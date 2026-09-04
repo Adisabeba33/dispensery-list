@@ -74,6 +74,10 @@ while len(sample) < min(args.limit, len(targets)):
     i += 1
 
 MENU_WORDS = re.compile(r"\b(menu|shop|order|browse|products?)\b", re.I)
+# The first two runs showed JSON-LD carries only LocalBusiness/Breadcrumb/FAQ
+# metadata — not one Product entry across 128 blocks. Products live in
+# __NEXT_DATA__ instead, so the flower category page is what we need to reach.
+FLOWER_URL = re.compile(r"(flower|/bud|category=flower|categories/flower)", re.I)
 FLOWER_WORDS = re.compile(r"\b(flower|bud|eighth|1/8|3\.5\s?g|quarter|ounce)\b", re.I)
 
 robots_cache: dict[str, urllib.robotparser.RobotFileParser | None] = {}
@@ -129,19 +133,61 @@ def describe_json_blobs(html: str) -> list[dict]:
             continue
         items = data if isinstance(data, list) else [data]
         for item in items:
-            if isinstance(item, dict):
-                found.append({
-                    "kind": "json-ld",
-                    "type": item.get("@type"),
-                    "keys": sorted(item.keys())[:25],
-                })
+            if not isinstance(item, dict):
+                continue
+            entry = {"kind": "json-ld", "type": item.get("@type"), "keys": sorted(item.keys())[:25]}
+
+            # An ItemList holds the products one level down, usually wrapped in
+            # ListItem envelopes. That inner object is the product.
+            elements = item.get("itemListElement")
+            if isinstance(elements, list) and elements:
+                first = elements[0]
+                if isinstance(first, dict):
+                    inner = first.get("item") if isinstance(first.get("item"), dict) else first
+                    entry["itemListCount"] = len(elements)
+                    entry["itemType"] = inner.get("@type")
+                    entry["itemKeys"] = sorted(inner.keys())[:30]
+                    for k in ("name", "category"):
+                        if inner.get(k):
+                            entry.setdefault("itemSample", {})[k] = str(inner[k])[:70]
+            found.append(entry)
 
     next_data = soup.find("script", id="__NEXT_DATA__")
     if next_data and next_data.string:
         try:
             data = json.loads(next_data.string)
             props = (data.get("props") or {}).get("pageProps") or {}
-            found.append({"kind": "__NEXT_DATA__", "pagePropsKeys": sorted(props.keys())[:30]})
+            entry = {"kind": "__NEXT_DATA__", "pagePropsKeys": sorted(props.keys())[:30]}
+
+            # The product object's own field names are what a parser is written
+            # against, so pull them out wherever a product list turns up.
+            for key in ("products", "menuItems", "items", "productList"):
+                value = props.get(key)
+                if key == "products" and "products" in props:
+                    # The key being present says nothing about it holding anything.
+                    # If the server ships it empty, the menu is fetched client-side
+                    # and no amount of HTML fetching will produce products.
+                    entry["productsFieldType"] = type(value).__name__
+                    if isinstance(value, list):
+                        entry["productsFieldLength"] = len(value)
+                    elif isinstance(value, dict):
+                        entry["productsFieldKeys"] = sorted(value.keys())[:20]
+                if isinstance(value, dict):
+                    value = value.get("products") or value.get("items") or value.get("edges")
+                if isinstance(value, list) and value:
+                    first = value[0]
+                    if isinstance(first, dict) and "node" in first and isinstance(first["node"], dict):
+                        first = first["node"]
+                    if isinstance(first, dict):
+                        entry["productContainer"] = key
+                        entry["productCount"] = len(value)
+                        entry["productKeys"] = sorted(first.keys())[:40]
+                        # Category naming decides how flower gets filtered out.
+                        for cat_key in ("type", "category", "productCategory", "kind", "subcategory"):
+                            if cat_key in first:
+                                entry.setdefault("categorySamples", {})[cat_key] = str(first[cat_key])[:60]
+                        break
+            found.append(entry)
         except Exception:
             found.append({"kind": "__NEXT_DATA__", "pagePropsKeys": None, "note": "unparseable"})
 
@@ -202,10 +248,12 @@ def probe(record):
             continue
         if host_of(url) != host_of(home["url"]):
             continue
-        if MENU_WORDS.search(label) or MENU_WORDS.search(url):
+        if FLOWER_URL.search(url) or FLOWER_URL.search(label):
+            candidates.insert(0, url)   # a flower category page is the target
+        elif MENU_WORDS.search(label) or MENU_WORDS.search(url):
             candidates.append(url)
 
-    for url in list(dict.fromkeys(candidates))[:2]:
+    for url in list(dict.fromkeys(candidates))[:4]:
         ok, _ = robots_allows(url)
         if not ok:
             result["pages"].append({"url": url, "status": None, "ok": False, "error": "robots.txt disallows"})
@@ -238,9 +286,53 @@ with ThreadPoolExecutor(max_workers=6) as ex:
 results.sort(key=lambda x: (x.get("provider") or "", x["licenseNumber"]))
 
 structure_kinds = Counter()
+jsonld_types = Counter()
+nextdata_keys = Counter()
+product_key_samples = []
+blocked_hosts = Counter()
+products_field_shape = Counter()
+item_list_samples = []
+reach_by_provider = Counter()
+
 for r in results:
+    provider = r.get("provider") or "?"
+    if r.get("robotsAllowed") is False:
+        blocked_hosts[urlparse(r.get("website") or "").netloc.lower()] += 1
+    if not r.get("error"):
+        reach_by_provider[provider] += 1
     for s in r.get("structures", []):
-        structure_kinds[s.get("kind")] += 1
+        kind = s.get("kind")
+        structure_kinds[kind] += 1
+        if kind == "__NEXT_DATA__" and s.get("productsFieldType"):
+            products_field_shape[
+                f'{s["productsFieldType"]}'
+                + (f'(len={s.get("productsFieldLength")})' if "productsFieldLength" in s else "")
+                + (f'(keys={",".join((s.get("productsFieldKeys") or [])[:6])})' if s.get("productsFieldKeys") else "")
+            ] += 1
+        if kind == "json-ld" and s.get("itemKeys") and len(item_list_samples) < 5:
+            item_list_samples.append({
+                "provider": provider, "count": s.get("itemListCount"),
+                "itemType": s.get("itemType"), "itemKeys": s.get("itemKeys"),
+                "sample": s.get("itemSample"),
+            })
+        if kind == "json-ld":
+            t = s.get("type")
+            jsonld_types[json.dumps(t) if isinstance(t, list) else str(t)] += 1
+            # A Product entry is the thing a parser would read, so capture its
+            # shape rather than only its existence.
+            if isinstance(t, str) and t.lower() in {"product", "offer", "itemlist"} and len(product_key_samples) < 6:
+                product_key_samples.append({"provider": provider, "type": t, "keys": s.get("keys")})
+        elif kind == "__NEXT_DATA__":
+            for k in s.get("pagePropsKeys") or []:
+                nextdata_keys[k] += 1
+            if s.get("productKeys") and len(product_key_samples) < 8:
+                product_key_samples.append({
+                    "provider": provider,
+                    "container": s.get("productContainer"),
+                    "count": s.get("productCount"),
+                    "keys": s.get("productKeys"),
+                    "categorySamples": s.get("categorySamples"),
+                })
 
 summary = {
     "eligibleShops": len(targets),
@@ -250,6 +342,14 @@ summary = {
     "byProvider": dict(Counter(r.get("provider") for r in results)),
     "structuresFound": dict(structure_kinds.most_common()),
     "flowerWordsSeen": sum(1 for r in results if r.get("flowerWordsSeen")),
+    "reachableByProvider": dict(reach_by_provider.most_common()),
+    "jsonLdTypes": dict(jsonld_types.most_common(15)),
+    "nextDataPagePropsKeys": dict(nextdata_keys.most_common(20)),
+    "productsFieldShape": dict(products_field_shape.most_common()),
+    "itemListSamples": item_list_samples,
+    "shopsWithProductList": sum(1 for r in results for s in r.get("structures", []) if s.get("productKeys")),
+    "productKeySamples": product_key_samples,
+    "robotsBlockedHosts": dict(blocked_hosts.most_common(30)),
 }
 
 (OUT / "menu-probe.json").write_text(
