@@ -414,6 +414,7 @@ validateDispensaries('data/dispensaries.json', true);
 validateDispensaries('data/dispensaries.demo.json', false);
 validateMunicipalities();
 validateFlowerListings('data/flower-listings.json');
+validateFlowerListings('data/flower-listings.demo.json');
 validateStrainReference('data/strain-reference.json');
 
 const print = (label: string, items: Problem[]) => {

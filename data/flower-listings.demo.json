@@ -1,0 +1,2356 @@
+[
+  {
+    "listingId": "river-ward-farm-durban-poison",
+    "licenseNumber": "OCM-CAURD-24-000104",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Durban Poison",
+    "strainNameCanonical": "durban poison",
+    "brand": "River Ward Farm",
+    "lineage": "SATIVA",
+    "thcPercent": 18.6,
+    "cbdPercent": 0.14,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 1.15
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0.43
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.26
+        }
+      ],
+      "totalPercent": 1.84,
+      "labName": "Empire Labs NY",
+      "testedOn": "2026-07-11",
+      "coaUrl": "https://example-lab.test/coa/durban-poison-river-ward-farm",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-05-09",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://www.kingshouseoffire.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "river-ward-farm-gmo-cookies",
+    "licenseNumber": "OCM-CAURD-24-000104",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "GMO Cookies",
+    "strainNameCanonical": "gmo cookies",
+    "brand": "River Ward Farm",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 19.9,
+    "cbdPercent": 0.05,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "STRAIN_REFERENCE",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.83
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.44
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.28
+        }
+      ],
+      "totalPercent": 1.55,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": "GMO Cookies"
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-06-05",
+    "inStock": true,
+    "availableSizesGrams": [
+      1,
+      3.5
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://www.kingshouseoffire.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "fallow-field-gardens-gelato-33",
+    "licenseNumber": "OCM-CAURD-24-000104",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Gelato #33",
+    "strainNameCanonical": "gelato 33",
+    "brand": "Fallow Field Gardens",
+    "lineage": "HYBRID",
+    "thcPercent": 29.2,
+    "cbdPercent": 0.27,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.61
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.5
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.16
+        }
+      ],
+      "totalPercent": 1.27,
+      "labName": "Empire Labs NY",
+      "testedOn": "2026-07-21",
+      "coaUrl": "https://example-lab.test/coa/gelato-33-fallow-field-gardens",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-07-20",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      14,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://www.kingshouseoffire.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "eastbound-cannabis-co-granddaddy-purple",
+    "licenseNumber": "OCM-CAURD-24-000104",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Granddaddy Purple",
+    "strainNameCanonical": "granddaddy purple",
+    "brand": "Eastbound Cannabis Co.",
+    "lineage": "INDICA",
+    "thcPercent": 23.0,
+    "cbdPercent": 0.21,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.89
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.35
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.18
+        }
+      ],
+      "totalPercent": 1.42,
+      "labName": "Keystone State Testing",
+      "testedOn": "2026-07-07",
+      "coaUrl": "https://example-lab.test/coa/granddaddy-purple-eastbound-cannabis-co",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-05-04",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      7,
+      14,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://www.kingshouseoffire.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "northline-cultivation-jack-herer",
+    "licenseNumber": "OCM-CAURD-24-000104",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Jack Herer",
+    "strainNameCanonical": "jack herer",
+    "brand": "Northline Cultivation",
+    "lineage": "SATIVA",
+    "thcPercent": 26.3,
+    "cbdPercent": 0.05,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.77
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.33
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.19
+        }
+      ],
+      "totalPercent": 1.29,
+      "labName": "Hudson Analytical",
+      "testedOn": "2026-07-08",
+      "coaUrl": "https://example-lab.test/coa/jack-herer-northline-cultivation",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-05-28",
+    "inStock": true,
+    "availableSizesGrams": [
+      1,
+      3.5
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://www.kingshouseoffire.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "fallow-field-gardens-lemon-cherry-gelato",
+    "licenseNumber": "OCM-CAURD-24-000104",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Lemon Cherry Gelato",
+    "strainNameCanonical": "lemon cherry gelato",
+    "brand": "Fallow Field Gardens",
+    "lineage": "HYBRID",
+    "thcPercent": 29.0,
+    "cbdPercent": 0.18,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.74
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.5
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.12
+        }
+      ],
+      "totalPercent": 1.36,
+      "labName": "Hudson Analytical",
+      "testedOn": "2026-07-18",
+      "coaUrl": "https://example-lab.test/coa/lemon-cherry-gelato-fallow-field-gardens",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-08-03",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      7
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://www.kingshouseoffire.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "fallow-field-gardens-mac-1",
+    "licenseNumber": "OCM-CAURD-24-000104",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "MAC 1",
+    "strainNameCanonical": "mac 1",
+    "brand": "Fallow Field Gardens",
+    "lineage": "HYBRID",
+    "thcPercent": 30.8,
+    "cbdPercent": 0.24,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": null
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": null
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-08-09",
+    "inStock": true,
+    "availableSizesGrams": [
+      7,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://www.kingshouseoffire.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "ninth-ward-farm-purple-punch",
+    "licenseNumber": "OCM-CAURD-24-000104",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Purple Punch",
+    "strainNameCanonical": "purple punch",
+    "brand": "Ninth Ward Farm",
+    "lineage": "INDICA",
+    "thcPercent": 24.9,
+    "cbdPercent": 0.06,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.71
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.41
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.23
+        }
+      ],
+      "totalPercent": 1.35,
+      "labName": "Hudson Analytical",
+      "testedOn": "2026-07-27",
+      "coaUrl": "https://example-lab.test/coa/purple-punch-ninth-ward-farm",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-06-28",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      14,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://www.kingshouseoffire.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "river-ward-farm-runtz",
+    "licenseNumber": "OCM-CAURD-24-000104",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Runtz",
+    "strainNameCanonical": "runtz",
+    "brand": "River Ward Farm",
+    "lineage": "HYBRID",
+    "thcPercent": 18.4,
+    "cbdPercent": 0.04,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.52
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.44
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.18
+        }
+      ],
+      "totalPercent": 1.14,
+      "labName": "Hudson Analytical",
+      "testedOn": "2026-07-22",
+      "coaUrl": "https://example-lab.test/coa/runtz-river-ward-farm",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-08-03",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      7,
+      14,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://www.kingshouseoffire.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "quarry-hill-growers-sour-diesel",
+    "licenseNumber": "OCM-CAURD-24-000104",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Sour Diesel",
+    "strainNameCanonical": "sour diesel",
+    "brand": "Quarry Hill Growers",
+    "lineage": "SATIVA",
+    "thcPercent": 25.4,
+    "cbdPercent": 0.07,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "STRAIN_REFERENCE",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.51
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.43
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.38
+        }
+      ],
+      "totalPercent": 1.32,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": "Sour Diesel"
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-07-10",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      14,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://www.kingshouseoffire.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "quarry-hill-growers-strawberry-cough",
+    "licenseNumber": "OCM-CAURD-24-000104",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Strawberry Cough",
+    "strainNameCanonical": "strawberry cough",
+    "brand": "Quarry Hill Growers",
+    "lineage": "SATIVA_DOMINANT",
+    "thcPercent": 19.8,
+    "cbdPercent": 0.04,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.57
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.33
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.27
+        }
+      ],
+      "totalPercent": 1.17,
+      "labName": "Empire Labs NY",
+      "testedOn": "2026-07-27",
+      "coaUrl": "https://example-lab.test/coa/strawberry-cough-quarry-hill-growers",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-05-01",
+    "inStock": false,
+    "availableSizesGrams": [
+      7,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://www.kingshouseoffire.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "quarry-hill-growers-zkittlez",
+    "licenseNumber": "OCM-CAURD-24-000104",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Zkittlez",
+    "strainNameCanonical": "zkittlez",
+    "brand": "Quarry Hill Growers",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 31.5,
+    "cbdPercent": 0.17,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "STRAIN_REFERENCE",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.61
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.39
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.17
+        }
+      ],
+      "totalPercent": 1.17,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": "Zkittlez"
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-08-07",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      7
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://www.kingshouseoffire.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "quarry-hill-growers-apple-fritter",
+    "licenseNumber": "OCM-RETL-24-000014",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Apple Fritter",
+    "strainNameCanonical": "apple fritter",
+    "brand": "Quarry Hill Growers",
+    "lineage": "HYBRID",
+    "thcPercent": 22.5,
+    "cbdPercent": 0.06,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "STRAIN_REFERENCE",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.57
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.41
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.3
+        }
+      ],
+      "totalPercent": 1.28,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": "Apple Fritter"
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-06-17",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      7,
+      14,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://transcendwps.com/products",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "eastbound-cannabis-co-gmo-cookies",
+    "licenseNumber": "OCM-RETL-24-000014",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "GMO Cookies",
+    "strainNameCanonical": "gmo cookies",
+    "brand": "Eastbound Cannabis Co.",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 26.1,
+    "cbdPercent": 0.04,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": null
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": null
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-05-09",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      7,
+      14,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://transcendwps.com/products",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "northline-cultivation-gelato-33",
+    "licenseNumber": "OCM-RETL-24-000014",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Gelato #33",
+    "strainNameCanonical": "gelato 33",
+    "brand": "Northline Cultivation",
+    "lineage": "HYBRID",
+    "thcPercent": 27.6,
+    "cbdPercent": 0.24,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.61
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.54
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.24
+        }
+      ],
+      "totalPercent": 1.39,
+      "labName": "Empire Labs NY",
+      "testedOn": "2026-07-24",
+      "coaUrl": "https://example-lab.test/coa/gelato-33-northline-cultivation",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-07-12",
+    "inStock": false,
+    "availableSizesGrams": [
+      7,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://transcendwps.com/products",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "river-ward-farm-granddaddy-purple",
+    "licenseNumber": "OCM-RETL-24-000014",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Granddaddy Purple",
+    "strainNameCanonical": "granddaddy purple",
+    "brand": "River Ward Farm",
+    "lineage": "INDICA",
+    "thcPercent": 22.8,
+    "cbdPercent": 0.18,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "STRAIN_REFERENCE",
+      "profile": [
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.74
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.36
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.15
+        }
+      ],
+      "totalPercent": 1.25,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": "Granddaddy Purple"
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-07-07",
+    "inStock": true,
+    "availableSizesGrams": [
+      7,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://transcendwps.com/products",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "eastbound-cannabis-co-jack-herer",
+    "licenseNumber": "OCM-RETL-24-000014",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Jack Herer",
+    "strainNameCanonical": "jack herer",
+    "brand": "Eastbound Cannabis Co.",
+    "lineage": "SATIVA",
+    "thcPercent": 27.4,
+    "cbdPercent": 0.15,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-08-27",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://transcendwps.com/products",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "fallow-field-gardens-lemon-cherry-gelato",
+    "licenseNumber": "OCM-RETL-24-000014",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Lemon Cherry Gelato",
+    "strainNameCanonical": "lemon cherry gelato",
+    "brand": "Fallow Field Gardens",
+    "lineage": "HYBRID",
+    "thcPercent": 26.0,
+    "cbdPercent": 0.04,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.59
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.6
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.18
+        }
+      ],
+      "totalPercent": 1.37,
+      "labName": "Keystone State Testing",
+      "testedOn": "2026-07-01",
+      "coaUrl": "https://example-lab.test/coa/lemon-cherry-gelato-fallow-field-gardens",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-05-24",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      7,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://transcendwps.com/products",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "quarry-hill-growers-mac-1",
+    "licenseNumber": "OCM-RETL-24-000014",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "MAC 1",
+    "strainNameCanonical": "mac 1",
+    "brand": "Quarry Hill Growers",
+    "lineage": "HYBRID",
+    "thcPercent": 31.6,
+    "cbdPercent": 0.05,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": null
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": null
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-06-15",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      7,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://transcendwps.com/products",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "ninth-ward-farm-purple-punch",
+    "licenseNumber": "OCM-RETL-24-000014",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Purple Punch",
+    "strainNameCanonical": "purple punch",
+    "brand": "Ninth Ward Farm",
+    "lineage": "INDICA",
+    "thcPercent": 24.5,
+    "cbdPercent": 0.09,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-08-22",
+    "inStock": true,
+    "availableSizesGrams": [
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://transcendwps.com/products",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "river-ward-farm-runtz",
+    "licenseNumber": "OCM-RETL-24-000014",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Runtz",
+    "strainNameCanonical": "runtz",
+    "brand": "River Ward Farm",
+    "lineage": "HYBRID",
+    "thcPercent": 18.0,
+    "cbdPercent": 0.14,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "STRAIN_REFERENCE",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.64
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.52
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.21
+        }
+      ],
+      "totalPercent": 1.37,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": "Runtz"
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-06-02",
+    "inStock": false,
+    "availableSizesGrams": [
+      1,
+      3.5
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://transcendwps.com/products",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "northline-cultivation-wedding-cake",
+    "licenseNumber": "OCM-RETL-24-000014",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Wedding Cake",
+    "strainNameCanonical": "wedding cake",
+    "brand": "Northline Cultivation",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 23.3,
+    "cbdPercent": 0.24,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "STRAIN_REFERENCE",
+      "profile": [
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.71
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.55
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.22
+        }
+      ],
+      "totalPercent": 1.48,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": "Wedding Cake"
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-08-19",
+    "inStock": false,
+    "availableSizesGrams": [
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://transcendwps.com/products",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "quarry-hill-growers-zkittlez",
+    "licenseNumber": "OCM-RETL-24-000014",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Zkittlez",
+    "strainNameCanonical": "zkittlez",
+    "brand": "Quarry Hill Growers",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 24.2,
+    "cbdPercent": 0.08,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": null
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": null
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-05-16",
+    "inStock": true,
+    "availableSizesGrams": [
+      7,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://transcendwps.com/products",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "fallow-field-gardens-apple-fritter",
+    "licenseNumber": "OCM-RETL-24-000021",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Apple Fritter",
+    "strainNameCanonical": "apple fritter",
+    "brand": "Fallow Field Gardens",
+    "lineage": "HYBRID",
+    "thcPercent": 20.6,
+    "cbdPercent": 0.22,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-07-14",
+    "inStock": true,
+    "availableSizesGrams": [
+      7,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://carnegiehillcannabis.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "river-ward-farm-blue-dream",
+    "licenseNumber": "OCM-RETL-24-000021",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Blue Dream",
+    "strainNameCanonical": "blue dream",
+    "brand": "River Ward Farm",
+    "lineage": "SATIVA_DOMINANT",
+    "thcPercent": 21.7,
+    "cbdPercent": 0.08,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": null
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": null
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-06-24",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      14,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://carnegiehillcannabis.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "northline-cultivation-durban-poison",
+    "licenseNumber": "OCM-RETL-24-000021",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Durban Poison",
+    "strainNameCanonical": "durban poison",
+    "brand": "Northline Cultivation",
+    "lineage": "SATIVA",
+    "thcPercent": 23.8,
+    "cbdPercent": 0.29,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.98
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0.3
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.23
+        }
+      ],
+      "totalPercent": 1.51,
+      "labName": "Hudson Analytical",
+      "testedOn": "2026-07-20",
+      "coaUrl": "https://example-lab.test/coa/durban-poison-northline-cultivation",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-08-27",
+    "inStock": true,
+    "availableSizesGrams": [
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://carnegiehillcannabis.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "eastbound-cannabis-co-gmo-cookies",
+    "licenseNumber": "OCM-RETL-24-000021",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "GMO Cookies",
+    "strainNameCanonical": "gmo cookies",
+    "brand": "Eastbound Cannabis Co.",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 22.0,
+    "cbdPercent": 0.29,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.91
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.52
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.25
+        }
+      ],
+      "totalPercent": 1.68,
+      "labName": "Keystone State Testing",
+      "testedOn": "2026-07-10",
+      "coaUrl": "https://example-lab.test/coa/gmo-cookies-eastbound-cannabis-co",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-05-05",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      7
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://carnegiehillcannabis.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "eastbound-cannabis-co-granddaddy-purple",
+    "licenseNumber": "OCM-RETL-24-000021",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Granddaddy Purple",
+    "strainNameCanonical": "granddaddy purple",
+    "brand": "Eastbound Cannabis Co.",
+    "lineage": "INDICA",
+    "thcPercent": 20.2,
+    "cbdPercent": 0.28,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.67
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.28
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.11
+        }
+      ],
+      "totalPercent": 1.06,
+      "labName": "Empire Labs NY",
+      "testedOn": "2026-07-01",
+      "coaUrl": "https://example-lab.test/coa/granddaddy-purple-eastbound-cannabis-co",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-05-16",
+    "inStock": true,
+    "availableSizesGrams": [
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://carnegiehillcannabis.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "northline-cultivation-jack-herer",
+    "licenseNumber": "OCM-RETL-24-000021",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Jack Herer",
+    "strainNameCanonical": "jack herer",
+    "brand": "Northline Cultivation",
+    "lineage": "SATIVA",
+    "thcPercent": 25.9,
+    "cbdPercent": 0.07,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 1.09
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.31
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.24
+        }
+      ],
+      "totalPercent": 1.64,
+      "labName": "Hudson Analytical",
+      "testedOn": "2026-07-15",
+      "coaUrl": "https://example-lab.test/coa/jack-herer-northline-cultivation",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-06-21",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://carnegiehillcannabis.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "ninth-ward-farm-lemon-cherry-gelato",
+    "licenseNumber": "OCM-RETL-24-000021",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Lemon Cherry Gelato",
+    "strainNameCanonical": "lemon cherry gelato",
+    "brand": "Ninth Ward Farm",
+    "lineage": "HYBRID",
+    "thcPercent": 30.2,
+    "cbdPercent": 0.19,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-08-02",
+    "inStock": false,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://carnegiehillcannabis.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "river-ward-farm-mac-1",
+    "licenseNumber": "OCM-RETL-24-000021",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "MAC 1",
+    "strainNameCanonical": "mac 1",
+    "brand": "River Ward Farm",
+    "lineage": "HYBRID",
+    "thcPercent": 26.8,
+    "cbdPercent": 0.19,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.71
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.57
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.15
+        }
+      ],
+      "totalPercent": 1.43,
+      "labName": "Hudson Analytical",
+      "testedOn": "2026-07-15",
+      "coaUrl": "https://example-lab.test/coa/mac-1-river-ward-farm",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-06-20",
+    "inStock": false,
+    "availableSizesGrams": [
+      3.5,
+      7
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://carnegiehillcannabis.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "eastbound-cannabis-co-purple-punch",
+    "licenseNumber": "OCM-RETL-24-000021",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Purple Punch",
+    "strainNameCanonical": "purple punch",
+    "brand": "Eastbound Cannabis Co.",
+    "lineage": "INDICA",
+    "thcPercent": 32.0,
+    "cbdPercent": 0.03,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.59
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.37
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.31
+        }
+      ],
+      "totalPercent": 1.27,
+      "labName": "Empire Labs NY",
+      "testedOn": "2026-07-10",
+      "coaUrl": "https://example-lab.test/coa/purple-punch-eastbound-cannabis-co",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-06-13",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      7
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://carnegiehillcannabis.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "northline-cultivation-strawberry-cough",
+    "licenseNumber": "OCM-RETL-24-000021",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Strawberry Cough",
+    "strainNameCanonical": "strawberry cough",
+    "brand": "Northline Cultivation",
+    "lineage": "SATIVA_DOMINANT",
+    "thcPercent": 20.2,
+    "cbdPercent": 0.09,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-07-27",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      7
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://carnegiehillcannabis.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "northline-cultivation-wedding-cake",
+    "licenseNumber": "OCM-RETL-24-000021",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Wedding Cake",
+    "strainNameCanonical": "wedding cake",
+    "brand": "Northline Cultivation",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 19.9,
+    "cbdPercent": 0.22,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.84
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.47
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.23
+        }
+      ],
+      "totalPercent": 1.54,
+      "labName": "Hudson Analytical",
+      "testedOn": "2026-07-17",
+      "coaUrl": "https://example-lab.test/coa/wedding-cake-northline-cultivation",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-06-14",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      7
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://carnegiehillcannabis.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "ninth-ward-farm-zkittlez",
+    "licenseNumber": "OCM-RETL-24-000021",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Zkittlez",
+    "strainNameCanonical": "zkittlez",
+    "brand": "Ninth Ward Farm",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 20.8,
+    "cbdPercent": 0.23,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.68
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.38
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.18
+        }
+      ],
+      "totalPercent": 1.24,
+      "labName": "Keystone State Testing",
+      "testedOn": "2026-07-23",
+      "coaUrl": "https://example-lab.test/coa/zkittlez-ninth-ward-farm",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-07-01",
+    "inStock": false,
+    "availableSizesGrams": [
+      3.5,
+      7
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://carnegiehillcannabis.com",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "northline-cultivation-apple-fritter",
+    "licenseNumber": "OCM-RETL-24-000120",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Apple Fritter",
+    "strainNameCanonical": "apple fritter",
+    "brand": "Northline Cultivation",
+    "lineage": "HYBRID",
+    "thcPercent": 25.1,
+    "cbdPercent": 0.24,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-07-09",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://seaweedrbny.com/shop/",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "quarry-hill-growers-durban-poison",
+    "licenseNumber": "OCM-RETL-24-000120",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Durban Poison",
+    "strainNameCanonical": "durban poison",
+    "brand": "Quarry Hill Growers",
+    "lineage": "SATIVA",
+    "thcPercent": 17.6,
+    "cbdPercent": 0.12,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": null
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": null
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-08-25",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://seaweedrbny.com/shop/",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "river-ward-farm-gmo-cookies",
+    "licenseNumber": "OCM-RETL-24-000120",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "GMO Cookies",
+    "strainNameCanonical": "gmo cookies",
+    "brand": "River Ward Farm",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 18.0,
+    "cbdPercent": 0.24,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "STRAIN_REFERENCE",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.83
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.44
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.28
+        }
+      ],
+      "totalPercent": 1.55,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": "GMO Cookies"
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-06-18",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      7,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://seaweedrbny.com/shop/",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "eastbound-cannabis-co-gelato-33",
+    "licenseNumber": "OCM-RETL-24-000120",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Gelato #33",
+    "strainNameCanonical": "gelato 33",
+    "brand": "Eastbound Cannabis Co.",
+    "lineage": "HYBRID",
+    "thcPercent": 24.4,
+    "cbdPercent": 0.11,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": null
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": null
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-08-11",
+    "inStock": false,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://seaweedrbny.com/shop/",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "northline-cultivation-granddaddy-purple",
+    "licenseNumber": "OCM-RETL-24-000120",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Granddaddy Purple",
+    "strainNameCanonical": "granddaddy purple",
+    "brand": "Northline Cultivation",
+    "lineage": "INDICA",
+    "thcPercent": 29.3,
+    "cbdPercent": 0.2,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "STRAIN_REFERENCE",
+      "profile": [
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.74
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.36
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.15
+        }
+      ],
+      "totalPercent": 1.25,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": "Granddaddy Purple"
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-05-07",
+    "inStock": true,
+    "availableSizesGrams": [
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://seaweedrbny.com/shop/",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "eastbound-cannabis-co-jack-herer",
+    "licenseNumber": "OCM-RETL-24-000120",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Jack Herer",
+    "strainNameCanonical": "jack herer",
+    "brand": "Eastbound Cannabis Co.",
+    "lineage": "SATIVA",
+    "thcPercent": 29.0,
+    "cbdPercent": 0.28,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 1.09
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.22
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.21
+        }
+      ],
+      "totalPercent": 1.52,
+      "labName": "Empire Labs NY",
+      "testedOn": "2026-07-17",
+      "coaUrl": "https://example-lab.test/coa/jack-herer-eastbound-cannabis-co",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-08-11",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      14,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://seaweedrbny.com/shop/",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "quarry-hill-growers-lemon-cherry-gelato",
+    "licenseNumber": "OCM-RETL-24-000120",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Lemon Cherry Gelato",
+    "strainNameCanonical": "lemon cherry gelato",
+    "brand": "Quarry Hill Growers",
+    "lineage": "HYBRID",
+    "thcPercent": 17.6,
+    "cbdPercent": 0.22,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "STRAIN_REFERENCE",
+      "profile": [
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.77
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.48
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.16
+        }
+      ],
+      "totalPercent": 1.41,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": "Lemon Cherry Gelato"
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-07-10",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://seaweedrbny.com/shop/",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "eastbound-cannabis-co-purple-punch",
+    "licenseNumber": "OCM-RETL-24-000120",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Purple Punch",
+    "strainNameCanonical": "purple punch",
+    "brand": "Eastbound Cannabis Co.",
+    "lineage": "INDICA",
+    "thcPercent": 27.5,
+    "cbdPercent": 0.08,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "STRAIN_REFERENCE",
+      "profile": [
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.68
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.41
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.24
+        }
+      ],
+      "totalPercent": 1.33,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": "Purple Punch"
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-08-24",
+    "inStock": true,
+    "availableSizesGrams": [
+      7,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://seaweedrbny.com/shop/",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "northline-cultivation-sour-diesel",
+    "licenseNumber": "OCM-RETL-24-000120",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Sour Diesel",
+    "strainNameCanonical": "sour diesel",
+    "brand": "Northline Cultivation",
+    "lineage": "SATIVA",
+    "thcPercent": 20.0,
+    "cbdPercent": 0.15,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": null
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": null
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-06-23",
+    "inStock": false,
+    "availableSizesGrams": [
+      7,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://seaweedrbny.com/shop/",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "ninth-ward-farm-strawberry-cough",
+    "licenseNumber": "OCM-RETL-24-000120",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Strawberry Cough",
+    "strainNameCanonical": "strawberry cough",
+    "brand": "Ninth Ward Farm",
+    "lineage": "SATIVA_DOMINANT",
+    "thcPercent": 19.1,
+    "cbdPercent": 0.03,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "LAB_COA",
+      "profile": [
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.55
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.21
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.31
+        }
+      ],
+      "totalPercent": 1.07,
+      "labName": "Keystone State Testing",
+      "testedOn": "2026-07-25",
+      "coaUrl": "https://example-lab.test/coa/strawberry-cough-ninth-ward-farm",
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-05-15",
+    "inStock": false,
+    "availableSizesGrams": [
+      3.5,
+      7,
+      14,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://seaweedrbny.com/shop/",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "fallow-field-gardens-wedding-cake",
+    "licenseNumber": "OCM-RETL-24-000120",
+    "capturedAt": "2026-09-04T16:00:00Z",
+    "strainNameRaw": "Wedding Cake",
+    "strainNameCanonical": "wedding cake",
+    "brand": "Fallow Field Gardens",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 19.7,
+    "cbdPercent": 0.1,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "STRAIN_REFERENCE",
+      "profile": [
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.71
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.55
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.22
+        }
+      ],
+      "totalPercent": 1.48,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": "Wedding Cake"
+    },
+    "harvestedOn": null,
+    "packagedOn": "2026-07-18",
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5,
+      7,
+      28
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://seaweedrbny.com/shop/",
+        "label": "Illustrative sample menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T16:00:00Z"
+      }
+    ],
+    "warnings": []
+  }
+]
