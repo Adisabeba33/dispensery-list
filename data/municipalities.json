@@ -1,667 +1,28 @@
 [
   {
-    "id": "ardsley-village",
-    "name": "Ardsley",
-    "kind": "VILLAGE",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "bronxville-village",
-    "name": "Bronxville",
-    "kind": "VILLAGE",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "eastchester-town",
-    "name": "Eastchester",
-    "kind": "TOWN",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "elmsford-village",
-    "name": "Elmsford",
-    "kind": "VILLAGE",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "irvington-village",
-    "name": "Irvington",
-    "kind": "VILLAGE",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "larchmont-village",
-    "name": "Larchmont",
-    "kind": "VILLAGE",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "lewisboro-town",
-    "name": "Lewisboro",
-    "kind": "TOWN",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "mamaroneck-town",
-    "name": "Mamaroneck",
-    "kind": "TOWN",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "mamaroneck-village",
-    "name": "Mamaroneck",
-    "kind": "VILLAGE",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "mount-kisco-village",
-    "name": "Mount Kisco",
-    "kind": "VILLAGE",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "mount-pleasant-town",
-    "name": "Mount Pleasant",
-    "kind": "TOWN",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "new-castle-town",
-    "name": "New Castle",
-    "kind": "TOWN",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "north-castle-town",
-    "name": "North Castle",
-    "kind": "TOWN",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "north-salem-town",
-    "name": "North Salem",
-    "kind": "TOWN",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "pelham-manor-village",
-    "name": "Pelham Manor",
-    "kind": "VILLAGE",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "pleasantville-village",
-    "name": "Pleasantville",
-    "kind": "VILLAGE",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "port-chester-village",
-    "name": "Port Chester",
-    "kind": "VILLAGE",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "rye-city",
-    "name": "Rye",
-    "kind": "CITY",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "rye-brook-village",
-    "name": "Rye Brook",
-    "kind": "VILLAGE",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "somers-town",
-    "name": "Somers",
-    "kind": "TOWN",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "tuckahoe-village",
-    "name": "Tuckahoe",
-    "kind": "VILLAGE",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "yorktown-town",
-    "name": "Yorktown",
-    "kind": "TOWN",
-    "county": "Westchester",
-    "retailOptOut": true,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
-    "sources": [
-      {
-        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
-        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
-        "type": "PRESS",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      },
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "yonkers-city",
-    "name": "Yonkers",
-    "kind": "CITY",
-    "county": "Westchester",
-    "retailOptOut": false,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Did not opt out of retail; licensed dispensaries operate here.",
-    "sources": [
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "white-plains-city",
-    "name": "White Plains",
-    "kind": "CITY",
-    "county": "Westchester",
-    "retailOptOut": false,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Did not opt out of retail; licensed dispensaries operate here.",
-    "sources": [
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "mount-vernon-city",
-    "name": "Mount Vernon",
-    "kind": "CITY",
-    "county": "Westchester",
-    "retailOptOut": false,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Did not opt out of retail; licensed dispensaries operate here.",
-    "sources": [
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "new-rochelle-city",
-    "name": "New Rochelle",
-    "kind": "CITY",
-    "county": "Westchester",
-    "retailOptOut": false,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Did not opt out of retail; licensed dispensaries operate here.",
-    "sources": [
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "peekskill-city",
-    "name": "Peekskill",
-    "kind": "CITY",
-    "county": "Westchester",
-    "retailOptOut": false,
-    "onsiteConsumptionOptOut": null,
-    "optOutDate": null,
-    "notes": "Did not opt out of retail; licensed dispensaries operate here.",
-    "sources": [
-      {
-        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
-        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
-        "type": "RESEARCH_TRACKER",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "manhattan-borough",
-    "name": "Manhattan",
+    "id": "bronx-borough",
+    "name": "Bronx",
     "kind": "BOROUGH",
-    "county": "New York",
+    "county": "Bronx",
     "retailOptOut": false,
     "onsiteConsumptionOptOut": false,
     "optOutDate": null,
-    "notes": "The opting-out authority was the City of New York, not the individual borough. New York City did not opt out, so retail is permitted across all five boroughs.",
+    "notes": "NYC boroughs are geographic records here; opt-out authority belongs to New York City, which is absent from OCM's current opt-out list.",
     "sources": [
       {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
         "url": "https://cannabis.ny.gov/localities",
-        "label": "NYS Office of Cannabis Management \u2014 localities",
+        "label": "OCM — Localities",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-04T00:00:00Z"
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
       }
     ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
   },
   {
     "id": "brooklyn-borough",
@@ -671,16 +32,47 @@
     "retailOptOut": false,
     "onsiteConsumptionOptOut": false,
     "optOutDate": null,
-    "notes": "The opting-out authority was the City of New York, not the individual borough. New York City did not opt out, so retail is permitted across all five boroughs.",
+    "notes": "NYC boroughs are geographic records here; opt-out authority belongs to New York City, which is absent from OCM's current opt-out list.",
     "sources": [
       {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
         "url": "https://cannabis.ny.gov/localities",
-        "label": "NYS Office of Cannabis Management \u2014 localities",
+        "label": "OCM — Localities",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-04T00:00:00Z"
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
       }
     ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "manhattan-borough",
+    "name": "Manhattan",
+    "kind": "BOROUGH",
+    "county": "New York",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": "NYC boroughs are geographic records here; opt-out authority belongs to New York City, which is absent from OCM's current opt-out list.",
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://cannabis.ny.gov/localities",
+        "label": "OCM — Localities",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
   },
   {
     "id": "queens-borough",
@@ -690,35 +82,22 @@
     "retailOptOut": false,
     "onsiteConsumptionOptOut": false,
     "optOutDate": null,
-    "notes": "The opting-out authority was the City of New York, not the individual borough. New York City did not opt out, so retail is permitted across all five boroughs.",
+    "notes": "NYC boroughs are geographic records here; opt-out authority belongs to New York City, which is absent from OCM's current opt-out list.",
     "sources": [
       {
-        "url": "https://cannabis.ny.gov/localities",
-        "label": "NYS Office of Cannabis Management \u2014 localities",
-        "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-04T00:00:00Z"
-      }
-    ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
-  },
-  {
-    "id": "the-bronx-borough",
-    "name": "The Bronx",
-    "kind": "BOROUGH",
-    "county": "Bronx",
-    "retailOptOut": false,
-    "onsiteConsumptionOptOut": false,
-    "optOutDate": null,
-    "notes": "The opting-out authority was the City of New York, not the individual borough. New York City did not opt out, so retail is permitted across all five boroughs.",
-    "sources": [
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
       {
         "url": "https://cannabis.ny.gov/localities",
-        "label": "NYS Office of Cannabis Management \u2014 localities",
+        "label": "OCM — Localities",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-04T00:00:00Z"
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
       }
     ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
   },
   {
     "id": "staten-island-borough",
@@ -728,15 +107,1221 @@
     "retailOptOut": false,
     "onsiteConsumptionOptOut": false,
     "optOutDate": null,
-    "notes": "The opting-out authority was the City of New York, not the individual borough. New York City did not opt out, so retail is permitted across all five boroughs.",
+    "notes": "NYC boroughs are geographic records here; opt-out authority belongs to New York City, which is absent from OCM's current opt-out list.",
     "sources": [
       {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
         "url": "https://cannabis.ny.gov/localities",
-        "label": "NYS Office of Cannabis Management \u2014 localities",
+        "label": "OCM — Localities",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-04T00:00:00Z"
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
       }
     ],
-    "lastUpdated": "2026-09-04T00:00:00Z"
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "ardsley-village",
+    "name": "Ardsley",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "bedford-town",
+    "name": "Bedford",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "briarcliff-manor-village",
+    "name": "Briarcliff Manor",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "bronxville-village",
+    "name": "Bronxville",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "buchanan-village",
+    "name": "Buchanan",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "cortlandt-town",
+    "name": "Cortlandt",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "croton-on-hudson-village",
+    "name": "Croton-on-Hudson",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "dobbs-ferry-village",
+    "name": "Dobbs Ferry",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "eastchester-town",
+    "name": "Eastchester",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "elmsford-village",
+    "name": "Elmsford",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "greenburgh-town",
+    "name": "Greenburgh",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "harrison-town",
+    "name": "Harrison",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": "OCM's official opt-out workbook lists this coextensive town/village separately by municipality type; retained as separate schema records.",
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "harrison-village",
+    "name": "Harrison",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": "OCM's official opt-out workbook lists this coextensive town/village separately by municipality type; retained as separate schema records.",
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "hastings-on-hudson-village",
+    "name": "Hastings-on-Hudson",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "irvington-village",
+    "name": "Irvington",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "larchmont-village",
+    "name": "Larchmont",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "lewisboro-town",
+    "name": "Lewisboro",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "mamaroneck-town",
+    "name": "Mamaroneck",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "mamaroneck-village",
+    "name": "Mamaroneck",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "mount-kisco-town",
+    "name": "Mount Kisco",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": "OCM's official opt-out workbook lists this coextensive town/village separately by municipality type; retained as separate schema records.",
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "mount-kisco-village",
+    "name": "Mount Kisco",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": "OCM's official opt-out workbook lists this coextensive town/village separately by municipality type; retained as separate schema records.",
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "mount-pleasant-town",
+    "name": "Mount Pleasant",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "mount-vernon-city",
+    "name": "Mount Vernon",
+    "kind": "CITY",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "new-castle-town",
+    "name": "New Castle",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "new-rochelle-city",
+    "name": "New Rochelle",
+    "kind": "CITY",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "north-castle-town",
+    "name": "North Castle",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "north-salem-town",
+    "name": "North Salem",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "ossining-town",
+    "name": "Ossining",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "ossining-village",
+    "name": "Ossining",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "peekskill-city",
+    "name": "Peekskill",
+    "kind": "CITY",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "pelham-town",
+    "name": "Pelham",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "pelham-village",
+    "name": "Pelham",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "pelham-manor-village",
+    "name": "Pelham Manor",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "pleasantville-village",
+    "name": "Pleasantville",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "port-chester-village",
+    "name": "Port Chester",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "pound-ridge-town",
+    "name": "Pound Ridge",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "rye-city",
+    "name": "Rye",
+    "kind": "CITY",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "rye-town",
+    "name": "Rye",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "rye-brook-village",
+    "name": "Rye Brook",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "scarsdale-town",
+    "name": "Scarsdale",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": "OCM's official opt-out workbook lists this coextensive town/village separately by municipality type; retained as separate schema records.",
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "scarsdale-village",
+    "name": "Scarsdale",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": "OCM's official opt-out workbook lists this coextensive town/village separately by municipality type; retained as separate schema records.",
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "sleepy-hollow-village",
+    "name": "Sleepy Hollow",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "somers-town",
+    "name": "Somers",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "tarrytown-village",
+    "name": "Tarrytown",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "tuckahoe-village",
+    "name": "Tuckahoe",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": true,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "white-plains-city",
+    "name": "White Plains",
+    "kind": "CITY",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "yonkers-city",
+    "name": "Yonkers",
+    "kind": "CITY",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
+  },
+  {
+    "id": "yorktown-town",
+    "name": "Yorktown",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": null,
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
+        "label": "OCM — Official Local Opt-Out List",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      },
+      {
+        "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
+        "label": "Westchester County GIS — Municipal Boundary layer",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T09:16:19.670Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T09:16:19.670Z"
   }
 ]
