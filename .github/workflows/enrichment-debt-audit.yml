@@ -1,0 +1,50 @@
+name: Enrichment debt audit
+
+on:
+  push:
+    branches:
+      - agent/enrich-nyc-westchester
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Fetch fresh official sources
+        run: node scripts/research-bootstrap.mjs
+      - name: Install audit dependencies
+        run: python -m pip install beautifulsoup4 requests
+      - name: Audit phase 1 debts
+        run: python scripts/enrichment-debt-audit.py
+      - name: Collect website enrichment evidence
+        run: python scripts/enrichment-collect.py
+      - name: Collect geocoding evidence
+        run: python scripts/enrichment-geocode.py
+      - name: Upload debt audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: enrichment-debt-audit
+          path: enrichment-output/debt-audit.json
+          if-no-files-found: error
+          retention-days: 7
+      - name: Upload website evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: enrichment-website-evidence
+          path: enrichment-output/website-evidence.json
+          if-no-files-found: error
+          retention-days: 7
+      - name: Upload geocoding evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: enrichment-geocode-evidence
+          path: enrichment-output/geocode-evidence.json
+          if-no-files-found: error
+          retention-days: 7
