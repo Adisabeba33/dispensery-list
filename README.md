@@ -24,7 +24,10 @@ data/
   municipalities.json              Westchester opt-outs + NYC boroughs
   raw/                             raw registry snapshots, kept as provenance
 docs/
-  AGENT_RESEARCH_BRIEF.md          the task specification for the research agent
+  AGENT_RESEARCH_BRIEF.md          phase 1 — collecting the register from the state
+  AGENT_ENRICHMENT_BRIEF.md        phase 2 — menus, geocodes, phones, services
+  RESEARCH_REPORT.md               what phase 1 found, and what it could not
+  SOURCE_COLUMNS.md                the registry's real columns and the filter used
 scripts/
   validate-data.ts                 schema + semantic validation (runs in CI)
   ingest/                          pulls the state registry into the schema
@@ -64,6 +67,23 @@ for licences already in the file, so hand-collected detail is not lost.
 The ingest adapter does not hard-code Socrata column names. It resolves each
 logical field against the columns actually present and, when a required one is
 missing, prints the real column list rather than silently emitting nulls.
+
+## Repository size
+
+Raw registry snapshots in `data/raw/` are the provenance for every record, and
+they are large in line count — one snapshot is about 4.5 MB across ~117k lines
+of pretty-printed JSON. That reads alarming and is not: JSON of this shape
+compresses to roughly 9%, so git stores a snapshot in about 0.6 MB, and the
+whole repository including history is under 10 MB.
+
+The thing to watch is not any single snapshot but the rate. Git history is
+permanent — a large file committed weekly cannot be shrunk later by deleting
+it. At roughly 0.6 MB per snapshot, weekly ingest adds about 30 MB of history
+a year, which is comfortable; keep that cadence in mind rather than committing
+a snapshot on every experimental run.
+
+Nothing here is slow: validation of 456 records takes under a second, the
+static build of 462 pages takes about 25 seconds.
 
 ## Scope
 

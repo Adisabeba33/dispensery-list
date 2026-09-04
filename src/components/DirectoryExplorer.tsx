@@ -15,7 +15,9 @@ export const DirectoryExplorer = ({ dispensaries }: { dispensaries: Dispensary[]
   const [region, setRegion] = useState<string | null>(null);
   const [openOnly, setOpenOnly] = useState(false);
   const [deliveryOnly, setDeliveryOnly] = useState(false);
-  const [sort, setSort] = useState<SortKey>('name');
+  // Open shops first by default: sorting by name leads with registry entity
+  // names that carry no shop sign, and buries the shops someone can walk into.
+  const [sort, setSort] = useState<SortKey>('status');
 
   const regions = useMemo(() => {
     const present = new Set(dispensaries.map(regionOf));
@@ -149,9 +151,9 @@ export const DirectoryExplorer = ({ dispensaries }: { dispensaries: Dispensary[]
               onChange={(e) => setSort(e.target.value as SortKey)}
               className="rounded-lg border border-ink-700 bg-ink-900 px-2.5 py-1.5 text-chalk-200 focus:border-moss-600 focus:outline-none"
             >
+              <option value="status">Open first</option>
               <option value="name">Name</option>
               <option value="region">Area</option>
-              <option value="status">Open first</option>
             </select>
           </label>
         </div>
