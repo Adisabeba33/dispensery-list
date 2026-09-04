@@ -1,0 +1,28 @@
+name: Research bootstrap
+
+on:
+  push:
+    branches:
+      - agent/research-nyc-westchester
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Fetch official research sources
+        run: node scripts/research-bootstrap.mjs
+      - name: Upload research snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-bootstrap
+          path: research-output/
+          if-no-files-found: error
+          retention-days: 7
