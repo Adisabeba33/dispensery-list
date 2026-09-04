@@ -99,6 +99,8 @@ LINEAGE_MAP = {
 robots_cache: dict = {}
 unresolved_keys = Counter()
 raw_terpene_names = Counter()
+categories_seen = Counter()
+product_key_sample = []
 
 
 def host_of(url):
@@ -206,6 +208,7 @@ def is_flower(product):
     parts = [str(flatten(pick(product, "category")) or ""),
              str(flatten(pick(product, "subcategory")) or "")]
     text = " ".join(parts).lower()
+    categories_seen[text.strip() or "(no category field)"] += 1
     if not text.strip():
         return False
     if re.search(r"pre[\s-]?roll|infused|blunt|joint", text):
@@ -325,6 +328,11 @@ def collect(shop):
     for page in pages:
         products = extract_products(page["text"])
         out["productsSeen"] += len(products)
+        if products and len(product_key_sample) < 3:
+            product_key_sample.append({
+                "provider": (shop.get("menu") or {}).get("provider"),
+                "keys": sorted(products[0].keys())[:40],
+            })
         if products and not any(FIELDS["name"][0] in p or "name" in p for p in products[:3]):
             unresolved_keys.update(sorted(products[0].keys())[:30])
         for product in products:
@@ -365,6 +373,8 @@ summary = {
     "withThc": sum(1 for l in listings if l["thcPercent"] is not None),
     "withSizes": sum(1 for l in listings if l["availableSizesGrams"]),
     "unmappedTerpeneNames": dict(raw_terpene_names.most_common(15)),
+    "categoriesSeen": dict(categories_seen.most_common(25)),
+    "productKeySample": product_key_sample,
 }
 # When nothing parsed, the real key names are the finding worth reporting.
 if unresolved_keys:
@@ -377,3 +387,6 @@ if not args.dry_run:
         json.dumps(listings, indent=2, ensure_ascii=False) + "\n"
     )
     print(f"\nWrote {len(listings)} listings")
+
+print("\n=== summary (repeated so it survives a truncated log tail) ===")
+print(json.dumps(summary, indent=2))
