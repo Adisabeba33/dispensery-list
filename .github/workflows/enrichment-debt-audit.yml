@@ -20,13 +20,22 @@ jobs:
       - name: Fetch fresh official sources
         run: node scripts/research-bootstrap.mjs
       - name: Install audit dependencies
-        run: python -m pip install beautifulsoup4
+        run: python -m pip install beautifulsoup4 requests
       - name: Audit phase 1 debts
         run: python scripts/enrichment-debt-audit.py
+      - name: Collect website enrichment evidence
+        run: python scripts/enrichment-collect.py
       - name: Upload debt audit
         uses: actions/upload-artifact@v4
         with:
           name: enrichment-debt-audit
           path: enrichment-output/debt-audit.json
+          if-no-files-found: error
+          retention-days: 7
+      - name: Upload website evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: enrichment-website-evidence
+          path: enrichment-output/website-evidence.json
           if-no-files-found: error
           retention-days: 7
