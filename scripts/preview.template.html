@@ -664,9 +664,8 @@ const menuHtml = (lic) => {
       '<span style="font-size:0.8rem;color:var(--faint);">' +
         (captured ? 'as read ' + esc(captured) : '') + '</span></div>' +
 
-    '<div class="menu-note"><span class="pill warn" style="margin-right:0.5rem;">Sample menu</span>' +
-      'No shelf has been read yet. Strain names are real genetics; the growers and the stock are ' +
-      'invented to show the layout, and describe no actual shop\u2019s inventory.</div>' +
+    '<p class="aroma" style="margin-top:0.5rem;">Read from the shop\u2019s own menu. Shelves move ' +
+      'through the day, so confirm before travelling for a specific strain.</p>' +
 
     '<div class="menu-filters">' +
       '<button type="button" class="chip" data-menu="size" data-value="" aria-pressed="' + (menuState.size === null) + '">Any size</button>' +

@@ -1,4 +1,4 @@
-import listingsRaw from '../../data/flower-listings.demo.json';
+import listingsRaw from '../../data/flower-listings.json';
 
 /** Mirrors data/schema/flower-listing.schema.json. */
 export type TerpeneSource = 'LAB_COA' | 'MENU_LISTING' | 'STRAIN_REFERENCE' | 'NONE';
@@ -30,13 +30,11 @@ export type FlowerListing = {
 };
 
 /**
- * Sample data. No shelf has been read yet — phase 3 collects that — so these
- * menus are illustrative. Strain names are real public genetics; the growers
- * are invented, because attributing stock to a real cultivator would be a
- * claim about a business we have not verified.
+ * Real shelves only. Empty until the collector has read a shop's menu, and a
+ * shop with nothing here simply shows no menu — an invented one would be worse
+ * than none, since the whole point is that a reader can trust what is listed.
  */
 export const listings = listingsRaw as unknown as FlowerListing[];
-export const menuIsSample = true;
 
 export const listingsFor = (licenseNumber: string): FlowerListing[] =>
   listings

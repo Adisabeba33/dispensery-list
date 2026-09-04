@@ -17,8 +17,7 @@ const read = (rel: string) => JSON.parse(readFileSync(resolve(ROOT, rel), 'utf8'
 const delivered = read('data/dispensaries.json') as unknown[];
 const dispensaries = delivered.length > 0 ? delivered : read('data/dispensaries.demo.json');
 const municipalities = read('data/municipalities.json');
-// Sample flower menus, so the snapshot shows what a shelf view looks like.
-const listings = read('data/flower-listings.demo.json');
+const listings = read('data/flower-listings.json');
 const isDemo = delivered.length === 0;
 
 let html = readFileSync(resolve(ROOT, 'scripts/preview.template.html'), 'utf8');
@@ -38,5 +37,5 @@ const out = resolve(ROOT, 'preview/index.html');
 writeFileSync(out, html);
 
 console.log(`Wrote ${out}`);
-console.log(`  ${dispensaries.length} dispensaries${isDemo ? ' (sample data)' : ''}, ${municipalities.length} municipalities, ${listings.length} sample listings`);
+console.log(`  ${dispensaries.length} dispensaries${isDemo ? ' (sample data)' : ''}, ${municipalities.length} municipalities, ${listings.length} flower listings`);
 console.log(`  ${(Buffer.byteLength(html) / 1024).toFixed(1)} kB`);

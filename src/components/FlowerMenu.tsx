@@ -166,11 +166,10 @@ export const FlowerMenu = ({ listings }: { listings: FlowerListing[] }) => {
         )}
       </div>
 
-      <div className="mt-4 rounded-lg border border-amber-400/30 bg-amber-400/[0.07] px-4 py-3 text-sm text-chalk-200">
-        <span className="pill mr-2 border-amber-400/50 bg-amber-400/15 text-amber-400">Sample menu</span>
-        No shelf has been read yet. Strain names are real genetics; the growers and the stock are
-        invented to show the layout, and describe no actual shop&apos;s inventory.
-      </div>
+      <p className="mt-2 text-xs leading-relaxed text-chalk-500">
+        Read from the shop&apos;s own menu. Shelves move through the day, so confirm before
+        travelling for a specific strain.
+      </p>
 
       <div className="mt-5 flex flex-wrap items-center gap-2">
         <button
