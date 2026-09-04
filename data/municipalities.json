@@ -1,0 +1,742 @@
+[
+  {
+    "id": "ardsley-village",
+    "name": "Ardsley",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "bronxville-village",
+    "name": "Bronxville",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "eastchester-town",
+    "name": "Eastchester",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "elmsford-village",
+    "name": "Elmsford",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "irvington-village",
+    "name": "Irvington",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "larchmont-village",
+    "name": "Larchmont",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "lewisboro-town",
+    "name": "Lewisboro",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "mamaroneck-town",
+    "name": "Mamaroneck",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "mamaroneck-village",
+    "name": "Mamaroneck",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "mount-kisco-village",
+    "name": "Mount Kisco",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "mount-pleasant-town",
+    "name": "Mount Pleasant",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "new-castle-town",
+    "name": "New Castle",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "north-castle-town",
+    "name": "North Castle",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "north-salem-town",
+    "name": "North Salem",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "pelham-manor-village",
+    "name": "Pelham Manor",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "pleasantville-village",
+    "name": "Pleasantville",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "port-chester-village",
+    "name": "Port Chester",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "rye-city",
+    "name": "Rye",
+    "kind": "CITY",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "rye-brook-village",
+    "name": "Rye Brook",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "somers-town",
+    "name": "Somers",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "tuckahoe-village",
+    "name": "Tuckahoe",
+    "kind": "VILLAGE",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "yorktown-town",
+    "name": "Yorktown",
+    "kind": "TOWN",
+    "county": "Westchester",
+    "retailOptOut": true,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.",
+    "sources": [
+      {
+        "url": "https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/",
+        "label": "Yonkers Times \u2014 Westchester municipalities that opted out",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "yonkers-city",
+    "name": "Yonkers",
+    "kind": "CITY",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Did not opt out of retail; licensed dispensaries operate here.",
+    "sources": [
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "white-plains-city",
+    "name": "White Plains",
+    "kind": "CITY",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Did not opt out of retail; licensed dispensaries operate here.",
+    "sources": [
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "mount-vernon-city",
+    "name": "Mount Vernon",
+    "kind": "CITY",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Did not opt out of retail; licensed dispensaries operate here.",
+    "sources": [
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "new-rochelle-city",
+    "name": "New Rochelle",
+    "kind": "CITY",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Did not opt out of retail; licensed dispensaries operate here.",
+    "sources": [
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "peekskill-city",
+    "name": "Peekskill",
+    "kind": "CITY",
+    "county": "Westchester",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": null,
+    "optOutDate": null,
+    "notes": "Did not opt out of retail; licensed dispensaries operate here.",
+    "sources": [
+      {
+        "url": "https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/",
+        "label": "Rockefeller Institute of Government \u2014 Marijuana Opt-Out Tracker",
+        "type": "RESEARCH_TRACKER",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "manhattan-borough",
+    "name": "Manhattan",
+    "kind": "BOROUGH",
+    "county": "New York",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": "The opting-out authority was the City of New York, not the individual borough. New York City did not opt out, so retail is permitted across all five boroughs.",
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/localities",
+        "label": "NYS Office of Cannabis Management \u2014 localities",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "brooklyn-borough",
+    "name": "Brooklyn",
+    "kind": "BOROUGH",
+    "county": "Kings",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": "The opting-out authority was the City of New York, not the individual borough. New York City did not opt out, so retail is permitted across all five boroughs.",
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/localities",
+        "label": "NYS Office of Cannabis Management \u2014 localities",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "queens-borough",
+    "name": "Queens",
+    "kind": "BOROUGH",
+    "county": "Queens",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": "The opting-out authority was the City of New York, not the individual borough. New York City did not opt out, so retail is permitted across all five boroughs.",
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/localities",
+        "label": "NYS Office of Cannabis Management \u2014 localities",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "the-bronx-borough",
+    "name": "The Bronx",
+    "kind": "BOROUGH",
+    "county": "Bronx",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": "The opting-out authority was the City of New York, not the individual borough. New York City did not opt out, so retail is permitted across all five boroughs.",
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/localities",
+        "label": "NYS Office of Cannabis Management \u2014 localities",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "staten-island-borough",
+    "name": "Staten Island",
+    "kind": "BOROUGH",
+    "county": "Richmond",
+    "retailOptOut": false,
+    "onsiteConsumptionOptOut": false,
+    "optOutDate": null,
+    "notes": "The opting-out authority was the City of New York, not the individual borough. New York City did not opt out, so retail is permitted across all five boroughs.",
+    "sources": [
+      {
+        "url": "https://cannabis.ny.gov/localities",
+        "label": "NYS Office of Cannabis Management \u2014 localities",
+        "type": "REGULATOR_PAGE",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  }
+]

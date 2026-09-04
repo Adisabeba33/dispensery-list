@@ -1,0 +1,246 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dispensary-list/schema/dispensary.schema.json",
+  "title": "Licensed cannabis dispensary (New York State)",
+  "description": "One physical, state-licensed cannabis retail location in New York State. A record describes a LICENSE at an ADDRESS. An operator with several storefronts produces several records, one per storefront, each with its own OCM license number.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "licenseNumber",
+    "licenseType",
+    "licenseStatus",
+    "operationalStatus",
+    "legalName",
+    "address",
+    "sources",
+    "verification",
+    "lastUpdated"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "minLength": 3,
+      "maxLength": 80,
+      "description": "Stable URL slug. Derive from dbaName + city, e.g. 'housing-works-cannabis-co-manhattan'. Must never change once published."
+    },
+    "licenseNumber": {
+      "type": "string",
+      "pattern": "^OCM-[A-Z0-9]{2,10}-[0-9]{2}-[0-9]{4,8}$",
+      "description": "OCM license number, verbatim from the state registry. Examples: OCM-CAURD-22-000001, OCM-CAURD-23-000003. This is the primary key of truth — never invent, never reformat."
+    },
+    "applicationNumber": {
+      "type": ["string", "null"],
+      "description": "OCM application number, if published."
+    },
+    "licenseType": {
+      "enum": [
+        "ADULT_USE_RETAIL_DISPENSARY",
+        "CAURD",
+        "MICROBUSINESS",
+        "REGISTERED_ORGANIZATION_ADULT_USE",
+        "REGISTERED_ORGANIZATION_MEDICAL",
+        "DELIVERY_ONLY",
+        "ONSITE_CONSUMPTION"
+      ],
+      "description": "CAURD = Conditional Adult-Use Retail Dispensary. REGISTERED_ORGANIZATION_MEDICAL = medical-only dispensing under a Registered Organization."
+    },
+    "licenseStatus": {
+      "enum": ["ACTIVE", "PROVISIONAL", "PENDING", "SUSPENDED", "EXPIRED", "SURRENDERED", "REVOKED"],
+      "description": "Status as published by OCM. Copy it, do not infer it from whether the shop looks open."
+    },
+    "operationalStatus": {
+      "enum": ["OPEN", "APPROVED_NOT_OPEN", "TEMPORARILY_CLOSED", "PERMANENTLY_CLOSED", "UNKNOWN"],
+      "description": "Whether the storefront actually serves customers today. A license being ACTIVE does NOT mean the shop is open — most NY licensees were licensed long before opening. Use UNKNOWN rather than guessing."
+    },
+    "seeCategory": {
+      "type": ["string", "null"],
+      "enum": [
+        "JUSTICE_INVOLVED",
+        "MINORITY_OWNED_BUSINESS",
+        "WOMAN_OWNED_BUSINESS",
+        "DISTRESSED_FARMER",
+        "SERVICE_DISABLED_VETERAN",
+        "NONE",
+        null
+      ],
+      "description": "Social & Economic Equity category as recorded by OCM."
+    },
+    "legalName": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Legal entity name on the license, e.g. 'Conbud LLC'."
+    },
+    "dbaName": {
+      "type": ["string", "null"],
+      "description": "Public trading name shown on the storefront, e.g. 'Smacked Village'. Null if the entity trades under its legal name."
+    },
+    "address": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["line1", "city", "county", "state", "zip"],
+      "properties": {
+        "line1": { "type": "string", "minLength": 3 },
+        "line2": { "type": ["string", "null"] },
+        "city": { "type": "string", "minLength": 2 },
+        "county": {
+          "enum": ["New York", "Kings", "Queens", "Bronx", "Richmond", "Westchester"],
+          "description": "Phase 1 scope. NYC boroughs map to counties: Manhattan=New York, Brooklyn=Kings, Staten Island=Richmond."
+        },
+        "borough": {
+          "type": ["string", "null"],
+          "enum": ["MANHATTAN", "BROOKLYN", "QUEENS", "BRONX", "STATEN_ISLAND", null],
+          "description": "Required for the five NYC counties, must be null for Westchester."
+        },
+        "neighborhood": {
+          "type": ["string", "null"],
+          "description": "e.g. 'Greenwich Village', 'Astoria'. Null if not confidently known."
+        },
+        "state": { "const": "NY" },
+        "zip": { "type": "string", "pattern": "^[0-9]{5}$" }
+      }
+    },
+    "geo": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["lat", "lng", "precision", "source"],
+      "properties": {
+        "lat": { "type": "number", "minimum": 40.4, "maximum": 41.4 },
+        "lng": { "type": "number", "minimum": -74.3, "maximum": -73.4 },
+        "precision": { "enum": ["ROOFTOP", "PARCEL", "INTERPOLATED", "CENTROID"] },
+        "source": { "type": "string", "description": "Geocoder used, e.g. 'NYC Geoclient', 'Census Bureau', 'Nominatim'." },
+        "geocodedAt": { "type": ["string", "null"], "format": "date-time" }
+      }
+    },
+    "contact": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "phone": { "type": ["string", "null"], "pattern": "^\\+1-[0-9]{3}-[0-9]{3}-[0-9]{4}$", "description": "E.164-ish normalized form: +1-212-555-0100" },
+        "email": { "type": ["string", "null"], "format": "email" },
+        "website": { "type": ["string", "null"], "format": "uri" },
+        "orderOnlineUrl": { "type": ["string", "null"], "format": "uri" },
+        "instagram": { "type": ["string", "null"], "description": "Handle without @." }
+      }
+    },
+    "hours": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["timezone", "week"],
+      "properties": {
+        "timezone": { "const": "America/New_York" },
+        "week": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+          "patternProperties": {
+            "^(mon|tue|wed|thu|fri|sat|sun)$": {
+              "oneOf": [
+                { "type": "null", "description": "Unknown." },
+                { "const": "CLOSED" },
+                {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["open", "close"],
+                    "properties": {
+                      "open": { "type": "string", "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$" },
+                      "close": { "type": "string", "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$" }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "services": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "description": "Tri-state booleans: true / false / null. Null means NOT VERIFIED and renders as 'unknown' on the site. Never default an unknown to false.",
+      "properties": {
+        "inStorePurchase": { "type": ["boolean", "null"] },
+        "pickup": { "type": ["boolean", "null"] },
+        "curbside": { "type": ["boolean", "null"] },
+        "delivery": { "type": ["boolean", "null"] },
+        "deliveryZips": { "type": ["array", "null"], "items": { "type": "string", "pattern": "^[0-9]{5}$" } },
+        "adaAccessible": { "type": ["boolean", "null"] },
+        "onsiteConsumption": { "type": ["boolean", "null"] },
+        "servesMedical": { "type": ["boolean", "null"] },
+        "servesAdultUse": { "type": ["boolean", "null"] },
+        "acceptsDebit": { "type": ["boolean", "null"] },
+        "acceptsCredit": { "type": ["boolean", "null"] },
+        "cashOnly": { "type": ["boolean", "null"] },
+        "atmOnSite": { "type": ["boolean", "null"] },
+        "parking": { "type": ["boolean", "null"] }
+      }
+    },
+    "menu": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "description": "How this shop publishes its live product menu. This is the integration point with SOMA — a machine-readable menu is what lets a taste profile be matched against real, in-stock inventory.",
+      "properties": {
+        "provider": {
+          "type": ["string", "null"],
+          "enum": ["DUTCHIE", "IHEARTJANE", "MEADOW", "BLAZE", "TREEZ", "LEAFLY", "WEEDMAPS", "PROPRIETARY", "OTHER", "NONE", null]
+        },
+        "menuUrl": { "type": ["string", "null"], "format": "uri" },
+        "menuIsPublic": { "type": ["boolean", "null"], "description": "True if the menu is readable without login." }
+      }
+    },
+    "dates": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "licenseIssued": { "type": ["string", "null"], "format": "date" },
+        "licenseEffective": { "type": ["string", "null"], "format": "date" },
+        "licenseExpiration": { "type": ["string", "null"], "format": "date" },
+        "openedOn": { "type": ["string", "null"], "format": "date" }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Provenance. At least one source of type OFFICIAL_REGISTRY is required for a record to count as verified.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["url", "type", "retrievedAt"],
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "label": { "type": ["string", "null"] },
+          "type": {
+            "enum": ["OFFICIAL_REGISTRY", "REGULATOR_PAGE", "BUSINESS_WEBSITE", "MENU_PLATFORM", "PRESS", "MAPS"]
+          },
+          "retrievedAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "confidence", "verifiedAt"],
+      "properties": {
+        "status": {
+          "enum": ["VERIFIED_OFFICIAL", "VERIFIED_SECONDARY", "UNVERIFIED"],
+          "description": "VERIFIED_OFFICIAL: licence number and address both matched against the OCM registry. VERIFIED_SECONDARY: corroborated by two independent non-registry sources. UNVERIFIED: anything less — will be hidden from the default site view."
+        },
+        "confidence": { "enum": ["HIGH", "MEDIUM", "LOW"] },
+        "verifiedAt": { "type": "string", "format": "date-time" },
+        "checkedAgainstOcmTool": { "type": ["boolean", "null"] },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Machine- or human-noted caveats, e.g. 'address differs between registry and business website'."
+    },
+    "lastUpdated": { "type": "string", "format": "date-time" }
+  }
+}

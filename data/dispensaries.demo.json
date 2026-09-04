@@ -1,0 +1,556 @@
+[
+  {
+    "id": "housing-works-cannabis-co-manhattan",
+    "licenseNumber": "OCM-CAURD-22-000001",
+    "applicationNumber": null,
+    "licenseType": "CAURD",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "OPEN",
+    "seeCategory": "JUSTICE_INVOLVED",
+    "legalName": "Housing Works Cannabis LLC",
+    "dbaName": "Housing Works Cannabis Co",
+    "address": {
+      "line1": "750 Broadway",
+      "line2": null,
+      "city": "New York",
+      "county": "New York",
+      "borough": "MANHATTAN",
+      "neighborhood": "NoHo",
+      "state": "NY",
+      "zip": "10003"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": "https://www.housingworkscannabis.com/",
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": {
+      "inStorePurchase": true,
+      "pickup": null,
+      "curbside": null,
+      "delivery": null,
+      "deliveryZips": null,
+      "adaAccessible": null,
+      "onsiteConsumption": null,
+      "servesMedical": null,
+      "servesAdultUse": true,
+      "acceptsDebit": null,
+      "acceptsCredit": null,
+      "cashOnly": null,
+      "atmOnSite": null,
+      "parking": null
+    },
+    "menu": null,
+    "dates": {
+      "licenseIssued": null,
+      "licenseEffective": null,
+      "licenseExpiration": null,
+      "openedOn": "2022-12-29"
+    },
+    "sources": [
+      {
+        "url": "https://www.prnewswire.com/news-releases/housing-works-upholds-promise-to-new-yorkers-with-launch-of-caurd-community-initiative-302075170.html",
+        "label": "Housing Works CAURD community initiative announcement",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_SECONDARY",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-04T00:00:00Z",
+      "checkedAgainstOcmTool": false,
+      "notes": "Demo seed. First CAURD licence issued in New York State and the first legal dispensary to open. Licence number taken from secondary reporting and NOT yet cross-checked against the OCM registry."
+    },
+    "warnings": [
+      "Licence number sourced from reporting, not from the state registry — re-verify during ingest."
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "smacked-village-manhattan",
+    "licenseNumber": "OCM-CAURD-23-000002",
+    "applicationNumber": null,
+    "licenseType": "CAURD",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "OPEN",
+    "seeCategory": "JUSTICE_INVOLVED",
+    "legalName": "Smacked LLC",
+    "dbaName": "Smacked Village",
+    "address": {
+      "line1": "144 Bleecker Street",
+      "line2": null,
+      "city": "New York",
+      "county": "New York",
+      "borough": "MANHATTAN",
+      "neighborhood": "Greenwich Village",
+      "state": "NY",
+      "zip": "10012"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": "https://getsmacked.online/",
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": {
+      "inStorePurchase": true,
+      "pickup": null,
+      "curbside": null,
+      "delivery": null,
+      "deliveryZips": null,
+      "adaAccessible": null,
+      "onsiteConsumption": null,
+      "servesMedical": null,
+      "servesAdultUse": true,
+      "acceptsDebit": null,
+      "acceptsCredit": null,
+      "cashOnly": null,
+      "atmOnSite": null,
+      "parking": null
+    },
+    "menu": null,
+    "dates": {
+      "licenseIssued": null,
+      "licenseEffective": null,
+      "licenseExpiration": null,
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://abc7ny.com/post/recreational-marijuabusna-nyc-weed-smacked-legal-week/12730663/",
+        "label": "ABC7 New York — second legal dispensary opens in Greenwich Village",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://getsmacked.online/",
+        "label": "Business website",
+        "type": "BUSINESS_WEBSITE",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_SECONDARY",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-04T00:00:00Z",
+      "checkedAgainstOcmTool": false,
+      "notes": "Demo seed. Second legal dispensary in New York City. Licence number from secondary reporting."
+    },
+    "warnings": [
+      "Licence number sourced from reporting, not from the state registry — re-verify during ingest."
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "the-travel-agency-union-square-manhattan",
+    "licenseNumber": "OCM-CAURD-23-000003",
+    "applicationNumber": null,
+    "licenseType": "CAURD",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "OPEN",
+    "seeCategory": null,
+    "legalName": "Union Square Travel Agency LLC",
+    "dbaName": "The Travel Agency: A Cannabis Store (Union Square)",
+    "address": {
+      "line1": "835 Broadway",
+      "line2": null,
+      "city": "New York",
+      "county": "New York",
+      "borough": "MANHATTAN",
+      "neighborhood": "Union Square",
+      "state": "NY",
+      "zip": "10003"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": "https://www.thetravelagency.co/dispensaries/union-square-new-york/",
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": {
+      "inStorePurchase": true,
+      "pickup": null,
+      "curbside": null,
+      "delivery": null,
+      "deliveryZips": null,
+      "adaAccessible": null,
+      "onsiteConsumption": null,
+      "servesMedical": null,
+      "servesAdultUse": true,
+      "acceptsDebit": null,
+      "acceptsCredit": null,
+      "cashOnly": null,
+      "atmOnSite": null,
+      "parking": null
+    },
+    "menu": {
+      "provider": "LEAFLY",
+      "menuUrl": "https://www.leafly.com/dispensary-info/union-square-travel-agency",
+      "menuIsPublic": true
+    },
+    "dates": {
+      "licenseIssued": null,
+      "licenseEffective": null,
+      "licenseExpiration": null,
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://www.thetravelagency.co/dispensaries/union-square-new-york/",
+        "label": "Business website — Union Square location",
+        "type": "BUSINESS_WEBSITE",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://www.leafly.com/dispensary-info/union-square-travel-agency",
+        "label": "Public menu listing",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_SECONDARY",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-04T00:00:00Z",
+      "checkedAgainstOcmTool": false,
+      "notes": "Demo seed. The operator runs several storefronts; this record covers the Union Square store only. Each other store needs its own record and its own licence number."
+    },
+    "warnings": [
+      "Licence number sourced from reporting, not from the state registry — re-verify during ingest."
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "dazed-union-square-manhattan",
+    "licenseNumber": "OCM-CAURD-23-000008",
+    "applicationNumber": null,
+    "licenseType": "CAURD",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "OPEN",
+    "seeCategory": null,
+    "legalName": "Dazed Cannabis LLC",
+    "dbaName": "Dazed",
+    "address": {
+      "line1": "33 Union Square West",
+      "line2": null,
+      "city": "New York",
+      "county": "New York",
+      "borough": "MANHATTAN",
+      "neighborhood": "Union Square",
+      "state": "NY",
+      "zip": "10003"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": {
+      "inStorePurchase": true,
+      "pickup": null,
+      "curbside": null,
+      "delivery": null,
+      "deliveryZips": null,
+      "adaAccessible": null,
+      "onsiteConsumption": null,
+      "servesMedical": null,
+      "servesAdultUse": true,
+      "acceptsDebit": null,
+      "acceptsCredit": null,
+      "cashOnly": null,
+      "atmOnSite": null,
+      "parking": null
+    },
+    "menu": null,
+    "dates": {
+      "licenseIssued": null,
+      "licenseEffective": null,
+      "licenseExpiration": null,
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://www.greenstate.com/dispensaries/map/top-dispensaries-lower-manhattan/",
+        "label": "Lower Manhattan licensed dispensary round-up",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_SECONDARY",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-04T00:00:00Z",
+      "checkedAgainstOcmTool": false,
+      "notes": "Demo seed. Licence number from secondary reporting."
+    },
+    "warnings": [
+      "Licence number sourced from reporting, not from the state registry — re-verify during ingest."
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "conbud-delancey-manhattan",
+    "licenseNumber": "OCM-CAURD-23-000029",
+    "applicationNumber": null,
+    "licenseType": "CAURD",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "OPEN",
+    "seeCategory": "JUSTICE_INVOLVED",
+    "legalName": "CONBUD LLC",
+    "dbaName": "CONBUD",
+    "address": {
+      "line1": "85 Delancey Street",
+      "line2": null,
+      "city": "New York",
+      "county": "New York",
+      "borough": "MANHATTAN",
+      "neighborhood": "Lower East Side",
+      "state": "NY",
+      "zip": "10002"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": {
+      "inStorePurchase": true,
+      "pickup": null,
+      "curbside": null,
+      "delivery": null,
+      "deliveryZips": null,
+      "adaAccessible": null,
+      "onsiteConsumption": null,
+      "servesMedical": null,
+      "servesAdultUse": true,
+      "acceptsDebit": null,
+      "acceptsCredit": null,
+      "cashOnly": null,
+      "atmOnSite": null,
+      "parking": null
+    },
+    "menu": null,
+    "dates": {
+      "licenseIssued": null,
+      "licenseEffective": null,
+      "licenseExpiration": null,
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://www.greenstate.com/dispensaries/map/top-dispensaries-lower-manhattan/",
+        "label": "Lower Manhattan licensed dispensary round-up",
+        "type": "PRESS",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_SECONDARY",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-04T00:00:00Z",
+      "checkedAgainstOcmTool": false,
+      "notes": "Demo seed. Licence number from secondary reporting."
+    },
+    "warnings": [
+      "Licence number sourced from reporting, not from the state registry — re-verify during ingest."
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "terp-bros-astoria-queens",
+    "licenseNumber": "OCM-CAURD-23-000020",
+    "applicationNumber": null,
+    "licenseType": "CAURD",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "OPEN",
+    "seeCategory": null,
+    "legalName": "Terp Bros NYC LLC",
+    "dbaName": "Terp Bros (Astoria)",
+    "address": {
+      "line1": "36-10 Ditmars Boulevard",
+      "line2": null,
+      "city": "Astoria",
+      "county": "Queens",
+      "borough": "QUEENS",
+      "neighborhood": "Astoria",
+      "state": "NY",
+      "zip": "11105"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": "https://www.terpbrosnyc.com/location/astoria/shop/",
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": {
+      "timezone": "America/New_York",
+      "week": {
+        "mon": [{ "open": "08:00", "close": "22:00" }],
+        "tue": [{ "open": "08:00", "close": "22:00" }],
+        "wed": [{ "open": "08:00", "close": "22:00" }],
+        "thu": [{ "open": "08:00", "close": "23:00" }],
+        "fri": [{ "open": "08:00", "close": "23:00" }],
+        "sat": [{ "open": "08:00", "close": "23:00" }],
+        "sun": [{ "open": "08:00", "close": "22:00" }]
+      },
+      "notes": "Hours taken from the operator's own website; confirm before travelling."
+    },
+    "services": {
+      "inStorePurchase": true,
+      "pickup": null,
+      "curbside": null,
+      "delivery": true,
+      "deliveryZips": null,
+      "adaAccessible": null,
+      "onsiteConsumption": null,
+      "servesMedical": null,
+      "servesAdultUse": true,
+      "acceptsDebit": null,
+      "acceptsCredit": null,
+      "cashOnly": null,
+      "atmOnSite": null,
+      "parking": null
+    },
+    "menu": {
+      "provider": "LEAFLY",
+      "menuUrl": "https://www.leafly.com/dispensary-info/terp-bros-dispensary-astoria",
+      "menuIsPublic": true
+    },
+    "dates": {
+      "licenseIssued": null,
+      "licenseEffective": null,
+      "licenseExpiration": null,
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://www.terpbrosnyc.com/location/astoria/shop/",
+        "label": "Business website — Astoria store",
+        "type": "BUSINESS_WEBSITE",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      },
+      {
+        "url": "https://www.leafly.com/dispensary-info/terp-bros-dispensary-astoria",
+        "label": "Public menu listing",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_SECONDARY",
+      "confidence": "MEDIUM",
+      "verifiedAt": "2026-09-04T00:00:00Z",
+      "checkedAgainstOcmTool": false,
+      "notes": "Demo seed. Operator runs two Queens storefronts under separate licences; this record is the Astoria store."
+    },
+    "warnings": [
+      "Licence number sourced from reporting, not from the state registry — re-verify during ingest."
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  },
+  {
+    "id": "terp-bros-ozone-park-queens",
+    "licenseNumber": "OCM-CAURD-25-000294",
+    "applicationNumber": null,
+    "licenseType": "CAURD",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "OPEN",
+    "seeCategory": null,
+    "legalName": "Terp Bros NYC LLC",
+    "dbaName": "Terp Bros (Ozone Park)",
+    "address": {
+      "line1": "135-26 Cross Bay Boulevard",
+      "line2": null,
+      "city": "Ozone Park",
+      "county": "Queens",
+      "borough": "QUEENS",
+      "neighborhood": "Ozone Park",
+      "state": "NY",
+      "zip": "11417"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": "https://www.terpbrosnyc.com/",
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": {
+      "timezone": "America/New_York",
+      "week": {
+        "mon": [{ "open": "08:00", "close": "22:00" }],
+        "tue": [{ "open": "08:00", "close": "22:00" }],
+        "wed": [{ "open": "08:00", "close": "22:00" }],
+        "thu": [{ "open": "08:00", "close": "23:00" }],
+        "fri": [{ "open": "08:00", "close": "23:00" }],
+        "sat": [{ "open": "08:00", "close": "23:00" }],
+        "sun": [{ "open": "08:00", "close": "22:00" }]
+      },
+      "notes": "Hours taken from the operator's own website; confirm before travelling."
+    },
+    "services": {
+      "inStorePurchase": true,
+      "pickup": null,
+      "curbside": null,
+      "delivery": true,
+      "deliveryZips": null,
+      "adaAccessible": null,
+      "onsiteConsumption": null,
+      "servesMedical": null,
+      "servesAdultUse": true,
+      "acceptsDebit": null,
+      "acceptsCredit": null,
+      "cashOnly": null,
+      "atmOnSite": null,
+      "parking": null
+    },
+    "menu": null,
+    "dates": {
+      "licenseIssued": null,
+      "licenseEffective": null,
+      "licenseExpiration": null,
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://www.terpbrosnyc.com/near/",
+        "label": "Business website — locations",
+        "type": "BUSINESS_WEBSITE",
+        "retrievedAt": "2026-09-04T00:00:00Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_SECONDARY",
+      "confidence": "MEDIUM",
+      "verifiedAt": "2026-09-04T00:00:00Z",
+      "checkedAgainstOcmTool": false,
+      "notes": "Demo seed. Second Terp Bros storefront, separate licence from the Astoria store."
+    },
+    "warnings": [
+      "Licence number sourced from reporting, not from the state registry — re-verify during ingest."
+    ],
+    "lastUpdated": "2026-09-04T00:00:00Z"
+  }
+]

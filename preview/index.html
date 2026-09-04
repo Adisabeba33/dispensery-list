@@ -1,0 +1,601 @@
+<title>NY Dispensary Register</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /*
+   * Committed to a single dark treatment: the page is meant to read as a public
+   * record consulted on a phone at a shop door, not as a shopfront. Every colour
+   * is painted explicitly so it holds on either host ground.
+   */
+  :root {
+    color-scheme: dark;
+    --ground: #080b0a;
+    --surface: #111815;
+    --surface-2: #161f1b;
+    --line: #1f2b25;
+    --line-soft: #182420;
+    --text: #f2f6f3;
+    --text-2: #c3cec8;
+    --muted: #8b9a93;
+    --faint: #6d7d76;
+    --moss: #3fc97d;
+    --moss-bright: #63dd97;
+    --amber: #f2b544;
+    --rust: #ef6f62;
+
+    --sans: 'Public Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --display: 'Archivo', 'Public Sans', ui-sans-serif, system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background:
+      radial-gradient(62rem 40rem at 80% -14%, rgba(63, 201, 125, 0.085), transparent 62%),
+      radial-gradient(46rem 32rem at 2% 2%, rgba(63, 201, 125, 0.04), transparent 58%),
+      var(--ground);
+    background-attachment: fixed;
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .shell { width: 100%; max-width: 76rem; margin: 0 auto; padding: 0 1.25rem; }
+  @media (min-width: 640px) { .shell { padding: 0 2rem; } }
+
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: -0.015em; }
+
+  a { color: var(--moss); text-decoration: underline; text-decoration-color: rgba(63,201,125,0.4); text-underline-offset: 4px; }
+  a:hover { text-decoration-color: var(--moss); }
+
+  :focus-visible { outline: 2px solid var(--moss); outline-offset: 2px; border-radius: 4px; }
+
+  .eyebrow {
+    font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.16em; color: var(--faint); margin: 0;
+  }
+
+  /* ---- masthead ------------------------------------------------------- */
+
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    background: rgba(8, 11, 10, 0.82);
+    backdrop-filter: blur(12px);
+    position: sticky; top: 0; z-index: 30;
+  }
+  .masthead-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: 3.75rem; }
+  .wordmark { display: flex; align-items: center; gap: 0.6rem; font-family: var(--display); font-weight: 600; font-size: 0.95rem; color: var(--text); }
+  .seal {
+    display: grid; place-items: center; width: 1.9rem; height: 1.9rem;
+    border: 1px solid rgba(63,201,125,0.45); border-radius: 0.5rem;
+    background: rgba(63,201,125,0.1); color: var(--moss);
+  }
+  .masthead nav { display: flex; gap: 0.25rem; font-size: 0.875rem; }
+  .masthead nav a { color: var(--text-2); text-decoration: none; padding: 0.5rem 0.7rem; border-radius: 0.5rem; }
+  .masthead nav a:hover { background: var(--surface-2); color: var(--text); }
+
+  /* ---- sample-data notice --------------------------------------------- */
+
+  .notice { border-bottom: 1px solid rgba(242,181,68,0.25); background: rgba(242,181,68,0.07); }
+  .notice-inner { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.75rem; padding: 0.75rem 0; font-size: 0.875rem; color: var(--text-2); }
+
+  /* ---- hero ------------------------------------------------------------ */
+
+  .hero { padding: 3.5rem 0 0; }
+  .hero h1 { font-size: clamp(2.15rem, 5.2vw, 3.25rem); line-height: 1.06; font-weight: 700; max-width: 20ch; margin-top: 0.9rem; }
+  .hero h1 em { font-style: normal; color: var(--moss); }
+  .hero p { max-width: 62ch; margin: 1.25rem 0 0; font-size: 1.075rem; color: var(--text-2); }
+
+  /* The stats strip reads as a record header: hairline cells, tabular figures. */
+  .stats {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: 0.75rem;
+    overflow: hidden; margin: 2.5rem 0 0; max-width: 44rem;
+  }
+  @media (min-width: 640px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+  .stat { background: #0c110f; padding: 0.9rem 1rem; }
+  .stat b { display: block; font-family: var(--display); font-size: 1.6rem; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text); }
+  .stat span { display: block; margin-top: 0.15rem; font-size: 0.75rem; color: var(--faint); }
+
+  /* ---- controls -------------------------------------------------------- */
+
+  .controls { padding: 3rem 0 0; display: flex; flex-direction: column; gap: 1rem; }
+
+  .search { position: relative; }
+  .search svg { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); width: 1rem; height: 1rem; color: var(--faint); pointer-events: none; }
+  .search input {
+    width: 100%; padding: 0.8rem 1rem 0.8rem 2.75rem;
+    border: 1px solid var(--line); border-radius: 0.6rem;
+    background: rgba(12,17,15,0.85); color: var(--text);
+    font-family: var(--sans); font-size: 0.95rem;
+  }
+  .search input::placeholder { color: var(--faint); }
+  .search input:focus { border-color: var(--moss); outline: none; box-shadow: 0 0 0 3px rgba(63,201,125,0.16); }
+
+  .chips { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+  .chip {
+    border: 1px solid var(--line); border-radius: 999px; background: none;
+    padding: 0.4rem 0.85rem; font-family: var(--sans); font-size: 0.875rem;
+    color: var(--text-2); cursor: pointer; transition: border-color .15s, color .15s, background-color .15s;
+  }
+  .chip:hover { border-color: rgba(43,167,102,0.6); color: var(--text); }
+  .chip[aria-pressed="true"] { border-color: #2ba766; background: rgba(43,167,102,0.16); color: var(--moss); }
+  .divider { width: 1px; height: 1.25rem; background: var(--line); margin: 0 0.25rem; }
+
+  .resultbar {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 0.75rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line);
+    font-size: 0.875rem; color: var(--muted);
+  }
+  .resultbar b { color: var(--text); font-variant-numeric: tabular-nums; }
+  .resultbar button.linkish { background: none; border: 0; padding: 0; font: inherit; color: var(--moss); cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+
+  /* ---- cards ----------------------------------------------------------- */
+
+  .grid { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: 1rem; }
+  @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+  @media (min-width: 1024px) { .grid { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+
+  .card {
+    display: flex; flex-direction: column; height: 100%; width: 100%; text-align: left;
+    border: 1px solid var(--line); border-radius: 0.75rem;
+    background: rgba(17,24,21,0.72); padding: 1.15rem;
+    font: inherit; color: inherit; cursor: pointer;
+    transition: border-color .15s, background-color .15s;
+  }
+  .card:hover { border-color: rgba(43,167,102,0.6); background: rgba(22,31,27,0.85); }
+  .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem; }
+  .card h3 { font-size: 1.03rem; font-weight: 600; line-height: 1.3; }
+  .card .where { margin: 0.3rem 0 0; font-size: 0.85rem; color: var(--muted); }
+  .card .addr { margin: 0.7rem 0 0; font-size: 0.875rem; color: var(--text-2); }
+  .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.75rem 0 0; padding: 0; }
+  .tags li { background: var(--surface-2); border-radius: 0.35rem; padding: 0.2rem 0.45rem; font-size: 0.7rem; color: var(--text-2); }
+  /* The licence number sits in the same corner on every card, like a stamp. */
+  .card-foot {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem;
+    margin-top: auto; padding-top: 0.85rem; border-top: 1px solid var(--line-soft);
+  }
+  .licence { font-family: var(--mono); font-size: 0.7rem; color: var(--faint); letter-spacing: -0.01em; }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 0.35rem; white-space: nowrap;
+    border: 1px solid; border-radius: 999px; padding: 0.22rem 0.6rem;
+    font-size: 0.72rem; font-weight: 500; line-height: 1.25;
+  }
+  .pill .dot { width: 0.4rem; height: 0.4rem; border-radius: 999px; background: currentColor; }
+  .pill.ok { border-color: rgba(43,167,102,0.55); background: rgba(43,167,102,0.12); color: var(--moss); }
+  .pill.warn { border-color: rgba(242,181,68,0.45); background: rgba(242,181,68,0.1); color: var(--amber); }
+  .pill.bad { border-color: rgba(239,111,98,0.45); background: rgba(239,111,98,0.1); color: var(--rust); }
+  .pill.neutral { border-color: var(--line); background: var(--surface-2); color: var(--muted); }
+
+  .empty { border: 1px solid var(--line); border-radius: 0.75rem; background: rgba(17,24,21,0.72); padding: 2.5rem; text-align: center; margin-top: 2rem; }
+
+  /* ---- detail drawer --------------------------------------------------- */
+
+  dialog {
+    width: min(46rem, calc(100vw - 2rem)); max-height: 88vh; padding: 0;
+    border: 1px solid var(--line); border-radius: 0.9rem;
+    background: #0c110f; color: var(--text);
+  }
+  dialog::backdrop { background: rgba(4,6,5,0.72); backdrop-filter: blur(3px); }
+  .sheet { padding: 1.5rem; overflow-y: auto; max-height: 88vh; }
+  .sheet-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+  .sheet h2 { font-size: 1.5rem; font-weight: 700; }
+  .sheet .legal { margin: 0.4rem 0 0; font-size: 0.85rem; color: var(--muted); }
+  .closebtn { border: 1px solid var(--line); background: var(--surface-2); color: var(--text-2); border-radius: 0.5rem; width: 2rem; height: 2rem; font-size: 1.1rem; line-height: 1; cursor: pointer; flex-shrink: 0; }
+  .closebtn:hover { color: var(--text); border-color: var(--muted); }
+
+  .rows { margin: 1.25rem 0 0; }
+  .row { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.6rem 0; border-bottom: 1px solid var(--line-soft); }
+  .row:last-child { border-bottom: 0; }
+  @media (min-width: 560px) { .row { flex-direction: row; gap: 1.5rem; } .row dt { width: 11rem; flex-shrink: 0; } }
+  .row dt { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--faint); padding-top: 0.15rem; }
+  .row dd { margin: 0; font-size: 0.9rem; color: var(--text); min-width: 0; overflow-wrap: anywhere; }
+
+  .sheet h3 { font-size: 0.95rem; font-weight: 600; margin: 1.75rem 0 0.5rem; }
+  .caveat { border: 1px solid rgba(242,181,68,0.3); background: rgba(242,181,68,0.07); border-radius: 0.6rem; padding: 0.85rem 1rem; margin-top: 1.25rem; font-size: 0.875rem; color: var(--text-2); }
+
+  table.hours { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  table.hours th { text-align: left; font-weight: 500; color: var(--muted); padding: 0.4rem 0; }
+  table.hours td { text-align: right; color: var(--text); font-variant-numeric: tabular-nums; padding: 0.4rem 0; }
+  table.hours tr { border-bottom: 1px solid var(--line-soft); }
+  table.hours tr:last-child { border-bottom: 0; }
+
+  .sources { list-style: none; margin: 0.5rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.875rem; }
+  .sources .meta { margin: 0.1rem 0 0; font-size: 0.75rem; color: var(--faint); }
+
+  .verify-cta { margin-top: 1.5rem; border: 1px solid rgba(43,167,102,0.3); background: rgba(43,167,102,0.06); border-radius: 0.7rem; padding: 1rem 1.15rem; }
+  .verify-cta p { margin: 0.4rem 0 0; font-size: 0.875rem; color: var(--text-2); }
+  .btn {
+    display: inline-block; margin-top: 0.9rem; padding: 0.6rem 1rem;
+    border: 1px solid rgba(43,167,102,0.6); border-radius: 0.55rem;
+    background: rgba(43,167,102,0.12); color: var(--moss);
+    font-size: 0.875rem; font-weight: 500; text-decoration: none;
+  }
+  .btn:hover { background: rgba(43,167,102,0.2); text-decoration: none; }
+
+  /* ---- long-form sections ---------------------------------------------- */
+
+  section.band { padding: 4rem 0 0; }
+  section.band h2 { font-size: 1.6rem; font-weight: 600; }
+  section.band > .shell > p { max-width: 66ch; color: var(--text-2); }
+
+  .optout { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0 0; padding: 0; }
+  .optout li { border: 1px solid var(--line); border-radius: 0.5rem; background: rgba(17,24,21,0.7); padding: 0.45rem 0.7rem; font-size: 0.875rem; color: var(--text-2); }
+  .optout .kind { margin-left: 0.45rem; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--faint); }
+
+  .method { display: grid; gap: 1rem; margin-top: 1.75rem; }
+  @media (min-width: 860px) { .method { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+  .method article { border-top: 2px solid var(--line); padding-top: 1rem; }
+  .method h3 { font-family: var(--display); font-size: 1rem; font-weight: 600; margin: 0 0 0.4rem; }
+  .method p { margin: 0; font-size: 0.9rem; color: var(--text-2); }
+  .method .key { color: var(--moss); }
+  .method .key.amber { color: var(--amber); }
+  .method .key.rust { color: var(--rust); }
+
+  footer { margin-top: 5rem; border-top: 1px solid var(--line); padding: 2.5rem 0 3.5rem; }
+  footer p { max-width: 70ch; font-size: 0.875rem; color: var(--muted); margin: 0 0 0.75rem; }
+
+  .fineprint { font-size: 0.75rem; color: var(--faint); max-width: 66ch; margin-top: 1.25rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+</style>
+
+<header class="masthead">
+  <div class="shell masthead-inner">
+    <div class="wordmark">
+      <span class="seal" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      NY Dispensary Register
+    </div>
+    <nav>
+      <a href="#directory">Directory</a>
+      <a href="#westchester">Westchester</a>
+      <a href="#method">Method</a>
+    </nav>
+  </div>
+</header>
+
+<div class="notice">
+  <div class="shell notice-inner">
+    <span class="pill warn">Sample data</span>
+    <span>A seven-record preview, not the register. Licence numbers here come from press reporting and have not yet been matched against the state registry.</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="shell">
+    <p class="eyebrow">New York City &middot; Westchester County</p>
+    <h1>Every dispensary here is a <em>licensed</em> one.</h1>
+    <p>New York has a licensed cannabis market and a much larger unlicensed one. This register lists only businesses licensed by the state Office of Cannabis Management, and shows the licence number and the sources behind every entry, so you can check our work.</p>
+    <dl class="stats" id="stats"></dl>
+  </div>
+</section>
+
+<section id="directory" class="shell controls">
+  <label class="search">
+    <span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Search by name, address, ZIP or licence number</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="Search name, street, ZIP or licence number (OCM-CAURD-…)" autocomplete="off">
+  </label>
+
+  <div class="chips" id="chips"></div>
+
+  <div class="resultbar">
+    <p id="count" style="margin:0;"></p>
+    <label style="display:flex;align-items:center;gap:0.5rem;">Sort
+      <select id="sort" style="border:1px solid var(--line);border-radius:0.5rem;background:#0c110f;color:var(--text-2);padding:0.35rem 0.5rem;font:inherit;font-size:0.85rem;">
+        <option value="name">Name</option>
+        <option value="region">Area</option>
+        <option value="status">Open first</option>
+      </select>
+    </label>
+  </div>
+</section>
+
+<div class="shell">
+  <ul class="grid" id="grid"></ul>
+  <div class="empty" id="empty" hidden>
+    <p style="margin:0;color:var(--text-2);">Nothing matches those filters.</p>
+    <p style="margin:0.5rem 0 0;font-size:0.875rem;color:var(--muted);">A shop missing from this list is not automatically illegal — it may simply not be in the register yet. Check it at <a href="https://cannabis.ny.gov/dispensary-location-verification" target="_blank" rel="noreferrer noopener">the state verification tool</a>.</p>
+  </div>
+</div>
+
+<section id="westchester" class="band">
+  <div class="shell">
+    <p class="eyebrow">County guide</p>
+    <h2 style="margin-top:0.6rem;">Westchester didn&rsquo;t say yes everywhere</h2>
+    <p style="margin-top:1rem;">Westchester is not one market but dozens. Under the state&rsquo;s legalisation law, each city, town and village could refuse to host retail dispensaries — and roughly twenty of them did, before the deadline of 31 December 2021 closed the option for good. That is why whole stretches of the county have no shops at all. A town and the village inside it decided separately, which is why some names appear twice.</p>
+    <ul class="optout" id="optout"></ul>
+    <p class="fineprint">Compiled from secondary reporting and the Rockefeller Institute opt-out tracker, pending confirmation against the state&rsquo;s filed opt-out data. A guide, not legal fact.</p>
+  </div>
+</section>
+
+<section id="method" class="band">
+  <div class="shell">
+    <p class="eyebrow">Method</p>
+    <h2 style="margin-top:0.6rem;">How to read this register</h2>
+    <div class="method">
+      <article>
+        <h3>Where the data comes from</h3>
+        <p>The spine is the state&rsquo;s own licence registry, published as the <a href="https://data.ny.gov/Economic-Development/Current-OCM-Licenses/jskf-tt3q" target="_blank" rel="noreferrer noopener">Current OCM Licenses</a> dataset. Phone numbers, hours and menus come from operators&rsquo; own sites — each recorded with its source. Aggregators are never used to establish that a shop is licensed; they list unlicensed businesses too.</p>
+      </article>
+      <article>
+        <h3>What the labels mean</h3>
+        <p><span class="key">Registry-verified</span> — licence number and address both matched in the state registry. <span class="key amber">Secondary sources</span> — two independent sources agree, but no registry match yet; provisional. <span class="key rust">Unverified</span> — anything less, kept out of the default view.</p>
+      </article>
+      <article>
+        <h3>Unknown is not the same as no</h3>
+        <p>A field reading <strong>Unknown</strong> means nobody checked it, not that the answer is no. The same goes for opening status: an active licence does not mean open doors — New York issued many licences long before the shops were built.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="shell">
+    <p>This directory lists businesses licensed by the New York State Office of Cannabis Management. It is informational only: it does not sell cannabis, and it is not affiliated with or endorsed by any state agency. Cannabis is for adults 21 and over.</p>
+    <p>Always confirm a shop yourself before you buy — look for the QR-coded verification decal at the entrance, or search the address at <a href="https://cannabis.ny.gov/dispensary-location-verification" target="_blank" rel="noreferrer noopener">cannabis.ny.gov/dispensary-location-verification</a>.</p>
+  </div>
+</footer>
+
+<dialog id="sheet"><div class="sheet" id="sheet-body"></div></dialog>
+
+<script>
+const DATA = [{"id":"housing-works-cannabis-co-manhattan","licenseNumber":"OCM-CAURD-22-000001","applicationNumber":null,"licenseType":"CAURD","licenseStatus":"ACTIVE","operationalStatus":"OPEN","seeCategory":"JUSTICE_INVOLVED","legalName":"Housing Works Cannabis LLC","dbaName":"Housing Works Cannabis Co","address":{"line1":"750 Broadway","line2":null,"city":"New York","county":"New York","borough":"MANHATTAN","neighborhood":"NoHo","state":"NY","zip":"10003"},"geo":null,"contact":{"phone":null,"email":null,"website":"https://www.housingworkscannabis.com/","orderOnlineUrl":null,"instagram":null},"hours":null,"services":{"inStorePurchase":true,"pickup":null,"curbside":null,"delivery":null,"deliveryZips":null,"adaAccessible":null,"onsiteConsumption":null,"servesMedical":null,"servesAdultUse":true,"acceptsDebit":null,"acceptsCredit":null,"cashOnly":null,"atmOnSite":null,"parking":null},"menu":null,"dates":{"licenseIssued":null,"licenseEffective":null,"licenseExpiration":null,"openedOn":"2022-12-29"},"sources":[{"url":"https://www.prnewswire.com/news-releases/housing-works-upholds-promise-to-new-yorkers-with-launch-of-caurd-community-initiative-302075170.html","label":"Housing Works CAURD community initiative announcement","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"}],"verification":{"status":"VERIFIED_SECONDARY","confidence":"LOW","verifiedAt":"2026-09-04T00:00:00Z","checkedAgainstOcmTool":false,"notes":"Demo seed. First CAURD licence issued in New York State and the first legal dispensary to open. Licence number taken from secondary reporting and NOT yet cross-checked against the OCM registry."},"warnings":["Licence number sourced from reporting, not from the state registry — re-verify during ingest."],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"smacked-village-manhattan","licenseNumber":"OCM-CAURD-23-000002","applicationNumber":null,"licenseType":"CAURD","licenseStatus":"ACTIVE","operationalStatus":"OPEN","seeCategory":"JUSTICE_INVOLVED","legalName":"Smacked LLC","dbaName":"Smacked Village","address":{"line1":"144 Bleecker Street","line2":null,"city":"New York","county":"New York","borough":"MANHATTAN","neighborhood":"Greenwich Village","state":"NY","zip":"10012"},"geo":null,"contact":{"phone":null,"email":null,"website":"https://getsmacked.online/","orderOnlineUrl":null,"instagram":null},"hours":null,"services":{"inStorePurchase":true,"pickup":null,"curbside":null,"delivery":null,"deliveryZips":null,"adaAccessible":null,"onsiteConsumption":null,"servesMedical":null,"servesAdultUse":true,"acceptsDebit":null,"acceptsCredit":null,"cashOnly":null,"atmOnSite":null,"parking":null},"menu":null,"dates":{"licenseIssued":null,"licenseEffective":null,"licenseExpiration":null,"openedOn":null},"sources":[{"url":"https://abc7ny.com/post/recreational-marijuabusna-nyc-weed-smacked-legal-week/12730663/","label":"ABC7 New York — second legal dispensary opens in Greenwich Village","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://getsmacked.online/","label":"Business website","type":"BUSINESS_WEBSITE","retrievedAt":"2026-09-04T00:00:00Z"}],"verification":{"status":"VERIFIED_SECONDARY","confidence":"LOW","verifiedAt":"2026-09-04T00:00:00Z","checkedAgainstOcmTool":false,"notes":"Demo seed. Second legal dispensary in New York City. Licence number from secondary reporting."},"warnings":["Licence number sourced from reporting, not from the state registry — re-verify during ingest."],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"the-travel-agency-union-square-manhattan","licenseNumber":"OCM-CAURD-23-000003","applicationNumber":null,"licenseType":"CAURD","licenseStatus":"ACTIVE","operationalStatus":"OPEN","seeCategory":null,"legalName":"Union Square Travel Agency LLC","dbaName":"The Travel Agency: A Cannabis Store (Union Square)","address":{"line1":"835 Broadway","line2":null,"city":"New York","county":"New York","borough":"MANHATTAN","neighborhood":"Union Square","state":"NY","zip":"10003"},"geo":null,"contact":{"phone":null,"email":null,"website":"https://www.thetravelagency.co/dispensaries/union-square-new-york/","orderOnlineUrl":null,"instagram":null},"hours":null,"services":{"inStorePurchase":true,"pickup":null,"curbside":null,"delivery":null,"deliveryZips":null,"adaAccessible":null,"onsiteConsumption":null,"servesMedical":null,"servesAdultUse":true,"acceptsDebit":null,"acceptsCredit":null,"cashOnly":null,"atmOnSite":null,"parking":null},"menu":{"provider":"LEAFLY","menuUrl":"https://www.leafly.com/dispensary-info/union-square-travel-agency","menuIsPublic":true},"dates":{"licenseIssued":null,"licenseEffective":null,"licenseExpiration":null,"openedOn":null},"sources":[{"url":"https://www.thetravelagency.co/dispensaries/union-square-new-york/","label":"Business website — Union Square location","type":"BUSINESS_WEBSITE","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://www.leafly.com/dispensary-info/union-square-travel-agency","label":"Public menu listing","type":"MENU_PLATFORM","retrievedAt":"2026-09-04T00:00:00Z"}],"verification":{"status":"VERIFIED_SECONDARY","confidence":"LOW","verifiedAt":"2026-09-04T00:00:00Z","checkedAgainstOcmTool":false,"notes":"Demo seed. The operator runs several storefronts; this record covers the Union Square store only. Each other store needs its own record and its own licence number."},"warnings":["Licence number sourced from reporting, not from the state registry — re-verify during ingest."],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"dazed-union-square-manhattan","licenseNumber":"OCM-CAURD-23-000008","applicationNumber":null,"licenseType":"CAURD","licenseStatus":"ACTIVE","operationalStatus":"OPEN","seeCategory":null,"legalName":"Dazed Cannabis LLC","dbaName":"Dazed","address":{"line1":"33 Union Square West","line2":null,"city":"New York","county":"New York","borough":"MANHATTAN","neighborhood":"Union Square","state":"NY","zip":"10003"},"geo":null,"contact":{"phone":null,"email":null,"website":null,"orderOnlineUrl":null,"instagram":null},"hours":null,"services":{"inStorePurchase":true,"pickup":null,"curbside":null,"delivery":null,"deliveryZips":null,"adaAccessible":null,"onsiteConsumption":null,"servesMedical":null,"servesAdultUse":true,"acceptsDebit":null,"acceptsCredit":null,"cashOnly":null,"atmOnSite":null,"parking":null},"menu":null,"dates":{"licenseIssued":null,"licenseEffective":null,"licenseExpiration":null,"openedOn":null},"sources":[{"url":"https://www.greenstate.com/dispensaries/map/top-dispensaries-lower-manhattan/","label":"Lower Manhattan licensed dispensary round-up","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"}],"verification":{"status":"VERIFIED_SECONDARY","confidence":"LOW","verifiedAt":"2026-09-04T00:00:00Z","checkedAgainstOcmTool":false,"notes":"Demo seed. Licence number from secondary reporting."},"warnings":["Licence number sourced from reporting, not from the state registry — re-verify during ingest."],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"conbud-delancey-manhattan","licenseNumber":"OCM-CAURD-23-000029","applicationNumber":null,"licenseType":"CAURD","licenseStatus":"ACTIVE","operationalStatus":"OPEN","seeCategory":"JUSTICE_INVOLVED","legalName":"CONBUD LLC","dbaName":"CONBUD","address":{"line1":"85 Delancey Street","line2":null,"city":"New York","county":"New York","borough":"MANHATTAN","neighborhood":"Lower East Side","state":"NY","zip":"10002"},"geo":null,"contact":{"phone":null,"email":null,"website":null,"orderOnlineUrl":null,"instagram":null},"hours":null,"services":{"inStorePurchase":true,"pickup":null,"curbside":null,"delivery":null,"deliveryZips":null,"adaAccessible":null,"onsiteConsumption":null,"servesMedical":null,"servesAdultUse":true,"acceptsDebit":null,"acceptsCredit":null,"cashOnly":null,"atmOnSite":null,"parking":null},"menu":null,"dates":{"licenseIssued":null,"licenseEffective":null,"licenseExpiration":null,"openedOn":null},"sources":[{"url":"https://www.greenstate.com/dispensaries/map/top-dispensaries-lower-manhattan/","label":"Lower Manhattan licensed dispensary round-up","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"}],"verification":{"status":"VERIFIED_SECONDARY","confidence":"LOW","verifiedAt":"2026-09-04T00:00:00Z","checkedAgainstOcmTool":false,"notes":"Demo seed. Licence number from secondary reporting."},"warnings":["Licence number sourced from reporting, not from the state registry — re-verify during ingest."],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"terp-bros-astoria-queens","licenseNumber":"OCM-CAURD-23-000020","applicationNumber":null,"licenseType":"CAURD","licenseStatus":"ACTIVE","operationalStatus":"OPEN","seeCategory":null,"legalName":"Terp Bros NYC LLC","dbaName":"Terp Bros (Astoria)","address":{"line1":"36-10 Ditmars Boulevard","line2":null,"city":"Astoria","county":"Queens","borough":"QUEENS","neighborhood":"Astoria","state":"NY","zip":"11105"},"geo":null,"contact":{"phone":null,"email":null,"website":"https://www.terpbrosnyc.com/location/astoria/shop/","orderOnlineUrl":null,"instagram":null},"hours":{"timezone":"America/New_York","week":{"mon":[{"open":"08:00","close":"22:00"}],"tue":[{"open":"08:00","close":"22:00"}],"wed":[{"open":"08:00","close":"22:00"}],"thu":[{"open":"08:00","close":"23:00"}],"fri":[{"open":"08:00","close":"23:00"}],"sat":[{"open":"08:00","close":"23:00"}],"sun":[{"open":"08:00","close":"22:00"}]},"notes":"Hours taken from the operator's own website; confirm before travelling."},"services":{"inStorePurchase":true,"pickup":null,"curbside":null,"delivery":true,"deliveryZips":null,"adaAccessible":null,"onsiteConsumption":null,"servesMedical":null,"servesAdultUse":true,"acceptsDebit":null,"acceptsCredit":null,"cashOnly":null,"atmOnSite":null,"parking":null},"menu":{"provider":"LEAFLY","menuUrl":"https://www.leafly.com/dispensary-info/terp-bros-dispensary-astoria","menuIsPublic":true},"dates":{"licenseIssued":null,"licenseEffective":null,"licenseExpiration":null,"openedOn":null},"sources":[{"url":"https://www.terpbrosnyc.com/location/astoria/shop/","label":"Business website — Astoria store","type":"BUSINESS_WEBSITE","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://www.leafly.com/dispensary-info/terp-bros-dispensary-astoria","label":"Public menu listing","type":"MENU_PLATFORM","retrievedAt":"2026-09-04T00:00:00Z"}],"verification":{"status":"VERIFIED_SECONDARY","confidence":"MEDIUM","verifiedAt":"2026-09-04T00:00:00Z","checkedAgainstOcmTool":false,"notes":"Demo seed. Operator runs two Queens storefronts under separate licences; this record is the Astoria store."},"warnings":["Licence number sourced from reporting, not from the state registry — re-verify during ingest."],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"terp-bros-ozone-park-queens","licenseNumber":"OCM-CAURD-25-000294","applicationNumber":null,"licenseType":"CAURD","licenseStatus":"ACTIVE","operationalStatus":"OPEN","seeCategory":null,"legalName":"Terp Bros NYC LLC","dbaName":"Terp Bros (Ozone Park)","address":{"line1":"135-26 Cross Bay Boulevard","line2":null,"city":"Ozone Park","county":"Queens","borough":"QUEENS","neighborhood":"Ozone Park","state":"NY","zip":"11417"},"geo":null,"contact":{"phone":null,"email":null,"website":"https://www.terpbrosnyc.com/","orderOnlineUrl":null,"instagram":null},"hours":{"timezone":"America/New_York","week":{"mon":[{"open":"08:00","close":"22:00"}],"tue":[{"open":"08:00","close":"22:00"}],"wed":[{"open":"08:00","close":"22:00"}],"thu":[{"open":"08:00","close":"23:00"}],"fri":[{"open":"08:00","close":"23:00"}],"sat":[{"open":"08:00","close":"23:00"}],"sun":[{"open":"08:00","close":"22:00"}]},"notes":"Hours taken from the operator's own website; confirm before travelling."},"services":{"inStorePurchase":true,"pickup":null,"curbside":null,"delivery":true,"deliveryZips":null,"adaAccessible":null,"onsiteConsumption":null,"servesMedical":null,"servesAdultUse":true,"acceptsDebit":null,"acceptsCredit":null,"cashOnly":null,"atmOnSite":null,"parking":null},"menu":null,"dates":{"licenseIssued":null,"licenseEffective":null,"licenseExpiration":null,"openedOn":null},"sources":[{"url":"https://www.terpbrosnyc.com/near/","label":"Business website — locations","type":"BUSINESS_WEBSITE","retrievedAt":"2026-09-04T00:00:00Z"}],"verification":{"status":"VERIFIED_SECONDARY","confidence":"MEDIUM","verifiedAt":"2026-09-04T00:00:00Z","checkedAgainstOcmTool":false,"notes":"Demo seed. Second Terp Bros storefront, separate licence from the Astoria store."},"warnings":["Licence number sourced from reporting, not from the state registry — re-verify during ingest."],"lastUpdated":"2026-09-04T00:00:00Z"}];
+const MUNI = [{"id":"ardsley-village","name":"Ardsley","kind":"VILLAGE","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"bronxville-village","name":"Bronxville","kind":"VILLAGE","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"eastchester-town","name":"Eastchester","kind":"TOWN","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"elmsford-village","name":"Elmsford","kind":"VILLAGE","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"irvington-village","name":"Irvington","kind":"VILLAGE","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"larchmont-village","name":"Larchmont","kind":"VILLAGE","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"lewisboro-town","name":"Lewisboro","kind":"TOWN","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"mamaroneck-town","name":"Mamaroneck","kind":"TOWN","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"mamaroneck-village","name":"Mamaroneck","kind":"VILLAGE","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"mount-kisco-village","name":"Mount Kisco","kind":"VILLAGE","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"mount-pleasant-town","name":"Mount Pleasant","kind":"TOWN","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"new-castle-town","name":"New Castle","kind":"TOWN","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"north-castle-town","name":"North Castle","kind":"TOWN","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"north-salem-town","name":"North Salem","kind":"TOWN","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"pelham-manor-village","name":"Pelham Manor","kind":"VILLAGE","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"pleasantville-village","name":"Pleasantville","kind":"VILLAGE","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"port-chester-village","name":"Port Chester","kind":"VILLAGE","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"rye-city","name":"Rye","kind":"CITY","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"rye-brook-village","name":"Rye Brook","kind":"VILLAGE","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"somers-town","name":"Somers","kind":"TOWN","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"tuckahoe-village","name":"Tuckahoe","kind":"VILLAGE","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"yorktown-town","name":"Yorktown","kind":"TOWN","county":"Westchester","retailOptOut":true,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Opt-out status taken from secondary reporting and the Rockefeller tracker. Re-verify against the OCM filed opt-out data before publishing as fact.","sources":[{"url":"https://yonkerstimes.com/22-westchester-towns-villages-opt-out-of-marijuana-dispensiaries-cafes/","label":"Yonkers Times — Westchester municipalities that opted out","type":"PRESS","retrievedAt":"2026-09-04T00:00:00Z"},{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"yonkers-city","name":"Yonkers","kind":"CITY","county":"Westchester","retailOptOut":false,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Did not opt out of retail; licensed dispensaries operate here.","sources":[{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"white-plains-city","name":"White Plains","kind":"CITY","county":"Westchester","retailOptOut":false,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Did not opt out of retail; licensed dispensaries operate here.","sources":[{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"mount-vernon-city","name":"Mount Vernon","kind":"CITY","county":"Westchester","retailOptOut":false,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Did not opt out of retail; licensed dispensaries operate here.","sources":[{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"new-rochelle-city","name":"New Rochelle","kind":"CITY","county":"Westchester","retailOptOut":false,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Did not opt out of retail; licensed dispensaries operate here.","sources":[{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"peekskill-city","name":"Peekskill","kind":"CITY","county":"Westchester","retailOptOut":false,"onsiteConsumptionOptOut":null,"optOutDate":null,"notes":"Did not opt out of retail; licensed dispensaries operate here.","sources":[{"url":"https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/","label":"Rockefeller Institute of Government — Marijuana Opt-Out Tracker","type":"RESEARCH_TRACKER","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"manhattan-borough","name":"Manhattan","kind":"BOROUGH","county":"New York","retailOptOut":false,"onsiteConsumptionOptOut":false,"optOutDate":null,"notes":"The opting-out authority was the City of New York, not the individual borough. New York City did not opt out, so retail is permitted across all five boroughs.","sources":[{"url":"https://cannabis.ny.gov/localities","label":"NYS Office of Cannabis Management — localities","type":"REGULATOR_PAGE","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"brooklyn-borough","name":"Brooklyn","kind":"BOROUGH","county":"Kings","retailOptOut":false,"onsiteConsumptionOptOut":false,"optOutDate":null,"notes":"The opting-out authority was the City of New York, not the individual borough. New York City did not opt out, so retail is permitted across all five boroughs.","sources":[{"url":"https://cannabis.ny.gov/localities","label":"NYS Office of Cannabis Management — localities","type":"REGULATOR_PAGE","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"queens-borough","name":"Queens","kind":"BOROUGH","county":"Queens","retailOptOut":false,"onsiteConsumptionOptOut":false,"optOutDate":null,"notes":"The opting-out authority was the City of New York, not the individual borough. New York City did not opt out, so retail is permitted across all five boroughs.","sources":[{"url":"https://cannabis.ny.gov/localities","label":"NYS Office of Cannabis Management — localities","type":"REGULATOR_PAGE","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"the-bronx-borough","name":"The Bronx","kind":"BOROUGH","county":"Bronx","retailOptOut":false,"onsiteConsumptionOptOut":false,"optOutDate":null,"notes":"The opting-out authority was the City of New York, not the individual borough. New York City did not opt out, so retail is permitted across all five boroughs.","sources":[{"url":"https://cannabis.ny.gov/localities","label":"NYS Office of Cannabis Management — localities","type":"REGULATOR_PAGE","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"},{"id":"staten-island-borough","name":"Staten Island","kind":"BOROUGH","county":"Richmond","retailOptOut":false,"onsiteConsumptionOptOut":false,"optOutDate":null,"notes":"The opting-out authority was the City of New York, not the individual borough. New York City did not opt out, so retail is permitted across all five boroughs.","sources":[{"url":"https://cannabis.ny.gov/localities","label":"NYS Office of Cannabis Management — localities","type":"REGULATOR_PAGE","retrievedAt":"2026-09-04T00:00:00Z"}],"lastUpdated":"2026-09-04T00:00:00Z"}];
+
+const BOROUGH_LABEL = { MANHATTAN:'Manhattan', BROOKLYN:'Brooklyn', QUEENS:'Queens', BRONX:'The Bronx', STATEN_ISLAND:'Staten Island' };
+const COUNTY_LABEL = { 'New York':'Manhattan', Kings:'Brooklyn', Queens:'Queens', Bronx:'The Bronx', Richmond:'Staten Island', Westchester:'Westchester' };
+const LICENSE_TYPE_LABEL = {
+  ADULT_USE_RETAIL_DISPENSARY:'Adult-use retail', CAURD:'CAURD', MICROBUSINESS:'Microbusiness',
+  REGISTERED_ORGANIZATION_ADULT_USE:'Registered org — adult-use', REGISTERED_ORGANIZATION_MEDICAL:'Registered org — medical',
+  DELIVERY_ONLY:'Delivery only', ONSITE_CONSUMPTION:'On-site consumption'
+};
+const OPERATIONAL = {
+  OPEN:{label:'Open', cls:'ok'}, APPROVED_NOT_OPEN:{label:'Licensed, not open yet', cls:'neutral'},
+  TEMPORARILY_CLOSED:{label:'Temporarily closed', cls:'warn'}, PERMANENTLY_CLOSED:{label:'Closed', cls:'bad'},
+  UNKNOWN:{label:'Status unconfirmed', cls:'neutral'}
+};
+const VERIFICATION = {
+  VERIFIED_OFFICIAL:{label:'Registry-verified', cls:'ok'},
+  VERIFIED_SECONDARY:{label:'Secondary sources', cls:'warn'},
+  UNVERIFIED:{label:'Unverified', cls:'bad'}
+};
+const SERVICE_LABELS = [
+  ['inStorePurchase','In-store'], ['delivery','Delivery'], ['pickup','Pickup'], ['curbside','Curbside'],
+  ['servesMedical','Medical'], ['onsiteConsumption','On-site use'], ['adaAccessible','Accessible'],
+  ['acceptsDebit','Debit'], ['atmOnSite','ATM'], ['parking','Parking']
+];
+const DAYS = [['mon','Mon'],['tue','Tue'],['wed','Wed'],['thu','Thu'],['fri','Fri'],['sat','Sat'],['sun','Sun']];
+const REGION_ORDER = ['Manhattan','Brooklyn','Queens','The Bronx','Staten Island','Westchester'];
+
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const name = (d) => d.dbaName || d.legalName;
+const region = (d) => d.address.borough ? BOROUGH_LABEL[d.address.borough] : 'Westchester';
+const fullAddress = (d) => [d.address.line1, d.address.line2, d.address.city + ', NY ' + d.address.zip].filter(Boolean).join(', ');
+const mapsUrl = (d) => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(d.address.line1 + ', ' + d.address.city + ', NY ' + d.address.zip);
+
+const prettyTime = (hhmm) => {
+  const [h, m] = hhmm.split(':').map(Number);
+  const suffix = h < 12 ? 'am' : 'pm';
+  const hour = h % 12 === 0 ? 12 : h % 12;
+  return m === 0 ? hour + suffix : hour + ':' + String(m).padStart(2, '0') + suffix;
+};
+const prettyDay = (v) => v === null || v === undefined ? 'Unknown' : v === 'CLOSED' ? 'Closed'
+  : v.map((s) => prettyTime(s.open) + ' – ' + prettyTime(s.close)).join(', ');
+const prettyDate = (iso) => {
+  if (!iso) return null;
+  const d = new Date(iso);
+  return isNaN(d.getTime()) ? null : d.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+};
+
+const pill = (cls, label, dot) =>
+  '<span class="pill ' + cls + '">' + (dot ? '<span class="dot" aria-hidden="true"></span>' : '') + esc(label) + '</span>';
+
+/* ---- stats ------------------------------------------------------------- */
+
+const regionsPresent = REGION_ORDER.filter((r) => DATA.some((d) => region(d) === r));
+const statsEl = document.getElementById('stats');
+statsEl.innerHTML = [
+  ['Listed', DATA.length],
+  ['Confirmed open', DATA.filter((d) => d.operationalStatus === 'OPEN').length],
+  ['Registry-verified', DATA.filter((d) => d.verification.status === 'VERIFIED_OFFICIAL').length],
+  ['Areas', regionsPresent.length]
+].map(([label, value]) => '<div class="stat"><dd style="margin:0;"><b>' + value + '</b></dd><dt><span>' + label + '</span></dt></div>').join('');
+
+/* ---- filter state ------------------------------------------------------ */
+
+const state = { q:'', region:null, openOnly:false, deliveryOnly:false, sort:'name' };
+
+const chipsEl = document.getElementById('chips');
+const renderChips = () => {
+  const areaChips = [['All areas', null]].concat(regionsPresent.map((r) => [r, r]))
+    .map(([label, value]) =>
+      '<button type="button" class="chip" data-kind="region" data-value="' + esc(value === null ? '' : value) +
+      '" aria-pressed="' + (state.region === value) + '">' + esc(label) + '</button>').join('');
+
+  chipsEl.innerHTML = areaChips +
+    '<span class="divider" aria-hidden="true"></span>' +
+    '<button type="button" class="chip" data-kind="open" aria-pressed="' + state.openOnly + '">Open now listed</button>' +
+    '<button type="button" class="chip" data-kind="delivery" aria-pressed="' + state.deliveryOnly + '">Delivers</button>';
+};
+
+chipsEl.addEventListener('click', (e) => {
+  const btn = e.target.closest('button.chip');
+  if (!btn) return;
+  const kind = btn.dataset.kind;
+  if (kind === 'region') {
+    const value = btn.dataset.value === '' ? null : btn.dataset.value;
+    state.region = state.region === value ? null : value;
+  } else if (kind === 'open') state.openOnly = !state.openOnly;
+  else if (kind === 'delivery') state.deliveryOnly = !state.deliveryOnly;
+  renderChips();
+  render();
+});
+
+document.getElementById('q').addEventListener('input', (e) => { state.q = e.target.value; render(); });
+document.getElementById('sort').addEventListener('change', (e) => { state.sort = e.target.value; render(); });
+
+const clearAll = () => {
+  state.q = ''; state.region = null; state.openOnly = false; state.deliveryOnly = false;
+  document.getElementById('q').value = '';
+  renderChips();
+  render();
+};
+
+/* ---- card list --------------------------------------------------------- */
+
+const gridEl = document.getElementById('grid');
+const emptyEl = document.getElementById('empty');
+const countEl = document.getElementById('count');
+
+const cardHtml = (d) => {
+  const confirmed = SERVICE_LABELS.filter(([key]) => d.services && d.services[key] === true).slice(0, 4);
+  const op = OPERATIONAL[d.operationalStatus];
+  const ver = VERIFICATION[d.verification.status];
+
+  return '<li><button type="button" class="card" data-id="' + esc(d.id) + '">' +
+    '<div class="card-head"><div style="min-width:0;">' +
+      '<h3>' + esc(name(d)) + '</h3>' +
+      '<p class="where">' + esc((d.address.neighborhood ? d.address.neighborhood + ' · ' : '') + region(d)) + '</p>' +
+    '</div>' + pill(op.cls, op.label, true) + '</div>' +
+    '<p class="addr">' + esc(fullAddress(d)) + '</p>' +
+    (confirmed.length ? '<ul class="tags">' + confirmed.map(([, l]) => '<li>' + esc(l) + '</li>').join('') + '</ul>' : '') +
+    '<div class="card-foot">' + pill(ver.cls, ver.label, false) +
+      '<span style="display:flex;align-items:center;gap:0.7rem;">' +
+        '<span style="font-size:0.7rem;color:var(--faint);">' + esc(LICENSE_TYPE_LABEL[d.licenseType] || d.licenseType) + '</span>' +
+        '<span class="licence">' + esc(d.licenseNumber) + '</span>' +
+      '</span>' +
+    '</div></button></li>';
+};
+
+const render = () => {
+  const q = state.q.trim().toLowerCase();
+
+  const filtered = DATA.filter((d) => {
+    if (state.region && region(d) !== state.region) return false;
+    if (state.openOnly && d.operationalStatus !== 'OPEN') return false;
+    if (state.deliveryOnly && !(d.services && d.services.delivery === true)) return false;
+    if (!q) return true;
+    return [name(d), d.legalName, d.licenseNumber, d.address.line1, d.address.city, d.address.zip, d.address.neighborhood || '']
+      .join(' ').toLowerCase().includes(q);
+  });
+
+  const openFirst = (d) => d.operationalStatus === 'OPEN' ? 0 : 1;
+  filtered.sort((a, b) => {
+    if (state.sort === 'status') return openFirst(a) - openFirst(b) || name(a).localeCompare(name(b));
+    if (state.sort === 'region') return region(a).localeCompare(region(b)) || name(a).localeCompare(name(b));
+    return name(a).localeCompare(name(b));
+  });
+
+  gridEl.innerHTML = filtered.map(cardHtml).join('');
+  gridEl.hidden = filtered.length === 0;
+  emptyEl.hidden = filtered.length > 0;
+
+  const active = state.region || state.openOnly || state.deliveryOnly || state.q.trim();
+  countEl.innerHTML = '<b>' + filtered.length + '</b> ' + (filtered.length === 1 ? 'dispensary' : 'dispensaries') +
+    (active ? ' · <button type="button" class="linkish" id="clear">clear filters</button>' : '');
+  const clearBtn = document.getElementById('clear');
+  if (clearBtn) clearBtn.addEventListener('click', clearAll);
+};
+
+/* ---- detail sheet ------------------------------------------------------ */
+
+const sheet = document.getElementById('sheet');
+const sheetBody = document.getElementById('sheet-body');
+
+const row = (label, value) => value ? '<div class="row"><dt>' + esc(label) + '</dt><dd>' + value + '</dd></div>' : '';
+
+const sheetHtml = (d) => {
+  const op = OPERATIONAL[d.operationalStatus];
+  const ver = VERIFICATION[d.verification.status];
+  const c = d.contact || {};
+
+  const services = SERVICE_LABELS
+    .filter(([key]) => d.services && d.services[key] !== undefined)
+    .map(([key, label]) => {
+      const v = d.services[key];
+      const text = v === true ? 'Yes' : v === false ? 'No' : 'Unknown';
+      const color = v === true ? 'var(--moss)' : 'var(--faint)';
+      return '<div class="row"><dt>' + esc(label) + '</dt><dd style="color:' + color + ';">' + text + '</dd></div>';
+    }).join('');
+
+  return '<div class="sheet-head"><div style="min-width:0;">' +
+      '<h2>' + esc(name(d)) + '</h2>' +
+      (d.dbaName && d.dbaName !== d.legalName ? '<p class="legal">Licensed to ' + esc(d.legalName) + '</p>' : '') +
+      '<div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.75rem;">' + pill(op.cls, op.label, true) + pill(ver.cls, ver.label, false) + '</div>' +
+    '</div><button type="button" class="closebtn" id="sheet-close" aria-label="Close">&times;</button></div>' +
+
+    (d.warnings && d.warnings.length
+      ? '<div class="caveat"><strong style="color:var(--amber);">Caveats</strong><ul style="margin:0.5rem 0 0;padding-left:1.1rem;">' +
+        d.warnings.map((w) => '<li>' + esc(w) + '</li>').join('') + '</ul></div>'
+      : '') +
+
+    '<h3>Licence</h3><dl class="rows">' +
+      row('Licence number', '<span class="licence" style="font-size:0.85rem;color:var(--text);">' + esc(d.licenseNumber) + '</span>') +
+      row('Licence type', esc(LICENSE_TYPE_LABEL[d.licenseType] || d.licenseType)) +
+      row('Licence status', esc(d.licenseStatus.toLowerCase())) +
+      row('Equity category', d.seeCategory && d.seeCategory !== 'NONE' ? esc(d.seeCategory.replace(/_/g, ' ').toLowerCase()) : '') +
+      row('Opened', d.dates && prettyDate(d.dates.openedOn) ? esc(prettyDate(d.dates.openedOn)) : '') +
+    '</dl>' +
+
+    '<h3>Location</h3><dl class="rows">' +
+      row('Address', '<a href="' + esc(mapsUrl(d)) + '" target="_blank" rel="noreferrer noopener">' + esc(fullAddress(d)) + '</a>') +
+      row('Area', esc(region(d) + ' · ' + COUNTY_LABEL[d.address.county] + ' County')) +
+      row('Website', c.website ? '<a href="' + esc(c.website) + '" target="_blank" rel="noreferrer noopener">' + esc(c.website.replace(/^https?:\/\//, '').replace(/\/$/, '')) + '</a>' : '') +
+      row('Menu', d.menu && d.menu.menuUrl ? '<a href="' + esc(d.menu.menuUrl) + '" target="_blank" rel="noreferrer noopener">' + esc(d.menu.provider ? d.menu.provider.toLowerCase() + ' listing' : 'online menu') + '</a>' : '') +
+    '</dl>' +
+
+    '<h3>Opening hours</h3>' +
+    (d.hours
+      ? '<table class="hours"><tbody>' + DAYS.map(([key, label]) =>
+          '<tr><th scope="row">' + label + '</th><td>' + esc(prettyDay(d.hours.week[key])) + '</td></tr>').join('') +
+        '</tbody></table>' + (d.hours.notes ? '<p class="fineprint" style="margin-top:0.75rem;">' + esc(d.hours.notes) + '</p>' : '')
+      : '<p style="font-size:0.875rem;color:var(--muted);margin:0;">Not collected yet. We would rather say nothing than publish hours we have not checked — call ahead or use the shop&rsquo;s own site.</p>') +
+
+    (services ? '<h3>Services</h3><dl class="rows">' + services + '</dl>' : '') +
+
+    '<h3>Where this came from</h3><ol class="sources">' +
+      d.sources.map((s) => '<li><a href="' + esc(s.url) + '" target="_blank" rel="noreferrer noopener">' + esc(s.label || s.url) + '</a>' +
+        '<p class="meta">' + esc(s.type.replace(/_/g, ' ').toLowerCase()) + ' · retrieved ' + esc(prettyDate(s.retrievedAt) || s.retrievedAt) + '</p></li>').join('') +
+    '</ol>' +
+    (d.verification.notes ? '<p class="fineprint">' + esc(d.verification.notes) + '</p>' : '') +
+
+    '<div class="verify-cta"><strong>Check it yourself</strong>' +
+      '<p>Look for the QR-coded verification decal at the entrance, or search this address on the state tool.</p>' +
+      '<a class="btn" href="https://cannabis.ny.gov/dispensary-location-verification" target="_blank" rel="noreferrer noopener">Open the state verification tool</a>' +
+    '</div>';
+};
+
+gridEl.addEventListener('click', (e) => {
+  const card = e.target.closest('button.card');
+  if (!card) return;
+  const d = DATA.find((x) => x.id === card.dataset.id);
+  if (!d) return;
+  sheetBody.innerHTML = sheetHtml(d);
+  sheet.showModal();
+  document.getElementById('sheet-close').addEventListener('click', () => sheet.close());
+});
+
+sheet.addEventListener('click', (e) => { if (e.target === sheet) sheet.close(); });
+
+/* ---- Westchester opt-out list ------------------------------------------ */
+
+document.getElementById('optout').innerHTML = MUNI
+  .filter((m) => m.county === 'Westchester' && m.retailOptOut === true)
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map((m) => '<li>' + esc(m.name) + '<span class="kind">' + esc(m.kind.toLowerCase()) + '</span></li>')
+  .join('');
+
+renderChips();
+render();
+</script>
