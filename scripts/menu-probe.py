@@ -238,9 +238,31 @@ with ThreadPoolExecutor(max_workers=6) as ex:
 results.sort(key=lambda x: (x.get("provider") or "", x["licenseNumber"]))
 
 structure_kinds = Counter()
+jsonld_types = Counter()
+nextdata_keys = Counter()
+product_key_samples = []
+blocked_hosts = Counter()
+reach_by_provider = Counter()
+
 for r in results:
+    provider = r.get("provider") or "?"
+    if r.get("robotsAllowed") is False:
+        blocked_hosts[urlparse(r.get("website") or "").netloc.lower()] += 1
+    if not r.get("error"):
+        reach_by_provider[provider] += 1
     for s in r.get("structures", []):
-        structure_kinds[s.get("kind")] += 1
+        kind = s.get("kind")
+        structure_kinds[kind] += 1
+        if kind == "json-ld":
+            t = s.get("type")
+            jsonld_types[json.dumps(t) if isinstance(t, list) else str(t)] += 1
+            # A Product entry is the thing a parser would read, so capture its
+            # shape rather than only its existence.
+            if isinstance(t, str) and t.lower() in {"product", "offer", "itemlist"} and len(product_key_samples) < 6:
+                product_key_samples.append({"provider": provider, "type": t, "keys": s.get("keys")})
+        elif kind == "__NEXT_DATA__":
+            for k in s.get("pagePropsKeys") or []:
+                nextdata_keys[k] += 1
 
 summary = {
     "eligibleShops": len(targets),
@@ -250,6 +272,11 @@ summary = {
     "byProvider": dict(Counter(r.get("provider") for r in results)),
     "structuresFound": dict(structure_kinds.most_common()),
     "flowerWordsSeen": sum(1 for r in results if r.get("flowerWordsSeen")),
+    "reachableByProvider": dict(reach_by_provider.most_common()),
+    "jsonLdTypes": dict(jsonld_types.most_common(15)),
+    "nextDataPagePropsKeys": dict(nextdata_keys.most_common(20)),
+    "productKeySamples": product_key_samples,
+    "robotsBlockedHosts": dict(blocked_hosts.most_common(30)),
 }
 
 (OUT / "menu-probe.json").write_text(
