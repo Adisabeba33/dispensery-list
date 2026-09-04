@@ -25,7 +25,13 @@ jobs:
       - name: Read flower off a pilot set of menus
         run: node scripts/menu-render.mjs --limit 25
       - name: Validate collected listings
-        run: npm run validate
+        run: |
+          set +e
+          npm run validate > /tmp/validate.txt 2>&1
+          code=$?
+          # Print only the errors: the warnings section is long and drowns them.
+          sed -n '/^ERRORS/,$p' /tmp/validate.txt | head -60
+          exit $code
       - name: Commit collected listings
         run: |
           git config user.name "github-actions[bot]"

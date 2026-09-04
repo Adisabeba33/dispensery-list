@@ -77,9 +77,14 @@ const findProductArrays = (value, depth = 0, out = []) => {
     const objects = value.filter((v) => v && typeof v === 'object' && !Array.isArray(v));
     if (objects.length >= 2) {
       const keys = Object.keys(objects[0]);
+      // The first pilot matched a Dutchie tax table: it has `name` and `type`
+      // like a product does. Demand something only a shelf item carries.
       const looksLikeProduct =
         keys.some((k) => /^(name|productName|title)$/i.test(k)) &&
-        keys.some((k) => /(categor|type|brand|strain|thc|price|variant)/i.test(k));
+        keys.some((k) =>
+          /^(category|productCategory|productCategoryName|subcategory|brand|brandName|strainType|cannabisType|variants|weightInGrams|potencyThc|thcContent)$/i.test(k),
+        ) &&
+        !keys.some((k) => /^(taxBasis|deliveryPolicy|applyTo|stages)$/i.test(k));
       if (looksLikeProduct) out.push(objects);
     }
     for (const item of value.slice(0, 20)) findProductArrays(item, depth + 1, out);
@@ -204,6 +209,9 @@ const TERPENES = {
   eucalyptol: 'EUCALYPTOL', guaiol: 'GUAIOL', farnesene: 'FARNESENE',
   geraniol: 'GERANIOL', borneol: 'BORNEOL', terpineol: 'TERPINEOL',
   phellandrene: 'PHELLANDRENE', carene: 'CARENE', sabinene: 'SABINENE', fenchol: 'FENCHOL',
+  // Spellings seen in the pilot payloads.
+  betamyrcene: 'MYRCENE', bmyrcene: 'MYRCENE', alphahumulene: 'HUMULENE',
+  betaocimene: 'OCIMENE', alphaterpineol: 'TERPINEOL', alphacedrene: 'OTHER',
 };
 
 const isFlower = (p) => {
@@ -219,13 +227,15 @@ const isFlower = (p) => {
   return /flower|bud/.test(text);
 };
 
+const inRange = (v, max) => (v === null || v === undefined || v < 0 || v > max ? null : v);
+
 const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const rawName = flatten(pick(p, ['name', 'productName', 'title', 'displayName']));
   if (!rawName) return null;
   const brand = flatten(pick(p, ['brandName', 'brand', 'producer', 'vendor', 'cultivator']));
   const name = cleanStrainName(rawName, brand);
   const lineageRaw = String(
-    flatten(pick(p, ['strainType', 'lineage', 'cannabisType', 'classification'])) ?? '',
+    flatten(pick(p, ['strainType', 'lineage', 'cannabisType', 'cannabisStrain', 'classification'])) ?? '',
   )
     .toLowerCase()
     .replace(/[^a-z]/g, '');
@@ -241,7 +251,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
       profile.push({
         name: mapped ?? 'OTHER',
         rawName: mapped ? null : String(raw).slice(0, 60),
-        percent: num(t && typeof t === 'object' ? t.value ?? t.percent : null),
+        percent: inRange(num(t && typeof t === 'object' ? t.value ?? t.percent : null), 20),
       });
     }
   }
@@ -255,6 +265,9 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     }
   }
 
+  const statedGrams = num(pick(p, ['weightInGrams', 'flowerEquivalentInGrams', 'weight', 'size']));
+  if (statedGrams && statedGrams > 0 && statedGrams <= 30) sizes.push(statedGrams);
+
   if (!sizes.length) {
     const fromTitle = sizeFromText(String(rawName));
     if (fromTitle) sizes.push(fromTitle);
@@ -262,8 +275,11 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
 
   const stock = flatten(pick(p, ['inStock', 'available', 'isAvailable', 'quantity']));
 
+  const listingId = slug(String(brand ?? ''), String(name));
+  if (!listingId) return null;
+
   return {
-    listingId: slug(String(brand ?? ''), String(name)),
+    listingId,
     licenseNumber: shop.licenseNumber,
     capturedAt: NOW,
     strainNameRaw: String(name).slice(0, 200),
@@ -271,8 +287,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     strainNameCanonical: String(name).toLowerCase().replace(/#/g, '').replace(/\s+/g, ' ').trim() || null,
     brand: brand ? String(brand).slice(0, 120) : null,
     lineage: LINEAGE[lineageRaw] ?? 'UNKNOWN',
-    thcPercent: num(pick(p, ['thcContent', 'potencyThc', 'thc', 'thcPercent'])),
-    cbdPercent: num(pick(p, ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent'])),
+    thcPercent: inRange(num(pick(p, ['thcContent', 'potencyThc', 'thc', 'thcPercent'])), 100),
+    cbdPercent: inRange(num(pick(p, ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent'])), 100),
     totalCannabinoidsPercent: null,
     terpenes: {
       // Numbers a menu prints without a certificate behind them are a claim,
