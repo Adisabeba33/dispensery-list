@@ -19,6 +19,8 @@ That is why one rule outranks everything else in this repo:
 data/
   schema/dispensary.schema.json    the data contract — read it before touching data
   schema/municipality.schema.json  opt-out status of cities, towns and villages
+  schema/flower-listing.schema.json    flower on a shelf — no prices, flower only
+  schema/strain-reference.schema.json  fallback terpene profiles by strain
   dispensaries.json                the delivered dataset (empty until research lands)
   dispensaries.demo.json           7-record sample so the site has something to show
   municipalities.json              Westchester opt-outs + NYC boroughs
@@ -26,6 +28,7 @@ data/
 docs/
   AGENT_RESEARCH_BRIEF.md          phase 1 — collecting the register from the state
   AGENT_ENRICHMENT_BRIEF.md        phase 2 — menus, geocodes, phones, services
+  AGENT_MENU_BRIEF.md              phase 3 — reading flower off the shelves
   RESEARCH_REPORT.md               what phase 1 found, and what it could not
   SOURCE_COLUMNS.md                the registry's real columns and the filter used
 scripts/
@@ -91,6 +94,26 @@ Phase 1 covers six counties: New York (Manhattan), Kings (Brooklyn), Queens,
 Bronx, Richmond (Staten Island) and Westchester. Adding a region means adding a
 source adapter under `scripts/ingest/sources/` and widening the county enums in
 the schemas.
+
+## Flower listings
+
+Phase 3 reads what is actually on the shelves, and two decisions shape it.
+
+**Flower only, and no prices.** Pre-rolls, vapes, concentrates and edibles are
+out of scope. Price is not collected in any form — the register does not compare
+cost, and not collecting it also keeps the project clear of the part of a menu
+that platforms defend hardest.
+
+**A terpene profile must say where it came from.** A profile measured from the
+batch's own certificate of analysis and a profile taken from the strain's
+typical reference are different claims about the world, so `terpenes.source`
+is required and the validator refuses a `LAB_COA` with nothing to back it or a
+`STRAIN_REFERENCE` that cannot name its reference. Reference entries built from
+someone else's dataset cannot ship without the licence that permits the use.
+
+Listings are perishable and belong in Postgres, not in git — weekly snapshots of
+tens of thousands of rows would bloat a history that cannot be reclaimed. The
+schema is the exchange and validation contract for one snapshot.
 
 ## Relationship to SŌMA
 

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dispensary-list/schema/strain-reference.schema.json",
+  "title": "Strain reference profile",
+  "description": "The typical terpene profile of a named strain, used as a fallback when a shelf listing carries no lab data. This is an expectation, never a measurement: a reference entry describes what a strain usually tastes like, not what is in any particular jar. Two growers, two harvests and six months on a shelf all move the real numbers.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["strainId", "canonicalName", "profile", "basis", "lastUpdated"],
+  "properties": {
+    "strainId": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "canonicalName": { "type": "string", "minLength": 2 },
+    "aliases": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Spellings seen on real menus: 'Gelato #33', 'Gelato 33', 'Larry Bird'. This is what makes matching a raw menu name work."
+    },
+    "lineage": { "enum": ["INDICA", "SATIVA", "HYBRID", "INDICA_DOMINANT", "SATIVA_DOMINANT", "CBD", "UNKNOWN"] },
+    "parents": { "type": ["array", "null"], "items": { "type": "string" } },
+    "profile": {
+      "type": "array",
+      "description": "Median terpene profile. Ordered by percent descending.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "medianPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 20 },
+          "observations": {
+            "type": ["integer", "null"],
+            "minimum": 0,
+            "description": "How many lab results this median rests on. One observation is an anecdote; the UI should treat a thin entry accordingly."
+          }
+        }
+      }
+    },
+    "basis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "sampleCount"],
+      "properties": {
+        "kind": {
+          "enum": ["AGGREGATED_COA", "EXTERNAL_DATASET", "PUBLISHED_LITERATURE"],
+          "description": "AGGREGATED_COA: computed from certificates this project collected — the preferred basis, because we can show our working and it carries no licence question. EXTERNAL_DATASET: imported from a third-party source, which must be named and licence-checked before use."
+        },
+        "sampleCount": { "type": "integer", "minimum": 0 },
+        "datasetName": { "type": ["string", "null"] },
+        "datasetLicence": {
+          "type": ["string", "null"],
+          "description": "The licence permitting this use. An external entry without one must not ship."
+        },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "confidence": {
+      "enum": ["HIGH", "MEDIUM", "LOW"],
+      "description": "HIGH needs a double-digit sample count from independent labs. A single COA is LOW no matter how precise its numbers look."
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["url", "retrievedAt"],
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "label": { "type": ["string", "null"] },
+          "retrievedAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "lastUpdated": { "type": "string", "format": "date-time" }
+  }
+}

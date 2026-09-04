@@ -282,10 +282,139 @@ const validateMunicipalities = () => {
 };
 
 // ---------------------------------------------------------------------------
+// Flower listings and the strain reference
+// ---------------------------------------------------------------------------
+
+/**
+ * Shelf listings are perishable and live in Postgres, not in git. This validates
+ * an exchange snapshot when one is present — the format the collector emits and
+ * the loader consumes.
+ */
+const validateFlowerListings = (FILE: string) => {
+  const raw = readJson(FILE);
+  if (raw === undefined) return;
+  if (!Array.isArray(raw)) {
+    fail(FILE, '-', 'top level must be an array of flower listings');
+    return;
+  }
+
+  const validate = compile('data/schema/flower-listing.schema.json');
+
+  // Listings must attach to a dispensary we actually publish.
+  const dispensaries = readJson('data/dispensaries.json');
+  const knownLicences = new Set(
+    Array.isArray(dispensaries) ? dispensaries.map((d: any) => d?.licenseNumber) : [],
+  );
+
+  const seen = new Map<string, number>();
+  const now = Date.now();
+
+  raw.forEach((record, i) => {
+    if (!validate(record)) formatAjvErrors(FILE, i, validate.errors);
+    const r = record as Record<string, any>;
+    const at = (field: string) => `[${i}] ${r.listingId ?? 'unknown'} → ${field}`;
+
+    // A listing is one shelf item at one shop; the pair must be unique.
+    const key = `${r.licenseNumber}::${r.listingId}`;
+    const prev = seen.get(key);
+    if (prev !== undefined) fail(FILE, at('listingId'), `duplicate listing, also at record [${prev}]`);
+    else seen.set(key, i);
+
+    if (knownLicences.size > 0 && r.licenseNumber && !knownLicences.has(r.licenseNumber)) {
+      fail(FILE, at('licenseNumber'), `${r.licenseNumber} is not in data/dispensaries.json`);
+    }
+
+    // No prices, ever. The schema forbids unknown keys, but raw collector output
+    // reaches this file too, and a stray price field must fail loudly rather
+    // than be quietly dropped.
+    for (const key of Object.keys(r)) {
+      if (/price|cost|discount|deal|sale/i.test(key)) {
+        fail(FILE, at(key), 'price-related field found — this project does not collect prices');
+      }
+    }
+
+    const terpenes = r.terpenes ?? {};
+    const source = terpenes.source;
+    const profile = Array.isArray(terpenes.profile) ? terpenes.profile : [];
+
+    // Each source makes a different claim, and each has to be able to back it.
+    if (source === 'LAB_COA' && !terpenes.coaUrl && !terpenes.labName) {
+      fail(FILE, at('terpenes'), 'LAB_COA requires a coaUrl or a labName — otherwise the claim of a measurement is unsupported');
+    }
+    if (source === 'STRAIN_REFERENCE' && !terpenes.referenceStrain) {
+      fail(FILE, at('terpenes'), 'STRAIN_REFERENCE requires referenceStrain, so a reader can see what the expectation rests on');
+    }
+    if (source === 'NONE' && profile.length > 0) {
+      fail(FILE, at('terpenes'), 'source NONE cannot carry a profile');
+    }
+    if (source && source !== 'NONE' && profile.length === 0) {
+      warn(FILE, at('terpenes'), `source ${source} with an empty profile — use NONE instead`);
+    }
+    for (const [j, t] of profile.entries()) {
+      if (t?.name === 'OTHER' && !t?.rawName) {
+        fail(FILE, at(`terpenes.profile[${j}]`), 'OTHER requires rawName, otherwise the terpene is unrecoverable');
+      }
+    }
+
+    if (typeof r.capturedAt === 'string' && new Date(r.capturedAt).getTime() > now + 60_000) {
+      fail(FILE, at('capturedAt'), 'captured in the future');
+    }
+
+    // Freshness is part of the sensory claim: volatile terpenes leave over months.
+    if (typeof r.packagedOn === 'string' && r.capturedAt) {
+      const ageDays = (new Date(r.capturedAt).getTime() - new Date(r.packagedOn).getTime()) / 86_400_000;
+      if (ageDays > 365) {
+        warn(FILE, at('packagedOn'), `packaged ${Math.round(ageDays)} days before capture — the terpene profile will have moved`);
+      }
+    }
+  });
+};
+
+const validateStrainReference = (FILE: string) => {
+  const raw = readJson(FILE);
+  if (raw === undefined) return;
+  if (!Array.isArray(raw)) {
+    fail(FILE, '-', 'top level must be an array of strain reference entries');
+    return;
+  }
+
+  const validate = compile('data/schema/strain-reference.schema.json');
+  const seen = new Map<string, number>();
+
+  raw.forEach((record, i) => {
+    if (!validate(record)) formatAjvErrors(FILE, i, validate.errors);
+    const r = record as Record<string, any>;
+    const at = (field: string) => `[${i}] ${r.strainId ?? 'unknown'} → ${field}`;
+
+    if (typeof r.strainId === 'string') {
+      const prev = seen.get(r.strainId);
+      if (prev !== undefined) fail(FILE, at('strainId'), `duplicate strainId, also at record [${prev}]`);
+      else seen.set(r.strainId, i);
+    }
+
+    // Borrowed data without a licence must not ship.
+    if (r.basis?.kind === 'EXTERNAL_DATASET' && !r.basis?.datasetLicence) {
+      fail(FILE, at('basis.datasetLicence'), 'an external dataset entry needs the licence permitting this use');
+    }
+
+    // A median over one sample is an anecdote wearing a statistic's clothes.
+    const samples = r.basis?.sampleCount ?? 0;
+    if (r.confidence === 'HIGH' && samples < 10) {
+      fail(FILE, at('confidence'), `HIGH needs at least 10 samples, has ${samples}`);
+    }
+    if (samples <= 1 && r.confidence !== 'LOW') {
+      fail(FILE, at('confidence'), `${samples} sample(s) can only support LOW confidence`);
+    }
+  });
+};
+
+// ---------------------------------------------------------------------------
 
 validateDispensaries('data/dispensaries.json', true);
 validateDispensaries('data/dispensaries.demo.json', false);
 validateMunicipalities();
+validateFlowerListings('data/flower-listings.json');
+validateStrainReference('data/strain-reference.json');
 
 const print = (label: string, items: Problem[]) => {
   if (items.length === 0) return;
