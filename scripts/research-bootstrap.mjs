@@ -1,7 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 
-// Bootstrap is intentionally deterministic apart from retrieval timestamps/source refreshes.
 const OUT = 'research-output';
 await mkdir(OUT, { recursive: true });
 
@@ -14,26 +13,35 @@ const urls = {
   rockefeller: 'https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/'
 };
 
-async function fetchText(url) {
-  const r = await fetch(url, {
-    headers: {
-      'user-agent': 'dispensary-list research agent/1.0 (+https://github.com/Adisabeba33/dispensery-list)',
-      accept: '*/*'
-    }
-  });
-  if (!r.ok) throw new Error(`${url}: HTTP ${r.status}`);
-  return await r.text();
+async function fetchText(url, { optional = false } = {}) {
+  try {
+    const r = await fetch(url, {
+      headers: {
+        'user-agent': 'Mozilla/5.0 (compatible; dispensary-list-research/1.0; +https://github.com/Adisabeba33/dispensery-list)',
+        accept: 'text/html,application/json,text/plain,*/*'
+      },
+      redirect: 'follow'
+    });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return { ok: true, text: await r.text(), error: null };
+  } catch (error) {
+    if (!optional) throw new Error(`${url}: ${error.message}`);
+    return { ok: false, text: '', error: `${url}: ${error.message}` };
+  }
 }
 
-const [licensesText, columnsText, verificationHtml, localitiesHtml, localGovernmentHtml, rockefellerHtml] = await Promise.all([
+const [licensesRes, columnsRes, verificationRes, localitiesRes, localGovernmentRes, rockefellerRes] = await Promise.all([
   fetchText(urls.licenses),
   fetchText(urls.columns),
   fetchText(urls.verification),
-  fetchText(urls.localities),
-  fetchText(urls.localGovernment),
-  fetchText(urls.rockefeller)
+  fetchText(urls.localities, { optional: true }),
+  fetchText(urls.localGovernment, { optional: true }),
+  fetchText(urls.rockefeller, { optional: true })
 ]);
 
+const licensesText = licensesRes.text;
+const columnsText = columnsRes.text;
+const verificationHtml = verificationRes.text;
 const raw = JSON.parse(licensesText);
 const columns = JSON.parse(columnsText);
 const counties = new Set(['New York', 'Kings', 'Queens', 'Bronx', 'Richmond', 'Westchester']);
@@ -46,15 +54,15 @@ const retailish = scoped.filter((r) => {
 });
 const licensedRetailish = retailish.filter((r) => /^OCM-[A-Z0-9]{2,10}-\d{2}-\d{4,8}$/.test(r.license_number || ''));
 
-const byCounty = {};
-for (const r of licensedRetailish) byCounty[r.county] = (byCounty[r.county] || 0) + 1;
-const byType = {};
-for (const r of licensedRetailish) byType[r.license_type] = (byType[r.license_type] || 0) + 1;
-const byStatus = {};
-for (const r of licensedRetailish) byStatus[r.license_status] = (byStatus[r.license_status] || 0) + 1;
+const countBy = (rows, field) => rows.reduce((acc, row) => {
+  const key = row[field] ?? '(null)';
+  acc[key] = (acc[key] || 0) + 1;
+  return acc;
+}, {});
 
 const sha256 = (s) => createHash('sha256').update(s).digest('hex');
 const generatedAt = new Date().toISOString();
+const optionalFailures = [localitiesRes, localGovernmentRes, rockefellerRes].filter((x) => !x.ok).map((x) => x.error);
 const summary = {
   generatedAt,
   sourceUrls: urls,
@@ -62,28 +70,30 @@ const summary = {
   scopedRows: scoped.length,
   retailishRows: retailish.length,
   licensedRetailishRows: licensedRetailish.length,
-  byCounty,
-  byType,
-  byStatus,
+  byCounty: countBy(licensedRetailish, 'county'),
+  byType: countBy(licensedRetailish, 'license_type'),
+  byStatus: countBy(licensedRetailish, 'license_status'),
+  optionalFailures,
   sha256: {
     licenses: sha256(licensesText),
     columns: sha256(columnsText),
     verification: sha256(verificationHtml),
-    localities: sha256(localitiesHtml),
-    localGovernment: sha256(localGovernmentHtml),
-    rockefeller: sha256(rockefellerHtml)
+    ...(localitiesRes.ok ? { localities: sha256(localitiesRes.text) } : {}),
+    ...(localGovernmentRes.ok ? { localGovernment: sha256(localGovernmentRes.text) } : {}),
+    ...(rockefellerRes.ok ? { rockefeller: sha256(rockefellerRes.text) } : {})
   }
 };
 
-await Promise.all([
+const writes = [
   writeFile(`${OUT}/ocm-licenses.json`, JSON.stringify(raw, null, 2) + '\n'),
   writeFile(`${OUT}/ocm-columns.json`, JSON.stringify(columns, null, 2) + '\n'),
   writeFile(`${OUT}/retail-candidates.json`, JSON.stringify(licensedRetailish, null, 2) + '\n'),
   writeFile(`${OUT}/ocm-verification.html`, verificationHtml),
-  writeFile(`${OUT}/ocm-localities.html`, localitiesHtml),
-  writeFile(`${OUT}/ocm-local-government.html`, localGovernmentHtml),
-  writeFile(`${OUT}/rockefeller-opt-out.html`, rockefellerHtml),
   writeFile(`${OUT}/summary.json`, JSON.stringify(summary, null, 2) + '\n')
-]);
+];
+if (localitiesRes.ok) writes.push(writeFile(`${OUT}/ocm-localities.html`, localitiesRes.text));
+if (localGovernmentRes.ok) writes.push(writeFile(`${OUT}/ocm-local-government.html`, localGovernmentRes.text));
+if (rockefellerRes.ok) writes.push(writeFile(`${OUT}/rockefeller-opt-out.html`, rockefellerRes.text));
+await Promise.all(writes);
 
 console.log(JSON.stringify(summary, null, 2));
