@@ -27,6 +27,34 @@ ROOT = Path(__file__).resolve().parents[1]
 # contradict them: the registry is the authority on what a licence permits.
 REGISTRY_SERVICES = {"inStorePurchase", "delivery", "servesAdultUse"}
 
+# Numbers that appear on dispensary websites but are not the shop's own line.
+# Cannabis retailers are required to display the poison control hotline, and the
+# collector cannot tell it apart from a business number by shape alone.
+# Publishing one would send a caller asking about opening hours to a medical
+# emergency service.
+PHONE_BLOCKLIST = {
+    "+1-800-222-1222",  # American Association of Poison Control Centers
+    "+1-800-273-8255",  # Suicide & Crisis Lifeline (legacy number)
+    "+1-877-846-7369",  # NY quitline, carried by some cannabis pages
+}
+
+
+def usable_menu_url(url):
+    """A menu URL has to be something a person can open.
+
+    Provider detection often lands on the embed script a platform injects
+    (api.dutchie.com/.../embedded-menu/<id>.js). That proves the platform, but
+    handing it to a reader gives them a JavaScript file. Keep the provider,
+    drop the URL.
+    """
+    if not url:
+        return False
+    lowered = url.lower().split("?")[0]
+    if lowered.endswith((".js", ".json", ".css")):
+        return False
+    return "/api/" not in lowered
+
+
 # Services the collector is allowed to set, and only ever to True.
 ENRICHABLE_SERVICES = {
     "pickup", "curbside", "adaAccessible", "onsiteConsumption", "servesMedical",
@@ -105,7 +133,8 @@ def note_append(record, text):
 
 
 touched = 0
-stats = {"geo": 0, "phone": 0, "menu": 0, "services": 0, "other_platform": 0, "warnings": 0}
+stats = {"geo": 0, "phone": 0, "menu": 0, "services": 0, "other_platform": 0,
+         "warnings": 0, "phone_rejected": 0, "menu_url_rejected": 0}
 unresolved_geo = []
 unresolved_menu = []
 
@@ -151,10 +180,16 @@ for record in records:
 
     provider = w.get("menuProvider")
     if provider:
+        raw_url = w.get("menuUrl")
+        keep_url = usable_menu_url(raw_url)
+        if raw_url and not keep_url:
+            note_append(record, "Menu detected via the platform's embed script; no public menu page found.")
+            stats["menu_url_rejected"] += 1
         record["menu"] = {
             "provider": provider,
-            "menuUrl": w.get("menuUrl"),
-            "menuIsPublic": w.get("menuIsPublic"),
+            "menuUrl": raw_url if keep_url else None,
+            # menuIsPublic describes a page we can open; without one it is unknown.
+            "menuIsPublic": w.get("menuIsPublic") if keep_url else None,
         }
         stats["menu"] += 1
         changed = True
@@ -163,15 +198,22 @@ for record in records:
             # where a human will read it rather than being lost.
             note_append(record, f"menu platform: {w['otherPlatform']}.")
             stats["other_platform"] += 1
-        if w.get("menuUrl"):
-            add_source(record, w["menuUrl"], f"{provider.title()} menu", "MENU_PLATFORM")
+        if keep_url:
+            add_source(record, raw_url, f"{provider.title()} menu", "MENU_PLATFORM")
     else:
+        record["menu"] = None
         unresolved_menu.append((licence, w.get("websiteError") or "no menu platform identified"))
 
     phone = w.get("phone")
+    if phone in PHONE_BLOCKLIST:
+        note_append(record, "A public-safety hotline was found on the site and rejected as the shop's number.")
+        stats["phone_rejected"] += 1
+        phone = None
+    record.setdefault("contact", {})
+    # Assigned unconditionally: this pass owns the field, so a value rejected on
+    # a later run must clear the one an earlier run wrote.
+    record["contact"]["phone"] = phone
     if phone:
-        record.setdefault("contact", {})
-        record["contact"]["phone"] = phone
         stats["phone"] += 1
         changed = True
         if w.get("phoneBasis") == "visible_site_text":
@@ -286,6 +328,34 @@ lines += [
 lines += [
     f"| {k} | {v} |"
     for k, v in sorted(provider_counts.items(), key=lambda kv: (-kv[1], kv[0]))
+]
+
+shared_phones = {}
+for r in records:
+    phone = (r.get("contact") or {}).get("phone")
+    if phone:
+        shared_phones.setdefault(phone, []).append(r["id"])
+repeated = {p: ids for p, ids in shared_phones.items() if len(ids) > 2}
+if repeated:
+    lines += [
+        "",
+        "## Numbers shared by several shops",
+        "",
+        "These may be genuine chains sharing a line, or a platform support number",
+        "picked up from a template. Worth a look before anyone relies on them.",
+        "",
+        "| Number | Shops |",
+        "|---|---:|",
+    ]
+    lines += [f"| `{p}` | {len(ids)} |" for p, ids in sorted(repeated.items(), key=lambda kv: -len(kv[1]))]
+
+lines += [
+    "",
+    "## Rejected during the merge",
+    "",
+    f"- Public-safety hotlines rejected as shop numbers: **{stats['phone_rejected']}**.",
+    f"- Menu URLs that were embed scripts rather than pages: **{stats['menu_url_rejected']}** "
+    "(the platform is still recorded; only the unusable link is dropped).",
 ]
 
 lines += ["", "## Geocode precision", "", "| Precision | Records |", "|---|---:|"]
