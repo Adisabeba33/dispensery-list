@@ -293,9 +293,9 @@
     <p id="count" style="margin:0;"></p>
     <label style="display:flex;align-items:center;gap:0.5rem;">Sort
       <select id="sort" style="border:1px solid var(--line);border-radius:0.5rem;background:#0c110f;color:var(--text-2);padding:0.35rem 0.5rem;font:inherit;font-size:0.85rem;">
+        <option value="status">Open first</option>
         <option value="name">Name</option>
         <option value="region">Area</option>
-        <option value="status">Open first</option>
       </select>
     </label>
   </div>
@@ -414,7 +414,9 @@ statsEl.innerHTML = [
 
 /* ---- filter state ------------------------------------------------------ */
 
-const state = { q:'', region:null, openOnly:false, deliveryOnly:false, sort:'name' };
+/* Open first by default: a name sort leads with registry entity names that carry
+   no shop sign, and buries the shops someone can actually walk into. */
+const state = { q:'', region:null, openOnly:false, deliveryOnly:false, sort:'status' };
 
 const chipsEl = document.getElementById('chips');
 const renderChips = () => {

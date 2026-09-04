@@ -82,6 +82,13 @@ const zipMatchesCounty = (zip: string, county: string): boolean => {
   return false;
 };
 
+/**
+ * Closing times up to 06:00 are read as "the same trading day, past midnight".
+ * A close earlier than the open but later than this is more likely a typo or a
+ * swapped pair than a shop trading for twenty hours.
+ */
+const LATEST_PLAUSIBLE_CLOSE = 6 * 60;
+
 const toMinutes = (hhmm: string): number => {
   const [h, m] = hhmm.split(':').map(Number);
   return h * 60 + m;
@@ -190,8 +197,11 @@ const validateDispensaries = (FILE: string, requireRegistry: boolean) => {
           // overnight interval, which we allow but flag so it gets a second look.
           if (close === open) {
             fail(FILE, at(`hours.week.${day}[${slotIndex}]`), `open and close are both ${slot.open}`);
-          } else if (close < open) {
-            warn(FILE, at(`hours.week.${day}[${slotIndex}]`), `${slot.open}–${slot.close} reads as an overnight interval — confirm that is intended`);
+          } else if (close < open && close > LATEST_PLAUSIBLE_CLOSE) {
+            // close < open is an overnight interval, which is ordinary for a shop
+            // trading past midnight — most of this dataset closes at 00:00 or 02:00.
+            // Only a span that runs deep into the next day is worth a second look.
+            warn(FILE, at(`hours.week.${day}[${slotIndex}]`), `${slot.open}–${slot.close} spans most of the following day — confirm that is intended`);
           }
         });
       }
