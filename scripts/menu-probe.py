@@ -133,12 +133,24 @@ def describe_json_blobs(html: str) -> list[dict]:
             continue
         items = data if isinstance(data, list) else [data]
         for item in items:
-            if isinstance(item, dict):
-                found.append({
-                    "kind": "json-ld",
-                    "type": item.get("@type"),
-                    "keys": sorted(item.keys())[:25],
-                })
+            if not isinstance(item, dict):
+                continue
+            entry = {"kind": "json-ld", "type": item.get("@type"), "keys": sorted(item.keys())[:25]}
+
+            # An ItemList holds the products one level down, usually wrapped in
+            # ListItem envelopes. That inner object is the product.
+            elements = item.get("itemListElement")
+            if isinstance(elements, list) and elements:
+                first = elements[0]
+                if isinstance(first, dict):
+                    inner = first.get("item") if isinstance(first.get("item"), dict) else first
+                    entry["itemListCount"] = len(elements)
+                    entry["itemType"] = inner.get("@type")
+                    entry["itemKeys"] = sorted(inner.keys())[:30]
+                    for k in ("name", "category"):
+                        if inner.get(k):
+                            entry.setdefault("itemSample", {})[k] = str(inner[k])[:70]
+            found.append(entry)
 
     next_data = soup.find("script", id="__NEXT_DATA__")
     if next_data and next_data.string:
@@ -151,6 +163,15 @@ def describe_json_blobs(html: str) -> list[dict]:
             # against, so pull them out wherever a product list turns up.
             for key in ("products", "menuItems", "items", "productList"):
                 value = props.get(key)
+                if key == "products" and "products" in props:
+                    # The key being present says nothing about it holding anything.
+                    # If the server ships it empty, the menu is fetched client-side
+                    # and no amount of HTML fetching will produce products.
+                    entry["productsFieldType"] = type(value).__name__
+                    if isinstance(value, list):
+                        entry["productsFieldLength"] = len(value)
+                    elif isinstance(value, dict):
+                        entry["productsFieldKeys"] = sorted(value.keys())[:20]
                 if isinstance(value, dict):
                     value = value.get("products") or value.get("items") or value.get("edges")
                 if isinstance(value, list) and value:
@@ -269,6 +290,8 @@ jsonld_types = Counter()
 nextdata_keys = Counter()
 product_key_samples = []
 blocked_hosts = Counter()
+products_field_shape = Counter()
+item_list_samples = []
 reach_by_provider = Counter()
 
 for r in results:
@@ -280,6 +303,18 @@ for r in results:
     for s in r.get("structures", []):
         kind = s.get("kind")
         structure_kinds[kind] += 1
+        if kind == "__NEXT_DATA__" and s.get("productsFieldType"):
+            products_field_shape[
+                f'{s["productsFieldType"]}'
+                + (f'(len={s.get("productsFieldLength")})' if "productsFieldLength" in s else "")
+                + (f'(keys={",".join((s.get("productsFieldKeys") or [])[:6])})' if s.get("productsFieldKeys") else "")
+            ] += 1
+        if kind == "json-ld" and s.get("itemKeys") and len(item_list_samples) < 5:
+            item_list_samples.append({
+                "provider": provider, "count": s.get("itemListCount"),
+                "itemType": s.get("itemType"), "itemKeys": s.get("itemKeys"),
+                "sample": s.get("itemSample"),
+            })
         if kind == "json-ld":
             t = s.get("type")
             jsonld_types[json.dumps(t) if isinstance(t, list) else str(t)] += 1
@@ -310,6 +345,8 @@ summary = {
     "reachableByProvider": dict(reach_by_provider.most_common()),
     "jsonLdTypes": dict(jsonld_types.most_common(15)),
     "nextDataPagePropsKeys": dict(nextdata_keys.most_common(20)),
+    "productsFieldShape": dict(products_field_shape.most_common()),
+    "itemListSamples": item_list_samples,
     "shopsWithProductList": sum(1 for r in results for s in r.get("structures", []) if s.get("productKeys")),
     "productKeySamples": product_key_samples,
     "robotsBlockedHosts": dict(blocked_hosts.most_common(30)),
