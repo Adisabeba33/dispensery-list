@@ -1,18 +1,18 @@
 # Enrichment report — phase 2
 
-Applied: **2026-09-04T18:47:28Z**
+Applied: **2026-09-04T18:52:17Z**
 Records: **456**, changed by this pass: **316**
 
 ## Coverage
 
 | Field | Before | After | Coverage |
 |---|---:|---:|---:|
-| `geo` | 0 | 452 | 99.1% |
-| `contact.phone` | 0 | 135 | 29.6% |
-| `menu.provider` | 0 | 256 | 56.1% |
-| `menu.menuUrl` | 0 | 209 | 45.8% |
+| `geo` | 452 | 452 | 99.1% |
+| `contact.phone` | 135 | 126 | 27.6% |
+| `menu.provider` | 256 | 256 | 56.1% |
+| `menu.menuUrl` | 209 | 142 | 31.1% |
 | `hours` | 333 | 333 | 73.0% |
-| `confidence HIGH` | 309 | 116 | 25.4% |
+| `confidence HIGH` | 116 | 109 | 23.9% |
 
 `confidence HIGH` falls in this pass, and that is not a data regression.
 Phase 1 awarded HIGH on registry completeness alone. This pass raises the bar
@@ -28,15 +28,29 @@ shop's shelf at all. A platform we can read is a shop SOMA can work with.
 | Platform | Shops |
 |---|---:|
 | not identified | 200 |
-| DUTCHIE | 106 |
+| DUTCHIE | 105 |
 | PROPRIETARY | 72 |
 | OTHER | 46 |
 | BLAZE | 13 |
 | LEAFLY | 9 |
-| WEEDMAPS | 4 |
+| WEEDMAPS | 5 |
 | TREEZ | 3 |
 | IHEARTJANE | 2 |
 | MEADOW | 1 |
+
+## Numbers shared by several shops
+
+These may be genuine chains sharing a line, or a platform support number
+picked up from a template. Worth a look before anyone relies on them.
+
+| Number | Shops |
+|---|---:|
+| `+1-718-554-4109` | 7 |
+
+## Rejected during the merge
+
+- Public-safety hotlines rejected as shop numbers: **7**.
+- Menu URLs that were embed scripts rather than pages: **66** (the platform is still recorded; only the unusable link is dropped).
 
 ## Geocode precision
 
