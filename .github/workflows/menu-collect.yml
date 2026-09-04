@@ -28,6 +28,7 @@ jobs:
         id: validate
         continue-on-error: true
         run: |
+          set +e
           npm run validate > /tmp/validate.txt 2>&1
           echo $? > /tmp/validate.code
       - name: Commit collected listings

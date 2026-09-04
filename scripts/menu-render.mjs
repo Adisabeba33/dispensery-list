@@ -120,8 +120,10 @@ const slug = (...parts) =>
     .join(' ')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, 80);
+    .slice(0, 80)
+    // Trim after the cut, not before: truncating an 80-character slug can
+    // land on a separator and leave a trailing dash the schema rejects.
+    .replace(/^-+|-+$/g, '');
 
 
 /**
