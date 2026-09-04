@@ -25,6 +25,8 @@ jobs:
         run: python scripts/enrichment-debt-audit.py
       - name: Collect website enrichment evidence
         run: python scripts/enrichment-collect.py
+      - name: Collect geocoding evidence
+        run: python scripts/enrichment-geocode.py
       - name: Upload debt audit
         uses: actions/upload-artifact@v4
         with:
@@ -37,5 +39,12 @@ jobs:
         with:
           name: enrichment-website-evidence
           path: enrichment-output/website-evidence.json
+          if-no-files-found: error
+          retention-days: 7
+      - name: Upload geocoding evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: enrichment-geocode-evidence
+          path: enrichment-output/geocode-evidence.json
           if-no-files-found: error
           retention-days: 7
