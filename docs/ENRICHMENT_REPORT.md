@@ -1,6 +1,6 @@
 # Enrichment report — phase 2
 
-Applied: **2026-09-04T18:52:17Z**
+Applied: **2026-09-04T18:56:09Z**
 Records: **456**, changed by this pass: **316**
 
 ## Coverage
@@ -8,11 +8,11 @@ Records: **456**, changed by this pass: **316**
 | Field | Before | After | Coverage |
 |---|---:|---:|---:|
 | `geo` | 452 | 452 | 99.1% |
-| `contact.phone` | 135 | 126 | 27.6% |
-| `menu.provider` | 256 | 256 | 56.1% |
-| `menu.menuUrl` | 209 | 142 | 31.1% |
+| `contact.phone` | 126 | 121 | 26.5% |
+| `menu.provider` | 256 | 243 | 53.3% |
+| `menu.menuUrl` | 142 | 138 | 30.3% |
 | `hours` | 333 | 333 | 73.0% |
-| `confidence HIGH` | 116 | 109 | 23.9% |
+| `confidence HIGH` | 109 | 102 | 22.4% |
 
 `confidence HIGH` falls in this pass, and that is not a data regression.
 Phase 1 awarded HIGH on registry completeness alone. This pass raises the bar
@@ -27,12 +27,12 @@ shop's shelf at all. A platform we can read is a shop SOMA can work with.
 
 | Platform | Shops |
 |---|---:|
-| not identified | 200 |
-| DUTCHIE | 105 |
-| PROPRIETARY | 72 |
-| OTHER | 46 |
+| not identified | 213 |
+| DUTCHIE | 97 |
+| PROPRIETARY | 70 |
+| OTHER | 45 |
 | BLAZE | 13 |
-| LEAFLY | 9 |
+| LEAFLY | 7 |
 | WEEDMAPS | 5 |
 | TREEZ | 3 |
 | IHEARTJANE | 2 |
@@ -50,7 +50,7 @@ picked up from a template. Worth a look before anyone relies on them.
 ## Rejected during the merge
 
 - Public-safety hotlines rejected as shop numbers: **7**.
-- Menu URLs that were embed scripts rather than pages: **66** (the platform is still recorded; only the unusable link is dropped).
+- Menu URLs that were embed scripts rather than pages: **64** (the platform is still recorded; only the unusable link is dropped).
 
 ## Geocode precision
 
@@ -64,7 +64,7 @@ They place a pin on the right building frontage, not inside the unit.
 ## Not resolved
 
 - Geocode missing for **4** record(s).
-- Menu platform not identified for **60** record(s) with a website.
+- Menu platform not identified for **73** record(s) with a website.
 
 Both remain null rather than guessed. Reasons per record are in the
 collector evidence files under `enrichment-output/`.
