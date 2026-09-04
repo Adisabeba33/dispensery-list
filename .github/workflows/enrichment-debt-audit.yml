@@ -7,10 +7,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   audit:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,6 +28,21 @@ jobs:
         run: python scripts/enrichment-collect.py
       - name: Collect geocoding evidence
         run: python scripts/enrichment-geocode.py
+      - name: Apply evidence to the dataset
+        run: python scripts/enrichment-apply.py
+      - name: Install project dependencies
+        run: npm ci
+      - name: Validate enriched dataset
+        run: npm run validate
+      - name: Commit enriched dataset
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/dispensaries.json docs/ENRICHMENT_REPORT.md
+          if ! git diff --cached --quiet; then
+            git commit -m "enrich: apply phase 2 website and geocoding evidence"
+            git push origin HEAD:agent/enrich-nyc-westchester
+          fi
       - name: Upload debt audit
         uses: actions/upload-artifact@v4
         with:
