@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dispensary-list/schema/municipality.schema.json",
+  "title": "New York municipality retail opt-out status",
+  "description": "Under the MRTA, cities, towns and villages could opt out of hosting adult-use retail dispensaries and/or on-site consumption lounges by 31 December 2021. A municipality that did not opt out by that date can no longer do so. This dataset explains why some towns have no dispensaries at all.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "kind", "county", "retailOptOut", "onsiteConsumptionOptOut", "sources", "lastUpdated"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "name": { "type": "string", "minLength": 2 },
+    "kind": {
+      "enum": ["CITY", "TOWN", "VILLAGE", "BOROUGH"],
+      "description": "A village sits inside a town and opts out independently — Mamaroneck exists as both a town and a village and must be two records."
+    },
+    "county": { "enum": ["New York", "Kings", "Queens", "Bronx", "Richmond", "Westchester"] },
+    "retailOptOut": { "type": ["boolean", "null"], "description": "True = opted out of retail dispensaries. Null = not established." },
+    "onsiteConsumptionOptOut": { "type": ["boolean", "null"] },
+    "optOutDate": { "type": ["string", "null"], "format": "date" },
+    "notes": { "type": ["string", "null"] },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["url", "type", "retrievedAt"],
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "label": { "type": ["string", "null"] },
+          "type": { "enum": ["OFFICIAL_REGISTRY", "REGULATOR_PAGE", "PRESS", "RESEARCH_TRACKER"] },
+          "retrievedAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "lastUpdated": { "type": "string", "format": "date-time" }
+  }
+}

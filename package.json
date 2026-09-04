@@ -1,0 +1,38 @@
+{
+  "name": "dispensary-list",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Verified directory of state-licensed cannabis dispensaries \u2014 New York (NYC + Westchester)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint src scripts",
+    "typecheck": "tsc --noEmit",
+    "validate": "tsx scripts/validate-data.ts",
+    "ingest": "tsx scripts/ingest/run.ts",
+    "ingest:dry": "tsx scripts/ingest/run.ts --dry-run",
+    "test": "npm run typecheck && npm run validate",
+    "preview": "tsx scripts/build-preview.ts"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "next": "^15.1.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.4",
+    "@types/react-dom": "^19.0.2",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.39.5",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.22.3",
+    "typescript": "^5.7.3"
+  }
+}

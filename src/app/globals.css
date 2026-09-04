@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * A directory whose whole claim is "these are the verified ones" should read as
+ * a public record, not as a shopfront: dense type, restrained colour, and the
+ * accent reserved for one meaning only — verification.
+ */
+:root {
+  color-scheme: dark;
+  --bg: #080b0a;
+  --surface: #111815;
+  --border: #1f2b25;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(60rem 40rem at 78% -12%, rgba(63, 201, 125, 0.09), transparent 62%),
+    radial-gradient(48rem 34rem at 4% 4%, rgba(63, 201, 125, 0.045), transparent 58%),
+    var(--bg);
+  background-attachment: fixed;
+  color: #f2f6f3;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+
+  .card {
+    @apply rounded-xl border border-ink-700 bg-ink-850/70 backdrop-blur-sm transition-colors;
+  }
+
+  .card-hover {
+    @apply hover:border-moss-600/70 hover:bg-ink-800/80;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium leading-none;
+  }
+
+  .label {
+    @apply text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-chalk-500;
+  }
+
+  .link {
+    @apply text-moss-400 underline decoration-moss-600/40 underline-offset-4 transition-colors hover:decoration-moss-400;
+  }
+
+  .field {
+    @apply w-full rounded-lg border border-ink-700 bg-ink-900/80 px-4 py-3 text-chalk-50 placeholder:text-chalk-500 focus:border-moss-600 focus:outline-none focus:ring-2 focus:ring-moss-600/25;
+  }
+
+  .chip {
+    @apply rounded-full border border-ink-700 px-3 py-1.5 text-sm text-chalk-200 transition-colors hover:border-moss-600/60 hover:text-chalk-50;
+  }
+
+  .chip-on {
+    @apply border-moss-600 bg-moss-600/15 text-moss-400;
+  }
+}
+
+/* Wide content must scroll inside itself, never push the page sideways. */
+.scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
