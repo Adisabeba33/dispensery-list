@@ -150,10 +150,37 @@ const sizeFromText = (text) => {
   return null;
 };
 
+/** Shops mark lineage in the title as (H), (S) or (I) — 197 of 330 did. */
+const LINEAGE_MARK = { h: 'HYBRID', s: 'SATIVA', i: 'INDICA', hybrid: 'HYBRID', sativa: 'SATIVA', indica: 'INDICA' };
+const lineageFromTitle = (raw) => {
+  const m = String(raw).match(/\((h|s|i|hybrid|sativa|indica)\)/i);
+  return m ? LINEAGE_MARK[m[1].toLowerCase()] : null;
+};
+
+/**
+ * Infused products, diamonds and pouches are built from flower but are not
+ * flower. Their category often still says "flower", so the title has to be
+ * read too.
+ */
+const NOT_FLOWER_TITLE = /\b(infus|diamond|moon\s?rock|pre[\s-]?roll|blunt|joint|vape|cart|gumm|edible)/i;
+
 /** Strips the brand, the category word and the size, leaving the strain. */
 const cleanStrainName = (raw, brand) => {
-  let parts = String(raw).split(/\s+[-–—|]\s+/).map((p) => p.trim()).filter(Boolean);
-  if (parts.length === 1) parts = [String(raw).trim()];
+  let text = String(raw)
+    .replace(/\s*[-–—]\s*F\d+\s*$/i, '')          // trailing shop SKU: "- F140"
+    .replace(/\((h|s|i|hybrid|sativa|indica)\)/gi, ' ')  // lineage marker, kept separately
+    // The weight is kept in availableSizesGrams, so it is noise in the name
+    // wherever it appears: "ILLUMINATI 3.5g" reads as a strain called ILLUMINATI.
+    .replace(/\b[\d.]+\s*(?:g|gr|grams?)\b/gi, ' ')
+    .replace(/\b(?:\d\/\d\s*)?(?:oz|ounce)\b/gi, ' ')
+    .replace(/\b(eighth|quarter|half)\b/gi, ' ')
+    .replace(/\s*[-–—|]\s*(?=[-–—|])/g, ' ')                 // collapsed separators
+    .replace(/\s*[-–—|]?\s*\b(sativa|indica|hybrid)\b\s*$/i, '') // lineage word left at the end
+    .replace(/\s+[\d.]+\s*$/, '')                             // bare trailing weight
+    .trim();
+
+  let parts = text.split(/\s+[-–—|]\s+/).map((p) => p.trim()).filter(Boolean);
+  if (parts.length === 1) parts = [text];
 
   const brandLower = String(brand ?? '').toLowerCase().trim();
   parts = parts.filter((part) => {
@@ -164,7 +191,7 @@ const cleanStrainName = (raw, brand) => {
     return true;
   });
 
-  const name = (parts.join(' - ') || String(raw)).replace(/\s{2,}/g, ' ').trim();
+  const name = (parts.join(' - ') || text).replace(/\s{2,}/g, ' ').replace(/^[\s\-–—|]+|[\s\-–—|]+$/g, '').trim();
   return name || String(raw).trim();
 };
 
@@ -217,6 +244,8 @@ const TERPENES = {
 };
 
 const isFlower = (p) => {
+  const title = String(flatten(pick(p, ['name', 'productName', 'title', 'displayName'])) ?? '');
+  if (NOT_FLOWER_TITLE.test(title)) return false;
   const text = [
     flatten(pick(p, ['category', 'productCategory', 'type', 'kind', 'categoryName'])),
     flatten(pick(p, ['subcategory', 'subCategory', 'productSubcategory'])),
@@ -288,7 +317,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
 
     strainNameCanonical: String(name).toLowerCase().replace(/#/g, '').replace(/\s+/g, ' ').trim() || null,
     brand: brand ? String(brand).slice(0, 120) : null,
-    lineage: LINEAGE[lineageRaw] ?? 'UNKNOWN',
+    lineage: LINEAGE[lineageRaw] ?? lineageFromTitle(rawName) ?? 'UNKNOWN',
     thcPercent: inRange(num(pick(p, ['thcContent', 'potencyThc', 'thc', 'thcPercent'])), 100),
     cbdPercent: inRange(num(pick(p, ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent'])), 100),
     totalCannabinoidsPercent: null,
