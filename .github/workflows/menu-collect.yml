@@ -35,3 +35,6 @@ jobs:
             git commit -m "menu: collect flower listings from shop menus"
             git push origin HEAD:agent/menu-flower-nyc
           fi
+      - name: Report what was collected
+        if: always()
+        run: cat enrichment-output/menu-summary.json

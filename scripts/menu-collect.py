@@ -388,5 +388,9 @@ if not args.dry_run:
     )
     print(f"\nWrote {len(listings)} listings")
 
-print("\n=== summary (repeated so it survives a truncated log tail) ===")
-print(json.dumps(summary, indent=2))
+# Written to a file so the workflow can echo it as its final step. Printing it
+# last inside this script does not help: later steps append to the same log and
+# push it out of the tail, which is all I can read back.
+OUT_DIR = ROOT / "enrichment-output"
+OUT_DIR.mkdir(parents=True, exist_ok=True)
+(OUT_DIR / "menu-summary.json").write_text(json.dumps(summary, indent=2) + "\n")
