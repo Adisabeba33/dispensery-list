@@ -1,1 +1,3382 @@
-[]
+[
+  {
+    "listingId": "leal-leal-fortune-cookie-flower-3-5g",
+    "licenseNumber": "OCM-CAURD-24-000165",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "Leal - Fortune Cookie - Flower - 3.5g",
+    "strainNameCanonical": "leal - fortune cookie - flower - 3.5g",
+    "brand": "Leal",
+    "lineage": "UNKNOWN",
+    "thcPercent": 26.71,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.37
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.14
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.06
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.38
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0.2
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Other Terpenes",
+          "percent": 0.09
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.09
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 1.38
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://frassboxcannabis.com/categories/flower/?category=flower&sort=best-selling",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "leal-leal-garlic-budder-flower-7g",
+    "licenseNumber": "OCM-CAURD-24-000165",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "Leal - Garlic Budder - Flower - 7g",
+    "strainNameCanonical": "leal - garlic budder - flower - 7g",
+    "brand": "Leal",
+    "lineage": "UNKNOWN",
+    "thcPercent": 32.53,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.05
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 1.11
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.22
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Caryophyllene Oxide",
+          "percent": 0.13
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0.07
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 2.13
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://frassboxcannabis.com/categories/flower/?category=flower&sort=best-selling",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "leal-leal-gmo-flower-3-5g",
+    "licenseNumber": "OCM-CAURD-24-000165",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "Leal - GMO - Flower - 3.5g",
+    "strainNameCanonical": "leal - gmo - flower - 3.5g",
+    "brand": "Leal",
+    "lineage": "UNKNOWN",
+    "thcPercent": 27.1,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.47
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.32
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "OTHER",
+          "rawName": "α-Terpinene",
+          "percent": 0.05
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.02
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.02
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.45
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Caryophyllene Oxide",
+          "percent": 0.05
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 1.81
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Other Terpenes",
+          "percent": 0.02
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.02
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 3.52
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://frassboxcannabis.com/categories/flower/?category=flower&sort=best-selling",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "leal-leal-grape-cake-flower-28-grams",
+    "licenseNumber": "OCM-CAURD-24-000165",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "Leal - Grape Cake - Flower - 28 Grams",
+    "strainNameCanonical": "leal - grape cake - flower - 28 grams",
+    "brand": "Leal",
+    "lineage": "UNKNOWN",
+    "thcPercent": 30.65,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.38
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.67
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.02
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0.16
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 1.23
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://frassboxcannabis.com/categories/flower/?category=flower&sort=best-selling",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "leal-leal-grape-cake-flower-3-5g",
+    "licenseNumber": "OCM-CAURD-24-000165",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "LEAL - Grape Cake - Flower - 3.5G",
+    "strainNameCanonical": "leal - grape cake - flower - 3.5g",
+    "brand": "Leal",
+    "lineage": "UNKNOWN",
+    "thcPercent": 25.61,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.07
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.74
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.3
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "BISABOLOL",
+          "rawName": null,
+          "percent": 0.08
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.19
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0.07
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.68
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 2
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://frassboxcannabis.com/categories/flower/?category=flower&sort=best-selling",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "leal-leal-jungle-gemz-flower-3-5g",
+    "licenseNumber": "OCM-CAURD-24-000165",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "LEAL - Jungle Gemz - Flower - 3.5g",
+    "strainNameCanonical": "leal - jungle gemz - flower - 3.5g",
+    "brand": "Leal",
+    "lineage": "UNKNOWN",
+    "thcPercent": 26.74,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.16
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.34
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.04
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.23
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.02
+        },
+        {
+          "name": "BISABOLOL",
+          "rawName": null,
+          "percent": 0.13
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.69
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Caryophyllene Oxide",
+          "percent": 0.04
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0.06
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Other Terpenes",
+          "percent": 0.02
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.02
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.35
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 1.72
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://frassboxcannabis.com/categories/flower/?category=flower&sort=best-selling",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "leal-leal-kush-cake-flower-28-gram",
+    "licenseNumber": "OCM-CAURD-24-000165",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "Leal - Kush Cake - Flower - 28 Gram",
+    "strainNameCanonical": "leal - kush cake - flower - 28 gram",
+    "brand": "Leal",
+    "lineage": "UNKNOWN",
+    "thcPercent": 29.79,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.27
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.05
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.06
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.28
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "BISABOLOL",
+          "rawName": null,
+          "percent": 0.11
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.99
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Caryophyllene Oxide",
+          "percent": 0.08
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0.09
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.05
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 2.07
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://frassboxcannabis.com/categories/flower/?category=flower&sort=best-selling",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "leal-leal-lemon-venom-flower-7g",
+    "licenseNumber": "OCM-CAURD-24-000165",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "Leal - Lemon Venom - Flower - 7g",
+    "strainNameCanonical": "leal - lemon venom - flower - 7g",
+    "brand": "Leal",
+    "lineage": "UNKNOWN",
+    "thcPercent": 27.65,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.23
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.05
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.25
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0.15
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 1.58
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://frassboxcannabis.com/categories/flower/?category=flower&sort=best-selling",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "leal-leal-macaroon-flower-7g",
+    "licenseNumber": "OCM-CAURD-24-000165",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "Leal - Macaroon - Flower - 7g",
+    "strainNameCanonical": "leal - macaroon - flower - 7g",
+    "brand": "Leal",
+    "lineage": "UNKNOWN",
+    "thcPercent": 26.4,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.47
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.05
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.04
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.34
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0.19
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Other Terpenes",
+          "percent": 0.05
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.05
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 1.21
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://frassboxcannabis.com/categories/flower/?category=flower&sort=best-selling",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "leal-leal-nic-the-bruiser-flower-3-5g",
+    "licenseNumber": "OCM-CAURD-24-000165",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "Leal - Nic The Bruiser - Flower - 3.5g",
+    "strainNameCanonical": "leal - nic the bruiser - flower - 3.5g",
+    "brand": "Leal",
+    "lineage": "UNKNOWN",
+    "thcPercent": 27.59,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.77
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.12
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 1.1
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Other Terpenes",
+          "percent": 0.09
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.09
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 2.21
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://frassboxcannabis.com/categories/flower/?category=flower&sort=best-selling",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "leal-leal-platinum-lemon-cherry-gelato-flower-3-5g",
+    "licenseNumber": "OCM-CAURD-24-000165",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "Leal - Platinum Lemon Cherry Gelato - Flower - 3.5g",
+    "strainNameCanonical": "leal - platinum lemon cherry gelato - flower - 3.5g",
+    "brand": "Leal",
+    "lineage": "UNKNOWN",
+    "thcPercent": 27.1,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.37
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.13
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.16
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.28
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "BISABOLOL",
+          "rawName": null,
+          "percent": 0.24
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.88
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Caryophyllene Oxide",
+          "percent": 0.03
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.06
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 2.26
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://frassboxcannabis.com/categories/flower/?category=flower&sort=best-selling",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "leal-leal-stank-breath-flower-3-5g",
+    "licenseNumber": "OCM-CAURD-24-000165",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "Leal - Stank Breath - Flower - 3.5g",
+    "strainNameCanonical": "leal - stank breath - flower - 3.5g",
+    "brand": "Leal",
+    "lineage": "UNKNOWN",
+    "thcPercent": 29.91,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.04
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.68
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.16
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.29
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Caryophyllene Oxide",
+          "percent": 0.03
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0.13
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Other Terpenes",
+          "percent": 0.08
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.08
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 1.94
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://frassboxcannabis.com/categories/flower/?category=flower&sort=best-selling",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "leal-leal-super-boof-flower-3-5g",
+    "licenseNumber": "OCM-CAURD-24-000165",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "LEAL - Super Boof - Flower - 3.5g",
+    "strainNameCanonical": "leal - super boof - flower - 3.5g",
+    "brand": "Leal",
+    "lineage": "UNKNOWN",
+    "thcPercent": 27.63,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 1.03
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.81
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Other Terpenes",
+          "percent": 0.01
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.01
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 2.89
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://frassboxcannabis.com/categories/flower/?category=flower&sort=best-selling",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "1937-1937-black-cherry-gelato-flower-3-5g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "1937 | BLACK CHERRY GELATO | FLOWER | 3.5G",
+    "strainNameCanonical": "1937 | black cherry gelato | flower | 3.5g",
+    "brand": "1937",
+    "lineage": "HYBRID",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.01
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.23
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.01
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.02
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.07
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.19
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.18
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "1937-1937-buttercream-flower-3-5g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "1937 | BUTTERCREAM | FLOWER | 3.5G",
+    "strainNameCanonical": "1937 | buttercream | flower | 3.5g",
+    "brand": "1937",
+    "lineage": "HYBRID",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.54
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.37
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.05
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0.01
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0.01
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.18
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.38
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.25
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0.01
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "1937-1937-fruity-loopz-flower-3-5g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "1937 | FRUITY LOOPZ | FLOWER | 3.5G",
+    "strainNameCanonical": "1937 | fruity loopz | flower | 3.5g",
+    "brand": "1937",
+    "lineage": "HYBRID",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.04
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.43
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.19
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.07
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0.01
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0.01
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0.11
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.14
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.54
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.21
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "1937-1937-kilimanjaro-flower-3-5g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "1937 | KILIMANJARO | FLOWER | 3.5G",
+    "strainNameCanonical": "1937 | kilimanjaro | flower | 3.5g",
+    "brand": "1937",
+    "lineage": "SATIVA",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.08
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.17
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.05
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.02
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.07
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0.17
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.57
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "5-boro-5-boro-amnesia-haze-7g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "5 BORO | AMNESIA HAZE | .7G",
+    "strainNameCanonical": "5 boro | amnesia haze | .7g",
+    "brand": "5 Boro",
+    "lineage": "SATIVA",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.12
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.04
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.04
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.04
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.05
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.04
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.51
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "5-boro-5-boro-blue-hawaiian-dimes-0-7g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "5 BORO | BLUE HAWAIIAN | DIMES | 0.7G",
+    "strainNameCanonical": "5 boro | blue hawaiian | dimes | 0.7g",
+    "brand": "5 Boro",
+    "lineage": "SATIVA",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0.46
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "5-boro-5-boro-cereal-milk-7g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "5 BORO | CEREAL MILK | .7G",
+    "strainNameCanonical": "5 boro | cereal milk | .7g",
+    "brand": "5 Boro",
+    "lineage": "HYBRID",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.02
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.93
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.23
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.3
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.17
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.17
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "5-boro-5-boro-forbidden-fruit-dimes-0-7g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "5 BORO | FORBIDDEN FRUIT | DIMES | 0.7G",
+    "strainNameCanonical": "5 boro | forbidden fruit | dimes | 0.7g",
+    "brand": "5 Boro",
+    "lineage": "HYBRID",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 1.01
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.04
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.05
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0.11
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0.02
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.29
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.31
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.17
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.02
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "5-boro-5-boro-fuel-pump-7g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "5 BORO | FUEL PUMP | .7G",
+    "strainNameCanonical": "5 boro | fuel pump | .7g",
+    "brand": "5 Boro",
+    "lineage": "INDICA",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.72
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.23
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "EUCALYPTOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0.1
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.22
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Isopulegol",
+          "percent": 0
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.14
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "NEROLIDOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "pCymene",
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "dragonfly-brands-dragonfly-cherry-gushers-popcorn-buds-flower-14g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "DRAGONFLY | CHERRY GUSHERS | POPCORN BUDS | FLOWER | 14G",
+    "strainNameCanonical": "dragonfly | cherry gushers | popcorn buds | flower | 14g",
+    "brand": "Dragonfly Brands",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.05
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.02
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.02
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0.05
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0.03
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.32
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.45
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0.4
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "find-find-modified-goat-whole-flower-70g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "FIND | MODIFIED GOAT | WHOLE FLOWER | 70G",
+    "strainNameCanonical": "find | modified goat | whole flower | 70g",
+    "brand": "Find.",
+    "lineage": "INDICA",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.26
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.25
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.11
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.53
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "honest-pharm-co-honest-pharm-co-double-runtz-flower",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "HONEST PHARM CO | DOUBLE RUNTZ | FLOWER",
+    "strainNameCanonical": "honest pharm co | double runtz | flower",
+    "brand": "HONEST PHARM CO",
+    "lineage": "HYBRID",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.24
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "honest-pharm-co-honest-pharm-co-garlic-cookies-flower-14g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "HONEST PHARM CO | GARLIC COOKIES | FLOWER | 14G",
+    "strainNameCanonical": "honest pharm co | garlic cookies | flower | 14g",
+    "brand": "Honest Pharm Co",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.04
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.09
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.06
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.07
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0.01
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.05
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.44
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.12
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "knack-knack-mind-melt-flower-28g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "KNACK | MIND MELT | FLOWER | 28G",
+    "strainNameCanonical": "knack | mind melt | flower | 28g",
+    "brand": "Knack",
+    "lineage": "INDICA",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.4
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.2
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.21
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.46
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.14
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "knack-knack-purple-brulee-flower-28g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "KNACK | PURPLE BRULEE | FLOWER | 28G",
+    "strainNameCanonical": "knack | purple brulee | flower | 28g",
+    "brand": "Knack",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.21
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.1
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.41
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.3
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "munchkins-munchkins-chemdawg-premium-small-buds-28g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "MUNCHKINS | CHEMDAWG | PREMIUM SMALL BUDS | 28G",
+    "strainNameCanonical": "munchkins | chemdawg | premium small buds | 28g",
+    "brand": "Munchkins",
+    "lineage": "SATIVA",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.14
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Isopulegol",
+          "percent": 0
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.48
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.14
+        },
+        {
+          "name": "NEROLIDOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "pCymene",
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.47
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "EUCALYPTOL",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "munchkins-munchkins-grape-ape-premium-small-buds-28g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "MUNCHKINS | GRAPE APE | PREMIUM SMALL BUDS | 28G",
+    "strainNameCanonical": "munchkins | grape ape | premium small buds | 28g",
+    "brand": "Munchkins",
+    "lineage": "INDICA",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.39
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.12
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.17
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.38
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.1
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "nanticoke-nanticoke-blue-dream-flower-jar-3-5g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "NANTICOKE |  BLUE DREAM | FLOWER JAR |  3.5G",
+    "strainNameCanonical": "nanticoke | blue dream | flower jar | 3.5g",
+    "brand": "Nanticoke",
+    "lineage": "SATIVA",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.07
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.57
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.42
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0.09
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.04
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "nanticoke-nanticoke-coconut-cream-flower-jar-3-5g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "NANTICOKE | COCONUT CREAM |  FLOWER JAR | 3.5G",
+    "strainNameCanonical": "nanticoke | coconut cream | flower jar | 3.5g",
+    "brand": "Nanticoke",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.83
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.04
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.04
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0.03
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.31
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.14
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.09
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.02
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "nanticoke-nanticoke-sour-diesel-flower-jar-3-5g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "NANTICOKE | SOUR DIESEL | FLOWER JAR | 3.5G",
+    "strainNameCanonical": "nanticoke | sour diesel | flower jar | 3.5g",
+    "brand": "Nanticoke",
+    "lineage": "SATIVA",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.02
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.72
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.03
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0.03
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.36
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.19
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.09
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "old-pal-old-pal-shebanger-7-ready-to-roll-flower-14g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "OLD PAL | SHEBANGER #7 | READY-TO-ROLL FLOWER | 14G",
+    "strainNameCanonical": "old pal | shebanger 7 | ready-to-roll flower | 14g",
+    "brand": "Old Pal",
+    "lineage": "HYBRID",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.47
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0.07
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.15
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.14
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "acreage-ny-the-botanist-the-botanist-candy-margy-flower-14g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "THE BOTANIST | CANDY MARGY | FLOWER | 14G",
+    "strainNameCanonical": "the botanist | candy margy | flower | 14g",
+    "brand": "Acreage NY (The Botanist)",
+    "lineage": "INDICA",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "acreage-ny-the-botanist-the-botanist-cherry-berry-latte-flower-14g",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "THE BOTANIST | CHERRY BERRY LATTE | FLOWER | 14G",
+    "strainNameCanonical": "the botanist | cherry berry latte | flower | 14g",
+    "brand": "Acreage NY (The Botanist)",
+    "lineage": "SATIVA",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "acreage-ny-the-botanist-the-botanist-orange-slice-nebula-flower",
+    "licenseNumber": "OCM-CAURD-25-000297",
+    "capturedAt": "2026-09-04T22:01:54Z",
+    "strainNameRaw": "THE BOTANIST | ORANGE SLICE NEBULA | FLOWER",
+    "strainNameCanonical": "the botanist | orange slice nebula | flower",
+    "brand": "Acreage NY (The Botanist)",
+    "lineage": "HYBRID",
+    "thcPercent": null,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.07
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.1
+        },
+        {
+          "name": "OTHER",
+          "rawName": "BetaMyrcene",
+          "percent": 0.5
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.13
+        },
+        {
+          "name": "CAMPHENE",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "OTHER",
+          "rawName": "CaryophylleneOxide",
+          "percent": 0
+        },
+        {
+          "name": "EUCALYPTOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GERANIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.04
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Isopulegol",
+          "percent": 0
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.16
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "NEROLIDOL",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "OTHER",
+          "rawName": "pCymene",
+          "percent": 0
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 1.22
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": null,
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-04T22:01:54Z"
+      }
+    ],
+    "warnings": []
+  }
+]
