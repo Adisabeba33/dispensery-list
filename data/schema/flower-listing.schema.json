@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dispensary-list/schema/flower-listing.schema.json",
+  "title": "Flower listing on a dispensary shelf",
+  "description": "One cannabis FLOWER product currently listed by one licensed dispensary. Flower only — whole bud. Pre-rolls, vapes, concentrates, hash, edibles, tinctures and topicals are out of scope even though some are made from flower. No prices: this project does not compare cost, and collecting price data would turn it into a price aggregator, which is both outside its purpose and the part of a menu platforms defend hardest.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["listingId", "licenseNumber", "capturedAt", "strainNameRaw", "inStock", "terpenes", "sources"],
+  "properties": {
+    "listingId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Stable within one dispensary: slug of brand + strain. Re-derived on every capture, so the same shelf item keeps its identity across snapshots."
+    },
+    "licenseNumber": {
+      "type": "string",
+      "pattern": "^(OCM-[A-Z0-9]{2,10}-[0-9]{2}-[0-9]{4,8}|MM[0-9]{3,5}[A-Z])$",
+      "description": "The dispensary this was seen at. Must match a record in data/dispensaries.json."
+    },
+    "capturedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the shelf was read. Shelf contents go stale within hours — a listing without this is unusable, and the UI must always show it."
+    },
+    "strainNameRaw": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Exactly as printed on the menu, including punctuation and numbering: 'Gelato #33', 'Blue Dream '. Never cleaned up in this field."
+    },
+    "strainNameCanonical": {
+      "type": ["string", "null"],
+      "description": "Normalized for matching: lowercase, '#' dropped, spacing collapsed — 'gelato 33'. Null when the raw name cannot be confidently resolved to a known strain, which is common for house crosses."
+    },
+    "brand": {
+      "type": ["string", "null"],
+      "description": "The cultivator. As important as the strain name: the same genetics grown by two people is two different products by taste, which is why a recommendation keyed on strain alone is approximate."
+    },
+    "lineage": {
+      "enum": ["INDICA", "SATIVA", "HYBRID", "INDICA_DOMINANT", "SATIVA_DOMINANT", "CBD", "UNKNOWN"],
+      "description": "As stated by the menu. UNKNOWN when the menu does not say — never inferred from the strain's reputation."
+    },
+    "thcPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "cbdPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "totalCannabinoidsPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "terpenes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "profile"],
+      "description": "The sensory core of the record, and the field most often missing. `source` decides how a recommendation built on it may be phrased, so it is required and never guessed.",
+      "properties": {
+        "source": {
+          "enum": ["LAB_COA", "MENU_LISTING", "STRAIN_REFERENCE", "NONE"],
+          "description": "LAB_COA: from this batch's certificate of analysis — the only measurement of what is actually in this jar. MENU_LISTING: percentages the menu states without a linked COA. STRAIN_REFERENCE: the strain's typical profile from the reference table, NOT this batch — a recommendation on this basis is a sensory expectation, not a measurement, and must be presented as such. NONE: nothing known."
+        },
+        "profile": {
+          "type": "array",
+          "description": "Empty when source is NONE. Ordered by percent descending where percentages exist.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name"],
+            "properties": {
+              "name": {
+                "enum": [
+                  "MYRCENE", "LIMONENE", "CARYOPHYLLENE", "PINENE_ALPHA", "PINENE_BETA",
+                  "LINALOOL", "TERPINOLENE", "HUMULENE", "OCIMENE", "BISABOLOL",
+                  "NEROLIDOL", "VALENCENE", "CAMPHENE", "EUCALYPTOL", "GUAIOL",
+                  "FARNESENE", "GERANIOL", "BORNEOL", "TERPINEOL", "PHELLANDRENE",
+                  "CARENE", "SABINENE", "FENCHOL", "OTHER"
+                ],
+                "description": "Controlled vocabulary. Menus spell these many ways — 'β-Caryophyllene', 'Beta-Caryophyllene', 'b caryophyllene' all normalize to CARYOPHYLLENE."
+              },
+              "rawName": {
+                "type": ["string", "null"],
+                "description": "The spelling used on the source. Required in practice when name is OTHER, so an unmapped terpene is recoverable rather than lost."
+              },
+              "percent": {
+                "type": ["number", "null"],
+                "minimum": 0,
+                "maximum": 20,
+                "description": "Percent by weight. Null when the source names a terpene without quantifying it — a common case worth keeping, since presence still carries sensory information."
+              }
+            }
+          }
+        },
+        "totalPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 20 },
+        "labName": { "type": ["string", "null"] },
+        "testedOn": { "type": ["string", "null"], "format": "date" },
+        "coaUrl": { "type": ["string", "null"], "format": "uri" },
+        "referenceStrain": {
+          "type": ["string", "null"],
+          "description": "Which reference entry the fallback profile came from. Required when source is STRAIN_REFERENCE, so a reader can see what the expectation was based on."
+        }
+      }
+    },
+    "harvestedOn": { "type": ["string", "null"], "format": "date" },
+    "packagedOn": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Freshness materially changes terpene content: volatile terpenes evaporate over months. An old package will not taste like its COA."
+    },
+    "inStock": { "type": "boolean" },
+    "availableSizesGrams": {
+      "type": ["array", "null"],
+      "items": { "type": "number", "exclusiveMinimum": 0 },
+      "description": "Recorded only when the menu gives it for free, e.g. [3.5, 7, 28]. Kept without price so a reader can see a strain exists only by the ounce. Never a reason to make an extra request."
+    },
+    "productUrl": { "type": ["string", "null"], "format": "uri" },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["url", "type", "retrievedAt"],
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "label": { "type": ["string", "null"] },
+          "type": { "enum": ["MENU_PLATFORM", "BUSINESS_WEBSITE", "LAB_COA", "DISPENSARY_FEED", "STRAIN_REFERENCE"] },
+          "retrievedAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "warnings": { "type": "array", "items": { "type": "string" } }
+  }
+}
