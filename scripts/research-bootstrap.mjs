@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 
+// Bootstrap is intentionally deterministic apart from retrieval timestamps/source refreshes.
 const OUT = 'research-output';
 await mkdir(OUT, { recursive: true });
 
