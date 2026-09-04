@@ -118,6 +118,77 @@ const slug = (...parts) =>
     .replace(/^-+|-+$/g, '')
     .slice(0, 80);
 
+
+/**
+ * Menus name a product "Brand - Strain - Flower - 3.5g": the size is in the
+ * title, not in a variants array, and the same strain appears once per size.
+ * Splitting that apart is what turns rows into a shelf a person can read.
+ */
+const SIZE_RULES = [
+  [/\b(\d+(?:\.\d+)?)\s*(?:g|gr|gram|grams)\b/i, (m) => parseFloat(m[1])],
+  [/\b1\s*\/\s*8\b|\beighth\b/i, () => 3.5],
+  [/\b1\s*\/\s*4\b|\bquarter\b/i, () => 7],
+  [/\b1\s*\/\s*2\b|\bhalf\b/i, () => 14],
+  [/\b(?:oz|ounce|zip)\b/i, () => 28],
+];
+
+const sizeFromText = (text) => {
+  for (const [re, take] of SIZE_RULES) {
+    const m = text.match(re);
+    if (m) {
+      const g = take(m);
+      if (g > 0 && g <= 30) return g;
+    }
+  }
+  return null;
+};
+
+/** Strips the brand, the category word and the size, leaving the strain. */
+const cleanStrainName = (raw, brand) => {
+  let parts = String(raw).split(/\s+[-–—|]\s+/).map((p) => p.trim()).filter(Boolean);
+  if (parts.length === 1) parts = [String(raw).trim()];
+
+  const brandLower = String(brand ?? '').toLowerCase().trim();
+  parts = parts.filter((part) => {
+    const p = part.toLowerCase();
+    if (brandLower && p === brandLower) return false;
+    if (/^(flower|bud|buds)$/.test(p)) return false;
+    if (sizeFromText(part) !== null && /^[\d\s./]*(g|gr|gram|grams|oz|ounce|eighth|quarter|half|zip)?$/i.test(p)) return false;
+    return true;
+  });
+
+  const name = (parts.join(' - ') || String(raw)).replace(/\s{2,}/g, ' ').trim();
+  return name || String(raw).trim();
+};
+
+/**
+ * One shelf item per strain, with every size it comes in. Without prices there
+ * is nothing to distinguish two rows of the same strain except the weight, so
+ * carrying them as separate listings would just make the menu look padded.
+ */
+const mergeBySize = (rows) => {
+  const byKey = new Map();
+  for (const row of rows) {
+    const key = `${row.licenseNumber}::${(row.brand ?? '').toLowerCase()}::${row.strainNameCanonical}`;
+    const existing = byKey.get(key);
+    if (!existing) {
+      byKey.set(key, row);
+      continue;
+    }
+    const sizes = new Set([...(existing.availableSizesGrams ?? []), ...(row.availableSizesGrams ?? [])]);
+    existing.availableSizesGrams = sizes.size ? [...sizes].sort((a, b) => a - b) : null;
+    // Anything in stock in any size means the strain is on the shelf.
+    existing.inStock = existing.inStock || row.inStock;
+    existing.thcPercent ??= row.thcPercent;
+    existing.cbdPercent ??= row.cbdPercent;
+    existing.lineage = existing.lineage === 'UNKNOWN' ? row.lineage : existing.lineage;
+    if (existing.terpenes.source === 'NONE' && row.terpenes.source !== 'NONE') {
+      existing.terpenes = row.terpenes;
+    }
+  }
+  return [...byKey.values()];
+};
+
 const LINEAGE = {
   indica: 'INDICA', sativa: 'SATIVA', hybrid: 'HYBRID',
   indicadominant: 'INDICA_DOMINANT', indicahybrid: 'INDICA_DOMINANT',
@@ -149,9 +220,10 @@ const isFlower = (p) => {
 };
 
 const toListing = (p, shop, sourceUrl, rawTerpNames) => {
-  const name = flatten(pick(p, ['name', 'productName', 'title', 'displayName']));
-  if (!name) return null;
+  const rawName = flatten(pick(p, ['name', 'productName', 'title', 'displayName']));
+  if (!rawName) return null;
   const brand = flatten(pick(p, ['brandName', 'brand', 'producer', 'vendor', 'cultivator']));
+  const name = cleanStrainName(rawName, brand);
   const lineageRaw = String(
     flatten(pick(p, ['strainType', 'lineage', 'cannabisType', 'classification'])) ?? '',
   )
@@ -183,6 +255,11 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     }
   }
 
+  if (!sizes.length) {
+    const fromTitle = sizeFromText(String(rawName));
+    if (fromTitle) sizes.push(fromTitle);
+  }
+
   const stock = flatten(pick(p, ['inStock', 'available', 'isAvailable', 'quantity']));
 
   return {
@@ -190,6 +267,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     licenseNumber: shop.licenseNumber,
     capturedAt: NOW,
     strainNameRaw: String(name).slice(0, 200),
+
     strainNameCanonical: String(name).toLowerCase().replace(/#/g, '').replace(/\s+/g, ' ').trim() || null,
     brand: brand ? String(brand).slice(0, 120) : null,
     lineage: LINEAGE[lineageRaw] ?? 'UNKNOWN',
@@ -316,7 +394,8 @@ const main = async () => {
 
   await browser.close();
 
-  listings.sort((a, b) =>
+  const merged = mergeBySize(listings);
+  merged.sort((a, b) =>
     a.licenseNumber === b.licenseNumber
       ? a.strainNameRaw.localeCompare(b.strainNameRaw)
       : a.licenseNumber.localeCompare(b.licenseNumber),
@@ -326,7 +405,8 @@ const main = async () => {
     shopsVisited: report.filter((r) => r.status !== 'robots-disallowed').length,
     robotsDisallowed: report.filter((r) => r.status === 'robots-disallowed').length,
     shopsWithFlower: report.filter((r) => r.flower > 0).length,
-    listings: listings.length,
+    listingsBeforeMerge: listings.length,
+    listings: merged.length,
     statusCounts: report.reduce((acc, r) => {
       const key = String(r.status).split(':')[0];
       acc[key] = (acc[key] ?? 0) + 1;
@@ -339,8 +419,8 @@ const main = async () => {
 
   mkdirSync(resolve(ROOT, 'enrichment-output'), { recursive: true });
   writeFileSync(resolve(ROOT, 'enrichment-output/menu-summary.json'), JSON.stringify(summary, null, 2) + '\n');
-  writeFileSync(resolve(ROOT, 'data/flower-listings.json'), JSON.stringify(listings, null, 2) + '\n');
-  console.log(`\nWrote ${listings.length} listings`);
+  writeFileSync(resolve(ROOT, 'data/flower-listings.json'), JSON.stringify(merged, null, 2) + '\n');
+  console.log(`\nWrote ${merged.length} listings`);
 };
 
 main().catch((e) => {

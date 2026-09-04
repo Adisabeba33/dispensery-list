@@ -23,7 +23,7 @@ jobs:
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Read flower off a pilot set of menus
-        run: node scripts/menu-render.mjs --limit 12
+        run: node scripts/menu-render.mjs --limit 25
       - name: Validate collected listings
         run: npm run validate
       - name: Commit collected listings
