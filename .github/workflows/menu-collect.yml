@@ -25,14 +25,13 @@ jobs:
       - name: Read flower off a pilot set of menus
         run: node scripts/menu-render.mjs --limit 25
       - name: Validate collected listings
+        id: validate
+        continue-on-error: true
         run: |
-          set +e
           npm run validate > /tmp/validate.txt 2>&1
-          code=$?
-          # Print only the errors: the warnings section is long and drowns them.
-          sed -n '/^ERRORS/,$p' /tmp/validate.txt | head -60
-          exit $code
+          echo $? > /tmp/validate.code
       - name: Commit collected listings
+        if: steps.validate.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -41,6 +40,18 @@ jobs:
             git commit -m "menu: collect flower listings from pilot shops"
             git push origin HEAD:agent/menu-flower-nyc
           fi
-      - name: Report what was collected
+      # Everything worth reading goes last, smallest first: a long report ahead
+      # of an error message hides the error, which has happened twice already.
+      - name: Report
         if: always()
-        run: cat enrichment-output/menu-summary.json
+        run: |
+          python3 - <<'PY'
+          import json
+          s = json.load(open('enrichment-output/menu-summary.json'))
+          s.pop('perShop', None)
+          print(json.dumps(s, indent=2)[:4000])
+          PY
+          echo "--- validation ---"
+          sed -n '/^ERRORS/,$p' /tmp/validate.txt | head -40 || true
+          tail -2 /tmp/validate.txt
+          exit $(cat /tmp/validate.code)
