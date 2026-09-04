@@ -9,6 +9,7 @@ const urls = {
   columns: 'https://data.ny.gov/api/views/jskf-tt3q/columns.json',
   verification: 'https://cannabis.ny.gov/dispensary-location-verification',
   localities: 'https://cannabis.ny.gov/localities',
+  localOptOut: 'https://cannabis.ny.gov/ocm-local-opt-out-data',
   localGovernment: 'https://cannabis.ny.gov/local-government',
   rockefeller: 'https://rockinst.org/issue-areas/state-local-government/municipal-opt-out-tracker/'
 };
@@ -30,11 +31,29 @@ async function fetchText(url, { optional = false } = {}) {
   }
 }
 
-const [licensesRes, columnsRes, verificationRes, localitiesRes, localGovernmentRes, rockefellerRes] = await Promise.all([
+async function fetchBinary(url, { optional = false } = {}) {
+  try {
+    const r = await fetch(url, {
+      headers: {
+        'user-agent': 'Mozilla/5.0 (compatible; dispensary-list-research/1.0; +https://github.com/Adisabeba33/dispensery-list)',
+        accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/octet-stream,*/*'
+      },
+      redirect: 'follow'
+    });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return { ok: true, bytes: Buffer.from(await r.arrayBuffer()), error: null };
+  } catch (error) {
+    if (!optional) throw new Error(`${url}: ${error.message}`);
+    return { ok: false, bytes: Buffer.alloc(0), error: `${url}: ${error.message}` };
+  }
+}
+
+const [licensesRes, columnsRes, verificationRes, localitiesRes, localOptOutRes, localGovernmentRes, rockefellerRes] = await Promise.all([
   fetchText(urls.licenses),
   fetchText(urls.columns),
   fetchText(urls.verification),
   fetchText(urls.localities, { optional: true }),
+  fetchBinary(urls.localOptOut, { optional: true }),
   fetchText(urls.localGovernment, { optional: true }),
   fetchText(urls.rockefeller, { optional: true })
 ]);
@@ -60,9 +79,9 @@ const countBy = (rows, field) => rows.reduce((acc, row) => {
   return acc;
 }, {});
 
-const sha256 = (s) => createHash('sha256').update(s).digest('hex');
+const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 const generatedAt = new Date().toISOString();
-const optionalFailures = [localitiesRes, localGovernmentRes, rockefellerRes].filter((x) => !x.ok).map((x) => x.error);
+const optionalFailures = [localitiesRes, localOptOutRes, localGovernmentRes, rockefellerRes].filter((x) => !x.ok).map((x) => x.error);
 const summary = {
   generatedAt,
   sourceUrls: urls,
@@ -79,6 +98,7 @@ const summary = {
     columns: sha256(columnsText),
     verification: sha256(verificationHtml),
     ...(localitiesRes.ok ? { localities: sha256(localitiesRes.text) } : {}),
+    ...(localOptOutRes.ok ? { localOptOut: sha256(localOptOutRes.bytes) } : {}),
     ...(localGovernmentRes.ok ? { localGovernment: sha256(localGovernmentRes.text) } : {}),
     ...(rockefellerRes.ok ? { rockefeller: sha256(rockefellerRes.text) } : {})
   }
@@ -92,6 +112,7 @@ const writes = [
   writeFile(`${OUT}/summary.json`, JSON.stringify(summary, null, 2) + '\n')
 ];
 if (localitiesRes.ok) writes.push(writeFile(`${OUT}/ocm-localities.html`, localitiesRes.text));
+if (localOptOutRes.ok) writes.push(writeFile(`${OUT}/ocm-local-opt-out-data.xlsx`, localOptOutRes.bytes));
 if (localGovernmentRes.ok) writes.push(writeFile(`${OUT}/ocm-local-government.html`, localGovernmentRes.text));
 if (rockefellerRes.ok) writes.push(writeFile(`${OUT}/rockefeller-opt-out.html`, rockefellerRes.text));
 await Promise.all(writes);
