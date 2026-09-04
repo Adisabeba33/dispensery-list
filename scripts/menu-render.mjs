@@ -174,6 +174,9 @@ const cleanStrainName = (raw, brand) => {
     .replace(/\b[\d.]+\s*(?:g|gr|grams?)\b/gi, ' ')
     .replace(/\b(?:\d\/\d\s*)?(?:oz|ounce)\b/gi, ' ')
     .replace(/\b(eighth|quarter|half)\b/gi, ' ')
+    .replace(/\s*[-–—|]\s*(?=[-–—|])/g, ' ')                 // collapsed separators
+    .replace(/\s*[-–—|]?\s*\b(sativa|indica|hybrid)\b\s*$/i, '') // lineage word left at the end
+    .replace(/\s+[\d.]+\s*$/, '')                             // bare trailing weight
     .trim();
 
   let parts = text.split(/\s+[-–—|]\s+/).map((p) => p.trim()).filter(Boolean);
