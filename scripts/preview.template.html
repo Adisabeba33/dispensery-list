@@ -142,13 +142,17 @@
   @media (min-width: 1024px) { .grid { grid-template-columns: repeat(3, minmax(0,1fr)); } }
 
   .card {
-    display: flex; flex-direction: column; height: 100%; width: 100%; text-align: left;
+    display: flex; flex-direction: column; height: 100%;
     border: 1px solid var(--line); border-radius: 0.75rem;
     background: rgba(17,24,21,0.72); padding: 1.15rem;
-    font: inherit; color: inherit; cursor: pointer;
     transition: border-color .15s, background-color .15s;
   }
   .card:hover { border-color: rgba(43,167,102,0.6); background: rgba(22,31,27,0.85); }
+  .card-summary {
+    display: flex; flex-direction: column; flex: 1; width: 100%; text-align: left;
+    background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit;
+    cursor: pointer;
+  }
   .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem; }
   .card h3 { font-size: 1.03rem; font-weight: 600; line-height: 1.3; }
   .card .where { margin: 0.3rem 0 0; font-size: 0.85rem; color: var(--muted); }
@@ -172,6 +176,19 @@
   .pill.warn { border-color: rgba(242,181,68,0.45); background: rgba(242,181,68,0.1); color: var(--amber); }
   .pill.bad { border-color: rgba(239,111,98,0.45); background: rgba(239,111,98,0.1); color: var(--rust); }
   .pill.neutral { border-color: var(--line); background: var(--surface-2); color: var(--muted); }
+
+  /* An expanded card takes the whole row: the detail needs the width, and the
+     list around it stays put so nobody loses their place. */
+  .grid > li.open { grid-column: 1 / -1; }
+  .grid > li.open .card { border-color: rgba(43,167,102,0.55); background: rgba(22,31,27,0.9); cursor: default; }
+  .detail { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); text-align: left; }
+  .detail h3:first-of-type { margin-top: 0; }
+  .collapse {
+    margin-top: 1.25rem; border: 1px solid var(--line); background: var(--surface-2);
+    color: var(--text-2); border-radius: 0.5rem; padding: 0.5rem 0.9rem;
+    font: inherit; font-size: 0.85rem; cursor: pointer;
+  }
+  .collapse:hover { color: var(--text); border-color: var(--muted); }
 
   .empty { border: 1px solid var(--line); border-radius: 0.75rem; background: rgba(17,24,21,0.72); padding: 2.5rem; text-align: center; margin-top: 2rem; }
 
@@ -437,7 +454,6 @@
   </div>
 </footer>
 
-<dialog id="sheet"><div class="sheet" id="sheet-body"></div></dialog>
 
 <script>
 /* Age affirmation, as New York's Part 129 marketing rules ask of a site
@@ -570,7 +586,30 @@ statsEl.innerHTML = [
 
 /* Open first by default: a name sort leads with registry entity names that carry
    no shop sign, and buries the shops someone can actually walk into. */
-const state = { q:'', region:null, openOnly:false, deliveryOnly:false, menuOnly:false, sort:'status' };
+const state = { q:'', region:null, openOnly:false, deliveryOnly:false, menuOnly:false, sort:'status', open:null };
+
+/* Following a link to a shop's own site and coming back reloads this page, and
+   without this the reader lands on an empty search having lost their filters,
+   their place in the list and the card they had open. */
+const STATE_KEY = 'ny-dispensary-register:view';
+const saveState = () => {
+  try {
+    localStorage.setItem(STATE_KEY, JSON.stringify({ ...state, menu: menuState, y: window.scrollY }));
+  } catch (e) {}
+};
+const loadState = () => {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STATE_KEY) || 'null');
+    if (!saved) return null;
+    Object.assign(state, {
+      q: saved.q || '', region: saved.region ?? null, openOnly: !!saved.openOnly,
+      deliveryOnly: !!saved.deliveryOnly, menuOnly: !!saved.menuOnly,
+      sort: saved.sort || 'status', open: saved.open ?? null,
+    });
+    if (saved.menu) Object.assign(menuState, saved.menu);
+    return saved;
+  } catch (e) { return null; }
+};
 
 const chipsEl = document.getElementById('chips');
 const renderChips = () => {
@@ -598,16 +637,19 @@ chipsEl.addEventListener('click', (e) => {
   else if (kind === 'menu') state.menuOnly = !state.menuOnly;
   renderChips();
   render();
+  saveState();
 });
 
-document.getElementById('q').addEventListener('input', (e) => { state.q = e.target.value; render(); });
-document.getElementById('sort').addEventListener('change', (e) => { state.sort = e.target.value; render(); });
+document.getElementById('q').addEventListener('input', (e) => { state.q = e.target.value; render(); saveState(); });
+document.getElementById('sort').addEventListener('change', (e) => { state.sort = e.target.value; render(); saveState(); });
 
 const clearAll = () => {
   state.q = ''; state.region = null; state.openOnly = false; state.deliveryOnly = false; state.menuOnly = false;
+  state.open = null;
   document.getElementById('q').value = '';
   renderChips();
   render();
+  saveState();
 };
 
 /* ---- card list --------------------------------------------------------- */
@@ -621,7 +663,10 @@ const cardHtml = (d) => {
   const op = OPERATIONAL[d.operationalStatus];
   const ver = VERIFICATION[d.verification.status];
 
-  return '<li><button type="button" class="card" data-id="' + esc(d.id) + '">' +
+  const isOpen = state.open === d.licenseNumber;
+
+  return '<li' + (isOpen ? ' class="open"' : '') + '><div class="card">' +
+    '<button type="button" class="card-summary" data-id="' + esc(d.id) + '" aria-expanded="' + isOpen + '">' +
     '<div class="card-head"><div style="min-width:0;">' +
       '<h3>' + esc(name(d)) + '</h3>' +
       '<p class="where">' + esc((d.address.neighborhood ? d.address.neighborhood + ' · ' : '') + region(d)) + '</p>' +
@@ -636,7 +681,9 @@ const cardHtml = (d) => {
         '<span style="font-size:0.7rem;color:var(--faint);">' + esc(LICENSE_TYPE_LABEL[d.licenseType] || d.licenseType) + '</span>' +
         '<span class="licence">' + esc(d.licenseNumber) + '</span>' +
       '</span>' +
-    '</div></button></li>';
+    '</div></button>' +
+    (isOpen ? '<div class="detail">' + detailHtml(d) + '</div>' : '') +
+    '</div></li>';
 };
 
 const render = () => {
@@ -701,7 +748,7 @@ const strainHtml = (l) => {
         '<span class="dot ' + prov.tone + '"></span>' + esc(prov.label) + '</span>' +
       top.map((t) => '<span class="t"' + (TERPENE_NOTE[t.name] ? ' title="' + esc(TERPENE_NOTE[t.name]) + '"' : '') + '>' +
         esc(TERPENE_LABEL[t.name] || t.rawName || t.name) +
-        (t.percent != null ? '<span class="pc">' + t.percent + '%</span>' : '') + '</span>').join('') +
+        (t.percent ? '<span class="pc">' + t.percent + '%</span>' : '') + '</span>').join('') +
       (l.terpenes.source === 'NONE' ? '<span style="font-size:0.72rem;color:var(--faint);">No terpene data published</span>' : '') +
     '</div>' +
     (aroma ? '<p class="aroma">' + esc(aroma) + '</p>' : '') +
@@ -766,12 +813,9 @@ const menuHtml = (lic) => {
 /* ---- detail sheet ------------------------------------------------------ */
 
 
-const sheet = document.getElementById('sheet');
-const sheetBody = document.getElementById('sheet-body');
-
 const row = (label, value) => value ? '<div class="row"><dt>' + esc(label) + '</dt><dd>' + value + '</dd></div>' : '';
 
-const sheetHtml = (d) => {
+const detailHtml = (d) => {
   const op = OPERATIONAL[d.operationalStatus];
   const ver = VERIFICATION[d.verification.status];
   const c = d.contact || {};
@@ -787,11 +831,7 @@ const sheetHtml = (d) => {
 
   const menuBlock = menuHtml(d.licenseNumber);
 
-  return '<div class="sheet-head"><div style="min-width:0;">' +
-      '<h2>' + esc(name(d)) + '</h2>' +
-      (d.dbaName && d.dbaName !== d.legalName ? '<p class="legal">Licensed to ' + esc(d.legalName) + '</p>' : '') +
-      '<div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.75rem;">' + pill(op.cls, op.label, true) + pill(ver.cls, ver.label, false) + '</div>' +
-    '</div><button type="button" class="closebtn" id="sheet-close" aria-label="Close">&times;</button></div>' +
+  return (d.dbaName && d.dbaName !== d.legalName ? '<p class="legal">Licensed to ' + esc(d.legalName) + '</p>' : '') +
 
     (d.warnings && d.warnings.length
       ? '<div class="caveat"><strong style="color:var(--amber);">Caveats</strong><ul style="margin:0.5rem 0 0;padding-left:1.1rem;">' +
@@ -837,41 +877,51 @@ const sheetHtml = (d) => {
 };
 
 gridEl.addEventListener('click', (e) => {
-  const card = e.target.closest('button.card');
+  // Links inside an expanded card must work as links, not as a toggle.
+  if (e.target.closest('a')) return;
+
+  const chip = e.target.closest('button.chip[data-menu]');
+  if (chip) {
+    const kind = chip.dataset.menu;
+    if (kind === 'size') {
+      const value = chip.dataset.value === '' ? null : Number(chip.dataset.value);
+      menuState.size = menuState.size === value ? null : value;
+    } else if (kind === 'stock') menuState.inStock = !menuState.inStock;
+    else if (kind === 'lab') menuState.labOnly = !menuState.labOnly;
+    const y = window.scrollY;
+    render();
+    window.scrollTo(0, y);
+    saveState();
+    return;
+  }
+
+  const card = e.target.closest('button.card-summary');
   if (!card) return;
   const d = DATA.find((x) => x.id === card.dataset.id);
   if (!d) return;
-  menuState.size = null; menuState.inStock = false; menuState.labOnly = false;
-  menuState.licence = d.licenseNumber;
-  renderSheet(d);
-  sheet.showModal();
-});
 
-function renderSheet(d) {
-  sheetBody.innerHTML = sheetHtml(d);
-  sheetBody.scrollTop = 0;
-  document.getElementById('sheet-close').addEventListener('click', () => sheet.close());
-}
-
-sheetBody.addEventListener('click', (e) => {
-  const btn = e.target.closest('button.chip[data-menu]');
-  if (!btn) return;
-  const kind = btn.dataset.menu;
-  if (kind === 'size') {
-    const value = btn.dataset.value === '' ? null : Number(btn.dataset.value);
-    menuState.size = menuState.size === value ? null : value;
-  } else if (kind === 'stock') menuState.inStock = !menuState.inStock;
-  else if (kind === 'lab') menuState.labOnly = !menuState.labOnly;
-  const d = DATA.find((x) => x.licenseNumber === menuState.licence);
-  if (d) {
-    const keep = sheetBody.scrollTop;
-    sheetBody.innerHTML = sheetHtml(d);
-    sheetBody.scrollTop = keep;
-    document.getElementById('sheet-close').addEventListener('click', () => sheet.close());
+  const wasOpen = state.open === d.licenseNumber;
+  state.open = wasOpen ? null : d.licenseNumber;
+  if (!wasOpen) {
+    menuState.size = null; menuState.inStock = false; menuState.labOnly = false;
+    menuState.licence = d.licenseNumber;
   }
-});
 
-sheet.addEventListener('click', (e) => { if (e.target === sheet) sheet.close(); });
+  const y = window.scrollY;
+  render();
+  // Collapsing leaves the reader where they were; opening brings the card's
+  // top into view so the detail is not half off-screen.
+  if (wasOpen) {
+    window.scrollTo(0, y);
+  } else {
+    const el = gridEl.querySelector('li.open');
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  }
+  saveState();
+});
 
 /* ---- Westchester opt-out list ------------------------------------------ */
 
@@ -881,6 +931,13 @@ document.getElementById('optout').innerHTML = MUNI
   .map((m) => '<li>' + esc(m.name) + '<span class="kind">' + esc(m.kind.toLowerCase()) + '</span></li>')
   .join('');
 
+const restored = loadState();
+if (restored) document.getElementById('q').value = state.q;
+if (restored && restored.sort) document.getElementById('sort').value = state.sort;
 renderChips();
 render();
+// Put the reader back exactly where they left off, once layout has settled.
+if (restored && restored.y) {
+  requestAnimationFrame(() => window.scrollTo(0, restored.y));
+}
 </script>

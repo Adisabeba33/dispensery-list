@@ -174,6 +174,7 @@ const cleanStrainName = (raw, brand) => {
     .replace(/\b[\d.]+\s*(?:g|gr|grams?)\b/gi, ' ')
     .replace(/\b(?:\d\/\d\s*)?(?:oz|ounce)\b/gi, ' ')
     .replace(/\b(eighth|quarter|half)\b/gi, ' ')
+    .replace(/\s*[-–—|]\s*(flower\s*jar|flower|jar|bag|jars|bags|pouch)\s*$/gi, '')
     .replace(/\s*[-–—|]\s*(?=[-–—|])/g, ' ')                 // collapsed separators
     .replace(/\s*[-–—|]?\s*\b(sativa|indica|hybrid)\b\s*$/i, '') // lineage word left at the end
     .replace(/\s+[\d.]+\s*$/, '')                             // bare trailing weight
@@ -282,7 +283,11 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
       profile.push({
         name: mapped ?? 'OTHER',
         rawName: mapped ? null : String(raw).slice(0, 60),
-        percent: inRange(num(t && typeof t === 'object' ? t.value ?? t.percent : null), 20),
+        // A menu that prints 0% is stating nothing, not stating zero.
+        percent: (() => {
+          const v = inRange(num(t && typeof t === 'object' ? t.value ?? t.percent : null), 20);
+          return v === 0 ? null : v;
+        })(),
       });
     }
   }

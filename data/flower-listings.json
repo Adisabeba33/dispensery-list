@@ -1329,8 +1329,8 @@
     "listingId": "smoke-candy-gas-jars",
     "licenseNumber": "OCM-CAURD-24-000105",
     "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Candy Gas - Jars",
-    "strainNameCanonical": "candy gas - jars",
+    "strainNameRaw": "Candy Gas",
+    "strainNameCanonical": "candy gas",
     "brand": "Smoke",
     "lineage": "INDICA",
     "thcPercent": null,
@@ -1919,8 +1919,8 @@
     "listingId": "smoke-electric-peanut-butter-cookie-jars",
     "licenseNumber": "OCM-CAURD-24-000105",
     "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Electric Peanut Butter Cookie - Jars",
-    "strainNameCanonical": "electric peanut butter cookie - jars",
+    "strainNameRaw": "Electric Peanut Butter Cookie",
+    "strainNameCanonical": "electric peanut butter cookie",
     "brand": "Smoke",
     "lineage": "SATIVA",
     "thcPercent": null,
@@ -9016,22 +9016,22 @@
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
@@ -9051,7 +9051,7 @@
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
@@ -9086,8 +9086,8 @@
     "listingId": "1937-black-cherry-gelato-flower",
     "licenseNumber": "OCM-CAURD-25-000297",
     "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "BLACK CHERRY GELATO - FLOWER",
-    "strainNameCanonical": "black cherry gelato - flower",
+    "strainNameRaw": "BLACK CHERRY GELATO",
+    "strainNameCanonical": "black cherry gelato",
     "brand": "1937",
     "lineage": "HYBRID",
     "thcPercent": null,
@@ -9119,22 +9119,22 @@
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
@@ -9154,12 +9154,12 @@
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -9189,8 +9189,8 @@
     "listingId": "nanticoke-blue-dream-flower-jar",
     "licenseNumber": "OCM-CAURD-25-000297",
     "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "BLUE DREAM - FLOWER JAR",
-    "strainNameCanonical": "blue dream - flower jar",
+    "strainNameRaw": "BLUE DREAM",
+    "strainNameCanonical": "blue dream",
     "brand": "Nanticoke",
     "lineage": "SATIVA",
     "thcPercent": null,
@@ -9212,32 +9212,32 @@
         {
           "name": "MYRCENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "PINENE_BETA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
@@ -9247,12 +9247,12 @@
         {
           "name": "LIMONENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "LINALOOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OCIMENE",
@@ -9305,32 +9305,32 @@
         {
           "name": "PINENE_ALPHA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CARYOPHYLLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "MYRCENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "PINENE_BETA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GERANIOL",
@@ -9340,32 +9340,32 @@
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "LIMONENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "LINALOOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -9395,8 +9395,8 @@
     "listingId": "1937-buttercream-flower",
     "licenseNumber": "OCM-CAURD-25-000297",
     "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "BUTTERCREAM - FLOWER",
-    "strainNameCanonical": "buttercream - flower",
+    "strainNameRaw": "BUTTERCREAM",
+    "strainNameCanonical": "buttercream",
     "brand": "1937",
     "lineage": "HYBRID",
     "thcPercent": null,
@@ -9438,12 +9438,12 @@
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
@@ -9468,7 +9468,7 @@
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -9531,17 +9531,17 @@
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
@@ -9566,12 +9566,12 @@
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -9614,12 +9614,12 @@
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
@@ -9629,7 +9629,7 @@
         {
           "name": "OTHER",
           "rawName": "Isopulegol",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "LIMONENE",
@@ -9644,27 +9644,27 @@
         {
           "name": "NEROLIDOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "pCymene",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "PINENE_ALPHA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CARYOPHYLLENE",
@@ -9674,27 +9674,27 @@
         {
           "name": "MYRCENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "PINENE_BETA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "EUCALYPTOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -9724,8 +9724,8 @@
     "listingId": "nanticoke-coconut-cream-flower-jar",
     "licenseNumber": "OCM-CAURD-25-000297",
     "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "COCONUT CREAM - FLOWER JAR",
-    "strainNameCanonical": "coconut cream - flower jar",
+    "strainNameRaw": "COCONUT CREAM",
+    "strainNameCanonical": "coconut cream",
     "brand": "Nanticoke",
     "lineage": "INDICA_DOMINANT",
     "thcPercent": null,
@@ -9757,7 +9757,7 @@
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
@@ -9767,12 +9767,12 @@
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
@@ -9792,7 +9792,7 @@
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
@@ -9840,42 +9840,42 @@
         {
           "name": "PINENE_ALPHA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CARYOPHYLLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "MYRCENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "PINENE_BETA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
@@ -9885,22 +9885,22 @@
         {
           "name": "LIMONENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "LINALOOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -9928,8 +9928,8 @@
     "listingId": "dragonfly-brands-dragonfly-cherry-gushers-popcorn-buds-flower",
     "licenseNumber": "OCM-CAURD-25-000297",
     "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "DRAGONFLY - CHERRY GUSHERS - POPCORN BUDS - FLOWER",
-    "strainNameCanonical": "dragonfly - cherry gushers - popcorn buds - flower",
+    "strainNameRaw": "DRAGONFLY - CHERRY GUSHERS - POPCORN BUDS",
+    "strainNameCanonical": "dragonfly - cherry gushers - popcorn buds",
     "brand": "Dragonfly Brands",
     "lineage": "INDICA_DOMINANT",
     "thcPercent": null,
@@ -9946,7 +9946,7 @@
         {
           "name": "CARYOPHYLLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "MYRCENE",
@@ -9971,12 +9971,12 @@
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
@@ -10001,7 +10001,7 @@
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -10044,7 +10044,7 @@
         {
           "name": "PINENE_ALPHA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CARYOPHYLLENE",
@@ -10059,27 +10059,27 @@
         {
           "name": "PINENE_BETA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
@@ -10094,17 +10094,17 @@
         {
           "name": "LINALOOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -10165,7 +10165,7 @@
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
@@ -10175,7 +10175,7 @@
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
@@ -10200,7 +10200,7 @@
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
@@ -10235,8 +10235,8 @@
     "listingId": "1937-fruity-loopz-flower",
     "licenseNumber": "OCM-CAURD-25-000297",
     "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "FRUITY LOOPZ - FLOWER",
-    "strainNameCanonical": "fruity loopz - flower",
+    "strainNameRaw": "FRUITY LOOPZ",
+    "strainNameCanonical": "fruity loopz",
     "brand": "1937",
     "lineage": "HYBRID",
     "thcPercent": null,
@@ -10278,7 +10278,7 @@
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
@@ -10303,12 +10303,12 @@
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -10351,7 +10351,7 @@
         {
           "name": "PINENE_ALPHA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CARYOPHYLLENE",
@@ -10366,27 +10366,27 @@
         {
           "name": "PINENE_BETA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "EUCALYPTOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
@@ -10401,7 +10401,7 @@
         {
           "name": "OTHER",
           "rawName": "Isopulegol",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "LIMONENE",
@@ -10411,27 +10411,27 @@
         {
           "name": "LINALOOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "NEROLIDOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "pCymene",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -10461,8 +10461,8 @@
     "listingId": "honest-pharm-co-garlic-cookies-flower",
     "licenseNumber": "OCM-CAURD-25-000297",
     "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "GARLIC COOKIES - FLOWER",
-    "strainNameCanonical": "garlic cookies - flower",
+    "strainNameRaw": "GARLIC COOKIES",
+    "strainNameCanonical": "garlic cookies",
     "brand": "Honest Pharm Co",
     "lineage": "INDICA_DOMINANT",
     "thcPercent": null,
@@ -10499,17 +10499,17 @@
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
@@ -10529,12 +10529,12 @@
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -10577,7 +10577,7 @@
         {
           "name": "PINENE_ALPHA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CARYOPHYLLENE",
@@ -10592,27 +10592,27 @@
         {
           "name": "PINENE_BETA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
@@ -10632,12 +10632,12 @@
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -10667,8 +10667,8 @@
     "listingId": "1937-kilimanjaro-flower",
     "licenseNumber": "OCM-CAURD-25-000297",
     "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "KILIMANJARO - FLOWER",
-    "strainNameCanonical": "kilimanjaro - flower",
+    "strainNameRaw": "KILIMANJARO",
+    "strainNameCanonical": "kilimanjaro",
     "brand": "1937",
     "lineage": "SATIVA",
     "thcPercent": null,
@@ -10700,17 +10700,17 @@
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
@@ -10730,7 +10730,7 @@
         {
           "name": "LINALOOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OCIMENE",
@@ -10770,8 +10770,8 @@
     "listingId": "knack-mind-melt-flower",
     "licenseNumber": "OCM-CAURD-25-000297",
     "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "MIND MELT - FLOWER",
-    "strainNameCanonical": "mind melt - flower",
+    "strainNameRaw": "MIND MELT",
+    "strainNameCanonical": "mind melt",
     "brand": "Knack",
     "lineage": "INDICA",
     "thcPercent": null,
@@ -10783,7 +10783,7 @@
         {
           "name": "PINENE_ALPHA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CARYOPHYLLENE",
@@ -10798,27 +10798,27 @@
         {
           "name": "PINENE_BETA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
@@ -10838,12 +10838,12 @@
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -10873,8 +10873,8 @@
     "listingId": "knack-purple-brulee-flower",
     "licenseNumber": "OCM-CAURD-25-000297",
     "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "PURPLE BRULEE - FLOWER",
-    "strainNameCanonical": "purple brulee - flower",
+    "strainNameRaw": "PURPLE BRULEE",
+    "strainNameCanonical": "purple brulee",
     "brand": "Knack",
     "lineage": "INDICA_DOMINANT",
     "thcPercent": null,
@@ -10886,7 +10886,7 @@
         {
           "name": "PINENE_ALPHA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CARYOPHYLLENE",
@@ -10896,32 +10896,32 @@
         {
           "name": "MYRCENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "PINENE_BETA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
@@ -10941,12 +10941,12 @@
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -10989,7 +10989,7 @@
         {
           "name": "PINENE_ALPHA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CARYOPHYLLENE",
@@ -10999,27 +10999,27 @@
         {
           "name": "MYRCENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "PINENE_BETA",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
@@ -11039,17 +11039,17 @@
         {
           "name": "LINALOOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -11079,8 +11079,8 @@
     "listingId": "nanticoke-sour-diesel-flower-jar",
     "licenseNumber": "OCM-CAURD-25-000297",
     "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "SOUR DIESEL - FLOWER JAR",
-    "strainNameCanonical": "sour diesel - flower jar",
+    "strainNameRaw": "SOUR DIESEL",
+    "strainNameCanonical": "sour diesel",
     "brand": "Nanticoke",
     "lineage": "SATIVA",
     "thcPercent": null,
@@ -11112,7 +11112,7 @@
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
@@ -11122,12 +11122,12 @@
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
@@ -11147,12 +11147,12 @@
         {
           "name": "OCIMENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         }
       ],
       "totalPercent": null,
@@ -11182,8 +11182,8 @@
     "listingId": "acreage-ny-the-botanist-the-botanist-candy-margy-flower",
     "licenseNumber": "OCM-CAURD-25-000297",
     "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "THE BOTANIST - CANDY MARGY - FLOWER",
-    "strainNameCanonical": "the botanist - candy margy - flower",
+    "strainNameRaw": "THE BOTANIST - CANDY MARGY",
+    "strainNameCanonical": "the botanist - candy margy",
     "brand": "Acreage NY (The Botanist)",
     "lineage": "INDICA",
     "thcPercent": null,
@@ -11219,8 +11219,8 @@
     "listingId": "acreage-ny-the-botanist-the-botanist-cherry-berry-latte-flower",
     "licenseNumber": "OCM-CAURD-25-000297",
     "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "THE BOTANIST - CHERRY BERRY LATTE - FLOWER",
-    "strainNameCanonical": "the botanist - cherry berry latte - flower",
+    "strainNameRaw": "THE BOTANIST - CHERRY BERRY LATTE",
+    "strainNameCanonical": "the botanist - cherry berry latte",
     "brand": "Acreage NY (The Botanist)",
     "lineage": "SATIVA",
     "thcPercent": null,
@@ -11289,27 +11289,27 @@
         {
           "name": "CAMPHENE",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "OTHER",
           "rawName": "CaryophylleneOxide",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "EUCALYPTOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GERANIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "GUAIOL",
           "rawName": null,
-          "percent": 0
+          "percent": null
         },
         {
           "name": "HUMULENE",
@@ -11319,7 +11319,7 @@
         {
           "name": "OTHER",
           "rawName": "Isopulegol",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "LIMONENE",
@@ -11344,7 +11344,7 @@
         {
           "name": "OTHER",
           "rawName": "pCymene",
-          "percent": 0
+          "percent": null
         },
         {
           "name": "TERPINOLENE",

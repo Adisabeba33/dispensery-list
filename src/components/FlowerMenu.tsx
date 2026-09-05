@@ -101,7 +101,7 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
               className="rounded-md bg-ink-800 px-2 py-1 text-[0.72rem] text-chalk-200"
             >
               {TERPENE_LABEL[t.name] ?? t.rawName ?? t.name}
-              {t.percent !== null && (
+              {Boolean(t.percent) && (
                 <span className="ml-1.5 tabular-nums text-chalk-500">{t.percent}%</span>
               )}
             </span>
