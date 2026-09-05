@@ -1,10 +1,11 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import clsx from 'clsx';
 import type { Dispensary } from '@/lib/types';
 import { displayName, regionOf } from '@/lib/data';
 import { DispensaryCard } from './DispensaryCard';
+import { DispensaryDetail } from './DispensaryDetail';
 
 const REGION_ORDER = ['Manhattan', 'Brooklyn', 'Queens', 'The Bronx', 'Staten Island', 'Westchester'];
 
@@ -18,6 +19,50 @@ export const DirectoryExplorer = ({ dispensaries }: { dispensaries: Dispensary[]
   // Open shops first by default: sorting by name leads with registry entity
   // names that carry no shop sign, and buries the shops someone can walk into.
   const [sort, setSort] = useState<SortKey>('status');
+  // Which shop is open in place. Nothing navigates: opening a card must not
+  // cost the reader the search they typed and the place they had reached.
+  const [openLicence, setOpenLicence] = useState<string | null>(null);
+  const restoredScroll = useRef(false);
+
+  /* Following a shop's own website and coming back reloads the page. Without
+     this the reader lands on an empty search, having lost their filters, their
+     position and the card they were reading. */
+  const STORAGE_KEY = 'ny-dispensary-register:view';
+
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(window.localStorage.getItem(STORAGE_KEY) ?? 'null');
+      if (!saved) return;
+      setQuery(saved.query ?? '');
+      setRegion(saved.region ?? null);
+      setOpenOnly(Boolean(saved.openOnly));
+      setDeliveryOnly(Boolean(saved.deliveryOnly));
+      setSort((saved.sort as SortKey) ?? 'status');
+      setOpenLicence(saved.openLicence ?? null);
+      if (typeof saved.scrollY === 'number' && saved.scrollY > 0) {
+        // After the restored list has laid out, not before.
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => window.scrollTo(0, saved.scrollY));
+        });
+      }
+    } catch {
+      // Storage blocked or corrupt: start clean rather than fail to render.
+    } finally {
+      restoredScroll.current = true;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!restoredScroll.current) return;   // don't overwrite before restoring
+    try {
+      window.localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({ query, region, openOnly, deliveryOnly, sort, openLicence, scrollY: window.scrollY }),
+      );
+    } catch {
+      // Not remembering is a small loss; blocking the page is not.
+    }
+  }, [query, region, openOnly, deliveryOnly, sort, openLicence]);
 
   const regions = useMemo(() => {
     const present = new Set(dispensaries.map(regionOf));
@@ -65,6 +110,18 @@ export const DirectoryExplorer = ({ dispensaries }: { dispensaries: Dispensary[]
     setRegion(null);
     setOpenOnly(false);
     setDeliveryOnly(false);
+    setOpenLicence(null);
+  };
+
+  const toggle = (licence: string) => {
+    const closing = openLicence === licence;
+    setOpenLicence(closing ? null : licence);
+    if (closing) return;
+    // Bring the card's top into view so the detail is not half off-screen.
+    requestAnimationFrame(() => {
+      const el = document.getElementById(`shop-${licence}`);
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+    });
   };
 
   return (
@@ -177,12 +234,25 @@ export const DirectoryExplorer = ({ dispensaries }: { dispensaries: Dispensary[]
           </p>
         </div>
       ) : (
-        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {results.map((d) => (
-            <li key={d.id}>
-              <DispensaryCard d={d} />
-            </li>
-          ))}
+        <ul className="mt-8 grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {results.map((d) => {
+            const isOpen = openLicence === d.licenseNumber;
+            return (
+              <li
+                key={d.id}
+                id={`shop-${d.licenseNumber}`}
+                // An expanded card takes the whole row: the detail needs the
+                // width, and the list around it stays where the reader left it.
+                className={isOpen ? 'sm:col-span-2 lg:col-span-3' : undefined}
+              >
+                <DispensaryCard
+                  d={d}
+                  expanded={isOpen}
+                  onToggle={() => toggle(d.licenseNumber)}
+                />
+              </li>
+            );
+          })}
         </ul>
       )}
     </section>
