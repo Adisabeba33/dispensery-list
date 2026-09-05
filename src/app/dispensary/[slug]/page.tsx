@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { DemoBanner } from '@/components/DemoBanner';
+import { FlowerMenu } from '@/components/FlowerMenu';
+import { listingsFor } from '@/lib/menu';
 import { LicenseTag, StatusBadge, VerificationBadge } from '@/components/Badges';
 import {
   COUNTY_LABEL,
@@ -57,6 +59,7 @@ export default async function DispensaryPage({ params }: Params) {
   })).filter((s) => s.value !== undefined);
 
   const hasHours = d.hours !== null;
+  const menu = listingsFor(d.licenseNumber);
 
   return (
     <>
@@ -92,6 +95,12 @@ export default async function DispensaryPage({ params }: Params) {
                 <li key={w}>· {w}</li>
               ))}
             </ul>
+          </div>
+        )}
+
+        {menu.length > 0 && (
+          <div className="mt-8">
+            <FlowerMenu listings={menu} />
           </div>
         )}
 

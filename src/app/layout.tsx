@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { AgeGate } from '@/components/AgeGate';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -21,12 +22,14 @@ const NAV = [
   { href: '/', label: 'Directory' },
   { href: '/westchester/', label: 'Westchester' },
   { href: '/about/', label: 'Method' },
+  { href: '/legal/', label: 'Notices' },
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="min-h-screen antialiased">
+        <AgeGate />
         <header className="sticky top-0 z-40 border-b border-ink-700/80 bg-ink-950/80 backdrop-blur-md">
           <div className="shell flex h-16 items-center justify-between gap-6">
             <Link href="/" className="group flex items-center gap-2.5">
@@ -64,7 +67,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <p className="max-w-3xl">
               This directory lists businesses licensed by the New York State Office of Cannabis
               Management. It is informational only: it does not sell cannabis, and it is not
-              affiliated with or endorsed by any state agency. Cannabis is for adults 21 and over.
+              affiliated with or endorsed by any state agency. Cannabis is for adults 21 and over —
+              see{' '}
+              <Link href="/legal/" className="link">
+                legal and data notices
+              </Link>
+              .
             </p>
             <p>
               Always confirm a shop yourself before you buy —{' '}

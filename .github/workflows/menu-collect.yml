@@ -1,0 +1,62 @@
+name: Menu collect
+
+on:
+  push:
+    branches:
+      - agent/menu-flower-nyc
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install project dependencies
+        run: npm ci
+      - name: Install Playwright
+        # Not a project dependency: it exists for this job alone, and keeping it
+        # out of package.json stops every Vercel build fetching browsers.
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Read flower off a pilot set of menus
+        run: node scripts/menu-render.mjs --limit 25
+      - name: Validate collected listings
+        id: validate
+        continue-on-error: true
+        run: |
+          set +e
+          npm run validate > /tmp/validate.txt 2>&1
+          echo $? > /tmp/validate.code
+      - name: Commit collected listings
+        if: steps.validate.outcome == 'success'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/flower-listings.json
+          if ! git diff --cached --quiet; then
+            git commit -m "menu: collect flower listings from pilot shops"
+            git push origin HEAD:agent/menu-flower-nyc
+          fi
+      # Everything worth reading goes last, smallest first: a long report ahead
+      # of an error message hides the error, which has happened twice already.
+      - name: Report
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json
+          s = json.load(open('enrichment-output/menu-summary.json'))
+          s.pop('perShop', None)
+          print(json.dumps(s, indent=2)[:4000])
+          PY
+          echo "--- validation ---"
+          sed -n '/^ERRORS/,$p' /tmp/validate.txt | head -40 || true
+          tail -2 /tmp/validate.txt
+          exit $(cat /tmp/validate.code)

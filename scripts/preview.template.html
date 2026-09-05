@@ -219,6 +219,74 @@
   }
   .btn:hover { background: rgba(43,167,102,0.2); text-decoration: none; }
 
+  /* ---- age gate ---------------------------------------------------------- */
+
+  .gate {
+    position: fixed; inset: 0; z-index: 50; display: grid; place-items: center;
+    padding: 1.25rem; background: rgba(8,11,10,0.96); backdrop-filter: blur(6px);
+  }
+  .gate-card {
+    width: 100%; max-width: 27rem; text-align: center;
+    border: 1px solid var(--line); border-radius: 0.9rem;
+    background: var(--surface); padding: 1.9rem 1.75rem;
+  }
+  .gate .seal { margin: 0 auto; width: 2.7rem; height: 2.7rem; border-radius: 0.75rem; }
+  .gate h2 { font-size: 1.3rem; font-weight: 700; margin: 1.15rem 0 0; }
+  .gate p { margin: 0.75rem 0 0; font-size: 0.9rem; color: var(--text-2); }
+  .gate .fine { margin-top: 1.2rem; font-size: 0.75rem; color: var(--faint); }
+  .gate-actions { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.5rem; }
+  .gate-actions button {
+    font: inherit; font-size: 0.9rem; padding: 0.75rem 1.25rem;
+    border-radius: 0.55rem; cursor: pointer;
+  }
+  .gate-yes {
+    border: 1px solid rgba(43,167,102,0.6); background: rgba(43,167,102,0.15);
+    color: var(--moss); font-weight: 500;
+  }
+  .gate-yes:hover { background: rgba(43,167,102,0.25); }
+  .gate-no { border: 1px solid var(--line); background: none; color: var(--muted); }
+  .gate-no:hover { border-color: var(--line-soft); color: var(--text-2); }
+
+  /* ---- flower menu ------------------------------------------------------ */
+
+  .menu-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
+  .menu-note { border: 1px solid rgba(242,181,68,0.3); background: rgba(242,181,68,0.07); border-radius: 0.6rem; padding: 0.8rem 1rem; margin-top: 0.9rem; font-size: 0.85rem; color: var(--text-2); }
+  .menu-filters { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1rem; }
+  .menu-count { margin: 0.9rem 0 0; font-size: 0.875rem; color: var(--muted); }
+  .menu-count b { color: var(--text); }
+
+  .strains { list-style: none; margin: 0.9rem 0 0; padding: 0; display: grid; gap: 0.7rem; }
+  @media (min-width: 720px) { .strains { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+  .strain { border: 1px solid var(--line); border-radius: 0.7rem; background: rgba(17,24,21,0.7); padding: 0.9rem; }
+  .strain.out { opacity: 0.55; }
+  .strain-top { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 0.5rem 1rem; }
+  .strain h4 { font-family: var(--display); font-size: 1rem; font-weight: 600; margin: 0; line-height: 1.25; }
+  .strain .grower { margin: 0.25rem 0 0; font-size: 0.82rem; color: var(--muted); }
+  .strain .thc { font-size: 0.82rem; color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  .sizes { list-style: none; display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.7rem 0 0; padding: 0; }
+  .sizes li { border: 1px solid var(--line); background: rgba(12,17,15,0.7); border-radius: 0.35rem; padding: 0.2rem 0.45rem; font-size: 0.72rem; color: var(--text-2); }
+  .sizes .g { margin-left: 0.35rem; color: var(--faint); font-variant-numeric: tabular-nums; }
+
+  .terps { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin-top: 0.7rem; padding-top: 0.7rem; border-top: 1px solid var(--line-soft); }
+  .terps .t { background: var(--surface-2); border-radius: 0.35rem; padding: 0.2rem 0.45rem; font-size: 0.72rem; color: var(--text-2); }
+  .terps .t .pc { margin-left: 0.35rem; color: var(--faint); font-variant-numeric: tabular-nums; }
+  .aroma { margin: 0.5rem 0 0; font-size: 0.72rem; color: var(--faint); }
+  .ref-note { margin: 0.45rem 0 0; font-size: 0.72rem; color: rgba(242,181,68,0.85); }
+
+  /* The dot's shape carries the meaning, not only its colour. */
+  .dot { width: 0.5rem; height: 0.5rem; border-radius: 999px; border: 1px solid; flex-shrink: 0; display: inline-block; }
+  .dot.lab { border-color: var(--moss-bright); background: var(--moss-bright); }
+  .dot.listed { border-color: var(--text-2); background: transparent; }
+  .dot.reference { border-color: var(--amber); border-style: dashed; background: transparent; }
+  .dot.none { border-color: var(--line); background: transparent; }
+
+  .legend { margin-top: 1.1rem; padding-top: 0.9rem; border-top: 1px solid var(--line-soft); }
+  .legend ul { list-style: none; margin: 0.5rem 0 0; padding: 0; display: grid; gap: 0.5rem; }
+  @media (min-width: 640px) { .legend ul { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+  .legend li { display: flex; gap: 0.45rem; font-size: 0.72rem; line-height: 1.5; color: var(--muted); }
+  .legend b { color: var(--text-2); font-weight: 500; }
+
   /* ---- long-form sections ---------------------------------------------- */
 
   section.band { padding: 4rem 0 0; }
@@ -247,6 +315,28 @@
     * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   }
 </style>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-heading" hidden>
+  <div class="gate-card">
+    <span class="seal" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+    <div id="gate-ask">
+      <h2 id="gate-heading">Are you 21 or older?</h2>
+      <p>This register lists cannabis dispensaries licensed by New York State. In New York, cannabis is for adults aged 21 and over.</p>
+      <div class="gate-actions">
+        <button type="button" class="gate-yes" id="gate-yes">Yes, I am 21 or older</button>
+        <button type="button" class="gate-no" id="gate-no">No, I am under 21</button>
+      </div>
+      <p class="fine">We do not verify your age and we do not sell cannabis. This is an informational register, not affiliated with or endorsed by any state agency.</p>
+    </div>
+    <div id="gate-declined" hidden>
+      <h2>Come back when you are 21</h2>
+      <p>New York law restricts cannabis to adults aged 21 and over, so there is nothing here for you yet. Nothing personal.</p>
+      <p style="margin-top:1.1rem;"><a href="https://cannabis.ny.gov/" target="_blank" rel="noreferrer noopener">About cannabis law in New York</a></p>
+    </div>
+  </div>
+</div>
 
 <header class="masthead">
   <div class="shell masthead-inner">
@@ -342,7 +432,7 @@
 
 <footer>
   <div class="shell">
-    <p>This directory lists businesses licensed by the New York State Office of Cannabis Management. It is informational only: it does not sell cannabis, and it is not affiliated with or endorsed by any state agency. Cannabis is for adults 21 and over.</p>
+    <p>This directory lists businesses licensed by the New York State Office of Cannabis Management. It is informational only: it does not sell cannabis, takes no payment for entries, and is not affiliated with or endorsed by any state agency. Cannabis is for adults 21 and over. A licensed business that wants its entry corrected or removed only has to ask; quote the licence number.</p>
     <p>Always confirm a shop yourself before you buy — look for the QR-coded verification decal at the entrance, or search the address at <a href="https://cannabis.ny.gov/dispensary-location-verification" target="_blank" rel="noreferrer noopener">cannabis.ny.gov/dispensary-location-verification</a>.</p>
   </div>
 </footer>
@@ -350,8 +440,31 @@
 <dialog id="sheet"><div class="sheet" id="sheet-body"></div></dialog>
 
 <script>
+/* Age affirmation, as New York's Part 129 marketing rules ask of a site
+   carrying cannabis content. A declaration, not a check: no age is verified.
+   Storage can throw in a private window, so every access is guarded — failing
+   to remember the answer is fine, failing to render the page is not. */
+(function () {
+  var KEY = 'ny-dispensary-register:age-affirmed';
+  var gate = document.getElementById('gate');
+  var affirmed = false;
+  try { affirmed = localStorage.getItem(KEY) === 'yes'; } catch (e) {}
+  if (affirmed) return;
+
+  gate.hidden = false;
+  document.getElementById('gate-yes').addEventListener('click', function () {
+    try { localStorage.setItem(KEY, 'yes'); } catch (e) {}
+    gate.hidden = true;
+  });
+  document.getElementById('gate-no').addEventListener('click', function () {
+    document.getElementById('gate-ask').hidden = true;
+    document.getElementById('gate-declined').hidden = false;
+  });
+})();
+
 const DATA = /*__DISPENSARIES__*/;
 const MUNI = /*__MUNICIPALITIES__*/;
+const LISTINGS = /*__LISTINGS__*/;
 
 const BOROUGH_LABEL = { MANHATTAN:'Manhattan', BROOKLYN:'Brooklyn', QUEENS:'Queens', BRONX:'The Bronx', STATEN_ISLAND:'Staten Island' };
 const COUNTY_LABEL = { 'New York':'Manhattan', Kings:'Brooklyn', Queens:'Queens', Bronx:'The Bronx', Richmond:'Staten Island', Westchester:'Westchester' };
@@ -376,6 +489,47 @@ const SERVICE_LABELS = [
   ['acceptsDebit','Debit'], ['atmOnSite','ATM'], ['parking','Parking']
 ];
 const DAYS = [['mon','Mon'],['tue','Tue'],['wed','Wed'],['thu','Thu'],['fri','Fri'],['sat','Sat'],['sun','Sun']];
+const SIZES = [
+  {g:1,   label:'Gram',    short:'1g'},
+  {g:3.5, label:'Eighth',  short:'3.5g'},
+  {g:7,   label:'Quarter', short:'7g'},
+  {g:14,  label:'Half',    short:'14g'},
+  {g:28,  label:'Ounce',   short:'28g'},
+];
+const TERPENE_LABEL = {
+  MYRCENE:'Myrcene', LIMONENE:'Limonene', CARYOPHYLLENE:'Caryophyllene',
+  PINENE_ALPHA:'\u03b1-Pinene', PINENE_BETA:'\u03b2-Pinene', LINALOOL:'Linalool',
+  TERPINOLENE:'Terpinolene', HUMULENE:'Humulene', OCIMENE:'Ocimene', BISABOLOL:'Bisabolol',
+  NEROLIDOL:'Nerolidol', VALENCENE:'Valencene', CAMPHENE:'Camphene', EUCALYPTOL:'Eucalyptol',
+  GUAIOL:'Guaiol', FARNESENE:'Farnesene', GERANIOL:'Geraniol', BORNEOL:'Borneol',
+  TERPINEOL:'Terpineol', PHELLANDRENE:'Phellandrene', CARENE:'Carene', SABINENE:'Sabinene',
+  FENCHOL:'Fenchol', OTHER:'Other'
+};
+const TERPENE_NOTE = {
+  MYRCENE:'earth, ripe mango, clove', LIMONENE:'citrus peel, bright',
+  CARYOPHYLLENE:'black pepper, warm spice', PINENE_ALPHA:'pine, forest air',
+  PINENE_BETA:'pine, dill', LINALOOL:'lavender, floral', TERPINOLENE:'apple, fresh herbs',
+  HUMULENE:'hops, dry wood', OCIMENE:'sweet herbs, basil', BISABOLOL:'chamomile, soft',
+  NEROLIDOL:'apple bark, tea tree', VALENCENE:'sweet orange', CAMPHENE:'damp earth, fir',
+  EUCALYPTOL:'eucalyptus, cool', GUAIOL:'pine, rose', FARNESENE:'green apple',
+  GERANIOL:'rose, peach', BORNEOL:'camphor, mint', TERPINEOL:'lilac, clay',
+  PHELLANDRENE:'mint, citrus', CARENE:'cypress, lemon', SABINENE:'pepper, pine',
+  FENCHOL:'basil, lime', OTHER:''
+};
+const LINEAGE_LABEL = {
+  INDICA:'Indica', SATIVA:'Sativa', HYBRID:'Hybrid', INDICA_DOMINANT:'Indica-leaning',
+  SATIVA_DOMINANT:'Sativa-leaning', CBD:'CBD', UNKNOWN:'Unstated'
+};
+const PROVENANCE = {
+  LAB_COA:{label:'Lab-tested', tone:'lab', detail:'Measured from this batch\u2019s certificate of analysis.'},
+  MENU_LISTING:{label:'Shop-stated', tone:'listed', detail:'Percentages the shop publishes, with no certificate attached.'},
+  STRAIN_REFERENCE:{label:'Typical for the strain', tone:'reference', detail:'No lab data for this batch \u2014 what the strain usually shows, an expectation rather than a measurement.'},
+  NONE:{label:'Not published', tone:'none', detail:'The shop publishes no terpene data.'}
+};
+
+const listingsFor = (lic) => LISTINGS.filter((l) => l.licenseNumber === lic)
+  .sort((a, b) => a.strainNameRaw.localeCompare(b.strainNameRaw));
+
 const REGION_ORDER = ['Manhattan','Brooklyn','Queens','The Bronx','Staten Island','Westchester'];
 
 const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -416,7 +570,7 @@ statsEl.innerHTML = [
 
 /* Open first by default: a name sort leads with registry entity names that carry
    no shop sign, and buries the shops someone can actually walk into. */
-const state = { q:'', region:null, openOnly:false, deliveryOnly:false, sort:'status' };
+const state = { q:'', region:null, openOnly:false, deliveryOnly:false, menuOnly:false, sort:'status' };
 
 const chipsEl = document.getElementById('chips');
 const renderChips = () => {
@@ -428,7 +582,8 @@ const renderChips = () => {
   chipsEl.innerHTML = areaChips +
     '<span class="divider" aria-hidden="true"></span>' +
     '<button type="button" class="chip" data-kind="open" aria-pressed="' + state.openOnly + '">Open now listed</button>' +
-    '<button type="button" class="chip" data-kind="delivery" aria-pressed="' + state.deliveryOnly + '">Delivers</button>';
+    '<button type="button" class="chip" data-kind="delivery" aria-pressed="' + state.deliveryOnly + '">Delivers</button>' +
+    '<button type="button" class="chip" data-kind="menu" aria-pressed="' + state.menuOnly + '">Menu published</button>';
 };
 
 chipsEl.addEventListener('click', (e) => {
@@ -440,6 +595,7 @@ chipsEl.addEventListener('click', (e) => {
     state.region = state.region === value ? null : value;
   } else if (kind === 'open') state.openOnly = !state.openOnly;
   else if (kind === 'delivery') state.deliveryOnly = !state.deliveryOnly;
+  else if (kind === 'menu') state.menuOnly = !state.menuOnly;
   renderChips();
   render();
 });
@@ -448,7 +604,7 @@ document.getElementById('q').addEventListener('input', (e) => { state.q = e.targ
 document.getElementById('sort').addEventListener('change', (e) => { state.sort = e.target.value; render(); });
 
 const clearAll = () => {
-  state.q = ''; state.region = null; state.openOnly = false; state.deliveryOnly = false;
+  state.q = ''; state.region = null; state.openOnly = false; state.deliveryOnly = false; state.menuOnly = false;
   document.getElementById('q').value = '';
   renderChips();
   render();
@@ -472,7 +628,10 @@ const cardHtml = (d) => {
     '</div>' + pill(op.cls, op.label, true) + '</div>' +
     '<p class="addr">' + esc(fullAddress(d)) + '</p>' +
     (confirmed.length ? '<ul class="tags">' + confirmed.map(([, l]) => '<li>' + esc(l) + '</li>').join('') + '</ul>' : '') +
-    '<div class="card-foot">' + pill(ver.cls, ver.label, false) +
+    '<div class="card-foot">' +
+      '<span style="display:flex;flex-wrap:wrap;align-items:center;gap:0.4rem;">' + pill(ver.cls, ver.label, false) +
+        (listingsFor(d.licenseNumber).length ? pill('ok', listingsFor(d.licenseNumber).length + ' strains', false) : '') +
+      '</span>' +
       '<span style="display:flex;align-items:center;gap:0.7rem;">' +
         '<span style="font-size:0.7rem;color:var(--faint);">' + esc(LICENSE_TYPE_LABEL[d.licenseType] || d.licenseType) + '</span>' +
         '<span class="licence">' + esc(d.licenseNumber) + '</span>' +
@@ -487,6 +646,7 @@ const render = () => {
     if (state.region && region(d) !== state.region) return false;
     if (state.openOnly && d.operationalStatus !== 'OPEN') return false;
     if (state.deliveryOnly && !(d.services && d.services.delivery === true)) return false;
+    if (state.menuOnly && listingsFor(d.licenseNumber).length === 0) return false;
     if (!q) return true;
     return [name(d), d.legalName, d.licenseNumber, d.address.line1, d.address.city, d.address.zip, d.address.neighborhood || '']
       .join(' ').toLowerCase().includes(q);
@@ -503,14 +663,108 @@ const render = () => {
   gridEl.hidden = filtered.length === 0;
   emptyEl.hidden = filtered.length > 0;
 
-  const active = state.region || state.openOnly || state.deliveryOnly || state.q.trim();
+  const active = state.region || state.openOnly || state.deliveryOnly || state.menuOnly || state.q.trim();
   countEl.innerHTML = '<b>' + filtered.length + '</b> ' + (filtered.length === 1 ? 'dispensary' : 'dispensaries') +
     (active ? ' · <button type="button" class="linkish" id="clear">clear filters</button>' : '');
   const clearBtn = document.getElementById('clear');
   if (clearBtn) clearBtn.addEventListener('click', clearAll);
 };
 
+
+/* ---- flower menu ------------------------------------------------------- */
+
+const menuState = { size: null, inStock: false, labOnly: false, licence: null };
+
+const strainHtml = (l) => {
+  const prov = PROVENANCE[l.terpenes.source] || PROVENANCE.NONE;
+  const sizes = l.availableSizesGrams || [];
+  const top = (l.terpenes.profile || []).slice(0, 3);
+  const aroma = top.map((t) => TERPENE_NOTE[t.name]).filter(Boolean).join(' \u00b7 ');
+
+  return '<li class="strain' + (l.inStock ? '' : ' out') + '">' +
+    '<div class="strain-top"><div style="min-width:0;">' +
+      '<h4>' + esc(l.strainNameRaw) + '</h4>' +
+      '<p class="grower">' + esc(l.brand || 'Grower not stated') +
+        ' <span style="color:var(--line);">\u00b7</span> ' + esc(LINEAGE_LABEL[l.lineage] || 'Unstated') + '</p>' +
+    '</div><span style="display:flex;align-items:center;gap:0.5rem;">' +
+      (l.thcPercent != null ? '<span class="thc">THC ' + l.thcPercent + '%</span>' : '') +
+      (l.inStock ? '' : pill('neutral', 'Sold out', false)) +
+    '</span></div>' +
+
+    (sizes.length
+      ? '<ul class="sizes">' + SIZES.filter((s) => sizes.indexOf(s.g) !== -1)
+          .map((s) => '<li>' + s.label + '<span class="g">' + s.short + '</span></li>').join('') + '</ul>'
+      : '') +
+
+    '<div class="terps">' +
+      '<span class="pill ' + (prov.tone === 'lab' ? 'ok' : prov.tone === 'reference' ? 'warn' : 'neutral') + '">' +
+        '<span class="dot ' + prov.tone + '"></span>' + esc(prov.label) + '</span>' +
+      top.map((t) => '<span class="t"' + (TERPENE_NOTE[t.name] ? ' title="' + esc(TERPENE_NOTE[t.name]) + '"' : '') + '>' +
+        esc(TERPENE_LABEL[t.name] || t.rawName || t.name) +
+        (t.percent != null ? '<span class="pc">' + t.percent + '%</span>' : '') + '</span>').join('') +
+      (l.terpenes.source === 'NONE' ? '<span style="font-size:0.72rem;color:var(--faint);">No terpene data published</span>' : '') +
+    '</div>' +
+    (aroma ? '<p class="aroma">' + esc(aroma) + '</p>' : '') +
+    (l.terpenes.source === 'STRAIN_REFERENCE'
+      ? '<p class="ref-note">Typical profile for ' + esc(l.terpenes.referenceStrain || l.strainNameRaw) +
+        ' \u2014 not measured from this batch.</p>'
+      : '') +
+  '</li>';
+};
+
+const menuHtml = (lic) => {
+  const all = listingsFor(lic);
+  if (all.length === 0) return '';
+
+  const present = {};
+  all.forEach((l) => (l.availableSizesGrams || []).forEach((g) => { present[g] = true; }));
+  const sizeChips = SIZES.filter((s) => present[s.g]);
+
+  const rows = all.filter((l) => {
+    if (menuState.size !== null && (l.availableSizesGrams || []).indexOf(menuState.size) === -1) return false;
+    if (menuState.inStock && !l.inStock) return false;
+    if (menuState.labOnly && l.terpenes.source !== 'LAB_COA') return false;
+    return true;
+  });
+
+  const captured = all[0].capturedAt
+    ? new Date(all[0].capturedAt).toLocaleString('en-US', { dateStyle:'medium', timeStyle:'short' })
+    : null;
+
+  return '<h3 style="margin-top:2rem;">Flower on the shelf</h3>' +
+    '<div class="menu-head">' +
+      '<span style="font-size:0.8rem;color:var(--faint);">' +
+        (captured ? 'as read ' + esc(captured) : '') + '</span></div>' +
+
+    '<p class="aroma" style="margin-top:0.5rem;">Read from the shop\u2019s own menu. Shelves move ' +
+      'through the day, so confirm before travelling for a specific strain.</p>' +
+
+    '<div class="menu-filters">' +
+      '<button type="button" class="chip" data-menu="size" data-value="" aria-pressed="' + (menuState.size === null) + '">Any size</button>' +
+      sizeChips.map((s) => '<button type="button" class="chip" data-menu="size" data-value="' + s.g +
+        '" aria-pressed="' + (menuState.size === s.g) + '">' + s.label +
+        '<span class="g" style="margin-left:0.35rem;color:var(--faint);">' + s.short + '</span></button>').join('') +
+      '<span class="divider"></span>' +
+      '<button type="button" class="chip" data-menu="stock" aria-pressed="' + menuState.inStock + '">In stock</button>' +
+      '<button type="button" class="chip" data-menu="lab" aria-pressed="' + menuState.labOnly + '">Lab-tested terpenes</button>' +
+    '</div>' +
+
+    '<p class="menu-count"><b>' + rows.length + '</b> ' + (rows.length === 1 ? 'strain' : 'strains') +
+      (menuState.size !== null ? ' available by the ' + (SIZES.find((s) => s.g === menuState.size) || {}).label.toLowerCase() : '') + '</p>' +
+
+    (rows.length === 0
+      ? '<p style="font-size:0.875rem;color:var(--muted);">Nothing on the shelf matches those filters.</p>'
+      : '<ul class="strains">' + rows.map(strainHtml).join('') + '</ul>') +
+
+    '<div class="legend"><p class="eyebrow">Where a terpene reading comes from</p><ul>' +
+      ['LAB_COA','MENU_LISTING','STRAIN_REFERENCE'].map((k) =>
+        '<li><span class="dot ' + PROVENANCE[k].tone + '" style="margin-top:0.3rem;"></span>' +
+        '<span><b>' + esc(PROVENANCE[k].label) + '</b> \u2014 ' + esc(PROVENANCE[k].detail) + '</span></li>').join('') +
+    '</ul></div>';
+};
+
 /* ---- detail sheet ------------------------------------------------------ */
+
 
 const sheet = document.getElementById('sheet');
 const sheetBody = document.getElementById('sheet-body');
@@ -531,6 +785,8 @@ const sheetHtml = (d) => {
       return '<div class="row"><dt>' + esc(label) + '</dt><dd style="color:' + color + ';">' + text + '</dd></div>';
     }).join('');
 
+  const menuBlock = menuHtml(d.licenseNumber);
+
   return '<div class="sheet-head"><div style="min-width:0;">' +
       '<h2>' + esc(name(d)) + '</h2>' +
       (d.dbaName && d.dbaName !== d.legalName ? '<p class="legal">Licensed to ' + esc(d.legalName) + '</p>' : '') +
@@ -541,6 +797,8 @@ const sheetHtml = (d) => {
       ? '<div class="caveat"><strong style="color:var(--amber);">Caveats</strong><ul style="margin:0.5rem 0 0;padding-left:1.1rem;">' +
         d.warnings.map((w) => '<li>' + esc(w) + '</li>').join('') + '</ul></div>'
       : '') +
+
+    menuBlock +
 
     '<h3>Licence</h3><dl class="rows">' +
       row('Licence number', '<span class="licence" style="font-size:0.85rem;color:var(--text);">' + esc(d.licenseNumber) + '</span>') +
@@ -583,9 +841,34 @@ gridEl.addEventListener('click', (e) => {
   if (!card) return;
   const d = DATA.find((x) => x.id === card.dataset.id);
   if (!d) return;
-  sheetBody.innerHTML = sheetHtml(d);
+  menuState.size = null; menuState.inStock = false; menuState.labOnly = false;
+  menuState.licence = d.licenseNumber;
+  renderSheet(d);
   sheet.showModal();
+});
+
+function renderSheet(d) {
+  sheetBody.innerHTML = sheetHtml(d);
+  sheetBody.scrollTop = 0;
   document.getElementById('sheet-close').addEventListener('click', () => sheet.close());
+}
+
+sheetBody.addEventListener('click', (e) => {
+  const btn = e.target.closest('button.chip[data-menu]');
+  if (!btn) return;
+  const kind = btn.dataset.menu;
+  if (kind === 'size') {
+    const value = btn.dataset.value === '' ? null : Number(btn.dataset.value);
+    menuState.size = menuState.size === value ? null : value;
+  } else if (kind === 'stock') menuState.inStock = !menuState.inStock;
+  else if (kind === 'lab') menuState.labOnly = !menuState.labOnly;
+  const d = DATA.find((x) => x.licenseNumber === menuState.licence);
+  if (d) {
+    const keep = sheetBody.scrollTop;
+    sheetBody.innerHTML = sheetHtml(d);
+    sheetBody.scrollTop = keep;
+    document.getElementById('sheet-close').addEventListener('click', () => sheet.close());
+  }
 });
 
 sheet.addEventListener('click', (e) => { if (e.target === sheet) sheet.close(); });

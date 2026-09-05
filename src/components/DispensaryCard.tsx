@@ -3,11 +3,13 @@ import type { Dispensary } from '@/lib/types';
 import { displayName, LICENSE_TYPE_LABEL, regionOf } from '@/lib/data';
 import { fullAddress, SERVICE_LABELS } from '@/lib/format';
 import { LicenseTag, StatusBadge, VerificationBadge } from './Badges';
+import { listingsFor } from '@/lib/menu';
 
 export const DispensaryCard = ({ d }: { d: Dispensary }) => {
   // Only services confirmed true are shown. An unchecked service is absent, not
   // denied — claiming "no delivery" because nobody looked would be a lie.
   const confirmed = SERVICE_LABELS.filter(({ key }) => d.services?.[key] === true).slice(0, 4);
+  const menuCount = listingsFor(d.licenseNumber).length;
 
   return (
     <Link href={`/dispensary/${d.id}/`} className="card card-hover group block p-5">
@@ -37,7 +39,14 @@ export const DispensaryCard = ({ d }: { d: Dispensary }) => {
       )}
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-ink-700/70 pt-3">
-        <VerificationBadge status={d.verification.status} />
+        <span className="flex flex-wrap items-center gap-2">
+          <VerificationBadge status={d.verification.status} />
+          {menuCount > 0 && (
+            <span className="pill border-moss-600/45 bg-moss-600/10 text-moss-400">
+              {menuCount} strains
+            </span>
+          )}
+        </span>
         <div className="flex items-center gap-3">
           <span className="text-[0.7rem] text-chalk-500">{LICENSE_TYPE_LABEL[d.licenseType]}</span>
           <LicenseTag d={d} />

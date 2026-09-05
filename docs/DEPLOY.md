@@ -12,11 +12,34 @@ npm run build      # → out/
 
 ## Vercel
 
-The repo needs no configuration. Import it, and Vercel detects Next.js. Because
-`next.config.mjs` sets `output: 'export'`, the result is a static deployment.
+The repo needs no configuration. Import it at vercel.com/new, pick the
+repository, and press Deploy — Vercel detects Next.js on its own. Because
+`next.config.mjs` sets `output: 'export'`, the result is a static site: no
+server, no runtime environment variables, nothing to provision.
+
+Defaults that are already correct, so leave them alone:
+
+| Setting | Value |
+|---|---|
+| Framework preset | Next.js |
+| Build command | `next build` |
+| Output directory | (leave empty) |
+| Install command | `npm ci` |
+| Environment variables | none |
+
+The build takes about a minute and produces 463 pages, one per dispensary plus
+the directory, county and notices pages.
+
+Every push to the default branch redeploys. A pull request gets its own preview
+URL, which is the sane way to look at a data refresh before it goes live.
+
+Playwright is deliberately **not** a project dependency. Vercel installs
+devDependencies in order to build, and the `playwright` package pulls several
+hundred megabytes of browsers in a postinstall hook — for a tool only the menu
+collection job in CI ever runs. That workflow installs it itself.
 
 ```bash
-npx vercel --prod
+npx vercel --prod   # or from the command line, once linked
 ```
 
 ## Netlify / Cloudflare Pages / GitHub Pages
