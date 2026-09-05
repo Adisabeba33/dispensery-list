@@ -219,6 +219,34 @@
   }
   .btn:hover { background: rgba(43,167,102,0.2); text-decoration: none; }
 
+  /* ---- age gate ---------------------------------------------------------- */
+
+  .gate {
+    position: fixed; inset: 0; z-index: 50; display: grid; place-items: center;
+    padding: 1.25rem; background: rgba(8,11,10,0.96); backdrop-filter: blur(6px);
+  }
+  .gate-card {
+    width: 100%; max-width: 27rem; text-align: center;
+    border: 1px solid var(--line); border-radius: 0.9rem;
+    background: var(--surface); padding: 1.9rem 1.75rem;
+  }
+  .gate .seal { margin: 0 auto; width: 2.7rem; height: 2.7rem; border-radius: 0.75rem; }
+  .gate h2 { font-size: 1.3rem; font-weight: 700; margin: 1.15rem 0 0; }
+  .gate p { margin: 0.75rem 0 0; font-size: 0.9rem; color: var(--text-2); }
+  .gate .fine { margin-top: 1.2rem; font-size: 0.75rem; color: var(--faint); }
+  .gate-actions { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.5rem; }
+  .gate-actions button {
+    font: inherit; font-size: 0.9rem; padding: 0.75rem 1.25rem;
+    border-radius: 0.55rem; cursor: pointer;
+  }
+  .gate-yes {
+    border: 1px solid rgba(43,167,102,0.6); background: rgba(43,167,102,0.15);
+    color: var(--moss); font-weight: 500;
+  }
+  .gate-yes:hover { background: rgba(43,167,102,0.25); }
+  .gate-no { border: 1px solid var(--line); background: none; color: var(--muted); }
+  .gate-no:hover { border-color: var(--line-soft); color: var(--text-2); }
+
   /* ---- flower menu ------------------------------------------------------ */
 
   .menu-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
@@ -287,6 +315,28 @@
     * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   }
 </style>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-heading" hidden>
+  <div class="gate-card">
+    <span class="seal" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+    <div id="gate-ask">
+      <h2 id="gate-heading">Are you 21 or older?</h2>
+      <p>This register lists cannabis dispensaries licensed by New York State. In New York, cannabis is for adults aged 21 and over.</p>
+      <div class="gate-actions">
+        <button type="button" class="gate-yes" id="gate-yes">Yes, I am 21 or older</button>
+        <button type="button" class="gate-no" id="gate-no">No, I am under 21</button>
+      </div>
+      <p class="fine">We do not verify your age and we do not sell cannabis. This is an informational register, not affiliated with or endorsed by any state agency.</p>
+    </div>
+    <div id="gate-declined" hidden>
+      <h2>Come back when you are 21</h2>
+      <p>New York law restricts cannabis to adults aged 21 and over, so there is nothing here for you yet. Nothing personal.</p>
+      <p style="margin-top:1.1rem;"><a href="https://cannabis.ny.gov/" target="_blank" rel="noreferrer noopener">About cannabis law in New York</a></p>
+    </div>
+  </div>
+</div>
 
 <header class="masthead">
   <div class="shell masthead-inner">
@@ -382,7 +432,7 @@
 
 <footer>
   <div class="shell">
-    <p>This directory lists businesses licensed by the New York State Office of Cannabis Management. It is informational only: it does not sell cannabis, and it is not affiliated with or endorsed by any state agency. Cannabis is for adults 21 and over.</p>
+    <p>This directory lists businesses licensed by the New York State Office of Cannabis Management. It is informational only: it does not sell cannabis, takes no payment for entries, and is not affiliated with or endorsed by any state agency. Cannabis is for adults 21 and over. A licensed business that wants its entry corrected or removed only has to ask; quote the licence number.</p>
     <p>Always confirm a shop yourself before you buy — look for the QR-coded verification decal at the entrance, or search the address at <a href="https://cannabis.ny.gov/dispensary-location-verification" target="_blank" rel="noreferrer noopener">cannabis.ny.gov/dispensary-location-verification</a>.</p>
   </div>
 </footer>
@@ -390,6 +440,28 @@
 <dialog id="sheet"><div class="sheet" id="sheet-body"></div></dialog>
 
 <script>
+/* Age affirmation, as New York's Part 129 marketing rules ask of a site
+   carrying cannabis content. A declaration, not a check: no age is verified.
+   Storage can throw in a private window, so every access is guarded — failing
+   to remember the answer is fine, failing to render the page is not. */
+(function () {
+  var KEY = 'ny-dispensary-register:age-affirmed';
+  var gate = document.getElementById('gate');
+  var affirmed = false;
+  try { affirmed = localStorage.getItem(KEY) === 'yes'; } catch (e) {}
+  if (affirmed) return;
+
+  gate.hidden = false;
+  document.getElementById('gate-yes').addEventListener('click', function () {
+    try { localStorage.setItem(KEY, 'yes'); } catch (e) {}
+    gate.hidden = true;
+  });
+  document.getElementById('gate-no').addEventListener('click', function () {
+    document.getElementById('gate-ask').hidden = true;
+    document.getElementById('gate-declined').hidden = false;
+  });
+})();
+
 const DATA = /*__DISPENSARIES__*/;
 const MUNI = /*__MUNICIPALITIES__*/;
 const LISTINGS = /*__LISTINGS__*/;
