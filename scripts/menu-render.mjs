@@ -13,11 +13,13 @@
  * payloads look like before deciding whether this is worth doing at scale.
  *
  *   node scripts/menu-render.mjs --limit 12
+ *
+ * --dataset <path> points it at a different register, and CHROMIUM_PATH at a
+ * browser already on the machine; both exist for scripts/menu-e2e-check.mjs.
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { chromium } from 'playwright';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const UA =
@@ -26,7 +28,11 @@ const UA =
 const limit = Number(process.argv[process.argv.indexOf('--limit') + 1]) || 12;
 const NOW = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
 
-const dispensaries = JSON.parse(readFileSync(resolve(ROOT, 'data/dispensaries.json'), 'utf8'));
+// --dataset points the collector at a different register: used by the local
+// end-to-end check, which runs it against a fixture storefront on localhost.
+const datasetArg = process.argv.indexOf('--dataset');
+const datasetPath = datasetArg > -1 ? process.argv[datasetArg + 1] : 'data/dispensaries.json';
+const dispensaries = JSON.parse(readFileSync(resolve(ROOT, datasetPath), 'utf8'));
 
 // Menus hosted on Leafly or Weedmaps belong to those companies, not the shop.
 const OWN_SITE = new Set(['DUTCHIE', 'BLAZE', 'TREEZ', 'IHEARTJANE', 'MEADOW', 'PROPRIETARY', 'OTHER']);
@@ -67,6 +73,51 @@ const robotsAllows = async (url) => {
   return !disallows.some((rule) => rule === '/' || pathname.startsWith(rule));
 };
 
+/**
+ * Almost every dispensary site opens with "are you 21 or over?" and loads no
+ * menu until it is answered. Answering it is what any adult visitor does — it
+ * is a notice, not a login, and nothing is being circumvented — but it is an
+ * assertion, so it is made deliberately and narrowly: only on a page that is
+ * actually asking about age, only on a control whose own words affirm it, and
+ * it is recorded per shop in the report.
+ */
+const AGE_AFFIRM =
+  /^(yes|yes[,.!]?\s*i\s*am\s*21.*|i\s*am\s*21.*|i'?m\s*21.*|21\s*\+?|21\s*(or|and)\s*(over|older)|over\s*21|enter(\s*site)?|confirm|continue)$/i;
+
+const affirmAge = async (page) => {
+  try {
+    const asking = await page.evaluate(() => {
+      const t = document.body?.innerText ?? '';
+      return /\b21\b/.test(t) && /(age|older|over|verify|confirm)/i.test(t);
+    });
+    if (!asking) return false;
+
+    const clicked = await page.evaluate(
+      (src) => {
+        const affirm = new RegExp(src, 'i');
+        const controls = [
+          ...document.querySelectorAll('button, a, input[type="button"], input[type="submit"], [role="button"]'),
+        ];
+        const target = controls.find((el) => {
+          const text = (el.innerText || el.value || el.getAttribute('aria-label') || '').trim();
+          if (!text || text.length > 40) return false;
+          if (!affirm.test(text)) return false;
+          const box = el.getBoundingClientRect();
+          return box.width > 0 && box.height > 0;
+        });
+        if (!target) return false;
+        target.click();
+        return true;
+      },
+      AGE_AFFIRM.source,
+    );
+    if (clicked) await page.waitForTimeout(2500);
+    return clicked;
+  } catch {
+    return false;
+  }
+};
+
 const FLOWER_LINK = /(flower|\/bud\b|category=flower|categories\/flower)/i;
 const MENU_LINK = /\b(menu|shop|order|browse|products?)\b/i;
 
@@ -94,9 +145,70 @@ const findProductArrays = (value, depth = 0, out = []) => {
   return out;
 };
 
+/**
+ * Key names are matched with case and separators ignored. Every one of the
+ * four shops that worked in the pilot was on the one platform that writes its
+ * keys in lower camel case; Dutchie — 105 of the 242 candidate shops — writes
+ * `Name`, `Options` and `CBDContent`, and an exact `in` test walked straight
+ * past all of them.
+ */
+const normaliseKey = (k) => k.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+const keyIndex = new WeakMap();
+const indexOf = (obj) => {
+  let index = keyIndex.get(obj);
+  if (!index) {
+    index = new Map();
+    // First key wins on collision, so `name` beats a later `Name`.
+    for (const k of Object.keys(obj)) {
+      const n = normaliseKey(k);
+      if (!index.has(n)) index.set(n, k);
+    }
+    keyIndex.set(obj, index);
+  }
+  return index;
+};
+
+const pick = (obj, names) => {
+  if (!obj || typeof obj !== 'object') return null;
+  const index = indexOf(obj);
+  for (const n of names) {
+    const key = index.get(normaliseKey(n));
+    if (key !== undefined && obj[key] !== null && obj[key] !== undefined) return obj[key];
+  }
+  return null;
+};
+
+/**
+ * Every value under any of these names, not just the first one present. One
+ * platform puts an opaque id in `productCategory` and the readable word in
+ * `productCategoryName`; first-match-wins read the id and concluded the shop
+ * sells no flower.
+ */
+const pickAll = (obj, names) => {
+  if (!obj || typeof obj !== 'object') return [];
+  const index = indexOf(obj);
+  const out = [];
+  for (const n of names) {
+    const key = index.get(normaliseKey(n));
+    if (key !== undefined && obj[key] !== null && obj[key] !== undefined) out.push(obj[key]);
+  }
+  return out;
+};
 const flatten = (v) => {
-  if (v && typeof v === 'object' && !Array.isArray(v)) {
-    for (const k of ['value', 'name', 'amount', 'percent', 'label', 'title']) if (k in v) return v[k];
+  if (Array.isArray(v)) {
+    // A potency range [24.1, 24.1] states a figure; take the low end.
+    if (v.length && typeof v[0] === 'number') return v[0];
+    return v.map((x) => flatten(x)).filter((x) => x !== null && x !== undefined).join(' ');
+  }
+  if (v && typeof v === 'object') {
+    for (const k of ['value', 'name', 'amount', 'percent', 'label', 'title', 'formatted', 'display', 'text']) {
+      const hit = pick(v, [k]);
+      if (hit !== null && hit !== undefined && typeof hit !== 'object') return hit;
+    }
+    // Dutchie states potency as { range: [24.1, 24.1], unit: 'PERCENTAGE' }.
+    const range = pick(v, ['range']);
+    if (Array.isArray(range) && typeof range[0] === 'number') return range[0];
     return null;
   }
   return v;
@@ -108,10 +220,6 @@ const num = (v) => {
     const m = f.match(/(\d+(?:\.\d+)?)/);
     if (m) return Math.round(parseFloat(m[1]) * 100) / 100;
   }
-  return null;
-};
-const pick = (obj, names) => {
-  for (const n of names) if (n in obj) return obj[n];
   return null;
 };
 const slug = (...parts) =>
@@ -131,20 +239,31 @@ const slug = (...parts) =>
  * title, not in a variants array, and the same strain appears once per size.
  * Splitting that apart is what turns rows into a shelf a person can read.
  */
+/* The boundaries are asymmetric on purpose. A size written "1/8oz" or "1oz"
+   has no word boundary between the digit and the unit, so `\b` before `oz`
+   or after the `8` never matches — which is how a whole platform's sizes came
+   back as one gram. A letter before the unit is still refused, so a strain
+   name is not read as an ounce. */
 const SIZE_RULES = [
   [/\b(\d+(?:\.\d+)?)\s*(?:g|gr|gram|grams)\b/i, (m) => parseFloat(m[1])],
-  [/\b1\s*\/\s*8\b|\beighth\b/i, () => 3.5],
-  [/\b1\s*\/\s*4\b|\bquarter\b/i, () => 7],
-  [/\b1\s*\/\s*2\b|\bhalf\b/i, () => 14],
-  [/\b(?:oz|ounce|zip)\b/i, () => 28],
+  [/\b1\s*\/\s*8(?!\d)|\beighth\b/i, () => 3.5],
+  [/\b1\s*\/\s*4(?!\d)|\bquarter\b/i, () => 7],
+  [/\b1\s*\/\s*2(?!\d)|\bhalf\b/i, () => 14],
+  [/(?<![a-z])(?:oz|ounce|zip)\b/i, () => 28],
 ];
+
+/* Nobody sells flower by the hundredth of a gram. A figure below this came
+   from some other field — a discount, a rating, a tax rate — and reading it as
+   a weight puts a size on the shelf that a buyer cannot ask for. */
+const MIN_PLAUSIBLE_GRAMS = 0.5;
+const plausibleSize = (g) => (typeof g === 'number' && g >= MIN_PLAUSIBLE_GRAMS && g <= 30 ? g : null);
 
 const sizeFromText = (text) => {
   for (const [re, take] of SIZE_RULES) {
     const m = text.match(re);
     if (m) {
-      const g = take(m);
-      if (g > 0 && g <= 30) return g;
+      const g = plausibleSize(take(m));
+      if (g) return g;
     }
   }
   return null;
@@ -172,8 +291,11 @@ const cleanStrainName = (raw, brand) => {
     // The weight is kept in availableSizesGrams, so it is noise in the name
     // wherever it appears: "ILLUMINATI 3.5g" reads as a strain called ILLUMINATI.
     .replace(/\b[\d.]+\s*(?:g|gr|grams?)\b/gi, ' ')
-    .replace(/\b(?:\d\/\d\s*)?(?:oz|ounce)\b/gi, ' ')
+    .replace(/(?:\d\s*\/\s*\d\s*)?(?<![a-z])(?:oz|ounce)\b/gi, ' ')
     .replace(/\b(eighth|quarter|half)\b/gi, ' ')
+    // Removing the weight leaves the separator that preceded it dangling, and
+    // a trailing "- " glued to the category word hid it from the filter below.
+    .replace(/[\s\-–—|]+$/, '')
     .replace(/\s*[-–—|]\s*(flower\s*jar|flower|jar|bag|jars|bags|pouch)\s*$/gi, '')
     .replace(/\s*[-–—|]\s*(?=[-–—|])/g, ' ')                 // collapsed separators
     .replace(/\s*[-–—|]?\s*\b(sativa|indica|hybrid)\b\s*$/i, '') // lineage word left at the end
@@ -187,7 +309,9 @@ const cleanStrainName = (raw, brand) => {
   parts = parts.filter((part) => {
     const p = part.toLowerCase();
     if (brandLower && p === brandLower) return false;
-    if (/^(flower|bud|buds)$/.test(p)) return false;
+    // Grade words a menu files a strain under, never a strain itself. Matched
+    // whole, so a strain called "Whole Lotta Love" survives.
+    if (/^(flower|bud|buds|whole|whole flower|indoor flower)$/.test(p)) return false;
     if (sizeFromText(part) !== null && /^[\d\s./]*(g|gr|gram|grams|oz|ounce|eighth|quarter|half|zip)?$/i.test(p)) return false;
     return true;
   });
@@ -244,19 +368,41 @@ const TERPENES = {
   betaocimene: 'OCIMENE', alphaterpineol: 'TERPINEOL', alphacedrene: 'OTHER',
 };
 
-const isFlower = (p) => {
-  const title = String(flatten(pick(p, ['name', 'productName', 'title', 'displayName'])) ?? '');
-  if (NOT_FLOWER_TITLE.test(title)) return false;
-  const text = [
-    flatten(pick(p, ['category', 'productCategory', 'type', 'kind', 'categoryName'])),
-    flatten(pick(p, ['subcategory', 'subCategory', 'productSubcategory'])),
-  ]
-    .map((v) => String(v ?? ''))
+const NAME_KEYS = ['name', 'productName', 'title', 'displayName'];
+
+/**
+ * Every name a menu might file its category under. They are read together and
+ * joined, not tried in order: one platform stores an opaque id in
+ * `productCategory` and the readable word in `productCategoryName`, and another
+ * uses `type` for something that is not a category at all.
+ */
+const CATEGORY_KEYS = [
+  'category', 'categoryName', 'categories',
+  'productCategory', 'productCategoryName', 'productType', 'productGroup',
+  'subcategory', 'productSubcategory', 'subType', 'rootSubtype', 'subtype',
+  'menuCategory', 'department', 'classification', 'class', 'kind', 'type',
+];
+
+const categoryText = (p) =>
+  pickAll(p, CATEGORY_KEYS)
+    .map((v) => String(flatten(v) ?? ''))
     .join(' ')
-    .toLowerCase();
-  if (!text.trim()) return false;
-  if (/pre[\s-]?roll|infused|blunt|joint/.test(text)) return false;
-  return /flower|bud/.test(text);
+    .toLowerCase()
+    .trim();
+
+/**
+ * Says why a product is or is not flower, rather than just whether. A filter
+ * that rejects thousands of products should be able to report what it was
+ * rejecting them for.
+ */
+const classify = (p) => {
+  const title = String(flatten(pick(p, NAME_KEYS)) ?? '');
+  if (!title.trim()) return 'no-title';
+  if (NOT_FLOWER_TITLE.test(title)) return 'title-not-flower';
+  const text = categoryText(p);
+  if (!text) return 'no-category';
+  if (/pre[\s-]?roll|infused|blunt|joint/.test(text)) return 'category-not-flower';
+  return /flower|bud/.test(text) ? 'flower' : 'category-not-flower';
 };
 
 const inRange = (v, max) => (v === null || v === undefined || v < 0 || v > max ? null : v);
@@ -293,16 +439,21 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   }
 
   const sizes = [];
-  const variants = pick(p, ['variants', 'weights', 'options', 'sizes', 'priceOptions']);
+  const variants = pick(p, ['variants', 'weights', 'options', 'sizes', 'priceOptions', 'measurements']);
   if (Array.isArray(variants)) {
     for (const v of variants) {
-      const g = num(v?.gramAmount ?? v?.weight ?? v?.size ?? v);
-      if (g && g > 0 && g <= 30) sizes.push(g);
+      // Dutchie lists sizes as bare strings: ["1g", "1/8oz", "1/4oz"]. Read
+      // those the same way a title is read, or "1/8oz" is taken for one gram.
+      const g =
+        typeof v === 'string'
+          ? sizeFromText(v)
+          : num(pick(v ?? {}, ['gramAmount', 'weight', 'size', 'value', 'netWeight']) ?? v);
+      if (plausibleSize(g)) sizes.push(g);
     }
   }
 
-  const statedGrams = num(pick(p, ['weightInGrams', 'flowerEquivalentInGrams', 'weight', 'size']));
-  if (statedGrams && statedGrams > 0 && statedGrams <= 30) sizes.push(statedGrams);
+  const statedGrams = plausibleSize(num(pick(p, ['weightInGrams', 'flowerEquivalentInGrams', 'weight', 'size'])));
+  if (statedGrams) sizes.push(statedGrams);
 
   if (!sizes.length) {
     const fromTitle = sizeFromText(String(rawName));
@@ -354,7 +505,14 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
 };
 
 const main = async () => {
-  const browser = await chromium.launch();
+  // Imported here rather than at the top so the parsing helpers below can be
+  // exercised against fixtures without a browser installed.
+  const { chromium } = await import('playwright');
+  // CHROMIUM_PATH lets the local end-to-end check use a browser that is already
+  // on the machine; CI installs its own and leaves this unset.
+  const browser = await chromium.launch(
+    process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {},
+  );
   const listings = [];
   const report = [];
   const rawTerpNames = {};
@@ -398,6 +556,7 @@ const main = async () => {
     try {
       await page.goto(site, { waitUntil: 'domcontentloaded', timeout: 30000 });
       await page.waitForTimeout(2500);
+      entry.ageGate = await affirmAge(page);
 
       // Prefer a flower category link; fall back to any menu link.
       const href = await page.evaluate(
@@ -414,7 +573,9 @@ const main = async () => {
 
       if (href && (await robotsAllows(href))) {
         await page.goto(href, { waitUntil: 'domcontentloaded', timeout: 30000 });
-        await page.waitForTimeout(4000);
+        await page.waitForTimeout(2500);
+        entry.ageGate = (await affirmAge(page)) || entry.ageGate;
+        await page.waitForTimeout(2500);
         await page.mouse.wheel(0, 4000);
         await page.waitForTimeout(2500);
       }
@@ -424,21 +585,42 @@ const main = async () => {
       entry.productsSeen = arrays.reduce((n, a) => n + a.length, 0);
 
       if (arrays.length) {
-        capturedShapes[shop.menu.provider] ??= Object.keys(arrays[0][0]).slice(0, 40);
+        capturedShapes[shop.menu.provider] ??= Object.keys(arrays[0][0]).sort().slice(0, 60);
       }
 
+      // Why products were dropped, not merely how many. A run that collects
+      // nothing has to say which step refused, or the next fix is guesswork.
+      const why = {};
+      const categoriesSeen = new Map();
       const seen = new Set();
       for (const arr of arrays) {
         for (const product of arr) {
-          if (!isFlower(product)) continue;
-          const listing = toListing(product, shop, page.url(), rawTerpNames);
-          if (listing?.listingId && !seen.has(listing.listingId)) {
-            seen.add(listing.listingId);
-            listings.push(listing);
+          const verdict = classify(product);
+          const cat = categoryText(product).slice(0, 40);
+          if (cat) categoriesSeen.set(cat, (categoriesSeen.get(cat) ?? 0) + 1);
+          if (verdict !== 'flower') {
+            why[verdict] = (why[verdict] ?? 0) + 1;
+            continue;
           }
+          const listing = toListing(product, shop, page.url(), rawTerpNames);
+          if (!listing) {
+            why['flower-no-size'] = (why['flower-no-size'] ?? 0) + 1;
+            continue;
+          }
+          if (seen.has(listing.listingId)) {
+            why['duplicate'] = (why['duplicate'] ?? 0) + 1;
+            continue;
+          }
+          seen.add(listing.listingId);
+          listings.push(listing);
         }
       }
       entry.flower = seen.size;
+      entry.rejected = why;
+      entry.categories = [...categoriesSeen.entries()]
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 8)
+        .map(([name, n]) => `${name} (${n})`);
       entry.status = seen.size ? 'ok' : entry.productsSeen ? 'no-flower' : 'no-products';
     } catch (e) {
       entry.status = `error: ${e.message.slice(0, 120)}`;
@@ -452,7 +634,29 @@ const main = async () => {
 
   await browser.close();
 
-  const merged = mergeBySize(listings);
+  /**
+   * A shop whose site was slow, redesigned or down today must not lose the
+   * shelf we already read. Its own listings are replaced outright when this run
+   * reads it successfully; otherwise the previous ones are carried forward
+   * unchanged, still carrying the date they were captured — until they are a
+   * month old, at which point a stale shelf is worse than no shelf.
+   */
+  const CARRY_FORWARD_DAYS = 30;
+  const listingsPath = resolve(ROOT, 'data/flower-listings.json');
+  let previous = [];
+  try {
+    previous = JSON.parse(readFileSync(listingsPath, 'utf8'));
+  } catch {
+    /* first run, or the file was removed on purpose */
+  }
+  const refreshed = new Set(report.filter((r) => r.flower > 0).map((r) => r.licence));
+  const cutoff = Date.now() - CARRY_FORWARD_DAYS * 24 * 60 * 60 * 1000;
+  const carried = previous.filter(
+    (l) => !refreshed.has(l.licenseNumber) && Date.parse(l.capturedAt) >= cutoff,
+  );
+  const dropped = previous.length - carried.length - previous.filter((l) => refreshed.has(l.licenseNumber)).length;
+
+  const merged = mergeBySize([...listings, ...carried]);
   merged.sort((a, b) =>
     a.licenseNumber === b.licenseNumber
       ? a.strainNameRaw.localeCompare(b.strainNameRaw)
@@ -461,6 +665,10 @@ const main = async () => {
 
   const summary = {
     shopsVisited: report.filter((r) => r.status !== 'robots-disallowed').length,
+    ageGatesAnswered: report.filter((r) => r.ageGate).length,
+    shelvesCarriedForward: new Set(carried.map((l) => l.licenseNumber)).size,
+    listingsCarriedForward: carried.length,
+    listingsDroppedAsStale: dropped,
     robotsDisallowed: report.filter((r) => r.status === 'robots-disallowed').length,
     shopsWithFlower: report.filter((r) => r.flower > 0).length,
     listingsBeforeMerge: listings.length,
@@ -477,11 +685,16 @@ const main = async () => {
 
   mkdirSync(resolve(ROOT, 'enrichment-output'), { recursive: true });
   writeFileSync(resolve(ROOT, 'enrichment-output/menu-summary.json'), JSON.stringify(summary, null, 2) + '\n');
-  writeFileSync(resolve(ROOT, 'data/flower-listings.json'), JSON.stringify(merged, null, 2) + '\n');
+  writeFileSync(listingsPath, JSON.stringify(merged, null, 2) + '\n');
   console.log(`\nWrote ${merged.length} listings`);
 };
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+/** Exported for scripts/menu-parse-check.mjs, which tests them against fixtures. */
+export { classify, categoryText, cleanStrainName, mergeBySize, sizeFromText, toListing };
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}

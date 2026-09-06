@@ -1,0 +1,15 @@
+<!doctype html><meta charset="utf-8"><title>Menu — Fixture Dispensary</title>
+<div id="gate">
+  <h1>Are you 21 or older?</h1>
+  <button id="yes">Yes, I am 21</button>
+</div>
+<div id="menu">loading…</div>
+<script>
+  // Like the real storefronts: the shelf only exists once the page fetches it.
+  document.getElementById('yes').onclick = async () => {
+    document.getElementById('gate').style.display = 'none';
+    const r = await fetch('/api/products.json');
+    const j = await r.json();
+    document.getElementById('menu').textContent = j.data.products.length + ' products';
+  };
+</script>

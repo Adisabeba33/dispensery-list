@@ -5,6 +5,10 @@ on:
     branches:
       - agent/menu-flower-nyc
   workflow_dispatch:
+    inputs:
+      limit:
+        description: How many reachable shops to visit
+        default: '40'
 
 permissions:
   contents: write
@@ -17,17 +21,25 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
       - name: Install project dependencies
         run: npm ci
+      # Cheap and first: six minutes of browser time is wasted if the parser
+      # cannot map a payload it has already been shown.
+      - name: Check the parser against captured payload shapes
+        run: node scripts/menu-parse-check.mjs
       - name: Install Playwright
         # Not a project dependency: it exists for this job alone, and keeping it
         # out of package.json stops every Vercel build fetching browsers.
         run: |
           npm install --no-save playwright
           npx playwright install --with-deps chromium
+      # Proves the browser path before it is pointed at real shops: the age
+      # affirmation, the menu link, and capturing the JSON the page fetches.
+      - name: Check the collector against a fixture storefront
+        run: node scripts/menu-e2e-check.mjs
       - name: Read flower off a pilot set of menus
-        run: node scripts/menu-render.mjs --limit 25
+        run: node scripts/menu-render.mjs --limit ${{ inputs.limit || '40' }}
       - name: Validate collected listings
         id: validate
         continue-on-error: true
@@ -43,7 +55,7 @@ jobs:
           git add data/flower-listings.json
           if ! git diff --cached --quiet; then
             git commit -m "menu: collect flower listings from pilot shops"
-            git push origin HEAD:agent/menu-flower-nyc
+            git push origin HEAD:${{ github.ref_name }}
           fi
       # Everything worth reading goes last, smallest first: a long report ahead
       # of an error message hides the error, which has happened twice already.
@@ -51,12 +63,30 @@ jobs:
         if: always()
         run: |
           python3 - <<'PY'
-          import json
-          s = json.load(open('enrichment-output/menu-summary.json'))
-          s.pop('perShop', None)
-          print(json.dumps(s, indent=2)[:4000])
+          import json, os
+          path = 'enrichment-output/menu-summary.json'
+          if not os.path.exists(path):
+              print('The collector wrote no summary — it failed before finishing.')
+              raise SystemExit(0)
+          s = json.load(open(path))
+          shops = s.pop('perShop', [])
+          print(json.dumps(s, indent=2)[:3000])
+
+          print('\n--- per shop ---')
+          for r in shops:
+              if r.get('status') == 'robots-disallowed':
+                  continue
+              gate = 'gate' if r.get('ageGate') else '    '
+              print(f"{str(r.get('status'))[:26]:27} {gate} seen={r.get('productsSeen', 0):<5} "
+                    f"flower={r.get('flower', 0):<4} {r.get('shop', '')[:34]}")
+              if r.get('rejected'):
+                  print(f"    dropped: {r['rejected']}")
+              # The categories a flowerless shop does publish are the finding:
+              # they say what word the filter should have been looking for.
+              if r.get('categories') and not r.get('flower'):
+                  print(f"    categories: {'; '.join(r['categories'][:6])}")
           PY
           echo "--- validation ---"
-          sed -n '/^ERRORS/,$p' /tmp/validate.txt | head -40 || true
-          tail -2 /tmp/validate.txt
-          exit $(cat /tmp/validate.code)
+          sed -n '/^ERRORS/,$p' /tmp/validate.txt 2>/dev/null | head -40 || true
+          tail -2 /tmp/validate.txt 2>/dev/null || echo "validation did not run"
+          exit $(cat /tmp/validate.code 2>/dev/null || echo 1)

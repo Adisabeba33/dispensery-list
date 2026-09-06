@@ -56,6 +56,18 @@ export const SIZES: { grams: number; label: string; short: string }[] = [
 export const sizeLabel = (grams: number): string =>
   SIZES.find((s) => s.grams === grams)?.label ?? `${grams}g`;
 
+/**
+ * The five sizes above are what a buyer asks for at the counter, but shops do
+ * sell flower in others — dime bags at 0.7g, four-gram packs. Rendering only
+ * the canonical five left those listings showing no weight at all, which reads
+ * as "we don't know" when in fact we do. Anything off the ladder keeps its
+ * gram figure and sorts in among the rest.
+ */
+export const sizeChips = (grams: number[]): { grams: number; label: string; short: string }[] =>
+  [...new Set(grams)]
+    .sort((a, b) => a - b)
+    .map((g) => SIZES.find((s) => s.grams === g) ?? { grams: g, label: `${g}g`, short: `${g}g` });
+
 export const TERPENE_LABEL: Record<string, string> = {
   MYRCENE: 'Myrcene',
   LIMONENE: 'Limonene',

@@ -2,7 +2,7 @@
   "name": "dispensary-list",
   "version": "0.1.0",
   "private": true,
-  "description": "Verified directory of state-licensed cannabis dispensaries — New York (NYC + Westchester)",
+  "description": "Verified directory of state-licensed cannabis dispensaries \u2014 New York (NYC + Westchester)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,7 +12,7 @@
     "validate": "tsx scripts/validate-data.ts",
     "ingest": "tsx scripts/ingest/run.ts",
     "ingest:dry": "tsx scripts/ingest/run.ts --dry-run",
-    "test": "npm run typecheck && npm run validate",
+    "test": "npm run typecheck && node scripts/menu-parse-check.mjs && npm run validate",
     "preview": "tsx scripts/build-preview.ts"
   },
   "dependencies": {
