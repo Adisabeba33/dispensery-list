@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import type { Dispensary } from '@/lib/types';
 import { displayName, LICENSE_TYPE_LABEL, regionOf } from '@/lib/data';
 import { fullAddress, SERVICE_LABELS } from '@/lib/format';
-import { listingsFor } from '@/lib/menu';
 import { LicenseTag, StatusBadge, VerificationBadge } from './Badges';
 import { DispensaryDetail } from './DispensaryDetail';
 
@@ -70,6 +69,8 @@ type Props = {
   d: Dispensary;
   expanded?: boolean;
   onToggle?: () => void;
+  /** Counted on the server: the client never holds every shop's shelf. */
+  menuCount?: number;
 };
 
 /**
@@ -77,14 +78,13 @@ type Props = {
  * it. Links and controls inside a <button> are invalid markup, and browsers
  * swallow their clicks, which would break every link in the expanded view.
  */
-export const DispensaryCard = ({ d, expanded = false, onToggle }: Props) => {
+export const DispensaryCard = ({ d, expanded = false, onToggle, menuCount = 0 }: Props) => {
   // Used outside the directory (the Westchester page) there is nothing to
   // expand into, so the summary links to the standalone page instead.
   const asLink = !onToggle;
   // Only services confirmed true are shown. An unchecked service is absent, not
   // denied — claiming "no delivery" because nobody looked would be a lie.
   const confirmed = SERVICE_LABELS.filter(({ key }) => d.services?.[key] === true).slice(0, 4);
-  const menuCount = listingsFor(d.licenseNumber).length;
 
   return (
     <div
@@ -110,7 +110,7 @@ export const DispensaryCard = ({ d, expanded = false, onToggle }: Props) => {
 
       {expanded && (
         <div className="mt-5 border-t border-ink-700 pt-5">
-          <DispensaryDetail d={d} />
+          <DispensaryDetail d={d} hasMenu={menuCount > 0} />
 
           <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-ink-700/70 pt-4">
             <button

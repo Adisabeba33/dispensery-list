@@ -10,7 +10,7 @@ import {
   sizeChips,
   sizeLabel,
   type FlowerListing,
-} from '@/lib/menu';
+} from '@/lib/menu-format';
 
 const PROVENANCE_CLASS: Record<string, string> = {
   lab: 'border-moss-600/55 bg-moss-600/12 text-moss-400',

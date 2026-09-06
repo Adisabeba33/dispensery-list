@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { DispensaryCard } from '@/components/DispensaryCard';
 import { DemoBanner } from '@/components/DemoBanner';
 import { dispensaries, isDemoData, optedOutMunicipalities } from '@/lib/data';
+import { menuCounts } from '@/lib/menu';
 
 export const metadata: Metadata = {
   title: 'Westchester County',
@@ -15,6 +16,7 @@ export default function WestchesterPage() {
     .sort((a, b) => a.address.city.localeCompare(b.address.city));
 
   const optedOut = optedOutMunicipalities();
+  const counts = menuCounts();
 
   return (
     <>
@@ -47,7 +49,7 @@ export default function WestchesterPage() {
             <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {local.map((d) => (
                 <li key={d.id}>
-                  <DispensaryCard d={d} />
+                  <DispensaryCard d={d} menuCount={counts[d.licenseNumber] ?? 0} />
                 </li>
               ))}
             </ul>

@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
-import { LINEAGE_LABEL, SIZES, sizeChips, sizeLabel } from '@/lib/menu';
+import { LINEAGE_LABEL, SIZES, sizeChips, sizeLabel } from '@/lib/menu-format';
 
 export type StrainEntry = {
   key: string;

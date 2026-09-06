@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { DirectoryExplorer } from '@/components/DirectoryExplorer';
 import { DemoBanner } from '@/components/DemoBanner';
 import { dispensaries, isDemoData, stats } from '@/lib/data';
+import { menuCounts } from '@/lib/menu';
 import { prettyDate } from '@/lib/format';
 
 export default function HomePage() {
@@ -59,7 +60,7 @@ export default function HomePage() {
         </p>
       </section>
 
-      <DirectoryExplorer dispensaries={dispensaries} />
+      <DirectoryExplorer dispensaries={dispensaries} menuCounts={menuCounts()} />
 
       <section className="shell">
         <div className="card flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">

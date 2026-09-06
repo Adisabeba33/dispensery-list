@@ -6,6 +6,7 @@ import { StatusBadge, VerificationBadge } from '@/components/Badges';
 import { DispensaryDetail } from '@/components/DispensaryDetail';
 import { dispensaries, displayName, getDispensary, isDemoData, LICENSE_TYPE_LABEL, regionOf } from '@/lib/data';
 import { fullAddress } from '@/lib/format';
+import { listingsFor } from '@/lib/menu';
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -55,7 +56,7 @@ export default async function DispensaryPage({ params }: Params) {
           </div>
         </header>
 
-        <DispensaryDetail d={d} />
+        <DispensaryDetail d={d} menu={listingsFor(d.licenseNumber)} />
 
       </article>
     </>
