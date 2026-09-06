@@ -92,3 +92,34 @@ export const stats = (): Stats => {
     lastUpdated: dates.length > 0 ? dates[dates.length - 1] : null,
   };
 };
+
+export type Debts = {
+  unknownStatus: number;
+  expiredButActive: number;
+  addressDisputed: number;
+  medical: number;
+};
+
+/**
+ * What the register knows it does not know, counted rather than described.
+ * A page that says "some records are unverified" is not checkable; a page that
+ * says how many is.
+ */
+export const debts = (): Debts => {
+  const addressWarning = 'OCM public-open list address differs';
+  return {
+    unknownStatus: dispensaries.filter((d) => d.operationalStatus === 'UNKNOWN').length,
+    // Compared against the day each record was last read from the registry,
+    // not against today: the site is built once and read later.
+    expiredButActive: dispensaries.filter(
+      (d) =>
+        d.licenseStatus === 'ACTIVE' &&
+        d.dates?.licenseExpiration != null &&
+        d.dates.licenseExpiration < d.lastUpdated.slice(0, 10),
+    ).length,
+    addressDisputed: dispensaries.filter((d) =>
+      d.warnings.some((w) => w.startsWith(addressWarning)),
+    ).length,
+    medical: dispensaries.filter((d) => d.licenseType === 'REGISTERED_ORGANIZATION_MEDICAL').length,
+  };
+};

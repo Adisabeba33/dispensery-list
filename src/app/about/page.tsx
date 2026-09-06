@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { stats } from '@/lib/data';
+import { debts, stats } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'How this register is built',
@@ -16,6 +16,7 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 
 export default function AboutPage() {
   const s = stats();
+  const d = debts();
 
   return (
     <div className="shell max-w-3xl py-12">
@@ -105,6 +106,44 @@ export default function AboutPage() {
             {s.regions.map((r) => `${r.name} (${r.count})`).join(', ')}. Phase one covers the five
             boroughs of New York City and Westchester County.
           </p>
+        </Section>
+
+        <Section title="What this register still does not know">
+          <p>
+            Every one of these is a gap we can name and count. Naming them is the point: a
+            directory that only shows what it is sure of, without saying what it is unsure of,
+            invites you to mistake its silence for completeness.
+          </p>
+          <ul className="mt-4 space-y-3">
+            <li>
+              <span className="font-semibold text-chalk-50">{d.unknownStatus} records with an
+              unconfirmed status.</span>{' '}
+              The state registry lists the licence as active, but the shop does not appear on
+              OCM&apos;s public list of open dispensaries, and we will not call a shop open on a
+              guess.
+            </li>
+            <li>
+              <span className="font-semibold text-chalk-50">{d.expiredButActive} licences past
+              their published expiry.</span>{' '}
+              The registry still marks them active. Whether they were renewed is not something the
+              published data answers, so each such record says so on its own page rather than
+              showing the date without comment.
+            </li>
+            <li>
+              <span className="font-semibold text-chalk-50">{d.addressDisputed} addresses the
+              state gives two ways.</span>{' '}
+              The licence registry and OCM&apos;s public-open list disagree, usually on the ZIP
+              code. The registry address is treated as canonical and the disagreement is recorded
+              on the record instead of being quietly resolved.
+            </li>
+            <li>
+              <span className="font-semibold text-chalk-50">Medical dispensaries are listed but
+              rarely confirmed open.</span>{' '}
+              The {d.medical} Registered Organizations here are licensed to serve patients. OCM&apos;s
+              public-open list covers adult-use retail, so for most of them there is no source that
+              confirms they are trading today.
+            </li>
+          </ul>
         </Section>
 
         <Section title="Corrections">
