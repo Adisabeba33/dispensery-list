@@ -62,7 +62,12 @@ jobs:
             exit 0
           fi
 
-          BRANCH="refresh/registry-$(date -u +%Y-%m-%d)"
+          # The run number keeps two refreshes on the same day from colliding.
+          # Without it the second one is rejected as a non-fast-forward and the
+          # whole job fails having already done its work — and nothing
+          # overwrites anything, which is the right trade for a disposable
+          # branch carrying data someone still has to review.
+          BRANCH="refresh/registry-$(date -u +%Y-%m-%d)-${{ github.run_number }}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"

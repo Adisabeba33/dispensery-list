@@ -1,0 +1,7 @@
+{
+  "source": "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/",
+  "sourceLabel": "US Census Bureau Gazetteer, ZIP Code Tabulation Areas",
+  "licence": "Public domain (work of the United States federal government)",
+  "note": "Filled by scripts/fetch-zip-centroids.py, which runs in the weekly refresh. Empty here so the import always resolves; until it is filled, ZIP search falls back to the centre of the shops we hold in each ZIP.",
+  "centroids": {}
+}

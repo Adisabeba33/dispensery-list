@@ -4,12 +4,16 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import clsx from 'clsx';
 import type { Dispensary } from '@/lib/types';
 import { displayName, regionOf } from '@/lib/data';
+import { buildZipCentroids, distanceKm, prettyDistance } from '@/lib/geo';
 import { DispensaryCard } from './DispensaryCard';
 import { DispensaryDetail } from './DispensaryDetail';
 
 const REGION_ORDER = ['Manhattan', 'Brooklyn', 'Queens', 'The Bronx', 'Staten Island', 'Westchester'];
 
-type SortKey = 'name' | 'region' | 'status';
+type SortKey = 'name' | 'region' | 'status' | 'distance';
+
+/** Where the reader is, and how we came to know it. */
+type Origin = { lat: number; lng: number; label: string } | null;
 
 export const DirectoryExplorer = ({
   dispensaries,
@@ -27,6 +31,10 @@ export const DirectoryExplorer = ({
   // Without this they are needles in the list, and the menus may as well not
   // have been collected.
   const [menuOnly, setMenuOnly] = useState(false);
+  const [origin, setOrigin] = useState<Origin>(null);
+  const [zip, setZip] = useState('');
+  const [locating, setLocating] = useState(false);
+  const [locateError, setLocateError] = useState<string | null>(null);
   // Open shops first by default: sorting by name leads with registry entity
   // names that carry no shop sign, and buries the shops someone can walk into.
   const [sort, setSort] = useState<SortKey>('status');
@@ -50,6 +58,10 @@ export const DirectoryExplorer = ({
       setDeliveryOnly(Boolean(saved.deliveryOnly));
       setMenuOnly(Boolean(saved.menuOnly));
       setSort((saved.sort as SortKey) ?? 'status');
+      // The point is remembered, not the permission: coming back should not
+      // re-prompt for location, and should not silently re-read it either.
+      if (saved.origin?.lat != null) setOrigin(saved.origin as Origin);
+      setZip(saved.zip ?? '');
       setOpenLicence(saved.openLicence ?? null);
       if (typeof saved.scrollY === 'number' && saved.scrollY > 0) {
         // After the restored list has laid out, not before.
@@ -70,13 +82,66 @@ export const DirectoryExplorer = ({
       window.localStorage.setItem(
         STORAGE_KEY,
         JSON.stringify({
-          query, region, openOnly, deliveryOnly, menuOnly, sort, openLicence, scrollY: window.scrollY,
+          query, region, openOnly, deliveryOnly, menuOnly, sort, openLicence,
+          origin, zip, scrollY: window.scrollY,
         }),
       );
     } catch {
       // Not remembering is a small loss; blocking the page is not.
     }
-  }, [query, region, openOnly, deliveryOnly, menuOnly, sort, openLicence]);
+  }, [query, region, openOnly, deliveryOnly, menuOnly, sort, openLicence, origin, zip]);
+
+  const centroids = useMemo(() => buildZipCentroids(dispensaries), [dispensaries]);
+
+  const locateMe = () => {
+    if (!('geolocation' in navigator)) {
+      setLocateError('This browser cannot share a location.');
+      return;
+    }
+    setLocating(true);
+    setLocateError(null);
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setOrigin({ lat: pos.coords.latitude, lng: pos.coords.longitude, label: 'your location' });
+        setZip('');
+        setSort('distance');
+        setLocating(false);
+      },
+      (err) => {
+        setLocating(false);
+        // Refusing is a choice, not a fault; say what happened and leave the
+        // ZIP box as the way through.
+        setLocateError(
+          err.code === err.PERMISSION_DENIED
+            ? 'Location was not shared. Type a ZIP code instead.'
+            : 'Your location could not be read. Type a ZIP code instead.',
+        );
+      },
+      { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 },
+    );
+  };
+
+  const useZip = (value: string) => {
+    setZip(value);
+    setLocateError(null);
+    const point = centroids[value.trim()];
+    if (!point) {
+      setOrigin(null);
+      if (/^\d{5}$/.test(value.trim())) {
+        setLocateError(`We have no fix for ZIP ${value.trim()} — it is outside the area covered.`);
+      }
+      return;
+    }
+    setOrigin({ lat: point[0], lng: point[1], label: `ZIP ${value.trim()}` });
+    setSort('distance');
+  };
+
+  const clearOrigin = () => {
+    setOrigin(null);
+    setZip('');
+    setLocateError(null);
+    if (sort === 'distance') setSort('status');
+  };
 
   const regions = useMemo(() => {
     const present = new Set(dispensaries.map(regionOf));
@@ -111,12 +176,35 @@ export const DirectoryExplorer = ({
 
     const openFirst = (d: Dispensary) => (d.operationalStatus === 'OPEN' ? 0 : 1);
 
-    return [...filtered].sort((a, b) => {
+    /* Distance is measured once per shop rather than inside the comparator,
+       which would recompute it on every comparison. */
+    const km = new Map<string, number>();
+    if (origin) {
+      for (const d of filtered) {
+        if (d.geo) km.set(d.licenseNumber, distanceKm(origin, { lat: d.geo.lat, lng: d.geo.lng }));
+      }
+    }
+
+    const sorted = [...filtered].sort((a, b) => {
+      if (sort === 'distance' && origin) {
+        const da = km.get(a.licenseNumber);
+        const db = km.get(b.licenseNumber);
+        // Sixteen records have no coordinates. They keep their place in the
+        // list rather than being dropped, but they cannot claim to be near.
+        if (da === undefined && db === undefined) return displayName(a).localeCompare(displayName(b));
+        if (da === undefined) return 1;
+        if (db === undefined) return -1;
+        return da - db;
+      }
       if (sort === 'status') return openFirst(a) - openFirst(b) || displayName(a).localeCompare(displayName(b));
       if (sort === 'region') return regionOf(a).localeCompare(regionOf(b)) || displayName(a).localeCompare(displayName(b));
       return displayName(a).localeCompare(displayName(b));
     });
-  }, [dispensaries, menuCounts, query, region, openOnly, deliveryOnly, menuOnly, sort]);
+
+    return { list: sorted, km };
+  }, [dispensaries, menuCounts, query, region, openOnly, deliveryOnly, menuOnly, sort, origin]);
+
+  const { list, km } = results;
 
   const activeFilters = Boolean(region || openOnly || deliveryOnly || menuOnly || query.trim());
 
@@ -168,6 +256,48 @@ export const DirectoryExplorer = ({
         <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
+            onClick={locateMe}
+            disabled={locating}
+            className={clsx('chip', origin?.label === 'your location' && 'chip-on')}
+          >
+            {locating ? 'Finding you…' : 'Shops near me'}
+          </button>
+
+          <label className="flex items-center gap-2">
+            <span className="sr-only">ZIP code</span>
+            <input
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              maxLength={5}
+              value={zip}
+              onChange={(e) => useZip(e.target.value.replace(/[^0-9]/g, ''))}
+              placeholder="or a ZIP"
+              className="w-28 rounded-full border border-ink-700 bg-ink-900/80 px-3 py-1.5 text-sm text-chalk-50 placeholder:text-chalk-500 focus:border-moss-600 focus:outline-none focus:ring-2 focus:ring-moss-600/25"
+            />
+          </label>
+
+          {origin && (
+            <>
+              <span className="text-sm text-chalk-400">
+                Nearest to <span className="text-chalk-100">{origin.label}</span>, straight-line
+              </span>
+              <button type="button" onClick={clearOrigin} className="link text-sm">
+                clear
+              </button>
+            </>
+          )}
+        </div>
+
+        {locateError && (
+          <p role="status" className="text-sm text-amber-400">
+            {locateError}
+          </p>
+        )}
+
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
             onClick={() => setRegion(null)}
             className={clsx('chip', region === null && 'chip-on')}
           >
@@ -212,8 +342,8 @@ export const DirectoryExplorer = ({
 
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink-700/70 pb-4">
           <p className="text-sm text-chalk-400">
-            <span className="font-semibold text-chalk-50">{results.length}</span>
-            {results.length === 1 ? ' dispensary' : ' dispensaries'}
+            <span className="font-semibold text-chalk-50">{list.length}</span>
+            {list.length === 1 ? ' dispensary' : ' dispensaries'}
             {activeFilters && (
               <>
                 {' '}
@@ -240,7 +370,7 @@ export const DirectoryExplorer = ({
         </div>
       </div>
 
-      {results.length === 0 ? (
+      {list.length === 0 ? (
         <div className="card mt-8 p-10 text-center">
           <p className="text-chalk-200">Nothing matches those filters.</p>
           <p className="mt-2 text-sm text-chalk-400">
@@ -259,7 +389,7 @@ export const DirectoryExplorer = ({
         </div>
       ) : (
         <ul className="mt-8 grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {results.map((d) => {
+          {list.map((d) => {
             const isOpen = openLicence === d.licenseNumber;
             return (
               <li
@@ -274,6 +404,11 @@ export const DirectoryExplorer = ({
                   expanded={isOpen}
                   onToggle={() => toggle(d.licenseNumber)}
                   menuCount={menuCounts[d.licenseNumber] ?? 0}
+                  distance={
+                    origin && km.has(d.licenseNumber)
+                      ? prettyDistance(km.get(d.licenseNumber)!)
+                      : null
+                  }
                 />
               </li>
             );
