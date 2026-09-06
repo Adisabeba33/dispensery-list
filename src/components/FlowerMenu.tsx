@@ -5,9 +5,10 @@ import clsx from 'clsx';
 import {
   LINEAGE_LABEL,
   PROVENANCE,
-  SIZES,
   TERPENE_LABEL,
   TERPENE_NOTE,
+  sizeChips,
+  sizeLabel,
   type FlowerListing,
 } from '@/lib/menu';
 
@@ -75,13 +76,15 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
       {/* Sizes: what a buyer actually asks for at the counter. */}
       {sizes.length > 0 && (
         <ul className="mt-3 flex flex-wrap gap-1.5">
-          {SIZES.filter((s) => sizes.includes(s.grams)).map((s) => (
+          {sizeChips(sizes).map((s) => (
             <li
               key={s.grams}
               className="rounded-md border border-ink-700 bg-ink-900/70 px-2 py-1 text-[0.72rem] text-chalk-200"
             >
               <span className="font-medium">{s.label}</span>
-              <span className="ml-1.5 tabular-nums text-chalk-500">{s.short}</span>
+              {s.label !== s.short && (
+                <span className="ml-1.5 tabular-nums text-chalk-500">{s.short}</span>
+              )}
             </li>
           ))}
         </ul>
@@ -137,9 +140,9 @@ export const FlowerMenu = ({ listings }: { listings: FlowerListing[] }) => {
   const [labOnly, setLabOnly] = useState(false);
 
   const sizesPresent = useMemo(() => {
-    const present = new Set<number>();
-    for (const l of listings) for (const g of l.availableSizesGrams ?? []) present.add(g);
-    return SIZES.filter((s) => present.has(s.grams));
+    const present: number[] = [];
+    for (const l of listings) for (const g of l.availableSizesGrams ?? []) present.push(g);
+    return sizeChips(present);
   }, [listings]);
 
   const results = useMemo(
@@ -212,7 +215,7 @@ export const FlowerMenu = ({ listings }: { listings: FlowerListing[] }) => {
       <p className="mt-4 text-sm text-chalk-400">
         <span className="font-semibold text-chalk-50">{results.length}</span>
         {results.length === 1 ? ' strain' : ' strains'}
-        {size !== null && ` available by the ${SIZES.find((s) => s.grams === size)?.label.toLowerCase()}`}
+        {size !== null && ` available by the ${sizeLabel(size).toLowerCase()}`}
       </p>
 
       {results.length === 0 ? (

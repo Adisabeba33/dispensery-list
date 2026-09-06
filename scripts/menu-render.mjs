@@ -252,12 +252,18 @@ const SIZE_RULES = [
   [/(?<![a-z])(?:oz|ounce|zip)\b/i, () => 28],
 ];
 
+/* Nobody sells flower by the hundredth of a gram. A figure below this came
+   from some other field — a discount, a rating, a tax rate — and reading it as
+   a weight puts a size on the shelf that a buyer cannot ask for. */
+const MIN_PLAUSIBLE_GRAMS = 0.5;
+const plausibleSize = (g) => (typeof g === 'number' && g >= MIN_PLAUSIBLE_GRAMS && g <= 30 ? g : null);
+
 const sizeFromText = (text) => {
   for (const [re, take] of SIZE_RULES) {
     const m = text.match(re);
     if (m) {
-      const g = take(m);
-      if (g > 0 && g <= 30) return g;
+      const g = plausibleSize(take(m));
+      if (g) return g;
     }
   }
   return null;
@@ -442,12 +448,12 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
         typeof v === 'string'
           ? sizeFromText(v)
           : num(pick(v ?? {}, ['gramAmount', 'weight', 'size', 'value', 'netWeight']) ?? v);
-      if (g && g > 0 && g <= 30) sizes.push(g);
+      if (plausibleSize(g)) sizes.push(g);
     }
   }
 
-  const statedGrams = num(pick(p, ['weightInGrams', 'flowerEquivalentInGrams', 'weight', 'size']));
-  if (statedGrams && statedGrams > 0 && statedGrams <= 30) sizes.push(statedGrams);
+  const statedGrams = plausibleSize(num(pick(p, ['weightInGrams', 'flowerEquivalentInGrams', 'weight', 'size'])));
+  if (statedGrams) sizes.push(statedGrams);
 
   if (!sizes.length) {
     const fromTitle = sizeFromText(String(rawName));

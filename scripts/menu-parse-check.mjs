@@ -115,6 +115,9 @@ check('size 1oz', sizeFromText('1oz'), 28);
 check('size 28 Grams', sizeFromText('28 Grams'), 28);
 check('size half', sizeFromText('1/2 oz'), 14);
 check('no size', sizeFromText('Blue Dream'), null);
+// A hundredth of a gram is some other field read as a weight.
+check('implausible size refused', toListing({ Name: 'Star Dawg', type: 'Flower', size: 0.01 }, shop, SRC, {}), null);
+check('small real pack kept', toListing({ Name: 'Dime Bag', type: 'Flower', size: 0.7 }, shop, SRC, {})?.availableSizesGrams, [0.7]);
 
 /* ---------------------------------------------------------- name cleaning */
 check('strip sku and marker', cleanStrainName('ILLUMINATI (H) 3.5g - F42', null), 'ILLUMINATI');
