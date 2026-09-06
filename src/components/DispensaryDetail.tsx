@@ -66,10 +66,14 @@ export const DispensaryDetail = ({
         }
       })
       .catch(() => {
-        // A 404 is the ordinary case: most shops have no collected shelf.
+        /* We only ask when the shop is known to have a shelf, so a failure here
+           means the shelf files are missing or unreachable — the deployment
+           did not run scripts/emit-shop-menus.mjs, most likely. Say so rather
+           than render a shop with no menu, which reads as "this shop has
+           none" and is a lie. */
         if (!cancelled) {
           setFetched([]);
-          setMenuState('idle');
+          setMenuState('failed');
         }
       });
     return () => {
@@ -100,6 +104,16 @@ export const DispensaryDetail = ({
 
       {menuState === 'loading' && (
         <p className="mt-8 text-sm text-chalk-500">Reading this shop&apos;s shelf…</p>
+      )}
+
+      {menuState === 'failed' && (
+        <p className="mt-8 text-sm text-amber-400">
+          This shop&apos;s shelf could not be loaded here.{' '}
+          <a href={`/dispensary/${d.id}/#menu`} className="link">
+            Open its page instead
+          </a>
+          .
+        </p>
       )}
 
       {menu.length > 0 && (

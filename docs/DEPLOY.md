@@ -79,6 +79,20 @@ git push
 The host rebuilds and the new register is live. A scheduled weekly job running
 those same three steps is enough to keep the register current.
 
+## The build command matters
+
+`npm run build` is `node scripts/emit-shop-menus.mjs && next build`. The first
+half writes `public/shelves/<licence>.json` — one file per shop with a
+collected menu — which the directory fetches when a card is expanded. Those
+files are generated, not committed, so a deployment configured to run
+`next build` directly would ship a site whose menus never open.
+
+Vercel runs the `build` script from package.json, so the default configuration
+is correct and nothing needs setting. If the build command is ever overridden,
+it must keep the script. A card that cannot load its shelf says so and links to
+the shop's own page rather than showing an empty menu, so the failure is
+visible rather than silent — but it is still a failure.
+
 ## Keeping the data current
 
 A snapshot goes stale: licences lapse, shops open and close, and a register
