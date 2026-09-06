@@ -13,16 +13,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://cannabis.ny.gov/localities",
         "label": "OCM — Localities",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "brooklyn-borough",
@@ -38,16 +38,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://cannabis.ny.gov/localities",
         "label": "OCM — Localities",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "manhattan-borough",
@@ -63,16 +63,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://cannabis.ny.gov/localities",
         "label": "OCM — Localities",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "queens-borough",
@@ -88,16 +88,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://cannabis.ny.gov/localities",
         "label": "OCM — Localities",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "staten-island-borough",
@@ -113,16 +113,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://cannabis.ny.gov/localities",
         "label": "OCM — Localities",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "ardsley-village",
@@ -138,16 +138,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "bedford-town",
@@ -163,16 +163,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "briarcliff-manor-village",
@@ -188,16 +188,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "bronxville-village",
@@ -213,16 +213,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "buchanan-village",
@@ -238,16 +238,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "cortlandt-town",
@@ -263,16 +263,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "croton-on-hudson-village",
@@ -288,16 +288,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "dobbs-ferry-village",
@@ -313,16 +313,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "eastchester-town",
@@ -338,16 +338,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "elmsford-village",
@@ -363,16 +363,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "greenburgh-town",
@@ -388,16 +388,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "harrison-town",
@@ -413,16 +413,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "harrison-village",
@@ -438,16 +438,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "hastings-on-hudson-village",
@@ -463,16 +463,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "irvington-village",
@@ -488,16 +488,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "larchmont-village",
@@ -513,16 +513,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "lewisboro-town",
@@ -538,16 +538,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "mamaroneck-town",
@@ -563,16 +563,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "mamaroneck-village",
@@ -588,16 +588,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "mount-kisco-town",
@@ -613,16 +613,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "mount-kisco-village",
@@ -638,16 +638,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "mount-pleasant-town",
@@ -663,16 +663,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "mount-vernon-city",
@@ -688,16 +688,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "new-castle-town",
@@ -713,16 +713,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "new-rochelle-city",
@@ -738,16 +738,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "north-castle-town",
@@ -763,16 +763,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "north-salem-town",
@@ -788,16 +788,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "ossining-town",
@@ -813,16 +813,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "ossining-village",
@@ -838,16 +838,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "peekskill-city",
@@ -863,16 +863,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "pelham-town",
@@ -888,16 +888,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "pelham-village",
@@ -913,16 +913,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "pelham-manor-village",
@@ -938,16 +938,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "pleasantville-village",
@@ -963,16 +963,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "port-chester-village",
@@ -988,16 +988,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "pound-ridge-town",
@@ -1013,16 +1013,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "rye-city",
@@ -1038,16 +1038,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "rye-town",
@@ -1063,16 +1063,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "rye-brook-village",
@@ -1088,16 +1088,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "scarsdale-town",
@@ -1113,16 +1113,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "scarsdale-village",
@@ -1138,16 +1138,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "sleepy-hollow-village",
@@ -1163,16 +1163,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "somers-town",
@@ -1188,16 +1188,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "tarrytown-village",
@@ -1213,16 +1213,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "tuckahoe-village",
@@ -1238,16 +1238,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "white-plains-city",
@@ -1263,16 +1263,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "yonkers-city",
@@ -1288,16 +1288,16 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   },
   {
     "id": "yorktown-town",
@@ -1313,15 +1313,15 @@
         "url": "https://cannabis.ny.gov/ocm-local-opt-out-data",
         "label": "OCM — Official Local Opt-Out List",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       },
       {
         "url": "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1",
         "label": "Westchester County GIS — Municipal Boundary layer",
         "type": "REGULATOR_PAGE",
-        "retrievedAt": "2026-09-06T13:47:36.566Z"
+        "retrievedAt": "2026-09-06T16:46:50.084Z"
       }
     ],
-    "lastUpdated": "2026-09-06T13:47:36.566Z"
+    "lastUpdated": "2026-09-06T16:46:50.084Z"
   }
 ]

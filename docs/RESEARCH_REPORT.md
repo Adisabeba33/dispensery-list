@@ -1,6 +1,6 @@
 # Research report — NYC + Westchester dispensaries
 
-Snapshot time: **2026-09-06T13:47:36.566Z**
+Snapshot time: **2026-09-06T16:46:50.084Z**
 
 ## Result
 
