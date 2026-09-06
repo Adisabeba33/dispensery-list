@@ -53,10 +53,20 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/flower-listings.json
-          if ! git diff --cached --quiet; then
-            git commit -m "menu: collect flower listings from pilot shops"
-            git push origin HEAD:${{ github.ref_name }}
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+            exit 0
           fi
+          # A collection run writes back to the branch it was dispatched on, so
+          # dispatching it on the default branch would put an unreviewed bot
+          # commit straight onto what Vercel deploys. Collection belongs on a
+          # branch; the shelves reach main through a merge someone looked at.
+          if [ "${{ github.ref_name }}" = "${{ github.event.repository.default_branch }}" ]; then
+            echo "Refusing to commit to the default branch. Re-run this on a working branch."
+            exit 1
+          fi
+          git commit -m "menu: collect flower listings from pilot shops"
+          git push origin HEAD:${{ github.ref_name }}
       # Everything worth reading goes last, smallest first: a long report ahead
       # of an error message hides the error, which has happened twice already.
       - name: Report
