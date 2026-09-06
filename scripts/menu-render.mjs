@@ -309,6 +309,12 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     if (fromTitle) sizes.push(fromTitle);
   }
 
+  // A flower listing without a weight is not useful to anyone: the whole point
+  // of the shelf view is which strains come by the eighth, quarter, half or
+  // ounce. If neither the payload nor the title states one, the listing is
+  // dropped rather than published as a strain nobody can ask for.
+  if (!sizes.length) return null;
+
   const stock = flatten(pick(p, ['inStock', 'available', 'isAvailable', 'quantity']));
 
   const listingId = slug(String(brand ?? ''), String(name));

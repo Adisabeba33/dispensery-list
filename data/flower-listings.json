@@ -222,41 +222,6 @@
     "warnings": []
   },
   {
-    "listingId": "find-agent-z-sativa",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Agent Z",
-    "strainNameCanonical": "agent z",
-    "brand": "Find",
-    "lineage": "UNKNOWN",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
     "listingId": "grocery-aisle-chem-de-la-chem",
     "licenseNumber": "OCM-CAURD-24-000105",
     "capturedAt": "2026-09-04T22:50:44Z",
@@ -356,41 +321,6 @@
     "availableSizesGrams": [
       14
     ],
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "nanticoke-all-gas-3-5",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "All Gas",
-    "strainNameCanonical": "all gas",
-    "brand": "Nanticoke",
-    "lineage": "INDICA",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
     "productUrl": null,
     "sources": [
       {
@@ -761,41 +691,6 @@
     "availableSizesGrams": [
       3.5
     ],
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "nanticoke-blue-dream-3-5-f86",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Blue Dream 3.5 F86",
-    "strainNameCanonical": "blue dream 3.5 f86",
-    "brand": "Nanticoke",
-    "lineage": "SATIVA",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
     "productUrl": null,
     "sources": [
       {
@@ -1807,41 +1702,6 @@
     "warnings": []
   },
   {
-    "listingId": "cheech-chong-drooler",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Drooler",
-    "strainNameCanonical": "drooler",
-    "brand": "Cheech & Chong",
-    "lineage": "HYBRID",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
     "listingId": "weedubest-dub-st-diesel",
     "licenseNumber": "OCM-CAURD-24-000105",
     "capturedAt": "2026-09-04T22:50:44Z",
@@ -2767,41 +2627,6 @@
     "warnings": []
   },
   {
-    "listingId": "find-garlic-patties-indica",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Garlic Patties",
-    "strainNameCanonical": "garlic patties",
-    "brand": "Find",
-    "lineage": "UNKNOWN",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
     "listingId": "find-gas-lit",
     "licenseNumber": "OCM-CAURD-24-000105",
     "capturedAt": "2026-09-04T22:50:44Z",
@@ -2901,41 +2726,6 @@
     "availableSizesGrams": [
       28
     ],
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "cali-honey-gelonade",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "GelonAde",
-    "strainNameCanonical": "gelonade",
-    "brand": "Cali Honey",
-    "lineage": "HYBRID",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
     "productUrl": null,
     "sources": [
       {
@@ -3577,41 +3367,6 @@
     "warnings": []
   },
   {
-    "listingId": "cali-honey-headstash-d16",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "HeadStash - D16",
-    "strainNameCanonical": "headstash - d16",
-    "brand": "Cali Honey",
-    "lineage": "INDICA",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
     "listingId": "honest-pharm-honest-pharm-peanut-butter-muffin",
     "licenseNumber": "OCM-CAURD-24-000105",
     "capturedAt": "2026-09-04T22:50:44Z",
@@ -3711,41 +3466,6 @@
     "availableSizesGrams": [
       7
     ],
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "bannermans-batch-iced-sangria-3-5",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Iced Sangria",
-    "strainNameCanonical": "iced sangria",
-    "brand": "Bannermans Batch",
-    "lineage": "UNKNOWN",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
     "productUrl": null,
     "sources": [
       {
@@ -4079,41 +3799,6 @@
     "availableSizesGrams": [
       3.5
     ],
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "jetpacks-jetpacks-3-5-powdered-donuts-big-apple-jacks",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Jetpacks 3.5 Powdered Donuts - Big Apple Jacks",
-    "strainNameCanonical": "jetpacks 3.5 powdered donuts - big apple jacks",
-    "brand": "Jetpacks",
-    "lineage": "UNKNOWN",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
     "productUrl": null,
     "sources": [
       {
@@ -4755,41 +4440,6 @@
     "warnings": []
   },
   {
-    "listingId": "nanticoke-lemon-cherry-gelato-3-5",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Lemon Cherry Gelato",
-    "strainNameCanonical": "lemon cherry gelato",
-    "brand": "Nanticoke",
-    "lineage": "HYBRID",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
     "listingId": "fx-lemon-cherry-wafflez",
     "licenseNumber": "OCM-CAURD-24-000105",
     "capturedAt": "2026-09-04T22:50:44Z",
@@ -4864,41 +4514,6 @@
     "warnings": []
   },
   {
-    "listingId": "hashtag-honey-lemon-skunk-snowballs",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Lemon Skunk Snowballs",
-    "strainNameCanonical": "lemon skunk snowballs",
-    "brand": "Hashtag Honey",
-    "lineage": "SATIVA",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
     "listingId": "wizard-trees-limelight-flower",
     "licenseNumber": "OCM-CAURD-24-000105",
     "capturedAt": "2026-09-04T22:50:44Z",
@@ -4936,41 +4551,6 @@
     "warnings": []
   },
   {
-    "listingId": "cheech-chong-low-rider",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Low Rider",
-    "strainNameCanonical": "low rider",
-    "brand": "Cheech & Chong",
-    "lineage": "HYBRID",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
     "listingId": "high-falls-canna-mac",
     "licenseNumber": "OCM-CAURD-24-000105",
     "capturedAt": "2026-09-04T22:50:44Z",
@@ -4996,41 +4576,6 @@
     "availableSizesGrams": [
       3.5
     ],
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "dealer-mendo-crumble",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Mendo Crumble",
-    "strainNameCanonical": "mendo crumble",
-    "brand": "Dealer",
-    "lineage": "INDICA",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
     "productUrl": null,
     "sources": [
       {
@@ -5265,41 +4810,6 @@
     "warnings": []
   },
   {
-    "listingId": "nysoh-ny-zushi",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "NY Zushi",
-    "strainNameCanonical": "ny zushi",
-    "brand": "NYSOH",
-    "lineage": "INDICA",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
     "listingId": "runtz-obama-runtz",
     "licenseNumber": "OCM-CAURD-24-000105",
     "capturedAt": "2026-09-04T22:50:44Z",
@@ -5436,41 +4946,6 @@
     "availableSizesGrams": [
       3.5
     ],
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "bannermans-batch-papa-smurf-3-5",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Papa Smurf",
-    "strainNameCanonical": "papa smurf",
-    "brand": "Bannermans Batch",
-    "lineage": "SATIVA",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
     "productUrl": null,
     "sources": [
       {
@@ -5816,41 +5291,6 @@
     "warnings": []
   },
   {
-    "listingId": "medison-puff-pastry-3-5",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Puff Pastry",
-    "strainNameCanonical": "puff pastry",
-    "brand": "Medison",
-    "lineage": "SATIVA",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
     "listingId": "hashtag-honey-punch-breath-snowball",
     "licenseNumber": "OCM-CAURD-24-000105",
     "capturedAt": "2026-09-04T22:50:44Z",
@@ -5987,41 +5427,6 @@
     "availableSizesGrams": [
       3.5
     ],
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "canna-cure-purple-zkittlez-dime-bag-0-7-f101b",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Purple Zkittlez Dime Bag 0.7 - F101B",
-    "strainNameCanonical": "purple zkittlez dime bag 0.7 - f101b",
-    "brand": "Canna Cure",
-    "lineage": "INDICA",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
     "productUrl": null,
     "sources": [
       {
@@ -6478,41 +5883,6 @@
     "warnings": []
   },
   {
-    "listingId": "nysoh-sour-durbin",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Sour Durbin",
-    "strainNameCanonical": "sour durbin",
-    "brand": "NYSOH",
-    "lineage": "HYBRID",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
     "listingId": "budcracker-sour-tangie",
     "licenseNumber": "OCM-CAURD-24-000105",
     "capturedAt": "2026-09-04T22:50:44Z",
@@ -6649,41 +6019,6 @@
     "availableSizesGrams": [
       7
     ],
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "canna-cure-strawberry-diesel-dime-bag-0-7-f101c",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Strawberry Diesel Dime Bag 0.7 -F101C",
-    "strainNameCanonical": "strawberry diesel dime bag 0.7 -f101c",
-    "brand": "Canna Cure",
-    "lineage": "SATIVA",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
     "productUrl": null,
     "sources": [
       {
@@ -6955,41 +6290,6 @@
     "warnings": []
   },
   {
-    "listingId": "toke-folks-toke-folks-mother-of-berries-3-5far",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Toke Folks: Mother Of. Berries 3.5far",
-    "strainNameCanonical": "toke folks: mother of. berries 3.5far",
-    "brand": "Toke Folks",
-    "lineage": "INDICA",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
     "listingId": "token-token-heights-cannabis-future-1-lc2",
     "licenseNumber": "OCM-CAURD-24-000105",
     "capturedAt": "2026-09-04T22:50:44Z",
@@ -7175,41 +6475,6 @@
     "warnings": []
   },
   {
-    "listingId": "nysoh-trop-sherb",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Trop-Sherb",
-    "strainNameCanonical": "trop-sherb",
-    "brand": "NYSOH",
-    "lineage": "SATIVA",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
     "listingId": "florist-farms-tropical-cookies",
     "licenseNumber": "OCM-CAURD-24-000105",
     "capturedAt": "2026-09-04T22:50:44Z",
@@ -7272,41 +6537,6 @@
     "availableSizesGrams": [
       14
     ],
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "canna-cure-white-widow-dime-bag-0-7-f101d",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "White Widow Dime Bag 0.7 - F101D",
-    "strainNameCanonical": "white widow dime bag 0.7 - f101d",
-    "brand": "Canna Cure",
-    "lineage": "HYBRID",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
     "productUrl": null,
     "sources": [
       {
@@ -7714,41 +6944,6 @@
     "availableSizesGrams": [
       3.5
     ],
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "cheech-chong-yesca",
-    "licenseNumber": "OCM-CAURD-24-000105",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "Yesca",
-    "strainNameCanonical": "yesca",
-    "brand": "Cheech & Chong",
-    "lineage": "HYBRID",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
     "productUrl": null,
     "sources": [
       {
@@ -8378,41 +7573,6 @@
     "availableSizesGrams": [
       4
     ],
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://brooklynorganicbuds.com/store/brooklyn/category/flower/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "find-gs-mints-premium-flower",
-    "licenseNumber": "OCM-CAURD-24-000130",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "GS Mints - Premium Flower",
-    "strainNameCanonical": "gs mints - premium flower",
-    "brand": "Find.",
-    "lineage": "UNKNOWN",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
     "productUrl": null,
     "sources": [
       {
@@ -9824,107 +8984,6 @@
     "warnings": []
   },
   {
-    "listingId": "honest-pharm-co-double-runtz",
-    "licenseNumber": "OCM-CAURD-25-000297",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "DOUBLE RUNTZ",
-    "strainNameCanonical": "double runtz",
-    "brand": "HONEST PHARM CO",
-    "lineage": "HYBRID",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "MENU_LISTING",
-      "profile": [
-        {
-          "name": "PINENE_ALPHA",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "CARYOPHYLLENE",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "MYRCENE",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "PINENE_BETA",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "CAMPHENE",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "OTHER",
-          "rawName": "CaryophylleneOxide",
-          "percent": null
-        },
-        {
-          "name": "GERANIOL",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "GUAIOL",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "HUMULENE",
-          "rawName": null,
-          "percent": 0.24
-        },
-        {
-          "name": "LIMONENE",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "LINALOOL",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "OCIMENE",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "TERPINOLENE",
-          "rawName": null,
-          "percent": null
-        }
-      ],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
     "listingId": "dragonfly-brands-dragonfly-cherry-gushers-popcorn-buds-flower",
     "licenseNumber": "OCM-CAURD-25-000297",
     "capturedAt": "2026-09-04T22:50:44Z",
@@ -10016,107 +9075,6 @@
     "availableSizesGrams": [
       14
     ],
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "find-find-modified-goat-whole-flower",
-    "licenseNumber": "OCM-CAURD-25-000297",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "FIND - MODIFIED GOAT - WHOLE FLOWER",
-    "strainNameCanonical": "find - modified goat - whole flower",
-    "brand": "Find.",
-    "lineage": "INDICA",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "MENU_LISTING",
-      "profile": [
-        {
-          "name": "PINENE_ALPHA",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "CARYOPHYLLENE",
-          "rawName": null,
-          "percent": 0.26
-        },
-        {
-          "name": "MYRCENE",
-          "rawName": null,
-          "percent": 0.25
-        },
-        {
-          "name": "PINENE_BETA",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "CAMPHENE",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "OTHER",
-          "rawName": "CaryophylleneOxide",
-          "percent": null
-        },
-        {
-          "name": "GERANIOL",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "GUAIOL",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "HUMULENE",
-          "rawName": null,
-          "percent": 0.11
-        },
-        {
-          "name": "LIMONENE",
-          "rawName": null,
-          "percent": 0.53
-        },
-        {
-          "name": "LINALOOL",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "OCIMENE",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "TERPINOLENE",
-          "rawName": null,
-          "percent": null
-        }
-      ],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
     "productUrl": null,
     "sources": [
       {
@@ -11241,127 +10199,6 @@
     "availableSizesGrams": [
       14
     ],
-    "productUrl": null,
-    "sources": [
-      {
-        "url": "https://bxbuddiez.com/product/honest-pharm-co-double-runtz-flower-83593/",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-09-04T22:50:44Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "acreage-ny-the-botanist-the-botanist-orange-slice-nebula",
-    "licenseNumber": "OCM-CAURD-25-000297",
-    "capturedAt": "2026-09-04T22:50:44Z",
-    "strainNameRaw": "THE BOTANIST - ORANGE SLICE NEBULA",
-    "strainNameCanonical": "the botanist - orange slice nebula",
-    "brand": "Acreage NY (The Botanist)",
-    "lineage": "HYBRID",
-    "thcPercent": null,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "MENU_LISTING",
-      "profile": [
-        {
-          "name": "PINENE_ALPHA",
-          "rawName": null,
-          "percent": 0.07
-        },
-        {
-          "name": "CARYOPHYLLENE",
-          "rawName": null,
-          "percent": 0.1
-        },
-        {
-          "name": "MYRCENE",
-          "rawName": null,
-          "percent": 0.5
-        },
-        {
-          "name": "PINENE_BETA",
-          "rawName": null,
-          "percent": 0.13
-        },
-        {
-          "name": "CAMPHENE",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "OTHER",
-          "rawName": "CaryophylleneOxide",
-          "percent": null
-        },
-        {
-          "name": "EUCALYPTOL",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "GERANIOL",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "GUAIOL",
-          "rawName": null,
-          "percent": null
-        },
-        {
-          "name": "HUMULENE",
-          "rawName": null,
-          "percent": 0.04
-        },
-        {
-          "name": "OTHER",
-          "rawName": "Isopulegol",
-          "percent": null
-        },
-        {
-          "name": "LIMONENE",
-          "rawName": null,
-          "percent": 0.16
-        },
-        {
-          "name": "LINALOOL",
-          "rawName": null,
-          "percent": 0.03
-        },
-        {
-          "name": "NEROLIDOL",
-          "rawName": null,
-          "percent": 0.03
-        },
-        {
-          "name": "OCIMENE",
-          "rawName": null,
-          "percent": 0.03
-        },
-        {
-          "name": "OTHER",
-          "rawName": "pCymene",
-          "percent": null
-        },
-        {
-          "name": "TERPINOLENE",
-          "rawName": null,
-          "percent": 1.22
-        }
-      ],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "harvestedOn": null,
-    "packagedOn": null,
-    "inStock": true,
-    "availableSizesGrams": null,
     "productUrl": null,
     "sources": [
       {
