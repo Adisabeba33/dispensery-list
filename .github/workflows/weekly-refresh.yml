@@ -35,6 +35,12 @@ jobs:
       - name: Fetch the state registry
         run: node scripts/research-bootstrap.mjs
 
+      # The Census publishes a new gazetteer vintage once a year, so this is
+      # almost always a no-op — but it is the same kind of thing this workflow
+      # exists for, and one workflow is easier to remember than two.
+      - name: Refresh ZIP centres
+        run: python scripts/fetch-zip-centroids.py
+
       - name: Rebuild records from the registry
         run: python scripts/compile-research.py
 
