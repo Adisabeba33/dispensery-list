@@ -1,8 +1,8 @@
 # Current OCM Licenses — source columns
 
-Snapshot: `2026-09-04T09:16:19.670Z`
+Snapshot: `2026-09-06T13:47:36.566Z`
 Dataset: `https://data.ny.gov/Economic-Development/Current-OCM-Licenses/jskf-tt3q`
-Raw rows: **2958**
+Raw rows: **2974**
 
 ## Actual columns
 
@@ -56,8 +56,8 @@ Raw rows: **2958**
 ## Filter used
 
 1. County must be one of New York, Kings, Queens, Bronx, Richmond, Westchester.
-2. License type must be Adult-Use Retail Dispensary, CAURD, or Microbusiness with an explicit retail business purpose.
-3. `license_number` must satisfy the repository contract `OCM-...`; this removes proximity-protection applicants and also exposes a schema conflict for legacy Registered Organization IDs (`MM####D`).
+2. License type must be Adult-Use Retail Dispensary, CAURD, Registered Organization (medical or adult-use), or Microbusiness with an explicit retail business purpose.
+3. `license_number` must satisfy the repository contract — `OCM-...` or the legacy Registered Organization form `MM####D`; this removes proximity-protection applicants.
 4. Only current `Active` license rows are published in this phase. Expired rows are retained in the raw snapshot and enumerated in the report, not silently dropped.
 5. ZIP sanity is applied after county filtering. Two official rows marked `county=New York` are physically upstate (Remsen 13438 and Palenville 12414); they are excluded as source-data geography anomalies.
 

@@ -1,37 +1,37 @@
 # Research report — NYC + Westchester dispensaries
 
-Snapshot time: **2026-09-04T09:16:19.670Z**
+Snapshot time: **2026-09-06T13:47:36.566Z**
 
 ## Result
 
-Published current-license records: **456**.
-- OPEN: **325**
-- APPROVED_NOT_OPEN: **115**
+Published current-license records: **468**.
+- OPEN: **328**
+- APPROVED_NOT_OPEN: **124**
 - UNKNOWN: **16**
-- VERIFIED_OFFICIAL: **456 / 456 (100%)**
+- VERIFIED_OFFICIAL: **468 / 468 (100%)**
 
 ### By county
 
 | County | Total | Open | Approved not open | Unknown |
 |---|---:|---:|---:|---:|
-| New York | 120 | 98 | 20 | 2 |
-| Kings | 116 | 86 | 27 | 3 |
-| Queens | 118 | 79 | 34 | 5 |
-| Bronx | 34 | 22 | 11 | 1 |
-| Richmond | 21 | 14 | 5 | 2 |
-| Westchester | 47 | 26 | 18 | 3 |
+| New York | 122 | 99 | 21 | 2 |
+| Kings | 118 | 86 | 29 | 3 |
+| Queens | 121 | 80 | 36 | 5 |
+| Bronx | 35 | 22 | 12 | 1 |
+| Richmond | 23 | 14 | 7 | 2 |
+| Westchester | 49 | 27 | 19 | 3 |
 
 ## Source integrity findings
 
 The official OCM public-open page text advertises 717 adult-use dispensaries statewide, while the HTML table snapshot parsed into **716 data rows**. This mismatch is preserved as a source inconsistency; no synthetic 717th row was created.
 
-The raw Current OCM Licenses snapshot contains **2958** rows. The first-pass six-county retail-ish filter produced **466** OCM-format licensed rows: **458 Active** and **8 Inactive/expired** before geography sanity filtering.
+The raw Current OCM Licenses snapshot contains **2974** rows. The first-pass six-county retail-ish filter produced **469** OCM-format licensed rows: **458 Active** and **8 Inactive/expired** before geography sanity filtering.
 
 Two rows are tagged `county=New York` / `region=Manhattan` in the official registry but have clearly upstate addresses and ZIPs; they are excluded from the NYC/Westchester deliverable and kept in the raw evidence:
 - `OCM-MICR-24-000199` — Copperhead Grow, LLC — 10242 State Route 12, Remsen NY 13438.
 - `OCM-RETL-26-000482` — Forage Dispensaries, LLC — 734 NY-32A, Palenville NY 12414.
 
-Expired/inactive OCM-format retail licenses excluded from the current directory: **8**.
+Expired/inactive OCM-format retail licenses excluded from the current directory: **9**.
 - `OCM-RETL-24-000121` — Altitude NY LLC — expired 2026-07-10.
 - `OCM-MICR-24-000043` — BKL Flowers LLC — expired 2026-04-08.
 - `OCM-CAURD-24-000158` — DISCO HERBATORY LLC — expired 2026-06-28.
@@ -40,10 +40,11 @@ Expired/inactive OCM-format retail licenses excluded from the current directory:
 - `OCM-CAURD-24-000182` — Juniper NY LLC — expired 2026-08-02.
 - `OCM-RETL-24-000067` — MamitaJoy LLC — expired 2026-04-18.
 - `OCM-CAURD-23-000015` — Statis Cannabis Co — expired 2025-06-27.
+- `MM0802D` — Sunnyside — expired date unavailable.
 
-## Contract conflict: Registered Organizations
+## Registered Organizations
 
-There are **10** in-scope Registered Organization / Adult-Use Registered Organization Dispensary rows in the official registry, but OCM publishes them with legacy IDs such as `MM0906D`, not the repository-required `OCM-XXX-YY-NNNNNN` pattern. They cannot be represented without changing the current schema/brief, so they are not silently coerced. This is a known completeness gap that needs a contract decision before publication as 'all dispensaries'.
+OCM publishes these with legacy IDs such as `MM0906D` rather than the `OCM-XXX-YY-NNNNNN` pattern, which the licence contract used to refuse — so they were absent from the register entirely. The schema now accepts both forms and they are included: **9** of **10** in-scope registry rows were published, the remainder failing the same active/geography filters as any other row. A medical Registered Organization is recorded as serving patients; whether it also dispenses adult-use is a separate permission the registry does not state here, so that field is left null rather than assumed.
 
 ## Operational unknowns
 
@@ -80,4 +81,4 @@ Five current public-open entries were matched only after manual review because t
 - Menu provider/order URL is still null pending website-by-website menu-platform enrichment.
 - Pickup/curbside/ADA/payment/parking fields remain null unless explicitly sourced.
 - The 16 operational UNKNOWN records above need a future OCM public-list appearance or other regulator-level reconciliation before they can be called OPEN.
-- Registered Organization storefronts require a schema/contract decision for legacy `MM...D` license numbers.
+- Registered Organizations are now included, but the OCM public-open list covers adult-use retail, so most of them will sit at `UNKNOWN` until another regulator source confirms they are trading.
