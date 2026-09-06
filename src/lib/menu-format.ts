@@ -158,63 +158,25 @@ export const PROVENANCE: Record<TerpeneSource, { label: string; detail: string; 
 };
 
 /**
- * What a shelf reads like as text, for pasting somewhere else.
+ * The strains on a shelf, one per line, and nothing else.
  *
- * The provenance labels are not decoration. On the page a reference profile is
- * a different colour with a sentence under it; in a paste buffer there is
- * nothing but the words, so each terpene line carries its own. A profile that
- * arrives somewhere else looking like a lab result for that jar would be the
- * one lie this project exists not to tell.
+ * This is for pasting into something that wants a list of names. A header, the
+ * shop, the date, brands, weights, potency and terpenes all belong on the page
+ * and all get in the way here — everything the reader can already see is noise
+ * in a paste buffer.
+ *
+ * Names repeat when two brands stock the same strain, and a list of strains has
+ * no use for the same name twice.
  */
-const TERPENE_PROVENANCE: Record<TerpeneSource, string> = {
-  LAB_COA: 'lab-tested, this batch',
-  MENU_LISTING: 'stated by the shop, no certificate',
-  STRAIN_REFERENCE: 'typical for the strain, NOT measured from this batch',
-  NONE: '',
-};
-
-export const menuAsText = (
-  rows: FlowerListing[],
-  opts: { shopName: string; sizeGrams: number | null; capturedAt?: string; url?: string },
-): string => {
-  const { shopName, sizeGrams, capturedAt, url } = opts;
-  const heading = sizeGrams === null
-    ? `${shopName} — flower`
-    : `${shopName} — flower by the ${sizeLabel(sizeGrams).toLowerCase()} (${sizeGrams}g)`;
-
-  const read = capturedAt
-    ? ` · read from the shop's own menu on ${new Date(capturedAt).toLocaleDateString('en-US', {
-        dateStyle: 'medium',
-      })}`
-    : '';
-
-  const lines = [heading, `${rows.length} ${rows.length === 1 ? 'strain' : 'strains'}${read}`, ''];
-
+export const strainsAsText = (rows: FlowerListing[]): string => {
+  const seen = new Set<string>();
+  const names: string[] = [];
   for (const l of rows) {
-    const bits = [l.strainNameRaw];
-    if (l.brand) bits.push(l.brand);
-    if (l.lineage !== 'UNKNOWN') bits.push(LINEAGE_LABEL[l.lineage] ?? l.lineage);
-    if (l.thcPercent !== null) bits.push(`THC ${l.thcPercent}%`);
-    const sizes = l.availableSizesGrams ?? [];
-    if (sizes.length) bits.push(sizes.map((g) => `${g}g`).join(', '));
-    if (!l.inStock) bits.push('sold out');
-    lines.push(bits.join(' · '));
-
-    if (l.terpenes.profile.length > 0) {
-      const named = l.terpenes.profile
-        .map((t) => {
-          const name = TERPENE_LABEL[t.name] ?? t.rawName ?? t.name;
-          return t.percent === null ? name : `${name} ${t.percent}%`;
-        })
-        .join(', ');
-      lines.push(`    terpenes (${TERPENE_PROVENANCE[l.terpenes.source]}): ${named}`);
-    }
+    const name = l.strainNameRaw.trim();
+    const key = name.toLowerCase();
+    if (!name || seen.has(key)) continue;
+    seen.add(key);
+    names.push(name);
   }
-
-  lines.push('');
-  lines.push(
-    'Shelves move through the day; this is what the shop published when its menu was read.',
-  );
-  if (url) lines.push(url);
-  return lines.join('\n');
+  return names.join('\n');
 };

@@ -128,7 +128,7 @@ export const DispensaryDetail = ({
 
       {menu.length > 0 && (
         <div className="mt-8">
-          <FlowerMenu listings={menu} shopName={displayName(d)} />
+          <FlowerMenu listings={menu} />
         </div>
       )}
 

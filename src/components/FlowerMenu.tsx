@@ -7,7 +7,7 @@ import {
   PROVENANCE,
   TERPENE_LABEL,
   TERPENE_NOTE,
-  menuAsText,
+  strainsAsText,
   sizeChips,
   sizeLabel,
   type FlowerListing,
@@ -135,13 +135,7 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
   );
 };
 
-export const FlowerMenu = ({
-  listings,
-  shopName = 'This shop',
-}: {
-  listings: FlowerListing[];
-  shopName?: string;
-}) => {
+export const FlowerMenu = ({ listings }: { listings: FlowerListing[] }) => {
   const [size, setSize] = useState<number | null>(null);
   const [inStockOnly, setInStockOnly] = useState(false);
   const [labOnly, setLabOnly] = useState(false);
@@ -168,13 +162,8 @@ export const FlowerMenu = ({
 
   /* Copies what is on screen, not the whole shelf: filtering to the ounce and
      pressing copy should give the strains that come by the ounce. */
-  const copyMenu = async () => {
-    const text = menuAsText(results, {
-      shopName,
-      sizeGrams: size,
-      capturedAt,
-      url: typeof window === 'undefined' ? undefined : window.location.href.split('#')[0],
-    });
+  const copyStrains = async () => {
+    const text = strainsAsText(results);
     try {
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(text);
@@ -210,7 +199,7 @@ export const FlowerMenu = ({
           )}
           <button
             type="button"
-            onClick={copyMenu}
+            onClick={copyStrains}
             className={clsx('chip', copied === 'done' && 'chip-on')}
             aria-live="polite"
           >
@@ -218,7 +207,7 @@ export const FlowerMenu = ({
               ? `Copied ${results.length}`
               : copied === 'failed'
                 ? 'Copy blocked'
-                : 'Copy menu'}
+                : 'Copy strains'}
           </button>
         </div>
       </div>
