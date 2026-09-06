@@ -7,23 +7,29 @@
  * emitted as its own static file and fetched when its card is opened: the home
  * page carries none of it, and opening one shop costs only that shop.
  *
- *   node scripts/emit-shop-menus.mjs
+ * The listings are read through lib/menu rather than straight off disk, so a
+ * shelf fetched by the directory carries the same reference terpenes the shop's
+ * own page shows. Two readers of one dataset disagreeing is worse than either
+ * of them being wrong.
+ *
+ *   npx tsx scripts/emit-shop-menus.ts
  */
-import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
+import { writeFileSync, mkdirSync, rmSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+import { listings } from '../src/lib/menu';
+import type { FlowerListing } from '../src/lib/menu-format';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 // Not public/menus: /menus is a page, and a data file living under a route
 // path invites the router to redirect the fetch out from under it.
 const OUT = resolve(ROOT, 'public/shelves');
 
-const listings = JSON.parse(readFileSync(resolve(ROOT, 'data/flower-listings.json'), 'utf8'));
-
-const byLicence = new Map();
+const byLicence = new Map<string, FlowerListing[]>();
 for (const l of listings) {
   if (!byLicence.has(l.licenseNumber)) byLicence.set(l.licenseNumber, []);
-  byLicence.get(l.licenseNumber).push(l);
+  byLicence.get(l.licenseNumber)!.push(l);
 }
 
 // Rebuilt from scratch: a shop that lost its shelf must not keep a stale file.

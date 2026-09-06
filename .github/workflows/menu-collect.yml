@@ -13,6 +13,10 @@ on:
         description: Skip shops whose shelf is already collected
         type: boolean
         default: false
+      only_endpoints:
+        description: Visit only shops with a researched menu address
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -47,6 +51,7 @@ jobs:
           node scripts/menu-render.mjs
           --limit ${{ inputs.limit || '40' }}
           ${{ inputs.skip_collected && '--skip-collected' || '' }}
+          ${{ inputs.only_endpoints && '--only-endpoints' || '' }}
       - name: Validate collected listings
         id: validate
         continue-on-error: true
@@ -73,7 +78,25 @@ jobs:
             exit 1
           fi
           git commit -m "menu: collect flower listings from pilot shops"
-          git push origin HEAD:${{ github.ref_name }}
+
+          # A collection run takes minutes, and anything pushed to the branch
+          # meanwhile makes this push a non-fast-forward — which threw away a
+          # run that had already read sixteen shops. The only local change is
+          # one data file, so replaying it onto whatever arrived is safe.
+          for attempt in 1 2 3; do
+            if git push origin HEAD:${{ github.ref_name }}; then
+              exit 0
+            fi
+            echo "Push rejected; rebasing onto the branch as it now stands (attempt $attempt)."
+            git fetch origin ${{ github.ref_name }}
+            git rebase FETCH_HEAD || {
+              echo "::error::Could not replay the collected listings onto the branch."
+              git rebase --abort || true
+              exit 1
+            }
+          done
+          echo "::error::Push kept being rejected; the collected listings were not saved."
+          exit 1
       # Everything worth reading goes last, smallest first: a long report ahead
       # of an error message hides the error, which has happened twice already.
       - name: Report
