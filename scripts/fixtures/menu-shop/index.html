@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><title>Fixture Dispensary</title>
+<div id="gate">
+  <h1>Are you 21 or older?</h1>
+  <p>You must be 21 or older to view this site.</p>
+  <button id="no">No</button>
+  <button id="yes">Yes, I am 21</button>
+</div>
+<div id="site" style="display:none">
+  <h1>Fixture Dispensary</h1>
+  <a href="/menu.html">Shop Flower</a>
+</div>
+<script>
+  document.getElementById('yes').onclick = () => {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('site').style.display = 'block';
+  };
+</script>

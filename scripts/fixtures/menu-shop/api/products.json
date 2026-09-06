@@ -1,0 +1,7 @@
+{"data":{"products":[
+ {"_id":"1","id":"1","brandName":"STIIIZY","Name":"STIIIZY - Blue Burst - 3.5g","type":"Flower","subcategory":"Whole Flower","strainType":"Hybrid","THC":{"range":[24.1,24.1],"unit":"PERCENTAGE"},"Options":["1g","1/8oz","1/4oz","1/2oz","1oz"],"Prices":[12,35,65,120,220]},
+ {"_id":"2","id":"2","brandName":"Leal","Name":"Leal - Grape Cake - Flower - 28 Grams","type":"Flower","strainType":"Indica","THC":{"range":[19.5,19.5]},"Options":["28g"],"Prices":[180]},
+ {"_id":"3","id":"3","brandName":"Roll Co","Name":"Blue Dream Pre-Roll 1g","type":"Pre-Rolls","Options":["1g"],"Prices":[9]},
+ {"_id":"4","id":"4","brandName":"Sweet","Name":"Peach Gummies 10mg","type":"Edibles","Options":["10pk"],"Prices":[25]},
+ {"_id":"5","id":"5","brandName":"Tax","name":"State Excise","type":"tax","taxBasis":"retail","applyTo":"all"}
+]}}
