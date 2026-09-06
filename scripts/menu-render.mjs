@@ -37,11 +37,30 @@ const dispensaries = JSON.parse(readFileSync(resolve(ROOT, datasetPath), 'utf8')
 // Menus hosted on Leafly or Weedmaps belong to those companies, not the shop.
 const OWN_SITE = new Set(['DUTCHIE', 'BLAZE', 'TREEZ', 'IHEARTJANE', 'MEADOW', 'PROPRIETARY', 'OTHER']);
 
+/**
+ * --skip-collected leaves out shops whose shelf we already hold, so a sweep
+ * spends its time on the ones never tried rather than re-reading the thirteen
+ * that worked. Their listings survive the run untouched: a shop this run does
+ * not read keeps the shelf already collected.
+ */
+const skipCollected = process.argv.includes('--skip-collected');
+const alreadyCollected = new Set();
+if (skipCollected) {
+  try {
+    for (const l of JSON.parse(readFileSync(resolve(ROOT, 'data/flower-listings.json'), 'utf8'))) {
+      alreadyCollected.add(l.licenseNumber);
+    }
+  } catch {
+    /* nothing collected yet */
+  }
+}
+
 const candidates = dispensaries.filter(
   (d) =>
     d.operationalStatus === 'OPEN' &&
     OWN_SITE.has(d.menu?.provider) &&
-    d.contact?.website,
+    d.contact?.website &&
+    !alreadyCollected.has(d.licenseNumber),
 );
 
 /**
