@@ -51,6 +51,10 @@ export default function HomePage() {
           )}
           <Link href="/map/" className="link">
             see them on a map
+          </Link>{' '}
+          ·{' '}
+          <Link href="/menus/" className="link">
+            browse the flower on their shelves
           </Link>
         </p>
       </section>

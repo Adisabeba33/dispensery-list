@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import clsx from 'clsx';
 import type { Dispensary } from '@/lib/types';
 import { displayName, regionOf } from '@/lib/data';
+import { listingsFor } from '@/lib/menu';
 import { DispensaryCard } from './DispensaryCard';
 import { DispensaryDetail } from './DispensaryDetail';
 
@@ -16,6 +17,10 @@ export const DirectoryExplorer = ({ dispensaries }: { dispensaries: Dispensary[]
   const [region, setRegion] = useState<string | null>(null);
   const [openOnly, setOpenOnly] = useState(false);
   const [deliveryOnly, setDeliveryOnly] = useState(false);
+  // Thirteen shops of four hundred and fifty-six have a shelf we have read.
+  // Without this they are needles in the list, and the menus may as well not
+  // have been collected.
+  const [menuOnly, setMenuOnly] = useState(false);
   // Open shops first by default: sorting by name leads with registry entity
   // names that carry no shop sign, and buries the shops someone can walk into.
   const [sort, setSort] = useState<SortKey>('status');
@@ -37,6 +42,7 @@ export const DirectoryExplorer = ({ dispensaries }: { dispensaries: Dispensary[]
       setRegion(saved.region ?? null);
       setOpenOnly(Boolean(saved.openOnly));
       setDeliveryOnly(Boolean(saved.deliveryOnly));
+      setMenuOnly(Boolean(saved.menuOnly));
       setSort((saved.sort as SortKey) ?? 'status');
       setOpenLicence(saved.openLicence ?? null);
       if (typeof saved.scrollY === 'number' && saved.scrollY > 0) {
@@ -57,12 +63,14 @@ export const DirectoryExplorer = ({ dispensaries }: { dispensaries: Dispensary[]
     try {
       window.localStorage.setItem(
         STORAGE_KEY,
-        JSON.stringify({ query, region, openOnly, deliveryOnly, sort, openLicence, scrollY: window.scrollY }),
+        JSON.stringify({
+          query, region, openOnly, deliveryOnly, menuOnly, sort, openLicence, scrollY: window.scrollY,
+        }),
       );
     } catch {
       // Not remembering is a small loss; blocking the page is not.
     }
-  }, [query, region, openOnly, deliveryOnly, sort, openLicence]);
+  }, [query, region, openOnly, deliveryOnly, menuOnly, sort, openLicence]);
 
   const regions = useMemo(() => {
     const present = new Set(dispensaries.map(regionOf));
@@ -76,6 +84,7 @@ export const DirectoryExplorer = ({ dispensaries }: { dispensaries: Dispensary[]
       if (region && regionOf(d) !== region) return false;
       if (openOnly && d.operationalStatus !== 'OPEN') return false;
       if (deliveryOnly && d.services?.delivery !== true) return false;
+      if (menuOnly && listingsFor(d.licenseNumber).length === 0) return false;
       if (!q) return true;
 
       // Searching by licence number matters: it is how someone checks the shop
@@ -101,15 +110,16 @@ export const DirectoryExplorer = ({ dispensaries }: { dispensaries: Dispensary[]
       if (sort === 'region') return regionOf(a).localeCompare(regionOf(b)) || displayName(a).localeCompare(displayName(b));
       return displayName(a).localeCompare(displayName(b));
     });
-  }, [dispensaries, query, region, openOnly, deliveryOnly, sort]);
+  }, [dispensaries, query, region, openOnly, deliveryOnly, menuOnly, sort]);
 
-  const activeFilters = Boolean(region || openOnly || deliveryOnly || query.trim());
+  const activeFilters = Boolean(region || openOnly || deliveryOnly || menuOnly || query.trim());
 
   const clearAll = () => {
     setQuery('');
     setRegion(null);
     setOpenOnly(false);
     setDeliveryOnly(false);
+    setMenuOnly(false);
     setOpenLicence(null);
   };
 
@@ -183,6 +193,14 @@ export const DirectoryExplorer = ({ dispensaries }: { dispensaries: Dispensary[]
             className={clsx('chip', deliveryOnly && 'chip-on')}
           >
             Delivers
+          </button>
+          <button
+            type="button"
+            onClick={() => setMenuOnly((v) => !v)}
+            aria-pressed={menuOnly}
+            className={clsx('chip', menuOnly && 'chip-on')}
+          >
+            Flower menu collected
           </button>
         </div>
 
