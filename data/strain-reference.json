@@ -1,0 +1,140 @@
+[
+  {
+    "strainId": "blue-dream",
+    "canonicalName": "Blue Dream",
+    "aliases": ["Blue Dream"],
+    "lineage": "UNKNOWN",
+    "parents": null,
+    "profile": [
+      {"name": "CARYOPHYLLENE", "medianPercent": 0.2532, "observations": 3},
+      {"name": "LIMONENE", "medianPercent": 0.2193, "observations": 4},
+      {"name": "MYRCENE", "medianPercent": 0.19, "observations": 3},
+      {"name": "PINENE_BETA", "medianPercent": 0.145, "observations": 2},
+      {"name": "FARNESENE", "medianPercent": 0.1096, "observations": 1},
+      {"name": "HUMULENE", "medianPercent": 0.095, "observations": 2},
+      {"name": "LINALOOL", "medianPercent": 0.07, "observations": 1},
+      {"name": "PINENE_ALPHA", "medianPercent": 0.045, "observations": 2},
+      {"name": "BISABOLOL", "medianPercent": 0.02, "observations": 1}
+    ],
+    "basis": {
+      "kind": "AGGREGATED_COA",
+      "sampleCount": 4,
+      "datasetName": null,
+      "datasetLicence": null,
+      "notes": "Provisional reference aggregated from four Nanticoke cured-flower NY COAs. Median is computed from quantified detections only; ND and <LOQ results are not coerced to zero. observations is the number of quantified COA results behind each terpene. Brand-limited evidence, not a batch claim for current shelf inventory."
+    },
+    "confidence": "MEDIUM",
+    "sources": [
+      {
+        "url": "https://nanticoke.co/image/catalog/lab-results/Blue%20Dream%201_2%20oz%20Jar%20BL120514H.pdf",
+        "label": "Keystone State Testing of New York — Nanticoke Blue Dream BL120514H — released 2025-05-06",
+        "retrievedAt": "2026-09-06T08:20:00Z"
+      },
+      {
+        "url": "https://nanticoke.co/image/catalog/lab-results/Blue%20Dream%203.5g%20Jar%20BL121908.pdf",
+        "label": "Keystone State Testing of New York — Nanticoke Blue Dream BL121908 — released 2025-07-14",
+        "retrievedAt": "2026-09-06T08:20:00Z"
+      },
+      {
+        "url": "https://nanticoke.co/image/catalog/lab-results/Blue%20Dream%203.5g%20Jar%20BL053115.pdf",
+        "label": "DRS Testing — Nanticoke Blue Dream BL053115 — report 2025-11-14",
+        "retrievedAt": "2026-09-06T08:20:00Z"
+      },
+      {
+        "url": "https://nanticoke.co/image/catalog/lab-results/Blue-Dream-1_2-oz-Jar-BL082810H.pdf",
+        "label": "DRS Testing — Nanticoke Blue Dream BL082810H — report 2026-01-02",
+        "retrievedAt": "2026-09-06T08:20:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-06T08:20:00Z"
+  },
+  {
+    "strainId": "coconut-cream",
+    "canonicalName": "Coconut Cream",
+    "aliases": ["Coconut Cream"],
+    "lineage": "UNKNOWN",
+    "parents": null,
+    "profile": [
+      {"name": "CARYOPHYLLENE", "medianPercent": 0.7425, "observations": 3},
+      {"name": "HUMULENE", "medianPercent": 0.2904, "observations": 3},
+      {"name": "MYRCENE", "medianPercent": 0.2211, "observations": 3},
+      {"name": "FARNESENE", "medianPercent": 0.2011, "observations": 2},
+      {"name": "BISABOLOL", "medianPercent": 0.15, "observations": 1},
+      {"name": "LIMONENE", "medianPercent": 0.13, "observations": 3},
+      {"name": "VALENCENE", "medianPercent": 0.1101, "observations": 1},
+      {"name": "LINALOOL", "medianPercent": 0.11, "observations": 3}
+    ],
+    "basis": {
+      "kind": "AGGREGATED_COA",
+      "sampleCount": 3,
+      "datasetName": null,
+      "datasetLicence": null,
+      "notes": "Provisional reference aggregated from three Nanticoke cured-flower NY COAs. Median is computed from quantified detections only; ND and <LOQ results are not coerced to zero. observations is the number of quantified COA results behind each terpene. Brand-limited evidence, not a batch claim for current shelf inventory."
+    },
+    "confidence": "MEDIUM",
+    "sources": [
+      {
+        "url": "https://nanticoke.co/image/catalog/lab-results/Coconut%20Cream%201_2%20Oz%20Jar%20CM121813H.pdf",
+        "label": "Keystone State Testing of New York — Nanticoke Coconut Cream CM121813H — report 2025-05-06",
+        "retrievedAt": "2026-09-06T08:20:00Z"
+      },
+      {
+        "url": "https://nanticoke.co/image/catalog/lab-results/Coconut%20Cream%203.5g%20Jar%20CM121907.pdf",
+        "label": "Keystone State Testing of New York — Nanticoke Coconut Cream CM121907 — released 2025-07-22",
+        "retrievedAt": "2026-09-06T08:20:00Z"
+      },
+      {
+        "url": "https://nanticoke.co/image/catalog/lab-results/Coconut%20Cream%203.5g%20Jar%20CM051313.pdf",
+        "label": "DRS Testing — Nanticoke Coconut Cream CM051313 — report 2025-11-13",
+        "retrievedAt": "2026-09-06T08:20:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-06T08:20:00Z"
+  },
+  {
+    "strainId": "og-kush",
+    "canonicalName": "OG Kush",
+    "aliases": ["OG Kush"],
+    "lineage": "UNKNOWN",
+    "parents": null,
+    "profile": [
+      {"name": "CARYOPHYLLENE", "medianPercent": 0.45, "observations": 2},
+      {"name": "LIMONENE", "medianPercent": 0.24, "observations": 2},
+      {"name": "MYRCENE", "medianPercent": 0.235, "observations": 2},
+      {"name": "HUMULENE", "medianPercent": 0.14, "observations": 2},
+      {"name": "LINALOOL", "medianPercent": 0.135, "observations": 2},
+      {"name": "BISABOLOL", "medianPercent": 0.06, "observations": 2},
+      {"name": "TERPINEOL", "medianPercent": 0.045, "observations": 2},
+      {"name": "FENCHOL", "medianPercent": 0.045, "observations": 2},
+      {"name": "PINENE_BETA", "medianPercent": 0.045, "observations": 2},
+      {"name": "PINENE_ALPHA", "medianPercent": 0.03, "observations": 2},
+      {"name": "CARYOPHYLLENE_OXIDE", "medianPercent": 0.02, "observations": 2},
+      {"name": "VALENCENE", "medianPercent": 0.02, "observations": 2},
+      {"name": "GERANIOL", "medianPercent": 0.02, "observations": 1},
+      {"name": "CAMPHENE", "medianPercent": 0.01, "observations": 2},
+      {"name": "OCIMENE", "medianPercent": 0.01, "observations": 2},
+      {"name": "TERPINOLENE", "medianPercent": 0.01, "observations": 1}
+    ],
+    "basis": {
+      "kind": "AGGREGATED_COA",
+      "sampleCount": 2,
+      "datasetName": null,
+      "datasetLicence": null,
+      "notes": "Provisional reference aggregated from two Dank by Definition/HPI Canna cured-flower NY COAs tested by Kaycha Labs. Median is computed from quantified detections only; <LOQ results are not coerced to zero. observations is the number of quantified COA results behind each terpene. Two batches remain thin evidence, so confidence stays LOW."
+    },
+    "confidence": "LOW",
+    "sources": [
+      {
+        "url": "https://ny.yourcoa.com/coa/coa-download/AL50102001-025?is_view=1&mrk=0&wl_id=0",
+        "label": "Kaycha Labs — Dank OG Kush DANK-00425-OGK / AL50102001-025 — COA 2025-01-09",
+        "retrievedAt": "2026-09-06T08:20:00Z"
+      },
+      {
+        "url": "https://ny.yourcoa.com/coa/coa-download/AL50220003-009?is_view=1&mrk=1&wl_id=0",
+        "label": "Kaycha Labs — Dank OG Kush DANK-04925-OGK / AL50220003-009 — COA 2025-03-01",
+        "retrievedAt": "2026-09-06T08:20:00Z"
+      }
+    ],
+    "lastUpdated": "2026-09-06T08:20:00Z"
+  }
+]
