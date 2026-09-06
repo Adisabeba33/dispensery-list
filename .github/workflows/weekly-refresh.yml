@@ -64,11 +64,28 @@ jobs:
           git commit -m "data: weekly refresh from the NY OCM registry"
           git push origin "$BRANCH"
 
-          gh pr create \
+          # Opening the pull request needs "Allow GitHub Actions to create and
+          # approve pull requests" (Settings → Actions → General). Without it
+          # the branch is still pushed and the data is still safe, so this must
+          # not fail the run: a red weekly job that actually did its work
+          # teaches everyone to ignore it.
+          if gh pr create \
             --title "Registry refresh — $(date -u +%Y-%m-%d)" \
             --body-file refresh-report.md \
             --base main \
-            --head "$BRANCH"
+            --head "$BRANCH"; then
+            exit 0
+          fi
+
+          echo "::warning::Could not open the pull request. The refresh itself succeeded."
+          echo
+          echo "The refreshed data is pushed to $BRANCH and validated. Open the"
+          echo "pull request by hand:"
+          echo "  https://github.com/${{ github.repository }}/compare/main...$BRANCH?expand=1"
+          echo
+          echo "To have this happen automatically, enable"
+          echo "  Settings → Actions → General → Workflow permissions"
+          echo "  → Allow GitHub Actions to create and approve pull requests"
 
       - name: Report
         if: always()

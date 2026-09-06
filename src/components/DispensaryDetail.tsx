@@ -89,6 +89,16 @@ export const DispensaryDetail = ({
   const hasHours = d.hours !== null;
   const menu = given ?? fetched ?? [];
 
+  /* Fifteen records carry a licence the registry calls active whose published
+     expiry has already passed. Showing the date without saying so leaves the
+     reader to notice it themselves, and most will not.
+     Compared against the day we last read the registry, not today: the page is
+     built once and read later, so today's date would differ between the
+     server's markup and the browser's, and the register can only speak as of
+     its own snapshot anyway. */
+  const expired =
+    d.dates?.licenseExpiration != null && d.dates.licenseExpiration < d.lastUpdated.slice(0, 10);
+
   return (
     <>
       {d.warnings.length > 0 && (
@@ -137,7 +147,16 @@ export const DispensaryDetail = ({
               )}
               {d.dates?.licenseIssued && <Row label="Issued">{prettyDate(d.dates.licenseIssued)}</Row>}
               {d.dates?.licenseExpiration && (
-                <Row label="Expires">{prettyDate(d.dates.licenseExpiration)}</Row>
+                <Row label="Expires">
+                  {prettyDate(d.dates.licenseExpiration)}
+                  {expired && (
+                    <span className="ml-2 text-amber-400">
+                      — this date has passed, though the registry still lists the licence as
+                      active. Neither we nor the reader can tell from the published data whether it
+                      was renewed.
+                    </span>
+                  )}
+                </Row>
               )}
               {d.dates?.openedOn && <Row label="Opened">{prettyDate(d.dates.openedOn)}</Row>}
             </dl>
