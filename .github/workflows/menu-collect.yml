@@ -13,6 +13,10 @@ on:
         description: Skip shops whose shelf is already collected
         type: boolean
         default: false
+      only_endpoints:
+        description: Visit only shops with a researched menu address
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -47,6 +51,7 @@ jobs:
           node scripts/menu-render.mjs
           --limit ${{ inputs.limit || '40' }}
           ${{ inputs.skip_collected && '--skip-collected' || '' }}
+          ${{ inputs.only_endpoints && '--only-endpoints' || '' }}
       - name: Validate collected listings
         id: validate
         continue-on-error: true

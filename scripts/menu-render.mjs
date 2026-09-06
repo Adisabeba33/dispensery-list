@@ -44,6 +44,10 @@ const OWN_SITE = new Set(['DUTCHIE', 'BLAZE', 'TREEZ', 'IHEARTJANE', 'MEADOW', '
  * not read keeps the shelf already collected.
  */
 const skipCollected = process.argv.includes('--skip-collected');
+/* --only-endpoints visits exactly the shops someone has researched a menu
+   address for. Those are the ones a sweep already failed on, so re-running the
+   whole register to reach them wastes an hour to test twenty-six. */
+const onlyEndpoints = process.argv.includes('--only-endpoints');
 const alreadyCollected = new Set();
 if (skipCollected) {
   try {
@@ -54,14 +58,6 @@ if (skipCollected) {
     /* nothing collected yet */
   }
 }
-
-const candidates = dispensaries.filter(
-  (d) =>
-    d.operationalStatus === 'OPEN' &&
-    OWN_SITE.has(d.menu?.provider) &&
-    d.contact?.website &&
-    !alreadyCollected.has(d.licenseNumber),
-);
 
 /**
  * Menu addresses found by hand, keyed by licence number.
@@ -83,6 +79,15 @@ try {
 } catch {
   /* not delivered yet; the collector hunts for the link as before */
 }
+
+const candidates = dispensaries.filter(
+  (d) =>
+    d.operationalStatus === 'OPEN' &&
+    OWN_SITE.has(d.menu?.provider) &&
+    d.contact?.website &&
+    !alreadyCollected.has(d.licenseNumber) &&
+    (!onlyEndpoints || ENDPOINTS[d.licenseNumber]),
+);
 
 /** robots.txt still applies: a browser does not change who is welcome. */
 const robotsCache = new Map();
