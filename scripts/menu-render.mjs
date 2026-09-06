@@ -37,11 +37,30 @@ const dispensaries = JSON.parse(readFileSync(resolve(ROOT, datasetPath), 'utf8')
 // Menus hosted on Leafly or Weedmaps belong to those companies, not the shop.
 const OWN_SITE = new Set(['DUTCHIE', 'BLAZE', 'TREEZ', 'IHEARTJANE', 'MEADOW', 'PROPRIETARY', 'OTHER']);
 
+/**
+ * --skip-collected leaves out shops whose shelf we already hold, so a sweep
+ * spends its time on the ones never tried rather than re-reading the thirteen
+ * that worked. Their listings survive the run untouched: a shop this run does
+ * not read keeps the shelf already collected.
+ */
+const skipCollected = process.argv.includes('--skip-collected');
+const alreadyCollected = new Set();
+if (skipCollected) {
+  try {
+    for (const l of JSON.parse(readFileSync(resolve(ROOT, 'data/flower-listings.json'), 'utf8'))) {
+      alreadyCollected.add(l.licenseNumber);
+    }
+  } catch {
+    /* nothing collected yet */
+  }
+}
+
 const candidates = dispensaries.filter(
   (d) =>
     d.operationalStatus === 'OPEN' &&
     OWN_SITE.has(d.menu?.provider) &&
-    d.contact?.website,
+    d.contact?.website &&
+    !alreadyCollected.has(d.licenseNumber),
 );
 
 /**
@@ -302,7 +321,11 @@ const lineageFromTitle = (raw) => {
  * flower. Their category often still says "flower", so the title has to be
  * read too.
  */
-const NOT_FLOWER_TITLE = /\b(infus|diamond|moon\s?rock|pre[\s-]?roll|blunt|joint|vape|cart|gumm|edible)/i;
+/* The first group are stems on purpose — "infus" catches Infused, "cart"
+   Cartridge, "gumm" Gummies. The second are whole words, so a Trimmed or
+   Shakedown strain is not thrown away with the shake. */
+const NOT_FLOWER_TITLE =
+  /\b(infus|diamond|moon\s?rock|pre[\s-]?roll|blunt|joint|vape|cart|gumm|edible)|\b(shake|trim)\b|ground\s+flower|ready\s+to\s+roll|flower\s+flight/i;
 
 /** Strips the brand, the category word and the size, leaving the strain. */
 const cleanStrainName = (raw, brand) => {
@@ -459,22 +482,49 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     }
   }
 
+  /* A bare number is not a weight. Reading `value` and `size` as grams put
+     shelves at eleven, twenty-six and twenty-seven grams into the register —
+     quantities and prices wearing a weight's clothes. A figure counts only
+     from a key that means weight, or from text that states its unit. */
+  const WEIGHT_KEYS = ['gramAmount', 'weightInGrams', 'netWeight'];
+  const UNIT_TEXT_KEYS = ['weightFormatted', 'label', 'name', 'title', 'weight', 'size', 'option'];
+
+  const sizeOf = (v) => {
+    if (typeof v === 'string') return sizeFromText(v);
+    if (typeof v === 'number') return null; // no unit stated, so no weight read
+    if (!v || typeof v !== 'object') return null;
+
+    const stated = num(pick(v, WEIGHT_KEYS));
+    if (stated) return stated;
+
+    for (const text of pickAll(v, UNIT_TEXT_KEYS)) {
+      if (typeof text === 'string') {
+        const g = sizeFromText(text);
+        if (g) return g;
+      }
+    }
+    return null;
+  };
+
   const sizes = [];
   const variants = pick(p, ['variants', 'weights', 'options', 'sizes', 'priceOptions', 'measurements']);
   if (Array.isArray(variants)) {
     for (const v of variants) {
-      // Dutchie lists sizes as bare strings: ["1g", "1/8oz", "1/4oz"]. Read
-      // those the same way a title is read, or "1/8oz" is taken for one gram.
-      const g =
-        typeof v === 'string'
-          ? sizeFromText(v)
-          : num(pick(v ?? {}, ['gramAmount', 'weight', 'size', 'value', 'netWeight']) ?? v);
-      if (plausibleSize(g)) sizes.push(g);
+      const g = plausibleSize(sizeOf(v));
+      if (g) sizes.push(g);
     }
   }
 
-  const statedGrams = plausibleSize(num(pick(p, ['weightInGrams', 'flowerEquivalentInGrams', 'weight', 'size'])));
+  // Same rule at the top level: weightInGrams says grams in its name, `size`
+  // does not.
+  const statedGrams = plausibleSize(num(pick(p, ['weightInGrams', 'flowerEquivalentInGrams'])));
   if (statedGrams) sizes.push(statedGrams);
+  if (!sizes.length) {
+    for (const text of pickAll(p, ['weightFormatted', 'weight', 'size'])) {
+      const g = typeof text === 'string' ? plausibleSize(sizeFromText(text)) : null;
+      if (g) sizes.push(g);
+    }
+  }
 
   if (!sizes.length) {
     const fromTitle = sizeFromText(String(rawName));

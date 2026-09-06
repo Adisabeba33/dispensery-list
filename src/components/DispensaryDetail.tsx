@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import {
   COUNTY_LABEL,
   displayName,
@@ -13,7 +16,7 @@ import {
   SERVICE_LABELS,
   WEEKDAYS,
 } from '@/lib/format';
-import { listingsFor } from '@/lib/menu';
+import type { FlowerListing } from '@/lib/menu-format';
 import type { Dispensary } from '@/lib/types';
 import { LicenseTag } from './Badges';
 import { FlowerMenu } from './FlowerMenu';
@@ -30,14 +33,57 @@ const Row = ({ label, children }: { label: string; children: React.ReactNode }) 
  * expands in the directory and the standalone page a link points at, so the
  * two cannot drift apart.
  */
-export const DispensaryDetail = ({ d }: { d: Dispensary }) => {
+/**
+ * `menu` is passed by the shop's own page, which is rendered on the server and
+ * already holds the shelf. The directory cannot: its cards are interactive, and
+ * a client bundle carrying every shop's menu would be six megabytes. So when it
+ * is not passed, the one shop's menu is fetched as it is opened.
+ */
+export const DispensaryDetail = ({
+  d,
+  menu: given,
+  hasMenu = true,
+}: {
+  d: Dispensary;
+  menu?: FlowerListing[];
+  /** The card already counted the shelf; without this we would ask for a file
+      that is not there for three hundred and forty-six of the shops. */
+  hasMenu?: boolean;
+}) => {
+  const [fetched, setFetched] = useState<FlowerListing[] | null>(null);
+  const [menuState, setMenuState] = useState<'idle' | 'loading' | 'failed'>('idle');
+
+  useEffect(() => {
+    if (given || !hasMenu) return;
+    let cancelled = false;
+    setMenuState('loading');
+    fetch(`/shelves/${encodeURIComponent(d.licenseNumber)}.json`)
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+      .then((data: FlowerListing[]) => {
+        if (!cancelled) {
+          setFetched(data);
+          setMenuState('idle');
+        }
+      })
+      .catch(() => {
+        // A 404 is the ordinary case: most shops have no collected shelf.
+        if (!cancelled) {
+          setFetched([]);
+          setMenuState('idle');
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [d.licenseNumber, given, hasMenu]);
+
   const services = SERVICE_LABELS.map(({ key, label }) => ({
     label,
     value: d.services?.[key] as boolean | null | undefined,
   })).filter((s) => s.value !== undefined);
 
   const hasHours = d.hours !== null;
-  const menu = listingsFor(d.licenseNumber);
+  const menu = given ?? fetched ?? [];
 
   return (
     <>
@@ -50,6 +96,10 @@ export const DispensaryDetail = ({ d }: { d: Dispensary }) => {
             ))}
           </ul>
         </div>
+      )}
+
+      {menuState === 'loading' && (
+        <p className="mt-8 text-sm text-chalk-500">Reading this shop&apos;s shelf…</p>
       )}
 
       {menu.length > 0 && (

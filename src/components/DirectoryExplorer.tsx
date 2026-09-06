@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import clsx from 'clsx';
 import type { Dispensary } from '@/lib/types';
 import { displayName, regionOf } from '@/lib/data';
-import { listingsFor } from '@/lib/menu';
 import { DispensaryCard } from './DispensaryCard';
 import { DispensaryDetail } from './DispensaryDetail';
 
@@ -12,7 +11,14 @@ const REGION_ORDER = ['Manhattan', 'Brooklyn', 'Queens', 'The Bronx', 'Staten Is
 
 type SortKey = 'name' | 'region' | 'status';
 
-export const DirectoryExplorer = ({ dispensaries }: { dispensaries: Dispensary[] }) => {
+export const DirectoryExplorer = ({
+  dispensaries,
+  menuCounts,
+}: {
+  dispensaries: Dispensary[];
+  /** Licence number → strains on its collected shelf. Built on the server. */
+  menuCounts: Record<string, number>;
+}) => {
   const [query, setQuery] = useState('');
   const [region, setRegion] = useState<string | null>(null);
   const [openOnly, setOpenOnly] = useState(false);
@@ -84,7 +90,7 @@ export const DirectoryExplorer = ({ dispensaries }: { dispensaries: Dispensary[]
       if (region && regionOf(d) !== region) return false;
       if (openOnly && d.operationalStatus !== 'OPEN') return false;
       if (deliveryOnly && d.services?.delivery !== true) return false;
-      if (menuOnly && listingsFor(d.licenseNumber).length === 0) return false;
+      if (menuOnly && !menuCounts[d.licenseNumber]) return false;
       if (!q) return true;
 
       // Searching by licence number matters: it is how someone checks the shop
@@ -110,7 +116,7 @@ export const DirectoryExplorer = ({ dispensaries }: { dispensaries: Dispensary[]
       if (sort === 'region') return regionOf(a).localeCompare(regionOf(b)) || displayName(a).localeCompare(displayName(b));
       return displayName(a).localeCompare(displayName(b));
     });
-  }, [dispensaries, query, region, openOnly, deliveryOnly, menuOnly, sort]);
+  }, [dispensaries, menuCounts, query, region, openOnly, deliveryOnly, menuOnly, sort]);
 
   const activeFilters = Boolean(region || openOnly || deliveryOnly || menuOnly || query.trim());
 
@@ -267,6 +273,7 @@ export const DirectoryExplorer = ({ dispensaries }: { dispensaries: Dispensary[]
                   d={d}
                   expanded={isOpen}
                   onToggle={() => toggle(d.licenseNumber)}
+                  menuCount={menuCounts[d.licenseNumber] ?? 0}
                 />
               </li>
             );

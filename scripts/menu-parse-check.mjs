@@ -117,7 +117,16 @@ check('size half', sizeFromText('1/2 oz'), 14);
 check('no size', sizeFromText('Blue Dream'), null);
 // A hundredth of a gram is some other field read as a weight.
 check('implausible size refused', toListing({ Name: 'Star Dawg', type: 'Flower', size: 0.01 }, shop, SRC, {}), null);
-check('small real pack kept', toListing({ Name: 'Dime Bag', type: 'Flower', size: 0.7 }, shop, SRC, {})?.availableSizesGrams, [0.7]);
+// A key that names grams is trusted; a bare number under `size` is not — that
+// is how quantities and prices arrived on the shelf as eleven- and
+// twenty-seven-gram packs.
+check('small real pack kept', toListing({ Name: 'Dime Bag', type: 'Flower', weightInGrams: 0.7 }, shop, SRC, {})?.availableSizesGrams, [0.7]);
+check('bare number is not a weight', toListing({ Name: 'Mystery', type: 'Flower', size: 26 }, shop, SRC, {}), null);
+check('unit in text is a weight', toListing({ Name: 'Mystery', type: 'Flower', size: '3.5g' }, shop, SRC, {})?.availableSizesGrams, [3.5]);
+check('variant value is not a weight', toListing({ Name: 'Mystery', type: 'Flower', variants: [{ name: '3.5g', value: 27 }] }, shop, SRC, {})?.availableSizesGrams, [3.5]);
+check('shake refused', classify({ Name: 'Blue Dream Shake', type: 'Flower' }), 'title-not-flower');
+check('ground flower refused', classify({ Name: 'Ready To Roll - Golden Lemons - Ground Flower', type: 'Flower' }), 'title-not-flower');
+check('sampler refused', classify({ Name: 'Flower Flight: Alien Cookies, Blue Moon Dream', type: 'Flower' }), 'title-not-flower');
 
 /* ---------------------------------------------------------- name cleaning */
 check('strip sku and marker', cleanStrainName('ILLUMINATI (H) 3.5g - F42', null), 'ILLUMINATI');

@@ -9,6 +9,10 @@ on:
       limit:
         description: How many reachable shops to visit
         default: '40'
+      skip_collected:
+        description: Skip shops whose shelf is already collected
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -39,7 +43,10 @@ jobs:
       - name: Check the collector against a fixture storefront
         run: node scripts/menu-e2e-check.mjs
       - name: Read flower off a pilot set of menus
-        run: node scripts/menu-render.mjs --limit ${{ inputs.limit || '40' }}
+        run: >-
+          node scripts/menu-render.mjs
+          --limit ${{ inputs.limit || '40' }}
+          ${{ inputs.skip_collected && '--skip-collected' || '' }}
       - name: Validate collected listings
         id: validate
         continue-on-error: true
