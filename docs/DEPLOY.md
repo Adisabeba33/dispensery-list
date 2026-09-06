@@ -81,7 +81,7 @@ those same three steps is enough to keep the register current.
 
 ## The build command matters
 
-`npm run build` is `node scripts/emit-shop-menus.mjs && next build`. The first
+`npm run build` is `tsx scripts/emit-shop-menus.ts && next build`. The first
 half writes `public/shelves/<licence>.json` — one file per shop with a
 collected menu — which the directory fetches when a card is expanded. Those
 files are generated, not committed, so a deployment configured to run

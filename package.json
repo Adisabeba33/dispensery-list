@@ -5,7 +5,7 @@
   "description": "Verified directory of state-licensed cannabis dispensaries \u2014 New York (NYC + Westchester)",
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/emit-shop-menus.mjs && next build",
+    "build": "tsx scripts/emit-shop-menus.ts && next build",
     "start": "next start",
     "lint": "eslint src scripts",
     "typecheck": "tsc --noEmit",
