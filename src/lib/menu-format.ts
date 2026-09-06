@@ -87,6 +87,8 @@ export const TERPENE_LABEL: Record<string, string> = {
   CARENE: 'Carene',
   SABINENE: 'Sabinene',
   FENCHOL: 'Fenchol',
+  CARYOPHYLLENE_OXIDE: 'Caryophyllene oxide',
+  TERPINENE: 'Terpinene',
   OTHER: 'Other',
 };
 
@@ -113,6 +115,8 @@ export const TERPENE_NOTE: Record<string, string> = {
   TERPINEOL: 'lilac, clay',
   PHELLANDRENE: 'mint, citrus',
   CARENE: 'cypress, lemon',
+  CARYOPHYLLENE_OXIDE: 'dry spice, cedar',
+  TERPINENE: 'citrus rind, faintly herbal',
   SABINENE: 'pepper, pine',
   FENCHOL: 'basil, lime',
   OTHER: '',
@@ -151,4 +155,66 @@ export const PROVENANCE: Record<TerpeneSource, { label: string; detail: string; 
     tone: 'reference',
   },
   NONE: { label: 'Not published', detail: 'The shop publishes no terpene data.', tone: 'none' },
+};
+
+/**
+ * What a shelf reads like as text, for pasting somewhere else.
+ *
+ * The provenance labels are not decoration. On the page a reference profile is
+ * a different colour with a sentence under it; in a paste buffer there is
+ * nothing but the words, so each terpene line carries its own. A profile that
+ * arrives somewhere else looking like a lab result for that jar would be the
+ * one lie this project exists not to tell.
+ */
+const TERPENE_PROVENANCE: Record<TerpeneSource, string> = {
+  LAB_COA: 'lab-tested, this batch',
+  MENU_LISTING: 'stated by the shop, no certificate',
+  STRAIN_REFERENCE: 'typical for the strain, NOT measured from this batch',
+  NONE: '',
+};
+
+export const menuAsText = (
+  rows: FlowerListing[],
+  opts: { shopName: string; sizeGrams: number | null; capturedAt?: string; url?: string },
+): string => {
+  const { shopName, sizeGrams, capturedAt, url } = opts;
+  const heading = sizeGrams === null
+    ? `${shopName} — flower`
+    : `${shopName} — flower by the ${sizeLabel(sizeGrams).toLowerCase()} (${sizeGrams}g)`;
+
+  const read = capturedAt
+    ? ` · read from the shop's own menu on ${new Date(capturedAt).toLocaleDateString('en-US', {
+        dateStyle: 'medium',
+      })}`
+    : '';
+
+  const lines = [heading, `${rows.length} ${rows.length === 1 ? 'strain' : 'strains'}${read}`, ''];
+
+  for (const l of rows) {
+    const bits = [l.strainNameRaw];
+    if (l.brand) bits.push(l.brand);
+    if (l.lineage !== 'UNKNOWN') bits.push(LINEAGE_LABEL[l.lineage] ?? l.lineage);
+    if (l.thcPercent !== null) bits.push(`THC ${l.thcPercent}%`);
+    const sizes = l.availableSizesGrams ?? [];
+    if (sizes.length) bits.push(sizes.map((g) => `${g}g`).join(', '));
+    if (!l.inStock) bits.push('sold out');
+    lines.push(bits.join(' · '));
+
+    if (l.terpenes.profile.length > 0) {
+      const named = l.terpenes.profile
+        .map((t) => {
+          const name = TERPENE_LABEL[t.name] ?? t.rawName ?? t.name;
+          return t.percent === null ? name : `${name} ${t.percent}%`;
+        })
+        .join(', ');
+      lines.push(`    terpenes (${TERPENE_PROVENANCE[l.terpenes.source]}): ${named}`);
+    }
+  }
+
+  lines.push('');
+  lines.push(
+    'Shelves move through the day; this is what the shop published when its menu was read.',
+  );
+  if (url) lines.push(url);
+  return lines.join('\n');
 };

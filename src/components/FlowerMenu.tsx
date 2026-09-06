@@ -7,6 +7,7 @@ import {
   PROVENANCE,
   TERPENE_LABEL,
   TERPENE_NOTE,
+  menuAsText,
   sizeChips,
   sizeLabel,
   type FlowerListing,
@@ -134,10 +135,17 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
   );
 };
 
-export const FlowerMenu = ({ listings }: { listings: FlowerListing[] }) => {
+export const FlowerMenu = ({
+  listings,
+  shopName = 'This shop',
+}: {
+  listings: FlowerListing[];
+  shopName?: string;
+}) => {
   const [size, setSize] = useState<number | null>(null);
   const [inStockOnly, setInStockOnly] = useState(false);
   const [labOnly, setLabOnly] = useState(false);
+  const [copied, setCopied] = useState<'idle' | 'done' | 'failed'>('idle');
 
   const sizesPresent = useMemo(() => {
     const present: number[] = [];
@@ -158,15 +166,61 @@ export const FlowerMenu = ({ listings }: { listings: FlowerListing[] }) => {
 
   const capturedAt = listings[0]?.capturedAt;
 
+  /* Copies what is on screen, not the whole shelf: filtering to the ounce and
+     pressing copy should give the strains that come by the ounce. */
+  const copyMenu = async () => {
+    const text = menuAsText(results, {
+      shopName,
+      sizeGrams: size,
+      capturedAt,
+      url: typeof window === 'undefined' ? undefined : window.location.href.split('#')[0],
+    });
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        // Older browsers, and any context where the async clipboard is refused.
+        const area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(area);
+        if (!ok) throw new Error('copy refused');
+      }
+      setCopied('done');
+    } catch {
+      setCopied('failed');
+    }
+    window.setTimeout(() => setCopied('idle'), 2500);
+  };
+
   return (
     <section id="menu" className="card scroll-mt-20 p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <h2 className="text-base font-semibold tracking-tight text-chalk-50">Flower on the shelf</h2>
-        {capturedAt && (
-          <span className="text-xs text-chalk-500">
-            as read {new Date(capturedAt).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}
-          </span>
-        )}
+        <div className="flex items-center gap-3">
+          {capturedAt && (
+            <span className="text-xs text-chalk-500">
+              as read {new Date(capturedAt).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}
+            </span>
+          )}
+          <button
+            type="button"
+            onClick={copyMenu}
+            className={clsx('chip', copied === 'done' && 'chip-on')}
+            aria-live="polite"
+          >
+            {copied === 'done'
+              ? `Copied ${results.length}`
+              : copied === 'failed'
+                ? 'Copy blocked'
+                : 'Copy menu'}
+          </button>
+        </div>
       </div>
 
       <p className="mt-2 text-xs leading-relaxed text-chalk-500">
