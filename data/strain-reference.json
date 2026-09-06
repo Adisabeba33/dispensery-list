@@ -224,5 +224,59 @@
       {"url": "https://app.alleaves.com/api/inventory/batch/buddega/coa/36312.pdf", "label": "Kaycha Labs — Find Gas Lit P-FDWF282026-991A / AL60703003-003 — completed 2026-07-09", "retrievedAt": "2026-09-06T08:30:00Z"}
     ],
     "lastUpdated": "2026-09-06T08:30:00Z"
+  },
+  {
+    "strainId": "permafrost",
+    "canonicalName": "Permafrost",
+    "aliases": ["Permafrost"],
+    "lineage": "UNKNOWN",
+    "parents": null,
+    "profile": [
+      {"name": "CARYOPHYLLENE", "medianPercent": 0.64, "observations": 3},
+      {"name": "LIMONENE", "medianPercent": 0.51, "observations": 3},
+      {"name": "MYRCENE", "medianPercent": 0.48, "observations": 3},
+      {"name": "LINALOOL", "medianPercent": 0.27, "observations": 3},
+      {"name": "HUMULENE", "medianPercent": 0.225, "observations": 2},
+      {"name": "PINENE_BETA", "medianPercent": 0.08, "observations": 3},
+      {"name": "FENCHOL", "medianPercent": 0.05, "observations": 1},
+      {"name": "TERPINEOL", "medianPercent": 0.05, "observations": 1},
+      {"name": "BISABOLOL", "medianPercent": 0.04, "observations": 1},
+      {"name": "PINENE_ALPHA", "medianPercent": 0.04, "observations": 3},
+      {"name": "VALENCENE", "medianPercent": 0.03, "observations": 1},
+      {"name": "CAMPHENE", "medianPercent": 0.01, "observations": 1},
+      {"name": "CARYOPHYLLENE_OXIDE", "medianPercent": 0.01, "observations": 1},
+      {"name": "TERPINOLENE", "medianPercent": 0.01, "observations": 1}
+    ],
+    "basis": {"kind": "AGGREGATED_COA", "sampleCount": 3, "datasetName": null, "datasetLicence": null, "notes": "Provisional reference aggregated from three Nanticoke cured-flower NY COAs across Kaycha Labs and DRS Testing. Median is computed from quantified detections only; ND and <LOQ results are not coerced to zero. observations is the number of quantified COA results behind each terpene. Brand-limited evidence, not a batch claim for current shelf inventory. A later PF122215 certificate pair was excluded because two public PDFs for the same sample report conflicting amended terpene values."},
+    "confidence": "MEDIUM",
+    "sources": [
+      {"url": "https://nanticoke.co/image/catalog/lab-results/AL50613007-002%20%28Original%29.pdf", "label": "Kaycha Labs — Nanticoke Permafrost PF022214 / AL50613007-002 — sampled 2025-06-13", "retrievedAt": "2026-09-06T13:10:00Z"},
+      {"url": "https://nanticoke.co/image/catalog/lab-results/Permafrost%203.5g%20Jars%20PF062510.pdf", "label": "DRS Testing — Nanticoke Permafrost PF062510 / 2510RLI0977-3716 — report 2025-10-28", "retrievedAt": "2026-09-06T13:10:00Z"},
+      {"url": "https://nanticoke.co/image/catalog/lab-results/Permafrost%203.5g%20Jar%20PF091114.pdf", "label": "DRS Testing — Nanticoke Permafrost PF091114 / 2601RLI0028-0115 — report 2026-01-22", "retrievedAt": "2026-09-06T13:10:00Z"}
+    ],
+    "lastUpdated": "2026-09-06T13:10:00Z"
+  },
+  {
+    "strainId": "sour-diesel",
+    "canonicalName": "Sour Diesel",
+    "aliases": ["Sour Diesel"],
+    "lineage": "UNKNOWN",
+    "parents": null,
+    "profile": [
+      {"name": "CARYOPHYLLENE", "medianPercent": 0.6045, "observations": 2},
+      {"name": "LIMONENE", "medianPercent": 0.33, "observations": 3},
+      {"name": "HUMULENE", "medianPercent": 0.2759, "observations": 2},
+      {"name": "BISABOLOL", "medianPercent": 0.1015, "observations": 1},
+      {"name": "LINALOOL", "medianPercent": 0.06, "observations": 1},
+      {"name": "PINENE_ALPHA", "medianPercent": 0.04, "observations": 1}
+    ],
+    "basis": {"kind": "AGGREGATED_COA", "sampleCount": 3, "datasetName": null, "datasetLicence": null, "notes": "Provisional reference aggregated from three Nanticoke cured-flower NY COAs across Keystone State Testing and DRS Testing. Median is computed from quantified detections only; ND and <LOQ results are not coerced to zero. Strong cross-batch and cross-lab detection variability limits confidence; this is brand-limited evidence, not a batch claim for current shelf inventory."},
+    "confidence": "LOW",
+    "sources": [
+      {"url": "https://nanticoke.co/image/catalog/lab-results/X250325_0034_Sour_Diesel_3_5g_Jar_13160.pdf", "label": "Keystone State Testing of New York — Nanticoke Sour Diesel SR120614 / sample 13160 — released 2025-03-31", "retrievedAt": "2026-09-06T13:10:00Z"},
+      {"url": "https://nanticoke.co/image/catalog/lab-results/Sour%20Diesel%203.5g%20Jar%20SR040111%2025.9.3.pdf", "label": "Keystone State Testing of New York — Nanticoke Sour Diesel SR040111 / sample 18304 — released 2025-09-03", "retrievedAt": "2026-09-06T13:10:00Z"},
+      {"url": "https://nanticoke.co/image/catalog/lab-results/Sour-Diesel-3.5g-Jar-SR081511.pdf", "label": "DRS Testing — Nanticoke Sour Diesel SR081511 / 2512RLI1274-4934 — report 2026-01-12", "retrievedAt": "2026-09-06T13:10:00Z"}
+    ],
+    "lastUpdated": "2026-09-06T13:10:00Z"
   }
 ]
