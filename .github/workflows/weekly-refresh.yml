@@ -1,0 +1,70 @@
+name: Weekly registry refresh
+
+on:
+  schedule:
+    # Monday morning, New York time. Nothing is published automatically; the
+    # run opens a pull request for a person to look at.
+    - cron: '0 11 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: |
+          npm ci
+          python -m pip install --disable-pip-version-check beautifulsoup4 openpyxl requests
+
+      - name: Keep the current dataset for comparison
+        run: cp data/dispensaries.json /tmp/previous-dispensaries.json
+
+      - name: Fetch the state registry
+        run: node scripts/research-bootstrap.mjs
+
+      - name: Rebuild records from the registry
+        run: python scripts/compile-research.py
+
+      - name: Merge with the enrichment we already hold
+        # compile-research.py writes the dataset from scratch and knows nothing
+        # about geocodes, phones or menu platforms. Without this step a weekly
+        # refresh would quietly erase all of phase 2.
+        run: python scripts/refresh-merge.py --previous /tmp/previous-dispensaries.json
+
+      - name: Validate
+        run: npm run validate
+
+      - name: Open a pull request if anything changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- data/; then
+            echo "Registry unchanged — nothing to review."
+            exit 0
+          fi
+
+          BRANCH="refresh/registry-$(date -u +%Y-%m-%d)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add data/ docs/
+          git commit -m "data: weekly refresh from the NY OCM registry"
+          git push origin "$BRANCH"
+
+          gh pr create \
+            --title "Registry refresh — $(date -u +%Y-%m-%d)" \
+            --body-file refresh-report.md \
+            --base main \
+            --head "$BRANCH"
+
+      - name: Report
+        if: always()
+        run: cat refresh-report.md || echo "no report produced"

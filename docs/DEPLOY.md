@@ -78,3 +78,25 @@ git push
 
 The host rebuilds and the new register is live. A scheduled weekly job running
 those same three steps is enough to keep the register current.
+
+## Keeping the data current
+
+A snapshot goes stale: licences lapse, shops open and close, and a register
+that quietly drifts out of date is worse than one that admits it knows nothing.
+
+`.github/workflows/weekly-refresh.yml` runs every Monday. It fetches the state
+registry, rebuilds the records, merges them with the enrichment already held,
+validates the result, and opens a pull request. **Nothing publishes itself** —
+the pull request carries a plain-language report of what changed, and a person
+decides.
+
+The merge step is not optional. `compile-research.py` writes the dataset from
+scratch and knows nothing about the previous file, so running it alone would
+erase every geocode, phone number and menu platform. `refresh-merge.py` puts
+the two together under one ownership rule: the registry owns what a licence
+is, we own what we went and found, and a licence keeps the `id` it already has
+because those are published URLs.
+
+Merging identical inputs produces no changes, and merging a registry-only
+rebuild against the previous file restores all of the enrichment — both were
+checked before the schedule was turned on.
