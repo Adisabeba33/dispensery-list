@@ -1,0 +1,84 @@
+/*
+ * Loaded immediately after leaflet's own stylesheet, and only on the map page.
+ * Cascade order is the whole point: these rules must come last, so they live
+ * beside the map component rather than in the global sheet the layout imports
+ * before anything else.
+ */
+
+.leaflet-container {
+  background: #0c110f;
+  font: inherit;
+  outline: none;
+}
+
+.leaflet-container a {
+  color: #63dd97;
+}
+
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  background: #111815;
+  border-bottom-color: #1f2b25;
+  color: #c3cec8;
+}
+
+.leaflet-bar a:hover {
+  background: #161f1b;
+  color: #f2f6f3;
+}
+
+.leaflet-control-attribution {
+  background: rgba(8, 11, 10, 0.82);
+  color: #6d7d76;
+  font-size: 0.68rem;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #111815;
+  border: 1px solid #1f2b25;
+  color: #c3cec8;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0.75rem;
+}
+
+.leaflet-popup-content {
+  margin: 0.85rem 1rem;
+}
+
+.leaflet-popup-close-button {
+  color: #6d7d76 !important;
+}
+
+.map-popup-name {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f2f6f3 !important;
+  text-decoration: none;
+}
+
+.map-popup-name:hover {
+  color: #63dd97 !important;
+}
+
+.map-popup-meta {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: #8b9a93;
+}
+
+.map-popup-status {
+  margin: 0.4rem 0 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Pins are focusable, so focus must be visible on them. */
+.leaflet-interactive:focus-visible {
+  outline: 2px solid #63dd97;
+  outline-offset: 2px;
+}

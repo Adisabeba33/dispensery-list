@@ -55,6 +55,24 @@ export default function LegalPage() {
             products on its shelf — that is stated on the entry too. Nothing here is taken from a
             paid database or a competitor&apos;s listings.
           </p>
+          <p>
+            The map draws its base layer from{' '}
+            <a className="link" href="https://carto.com/attributions" target="_blank" rel="noreferrer noopener">
+              CARTO
+            </a>
+            , built on{' '}
+            <a
+              className="link"
+              href="https://www.openstreetmap.org/copyright"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              OpenStreetMap
+            </a>{' '}
+            data under the Open Database Licence. The pins themselves are ours: coordinates
+            geocoded from the postal address on each licence, and approximate to the block rather
+            than surveyed.
+          </p>
         </Section>
 
         <Section title="What this register is not">
