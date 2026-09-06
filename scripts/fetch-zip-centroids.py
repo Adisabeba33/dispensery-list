@@ -32,12 +32,18 @@ UA = "dispensary-list/1.0 (+https://github.com/Adisabeba33/dispensery-list)"
 
 
 def in_scope(zip_code: str) -> bool:
-    """The same rule compile-research.py filters licences with."""
+    """The ZIPs of the five boroughs and Westchester, and nothing else."""
     if not zip_code or not zip_code.isdigit() or len(zip_code) != 5:
         return False
+    # Manhattan 100-102, Staten Island 103, the Bronx 104, Westchester 105-108,
+    # Queens 110/111/113/114/116, Brooklyn 112 — and 11004/11005, the Queens
+    # corner of Glen Oaks and Floral Park. 115 and 117-119 are Nassau and
+    # Suffolk: a licence filter can afford to be loose about them because it
+    # checks the county separately, but a reader typing a ZIP cannot.
     prefix = int(zip_code[:3])
-    # Westchester 105-108; New York City 100-104 and 110-119.
-    return 105 <= prefix <= 108 or 100 <= prefix <= 104 or 110 <= prefix <= 119
+    if zip_code in {"11004", "11005"}:
+        return True
+    return prefix in {100, 101, 102, 103, 104, 105, 106, 107, 108, 110, 111, 112, 113, 114, 116}
 
 
 def fetch():

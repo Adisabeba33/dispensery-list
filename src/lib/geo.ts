@@ -10,9 +10,20 @@ import centroidFile from '../../data/zip-centroids.json';
 
 type Point = { lat: number; lng: number };
 
-const published = (centroidFile as { centroids: Record<string, [number, number]> }).centroids ?? {};
+const published = ((centroidFile as { centroids: Record<string, number[]> }).centroids ??
+  {}) as Record<string, number[]>;
 
 export const publishedCentroidCount = Object.keys(published).length;
+
+/** The ZIPs of the five boroughs and Westchester, and nothing else. */
+const SCOPE = new Set([100, 101, 102, 103, 104, 105, 106, 107, 108, 110, 111, 112, 113, 114, 116]);
+
+export const zipInScope = (zip: string): boolean => {
+  if (!/^\d{5}$/.test(zip)) return false;
+  // 11004 and 11005 are the Queens corner of Glen Oaks and Floral Park.
+  if (zip === '11004' || zip === '11005') return true;
+  return SCOPE.has(Number(zip.slice(0, 3)));
+};
 
 /**
  * ZIP centres, published first.
@@ -36,7 +47,10 @@ export const buildZipCentroids = (
   for (const [zip, [lat, lng, n]] of Object.entries(sums)) {
     out[zip] = [Math.round((lat / n) * 1e5) / 1e5, Math.round((lng / n) * 1e5) / 1e5];
   }
-  return { ...out, ...published };
+  for (const [zip, point] of Object.entries(published)) {
+    if (point.length === 2) out[zip] = [point[0], point[1]];
+  }
+  return out;
 };
 
 /**

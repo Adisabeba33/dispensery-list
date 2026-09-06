@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import clsx from 'clsx';
 import type { Dispensary } from '@/lib/types';
 import { displayName, regionOf } from '@/lib/data';
-import { buildZipCentroids, distanceKm, prettyDistance } from '@/lib/geo';
+import { buildZipCentroids, distanceKm, prettyDistance, zipInScope } from '@/lib/geo';
 import { DispensaryCard } from './DispensaryCard';
 import { DispensaryDetail } from './DispensaryDetail';
 
@@ -124,11 +124,18 @@ export const DirectoryExplorer = ({
   const useZip = (value: string) => {
     setZip(value);
     setLocateError(null);
-    const point = centroids[value.trim()];
+    const code = value.trim();
+    const point = centroids[code];
     if (!point) {
       setOrigin(null);
-      if (/^\d{5}$/.test(value.trim())) {
-        setLocateError(`We have no fix for ZIP ${value.trim()} — it is outside the area covered.`);
+      if (/^\d{5}$/.test(code)) {
+        /* Two different failures. Telling a Westchester reader their ZIP is
+           out of area when it is not would be worse than saying nothing. */
+        setLocateError(
+          zipInScope(code)
+            ? `ZIP ${code} is in the area, but we have no point for it. Use “Shops near me”, or the map.`
+            : `ZIP ${code} is outside New York City and Westchester, which is all this register covers.`,
+        );
       }
       return;
     }
@@ -362,6 +369,9 @@ export const DirectoryExplorer = ({
               onChange={(e) => setSort(e.target.value as SortKey)}
               className="rounded-lg border border-ink-700 bg-ink-900 px-2.5 py-1.5 text-chalk-200 focus:border-moss-600 focus:outline-none"
             >
+              {/* Offered only once we know where the reader is: a sort by a
+                  distance from nowhere would sort by nothing. */}
+              {origin && <option value="distance">Nearest first</option>}
               <option value="status">Open first</option>
               <option value="name">Name</option>
               <option value="region">Area</option>
