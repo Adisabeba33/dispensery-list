@@ -2,7 +2,7 @@
   "name": "dispensary-list",
   "version": "0.1.0",
   "private": true,
-  "description": "Verified directory of state-licensed cannabis dispensaries \u2014 New York (NYC + Westchester)",
+  "description": "Verified directory of state-licensed cannabis dispensaries — New York (NYC + Westchester)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -17,12 +17,14 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "leaflet": "^1.9.4",
     "next": "^15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
+    "@types/leaflet": "^1.9.22",
     "@types/node": "^22.10.5",
     "@types/react": "^19.0.4",
     "@types/react-dom": "^19.0.2",

@@ -39,14 +39,20 @@ export default function HomePage() {
           ))}
         </dl>
 
-        {s.lastUpdated && (
-          <p className="mt-4 text-sm text-chalk-500">
-            Data last updated {prettyDate(s.lastUpdated)} ·{' '}
-            <Link href="/about/" className="link">
-              how this list is built
-            </Link>
-          </p>
-        )}
+        <p className="mt-4 text-sm text-chalk-500">
+          {s.lastUpdated && (
+            <>
+              Data last updated {prettyDate(s.lastUpdated)} ·{' '}
+              <Link href="/about/" className="link">
+                how this list is built
+              </Link>{' '}
+              ·{' '}
+            </>
+          )}
+          <Link href="/map/" className="link">
+            see them on a map
+          </Link>
+        </p>
       </section>
 
       <DirectoryExplorer dispensaries={dispensaries} />
