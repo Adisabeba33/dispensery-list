@@ -14,9 +14,10 @@ type SummaryProps = {
   expanded: boolean;
   confirmed: { key: string; label: string }[];
   menuCount: number;
+  distance?: string | null;
 };
 
-const CardSummary = ({ d, expanded, confirmed, menuCount }: SummaryProps) => (
+const CardSummary = ({ d, expanded, confirmed, menuCount, distance }: SummaryProps) => (
   <>
         <span className="flex w-full items-start justify-between gap-3">
           <span className="min-w-0">
@@ -29,6 +30,7 @@ const CardSummary = ({ d, expanded, confirmed, menuCount }: SummaryProps) => (
               {displayName(d)}
             </span>
             <span className="mt-1 block text-sm text-chalk-400">
+              {distance && <span className="font-medium text-moss-400">{distance} · </span>}
               {d.address.neighborhood ? `${d.address.neighborhood} · ` : ''}
               {regionOf(d)}
             </span>
@@ -71,6 +73,8 @@ type Props = {
   onToggle?: () => void;
   /** Counted on the server: the client never holds every shop's shelf. */
   menuCount?: number;
+  /** Formatted straight-line distance from wherever the reader said they are. */
+  distance?: string | null;
 };
 
 /**
@@ -78,7 +82,7 @@ type Props = {
  * it. Links and controls inside a <button> are invalid markup, and browsers
  * swallow their clicks, which would break every link in the expanded view.
  */
-export const DispensaryCard = ({ d, expanded = false, onToggle, menuCount = 0 }: Props) => {
+export const DispensaryCard = ({ d, expanded = false, onToggle, menuCount = 0, distance = null }: Props) => {
   // Used outside the directory (the Westchester page) there is nothing to
   // expand into, so the summary links to the standalone page instead.
   const asLink = !onToggle;
@@ -95,7 +99,7 @@ export const DispensaryCard = ({ d, expanded = false, onToggle, menuCount = 0 }:
     >
       {asLink ? (
         <Link href={`/dispensary/${d.id}/`} className="group flex w-full flex-1 flex-col text-left">
-          <CardSummary d={d} expanded={expanded} confirmed={confirmed} menuCount={menuCount} />
+          <CardSummary d={d} expanded={expanded} confirmed={confirmed} menuCount={menuCount} distance={distance} />
         </Link>
       ) : (
       <button
@@ -104,7 +108,7 @@ export const DispensaryCard = ({ d, expanded = false, onToggle, menuCount = 0 }:
         aria-expanded={expanded}
         className="group flex w-full flex-1 flex-col text-left"
       >
-        <CardSummary d={d} expanded={expanded} confirmed={confirmed} menuCount={menuCount} />
+        <CardSummary d={d} expanded={expanded} confirmed={confirmed} menuCount={menuCount} distance={distance} />
       </button>
       )}
 
