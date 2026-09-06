@@ -31,13 +31,21 @@ TYPE_MAP = {
     "Adult-Use Retail Dispensary License": "ADULT_USE_RETAIL_DISPENSARY",
     "Adult-Use Conditional Retail Dispensary License": "CAURD",
     "Adult-Use Microbusiness License": "MICROBUSINESS",
+    # Registered Organizations are the medical side of the market, and they are
+    # dispensaries a patient can walk into. They were excluded only because OCM
+    # numbers them MM0906D rather than OCM-..., which the licence contract used
+    # to refuse; the schema was widened to accept both, so leaving them out now
+    # would be a register calling itself complete while missing a whole class.
+    "Adult-Use Registered Organization Dispensary License": "REGISTERED_ORGANIZATION_ADULT_USE",
+    "Registered Organization": "REGISTERED_ORGANIZATION_MEDICAL",
 }
+MEDICAL_TYPES = {"REGISTERED_ORGANIZATION_MEDICAL"}
 REG_URL = "https://data.ny.gov/Economic-Development/Current-OCM-Licenses/jskf-tt3q"
 OCM_OPEN_URL = "https://cannabis.ny.gov/dispensary-location-verification"
 OCM_LOCALITIES_URL = "https://cannabis.ny.gov/localities"
 OCM_OPTOUT_URL = "https://cannabis.ny.gov/ocm-local-opt-out-data"
 WESTCHESTER_MUNI_URL = "https://giswww.westchestergov.com/arcgis/rest/services/WestchesterCountyBaseMap_Gray/MapServer/1"
-LIC_RE = re.compile(r"^OCM-[A-Z0-9]{2,10}-\d{2}-\d{4,8}$")
+LIC_RE = re.compile(r"^(OCM-[A-Z0-9]{2,10}-\d{2}-\d{4,8}|MM\d{3,5}[A-Z])$")
 
 
 def clean_text(value):
@@ -297,6 +305,12 @@ for candidate in retail_candidates:
     sales_no = bool01(candidate.get("retail_activities_sales_no"))
     in_store = True if (sales_with is True or sales_no is True) else (False if sales_with is False and sales_no is False else None)
     delivery = True if sales_with is True else (False if sales_no is True and sales_with is False else None)
+    license_type = TYPE_MAP[candidate["license_type"]]
+    # A medical Registered Organization is licensed to serve patients. Whether
+    # it also dispenses adult-use is a separate permission the registry does not
+    # state here, so it stays null rather than being assumed either way.
+    serves_medical = True if license_type in MEDICAL_TYPES else None
+    serves_adult_use = None if license_type in MEDICAL_TYPES else True
     display = candidate.get("dba") or candidate["entity_name"]
     stable_id = slug(f"{display}-{candidate['city']}-{license_number[-6:]}")[:80].strip("-")
     sources = [{"url": REG_URL, "label": "New York State Open Data — Current OCM Licenses", "type": "OFFICIAL_REGISTRY", "retrievedAt": retrieved}]
@@ -310,7 +324,7 @@ for candidate in retail_candidates:
         "id": stable_id,
         "licenseNumber": license_number,
         "applicationNumber": candidate.get("application_number"),
-        "licenseType": TYPE_MAP[candidate["license_type"]],
+        "licenseType": license_type,
         "licenseStatus": "ACTIVE",
         "operationalStatus": operational_status,
         "seeCategory": see_category(candidate.get("see_category")),
@@ -320,7 +334,7 @@ for candidate in retail_candidates:
         "geo": None,
         "contact": {"phone": None, "email": None, "website": website, "orderOnlineUrl": None, "instagram": None} if website else None,
         "hours": hours,
-        "services": {"inStorePurchase": in_store, "pickup": None, "curbside": None, "delivery": delivery, "deliveryZips": None, "adaAccessible": None, "onsiteConsumption": None, "servesMedical": None, "servesAdultUse": True, "acceptsDebit": None, "acceptsCredit": None, "cashOnly": None, "atmOnSite": None, "parking": None},
+        "services": {"inStorePurchase": in_store, "pickup": None, "curbside": None, "delivery": delivery, "deliveryZips": None, "adaAccessible": None, "onsiteConsumption": None, "servesMedical": serves_medical, "servesAdultUse": serves_adult_use, "acceptsDebit": None, "acceptsCredit": None, "cashOnly": None, "atmOnSite": None, "parking": None},
         "menu": None,
         "dates": {"licenseIssued": date_only(candidate.get("issued_date")), "licenseEffective": date_only(candidate.get("effective_date")), "licenseExpiration": date_only(candidate.get("expiration_date")), "openedOn": date_only(candidate.get("retail_date_opened_to_public"))},
         "sources": sources,
@@ -378,7 +392,7 @@ assert len({r["id"] for r in municipalities}) == len(municipalities)
 col_lines = ["# Current OCM Licenses — source columns", "", f"Snapshot: `{retrieved}`", f"Dataset: `{REG_URL}`", f"Raw rows: **{len(raw)}**", "", "## Actual columns", "", "| fieldName | Display name |", "|---|---|"]
 for col in sorted(columns, key=lambda x: x.get("position", 0)):
     col_lines.append(f"| `{col.get('fieldName')}` | {str(col.get('name') or '').replace('|', '\\|')} |")
-col_lines += ["", "## Filter used", "", "1. County must be one of New York, Kings, Queens, Bronx, Richmond, Westchester.", "2. License type must be Adult-Use Retail Dispensary, CAURD, or Microbusiness with an explicit retail business purpose.", "3. `license_number` must satisfy the repository contract `OCM-...`; this removes proximity-protection applicants and also exposes a schema conflict for legacy Registered Organization IDs (`MM####D`).", "4. Only current `Active` license rows are published in this phase. Expired rows are retained in the raw snapshot and enumerated in the report, not silently dropped.", "5. ZIP sanity is applied after county filtering. Two official rows marked `county=New York` are physically upstate (Remsen 13438 and Palenville 12414); they are excluded as source-data geography anomalies.", "", "## Operational status", "", "`OPEN` is assigned only when a confident match exists on OCM's Dispensary Location Verification public-open list. Registry `Non-Operational` becomes `APPROVED_NOT_OPEN` unless the OCM public-open list overrides it. Registry `Active` without a confident public-open-list match is `UNKNOWN`, never guessed open.", ""]
+col_lines += ["", "## Filter used", "", "1. County must be one of New York, Kings, Queens, Bronx, Richmond, Westchester.", "2. License type must be Adult-Use Retail Dispensary, CAURD, Registered Organization (medical or adult-use), or Microbusiness with an explicit retail business purpose.", "3. `license_number` must satisfy the repository contract — `OCM-...` or the legacy Registered Organization form `MM####D`; this removes proximity-protection applicants.", "4. Only current `Active` license rows are published in this phase. Expired rows are retained in the raw snapshot and enumerated in the report, not silently dropped.", "5. ZIP sanity is applied after county filtering. Two official rows marked `county=New York` are physically upstate (Remsen 13438 and Palenville 12414); they are excluded as source-data geography anomalies.", "", "## Operational status", "", "`OPEN` is assigned only when a confident match exists on OCM's Dispensary Location Verification public-open list. Registry `Non-Operational` becomes `APPROVED_NOT_OPEN` unless the OCM public-open list overrides it. Registry `Active` without a confident public-open-list match is `UNKNOWN`, never guessed open.", ""]
 (DOCS / "SOURCE_COLUMNS.md").write_text("\n".join(col_lines))
 
 status_counts = Counter(r["operationalStatus"] for r in dispensaries)
@@ -399,10 +413,11 @@ for lic, _, row in anomalies:
 report += ["", f"Expired/inactive OCM-format retail licenses excluded from the current directory: **{len(expired)}**."]
 for lic, _, row in expired:
     report.append(f"- `{lic}` — {row.get('dba') or row.get('entity_name')} — expired {date_only(row.get('expiration_date')) or 'date unavailable'}.")
-report += ["", "## Contract conflict: Registered Organizations", "", f"There are **{len(ro_rows)}** in-scope Registered Organization / Adult-Use Registered Organization Dispensary rows in the official registry, but OCM publishes them with legacy IDs such as `MM0906D`, not the repository-required `OCM-XXX-YY-NNNNNN` pattern. They cannot be represented without changing the current schema/brief, so they are not silently coerced. This is a known completeness gap that needs a contract decision before publication as 'all dispensaries'.", "", "## Operational unknowns", "", "These licenses are `Active` and the registry operating-address status is `Active`, but no confident match was found on the current OCM public-open list. They remain `UNKNOWN` rather than being guessed open:"]
+ro_published = [d for d in dispensaries if d["licenseType"].startswith("REGISTERED_ORGANIZATION")]
+report += ["", "## Registered Organizations", "", f"OCM publishes these with legacy IDs such as `MM0906D` rather than the `OCM-XXX-YY-NNNNNN` pattern, which the licence contract used to refuse — so they were absent from the register entirely. The schema now accepts both forms and they are included: **{len(ro_published)}** of **{len(ro_rows)}** in-scope registry rows were published, the remainder failing the same active/geography filters as any other row. A medical Registered Organization is recorded as serving patients; whether it also dispenses adult-use is a separate permission the registry does not state here, so that field is left null rather than assumed.", "", "## Operational unknowns", "", "These licenses are `Active` and the registry operating-address status is `Active`, but no confident match was found on the current OCM public-open list. They remain `UNKNOWN` rather than being guessed open:"]
 for r in unknown:
     report.append(f"- `{r['licenseNumber']}` — {r['dbaName'] or r['legalName']} — {r['address']['line1']}, {r['address']['city']} {r['address']['zip']}")
-report += ["", "## OCM public-open-list address discrepancies", "", "Five current public-open entries were matched only after manual review because the OCM public-open table carries a ZIP different from the registry for the same storefront address/identity. Each affected record carries a warning; the registry address remains canonical.", "", "## Municipal opt-out audit", "", "`data/municipalities.json` was rebuilt from OCM's current official opt-out workbook, not the older secondary 22-municipality list. The workbook currently contains **34 Westchester opt-out rows**, of which **27** include Retail Dispensary opt-out and **34** include On-Site Consumption opt-out. The file also includes the five NYC borough geographic records and all 45 Westchester local-government units; the three coextensive town/villages (Harrison, Mount Kisco, Scarsdale) are represented as separate town/village schema records because OCM's workbook lists both municipality types.", "", "## What we still do not know", "", "- `geo` is still null; no rooftop coordinates were invented.", "- Phone numbers are still null unless a later website-enrichment pass verifies them.", "- Menu provider/order URL is still null pending website-by-website menu-platform enrichment.", "- Pickup/curbside/ADA/payment/parking fields remain null unless explicitly sourced.", "- The 16 operational UNKNOWN records above need a future OCM public-list appearance or other regulator-level reconciliation before they can be called OPEN.", "- Registered Organization storefronts require a schema/contract decision for legacy `MM...D` license numbers.", ""]
+report += ["", "## OCM public-open-list address discrepancies", "", "Five current public-open entries were matched only after manual review because the OCM public-open table carries a ZIP different from the registry for the same storefront address/identity. Each affected record carries a warning; the registry address remains canonical.", "", "## Municipal opt-out audit", "", "`data/municipalities.json` was rebuilt from OCM's current official opt-out workbook, not the older secondary 22-municipality list. The workbook currently contains **34 Westchester opt-out rows**, of which **27** include Retail Dispensary opt-out and **34** include On-Site Consumption opt-out. The file also includes the five NYC borough geographic records and all 45 Westchester local-government units; the three coextensive town/villages (Harrison, Mount Kisco, Scarsdale) are represented as separate town/village schema records because OCM's workbook lists both municipality types.", "", "## What we still do not know", "", "- `geo` is still null; no rooftop coordinates were invented.", "- Phone numbers are still null unless a later website-enrichment pass verifies them.", "- Menu provider/order URL is still null pending website-by-website menu-platform enrichment.", "- Pickup/curbside/ADA/payment/parking fields remain null unless explicitly sourced.", "- The 16 operational UNKNOWN records above need a future OCM public-list appearance or other regulator-level reconciliation before they can be called OPEN.", "- Registered Organizations are now included, but the OCM public-open list covers adult-use retail, so most of them will sit at `UNKNOWN` until another regulator source confirms they are trading.", ""]
 (DOCS / "RESEARCH_REPORT.md").write_text("\n".join(report))
 
 print(json.dumps({"dispensaries": len(dispensaries), "open": status_counts["OPEN"], "approvedNotOpen": status_counts["APPROVED_NOT_OPEN"], "unknown": status_counts["UNKNOWN"], "municipalities": len(municipalities), "parsedOcmOpenRows": len(open_rows), "rawSnapshot": str(RAW / f"ocm-licenses-{snapshot_date}.json")}, indent=2))
