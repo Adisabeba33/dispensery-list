@@ -87,8 +87,11 @@ jobs:
               if r.get('status') == 'robots-disallowed':
                   continue
               gate = 'gate' if r.get('ageGate') else '    '
-              print(f"{str(r.get('status'))[:26]:27} {gate} seen={r.get('productsSeen', 0):<5} "
-                    f"flower={r.get('flower', 0):<4} {r.get('shop', '')[:34]}")
+              link = r.get('menuLink', '?')
+              known = '*' if r.get('usedKnownEndpoint') else ' '
+              print(f"{str(r.get('status'))[:26]:27} {gate} link={link:<18}{known} "
+                    f"seen={r.get('productsSeen', 0):<5} flower={r.get('flower', 0):<4} "
+                    f"{r.get('shop', '')[:30]}")
               if r.get('rejected'):
                   print(f"    dropped: {r['rejected']}")
               # The categories a flowerless shop does publish are the finding:

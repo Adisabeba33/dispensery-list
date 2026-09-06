@@ -44,6 +44,27 @@ const candidates = dispensaries.filter(
     d.contact?.website,
 );
 
+/**
+ * Menu addresses found by hand, keyed by licence number.
+ *
+ * Twenty-five of forty shops returned no products at all, because the
+ * collector could not find the way in: the menu is behind a control that is
+ * not a link, or lives on a host the shop's own pages never name. A person
+ * finds those in seconds and a crawler does not, so where one has been written
+ * down the collector goes straight there instead of hunting.
+ *
+ * The file is optional and hand-maintained; see docs/AGENT_MENU_ENDPOINTS_BRIEF.md.
+ */
+let ENDPOINTS = {};
+try {
+  const raw = JSON.parse(readFileSync(resolve(ROOT, 'data/menu-endpoints.json'), 'utf8'));
+  for (const e of raw) {
+    if (e?.licenseNumber && e?.menuUrl) ENDPOINTS[e.licenseNumber] = e.menuUrl;
+  }
+} catch {
+  /* not delivered yet; the collector hunts for the link as before */
+}
+
 /** robots.txt still applies: a browser does not change who is welcome. */
 const robotsCache = new Map();
 const robotsAllows = async (url) => {
@@ -558,8 +579,12 @@ const main = async () => {
       await page.waitForTimeout(2500);
       entry.ageGate = await affirmAge(page);
 
+      // A menu address written down by hand beats anything found by guessing.
+      const known = ENDPOINTS[shop.licenseNumber] ?? null;
+      entry.usedKnownEndpoint = Boolean(known);
+
       // Prefer a flower category link; fall back to any menu link.
-      const href = await page.evaluate(
+      const found = await page.evaluate(
         ({ flowerSrc, menuSrc }) => {
           const flower = new RegExp(flowerSrc, 'i');
           const menu = new RegExp(menuSrc, 'i');
@@ -570,8 +595,12 @@ const main = async () => {
         },
         { flowerSrc: FLOWER_LINK.source, menuSrc: MENU_LINK.source },
       );
+      const href = known ?? found;
+      // Said plainly, so "no products" stops covering "not allowed there".
+      entry.menuLink = href ? 'found' : 'none';
+      if (href && !(await robotsAllows(href))) entry.menuLink = 'robots-disallowed';
 
-      if (href && (await robotsAllows(href))) {
+      if (href && entry.menuLink !== 'robots-disallowed') {
         await page.goto(href, { waitUntil: 'domcontentloaded', timeout: 30000 });
         await page.waitForTimeout(2500);
         entry.ageGate = (await affirmAge(page)) || entry.ageGate;
@@ -666,6 +695,13 @@ const main = async () => {
   const summary = {
     shopsVisited: report.filter((r) => r.status !== 'robots-disallowed').length,
     ageGatesAnswered: report.filter((r) => r.ageGate).length,
+    // Why a shop yielded nothing, which "no-products" used to hide.
+    menuLinkCounts: report.reduce((acc, r) => {
+      if (!r.menuLink) return acc;
+      acc[r.menuLink] = (acc[r.menuLink] ?? 0) + 1;
+      return acc;
+    }, {}),
+    usedKnownEndpoint: report.filter((r) => r.usedKnownEndpoint).length,
     shelvesCarriedForward: new Set(carried.map((l) => l.licenseNumber)).size,
     listingsCarriedForward: carried.length,
     listingsDroppedAsStale: dropped,
