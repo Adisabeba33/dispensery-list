@@ -10,7 +10,7 @@
  *
  *   node scripts/menu-parse-check.mjs
  */
-import { classify, cleanStrainName, sizeFromText, toListing } from './menu-render.mjs';
+import { classify, cleanStrainName, mergeBySize, sizeFromText, toListing } from './menu-render.mjs';
 
 const shop = { licenseNumber: 'OCM-CAURD-24-000001' };
 const SRC = 'https://example-dispensary.test/menu';
@@ -107,6 +107,25 @@ check('unrelated type field', classify({ name: 'Grape Cake', type: 'variant', ca
 // Flower with no weight anywhere is dropped: the shelf view is entirely about
 // which strains come by the eighth, quarter, half or ounce.
 check('flower without a size', toListing({ Name: 'Nameless Bud', type: 'Flower' }, shop, SRC, {}), null);
+
+/* --------------------------------------------- one product per weight ----
+ * Some platforms publish each weight as its own product with an empty variants
+ * array. The two rows must end up as one strain carrying both sizes.
+ */
+{
+  const eighth = toListing(
+    { name: 'WARRIOR | FRESH POWDER | FLOWER | 3.5G', brand: 'Operator', productCategoryName: 'Flower', weightInGrams: 3.5, variants: [] },
+    shop, SRC, {},
+  );
+  const ounce = toListing(
+    { name: 'WARRIOR | FRESH POWDER | FLOWER | 28G', brand: 'Operator', productCategoryName: 'Flower', weightInGrams: 28, variants: [] },
+    shop, SRC, {},
+  );
+  check('same strain, two weights, same id', eighth?.listingId, ounce?.listingId);
+  const merged = mergeBySize([eighth, ounce].filter(Boolean));
+  check('merged into one strain', merged.length, 1);
+  check('carrying both weights', merged[0]?.availableSizesGrams, [3.5, 28]);
+}
 
 /* ------------------------------------------------------------ size strings */
 check('size 1/8oz', sizeFromText('1/8oz'), 3.5);

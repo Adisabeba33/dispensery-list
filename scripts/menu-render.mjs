@@ -741,10 +741,13 @@ const main = async () => {
             why['flower-no-size'] = (why['flower-no-size'] ?? 0) + 1;
             continue;
           }
-          if (seen.has(listing.listingId)) {
-            why['duplicate'] = (why['duplicate'] ?? 0) + 1;
-            continue;
-          }
+          /* Every row is kept; mergeBySize folds them together afterwards.
+             Dropping a repeated listingId here threw away the ounce: on
+             platforms that publish one product per weight, "FRESH POWDER |
+             FLOWER | 3.5G" and the same strain at 28G clean to the same strain
+             name, and the second was discarded before its size was ever read.
+             That is why a shop with twenty ounce products showed four. */
+          if (seen.has(listing.listingId)) why['sameStrainAnotherSize'] = (why['sameStrainAnotherSize'] ?? 0) + 1;
           seen.add(listing.listingId);
           listings.push(listing);
         }
