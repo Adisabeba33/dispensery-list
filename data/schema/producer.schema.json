@@ -1,0 +1,287 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dispensary-list/schema/producer.schema.json",
+  "title": "Licensed cannabis producer (New York State)",
+  "description": "One state-licensed business that grows, processes or brands cannabis in New York. A record describes a LICENCE, not a company: an operator holding a cultivator licence and a processor licence produces two records. Unlike a dispensary, a producer has no public street address in the state registry — only a county and a region — so this schema does not pretend to one.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "licenseNumber",
+    "licenseType",
+    "licenseStatus",
+    "entityName",
+    "sources",
+    "verification",
+    "lastUpdated"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "minLength": 3,
+      "maxLength": 80,
+      "description": "Stable URL slug, derived from the entity name and the licence number's tail. Must never change once published."
+    },
+    "licenseNumber": {
+      "type": "string",
+      "pattern": "^OCM-[A-Z0-9]{2,10}-[0-9]{2}-[0-9]{4,8}$",
+      "description": "Licence number verbatim from the state registry. The primary key of truth: never invent, never reformat."
+    },
+    "applicationNumber": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "licenseType": {
+      "enum": [
+        "CULTIVATOR",
+        "PROCESSOR",
+        "PROCESSOR_BRANDING",
+        "PROCESSOR_FLOWER",
+        "MICROBUSINESS"
+      ],
+      "description": "MICROBUSINESS appears in both this register and the dispensary one: the licence permits growing and selling, and the same licence number links the two."
+    },
+    "licenseStatus": {
+      "enum": [
+        "ACTIVE",
+        "PROVISIONAL",
+        "PENDING",
+        "SUSPENDED",
+        "EXPIRED",
+        "SURRENDERED",
+        "REVOKED"
+      ]
+    },
+    "operationalStatus": {
+      "enum": [
+        "ACTIVE",
+        "NON_OPERATIONAL",
+        "UNKNOWN"
+      ],
+      "description": "What the registry publishes about whether the licensee is operating. UNKNOWN where it publishes nothing — never guessed."
+    },
+    "entityName": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 200
+    },
+    "businessPurpose": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tier": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Registry tier code, e.g. CCULT_OUTDOOR_T5. Kept verbatim: the tiers encode canopy size and are not ours to reinterpret."
+    },
+    "cultivation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "description": "How they grow, as the registry states it. Null where the registry says nothing — which is different from all-false.",
+      "properties": {
+        "indoor": {
+          "type": "boolean"
+        },
+        "outdoor": {
+          "type": "boolean"
+        },
+        "mixedLight": {
+          "type": "boolean"
+        },
+        "combination": {
+          "type": "boolean"
+        }
+      }
+    },
+    "processing": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "any": {
+          "type": "boolean"
+        },
+        "blending": {
+          "type": "boolean"
+        },
+        "branding": {
+          "type": "boolean"
+        }
+      }
+    },
+    "primaryContactName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The contact the state publishes for the licence. This is a named individual: it is here because the state publishes it and because reaching a licensee is the point of this register, and it must not be rendered on a public page. A public record being public does not make republishing a person's name on a directory a good idea."
+    },
+    "dates": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "licenseIssued": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "licenseEffective": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "licenseExpiration": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        }
+      }
+    },
+    "brands": {
+      "type": "array",
+      "description": "Brand names seen on collected dispensary shelves that resolve to this licensee. Each carries how the link was made, because a brand is not a licence: national brands are produced under contract by a New York processor whose registered name is different, and no amount of string comparison bridges that.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "match",
+          "listingCount",
+          "shopCount"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "match": {
+            "enum": [
+              "EXACT",
+              "TOKEN_SUBSET",
+              "MANUAL"
+            ],
+            "description": "EXACT: the brand and the licensee name normalise identically. TOKEN_SUBSET: one name's significant words are contained in the other's — good enough to look at, not good enough to assert. MANUAL: a person checked it."
+          },
+          "listingCount": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "shopCount": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "url",
+          "type",
+          "retrievedAt"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "type": {
+            "enum": [
+              "OFFICIAL_REGISTRY",
+              "REGULATOR_PAGE",
+              "BUSINESS_WEBSITE",
+              "PRESS"
+            ]
+          },
+          "retrievedAt": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "verifiedAt"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "VERIFIED_OFFICIAL",
+            "VERIFIED_SECONDARY",
+            "UNVERIFIED"
+          ]
+        },
+        "verifiedAt": {
+          "type": "string"
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lastUpdated": {
+      "type": "string"
+    },
+    "counties": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Every county the registry lists this licence operating in. A cultivator with two sites appears twice in the registry, differing only by location: taking the first row would silently lose the second county."
+    },
+    "regions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The state's own economic-development regions for those sites, kept verbatim rather than mapped."
+    },
+    "locationCount": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "How many locations the registry publishes for this licence."
+    }
+  }
+}

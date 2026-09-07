@@ -408,6 +408,70 @@ const validateStrainReference = (FILE: string) => {
   });
 };
 
+const COVERED_COUNTIES = new Set(['New York', 'Kings', 'Queens', 'Bronx', 'Richmond', 'Westchester']);
+
+const validateProducers = (FILE: string) => {
+  const raw = readJson(FILE);
+  if (raw === undefined) return;
+  if (!Array.isArray(raw)) {
+    fail(FILE, '-', 'top level must be an array of producer records');
+    return;
+  }
+
+  const validate = compile('data/schema/producer.schema.json');
+  const seenLicence = new Map<string, number>();
+  const seenId = new Map<string, number>();
+  const dispensaries = readJson('data/dispensaries.json');
+  const dispensaryLicences = new Set(
+    (Array.isArray(dispensaries) ? dispensaries : []).map((d: any) => d.licenseNumber),
+  );
+
+  raw.forEach((record, i) => {
+    if (!validate(record)) formatAjvErrors(FILE, i, validate.errors);
+    const r = record as Record<string, any>;
+    const at = (field: string) => `[${i}] ${r.licenseNumber ?? 'unknown'} → ${field}`;
+
+    for (const [key, map] of [['licenseNumber', seenLicence], ['id', seenId]] as const) {
+      const value = r[key];
+      if (typeof value !== 'string') continue;
+      const prev = map.get(value);
+      if (prev !== undefined) fail(FILE, at(key), `duplicate ${key}, also at record [${prev}]`);
+      else map.set(value, i);
+    }
+
+    // A register of licensees may only contain licensees.
+    if (r.verification?.status === 'VERIFIED_OFFICIAL' && r.licenseStatus !== 'ACTIVE') {
+      fail(FILE, at('licenseStatus'), 'only an active licence can be called registry-verified here');
+    }
+
+    // Counties come from the registry rows; more locations than counties is
+    // possible, fewer is a sign the fold-in lost one.
+    if (Array.isArray(r.counties) && r.locationCount < r.counties.length) {
+      fail(FILE, at('locationCount'), `${r.locationCount} location(s) but ${r.counties.length} counties`);
+    }
+
+    /* A brand link is a claim about who made what. TOKEN_SUBSET is a lead, and
+       the schema lets it through, but an EXACT claim has to actually be exact:
+       otherwise the weakest evidence quietly wears the strongest label. */
+    const normalise = (value: string) => value.toLowerCase().replace(/[^a-z0-9]/g, '');
+    for (const brand of r.brands ?? []) {
+      if (brand.match === 'EXACT' && normalise(brand.name) !== normalise(r.entityName ?? '')) {
+        fail(FILE, at(`brands.${brand.name}`), 'labelled EXACT but the names do not match exactly');
+      }
+    }
+
+    /* A microbusiness grows and sells under one licence, so one inside our
+       area should appear in both registers. Producers are statewide and the
+       dispensary register is not, so this only means anything for a licence
+       whose county we actually cover — otherwise it fires three hundred times
+       and says nothing. */
+    const covered = (r.counties ?? []).some((c: string) => COVERED_COUNTIES.has(c));
+    if (r.licenseType === 'MICROBUSINESS' && covered && r.licenseNumber && !dispensaryLicences.has(r.licenseNumber)) {
+      warn(FILE, at('licenseType'), 'microbusiness in a county we cover, but absent from the dispensary register');
+    }
+  });
+};
+
 // ---------------------------------------------------------------------------
 
 validateDispensaries('data/dispensaries.json', true);
@@ -415,6 +479,7 @@ validateDispensaries('data/dispensaries.demo.json', false);
 validateMunicipalities();
 validateFlowerListings('data/flower-listings.json');
 validateStrainReference('data/strain-reference.json');
+validateProducers('data/producers.json');
 
 const print = (label: string, items: Problem[]) => {
   if (items.length === 0) return;
