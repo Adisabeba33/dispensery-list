@@ -66,12 +66,18 @@ jobs:
         run: |
           set +e
           npm run validate > /tmp/validate.txt 2>&1
-          echo $? > /tmp/validate.code
+          code=$?
+          echo $code > /tmp/validate.code
+          # The step's own outcome only says the command ran, and `set +e` makes
+          # that always true — so the commit gate was reading "success" from a
+          # validator that had failed, and eight bad records were published.
+          # The verdict has to travel as a value.
+          echo "passed=$([ $code -eq 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
       - name: Commit collected listings
         # A one-shop diagnostic run must not rewrite the shelf file: it visited
         # one shop, and committing that would republish the whole dataset off
         # the back of a debugging run.
-        if: steps.validate.outcome == 'success' && inputs.only == ''
+        if: steps.validate.outputs.passed == 'true' && inputs.only == ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

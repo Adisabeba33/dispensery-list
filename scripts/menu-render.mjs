@@ -382,6 +382,8 @@ const cleanStrainName = (raw, brand) => {
   let text = String(raw)
     .replace(/\s*[-–—]\s*F\d+\s*$/i, '')          // trailing shop SKU: "- F140"
     .replace(/\((h|s|i|hybrid|sativa|indica)\)/gi, ' ')  // lineage marker, kept separately
+    // What removing a marker or a weight leaves behind: "Cherry Pie ( )".
+    .replace(/\(\s*\)/g, ' ')
     // The weight is kept in availableSizesGrams, so it is noise in the name
     // wherever it appears: "ILLUMINATI 3.5g" reads as a strain called ILLUMINATI.
     .replace(/\b[\d.]+\s*(?:g|gr|grams?)\b/gi, ' ')
@@ -422,7 +424,13 @@ const cleanStrainName = (raw, brand) => {
 const mergeBySize = (rows) => {
   const byKey = new Map();
   for (const row of rows) {
-    const key = `${row.licenseNumber}::${(row.brand ?? '').toLowerCase()}::${row.strainNameCanonical}`;
+    /* Keyed on the id itself, not on a separately computed name. The two were
+       normalised differently — the id folds all punctuation, the canonical name
+       does not — so "Cherry Pie" and "Cherry Pie ( )" were two shelf items with
+       one id: they failed to merge, and then failed validation as duplicates.
+       Anything that would collide on an id is the same shelf item by
+       definition. */
+    const key = `${row.licenseNumber}::${row.listingId}`;
     const existing = byKey.get(key);
     if (!existing) {
       byKey.set(key, row);

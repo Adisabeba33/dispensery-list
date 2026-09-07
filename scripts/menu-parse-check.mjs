@@ -149,6 +149,21 @@ check('shake refused', classify({ Name: 'Blue Dream Shake', type: 'Flower' }), '
 check('ground flower refused', classify({ Name: 'Ready To Roll - Golden Lemons - Ground Flower', type: 'Flower' }), 'title-not-flower');
 check('sampler refused', classify({ Name: 'Flower Flight: Alien Cookies, Blue Moon Dream', type: 'Flower' }), 'title-not-flower');
 
+/* ------------------------------------------------- merging what shares an id --
+ * The id folds punctuation and the canonical name did not, so an eighth and an
+ * ounce of one strain could carry one id and still be two shelf items — which
+ * failed validation as a duplicate and lost the ounce's weight on the way.
+ */
+{
+  const a = toListing({ Name: 'Cherry Pie', brandName: 'The Plug Pack', type: 'Flower', Options: ['1/8oz'] }, shop, SRC, {});
+  const b = toListing({ Name: 'Cherry Pie ( )', brandName: 'The Plug Pack', type: 'Flower', Options: ['1oz'] }, shop, SRC, {});
+  check('empty brackets are not part of a name', b?.strainNameRaw, 'Cherry Pie');
+  check('both carry one id', a?.listingId, b?.listingId);
+  const merged = mergeBySize([a, b].filter(Boolean));
+  check('and merge into one shelf item', merged.length, 1);
+  check('carrying both weights', merged[0]?.availableSizesGrams, [3.5, 28]);
+}
+
 /* ------------------------------------------------------------- on the shelf --
  * The menu carries no quantity, so a product it returns is a product it lists.
  * But a status that is not Active, and a product still marked coming soon, are
