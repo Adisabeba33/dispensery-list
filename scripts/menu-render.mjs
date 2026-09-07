@@ -625,6 +625,11 @@ const main = async () => {
     const page = await context.newPage();
     const payloads = [];
 
+    // When the last payload landed. A menu that is still fetching has not
+    // finished, and a fixed wait either cuts it off or wastes time on a shop
+    // that answered at once.
+    let lastPayloadAt = Date.now();
+
     // Capture what the page asks for; that is the menu the shop publishes.
     page.on('response', async (res) => {
       try {
@@ -633,6 +638,7 @@ const main = async () => {
         if (res.request().resourceType() === 'document') return;
         const body = await res.json();
         payloads.push(body);
+        lastPayloadAt = Date.now();
       } catch {
         /* non-JSON or aborted; nothing to capture */
       }
@@ -640,8 +646,23 @@ const main = async () => {
 
     const entry = { shop: shop.dbaName ?? shop.legalName, licence: shop.licenseNumber, status: null };
     try {
+      /* Wait for the fetching to stop rather than for a fixed number of
+         seconds. The same shop returned forty products one day and none the
+         next from the same address: we were reading whatever had arrived by
+         the time the clock ran out. Returns false if the cap was reached with
+         payloads still coming, which the report records. */
+      const settle = async (quietMs, capMs) => {
+        const start = Date.now();
+        lastPayloadAt = Date.now();
+        while (Date.now() - start < capMs) {
+          if (Date.now() - lastPayloadAt > quietMs) return true;
+          await page.waitForTimeout(400);
+        }
+        return false;
+      };
+
       await page.goto(site, { waitUntil: 'domcontentloaded', timeout: 30000 });
-      await page.waitForTimeout(2500);
+      await settle(1500, 8000);
       entry.ageGate = await affirmAge(page);
 
       // A menu address written down by hand beats anything found by guessing.
@@ -667,12 +688,22 @@ const main = async () => {
 
       if (href && entry.menuLink !== 'robots-disallowed') {
         await page.goto(href, { waitUntil: 'domcontentloaded', timeout: 30000 });
-        await page.waitForTimeout(2500);
+        await settle(1500, 10000);
         entry.ageGate = (await affirmAge(page)) || entry.ageGate;
-        await page.waitForTimeout(2500);
-        await page.mouse.wheel(0, 4000);
-        await page.waitForTimeout(2500);
+        entry.settled = await settle(3000, 25000);
+
+        /* Then scroll until nothing new arrives. Menus that page in as you go
+           gave us their first screen and no more. */
+        let previous = -1;
+        for (let round = 0; round < 8; round += 1) {
+          if (payloads.length === previous) break;
+          previous = payloads.length;
+          await page.mouse.wheel(0, 6000);
+          await settle(2000, 12000);
+          entry.scrollRounds = round + 1;
+        }
       }
+      entry.payloads = payloads.length;
 
       const arrays = payloads.flatMap((p) => findProductArrays(p));
       entry.productArrays = arrays.length;
@@ -753,6 +784,16 @@ const main = async () => {
     /* first run, or the file was removed on purpose */
   }
   const refreshed = new Set(report.filter((r) => r.flower > 0).map((r) => r.licence));
+
+  /* A capture that comes back much smaller than the last one is more often a
+     page that had not finished than a shop that stopped stocking. We still take
+     what we saw — inventing the difference would be worse — but the run says so
+     rather than letting the shelf quietly shrink. */
+  const previousCounts = {};
+  for (const l of previous) previousCounts[l.licenseNumber] = (previousCounts[l.licenseNumber] ?? 0) + 1;
+  const shrank = report
+    .filter((r) => r.flower > 0 && previousCounts[r.licence] > 0 && r.flower * 2 < previousCounts[r.licence])
+    .map((r) => `${r.shop}: ${previousCounts[r.licence]} → ${r.flower}`);
   const cutoff = Date.now() - CARRY_FORWARD_DAYS * 24 * 60 * 60 * 1000;
   const carried = previous.filter(
     (l) => !refreshed.has(l.licenseNumber) && Date.parse(l.capturedAt) >= cutoff,
@@ -776,6 +817,8 @@ const main = async () => {
       return acc;
     }, {}),
     usedKnownEndpoint: report.filter((r) => r.usedKnownEndpoint).length,
+    shelvesThatShrankByHalf: shrank,
+    hitTheSettleCap: report.filter((r) => r.settled === false).length,
     shelvesCarriedForward: new Set(carried.map((l) => l.licenseNumber)).size,
     listingsCarriedForward: carried.length,
     listingsDroppedAsStale: dropped,
