@@ -17,6 +17,12 @@ on:
         description: Visit only shops with a researched menu address
         type: boolean
         default: false
+      only:
+        description: Visit one licence number only (diagnosis)
+        default: ''
+      dump_products:
+        description: Write this many raw flower products into the report
+        default: '0'
 
 permissions:
   contents: write
@@ -52,6 +58,8 @@ jobs:
           --limit ${{ inputs.limit || '40' }}
           ${{ inputs.skip_collected && '--skip-collected' || '' }}
           ${{ inputs.only_endpoints && '--only-endpoints' || '' }}
+          ${{ inputs.only && format('--only {0}', inputs.only) || '' }}
+          ${{ inputs.dump_products != '0' && format('--dump-products {0}', inputs.dump_products) || '' }}
       - name: Validate collected listings
         id: validate
         continue-on-error: true
@@ -60,7 +68,10 @@ jobs:
           npm run validate > /tmp/validate.txt 2>&1
           echo $? > /tmp/validate.code
       - name: Commit collected listings
-        if: steps.validate.outcome == 'success'
+        # A one-shop diagnostic run must not rewrite the shelf file: it visited
+        # one shop, and committing that would republish the whole dataset off
+        # the back of a debugging run.
+        if: steps.validate.outcome == 'success' && inputs.only == ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -122,6 +133,8 @@ jobs:
               print(f"{str(r.get('status'))[:26]:27} {gate} link={link:<18}{known} "
                     f"seen={r.get('productsSeen', 0):<5} flower={r.get('flower', 0):<4} "
                     f"{r.get('shop', '')[:30]}")
+              for sample in r.get('sample', []):
+                  print(f"    RAW {sample}")
               if r.get('rejected'):
                   print(f"    dropped: {r['rejected']}")
               # The categories a flowerless shop does publish are the finding:

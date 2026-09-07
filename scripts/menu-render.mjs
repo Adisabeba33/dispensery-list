@@ -48,6 +48,15 @@ const skipCollected = process.argv.includes('--skip-collected');
    address for. Those are the ones a sweep already failed on, so re-running the
    whole register to reach them wastes an hour to test twenty-six. */
 const onlyEndpoints = process.argv.includes('--only-endpoints');
+
+/* --only <licence> visits one shop, and --dump-products writes the raw product
+   objects it saw into the report. Between them they answer "why did this shop
+   come out wrong" with the payload rather than a theory about it — which is
+   how the last three parser faults were actually found. */
+const onlyArg = process.argv.indexOf('--only');
+const onlyLicence = onlyArg > -1 ? process.argv[onlyArg + 1] : null;
+const dumpArg = process.argv.indexOf('--dump-products');
+const dumpProducts = dumpArg > -1 ? Number(process.argv[dumpArg + 1]) || 5 : 0;
 const alreadyCollected = new Set();
 if (skipCollected) {
   try {
@@ -86,7 +95,8 @@ const candidates = dispensaries.filter(
     OWN_SITE.has(d.menu?.provider) &&
     d.contact?.website &&
     !alreadyCollected.has(d.licenseNumber) &&
-    (!onlyEndpoints || ENDPOINTS[d.licenseNumber]),
+    (!onlyEndpoints || ENDPOINTS[d.licenseNumber]) &&
+    (!onlyLicence || d.licenseNumber === onlyLicence),
 );
 
 /** robots.txt still applies: a browser does not change who is welcome. */
@@ -670,6 +680,15 @@ const main = async () => {
 
       if (arrays.length) {
         capturedShapes[shop.menu.provider] ??= Object.keys(arrays[0][0]).sort().slice(0, 60);
+      }
+
+      if (dumpProducts > 0) {
+        // Whole objects, not key names: the fault is usually in a value.
+        entry.sample = arrays
+          .flat()
+          .filter((product) => classify(product) === 'flower')
+          .slice(0, dumpProducts)
+          .map((product) => JSON.stringify(product).slice(0, 2400));
       }
 
       // Why products were dropped, not merely how many. A run that collects
