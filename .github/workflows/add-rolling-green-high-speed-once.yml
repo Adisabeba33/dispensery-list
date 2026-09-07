@@ -1,0 +1,108 @@
+name: Add Rolling Green High Speed COA reference once
+
+on:
+  push:
+    branches:
+      - agent/menu-endpoints-nyc
+    paths:
+      - .github/workflows/add-rolling-green-high-speed-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/menu-endpoints-nyc
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Append, validate, and commit verified High Speed reference
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            git fetch origin agent/menu-endpoints-nyc
+            git reset --hard origin/agent/menu-endpoints-nyc
+            python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path('data/strain-reference.json')
+          data = json.loads(path.read_text())
+          if any(x.get('strainId') == 'high-speed' for x in data):
+              print('High Speed already present; no change needed.')
+              raise SystemExit(0)
+
+          data.append({
+            "strainId": "high-speed",
+            "canonicalName": "High Speed",
+            "aliases": ["High Speed", "Jar Flower - High Speed"],
+            "lineage": "UNKNOWN",
+            "parents": None,
+            "profile": [
+              {"name": "CARYOPHYLLENE", "medianPercent": 0.32, "observations": 1},
+              {"name": "LIMONENE", "medianPercent": 0.31, "observations": 1},
+              {"name": "MYRCENE", "medianPercent": 0.21, "observations": 1},
+              {"name": "HUMULENE", "medianPercent": 0.13, "observations": 1},
+              {"name": "LINALOOL", "medianPercent": 0.07, "observations": 1},
+              {"name": "OCIMENE", "medianPercent": 0.07, "observations": 1},
+              {"name": "BISABOLOL", "medianPercent": 0.07, "observations": 1},
+              {"name": "GUAIOL", "medianPercent": 0.06, "observations": 1},
+              {"name": "PINENE_BETA", "medianPercent": 0.06, "observations": 1},
+              {"name": "PINENE_ALPHA", "medianPercent": 0.04, "observations": 1},
+              {"name": "TERPINEOL", "medianPercent": 0.03, "observations": 1},
+              {"name": "FENCHOL", "medianPercent": 0.03, "observations": 1},
+              {"name": "CARYOPHYLLENE_OXIDE", "medianPercent": 0.02, "observations": 1},
+              {"name": "CAMPHENE", "medianPercent": 0.01, "observations": 1},
+              {"name": "VALENCENE", "medianPercent": 0.01, "observations": 1}
+            ],
+            "basis": {
+              "kind": "AGGREGATED_COA",
+              "sampleCount": 1,
+              "datasetName": None,
+              "datasetLicence": None,
+              "notes": "Single direct Kaycha Labs compliance COA for Rolling Green High Speed cured flower 3.5g, sample AL60123013-002 / batch HS12326 / harvest-lot 1A41203000003F5000000220, sampled 2026-01-23 and completed 2026-02-02. Stored as a LOW-confidence seed reference only; one batch is not representative of all High Speed lots. Only quantified terpene detections are retained; <LOQ results are omitted rather than coerced to zero. The retained quantified analytes sum exactly to the certificate's Total Terpenes 1.44%. The certificate classification is Raw Plant Material (Final Form) and does not explicitly state Indica/Sativa/Hybrid, so lineage remains UNKNOWN."
+            },
+            "confidence": "LOW",
+            "sources": [
+              {
+                "url": "https://app.alleaves.com/api/inventory/batch/buddega/coa/21225.pdf",
+                "label": "Kaycha Labs — Rolling Green High Speed 3.5g / AL60123013-002 / HS12326 — completed 2026-02-02",
+                "retrievedAt": "2026-09-07T12:45:00Z"
+              },
+              {
+                "url": "https://www.rollinggreenny.com/products/premium-s3tw4",
+                "label": "Rolling Green official Premium Line — High Speed 29.56% THC with official COA link for harvest/lot 1A41203000003F5000000220",
+                "retrievedAt": "2026-09-07T12:45:00Z"
+              }
+            ],
+            "lastUpdated": "2026-09-07T12:45:00Z"
+          })
+
+          path.write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')) + '\n')
+          PY
+
+            if git diff --quiet -- data/strain-reference.json; then
+              echo 'No data change to commit.'
+              exit 0
+            fi
+
+            npm run validate
+            git config user.name 'Adisabeba33'
+            git config user.email 'lezzgo2@gmail.com'
+            git add data/strain-reference.json
+            git commit -m 'research: add Rolling Green High Speed COA profile'
+            if git push origin HEAD:agent/menu-endpoints-nyc; then
+              exit 0
+            fi
+            echo "Push raced with another update; retrying from latest branch (attempt ${attempt}/5)."
+          done
+          echo 'Could not push after 5 attempts.' >&2
+          exit 1
