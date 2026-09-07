@@ -749,12 +749,28 @@ const main = async () => {
       }
 
       if (dumpProducts > 0) {
-        // Whole objects, not key names: the fault is usually in a value.
+        /* The whole object gets truncated exactly where the interesting fields
+           are, so anything that might mean "on the shelf" is pulled out by
+           name alongside what we concluded from it. Every menu says it has
+           everything in stock, which no shop does. */
+        const STOCKISH = /stock|avail|quantit|inventor|sold|status|active|discontinu|archiv/i;
         entry.sample = arrays
           .flat()
           .filter((product) => classify(product) === 'flower')
           .slice(0, dumpProducts)
-          .map((product) => JSON.stringify(product).slice(0, 2400));
+          .map((product) => {
+            const stock = {};
+            for (const [k, v] of Object.entries(product)) {
+              if (STOCKISH.test(k)) stock[k] = typeof v === 'object' ? JSON.stringify(v).slice(0, 200) : v;
+            }
+            const listing = toListing(product, shop, page.url(), {});
+            return JSON.stringify({
+              name: String(flatten(pick(product, NAME_KEYS)) ?? '').slice(0, 60),
+              weRead: { inStock: listing?.inStock, sizes: listing?.availableSizesGrams },
+              stockFields: stock,
+              allKeys: Object.keys(product).join(','),
+            }).slice(0, 1600);
+          });
       }
 
       // Why products were dropped, not merely how many. A run that collects
