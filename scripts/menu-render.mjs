@@ -587,7 +587,17 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   // dropped rather than published as a strain nobody can ask for.
   if (!sizes.length) return null;
 
-  const stock = flatten(pick(p, ['inStock', 'available', 'isAvailable', 'quantity']));
+  /* Dutchie's menu carries no quantity: what it returns is what is on the
+     menu, so the absence of a stock field means "listed", not "unknown". It
+     does say two other things we were ignoring — a product whose Status is not
+     Active, and one still marked coming soon, are not on the shelf today. */
+  const status = flatten(pick(p, ['status']));
+  const comingSoon = flatten(pick(p, ['comingSoon']));
+  const notYet =
+    (typeof status === 'string' && status.trim() !== '' && !/^active$/i.test(status.trim())) ||
+    comingSoon === true;
+
+  const stock = notYet ? false : flatten(pick(p, ['inStock', 'available', 'isAvailable', 'quantity']));
 
   const listingId = slug(String(brand ?? ''), String(name));
   if (!listingId) return null;
@@ -617,7 +627,13 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     },
     harvestedOn: null,
     packagedOn: null,
-    inStock: stock === null || stock === undefined ? true : typeof stock === 'number' ? stock > 0 : Boolean(stock),
+    inStock: notYet
+      ? false
+      : stock === null || stock === undefined
+        ? true
+        : typeof stock === 'number'
+          ? stock > 0
+          : Boolean(stock),
     availableSizesGrams: sizes.length ? [...new Set(sizes)].sort((a, b) => a - b) : null,
     productUrl: null,
     sources: [{ url: sourceUrl, label: 'Shop menu', type: 'MENU_PLATFORM', retrievedAt: NOW }],

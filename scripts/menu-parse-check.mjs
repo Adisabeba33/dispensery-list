@@ -149,6 +149,20 @@ check('shake refused', classify({ Name: 'Blue Dream Shake', type: 'Flower' }), '
 check('ground flower refused', classify({ Name: 'Ready To Roll - Golden Lemons - Ground Flower', type: 'Flower' }), 'title-not-flower');
 check('sampler refused', classify({ Name: 'Flower Flight: Alien Cookies, Blue Moon Dream', type: 'Flower' }), 'title-not-flower');
 
+/* ------------------------------------------------------------- on the shelf --
+ * The menu carries no quantity, so a product it returns is a product it lists.
+ * But a status that is not Active, and a product still marked coming soon, are
+ * not on the shelf whatever else the payload says.
+ */
+check('listed with no stock field is on the shelf',
+  toListing({ Name: 'A', type: 'Flower', Options: ['3.5g'], Status: 'Active' }, shop, SRC, {})?.inStock, true);
+check('an inactive status is not on the shelf',
+  toListing({ Name: 'B', type: 'Flower', Options: ['3.5g'], Status: 'Archived' }, shop, SRC, {})?.inStock, false);
+check('coming soon is not on the shelf',
+  toListing({ Name: 'C', type: 'Flower', Options: ['3.5g'], comingSoon: true }, shop, SRC, {})?.inStock, false);
+check('an empty status says nothing either way',
+  toListing({ Name: 'D', type: 'Flower', Options: ['3.5g'], Status: '' }, shop, SRC, {})?.inStock, true);
+
 /* ------------------------------------------------------- choosing the link --
  * From a real page: a promotional tile saying "Shop now" appears before the
  * Flower nav item, and taking the first match landed a run on an offer with
