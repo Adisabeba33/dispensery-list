@@ -1,0 +1,108 @@
+name: Add Muffin Bomb COA reference once
+
+on:
+  push:
+    branches:
+      - agent/menu-endpoints-nyc
+    paths:
+      - .github/workflows/add-muffin-bomb-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/menu-endpoints-nyc
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Append, validate, and commit verified Muffin Bomb reference
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            git fetch origin agent/menu-endpoints-nyc
+            git reset --hard origin/agent/menu-endpoints-nyc
+            python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path('data/strain-reference.json')
+          data = json.loads(path.read_text())
+          if any(x.get('strainId') == 'muffin-bomb' for x in data):
+              print('Muffin Bomb already present; no change needed.')
+              raise SystemExit(0)
+
+          data.append({
+            "strainId": "muffin-bomb",
+            "canonicalName": "Muffin Bomb",
+            "aliases": ["Muffin Bomb"],
+            "lineage": "UNKNOWN",
+            "parents": None,
+            "profile": [
+              {"name": "LIMONENE", "medianPercent": 0.18, "observations": 1},
+              {"name": "MYRCENE", "medianPercent": 0.09, "observations": 1},
+              {"name": "CARYOPHYLLENE", "medianPercent": 0.07, "observations": 1},
+              {"name": "LINALOOL", "medianPercent": 0.05, "observations": 1},
+              {"name": "PINENE_BETA", "medianPercent": 0.03, "observations": 1},
+              {"name": "GUAIOL", "medianPercent": 0.03, "observations": 1},
+              {"name": "BISABOLOL", "medianPercent": 0.02, "observations": 1},
+              {"name": "HUMULENE", "medianPercent": 0.02, "observations": 1},
+              {"name": "TERPINOLENE", "medianPercent": 0.02, "observations": 1},
+              {"name": "PINENE_ALPHA", "medianPercent": 0.01, "observations": 1},
+              {"name": "CARYOPHYLLENE_OXIDE", "medianPercent": 0.01, "observations": 1},
+              {"name": "FENCHOL", "medianPercent": 0.01, "observations": 1},
+              {"name": "OCIMENE", "medianPercent": 0.01, "observations": 1},
+              {"name": "TERPINEOL", "medianPercent": 0.01, "observations": 1},
+              {"name": "VALENCENE", "medianPercent": 0.01, "observations": 1}
+            ],
+            "basis": {
+              "kind": "AGGREGATED_COA",
+              "sampleCount": 1,
+              "datasetName": None,
+              "datasetLicence": None,
+              "notes": "Single direct Alleaves batch COA export for Find/Curaleaf NY whole flower 28g, sample AL60219001-004, released 2026-02-23. Stored as a LOW-confidence seed reference only; one package sample is not representative of all Muffin Bomb lots. The export reports Total Terpenes 0.57%, exactly matching the sum of positive terpene results retained here. Explicit zero results are omitted rather than treated as quantified observations. The item code ends in -H but the certificate does not spell out Hybrid, so lineage remains UNKNOWN."
+            },
+            "confidence": "LOW",
+            "sources": [
+              {
+                "url": "https://app.alleaves.com/api/inventory/batch/buddega/coa/24079.pdf",
+                "label": "Alleaves direct batch COA export — Find Muffin Bomb 28g / AL60219001-004 — released 2026-02-23",
+                "retrievedAt": "2026-09-07T06:55:00Z"
+              },
+              {
+                "url": "https://opencoa.org/license/2361?page=46",
+                "label": "OpenCOA — MM1001M history entry for Find Muffin Bomb 28g / AL60219001-004",
+                "retrievedAt": "2026-09-07T06:55:00Z"
+              }
+            ],
+            "lastUpdated": "2026-09-07T06:55:00Z"
+          })
+
+          path.write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')) + '\n')
+          PY
+
+            if git diff --quiet -- data/strain-reference.json; then
+              echo 'No data change to commit.'
+              exit 0
+            fi
+
+            npm run validate
+            git config user.name 'Adisabeba33'
+            git config user.email 'lezzgo2@gmail.com'
+            git add data/strain-reference.json
+            git commit -m 'research: add Find Muffin Bomb COA profile'
+            if git push origin HEAD:agent/menu-endpoints-nyc; then
+              exit 0
+            fi
+            echo "Push raced with another update; retrying from latest branch (attempt ${attempt}/5)."
+          done
+          echo 'Could not push after 5 attempts.' >&2
+          exit 1
