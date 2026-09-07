@@ -10,7 +10,9 @@
  *
  *   node scripts/menu-parse-check.mjs
  */
-import { classify, cleanStrainName, mergeBySize, sizeFromText, toListing } from './menu-render.mjs';
+import {
+  classify, cleanStrainName, mergeBySize, pickMenuLink, rankMenuLink, sizeFromText, toListing,
+} from './menu-render.mjs';
 
 const shop = { licenseNumber: 'OCM-CAURD-24-000001' };
 const SRC = 'https://example-dispensary.test/menu';
@@ -146,6 +148,31 @@ check('variant value is not a weight', toListing({ Name: 'Mystery', type: 'Flowe
 check('shake refused', classify({ Name: 'Blue Dream Shake', type: 'Flower' }), 'title-not-flower');
 check('ground flower refused', classify({ Name: 'Ready To Roll - Golden Lemons - Ground Flower', type: 'Flower' }), 'title-not-flower');
 check('sampler refused', classify({ Name: 'Flower Flight: Alien Cookies, Blue Moon Dream', type: 'Flower' }), 'title-not-flower');
+
+/* ------------------------------------------------------- choosing the link --
+ * From a real page: a promotional tile saying "Shop now" appears before the
+ * Flower nav item, and taking the first match landed a run on an offer with
+ * five products while the shop's actual flower category went unread.
+ */
+{
+  const links = [
+    { href: 'https://shop.test/stores/x/specials/offer/331687', text: 'Shop now' },
+    { href: 'https://shop.test/about', text: 'About us' },
+    { href: 'https://shop.test/stores/x/categories/flower', text: 'Flower' },
+    { href: 'https://shop.test/stores/x/categories/edibles', text: 'Edibles' },
+  ];
+  check('picks the flower category over a promo', pickMenuLink(links), 'https://shop.test/stores/x/categories/flower');
+  check('a specials route is never followed', rankMenuLink('https://shop.test/specials/offer/1', 'Shop now'), 0);
+  check('a brand page is never followed', rankMenuLink('https://shop.test/brands/dada', 'Shop Dada'), 0);
+  check('a flower category beats a bare menu', rankMenuLink('https://s.test/menu/flower', 'x') > rankMenuLink('https://s.test/menu', 'Menu'), true);
+  check('a nav item reading Flower counts', rankMenuLink('https://s.test/c/1b9f87', 'Flower') > 0, true);
+  check(
+    'the menu is still followed when no category is offered',
+    pickMenuLink([{ href: 'https://s.test/menu', text: 'Menu' }]),
+    'https://s.test/menu',
+  );
+  check('nothing usable gives nothing', pickMenuLink([{ href: 'https://s.test/careers', text: 'Careers' }]), null);
+}
 
 /* ---------------------------------------------------------- name cleaning */
 check('strip sku and marker', cleanStrainName('ILLUMINATI (H) 3.5g - F42', null), 'ILLUMINATI');

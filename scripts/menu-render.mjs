@@ -173,8 +173,43 @@ const affirmAge = async (page) => {
   }
 };
 
-const FLOWER_LINK = /(flower|\/bud\b|category=flower|categories\/flower)/i;
-const MENU_LINK = /\b(menu|shop|order|browse|products?)\b/i;
+/**
+ * Choosing which link is the menu.
+ *
+ * Taking the first link whose text says "shop" landed a run on a promotional
+ * offer — five products, and the shop's real flower category untouched. Links
+ * are now scored rather than raced, the address counts for more than the words
+ * on it, and the routes that are never a menu are refused outright.
+ */
+const PROMO_ROUTE = /\/(specials?|offers?|deals?|promo|blog|news|about|contact|account|login|cart|checkout|brands?|careers)\b/i;
+const FLOWER_ROUTE = /(categor(y|ies)[=/][^/?#]*flower|\/flower\b|flower\/?$|[?&]category=flower|\/rec\/flower|\/bud\b)/i;
+const MENU_ROUTE = /\/(menu|shop|order|products?|browse|store|dispensary)\b/i;
+const FLOWER_WORD = /^\s*(flower|flowers|bud|buds|whole\s*flower)\s*$/i;
+const MENU_WORD = /\b(menu|shop|order|browse|products?)\b/i;
+
+/** Higher is better; 0 means "never follow this". */
+export const rankMenuLink = (href = '', text = '') => {
+  if (!href || PROMO_ROUTE.test(href)) return 0;
+  if (FLOWER_ROUTE.test(href)) return 100;          // the flower category itself
+  if (FLOWER_WORD.test(text)) return 90;            // a nav item that says Flower
+  if (MENU_ROUTE.test(href) && FLOWER_WORD.test(text)) return 85;
+  if (MENU_ROUTE.test(href)) return 50;             // the menu, if not the category
+  if (MENU_WORD.test(text)) return 20;              // only the words on a link
+  return 0;
+};
+
+export const pickMenuLink = (links) => {
+  let best = null;
+  let bestScore = 0;
+  for (const link of links) {
+    const score = rankMenuLink(link.href, link.text);
+    if (score > bestScore) {
+      bestScore = score;
+      best = link.href;
+    }
+  }
+  return best;
+};
 
 /** Walks captured JSON looking for something shaped like a product list. */
 const findProductArrays = (value, depth = 0, out = []) => {
@@ -669,18 +704,14 @@ const main = async () => {
       const known = ENDPOINTS[shop.licenseNumber] ?? null;
       entry.usedKnownEndpoint = Boolean(known);
 
-      // Prefer a flower category link; fall back to any menu link.
-      const found = await page.evaluate(
-        ({ flowerSrc, menuSrc }) => {
-          const flower = new RegExp(flowerSrc, 'i');
-          const menu = new RegExp(menuSrc, 'i');
-          const links = [...document.querySelectorAll('a[href]')];
-          const match = links.find((a) => flower.test(a.href) || flower.test(a.textContent || ''));
-          const fallback = links.find((a) => menu.test(a.href) || menu.test(a.textContent || ''));
-          return (match ?? fallback)?.href ?? null;
-        },
-        { flowerSrc: FLOWER_LINK.source, menuSrc: MENU_LINK.source },
+      /* The page hands back its links; the choosing happens here, where it can
+         be tested against a real page's worth of them. */
+      const links = await page.evaluate(() =>
+        [...document.querySelectorAll('a[href]')]
+          .slice(0, 400)
+          .map((a) => ({ href: a.href, text: (a.textContent || '').trim().slice(0, 60) })),
       );
+      const found = pickMenuLink(links);
       const href = known ?? found;
       // Said plainly, so "no products" stops covering "not allowed there".
       entry.menuLink = href ? 'found' : 'none';
