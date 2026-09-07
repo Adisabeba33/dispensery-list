@@ -209,6 +209,32 @@ check('strip brand', cleanStrainName('LEAL - Grape Cake - Flower - 28 Grams', 'L
 check('strip grade word', cleanStrainName('Flower - Whole - Bubblegum Gushers', null), 'Bubblegum Gushers');
 check('keep strain that starts with a grade word', cleanStrainName('Whole Lotta Love', null), 'Whole Lotta Love');
 
+/* --------------------------------------------- flower vs not, by the title */
+/* A word inside another word is not that word. The stem "cart" was rejecting
+   Cartel OG, and "diamond" was rejecting Black Diamond — real strains, sold
+   as flower by the eighth, silently absent from every shelf that carried
+   them. These are the names that must survive the filter, and the product
+   forms that must not. */
+{
+  const flower = (name) => ({ name, category: 'Flower' });
+  const keeps = [
+    'Black Diamond', 'Diamond OG', 'Cartel OG', 'Cartier', 'Carter Kush',
+    'Gumbo', 'Shakedown', 'Jointer Kush', 'Vaporub OG', 'Trimble Haze',
+  ];
+  for (const name of keeps) {
+    check(`kept as flower: ${name}`, classify(flower(name)), 'flower');
+  }
+  const drops = [
+    'Blue Dream Diamonds', 'Diamond Sauce', 'Infused Pre-Roll', 'Gelato Pre Roll',
+    'Runtz Blunt', 'Sour Joint', 'Wedding Cake Cart', 'GMO Cartridge',
+    'Peach Gummies', 'Assorted Edibles', 'Sour Diesel Shake', 'House Trim',
+    'Moon Rocks', 'Pre-Ground Flower', 'Ready to Roll', 'Flower Flight',
+  ];
+  for (const name of drops) {
+    check(`dropped, not flower: ${name}`, classify(flower(name)), 'title-not-flower');
+  }
+}
+
 if (failures) {
   console.log(`\n${failures} check(s) failed.`);
   process.exit(1);

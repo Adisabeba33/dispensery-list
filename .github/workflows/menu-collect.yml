@@ -148,6 +148,12 @@ jobs:
                   print(f"    RAW {sample}")
               if r.get('rejected'):
                   print(f"    dropped: {r['rejected']}")
+              # Named, not just counted: a shelf that comes up short is diagnosed
+              # by reading what was thrown away against the shop's own website.
+              for verdict, names in (r.get('rejectedSample') or {}).items():
+                  print(f"    dropped as {verdict}:")
+                  for n in names:
+                      print(f"      - {n}")
               # The categories a flowerless shop does publish are the finding:
               # they say what word the filter should have been looking for.
               if r.get('categories') and not r.get('flower'):

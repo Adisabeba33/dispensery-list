@@ -371,11 +371,34 @@ const lineageFromTitle = (raw) => {
  * flower. Their category often still says "flower", so the title has to be
  * read too.
  */
-/* The first group are stems on purpose — "infus" catches Infused, "cart"
-   Cartridge, "gumm" Gummies. The second are whole words, so a Trimmed or
-   Shakedown strain is not thrown away with the shake. */
-const NOT_FLOWER_TITLE =
-  /\b(infus|diamond|moon\s?rock|pre[\s-]?roll|blunt|joint|vape|cart|gumm|edible)|\b(shake|trim)\b|ground\s+flower|ready\s+to\s+roll|flower\s+flight/i;
+/* Stems were too blunt an instrument. "cart" threw away Cartel OG and
+   Cartier; "diamond" threw away Black Diamond and Diamond OG, which are
+   flower strains a shop sells by the eighth. Only "infus" stays a stem,
+   because Infused and Infusion are never a strain name. Everything else is
+   whole-word, and the concentrate is told from the strain by the plural:
+   Diamonds is an extract, Diamond is a strain. */
+const NOT_FLOWER_TITLE = new RegExp(
+  [
+    'infus',                                   // Infused, Infusion
+    '\\bdiamonds\\b',                            // the extract; "Black Diamond" is a strain
+    '\\bdiamond\\s+(?:sauce|melt|infused)\\b',
+    '\\bmoon\\s?rocks?\\b',
+    '\\bpre[\\s-]?rolls?\\b',
+    '\\bblunts?\\b',
+    '\\bjoints?\\b',
+    '\\bvapes?\\b',
+    '\\bcarts?\\b',
+    '\\bcartridges?\\b',
+    '\\bgumm(?:y|ies|ie)\\b',
+    '\\bedibles?\\b',
+    '\\bshake\\b',
+    '\\btrim\\b',
+    'ground\\s+flower',
+    'ready\\s+to\\s+roll',
+    'flower\\s+flight',
+  ].join('|'),
+  'i',
+);
 
 /** Strips the brand, the category word and the size, leaving the strain. */
 const cleanStrainName = (raw, brand) => {
@@ -800,6 +823,12 @@ const main = async () => {
       // Why products were dropped, not merely how many. A run that collects
       // nothing has to say which step refused, or the next fix is guesswork.
       const why = {};
+      /* What was dropped, by name. The counts alone cannot answer the only
+         question that matters when a shelf comes up short — "is the thing the
+         shop sells and we do not among these?" — and answering it from the
+         shop's own website by hand is how the last three data-losing bugs
+         were found. */
+      const rejectedNames = {};
       const categoriesSeen = new Map();
       const seen = new Set();
       for (const arr of arrays) {
@@ -809,11 +838,21 @@ const main = async () => {
           if (cat) categoriesSeen.set(cat, (categoriesSeen.get(cat) ?? 0) + 1);
           if (verdict !== 'flower') {
             why[verdict] = (why[verdict] ?? 0) + 1;
+            if (dumpProducts > 0) {
+              (rejectedNames[verdict] ??= []).push(
+                `${String(flatten(pick(product, NAME_KEYS)) ?? '').slice(0, 70)}  [${cat}]`,
+              );
+            }
             continue;
           }
           const listing = toListing(product, shop, page.url(), rawTerpNames);
           if (!listing) {
             why['flower-no-size'] = (why['flower-no-size'] ?? 0) + 1;
+            if (dumpProducts > 0) {
+              (rejectedNames['flower-no-size'] ??= []).push(
+                `${String(flatten(pick(product, NAME_KEYS)) ?? '').slice(0, 70)}  [${cat}]`,
+              );
+            }
             continue;
           }
           /* Every row is kept; mergeBySize folds them together afterwards.
@@ -829,6 +868,11 @@ const main = async () => {
       }
       entry.flower = seen.size;
       entry.rejected = why;
+      if (dumpProducts > 0) {
+        entry.rejectedSample = Object.fromEntries(
+          Object.entries(rejectedNames).map(([k, v]) => [k, v.slice(0, dumpProducts)]),
+        );
+      }
       entry.categories = [...categoriesSeen.entries()]
         .sort((a, b) => b[1] - a[1])
         .slice(0, 8)
