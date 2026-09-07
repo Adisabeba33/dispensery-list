@@ -1,0 +1,138 @@
+name: Add Canna Cure shelf COA references once
+
+on:
+  push:
+    branches:
+      - agent/menu-endpoints-nyc
+    paths:
+      - .github/workflows/add-cannacure-shelf-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/menu-endpoints-nyc
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Append, validate, and commit verified Canna Cure references
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            git fetch origin agent/menu-endpoints-nyc
+            git reset --hard origin/agent/menu-endpoints-nyc
+            python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path('data/strain-reference.json')
+          data = json.loads(path.read_text())
+          existing = {x.get('strainId') for x in data}
+          changed = False
+          now = '2026-09-07T12:00:00Z'
+
+          if 'blue-zushi' not in existing:
+              data.append({
+                "strainId": "blue-zushi",
+                "canonicalName": "Blue Zushi",
+                "aliases": ["Blue Zushi"],
+                "lineage": "UNKNOWN",
+                "parents": None,
+                "profile": [
+                  {"name": "MYRCENE", "medianPercent": 0.57, "observations": 1},
+                  {"name": "LIMONENE", "medianPercent": 0.55, "observations": 1},
+                  {"name": "LINALOOL", "medianPercent": 0.35, "observations": 1},
+                  {"name": "CARYOPHYLLENE", "medianPercent": 0.27, "observations": 1},
+                  {"name": "PINENE_BETA", "medianPercent": 0.10, "observations": 1},
+                  {"name": "HUMULENE", "medianPercent": 0.09, "observations": 1},
+                  {"name": "FENCHOL", "medianPercent": 0.07, "observations": 1},
+                  {"name": "TERPINEOL", "medianPercent": 0.06, "observations": 1},
+                  {"name": "NEROLIDOL_TRANS", "medianPercent": 0.04, "observations": 1}
+                ],
+                "basis": {
+                  "kind": "AGGREGATED_COA",
+                  "sampleCount": 1,
+                  "datasetName": None,
+                  "datasetLicence": None,
+                  "notes": "Single direct Green Analytics NY full-compliance flower COA for Canna Cure Farms Blue Zushi 3.5g Jar, sample 20241014-CACF-007 / batch LL-2024-0020, sampled 2024-10-14 and reported 2024-10-30. Stored as a LOW-confidence seed reference only; one batch is not representative of all Blue Zushi lots. Only quantified terpene detections are retained; <MRL results are omitted rather than coerced to zero. The retained quantified values sum exactly to the certificate's Total Terpenes 2.10%. The certificate does not explicitly classify the cultivar as Indica/Sativa/Hybrid, so lineage remains UNKNOWN."
+                },
+                "confidence": "LOW",
+                "sources": [
+                  {
+                    "url": "https://app.alleaves.com/api/inventory/batch/buddega/coa/6184.pdf",
+                    "label": "Green Analytics NY — Canna Cure Farms Blue Zushi 3.5g Jar / 20241014-CACF-007 / LL-2024-0020 — reported 2024-10-30",
+                    "retrievedAt": now
+                  }
+                ],
+                "lastUpdated": now
+              })
+              changed = True
+
+          if 'pineapple-express' not in existing:
+              data.append({
+                "strainId": "pineapple-express",
+                "canonicalName": "Pineapple Express",
+                "aliases": ["Pineapple Express", "CannaCure Farms - Pineapple Express - Flower"],
+                "lineage": "UNKNOWN",
+                "parents": None,
+                "profile": [
+                  {"name": "TERPINOLENE", "medianPercent": 0.59, "observations": 1},
+                  {"name": "MYRCENE", "medianPercent": 0.27, "observations": 1},
+                  {"name": "OCIMENE", "medianPercent": 0.27, "observations": 1},
+                  {"name": "CARYOPHYLLENE", "medianPercent": 0.19, "observations": 1},
+                  {"name": "GUAIOL", "medianPercent": 0.10, "observations": 1},
+                  {"name": "LINALOOL", "medianPercent": 0.10, "observations": 1},
+                  {"name": "LIMONENE", "medianPercent": 0.09, "observations": 1},
+                  {"name": "PINENE_BETA", "medianPercent": 0.08, "observations": 1}
+                ],
+                "basis": {
+                  "kind": "AGGREGATED_COA",
+                  "sampleCount": 1,
+                  "datasetName": None,
+                  "datasetLicence": None,
+                  "notes": "Single direct Metrc VerifID lab-results export for Canna Cure Farms Pineapple Express 3.5g Jar, tracking ID 1A41203000016B3000000161, tested by Green Analytics NY on 2026-02-10. Stored as a LOW-confidence seed reference only; one package result is not representative of all Pineapple Express lots. The export reports Total Terpenes 1.74% while the eight individually printed terpene values retained here sum to 1.69%; the project preserves the printed analytes and does not invent or adjust the missing 0.05 percentage point. The lab-results export does not explicitly classify the cultivar as Indica/Sativa/Hybrid, so lineage remains UNKNOWN."
+                },
+                "confidence": "LOW",
+                "sources": [
+                  {
+                    "url": "https://app.alleaves.com/api/inventory/batch/buddega/coa/21881.pdf",
+                    "label": "Metrc VerifID / Green Analytics NY — Canna Cure Farms Pineapple Express 3.5g Jar / 1A41203000016B3000000161 — tested 2026-02-10",
+                    "retrievedAt": now
+                  }
+                ],
+                "lastUpdated": now
+              })
+              changed = True
+
+          if changed:
+              path.write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')) + '\n')
+          else:
+              print('Both Canna Cure profiles already present; no data change needed.')
+          PY
+
+            if git diff --quiet -- data/strain-reference.json; then
+              echo 'No data change to commit.'
+              exit 0
+            fi
+
+            npm run validate
+            git config user.name 'Adisabeba33'
+            git config user.email 'lezzgo2@gmail.com'
+            git add data/strain-reference.json
+            git commit -m 'research: add Canna Cure Blue Zushi and Pineapple Express COA profiles'
+            if git push origin HEAD:agent/menu-endpoints-nyc; then
+              exit 0
+            fi
+            echo "Push raced with another update; retrying from latest branch (attempt ${attempt}/5)."
+          done
+          echo 'Could not push after 5 attempts.' >&2
+          exit 1
