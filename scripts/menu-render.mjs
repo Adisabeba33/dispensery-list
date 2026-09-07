@@ -704,6 +704,10 @@ const main = async () => {
         }
       }
       entry.payloads = payloads.length;
+      /* Where we actually ended up. A shop that returns five products when its
+         site shows twenty is either being paged or we are standing on the wrong
+         page, and the URL is the difference between those two. */
+      entry.landedOn = page.url();
 
       const arrays = payloads.flatMap((p) => findProductArrays(p));
       entry.productArrays = arrays.length;

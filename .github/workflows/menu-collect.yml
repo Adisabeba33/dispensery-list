@@ -133,6 +133,9 @@ jobs:
               print(f"{str(r.get('status'))[:26]:27} {gate} link={link:<18}{known} "
                     f"seen={r.get('productsSeen', 0):<5} flower={r.get('flower', 0):<4} "
                     f"{r.get('shop', '')[:30]}")
+              if r.get('landedOn'):
+                  print(f"    landed on {r['landedOn']}  ({r.get('payloads', 0)} payloads, "
+                        f"{r.get('scrollRounds', 0)} scroll rounds)")
               if r.get('settled') is False:
                   print('    still fetching when the cap was reached')
               for sample in r.get('sample', []):
