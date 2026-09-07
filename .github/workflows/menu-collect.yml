@@ -144,6 +144,10 @@ jobs:
                         f"{r.get('scrollRounds', 0)} scroll rounds)")
               if r.get('settled') is False:
                   print('    still fetching when the cap was reached')
+              if r.get('hitScrollCap') or r.get('hitScrollBudget'):
+                  print('    STOPPED SCROLLING WITH THE MENU STILL GROWING — this shelf is short')
+              if r.get('declaredTotal') and r['declaredTotal'] > r.get('productsSeen', 0):
+                  print(f"    the menu says {r['declaredTotal']} products, we read {r.get('productsSeen', 0)}")
               for sample in r.get('sample', []):
                   print(f"    RAW {sample}")
               if r.get('rejected'):

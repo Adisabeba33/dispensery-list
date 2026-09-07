@@ -212,6 +212,25 @@ export const pickMenuLink = (links) => {
 };
 
 /** Walks captured JSON looking for something shaped like a product list. */
+/* How many products the menu says it has. A shelf can only be known to be
+   short by comparing what arrived against what the menu itself declared, and
+   without that a truncated collection looks exactly like a small shop. Only
+   keys that name a total count are read, and only when the number is one a
+   menu could plausibly state. */
+const TOTAL_KEY = /^(total|totalCount|totalResults|totalItems|totalProducts|resultCount|numResults|count)$/i;
+const findDeclaredTotal = (value, depth = 0, best = { n: 0 }) => {
+  if (depth > 6 || !value || typeof value !== 'object') return best.n;
+  if (Array.isArray(value)) {
+    for (const item of value.slice(0, 20)) findDeclaredTotal(item, depth + 1, best);
+    return best.n;
+  }
+  for (const [k, v] of Object.entries(value)) {
+    if (TOTAL_KEY.test(k) && typeof v === 'number' && v > best.n && v <= 100000) best.n = v;
+    findDeclaredTotal(v, depth + 1, best);
+  }
+  return best.n;
+};
+
 const findProductArrays = (value, depth = 0, out = []) => {
   if (depth > 6 || out.length > 40) return out;
   if (Array.isArray(value)) {
@@ -345,6 +364,12 @@ const SIZE_RULES = [
 /* Nobody sells flower by the hundredth of a gram. A figure below this came
    from some other field — a discount, a rating, a tax rate — and reading it as
    a weight puts a size on the shelf that a buyer cannot ask for. */
+/* A menu is read by scrolling it, and the only honest stopping condition is
+   that it stopped growing. These bound the effort, not the result: when
+   either is reached the shelf is marked as cut short. */
+const MAX_SCROLL_ROUNDS = 60;
+const SCROLL_BUDGET_MS = 150000;
+
 const MIN_PLAUSIBLE_GRAMS = 0.5;
 const plausibleSize = (g) => (typeof g === 'number' && g >= MIN_PLAUSIBLE_GRAMS && g <= 30 ? g : null);
 
@@ -771,15 +796,29 @@ const main = async () => {
         entry.settled = await settle(3000, 25000);
 
         /* Then scroll until nothing new arrives. Menus that page in as you go
-           gave us their first screen and no more. */
+           gave us their first screen and no more.
+
+           Eight rounds was not "until nothing new arrives", it was until the
+           counter ran out — and Bleu Leaf stopped on exactly eight with ten
+           ounces still unfetched, which is how this was found. The loop now
+           ends when the menu stops growing, and a wall clock, not a round
+           count, is what bounds it. Hitting either bound is recorded: a shelf
+           cut short must say so rather than look complete. */
         let previous = -1;
-        for (let round = 0; round < 8; round += 1) {
+        const scrollUntil = Date.now() + SCROLL_BUDGET_MS;
+        let round = 0;
+        for (; round < MAX_SCROLL_ROUNDS; round += 1) {
           if (payloads.length === previous) break;
+          if (Date.now() > scrollUntil) {
+            entry.hitScrollBudget = true;
+            break;
+          }
           previous = payloads.length;
           await page.mouse.wheel(0, 6000);
           await settle(2000, 12000);
           entry.scrollRounds = round + 1;
         }
+        if (round >= MAX_SCROLL_ROUNDS) entry.hitScrollCap = true;
       }
       entry.payloads = payloads.length;
       /* Where we actually ended up. A shop that returns five products when its
@@ -790,6 +829,7 @@ const main = async () => {
       const arrays = payloads.flatMap((p) => findProductArrays(p));
       entry.productArrays = arrays.length;
       entry.productsSeen = arrays.reduce((n, a) => n + a.length, 0);
+      entry.declaredTotal = payloads.reduce((n, pl) => Math.max(n, findDeclaredTotal(pl)), 0) || null;
 
       if (arrays.length) {
         capturedShapes[shop.menu.provider] ??= Object.keys(arrays[0][0]).sort().slice(0, 60);
@@ -941,6 +981,14 @@ const main = async () => {
     usedKnownEndpoint: report.filter((r) => r.usedKnownEndpoint).length,
     shelvesThatShrankByHalf: shrank,
     hitTheSettleCap: report.filter((r) => r.settled === false).length,
+    /* Shelves that were cut short rather than finished. Ten ounces went
+       missing from one Bronx shop this way, and nothing in the run said so. */
+    shelvesCutShort: report
+      .filter((r) => r.hitScrollCap || r.hitScrollBudget)
+      .map((r) => `${r.shop}: stopped scrolling with the menu still growing`),
+    shelvesShorterThanTheMenuSays: report
+      .filter((r) => r.declaredTotal && r.declaredTotal > r.productsSeen)
+      .map((r) => `${r.shop}: menu says ${r.declaredTotal}, we read ${r.productsSeen}`),
     shelvesCarriedForward: new Set(carried.map((l) => l.licenseNumber)).size,
     listingsCarriedForward: carried.length,
     listingsDroppedAsStale: dropped,
