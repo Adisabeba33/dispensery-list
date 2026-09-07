@@ -1,0 +1,97 @@
+name: Add Gelonade COA reference once
+
+on:
+  push:
+    branches:
+      - agent/menu-endpoints-nyc
+    paths:
+      - .github/workflows/add-gelonade-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/menu-endpoints-nyc
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Append verified Gelonade reference
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path('data/strain-reference.json')
+          data = json.loads(path.read_text())
+          if any(x.get('strainId') == 'gelonade' for x in data):
+              print('Gelonade already present; no change needed.')
+              raise SystemExit(0)
+
+          data.append({
+            "strainId": "gelonade",
+            "canonicalName": "Gelonade",
+            "aliases": ["Gelonade"],
+            "lineage": "UNKNOWN",
+            "parents": None,
+            "profile": [
+              {"name": "CARYOPHYLLENE", "medianPercent": 0.67, "observations": 2},
+              {"name": "MYRCENE", "medianPercent": 0.41, "observations": 2},
+              {"name": "LIMONENE", "medianPercent": 0.405, "observations": 2},
+              {"name": "LINALOOL", "medianPercent": 0.22, "observations": 2},
+              {"name": "HUMULENE", "medianPercent": 0.195, "observations": 2},
+              {"name": "BISABOLOL", "medianPercent": 0.12, "observations": 1},
+              {"name": "PINENE_BETA", "medianPercent": 0.06, "observations": 1},
+              {"name": "TERPINEOL", "medianPercent": 0.05, "observations": 1},
+              {"name": "NEROLIDOL_TRANS", "medianPercent": 0.05, "observations": 1},
+              {"name": "FENCHOL", "medianPercent": 0.04, "observations": 1},
+              {"name": "CARYOPHYLLENE_OXIDE", "medianPercent": 0.02, "observations": 1},
+              {"name": "VALENCENE", "medianPercent": 0.02, "observations": 1},
+              {"name": "PINENE_ALPHA", "medianPercent": 0.02, "observations": 1},
+              {"name": "CAMPHENE", "medianPercent": 0.01, "observations": 1}
+            ],
+            "basis": {
+              "kind": "AGGREGATED_COA",
+              "sampleCount": 2,
+              "datasetName": None,
+              "datasetLicence": None,
+              "notes": "Provisional reference aggregated from two direct ElectraLeaf/Lifted NY cured-flower 3.5g COAs across Kaycha Labs and Green Analytics NY (NY-6724-06 and NY-051925-08). Median is computed from quantified detections only; <LOQ/<MRL results are not coerced to zero. observations is the number of quantified COA results behind each terpene. Two batches from one grower remain thin evidence, so confidence stays LOW; this is not a claim about every Gelonade lot."
+            },
+            "confidence": "LOW",
+            "sources": [
+              {
+                "url": "https://electraleaf.com/wp-content/uploads/2024/07/Gelonade-Testing-3.5-NY-6724-06.pdf",
+                "label": "Kaycha Labs — ElectraLeaf Gelonade NY-6724-06 / AL40625003-007 — sampled 2024-06-24",
+                "retrievedAt": "2026-09-07T06:55:00Z"
+              },
+              {
+                "url": "https://electraleaf.com/wp-content/uploads/2025/07/20250701-ELEC-001-Gelonade-3.5.pdf",
+                "label": "Green Analytics NY — ElectraLeaf Gelonade NY-051925-08 / 20250701-ELEC-001 — reported 2025-07-07",
+                "retrievedAt": "2026-09-07T06:55:00Z"
+              }
+            ],
+            "lastUpdated": "2026-09-07T06:55:00Z"
+          })
+
+          path.write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')) + '\n')
+          PY
+      - name: Validate repository data
+        run: |
+          npm ci
+          npm run validate
+      - name: Commit Gelonade reference
+        run: |
+          if git diff --quiet -- data/strain-reference.json; then
+            echo 'No data change to commit.'
+            exit 0
+          fi
+          git config user.name 'Adisabeba33'
+          git config user.email 'lezzgo2@gmail.com'
+          git add data/strain-reference.json
+          git commit -m 'research: add Gelonade COA profile'
+          git push origin HEAD:agent/menu-endpoints-nyc
