@@ -450,6 +450,10 @@ const SIZE_RULES = [
 const MAX_SCROLL_ROUNDS = 60;
 const SCROLL_BUDGET_MS = 150000;
 
+/* A shelf read from a menu that serves several licences: the strains are real,
+   which branch stocks them is not established. */
+const SHELF_SHARED = 'SHELF_SHARED_WITH_OTHER_LICENCES';
+
 const MIN_PLAUSIBLE_GRAMS = 0.5;
 const plausibleSize = (g) => (typeof g === 'number' && g >= MIN_PLAUSIBLE_GRAMS && g <= 30 ? g : null);
 
@@ -1084,6 +1088,33 @@ const main = async () => {
       ? a.strainNameRaw.localeCompare(b.strainNameRaw)
       : a.licenseNumber.localeCompare(b.licenseNumber),
   );
+
+  /* One menu address cannot be two shops' shelves. Where a chain publishes one
+     menu for several licences we read one window and hand it to all of them:
+     the strains are real, the branch is not established, and the record has to
+     carry that.
+
+     Derived here, over the whole file, because here is where the file is
+     written. Left to a separate pass it was simply forgotten — a run that
+     re-read eight chain shops produced 445 unmarked listings and the validator
+     stopped it, which is the invariant working and the placement not. Reading
+     one branch properly clears its own mark on the next run, with nothing to
+     remember. */
+  const licencesByMenu = new Map();
+  for (const l of merged) {
+    const url = l.sources?.[0]?.url;
+    if (!url) continue;
+    if (!licencesByMenu.has(url)) licencesByMenu.set(url, new Set());
+    licencesByMenu.get(url).add(l.licenseNumber);
+  }
+  for (const l of merged) {
+    const url = l.sources?.[0]?.url;
+    const shared = (licencesByMenu.get(url)?.size ?? 0) > 1;
+    const warnings = new Set(l.warnings ?? []);
+    if (shared) warnings.add(SHELF_SHARED);
+    else warnings.delete(SHELF_SHARED);
+    l.warnings = [...warnings];
+  }
 
   const summary = {
     shopsVisited: report.filter((r) => r.status !== 'robots-disallowed').length,
