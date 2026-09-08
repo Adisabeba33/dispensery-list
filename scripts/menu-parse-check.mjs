@@ -208,6 +208,13 @@ check('strip sku and marker', cleanStrainName('ILLUMINATI (H) 3.5g - F42', null)
 check('strip brand', cleanStrainName('LEAL - Grape Cake - Flower - 28 Grams', 'Leal'), 'Grape Cake');
 check('strip grade word', cleanStrainName('Flower - Whole - Bubblegum Gushers', null), 'Bubblegum Gushers');
 check('keep strain that starts with a grade word', cleanStrainName('Whole Lotta Love', null), 'Whole Lotta Love');
+/* A bracketed weight leaves brackets behind, and the cleanup used to run
+   before the weight was removed — so 136 shelf names read "Afghani - ( )".
+   Tidying now runs after the stripping, and repeats until the name settles. */
+check('bracketed weight leaves nothing behind', cleanStrainName('Afghani - (3.5g)', 'Dank'), 'Afghani');
+check('and the ounce likewise', cleanStrainName('Gumbo - (28g)', 'Puff'), 'Gumbo');
+check('a number the weight left behind goes too',
+  cleanStrainName('3 Point Cherry Bomb Flower - 1 (3.5g)', 'Grocery'), '3 Point Cherry Bomb Flower');
 
 /* --------------------------------------------- flower vs not, by the title */
 /* A word inside another word is not that word. The stem "cart" was rejecting

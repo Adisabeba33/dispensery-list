@@ -1,0 +1,122 @@
+name: Daily menu refresh
+
+on:
+  schedule:
+    # 07:00 New York time. Shops restock overnight, so the morning menu is the
+    # day's menu; running before the shops open reads yesterday's shelf.
+    # (11:00 UTC in winter, 12:00 in summer — GitHub cron has no timezone, and
+    # an hour's drift twice a year is not worth a second workflow.)
+    - cron: '0 11 * * *'
+  workflow_dispatch:
+    inputs:
+      batch:
+        description: Shops per batch
+        default: '35'
+
+permissions:
+  contents: write
+
+concurrency:
+  # A second run while the first is still reading menus would push over it.
+  group: menu-daily
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - name: Check the parser against captured payload shapes
+        run: node scripts/menu-parse-check.mjs
+      - run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Check the collector against a fixture storefront
+        run: node scripts/menu-e2e-check.mjs
+
+      - name: Keep yesterday's shelves for comparison
+        run: cp data/flower-listings.json /tmp/yesterday.json
+
+      # Read in batches, committing each one. A single ninety-minute pass that
+      # dies at minute eighty-five loses the whole day; a batch that dies loses
+      # thirty-five shops, and tomorrow reads them again.
+      - name: Read every menu, a batch at a time
+        env:
+          BATCH: ${{ inputs.batch || '35' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          failed=0
+          for offset in $(seq 0 "$BATCH" 245); do
+            echo "::group::shops $offset – $((offset + BATCH))"
+            if node scripts/menu-render.mjs --limit "$BATCH" --offset "$offset"; then
+              if npm run validate > /tmp/validate.txt 2>&1; then
+                git add data/flower-listings.json
+                git diff --cached --quiet || git commit -q -m "menu: daily refresh, shops $offset+"
+              else
+                echo "::warning::Batch at $offset did not validate; its listings were not kept."
+                tail -20 /tmp/validate.txt
+                git checkout -- data/flower-listings.json
+                failed=$((failed + 1))
+              fi
+            else
+              echo "::warning::Batch at $offset failed to run."
+              git checkout -- data/flower-listings.json || true
+              failed=$((failed + 1))
+            fi
+            echo "::endgroup::"
+          done
+          echo "batches_failed=$failed" >> "$GITHUB_ENV"
+
+      - name: What changed on the shelves
+        id: diff
+        run: |
+          # $? inside $( ) is the subshell's own status, not the command's.
+          # That exact mistake let eight invalid records through the gate in
+          # menu-collect.yml; the verdict has to be captured on its own line.
+          set +e
+          python scripts/menu-diff.py --previous /tmp/yesterday.json
+          code=$?
+          set -e
+          if [ $code -eq 0 ]; then echo "sane=true"; else echo "sane=false"; fi >> "$GITHUB_OUTPUT"
+
+      # Menus are the point of the site and they change daily, so a clean run
+      # publishes itself. A run that produced a collapsed shelf does not: that
+      # is nearly always a page we failed to read, and republishing it would
+      # tell visitors a shop stopped stocking what it still sells.
+      - name: Publish
+        if: steps.diff.outputs.sane == 'true' && env.batches_failed == '0'
+        run: |
+          for attempt in 1 2 3; do
+            git push origin HEAD:${{ github.ref_name }} && exit 0
+            git fetch origin ${{ github.ref_name }}
+            git rebase FETCH_HEAD || { git rebase --abort || true; exit 1; }
+          done
+          echo "::error::Could not push the day's shelves."
+          exit 1
+
+      - name: Hold back for review
+        if: steps.diff.outputs.sane != 'true' || env.batches_failed != '0'
+        run: |
+          BRANCH="menu/held-$(date -u +%Y-%m-%d)-${{ github.run_number }}"
+          git push origin "HEAD:$BRANCH"
+          {
+            echo "## Held back, not published"
+            echo
+            echo "Some shelves look cut short, or a batch failed. The day's"
+            echo "reading is on \`$BRANCH\` for someone to look at:"
+            echo
+            echo "  https://github.com/${{ github.repository }}/compare/${{ github.ref_name }}...$BRANCH?expand=1"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Report
+        if: always()
+        run: cat menu-report.md >> "$GITHUB_STEP_SUMMARY" || echo "no report produced"

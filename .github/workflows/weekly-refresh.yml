@@ -29,8 +29,10 @@ jobs:
           npm ci
           python -m pip install --disable-pip-version-check beautifulsoup4 openpyxl requests
 
-      - name: Keep the current dataset for comparison
-        run: cp data/dispensaries.json /tmp/previous-dispensaries.json
+      - name: Keep the current data for comparison
+        run: |
+          cp data/dispensaries.json /tmp/previous-dispensaries.json
+          cp data/producers.json /tmp/previous-producers.json
 
       - name: Fetch the state registry
         run: node scripts/research-bootstrap.mjs
@@ -50,8 +52,22 @@ jobs:
         # refresh would quietly erase all of phase 2.
         run: python scripts/refresh-merge.py --previous /tmp/previous-dispensaries.json
 
+      # Growers and processors come from the same registry snapshot, and asking
+      # "are there new growers this week" is the same question as "are there
+      # new shops" — one refresh, not two.
+      - name: Rebuild the producer register
+        run: python scripts/compile-producers.py
+
       - name: Validate
         run: npm run validate
+
+      # Written after the validator, because a report about data that failed
+      # validation would be a report about nothing.
+      - name: What changed this week
+        run: |
+          python scripts/weekly-report.py \
+            --previous-dispensaries /tmp/previous-dispensaries.json \
+            --previous-producers /tmp/previous-producers.json
 
       - name: Open a pull request if anything changed
         env:

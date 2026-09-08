@@ -443,14 +443,31 @@ const cleanStrainName = (raw, brand) => {
     .replace(/\b[\d.]+\s*(?:g|gr|grams?)\b/gi, ' ')
     .replace(/(?:\d\s*\/\s*\d\s*)?(?<![a-z])(?:oz|ounce)\b/gi, ' ')
     .replace(/\b(eighth|quarter|half)\b/gi, ' ')
-    // Removing the weight leaves the separator that preceded it dangling, and
-    // a trailing "- " glued to the category word hid it from the filter below.
-    .replace(/[\s\-–—|]+$/, '')
-    .replace(/\s*[-–—|]\s*(flower\s*jar|flower|jar|bag|jars|bags|pouch)\s*$/gi, '')
-    .replace(/\s*[-–—|]\s*(?=[-–—|])/g, ' ')                 // collapsed separators
-    .replace(/\s*[-–—|]?\s*\b(sativa|indica|hybrid)\b\s*$/i, '') // lineage word left at the end
-    .replace(/\s+[\d.]+\s*$/, '')                             // bare trailing weight
     .trim();
+
+  /* Tidying has to come after the stripping, not before it. The empty-bracket
+     cleanup used to run first, so "Afghani - (3.5g)" lost its weight and kept
+     the brackets: a hundred and thirty-six shelf names read "Afghani - ( )".
+     Each pass can expose the next — brackets emptied, then the separator that
+     held them, then the category word that separator was hiding — so it runs
+     until the name stops changing. */
+  const tidy = (s) =>
+    s
+      .replace(/\(\s*\)/g, ' ')                                  // "Cherry Pie ( )"
+      .replace(/\s{2,}/g, ' ')
+      .replace(/[\s\-–—|]+$/, '')
+      .replace(/\s*[-–—|]\s*(flower\s*jar|flower|jar|bag|jars|bags|pouch)\s*$/gi, '')
+      .replace(/\s*[-–—|]\s*(?=[-–—|])/g, ' ')                    // collapsed separators
+      .replace(/\s*[-–—|]?\s*\b(sativa|indica|hybrid)\b\s*$/i, '')
+      .replace(/\s*[-–—|]\s*\d+(?:\s*\/\s*\d+)?\s*$/, '')       // "... - 1" left by a weight
+      .replace(/\s+[\d.]+\s*$/, '')                              // bare trailing weight
+      .trim();
+
+  for (let pass = 0; pass < 4; pass += 1) {
+    const next = tidy(text);
+    if (next === text) break;
+    text = next;
+  }
 
   let parts = text.split(/\s+[-–—|]\s+/).map((p) => p.trim()).filter(Boolean);
   if (parts.length === 1) parts = [text];
