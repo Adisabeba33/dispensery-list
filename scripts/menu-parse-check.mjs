@@ -11,7 +11,7 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  classify, cleanStrainName, mergeBySize, pickMenuLink, rankMenuLink, sizeFromText, toListing,
+  classify, cleanStrainName, mergeBySize, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
 
 const shop = { licenseNumber: 'OCM-CAURD-24-000001' };
@@ -201,6 +201,34 @@ check('an empty status says nothing either way',
     'https://s.test/menu',
   );
   check('nothing usable gives nothing', pickMenuLink([{ href: 'https://s.test/careers', text: 'Careers' }]), null);
+
+  /* A shop's site linked out to the theme vendor it was built from, and the
+     demo storefront there became forty-seven invented products under a
+     licensed shop's name. A menu is on the shop's own estate or on the
+     platform serving it — never anywhere else. */
+  const site = 'https://emeralddispensary.nyc';
+  check('a theme vendor is not the shop', sameEstate('https://codegearthemes.com/products/acoustics', site), false);
+  check('the shop itself is', sameEstate('https://emeralddispensary.nyc/menu/flower', site), true);
+  check('and its subdomain', sameEstate('https://menu.emeralddispensary.nyc/flower', site), true);
+  check('and the platform serving it', sameEstate('https://dutchie.com/embedded-menu/x/flower', site), true);
+  /* The register holds one address per shop, and shops move: Take N Toke is
+     filed under a Vercel preview and keeps its menu on its own name. Its name
+     is what says it is still the shop. */
+  check('a shop under another of its own domains',
+    sameEstate('https://takentoke.com/menu/', 'https://take-n-toke-livid.vercel.app/',
+               'Take N Toke Herbal Healing Solutions Inc'), true);
+  check('and the theme vendor still is not, name or no name',
+    sameEstate('https://codegearthemes.com/products/acoustics', site, 'Emerald Dispensary'), false);
+  check('a menu off the estate is never followed',
+    pickMenuLink([{ href: 'https://codegearthemes.com/products/acoustics', text: 'Flower' }], site), null);
+
+  /* A chain page and a shop page score the same; the one that names a shop is
+     deeper, and three licences got the chain's eight placeholders because the
+     tie went to whichever came first in the markup. */
+  check('a shop\'s own menu beats the chain\'s', pickMenuLink([
+    { href: 'https://greenflowerwellness.com/stores/products/flower', text: 'Flower' },
+    { href: 'https://greenflowerwellness.com/stores/oakland-gardens/products/flower', text: 'Flower' },
+  ], 'https://greenflowerwellness.com'), 'https://greenflowerwellness.com/stores/oakland-gardens/products/flower');
 }
 
 /* ---------------------------------------------------------- name cleaning */

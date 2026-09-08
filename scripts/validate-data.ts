@@ -290,6 +290,10 @@ const validateMunicipalities = () => {
  * an exchange snapshot when one is present — the format the collector emits and
  * the loader consumes.
  */
+/* A shelf we read from a menu that serves several licences. The strains are
+   real; which branch stocks them is not established. */
+const SHELF_SHARED = 'SHELF_SHARED_WITH_OTHER_LICENCES';
+
 const validateFlowerListings = (FILE: string) => {
   const raw = readJson(FILE);
   if (raw === undefined) return;
@@ -368,6 +372,41 @@ const validateFlowerListings = (FILE: string) => {
       }
     }
   });
+
+  /* One menu address cannot be two shops' shelves. Where it is, we read a
+     chain's window — or one branch's — and handed it to every licence on the
+     chain: five Just a Little Higher licences shared one Queens shelf, three
+     Gotham licences one page. For "which strains exist in New York" that costs
+     nothing; for "where can I buy this" it is simply untrue, so the listing has
+     to say so itself. Marked, not deleted: the strains are real even when the
+     address is not settled. */
+  const licencesByUrl = new Map<string, Set<string>>();
+  raw.forEach((record) => {
+    const r = record as Record<string, any>;
+    const url = r?.sources?.[0]?.url;
+    if (typeof url !== 'string' || typeof r.licenseNumber !== 'string') return;
+    if (!licencesByUrl.has(url)) licencesByUrl.set(url, new Set());
+    licencesByUrl.get(url)!.add(r.licenseNumber);
+  });
+  raw.forEach((record, i) => {
+    const r = record as Record<string, any>;
+    const url = r?.sources?.[0]?.url;
+    const sharing = typeof url === 'string' ? licencesByUrl.get(url) : undefined;
+    const shared = (sharing?.size ?? 0) > 1;
+    const marked = Array.isArray(r.warnings) && r.warnings.includes(SHELF_SHARED);
+    const at = `[${i}] ${r.listingId ?? 'unknown'} → sources[0].url`;
+    if (shared && !marked) {
+      fail(FILE, at, `menu shared by ${sharing!.size} licences and not marked ${SHELF_SHARED}`);
+    }
+    if (!shared && marked) {
+      fail(FILE, at, `marked ${SHELF_SHARED}, but no other licence reads this menu`);
+    }
+  });
+
+  const sharedMenus = [...licencesByUrl.values()].filter((s) => s.size > 1).length;
+  if (sharedMenus) {
+    warn(FILE, 'sources', `${sharedMenus} menu address(es) back more than one licence — those shelves are not attributed to a branch`);
+  }
 };
 
 const validateStrainReference = (FILE: string) => {

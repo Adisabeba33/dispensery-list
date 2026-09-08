@@ -199,6 +199,45 @@ const MENU_ROUTE = /\/(menu|shop|order|products?|browse|store|dispensary)\b/i;
 const FLOWER_WORD = /^\s*(flower|flowers|bud|buds|whole\s*flower)\s*$/i;
 const MENU_WORD = /\b(menu|shop|order|browse|products?)\b/i;
 
+/* A menu lives on the shop's own site or on the platform that serves it.
+   Following a link anywhere else put a theme vendor's demo storefront into the
+   register as a real shelf — forty-seven invented products under a licensed
+   shop's name, which is worse than having no shelf for it at all. */
+const MENU_PLATFORM_HOST =
+  /(^|\.)(dutchie\.com|dutchie\.co|iheartjane\.com|dispenseapp\.com|tymber\.io|getblaze\.io|blaze\.me|treez\.io|getmeadow\.com|meadow\.dev|sweedpos\.com|greenrush\.com)$/i;
+
+const registrable = (host) => host.toLowerCase().split('.').slice(-2).join('.');
+const compact = (s) => String(s ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+/**
+ * Is this address still the shop's, or the platform serving the shop?
+ *
+ * "Same domain" alone is too strict to be the whole rule: the register holds
+ * one address per shop and shops move. Take N Toke is filed under a Vercel
+ * preview and keeps its menu on takentoke.com; Cannavita is filed under
+ * cannavita.us and its menu is on cannavitanyc.com. Both are the shop. What is
+ * not the shop is codegearthemes.com — the theme vendor Emerald Dispensary
+ * built its site from, whose demo storefront we published as a real shelf. The
+ * shop's name is what tells them apart.
+ */
+export const sameEstate = (href, siteUrl, shopName = '') => {
+  let a;
+  let b;
+  try {
+    a = new URL(href);
+    b = new URL(siteUrl);
+  } catch {
+    return false;
+  }
+  if (a.protocol !== 'http:' && a.protocol !== 'https:') return false;
+  if (registrable(a.hostname) === registrable(b.hostname)) return true;
+  if (MENU_PLATFORM_HOST.test(a.hostname)) return true;
+  const host = compact(a.hostname.replace(/\.[a-z]+$/i, ''));
+  const name = compact(shopName);
+  if (name.length >= 5 && host.length >= 5 && (host.includes(name) || name.includes(host))) return true;
+  return false;
+};
+
 /** Higher is better; 0 means "never follow this". */
 export const rankMenuLink = (href = '', text = '') => {
   if (!href || PROMO_ROUTE.test(href)) return 0;
@@ -210,13 +249,31 @@ export const rankMenuLink = (href = '', text = '') => {
   return 0;
 };
 
-export const pickMenuLink = (links) => {
+/* A chain publishes both /stores/products/flower and
+   /stores/<this-shop>/products/flower, and both score the same. Whichever came
+   first in the markup won — so three Green Flower Wellness licences all got the
+   chain page and its eight placeholder items. The deeper address is the one
+   that names a shop, so on a tie it wins. */
+const depth = (href) => {
+  try {
+    return new URL(href).pathname.split('/').filter(Boolean).length;
+  } catch {
+    return 0;
+  }
+};
+
+export const pickMenuLink = (links, siteUrl = null, shopName = '') => {
   let best = null;
   let bestScore = 0;
+  let bestDepth = -1;
   for (const link of links) {
+    if (siteUrl && !sameEstate(link.href, siteUrl, shopName)) continue;
     const score = rankMenuLink(link.href, link.text);
-    if (score > bestScore) {
+    if (score === 0) continue;
+    const d = depth(link.href);
+    if (score > bestScore || (score === bestScore && d > bestDepth)) {
       bestScore = score;
+      bestDepth = d;
       best = link.href;
     }
   }
@@ -821,7 +878,7 @@ const main = async () => {
           .slice(0, 400)
           .map((a) => ({ href: a.href, text: (a.textContent || '').trim().slice(0, 60) })),
       );
-      const found = pickMenuLink(links);
+      const found = pickMenuLink(links, site, shop.dbaName ?? shop.legalName);
       const href = known ?? found;
       // Said plainly, so "no products" stops covering "not allowed there".
       entry.menuLink = href ? 'found' : 'none';

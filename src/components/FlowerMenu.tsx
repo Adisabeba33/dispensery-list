@@ -136,6 +136,7 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
 };
 
 export const FlowerMenu = ({ listings }: { listings: FlowerListing[] }) => {
+  const sharedShelf = listings.some((l) => l.warnings?.includes('SHELF_SHARED_WITH_OTHER_LICENCES'));
   const [size, setSize] = useState<number | null>(null);
   const [inStockOnly, setInStockOnly] = useState(false);
   const [labOnly, setLabOnly] = useState(false);
@@ -216,6 +217,17 @@ export const FlowerMenu = ({ listings }: { listings: FlowerListing[] }) => {
         Read from the shop&apos;s own menu. Shelves move through the day, so confirm before
         travelling for a specific strain.
       </p>
+
+      {/* A chain that publishes one menu for several licences gives us one
+          shelf and no way to tell which branch stocks it. Saying so is the
+          difference between an uncertain answer and a wrong one. */}
+      {sharedShelf && (
+        <p className="mt-2 text-xs leading-relaxed text-amber-300/80">
+          This chain publishes one menu across several licensed shops, so this shelf is the
+          chain&apos;s, not this branch&apos;s. The strains are on sale; which of its shops holds
+          them is not established. Call ahead.
+        </p>
+      )}
 
       <div className="mt-5 flex flex-wrap items-center gap-2">
         <button

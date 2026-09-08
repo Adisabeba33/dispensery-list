@@ -34,6 +34,10 @@ export type FlowerListing = {
   packagedOn: string | null;
   inStock: boolean;
   availableSizesGrams: number[] | null;
+  /* What the record itself knows is unsound about it. SHELF_SHARED_WITH_OTHER_LICENCES
+     says this menu serves several licensed shops, so the shelf is the chain's
+     rather than this branch's. */
+  warnings?: string[];
 };
 
 /**
