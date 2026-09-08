@@ -32,6 +32,12 @@ const limit = Number(process.argv[process.argv.indexOf('--limit') + 1]) || 12;
    the same first shops over and over. */
 const offsetArg = process.argv.indexOf('--offset');
 const offset = offsetArg > -1 ? Math.max(0, Number(process.argv[offsetArg + 1]) || 0) : 0;
+/* --count prints how many shops a full sweep would visit and stops. The daily
+   run reads menus in batches, and a batch loop needs an end: hard-coding one
+   means the day new shops push the register past it, the last of them are
+   skipped and nothing says so. The count has to come from the same filter the
+   sweep uses, or it is just a second thing to keep in step. */
+const countOnly = process.argv.includes('--count');
 const NOW = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
 
 // --dataset points the collector at a different register: used by the local
@@ -721,6 +727,10 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
 };
 
 const main = async () => {
+  if (countOnly) {
+    console.log(candidates.length);
+    return;
+  }
   // Imported here rather than at the top so the parsing helpers below can be
   // exercised against fixtures without a browser installed.
   const { chromium } = await import('playwright');

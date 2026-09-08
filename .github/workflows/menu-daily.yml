@@ -2,10 +2,10 @@ name: Daily menu refresh
 
 on:
   schedule:
-    # 07:00 New York time. Shops restock overnight, so the morning menu is the
-    # day's menu; running before the shops open reads yesterday's shelf.
-    # (11:00 UTC in winter, 12:00 in summer — GitHub cron has no timezone, and
-    # an hour's drift twice a year is not worth a second workflow.)
+    # Shops restock overnight, so the morning menu is the day's menu.
+    # GitHub cron is UTC and has no daylight saving: 11:00 UTC is 07:00 in New
+    # York from March to November and 06:00 the rest of the year. An hour's
+    # drift twice a year is not worth a second workflow.
     - cron: '0 11 * * *'
   workflow_dispatch:
     inputs:
@@ -15,6 +15,9 @@ on:
 
 permissions:
   contents: write
+  # The report is delivered as a comment on a standing issue, which is what
+  # actually reaches a person: a job summary has to be gone and looked for.
+  issues: write
 
 concurrency:
   # A second run while the first is still reading menus would push over it.
@@ -54,8 +57,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # How many shops a sweep would visit, asked of the collector itself.
+          # A hard-coded end would silently skip the shops that open after it
+          # was written.
+          total=$(node scripts/menu-render.mjs --count)
+          echo "$total shops to read, $BATCH at a time"
           failed=0
-          for offset in $(seq 0 "$BATCH" 245); do
+          for offset in $(seq 0 "$BATCH" $((total - 1))); do
             echo "::group::shops $offset – $((offset + BATCH))"
             if node scripts/menu-render.mjs --limit "$BATCH" --offset "$offset"; then
               if npm run validate > /tmp/validate.txt 2>&1; then
@@ -120,3 +128,31 @@ jobs:
       - name: Report
         if: always()
         run: cat menu-report.md >> "$GITHUB_STEP_SUMMARY" || echo "no report produced"
+
+      # A report nobody is told about is a report nobody reads. One long-lived
+      # issue collects them, so the owner gets a notification a day rather than
+      # a new issue a day, and last week's shelves stay one scroll away.
+      - name: Deliver the report
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TITLE: Ежедневный отчёт по витринам
+        run: |
+          [ -f menu-report.md ] || { echo "no report to deliver"; exit 0; }
+          if [ "${{ steps.diff.outputs.sane }}" != "true" ] || [ "$batches_failed" != "0" ]; then
+            printf '\n---\n\n⚠ **Не опубликовано.** Часть полок прочитана не полностью — данные ждут на отдельной ветке.\n' >> menu-report.md
+          fi
+          printf '\n[прогон](%s/actions/runs/%s)\n' \
+            "${{ github.server_url }}/${{ github.repository }}" "${{ github.run_id }}" >> menu-report.md
+
+          number=$(gh issue list --state open --search "$TITLE in:title" \
+                     --json number,title \
+                     --jq "[.[] | select(.title == \"$TITLE\")] | .[0].number // empty")
+          if [ -z "$number" ]; then
+            gh issue create --title "$TITLE" --body-file menu-report.md \
+              && exit 0
+          else
+            gh issue comment "$number" --body-file menu-report.md && exit 0
+          fi
+          # Delivery failing must not fail a run that read every menu correctly.
+          echo "::warning::Could not post the report. It is in the job summary."
