@@ -1,25 +1,5 @@
 [
   {
-    "licenseNumber": "OCM-CAURD-25-000281",
-    "menuUrl": "https://flynnstoned.com/categories/flower/",
-    "platform": "PROPRIETARY",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "Direct first-party Flower category; the original crawler landed on a non-flower menu view and missed the category route."
-  },
-  {
-    "licenseNumber": "OCM-CAURD-24-000165",
-    "menuUrl": "https://frassboxcannabis.com/categories/flower/",
-    "platform": "PROPRIETARY",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "Direct first-party Flower category; category routing was not discovered by the original crawler."
-  },
-  {
     "licenseNumber": "OCM-CAURD-24-000051",
     "menuUrl": "https://thespotdispensary.com/menu/?category=flowers",
     "platform": "BLAZE",
@@ -30,94 +10,14 @@
     "notes": "Direct Flowers menu; page markup identifies BLAZE. A login link exists but is not required to browse products."
   },
   {
-    "licenseNumber": "OCM-RETL-25-000360",
-    "menuUrl": "https://www.bkgreenery.com/menu?dtche%5Bcategory%5D=flower",
-    "platform": "DUTCHIE",
+    "licenseNumber": "OCM-CAURD-24-000123",
+    "menuUrl": "https://houseofstrains.com/store/category/flower?locId=1",
+    "platform": "PROPRIETARY",
     "robotsAllows": true,
     "flowerVisibleWithoutLogin": true,
     "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "Dutchie is embedded client-side; the original HTML-only crawler reached the menu shell but not the rendered Flower inventory."
-  },
-  {
-    "licenseNumber": "OCM-CAURD-24-000145",
-    "menuUrl": "https://byanyothernamebk.com/shop/?dtche%5Bcategory%5D=flower",
-    "platform": "DUTCHIE",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "First-party Shop page embeds Dutchie; direct category parameter opens Flower after the simple 21+ notice."
-  },
-  {
-    "licenseNumber": "OCM-RETL-24-000063",
-    "menuUrl": "https://budcityny.com/shop/flower/",
-    "platform": "DUTCHIE",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "Direct Flower route on the first-party site; Dutchie markers are present in the menu page."
-  },
-  {
-    "licenseNumber": "OCM-RETL-25-000285",
-    "menuUrl": "https://getbuzzy.com/menu/?dtche%5Bcategory%5D=flower",
-    "platform": "DUTCHIE",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "Direct Dutchie Flower category; the shop page is client-rendered, which explains the original no-products result."
-  },
-  {
-    "licenseNumber": "OCM-RETL-24-000144",
-    "menuUrl": "https://qualitycontroldispensary.com/flower-brooklyn",
-    "platform": "DUTCHIE",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "Brooklyn-specific Flower page links into the store's Dutchie-backed inventory; multi-location site structure hid the route from the crawler."
-  },
-  {
-    "licenseNumber": "OCM-CAURD-26-000336",
-    "menuUrl": "https://dutchie.com/dispensary/emerald-dispensary-carroll-gardens/products/flower",
-    "platform": "DUTCHIE",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "Menu lives directly on Dutchie rather than the location page; Dutchie's current robots.txt has an empty Disallow rule for User-agent *."
-  },
-  {
-    "licenseNumber": "OCM-CAURD-24-000196",
-    "menuUrl": "https://fireleafny.com/shop/?dtche%5Bcategory%5D=flower",
-    "platform": "DUTCHIE",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "Dutchie is embedded on the first-party Shop page; explicit Flower category avoids the generic menu shell."
-  },
-  {
-    "licenseNumber": "OCM-RETL-24-000171",
-    "menuUrl": "https://guardianwellnessretail.com/order-online/?dtche%5Bcategory%5D=flower",
-    "platform": "DUTCHIE",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "Order Online uses a client-side Dutchie embed; direct Flower parameter bypasses the crawler's failed link discovery, not the age notice."
-  },
-  {
-    "licenseNumber": "OCM-RETL-24-000260",
-    "menuUrl": "https://dutchie.com/dispensary/herbwell-bronx/products/flower",
-    "platform": "DUTCHIE",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "Herbwell's browseable menu is hosted on Dutchie; Dutchie's current robots.txt permits User-agent * and the Flower route uses the standard products/flower path."
+    "checkedAt": "2026-09-08",
+    "notes": "Beast Coast / House of Strains I, 16105 29th Ave Flushing — locId=1 (сеть сама вела на store/hos-i)."
   },
   {
     "licenseNumber": "OCM-CAURD-24-000131",
@@ -130,104 +30,84 @@
     "notes": "Bronx location has a location-specific Dutchie menu page; direct Flower parameter avoids the generic shell."
   },
   {
-    "licenseNumber": "OCM-RETL-24-000008",
-    "menuUrl": "https://mybud420.com/shop/?dtche%5Bcategory%5D=flower",
+    "licenseNumber": "OCM-CAURD-24-000136",
+    "menuUrl": "https://justalittlehigher.com/store/category/flower?locId=3",
+    "platform": "PROPRIETARY",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-08",
+    "notes": "DAGGA LLC, 157 W 72nd St — locId=3 «JALH – UPPER WEST SIDE». Ранее уводило на jalh-fishkill (не наш округ) и давало ноль."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000145",
+    "menuUrl": "https://byanyothernamebk.com/shop/?dtche%5Bcategory%5D=flower",
     "platform": "DUTCHIE",
     "robotsAllows": true,
     "flowerVisibleWithoutLogin": true,
     "ageGate": "simple-button",
     "checkedAt": "2026-09-06",
-    "notes": "The first-party Shop page exposes Flower through the Dutchie category parameter; browsing requires only the site's 21+ confirmation."
+    "notes": "First-party Shop page embeds Dutchie; direct category parameter opens Flower after the simple 21+ notice."
   },
   {
-    "licenseNumber": "OCM-CAURD-25-000304",
-    "menuUrl": "https://saylessny.com/order-online/?dtche%5Bcategory%5D=flower",
+    "licenseNumber": "OCM-CAURD-24-000156",
+    "menuUrl": "https://justalittlehigher.com/store/category/flower?locId=4",
+    "platform": "PROPRIETARY",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-08",
+    "notes": "JALH Murray Hill (698 2nd Ave) — locId=4."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000165",
+    "menuUrl": "https://frassboxcannabis.com/categories/flower/",
+    "platform": "PROPRIETARY",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "Direct first-party Flower category; category routing was not discovered by the original crawler."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000196",
+    "menuUrl": "https://fireleafny.com/shop/?dtche%5Bcategory%5D=flower",
     "platform": "DUTCHIE",
     "robotsAllows": true,
     "flowerVisibleWithoutLogin": true,
     "ageGate": "simple-button",
     "checkedAt": "2026-09-06",
-    "notes": "Say Less has a first-party Order Online page with a Dutchie embed; no Weedmaps endpoint is needed."
+    "notes": "Dutchie is embedded on the first-party Shop page; explicit Flower category avoids the generic menu shell."
   },
   {
-    "licenseNumber": "OCM-RETL-24-000261",
-    "menuUrl": "https://stashhouseus.com/shop/?dtche%5Bcategory%5D=flower",
-    "platform": "DUTCHIE",
+    "licenseNumber": "OCM-CAURD-25-000233",
+    "menuUrl": "https://justalittlehigher.com/store/category/flower?locId=5",
+    "platform": "PROPRIETARY",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-08",
+    "notes": "JALH Briarwood (138-72 Queens Blvd) — locId=5."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000275",
+    "menuUrl": "https://justalittlehigher.com/store/category/flower?locId=1",
+    "platform": "PROPRIETARY",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-08",
+    "notes": "JALH Queens Plaza (2415 Queens Plz N) — locId=1 «JALH – QUEENS PLAZA»."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000281",
+    "menuUrl": "https://flynnstoned.com/categories/flower/",
+    "platform": "PROPRIETARY",
     "robotsAllows": true,
     "flowerVisibleWithoutLogin": true,
     "ageGate": "simple-button",
     "checkedAt": "2026-09-06",
-    "notes": "Client-side Dutchie embed on the first-party Shop page; explicit Flower category is the stable human-facing entry."
-  },
-  {
-    "licenseNumber": "OCM-RETL-24-000189",
-    "menuUrl": "https://dispostore.com/shop/",
-    "platform": "MEADOW",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "The Shop page is the human-facing Meadow menu; category data is rendered client-side, so the original HTML parser saw no products."
-  },
-  {
-    "licenseNumber": "OCM-RETL-24-000151",
-    "menuUrl": "https://stayallgood.com/shop/categories/flower",
-    "platform": "OTHER",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "menu platform: Dispense; direct Flower category is public and was missed because the storefront runs on a different ecommerce host/runtime than expected."
-  },
-  {
-    "licenseNumber": "OCM-CAURD-26-000325",
-    "menuUrl": "https://shop.bkurbanbud.com/shop/categories/flower/",
-    "platform": "BLAZE",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "none",
-    "checkedAt": "2026-09-06",
-    "notes": "Direct public Flower category; page evidence identifies BLAZE, correcting the brief's provisional OTHER guess. A login link is optional, not a browsing requirement."
-  },
-  {
-    "licenseNumber": "OCM-RETL-24-000055",
-    "menuUrl": "https://elevated718.com/menu/categories/flower",
-    "platform": "OTHER",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "menu platform: Dispense; direct Flower category is public after the site's simple 21+ confirmation."
-  },
-  {
-    "licenseNumber": "OCM-CAURD-25-000305",
-    "menuUrl": "https://shop.flowerdaddy.nyc/newyork/menu/flower-3325",
-    "platform": "OTHER",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "menu platform: Sweed; direct Flower category lists products without registration. The gate is a yes/confirm 21+ notice, not a date-of-birth form."
-  },
-  {
-    "licenseNumber": "OCM-RETL-26-000488",
-    "menuUrl": "https://freshlybaked.nyc/stores/midtown/shop/menu/flower-1088",
-    "platform": "OTHER",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "menu platform: Sweed; Midtown-specific Flower category is publicly browseable after a simple 21+ confirmation."
-  },
-  {
-    "licenseNumber": "OCM-CAURD-25-000292",
-    "menuUrl": "https://celestialherbs.dispensary.shop/rec/flower/nb/k3w",
-    "platform": "OTHER",
-    "robotsAllows": true,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "none",
-    "checkedAt": "2026-09-06",
-    "notes": "menu platform: Flowhub Ecommerce (dispensary.shop); direct recreational Flower category is public."
+    "notes": "Direct first-party Flower category; the original crawler landed on a non-flower menu view and missed the category route."
   },
   {
     "licenseNumber": "OCM-CAURD-25-000284",
@@ -240,14 +120,44 @@
     "notes": "Direct first-party Flower category; the apparent login text is not required for browsing, while the actual access gate is only a 21+ yes/no notice."
   },
   {
-    "licenseNumber": "OCM-RETL-24-000133",
-    "menuUrl": "https://www.forever420ny.com/collection/flower",
-    "platform": "TREEZ",
+    "licenseNumber": "OCM-CAURD-25-000292",
+    "menuUrl": "https://celestialherbs.dispensary.shop/rec/flower/nb/k3w",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "none",
+    "checkedAt": "2026-09-06",
+    "notes": "menu platform: Flowhub Ecommerce (dispensary.shop); direct recreational Flower category is public."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000304",
+    "menuUrl": "https://saylessny.com/order-online/?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
     "robotsAllows": true,
     "flowerVisibleWithoutLogin": true,
     "ageGate": "simple-button",
     "checkedAt": "2026-09-06",
-    "notes": "Direct Treez Flower collection; a simple age-gate redirect returns to this exact category after confirmation."
+    "notes": "Say Less has a first-party Order Online page with a Dutchie embed; no Weedmaps endpoint is needed."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000305",
+    "menuUrl": "https://shop.flowerdaddy.nyc/newyork/menu/flower-3325",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "menu platform: Sweed; direct Flower category lists products without registration. The gate is a yes/confirm 21+ notice, not a date-of-birth form."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000319",
+    "menuUrl": "https://justalittlehigher.com/store/category/flower?locId=7",
+    "platform": "PROPRIETARY",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-08",
+    "notes": "JALH Kew Gardens (14601 Union Tpke) — locId=7."
   },
   {
     "licenseNumber": "OCM-CAURD-25-000324",
@@ -260,6 +170,166 @@
     "notes": "Direct Treez Flower collection; the only access step observed is the standard 21+ confirmation."
   },
   {
+    "licenseNumber": "OCM-CAURD-26-000325",
+    "menuUrl": "https://shop.bkurbanbud.com/shop/categories/flower/",
+    "platform": "BLAZE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "none",
+    "checkedAt": "2026-09-06",
+    "notes": "Direct public Flower category; page evidence identifies BLAZE, correcting the brief's provisional OTHER guess. A login link is optional, not a browsing requirement."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-26-000336",
+    "menuUrl": "https://dutchie.com/dispensary/emerald-dispensary-carroll-gardens/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "Menu lives directly on Dutchie rather than the location page; Dutchie's current robots.txt has an empty Disallow rule for User-agent *."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000008",
+    "menuUrl": "https://mybud420.com/shop/?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "The first-party Shop page exposes Flower through the Dutchie category parameter; browsing requires only the site's 21+ confirmation."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000055",
+    "menuUrl": "https://elevated718.com/menu/categories/flower",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "menu platform: Dispense; direct Flower category is public after the site's simple 21+ confirmation."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000063",
+    "menuUrl": "https://budcityny.com/shop/flower/",
+    "platform": "DUTCHIE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "Direct Flower route on the first-party site; Dutchie markers are present in the menu page."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000133",
+    "menuUrl": "https://www.forever420ny.com/collection/flower",
+    "platform": "TREEZ",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "Direct Treez Flower collection; a simple age-gate redirect returns to this exact category after confirmation."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000144",
+    "menuUrl": "https://qualitycontroldispensary.com/flower-brooklyn",
+    "platform": "DUTCHIE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "Brooklyn-specific Flower page links into the store's Dutchie-backed inventory; multi-location site structure hid the route from the crawler."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000151",
+    "menuUrl": "https://stayallgood.com/shop/categories/flower",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "menu platform: Dispense; direct Flower category is public and was missed because the storefront runs on a different ecommerce host/runtime than expected."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000171",
+    "menuUrl": "https://guardianwellnessretail.com/order-online/?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "Order Online uses a client-side Dutchie embed; direct Flower parameter bypasses the crawler's failed link discovery, not the age notice."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000189",
+    "menuUrl": "https://dispostore.com/shop/",
+    "platform": "MEADOW",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "The Shop page is the human-facing Meadow menu; category data is rendered client-side, so the original HTML parser saw no products."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000260",
+    "menuUrl": "https://dutchie.com/dispensary/herbwell-bronx/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "Herbwell's browseable menu is hosted on Dutchie; Dutchie's current robots.txt permits User-agent * and the Flower route uses the standard products/flower path."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000261",
+    "menuUrl": "https://stashhouseus.com/shop/?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "Client-side Dutchie embed on the first-party Shop page; explicit Flower category is the stable human-facing entry."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000284",
+    "menuUrl": "https://houseofstrains.com/store/category/flower?locId=2",
+    "platform": "PROPRIETARY",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-08",
+    "notes": "House of Strains II, 133-36 Whitestone Expy — locId=2."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000285",
+    "menuUrl": "https://getbuzzy.com/menu/?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "Direct Dutchie Flower category; the shop page is client-rendered, which explains the original no-products result."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000298",
+    "menuUrl": "https://verdicannabis.com/stores/verdi-park-slope/products/flower",
+    "platform": "PROPRIETARY",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-08",
+    "notes": "Verdi Park Slope (360 7th Ave) — слаг verdi-park-slope из ссылки «Shop Park Slope, nyc». Слаг verdi — это Chelsea."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000360",
+    "menuUrl": "https://www.bkgreenery.com/menu?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "Dutchie is embedded client-side; the original HTML-only crawler reached the menu shell but not the rendered Flower inventory."
+  },
+  {
     "licenseNumber": "OCM-RETL-25-000466",
     "menuUrl": null,
     "platform": null,
@@ -268,5 +338,15 @@
     "ageGate": "none",
     "checkedAt": "2026-09-06",
     "notes": "No public website or human-facing menu for this licensed location was found, so platform and robots status remain null rather than being invented."
+  },
+  {
+    "licenseNumber": "OCM-RETL-26-000488",
+    "menuUrl": "https://freshlybaked.nyc/stores/midtown/shop/menu/flower-1088",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-06",
+    "notes": "menu platform: Sweed; Midtown-specific Flower category is publicly browseable after a simple 21+ confirmation."
   }
 ]
