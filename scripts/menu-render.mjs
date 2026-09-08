@@ -26,6 +26,12 @@ const UA =
   'Mozilla/5.0 (compatible; dispensary-list-menu/1.0; +https://github.com/Adisabeba33/dispensery-list)';
 
 const limit = Number(process.argv[process.argv.indexOf('--limit') + 1]) || 12;
+/* --offset skips the first N candidates. Re-reading the whole register takes
+   hours, and without a way to say "start where the last batch stopped" the
+   only choices were one job long enough to lose everything if it fails, or
+   the same first shops over and over. */
+const offsetArg = process.argv.indexOf('--offset');
+const offset = offsetArg > -1 ? Math.max(0, Number(process.argv[offsetArg + 1]) || 0) : 0;
 const NOW = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
 
 // --dataset points the collector at a different register: used by the local
@@ -711,9 +717,14 @@ const main = async () => {
   const rawTerpNames = {};
   const capturedShapes = {};
   let done = 0;
+  let skipped = 0;
 
   for (const shop of candidates) {
     if (done >= limit) break;
+    if (skipped < offset) {
+      skipped += 1;
+      continue;
+    }
     const site = shop.contact.website;
 
     let allowed = false;

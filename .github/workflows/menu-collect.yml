@@ -17,6 +17,9 @@ on:
         description: Visit only shops with a researched menu address
         type: boolean
         default: false
+      offset:
+        description: Skip this many candidates first, to continue a batched sweep
+        default: '0'
       only:
         description: Visit one licence number only (diagnosis)
         default: ''
@@ -56,6 +59,7 @@ jobs:
         run: >-
           node scripts/menu-render.mjs
           --limit ${{ inputs.limit || '40' }}
+          ${{ inputs.offset != '0' && format('--offset {0}', inputs.offset) || '' }}
           ${{ inputs.skip_collected && '--skip-collected' || '' }}
           ${{ inputs.only_endpoints && '--only-endpoints' || '' }}
           ${{ inputs.only && format('--only {0}', inputs.only) || '' }}
