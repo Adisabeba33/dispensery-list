@@ -26,6 +26,9 @@ on:
       dump_products:
         description: Write this many raw flower products into the report
         default: '0'
+      dump_links:
+        description: Report this many scored menu links per shop (chain diagnosis)
+        default: '0'
 
 permissions:
   contents: write
@@ -64,6 +67,7 @@ jobs:
           ${{ inputs.only_endpoints && '--only-endpoints' || '' }}
           ${{ inputs.only && format('--only {0}', inputs.only) || '' }}
           ${{ inputs.dump_products != '0' && format('--dump-products {0}', inputs.dump_products) || '' }}
+          ${{ inputs.dump_links != '0' && format('--dump-links {0}', inputs.dump_links) || '' }}
       - name: Validate collected listings
         id: validate
         continue-on-error: true
@@ -152,6 +156,8 @@ jobs:
                   print('    STOPPED SCROLLING WITH THE MENU STILL GROWING — this shelf is short')
               if r.get('declaredTotal') and r['declaredTotal'] > r.get('productsSeen', 0):
                   print(f"    the menu says {r['declaredTotal']} products, we read {r.get('productsSeen', 0)}")
+              for link in r.get('links', []):
+                  print(f"    LINK {link}")
               for sample in r.get('sample', []):
                   print(f"    RAW {sample}")
               if r.get('rejected'):

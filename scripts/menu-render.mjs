@@ -66,7 +66,18 @@ const onlyEndpoints = process.argv.includes('--only-endpoints');
    come out wrong" with the payload rather than a theory about it — which is
    how the last three parser faults were actually found. */
 const onlyArg = process.argv.indexOf('--only');
-const onlyLicence = onlyArg > -1 ? process.argv[onlyArg + 1] : null;
+/* Several licences at once, comma-separated: the chains that need a branch
+   address each need looking at, and nine separate runs is nine browser
+   installs to answer one question. */
+const onlyLicences = onlyArg > -1
+  ? new Set(String(process.argv[onlyArg + 1] ?? '').split(',').map((s) => s.trim()).filter(Boolean))
+  : null;
+/* --dump-links reports the menu links a shop publishes, scored. A chain hands
+   every licence the same shelf until someone writes down which address belongs
+   to which branch, and that cannot be guessed from here — it has to be read
+   off the chain's own page. */
+const linksArg = process.argv.indexOf('--dump-links');
+const dumpLinks = linksArg > -1 ? Number(process.argv[linksArg + 1]) || 25 : 0;
 const dumpArg = process.argv.indexOf('--dump-products');
 const dumpProducts = dumpArg > -1 ? Number(process.argv[dumpArg + 1]) || 5 : 0;
 const alreadyCollected = new Set();
@@ -108,7 +119,7 @@ const candidates = dispensaries.filter(
     d.contact?.website &&
     !alreadyCollected.has(d.licenseNumber) &&
     (!onlyEndpoints || ENDPOINTS[d.licenseNumber]) &&
-    (!onlyLicence || d.licenseNumber === onlyLicence),
+    (!onlyLicences || onlyLicences.has(d.licenseNumber)),
 );
 
 /** robots.txt still applies: a browser does not change who is welcome. */
@@ -879,6 +890,16 @@ const main = async () => {
           .map((a) => ({ href: a.href, text: (a.textContent || '').trim().slice(0, 60) })),
       );
       const found = pickMenuLink(links, site, shop.dbaName ?? shop.legalName);
+      if (dumpLinks > 0) {
+        const shopName = shop.dbaName ?? shop.legalName;
+        entry.links = links
+          .filter((l) => sameEstate(l.href, site, shopName) && rankMenuLink(l.href, l.text) > 0)
+          .map((l) => ({ href: l.href, text: l.text, score: rankMenuLink(l.href, l.text) }))
+          .filter((l, i, all) => all.findIndex((x) => x.href === l.href) === i)
+          .sort((a, b) => b.score - a.score)
+          .slice(0, dumpLinks)
+          .map((l) => `${String(l.score).padStart(3)}  ${l.href}   «${l.text}»`);
+      }
       const href = known ?? found;
       // Said plainly, so "no products" stops covering "not allowed there".
       entry.menuLink = href ? 'found' : 'none';
