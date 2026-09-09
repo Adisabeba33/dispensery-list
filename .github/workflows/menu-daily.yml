@@ -3,10 +3,15 @@ name: Daily menu refresh
 on:
   schedule:
     # Shops restock overnight, so the morning menu is the day's menu.
-    # GitHub cron is UTC and has no daylight saving: 11:00 UTC is 07:00 in New
-    # York from March to November and 06:00 the rest of the year. An hour's
+    # GitHub cron is UTC and has no daylight saving: 11:17 UTC is 07:17 in New
+    # York from March to November and 06:17 the rest of the year. An hour's
     # drift twice a year is not worth a second workflow.
-    - cron: '0 11 * * *'
+    #
+    # :17 rather than :00 because every scheduled job on GitHub asks for the
+    # top of the hour and they queue behind each other. This repository's
+    # weekly refresh, set to 11:00, has fired at 16:16 — five hours late. An
+    # odd minute is not a guarantee, only a shorter queue.
+    - cron: '17 11 * * *'
   workflow_dispatch:
     inputs:
       batch:
