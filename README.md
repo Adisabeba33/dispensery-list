@@ -21,6 +21,7 @@ data/
   schema/municipality.schema.json  opt-out status of cities, towns and villages
   schema/flower-listing.schema.json    flower on a shelf — no prices, flower only
   schema/strain-reference.schema.json  fallback terpene profiles by strain
+  brands.json                      canonical cultivator identity — spellings folded, near misses left apart
   dispensaries.json                the delivered dataset (empty until research lands)
   dispensaries.demo.json           7-record sample so the site has something to show
   municipalities.json              Westchester opt-outs + NYC boroughs
@@ -33,6 +34,7 @@ docs/
   SOURCE_COLUMNS.md                the registry's real columns and the filter used
 scripts/
   validate-data.ts                 schema + semantic validation (runs in CI)
+  build-brands.ts                  derives data/brands.json from the listings
   ingest/                          pulls the state registry into the schema
   build-preview.ts                 renders everything into one shareable HTML file
 src/                               the Next.js site

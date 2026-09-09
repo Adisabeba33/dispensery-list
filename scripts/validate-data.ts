@@ -11,6 +11,7 @@
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { brandKey } from './build-brands';
 import Ajv2020, { type ErrorObject } from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 
@@ -408,6 +409,87 @@ const validateStrainReference = (FILE: string) => {
   });
 };
 
+
+// ---------------------------------------------------------------------------
+// Brand identity. The listing schema has always carried a canonical form for
+// the strain name and never for the brand, so one company arrived as up to four
+// companies — "Boukét" and "Bouket" split the largest catalogue in the register
+// clean in half. data/brands.json is the canonical layer; these rules stop it
+// going stale behind the listings it describes.
+const validateBrands = () => {
+  const FILE = 'data/brands.json';
+  const raw = readJson(FILE);
+  if (raw === undefined) return;
+  const file = raw as {
+    manualAliases?: Record<string, string>;
+    brands?: Array<{ brandId: string; displayName: string; spellings: string[] }>;
+    reviewNeeded?: Array<{ a: string; b: string; decided: boolean }>;
+  };
+  if (!Array.isArray(file.brands)) {
+    fail(FILE, '-', 'brands must be an array — regenerate with scripts/build-brands.ts');
+    return;
+  }
+
+  const manualAliases = file.manualAliases ?? {};
+  const byId = new Map(file.brands.map((b) => [b.brandId, b]));
+
+  file.brands.forEach((b, i) => {
+    const at = (field: string) => `brands[${i}] (${b.brandId}) ${field}`;
+    if (!b.brandId) fail(FILE, at('brandId'), 'missing');
+    if (!b.displayName) fail(FILE, at('displayName'), 'missing');
+    if (!Array.isArray(b.spellings) || b.spellings.length === 0) {
+      fail(FILE, at('spellings'), 'a brand must record at least the spelling it was seen as');
+    }
+    // The display name has to be one of the spellings actually observed. A
+    // prettier name nobody prints is an invention, and this register does not
+    // invent.
+    if (b.spellings && !b.spellings.includes(b.displayName)) {
+      fail(FILE, at('displayName'), `"${b.displayName}" is not one of the observed spellings`);
+    }
+    for (const spelling of b.spellings ?? []) {
+      if (brandKey(spelling) !== b.brandId && manualAliases[brandKey(spelling)] !== b.brandId) {
+        fail(FILE, at('spellings'), `"${spelling}" does not fold to ${b.brandId}`);
+      }
+    }
+  });
+
+  // A manual merge that points nowhere silently stops merging what a human
+  // decided should merge — worse than never having recorded it.
+  for (const [alias, canonical] of Object.entries(manualAliases)) {
+    if (!byId.has(canonical)) {
+      fail(FILE, `manualAliases["${alias}"]`, `points at "${canonical}", which is not a brand here`);
+    }
+    if (manualAliases[canonical]) {
+      fail(FILE, `manualAliases["${alias}"]`, `chains through "${canonical}", which is itself an alias — resolve to the final brand`);
+    }
+    if (byId.has(alias)) {
+      fail(FILE, `manualAliases["${alias}"]`, 'is both an alias and a brand in its own right');
+    }
+  }
+
+  // Staleness: every brand the listings actually carry must be represented.
+  const listings = readJson('data/flower-listings.json');
+  if (!Array.isArray(listings)) return;
+  const unknown = new Set<string>();
+  for (const l of listings as Array<{ brand?: string | null }>) {
+    if (!l.brand || !l.brand.trim()) continue;
+    const id = manualAliases[brandKey(l.brand)] ?? brandKey(l.brand);
+    if (id && !byId.has(id)) unknown.add(l.brand.trim());
+  }
+  if (unknown.size > 0) {
+    fail(
+      FILE,
+      '-',
+      `${unknown.size} brand(s) in the listings are absent here (e.g. ${[...unknown].slice(0, 3).join(', ')}) — rerun scripts/build-brands.ts --write`,
+    );
+  }
+
+  const undecided = (file.reviewNeeded ?? []).filter((r) => !r.decided).length;
+  if (undecided > 0) {
+    warn(FILE, 'reviewNeeded', `${undecided} near-miss brand pair(s) awaiting a human decision — they stay separate until then`);
+  }
+};
+
 // ---------------------------------------------------------------------------
 
 validateDispensaries('data/dispensaries.json', true);
@@ -415,6 +497,7 @@ validateDispensaries('data/dispensaries.demo.json', false);
 validateMunicipalities();
 validateFlowerListings('data/flower-listings.json');
 validateStrainReference('data/strain-reference.json');
+validateBrands();
 
 const print = (label: string, items: Problem[]) => {
   if (items.length === 0) return;
