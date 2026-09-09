@@ -1,0 +1,73 @@
+name: Menu probe
+
+# The probe needs outbound HTTPS, which a sandboxed agent session does not
+# have. So it runs here, where a runner does — the same arrangement the
+# endpoint audit already uses. Nothing is committed: the probe writes only to
+# enrichment-output/, which is gitignored, and the report leaves as an
+# artifact.
+
+on:
+  workflow_dispatch:
+    inputs:
+      only_untried:
+        description: Only shops no pass has ever reached (step 0 of the coverage plan)
+        type: boolean
+        default: true
+      sweep_all:
+        description: Sweep every eligible shop instead of sampling
+        type: boolean
+        default: true
+      limit:
+        description: Sample size when not sweeping all
+        default: '60'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install probe dependencies
+        run: python -m pip install requests beautifulsoup4
+      - name: Probe menus
+        run: >-
+          python scripts/menu-probe.py
+          ${{ inputs.sweep_all && '--all' || format('--limit {0}', inputs.limit) }}
+          ${{ inputs.only_untried && '--only-untried' || '' }}
+      # Read before the artifact is downloaded: the summary is the whole point,
+      # and it is short.
+      - name: Report
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, os
+          path = 'enrichment-output/menu-probe.json'
+          if not os.path.exists(path):
+              print('The probe wrote no report — it failed before finishing.')
+              raise SystemExit(0)
+          d = json.load(open(path))
+          print(json.dumps(d['summary'], indent=2)[:4000])
+
+          # Which shops answered, and with what. A platform named here is a
+          # platform we no longer have to guess at.
+          print('\n--- per shop ---')
+          for r in d['records']:
+              state = 'ok' if not r.get('error') else str(r['error'])[:40]
+              kinds = ','.join(sorted({s.get('kind') for s in r.get('structures', []) if s.get('kind')})) or '-'
+              print(f"{r.get('provider') or '?':<12} {state:<41} "
+                    f"{'flower' if r.get('flowerWordsSeen') else '      '} "
+                    f"{kinds:<28} {r.get('name', '')[:30]}")
+          PY
+      - name: Upload probe evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: menu-probe
+          path: enrichment-output/menu-probe.json
+          if-no-files-found: error
+          retention-days: 7
