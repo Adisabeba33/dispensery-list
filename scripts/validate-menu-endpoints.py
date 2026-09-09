@@ -72,8 +72,18 @@ for i, row in enumerate(rows):
             errors.append(f"{pfx}: invalid menuUrl {url!r}")
         if platform not in PLATFORMS:
             errors.append(f"{pfx}: invalid platform {platform!r}")
-        if not isinstance(robots, bool):
-            errors.append(f"{pfx}: robotsAllows must be boolean when menuUrl exists")
+        if robots is None:
+            # Unknown has to be sayable. A host that answers 403 to
+            # /robots.txt has stated no crawl rule, and the audit already
+            # recorded once (docs/MENU_ENDPOINTS_REPORT.md, Dutchie) how a
+            # 403 read as a prohibition takes a human to undo. Null is
+            # allowed, but only with the reason written down.
+            if "robots" not in (row.get("notes") or "").lower():
+                errors.append(
+                    f"{pfx}: robotsAllows may be null only if notes say why robots.txt could not be read"
+                )
+        elif not isinstance(robots, bool):
+            errors.append(f"{pfx}: robotsAllows must be true, false or null when menuUrl exists")
         if not isinstance(flower, bool):
             errors.append(f"{pfx}: flowerVisibleWithoutLogin must be boolean")
     if row.get("ageGate") not in GATES:

@@ -76,6 +76,30 @@ Sitemap: https://dutchie.com/sitemap.xml
 
 Therefore `robotsAllows: true` is used for the Emerald Carroll Gardens and Herbwell Bronx Dutchie routes. The 403 was an environment/access artifact, not a `Disallow` rule, and no anti-bot mechanism was bypassed.
 
+### The same artifact, in code
+
+That incident took a human to undo, and the code that produced it kept the
+defect until 2026-09-09. `scripts/menu-probe.py` and `scripts/menu-collect.py`
+resolved robots.txt through `urllib.robotparser.RobotFileParser.read()`, which
+swallows the HTTP status: a 401 or 403 on `/robots.txt` silently becomes
+`disallow_all`, indistinguishable from a host that actually wrote `Disallow`.
+A sweep run behind a blocking egress proxy proved it — two shops on plain
+`http://` were reported as `robots.txt consulted` / disallowed, having been
+consulted by nobody.
+
+Both scripts now fetch robots.txt themselves and keep the status. Only a
+robots.txt that was read and whose content disallows produces `false`; a 401
+or 403 produces `null` — we still stay away, but the record says the policy is
+unknown rather than forbidding. `scripts/validate-menu-endpoints.py` accepts
+that `null` when `notes` explains it. Nothing else changed: an absent, broken
+or briefly unreachable robots.txt still states no restriction, as before.
+
+The three `"menuLink": "robots-disallowed"` records in
+`data/menu-endpoints.todo.json` are unaffected. They came from
+`scripts/menu-render.mjs`, which parses the robots body itself and treats any
+non-200 as empty — those three followed a `Disallow` line that was actually
+served.
+
 ## Why the original collector missed these stores
 
 The failures clustered into a few repeatable patterns:

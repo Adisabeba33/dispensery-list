@@ -12,7 +12,9 @@ rather than silently producing nulls.
 
 Access discipline is the same as the probe: robots.txt obeyed per host, one
 request at a time per host with a pause, a User-Agent naming the project, and
-no logins, age-gate bypasses or captcha handling.
+no logins, age-gate bypasses or captcha handling. A host that refuses to serve
+robots.txt at all is left alone and recorded as unknown rather than as
+disallowing — that refusal came from something between us and the shop.
 
 Usage: python scripts/menu-collect.py [--limit N] [--dry-run]
 """
@@ -96,6 +98,7 @@ LINEAGE_MAP = {
     "cbd": "CBD", "highcbd": "CBD",
 }
 
+# host -> (parser | None, note); None means no policy was obtained.
 robots_cache: dict = {}
 unresolved_keys = Counter()
 raw_terpene_names = Counter()
@@ -107,23 +110,64 @@ def host_of(url):
     return urlparse(url).netloc.lower()
 
 
-def robots_allows(url):
+def load_robots(url):
+    """Fetch robots.txt ourselves and keep the HTTP status.
+
+    RobotFileParser.read() turns a 401 or 403 on /robots.txt into
+    disallow_all, so a WAF, a CDN or an egress proxy refusing the file looks
+    exactly like a shop that wrote Disallow. This collector writes what it
+    finds into the register, so that difference has to survive.
+    """
     host = host_of(url)
-    if host not in robots_cache:
-        rp = urllib.robotparser.RobotFileParser()
-        rp.set_url(f"{urlparse(url).scheme}://{host}/robots.txt")
-        try:
-            rp.read()
-            robots_cache[host] = rp
-        except Exception:
-            robots_cache[host] = None
-    rp = robots_cache[host]
-    if rp is None:
-        return True
+    if host in robots_cache:
+        return robots_cache[host]
+
+    scheme = urlparse(url).scheme or "https"
     try:
-        return bool(rp.can_fetch(UA, url))
+        r = requests.get(
+            f"{scheme}://{host}/robots.txt",
+            timeout=TIMEOUT,
+            allow_redirects=True,
+            headers={"User-Agent": UA, "Accept": "text/plain,*/*"},
+        )
+    except Exception as e:
+        entry = (None, f"robots.txt unreachable ({type(e).__name__})")
+    else:
+        if r.status_code == 200:
+            rp = urllib.robotparser.RobotFileParser()
+            try:
+                rp.parse(r.text.splitlines())
+                entry = (rp, "robots.txt consulted")
+            except Exception:
+                entry = (None, "robots.txt unparseable")
+        elif r.status_code in (401, 403):
+            entry = (None, f"robots.txt withheld (HTTP {r.status_code})")
+        elif 400 <= r.status_code < 500:
+            entry = (None, f"no robots.txt (HTTP {r.status_code})")
+        else:
+            entry = (None, f"robots.txt unavailable (HTTP {r.status_code})")
+
+    robots_cache[host] = entry
+    return entry
+
+
+def robots_allows(url):
+    """True, False, or None when robots.txt could not be read.
+
+    We decline to fetch on None as well as on False — politeness does not
+    require certainty — but only False is a prohibition the shop stated.
+    """
+    rp, note = load_robots(url)
+    if rp is None:
+        # Only an outright refusal (401/403) keeps us away. Absent, broken or
+        # briefly unreachable states no restriction, as before.
+        if note.startswith("robots.txt withheld"):
+            return None, note
+        return True, note
+    try:
+        return bool(rp.can_fetch(UA, url)), note
     except Exception:
-        return True
+        return True, "robots.txt unparseable"
 
 
 def fetch(session, url):
@@ -293,8 +337,15 @@ def collect(shop):
     site = shop["contact"]["website"]
     out = {"licenseNumber": shop["licenseNumber"], "listings": [], "status": None, "productsSeen": 0}
 
-    if not robots_allows(site):
+    allowed, robots_note = robots_allows(site)
+    if allowed is False:
         out["status"] = "robots-disallowed"
+        out["robotsNote"] = robots_note
+        return out
+    if allowed is None:
+        # Nothing was learned about this shop, so nothing is recorded about it.
+        out["status"] = "robots-unknown"
+        out["robotsNote"] = robots_note
         return out
 
     session = requests.Session()
@@ -317,7 +368,7 @@ def collect(shop):
             candidates.append(url)
 
     for url in list(dict.fromkeys(candidates))[:3]:
-        if not robots_allows(url):
+        if robots_allows(url)[0] is not True:
             continue
         time.sleep(PER_HOST_PAUSE)
         page = fetch(session, url)
