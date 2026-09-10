@@ -268,7 +268,14 @@ def describe_json_blobs(html: str) -> list[dict]:
                     elif isinstance(value, dict):
                         entry["productsFieldKeys"] = sorted(value.keys())[:20]
                 if isinstance(value, dict):
-                    value = value.get("products") or value.get("items") or value.get("edges")
+                    # `data` first, and it is not a guess: the collector was
+                    # written against this engine in September after the same
+                    # descent list missed it, and the shape reported by this
+                    # run — dict(keys=data,params), on seven sites — is that
+                    # engine. Without it the probe reports zero product lists
+                    # while looking straight at them.
+                    value = (value.get("data") or value.get("products")
+                             or value.get("items") or value.get("edges"))
                 if isinstance(value, list) and value:
                     first = value[0]
                     if isinstance(first, dict) and "node" in first and isinstance(first["node"], dict):
