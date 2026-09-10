@@ -192,6 +192,26 @@ check('an empty status says nothing either way',
   ];
   check('picks the flower category over a promo', pickMenuLink(links), 'https://shop.test/stores/x/categories/flower');
   check('a specials route is never followed', rankMenuLink('https://shop.test/specials/offer/1', 'Shop now'), 0);
+  /* One item's own page is not the shelf. BX Buddiez's ninety-two strains were
+     replaced by the sixteen that sit on /product/nanticoke-coconut-cream-flower/,
+     because the slug ends in "flower" and the pattern could not tell a segment
+     that IS "flower" from one that merely ends in it. Both runs that day read
+     it the same way: a wrong page is steadier than a flaky one, and steadier
+     is worse. */
+  check('one product\'s page is never the menu',
+    rankMenuLink('https://bxbuddiez.com/product/nanticoke-coconut-cream-flower/', 'Coconut Cream'), 0);
+  check('and the category still is',
+    rankMenuLink('https://bxbuddiez.com/categories/flower/?sort=NAME_ASC', 'Flower'), 100);
+  check('the shelf wins over the item',
+    pickMenuLink([
+      { href: 'https://bxbuddiez.com/product/nanticoke-coconut-cream-flower/', text: 'Coconut Cream' },
+      { href: 'https://bxbuddiez.com/categories/flower/', text: 'Flower' },
+    ], 'https://bxbuddiez.com', 'BX Buddiez'),
+    'https://bxbuddiez.com/categories/flower/');
+  /* products, plural, is a menu route on several platforms — the word boundary
+     after "product" does not fall inside it. */
+  check('a plural products route survives',
+    rankMenuLink('https://verdicannabis.com/stores/verdi/products/flower', 'Flower'), 100);
   check('a brand page is never followed', rankMenuLink('https://shop.test/brands/dada', 'Shop Dada'), 0);
   check('a flower category beats a bare menu', rankMenuLink('https://s.test/menu/flower', 'x') > rankMenuLink('https://s.test/menu', 'Menu'), true);
   check('a nav item reading Flower counts', rankMenuLink('https://s.test/c/1b9f87', 'Flower') > 0, true);

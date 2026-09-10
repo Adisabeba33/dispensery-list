@@ -204,8 +204,17 @@ const affirmAge = async (page) => {
  * are now scored rather than raced, the address counts for more than the words
  * on it, and the routes that are never a menu are refused outright.
  */
-const PROMO_ROUTE = /\/(specials?|offers?|deals?|promo|blog|news|about|contact|account|login|cart|checkout|brands?|careers)\b/i;
-const FLOWER_ROUTE = /(categor(y|ies)[=/][^/?#]*flower|\/flower\b|flower\/?$|[?&]category=flower|\/rec\/flower|\/bud\b)/i;
+/* `product` singular is one item's own page, never a menu. `products` plural
+   is a menu route on several platforms, and \b keeps them apart: the word
+   boundary after "product" does not fall inside "products". */
+const PROMO_ROUTE = /\/(specials?|offers?|deals?|promo|blog|news|about|contact|account|login|cart|checkout|brands?|careers|product)\b/i;
+/* A path segment that IS "flower" names the category. A segment that merely
+   ends in "-flower" is a product slug, and `flower\/?$` could not tell them
+   apart: BX Buddiez's whole shelf was replaced by whatever sits on
+   /product/nanticoke-coconut-cream-flower/ — sixteen items where the shop has
+   ninety-two. Two runs read it the same way, which is what makes a wrong page
+   so much more dangerous than a flaky one. */
+const FLOWER_ROUTE = /(categor(y|ies)[=/][^/?#]*flower|\/flower\b|\/flowers?\/?$|[?&]category=flower|\/rec\/flower|\/bud\b)/i;
 const MENU_ROUTE = /\/(menu|shop|order|products?|browse|store|dispensary)\b/i;
 const FLOWER_WORD = /^\s*(flower|flowers|bud|buds|whole\s*flower)\s*$/i;
 const MENU_WORD = /\b(menu|shop|order|browse|products?)\b/i;
