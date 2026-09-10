@@ -47,10 +47,34 @@ jobs:
       - name: Install probe dependencies
         run: python -m pip install requests beautifulsoup4
       - name: Probe menus
-        run: >-
-          python scripts/menu-probe.py
-          ${{ inputs.sweep_all && '--all' || format('--limit {0}', inputs.limit) }}
-          ${{ inputs.only_untried && '--only-untried' || '' }}
+        # The arguments are assembled in the shell, not in a ${{ }} ternary.
+        # A push event carries no dispatch inputs at all, so the expression
+        # form produced "--limit" with nothing after it; and GitHub's
+        # `cond && x || y` cannot carry a false boolean through, so an
+        # unchecked box would have read as the default. Both are avoided by
+        # passing the raw values in and deciding here.
+        env:
+          EVENT: ${{ github.event_name }}
+          SWEEP_ALL: ${{ inputs.sweep_all }}
+          ONLY_UNTRIED: ${{ inputs.only_untried }}
+          LIMIT: ${{ inputs.limit }}
+        run: |
+          if [ "$EVENT" != "workflow_dispatch" ]; then
+            # Pushed, not dispatched: run step 0 of the coverage plan.
+            SWEEP_ALL=true
+            ONLY_UNTRIED=true
+          fi
+          args=()
+          if [ "$SWEEP_ALL" = "true" ]; then
+            args+=(--all)
+          else
+            args+=(--limit "${LIMIT:-60}")
+          fi
+          if [ "$ONLY_UNTRIED" = "true" ]; then
+            args+=(--only-untried)
+          fi
+          echo "running: python scripts/menu-probe.py ${args[*]}"
+          python scripts/menu-probe.py "${args[@]}"
       # Read before the artifact is downloaded: the summary is the whole point,
       # and it is short.
       - name: Report
