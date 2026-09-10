@@ -89,6 +89,8 @@ jobs:
           done
           echo "batches_failed=$failed" >> "$GITHUB_ENV"
 
+      # menu-diff reads the collector's summary for the shelves it held back, so
+      # the report names them; without it a held shelf shows up nowhere at all.
       - name: What changed on the shelves
         id: diff
         run: |

@@ -1077,21 +1077,57 @@ const main = async () => {
   const refreshed = new Set(report.filter((r) => r.flower > 0).map((r) => r.licence));
 
   /* A capture that comes back much smaller than the last one is more often a
-     page that had not finished than a shop that stopped stocking. We still take
-     what we saw — inventing the difference would be worse — but the run says so
-     rather than letting the shelf quietly shrink. */
+     page that had not finished — or, as at BX Buddiez, a page that was never
+     the shelf — than a shop that stopped stocking. Such a shelf is not
+     published: the shop keeps the reading we believe, and the run says whose
+     and why.
+
+     It is held, not held forever. If the shop really has sold down, the
+     shelf we are keeping ages out of the window below within a couple of
+     days and the small reading is taken. That way a wrong page is masked at
+     once and a true one is only delayed.
+
+     Holding a shelf must never be quiet. This is exactly the shape of thing
+     that hides a collector fault for weeks, so the licences are named in the
+     summary and the report repeats them. */
+  const SUSPECT_CARRY_DAYS = 2;
   const previousCounts = {};
-  for (const l of previous) previousCounts[l.licenseNumber] = (previousCounts[l.licenseNumber] ?? 0) + 1;
+  const previousCapturedAt = {};
+  for (const l of previous) {
+    previousCounts[l.licenseNumber] = (previousCounts[l.licenseNumber] ?? 0) + 1;
+    const at = Date.parse(l.capturedAt);
+    if (!(previousCapturedAt[l.licenseNumber] >= at)) previousCapturedAt[l.licenseNumber] = at;
+  }
+  const suspectCutoff = Date.now() - SUSPECT_CARRY_DAYS * 24 * 60 * 60 * 1000;
+  const held = new Set(
+    report
+      .filter(
+        (r) =>
+          r.flower > 0 &&
+          previousCounts[r.licence] > 0 &&
+          r.flower * 2 < previousCounts[r.licence] &&
+          previousCapturedAt[r.licence] >= suspectCutoff,
+      )
+      .map((r) => r.licence),
+  );
   const shrank = report
     .filter((r) => r.flower > 0 && previousCounts[r.licence] > 0 && r.flower * 2 < previousCounts[r.licence])
-    .map((r) => `${r.shop}: ${previousCounts[r.licence]} → ${r.flower}`);
+    .map((r) => `${r.shop}: ${previousCounts[r.licence]} → ${r.flower}`
+      + (held.has(r.licence) ? ' — held at the earlier reading' : ' — taken; the earlier reading has aged out'));
+
   const cutoff = Date.now() - CARRY_FORWARD_DAYS * 24 * 60 * 60 * 1000;
   const carried = previous.filter(
-    (l) => !refreshed.has(l.licenseNumber) && Date.parse(l.capturedAt) >= cutoff,
+    (l) =>
+      (!refreshed.has(l.licenseNumber) || held.has(l.licenseNumber)) &&
+      Date.parse(l.capturedAt) >= cutoff,
   );
   const dropped = previous.length - carried.length - previous.filter((l) => refreshed.has(l.licenseNumber)).length;
 
-  const merged = mergeBySize([...listings, ...carried]);
+  /* One shop's suspect shelf used to stop the whole run publishing, and two
+     days of everyone else's shelves sat on a branch because of it. The shelf
+     is dropped, the run is not. */
+  const takenThisRun = listings.filter((l) => !held.has(l.licenseNumber));
+  const merged = mergeBySize([...takenThisRun, ...carried]);
   merged.sort((a, b) =>
     a.licenseNumber === b.licenseNumber
       ? a.strainNameRaw.localeCompare(b.strainNameRaw)
@@ -1139,6 +1175,12 @@ const main = async () => {
     hitTheSettleCap: report.filter((r) => r.settled === false).length,
     /* Shelves that were cut short rather than finished. Ten ounces went
        missing from one Bronx shop this way, and nothing in the run said so. */
+    /* Named, because a shelf quietly kept from yesterday is how a collector
+       fault survives a fortnight of green runs. */
+    shelvesHeldAtPreviousReading: [...held].map((lic) => {
+      const r = report.find((x) => x.licence === lic);
+      return `${r?.shop ?? lic}: read ${r?.flower ?? '?'}, kept ${previousCounts[lic]} from the last run`;
+    }),
     shelvesCutShort: report
       .filter((r) => r.hitScrollCap || r.hitScrollBudget)
       .map((r) => `${r.shop}: stopped scrolling with the menu still growing`),

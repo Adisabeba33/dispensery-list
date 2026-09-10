@@ -90,6 +90,24 @@ lines += [f"- {n}" for n in gone_from_market[:40]] or ["_ничего_"]
 if len(gone_from_market) > 40:
     lines.append(f"- …и ещё {len(gone_from_market) - 40}")
 
+# Полки, которые прогон НЕ взял, а оставил от прошлого чтения. Их нет в
+# разнице по определению — файл-то не изменился — и именно поэтому о них надо
+# сказать отдельно. Молча придержанная полка это способ спрятать поломку
+# коллектора на две недели вперёд.
+held = []
+summary_path = ROOT / "enrichment-output" / "menu-summary.json"
+if summary_path.exists():
+    try:
+        held = json.loads(summary_path.read_text()).get("shelvesHeldAtPreviousReading") or []
+    except (ValueError, OSError):
+        held = []
+if held:
+    lines += ["", f"### Полки, оставленные от прошлого чтения: {len(held)}", "",
+              "Прочитано заметно меньше прежнего — не публикуем, держим прежнее.",
+              "Если магазин правда распродался, через пару дней прежнее чтение",
+              "устареет и будет взято новое.", ""]
+    lines += [f"- {h}" for h in held[:20]]
+
 broken = bool(collapsed or vanished)
 if broken:
     lines += ["", "### ⚠ Полки, которые выглядят оборванными", "",
