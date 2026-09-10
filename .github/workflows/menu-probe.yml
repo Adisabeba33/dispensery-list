@@ -98,6 +98,17 @@ jobs:
               print(f"{r.get('provider') or '?':<12} {state:<41} "
                     f"{'flower' if r.get('flowerWordsSeen') else '      '} "
                     f"{kinds:<28} {r.get('name', '')[:30]}")
+
+          # Last, deliberately. A reader — human or agent — reaches a long log
+          # from its end, and the numbers that decide the next move were
+          # sitting two hundred lines up behind the JSON-LD key dumps.
+          s = d['summary']
+          print('\n--- headline ---')
+          print(f"eligible {s['eligibleShops']} · probed {s['probed']} · reachable {s['reachable']}")
+          print(f"robots: disallowed {s.get('robotsDisallowed')} · unknown {s.get('robotsUnknown')}")
+          print(f"structures: {s.get('structuresFound')}")
+          print(f"products field: {s.get('productsFieldShape')}")
+          print(f"shops with a product list in the HTML: {s.get('shopsWithProductList')}")
           PY
       - name: Upload probe evidence
         if: always()

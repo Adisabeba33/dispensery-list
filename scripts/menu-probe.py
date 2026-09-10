@@ -267,6 +267,16 @@ def describe_json_blobs(html: str) -> list[dict]:
                         entry["productsFieldLength"] = len(value)
                     elif isinstance(value, dict):
                         entry["productsFieldKeys"] = sorted(value.keys())[:20]
+                        # Naming the keys is not enough. "products is a dict
+                        # with a data key" and "the shelf is empty" look the
+                        # same in a report that stops at the key names, and
+                        # those two lead to opposite decisions: parse the HTML,
+                        # or go and render the page in a browser. So say how
+                        # many items each inner list actually holds.
+                        entry["productsInnerLengths"] = {
+                            k: len(v) for k, v in sorted(value.items())
+                            if isinstance(v, list)
+                        }
                 if isinstance(value, dict):
                     # `data` first, and it is not a guess: the collector was
                     # written against this engine in September after the same
@@ -420,6 +430,10 @@ for r in results:
                 f'{s["productsFieldType"]}'
                 + (f'(len={s.get("productsFieldLength")})' if "productsFieldLength" in s else "")
                 + (f'(keys={",".join((s.get("productsFieldKeys") or [])[:6])})' if s.get("productsFieldKeys") else "")
+                + (
+                    "(" + ", ".join(f"{k}={n}" for k, n in s["productsInnerLengths"].items()) + ")"
+                    if s.get("productsInnerLengths") else ""
+                )
             ] += 1
         if kind == "json-ld" and s.get("itemKeys") and len(item_list_samples) < 5:
             item_list_samples.append({
