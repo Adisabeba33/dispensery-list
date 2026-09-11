@@ -2,7 +2,7 @@
 """Reads flower off real dispensary shelves.
 
 The probe runs established the route: these storefronts server-render their
-menu into __NEXT_DATA__, and pageProps.products is a dict whose `data` key
+menu into __NEXT_DATA__, and pageProps.products is a dict whose product array
 holds the product array. No browser is needed.
 
 Field names inside a product are not hard-coded. As with the registry adapter
@@ -31,6 +31,8 @@ from urllib.parse import urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
+
+from menu_shapes import declared_total, descend_to_product_list
 
 ROOT = Path(__file__).resolve().parents[1]
 UA = ("Mozilla/5.0 (compatible; dispensary-list-menu/1.0; "
@@ -215,25 +217,34 @@ def normalise_terpene(raw):
 
 
 def extract_products(html):
-    """Returns the product array from __NEXT_DATA__, whatever wraps it."""
+    """Returns (products, declaredTotal) from __NEXT_DATA__, whatever wraps it.
+
+    The total comes back with the products rather than on the side: this
+    collector runs six shops at once, so anything handed over through shared
+    state belongs to whichever thread wrote last.
+    """
     soup = BeautifulSoup(html, "html.parser")
     tag = soup.find("script", id="__NEXT_DATA__")
     if not (tag and tag.string):
-        return []
+        return [], None
     try:
         props = (json.loads(tag.string).get("props") or {}).get("pageProps") or {}
     except Exception:
-        return []
+        return [], None
 
     for key in ("products", "menuItems", "items", "productList"):
-        value = props.get(key)
-        # The probes showed this is a dict keyed `data`, sometimes JSON:API shaped.
-        if isinstance(value, dict):
-            for inner in ("data", "products", "items", "edges", "results"):
-                if isinstance(value.get(inner), list):
-                    value = value[inner]
-                    break
-        if isinstance(value, list) and value:
+        # This used to descend one level through a list of names that did not
+        # include `objects` — the key seven shops actually use. The docstring
+        # above promised "whatever wraps it" and the code did not deliver it.
+        # The search is shared with the probe now, so a wrapper learned by one
+        # is known to the other.
+        value, _path = descend_to_product_list(props.get(key), key)
+        if value:
+            # Carried out with the products so the caller can say what it did
+            # not see. A page recorded as a shelf is the quiet kind of wrong:
+            # the field is full, nothing looks missing, and the number is
+            # false.
+            total = declared_total(props.get(key))
             out = []
             for item in value:
                 if isinstance(item, dict):
@@ -243,8 +254,8 @@ def extract_products(html):
                     if isinstance(item.get("node"), dict):
                         item = item["node"]
                     out.append(item)
-            return out
-    return []
+            return out, total
+    return [], None
 
 
 def is_flower(product):
@@ -377,8 +388,15 @@ def collect(shop):
 
     seen_ids = set()
     for page in pages:
-        products = extract_products(page["text"])
+        products, total = extract_products(page["text"])
         out["productsSeen"] += len(products)
+        if products and total is not None and total > len(products):
+            # Recorded, not silently collected: the operator decides whether a
+            # partial shelf is worth paginating for, but cannot decide it
+            # without being told.
+            out.setdefault("partialShelves", []).append(
+                {"url": page.get("url"), "seen": len(products), "declaredTotal": total}
+            )
         if products and len(product_key_sample) < 3:
             product_key_sample.append({
                 "provider": (shop.get("menu") or {}).get("provider"),
@@ -420,6 +438,12 @@ summary = {
     "listings": len(listings),
     "statusCounts": dict(Counter(r["status"] for r in results).most_common()),
     "productsSeenTotal": sum(r["productsSeen"] for r in results),
+    # Shelves we saw only a page of. Left visible rather than folded into the
+    # totals: a partial shelf recorded as a whole one is the failure this
+    # register is built against.
+    "partialShelves": [
+        ps for r in results for ps in (r.get("partialShelves") or [])
+    ],
     "withTerpenes": sum(1 for l in listings if l["terpenes"]["source"] != "NONE"),
     "withThc": sum(1 for l in listings if l["thcPercent"] is not None),
     "withSizes": sum(1 for l in listings if l["availableSizesGrams"]),

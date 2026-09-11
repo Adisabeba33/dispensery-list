@@ -64,7 +64,7 @@ jobs:
           # reachable count falling and robots refusals rising as the hosts'
           # defences warmed to a datacentre address. Empty this back out when
           # the diagnosis lands, and pushes sweep again.
-          PROBE_FOCUS: "flowery,happy alta,terp bros,art of flower,housing works,weed shoppe,pryzm"
+          PROBE_FOCUS: ""
           SWEEP_ALL: ${{ inputs.sweep_all }}
           ONLY_UNTRIED: ${{ inputs.only_untried }}
           LIMIT: ${{ inputs.limit }}

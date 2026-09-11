@@ -33,6 +33,8 @@ from urllib.parse import urljoin, urlparse
 import requests
 from bs4 import BeautifulSoup
 
+from menu_shapes import declared_total, descend_to_product_list
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "enrichment-output"
 OUT.mkdir(parents=True, exist_ok=True)
@@ -231,52 +233,6 @@ def fetch(session, url):
         return {"ok": False, "status": None, "url": url, "text": "", "error": f"{type(e).__name__}: {e}"}
 
 
-# Keys a wrapper is likely to hide the array behind, best first. This list has
-# been wrong three times: `data` was missing until the collector found it,
-# `objects` until a run reported dict(keys=meta,objects). Each miss cost a
-# round trip to a network this session cannot reach, so the list is now a
-# preference, not a requirement — see below.
-PRODUCT_LIST_KEYS = ("objects", "data", "products", "items", "edges", "results", "nodes")
-
-
-def descend_to_product_list(value, key: str, depth: int = 4) -> tuple[list | None, str]:
-    """Finds the product array inside whatever wrapper the engine uses.
-
-    Returns the array — empty or not — and the path we reached it by, so the
-    report names the route instead of leaving the next reader to guess it. An
-    array that is present and empty is the finding that says a menu really is
-    assembled in the browser; it must not come back looking like "not found".
-
-    Naming every wrapper key in advance is a game we keep losing: `data` was
-    missing until the collector found it, `objects` until a run reported
-    dict(keys=meta,objects), and each miss cost a round trip to a network this
-    session cannot reach. So the known names are only a preference. Failing
-    them, any list of objects will do, and failing that we walk into the
-    dicts — a probe exists to discover what a site does, not to require that
-    it match a list we wrote first.
-    """
-    if depth <= 0 or not isinstance(value, (dict, list)):
-        return None, key
-    if isinstance(value, list):
-        return (value if not value or isinstance(value[0], dict) else None), key
-
-    for candidate in PRODUCT_LIST_KEYS:
-        if candidate in value:
-            return descend_to_product_list(value[candidate], f"{key}.{candidate}", depth - 1)
-
-    for k, v in sorted(value.items()):
-        if isinstance(v, list) and v and isinstance(v[0], dict):
-            return v, f"{key}.{k}"
-
-    for k, v in sorted(value.items()):
-        if isinstance(v, dict):
-            found, path = descend_to_product_list(v, f"{key}.{k}", depth - 1)
-            if found is not None:
-                return found, path
-
-    return None, key
-
-
 def describe_json_blobs(html: str) -> list[dict]:
     """Names the machine-readable structures a page carries, with a shape sample.
 
@@ -360,6 +316,11 @@ def describe_json_blobs(html: str) -> list[dict]:
                     # but empty array is what a client-side menu looks like.
                     entry["productListPath"] = path
                     entry["productListCount"] = len(value)
+                    # Twenty items from every one of seven shops is a page
+                    # size, not seven shelves that happen to match. What the
+                    # payload claims for the whole set says how much of it we
+                    # are not looking at.
+                    entry["productListDeclaredTotal"] = declared_total(props.get(key))
                 if value:
                     first = value[0]
                     if isinstance(first, dict) and "node" in first and isinstance(first["node"], dict):
@@ -513,7 +474,10 @@ for r in results:
         if s.get("productListPath"):
             # The route and the count together. Either half alone has already
             # sent this work down the wrong path once.
-            product_list_paths[f'{s["productListPath"]} → {s["productListCount"]} items'] += 1
+            total = s.get("productListDeclaredTotal")
+            seen = s["productListCount"]
+            of = "" if total is None or total <= seen else f" of {total} declared"
+            product_list_paths[f'{s["productListPath"]} → {seen} items{of}'] += 1
         if kind == "json-ld" and s.get("itemKeys") and len(item_list_samples) < 5:
             item_list_samples.append({
                 "provider": provider, "count": s.get("itemListCount"),

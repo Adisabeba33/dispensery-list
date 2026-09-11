@@ -100,6 +100,39 @@ The three `"menuLink": "robots-disallowed"` records in
 non-200 as empty — those three followed a `Disallow` line that was actually
 served.
 
+## Where this engine keeps its products
+
+Thirteen of the shops whose platform was never identified run one engine, and
+on 2026-09-11 a focused probe named its route:
+
+```text
+pageProps.products = {
+  params: {category, limit[, delivery_type]},
+  data:   {meta: {...}, objects: [ ...products... ]}
+}
+```
+
+Seven shops, all reachable, all serving the array in the HTML:
+`products.data.objects → 20 items`. **No headless browser is needed for this
+engine** — the earlier reading of "the menu is assembled in the browser" came
+from a descent that looked under `data`, `products`, `items`, `edges`,
+`results` and `nodes`, and not `objects`.
+
+That list had been wrong three times by then, each miss costing a round trip
+to a network the agent session cannot reach. It is now a preference rather
+than a requirement: `scripts/menu_shapes.py` tries the known names, then takes
+any list of objects, then walks into the dicts and looks again. Both the probe
+and the collector use it, so a wrapper learned by one is known to the other.
+
+**Twenty is the page size, not the shelf.** All seven returned exactly twenty,
+which is `params.limit`; the `meta` envelope states the real total. Recording
+a page as a shelf is the quiet kind of wrong this register exists to avoid —
+the field is full, nothing looks missing, and the number is false. So both
+scripts read the declared total and report the gap: the probe prints
+`→ N items of M declared`, and the collector records a `partialShelves` entry
+per page it could only see part of. Following the pagination is not built yet;
+it is now visible rather than assumed away.
+
 ## Why the original collector missed these stores
 
 The failures clustered into a few repeatable patterns:
