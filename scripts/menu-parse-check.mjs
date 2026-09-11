@@ -11,7 +11,8 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  classify, cleanStrainName, mergeBySize, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
+  categoryFromProductUrl, classify, cleanStrainName, flattenJsonApiProducts, mergeBySize,
+  pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 
@@ -321,6 +322,114 @@ check('a number the weight left behind goes too',
   /* Spelling and punctuation fold away; the strain does not. */
   check('spacing and case fold', strainKey('Sunset  SHERBERT') === strainKey('sunset-sherbert'), true);
   check('Superboof meets Super Boof', strainKey(c('Superboof')) === strainKey(c('Super Boof')), true);
+}
+
+/* --------------------------------------------------------------- JSON:API --
+ * Tymber/Blaze. Nineteen shops declared a hundred products apiece and handed
+ * us none of them, because a product here is a resource — its own keys are
+ * id, type, attributes, relationships — and the shelf fields are one floor
+ * down, with the category and the brand held as ids into `included`.
+ *
+ * The two products below are copied from a resource a diagnostic run printed
+ * in full, so what is tested is the payload the shop really sends: an edible
+ * that must be rejected, and the same shape carrying flower.
+ */
+{
+  const edible = {
+    id: 3976845,
+    type: 'products',
+    attributes: {
+      id: 3976845,
+      name: 'Level | Edible | Hybrid Protab | 5ct/100MG',
+      size: { amount: 1, display_text: null, type: 'EACH', units: 'each' },
+      weight_prices: null,
+      unit_prices: [{ display_name: '1 each', quantity: 1, price: { amount: 2400, currency: 'usd' } }],
+      potency: { thc: 25, units: 'mg' },
+      terpenoids: null,
+      strain: null,
+      flower_type: 'Hybrid',
+      in_stock: true,
+      store_url: 'https://urbanweedsny.com/menu/products/level-384256/edibles/level-edible-hybrid-protab-5ct100mg-3976845',
+    },
+    relationships: {
+      category: { data: { id: 14966, type: 'product_categories' } },
+      brand: { data: { id: 384256, type: 'product_brands' } },
+    },
+  };
+
+  /* The same product arriving a second time with fewer fields — the response
+     that broke the first reading of this menu, because on its own it has no
+     title at all. */
+  const sparse = {
+    id: 7781002,
+    type: 'products',
+    attributes: {
+      id: 7781002,
+      potency: { thc: 27.4, units: '%' },
+      terpenoids: [{ name: 'β-Caryophyllene', value: 0.61 }, { name: 'Limonene', value: 0.44 }],
+      in_stock: true,
+      store_url: 'https://urbanweedsny.com/menu/products/hepworth-2211/flower/hepworth-blue-dream-3-5g-7781002',
+    },
+  };
+  const full = {
+    id: 7781002,
+    type: 'products',
+    attributes: {
+      id: 7781002,
+      name: 'Hepworth | Blue Dream | 3.5g',
+      flower_type: 'Sativa',
+      size: { amount: 3.5, display_text: '3.5g', type: 'WEIGHT', units: 'g' },
+      weight_prices: [{ display_name: '3.5g', price: { amount: 4000, currency: 'usd' } }],
+    },
+    relationships: {
+      category: { data: { id: 14970, type: 'product_categories' } },
+      brand: { data: { id: 2211, type: 'product_brands' } },
+    },
+  };
+
+  const payloads = [
+    { data: [sparse], included: [] },
+    {
+      data: [edible, full],
+      included: [
+        { id: 14966, type: 'product_categories', attributes: { name: 'Edibles' } },
+        { id: 14970, type: 'product_categories', attributes: { name: 'Flower' } },
+        { id: 384256, type: 'product_brands', attributes: { name: 'Level' } },
+        { id: 2211, type: 'product_brands', attributes: { name: 'Hepworth' } },
+      ],
+    },
+  ];
+
+  const rows = flattenJsonApiProducts(payloads);
+  check('two products, not four', rows.length, 2);
+
+  const byId = new Map(rows.map((r) => [r.id, r]));
+  const e = byId.get(3976845);
+  check('attributes are lifted', e?.name, 'Level | Edible | Hybrid Protab | 5ct/100MG');
+  check('category is resolved to a word', e?.category, 'Edibles');
+  check('brand is resolved to a word', e?.brand, 'Level');
+  // Caught by the title before the category is even read; both would do.
+  check('an edible is not flower', classify(e), 'title-not-flower');
+
+  const f = byId.get(7781002);
+  check('a product split across payloads keeps its title', f?.name, 'Hepworth | Blue Dream | 3.5g');
+  check('and its terpenes', f?.terpenoids?.length, 2);
+  check('flower is flower', classify(f), 'flower');
+
+  const listing = toListing(f, shop, SRC, {});
+  check('jsonapi strain', listing?.strainNameRaw, 'Blue Dream');
+  check('jsonapi brand', listing?.brand, 'Hepworth');
+  check('jsonapi size', listing?.availableSizesGrams, [3.5]);
+  check('jsonapi lineage', listing?.lineage, 'SATIVA');
+  check('jsonapi terpenes', listing?.terpenes?.profile?.map((t) => t.name), ['CARYOPHYLLENE', 'LIMONENE']);
+  check('jsonapi terpene source', listing?.terpenes?.source, 'MENU_LISTING');
+
+  /* "each" is a count, not a weight. Reading it as one put single gummies on
+     the shelf as one-gram flower in an earlier draft of the size reader. */
+  check('an each is not a gram', toListing(edible, shop, SRC, {}), null);
+
+  check('category off the product address', categoryFromProductUrl(
+    'https://urbanweedsny.com/menu/products/hepworth-2211/flower/hepworth-blue-dream-3-5g'), 'flower');
 }
 
 if (failures) {

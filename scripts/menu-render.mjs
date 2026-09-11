@@ -328,6 +328,116 @@ const findDeclaredTotal = (value, depth = 0, best = { n: 0 }) => {
   return best.n;
 };
 
+/**
+ * JSON:API menus — Tymber/Blaze, nineteen of the silent shops — keep nothing
+ * where a parser looks for it. A product arrives as
+ *
+ *   { id, type: "products", attributes: { name, size, terpenoids, ... },
+ *     relationships: { category: { data: { id, type: "product_categories" } } } }
+ *
+ * so every field is one floor down, and the two that decide whether we keep
+ * the row — its category and its brand — are not there at all: they are ids
+ * pointing into a sibling `included` array. `findProductArrays` looked at
+ * `id, type, attributes, relationships`, saw no name and no category, and
+ * walked past a hundred and twenty products at a time.
+ *
+ * Three things are needed and all three are in the payloads already:
+ *
+ *   1. the fields lifted out of `attributes`;
+ *   2. relationships resolved against `included`, so `category` becomes the
+ *      word "Flower" rather than 14966;
+ *   3. products merged by id across payloads. The same shelf arrives several
+ *      times with different fields each time — one response carries `name`,
+ *      another carries only potency and `store_url` — and a product read from
+ *      the second alone has no title to publish.
+ *
+ * Nothing here guesses: every key used below was read off one whole product
+ * resource that a diagnostic run printed in full.
+ */
+const isResource = (v) =>
+  v && typeof v === 'object' && !Array.isArray(v) &&
+  typeof v.type === 'string' && v.id !== undefined &&
+  v.attributes && typeof v.attributes === 'object' && !Array.isArray(v.attributes);
+
+const JSONAPI_PRODUCT = /^products?$/i;
+
+/**
+ * The category the shop itself filed the product under, taken from the address
+ * the shop publishes for it:
+ *
+ *   /menu/products/level-384256/edibles/level-edible-hybrid-protab-5ct100mg
+ *                 └ brand ────┘ └ cat ┘ └ product ─────────────────────────┘
+ *
+ * This is a fallback for the payloads that send products without including the
+ * category resource they point at. It is the shop's own word, not ours.
+ */
+export const categoryFromProductUrl = (url) => {
+  if (typeof url !== 'string') return null;
+  let path;
+  try {
+    path = new URL(url).pathname;
+  } catch {
+    return null;
+  }
+  const parts = path.split('/').filter(Boolean);
+  // The product slug is last; what it sits under is the category.
+  return parts.length >= 2 ? decodeURIComponent(parts[parts.length - 2]) : null;
+};
+
+export const flattenJsonApiProducts = (payloads) => {
+  const index = new Map();          // "type:id" -> attributes, for relationships
+  const products = new Map();       // id -> merged attributes
+  const relationships = new Map();  // id -> merged relationships
+
+  const remember = (r) => {
+    const key = `${r.type}:${r.id}`;
+    if (!index.has(key)) index.set(key, r.attributes);
+    if (!JSONAPI_PRODUCT.test(r.type)) return;
+    // Merged rather than replaced: a field present in one response and absent
+    // in another must survive, whichever order they arrive in.
+    const merged = products.get(r.id) ?? {};
+    for (const [k, v] of Object.entries(r.attributes)) {
+      if (v !== null && v !== undefined && (merged[k] === null || merged[k] === undefined)) merged[k] = v;
+    }
+    products.set(r.id, merged);
+    if (r.relationships && typeof r.relationships === 'object') {
+      relationships.set(r.id, { ...(relationships.get(r.id) ?? {}), ...r.relationships });
+    }
+  };
+
+  const walk = (value, depth) => {
+    if (depth > 7 || !value || typeof value !== 'object') return;
+    if (Array.isArray(value)) {
+      for (const v of value.slice(0, 400)) walk(v, depth + 1);
+      return;
+    }
+    if (isResource(value)) remember(value);
+    for (const v of Object.values(value)) walk(v, depth + 1);
+  };
+  for (const payload of payloads) walk(payload, 0);
+
+  const rows = [];
+  for (const [id, attributes] of products) {
+    const flat = { ...attributes };
+    flat.id = attributes.id ?? id;
+    for (const [name, rel] of Object.entries(relationships.get(id) ?? {})) {
+      const target = rel && typeof rel === 'object' ? rel.data : null;
+      if (!target || Array.isArray(target) || target.id === undefined) continue;
+      const attrs = index.get(`${target.type}:${target.id}`);
+      const label = attrs && (attrs.name ?? attrs.title);
+      // `category` and `brand` are the two that matter; anything else that
+      // resolves to a name is kept under its own key and costs nothing.
+      if (typeof label === 'string' && label.trim() && flat[name] === undefined) flat[name] = label;
+    }
+    if (flat.category === undefined) {
+      const fromUrl = categoryFromProductUrl(flat.store_url);
+      if (fromUrl) flat.category = fromUrl;
+    }
+    rows.push(flat);
+  }
+  return rows;
+};
+
 const findProductArrays = (value, depth = 0, out = []) => {
   if (depth > 6 || out.length > 40) return out;
   if (Array.isArray(value)) {
@@ -631,6 +741,11 @@ const TERPENES = {
   eucalyptol: 'EUCALYPTOL', guaiol: 'GUAIOL', farnesene: 'FARNESENE',
   geraniol: 'GERANIOL', borneol: 'BORNEOL', terpineol: 'TERPINEOL',
   phellandrene: 'PHELLANDRENE', carene: 'CARENE', sabinene: 'SABINENE', fenchol: 'FENCHOL',
+  /* Both are on every NY panel and neither had a word here, so a shop that
+     quantified them handed us OTHER. The strain references were already
+     carrying them under names the shelf side could not match. */
+  caryophylleneoxide: 'CARYOPHYLLENE_OXIDE', betacaryophylleneoxide: 'CARYOPHYLLENE_OXIDE',
+  terpinene: 'TERPINENE', gammaterpinene: 'TERPINENE', alphaterpinene: 'TERPINENE',
   // Spellings seen in the pilot payloads.
   betamyrcene: 'MYRCENE', bmyrcene: 'MYRCENE', alphahumulene: 'HUMULENE',
   betaocimene: 'OCIMENE', alphaterpineol: 'TERPINEOL', alphacedrene: 'OTHER',
@@ -681,13 +796,13 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const brand = flatten(pick(p, ['brandName', 'brand', 'producer', 'vendor', 'cultivator']));
   const name = cleanStrainName(rawName, brand);
   const lineageRaw = String(
-    flatten(pick(p, ['strainType', 'lineage', 'cannabisType', 'cannabisStrain', 'classification'])) ?? '',
+    flatten(pick(p, ['strainType', 'lineage', 'cannabisType', 'cannabisStrain', 'flowerType', 'classification'])) ?? '',
   )
     .toLowerCase()
     .replace(/[^a-z]/g, '');
 
   const profile = [];
-  const terps = pick(p, ['terpenes', 'terpeneProfile', 'terps']);
+  const terps = pick(p, ['terpenes', 'terpeneProfile', 'terpenoids', 'terps']);
   if (Array.isArray(terps)) {
     for (const t of terps) {
       const raw = t && typeof t === 'object' ? t.name ?? t.terpene : t;
@@ -711,7 +826,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
      quantities and prices wearing a weight's clothes. A figure counts only
      from a key that means weight, or from text that states its unit. */
   const WEIGHT_KEYS = ['gramAmount', 'weightInGrams', 'netWeight'];
-  const UNIT_TEXT_KEYS = ['weightFormatted', 'label', 'name', 'title', 'weight', 'size', 'option'];
+  const UNIT_TEXT_KEYS = ['weightFormatted', 'label', 'name', 'title', 'displayName', 'displayText', 'weight', 'size', 'option'];
 
   const sizeOf = (v) => {
     if (typeof v === 'string') return sizeFromText(v);
@@ -720,6 +835,16 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
 
     const stated = num(pick(v, WEIGHT_KEYS));
     if (stated) return stated;
+
+    /* Tymber states the unit in a field of its own: { amount: 3.5, units: "g" }.
+       That is a key that means weight, spelled across two fields rather than
+       one, so it counts — and it is what keeps "each" from becoming a gram. */
+    const units = flatten(pick(v, ['units', 'unit', 'uom']));
+    const amount = num(pick(v, ['amount', 'weightAmount']));
+    if (typeof units === 'string' && amount) {
+      const g = sizeFromText(`${amount} ${units}`);
+      if (g) return g;
+    }
 
     for (const text of pickAll(v, UNIT_TEXT_KEYS)) {
       if (typeof text === 'string') {
@@ -731,7 +856,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   };
 
   const sizes = [];
-  const variants = pick(p, ['variants', 'weights', 'options', 'sizes', 'priceOptions', 'measurements']);
+  const variants = pick(p, ['variants', 'weights', 'weightPrices', 'options', 'sizes', 'priceOptions', 'unitPrices', 'measurements']);
   if (Array.isArray(variants)) {
     for (const v of variants) {
       const g = plausibleSize(sizeOf(v));
@@ -744,8 +869,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const statedGrams = plausibleSize(num(pick(p, ['weightInGrams', 'flowerEquivalentInGrams'])));
   if (statedGrams) sizes.push(statedGrams);
   if (!sizes.length) {
-    for (const text of pickAll(p, ['weightFormatted', 'weight', 'size'])) {
-      const g = typeof text === 'string' ? plausibleSize(sizeFromText(text)) : null;
+    for (const value of pickAll(p, ['weightFormatted', 'weight', 'size', 'cannabisWeight'])) {
+      const g = plausibleSize(sizeOf(value));
       if (g) sizes.push(g);
     }
   }
@@ -964,6 +1089,15 @@ const main = async () => {
       entry.landedOn = page.url();
 
       const arrays = payloads.flatMap((p) => findProductArrays(p));
+      /* JSON:API products are not found by shape — their own keys are id,
+         type, attributes and relationships, which look nothing like a shelf.
+         They are lifted separately and appended, so everything downstream —
+         the flower filter, the size reader, the merge — stays one path. */
+      const jsonApi = flattenJsonApiProducts(payloads);
+      if (jsonApi.length) {
+        entry.jsonApiProducts = jsonApi.length;
+        arrays.push(jsonApi);
+      }
 
       if (dumpShapes > 0 && arrays.length === 0) {
         /* Every array of objects the page sent, wherever it sits, with the
