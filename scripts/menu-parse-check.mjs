@@ -11,8 +11,8 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  categoryFromProductUrl, classify, cleanStrainName, flattenJsonApiProducts, mergeBySize,
-  pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
+  categoryFromProductUrl, classify, cleanStrainName, flattenJsonApiProducts, isProductPage,
+  mergeBySize, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 
@@ -322,6 +322,33 @@ check('a number the weight left behind goes too',
   /* Spelling and punctuation fold away; the strain does not. */
   check('spacing and case fold', strainKey('Sunset  SHERBERT') === strainKey('sunset-sherbert'), true);
   check('Superboof meets Super Boof', strainKey(c('Superboof')) === strainKey(c('Super Boof')), true);
+}
+
+/* ---------------------------------------------------------------- Routing --
+ * Which address is the shelf. Every URL below was read off a real run's log,
+ * including the two that cost us a shelf each.
+ */
+{
+  const page = (url) => isProductPage(url);
+  // NY Flos: 107 products declared, none read — we were standing on one packet
+  // of gummies, which won the tie-break for being the deepest link on the page.
+  check('a product under its brand and category',
+    page('https://getflos.com/menu/products/ayrloom-766427/edibles/ayrloom-island-time-100mg-8453750/'), true);
+  // BX Buddiez: sixteen items where the shop has ninety-two.
+  check('a product under /product/', page('https://bxbuddiez.com/product/nanticoke-coconut-cream-flower/'), true);
+  check('a slug on its own is still a product', page('https://example.test/products/blue-dream-3-5g-8453750'), true);
+
+  /* And what must not be mistaken for one. */
+  check('a category listing', page('https://qualityhigh.com/store/categories/flower/'), false);
+  check('a branch category listing', page('https://www.nycbud.com/shop/queens/categories/flower/?order=-x'), false);
+  check('products/flower is a listing', page('https://example.test/products/flower'), false);
+  check('a bare products route', page('https://example.test/shop/products/'), false);
+  check('a one-word category', page('https://example.test/products/edibles'), false);
+
+  check('a product page cannot be the menu',
+    rankMenuLink('https://getflos.com/menu/products/ayrloom-766427/edibles/ayrloom-island-100mg-8453750/', 'Shop'), 0);
+  check('the flower category still wins',
+    rankMenuLink('https://qualityhigh.com/store/categories/flower/', 'Flower'), 100);
 }
 
 /* --------------------------------------------------------------- JSON:API --

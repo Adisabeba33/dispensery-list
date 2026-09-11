@@ -224,6 +224,39 @@ const PROMO_ROUTE = /\/(specials?|offers?|deals?|promo|blog|news|about|contact|a
    so much more dangerous than a flaky one. */
 const FLOWER_ROUTE = /(categor(y|ies)[=/][^/?#]*flower|\/flower\b|\/flowers?\/?$|[?&]category=flower|\/rec\/flower|\/bud\b)/i;
 const MENU_ROUTE = /\/(menu|shop|order|products?|browse|store|dispensary)\b/i;
+
+/**
+ * One product's own page, told from the listing that holds many.
+ *
+ * NY Flos declares 107 products and we read none, because the link we followed
+ * was
+ *
+ *   /menu/products/ayrloom-766427/edibles/ayrloom-island-time-...-8453750/
+ *
+ * — a single packet of gummies. It scored as a menu (the path says "products")
+ * and then won the tie-break for being the deepest address on the page, which
+ * is the rule that exists to prefer a branch over its chain. The two need
+ * telling apart, and the shop's own address says which is which: a product
+ * sits under its brand and its category, and the last segment is its slug.
+ *
+ * /products/flower is the other case and stays a listing.
+ */
+const FLOWER_SEGMENT = /^(flowers?|buds?)$/i;
+const SLUG_SEGMENT = (s) => /-/.test(s) && (s.split('-').length >= 3 || /\d{3,}$/.test(s));
+export const isProductPage = (href) => {
+  let parts;
+  try {
+    parts = new URL(href).pathname.split('/').filter(Boolean);
+  } catch {
+    return false;
+  }
+  const i = parts.findIndex((p) => /^products?$/i.test(p));
+  if (i === -1) return false;
+  const after = parts.slice(i + 1);
+  if (!after.length) return false;
+  if (FLOWER_SEGMENT.test(after[after.length - 1])) return false;
+  return after.length >= 2 || SLUG_SEGMENT(after[after.length - 1]);
+};
 const FLOWER_WORD = /^\s*(flower|flowers|bud|buds|whole\s*flower)\s*$/i;
 const MENU_WORD = /\b(menu|shop|order|browse|products?)\b/i;
 
@@ -268,7 +301,7 @@ export const sameEstate = (href, siteUrl, shopName = '') => {
 
 /** Higher is better; 0 means "never follow this". */
 export const rankMenuLink = (href = '', text = '') => {
-  if (!href || PROMO_ROUTE.test(href)) return 0;
+  if (!href || PROMO_ROUTE.test(href) || isProductPage(href)) return 0;
   if (FLOWER_ROUTE.test(href)) return 100;          // the flower category itself
   if (FLOWER_WORD.test(text)) return 90;            // a nav item that says Flower
   if (MENU_ROUTE.test(href) && FLOWER_WORD.test(text)) return 85;
@@ -1087,6 +1120,11 @@ const main = async () => {
          site shows twenty is either being paged or we are standing on the wrong
          page, and the URL is the difference between those two. */
       entry.landedOn = page.url();
+      /* Said out loud rather than left to be inferred from a short shelf. Two
+         runs read BX Buddiez's sixteen items off one product's page and agreed
+         with each other, which is exactly why a wrong page has to announce
+         itself: agreement between runs is not evidence of a right one. */
+      if (isProductPage(entry.landedOn)) entry.landedOnProductPage = true;
 
       const arrays = payloads.flatMap((p) => findProductArrays(p));
       /* JSON:API products are not found by shape — their own keys are id,
