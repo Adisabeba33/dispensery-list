@@ -215,7 +215,35 @@ const affirmAge = async (page) => {
 /* `product` singular is one item's own page, never a menu. `products` plural
    is a menu route on several platforms, and \b keeps them apart: the word
    boundary after "product" does not fall inside "products". */
-const PROMO_ROUTE = /\/(specials?|offers?|deals?|promo|blog|news|about|contact|account|login|cart|checkout|brands?|careers|product)\b/i;
+const PROMO_ROUTE = /\/(specials?|offers?|deals?|promo|blog|news|about|contact|account|login|sign-?up|register|cart|checkout|brands?|careers|product)\b/i;
+
+/**
+ * A category page for something we do not collect.
+ *
+ * NY Flos publishes no flower link on its front page at all — its highest
+ * scoring link is an ordinary menu route — so the tie-break handed the shelf
+ * to /menu/categories/accessories/ and we read sixteen grinders. The shop's
+ * own word for the category is right there in the address, and when that word
+ * is "accessories" the page cannot hold flower whatever else is true.
+ *
+ * Only category routes are judged this way. A shop called Vape City is not a
+ * vape category, and "edibles" inside a product slug is a product, not a page.
+ */
+const CATEGORY_ROUTE = /(categor(y|ies)[=/]|[?&]category=)/i;
+const NOT_FLOWER_CATEGORY =
+  /^(accessor\w*|vapes?|vaporizers?|carts?|cartridges?|edibles?|gumm\w*|beverages?|drinks?|concentrates?|extracts?|dabs?|pre-?rolls?|prerolls?|joints?|blunts?|cbd|topicals?|tinctures?|apparel|merch\w*|gear|clothing|seeds?|clones?)$/i;
+const isNotFlowerCategory = (href) => {
+  if (!CATEGORY_ROUTE.test(href)) return false;
+  let url;
+  try {
+    url = new URL(href);
+  } catch {
+    return false;
+  }
+  const last = url.pathname.split('/').filter(Boolean).pop() ?? '';
+  const named = url.searchParams.get('category') ?? '';
+  return NOT_FLOWER_CATEGORY.test(last) || NOT_FLOWER_CATEGORY.test(named);
+};
 /* A path segment that IS "flower" names the category. A segment that merely
    ends in "-flower" is a product slug, and `flower\/?$` could not tell them
    apart: BX Buddiez's whole shelf was replaced by whatever sits on
@@ -302,6 +330,7 @@ export const sameEstate = (href, siteUrl, shopName = '') => {
 /** Higher is better; 0 means "never follow this". */
 export const rankMenuLink = (href = '', text = '') => {
   if (!href || PROMO_ROUTE.test(href) || isProductPage(href)) return 0;
+  if (isNotFlowerCategory(href)) return 0;
   if (FLOWER_ROUTE.test(href)) return 100;          // the flower category itself
   if (FLOWER_WORD.test(text)) return 90;            // a nav item that says Flower
   if (MENU_ROUTE.test(href) && FLOWER_WORD.test(text)) return 85;
@@ -323,18 +352,22 @@ const depth = (href) => {
   }
 };
 
+const FLOWER_SPECIFIC = 90;
 export const pickMenuLink = (links, siteUrl = null, shopName = '') => {
   let best = null;
   let bestScore = 0;
-  let bestDepth = -1;
+  let bestRank = -Infinity;
   for (const link of links) {
     if (siteUrl && !sameEstate(link.href, siteUrl, shopName)) continue;
     const score = rankMenuLink(link.href, link.text);
     if (score === 0) continue;
     const d = depth(link.href);
-    if (score > bestScore || (score === bestScore && d > bestDepth)) {
+    /* Deeper wins among flower categories, shallower among plain menu links,
+       and a bare address beats the same page carrying a query. */
+    const rank = (score >= FLOWER_SPECIFIC ? d : -d) * 2 - (link.href.includes('?') ? 1 : 0);
+    if (score > bestScore || (score === bestScore && rank > bestRank)) {
       bestScore = score;
-      bestDepth = d;
+      bestRank = rank;
       best = link.href;
     }
   }

@@ -345,6 +345,46 @@ check('a number the weight left behind goes too',
   check('a bare products route', page('https://example.test/shop/products/'), false);
   check('a one-word category', page('https://example.test/products/edibles'), false);
 
+  /* Link sets copied from a run's own log, in the order the page gave them. */
+  const flos = [
+    { href: 'https://getflos.com/menu/?search_active=true', text: '' },
+    { href: 'https://getflos.com/menu/?open_cart=true', text: '' },
+    { href: 'https://getflos.com/locations/menu', text: 'NY FLOS LLC' },
+    { href: 'https://getflos.com/menu/signup/', text: 'Sign Up' },
+    { href: 'https://getflos.com/menu/', text: 'SHOP NOW' },
+    { href: 'https://getflos.com/menu/categories/accessories/', text: 'Accessories' },
+    { href: 'https://getflos.com/menu/categories/beverages/', text: 'Beverages' },
+    { href: 'https://getflos.com/menu/categories/cbd/', text: 'CBD' },
+  ];
+  // NY Flos publishes no flower link at all. The whole menu is the answer;
+  // sixteen grinders was the old one.
+  check('no flower link means the whole menu',
+    pickMenuLink(flos, 'https://www.getflos.com/', 'NY Flos LLC'), 'https://getflos.com/menu/');
+  check('a category we do not collect is not a menu',
+    rankMenuLink('https://getflos.com/menu/categories/accessories/', 'Accessories'), 0);
+  check('nor is the signup page', rankMenuLink('https://getflos.com/menu/signup/', 'Sign Up'), 0);
+
+  const caldwell = [
+    { href: 'https://caldwellsny.com/menu/', text: 'SHOP NOW' },
+    { href: 'https://caldwellsny.com/menu/categories/flower/', text: '' },
+    { href: 'https://caldwellsny.com/menu/categories/vape/', text: '' },
+    { href: 'https://caldwellsny.com/menu/categories/edibles/', text: '' },
+  ];
+  check('the flower category still beats the menu root',
+    pickMenuLink(caldwell, 'https://caldwellsny.com', 'CALDWELL CANNABIS CO'),
+    'https://caldwellsny.com/menu/categories/flower/');
+
+  /* The rule the depth tie-break was written for, which must survive its
+     reversal: three licences all took the chain page and its eight
+     placeholder items. */
+  const chain = [
+    { href: 'https://gfw.test/stores/products/flower', text: 'Flower' },
+    { href: 'https://gfw.test/stores/harlem/products/flower', text: 'Flower' },
+  ];
+  check('a branch page still beats its chain',
+    pickMenuLink(chain, 'https://gfw.test', 'Green Flower Wellness'),
+    'https://gfw.test/stores/harlem/products/flower');
+
   check('a product page cannot be the menu',
     rankMenuLink('https://getflos.com/menu/products/ayrloom-766427/edibles/ayrloom-island-100mg-8453750/', 'Shop'), 0);
   check('the flower category still wins',
