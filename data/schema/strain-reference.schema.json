@@ -24,7 +24,20 @@
         "additionalProperties": false,
         "required": ["name"],
         "properties": {
-          "name": { "type": "string" },
+          "name": {
+            "enum": [
+              "MYRCENE", "LIMONENE", "CARYOPHYLLENE", "PINENE_ALPHA", "PINENE_BETA", "LINALOOL",
+              "TERPINOLENE", "HUMULENE", "OCIMENE", "BISABOLOL", "NEROLIDOL", "VALENCENE",
+              "CAMPHENE", "EUCALYPTOL", "GUAIOL", "FARNESENE", "GERANIOL", "BORNEOL",
+              "TERPINEOL", "PHELLANDRENE", "CARENE", "SABINENE", "FENCHOL", "TERPINENE",
+              "CARYOPHYLLENE_OXIDE", "OTHER"
+            ],
+            "description": "The same controlled vocabulary a shelf listing uses. A reference profile and a shop's own figures are shown side by side, so the same compound has to carry the same word on both sides — and it did not: this field took any spelling it liked, so CARYOPHYLLENE_OXIDE here could never be joined to the OTHER it became there. scripts/validate-data.ts fails if the two lists drift apart."
+          },
+          "rawName": {
+            "type": ["string", "null"],
+            "description": "The spelling the certificate used. Required when name is OTHER, so a compound outside the vocabulary is recorded rather than lost — which is what the terpene research had to do with quantified caryophyllene oxide while this field did not exist."
+          },
           "medianPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 20 },
           "observations": {
             "type": ["integer", "null"],
