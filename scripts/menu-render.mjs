@@ -779,6 +779,9 @@ const TERPENES = {
      carrying them under names the shelf side could not match. */
   caryophylleneoxide: 'CARYOPHYLLENE_OXIDE', betacaryophylleneoxide: 'CARYOPHYLLENE_OXIDE',
   terpinene: 'TERPINENE', gammaterpinene: 'TERPINENE', alphaterpinene: 'TERPINENE',
+  /* Both arrived in the first JSON:API run: seven products apiece published a
+     figure for them, and both would have gone down as OTHER. */
+  isopulegol: 'ISOPULEGOL', pcymene: 'CYMENE', cymene: 'CYMENE', paracymene: 'CYMENE',
   // Spellings seen in the pilot payloads.
   betamyrcene: 'MYRCENE', bmyrcene: 'MYRCENE', alphahumulene: 'HUMULENE',
   betaocimene: 'OCIMENE', alphaterpineol: 'TERPINEOL', alphacedrene: 'OTHER',
