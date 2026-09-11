@@ -18,6 +18,7 @@
  * browser already on the machine; both exist for scripts/menu-e2e-check.mjs.
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { canonicalStrain } from './strain-name.mjs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -1145,6 +1146,15 @@ const main = async () => {
      stopped it, which is the invariant working and the placement not. Reading
      one branch properly clears its own mark on the next run, with nothing to
      remember. */
+  /* The name a shop published is kept as it was published; the name the strain
+     goes by is derived beside it. Done here, over the whole file, because
+     recognising a grower's name inside a listing needs every grower's name the
+     register holds — which is not knowable while reading one shop. */
+  const brandVocabulary = new Set(merged.map((l) => l.brand).filter(Boolean));
+  for (const l of merged) {
+    l.strainNameCanonical = canonicalStrain(l.strainNameRaw, l.brand, brandVocabulary);
+  }
+
   const licencesByMenu = new Map();
   for (const l of merged) {
     const url = l.sources?.[0]?.url;

@@ -13,6 +13,7 @@
 import {
   classify, cleanStrainName, mergeBySize, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
+import { canonicalStrain, strainKey } from './strain-name.mjs';
 
 const shop = { licenseNumber: 'OCM-CAURD-24-000001' };
 const SRC = 'https://example-dispensary.test/menu';
@@ -288,6 +289,38 @@ check('a number the weight left behind goes too',
   for (const name of drops) {
     check(`dropped, not flower: ${name}`, classify(flower(name)), 'title-not-flower');
   }
+}
+
+/* --------------------------------------------------- the strain behind the name */
+/* A menu writes the grower, the packaging, its own stock number and a lab
+   figure around the cultivar. Counted raw, New York's shelves held 5771
+   "strains"; read this way, 3065. The guards matter as much as the stripping:
+   Flower Power and Whole Lotta Love open with packaging words and are still
+   cultivars, Runtz is a brand AND a cultivar, and Gelato 41 is not Gelato. */
+{
+  const brands = new Set(['Dank', 'GRASSROOTS', "Papa's Herb", 'Runtz', 'TTM', 'Bouket', 'Matter']);
+  const c = (raw, brand = null) => canonicalStrain(raw, brand, brands);
+
+  check('packaging around the name', c('Premium Cannabis Flower Jar Sour Diesel'), 'Sour Diesel');
+  check('the shop\'s own stock number', c('#337 - Black Maple Flower'), 'Black Maple');
+  check('a lab figure is not a name', c('BANANA KUSH - THC 28.8%'), 'BANANA KUSH');
+  check('grade words at both ends', c('Banana Kush - Indoor Large Bud Flower'), 'Banana Kush');
+  check('a grower fenced by a dash', c('Matter - Grape Gas', 'Matter'), 'Grape Gas');
+  check('a grower with no fence at all', c('Dank Agent Orange Flower'), 'Agent Orange');
+  check('an item code left at the end', c("Papa's Herb - OG Kush - ITEM #513KH"), 'OG Kush');
+  check('emptied brackets', c('ICE CREAM CAKE ( BAG)'), 'ICE CREAM CAKE');
+
+  /* What must survive. Each of these was broken by an earlier draft. */
+  check('a cultivar that opens with a packaging word', c('Flower Power'), 'Flower Power');
+  check('and another', c('Whole Lotta Love'), 'Whole Lotta Love');
+  check('a brand that is also a cultivar, alone', c('Runtz', 'Runtz'), 'Runtz');
+  check('a brand that is also the head of a cultivar', c('Runtz Cake'), 'Runtz Cake');
+  check('a numbered cut is not its parent', c('Gelato 41'), 'Gelato 41');
+  check('Gelato 41 and Gelato stay apart', strainKey(c('Gelato 41')) === strainKey(c('Gelato')), false);
+
+  /* Spelling and punctuation fold away; the strain does not. */
+  check('spacing and case fold', strainKey('Sunset  SHERBERT') === strainKey('sunset-sherbert'), true);
+  check('Superboof meets Super Boof', strainKey(c('Superboof')) === strainKey(c('Super Boof')), true);
 }
 
 if (failures) {

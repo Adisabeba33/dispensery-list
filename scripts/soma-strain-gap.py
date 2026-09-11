@@ -69,7 +69,9 @@ NOISE = re.compile(
 gap = defaultdict(lambda: {"shops": set(), "brands": set(), "sizes": set()})
 on_sale = set()
 for l in listings:
-    name = (l.get("strainNameRaw") or "").strip()
+    # Каноническое имя, а не сырое: в сыром сидят гровер, упаковка, артикул
+    # магазина и цифра с анализа, и SOMA спотыкается о них, а не о сорте.
+    name = (l.get("strainNameCanonical") or l.get("strainNameRaw") or "").strip()
     if not name:
         continue
     on_sale.add(name.lower())
