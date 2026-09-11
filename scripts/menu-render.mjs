@@ -974,7 +974,15 @@ const main = async () => {
           if (Array.isArray(value)) {
             const objects = value.filter((v) => v && typeof v === 'object' && !Array.isArray(v));
             if (objects.length >= 2) {
-              found.push(`${path} [${value.length}] keys: ${Object.keys(objects[0]).slice(0, 24).join(',')}`);
+              const first = objects[0];
+              let line = `${path} [${value.length}] keys: ${Object.keys(first).slice(0, 24).join(',')}`;
+              /* JSON:API keeps the fields one floor down, under `attributes`,
+                 and says what the thing is in `type`. Both are what a parser
+                 needs to know, and neither shows in the outer key list. */
+              if (first.attributes && typeof first.attributes === 'object') {
+                line += ` | type=${JSON.stringify(first.type)} attributes: ${Object.keys(first.attributes).slice(0, 30).join(',')}`;
+              }
+              found.push(line);
             }
             value.slice(0, 6).forEach((v, i) => walk(v, `${path}[${i}]`, depth + 1));
             return;
