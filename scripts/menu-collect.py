@@ -44,21 +44,48 @@ NOW = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00
 parser = argparse.ArgumentParser()
 parser.add_argument("--limit", type=int, default=120)
 parser.add_argument("--dry-run", action="store_true")
+parser.add_argument(
+    "--only",
+    default="",
+    help="comma-separated substrings; collect only from shops whose name or licence matches "
+         "one (the probe learned the hard way that repeated full sweeps cost accuracy, not "
+         "just politeness: reachability fell and robots refusals rose as hosts' defences "
+         "warmed to a datacentre address)",
+)
 args = parser.parse_args()
 
 records = json.loads((ROOT / "data/dispensaries.json").read_text())
 by_licence = {r["licenseNumber"]: r for r in records}
 
-# Shops whose menu sits on a third party (Leafly, Weedmaps) are excluded: that
-# is someone else's site under someone else's terms, not the shop's own menu.
-OWN_SITE_PROVIDERS = {"DUTCHIE", "BLAZE", "TREEZ", "IHEARTJANE", "MEADOW", "PROPRIETARY", "OTHER"}
+# Shops whose menu sits on a third party are out of scope: that is someone
+# else's site under someone else's terms, not the shop's own menu.
+#
+# Stated as the exclusion it is. It used to be an allowlist of the platforms
+# we had already identified, which quietly excluded a third thing nobody
+# meant to exclude: every shop whose platform is simply not known yet. The
+# probe carried the same circularity and it cost us ninety-two shops that no
+# pass could reach — a shop was skipped for want of a platform name, so its
+# platform stayed unnamed. An unknown provider means the shop's own site
+# until something says otherwise.
+THIRD_PARTY_PROVIDERS = {"LEAFLY", "WEEDMAPS"}
 
 targets = [
     r for r in records
     if r.get("operationalStatus") == "OPEN"
-    and (r.get("menu") or {}).get("provider") in OWN_SITE_PROVIDERS
+    and (r.get("menu") or {}).get("provider") not in THIRD_PARTY_PROVIDERS
     and (r.get("contact") or {}).get("website")
-][: args.limit]
+]
+
+if args.only:
+    wanted = [w.strip().lower() for w in args.only.split(",") if w.strip()]
+    targets = [
+        r for r in targets
+        if any(w in (r.get("dbaName") or "").lower()
+               or w in (r.get("legalName") or "").lower()
+               or w in r["licenseNumber"].lower() for w in wanted)
+    ]
+
+targets = targets[: args.limit]
 
 FLOWER_URL = re.compile(r"(flower|/bud\b|category=flower|categories/flower)", re.I)
 MENU_WORDS = re.compile(r"\b(menu|shop|order|browse|products?)\b", re.I)
