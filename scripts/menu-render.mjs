@@ -983,6 +983,13 @@ const main = async () => {
                 line += ` | type=${JSON.stringify(first.type)} attributes: ${Object.keys(first.attributes).slice(0, 30).join(',')}`;
               }
               found.push(line);
+              /* The keys alone stopped one floor short twice. For the resource
+                 that actually holds the shelf, print the whole thing once:
+                 where the name lives, how the weights are shaped, what the
+                 relationships point at. One item answers all of it. */
+              if (/product/i.test(String(first.type ?? '')) && !found.some((f) => f.startsWith('ITEM '))) {
+                found.push(`ITEM ${JSON.stringify(first).slice(0, 2200)}`);
+              }
             }
             value.slice(0, 6).forEach((v, i) => walk(v, `${path}[${i}]`, depth + 1));
             return;
