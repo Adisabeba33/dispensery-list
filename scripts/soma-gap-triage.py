@@ -27,8 +27,11 @@ Writes, into enrichment-output/ (none of it committed — all of it derived):
                                source hierarchy, and 50 brands cover ~46% of it.
   soma-queue-aliases.json      names one edit from a catalog entry. Cheapest
                                possible fix, and the most dangerous to get
-                               wrong — split into orthographic variants and
-                               names that need a distinctness check first.
+                               wrong. Split into two grades, NEITHER of which
+                               is safe to apply in bulk: batch 04 found 5 of 42
+                               "orthographic" candidates to be different plants
+                               (Purple Cream is not Purple Dream). Every row is
+                               a candidate for judgement, never a fix.
   soma-queue-crosses.json      names that state their own parentage ("A x B").
                                No research needed; SOMA reads these already, so
                                anything here is a parent it cannot resolve.
@@ -128,6 +131,15 @@ def brand_key(b: str) -> str:
     return re.sub(r"\s+", "", b)
 
 
+# Brands per shelf spelling across every listing. The alias search needs the
+# catalog target's brands, and the target is by definition NOT in the gap — so
+# this cannot be built from `gap`.
+shelf_brands = defaultdict(set)
+for l in listings:
+    nm = (l.get("strainNameRaw") or "").strip()
+    if nm and l.get("brand"):
+        shelf_brands[key(nm)].add(l["brand"])
+
 gap = defaultdict(lambda: {"shops": set(), "brands": Counter(), "terp": [], "lineage": Counter()})
 for l in listings:
     name = (l.get("strainNameRaw") or "").strip()
@@ -207,12 +219,26 @@ for n in gap:
     # "Sunset Sherbet". Anything that ADDS or REPLACES a word ("Gelato Z" vs
     # "Gelato", "Durban Z" vs "Durban Poison") is a different claim about a
     # plant and has to be established, not assumed.
+    #
+    # This separates the two grades; it does NOT certify either. Word shape is
+    # blind to a swap between two real words of similar shape, so "Purple Cream"
+    # lands here against "Purple Dream" and "Apple Pie" against "Grapple Pie" —
+    # both rejected by hand in batch 04. Read the grade as "how much checking",
+    # not "whether".
     wn = re.sub(r"[^a-z0-9 ]", " ", n.lower()).split()
     wt = re.sub(r"[^a-z0-9 ]", " ", target.lower()).split()
     same_shape = len(wn) == len(wt) and all(
         difflib.SequenceMatcher(None, a, b).ratio() >= 0.75 for a, b in zip(wn, wt))
+    # The strongest offline evidence for a merge, and what carried 17 of batch
+    # 04's 30 accepted aliases: the register stores a cultivator's name exactly
+    # as each shop prints it, so one brand appearing under BOTH spellings means
+    # one product transcribed two ways rather than two plants.
+    variant_brands = {brand_key(b) for b in gap[n]["brands"]}
+    target_brands = {brand_key(b) for b in shelf_brands.get(key(target), ())}
     entry = {"strain": n, "catalogTarget": target, "similarity": ratio,
-             "shopCount": presence[n], "brands": [b for b, _ in gap[n]["brands"].most_common()]}
+             "shopCount": presence[n], "brands": [b for b, _ in gap[n]["brands"].most_common()],
+             "sharedCultivators": sorted(variant_brands & target_brands),
+             "catalogTargetOnShelf": key(target) in shelf_brands}
     aliases["orthographic" if same_shape else "needsDistinctnessCheck"].append(entry)
 for v in aliases.values():
     v.sort(key=lambda r: (-r["shopCount"], -r["similarity"]))
@@ -280,8 +306,12 @@ for N in (10, 25, 50, 100, 200):
     s = sum(presence[n] for n in covered)
     print(f"      топ-{N:<4} = {len(covered):>5} названий = {100*s/max(total_presence,1):5.1f}% пробела")
 
-print(f"\n2. АЛИАСЫ — {len(aliases['orthographic'])} орфографических вариантов "
-      f"(дёшево), {len(aliases['needsDistinctnessCheck'])} требуют проверки на другой сорт")
+shared = sum(1 for r in aliases["orthographic"] if r["sharedCultivators"])
+print(f"\n2. АЛИАСЫ — {len(aliases['orthographic'])} орфографических + "
+      f"{len(aliases['needsDistinctnessCheck'])} со сменой слова.")
+print(f"   НИ ОДИН не применять пачкой: в батче 04 пятеро из 42 «орфографических»")
+print(f"   оказались другими растениями (Purple Cream != Purple Dream).")
+print(f"   у {shared} из {len(aliases['orthographic'])} общий культиватор с целью — самое сильное доказательство слияния")
 for r in aliases["orthographic"][:10]:
     print(f"      {r['shopCount']:>3} маг.  {r['strain'][:32]:<32} -> {r['catalogTarget']}")
 if aliases["needsDistinctnessCheck"]:
