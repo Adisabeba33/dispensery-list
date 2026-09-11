@@ -79,6 +79,13 @@ const onlyLicences = onlyArg > -1
    off the chain's own page. */
 const linksArg = process.argv.indexOf('--dump-links');
 const dumpLinks = linksArg > -1 ? Number(process.argv[linksArg + 1]) || 25 : 0;
+/* --dump-shapes describes what a page DID send when we recognised none of it.
+   --dump-products cannot answer that: it samples what was already classified
+   as flower, so at zero it shows nothing. Nineteen shops declare a hundred
+   products and give us none, and the only way to learn why is to look at the
+   shape of what arrived. */
+const shapesArg = process.argv.indexOf('--dump-shapes');
+const dumpShapes = shapesArg > -1 ? Number(process.argv[shapesArg + 1]) || 8 : 0;
 const dumpArg = process.argv.indexOf('--dump-products');
 const dumpProducts = dumpArg > -1 ? Number(process.argv[dumpArg + 1]) || 5 : 0;
 const alreadyCollected = new Set();
@@ -957,6 +964,36 @@ const main = async () => {
       entry.landedOn = page.url();
 
       const arrays = payloads.flatMap((p) => findProductArrays(p));
+
+      if (dumpShapes > 0 && arrays.length === 0) {
+        /* Every array of objects the page sent, wherever it sits, with the
+           keys of its first item. Whatever the shelf is, it is in here. */
+        const found = [];
+        const walk = (value, path, depth) => {
+          if (depth > 7 || found.length > 60 || !value || typeof value !== 'object') return;
+          if (Array.isArray(value)) {
+            const objects = value.filter((v) => v && typeof v === 'object' && !Array.isArray(v));
+            if (objects.length >= 2) {
+              found.push(`${path} [${value.length}] keys: ${Object.keys(objects[0]).slice(0, 24).join(',')}`);
+            }
+            value.slice(0, 6).forEach((v, i) => walk(v, `${path}[${i}]`, depth + 1));
+            return;
+          }
+          for (const [k, v] of Object.entries(value)) walk(v, path ? `${path}.${k}` : k, depth + 1);
+        };
+        payloads.slice(0, 40).forEach((pl, i) => walk(pl, `payload${i}`, 0));
+        /* Same shape from twenty pages of one menu is one finding, not twenty. */
+        const bySignature = new Map();
+        for (const f of found) {
+          const sig = f.replace(/payload\d+/, '').replace(/\[\d+\]/g, '[]');
+          if (!bySignature.has(sig)) bySignature.set(sig, f);
+        }
+        entry.shapes = [...bySignature.values()].slice(0, dumpShapes);
+        entry.topLevelKeys = payloads
+          .slice(0, 6)
+          .map((pl) => (pl && typeof pl === 'object' ? Object.keys(pl).slice(0, 14).join(',') : typeof pl))
+          .filter((v, i, a) => a.indexOf(v) === i);
+      }
       entry.productArrays = arrays.length;
       entry.productsSeen = arrays.reduce((n, a) => n + a.length, 0);
       entry.declaredTotal = payloads.reduce((n, pl) => Math.max(n, findDeclaredTotal(pl)), 0) || null;
