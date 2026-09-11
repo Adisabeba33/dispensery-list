@@ -127,6 +127,8 @@ jobs:
           print(f"structures: {s.get('structuresFound')}")
           print(f"products field: {s.get('productsFieldShape')}")
           print(f"shops with a product list in the HTML: {s.get('shopsWithProductList')}")
+          for route, n in (s.get('productListPaths') or {}).items():
+              print(f"    {n:>3} x  {route}")
           PY
       - name: Upload probe evidence
         if: always()
