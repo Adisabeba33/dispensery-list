@@ -56,6 +56,12 @@ parser.add_argument(
     action="store_true",
     help="skip shops we already collected listings for or already recorded in menu-endpoints.todo.json",
 )
+parser.add_argument(
+    "--only",
+    default="",
+    help="comma-separated substrings; probe only shops whose name or licence matches one "
+         "(for a diagnostic run that does not need to visit every shop again)",
+)
 args = parser.parse_args()
 
 records = json.loads((ROOT / "data/dispensaries.json").read_text())
@@ -71,6 +77,19 @@ targets = [
     if r.get("operationalStatus") == "OPEN"
     and (r.get("contact") or {}).get("website")
 ]
+
+if args.only:
+    # A question about one engine does not justify knocking on eighty-three
+    # doors. Repeated full sweeps also cost accuracy, not just politeness:
+    # across three runs the reachable count fell and robots refusals rose as
+    # the hosts' defences warmed to a datacentre address.
+    wanted = [w.strip().lower() for w in args.only.split(",") if w.strip()]
+    targets = [
+        r for r in targets
+        if any(w in (r.get("dbaName") or "").lower()
+               or w in (r.get("legalName") or "").lower()
+               or w in r["licenseNumber"].lower() for w in wanted)
+    ]
 
 if args.only_untried:
     # Step 0 of the coverage plan: the shops no pass has ever reached. Anything
@@ -277,15 +296,29 @@ def describe_json_blobs(html: str) -> list[dict]:
                             k: len(v) for k, v in sorted(value.items())
                             if isinstance(v, list)
                         }
-                if isinstance(value, dict):
-                    # `data` first, and it is not a guess: the collector was
-                    # written against this engine in September after the same
-                    # descent list missed it, and the shape reported by this
-                    # run — dict(keys=data,params), on seven sites — is that
-                    # engine. Without it the probe reports zero product lists
-                    # while looking straight at them.
+                        # And when nothing inside is a list, the lengths come
+                        # back empty and say nothing at all — which is how the
+                        # run of 2026-09-10 answered. So describe every inner
+                        # value by type, and open one more level where that
+                        # type is a dict. An answer that cannot distinguish
+                        # "empty" from "deeper" is not worth the round trip.
+                        entry["productsInnerShape"] = {
+                            k: (f"list[{len(v)}]" if isinstance(v, list)
+                                else f"dict(keys={','.join(sorted(v.keys())[:8])})"
+                                if isinstance(v, dict) else type(v).__name__)
+                            for k, v in sorted(value.items())
+                        }
+                # Two levels, not one. `data` came from the collector, which
+                # was written against this engine in September; but the seven
+                # sites reporting dict(keys=data,params) hold no list directly
+                # under either key, so the array sits one level deeper than a
+                # single descent can reach.
+                for _ in range(2):
+                    if not isinstance(value, dict):
+                        break
                     value = (value.get("data") or value.get("products")
-                             or value.get("items") or value.get("edges"))
+                             or value.get("items") or value.get("edges")
+                             or value.get("results") or value.get("nodes"))
                 if isinstance(value, list) and value:
                     first = value[0]
                     if isinstance(first, dict) and "node" in first and isinstance(first["node"], dict):
@@ -431,8 +464,8 @@ for r in results:
                 + (f'(len={s.get("productsFieldLength")})' if "productsFieldLength" in s else "")
                 + (f'(keys={",".join((s.get("productsFieldKeys") or [])[:6])})' if s.get("productsFieldKeys") else "")
                 + (
-                    "(" + ", ".join(f"{k}={n}" for k, n in s["productsInnerLengths"].items()) + ")"
-                    if s.get("productsInnerLengths") else ""
+                    "{" + ", ".join(f"{k}:{v}" for k, v in s["productsInnerShape"].items()) + "}"
+                    if s.get("productsInnerShape") else ""
                 )
             ] += 1
         if kind == "json-ld" and s.get("itemKeys") and len(item_list_samples) < 5:

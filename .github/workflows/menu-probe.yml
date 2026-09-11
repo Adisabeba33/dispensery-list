@@ -32,6 +32,9 @@ on:
       limit:
         description: Sample size when not sweeping all
         default: '60'
+      only:
+        description: Comma-separated name or licence substrings; probe only those shops
+        default: ''
 
 permissions:
   contents: read
@@ -55,14 +58,26 @@ jobs:
         # passing the raw values in and deciding here.
         env:
           EVENT: ${{ github.event_name }}
+          # A pushed run answers whatever question the last commit raised. When
+          # that question is about one engine, it does not need eighty-three
+          # shops: three sweeps in thirteen hours already cost us accuracy, the
+          # reachable count falling and robots refusals rising as the hosts'
+          # defences warmed to a datacentre address. Empty this back out when
+          # the diagnosis lands, and pushes sweep again.
+          PROBE_FOCUS: "flowery,happy alta,terp bros,art of flower,housing works,weed shoppe,pryzm"
           SWEEP_ALL: ${{ inputs.sweep_all }}
           ONLY_UNTRIED: ${{ inputs.only_untried }}
           LIMIT: ${{ inputs.limit }}
+          ONLY: ${{ inputs.only }}
         run: |
           if [ "$EVENT" != "workflow_dispatch" ]; then
-            # Pushed, not dispatched: run step 0 of the coverage plan.
+            # Pushed, not dispatched: run step 0 of the coverage plan, unless
+            # a focus is set, in which case answer that question instead.
             SWEEP_ALL=true
-            ONLY_UNTRIED=true
+            ONLY="$PROBE_FOCUS"
+            if [ -z "$ONLY" ]; then
+              ONLY_UNTRIED=true
+            fi
           fi
           args=()
           if [ "$SWEEP_ALL" = "true" ]; then
@@ -72,6 +87,9 @@ jobs:
           fi
           if [ "$ONLY_UNTRIED" = "true" ]; then
             args+=(--only-untried)
+          fi
+          if [ -n "$ONLY" ]; then
+            args+=(--only "$ONLY")
           fi
           echo "running: python scripts/menu-probe.py ${args[*]}"
           python scripts/menu-probe.py "${args[@]}"
