@@ -1195,7 +1195,13 @@ const main = async () => {
         arrays.push(jsonApi);
       }
 
-      if (dumpShapes > 0 && arrays.length === 0) {
+      /* Asked for, always printed. The condition used to be "only when we
+         recognised nothing", which is exactly wrong for the shops that are
+         standing on the right page and reading the wrong products: eight
+         licences land on /categories/flower/ and come back holding fifteen
+         edibles, and the payload that has the flower in it is the one the
+         dump was refusing to describe. */
+      if (dumpShapes > 0) {
         /* Every array of objects the page sent, wherever it sits, with the
            keys of its first item. Whatever the shelf is, it is in here. */
         const found = [];
