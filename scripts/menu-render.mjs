@@ -1063,12 +1063,34 @@ const main = async () => {
 
       /* The page hands back its links; the choosing happens here, where it can
          be tested against a real page's worth of them. */
-      const links = await page.evaluate(() =>
-        [...document.querySelectorAll('a[href]')]
-          .slice(0, 400)
-          .map((a) => ({ href: a.href, text: (a.textContent || '').trim().slice(0, 60) })),
-      );
-      const found = pickMenuLink(links, site, shop.dbaName ?? shop.legalName);
+      const readLinks = () =>
+        page.evaluate(() =>
+          [...document.querySelectorAll('a[href]')]
+            .slice(0, 400)
+            .map((a) => ({ href: a.href, text: (a.textContent || '').trim().slice(0, 60) })),
+        );
+      let links = await readLinks();
+      let found = pickMenuLink(links, site, shop.dbaName ?? shop.legalName);
+
+      /* An age wall that is a page of its own carries no menu links, and the
+         click that answers it waits a flat two and a half seconds — not long
+         enough for a site that then loads its home page from scratch. So the
+         first read can be of the wall rather than of the shop.
+         Reading again costs nothing when the first read worked, and it is the
+         difference between a shelf and a silence when it did not. */
+      if (!found) {
+        await settle(1500, 8000);
+        if (await affirmAge(page)) {
+          entry.ageGate = true;
+          await settle(1500, 8000);
+        }
+        links = await readLinks();
+        const second = pickMenuLink(links, site, shop.dbaName ?? shop.legalName);
+        if (second) {
+          entry.foundMenuOnSecondLook = true;
+          found = second;
+        }
+      }
       if (dumpLinks > 0) {
         const shopName = shop.dbaName ?? shop.legalName;
         entry.links = links
