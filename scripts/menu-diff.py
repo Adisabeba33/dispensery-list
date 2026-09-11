@@ -95,12 +95,16 @@ if len(gone_from_market) > 40:
 # сказать отдельно. Молча придержанная полка это способ спрятать поломку
 # коллектора на две недели вперёд.
 held = []
+adjudicated = set()
 summary_path = ROOT / "enrichment-output" / "menu-summary.json"
 if summary_path.exists():
     try:
-        held = json.loads(summary_path.read_text()).get("shelvesHeldAtPreviousReading") or []
+        summary = json.loads(summary_path.read_text())
+        held = summary.get("shelvesHeldAtPreviousReading") or []
+        adjudicated = set(summary.get("shelvesTakenAfterTheHoldExpired") or [])
     except (ValueError, OSError):
         held = []
+        adjudicated = set()
 if held:
     lines += ["", f"### Полки, оставленные от прошлого чтения: {len(held)}", "",
               "Прочитано заметно меньше прежнего — не публикуем, держим прежнее.",
@@ -108,11 +112,28 @@ if held:
               "устареет и будет взято новое.", ""]
     lines += [f"- {h}" for h in held[:20]]
 
-broken = bool(collapsed or vanished)
+# Обвал, который коллектор уже рассудил. Полку держали, прежнее чтение
+# устарело за два дня, новое взяли осознанно. Если такой обвал запрещает
+# публикацию, то выдержка не может истечь никогда: неопубликованные полки
+# стареют, старение снимает выдержку, снятая выдержка запрещает публикацию.
+# Ровно так три прогона подряд ушли на ветки вместо сайта.
+#
+# Про такой обвал надо сказать громко — но он не повод не публиковать.
+settled = [(lic, b, a) for lic, b, a in collapsed if lic in adjudicated]
+unsettled = [(lic, b, a) for lic, b, a in collapsed if lic not in adjudicated]
+
+broken = bool(unsettled or vanished)
+if settled:
+    lines += ["", f"### Полки, принятые после выдержки: {len(settled)}", "",
+              "Держали прежнее чтение, оно устарело за два дня — взяли новое.",
+              "Если магазин на самом деле не распродался, это недочитанная",
+              "страница, и её надо смотреть руками.", ""]
+    for lic, b, a in sorted(settled, key=lambda x: x[2] - x[1])[:20]:
+        lines.append(f"- **{shops.get(lic, lic)}**: {b} → {a}")
 if broken:
     lines += ["", "### ⚠ Полки, которые выглядят оборванными", "",
               "Это скорее всего недолистанная страница, а не распроданный товар.", ""]
-    for lic, b, a in sorted(collapsed, key=lambda x: x[2] - x[1])[:20]:
+    for lic, b, a in sorted(unsettled, key=lambda x: x[2] - x[1])[:20]:
         lines.append(f"- **{shops.get(lic, lic)}**: {b} → {a}")
     for lic in vanished[:20]:
         lines.append(f"- **{shops.get(lic, lic)}**: {len(sb[lic])} → полка пропала целиком")

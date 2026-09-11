@@ -1470,6 +1470,21 @@ const main = async () => {
     }, {}),
     usedKnownEndpoint: report.filter((r) => r.usedKnownEndpoint).length,
     shelvesThatShrankByHalf: shrank,
+    /* The licences whose collapse we decided to accept because the reading we
+       were protecting has aged out. Named on their own, because the daily
+       workflow has to be able to tell them apart from a collapse nobody has
+       adjudicated: refusing to publish these is refusing to ever let the hold
+       expire, and that is a deadlock — unpublished shelves age, ageing expires
+       the hold, the expired hold blocks the publish. */
+    shelvesTakenAfterTheHoldExpired: report
+      .filter(
+        (r) =>
+          r.flower > 0 &&
+          previousCounts[r.licence] > 0 &&
+          r.flower * 2 < previousCounts[r.licence] &&
+          !held.has(r.licence),
+      )
+      .map((r) => r.licence),
     hitTheSettleCap: report.filter((r) => r.settled === false).length,
     /* Shelves that were cut short rather than finished. Ten ounces went
        missing from one Bronx shop this way, and nothing in the run said so. */
