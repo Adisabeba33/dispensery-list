@@ -132,6 +132,7 @@ robots_cache: dict = {}
 unresolved_keys = Counter()
 raw_terpene_names = Counter()
 categories_seen = Counter()
+rejected_kind_fields = Counter()
 product_key_sample = []
 
 
@@ -285,6 +286,42 @@ def extract_products(html):
     return [], None
 
 
+# Keys that might carry what a shop calls a product's kind. Used only to
+# report, never to decide: the point is to read back what the engine actually
+# writes, not to add another guess to a list that has been wrong three times.
+# The envelope names are here too — attributes, extras, relationships — because
+# a category that is not on the product is usually one level inside one of
+# them, and a dict reports only its key names, so this stays bounded.
+KIND_KEY = re.compile(
+    r"type|categor|class|kind|strain|composition|form|attribut|extra|relationship",
+    re.I,
+)
+
+
+def describe_kind_fields(product):
+    """Every plausible kind-bearing field on a product we could not classify.
+
+    Forty products came back from one engine carrying terpenoids, strain names
+    and THC, and every one was dropped because the only category text on offer
+    was the word "regular". That is not a shelf without flower; it is a
+    vocabulary mismatch, and it is the third time a hardcoded list of names has
+    silently thrown away real data. So when a product fails to classify, its
+    own words are reported rather than the failure alone.
+    """
+    for key, value in sorted(product.items()):
+        if not KIND_KEY.search(key):
+            continue
+        if isinstance(value, (str, int, float, bool)) and str(value).strip():
+            rejected_kind_fields[f"{key}={str(value)[:40]}"] += 1
+        elif isinstance(value, dict):
+            rejected_kind_fields[f"{key}={{{','.join(sorted(value)[:6])}}}"] += 1
+        elif isinstance(value, list) and value:
+            first = value[0]
+            shape = (",".join(sorted(first)[:6]) if isinstance(first, dict)
+                     else type(first).__name__)
+            rejected_kind_fields[f"{key}=[{shape}]"] += 1
+
+
 def is_flower(product):
     """Whole bud only. Pre-rolls are made of flower but are a different product."""
     parts = [str(flatten(pick(product, "category")) or ""),
@@ -292,10 +329,14 @@ def is_flower(product):
     text = " ".join(parts).lower()
     categories_seen[text.strip() or "(no category field)"] += 1
     if not text.strip():
+        describe_kind_fields(product)
         return False
     if re.search(r"pre[\s-]?roll|infused|blunt|joint", text):
         return False
-    return bool(re.search(r"flower|bud", text))
+    if re.search(r"flower|bud", text):
+        return True
+    describe_kind_fields(product)
+    return False
 
 
 def slug(*parts):
@@ -476,6 +517,10 @@ summary = {
     "withSizes": sum(1 for l in listings if l["availableSizesGrams"]),
     "unmappedTerpeneNames": dict(raw_terpene_names.most_common(15)),
     "categoriesSeen": dict(categories_seen.most_common(25)),
+    # What the shops themselves call the products we could not classify. This
+    # is the finding when the listing count is zero and the product count is
+    # not: the shelf was read and the words did not match.
+    "rejectedKindFields": dict(rejected_kind_fields.most_common(40)),
     "productKeySample": product_key_sample,
 }
 # When nothing parsed, the real key names are the finding worth reporting.
