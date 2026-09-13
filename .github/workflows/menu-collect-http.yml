@@ -58,4 +58,39 @@ jobs:
             args+=(--only "$ONLY")
           fi
           echo "running: python scripts/menu-collect.py ${args[*]}"
-          python scripts/menu-collect.py "${args[@]}"
+          python scripts/menu-collect.py "${args[@]}" | tee /tmp/collect.out
+
+      # Last, and short. Reading a run of this from its end is how it is
+      # actually read, and the numbers that decide the next move were sitting
+      # behind a two-hundred-line dump of product key names.
+      - name: Headline
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, os
+          path = '/tmp/collect.out'
+          if not os.path.exists(path):
+              print('The collector wrote nothing — it failed before finishing.')
+              raise SystemExit(0)
+          lines = open(path).read().split('\n')
+          # Progress lines precede the report; the report starts at a bare "{".
+          start = next((i for i, l in enumerate(lines) if l.rstrip() == '{'), None)
+          if start is None:
+              print('No report in the output.')
+              raise SystemExit(0)
+          s = json.loads('\n'.join(lines[start:]))
+          print('--- headline ---')
+          print(f"shops {s['shopsTargeted']} · with flower {s['shopsWithFlower']} · "
+                f"listings {s['listings']} · products seen {s['productsSeenTotal']}")
+          print(f"status: {s['statusCounts']}")
+          print(f"categories the shops used: {s.get('categoriesSeen')}")
+          for ps in s.get('partialShelves') or []:
+              print(f"    partial: {ps['seen']} of {ps['declaredTotal']} at {ps['url']}")
+          # Only the fields that decide something: a value seen on many
+          # products, never the long tail of one-offs.
+          kinds = {k: n for k, n in (s.get('rejectedKindFields') or {}).items() if n > 1}
+          if kinds:
+              print('what the shops call what we dropped:')
+              for k, n in list(kinds.items())[:20]:
+                  print(f"    {n:>4} x  {k}")
+          PY

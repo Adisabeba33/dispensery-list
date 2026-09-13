@@ -292,8 +292,13 @@ def extract_products(html):
 # The envelope names are here too — attributes, extras, relationships — because
 # a category that is not on the product is usually one level inside one of
 # them, and a dict reports only its key names, so this stays bounded.
+# `strain` is deliberately absent. It was here for one run, and it answered:
+# forty products, forty distinct strain names — Gorilla Glue, Blue Dream, Sour
+# Diesel — which is real flower and proof the shelf was read. But a name is an
+# identifier, not a kind, and forty singletons crowded the fields that decide
+# anything out of the top of the report. Evidence taken, field dropped.
 KIND_KEY = re.compile(
-    r"type|categor|class|kind|strain|composition|form|attribut|extra|relationship",
+    r"type|categor|class|kind|composition|form|attribut|extra|relationship",
     re.I,
 )
 
@@ -314,7 +319,21 @@ def describe_kind_fields(product):
         if isinstance(value, (str, int, float, bool)) and str(value).strip():
             rejected_kind_fields[f"{key}={str(value)[:40]}"] += 1
         elif isinstance(value, dict):
-            rejected_kind_fields[f"{key}={{{','.join(sorted(value)[:6])}}}"] += 1
+            # One level deeper, because the key names alone stopped short of
+            # the answer: relationships={brand,category,images,tags} located
+            # the category and said nothing about what is in it. A reference
+            # to resolve and a name to read look identical from outside.
+            for inner_key, inner in sorted(value.items())[:8]:
+                label = f"{key}.{inner_key}"
+                if isinstance(inner, (str, int, float, bool)) and str(inner).strip():
+                    rejected_kind_fields[f"{label}={str(inner)[:40]}"] += 1
+                elif isinstance(inner, dict):
+                    rejected_kind_fields[f"{label}={{{','.join(sorted(inner)[:6])}}}"] += 1
+                elif isinstance(inner, list) and inner:
+                    first = inner[0]
+                    shape = (",".join(sorted(first)[:6]) if isinstance(first, dict)
+                             else type(first).__name__)
+                    rejected_kind_fields[f"{label}=[{shape}]"] += 1
         elif isinstance(value, list) and value:
             first = value[0]
             shape = (",".join(sorted(first)[:6]) if isinstance(first, dict)
