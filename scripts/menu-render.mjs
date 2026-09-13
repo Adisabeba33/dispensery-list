@@ -79,6 +79,13 @@ const onlyLicences = onlyArg > -1
    off the chain's own page. */
 const linksArg = process.argv.indexOf('--dump-links');
 const dumpLinks = linksArg > -1 ? Number(process.argv[linksArg + 1]) || 25 : 0;
+/* --dump-shapes describes what a page DID send when we recognised none of it.
+   --dump-products cannot answer that: it samples what was already classified
+   as flower, so at zero it shows nothing. Nineteen shops declare a hundred
+   products and give us none, and the only way to learn why is to look at the
+   shape of what arrived. */
+const shapesArg = process.argv.indexOf('--dump-shapes');
+const dumpShapes = shapesArg > -1 ? Number(process.argv[shapesArg + 1]) || 8 : 0;
 const dumpArg = process.argv.indexOf('--dump-products');
 const dumpProducts = dumpArg > -1 ? Number(process.argv[dumpArg + 1]) || 5 : 0;
 const alreadyCollected = new Set();
@@ -208,7 +215,35 @@ const affirmAge = async (page) => {
 /* `product` singular is one item's own page, never a menu. `products` plural
    is a menu route on several platforms, and \b keeps them apart: the word
    boundary after "product" does not fall inside "products". */
-const PROMO_ROUTE = /\/(specials?|offers?|deals?|promo|blog|news|about|contact|account|login|cart|checkout|brands?|careers|product)\b/i;
+const PROMO_ROUTE = /\/(specials?|offers?|deals?|promo|blog|news|about|contact|account|login|sign-?up|register|cart|checkout|brands?|careers|product)\b/i;
+
+/**
+ * A category page for something we do not collect.
+ *
+ * NY Flos publishes no flower link on its front page at all — its highest
+ * scoring link is an ordinary menu route — so the tie-break handed the shelf
+ * to /menu/categories/accessories/ and we read sixteen grinders. The shop's
+ * own word for the category is right there in the address, and when that word
+ * is "accessories" the page cannot hold flower whatever else is true.
+ *
+ * Only category routes are judged this way. A shop called Vape City is not a
+ * vape category, and "edibles" inside a product slug is a product, not a page.
+ */
+const CATEGORY_ROUTE = /(categor(y|ies)[=/]|[?&]category=)/i;
+const NOT_FLOWER_CATEGORY =
+  /^(accessor\w*|vapes?|vaporizers?|carts?|cartridges?|edibles?|gumm\w*|beverages?|drinks?|concentrates?|extracts?|dabs?|pre-?rolls?|prerolls?|joints?|blunts?|cbd|topicals?|tinctures?|apparel|merch\w*|gear|clothing|seeds?|clones?)$/i;
+const isNotFlowerCategory = (href) => {
+  if (!CATEGORY_ROUTE.test(href)) return false;
+  let url;
+  try {
+    url = new URL(href);
+  } catch {
+    return false;
+  }
+  const last = url.pathname.split('/').filter(Boolean).pop() ?? '';
+  const named = url.searchParams.get('category') ?? '';
+  return NOT_FLOWER_CATEGORY.test(last) || NOT_FLOWER_CATEGORY.test(named);
+};
 /* A path segment that IS "flower" names the category. A segment that merely
    ends in "-flower" is a product slug, and `flower\/?$` could not tell them
    apart: BX Buddiez's whole shelf was replaced by whatever sits on
@@ -217,6 +252,39 @@ const PROMO_ROUTE = /\/(specials?|offers?|deals?|promo|blog|news|about|contact|a
    so much more dangerous than a flaky one. */
 const FLOWER_ROUTE = /(categor(y|ies)[=/][^/?#]*flower|\/flower\b|\/flowers?\/?$|[?&]category=flower|\/rec\/flower|\/bud\b)/i;
 const MENU_ROUTE = /\/(menu|shop|order|products?|browse|store|dispensary)\b/i;
+
+/**
+ * One product's own page, told from the listing that holds many.
+ *
+ * NY Flos declares 107 products and we read none, because the link we followed
+ * was
+ *
+ *   /menu/products/ayrloom-766427/edibles/ayrloom-island-time-...-8453750/
+ *
+ * — a single packet of gummies. It scored as a menu (the path says "products")
+ * and then won the tie-break for being the deepest address on the page, which
+ * is the rule that exists to prefer a branch over its chain. The two need
+ * telling apart, and the shop's own address says which is which: a product
+ * sits under its brand and its category, and the last segment is its slug.
+ *
+ * /products/flower is the other case and stays a listing.
+ */
+const FLOWER_SEGMENT = /^(flowers?|buds?)$/i;
+const SLUG_SEGMENT = (s) => /-/.test(s) && (s.split('-').length >= 3 || /\d{3,}$/.test(s));
+export const isProductPage = (href) => {
+  let parts;
+  try {
+    parts = new URL(href).pathname.split('/').filter(Boolean);
+  } catch {
+    return false;
+  }
+  const i = parts.findIndex((p) => /^products?$/i.test(p));
+  if (i === -1) return false;
+  const after = parts.slice(i + 1);
+  if (!after.length) return false;
+  if (FLOWER_SEGMENT.test(after[after.length - 1])) return false;
+  return after.length >= 2 || SLUG_SEGMENT(after[after.length - 1]);
+};
 const FLOWER_WORD = /^\s*(flower|flowers|bud|buds|whole\s*flower)\s*$/i;
 const MENU_WORD = /\b(menu|shop|order|browse|products?)\b/i;
 
@@ -261,7 +329,8 @@ export const sameEstate = (href, siteUrl, shopName = '') => {
 
 /** Higher is better; 0 means "never follow this". */
 export const rankMenuLink = (href = '', text = '') => {
-  if (!href || PROMO_ROUTE.test(href)) return 0;
+  if (!href || PROMO_ROUTE.test(href) || isProductPage(href)) return 0;
+  if (isNotFlowerCategory(href)) return 0;
   if (FLOWER_ROUTE.test(href)) return 100;          // the flower category itself
   if (FLOWER_WORD.test(text)) return 90;            // a nav item that says Flower
   if (MENU_ROUTE.test(href) && FLOWER_WORD.test(text)) return 85;
@@ -283,18 +352,22 @@ const depth = (href) => {
   }
 };
 
+const FLOWER_SPECIFIC = 90;
 export const pickMenuLink = (links, siteUrl = null, shopName = '') => {
   let best = null;
   let bestScore = 0;
-  let bestDepth = -1;
+  let bestRank = -Infinity;
   for (const link of links) {
     if (siteUrl && !sameEstate(link.href, siteUrl, shopName)) continue;
     const score = rankMenuLink(link.href, link.text);
     if (score === 0) continue;
     const d = depth(link.href);
-    if (score > bestScore || (score === bestScore && d > bestDepth)) {
+    /* Deeper wins among flower categories, shallower among plain menu links,
+       and a bare address beats the same page carrying a query. */
+    const rank = (score >= FLOWER_SPECIFIC ? d : -d) * 2 - (link.href.includes('?') ? 1 : 0);
+    if (score > bestScore || (score === bestScore && rank > bestRank)) {
       bestScore = score;
-      bestDepth = d;
+      bestRank = rank;
       best = link.href;
     }
   }
@@ -319,6 +392,116 @@ const findDeclaredTotal = (value, depth = 0, best = { n: 0 }) => {
     findDeclaredTotal(v, depth + 1, best);
   }
   return best.n;
+};
+
+/**
+ * JSON:API menus — Tymber/Blaze, nineteen of the silent shops — keep nothing
+ * where a parser looks for it. A product arrives as
+ *
+ *   { id, type: "products", attributes: { name, size, terpenoids, ... },
+ *     relationships: { category: { data: { id, type: "product_categories" } } } }
+ *
+ * so every field is one floor down, and the two that decide whether we keep
+ * the row — its category and its brand — are not there at all: they are ids
+ * pointing into a sibling `included` array. `findProductArrays` looked at
+ * `id, type, attributes, relationships`, saw no name and no category, and
+ * walked past a hundred and twenty products at a time.
+ *
+ * Three things are needed and all three are in the payloads already:
+ *
+ *   1. the fields lifted out of `attributes`;
+ *   2. relationships resolved against `included`, so `category` becomes the
+ *      word "Flower" rather than 14966;
+ *   3. products merged by id across payloads. The same shelf arrives several
+ *      times with different fields each time — one response carries `name`,
+ *      another carries only potency and `store_url` — and a product read from
+ *      the second alone has no title to publish.
+ *
+ * Nothing here guesses: every key used below was read off one whole product
+ * resource that a diagnostic run printed in full.
+ */
+const isResource = (v) =>
+  v && typeof v === 'object' && !Array.isArray(v) &&
+  typeof v.type === 'string' && v.id !== undefined &&
+  v.attributes && typeof v.attributes === 'object' && !Array.isArray(v.attributes);
+
+const JSONAPI_PRODUCT = /^products?$/i;
+
+/**
+ * The category the shop itself filed the product under, taken from the address
+ * the shop publishes for it:
+ *
+ *   /menu/products/level-384256/edibles/level-edible-hybrid-protab-5ct100mg
+ *                 └ brand ────┘ └ cat ┘ └ product ─────────────────────────┘
+ *
+ * This is a fallback for the payloads that send products without including the
+ * category resource they point at. It is the shop's own word, not ours.
+ */
+export const categoryFromProductUrl = (url) => {
+  if (typeof url !== 'string') return null;
+  let path;
+  try {
+    path = new URL(url).pathname;
+  } catch {
+    return null;
+  }
+  const parts = path.split('/').filter(Boolean);
+  // The product slug is last; what it sits under is the category.
+  return parts.length >= 2 ? decodeURIComponent(parts[parts.length - 2]) : null;
+};
+
+export const flattenJsonApiProducts = (payloads) => {
+  const index = new Map();          // "type:id" -> attributes, for relationships
+  const products = new Map();       // id -> merged attributes
+  const relationships = new Map();  // id -> merged relationships
+
+  const remember = (r) => {
+    const key = `${r.type}:${r.id}`;
+    if (!index.has(key)) index.set(key, r.attributes);
+    if (!JSONAPI_PRODUCT.test(r.type)) return;
+    // Merged rather than replaced: a field present in one response and absent
+    // in another must survive, whichever order they arrive in.
+    const merged = products.get(r.id) ?? {};
+    for (const [k, v] of Object.entries(r.attributes)) {
+      if (v !== null && v !== undefined && (merged[k] === null || merged[k] === undefined)) merged[k] = v;
+    }
+    products.set(r.id, merged);
+    if (r.relationships && typeof r.relationships === 'object') {
+      relationships.set(r.id, { ...(relationships.get(r.id) ?? {}), ...r.relationships });
+    }
+  };
+
+  const walk = (value, depth) => {
+    if (depth > 7 || !value || typeof value !== 'object') return;
+    if (Array.isArray(value)) {
+      for (const v of value.slice(0, 400)) walk(v, depth + 1);
+      return;
+    }
+    if (isResource(value)) remember(value);
+    for (const v of Object.values(value)) walk(v, depth + 1);
+  };
+  for (const payload of payloads) walk(payload, 0);
+
+  const rows = [];
+  for (const [id, attributes] of products) {
+    const flat = { ...attributes };
+    flat.id = attributes.id ?? id;
+    for (const [name, rel] of Object.entries(relationships.get(id) ?? {})) {
+      const target = rel && typeof rel === 'object' ? rel.data : null;
+      if (!target || Array.isArray(target) || target.id === undefined) continue;
+      const attrs = index.get(`${target.type}:${target.id}`);
+      const label = attrs && (attrs.name ?? attrs.title);
+      // `category` and `brand` are the two that matter; anything else that
+      // resolves to a name is kept under its own key and costs nothing.
+      if (typeof label === 'string' && label.trim() && flat[name] === undefined) flat[name] = label;
+    }
+    if (flat.category === undefined) {
+      const fromUrl = categoryFromProductUrl(flat.store_url);
+      if (fromUrl) flat.category = fromUrl;
+    }
+    rows.push(flat);
+  }
+  return rows;
 };
 
 const findProductArrays = (value, depth = 0, out = []) => {
@@ -624,6 +807,14 @@ const TERPENES = {
   eucalyptol: 'EUCALYPTOL', guaiol: 'GUAIOL', farnesene: 'FARNESENE',
   geraniol: 'GERANIOL', borneol: 'BORNEOL', terpineol: 'TERPINEOL',
   phellandrene: 'PHELLANDRENE', carene: 'CARENE', sabinene: 'SABINENE', fenchol: 'FENCHOL',
+  /* Both are on every NY panel and neither had a word here, so a shop that
+     quantified them handed us OTHER. The strain references were already
+     carrying them under names the shelf side could not match. */
+  caryophylleneoxide: 'CARYOPHYLLENE_OXIDE', betacaryophylleneoxide: 'CARYOPHYLLENE_OXIDE',
+  terpinene: 'TERPINENE', gammaterpinene: 'TERPINENE', alphaterpinene: 'TERPINENE',
+  /* Both arrived in the first JSON:API run: seven products apiece published a
+     figure for them, and both would have gone down as OTHER. */
+  isopulegol: 'ISOPULEGOL', pcymene: 'CYMENE', cymene: 'CYMENE', paracymene: 'CYMENE',
   // Spellings seen in the pilot payloads.
   betamyrcene: 'MYRCENE', bmyrcene: 'MYRCENE', alphahumulene: 'HUMULENE',
   betaocimene: 'OCIMENE', alphaterpineol: 'TERPINEOL', alphacedrene: 'OTHER',
@@ -674,13 +865,13 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const brand = flatten(pick(p, ['brandName', 'brand', 'producer', 'vendor', 'cultivator']));
   const name = cleanStrainName(rawName, brand);
   const lineageRaw = String(
-    flatten(pick(p, ['strainType', 'lineage', 'cannabisType', 'cannabisStrain', 'classification'])) ?? '',
+    flatten(pick(p, ['strainType', 'lineage', 'cannabisType', 'cannabisStrain', 'flowerType', 'classification'])) ?? '',
   )
     .toLowerCase()
     .replace(/[^a-z]/g, '');
 
   const profile = [];
-  const terps = pick(p, ['terpenes', 'terpeneProfile', 'terps']);
+  const terps = pick(p, ['terpenes', 'terpeneProfile', 'terpenoids', 'terps']);
   if (Array.isArray(terps)) {
     for (const t of terps) {
       const raw = t && typeof t === 'object' ? t.name ?? t.terpene : t;
@@ -704,7 +895,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
      quantities and prices wearing a weight's clothes. A figure counts only
      from a key that means weight, or from text that states its unit. */
   const WEIGHT_KEYS = ['gramAmount', 'weightInGrams', 'netWeight'];
-  const UNIT_TEXT_KEYS = ['weightFormatted', 'label', 'name', 'title', 'weight', 'size', 'option'];
+  const UNIT_TEXT_KEYS = ['weightFormatted', 'label', 'name', 'title', 'displayName', 'displayText', 'weight', 'size', 'option'];
 
   const sizeOf = (v) => {
     if (typeof v === 'string') return sizeFromText(v);
@@ -713,6 +904,16 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
 
     const stated = num(pick(v, WEIGHT_KEYS));
     if (stated) return stated;
+
+    /* Tymber states the unit in a field of its own: { amount: 3.5, units: "g" }.
+       That is a key that means weight, spelled across two fields rather than
+       one, so it counts — and it is what keeps "each" from becoming a gram. */
+    const units = flatten(pick(v, ['units', 'unit', 'uom']));
+    const amount = num(pick(v, ['amount', 'weightAmount']));
+    if (typeof units === 'string' && amount) {
+      const g = sizeFromText(`${amount} ${units}`);
+      if (g) return g;
+    }
 
     for (const text of pickAll(v, UNIT_TEXT_KEYS)) {
       if (typeof text === 'string') {
@@ -724,7 +925,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   };
 
   const sizes = [];
-  const variants = pick(p, ['variants', 'weights', 'options', 'sizes', 'priceOptions', 'measurements']);
+  const variants = pick(p, ['variants', 'weights', 'weightPrices', 'options', 'sizes', 'priceOptions', 'unitPrices', 'measurements']);
   if (Array.isArray(variants)) {
     for (const v of variants) {
       const g = plausibleSize(sizeOf(v));
@@ -737,8 +938,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const statedGrams = plausibleSize(num(pick(p, ['weightInGrams', 'flowerEquivalentInGrams'])));
   if (statedGrams) sizes.push(statedGrams);
   if (!sizes.length) {
-    for (const text of pickAll(p, ['weightFormatted', 'weight', 'size'])) {
-      const g = typeof text === 'string' ? plausibleSize(sizeFromText(text)) : null;
+    for (const value of pickAll(p, ['weightFormatted', 'weight', 'size', 'cannabisWeight'])) {
+      const g = plausibleSize(sizeOf(value));
       if (g) sizes.push(g);
     }
   }
@@ -898,12 +1099,34 @@ const main = async () => {
 
       /* The page hands back its links; the choosing happens here, where it can
          be tested against a real page's worth of them. */
-      const links = await page.evaluate(() =>
-        [...document.querySelectorAll('a[href]')]
-          .slice(0, 400)
-          .map((a) => ({ href: a.href, text: (a.textContent || '').trim().slice(0, 60) })),
-      );
-      const found = pickMenuLink(links, site, shop.dbaName ?? shop.legalName);
+      const readLinks = () =>
+        page.evaluate(() =>
+          [...document.querySelectorAll('a[href]')]
+            .slice(0, 400)
+            .map((a) => ({ href: a.href, text: (a.textContent || '').trim().slice(0, 60) })),
+        );
+      let links = await readLinks();
+      let found = pickMenuLink(links, site, shop.dbaName ?? shop.legalName);
+
+      /* An age wall that is a page of its own carries no menu links, and the
+         click that answers it waits a flat two and a half seconds — not long
+         enough for a site that then loads its home page from scratch. So the
+         first read can be of the wall rather than of the shop.
+         Reading again costs nothing when the first read worked, and it is the
+         difference between a shelf and a silence when it did not. */
+      if (!found) {
+        await settle(1500, 8000);
+        if (await affirmAge(page)) {
+          entry.ageGate = true;
+          await settle(1500, 8000);
+        }
+        links = await readLinks();
+        const second = pickMenuLink(links, site, shop.dbaName ?? shop.legalName);
+        if (second) {
+          entry.foundMenuOnSecondLook = true;
+          found = second;
+        }
+      }
       if (dumpLinks > 0) {
         const shopName = shop.dbaName ?? shop.legalName;
         entry.links = links
@@ -955,8 +1178,73 @@ const main = async () => {
          site shows twenty is either being paged or we are standing on the wrong
          page, and the URL is the difference between those two. */
       entry.landedOn = page.url();
+      /* Said out loud rather than left to be inferred from a short shelf. Two
+         runs read BX Buddiez's sixteen items off one product's page and agreed
+         with each other, which is exactly why a wrong page has to announce
+         itself: agreement between runs is not evidence of a right one. */
+      if (isProductPage(entry.landedOn)) entry.landedOnProductPage = true;
 
       const arrays = payloads.flatMap((p) => findProductArrays(p));
+      /* JSON:API products are not found by shape — their own keys are id,
+         type, attributes and relationships, which look nothing like a shelf.
+         They are lifted separately and appended, so everything downstream —
+         the flower filter, the size reader, the merge — stays one path. */
+      const jsonApi = flattenJsonApiProducts(payloads);
+      if (jsonApi.length) {
+        entry.jsonApiProducts = jsonApi.length;
+        arrays.push(jsonApi);
+      }
+
+      /* Asked for, always printed. The condition used to be "only when we
+         recognised nothing", which is exactly wrong for the shops that are
+         standing on the right page and reading the wrong products: eight
+         licences land on /categories/flower/ and come back holding fifteen
+         edibles, and the payload that has the flower in it is the one the
+         dump was refusing to describe. */
+      if (dumpShapes > 0) {
+        /* Every array of objects the page sent, wherever it sits, with the
+           keys of its first item. Whatever the shelf is, it is in here. */
+        const found = [];
+        const walk = (value, path, depth) => {
+          if (depth > 7 || found.length > 60 || !value || typeof value !== 'object') return;
+          if (Array.isArray(value)) {
+            const objects = value.filter((v) => v && typeof v === 'object' && !Array.isArray(v));
+            if (objects.length >= 2) {
+              const first = objects[0];
+              let line = `${path} [${value.length}] keys: ${Object.keys(first).slice(0, 24).join(',')}`;
+              /* JSON:API keeps the fields one floor down, under `attributes`,
+                 and says what the thing is in `type`. Both are what a parser
+                 needs to know, and neither shows in the outer key list. */
+              if (first.attributes && typeof first.attributes === 'object') {
+                line += ` | type=${JSON.stringify(first.type)} attributes: ${Object.keys(first.attributes).slice(0, 30).join(',')}`;
+              }
+              found.push(line);
+              /* The keys alone stopped one floor short twice. For the resource
+                 that actually holds the shelf, print the whole thing once:
+                 where the name lives, how the weights are shaped, what the
+                 relationships point at. One item answers all of it. */
+              if (/product/i.test(String(first.type ?? '')) && !found.some((f) => f.startsWith('ITEM '))) {
+                found.push(`ITEM ${JSON.stringify(first).slice(0, 2200)}`);
+              }
+            }
+            value.slice(0, 6).forEach((v, i) => walk(v, `${path}[${i}]`, depth + 1));
+            return;
+          }
+          for (const [k, v] of Object.entries(value)) walk(v, path ? `${path}.${k}` : k, depth + 1);
+        };
+        payloads.slice(0, 40).forEach((pl, i) => walk(pl, `payload${i}`, 0));
+        /* Same shape from twenty pages of one menu is one finding, not twenty. */
+        const bySignature = new Map();
+        for (const f of found) {
+          const sig = f.replace(/payload\d+/, '').replace(/\[\d+\]/g, '[]');
+          if (!bySignature.has(sig)) bySignature.set(sig, f);
+        }
+        entry.shapes = [...bySignature.values()].slice(0, dumpShapes);
+        entry.topLevelKeys = payloads
+          .slice(0, 6)
+          .map((pl) => (pl && typeof pl === 'object' ? Object.keys(pl).slice(0, 14).join(',') : typeof pl))
+          .filter((v, i, a) => a.indexOf(v) === i);
+      }
       entry.productArrays = arrays.length;
       entry.productsSeen = arrays.reduce((n, a) => n + a.length, 0);
       entry.declaredTotal = payloads.reduce((n, pl) => Math.max(n, findDeclaredTotal(pl)), 0) || null;
@@ -1182,6 +1470,21 @@ const main = async () => {
     }, {}),
     usedKnownEndpoint: report.filter((r) => r.usedKnownEndpoint).length,
     shelvesThatShrankByHalf: shrank,
+    /* The licences whose collapse we decided to accept because the reading we
+       were protecting has aged out. Named on their own, because the daily
+       workflow has to be able to tell them apart from a collapse nobody has
+       adjudicated: refusing to publish these is refusing to ever let the hold
+       expire, and that is a deadlock — unpublished shelves age, ageing expires
+       the hold, the expired hold blocks the publish. */
+    shelvesTakenAfterTheHoldExpired: report
+      .filter(
+        (r) =>
+          r.flower > 0 &&
+          previousCounts[r.licence] > 0 &&
+          r.flower * 2 < previousCounts[r.licence] &&
+          !held.has(r.licence),
+      )
+      .map((r) => r.licence),
     hitTheSettleCap: report.filter((r) => r.settled === false).length,
     /* Shelves that were cut short rather than finished. Ten ounces went
        missing from one Bronx shop this way, and nothing in the run said so. */

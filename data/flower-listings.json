@@ -1184,6 +1184,283 @@
     "warnings": []
   },
   {
+    "listingId": "canna-cure-blue-zushi",
+    "licenseNumber": "OCM-CAURD-23-000008",
+    "capturedAt": "2026-09-11T04:36:46Z",
+    "strainNameRaw": "Blue Zushi",
+    "strainNameCanonical": "Blue Zushi",
+    "brand": "Canna Cure",
+    "lineage": "UNKNOWN",
+    "thcPercent": 26.56,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.28
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.14
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.11
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.16
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.75
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 1.45
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://dazed.fun/categories/flower/?category=flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-11T04:36:46Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "canna-cure-gg4",
+    "licenseNumber": "OCM-CAURD-23-000008",
+    "capturedAt": "2026-09-11T04:36:46Z",
+    "strainNameRaw": "GG4",
+    "strainNameCanonical": "GG4",
+    "brand": "Canna Cure",
+    "lineage": "UNKNOWN",
+    "thcPercent": 23.52,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.11
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.1
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.24
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.29
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.32
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0.12
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 1.25
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://dazed.fun/categories/flower/?category=flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-11T04:36:46Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "canna-cure-jack-herer",
+    "licenseNumber": "OCM-CAURD-23-000008",
+    "capturedAt": "2026-09-11T04:36:46Z",
+    "strainNameRaw": "Jack Herer",
+    "strainNameCanonical": "Jack Herer",
+    "brand": "Canna Cure",
+    "lineage": "UNKNOWN",
+    "thcPercent": 24.19,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.21
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.17
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.24
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.58
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 1.27
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://dazed.fun/categories/flower/?category=flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-11T04:36:46Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "canna-cure-white-widow",
+    "licenseNumber": "OCM-CAURD-23-000008",
+    "capturedAt": "2026-09-11T04:36:46Z",
+    "strainNameRaw": "White Widow",
+    "strainNameCanonical": "White Widow",
+    "brand": "Canna Cure",
+    "lineage": "UNKNOWN",
+    "thcPercent": 22.65,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.13
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.09
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.21
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.23
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.41
+        },
+        {
+          "name": "GUAIOL",
+          "rawName": null,
+          "percent": 0.09
+        },
+        {
+          "name": "OTHER",
+          "rawName": "Total Terpenes",
+          "percent": 1.15
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "harvestedOn": null,
+    "packagedOn": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      0.7
+    ],
+    "productUrl": null,
+    "sources": [
+      {
+        "url": "https://dazed.fun/categories/flower/?category=flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-09-11T04:36:46Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
     "listingId": "electraleaf-blue-lobster",
     "licenseNumber": "OCM-CAURD-23-000009",
     "capturedAt": "2026-09-10T21:30:32Z",

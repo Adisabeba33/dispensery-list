@@ -418,6 +418,20 @@ const validateStrainReference = (FILE: string) => {
   }
 
   const validate = compile('data/schema/strain-reference.schema.json');
+
+  /* Two files, one vocabulary. A shelf listing's terpenes and a strain's
+     reference profile are read together, so LIMONENE has to mean LIMONENE on
+     both sides. Keeping the list in one place is not possible while each
+     schema compiles alone, so the copies are checked against each other here
+     instead of trusted to stay in step. */
+  const listingTerpenes = (readJson('data/schema/flower-listing.schema.json') as any)
+    ?.properties?.terpenes?.properties?.profile?.items?.properties?.name?.enum;
+  const referenceTerpenes = (readJson('data/schema/strain-reference.schema.json') as any)
+    ?.properties?.profile?.items?.properties?.name?.enum;
+  if (JSON.stringify(listingTerpenes) !== JSON.stringify(referenceTerpenes)) {
+    fail(FILE, 'schema', 'the terpene vocabulary differs between the listing and reference schemas');
+  }
+
   const seen = new Map<string, number>();
 
   raw.forEach((record, i) => {
@@ -434,6 +448,18 @@ const validateStrainReference = (FILE: string) => {
     // Borrowed data without a licence must not ship.
     if (r.basis?.kind === 'EXTERNAL_DATASET' && !r.basis?.datasetLicence) {
       fail(FILE, at('basis.datasetLicence'), 'an external dataset entry needs the licence permitting this use');
+    }
+
+    /* The same rule as the shelf side: a compound outside the vocabulary is
+       recorded under its own spelling or it is lost. The research agent hit
+       this from the other direction — it had quantified caryophyllene oxide,
+       the brief told it to write OTHER + rawName, and the schema had no
+       rawName to write to, so the numbers were dropped rather than invented
+       into a shape. That hole is closed; this keeps it closed. */
+    for (const [j, t] of (Array.isArray(r.profile) ? r.profile : []).entries()) {
+      if (t?.name === 'OTHER' && !t?.rawName) {
+        fail(FILE, at(`profile[${j}]`), 'OTHER requires rawName, otherwise the terpene is unrecoverable');
+      }
     }
 
     // A median over one sample is an anecdote wearing a statistic's clothes.

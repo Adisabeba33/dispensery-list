@@ -11,7 +11,8 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  classify, cleanStrainName, mergeBySize, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
+  categoryFromProductUrl, classify, cleanStrainName, flattenJsonApiProducts, isProductPage,
+  mergeBySize, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 
@@ -321,6 +322,181 @@ check('a number the weight left behind goes too',
   /* Spelling and punctuation fold away; the strain does not. */
   check('spacing and case fold', strainKey('Sunset  SHERBERT') === strainKey('sunset-sherbert'), true);
   check('Superboof meets Super Boof', strainKey(c('Superboof')) === strainKey(c('Super Boof')), true);
+}
+
+/* ---------------------------------------------------------------- Routing --
+ * Which address is the shelf. Every URL below was read off a real run's log,
+ * including the two that cost us a shelf each.
+ */
+{
+  const page = (url) => isProductPage(url);
+  // NY Flos: 107 products declared, none read — we were standing on one packet
+  // of gummies, which won the tie-break for being the deepest link on the page.
+  check('a product under its brand and category',
+    page('https://getflos.com/menu/products/ayrloom-766427/edibles/ayrloom-island-time-100mg-8453750/'), true);
+  // BX Buddiez: sixteen items where the shop has ninety-two.
+  check('a product under /product/', page('https://bxbuddiez.com/product/nanticoke-coconut-cream-flower/'), true);
+  check('a slug on its own is still a product', page('https://example.test/products/blue-dream-3-5g-8453750'), true);
+
+  /* And what must not be mistaken for one. */
+  check('a category listing', page('https://qualityhigh.com/store/categories/flower/'), false);
+  check('a branch category listing', page('https://www.nycbud.com/shop/queens/categories/flower/?order=-x'), false);
+  check('products/flower is a listing', page('https://example.test/products/flower'), false);
+  check('a bare products route', page('https://example.test/shop/products/'), false);
+  check('a one-word category', page('https://example.test/products/edibles'), false);
+
+  /* Link sets copied from a run's own log, in the order the page gave them. */
+  const flos = [
+    { href: 'https://getflos.com/menu/?search_active=true', text: '' },
+    { href: 'https://getflos.com/menu/?open_cart=true', text: '' },
+    { href: 'https://getflos.com/locations/menu', text: 'NY FLOS LLC' },
+    { href: 'https://getflos.com/menu/signup/', text: 'Sign Up' },
+    { href: 'https://getflos.com/menu/', text: 'SHOP NOW' },
+    { href: 'https://getflos.com/menu/categories/accessories/', text: 'Accessories' },
+    { href: 'https://getflos.com/menu/categories/beverages/', text: 'Beverages' },
+    { href: 'https://getflos.com/menu/categories/cbd/', text: 'CBD' },
+  ];
+  // NY Flos publishes no flower link at all. The whole menu is the answer;
+  // sixteen grinders was the old one.
+  check('no flower link means the whole menu',
+    pickMenuLink(flos, 'https://www.getflos.com/', 'NY Flos LLC'), 'https://getflos.com/menu/');
+  check('a category we do not collect is not a menu',
+    rankMenuLink('https://getflos.com/menu/categories/accessories/', 'Accessories'), 0);
+  check('nor is the signup page', rankMenuLink('https://getflos.com/menu/signup/', 'Sign Up'), 0);
+
+  const caldwell = [
+    { href: 'https://caldwellsny.com/menu/', text: 'SHOP NOW' },
+    { href: 'https://caldwellsny.com/menu/categories/flower/', text: '' },
+    { href: 'https://caldwellsny.com/menu/categories/vape/', text: '' },
+    { href: 'https://caldwellsny.com/menu/categories/edibles/', text: '' },
+  ];
+  check('the flower category still beats the menu root',
+    pickMenuLink(caldwell, 'https://caldwellsny.com', 'CALDWELL CANNABIS CO'),
+    'https://caldwellsny.com/menu/categories/flower/');
+
+  /* The rule the depth tie-break was written for, which must survive its
+     reversal: three licences all took the chain page and its eight
+     placeholder items. */
+  const chain = [
+    { href: 'https://gfw.test/stores/products/flower', text: 'Flower' },
+    { href: 'https://gfw.test/stores/harlem/products/flower', text: 'Flower' },
+  ];
+  check('a branch page still beats its chain',
+    pickMenuLink(chain, 'https://gfw.test', 'Green Flower Wellness'),
+    'https://gfw.test/stores/harlem/products/flower');
+
+  check('a product page cannot be the menu',
+    rankMenuLink('https://getflos.com/menu/products/ayrloom-766427/edibles/ayrloom-island-100mg-8453750/', 'Shop'), 0);
+  check('the flower category still wins',
+    rankMenuLink('https://qualityhigh.com/store/categories/flower/', 'Flower'), 100);
+}
+
+/* --------------------------------------------------------------- JSON:API --
+ * Tymber/Blaze. Nineteen shops declared a hundred products apiece and handed
+ * us none of them, because a product here is a resource — its own keys are
+ * id, type, attributes, relationships — and the shelf fields are one floor
+ * down, with the category and the brand held as ids into `included`.
+ *
+ * The two products below are copied from a resource a diagnostic run printed
+ * in full, so what is tested is the payload the shop really sends: an edible
+ * that must be rejected, and the same shape carrying flower.
+ */
+{
+  const edible = {
+    id: 3976845,
+    type: 'products',
+    attributes: {
+      id: 3976845,
+      name: 'Level | Edible | Hybrid Protab | 5ct/100MG',
+      size: { amount: 1, display_text: null, type: 'EACH', units: 'each' },
+      weight_prices: null,
+      unit_prices: [{ display_name: '1 each', quantity: 1, price: { amount: 2400, currency: 'usd' } }],
+      potency: { thc: 25, units: 'mg' },
+      terpenoids: null,
+      strain: null,
+      flower_type: 'Hybrid',
+      in_stock: true,
+      store_url: 'https://urbanweedsny.com/menu/products/level-384256/edibles/level-edible-hybrid-protab-5ct100mg-3976845',
+    },
+    relationships: {
+      category: { data: { id: 14966, type: 'product_categories' } },
+      brand: { data: { id: 384256, type: 'product_brands' } },
+    },
+  };
+
+  /* The same product arriving a second time with fewer fields — the response
+     that broke the first reading of this menu, because on its own it has no
+     title at all. */
+  const sparse = {
+    id: 7781002,
+    type: 'products',
+    attributes: {
+      id: 7781002,
+      potency: { thc: 27.4, units: '%' },
+      terpenoids: [{ name: 'β-Caryophyllene', value: 0.61 }, { name: 'Limonene', value: 0.44 }],
+      in_stock: true,
+      store_url: 'https://urbanweedsny.com/menu/products/hepworth-2211/flower/hepworth-blue-dream-3-5g-7781002',
+    },
+  };
+  const full = {
+    id: 7781002,
+    type: 'products',
+    attributes: {
+      id: 7781002,
+      name: 'Hepworth | Blue Dream | 3.5g',
+      flower_type: 'Sativa',
+      size: { amount: 3.5, display_text: '3.5g', type: 'WEIGHT', units: 'g' },
+      weight_prices: [{ display_name: '3.5g', price: { amount: 4000, currency: 'usd' } }],
+    },
+    relationships: {
+      category: { data: { id: 14970, type: 'product_categories' } },
+      brand: { data: { id: 2211, type: 'product_brands' } },
+    },
+  };
+
+  const payloads = [
+    { data: [sparse], included: [] },
+    {
+      data: [edible, full],
+      included: [
+        { id: 14966, type: 'product_categories', attributes: { name: 'Edibles' } },
+        { id: 14970, type: 'product_categories', attributes: { name: 'Flower' } },
+        { id: 384256, type: 'product_brands', attributes: { name: 'Level' } },
+        { id: 2211, type: 'product_brands', attributes: { name: 'Hepworth' } },
+      ],
+    },
+  ];
+
+  const rows = flattenJsonApiProducts(payloads);
+  check('two products, not four', rows.length, 2);
+
+  const byId = new Map(rows.map((r) => [r.id, r]));
+  const e = byId.get(3976845);
+  check('attributes are lifted', e?.name, 'Level | Edible | Hybrid Protab | 5ct/100MG');
+  check('category is resolved to a word', e?.category, 'Edibles');
+  check('brand is resolved to a word', e?.brand, 'Level');
+  // Caught by the title before the category is even read; both would do.
+  check('an edible is not flower', classify(e), 'title-not-flower');
+
+  const f = byId.get(7781002);
+  check('a product split across payloads keeps its title', f?.name, 'Hepworth | Blue Dream | 3.5g');
+  check('and its terpenes', f?.terpenoids?.length, 2);
+  check('flower is flower', classify(f), 'flower');
+
+  const listing = toListing(f, shop, SRC, {});
+  check('jsonapi strain', listing?.strainNameRaw, 'Blue Dream');
+  check('jsonapi brand', listing?.brand, 'Hepworth');
+  check('jsonapi size', listing?.availableSizesGrams, [3.5]);
+  check('jsonapi lineage', listing?.lineage, 'SATIVA');
+  check('jsonapi terpenes', listing?.terpenes?.profile?.map((t) => t.name), ['CARYOPHYLLENE', 'LIMONENE']);
+  check('jsonapi terpene source', listing?.terpenes?.source, 'MENU_LISTING');
+
+  /* "each" is a count, not a weight. Reading it as one put single gummies on
+     the shelf as one-gram flower in an earlier draft of the size reader. */
+  check('an each is not a gram', toListing(edible, shop, SRC, {}), null);
+
+  check('category off the product address', categoryFromProductUrl(
+    'https://urbanweedsny.com/menu/products/hepworth-2211/flower/hepworth-blue-dream-3-5g'), 'flower');
 }
 
 if (failures) {
