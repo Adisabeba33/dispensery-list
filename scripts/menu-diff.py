@@ -95,16 +95,46 @@ if len(gone_from_market) > 40:
 # сказать отдельно. Молча придержанная полка это способ спрятать поломку
 # коллектора на две недели вперёд.
 held = []
-adjudicated = set()
 summary_path = ROOT / "enrichment-output" / "menu-summary.json"
 if summary_path.exists():
     try:
-        summary = json.loads(summary_path.read_text())
-        held = summary.get("shelvesHeldAtPreviousReading") or []
-        adjudicated = set(summary.get("shelvesTakenAfterTheHoldExpired") or [])
+        held = json.loads(summary_path.read_text()).get("shelvesHeldAtPreviousReading") or []
     except (ValueError, OSError):
         held = []
-        adjudicated = set()
+
+# Обвал, который коллектор физически не мог придержать: он держит полку, только
+# пока чтение, которое он защищает, моложе двух дней. Если прежнее чтение
+# старше — выдержка истекла, новое чтение взято осознанно, и запрещать за это
+# публикацию значит не давать выдержке истечь никогда.
+#
+# Вердикт считается здесь, по самим данным, а не принимается из сводки
+# коллектора. Сводка переписывается каждой партией из тридцати пяти магазинов,
+# так что до сюда доезжает вердикт по последним тридцати пяти из четырёхсот
+# шестидесяти восьми. Именно поэтому вчерашняя починка пропустила AFI и не
+# пропустила пятерых из ранних партий.
+SUSPECT_CARRY_DAYS = 2
+cutoff = datetime.now(timezone.utc).timestamp() - SUSPECT_CARRY_DAYS * 86400
+
+def newest_reading(rows, lic):
+    stamps = []
+    for l in rows:
+        if l.get("licenseNumber") != lic:
+            continue
+        at = l.get("capturedAt")
+        if not at:
+            continue
+        try:
+            stamps.append(datetime.fromisoformat(at.replace("Z", "+00:00")).timestamp())
+        except ValueError:
+            pass
+    return max(stamps) if stamps else None
+
+def aged_out(lic):
+    at = newest_reading(before, lic)
+    # Без отметки времени судить не о чем — пусть решает человек.
+    return at is not None and at < cutoff
+
+adjudicated = {lic for lic, _b, _a in collapsed if aged_out(lic)}
 if held:
     lines += ["", f"### Полки, оставленные от прошлого чтения: {len(held)}", "",
               "Прочитано заметно меньше прежнего — не публикуем, держим прежнее.",
