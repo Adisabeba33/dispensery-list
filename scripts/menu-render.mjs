@@ -658,6 +658,60 @@ const classify = (p) => {
 
 const inRange = (v, max) => (v === null || v === undefined || v < 0 || v > max ? null : v);
 
+
+/* A product's own page, when the menu gives one that can actually be opened.
+ *
+ * Menus state this three ways: an absolute URL, a root-relative path, and a
+ * bare slug ("blue-burst"). The first two resolve; the third does not, and
+ * building "https://shop.example/blue-burst" from it would be inventing a link
+ * — the platform's real path might be /product/, /menu/, /shop/p/ or nothing
+ * at all. An empty field beats a plausible guess, so a bare slug is dropped.
+ *
+ * This is the field that turns a collected terpene panel from a lead into a
+ * record: without a product page there is no route to the batch id a tier-C
+ * terpene reading requires, which is why 127 collected panels are unusable. */
+const productPage = (p, sourceUrl) => {
+  const raw = flatten(pick(p, ['productUrl', 'url', 'permalink', 'link', 'href', 'canonicalUrl']));
+  if (!raw || typeof raw !== 'string') return null;
+  const value = raw.trim();
+  if (!value || value.length > 500) return null;
+  try {
+    if (/^https?:\/\//i.test(value)) return new URL(value).toString();
+    if (value.startsWith('/')) return new URL(value, sourceUrl).toString();
+  } catch {
+    return null;
+  }
+  return null;
+};
+
+/* The menu's own words about the product.
+ *
+ * Rule 5 in the source hierarchy — written to sell, corroboration only, never
+ * a lone source for anything. It earns its place anyway: menu copy routinely
+ * states parentage ("a Gelato x Sherb cross") and sensory notes for cultivars
+ * no aggregator covers, and it costs nothing to capture at collection time.
+ *
+ * Stored close to verbatim: tags stripped and whitespace collapsed so it is
+ * readable, but no summarising, because a curator has to see what the shop
+ * actually claimed. Capped so one shop's essay cannot dominate the file. */
+const cleanDescription = (p) => {
+  const raw = flatten(
+    pick(p, ['description', 'productDescription', 'longDescription', 'shortDescription',
+             'details', 'body', 'summary', 'about']),
+  );
+  if (!raw || typeof raw !== 'string') return null;
+  const text = raw
+    .replace(/<br\s*\/?>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&quot;/gi, '"')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return text.length >= 12 ? text.slice(0, 2000) : null;
+};
+
 const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const rawName = flatten(pick(p, ['name', 'productName', 'title', 'displayName']));
   if (!rawName) return null;
@@ -792,7 +846,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
           ? stock > 0
           : Boolean(stock),
     availableSizesGrams: sizes.length ? [...new Set(sizes)].sort((a, b) => a - b) : null,
-    productUrl: null,
+    productUrl: productPage(p, sourceUrl),
+    description: cleanDescription(p),
     sources: [{ url: sourceUrl, label: 'Shop menu', type: 'MENU_PLATFORM', retrievedAt: NOW }],
     warnings: [],
   };

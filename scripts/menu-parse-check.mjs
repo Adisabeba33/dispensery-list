@@ -110,6 +110,29 @@ check('unrelated type field', classify({ name: 'Grape Cake', type: 'variant', ca
 // which strains come by the eighth, quarter, half or ounce.
 check('flower without a size', toListing({ Name: 'Nameless Bud', type: 'Flower' }, shop, SRC, {}), null);
 
+/* ------------------------------------------------------- product page + copy --
+ * Both were hardcoded null for every one of 9,542 collected listings, which is
+ * why 127 collected terpene panels are leads rather than records: without a
+ * product page there is no route to the batch id a tier-C reading requires.
+ */
+const withUrl = (v) => toListing({ Name: 'Blue Burst', type: 'Flower', Options: ['3.5g'], url: v }, shop, SRC, {});
+check('absolute product url kept', withUrl('https://x.test/p/a')?.productUrl, 'https://x.test/p/a');
+check('root-relative url resolved', withUrl('/product/b')?.productUrl, 'https://example-dispensary.test/product/b');
+// A bare slug is NOT a URL. Building one would invent a link: the platform's
+// real path might be /product/, /menu/, /shop/p/ or nothing at all.
+check('bare slug refused', withUrl('blue-burst')?.productUrl, null);
+check('junk url refused', withUrl('javascript:void(0)')?.productUrl, null);
+check('missing url stays null', toListing({ Name: 'X', type: 'Flower', Options: ['3.5g'] }, shop, SRC, {})?.productUrl, null);
+
+const withDesc = (v) => toListing({ Name: 'Blue Burst', type: 'Flower', Options: ['3.5g'], description: v }, shop, SRC, {});
+check('menu copy kept, tags stripped',
+  withDesc('<p>A <b>Gelato</b> x Sherb cross, sweet citrus.</p>')?.description,
+  'A Gelato x Sherb cross, sweet citrus.');
+check('entities decoded', withDesc('Sweet &amp; loud, the grower&#39;s pick')?.description, "Sweet & loud, the grower's pick");
+// Rule 5 evidence is only worth keeping when there is a sentence to read.
+check('too short to be copy', withDesc('Nice')?.description, null);
+check('missing copy stays null', toListing({ Name: 'X', type: 'Flower', Options: ['3.5g'] }, shop, SRC, {})?.description, null);
+
 /* --------------------------------------------- one product per weight ----
  * Some platforms publish each weight as its own product with an empty variants
  * array. The two rows must end up as one strain carrying both sizes.

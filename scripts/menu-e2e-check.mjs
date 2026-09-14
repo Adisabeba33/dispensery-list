@@ -77,6 +77,16 @@ try {
   check('every gram size read', collected[0]?.availableSizesGrams, [1, 3.5, 7, 14, 28]);
   check('potency read from a range', collected[0]?.thcPercent, 24.1);
   check('lineage read', collected.map((l) => l.lineage), ['HYBRID', 'INDICA']);
+  // The product page and the menu's own copy, through the full browser path.
+  // Both were hardcoded null on every collected listing until now; the mapper
+  // check next door proves the mapping, this proves it survives the capture.
+  check('product page resolved against the shop', collected[0]?.productUrl,
+    'http://localhost:4399/product/blue-burst');
+  check('absolute product page kept', collected[1]?.productUrl,
+    'https://cdn.example.test/p/grape-cake');
+  check('menu copy captured, tags stripped', collected[0]?.description,
+    'A Gelato x Sherb cross. Sweet citrus, heavy finish.');
+  check('no copy stays null', collected[1]?.description, null);
   // Shelves the run did not visit must survive it.
   check('other shelves carried forward', summary.shelvesCarriedForward > 0, true);
 } finally {

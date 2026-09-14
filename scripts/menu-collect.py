@@ -72,7 +72,9 @@ FIELDS = {
     "variants": ["variants", "prices", "weights", "options", "sizes", "priceOptions"],
     "inStock": ["inStock", "available", "isAvailable", "inventory", "stock"],
     "productId": ["id", "_id", "productId", "slug"],
-    "url": ["url", "productUrl", "permalink"],
+    "url": ["productUrl", "url", "permalink", "link", "href", "canonicalUrl"],
+    "description": ["description", "productDescription", "longDescription",
+                    "shortDescription", "details", "body", "summary", "about"],
 }
 
 TERPENE_MAP = {
@@ -221,6 +223,41 @@ def slug(*parts):
     return re.sub(r"-+", "-", re.sub(r"[^a-z0-9]+", "-", joined)).strip("-")[:80]
 
 
+def product_page(product, source_url):
+    """The product's own page, when the menu gives one that can be opened.
+
+    A bare slug ("blue-burst") is dropped rather than built into a URL: the
+    platform's real path might be /product/, /menu/, /shop/p/ or nothing, and
+    an empty field beats a plausible guess. See menu-render.mjs, which is the
+    collector CI actually runs; this mirrors it so the two agree.
+    """
+    raw = flatten(pick(product, "url"))
+    if not isinstance(raw, str):
+        return None
+    value = raw.strip()
+    if not value or len(value) > 500:
+        return None
+    if re.match(r"https?://", value, re.I):
+        return value
+    if value.startswith("/"):
+        return urljoin(source_url, value)
+    return None
+
+
+def clean_description(product):
+    """The menu's own copy: rule 5 evidence, corroboration only, never alone."""
+    raw = flatten(pick(product, "description"))
+    if not isinstance(raw, str):
+        return None
+    text = re.sub(r"<br\s*/?>", " ", raw, flags=re.I)
+    text = re.sub(r"<[^>]+>", " ", text)
+    for entity, char in (("&nbsp;", " "), ("&amp;", "&"), ("&#39;", "'"),
+                         ("&apos;", "'"), ("&quot;", '"')):
+        text = text.replace(entity, char)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text[:2000] if len(text) >= 12 else None
+
+
 def build_listing(product, shop, source_url):
     name = flatten(pick(product, "name"))
     if not name:
@@ -283,7 +320,8 @@ def build_listing(product, shop, source_url):
         "packagedOn": None,
         "inStock": in_stock,
         "availableSizesGrams": sorted(set(sizes)) or None,
-        "productUrl": None,
+        "productUrl": product_page(product, source_url),
+        "description": clean_description(product),
         "sources": [{"url": source_url, "label": "Shop menu", "type": "MENU_PLATFORM", "retrievedAt": NOW}],
         "warnings": [],
     }
