@@ -299,7 +299,11 @@ check('a number the weight left behind goes too',
    Flower Power and Whole Lotta Love open with packaging words and are still
    cultivars, Runtz is a brand AND a cultivar, and Gelato 41 is not Gelato. */
 {
-  const brands = new Set(['Dank', 'GRASSROOTS', "Papa's Herb", 'Runtz', 'TTM', 'Bouket', 'Matter']);
+  const brands = new Set([
+    'Dank', 'GRASSROOTS', "Papa's Herb", 'Runtz', 'TTM', 'Bouket', 'Matter',
+    // Growers whose names sit in the shelf-label cases below.
+    '5 Boro', 'Leal', 'Honest PharmCo',
+  ]);
   const c = (raw, brand = null) => canonicalStrain(raw, brand, brands);
 
   check('packaging around the name', c('Premium Cannabis Flower Jar Sour Diesel'), 'Sour Diesel');
@@ -318,6 +322,26 @@ check('a number the weight left behind goes too',
   check('a brand that is also the head of a cultivar', c('Runtz Cake'), 'Runtz Cake');
   check('a numbered cut is not its parent', c('Gelato 41'), 'Gelato 41');
   check('Gelato 41 and Gelato stay apart', strainKey(c('Gelato 41')) === strainKey(c('Gelato')), false);
+
+  /* What a shop writes around the cultivar. Each line below is a real menu
+     entry that the register counted as a strain of its own. */
+  check('a shelf label is not a strain',
+    c('Amnesia Haze -Sativa- 21.04% THC - Dime Bag . Flower - 5 Boro -gg11 FRONT'), 'Amnesia Haze');
+  check('nor the aisle it sits in', c('Trump Runtz -Hybrid - (Flower) - Y1'), 'Trump Runtz');
+  check('a shop code glued to a grade word', c('R14-Flower -Black Magic'), 'Black Magic');
+  check('a grower carrying packaging', c('Leal Flower- Lemon Venom'), 'Lemon Venom');
+  check('a grade word behind a hyphen', c('Sherb - Micro Grown'), 'Sherb');
+  check('a grower ahead of a grade word',
+    c('Runtz Premium Flower', 'Honest PharmCo'), 'Runtz');
+
+  /* And what must survive all of that. A cultivar whose name is a letter and
+     a number reads as noise twice over — "g" is a unit, "13" is a number —
+     and an earlier draft of the shelf-label rule deleted it outright. */
+  check('a cultivar that is a letter and a number', c('G-13'), 'G-13');
+  check('and another', c('AK-47'), 'AK-47');
+  check('a bare code that is a cultivar', c('GG4'), 'GG4');
+  check('a code the shop did name a strain', c('RS11 Premium Cannabis Flower'), 'RS11');
+  check('a numbered cut with no grade word', c('Z1 #4'), 'Z1 #4');
 
   /* Spelling and punctuation fold away; the strain does not. */
   check('spacing and case fold', strainKey('Sunset  SHERBERT') === strainKey('sunset-sherbert'), true);

@@ -34,12 +34,14 @@ const GRADE = [
   'limited edition', 'limited edition premium flower', 'new', 'sale',
   'cannabis', 'weed', 'strain', 'strains', 'smokeable', 'smokable',
   'item', 'sku', 'spray can', 'large', 'small', 'mixed',
+  'package', 'packaging', 'sun grown flower', 'grown', 'micro', 'micro grown',
 ];
 
 /* Lineage is carried in its own field; in a name it is a label, not a name. */
 const LINEAGE = [
   'indica', 'sativa', 'hybrid', 'indica hybrid', 'sativa hybrid',
   'indica dominant', 'sativa dominant', 'indica-dominant', 'sativa-dominant',
+  'dominant', 'dominant hybrid',
   'ih', 'sh', 'i', 's', 'h',
 ];
 
@@ -63,8 +65,33 @@ const LINEAGE_SET = new Set(LINEAGE.map(norm));
 const isMeasure = (seg) =>
   /^[\d.\s/]*(g|gr|gram|grams|oz|ounce|eighth|quarter|half|zip)?$/i.test(seg) ||
   /^#?\s*\d{1,5}\s*[a-z]{0,3}$/i.test(seg) ||
-  /^(thc|cbd)\b/i.test(seg) ||
-  /^\d{1,2}(\.\d+)?\s*%/.test(seg);
+  /^(thc|cbd|tac|thca|cbda)\b/i.test(seg) ||
+  /* The lab's own row label, which two shops print inside the product name.
+     Spelled "Cannabinolds" on one of them; no cultivar opens this way. */
+  /^total\s+cannabin/i.test(seg) ||
+  /^\d{1,2}\.?(\d+)?\s*%/.test(seg);
+
+/**
+ * Where the jar sits in the shop, not what is in it.
+ *
+ * "Amnesia Haze -Sativa- 21.04% THC - Dime Bag . Flower - 5 Boro -gg11 FRONT"
+ * ends with the aisle and shelf the jar is on. Shops that label their shelves
+ * this way put the label in the product name, and every one of those labels
+ * became a cultivar of its own: one shop's twenty-one strains were twenty-one
+ * novelties in the register and all of them were Blue Dream, Amnesia Haze and
+ * the like.
+ *
+ * A bare code is the dangerous half of this, because GG4, G13 and AK47 are
+ * cultivars of exactly that shape. So a bare code is only ever dropped while
+ * another segment still names something — a listing that says nothing but
+ * "GG4" is about the cultivar.
+ */
+const SHELF_POSITION = /\b(front|back|middle|centre|center|left|right|top|bottom|shelf|row|case)\b/i;
+const isShelfCode = (seg) => {
+  const s = norm(seg);
+  if (SHELF_POSITION.test(s) && /[a-z]{1,3}\s?\d{1,3}/i.test(s)) return true;
+  return /^[a-z]{1,3}\s?\d{1,3}$/i.test(s);
+};
 
 /** Noise that clings inside a segment rather than forming one. */
 const stripInline = (seg) =>
@@ -95,23 +122,51 @@ export const canonicalStrain = (raw, brand = null, brands = new Set()) => {
   if (brand) brandKeys.add(strainKey(brand));
 
   const segments = text
-    .split(/\s+[-–—|]\s+|\s*\|\s*|\s*·\s*/)
+    /* A dash needs a space on only ONE side to be a fence. It used to need
+       both, so "Blue Dream -Hybrid- 25.% THC" was a single segment and the
+       lineage label rode along into the name. AK-47 and G-13 are untouched:
+       their hyphens have a space on neither side. */
+    .split(/\s+[-–—]\s*|\s*[-–—]\s+|\s*\|\s*|\s*·\s*/)
     .map((s) => stripInline(s.replace(/^[\s\-–—|.,]+|[\s\-–—|.,]+$/g, '')))
     .filter(Boolean);
 
-  const isNoiseWord = (w) => GRADE_SET.has(w) || LINEAGE_SET.has(w) || isMeasure(w);
+  const isNoiseWord = (w) => GRADE_SET.has(w) || LINEAGE_SET.has(w) || isMeasure(w) || isShelfCode(w);
 
   const classify = (seg) => {
     const n = norm(seg);
     if (!n) return 'empty';
-    if (GRADE_SET.has(n)) return 'grade';
-    if (LINEAGE_SET.has(n)) return 'lineage';
+    /* A hyphen must not hide a grade word: shops write "Sun-Grown" as often
+       as "Sun Grown", and only one of them was being recognised. */
+    const h = n.replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
+    if (GRADE_SET.has(n) || GRADE_SET.has(h)) return 'grade';
+    if (LINEAGE_SET.has(n) || LINEAGE_SET.has(h)) return 'lineage';
     if (isMeasure(n)) return 'measure';
     if (brandKeys.has(strainKey(n))) return 'brand';
+    if (isShelfCode(seg)) return 'code';
     /* "Flower #284ZZ" is a grade word and a stock number and nothing else. A
-       segment made entirely of such words names no cultivar. */
-    const words = n.split(' ');
-    if (words.length > 1 && words.every(isNoiseWord)) return 'grade';
+       segment made entirely of such words names no cultivar.
+
+       Hyphens count as spaces here and nowhere else. A shop writes its own
+       code straight onto the grade word — "R14-Flower", "LC-Premium Indoor
+       Flower" — and those hyphens cannot be allowed to split a segment in
+       general, because AK-47 and G-13 are cultivars. Reading them apart only
+       to ask "is every piece noise" is safe: a cultivar always has at least
+       one word that is not. */
+    const words = n.split(/[\s-]+/).filter(Boolean);
+    /* Reading hyphens apart costs something, and G-13 is what it costs: its
+       two pieces are "g" (a unit) and "13" (a number), both noise, and the
+       cultivar vanished. So the verdict needs an actual grade or lineage word
+       present — a real one, not a measure that happens to look like one.
+       "R14-Flower" has "flower"; G-13 has nothing of the kind. */
+    const hasGradeWord = words.some((w) => GRADE_SET.has(w) || LINEAGE_SET.has(w));
+    if (words.length > 1 && hasGradeWord && words.every(isNoiseWord)) {
+      /* But a code inside such a segment is not always the shop's shelf: RS11
+         and Z1 are cultivars, and "RS11 Premium Cannabis Flower" is a listing
+         about RS11. Calling it 'code' rather than 'grade' is what lets it be
+         recovered when nothing else in the name survives — and ignored when
+         something does, which is the "R14-Flower - Black Magic" case. */
+      return words.some(isShelfCode) ? 'code' : 'grade';
+    }
     return 'name';
   };
 
@@ -146,15 +201,41 @@ export const canonicalStrain = (raw, brand = null, brands = new Set()) => {
     return seg;
   };
 
-  const kinds = segments.map(classify);
+  /* A grower with packaging attached is still a grower. Splitting on the
+     one-sided dash turned "Leal Flower- Lemon Venom" into two segments, and
+     "Leal Flower" — a brand and a grade word — was no longer recognised as
+     either, so it rode into the name. What is left of a segment after its
+     grower and its packaging are taken off decides what the segment is. */
+  const isJustTrimmings = (seg) => {
+    const words = norm(seg).split(/[\s-]+/).filter(Boolean);
+    if (words.length < 2) return false;
+    /* Asking a different question than stripLeadingBrand does, so it takes a
+       different bound. That one keeps two words alive because it is producing
+       a name and "Runtz Cake" must not become "Cake"; this one only decides
+       what the segment IS, and "Leal Flower" is a grower and its packaging
+       however few words are left. */
+    for (let n = Math.min(4, words.length - 1); n >= 1; n -= 1) {
+      if (!brandKeys.has(strainKey(words.slice(0, n).join(' ')))) continue;
+      const rest = words.slice(n);
+      if (rest.every(isNoiseWord) && !rest.some(isShelfCode)) return true;
+    }
+    return false;
+  };
+
+  const kinds = segments.map((seg) => {
+    const kind = classify(seg);
+    return kind === 'name' && isJustTrimmings(seg) ? 'brand' : kind;
+  });
   let kept = segments
     .filter((_, i) => kinds[i] === 'name')
     .map((s) => stripLeadingNoise(stripLeadingBrand(s)));
 
-  /* Nothing but grower and packaging: the shop told us no cultivar, so take
-     what it did say rather than invent one. */
+  /* Nothing but grower, packaging and shelf label: the shop told us no
+     cultivar, so take what it did say rather than invent one. A bare code is
+     preferred to a grower here, because "GG4" on its own is the cultivar. */
   if (kept.length === 0) {
-    kept = segments.filter((_, i) => kinds[i] === 'brand');
+    kept = segments.filter((_, i) => kinds[i] === 'code');
+    if (kept.length === 0) kept = segments.filter((_, i) => kinds[i] === 'brand');
     if (kept.length === 0) return null;
   }
 
