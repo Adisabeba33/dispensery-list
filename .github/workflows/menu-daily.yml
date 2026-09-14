@@ -74,6 +74,10 @@ jobs:
               if npm run validate > /tmp/validate.txt 2>&1; then
                 git add data/flower-listings.json
                 git diff --cached --quiet || git commit -q -m "menu: daily refresh, shops $offset+"
+                # Each batch overwrites the summary, so the shelves it held
+                # were named for thirty-five shops and forgotten for the other
+                # four hundred and thirty-three.
+                python scripts/held-shelves.py collect || true
               else
                 echo "::warning::Batch at $offset did not validate; its listings were not kept."
                 tail -20 /tmp/validate.txt
@@ -87,6 +91,8 @@ jobs:
             fi
             echo "::endgroup::"
           done
+          # Put every batch's held shelves back where the report looks.
+          python scripts/held-shelves.py merge || true
           echo "batches_failed=$failed" >> "$GITHUB_ENV"
 
       # menu-diff reads the collector's summary for the shelves it held back, so
