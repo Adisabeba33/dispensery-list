@@ -138,9 +138,13 @@
                   "CARENE",
                   "SABINENE",
                   "FENCHOL",
+                  "CARYOPHYLLENE_OXIDE",
+                  "ISOPULEGOL",
+                  "CYMENE",
+                  "TERPINENE",
                   "OTHER"
                 ],
-                "description": "Controlled vocabulary. Menus spell these many ways — 'β-Caryophyllene', 'Beta-Caryophyllene', 'b caryophyllene' all normalize to CARYOPHYLLENE."
+                "description": "Controlled vocabulary. Menus spell these many ways — 'β-Caryophyllene', 'Beta-Caryophyllene', 'b caryophyllene' all normalize to CARYOPHYLLENE. CARYOPHYLLENE_OXIDE is deliberately separate from CARYOPHYLLENE: it is the oxidation product that accumulates as flower ages, and it reads woody and medicinal rather than peppery, so folding it into its parent would report a cured jar as a fresh one."
               },
               "rawName": {
                 "type": [

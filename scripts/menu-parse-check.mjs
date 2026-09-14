@@ -110,6 +110,39 @@ check('unrelated type field', classify({ name: 'Grape Cake', type: 'variant', ca
 // which strains come by the eighth, quarter, half or ounce.
 check('flower without a size', toListing({ Name: 'Nameless Bud', type: 'Flower' }, shop, SRC, {}), null);
 
+/* ----------------------------------------------------------------- terpenes --
+ * Audited against what the register actually filed as OTHER: 772 entries over
+ * ten spellings. Four defects, each of which silently lost or invented data.
+ */
+const terps = (list) =>
+  toListing({ Name: 'Zoap', type: 'Flower', Options: ['3.5g'], terpenes: list }, shop, SRC, {})?.terpenes;
+
+// 394 entries were stored under the literal name "[object Object]" because the
+// platform files the compound's name as an object of its own.
+check('nested name read, not stringified',
+  terps([{ name: { en: 'Limonene' }, value: 0.4 } ])?.profile[0],
+  { name: 'LIMONENE', rawName: null, percent: 0.4 });
+check('unreadable name skipped, never stored as a placeholder',
+  terps([{ name: { code: 7 }, value: 0.4 }])?.profile, []);
+
+// Real compounds the map did not know. Caryophyllene oxide is NOT
+// caryophyllene: it is what accumulates as flower ages.
+check('caryophyllene oxide is its own compound',
+  terps([{ name: 'Caryophyllene Oxide', value: 0.2 }])?.profile[0]?.name, 'CARYOPHYLLENE_OXIDE');
+check('isopulegol mapped', terps([{ name: 'Isopulegol', value: 0.1 }])?.profile[0]?.name, 'ISOPULEGOL');
+check('p-cymene mapped', terps([{ name: 'pCymene', value: 0.1 }])?.profile[0]?.name, 'CYMENE');
+check('terpinene mapped', terps([{ name: '\u03b1-Terpinene', value: 0.1 }])?.profile[0]?.name, 'TERPINENE');
+
+// Summary rows are not compounds. Storing them invents one and double-counts
+// the mass it stands for.
+const withTotals = terps([
+  { name: 'Limonene', value: 0.4 },
+  { name: 'Total Terpenes', value: 1.8 },
+  { name: 'Other Terpenes', value: 0.2 },
+]);
+check('total goes to totalPercent', withTotals?.totalPercent, 1.8);
+check('residual bucket dropped', withTotals?.profile.map((t) => t.name), ['LIMONENE']);
+
 /* ------------------------------------------------------- product page + copy --
  * Both were hardcoded null for every one of 9,542 collected listings, which is
  * why 127 collected terpene panels are leads rather than records: without a

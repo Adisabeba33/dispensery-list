@@ -89,7 +89,44 @@ TERPENE_MAP = {
     "geraniol": "GERANIOL", "borneol": "BORNEOL", "terpineol": "TERPINEOL",
     "phellandrene": "PHELLANDRENE", "carene": "CARENE", "sabinene": "SABINENE",
     "fenchol": "FENCHOL",
+    # Found by auditing what the register filed as OTHER. Caryophyllene oxide
+    # is deliberately NOT caryophyllene: it is the oxidation product that
+    # accumulates as flower ages and reads woody, not peppery.
+    "caryophylleneoxide": "CARYOPHYLLENE_OXIDE",
+    "isopulegol": "ISOPULEGOL",
+    "pcymene": "CYMENE", "paracymene": "CYMENE", "cymene": "CYMENE",
+    "terpinene": "TERPINENE", "alphaterpinene": "TERPINENE",
+    "gammaterpinene": "TERPINENE",
 }
+
+# Rows a certificate prints that are not compounds.
+TERPENE_TOTAL = re.compile(r"^(total|sum)\s*terp", re.I)
+TERPENE_RESIDUAL = re.compile(r"^(other|misc|remaining)\s*terp", re.I)
+
+
+def terpene_name(t):
+    """The compound's name, however the payload nests it.
+
+    Reading `t["name"]` alone produced the literal string "[object Object]" 394
+    times in the register: some platforms file the name as an object of its
+    own. A name we cannot read is skipped, never stored as a placeholder — a
+    placeholder in a controlled vocabulary looks like data.
+    """
+    seen = []
+
+    def dig(v, depth):
+        if isinstance(v, str):
+            return v.strip() or None
+        if not isinstance(v, dict) or depth > 3 or any(v is x for x in seen):
+            return None
+        seen.append(v)
+        for key in ("name", "terpene", "terpeneName", "label", "title", "en", "value"):
+            hit = dig(v.get(key), depth + 1)
+            if hit:
+                return hit
+        return None
+
+    return dig(t, 0)
 
 LINEAGE_MAP = {
     "indica": "INDICA", "sativa": "SATIVA", "hybrid": "HYBRID",
@@ -268,17 +305,26 @@ def build_listing(product, shop, source_url):
     lineage = LINEAGE_MAP.get(re.sub(r"[^a-z]", "", str(lineage_raw or "").lower()), "UNKNOWN")
 
     profile = []
+    total_percent = None
     terps = pick(product, "terpenes")
     if isinstance(terps, list):
         for t in terps:
-            raw = flatten(t) if not isinstance(t, dict) else (t.get("name") or t.get("terpene"))
+            raw = terpene_name(t)
+            if not raw:
+                continue
+            raw_terpene_names[raw[:40]] += 1
+            amount = as_number(t.get("value") if isinstance(t, dict) else None)
+            if TERPENE_TOTAL.search(raw):
+                if total_percent is None:
+                    total_percent = amount
+                continue
+            if TERPENE_RESIDUAL.search(raw):
+                continue
             mapped = normalise_terpene(raw)
-            if raw:
-                raw_terpene_names[str(raw)[:40]] += 1
             profile.append({
                 "name": mapped or "OTHER",
-                "rawName": None if mapped else str(raw)[:60],
-                "percent": as_number(t.get("value") if isinstance(t, dict) else None),
+                "rawName": None if mapped else raw[:60],
+                "percent": amount,
             })
 
     # Terpenes stated on a menu without a certificate are exactly that.
@@ -310,7 +356,7 @@ def build_listing(product, shop, source_url):
         "terpenes": {
             "source": source,
             "profile": profile,
-            "totalPercent": None,
+            "totalPercent": total_percent,
             "labName": None,
             "testedOn": None,
             "coaUrl": None,

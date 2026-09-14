@@ -617,6 +617,45 @@ const TERPENES = {
   // Spellings seen in the pilot payloads.
   betamyrcene: 'MYRCENE', bmyrcene: 'MYRCENE', alphahumulene: 'HUMULENE',
   betaocimene: 'OCIMENE', alphaterpineol: 'TERPINEOL', alphacedrene: 'OTHER',
+  /* Found by auditing what the register filed as OTHER: 772 entries across ten
+     spellings, most of them real compounds the map simply did not know.
+
+     Caryophyllene oxide is deliberately NOT caryophyllene. It is the oxidation
+     product — the note that arrives as flower ages — and it reads woody and
+     medicinal rather than peppery. Folding it into its parent would report a
+     cured jar as a fresh one. */
+  caryophylleneoxide: 'CARYOPHYLLENE_OXIDE',
+  isopulegol: 'ISOPULEGOL',
+  pcymene: 'CYMENE', paracymene: 'CYMENE', cymene: 'CYMENE',
+  terpinene: 'TERPINENE', alphaterpinene: 'TERPINENE', gammaterpinene: 'TERPINENE',
+};
+
+/* Rows a certificate prints that are NOT compounds. "Total Terpenes" is the
+   sum and belongs in totalPercent; "Other Terpenes" is the residual bucket and
+   belongs nowhere — storing either as a terpene invents a compound and then
+   double-counts the mass it stands for. */
+const TERPENE_TOTAL = /^(total|sum)\s*terp/i;
+const TERPENE_RESIDUAL = /^(other|misc|remaining)\s*terp/i;
+
+/* The compound's name, however the payload nests it.
+   Reading `t.name` alone produced "[object Object]" 394 times in the register:
+   some platforms file the name as an object of its own ({ name: { en: ... } },
+   { terpene: { name: ... } }). A name we cannot read is skipped, never stored
+   as the string "[object Object]" — a placeholder in a controlled vocabulary is
+   worse than an absence, because it looks like data. */
+const terpeneName = (t) => {
+  const seen = new Set();
+  const dig = (v, depth) => {
+    if (typeof v === 'string') return v.trim() || null;
+    if (!v || typeof v !== 'object' || depth > 3 || seen.has(v)) return null;
+    seen.add(v);
+    for (const key of ['name', 'terpene', 'terpeneName', 'label', 'title', 'en', 'value']) {
+      const hit = dig(v[key], depth + 1);
+      if (hit) return hit;
+    }
+    return null;
+  };
+  return dig(t, 0);
 };
 
 const NAME_KEYS = ['name', 'productName', 'title', 'displayName'];
@@ -724,21 +763,26 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     .replace(/[^a-z]/g, '');
 
   const profile = [];
+  let totalPercent = null;
   const terps = pick(p, ['terpenes', 'terpeneProfile', 'terps']);
   if (Array.isArray(terps)) {
     for (const t of terps) {
-      const raw = t && typeof t === 'object' ? t.name ?? t.terpene : t;
+      const raw = terpeneName(t);
       if (!raw) continue;
-      rawTerpNames[String(raw)] = (rawTerpNames[String(raw)] ?? 0) + 1;
-      const mapped = TERPENES[String(raw).toLowerCase().replace(/[^a-z]/g, '')];
+      rawTerpNames[raw] = (rawTerpNames[raw] ?? 0) + 1;
+      const amount = (() => {
+        const v = inRange(num(t && typeof t === 'object' ? t.value ?? t.percent : null), 20);
+        return v === 0 ? null : v;
+      })();
+      // Summary rows are not compounds.
+      if (TERPENE_TOTAL.test(raw)) { totalPercent ??= amount; continue; }
+      if (TERPENE_RESIDUAL.test(raw)) continue;
+      const mapped = TERPENES[raw.toLowerCase().replace(/[^a-z]/g, '')];
       profile.push({
         name: mapped ?? 'OTHER',
-        rawName: mapped ? null : String(raw).slice(0, 60),
+        rawName: mapped ? null : raw.slice(0, 60),
         // A menu that prints 0% is stating nothing, not stating zero.
-        percent: (() => {
-          const v = inRange(num(t && typeof t === 'object' ? t.value ?? t.percent : null), 20);
-          return v === 0 ? null : v;
-        })(),
+        percent: amount,
       });
     }
   }
@@ -830,7 +874,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
       // not a measurement, and the schema keeps that distinction.
       source: profile.length ? 'MENU_LISTING' : 'NONE',
       profile,
-      totalPercent: null,
+      totalPercent,
       labName: null,
       testedOn: null,
       coaUrl: null,
