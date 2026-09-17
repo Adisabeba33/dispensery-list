@@ -49,6 +49,14 @@
       ],
       "description": "The cultivator. As important as the strain name: the same genetics grown by two people is two different products by taste, which is why a recommendation keyed on strain alone is approximate."
     },
+    "brandKey": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-z0-9]+$",
+      "description": "The cultivator's identity, derived from `brand` so the same operation is one thing across shops. The register stores a brand exactly as each shop prints it, which is right — `brand` is evidence — but it means ElectraLeaf arrives as six spellings (ElectraLeaf, Electraleaf, ELECTRALEAF, Electra Leaf, ElectraLeaf NY, Electraleaf NY) and one outreach target splits six ways. Derived by: strip accents, lowercase, drop everything but letters and digits, and remove the corporate and category words a shop may or may not print — cannabis, co, company, farm(s), lab(s), brand(s), ny, nyc, llc, inc. Across 9,542 listings that collapses 673 spellings to 398 cultivators. Null when the menu states no brand, and null rather than empty when normalization leaves nothing: a key of \"\" would silently merge every anonymous listing."
+    },
     "lineage": {
       "enum": [
         "INDICA",

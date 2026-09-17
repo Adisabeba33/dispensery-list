@@ -20,6 +20,7 @@ import argparse
 import json
 import re
 import time
+import unicodedata
 import urllib.robotparser
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -260,6 +261,25 @@ def slug(*parts):
     return re.sub(r"-+", "-", re.sub(r"[^a-z0-9]+", "-", joined)).strip("-")[:80]
 
 
+BRAND_NOISE = re.compile(r"\b(cannabis|co|company|farms?|labs?|brands?|nyc?|llc|inc)\b")
+
+
+def brand_key_of(brand):
+    """The cultivator's identity, as opposed to its name — see menu-render.mjs.
+
+    Null, never "", when nothing survives: an empty key would merge every
+    brandless listing into one enormous cultivator.
+    """
+    if not brand:
+        return None
+    key = unicodedata.normalize("NFKD", str(brand))
+    key = "".join(c for c in key if not unicodedata.combining(c))
+    key = re.sub(r"[^a-z0-9 ]", " ", key.lower())
+    key = BRAND_NOISE.sub(" ", key)
+    key = re.sub(r"[^a-z0-9]", "", key)
+    return key or None
+
+
 def product_page(product, source_url):
     """The product's own page, when the menu gives one that can be opened.
 
@@ -349,6 +369,7 @@ def build_listing(product, shop, source_url):
         "strainNameRaw": str(name)[:200],
         "strainNameCanonical": re.sub(r"\s+", " ", str(name).lower().replace("#", "")).strip() or None,
         "brand": str(brand)[:120] if brand else None,
+        "brandKey": brand_key_of(brand),
         "lineage": lineage,
         "thcPercent": as_number(pick(product, "thc")),
         "cbdPercent": as_number(pick(product, "cbd")),

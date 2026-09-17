@@ -58,7 +58,14 @@ ap.add_argument("--min-shops", type=int, default=1,
                 help="only names carried by at least this many shops")
 args = ap.parse_args()
 
+# brand (as printed) -> brandKey (the cultivator behind it), read off the
+# register so this script and the collector cannot disagree.
+_BRAND_KEYS: dict = {}
+
 listings = json.loads((DATA / "flower-listings.json").read_text())
+for _l in listings:
+    if _l.get("brand") and _l.get("brandKey"):
+        _BRAND_KEYS[_l["brand"]] = _l["brandKey"]
 shops = {d["licenseNumber"]: (d.get("dbaName") or d["legalName"])
          for d in json.loads((DATA / "dispensaries.json").read_text())}
 
@@ -119,11 +126,15 @@ def is_gap(name: str) -> bool:
 
 
 # ---------------------------------------------------------------- the gap
-# Brands are normalised before grouping. The register captures a cultivator's
-# name exactly as each shop prints it, so "Electraleaf", "ElectraLeaf" and
-# "ELECTRALEAF" arrive as three brands — and a queue built on the raw strings
-# splits one outreach target into three entries and buries it.
+# The register now carries `brandKey` on every listing — the cultivator's
+# identity behind the spelling, derived by the collector and guarded against
+# drift by `npm run validate`. Prefer it, and keep the local derivation only as
+# a fallback for a snapshot captured before that field existed. Two copies of a
+# normalizer disagreeing is exactly how one cultivator becomes two queue rows.
 def brand_key(b: str) -> str:
+    stored = _BRAND_KEYS.get(b)
+    if stored:
+        return stored
     b = unicodedata.normalize("NFKD", b or "")
     b = "".join(c for c in b if not unicodedata.combining(c))
     b = re.sub(r"[^a-z0-9 ]", " ", b.lower())

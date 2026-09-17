@@ -11,6 +11,7 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
+  brandKeyOf,
   classify, cleanStrainName, mergeBySize, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
 
@@ -109,6 +110,23 @@ check('unrelated type field', classify({ name: 'Grape Cake', type: 'variant', ca
 // Flower with no weight anywhere is dropped: the shelf view is entirely about
 // which strains come by the eighth, quarter, half or ounce.
 check('flower without a size', toListing({ Name: 'Nameless Bud', type: 'Flower' }, shop, SRC, {}), null);
+
+/* --------------------------------------------------------------- brand key --
+ * The register stores a brand exactly as each shop prints it, which is right.
+ * It also means ElectraLeaf arrives six ways and one outreach target splits
+ * six ways with it. brandKey is the cultivator's identity behind the spelling.
+ */
+check('case and spacing collapse', ['ElectraLeaf', 'ELECTRALEAF', 'Electra Leaf', 'Electraleaf NY'].map(brandKeyOf),
+  ['electraleaf', 'electraleaf', 'electraleaf', 'electraleaf']);
+check('accents fold', brandKeyOf('Boukét'), brandKeyOf('Bouket'));
+check('corporate words dropped', brandKeyOf('Rolling Green Cannabis'), brandKeyOf('Rolling Green'));
+// Null rather than "": an empty key would merge every brandless listing into
+// one enormous cultivator.
+check('nothing left is null, not empty', brandKeyOf('Cannabis Co'), null);
+check('no brand is null', brandKeyOf(null), null);
+// Two genuinely different cultivators must not collide.
+check('different brands stay different', brandKeyOf('Florist Farms') === brandKeyOf('Hurley Grown'), false);
+check('the listing carries it', toListing({ Name: 'X', type: 'Flower', Options: ['3.5g'], brandName: 'ElectraLeaf NY' }, shop, SRC, {})?.brandKey, 'electraleaf');
 
 /* ----------------------------------------------------------------- terpenes --
  * Audited against what the register actually filed as OTHER: 772 entries over

@@ -698,6 +698,31 @@ const classify = (p) => {
 const inRange = (v, max) => (v === null || v === undefined || v < 0 || v > max ? null : v);
 
 
+/* The cultivator's identity, as opposed to the cultivator's name.
+ *
+ * `brand` stays exactly as the shop printed it, because that is the evidence.
+ * This is what two shops printing the same operation have in common: accents
+ * folded, letters and digits only, and the corporate/category words a shop may
+ * or may not bother with removed. Across the register that turns 673 spellings
+ * into 398 cultivators — ElectraLeaf alone arrives six ways, and without this
+ * one outreach target splits six ways with it.
+ *
+ * Null, never "", when nothing survives: an empty key would quietly merge every
+ * brandless listing into one enormous cultivator. */
+const BRAND_NOISE = /\b(cannabis|co|company|farms?|labs?|brands?|nyc?|llc|inc)\b/g;
+
+const brandKeyOf = (brand) => {
+  if (!brand) return null;
+  const key = String(brand)
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9 ]/g, ' ')
+    .replace(BRAND_NOISE, ' ')
+    .replace(/[^a-z0-9]/g, '');
+  return key || null;
+};
+
 /* A product's own page, when the menu gives one that can actually be opened.
  *
  * Menus state this three ways: an absolute URL, a root-relative path, and a
@@ -865,6 +890,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
 
     strainNameCanonical: String(name).toLowerCase().replace(/#/g, '').replace(/\s+/g, ' ').trim() || null,
     brand: brand ? String(brand).slice(0, 120) : null,
+    brandKey: brandKeyOf(brand),
     lineage: LINEAGE[lineageRaw] ?? lineageFromTitle(rawName) ?? 'UNKNOWN',
     thcPercent: inRange(num(pick(p, ['thcContent', 'potencyThc', 'thc', 'thcPercent'])), 100),
     cbdPercent: inRange(num(pick(p, ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent'])), 100),
@@ -1259,7 +1285,7 @@ const main = async () => {
 };
 
 /** Exported for scripts/menu-parse-check.mjs, which tests them against fixtures. */
-export { classify, categoryText, cleanStrainName, mergeBySize, sizeFromText, toListing };
+export { brandKeyOf, classify, categoryText, cleanStrainName, mergeBySize, sizeFromText, toListing };
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   main().catch((e) => {

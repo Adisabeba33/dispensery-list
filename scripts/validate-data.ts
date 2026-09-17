@@ -13,6 +13,10 @@ import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import Ajv2020, { type ErrorObject } from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
+// The collector's own normalizer, so the check cannot disagree with what
+// writes the field.
+// @ts-expect-error — plain ES module, no types alongside it.
+import { brandKeyOf } from './menu-render.mjs';
 
 const ROOT = resolve(import.meta.dirname, '..');
 
@@ -317,6 +321,19 @@ const validateFlowerListings = (FILE: string) => {
     if (!validate(record)) formatAjvErrors(FILE, i, validate.errors);
     const r = record as Record<string, any>;
     const at = (field: string) => `[${i}] ${r.listingId ?? 'unknown'} → ${field}`;
+
+    // brandKey is DERIVED from brand, so the only way it can be wrong is by
+    // drifting — a hand edit, or a second normalizer growing somewhere else.
+    // Recomputing it here with the collector's own function makes drift a
+    // build failure instead of a silently split cultivator.
+    const expectedKey = brandKeyOf(r.brand ?? null);
+    if ((r.brandKey ?? null) !== expectedKey) {
+      fail(
+        FILE,
+        at('brandKey'),
+        `is ${JSON.stringify(r.brandKey ?? null)} but brand ${JSON.stringify(r.brand ?? null)} derives ${JSON.stringify(expectedKey)}`,
+      );
+    }
 
     // A listing is one shelf item at one shop; the pair must be unique.
     const key = `${r.licenseNumber}::${r.listingId}`;
