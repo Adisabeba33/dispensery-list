@@ -1,6 +1,6 @@
 name: Coverage probe
 
-# Одноразовая диагностика: три магазина, про которые есть конкретный вопрос.
+# Одноразовая диагностика по магазинам, про которые есть конкретный вопрос.
 # Ничего не коммитит и никуда не публикует — только читает и печатает в лог.
 # Живёт на ветке и уезжает вместе с ней; запускается пушем, потому что кнопка
 # «Run workflow» появляется только у файлов на ветке по умолчанию.
@@ -8,11 +8,15 @@ on:
   push:
     branches:
       - claude/menu-coverage
+    # Только когда меняется сама проба: иначе каждый коммит в ветку заново
+    # ходит по чужим сайтам, чтобы напечатать то же самое.
+    paths:
+      - .github/workflows/menu-coverage-probe.yml
   workflow_dispatch:
     inputs:
       licences:
         description: Лицензии через запятую
-        default: OCM-CAURD-24-000116,OCM-CAURD-23-000009,OCM-CAURD-23-000023
+        default: OCM-CAURD-24-000116
 
 permissions:
   contents: read
@@ -34,12 +38,13 @@ jobs:
           npm install --no-save playwright
           npx playwright install --with-deps chromium
 
-      - name: Read the three shops with the diagnostics turned on
+      - name: Read the shops with the diagnostics turned on
         env:
-          # Bleu Leaf — полка на 223 позиции, у магазина на сайте больше.
-          # Gotham Bowery — ровно 20 позиций. Gotham Buds — ровно 24.
-          LICENCES: ${{ inputs.licences || 'OCM-CAURD-24-000116,OCM-CAURD-23-000009,OCM-CAURD-23-000023' }}
-        run: node scripts/menu-render.mjs --only "$LICENCES" --dump-products 25
+          # Bleu Leaf: у магазина на сайте больше позиций в каждом весе,
+          # чем у нас. Своего общего числа его меню не называет, так что
+          # проверять придётся по тому, что выброшено поимённо.
+          LICENCES: ${{ inputs.licences || 'OCM-CAURD-24-000116' }}
+        run: node scripts/menu-render.mjs --only "$LICENCES" --dump-products 8
 
       - name: What the collector saw, and what it threw away
         run: |
@@ -66,15 +71,19 @@ jobs:
 
           # Что в итоге легло в данные по этим магазинам: сорт и веса.
           licences = {s.get("licence") for s in summary.get("perShop", [])}
-          rows = [r for r in json.loads(Path("data/flower-listings.json").read_text())
-                  if r["licenseNumber"] in licences]
+          listings = json.loads(Path("data/flower-listings.json").read_text())
           print("=" * 72)
-          sizes = {}
-          for r in rows:
-              for g in r.get("availableSizesGrams") or []:
-                  sizes[g] = sizes.get(g, 0) + 1
-          print(f"listings kept for these shops: {len(rows)}")
-          print("sizes:", dict(sorted(sizes.items())))
+          for licence in sorted(licences):
+              rows = [r for r in listings if r["licenseNumber"] == licence]
+              sizes = {}
+              for r in rows:
+                  for g in r.get("availableSizesGrams") or []:
+                      sizes[g] = sizes.get(g, 0) + 1
+              print(f"{licence}: {len(rows)} listings, sizes {dict(sorted(sizes.items()))}")
+              # Сколько товаров сложилось в одну позицию: строка у нас одна на
+              # сорт+бренд, а фильтр магазина считает товары.
+              merged = sum(1 for r in rows if len(r.get("availableSizesGrams") or []) > 1)
+              print(f"   of them carrying more than one weight: {merged}")
           PY
 
       - name: The section the daily report would now carry
