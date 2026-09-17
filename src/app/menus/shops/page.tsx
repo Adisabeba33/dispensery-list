@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { ShelfStamp } from '@/components/ShelfStamp';
 import { dispensaries, displayName, regionOf } from '@/lib/data';
 import { prettyDate } from '@/lib/format';
-import { lastCapturedAt, shelvesRead } from '@/lib/shelf';
+import { shelvesRead } from '@/lib/shelf';
 
 export const metadata: Metadata = {
   title: 'Shops with a menu',
@@ -12,7 +13,6 @@ export const metadata: Metadata = {
 
 export default function MenuShopsPage() {
   const shelves = shelvesRead();
-  const capturedAt = lastCapturedAt();
   const strains = shelves.reduce((n, s) => n + s.count, 0);
 
   return (
@@ -23,8 +23,7 @@ export default function MenuShopsPage() {
       </h1>
       <p className="mt-5 max-w-2xl text-lg leading-relaxed text-chalk-200">
         {shelves.length} of {dispensaries.length} licensed dispensaries in the register have had
-        their shelf read — {strains} listings in all
-        {capturedAt ? `, most recently on ${prettyDate(capturedAt)}` : ''}. The rest are in the{' '}
+        their shelf read — {strains} listings in all. The rest are in the{' '}
         <Link href="/" className="link">
           directory
         </Link>
@@ -38,8 +37,10 @@ export default function MenuShopsPage() {
         .
       </p>
 
+      <ShelfStamp />
+
       <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {shelves.map(({ shop, count, sizes }) => (
+        {shelves.map(({ shop, count, sizes, readAt }) => (
           <li key={shop!.id}>
             <Link href={`/dispensary/${shop!.id}/#menu`} className="card card-hover block p-4">
               <div className="flex items-start justify-between gap-3">
@@ -54,6 +55,12 @@ export default function MenuShopsPage() {
                 </span>
               </div>
               <p className="mt-3 text-xs text-chalk-400">{sizes.map((s) => s.short).join(' · ')}</p>
+              {/* Per shop, because per page would be a promise the file does
+                  not keep: a shop the collector could not reach keeps the
+                  shelf it last gave us. */}
+              {readAt && (
+                <p className="mt-1 text-[0.7rem] text-chalk-500">read {prettyDate(readAt)}</p>
+              )}
             </Link>
           </li>
         ))}

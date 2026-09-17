@@ -100,6 +100,10 @@ export const shelvesRead = () =>
         shop,
         count: own.length,
         sizes: sizeChips(own.flatMap((l) => l.availableSizesGrams ?? [])),
+        /* This shop's own reading, which is not the same as the newest one in
+           the file: a shop whose site was down keeps the shelf it last gave
+           us, and that shelf can be a week old. */
+        readAt: own.map((l) => l.capturedAt).sort().at(-1) ?? null,
       };
     })
     .filter((s) => s.shop)
@@ -111,3 +115,24 @@ export const lastCapturedAt = (): string | undefined =>
     .map((l) => l.capturedAt)
     .sort()
     .at(-1);
+
+/**
+ * How fresh the shelves are, taken together.
+ *
+ * One date over the whole page would be a promise the data does not make.
+ * 146 of 175 shops were read on the newest sweep; the rest carry a reading
+ * from a day the collector could not reach them — one of them nine days old.
+ * Saying only the newest date would present all 175 as read that afternoon.
+ */
+export const shelfFreshness = () => {
+  const shelves = shelvesRead();
+  const latest = lastCapturedAt() ?? null;
+  const day = latest?.slice(0, 10) ?? null;
+  const fresh = shelves.filter((s) => s.readAt?.slice(0, 10) === day).length;
+  const oldest = shelves
+    .map((s) => s.readAt)
+    .filter((v): v is string => Boolean(v))
+    .sort()
+    .at(0) ?? null;
+  return { latest, oldest, shops: shelves.length, fresh, stale: shelves.length - fresh };
+};

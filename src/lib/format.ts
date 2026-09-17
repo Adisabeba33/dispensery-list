@@ -49,6 +49,28 @@ export const prettyDate = (iso: string | null): string | null => {
   return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 };
 
+/**
+ * A moment, to the minute, in New York time.
+ *
+ * Always New York and always labelled: the pages are built on a machine that
+ * keeps UTC, so an unpinned stamp said 16:29 for a shelf read at half past
+ * twelve in the afternoon on 6th Avenue — and said it without naming a zone,
+ * which is the part that makes it a wrong number rather than an unfamiliar
+ * one. Client components have the opposite problem: whatever zone the reader's
+ * laptop is set to, rendered over a shelf that only exists in one.
+ */
+export const prettyDateTime = (iso: string | null): string | null => {
+  if (!iso) return null;
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  const stamp = d.toLocaleString('en-US', {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+    timeZone: 'America/New_York',
+  });
+  return `${stamp} New York time`;
+};
+
 /** Service flags worth surfacing, in the order a shopper cares about them. */
 export const SERVICE_LABELS: { key: keyof NonNullable<Dispensary['services']>; label: string }[] = [
   { key: 'inStorePurchase', label: 'In-store' },
