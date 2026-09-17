@@ -41,7 +41,14 @@ old_by_licence = {r["licenseNumber"]: r for r in previous}
 
 # Enrichment we go out and collect; the registry publishes none of it.
 CARRIED = ["geo", "menu"]
-CARRIED_CONTACT = ["phone", "email", "orderOnlineUrl", "instagram"]
+CARRIED_CONTACT = ["phone", "email", "orderOnlineUrl", "instagram", "website"]
+# `website` is here on a different footing from the other four. The registry
+# does publish it — for most shops — so the rule that matters is the one this
+# loop already applies: a value the registry states wins, and a value we found
+# survives only where the registry states none. Without the carry, a website
+# found by hand for a shop the registry left blank is silently erased by the
+# next Monday refresh, and the shop drops out of the daily sweep again,
+# because the sweep needs an address to start from.
 # The registry states these three; everything else in services was observed.
 REGISTRY_SERVICES = {"inStorePurchase", "delivery", "servesAdultUse"}
 
