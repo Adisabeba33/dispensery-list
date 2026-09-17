@@ -400,7 +400,12 @@ export const pickMenuLink = (links, siteUrl = null, shopName = '') => {
    without that a truncated collection looks exactly like a small shop. Only
    keys that name a total count are read, and only when the number is one a
    menu could plausibly state. */
-const TOTAL_KEY = /^(total|totalCount|totalResults|totalItems|totalProducts|resultCount|numResults|count)$/i;
+/* Tested against the key with its underscores removed, because the same field
+   arrives as totalCount from one platform and total_count from the next — and
+   the fixture storefront, which states total_count, went unnoticed by this for
+   as long as it existed. */
+const TOTAL_KEY = /^(total|totalCount|totalResults|totalItems|totalProducts|resultCount|numResults|count|found)$/i;
+const declaresTotal = (key) => TOTAL_KEY.test(String(key).replace(/_/g, ''));
 const findDeclaredTotal = (value, depth = 0, best = { n: 0 }) => {
   if (depth > 6 || !value || typeof value !== 'object') return best.n;
   if (Array.isArray(value)) {
@@ -408,7 +413,7 @@ const findDeclaredTotal = (value, depth = 0, best = { n: 0 }) => {
     return best.n;
   }
   for (const [k, v] of Object.entries(value)) {
-    if (TOTAL_KEY.test(k) && typeof v === 'number' && v > best.n && v <= 100000) best.n = v;
+    if (declaresTotal(k) && typeof v === 'number' && v > best.n && v <= 100000) best.n = v;
     findDeclaredTotal(v, depth + 1, best);
   }
   return best.n;
@@ -663,6 +668,142 @@ const SIZE_RULES = [
   [/(\d+(?:\.\d+)?)?\s*(?<![a-z])(?:oz|ounces?|zips?)\b/i,
     (m) => (m[1] ? parseFloat(m[1]) : 1) * 28],
 ];
+
+/* ---------------------------------------------------------------- paging --
+ * Scrolling is not how most of these menus give up their shelf.
+ *
+ * The first run that could see it said so plainly: 55 shops handed over fewer
+ * products than their own answer counted, and the numbers they stopped at were
+ * 25, 50, 75, 100, 125, 150, 200. Multiples of a page size are not assortments.
+ * The collector was taking whatever lazy-loading delivered while the wheel was
+ * turning, and a menu that pages on a click, or on a route change, delivers one
+ * page however long you scroll it.
+ *
+ * So the page is asked again, the way it asked itself. The request that carried
+ * products is replayed from inside the page — same origin, same cookies, same
+ * headers — with its page number advanced. Which is also why this is not a
+ * second crawler: nothing is requested that the shop's own menu would not
+ * request of itself if a visitor pressed "next".
+ */
+
+/* Where a page number hides. Three shapes, in the order they are trusted:
+   an explicit page index, an offset in items, and the size that an offset has
+   to be advanced by. */
+const PAGE_KEYS = ['page', 'pageNumber', 'pageIndex', 'currentPage', 'pageNum'];
+const OFFSET_KEYS = ['offset', 'skip', 'from', 'start'];
+const SIZE_KEYS = ['perPage', 'pageSize', 'per_page', 'page_size', 'limit', 'first', 'take'];
+
+/** The first numeric value under any of `keys`, with the path that reaches it. */
+const findNumber = (value, keys, path = [], depth = 0) => {
+  if (depth > 6 || !value || typeof value !== 'object') return null;
+  if (Array.isArray(value)) return null;
+  for (const key of Object.keys(value)) {
+    if (keys.includes(key) && typeof value[key] === 'number') return { path: [...path, key], value: value[key] };
+  }
+  for (const [key, v] of Object.entries(value)) {
+    const found = findNumber(v, keys, [...path, key], depth + 1);
+    if (found) return found;
+  }
+  return null;
+};
+
+const setAt = (object, path, value) => {
+  let node = object;
+  for (const key of path.slice(0, -1)) node = node[key];
+  node[path.at(-1)] = value;
+  return object;
+};
+
+/** Advance a page knob inside a JSON value. Returns a copy, or null. */
+const advanceJson = (value, nth, fallbackSize) => {
+  const paged = findNumber(value, PAGE_KEYS);
+  if (paged) {
+    return setAt(structuredClone(value), paged.path, paged.value + nth);
+  }
+  const offset = findNumber(value, OFFSET_KEYS);
+  if (offset) {
+    /* An offset means nothing without the step. The menu usually states it in
+       the same breath — perPage, limit, first — and where it does not, the
+       number of products the first answer carried is the step it used. */
+    const size = findNumber(value, SIZE_KEYS)?.value || fallbackSize;
+    if (!size) return null;
+    return setAt(structuredClone(value), offset.path, offset.value + nth * size);
+  }
+  return null;
+};
+
+/**
+ * The request that asks for page `nth` after the one we captured, or null when
+ * the request carries no page at all.
+ *
+ * `req` is what the page actually sent: {method, url, body}. A page number
+ * lives in one of three places, and Dutchie uses the third: a query parameter
+ * whose value is itself JSON.
+ */
+const pagedRequest = (req, nth, fallbackSize) => {
+  if (!req || nth < 1) return null;
+
+  if (req.body) {
+    try {
+      const advanced = advanceJson(JSON.parse(req.body), nth, fallbackSize);
+      if (advanced) return { ...req, body: JSON.stringify(advanced) };
+    } catch {
+      /* not JSON; the address may still carry the page */
+    }
+  }
+
+  let url;
+  try {
+    url = new URL(req.url);
+  } catch {
+    return null;
+  }
+
+  // A parameter that is itself JSON — operationName=…&variables={"page":0,…}
+  for (const [key, raw] of [...url.searchParams]) {
+    if (!raw.trim().startsWith('{')) continue;
+    try {
+      const advanced = advanceJson(JSON.parse(raw), nth, fallbackSize);
+      if (advanced) {
+        const next = new URL(url);
+        next.searchParams.set(key, JSON.stringify(advanced));
+        return { ...req, url: next.toString() };
+      }
+    } catch {
+      /* the parameter only looked like JSON */
+    }
+  }
+
+  // A plain numeric parameter.
+  const params = Object.fromEntries([...url.searchParams].map(([k, v]) => [k, Number(v)]));
+  const numeric = Object.fromEntries(Object.entries(params).filter(([, v]) => Number.isFinite(v)));
+  const advanced = advanceJson(numeric, nth, fallbackSize);
+  if (!advanced) return null;
+  const next = new URL(url);
+  for (const [key, value] of Object.entries(advanced)) {
+    if (numeric[key] !== value) next.searchParams.set(key, String(value));
+  }
+  return { ...req, url: next.toString() };
+};
+
+/* How far the asking goes. A shop that states its total is asked until the
+   total is reached; one that states nothing is asked a few times and then left
+   alone, because "ask until it stops giving" against a menu that ignores the
+   parameter is a loop that never ends. */
+/** What a batch of payloads holds, named: the ids of the products in it. */
+const signatureOf = (somePayloads) => {
+  const ids = somePayloads
+    .flatMap((pl) => findProductArrays(pl))
+    .flat()
+    .map((p) => String(p?.id ?? p?._id ?? p?.sku ?? p?.slug ?? p?.name ?? p?.Name ?? ''))
+    .filter(Boolean);
+  return ids.length ? ids.slice(0, 40).join('|') : null;
+};
+
+const MAX_PAGES_DECLARED = 40;
+const MAX_PAGES_UNDECLARED = 10;
+const PAGING_BUDGET_MS = 45000;
+const BETWEEN_PAGES_MS = 400;
 
 /* A menu is read by scrolling it, and the only honest stopping condition is
    that it stopped growing. These bound the effort, not the result: when
@@ -1110,19 +1251,31 @@ const main = async () => {
         const body = await res.json();
         payloads.push(body);
         lastPayloadAt = Date.now();
-        if (dumpRequests > 0) {
-          const carried = findProductArrays(body).reduce((n, a) => n + a.length, 0);
-          if (carried > 0) {
-            const req = res.request();
-            requests.push({
-              products: carried,
-              method: req.method(),
-              url: res.url().slice(0, 300),
-              // GraphQL keeps the page and the filters in the body, not the
-              // address, so the address alone would say nothing.
-              body: req.method() === 'POST' ? String(req.postData() ?? '').slice(0, 700) : null,
-            });
-          }
+        /* Kept for every run, not only when asked to print: the request that
+           carried products is the one the paging replays. Truncating it would
+           make it unusable for that, so the recorded address is whole and the
+           dump shortens it at printing time instead. */
+        const carried = findProductArrays(body).reduce((n, a) => n + a.length, 0);
+        if (carried > 0) {
+          const req = res.request();
+          /* Accept, content-type and the platform's own x- headers. Origin,
+             referer and cookie are the browser's to set and it refuses them
+             from script, which is right: replaying a request must not be a way
+             to claim to be someone else. */
+          const headers = Object.fromEntries(
+            Object.entries(req.headers()).filter(
+              ([k]) => k === 'accept' || k === 'content-type' || k.startsWith('x-') || k.startsWith('apollographql'),
+            ),
+          );
+          requests.push({
+            products: carried,
+            method: req.method(),
+            url: res.url(),
+            headers,
+            // GraphQL keeps the page and the filters in the body, not the
+            // address, so the address alone would say nothing.
+            body: req.method() === 'POST' ? String(req.postData() ?? '') : null,
+          });
         }
       } catch {
         /* non-JSON or aborted; nothing to capture */
@@ -1229,6 +1382,94 @@ const main = async () => {
           entry.scrollRounds = round + 1;
         }
         if (round >= MAX_SCROLL_ROUNDS) entry.hitScrollCap = true;
+
+        /* Then ask for the pages scrolling never reached. */
+        const biggest = [...requests].sort((a, b) => b.products - a.products)[0];
+        if (biggest) {
+          const declared = payloads.reduce(
+            (n, pl) =>
+              findProductArrays(pl).some((a) => a.length) ? Math.max(n, findDeclaredTotal(pl)) : n,
+            0,
+          );
+          const seenBefore = () =>
+            payloads.reduce((n, pl) => n + findProductArrays(pl).reduce((m, a) => m + a.length, 0), 0);
+          const cap = declared ? MAX_PAGES_DECLARED : MAX_PAGES_UNDECLARED;
+          const pageUntil = Date.now() + PAGING_BUDGET_MS;
+          let asked = 0;
+          /* Compared against everything already in hand, not just the previous
+             answer: a menu that ignores the parameter usually has handed over
+             exactly one product payload, and this catches it on the first ask
+             rather than the second. */
+          let previousPageAt = 0;
+          const pagedFrom = seenBefore();
+
+          for (let nth = 1; nth <= cap; nth += 1) {
+            if (Date.now() > pageUntil) {
+              entry.hitPagingBudget = true;
+              break;
+            }
+            if (declared && seenBefore() >= declared) break;
+
+            const next = pagedRequest(biggest, nth, biggest.products);
+            if (!next) break; // no page in this request; nothing to advance
+
+            const before = payloads.length;
+            const seenIds = signatureOf(payloads.slice(previousPageAt));
+            /* Asked from inside the page, so the shop sees the request its own
+               menu makes: same origin, same cookies, same headers. The response
+               is captured by the listener above like any other, which is why
+               nothing is pushed here. */
+            const carried = await page.evaluate(async (req) => {
+              try {
+                /* No credentials option, which means the browser default:
+                   cookies on a same-origin request, none across origins. The
+                   alternative would break the biggest platform outright —
+                   Dutchie's menu lives on dutchie.com and answers the shop's
+                   site with Access-Control-Allow-Origin: *, and a wildcard and
+                   credentials cannot be used together. */
+                const res = await fetch(req.url, {
+                  method: req.method,
+                  body: req.body ?? undefined,
+                  headers: req.headers ?? undefined,
+                });
+                if (!res.ok) return -1;
+                const text = await res.text();
+                return text.length;
+              } catch {
+                return -1;
+              }
+            }, next);
+
+            asked += 1;
+            if (carried === -1) break; // refused or failed; do not keep knocking
+            await settle(800, 6000);
+            // Nothing arrived at all: the menu has ended.
+            if (payloads.length === before) break;
+            /* Something arrived, but the same something. A menu that ignores
+               the page parameter answers page two with page one, and without
+               this the collector asks it forty times and calls the result a
+               shelf. */
+            const arrived = signatureOf(payloads.slice(before));
+            // No products in the answer: the menu has run out, which is the
+            // ordinary way this ends.
+            if (!arrived) break;
+            /* Products, but the same products. A menu that ignores the page
+               parameter answers page two with page one, and without this the
+               collector asks it forty times and calls the result a shelf. */
+            if (arrived === seenIds) {
+              entry.pagingIgnored = true;
+              break;
+            }
+            previousPageAt = before;
+            await new Promise((r) => setTimeout(r, BETWEEN_PAGES_MS));
+          }
+
+          if (asked > 0) {
+            entry.pagesAsked = asked;
+            entry.pagedFrom = pagedFrom;
+            entry.pagedTo = seenBefore();
+          }
+        }
       }
       entry.payloads = payloads.length;
       /* Where we actually ended up. A shop that returns five products when its
@@ -1304,7 +1545,15 @@ const main = async () => {
       }
       if (dumpRequests > 0) {
         /* Biggest first: the one carrying the shelf is the one to read. */
-        entry.requests = requests.sort((a, b) => b.products - a.products).slice(0, dumpRequests);
+        entry.requests = [...requests]
+          .sort((a, b) => b.products - a.products)
+          .slice(0, dumpRequests)
+          .map((r) => ({
+            products: r.products,
+            method: r.method,
+            url: r.url.slice(0, 300),
+            body: r.body ? r.body.slice(0, 700) : null,
+          }));
       }
       entry.productArrays = arrays.length;
       entry.productsSeen = arrays.reduce((n, a) => n + a.length, 0);
@@ -1601,7 +1850,7 @@ const main = async () => {
 };
 
 /** Exported for scripts/menu-parse-check.mjs, which tests them against fixtures. */
-export { classify, categoryText, cleanStrainName, mergeBySize, sizeFromText, toListing };
+export { classify, categoryText, cleanStrainName, mergeBySize, pagedRequest, sizeFromText, toListing };
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   main().catch((e) => {

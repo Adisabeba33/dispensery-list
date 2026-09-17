@@ -12,7 +12,7 @@
  */
 import {
   categoryFromProductUrl, classify, cleanStrainName, flattenJsonApiProducts, isProductPage,
-  mergeBySize, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
+  mergeBySize, pagedRequest, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 
@@ -521,6 +521,69 @@ check('a number the weight left behind goes too',
 
   check('category off the product address', categoryFromProductUrl(
     'https://urbanweedsny.com/menu/products/hepworth-2211/flower/hepworth-blue-dream-3-5g'), 'flower');
+}
+
+/* ------------------------------------------------------------------ paging --
+ * Asking a menu for its second page. Every shape below was taken off a real
+ * request: Dutchie keeps the page inside a query parameter that is itself JSON,
+ * others put it in the address, and a GraphQL POST keeps it in the body.
+ *
+ * These matter more than they look. A wrong guess here does not fail loudly —
+ * it re-fetches page one over and over, and the shelf comes out the same size
+ * it was before, with the shop asked ten times for it.
+ */
+{
+  const dutchie = {
+    method: 'GET',
+    url: 'https://dutchie.com/api-3/graphql?operationName=FilteredProducts&variables='
+      + encodeURIComponent(JSON.stringify({
+        productsFilter: { dispensaryId: '64a2', pricingType: 'rec', Status: 'Active' },
+        page: 0,
+        perPage: 25,
+      })),
+    body: null,
+  };
+  const variablesOf = (url) => JSON.parse(new URL(url).searchParams.get('variables'));
+
+  check('dutchie page 1', variablesOf(pagedRequest(dutchie, 1).url).page, 1);
+  check('dutchie page 3 is not three page-ones', variablesOf(pagedRequest(dutchie, 3).url).page, 3);
+  check('dutchie filter survives', variablesOf(pagedRequest(dutchie, 1).url).productsFilter.dispensaryId, '64a2');
+  check('dutchie page size untouched', variablesOf(pagedRequest(dutchie, 1).url).perPage, 25);
+
+  // A plain address, one-based, as several storefronts write it.
+  const plain = { method: 'GET', url: 'https://shop.test/api/products?category=flower&page=1', body: null };
+  check('plain page', new URL(pagedRequest(plain, 1).url).searchParams.get('page'), '2');
+  check('plain filter survives', new URL(pagedRequest(plain, 1).url).searchParams.get('category'), 'flower');
+
+  /* An offset advances by the page size, not by one. Reading it as a page
+     number would ask for item 1, then item 2 — and re-read the whole shelf
+     minus its first product, twenty times over. */
+  const offset = { method: 'GET', url: 'https://shop.test/products?offset=0&limit=24', body: null };
+  check('offset steps by the size', new URL(pagedRequest(offset, 1).url).searchParams.get('offset'), '24');
+  check('offset page 2', new URL(pagedRequest(offset, 2).url).searchParams.get('offset'), '48');
+  check('limit untouched', new URL(pagedRequest(offset, 1).url).searchParams.get('limit'), '24');
+
+  /* No size stated: the step is what the first answer carried, which is what
+     the menu itself used. */
+  const bare = { method: 'GET', url: 'https://shop.test/products?skip=0', body: null };
+  check('offset falls back to what arrived', new URL(pagedRequest(bare, 1, 20).url).searchParams.get('skip'), '20');
+  check('offset with no step at all is refused', pagedRequest(bare, 1), null);
+
+  // GraphQL over POST keeps everything in the body.
+  const post = {
+    method: 'POST',
+    url: 'https://shop.test/graphql',
+    body: JSON.stringify({ operationName: 'Products', variables: { menuId: 'x', page: 2, perPage: 50 } }),
+  };
+  check('post body page', JSON.parse(pagedRequest(post, 1).body).variables.page, 3);
+  check('post body address untouched', pagedRequest(post, 1).url, 'https://shop.test/graphql');
+  check('post body keeps its menu', JSON.parse(pagedRequest(post, 1).body).variables.menuId, 'x');
+
+  /* A request with no page in it at all. Returning something here would send
+     the collector round a loop against a menu that answers the same thing
+     every time. */
+  check('no page, no request', pagedRequest({ method: 'GET', url: 'https://shop.test/menu.json', body: null }, 1), null);
+  check('nothing to advance to', pagedRequest(dutchie, 0), null);
 }
 
 if (failures) {

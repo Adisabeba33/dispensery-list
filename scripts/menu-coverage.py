@@ -47,6 +47,11 @@ KEEP = (
     "scrollRounds",
     "landedOnProductPage",
     "usedKnownEndpoint",
+    "pagesAsked",
+    "pagedFrom",
+    "pagedTo",
+    "pagingIgnored",
+    "hitPagingBudget",
 )
 
 # Размеры страницы, которые раздают меню: двадцать, двадцать четыре, двадцать
@@ -145,6 +150,47 @@ def report():
         [
             f"**{shop_name(r)}**: меню говорит {r['declaredTotal']}, прочитали {r['productsSeen']}"
             for r in short
+        ],
+    )
+
+    # Что дало листание. Раньше этих товаров не было вовсе: прокрутка их не
+    # достаёт, потому что меню не подгружается прокруткой — оно листается.
+    paged = [r for r in rows if r.get("pagesAsked")]
+    if paged:
+        gainers = [r for r in paged if (r.get("pagedTo") or 0) > (r.get("pagedFrom") or 0)]
+        gained = sum((r["pagedTo"] or 0) - (r["pagedFrom"] or 0) for r in gainers)
+        gainers.sort(key=lambda r: r["pagedFrom"] - r["pagedTo"])
+        section(
+            lines,
+            "Долистано страниц",
+            f"Всего {gained} товаров сверх первой страницы, в {len(gainers)} "
+            f"магазинах. Спрошено страниц: {sum(r['pagesAsked'] for r in paged)} "
+            f"у {len(paged)} магазинов — где-то следующей страницы просто не было.",
+            [
+                f"**{shop_name(r)}**: {r['pagedFrom']} → {r['pagedTo']} (страниц {r['pagesAsked']})"
+                for r in gainers
+            ],
+        )
+
+    ignored = [r for r in rows if r.get("pagingIgnored")]
+    section(
+        lines,
+        "Меню не слушает номер страницы",
+        "На запрос следующей страницы приходит та же самая. Такому магазину\n"
+        "листание не поможет — нужен свой адрес меню в data/menu-endpoints.json.",
+        [f"**{shop_name(r)}**: прочитано {r.get('productsSeen', 0)}" for r in ignored],
+    )
+
+    budget = [r for r in rows if r.get("hitPagingBudget")]
+    section(
+        lines,
+        "⚠ Листали, но не дочитали",
+        "Кончилось отведённое на магазин время. Полка реальная, просто длинная —\n"
+        "и то, что осталось за границей, осталось непрочитанным.",
+        [
+            f"**{shop_name(r)}**: дошли до {r.get('pagedTo', '?')}"
+            + (f" из {r['declaredTotal']}" if r.get("declaredTotal") else "")
+            for r in budget
         ],
     )
 
