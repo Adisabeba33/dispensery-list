@@ -18,25 +18,43 @@ export default function MenusPage() {
      shops is the question this page exists to answer — the directory can only
      ever tell you what one shop stocks. */
   const byStrain = new Map<string, StrainEntry>();
+  /* Keyed with the case folded. Shops SHOUT their menus and the strain that
+     comes out of a shouted line is shouted too, so BLUE DREAM, Blue Dream and
+     Blue dream were three rows, each holding a different subset of the shops
+     that stock one plant: 4, 81 and 1. The page exists to answer "who has
+     this" and it was answering it three ways at once. Folding the case merges
+     443 such rows and lengthens the shop list of 409 strains. */
+  const spellings = new Map<string, Map<string, number>>();
   for (const l of listings) {
-    const key = l.strainNameCanonical ?? l.strainNameRaw.toLowerCase();
+    const written = l.strainNameCanonical ?? l.strainNameRaw;
+    const key = written.toLowerCase();
     const shop = shopOf.get(l.licenseNumber);
     if (!shop) continue;
+
+    /* Which spelling to print, decided by counting rather than by taking
+       whichever listing was read first. */
+    const seen = spellings.get(key) ?? new Map<string, number>();
+    seen.set(written, (seen.get(written) ?? 0) + 1);
+    spellings.set(key, seen);
 
     let entry = byStrain.get(key);
     if (!entry) {
       entry = {
         key,
-        name: l.strainNameRaw,
+        name: written,
         lineage: l.lineage,
         thcPercent: l.thcPercent,
         sizes: [],
         brands: [],
+        labels: [],
         hasTerpenes: false,
         shops: [],
       };
       byStrain.set(key, entry);
     }
+    /* Every way a shop wrote it, so a search for the label on the jar finds
+       the strain even when the strain is printed under its plain name. */
+    if (!entry.labels.includes(l.strainNameRaw)) entry.labels.push(l.strainNameRaw);
 
     entry.sizes = [...new Set([...entry.sizes, ...(l.availableSizesGrams ?? [])])].sort((a, b) => a - b);
     // Shops write the same brand differently — "mini mart" and "Mini MART" —
@@ -52,6 +70,18 @@ export default function MenusPage() {
     if (!entry.shops.some((s) => s.id === shop.id)) {
       entry.shops.push({ id: shop.id, name: displayName(shop), region: regionOf(shop) });
     }
+  }
+
+  /* The most-used spelling wins, and SHOUTING loses a tie: with 'Blue Dream'
+     and 'BLUE DREAM' equally common, the first is the strain and the second is
+     a menu's house style. */
+  for (const entry of byStrain.values()) {
+    const counted = [...(spellings.get(entry.key) ?? new Map<string, number>())];
+    counted.sort((a, b) => {
+      const shout = (w: string) => (w === w.toUpperCase() && /[A-Z]/.test(w) ? 1 : 0);
+      return b[1] - a[1] || shout(a[0]) - shout(b[0]) || a[0].localeCompare(b[0]);
+    });
+    if (counted.length > 0) entry.name = counted[0][0];
   }
 
   const strains = [...byStrain.values()].sort(
@@ -131,7 +161,7 @@ export default function MenusPage() {
           them all, so you can see where it is before you travel.
         </p>
         <div className="mt-6">
-          <ShelfIndex strains={strains} />
+          <ShelfIndex strains={strains} shopsRead={shelves.length} />
         </div>
       </section>
 
