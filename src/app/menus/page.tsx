@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ShelfIndex } from '@/components/ShelfIndex';
-import { prettyDate } from '@/lib/format';
-import { lastCapturedAt, shelvesRead, strainEntries } from '@/lib/shelf';
+import { ShelfStamp } from '@/components/ShelfStamp';
+import { shelvesRead, strainEntries } from '@/lib/shelf';
 
 export const metadata: Metadata = {
   title: 'Find a strain',
@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 export default function MenusPage() {
   const strains = strainEntries();
   const shelves = shelvesRead();
-  const capturedAt = lastCapturedAt();
 
   return (
     <div className="shell py-12">
@@ -27,6 +26,8 @@ export default function MenusPage() {
         by brand, or by shop.
       </p>
 
+      <ShelfStamp linkToShops />
+
       {/* The search is the page now. It used to sit below a grid of every shop
           read, half a screen down, which is a long way to scroll to reach the
           thing the page is for. The grid has a page of its own. */}
@@ -35,8 +36,7 @@ export default function MenusPage() {
       </div>
 
       <p className="mt-12 max-w-2xl text-sm text-chalk-400">
-        Read from {shelves.length} shops&apos; own menus
-        {capturedAt ? `, most recently on ${prettyDate(capturedAt)}` : ''} —{' '}
+        Read from {shelves.length} shops&apos; own menus —{' '}
         <Link href="/menus/shops/" className="link">
           see which shops
         </Link>
