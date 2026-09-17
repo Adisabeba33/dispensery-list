@@ -55,7 +55,7 @@ export default function HomePage() {
           </Link>{' '}
           ·{' '}
           <Link href="/menus/" className="link">
-            browse the flower on their shelves
+            find a strain across every shelf
           </Link>
         </p>
       </section>
