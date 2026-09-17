@@ -1308,7 +1308,18 @@ const main = async () => {
       }
       entry.productArrays = arrays.length;
       entry.productsSeen = arrays.reduce((n, a) => n + a.length, 0);
-      entry.declaredTotal = payloads.reduce((n, pl) => Math.max(n, findDeclaredTotal(pl)), 0) || null;
+      /* The total worth comparing against is the one that came back WITH the
+         products, not the largest number anywhere the page fetched. Gotham
+         Bowery's menu answers a flower query with twenty products and the site
+         elsewhere says 83 — its whole catalogue, edibles and vapes included.
+         Read the way it was, that shop looked like it was hiding sixty-three
+         products; what it was hiding was a filter. */
+      entry.declaredTotal =
+        payloads.reduce(
+          (n, pl) =>
+            findProductArrays(pl).some((a) => a.length) ? Math.max(n, findDeclaredTotal(pl)) : n,
+          0,
+        ) || null;
 
       if (arrays.length) {
         /* `menu` is null for every shop nobody has classified — which, now
