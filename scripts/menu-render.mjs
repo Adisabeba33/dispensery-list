@@ -640,15 +640,22 @@ const slug = (...parts) =>
    name is not read as an ounce. */
 const SIZE_RULES = [
   [/\b(\d+(?:\.\d+)?)\s*(?:g|gr|gram|grams)\b/i, (m) => parseFloat(m[1])],
-  [/\b1\s*\/\s*8(?!\d)|\beighth\b/i, () => 3.5],
-  [/\b1\s*\/\s*4(?!\d)|\bquarter\b/i, () => 7],
-  [/\b1\s*\/\s*2(?!\d)|\bhalf\b/i, () => 14],
-  [/(?<![a-z])(?:oz|ounce|zip)\b/i, () => 28],
+  /* A fraction means a fraction of an ounce — unless a pound follows it.
+     "Quarter pound" was read as a quarter ounce: 7 grams for 113, wrong by
+     sixteen times and silently. Nobody may sell one in New York, so the right
+     answer is to refuse it, not to shrink it. */
+  [/(?:\b1\s*\/\s*8(?!\d)|\beighth\b)(?!\s*(?:pound|lb|#))/i, () => 3.5],
+  [/(?:\b1\s*\/\s*4(?!\d)|\bquarter\b)(?!\s*(?:pound|lb|#))/i, () => 7],
+  [/(?:\b1\s*\/\s*2(?!\d)|\bhalf\b)(?!\s*(?:pound|lb|#))/i, () => 14],
+  /* The multiplier used to be thrown away: this returned a flat 28 for "oz",
+     "2oz" and "4oz" alike, so a two-ounce jar entered the register as one
+     ounce. A wrong weight is worse than a missing one — a reader cannot tell
+     it is wrong. Shops label an ounce 28g, so an ounce is 28 here too, which
+     makes 2.5oz exactly the 70g Bleu Leaf prints on its own filter. */
+  [/(\d+(?:\.\d+)?)?\s*(?<![a-z])(?:oz|ounces?|zips?)\b/i,
+    (m) => (m[1] ? parseFloat(m[1]) : 1) * 28],
 ];
 
-/* Nobody sells flower by the hundredth of a gram. A figure below this came
-   from some other field — a discount, a rating, a tax rate — and reading it as
-   a weight puts a size on the shelf that a buyer cannot ask for. */
 /* A menu is read by scrolling it, and the only honest stopping condition is
    that it stopped growing. These bound the effort, not the result: when
    either is reached the shelf is marked as cut short. */
@@ -659,8 +666,21 @@ const SCROLL_BUDGET_MS = 150000;
    which branch stocks them is not established. */
 const SHELF_SHARED = 'SHELF_SHARED_WITH_OTHER_LICENCES';
 
+/* Nobody sells flower by the hundredth of a gram. A figure below the floor
+   came from some other field — a discount, a rating, a tax rate — and reading
+   it as a weight puts a size on the shelf that a buyer cannot ask for.
+
+   The ceiling was 30, which is an ounce and a rounding. It silently discarded
+   every larger format: across 10244 collected listings, 70g appears exactly
+   zero times while Bleu Leaf's own filter counts five of them, and nothing
+   above 28.35 has ever been recorded from any of 175 shops. So the bound is
+   the one the state sets — three ounces, 85 grams, the most an adult may buy
+   in New York in a day — and not a guess at what shops stock. A quarter pound
+   is still refused, because nobody may sell one. */
 const MIN_PLAUSIBLE_GRAMS = 0.5;
-const plausibleSize = (g) => (typeof g === 'number' && g >= MIN_PLAUSIBLE_GRAMS && g <= 30 ? g : null);
+const MAX_PLAUSIBLE_GRAMS = 85;
+const plausibleSize = (g) =>
+  typeof g === 'number' && g >= MIN_PLAUSIBLE_GRAMS && g <= MAX_PLAUSIBLE_GRAMS ? g : null;
 
 const sizeFromText = (text) => {
   for (const [re, take] of SIZE_RULES) {
