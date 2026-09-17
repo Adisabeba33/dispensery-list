@@ -47,8 +47,20 @@ const datasetArg = process.argv.indexOf('--dataset');
 const datasetPath = datasetArg > -1 ? process.argv[datasetArg + 1] : 'data/dispensaries.json';
 const dispensaries = JSON.parse(readFileSync(resolve(ROOT, datasetPath), 'utf8'));
 
-// Menus hosted on Leafly or Weedmaps belong to those companies, not the shop.
-const OWN_SITE = new Set(['DUTCHIE', 'BLAZE', 'TREEZ', 'IHEARTJANE', 'MEADOW', 'PROPRIETARY', 'OTHER']);
+/* Menus hosted on Leafly or Weedmaps belong to those companies, not the shop,
+   and are the only providers this collector refuses.
+
+   It used to be the other way round — an allowlist of the seven platforms we
+   had names for — and the cost of that was invisible: `provider` is null for a
+   shop nobody has looked at yet, so "we have never checked what menu this shop
+   runs" read as "not ours to read". Sixty-three open shops with a website of
+   their own were excluded by the register's own empty field, and because they
+   were never visited the field stayed empty. A shop left out for not being
+   classified can never be classified.
+
+   A denylist inverts that: the unknown is visited, and what it runs is learnt
+   from the visit. */
+const THIRD_PARTY_MENU = new Set(['LEAFLY', 'WEEDMAPS']);
 
 /**
  * --skip-collected leaves out shops whose shelf we already hold, so a sweep
@@ -88,6 +100,14 @@ const shapesArg = process.argv.indexOf('--dump-shapes');
 const dumpShapes = shapesArg > -1 ? Number(process.argv[shapesArg + 1]) || 8 : 0;
 const dumpArg = process.argv.indexOf('--dump-products');
 const dumpProducts = dumpArg > -1 ? Number(process.argv[dumpArg + 1]) || 5 : 0;
+/* --dump-requests names the address the shelf actually came from, and for a
+   menu that pages, the parameters it was asked for. A shop that declares 83
+   products and gives 20 is being paged, and neither the shapes nor the
+   products can say which knob turns the page — only the request can. It also
+   hands the menu's real address to whoever is filling data/menu-endpoints.json
+   by hand. */
+const requestsArg = process.argv.indexOf('--dump-requests');
+const dumpRequests = requestsArg > -1 ? Number(process.argv[requestsArg + 1]) || 8 : 0;
 const alreadyCollected = new Set();
 if (skipCollected) {
   try {
@@ -123,7 +143,7 @@ try {
 const candidates = dispensaries.filter(
   (d) =>
     d.operationalStatus === 'OPEN' &&
-    OWN_SITE.has(d.menu?.provider) &&
+    !THIRD_PARTY_MENU.has(d.menu?.provider) &&
     d.contact?.website &&
     !alreadyCollected.has(d.licenseNumber) &&
     (!onlyEndpoints || ENDPOINTS[d.licenseNumber]) &&
@@ -1072,6 +1092,9 @@ const main = async () => {
     const context = await browser.newContext({ userAgent: UA });
     const page = await context.newPage();
     const payloads = [];
+    /* One entry per JSON response that carried products: where it came from,
+       and what was asked for. Kept only when --dump-requests asks. */
+    const requests = [];
 
     // When the last payload landed. A menu that is still fetching has not
     // finished, and a fixed wait either cuts it off or wastes time on a shop
@@ -1087,6 +1110,20 @@ const main = async () => {
         const body = await res.json();
         payloads.push(body);
         lastPayloadAt = Date.now();
+        if (dumpRequests > 0) {
+          const carried = findProductArrays(body).reduce((n, a) => n + a.length, 0);
+          if (carried > 0) {
+            const req = res.request();
+            requests.push({
+              products: carried,
+              method: req.method(),
+              url: res.url().slice(0, 300),
+              // GraphQL keeps the page and the filters in the body, not the
+              // address, so the address alone would say nothing.
+              body: req.method() === 'POST' ? String(req.postData() ?? '').slice(0, 700) : null,
+            });
+          }
+        }
       } catch {
         /* non-JSON or aborted; nothing to capture */
       }
@@ -1265,12 +1302,32 @@ const main = async () => {
           .map((pl) => (pl && typeof pl === 'object' ? Object.keys(pl).slice(0, 14).join(',') : typeof pl))
           .filter((v, i, a) => a.indexOf(v) === i);
       }
+      if (dumpRequests > 0) {
+        /* Biggest first: the one carrying the shelf is the one to read. */
+        entry.requests = requests.sort((a, b) => b.products - a.products).slice(0, dumpRequests);
+      }
       entry.productArrays = arrays.length;
       entry.productsSeen = arrays.reduce((n, a) => n + a.length, 0);
-      entry.declaredTotal = payloads.reduce((n, pl) => Math.max(n, findDeclaredTotal(pl)), 0) || null;
+      /* The total worth comparing against is the one that came back WITH the
+         products, not the largest number anywhere the page fetched. Gotham
+         Bowery's menu answers a flower query with twenty products and the site
+         elsewhere says 83 — its whole catalogue, edibles and vapes included.
+         Read the way it was, that shop looked like it was hiding sixty-three
+         products; what it was hiding was a filter. */
+      entry.declaredTotal =
+        payloads.reduce(
+          (n, pl) =>
+            findProductArrays(pl).some((a) => a.length) ? Math.max(n, findDeclaredTotal(pl)) : n,
+          0,
+        ) || null;
 
       if (arrays.length) {
-        capturedShapes[shop.menu.provider] ??= Object.keys(arrays[0][0]).sort().slice(0, 60);
+        /* `menu` is null for every shop nobody has classified — which, now
+           that those are visited, is sixty-three of them. Reading .provider
+           off it threw, inside the try that turns anything thrown into
+           "error", so the shelf would have been read and then dropped on the
+           way to a diagnostic. */
+        capturedShapes[shop.menu?.provider ?? 'UNKNOWN'] ??= Object.keys(arrays[0][0]).sort().slice(0, 60);
       }
 
       if (dumpProducts > 0) {

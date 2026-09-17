@@ -71,6 +71,10 @@ jobs:
           for offset in $(seq 0 "$BATCH" $((total - 1))); do
             echo "::group::shops $offset – $((offset + BATCH))"
             if node scripts/menu-render.mjs --limit "$BATCH" --offset "$offset"; then
+              # Диагностика собирается до решения о публикации: партия могла не
+              # пройти валидацию, но прочитана она была, и то, что она увидела,
+              # ровно и объясняет почему.
+              python scripts/menu-coverage.py collect || true
               if npm run validate > /tmp/validate.txt 2>&1; then
                 git add data/flower-listings.json
                 git diff --cached --quiet || git commit -q -m "menu: daily refresh, shops $offset+"
@@ -107,6 +111,9 @@ jobs:
           python scripts/menu-diff.py --previous /tmp/yesterday.json
           code=$?
           set -e
+          # Разностная проверка не видит полку, которая обрывается одинаково
+          # каждый день. Абсолютная — видит, и дописывается в тот же отчёт.
+          python scripts/menu-coverage.py report >> menu-report.md || true
           if [ $code -eq 0 ]; then echo "sane=true"; else echo "sane=false"; fi >> "$GITHUB_OUTPUT"
 
       # Menus are the point of the site and they change daily, so a clean run
