@@ -100,6 +100,14 @@ const shapesArg = process.argv.indexOf('--dump-shapes');
 const dumpShapes = shapesArg > -1 ? Number(process.argv[shapesArg + 1]) || 8 : 0;
 const dumpArg = process.argv.indexOf('--dump-products');
 const dumpProducts = dumpArg > -1 ? Number(process.argv[dumpArg + 1]) || 5 : 0;
+/* --dump-requests names the address the shelf actually came from, and for a
+   menu that pages, the parameters it was asked for. A shop that declares 83
+   products and gives 20 is being paged, and neither the shapes nor the
+   products can say which knob turns the page — only the request can. It also
+   hands the menu's real address to whoever is filling data/menu-endpoints.json
+   by hand. */
+const requestsArg = process.argv.indexOf('--dump-requests');
+const dumpRequests = requestsArg > -1 ? Number(process.argv[requestsArg + 1]) || 8 : 0;
 const alreadyCollected = new Set();
 if (skipCollected) {
   try {
@@ -1084,6 +1092,9 @@ const main = async () => {
     const context = await browser.newContext({ userAgent: UA });
     const page = await context.newPage();
     const payloads = [];
+    /* One entry per JSON response that carried products: where it came from,
+       and what was asked for. Kept only when --dump-requests asks. */
+    const requests = [];
 
     // When the last payload landed. A menu that is still fetching has not
     // finished, and a fixed wait either cuts it off or wastes time on a shop
@@ -1099,6 +1110,20 @@ const main = async () => {
         const body = await res.json();
         payloads.push(body);
         lastPayloadAt = Date.now();
+        if (dumpRequests > 0) {
+          const carried = findProductArrays(body).reduce((n, a) => n + a.length, 0);
+          if (carried > 0) {
+            const req = res.request();
+            requests.push({
+              products: carried,
+              method: req.method(),
+              url: res.url().slice(0, 300),
+              // GraphQL keeps the page and the filters in the body, not the
+              // address, so the address alone would say nothing.
+              body: req.method() === 'POST' ? String(req.postData() ?? '').slice(0, 700) : null,
+            });
+          }
+        }
       } catch {
         /* non-JSON or aborted; nothing to capture */
       }
@@ -1276,6 +1301,10 @@ const main = async () => {
           .slice(0, 6)
           .map((pl) => (pl && typeof pl === 'object' ? Object.keys(pl).slice(0, 14).join(',') : typeof pl))
           .filter((v, i, a) => a.indexOf(v) === i);
+      }
+      if (dumpRequests > 0) {
+        /* Biggest first: the one carrying the shelf is the one to read. */
+        entry.requests = requests.sort((a, b) => b.products - a.products).slice(0, dumpRequests);
       }
       entry.productArrays = arrays.length;
       entry.productsSeen = arrays.reduce((n, a) => n + a.length, 0);

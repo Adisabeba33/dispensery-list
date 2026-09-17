@@ -16,7 +16,7 @@ on:
     inputs:
       licences:
         description: Лицензии через запятую
-        default: OCM-CAURD-24-000116
+        default: OCM-CAURD-23-000009,OCM-CAURD-23-000023
 
 permissions:
   contents: read
@@ -40,11 +40,12 @@ jobs:
 
       - name: Read the shops with the diagnostics turned on
         env:
-          # Bleu Leaf: у магазина на сайте больше позиций в каждом весе,
-          # чем у нас. Своего общего числа его меню не называет, так что
-          # проверять придётся по тому, что выброшено поимённо.
-          LICENCES: ${{ inputs.licences || 'OCM-CAURD-24-000116' }}
-        run: node scripts/menu-render.mjs --only "$LICENCES" --dump-products 8
+          # Gotham Bowery объявляет 83 товара и отдаёт 20, Gotham Buds
+          # объявляет 131 и отдаёт 79. Оба останавливаются после первого
+          # круга прокрутки — значит меню листается, а не подгружается. Нужен
+          # адрес запроса и то, что в нём спрашивают.
+          LICENCES: ${{ inputs.licences || 'OCM-CAURD-23-000009,OCM-CAURD-23-000023' }}
+        run: node scripts/menu-render.mjs --only "$LICENCES" --dump-requests 6
 
       - name: What the collector saw, and what it threw away
         run: |
@@ -64,6 +65,10 @@ jobs:
                   if shop.get(key) is not None:
                       print(f"  {key}: {shop[key]}")
               print(f"  rejected: {shop.get('rejected')}")
+              for req in shop.get("requests") or []:
+                  print(f"  -- {req['products']:>4} products  {req['method']} {req['url']}")
+                  if req.get("body"):
+                      print(f"     body: {req['body']}")
               for reason, names in (shop.get("rejectedSample") or {}).items():
                   print(f"  -- dropped as {reason}:")
                   for n in names:
