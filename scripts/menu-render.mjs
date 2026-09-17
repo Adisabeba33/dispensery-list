@@ -47,8 +47,20 @@ const datasetArg = process.argv.indexOf('--dataset');
 const datasetPath = datasetArg > -1 ? process.argv[datasetArg + 1] : 'data/dispensaries.json';
 const dispensaries = JSON.parse(readFileSync(resolve(ROOT, datasetPath), 'utf8'));
 
-// Menus hosted on Leafly or Weedmaps belong to those companies, not the shop.
-const OWN_SITE = new Set(['DUTCHIE', 'BLAZE', 'TREEZ', 'IHEARTJANE', 'MEADOW', 'PROPRIETARY', 'OTHER']);
+/* Menus hosted on Leafly or Weedmaps belong to those companies, not the shop,
+   and are the only providers this collector refuses.
+
+   It used to be the other way round — an allowlist of the seven platforms we
+   had names for — and the cost of that was invisible: `provider` is null for a
+   shop nobody has looked at yet, so "we have never checked what menu this shop
+   runs" read as "not ours to read". Sixty-three open shops with a website of
+   their own were excluded by the register's own empty field, and because they
+   were never visited the field stayed empty. A shop left out for not being
+   classified can never be classified.
+
+   A denylist inverts that: the unknown is visited, and what it runs is learnt
+   from the visit. */
+const THIRD_PARTY_MENU = new Set(['LEAFLY', 'WEEDMAPS']);
 
 /**
  * --skip-collected leaves out shops whose shelf we already hold, so a sweep
@@ -123,7 +135,7 @@ try {
 const candidates = dispensaries.filter(
   (d) =>
     d.operationalStatus === 'OPEN' &&
-    OWN_SITE.has(d.menu?.provider) &&
+    !THIRD_PARTY_MENU.has(d.menu?.provider) &&
     d.contact?.website &&
     !alreadyCollected.has(d.licenseNumber) &&
     (!onlyEndpoints || ENDPOINTS[d.licenseNumber]) &&
@@ -1250,7 +1262,12 @@ const main = async () => {
       entry.declaredTotal = payloads.reduce((n, pl) => Math.max(n, findDeclaredTotal(pl)), 0) || null;
 
       if (arrays.length) {
-        capturedShapes[shop.menu.provider] ??= Object.keys(arrays[0][0]).sort().slice(0, 60);
+        /* `menu` is null for every shop nobody has classified — which, now
+           that those are visited, is sixty-three of them. Reading .provider
+           off it threw, inside the try that turns anything thrown into
+           "error", so the shelf would have been read and then dropped on the
+           way to a diagnostic. */
+        capturedShapes[shop.menu?.provider ?? 'UNKNOWN'] ??= Object.keys(arrays[0][0]).sort().slice(0, 60);
       }
 
       if (dumpProducts > 0) {
