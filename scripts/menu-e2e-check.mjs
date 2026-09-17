@@ -31,7 +31,7 @@ const run = (cmd, args, opts = {}) =>
     child.on('close', (code) => done({ code, out }));
   });
 
-const server = spawn('python3', ['-m', 'http.server', String(PORT), '--directory', 'scripts/fixtures/menu-shop'], {
+const server = spawn('node', ['scripts/fixtures/menu-server.mjs', String(PORT)], {
   cwd: ROOT,
   stdio: 'ignore',
 });
@@ -63,7 +63,12 @@ try {
 
   check('status', shop.status, 'ok');
   check('age gate answered', shop.ageGate, true);
+  /* Five products across two pages of three. The menu hands over the first
+     page and offers no way to the second, so this number is 3 unless the
+     collector asked for page two itself. */
   check('products captured', shop.productsSeen, 5);
+  check('a second page was asked for', shop.pagesAsked >= 1, true);
+  check('and the menu was not asked past its end', shop.pagesAsked <= 2, true);
   check('flower found', shop.flower, 2);
   check('pre-roll and edible refused', shop.rejected['title-not-flower'], 2);
   check('tax row refused', shop.rejected['category-not-flower'], 1);
