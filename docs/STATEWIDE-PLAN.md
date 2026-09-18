@@ -1,0 +1,202 @@
+# Covering the rest of New York
+
+The register holds NYC's five boroughs and Westchester: 468 licences, 328 of
+them open, 157 with a menu collected. This is the plan for the other 56
+counties — and, because that is the real reason to do it, for learning what a
+**second state** would cost.
+
+Every number below is measured from `data/raw/ocm-licenses-2026-09-06.json`,
+which already contains the whole state. Reproduce with the snippets inline.
+
+---
+
+## 1. What is actually out there
+
+| | Active retail licences | Of those, opened to the public |
+|---|---:|---:|
+| Current scope (6 counties) | 505 | 334 |
+| **Rest of the state** | **807** | **369** |
+| — of which Long Island (Suffolk, Nassau) | 58 | 17 |
+| — of which upstate | 749 | 352 |
+
+**The expansion roughly DOUBLES the open set — it does not triple it.** 807
+sounds like 2.6× today's register, but licence ≠ shop: only 369 of them have a
+public opening date, against 334 in scope. Upstate has many more licences that
+have not opened.
+
+### One scope decision to make deliberately
+
+"Everything above Westchester up to Canada" is upstate — **749 licences, 352
+open**. It excludes Long Island, which is 58 licences and only 17 open. Long
+Island is neither upstate nor currently covered, so it falls through unless
+someone names it. Cheap either way; just decide rather than discover.
+
+### Where the shops are, by the registry's own region field
+
+| Region | Active retail outside current scope |
+|---|---:|
+| Capital District | 148 |
+| Western NY | 143 |
+| Mid-Hudson | 142 |
+| Finger Lakes | 97 |
+| Southern Tier | 78 |
+| Central NY | 60 |
+| Long Island | 58 |
+| Mohawk Valley | 48 |
+| North Country | 31 |
+
+---
+
+## 2. The funnel, as measured on the six counties we have
+
+```
+468 licences  →  328 open  →  319 with a website (97%)  →  157 menus (48%)
+```
+
+Applied to the 352 open upstate shops, the expected landing is **~170 new
+menus** and a shelf of roughly **19,000 listings**, about double today's 9,542.
+
+That 48 % is the number to watch, and it is not guaranteed to hold. It was
+earned in a city where menu platforms are concentrated, and
+`docs/MENU_ENDPOINTS_REPORT.md` records that fifteen of twenty-five shops were
+once lost to age gates and the browser path alone. Upstate will have more
+one-off proprietary storefronts and possibly more of the standard platforms;
+which way that cuts is unknown until the first region is run.
+
+**The bottleneck is not collection, it is the endpoint study.** 35 endpoints
+have been characterised and `data/menu-endpoints.todo.json` still holds 131
+for the current scope alone. That is the step that costs attention; the
+browser run costs only CI minutes (40 shops per run, ~9 runs for a doubled
+register).
+
+---
+
+## 3. What is free, what is cheap, and what is the actual work
+
+### Free — the ingest
+
+`SCOPE_COUNTIES` in `scripts/ingest/sources/ny-ocm-socrata.ts` is a
+six-element array. The raw snapshot already holds every county, and the US
+Census geocoder that gave 97 % coverage does not care where a street is. The
+statewide register is **one constant away**, today, and the record shape needs
+nothing new.
+
+### Cheap — menu collection
+
+Mechanical, and already automated end to end. It costs CI browser minutes and
+the endpoint study above.
+
+### The actual work — municipalities
+
+`data/municipalities.json` holds **53 records**: five NYC boroughs and 48
+Westchester towns and villages. New York State has on the order of **1,500**
+cities, towns and villages, and its opt-out regime is real — a large number of
+upstate municipalities opted out of retail entirely.
+
+This is the register's whole claim to correctness. The README's rule — *an
+empty field beats a plausible guess* — bites hardest here: recording a shop in
+a town that opted out, or marking a town opted-out when it never voted, is
+precisely the fabricated record the project exists to refuse. Opt-out status
+comes from municipal records and the state's own opt-out list, one municipality
+at a time.
+
+**Budget the expansion as municipal research, not as engineering.**
+
+---
+
+## 4. Three things that break, and must be decided before the switch
+
+### 4a. The ratchet baseline — the one that matters
+
+`Soma/tests/fixtures/ny-shelf-names.json` is the frozen NYC shelf, and
+`tests/shelf-coverage.test.ts` floors absolute counts against it: 3,968
+answered, 3,772 curated. Doubling the shelf invalidates every one of those
+numbers, and **coverage will probably fall** — upstate cultivators are
+different cultivators, so a fresh crop of unknown names arrives at once.
+
+A drop that arrives silently makes months of ratcheting unreadable. So:
+
+> **Keep the NYC fixture frozen as its own ratchet. Add a second, statewide
+> one beside it. Never merge them.** The NYC number goes on measuring the work
+> that has been done; the statewide number starts its own history at whatever
+> it starts at.
+
+### 4b. The site is NYC-shaped
+
+`src/app/westchester/` is a hard-coded route and the directory groups by
+borough. Statewide needs region as a first-class dimension — and the raw feed
+already carries a `region` field, so it is available rather than inventable.
+
+### 4c. `address.borough` is NYC-only
+
+Fine as a nullable NYC extra; it must not be the grouping key statewide.
+
+---
+
+## 5. What this trial teaches about a second state — the real point
+
+Be precise about what would carry over, because it decides whether state #2 is
+a week or a quarter.
+
+**Carries over (~90 % of the repo):** the schemas, the validator, the menu
+collector and its browser path, the terpene mapping, the producer model, the
+SŌMA gap triage, the whole curation pipeline. None of it is New York-specific.
+
+**Does not carry over:** the ingest adapter. `scripts/ingest/sources/ny-ocm-socrata.ts`
+is bespoke to New York's Socrata dataset `jskf-tt3q`. Another state means
+another source with another shape — and several states publish no
+machine-readable licence registry at all, which turns ingest from an adapter
+into a scraping-and-verification project.
+
+**And the municipality research does not carry over at all.** It is the
+dominant cost in both states.
+
+So the measurement to take from this trial is not "did it work". It is:
+
+> **How many lines of code changed, against how many hours of municipal
+> research.** If the answer is "one constant and three weeks of opt-out
+> checking", then a new state costs research-days, not engineering-days — and
+> that is the number that decides whether this scales to fifty states or to
+> three.
+
+Write both figures down when stage 1 finishes.
+
+---
+
+## 6. Staged, and the recommendation
+
+**Do one region first, not the whole state.** The point is to learn the cost,
+and a region answers that in a week where the state takes a quarter.
+
+**Capital District** is the right first region: 148 licences, the largest
+block, self-contained, and Albany gives a dense urban core to compare against
+NYC behaviour.
+
+| Stage | Work | Cost |
+|---|---|---|
+| **0** | Widen `SCOPE_COUNTIES` to the Capital District's counties, re-run ingest, geocode. **Touch no ratchet.** Report what arrived. | hours |
+| **1** | Municipal opt-out research for that region — the real work, and the thing to time carefully. | the unknown |
+| **2** | Endpoint study, then menu collection for the region. | CI + attention |
+| **3** | Stand up the statewide ratchet beside the frozen NYC one. Re-measure coverage and expect it to fall; decide what the new floor means before reading it. | half a day |
+| **4** | Repeat by region, largest first: Western NY (143), Mid-Hudson (142), Finger Lakes (97)… | linear |
+
+Only after stage 3 is there an honest answer to the question this trial was
+run to ask.
+
+---
+
+## Reproduce
+
+```bash
+cd dispensery-list && python3 -c "
+import json, collections
+R = json.load(open('data/raw/ocm-licenses-2026-09-06.json'))
+SCOPE = {'New York','Kings','Queens','Bronx','Richmond','Westchester'}
+RETAIL = {'Adult-Use Retail Dispensary License','Adult-Use Conditional Retail Dispensary License','Adult-Use Registered Organization Dispensary License','Adult-Use Microbusiness License'}
+act = [r for r in R if r.get('license_type') in RETAIL and r.get('license_status') == 'Active']
+out = [r for r in act if (r.get('county') or '').strip() not in SCOPE]
+opened = lambda rs: sum(1 for r in rs if r.get('retail_date_opened_to_public'))
+print(len(act), len(out), opened(out))
+print(collections.Counter((r.get('region') or '?').strip() for r in out).most_common())
+"
+```
