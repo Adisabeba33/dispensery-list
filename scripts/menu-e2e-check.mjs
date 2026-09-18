@@ -75,7 +75,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '6',
+    '--limit', '7',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -171,6 +171,23 @@ try {
   check('to the end of it', carousel?.pagingStoppedBecause, 'read-everything-declared');
   check('the total is the list_s, not a carousel_s', carousel?.declaredTotal, 4);
   check('and the whole list was read', carousel?.pagedQueryProducts, 4);
+
+  /* Products with no category field at all. What they are is in the name —
+     the word Flower, the weight, the potency — and refusing to read the name
+     because a field is missing is what cost Liberty Buds all 206 of its
+     products, read off its own flower page. */
+  const nocat = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000993');
+  check('an uncategorised product named as flower is kept', nocat?.flower, 2);
+  check('one named as something else is still refused', nocat?.rejected?.['title-not-flower'], 1);
+  check('and one that names nothing is not guessed at', nocat?.rejected?.['no-category'], 1);
+
+  const nocatShelf = JSON.parse(readFileSync(LISTINGS, 'utf8'))
+    .filter((l) => l.licenseNumber === 'OCM-CAURD-24-000993')
+    .flatMap((l) => l.availableSizesGrams ?? [])
+    .sort((a, b) => a - b);
+  /* 3.5 from "| 3.5g |", and 7 from a name that ends "- 7" with the unit left
+     off, which is how The Hibrary writes an eighth. */
+  check('both weights were read, unit or no unit', nocatShelf, [3.5, 7]);
 
   // Shelves the run did not visit must survive it.
   check('other shelves carried forward', summary.shelvesCarriedForward > 0, true);
