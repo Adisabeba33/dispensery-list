@@ -1,1 +1,36 @@
-[{"id":"fixture-shop","licenseNumber":"OCM-CAURD-24-000999","legalName":"Fixture Dispensary LLC","dbaName":"Fixture Dispensary","operationalStatus":"OPEN","menu":{"provider":"DUTCHIE"},"contact":{"website":"http://localhost:4399/"},"address":{"line1":"1 Test St","city":"Brooklyn","zip":"11201"}}]
+[
+ {
+  "id": "fixture-shop",
+  "licenseNumber": "OCM-CAURD-24-000999",
+  "legalName": "Fixture Dispensary LLC",
+  "dbaName": "Fixture Dispensary",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "DUTCHIE"
+  },
+  "contact": {
+   "website": "http://localhost:4399/"
+  },
+  "address": {
+   "line1": "1 Test St",
+   "city": "Brooklyn",
+   "zip": "11201"
+  }
+ },
+ {
+  "id": "fixture-shop-nolink",
+  "licenseNumber": "OCM-CAURD-24-000998",
+  "legalName": "Second Fixture Dispensary LLC",
+  "dbaName": "Second Fixture Dispensary",
+  "operationalStatus": "OPEN",
+  "menu": null,
+  "contact": {
+   "website": "http://localhost:4399/nolink"
+  },
+  "address": {
+   "line1": "2 Test St",
+   "city": "Brooklyn",
+   "zip": "11201"
+  }
+ }
+]

@@ -347,6 +347,22 @@ export const sameEstate = (href, siteUrl, shopName = '') => {
   return false;
 };
 
+/* Where a menu lives when the shop's own pages do not say.
+ *
+ * Forty open shops came back with menuLink: none — a website, a robots.txt
+ * that allows us, and not one link on the page that scored above zero. Some
+ * put the menu behind a button that is not a link, some behind a script that
+ * writes it after we have read the markup, and some simply do not mention it
+ * on the home page at all.
+ *
+ * These are the addresses a person would try next, in the order a person would
+ * try them. Tried only when nothing was found, only on the shop's own site,
+ * and only until one of them answers — a guess that costs four HEAD requests
+ * and at most two page loads is worth forty shops; a guess that costs forty
+ * page loads per shop is a crawler, which is not what this is.
+ */
+const GUESSED_MENU_PATHS = ['/menu', '/shop', '/order', '/products'];
+
 /** Higher is better; 0 means "never follow this". */
 export const rankMenuLink = (href = '', text = '') => {
   if (!href || PROMO_ROUTE.test(href) || isProductPage(href)) return 0;
@@ -1335,6 +1351,42 @@ const main = async () => {
         if (second) {
           entry.foundMenuOnSecondLook = true;
           found = second;
+        }
+      }
+
+      /* Still nothing said where the menu is, so try where it usually is.
+         Asked from inside the page, which keeps it to one request per address
+         and leaves the browser out of it until something answers. */
+      if (!found) {
+        const origin = (() => {
+          try {
+            return new URL(site).origin;
+          } catch {
+            return null;
+          }
+        })();
+        const candidates = [];
+        for (const path of origin ? GUESSED_MENU_PATHS : []) {
+          const url = `${origin}${path}`;
+          if (!(await robotsAllows(url))) continue;
+          const ok = await page.evaluate(async (target) => {
+            try {
+              const res = await fetch(target, { method: 'HEAD', redirect: 'follow' });
+              return res.ok;
+            } catch {
+              return false;
+            }
+          }, url);
+          if (ok) candidates.push(url);
+          // Two is enough to try; a site that answers 200 to everything would
+          // otherwise hand us its whole list of guesses as though each were a
+          // menu.
+          if (candidates.length >= 2) break;
+        }
+        if (candidates.length) {
+          entry.guessedMenuPaths = candidates.map((u) => new URL(u).pathname);
+          found = candidates[0];
+          entry.foundMenuByGuess = true;
         }
       }
       if (dumpLinks > 0) {

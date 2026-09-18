@@ -46,10 +46,15 @@ createServer((req, res) => {
   }
 
   try {
-    const name = url.pathname === '/' ? 'index.html' : url.pathname.slice(1);
+    /* Extensionless addresses, because that is how a menu is usually
+       published — /menu, not /menu.html — and the collector guesses those. */
+    const ROUTES = { '/': 'index.html', '/menu': 'menu.html', '/nolink': 'nolink.html' };
+    const name = ROUTES[url.pathname] ?? url.pathname.slice(1);
     const [body, type] = file(name);
     res.writeHead(200, { 'content-type': type });
-    res.end(body);
+    // A HEAD answers whether the address exists and sends nothing, which is
+    // the whole point of asking with one.
+    res.end(req.method === 'HEAD' ? undefined : body);
   } catch {
     res.writeHead(404, { 'content-type': 'text/plain' });
     res.end('not found');
