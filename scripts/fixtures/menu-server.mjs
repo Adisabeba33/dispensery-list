@@ -119,6 +119,47 @@ createServer((req, res) => {
     return;
   }
 
+  /* Products with no category field whatsoever — the shape that cost Liberty
+     Buds its whole shelf. What they are is in the name, and nowhere else. */
+  if (url.pathname === '/api/nocat.json') {
+    res.writeHead(200, { 'content-type': 'application/json' });
+    res.end(
+      JSON.stringify({
+        products: [
+          {
+            id: 'n1',
+            name: '1937 | Flower | Kilimanjaro Mixed Bud | 3.5g | 23.2% | Sativa',
+            brand: '1937',
+            thc: 23.2,
+            price: 45,
+          },
+          // The weight with its unit left off, at the end, the way The Hibrary
+          // writes it: "JULIA - Lemon Sherbert - flower - 3.5".
+          {
+            id: 'n2',
+            name: 'Bouket | Large Bud | Indoor Sunkist | Hybrid - 7',
+            brand: 'Bouket',
+            thc: 28.1,
+            price: 70,
+          },
+          // Named outright as something else: still refused, category or no.
+          {
+            id: 'n3',
+            name: 'Camino Sours Tropical Burst Gummies 100MG',
+            brand: 'Camino',
+            thc: 100,
+            price: 25,
+          },
+          /* Names no product type at all. Stays refused: guessing flower from
+             a bare strain name would sweep in every uncategorised pre-roll in
+             the state, and an empty field beats a plausible guess. */
+          { id: 'n4', name: 'Blue Dream', brand: 'Somebody', thc: 20, price: 30 },
+        ],
+      }),
+    );
+    return;
+  }
+
   if (url.pathname === '/api/empty.json') {
     res.writeHead(200, { 'content-type': 'application/json' });
     res.end(JSON.stringify({ data: { products: [] } }));
@@ -140,6 +181,8 @@ createServer((req, res) => {
       '/facets-menu': 'facets-menu.html',
       '/carousel': 'carousel.html',
       '/carousel-menu': 'carousel-menu.html',
+      '/nocat': 'nocat.html',
+      '/nocat-menu': 'nocat-menu.html',
     };
     const name = ROUTES[url.pathname] ?? url.pathname.slice(1);
     const [body, type] = file(name);

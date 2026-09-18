@@ -104,5 +104,23 @@
    "city": "Brooklyn",
    "zip": "11201"
   }
+ },
+ {
+  "id": "fixture-shop-nocat",
+  "licenseNumber": "OCM-CAURD-24-000993",
+  "legalName": "Seventh Fixture Dispensary LLC",
+  "dbaName": "Seventh Fixture Dispensary",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "PROPRIETARY"
+  },
+  "contact": {
+   "website": "http://localhost:4399/nocat"
+  },
+  "address": {
+   "line1": "7 Test St",
+   "city": "Brooklyn",
+   "zip": "11201"
+  }
  }
 ]

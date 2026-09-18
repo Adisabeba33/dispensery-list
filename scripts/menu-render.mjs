@@ -995,6 +995,24 @@ const MAX_PLAUSIBLE_GRAMS = 85;
 const plausibleSize = (g) =>
   typeof g === 'number' && g >= MIN_PLAUSIBLE_GRAMS && g <= MAX_PLAUSIBLE_GRAMS ? g : null;
 
+/**
+ * A weight with its unit left off, at the very end of a name.
+ *
+ * The Hibrary lists "JULIA - Lemon Sherbert - flower - 3.5" and means an
+ * eighth. Read anywhere in a name a bare number is as likely to be a
+ * percentage, a pack count or a deal number, so this reads only the end, only
+ * the weights a shop actually sells by, and only after every other rule has
+ * declined — a flower listing with no weight is dropped whole, so the last
+ * resort is worth having.
+ */
+const RETAIL_GRAMS = new Set([1, 1.75, 2, 3.5, 7, 14, 28]);
+const bareWeightAtEnd = (text) => {
+  const m = String(text ?? '').trim().match(/(?:^|[\s\-|·,])(\d+(?:\.\d+)?)\s*$/);
+  if (!m) return null;
+  const g = parseFloat(m[1]);
+  return RETAIL_GRAMS.has(g) ? g : null;
+};
+
 const sizeFromText = (text) => {
   for (const [re, take] of SIZE_RULES) {
     const m = text.match(re);
@@ -1192,12 +1210,32 @@ const categoryText = (p) =>
  * that rejects thousands of products should be able to report what it was
  * rejecting them for.
  */
+/**
+ * What a shop calls the thing when it is naming the product, not the shelf.
+ *
+ * Read only when there is no category to read, which is not a rare corner:
+ * Liberty Buds publishes two hundred and six products from /shop/c/flower/,
+ * its own menu states two hundred and six, we read all two hundred and six —
+ * and every one of them was dropped for want of a category field, while its
+ * name said
+ *
+ *   1937 | Flower | Kilimanjaro Mixed Bud | 3.5g | 23.2% | Sativa
+ *
+ * The weight, the potency and the lineage are all in there. Refusing to look
+ * at the name because a field is missing threw away a whole shop.
+ */
+const FLOWER_TITLE = /\b(flowers?|buds?|nugs?|smalls?|popcorn)\b/i;
+
 const classify = (p) => {
   const title = String(flatten(pick(p, NAME_KEYS)) ?? '');
   if (!title.trim()) return 'no-title';
   if (NOT_FLOWER_TITLE.test(title)) return 'title-not-flower';
   const text = categoryText(p);
-  if (!text) return 'no-category';
+  /* No category to go on, so the name decides — and only when it says so
+     outright. A name that names no product type stays refused: guessing from
+     a bare strain name would sweep in every pre-roll a shop lists without a
+     category, and an empty field beats a plausible guess. */
+  if (!text) return FLOWER_TITLE.test(title) ? 'flower' : 'no-category';
   if (/pre[\s-]?roll|infused|blunt|joint/.test(text)) return 'category-not-flower';
   return /flower|bud/.test(text) ? 'flower' : 'category-not-flower';
 };
@@ -1290,7 +1328,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   }
 
   if (!sizes.length) {
-    const fromTitle = sizeFromText(String(rawName));
+    const fromTitle = sizeFromText(String(rawName)) ?? bareWeightAtEnd(rawName);
     if (fromTitle) sizes.push(fromTitle);
   }
 
