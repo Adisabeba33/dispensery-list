@@ -53,6 +53,7 @@ KEEP = (
     "payloads",
     "settled",
     "jsonApiProducts",
+    "rejectedShape",
     "productsSeen",
     "declaredTotal",
     "flower",
@@ -335,6 +336,24 @@ def report():
             for r in sorted(wrong_shelf, key=lambda r: -(r.get("productsSeen") or 0))
         ],
         limit=20,
+    )
+
+    # Поля того, что мы прочитали и не смогли опознать. Это не товары:
+    # cookie-баннер OneTrust у Curaleaf, список категорий у The Hibrary. У
+    # настоящего товара есть цена, процент или вес — у них нет ничего.
+    shapes = [r for r in rows if r.get("rejectedShape") and not (r.get("flower") or 0)]
+    section(
+        lines,
+        "Что мы читаем и не можем опознать",
+        "Поля первой такой записи в каждом магазине. Если в списке нет ни\n"
+        "цены, ни процента, ни веса — это не товар, и читать его как товар\n"
+        "нельзя: он раздувает «прочитано» и портит всю диагностику.",
+        [
+            f"**{shop_name(r)}** ({reason}): {keys[:150]}"
+            for r in sorted(shapes, key=lambda r: shop_name(r))
+            for reason, keys in (r.get("rejectedShape") or {}).items()
+        ],
+        limit=25,
     )
 
     dead = [r for r in rows if str(r.get("status") or "").startswith("error")]

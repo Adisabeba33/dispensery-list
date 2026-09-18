@@ -1984,6 +1984,18 @@ const main = async () => {
          shop's own website by hand is how the last three data-losing bugs
          were found. */
       const rejectedNames = {};
+      /* The fields of the first thing refused for each of the two reasons that
+         mean "we could not tell what this is".
+         
+         We read things that are not products at all: Curaleaf's cookie banner
+         arrives as FPAU, __qca and sa-user-id-v3, and The Hibrary's list of
+         categories arrives as Flowers, Wax, LIGHTERS. Both pass for a shelf
+         because they carry a name and a category. Telling them from products
+         needs to know what a product carries and they do not — a price, a
+         potency, a weight — and that cannot be read off the ones we accept.
+         One key list per reason per shop, which is what the next fix needs and
+         is small enough to carry every day. */
+      const rejectedShape = {};
       const categoriesSeen = new Map();
       const seen = new Set();
       for (const arr of arrays) {
@@ -1993,6 +2005,9 @@ const main = async () => {
           if (cat) categoriesSeen.set(cat, (categoriesSeen.get(cat) ?? 0) + 1);
           if (verdict !== 'flower') {
             why[verdict] = (why[verdict] ?? 0) + 1;
+            if ((verdict === 'no-category' || verdict === 'no-title') && !rejectedShape[verdict]) {
+              rejectedShape[verdict] = Object.keys(product).sort().join(',').slice(0, 220);
+            }
             if (dumpProducts > 0) {
               (rejectedNames[verdict] ??= []).push(
                 `${String(flatten(pick(product, NAME_KEYS)) ?? '').slice(0, 70)}  [${cat}]`,
@@ -2023,6 +2038,7 @@ const main = async () => {
       }
       entry.flower = seen.size;
       entry.rejected = why;
+      if (Object.keys(rejectedShape).length) entry.rejectedShape = rejectedShape;
       if (dumpProducts > 0) {
         entry.rejectedSample = Object.fromEntries(
           Object.entries(rejectedNames).map(([k, v]) => [k, v.slice(0, dumpProducts)]),
