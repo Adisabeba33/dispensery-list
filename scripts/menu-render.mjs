@@ -1258,20 +1258,25 @@ const main = async () => {
         const carried = findProductArrays(body).reduce((n, a) => n + a.length, 0);
         if (carried > 0) {
           const req = res.request();
-          /* Accept, content-type and the platform's own x- headers. Origin,
-             referer and cookie are the browser's to set and it refuses them
-             from script, which is right: replaying a request must not be a way
-             to claim to be someone else. */
-          const headers = Object.fromEntries(
-            Object.entries(req.headers()).filter(
-              ([k]) => k === 'accept' || k === 'content-type' || k.startsWith('x-') || k.startsWith('apollographql'),
-            ),
-          );
+          /* Every header the request carried. The browser refuses the ones
+             that are its own to set — origin, referer, cookie, host — and
+             drops them silently, which is right: replaying a request must not
+             be a way to claim to be someone else. Everything else goes back,
+             because an allowlist of accept, content-type and x-* is a guess
+             about what a platform needs, and SweedPOS answered that guess with
+             HTTP 400. */
+          const headers = { ...req.headers() };
           requests.push({
             products: carried,
             method: req.method(),
             url: res.url(),
             headers,
+            /* Asked again from the frame that asked the first time. A menu in
+               an iframe belongs to the platform's origin, and a fetch for it
+               from the top frame is cross-origin — which is how Stashmaster's
+               second page came back as "Failed to fetch" while the same code
+               paged other Dutchie shops fine. */
+            frame: req.frame(),
             // GraphQL keeps the page and the filters in the body, not the
             // address, so the address alone would say nothing.
             body: req.method() === 'POST' ? String(req.postData() ?? '') : null,
@@ -1419,7 +1424,18 @@ const main = async () => {
                menu makes: same origin, same cookies, same headers. The response
                is captured by the listener above like any other, which is why
                nothing is pushed here. */
-            const carried = await page.evaluate(async (req) => {
+            /* The frame may be gone by now — a menu that re-renders detaches
+               its iframe — and the page is the honest fallback. */
+            let asker = page;
+            try {
+              if (biggest.frame && !biggest.frame.isDetached()) asker = biggest.frame;
+            } catch {
+              asker = page;
+            }
+            // A Frame is a handle on this side of the wire and cannot be
+            // serialised into the page, so it is left behind here.
+            const { frame: _frame, products: _products, ...sendable } = next;
+            const outcome = await asker.evaluate(async (req) => {
               try {
                 /* No credentials option, which means the browser default:
                    cookies on a same-origin request, none across origins. The
@@ -1432,13 +1448,18 @@ const main = async () => {
                   body: req.body ?? undefined,
                   headers: req.headers ?? undefined,
                 });
-                if (!res.ok) return -1;
                 const text = await res.text();
-                return text.length;
-              } catch {
-                return -1;
+                return { status: res.status, length: text.length };
+              } catch (e) {
+                return { status: 0, error: String(e && e.message ? e.message : e).slice(0, 120) };
               }
-            }, next);
+            }, sendable);
+            /* Said out loud. A page asked for and not delivered used to end the
+               loop in silence, which is indistinguishable from a shelf that
+               ended — and the difference is the whole question for a shop that
+               declares 464 and hands over 24. */
+            const carried = outcome.status >= 200 && outcome.status < 300 ? outcome.length : -1;
+            if (carried === -1) entry.pagingRefused = outcome.error ?? `HTTP ${outcome.status}`;
 
             asked += 1;
             if (carried === -1) break; // refused or failed; do not keep knocking
@@ -1551,6 +1572,7 @@ const main = async () => {
           .map((r) => ({
             products: r.products,
             method: r.method,
+            headerNames: Object.keys(r.headers ?? {}).sort().join(','),
             url: r.url.slice(0, 300),
             body: r.body ? r.body.slice(0, 700) : null,
           }));
