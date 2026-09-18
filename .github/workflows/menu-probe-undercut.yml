@@ -62,6 +62,8 @@ jobs:
                       print(f"  {key}: {shop[key]}")
               for req in shop.get("requests") or []:
                   print(f"  -- {req['products']:>4} products  {req['method']} {req['url']}")
+                  if req.get("headerNames"):
+                      print(f"     headers: {req['headerNames']}")
                   if req.get("body"):
                       print(f"     body: {req['body']}")
           PY

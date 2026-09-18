@@ -51,6 +51,7 @@ KEEP = (
     "pagedFrom",
     "pagedTo",
     "pagingIgnored",
+    "pagingRefused",
     "hitPagingBudget",
 )
 
@@ -179,6 +180,21 @@ def report():
         "На запрос следующей страницы приходит та же самая. Такому магазину\n"
         "листание не поможет — нужен свой адрес меню в data/menu-endpoints.json.",
         [f"**{shop_name(r)}**: прочитано {r.get('productsSeen', 0)}" for r in ignored],
+    )
+
+    refused = [r for r in rows if r.get("pagingRefused")]
+    section(
+        lines,
+        "⚠ Следующую страницу не отдали",
+        "Мы её спросили — сервер не дал. Слева то, что он ответил: код или\n"
+        "ошибка браузера. «Failed to fetch» значит, что запрос заблокирован\n"
+        "как межсайтовый; код 4xx — что серверу что-то в запросе не нравится.",
+        [
+            f"**{shop_name(r)}**: {r['pagingRefused']} (держим {r.get('productsSeen', 0)}"
+            + (f" из {r['declaredTotal']}" if r.get("declaredTotal") else "")
+            + ")"
+            for r in sorted(refused, key=lambda r: -(r.get("declaredTotal") or 0))
+        ],
     )
 
     budget = [r for r in rows if r.get("hitPagingBudget")]
