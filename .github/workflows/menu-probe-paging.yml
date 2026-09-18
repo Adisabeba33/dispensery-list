@@ -1,0 +1,60 @@
+# Throwaway. Answers one question: why does the paging loop stop while the
+# menu is still declaring hundreds of products it has not handed over?
+#
+# Six shops, picked from run #16's own diagnostics — the ones where the menu
+# states its total and we are furthest below it. Nothing is committed: this
+# reads, prints, and ends.
+name: Probe — why paging stops short
+
+on:
+  push:
+    branches: [claude/probe-paging]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Read the six shops that stop short
+        run: |
+          node scripts/menu-render.mjs \
+            --only OCM-RETL-25-000403,OCM-RETL-25-000298,OCM-CAURD-25-000263,OCM-CAURD-24-000217,OCM-RETL-24-000047,OCM-RETL-25-000339 \
+            --limit 10 --dump-requests 4 || true
+      - name: What the menus actually said
+        run: |
+          python3 - <<'PY'
+          import json
+          s = json.load(open('enrichment-output/menu-summary.json'))
+          for e in s.get('perShop', []):
+              print('=' * 78)
+              print(f"{e.get('shop')} | {e.get('licence')}")
+              print(f"  landedOn: {e.get('landedOn')}")
+              print(f"  status={e.get('status')}  productsSeen={e.get('productsSeen')}  "
+                    f"declaredTotal={e.get('declaredTotal')}  flower={e.get('flower')}")
+              print(f"  payloads={e.get('payloads')}  productArrays={e.get('productArrays')}  "
+                    f"scrollRounds={e.get('scrollRounds')}  settled={e.get('settled')}")
+              print(f"  pagesAsked={e.get('pagesAsked')}  pagedFrom={e.get('pagedFrom')}  "
+                    f"pagedTo={e.get('pagedTo')}")
+              print(f"  STOPPED BECAUSE: {e.get('pagingStoppedBecause')}  "
+                    f"uncapturedBytes={e.get('pagingUncapturedBytes')}")
+              print(f"  pagingIgnored={e.get('pagingIgnored')}  pagingRefused={e.get('pagingRefused')}  "
+                    f"hitPagingBudget={e.get('hitPagingBudget')}  hitScrollCap={e.get('hitScrollCap')}  "
+                    f"hitScrollBudget={e.get('hitScrollBudget')}")
+              print(f"  rejected={e.get('rejected')}")
+              for r in e.get('requests') or []:
+                  print(f"  --- request carrying {r.get('products')} products, {r.get('method')}")
+                  print(f"      url : {r.get('url')}")
+                  if r.get('body'):
+                      print(f"      body: {r.get('body')}")
+                  print(f"      hdrs: {r.get('headerNames')}")
+          PY

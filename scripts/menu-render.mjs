@@ -1520,15 +1520,33 @@ const main = async () => {
           let previousPageAt = 0;
           const pagedFrom = seenBefore();
 
+          /* Why the asking stopped, named.
+           *
+           * Five ways out of this loop and three of them were silent, which is
+           * why "MILLIGRAMS: read 151, menu says 659, asked 2 pages" could not
+           * be acted on: reaching the end of the shelf, being handed an empty
+           * answer, and hearing nothing back at all all looked identical from
+           * the outside. The two that already spoke — a refusal and a menu that
+           * ignores the parameter — were the two that got fixed. */
+          let stopped = 'ran-out-of-pages';
+
           for (let nth = 1; nth <= cap; nth += 1) {
             if (Date.now() > pageUntil) {
               entry.hitPagingBudget = true;
+              stopped = 'out-of-time';
               break;
             }
-            if (declared && seenBefore() >= declared) break;
+            if (declared && seenBefore() >= declared) {
+              stopped = 'read-everything-declared';
+              break;
+            }
 
             const next = pagedRequest(biggest, nth, biggest.products);
-            if (!next) break; // no page in this request; nothing to advance
+            if (!next) {
+              // No page knob anywhere in the request: nothing to advance.
+              stopped = 'no-page-in-request';
+              break;
+            }
 
             const before = payloads.length;
             const seenIds = signatureOf(payloads.slice(previousPageAt));
@@ -1574,10 +1592,22 @@ const main = async () => {
             if (carried === -1) entry.pagingRefused = outcome.error ?? `HTTP ${outcome.status}`;
 
             asked += 1;
-            if (carried === -1) break; // refused or failed; do not keep knocking
+            if (carried === -1) {
+              stopped = 'refused';
+              break; // refused or failed; do not keep knocking
+            }
             await settle(800, 6000);
-            // Nothing arrived at all: the menu has ended.
-            if (payloads.length === before) break;
+            /* The answer was fetched — its length says so — and no payload was
+               recorded for it. That is not a menu that ended: it is a menu the
+               response listener did not keep, because the answer was not JSON,
+               or was still arriving when the six-second wait ran out. Naming it
+               separately is the difference between "the shelf is 151 long" and
+               "we stopped listening at 151". */
+            if (payloads.length === before) {
+              stopped = carried > 0 ? 'answer-not-captured' : 'nothing-arrived';
+              entry.pagingUncapturedBytes = carried;
+              break;
+            }
             /* Something arrived, but the same something. A menu that ignores
                the page parameter answers page two with page one, and without
                this the collector asks it forty times and calls the result a
@@ -1585,12 +1615,16 @@ const main = async () => {
             const arrived = signatureOf(payloads.slice(before));
             // No products in the answer: the menu has run out, which is the
             // ordinary way this ends.
-            if (!arrived) break;
+            if (!arrived) {
+              stopped = 'answer-had-no-products';
+              break;
+            }
             /* Products, but the same products. A menu that ignores the page
                parameter answers page two with page one, and without this the
                collector asks it forty times and calls the result a shelf. */
             if (arrived === seenIds) {
               entry.pagingIgnored = true;
+              stopped = 'same-products-again';
               break;
             }
             previousPageAt = before;
@@ -1602,6 +1636,10 @@ const main = async () => {
             entry.pagedFrom = pagedFrom;
             entry.pagedTo = seenBefore();
           }
+          /* Recorded whether anything was asked or not: "no page in this
+             request" is the finding for a shop that declares 249 and was never
+             paged at all, and it is invisible in pagesAsked. */
+          entry.pagingStoppedBecause = stopped;
         }
       }
       entry.payloads = payloads.length;
