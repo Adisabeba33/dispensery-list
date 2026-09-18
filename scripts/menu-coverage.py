@@ -20,6 +20,7 @@ enrichment-output/menu-summary.json — и там же умирает:
 раздел отчёта: абсолютную проверку вместо разностной.
 
     python scripts/menu-coverage.py collect   # после каждой партии
+    python scripts/menu-coverage.py save      # один раз, в data/menu-coverage.json
     python scripts/menu-coverage.py report    # один раз, markdown в stdout
 """
 import json
@@ -29,6 +30,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SUMMARY = ROOT / "enrichment-output" / "menu-summary.json"
 ACCUMULATED = Path("/tmp/menu-coverage.json")
+SAVED = ROOT / "data/menu-coverage.json"
 
 # Только то, что отвечает на вопрос «прочитали ли мы магазин целиком». Всё
 # остальное из perShop — образцы полезной нагрузки, списки ключей, ссылки —
@@ -258,11 +260,31 @@ def report():
     return 0
 
 
+def save():
+    """Положить диагностику в репозиторий, чтобы она пережила раннер.
+
+    Раздел отчёта живёт один день и уезжает в комментарий к issue. Список
+    «кому нужен адрес меню» строится по тем же данным, и строить его не из
+    чего, пока они умирают вместе с раннером. Файл маленький — по строке на
+    магазин — и меняется предсказуемо, так что его не страшно держать в git.
+    """
+    rows = read_json(ACCUMULATED, {})
+    if not rows:
+        print("coverage: nothing collected, file left as it was")
+        return 0
+    SAVED.parent.mkdir(parents=True, exist_ok=True)
+    SAVED.write_text(json.dumps(rows, ensure_ascii=False, indent=1, sort_keys=True) + "\n")
+    print(f"coverage: {len(rows)} shop(s) saved to {SAVED.relative_to(ROOT)}")
+    return 0
+
+
 def main(action):
     if action == "collect":
         return collect()
     if action == "report":
         return report()
+    if action == "save":
+        return save()
     print(f"unknown action: {action}", file=sys.stderr)
     return 2
 
