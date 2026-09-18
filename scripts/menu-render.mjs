@@ -108,16 +108,28 @@ const dumpProducts = dumpArg > -1 ? Number(process.argv[dumpArg + 1]) || 5 : 0;
    by hand. */
 const requestsArg = process.argv.indexOf('--dump-requests');
 const dumpRequests = requestsArg > -1 ? Number(process.argv[requestsArg + 1]) || 8 : 0;
-const alreadyCollected = new Set();
-if (skipCollected) {
-  try {
-    for (const l of JSON.parse(readFileSync(resolve(ROOT, 'data/flower-listings.json'), 'utf8'))) {
-      alreadyCollected.add(l.licenseNumber);
-    }
-  } catch {
-    /* nothing collected yet */
+/**
+ * What each licence had on its shelf at the last reading.
+ *
+ * The carry-forward rule keeps a shop's previous shelf whenever today's visit
+ * comes back with nothing, which is right — a site that is down must not empty
+ * the page — but it is also silent, and silence is how a shop goes on showing
+ * a reading from the sixteenth for days. Hibernica Central Park did exactly
+ * that: read fine on the sixteenth and the seventeenth, nothing on the
+ * eighteenth from the same address, shelf held, nobody told.
+ *
+ * So a shop that had a shelf and comes back empty is asked a second time
+ * before the emptiness is believed. This is the list of who had one.
+ */
+const PREVIOUS_SHELF = new Map();
+try {
+  for (const l of JSON.parse(readFileSync(resolve(ROOT, 'data/flower-listings.json'), 'utf8'))) {
+    PREVIOUS_SHELF.set(l.licenseNumber, (PREVIOUS_SHELF.get(l.licenseNumber) ?? 0) + 1);
   }
+} catch {
+  /* first run, or the file was removed on purpose */
 }
+const alreadyCollected = skipCollected ? new Set(PREVIOUS_SHELF.keys()) : new Set();
 
 /**
  * Menu addresses found by hand, keyed by licence number.
@@ -827,6 +839,26 @@ const BETWEEN_PAGES_MS = 400;
 const MAX_SCROLL_ROUNDS = 60;
 const SCROLL_BUDGET_MS = 150000;
 
+/* Asking again, and what it is allowed to cost.
+ *
+ * Only a shop that had a shelf at the last reading and has none now is asked
+ * again: that is the one case where we know the emptiness is wrong, because
+ * the same address gave us products before. Once, not until it works — a shop
+ * that has genuinely emptied its shelf would otherwise be visited twice every
+ * day forever.
+ *
+ * The budget is the whole batch's, not the shop's. Nine batches of thirty-five
+ * run inside a five-hour job, and a day on which every site is unreachable
+ * would otherwise double the run and lose the batches at the end of it. When
+ * it runs out the shop says so rather than looking like it was asked.
+ *
+ * Overridable only so that running out of it can be tested in seconds instead
+ * of in six minutes of real visiting; unset, which is every real run, is six
+ * minutes. */
+const RETRY_BUDGET_MS = process.env.MENU_RETRY_BUDGET_MS
+  ? Number(process.env.MENU_RETRY_BUDGET_MS) || 0
+  : 360000;
+
 /* A shelf read from a menu that serves several licences: the strains are real,
    which branch stocks them is not established. */
 const SHELF_SHARED = 'SHELF_SHARED_WITH_OTHER_LICENCES';
@@ -1226,10 +1258,37 @@ const main = async () => {
   let done = 0;
   let skipped = 0;
 
-  for (const shop of candidates) {
-    if (done >= limit) break;
-    if (skipped < offset) {
+  /* Time already spent on second visits, against RETRY_BUDGET_MS. */
+  let retrySpent = 0;
+
+  /* The visit list, which the run is allowed to add to.
+   *
+   * Appending to the array a for…of is walking is deliberate: a shop put back
+   * on the end is visited after every other shop has had its first turn, which
+   * is half an hour later in a batch of thirty-five. That gap is the whole
+   * value of the second visit. Knocking again five seconds later asks the same
+   * unfinished page the same question; asking after the rest of the batch gives
+   * a site that was deploying, throttling or simply slow the time to come back. */
+  const queue = candidates.map((shop) => ({ shop, attempt: 1 }));
+
+  for (const job of queue) {
+    const { shop } = job;
+    /* Only first visits count against the batch. A retry that consumed one of
+       the thirty-five would push a shop off the end of the batch and out of the
+       day's run entirely — the offsets the workflow walks are fixed. And the
+       list cannot be broken out of once the limit is reached, because the
+       retries are queued behind it. */
+    if (job.attempt === 1 && done >= limit) continue;
+    if (job.attempt === 1 && skipped < offset) {
       skipped += 1;
+      continue;
+    }
+    if (job.attempt > 1 && retrySpent >= RETRY_BUDGET_MS) {
+      /* Said, not swallowed. A shop that was owed a second visit and did not
+         get one looks exactly like a shop that got one and stayed empty, and
+         those want opposite things done about them. */
+      const at = report.findIndex((r) => r.licence === shop.licenseNumber);
+      if (at > -1) report[at].retryBudgetSpent = true;
       continue;
     }
     const site = shop.contact.website;
@@ -1244,7 +1303,8 @@ const main = async () => {
       report.push({ shop: shop.dbaName ?? shop.legalName, status: 'robots-disallowed' });
       continue;
     }
-    done += 1;
+    if (job.attempt === 1) done += 1;
+    const startedAt = Date.now();
 
     const context = await browser.newContext({ userAgent: UA });
     const page = await context.newPage();
@@ -1740,8 +1800,50 @@ const main = async () => {
       entry.status = `error: ${e.message.slice(0, 120)}`;
     }
 
-    report.push(entry);
-    console.log(`${done}/${limit} ${entry.shop}: ${entry.status}`);
+    /* Nothing today from a shop that had a shelf yesterday. That is rarely a
+       shop that sold out and never restocked — it is a page that had not
+       finished, a host that refused this one visit, a menu that was being
+       swapped. Believing it costs nothing visible, because the carry-forward
+       rule quietly keeps the old shelf; the shop simply goes on showing a
+       reading from days ago while the site next to it shows today's.
+
+       So it is asked once more, at the end of the batch. Once: a shop that
+       genuinely emptied its shelf would otherwise be visited twice a day for
+       the rest of time. Not the three whose robots.txt says no — those are not
+       ours to ask twice, or once. */
+    if (
+      job.attempt === 1 &&
+      !entry.flower &&
+      entry.menuLink !== 'robots-disallowed' &&
+      (PREVIOUS_SHELF.get(shop.licenseNumber) ?? 0) > 0
+    ) {
+      entry.willAskAgain = true;
+      queue.push({
+        shop,
+        attempt: 2,
+        first: { status: entry.status, productsSeen: entry.productsSeen ?? 0, menuLink: entry.menuLink ?? null },
+      });
+    }
+
+    if (job.attempt === 1) {
+      report.push(entry);
+    } else {
+      /* One shop, one row: the second reading replaces the first rather than
+         joining it, or every count in the report would see this shop twice.
+         What the first visit saw is carried inside it, because "asked again and
+         got the same nothing" and "asked again and the shelf was there" are
+         different findings and the report has to tell them apart. */
+      entry.retried = true;
+      entry.firstAttempt = job.first;
+      delete entry.willAskAgain;
+      const at = report.findIndex((r) => r.licence === entry.licence);
+      if (at > -1) report[at] = entry;
+      else report.push(entry);
+      retrySpent += Date.now() - startedAt;
+    }
+    console.log(
+      `${done}/${limit} ${entry.shop}: ${entry.status}${job.attempt > 1 ? ' (asked again)' : ''}`,
+    );
     await context.close();
     await new Promise((r) => setTimeout(r, 1500)); // be a considerate visitor
   }
@@ -1869,6 +1971,12 @@ const main = async () => {
       return acc;
     }, {}),
     usedKnownEndpoint: report.filter((r) => r.usedKnownEndpoint).length,
+    /* Second visits, and what came of them. A shop that had a shelf and came
+       back empty is asked once more; this is how often that was needed, how
+       often it worked, and how often the run ran out of time to do it. */
+    askedAgain: report.filter((r) => r.retried).length,
+    askedAgainAndAnswered: report.filter((r) => r.retried && r.flower > 0).length,
+    owedASecondVisit: report.filter((r) => r.retryBudgetSpent).length,
     shelvesThatShrankByHalf: shrank,
     /* The licences whose collapse we decided to accept because the reading we
        were protecting has aged out. Named on their own, because the daily

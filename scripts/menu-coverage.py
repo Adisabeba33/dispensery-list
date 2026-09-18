@@ -57,6 +57,10 @@ KEEP = (
     "pagingIgnored",
     "pagingRefused",
     "hitPagingBudget",
+    "retried",
+    "firstAttempt",
+    "willAskAgain",
+    "retryBudgetSpent",
 )
 
 # Размеры страницы, которые раздают меню: двадцать, двадцать четыре, двадцать
@@ -188,6 +192,41 @@ def report():
             f"**{shop_name(r)}**: {', '.join(r.get('guessedMenuPaths') or [])} → "
             f"{r.get('flower', 0)} сортов"
             for r in sorted(guessed, key=lambda r: -(r.get("flower") or 0))
+        ],
+    )
+
+    # Магазин, у которого полка была, а сегодня пришёл ноль. Правило переноса
+    # молча оставляет вчерашнюю полку — и магазин неделями показывает чтение
+    # от шестнадцатого рядом с соседом, у которого сегодняшнее. Поэтому у
+    # такого спрашивают второй раз, в конце партии.
+    retried = [r for r in rows if r.get("retried")]
+    helped = [r for r in retried if (r.get("flower") or 0) > 0]
+    section(
+        lines,
+        "Спросили второй раз",
+        f"Помогло в {len(helped)} из {len(retried)}. Сколько именно мы теряли на\n"
+        "этом: столько полок каждый день выглядели пустыми не потому, что\n"
+        "магазин распродался, а потому что страница не догрузилась.",
+        [
+            f"**{shop_name(r)}**: с первого раза "
+            f"{(r.get('firstAttempt') or {}).get('status', '?')}, со второго "
+            + (f"{r['flower']} сортов" if (r.get("flower") or 0) > 0 else "снова пусто")
+            for r in sorted(retried, key=lambda r: -(r.get("flower") or 0))
+        ],
+        limit=25,
+    )
+
+    owed = [r for r in rows if r.get("retryBudgetSpent")]
+    section(
+        lines,
+        "⚠ Второго раза не хватило времени",
+        "Магазину полагался повторный заход, и на него не осталось времени в\n"
+        "прогоне. Публикуется вчерашняя полка — но не потому, что мы её\n"
+        "проверили, а потому что не дошли.",
+        [
+            f"**{shop_name(r)}**: "
+            + (f"{r['status']}" if r.get("status") else "пусто")
+            for r in owed
         ],
     )
 

@@ -19,6 +19,15 @@ const PORT = Number(process.argv[2]) || 4399;
 
 const PRODUCTS = JSON.parse(readFileSync(resolve(HERE, 'api/products.json'), 'utf8')).data.products;
 
+/* The third shop's menu answers its first caller with an empty shelf and every
+   caller after that with the real one. Nothing about it is broken in a way a
+   visit can detect: the address is right, the page loads, the gate is
+   answered, the request returns 200 with well-formed JSON — and there is
+   nothing in it. That is what a real shop looks like on the day it drops out,
+   and the only way to tell it from a shop that has actually emptied its shelf
+   is to ask a second time. */
+let flakyAsked = 0;
+
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.txt': 'text/plain; charset=utf-8',
@@ -45,10 +54,33 @@ createServer((req, res) => {
     return;
   }
 
+  if (url.pathname === '/api/flaky.json') {
+    flakyAsked += 1;
+    res.writeHead(200, { 'content-type': 'application/json' });
+    // No total on the empty answer either: a menu that stated "0 of 5" would
+    // be a menu telling us something is wrong, and this one does not.
+    res.end(JSON.stringify({ data: { products: flakyAsked > 1 ? PRODUCTS.slice(0, 2) : [] } }));
+    return;
+  }
+
+  if (url.pathname === '/api/empty.json') {
+    res.writeHead(200, { 'content-type': 'application/json' });
+    res.end(JSON.stringify({ data: { products: [] } }));
+    return;
+  }
+
   try {
     /* Extensionless addresses, because that is how a menu is usually
        published — /menu, not /menu.html — and the collector guesses those. */
-    const ROUTES = { '/': 'index.html', '/menu': 'menu.html', '/nolink': 'nolink.html' };
+    const ROUTES = {
+      '/': 'index.html',
+      '/menu': 'menu.html',
+      '/nolink': 'nolink.html',
+      '/flaky': 'flaky.html',
+      '/flaky-menu': 'flaky-menu.html',
+      '/empty': 'empty.html',
+      '/empty-menu': 'empty-menu.html',
+    };
     const name = ROUTES[url.pathname] ?? url.pathname.slice(1);
     const [body, type] = file(name);
     res.writeHead(200, { 'content-type': type });
