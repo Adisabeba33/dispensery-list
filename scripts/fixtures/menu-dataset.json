@@ -68,5 +68,41 @@
    "city": "Brooklyn",
    "zip": "11201"
   }
+ },
+ {
+  "id": "fixture-shop-facets",
+  "licenseNumber": "OCM-CAURD-24-000995",
+  "legalName": "Fifth Fixture Dispensary LLC",
+  "dbaName": "Fifth Fixture Dispensary",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "DUTCHIE"
+  },
+  "contact": {
+   "website": "http://localhost:4399/facets"
+  },
+  "address": {
+   "line1": "5 Test St",
+   "city": "Brooklyn",
+   "zip": "11201"
+  }
+ },
+ {
+  "id": "fixture-shop-carousel",
+  "licenseNumber": "OCM-CAURD-24-000994",
+  "legalName": "Sixth Fixture Dispensary LLC",
+  "dbaName": "Sixth Fixture Dispensary",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "PROPRIETARY"
+  },
+  "contact": {
+   "website": "http://localhost:4399/carousel"
+  },
+  "address": {
+   "line1": "6 Test St",
+   "city": "Brooklyn",
+   "zip": "11201"
+  }
  }
 ]

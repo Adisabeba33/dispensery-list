@@ -75,7 +75,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '4',
+    '--limit', '6',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -151,6 +151,27 @@ try {
   check('every gram size read', collected[0]?.availableSizesGrams, [1, 3.5, 7, 14, 28]);
   check('potency read from a range', collected[0]?.thcPercent, 24.1);
   check('lineage read', collected.map((l) => l.lineage), ['HYBRID', 'INDICA']);
+  /* The total a menu states is the total for the query it is answering. This
+     shop answers with its five-product shelf and, beside it, the counts for
+     every other category it sells — 500 edibles, 320 vapes — the way a real
+     menu fills its filter sidebar. Read as "the largest number in the answer",
+     this shop has 500 products and we have read five of them. */
+  const facets = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000995');
+  check('the shelf was read', facets?.flower, 2);
+  check('the total is the one beside the products', facets?.declaredTotal, 5);
+  check('and it is compared against that query alone', facets?.pagedQueryProducts, 5);
+  check('so the shop reads as complete', facets?.pagingStoppedBecause, 'read-everything-declared');
+
+  /* The biggest answer is not always the one that can be paged. This shop's
+     carousels arrive in one answer carrying six products with no page number
+     anywhere in the request; its product list carries two and pages to four. */
+  const carousel = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000994');
+  check('a pageable request was preferred to a bigger one', carousel?.pagedQueryIsPageable, true);
+  check('the list was paged, not the carousel', carousel?.pagesAsked >= 1, true);
+  check('to the end of it', carousel?.pagingStoppedBecause, 'read-everything-declared');
+  check('the total is the list_s, not a carousel_s', carousel?.declaredTotal, 4);
+  check('and the whole list was read', carousel?.pagedQueryProducts, 4);
+
   // Shelves the run did not visit must survive it.
   check('other shelves carried forward', summary.shelvesCarriedForward > 0, true);
 

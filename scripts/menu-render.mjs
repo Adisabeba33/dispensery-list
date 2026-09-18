@@ -434,17 +434,63 @@ export const pickMenuLink = (links, siteUrl = null, shopName = '') => {
    as long as it existed. */
 const TOTAL_KEY = /^(total|totalCount|totalResults|totalItems|totalProducts|resultCount|numResults|count|found)$/i;
 const declaresTotal = (key) => TOTAL_KEY.test(String(key).replace(/_/g, ''));
-const findDeclaredTotal = (value, depth = 0, best = { n: 0 }) => {
-  if (depth > 6 || !value || typeof value !== 'object') return best.n;
+/**
+ * The total stated in the same breath as a shelf, and only that one.
+ *
+ * The old rule — the largest total-ish number anywhere in the payload — is
+ * what made the completeness check unusable. A menu answers a page with the
+ * count for THAT query, and a page carries several: FUMI's six product
+ * payloads state 259, 16, 35, 98, 5 and 72, one per query it fired, and
+ * taking 259 read the shop as hiding eighty-one products it had never been
+ * asked for. Verdi Park Slope declared 519 one run and 29 the next from the
+ * same shelf, which is not a shop restocking — it is a number that belongs to
+ * a different question.
+ *
+ * So the total is looked for where a total for THIS shelf would be written:
+ * in the object that holds the array, or one floor down inside it, which is
+ * where Dutchie keeps queryInfo.totalCount. Nowhere else.
+ */
+const totalIn = (container) => {
+  if (!container || typeof container !== 'object' || Array.isArray(container)) return null;
+  let found = null;
+  const take = (k, v) => {
+    if (declaresTotal(k) && typeof v === 'number' && v >= 0 && v <= 100000) {
+      found = Math.max(found ?? 0, v);
+    }
+  };
+  for (const [k, v] of Object.entries(container)) {
+    take(k, v);
+    /* One floor down, into plain objects only: Dutchie writes the count under
+       queryInfo beside the products, and a sibling array is another shelf, not
+       this one's total. */
+    if (v && typeof v === 'object' && !Array.isArray(v)) {
+      for (const [k2, v2] of Object.entries(v)) take(k2, v2);
+    }
+  }
+  return found;
+};
+
+/** Every shelf in a payload, each with the total its own container states. */
+const shelvesWithTotals = (value, container = null, depth = 0, out = []) => {
+  if (depth > 7 || !value || typeof value !== 'object' || out.length > 40) return out;
   if (Array.isArray(value)) {
-    for (const item of value.slice(0, 20)) findDeclaredTotal(item, depth + 1, best);
-    return best.n;
+    if (looksLikeShelf(value)) out.push({ count: value.length, total: totalIn(container) });
+    for (const item of value.slice(0, 20)) shelvesWithTotals(item, container, depth + 1, out);
+    return out;
   }
-  for (const [k, v] of Object.entries(value)) {
-    if (declaresTotal(k) && typeof v === 'number' && v > best.n && v <= 100000) best.n = v;
-    findDeclaredTotal(v, depth + 1, best);
-  }
-  return best.n;
+  for (const v of Object.values(value)) shelvesWithTotals(v, value, depth + 1, out);
+  return out;
+};
+
+/** What one response says about itself: how many it carried, of how many. */
+const shelfOf = (payload) => {
+  const shelves = shelvesWithTotals(payload);
+  if (!shelves.length) return { count: 0, total: null };
+  const carried = shelves.reduce((n, sh) => n + sh.count, 0);
+  /* The biggest array in the answer is the shelf it is an answer about; the
+     smaller ones beside it are carousels and "you might also like". */
+  const main = [...shelves].sort((a, b) => b.count - a.count)[0];
+  return { count: carried, total: main.total };
 };
 
 /**
@@ -557,22 +603,28 @@ export const flattenJsonApiProducts = (payloads) => {
   return rows;
 };
 
+/** Whether this array is a shelf of products rather than, say, a tax table. */
+const looksLikeShelf = (value) => {
+  if (!Array.isArray(value)) return null;
+  const objects = value.filter((v) => v && typeof v === 'object' && !Array.isArray(v));
+  if (objects.length < 2) return null;
+  const keys = Object.keys(objects[0]);
+  // The first pilot matched a Dutchie tax table: it has `name` and `type`
+  // like a product does. Demand something only a shelf item carries.
+  const looksLikeProduct =
+    keys.some((k) => /^(name|productName|title)$/i.test(k)) &&
+    keys.some((k) =>
+      /^(category|productCategory|productCategoryName|subcategory|brand|brandName|strainType|cannabisType|variants|weightInGrams|potencyThc|thcContent)$/i.test(k),
+    ) &&
+    !keys.some((k) => /^(taxBasis|deliveryPolicy|applyTo|stages)$/i.test(k));
+  return looksLikeProduct ? objects : null;
+};
+
 const findProductArrays = (value, depth = 0, out = []) => {
   if (depth > 6 || out.length > 40) return out;
   if (Array.isArray(value)) {
-    const objects = value.filter((v) => v && typeof v === 'object' && !Array.isArray(v));
-    if (objects.length >= 2) {
-      const keys = Object.keys(objects[0]);
-      // The first pilot matched a Dutchie tax table: it has `name` and `type`
-      // like a product does. Demand something only a shelf item carries.
-      const looksLikeProduct =
-        keys.some((k) => /^(name|productName|title)$/i.test(k)) &&
-        keys.some((k) =>
-          /^(category|productCategory|productCategoryName|subcategory|brand|brandName|strainType|cannabisType|variants|weightInGrams|potencyThc|thcContent)$/i.test(k),
-        ) &&
-        !keys.some((k) => /^(taxBasis|deliveryPolicy|applyTo|stages)$/i.test(k));
-      if (looksLikeProduct) out.push(objects);
-    }
+    const shelf = looksLikeShelf(value);
+    if (shelf) out.push(shelf);
     for (const item of value.slice(0, 20)) findProductArrays(item, depth + 1, out);
   } else if (value && typeof value === 'object') {
     for (const v of Object.values(value)) findProductArrays(v, depth + 1, out);
@@ -758,6 +810,70 @@ const advanceJson = (value, nth, fallbackSize) => {
     return setAt(structuredClone(value), offset.path, offset.value + nth * size);
   }
   return null;
+};
+
+/** The same JSON with its page knob wound back to the start. */
+const withoutPage = (value) => {
+  const paged = findNumber(value, PAGE_KEYS);
+  if (paged) return setAt(structuredClone(value), paged.path, 0);
+  const offset = findNumber(value, OFFSET_KEYS);
+  if (offset) return setAt(structuredClone(value), offset.path, 0);
+  return value;
+};
+
+/**
+ * One name for every page of one query.
+ *
+ * A menu page fires several different queries and we read products from all of
+ * them, so "products seen" is a sum across questions while "the total" belongs
+ * to one. Comparing the two is how a complete shop comes out looking truncated.
+ * Keyed this way, each query's pages can be counted against that query's own
+ * stated total, and nothing else.
+ */
+const keyCache = new WeakMap();
+const queryKey = (req) => {
+  const cached = keyCache.get(req);
+  if (cached !== undefined) return cached;
+  const key = buildQueryKey(req);
+  keyCache.set(req, key);
+  return key;
+};
+
+/* Worked out once per request and remembered: the paging loop counts a query's
+   pages on every turn, and re-parsing forty URLs to answer the same question
+   forty times is forty times the work for one answer. */
+const buildQueryKey = (req) => {
+  let key = `${req.method} `;
+  try {
+    const url = new URL(req.url);
+    for (const [k, raw] of [...url.searchParams]) {
+      if (!raw.trim().startsWith('{')) continue;
+      try {
+        url.searchParams.set(k, JSON.stringify(withoutPage(JSON.parse(raw))));
+      } catch {
+        /* only looked like JSON */
+      }
+    }
+    const numeric = Object.fromEntries(
+      [...url.searchParams].map(([k, v]) => [k, Number(v)]).filter(([, v]) => Number.isFinite(v)),
+    );
+    const flattened = withoutPage(numeric);
+    for (const [k, v] of Object.entries(flattened)) {
+      if (numeric[k] !== v) url.searchParams.set(k, String(v));
+    }
+    url.searchParams.sort();
+    key += url.toString();
+  } catch {
+    key += req.url;
+  }
+  if (req.body) {
+    try {
+      key += ` ${JSON.stringify(withoutPage(JSON.parse(req.body)))}`;
+    } catch {
+      key += ` ${req.body}`;
+    }
+  }
+  return key;
 };
 
 /**
@@ -1331,7 +1447,7 @@ const main = async () => {
            carried products is the one the paging replays. Truncating it would
            make it unusable for that, so the recorded address is whole and the
            dump shortens it at printing time instead. */
-        const carried = findProductArrays(body).reduce((n, a) => n + a.length, 0);
+        const { count: carried, total: declaredHere } = shelfOf(body);
         if (carried > 0) {
           const req = res.request();
           /* Every header the request carried. The browser refuses the ones
@@ -1344,6 +1460,10 @@ const main = async () => {
           const headers = { ...req.headers() };
           requests.push({
             products: carried,
+            /* What THIS answer said its query holds. Kept on the request rather
+               than summed across the page, because the page asks several
+               questions and each answer counts only its own. */
+            declared: declaredHere,
             method: req.method(),
             url: res.url(),
             headers,
@@ -1501,15 +1621,29 @@ const main = async () => {
         if (round >= MAX_SCROLL_ROUNDS) entry.hitScrollCap = true;
 
         /* Then ask for the pages scrolling never reached. */
-        const biggest = [...requests].sort((a, b) => b.products - a.products)[0];
+        /* The biggest answer is not always the one that can be paged. The
+           Cannabis Reserve's page opens with eight carousels in a single
+           answer — 154 products, more than any other request it makes — and
+           that answer is POST /_api/Products/GetProductCarouselList with a body
+           of {"platformOs":"web"}: there is no page in it and there never will
+           be. Its real product list is a smaller answer next to it, and it
+           pages. So pageability is asked first and size only decides between
+           the ones that have it. */
+        const pageable = requests.filter((r) => pagedRequest(r, 1, r.products));
+        const biggest = [...(pageable.length ? pageable : requests)].sort(
+          (a, b) => b.products - a.products,
+        )[0];
         if (biggest) {
-          const declared = payloads.reduce(
-            (n, pl) =>
-              findProductArrays(pl).some((a) => a.length) ? Math.max(n, findDeclaredTotal(pl)) : n,
-            0,
-          );
+          entry.pagedQueryIsPageable = pageable.length > 0;
+          /* The total belongs to the query, so the reading it is compared
+             against has to belong to the same query. Everything the page
+             fetched, summed, is a different quantity from what one question
+             was answered with — and comparing those two is what read complete
+             shops as truncated. */
+          const key = queryKey(biggest);
+          const declared = biggest.declared ?? 0;
           const seenBefore = () =>
-            payloads.reduce((n, pl) => n + findProductArrays(pl).reduce((m, a) => m + a.length, 0), 0);
+            requests.filter((r) => queryKey(r) === key).reduce((n, r) => n + r.products, 0);
           const cap = declared ? MAX_PAGES_DECLARED : MAX_PAGES_UNDECLARED;
           const pageUntil = Date.now() + PAGING_BUDGET_MS;
           let asked = 0;
@@ -1520,15 +1654,33 @@ const main = async () => {
           let previousPageAt = 0;
           const pagedFrom = seenBefore();
 
+          /* Why the asking stopped, named.
+           *
+           * Five ways out of this loop and three of them were silent, which is
+           * why "read 151, menu says 659, asked 2 pages" could not be acted on:
+           * reaching the end of the shelf, being handed an empty answer, and
+           * hearing nothing back at all all looked identical from outside. The
+           * two that already spoke — a refusal, and a menu that ignores the
+           * parameter — are the two that got fixed. */
+          let stopped = 'ran-out-of-pages';
+
           for (let nth = 1; nth <= cap; nth += 1) {
             if (Date.now() > pageUntil) {
               entry.hitPagingBudget = true;
+              stopped = 'out-of-time';
               break;
             }
-            if (declared && seenBefore() >= declared) break;
+            if (declared && seenBefore() >= declared) {
+              stopped = 'read-everything-declared';
+              break;
+            }
 
             const next = pagedRequest(biggest, nth, biggest.products);
-            if (!next) break; // no page in this request; nothing to advance
+            if (!next) {
+              // No page knob anywhere in the request: nothing to advance.
+              stopped = 'no-page-in-request';
+              break;
+            }
 
             const before = payloads.length;
             const seenIds = signatureOf(payloads.slice(previousPageAt));
@@ -1574,10 +1726,19 @@ const main = async () => {
             if (carried === -1) entry.pagingRefused = outcome.error ?? `HTTP ${outcome.status}`;
 
             asked += 1;
-            if (carried === -1) break; // refused or failed; do not keep knocking
+            if (carried === -1) {
+              stopped = 'refused';
+              break; // refused or failed; do not keep knocking
+            }
             await settle(800, 6000);
-            // Nothing arrived at all: the menu has ended.
-            if (payloads.length === before) break;
+            /* The answer was fetched — its length says so — and no payload was
+               recorded for it. That is not a menu that ended: it is an answer
+               the listener did not keep, because it was not JSON or was still
+               arriving when the wait ran out. */
+            if (payloads.length === before) {
+              stopped = carried > 0 ? 'answer-not-captured' : 'nothing-arrived';
+              break;
+            }
             /* Something arrived, but the same something. A menu that ignores
                the page parameter answers page two with page one, and without
                this the collector asks it forty times and calls the result a
@@ -1585,12 +1746,16 @@ const main = async () => {
             const arrived = signatureOf(payloads.slice(before));
             // No products in the answer: the menu has run out, which is the
             // ordinary way this ends.
-            if (!arrived) break;
+            if (!arrived) {
+              stopped = 'answer-had-no-products';
+              break;
+            }
             /* Products, but the same products. A menu that ignores the page
                parameter answers page two with page one, and without this the
                collector asks it forty times and calls the result a shelf. */
             if (arrived === seenIds) {
               entry.pagingIgnored = true;
+              stopped = 'same-products-again';
               break;
             }
             previousPageAt = before;
@@ -1602,6 +1767,13 @@ const main = async () => {
             entry.pagedFrom = pagedFrom;
             entry.pagedTo = seenBefore();
           }
+          /* Recorded whether anything was asked or not: "no page in this
+             request" is the whole finding for a shop that was never paged, and
+             it is invisible in pagesAsked. */
+          entry.pagingStoppedBecause = stopped;
+          /* Both sides of the completeness check, taken from one query. */
+          entry.declaredTotal = declared || null;
+          entry.pagedQueryProducts = seenBefore();
         }
       }
       entry.payloads = payloads.length;
@@ -1691,18 +1863,27 @@ const main = async () => {
       }
       entry.productArrays = arrays.length;
       entry.productsSeen = arrays.reduce((n, a) => n + a.length, 0);
+      /* What we have of the one query the total belongs to. The number beside
+         it in the report has to be this, not productsSeen: productsSeen is
+         every answer the page gave, to every question it asked. */
+      if (entry.pagedQueryProducts === undefined && requests.length) {
+        const main = [...requests].sort((a, b) => b.products - a.products)[0];
+        const key = queryKey(main);
+        entry.pagedQueryProducts = requests
+          .filter((r) => queryKey(r) === key)
+          .reduce((n, r) => n + r.products, 0);
+      }
       /* The total worth comparing against is the one that came back WITH the
          products, not the largest number anywhere the page fetched. Gotham
          Bowery's menu answers a flower query with twenty products and the site
          elsewhere says 83 — its whole catalogue, edibles and vapes included.
          Read the way it was, that shop looked like it was hiding sixty-three
          products; what it was hiding was a filter. */
+      /* Stated by the menu for the shelf we read, not the largest number
+         anywhere it sent. See totalIn() for what that difference cost. */
       entry.declaredTotal =
-        payloads.reduce(
-          (n, pl) =>
-            findProductArrays(pl).some((a) => a.length) ? Math.max(n, findDeclaredTotal(pl)) : n,
-          0,
-        ) || null;
+        (entry.declaredTotal ?? [...requests].sort((a, b) => b.products - a.products)[0]?.declared) ||
+        null;
 
       if (arrays.length) {
         /* `menu` is null for every shop nobody has classified — which, now
