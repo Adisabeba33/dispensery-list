@@ -1,0 +1,55 @@
+# Throwaway. Answers one question: what are we throwing away, by name?
+#
+# Seventeen shops from run #16's own diagnostics — the ones that read hundreds
+# of products and publish none, the ones whose every product arrives without a
+# category, and the ones losing whole strains for want of a weight. Nothing is
+# committed: this reads, prints, and ends.
+name: Probe — what gets thrown away
+
+on:
+  push:
+    branches: [claude/probe-classify]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Read the seventeen shops that publish nothing
+        run: |
+          node scripts/menu-render.mjs \
+            --only MM1004D,OCM-CAURD-24-000075,OCM-CAURD-24-000082,OCM-CAURD-24-000105,OCM-CAURD-24-000165,OCM-CAURD-25-000281,OCM-CAURD-25-000310,OCM-CAURD-25-000321,OCM-CAURD-26-000334,OCM-CAURD-26-000339,OCM-CAURD-26-000343,OCM-MICR-24-000204,OCM-RETL-24-000041,OCM-RETL-24-000197,OCM-RETL-24-000263,OCM-RETL-25-000346,OCM-RETL-25-000379 \
+            --limit 20 --dump-products 8 --dump-shapes 4 || true
+      - name: What was thrown away, by name
+        run: |
+          python3 - <<'PY'
+          import json
+          s = json.load(open('enrichment-output/menu-summary.json'))
+          for e in s.get('perShop', []):
+              print('=' * 78)
+              print(f"{e.get('shop')} | {e.get('licence')}")
+              print(f"  landedOn: {e.get('landedOn')}")
+              print(f"  status={e.get('status')}  productsSeen={e.get('productsSeen')}  "
+                    f"flower={e.get('flower')}  declaredTotal={e.get('declaredTotal')}  "
+                    f"pagedQueryProducts={e.get('pagedQueryProducts')}")
+              print(f"  stopped={e.get('pagingStoppedBecause')}  rejected={e.get('rejected')}")
+              print(f"  categoriesSeen={e.get('categories')}")
+              for reason, names in (e.get('rejectedSample') or {}).items():
+                  print(f"  --- refused as {reason}:")
+                  for n in names:
+                      print(f"        {n}")
+              for line in e.get('sample') or []:
+                  print(f"  KEPT {line}")
+              for sh in e.get('shapes') or []:
+                  print(f"  SHAPE {sh[:1400]}")
+          PY
