@@ -32,5 +32,41 @@
    "city": "Brooklyn",
    "zip": "11201"
   }
+ },
+ {
+  "id": "fixture-shop-flaky",
+  "licenseNumber": "OCM-CAURD-24-000997",
+  "legalName": "Third Fixture Dispensary LLC",
+  "dbaName": "Third Fixture Dispensary",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "DUTCHIE"
+  },
+  "contact": {
+   "website": "http://localhost:4399/flaky"
+  },
+  "address": {
+   "line1": "3 Test St",
+   "city": "Brooklyn",
+   "zip": "11201"
+  }
+ },
+ {
+  "id": "fixture-shop-empty",
+  "licenseNumber": "OCM-CAURD-24-000996",
+  "legalName": "Fourth Fixture Dispensary LLC",
+  "dbaName": "Fourth Fixture Dispensary",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "DUTCHIE"
+  },
+  "contact": {
+   "website": "http://localhost:4399/empty"
+  },
+  "address": {
+   "line1": "4 Test St",
+   "city": "Brooklyn",
+   "zip": "11201"
+  }
  }
 ]

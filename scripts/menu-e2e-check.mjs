@@ -13,7 +13,7 @@
  *   node scripts/menu-e2e-check.mjs
  */
 import { spawn } from 'node:child_process';
-import { readFileSync, rmSync, copyFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, rmSync, copyFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -31,10 +31,11 @@ const run = (cmd, args, opts = {}) =>
     child.on('close', (code) => done({ code, out }));
   });
 
-const server = spawn('node', ['scripts/fixtures/menu-server.mjs', String(PORT)], {
-  cwd: ROOT,
-  stdio: 'ignore',
-});
+const serve = () =>
+  spawn('node', ['scripts/fixtures/menu-server.mjs', String(PORT)], { cwd: ROOT, stdio: 'ignore' });
+/* Restartable: the flaky shop's menu is empty to its first caller and stocked
+   to every one after, and the second run below needs it to be flaky again. */
+let server = serve();
 
 let failures = 0;
 const check = (label, actual, expected) => {
@@ -48,10 +49,33 @@ try {
   // The collector writes the real shelf file, so put it back afterwards.
   if (existsSync(LISTINGS)) copyFileSync(LISTINGS, BACKUP);
 
+  /* The third shop is given a shelf it was read from before. That is the whole
+     precondition for asking a second time — the collector will not knock twice
+     at a shop it has never read anything from — and it lives in this file, so
+     the file is what has to say so. */
+  const shelves = existsSync(LISTINGS) ? JSON.parse(readFileSync(LISTINGS, 'utf8')) : [];
+  writeFileSync(
+    LISTINGS,
+    JSON.stringify(
+      [
+        ...shelves.filter((l) => !l.licenseNumber.startsWith('OCM-CAURD-24-0009')),
+        {
+          ...shelves[0],
+          licenseNumber: 'OCM-CAURD-24-000997',
+          listingId: 'OCM-CAURD-24-000997::fixture-yesterday',
+          strainNameRaw: 'Yesterday Kush',
+          capturedAt: new Date(Date.now() - 86400000).toISOString(),
+        },
+      ],
+      null,
+      1,
+    ),
+  );
+
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '2',
+    '--limit', '4',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -82,6 +106,42 @@ try {
   check('and it was guessed, not stumbled on', guessed?.guessedMenuPaths, ['/menu']);
   check('its shelf came back', guessed?.flower, 2);
 
+  /* A shop that had a shelf and came back empty, asked once more. Its menu
+     answers the first caller with an empty list and every caller after that
+     with its real shelf, which is what the collector cannot tell from a shop
+     that has sold out — except by asking again. */
+  const flaky = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000997');
+  check('an empty shelf that used to have products is not believed', flaky?.retried, true);
+  check('what the first visit saw is kept', flaky?.firstAttempt?.status, 'no-products');
+  check('and the first visit really did come back empty', flaky?.firstAttempt?.productsSeen, 0);
+  check('the second visit found the shelf', flaky?.flower, 2);
+  check('one row for the shop, not two', summary.perShop.filter((s) => s.licence === 'OCM-CAURD-24-000997').length, 1);
+  check('the run counted the second visits', summary.askedAgain, 1);
+  check('and says the asking worked', summary.askedAgainAndAnswered, 1);
+
+  /* The bound on all of this. A shop we have never read a shelf from is read
+     once and left alone however empty it is — otherwise a day on which nothing
+     is reachable costs the run twice its time, and the batches at the end of
+     it never run. */
+  const neverRead = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000996');
+  check('an empty shop with nothing to compare against is read once', neverRead?.status, 'no-products');
+  check('and is not asked again', neverRead?.retried, undefined);
+  // Nor is a shop that answered the first time.
+  check('a shop that answered is not asked twice', summary.perShop[0].retried, undefined);
+
+  /* The retry replaces the empty reading rather than being carried alongside
+     it: the shelf published for this shop is today's, not yesterday's held
+     one. */
+  const flakyShelf = JSON.parse(readFileSync(LISTINGS, 'utf8')).filter(
+    (l) => l.licenseNumber === 'OCM-CAURD-24-000997',
+  );
+  check('the second reading is what gets published', flakyShelf.length, 2);
+  check(
+    'and the held shelf is gone',
+    flakyShelf.some((l) => l.strainNameRaw === 'Yesterday Kush'),
+    false,
+  );
+
   const collected = JSON.parse(readFileSync(LISTINGS, 'utf8'))
     .filter((l) => l.licenseNumber === 'OCM-CAURD-24-000999')
     .sort((a, b) => a.strainNameRaw.localeCompare(b.strainNameRaw));
@@ -93,6 +153,44 @@ try {
   check('lineage read', collected.map((l) => l.lineage), ['HYBRID', 'INDICA']);
   // Shelves the run did not visit must survive it.
   check('other shelves carried forward', summary.shelvesCarriedForward > 0, true);
+
+  /* And the bound on the bound: what happens when the run has no time left to
+     ask again. A shop that was owed a second visit and did not get one must say
+     so — it looks identical to one that got its second visit and stayed empty,
+     and those want opposite things done about them.
+
+     The same flaky shop, a fresh server so its menu is empty again, and a
+     retry budget of nothing. It now has yesterday's shelf from the run above,
+     which is the precondition for being asked at all. */
+  server.kill();
+  await new Promise((r) => setTimeout(r, 500));
+  server = serve();
+  await new Promise((r) => setTimeout(r, 1500));
+
+  const broke = await run(
+    'node',
+    ['scripts/menu-render.mjs', '--dataset', 'scripts/fixtures/menu-dataset.json', '--limit', '1', '--offset', '2'],
+    { env: { ...process.env, MENU_RETRY_BUDGET_MS: '0' } },
+  );
+  if (broke.code !== 0) {
+    console.log(broke.out.slice(-1500));
+    throw new Error(`collector exited ${broke.code}`);
+  }
+  const outOfTime = JSON.parse(
+    readFileSync(resolve(ROOT, 'enrichment-output/menu-summary.json'), 'utf8'),
+  );
+  const owed = outOfTime.perShop.find((s) => s.licence === 'OCM-CAURD-24-000997');
+  check('the shop still needed asking again', owed?.willAskAgain, true);
+  check('it did not get asked', owed?.retried, undefined);
+  check('and the run says why', owed?.retryBudgetSpent, true);
+  check('counted in the summary', outOfTime.owedASecondVisit, 1);
+  // The shelf we could not re-read is still the one that gets published.
+  check(
+    'yesterday\'s shelf is held rather than emptied',
+    JSON.parse(readFileSync(LISTINGS, 'utf8')).filter((l) => l.licenseNumber === 'OCM-CAURD-24-000997')
+      .length,
+    2,
+  );
 } finally {
   server.kill();
   if (existsSync(BACKUP)) {
