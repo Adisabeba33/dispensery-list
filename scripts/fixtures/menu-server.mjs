@@ -183,6 +183,10 @@ createServer((req, res) => {
       '/carousel-menu': 'carousel-menu.html',
       '/nocat': 'nocat.html',
       '/nocat-menu': 'nocat-menu.html',
+      /* The same shelf under a flower address as well as a general one. The
+         second fixture shop links to neither, so which of the two the
+         collector tries first is what this route is here to prove. */
+      '/menu/flower': 'menu.html',
     };
     const name = ROUTES[url.pathname] ?? url.pathname.slice(1);
     const [body, type] = file(name);

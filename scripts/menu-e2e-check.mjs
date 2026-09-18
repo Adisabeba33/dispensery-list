@@ -103,7 +103,12 @@ try {
   const guessed = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000998');
   check('a shop with no menu link is not given up on', guessed?.status, 'ok');
   check('the menu was found by guessing', guessed?.foundMenuByGuess, true);
-  check('and it was guessed, not stumbled on', guessed?.guessedMenuPaths, ['/menu']);
+  /* Both addresses exist on the fixture host; the flower one is tried first.
+     A general menu makes the classifier do the filter's work, and that is
+     where the mistakes are — 38 of 193 real shelves are read from a page that
+     names no category at all. */
+  check('and it was guessed, not stumbled on', guessed?.guessedMenuPaths, ['/menu/flower', '/menu']);
+  check('the flower address was the one taken', guessed?.landedOn?.endsWith('/menu/flower'), true);
   check('its shelf came back', guessed?.flower, 2);
 
   /* A shop that had a shelf and came back empty, asked once more. Its menu
