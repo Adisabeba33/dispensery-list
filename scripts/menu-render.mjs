@@ -434,6 +434,32 @@ export const pickMenuLink = (links, siteUrl = null, shopName = '') => {
    as long as it existed. */
 const TOTAL_KEY = /^(total|totalCount|totalResults|totalItems|totalProducts|resultCount|numResults|count|found)$/i;
 const declaresTotal = (key) => TOTAL_KEY.test(String(key).replace(/_/g, ''));
+/** Every total-ish number in a payload, with the path that reaches it. */
+const allTotals = (value, path = [], depth = 0, out = []) => {
+  if (depth > 8 || !value || typeof value !== 'object' || out.length > 60) return out;
+  if (Array.isArray(value)) {
+    value.slice(0, 8).forEach((v, i) => allTotals(v, [...path, i], depth + 1, out));
+    return out;
+  }
+  for (const [k, v] of Object.entries(value)) {
+    if (declaresTotal(k) && typeof v === 'number') out.push({ path: [...path, k].join('.'), value: v });
+    allTotals(v, [...path, k], depth + 1, out);
+  }
+  return out;
+};
+
+/** Where the arrays of products sit, by path, with their lengths. */
+const productArrayPaths = (value, path = [], depth = 0, out = []) => {
+  if (depth > 8 || !value || typeof value !== 'object' || out.length > 40) return out;
+  if (Array.isArray(value)) {
+    if (findProductArrays(value).length && value.length) out.push({ path: path.join('.'), length: value.length });
+    value.slice(0, 8).forEach((v, i) => productArrayPaths(v, [...path, i], depth + 1, out));
+    return out;
+  }
+  for (const [k, v] of Object.entries(value)) productArrayPaths(v, [...path, k], depth + 1, out);
+  return out;
+};
+
 const findDeclaredTotal = (value, depth = 0, best = { n: 0 }) => {
   if (depth > 6 || !value || typeof value !== 'object') return best.n;
   if (Array.isArray(value)) {
@@ -1713,6 +1739,24 @@ const main = async () => {
           .slice(0, 6)
           .map((pl) => (pl && typeof pl === 'object' ? Object.keys(pl).slice(0, 14).join(',') : typeof pl))
           .filter((v, i, a) => a.indexOf(v) === i);
+      }
+      if (dumpRequests > 0) {
+        /* Probe only: for each payload that carried products, where the
+           products are and every number in it that calls itself a total. The
+           declared total is compared against a flower shelf, so a count that
+           belongs to another query — the whole catalogue, another category's
+           facet — is the difference between "this shop is truncated" and "this
+           shop is complete". Verdi Park Slope declared 519 one run and 29 the
+           next, from the same shelf, which is how this was found. */
+        entry.totalsByPayload = payloads
+          .map((pl, i) => ({ i, arrays: productArrayPaths(pl), totals: allTotals(pl) }))
+          .filter((p) => p.arrays.length)
+          .slice(0, 6)
+          .map(
+            (p) =>
+              `payload${p.i}  products at [${p.arrays.map((a) => `${a.path}=${a.length}`).join(', ')}]  ` +
+              `totals: ${p.totals.map((t) => `${t.path}=${t.value}`).join(', ').slice(0, 900)}`,
+          );
       }
       if (dumpRequests > 0) {
         /* Biggest first: the one carrying the shelf is the one to read. */

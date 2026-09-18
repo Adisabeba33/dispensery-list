@@ -51,6 +51,8 @@ jobs:
                     f"hitPagingBudget={e.get('hitPagingBudget')}  hitScrollCap={e.get('hitScrollCap')}  "
                     f"hitScrollBudget={e.get('hitScrollBudget')}")
               print(f"  rejected={e.get('rejected')}")
+              for t in e.get('totalsByPayload') or []:
+                  print(f"  TOTALS {t}")
               for r in e.get('requests') or []:
                   print(f"  --- request carrying {r.get('products')} products, {r.get('method')}")
                   print(f"      url : {r.get('url')}")
