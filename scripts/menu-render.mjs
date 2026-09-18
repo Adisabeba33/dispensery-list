@@ -1419,7 +1419,7 @@ const main = async () => {
                menu makes: same origin, same cookies, same headers. The response
                is captured by the listener above like any other, which is why
                nothing is pushed here. */
-            const carried = await page.evaluate(async (req) => {
+            const outcome = await page.evaluate(async (req) => {
               try {
                 /* No credentials option, which means the browser default:
                    cookies on a same-origin request, none across origins. The
@@ -1432,13 +1432,18 @@ const main = async () => {
                   body: req.body ?? undefined,
                   headers: req.headers ?? undefined,
                 });
-                if (!res.ok) return -1;
                 const text = await res.text();
-                return text.length;
-              } catch {
-                return -1;
+                return { status: res.status, length: text.length, body: text.slice(0, 200) };
+              } catch (e) {
+                return { status: 0, error: String(e && e.message ? e.message : e).slice(0, 200) };
               }
             }, next);
+            /* Said out loud. A page asked for and not delivered used to end the
+               loop in silence, which is indistinguishable from a shelf that
+               ended — and the difference is the whole question for the shops
+               that declare 464 and hand over 24. */
+            const carried = outcome.status >= 200 && outcome.status < 300 ? outcome.length : -1;
+            if (carried === -1) entry.pagingRefused = outcome.error ?? `HTTP ${outcome.status}`;
 
             asked += 1;
             if (carried === -1) break; // refused or failed; do not keep knocking

@@ -56,7 +56,8 @@ jobs:
               print(shop.get("shop"), "|", shop.get("licence"))
               for key in ("status", "menuLink", "landedOn", "productsSeen", "declaredTotal",
                           "flower", "scrollRounds", "pagesAsked", "pagedFrom", "pagedTo",
-                          "pagingIgnored", "hitPagingBudget", "usedKnownEndpoint"):
+                          "pagingIgnored", "pagingRefused", "hitPagingBudget",
+                          "usedKnownEndpoint"):
                   if shop.get(key) is not None:
                       print(f"  {key}: {shop[key]}")
               for req in shop.get("requests") or []:
