@@ -67,14 +67,19 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-23-000008": {
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 26,
+   "status": "no-flower"
+  },
   "flower": 2,
   "licence": "OCM-CAURD-23-000008",
   "menuLink": "found",
-  "productsSeen": 31,
+  "productsSeen": 28,
   "rejected": {
-   "category-not-flower": 27,
-   "sameStrainAnotherSize": 2
+   "category-not-flower": 26
   },
+  "retried": true,
   "scrollRounds": 1,
   "shop": "Dazed",
   "status": "ok",
@@ -184,12 +189,7 @@
  },
  "OCM-CAURD-23-000034": {
   "declaredTotal": 228,
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 0,
-   "status": "no-products"
-  },
-  "flower": 34,
+  "flower": 72,
   "licence": "OCM-CAURD-23-000034",
   "menuLink": "found",
   "pagedFrom": 199,
@@ -197,11 +197,10 @@
   "pagesAsked": 2,
   "productsSeen": 249,
   "rejected": {
-   "category-not-flower": 93,
-   "sameStrainAnotherSize": 3,
-   "title-not-flower": 119
+   "category-not-flower": 60,
+   "sameStrainAnotherSize": 8,
+   "title-not-flower": 109
   },
-  "retried": true,
   "scrollRounds": 1,
   "shop": "Grow Together",
   "status": "ok",
@@ -209,16 +208,10 @@
  },
  "OCM-CAURD-23-000036": {
   "flower": 0,
-  "foundMenuByGuess": true,
-  "guessedMenuPaths": [
-   "/menu",
-   "/shop"
-  ],
   "licence": "OCM-CAURD-23-000036",
-  "menuLink": "found",
+  "menuLink": "none",
   "productsSeen": 0,
   "rejected": {},
-  "scrollRounds": 1,
   "shop": "THE HERBAL CARE THC LLC",
   "status": "no-products",
   "usedKnownEndpoint": false
@@ -227,11 +220,11 @@
   "flower": 325,
   "licence": "OCM-CAURD-23-000038",
   "menuLink": "found",
-  "productsSeen": 380,
+  "productsSeen": 379,
   "rejected": {
    "flower-no-size": 5,
    "sameStrainAnotherSize": 9,
-   "title-not-flower": 41
+   "title-not-flower": 40
   },
   "scrollRounds": 1,
   "shop": "Lenox Hill Cannabis Co.",
@@ -264,14 +257,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-23-000044": {
-  "declaredTotal": 47,
+  "declaredTotal": 46,
   "flower": 39,
   "licence": "OCM-CAURD-23-000044",
   "menuLink": "found",
-  "productsSeen": 72,
+  "productsSeen": 71,
   "rejected": {
-   "sameStrainAnotherSize": 23,
-   "title-not-flower": 10
+   "sameStrainAnotherSize": 24,
+   "title-not-flower": 8
   },
   "scrollRounds": 1,
   "shop": "VERDI",
@@ -289,13 +282,13 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000046": {
-  "flower": 7,
+  "flower": 10,
   "licence": "OCM-CAURD-24-000046",
   "menuLink": "found",
-  "pagedFrom": 7,
-  "pagedTo": 7,
+  "pagedFrom": 10,
+  "pagedTo": 10,
   "pagesAsked": 1,
-  "productsSeen": 7,
+  "productsSeen": 10,
   "rejected": {},
   "scrollRounds": 1,
   "shop": "Cannabis Realm of New York",
@@ -303,11 +296,11 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000047": {
-  "declaredTotal": 43,
-  "flower": 43,
+  "declaredTotal": 42,
+  "flower": 42,
   "licence": "OCM-CAURD-24-000047",
   "menuLink": "found",
-  "productsSeen": 92,
+  "productsSeen": 91,
   "rejected": {
    "category-not-flower": 11,
    "sameStrainAnotherSize": 25,
@@ -361,13 +354,13 @@
   "productsSeen": 0,
   "rejected": {},
   "retried": true,
-  "scrollRounds": 2,
+  "scrollRounds": 1,
   "shop": "Cannavita",
   "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000057": {
-  "declaredTotal": 94,
+  "declaredTotal": 91,
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
@@ -382,9 +375,9 @@
   "menuLink": "found",
   "productsSeen": 180,
   "rejected": {
-   "category-not-flower": 78,
+   "category-not-flower": 76,
    "sameStrainAnotherSize": 32,
-   "title-not-flower": 44
+   "title-not-flower": 46
   },
   "retried": true,
   "scrollRounds": 1,
@@ -432,15 +425,15 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000063": {
-  "flower": 117,
+  "flower": 114,
   "licence": "OCM-CAURD-24-000063",
   "menuLink": "found",
-  "pagedFrom": 146,
-  "pagedTo": 272,
+  "pagedFrom": 143,
+  "pagedTo": 266,
   "pagesAsked": 8,
-  "productsSeen": 272,
+  "productsSeen": 266,
   "rejected": {
-   "sameStrainAnotherSize": 106,
+   "sameStrainAnotherSize": 103,
    "title-not-flower": 49
   },
   "scrollRounds": 8,
@@ -453,14 +446,14 @@
   "flower": 257,
   "licence": "OCM-CAURD-24-000064",
   "menuLink": "found",
-  "pagedFrom": 150,
-  "pagedTo": 338,
+  "pagedFrom": 175,
+  "pagedTo": 363,
   "pagesAsked": 2,
-  "productsSeen": 338,
+  "productsSeen": 363,
   "rejected": {
    "category-not-flower": 6,
-   "sameStrainAnotherSize": 41,
-   "title-not-flower": 34
+   "sameStrainAnotherSize": 65,
+   "title-not-flower": 35
   },
   "scrollRounds": 1,
   "shop": "BRONX JOINT",
@@ -468,24 +461,22 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000065": {
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 0,
-   "status": "no-products"
-  },
-  "flower": 0,
+  "declaredTotal": 60,
+  "flower": 54,
   "licence": "OCM-CAURD-24-000065",
   "menuLink": "found",
-  "productsSeen": 0,
-  "rejected": {},
-  "retried": true,
-  "scrollRounds": 2,
+  "productsSeen": 84,
+  "rejected": {
+   "sameStrainAnotherSize": 21,
+   "title-not-flower": 9
+  },
+  "scrollRounds": 1,
   "shop": "Mighty Lucky Inc.",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000071": {
-  "declaredTotal": 65,
+  "declaredTotal": 64,
   "flower": 7,
   "licence": "OCM-CAURD-24-000071",
   "menuLink": "found",
@@ -501,13 +492,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000073": {
-  "declaredTotal": 86,
+  "declaredTotal": 98,
   "flower": 80,
   "licence": "OCM-CAURD-24-000073",
   "menuLink": "found",
-  "productsSeen": 86,
+  "productsSeen": 136,
   "rejected": {
-   "title-not-flower": 6
+   "category-not-flower": 27,
+   "title-not-flower": 29
   },
   "scrollRounds": 1,
   "shop": "Puro vita enterprises inc.",
@@ -516,28 +508,34 @@
  },
  "OCM-CAURD-24-000074": {
   "declaredTotal": 100,
-  "flower": 38,
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 37,
   "licence": "OCM-CAURD-24-000074",
   "menuLink": "found",
   "productsSeen": 304,
   "rejected": {
    "category-not-flower": 49,
-   "sameStrainAnotherSize": 19,
-   "title-not-flower": 198
+   "sameStrainAnotherSize": 18,
+   "title-not-flower": 200
   },
+  "retried": true,
   "scrollRounds": 1,
   "shop": "Late Bloomers NYC LLC",
   "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000075": {
-  "declaredTotal": 207,
+  "declaredTotal": 206,
   "flower": 0,
   "licence": "OCM-CAURD-24-000075",
   "menuLink": "found",
-  "productsSeen": 207,
+  "productsSeen": 206,
   "rejected": {
-   "no-category": 183,
+   "no-category": 182,
    "title-not-flower": 24
   },
   "scrollRounds": 1,
@@ -549,10 +547,10 @@
   "flower": 64,
   "licence": "OCM-CAURD-24-000077",
   "menuLink": "found",
-  "productsSeen": 87,
+  "productsSeen": 86,
   "rejected": {
    "sameStrainAnotherSize": 4,
-   "title-not-flower": 19
+   "title-not-flower": 18
   },
   "scrollRounds": 1,
   "shop": "Polanco Brothers Corp",
@@ -571,14 +569,15 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000080": {
-  "flower": 20,
+  "flower": 21,
   "licence": "OCM-CAURD-24-000080",
   "menuLink": "found",
-  "productsSeen": 142,
+  "productsSeen": 167,
   "rejected": {
-   "category-not-flower": 77,
+   "category-not-flower": 98,
+   "no-title": 1,
    "sameStrainAnotherSize": 1,
-   "title-not-flower": 44
+   "title-not-flower": 46
   },
   "scrollRounds": 4,
   "shop": "The Cannabis Place",
@@ -589,10 +588,9 @@
   "flower": 0,
   "licence": "OCM-CAURD-24-000082",
   "menuLink": "found",
-  "productsSeen": 24,
+  "productsSeen": 18,
   "rejected": {
-   "category-not-flower": 2,
-   "title-not-flower": 22
+   "title-not-flower": 18
   },
   "scrollRounds": 3,
   "shop": "Stoops NYC",
@@ -605,20 +603,26 @@
   "status": "error: page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.conbudbx.com/\", waiting until \"domcontentl"
  },
  "OCM-CAURD-24-000084": {
+  "declaredTotal": 53,
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 0,
+  "flower": 50,
   "licence": "OCM-CAURD-24-000084",
   "menuLink": "found",
-  "productsSeen": 0,
-  "rejected": {},
+  "pagedFrom": 25,
+  "pagedTo": 53,
+  "pagesAsked": 2,
+  "productsSeen": 53,
+  "rejected": {
+   "title-not-flower": 3
+  },
   "retried": true,
   "scrollRounds": 1,
   "shop": "ENFLOR LLC",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000087": {
@@ -649,14 +653,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000094": {
-  "declaredTotal": 464,
-  "flower": 402,
+  "declaredTotal": 462,
+  "flower": 400,
   "licence": "OCM-CAURD-24-000094",
   "menuLink": "found",
   "pagedFrom": 24,
-  "pagedTo": 464,
+  "pagedTo": 462,
   "pagesAsked": 19,
-  "productsSeen": 464,
+  "productsSeen": 462,
   "rejected": {
    "category-not-flower": 5,
    "sameStrainAnotherSize": 35,
@@ -669,20 +673,14 @@
  },
  "OCM-CAURD-24-000096": {
   "declaredTotal": 35,
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 0,
-   "status": "no-products"
-  },
-  "flower": 20,
+  "flower": 19,
   "licence": "OCM-CAURD-24-000096",
   "menuLink": "found",
-  "productsSeen": 121,
+  "productsSeen": 120,
   "rejected": {
-   "category-not-flower": 86,
-   "title-not-flower": 15
+   "category-not-flower": 87,
+   "title-not-flower": 14
   },
-  "retried": true,
   "scrollRounds": 2,
   "shop": "SMILEY EXOTICS",
   "status": "ok",
@@ -717,14 +715,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000102": {
-  "declaredTotal": 247,
-  "flower": 241,
+  "declaredTotal": 246,
+  "flower": 240,
   "licence": "OCM-CAURD-24-000102",
   "menuLink": "found",
   "pagedFrom": 125,
-  "pagedTo": 272,
+  "pagedTo": 271,
   "pagesAsked": 2,
-  "productsSeen": 272,
+  "productsSeen": 271,
   "rejected": {
    "sameStrainAnotherSize": 29,
    "title-not-flower": 2
@@ -735,14 +733,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000104": {
-  "declaredTotal": 296,
-  "flower": 263,
+  "declaredTotal": 300,
+  "flower": 267,
   "licence": "OCM-CAURD-24-000104",
   "menuLink": "found",
   "pagedFrom": 100,
-  "pagedTo": 296,
+  "pagedTo": 300,
   "pagesAsked": 2,
-  "productsSeen": 296,
+  "productsSeen": 300,
   "rejected": {
    "title-not-flower": 33
   },
@@ -767,17 +765,17 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000112": {
-  "declaredTotal": 199,
-  "flower": 176,
+  "declaredTotal": 197,
+  "flower": 175,
   "licence": "OCM-CAURD-24-000112",
   "menuLink": "found",
   "pagedFrom": 125,
-  "pagedTo": 224,
+  "pagedTo": 222,
   "pagesAsked": 1,
-  "productsSeen": 224,
+  "productsSeen": 222,
   "rejected": {
    "category-not-flower": 1,
-   "sameStrainAnotherSize": 23,
+   "sameStrainAnotherSize": 22,
    "title-not-flower": 24
   },
   "scrollRounds": 1,
@@ -787,13 +785,13 @@
  },
  "OCM-CAURD-24-000114": {
   "declaredTotal": 1,
-  "flower": 150,
+  "flower": 149,
   "licence": "OCM-CAURD-24-000114",
   "menuLink": "found",
   "pagedFrom": 20,
-  "pagedTo": 187,
+  "pagedTo": 186,
   "pagesAsked": 10,
-  "productsSeen": 187,
+  "productsSeen": 186,
   "rejected": {
    "sameStrainAnotherSize": 12,
    "title-not-flower": 25
@@ -862,15 +860,15 @@
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-24-000124": {
-  "declaredTotal": 26,
+  "declaredTotal": 25,
   "flower": 19,
   "licence": "OCM-CAURD-24-000124",
   "menuLink": "found",
-  "productsSeen": 51,
+  "productsSeen": 50,
   "rejected": {
    "category-not-flower": 4,
-   "sameStrainAnotherSize": 18,
-   "title-not-flower": 10
+   "sameStrainAnotherSize": 19,
+   "title-not-flower": 8
   },
   "scrollRounds": 1,
   "shop": "The purple owl Dispensary",
@@ -889,19 +887,19 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000127": {
-  "declaredTotal": 2548,
+  "declaredTotal": 2546,
   "flower": 285,
   "hitPagingBudget": true,
   "licence": "OCM-CAURD-24-000127",
   "menuLink": "found",
-  "pagedFrom": 228,
-  "pagedTo": 2228,
+  "pagedFrom": 203,
+  "pagedTo": 2203,
   "pagesAsked": 20,
-  "productsSeen": 2228,
+  "productsSeen": 2203,
   "rejected": {
-   "category-not-flower": 951,
-   "sameStrainAnotherSize": 26,
-   "title-not-flower": 966
+   "category-not-flower": 942,
+   "sameStrainAnotherSize": 25,
+   "title-not-flower": 951
   },
   "scrollRounds": 1,
   "shop": "QUBE",
@@ -912,9 +910,9 @@
   "flower": 94,
   "licence": "OCM-CAURD-24-000129",
   "menuLink": "found",
-  "productsSeen": 168,
+  "productsSeen": 167,
   "rejected": {
-   "category-not-flower": 33,
+   "category-not-flower": 32,
    "title-not-flower": 41
   },
   "scrollRounds": 6,
@@ -942,8 +940,8 @@
   "menuLink": "found",
   "productsSeen": 125,
   "rejected": {
-   "sameStrainAnotherSize": 22,
-   "title-not-flower": 4
+   "sameStrainAnotherSize": 21,
+   "title-not-flower": 5
   },
   "scrollRounds": 1,
   "shop": "Hibernica",
@@ -985,14 +983,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000138": {
-  "flower": 41,
+  "flower": 85,
   "licence": "OCM-CAURD-24-000138",
   "menuLink": "found",
-  "productsSeen": 74,
+  "productsSeen": 391,
   "rejected": {
-   "category-not-flower": 16,
-   "sameStrainAnotherSize": 8,
-   "title-not-flower": 9
+   "category-not-flower": 76,
+   "sameStrainAnotherSize": 146,
+   "title-not-flower": 84
   },
   "scrollRounds": 1,
   "shop": "Valley Greens Ltd.",
@@ -1015,11 +1013,11 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000142": {
-  "declaredTotal": 71,
-  "flower": 68,
+  "declaredTotal": 70,
+  "flower": 67,
   "licence": "OCM-CAURD-24-000142",
   "menuLink": "found",
-  "productsSeen": 96,
+  "productsSeen": 95,
   "rejected": {
    "sameStrainAnotherSize": 27,
    "title-not-flower": 1
@@ -1030,30 +1028,32 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000145": {
-  "declaredTotal": 40,
-  "flower": 36,
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
   "licence": "OCM-CAURD-24-000145",
   "menuLink": "found",
-  "productsSeen": 65,
-  "rejected": {
-   "sameStrainAnotherSize": 21,
-   "title-not-flower": 8
-  },
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
   "scrollRounds": 1,
   "shop": "BY ANY OTHER NAME",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-24-000146": {
-  "declaredTotal": 122,
-  "flower": 26,
+  "declaredTotal": 121,
+  "flower": 27,
   "licence": "OCM-CAURD-24-000146",
   "menuLink": "none",
   "productsSeen": 92,
   "rejected": {
-   "category-not-flower": 39,
+   "category-not-flower": 40,
    "sameStrainAnotherSize": 2,
-   "title-not-flower": 25
+   "title-not-flower": 23
   },
   "shop": "Emerald Dispensary",
   "status": "ok",
@@ -1061,37 +1061,25 @@
  },
  "OCM-CAURD-24-000149": {
   "flower": 0,
-  "foundMenuByGuess": true,
-  "guessedMenuPaths": [
-   "/menu",
-   "/shop"
-  ],
   "licence": "OCM-CAURD-24-000149",
-  "menuLink": "found",
+  "menuLink": "none",
   "productsSeen": 0,
   "rejected": {},
-  "scrollRounds": 1,
   "shop": "Sparkboro Inc",
   "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000151": {
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 10,
-   "status": "no-flower"
-  },
-  "flower": 1,
+  "flower": 19,
   "licence": "OCM-CAURD-24-000151",
   "menuLink": "found",
-  "productsSeen": 135,
+  "productsSeen": 155,
   "rejected": {
    "category-not-flower": 75,
-   "sameStrainAnotherSize": 4,
-   "title-not-flower": 55
+   "sameStrainAnotherSize": 5,
+   "title-not-flower": 56
   },
-  "retried": true,
-  "scrollRounds": 1,
+  "scrollRounds": 2,
   "shop": "Nicklz",
   "status": "ok",
   "usedKnownEndpoint": false
@@ -1110,7 +1098,7 @@
    "sameStrainAnotherSize": 3,
    "title-not-flower": 23
   },
-  "scrollRounds": 1,
+  "scrollRounds": 2,
   "shop": "NY ELITE CANNABIS",
   "status": "ok",
   "usedKnownEndpoint": false
@@ -1144,17 +1132,17 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000163": {
-  "declaredTotal": 469,
+  "declaredTotal": 465,
   "flower": 33,
   "licence": "OCM-CAURD-24-000163",
   "menuLink": "found",
   "pagedFrom": 25,
-  "pagedTo": 469,
+  "pagedTo": 465,
   "pagesAsked": 18,
-  "productsSeen": 469,
+  "productsSeen": 465,
   "rejected": {
-   "category-not-flower": 239,
-   "title-not-flower": 197
+   "category-not-flower": 237,
+   "title-not-flower": 195
   },
   "scrollRounds": 1,
   "shop": "AFI & Associates Group LLC",
@@ -1162,26 +1150,21 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000165": {
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 12,
-   "status": "no-flower"
-  },
-  "flower": 0,
+  "flower": 12,
   "licence": "OCM-CAURD-24-000165",
   "menuLink": "found",
-  "productsSeen": 12,
+  "productsSeen": 27,
   "rejected": {
-   "title-not-flower": 12
+   "category-not-flower": 9,
+   "title-not-flower": 6
   },
-  "retried": true,
   "scrollRounds": 1,
   "shop": "Frass Box Cannabis LLC",
-  "status": "no-flower",
+  "status": "ok",
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-24-000166": {
-  "declaredTotal": 107,
+  "declaredTotal": 106,
   "flower": 97,
   "licence": "OCM-CAURD-24-000166",
   "menuLink": "found",
@@ -1207,18 +1190,18 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000173": {
-  "flower": 134,
+  "flower": 137,
   "licence": "OCM-CAURD-24-000173",
   "menuLink": "found",
-  "pagedFrom": 177,
-  "pagedTo": 334,
+  "pagedFrom": 180,
+  "pagedTo": 340,
   "pagesAsked": 9,
-  "productsSeen": 334,
+  "productsSeen": 340,
   "rejected": {
-   "sameStrainAnotherSize": 133,
+   "sameStrainAnotherSize": 136,
    "title-not-flower": 67
   },
-  "scrollRounds": 9,
+  "scrollRounds": 10,
   "shop": "Gaslight Dispensary",
   "status": "ok",
   "usedKnownEndpoint": false
@@ -1273,16 +1256,17 @@
  },
  "OCM-CAURD-24-000183": {
   "declaredTotal": 226,
-  "flower": 186,
+  "flower": 160,
   "licence": "OCM-CAURD-24-000183",
   "menuLink": "found",
-  "pagedFrom": 125,
-  "pagedTo": 251,
-  "pagesAsked": 2,
-  "productsSeen": 251,
+  "pagedFrom": 166,
+  "pagedTo": 266,
+  "pagesAsked": 1,
+  "productsSeen": 266,
   "rejected": {
-   "sameStrainAnotherSize": 25,
-   "title-not-flower": 40
+   "category-not-flower": 7,
+   "sameStrainAnotherSize": 43,
+   "title-not-flower": 56
   },
   "scrollRounds": 1,
   "shop": "NugHub NY LLC",
@@ -1290,15 +1274,15 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000184": {
-  "declaredTotal": 114,
+  "declaredTotal": 113,
   "flower": 82,
   "licence": "OCM-CAURD-24-000184",
   "menuLink": "found",
   "productsSeen": 222,
   "rejected": {
-   "category-not-flower": 42,
+   "category-not-flower": 40,
    "sameStrainAnotherSize": 20,
-   "title-not-flower": 78
+   "title-not-flower": 80
   },
   "scrollRounds": 1,
   "shop": "Pryzm",
@@ -1311,9 +1295,9 @@
   "menuLink": "found",
   "productsSeen": 110,
   "rejected": {
-   "category-not-flower": 31,
-   "sameStrainAnotherSize": 26,
-   "title-not-flower": 36
+   "category-not-flower": 33,
+   "sameStrainAnotherSize": 22,
+   "title-not-flower": 38
   },
   "scrollRounds": 1,
   "shop": "Highstone",
@@ -1321,18 +1305,24 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000188": {
-  "declaredTotal": 395,
-  "flower": 359,
+  "declaredTotal": 394,
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 358,
   "licence": "OCM-CAURD-24-000188",
   "menuLink": "found",
   "pagedFrom": 125,
-  "pagedTo": 420,
+  "pagedTo": 419,
   "pagesAsked": 3,
-  "productsSeen": 420,
+  "productsSeen": 419,
   "rejected": {
    "sameStrainAnotherSize": 22,
    "title-not-flower": 39
   },
+  "retried": true,
   "scrollRounds": 1,
   "shop": "Brooklyn Bourne Dispensary",
   "status": "ok",
@@ -1340,35 +1330,33 @@
  },
  "OCM-CAURD-24-000191": {
   "flower": 0,
-  "foundMenuByGuess": true,
-  "guessedMenuPaths": [
-   "/menu",
-   "/shop"
-  ],
   "licence": "OCM-CAURD-24-000191",
-  "menuLink": "found",
+  "menuLink": "none",
   "productsSeen": 0,
   "rejected": {},
-  "scrollRounds": 1,
   "shop": "Twisted Vibration LLC",
   "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000196": {
+  "declaredTotal": 119,
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 0,
+  "flower": 89,
   "licence": "OCM-CAURD-24-000196",
   "menuLink": "found",
-  "productsSeen": 0,
-  "rejected": {},
+  "productsSeen": 125,
+  "rejected": {
+   "sameStrainAnotherSize": 21,
+   "title-not-flower": 15
+  },
   "retried": true,
   "scrollRounds": 1,
   "shop": "Fireleaf, LLC",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-24-000200": {
@@ -1425,11 +1413,11 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000207": {
-  "declaredTotal": 81,
-  "flower": 77,
+  "declaredTotal": 80,
+  "flower": 76,
   "licence": "OCM-CAURD-24-000207",
   "menuLink": "found",
-  "productsSeen": 106,
+  "productsSeen": 105,
   "rejected": {
    "sameStrainAnotherSize": 24,
    "title-not-flower": 5
@@ -1462,27 +1450,20 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000210": {
-  "declaredTotal": 146,
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 99,
+  "flower": 0,
   "licence": "OCM-CAURD-24-000210",
   "menuLink": "found",
-  "pagedFrom": 72,
-  "pagedTo": 118,
-  "pagesAsked": 2,
-  "productsSeen": 118,
-  "rejected": {
-   "sameStrainAnotherSize": 1,
-   "title-not-flower": 18
-  },
+  "productsSeen": 0,
+  "rejected": {},
   "retried": true,
   "scrollRounds": 1,
   "shop": "Exotic Herbals LLC",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000211": {
@@ -1503,14 +1484,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000212": {
-  "declaredTotal": 137,
-  "flower": 120,
+  "declaredTotal": 136,
+  "flower": 119,
   "licence": "OCM-CAURD-24-000212",
   "menuLink": "found",
   "pagedFrom": 125,
-  "pagedTo": 162,
+  "pagedTo": 161,
   "pagesAsked": 1,
-  "productsSeen": 162,
+  "productsSeen": 161,
   "rejected": {
    "sameStrainAnotherSize": 19,
    "title-not-flower": 23
@@ -1538,22 +1519,22 @@
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 14,
+  "flower": 0,
   "licence": "OCM-CAURD-24-000217",
   "menuLink": "found",
-  "pagedFrom": 50,
-  "pagedTo": 50,
+  "pagedFrom": 25,
+  "pagedTo": 25,
   "pagesAsked": 1,
   "pagingRefused": "Failed to fetch",
-  "productsSeen": 50,
+  "productsSeen": 25,
   "rejected": {
-   "category-not-flower": 10,
-   "title-not-flower": 26
+   "category-not-flower": 7,
+   "title-not-flower": 18
   },
   "retried": true,
   "scrollRounds": 1,
   "shop": "Stashmaster",
-  "status": "ok",
+  "status": "no-flower",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000220": {
@@ -1561,10 +1542,11 @@
   "flower": 11,
   "licence": "OCM-CAURD-24-000220",
   "menuLink": "found",
-  "productsSeen": 52,
+  "productsSeen": 64,
   "rejected": {
-   "category-not-flower": 40,
-   "sameStrainAnotherSize": 1
+   "category-not-flower": 48,
+   "sameStrainAnotherSize": 1,
+   "title-not-flower": 4
   },
   "scrollRounds": 1,
   "shop": "I Bud You NY, Inc",
@@ -1593,19 +1575,19 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000229": {
-  "declaredTotal": 450,
+  "declaredTotal": 449,
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 413,
+  "flower": 412,
   "licence": "OCM-CAURD-25-000229",
   "menuLink": "found",
   "pagedFrom": 125,
-  "pagedTo": 475,
+  "pagedTo": 474,
   "pagesAsked": 4,
-  "productsSeen": 475,
+  "productsSeen": 474,
   "rejected": {
    "sameStrainAnotherSize": 26,
    "title-not-flower": 36
@@ -1618,12 +1600,7 @@
  },
  "OCM-CAURD-25-000230": {
   "declaredTotal": 137,
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 0,
-   "status": "no-products"
-  },
-  "flower": 41,
+  "flower": 17,
   "licence": "OCM-CAURD-25-000230",
   "menuLink": "found",
   "pagedFrom": 125,
@@ -1631,11 +1608,10 @@
   "pagesAsked": 1,
   "productsSeen": 150,
   "rejected": {
-   "category-not-flower": 70,
-   "sameStrainAnotherSize": 3,
-   "title-not-flower": 36
+   "category-not-flower": 83,
+   "sameStrainAnotherSize": 2,
+   "title-not-flower": 48
   },
-  "retried": true,
   "scrollRounds": 1,
   "shop": "Aroma Farms Inc",
   "status": "ok",
@@ -1682,9 +1658,10 @@
   "flower": 10,
   "licence": "OCM-CAURD-25-000237",
   "menuLink": "found",
-  "productsSeen": 20,
+  "productsSeen": 30,
   "rejected": {
-   "category-not-flower": 10
+   "category-not-flower": 10,
+   "sameStrainAnotherSize": 10
   },
   "scrollRounds": 3,
   "shop": "Tetra",
@@ -1726,16 +1703,10 @@
  },
  "OCM-CAURD-25-000240": {
   "flower": 0,
-  "foundMenuByGuess": true,
-  "guessedMenuPaths": [
-   "/menu",
-   "/shop"
-  ],
   "licence": "OCM-CAURD-25-000240",
-  "menuLink": "found",
+  "menuLink": "none",
   "productsSeen": 0,
   "rejected": {},
-  "scrollRounds": 1,
   "shop": "RENAISSANT NYC",
   "status": "no-products",
   "usedKnownEndpoint": false
@@ -1776,10 +1747,10 @@
  },
  "OCM-CAURD-25-000245": {
   "declaredTotal": 1,
-  "flower": 168,
+  "flower": 166,
   "licence": "OCM-CAURD-25-000245",
   "menuLink": "found",
-  "productsSeen": 205,
+  "productsSeen": 203,
   "rejected": {
    "sameStrainAnotherSize": 17,
    "title-not-flower": 20
@@ -1842,18 +1813,24 @@
  },
  "OCM-CAURD-25-000263": {
   "declaredTotal": 362,
-  "flower": 23,
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 29,
   "licence": "OCM-CAURD-25-000263",
   "menuLink": "found",
-  "pagedFrom": 123,
-  "pagedTo": 131,
+  "pagedFrom": 148,
+  "pagedTo": 156,
   "pagesAsked": 2,
-  "productsSeen": 131,
+  "productsSeen": 156,
   "rejected": {
-   "category-not-flower": 82,
+   "category-not-flower": 99,
    "sameStrainAnotherSize": 7,
-   "title-not-flower": 19
+   "title-not-flower": 21
   },
+  "retried": true,
   "scrollRounds": 1,
   "shop": "Big City Flavors",
   "status": "ok",
@@ -1892,12 +1869,12 @@
   "flower": 303,
   "licence": "OCM-CAURD-25-000268",
   "menuLink": "found",
-  "productsSeen": 1195,
+  "productsSeen": 2390,
   "rejected": {
-   "category-not-flower": 214,
-   "flower-no-size": 5,
-   "sameStrainAnotherSize": 32,
-   "title-not-flower": 641
+   "category-not-flower": 428,
+   "flower-no-size": 10,
+   "sameStrainAnotherSize": 367,
+   "title-not-flower": 1282
   },
   "scrollRounds": 1,
   "shop": "JFK Cannabis Inc",
@@ -1983,9 +1960,10 @@
   "flower": 0,
   "licence": "OCM-CAURD-25-000281",
   "menuLink": "found",
-  "productsSeen": 13,
+  "productsSeen": 33,
   "rejected": {
-   "category-not-flower": 13
+   "category-not-flower": 32,
+   "title-not-flower": 1
   },
   "scrollRounds": 1,
   "shop": "Flynnstoned Cannabis Company",
@@ -2045,7 +2023,7 @@
  },
  "OCM-CAURD-25-000290": {
   "declaredTotal": 97,
-  "flower": 47,
+  "flower": 25,
   "licence": "OCM-CAURD-25-000290",
   "menuLink": "found",
   "pagedFrom": 81,
@@ -2053,10 +2031,10 @@
   "pagesAsked": 1,
   "productsSeen": 106,
   "rejected": {
-   "category-not-flower": 35,
-   "title-not-flower": 24
+   "category-not-flower": 54,
+   "title-not-flower": 27
   },
-  "scrollRounds": 2,
+  "scrollRounds": 1,
   "shop": "Lighthouse Cannabis",
   "status": "ok",
   "usedKnownEndpoint": false
@@ -2087,14 +2065,14 @@
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-25-000294": {
-  "declaredTotal": 185,
-  "flower": 174,
+  "declaredTotal": 184,
+  "flower": 173,
   "licence": "OCM-CAURD-25-000294",
   "menuLink": "found",
   "pagedFrom": 125,
-  "pagedTo": 210,
+  "pagedTo": 209,
   "pagesAsked": 1,
-  "productsSeen": 210,
+  "productsSeen": 209,
   "rejected": {
    "sameStrainAnotherSize": 18,
    "title-not-flower": 18
@@ -2119,11 +2097,11 @@
   "flower": 96,
   "licence": "OCM-CAURD-25-000297",
   "menuLink": "found",
-  "productsSeen": 190,
+  "productsSeen": 202,
   "rejected": {
-   "category-not-flower": 20,
-   "sameStrainAnotherSize": 32,
-   "title-not-flower": 42
+   "category-not-flower": 36,
+   "sameStrainAnotherSize": 37,
+   "title-not-flower": 33
   },
   "scrollRounds": 1,
   "shop": "BX Buddiez",
@@ -2131,10 +2109,10 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000301": {
-  "flower": 94,
+  "flower": 92,
   "licence": "OCM-CAURD-25-000301",
   "menuLink": "found",
-  "productsSeen": 99,
+  "productsSeen": 97,
   "rejected": {
    "flower-no-size": 1,
    "sameStrainAnotherSize": 1,
@@ -2171,8 +2149,8 @@
   "pagesAsked": 1,
   "productsSeen": 225,
   "rejected": {
-   "sameStrainAnotherSize": 24,
-   "title-not-flower": 18
+   "sameStrainAnotherSize": 23,
+   "title-not-flower": 19
   },
   "retried": true,
   "scrollRounds": 1,
@@ -2229,9 +2207,11 @@
   "flower": 0,
   "licence": "OCM-CAURD-25-000310",
   "menuLink": "found",
-  "productsSeen": 12,
+  "productsSeen": 13,
   "rejected": {
-   "category-not-flower": 12
+   "category-not-flower": 7,
+   "flower-no-size": 3,
+   "title-not-flower": 3
   },
   "scrollRounds": 1,
   "shop": "FlynnStoned Cannabis Company",
@@ -2309,11 +2289,6 @@
  },
  "OCM-CAURD-25-000321": {
   "declaredTotal": 197,
-  "firstAttempt": {
-   "menuLink": "none",
-   "productsSeen": 0,
-   "status": "no-products"
-  },
   "flower": 89,
   "licence": "OCM-CAURD-25-000321",
   "menuLink": "found",
@@ -2325,7 +2300,6 @@
    "sameStrainAnotherSize": 89,
    "title-not-flower": 388
   },
-  "retried": true,
   "scrollRounds": 1,
   "shop": "The Hibrary 695 Inc",
   "status": "ok",
@@ -2333,23 +2307,17 @@
  },
  "OCM-CAURD-25-000322": {
   "declaredTotal": 118,
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 0,
-   "status": "no-products"
-  },
-  "flower": 23,
+  "flower": 67,
   "licence": "OCM-CAURD-25-000322",
   "menuLink": "found",
   "pagedFrom": 92,
-  "pagedTo": 131,
+  "pagedTo": 142,
   "pagesAsked": 2,
-  "productsSeen": 131,
+  "productsSeen": 142,
   "rejected": {
-   "category-not-flower": 58,
-   "title-not-flower": 50
+   "category-not-flower": 42,
+   "title-not-flower": 33
   },
-  "retried": true,
   "scrollRounds": 1,
   "shop": "HUDSON HAZeLLC",
   "status": "ok",
@@ -2381,10 +2349,10 @@
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-26-000329": {
-  "flower": 108,
+  "flower": 107,
   "licence": "OCM-CAURD-26-000329",
   "menuLink": "found",
-  "productsSeen": 147,
+  "productsSeen": 146,
   "rejected": {
    "category-not-flower": 3,
    "sameStrainAnotherSize": 4,
@@ -2396,14 +2364,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-26-000330": {
-  "declaredTotal": 247,
-  "flower": 241,
+  "declaredTotal": 246,
+  "flower": 240,
   "licence": "OCM-CAURD-26-000330",
   "menuLink": "found",
   "pagedFrom": 125,
-  "pagedTo": 272,
+  "pagedTo": 271,
   "pagesAsked": 2,
-  "productsSeen": 272,
+  "productsSeen": 271,
   "rejected": {
    "sameStrainAnotherSize": 29,
    "title-not-flower": 2
@@ -2428,16 +2396,10 @@
  },
  "OCM-CAURD-26-000332": {
   "flower": 0,
-  "foundMenuByGuess": true,
-  "guessedMenuPaths": [
-   "/menu",
-   "/shop"
-  ],
   "licence": "OCM-CAURD-26-000332",
-  "menuLink": "found",
+  "menuLink": "none",
   "productsSeen": 0,
   "rejected": {},
-  "scrollRounds": 1,
   "shop": "The Bridge A Cannabis Experience",
   "status": "no-products",
   "usedKnownEndpoint": false
@@ -2463,9 +2425,10 @@
   "flower": 0,
   "licence": "OCM-CAURD-26-000334",
   "menuLink": "found",
-  "productsSeen": 26,
+  "productsSeen": 12,
   "rejected": {
-   "category-not-flower": 26
+   "category-not-flower": 11,
+   "title-not-flower": 1
   },
   "scrollRounds": 1,
   "shop": "FLYNNSTONED CANNABIS COMPANY",
@@ -2489,16 +2452,12 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-26-000336": {
-  "declaredTotal": 38,
+  "declaredTotal": 25,
   "flower": 25,
   "licence": "OCM-CAURD-26-000336",
   "menuLink": "found",
-  "productsSeen": 101,
-  "rejected": {
-   "category-not-flower": 28,
-   "sameStrainAnotherSize": 23,
-   "title-not-flower": 25
-  },
+  "productsSeen": 25,
+  "rejected": {},
   "scrollRounds": 1,
   "shop": "Emerald Dispensary Carroll Gardens",
   "status": "ok",
@@ -2508,10 +2467,9 @@
   "flower": 0,
   "licence": "OCM-CAURD-26-000339",
   "menuLink": "found",
-  "productsSeen": 33,
+  "productsSeen": 28,
   "rejected": {
-   "category-not-flower": 27,
-   "title-not-flower": 6
+   "category-not-flower": 28
   },
   "scrollRounds": 1,
   "shop": "3JsUmiNDre LLC",
@@ -2520,6 +2478,11 @@
  },
  "OCM-CAURD-26-000340": {
   "declaredTotal": 146,
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
   "flower": 22,
   "licence": "OCM-CAURD-26-000340",
   "menuLink": "found",
@@ -2528,10 +2491,11 @@
   "pagesAsked": 3,
   "productsSeen": 142,
   "rejected": {
-   "category-not-flower": 38,
-   "sameStrainAnotherSize": 25,
-   "title-not-flower": 57
+   "category-not-flower": 34,
+   "sameStrainAnotherSize": 27,
+   "title-not-flower": 59
   },
+  "retried": true,
   "scrollRounds": 1,
   "shop": "Mello Tymes LLC",
   "status": "ok",
@@ -2585,11 +2549,6 @@
  },
  "OCM-CAURD-26-000350": {
   "declaredTotal": 94,
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 0,
-   "status": "no-products"
-  },
   "flower": 24,
   "licence": "OCM-CAURD-26-000350",
   "menuLink": "found",
@@ -2599,7 +2558,6 @@
    "sameStrainAnotherSize": 24,
    "title-not-flower": 60
   },
-  "retried": true,
   "scrollRounds": 1,
   "shop": "GOOD VIBES NYC, inc",
   "status": "ok",
@@ -2641,8 +2599,11 @@
   "flower": 20,
   "licence": "OCM-MICR-24-000068",
   "menuLink": "found",
-  "productsSeen": 20,
-  "rejected": {},
+  "productsSeen": 62,
+  "rejected": {
+   "category-not-flower": 14,
+   "title-not-flower": 28
+  },
   "scrollRounds": 2,
   "shop": "Art of Flower Farm & Dispensary LLC",
   "status": "ok",
@@ -2701,13 +2662,13 @@
  },
  "OCM-MICR-25-000223": {
   "declaredTotal": 105,
-  "flower": 37,
+  "flower": 36,
   "licence": "OCM-MICR-25-000223",
   "menuLink": "found",
   "productsSeen": 312,
   "rejected": {
    "category-not-flower": 55,
-   "sameStrainAnotherSize": 32,
+   "sameStrainAnotherSize": 33,
    "title-not-flower": 188
   },
   "scrollRounds": 1,
@@ -2743,44 +2704,36 @@
   "status": "error: page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://sageseed.com/\nCall log:\n  - navigating to \"https://sagesee"
  },
  "OCM-RETL-24-000008": {
-  "declaredTotal": 188,
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 0,
-   "status": "no-products"
-  },
-  "flower": 178,
-  "licence": "OCM-RETL-24-000008",
-  "menuLink": "found",
-  "pagedFrom": 125,
-  "pagedTo": 213,
-  "pagesAsked": 1,
-  "productsSeen": 213,
-  "rejected": {
-   "sameStrainAnotherSize": 22,
-   "title-not-flower": 13
-  },
-  "retried": true,
-  "scrollRounds": 1,
-  "shop": "My Bud 420 Inc.",
-  "status": "ok",
-  "usedKnownEndpoint": true
- },
- "OCM-RETL-24-000011": {
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
    "status": "no-products"
   },
   "flower": 0,
-  "licence": "OCM-RETL-24-000011",
+  "licence": "OCM-RETL-24-000008",
   "menuLink": "found",
   "productsSeen": 0,
   "rejected": {},
   "retried": true,
   "scrollRounds": 1,
-  "shop": "OET INC.",
+  "shop": "My Bud 420 Inc.",
   "status": "no-products",
+  "usedKnownEndpoint": true
+ },
+ "OCM-RETL-24-000011": {
+  "declaredTotal": 84,
+  "flower": 22,
+  "licence": "OCM-RETL-24-000011",
+  "menuLink": "found",
+  "productsSeen": 84,
+  "rejected": {
+   "category-not-flower": 42,
+   "sameStrainAnotherSize": 1,
+   "title-not-flower": 19
+  },
+  "scrollRounds": 1,
+  "shop": "OET INC.",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000014": {
@@ -2810,10 +2763,10 @@
   "flower": 90,
   "licence": "OCM-RETL-24-000020",
   "menuLink": "found",
-  "productsSeen": 198,
+  "productsSeen": 199,
   "rejected": {
    "category-not-flower": 44,
-   "sameStrainAnotherSize": 29,
+   "sameStrainAnotherSize": 30,
    "title-not-flower": 35
   },
   "scrollRounds": 1,
@@ -2832,18 +2785,18 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000026": {
-  "declaredTotal": 531,
-  "flower": 392,
+  "declaredTotal": 530,
+  "flower": 418,
   "licence": "OCM-RETL-24-000026",
   "menuLink": "found",
-  "pagedFrom": 150,
-  "pagedTo": 550,
-  "pagesAsked": 4,
-  "productsSeen": 550,
+  "pagedFrom": 125,
+  "pagedTo": 555,
+  "pagesAsked": 5,
+  "productsSeen": 555,
   "rejected": {
-   "category-not-flower": 8,
-   "sameStrainAnotherSize": 39,
-   "title-not-flower": 111
+   "category-not-flower": 3,
+   "sameStrainAnotherSize": 38,
+   "title-not-flower": 96
   },
   "scrollRounds": 1,
   "shop": "Silky Strain",
@@ -2851,9 +2804,13 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000027": {
+  "flower": 0,
   "licence": "OCM-RETL-24-000027",
+  "menuLink": "none",
+  "productsSeen": 0,
+  "rejected": {},
   "shop": "Hudson Park Agency LLC",
-  "status": "error: page.evaluate: Execution context was destroyed, most likely because of a navigation",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000032": {
@@ -2861,11 +2818,9 @@
   "flower": 16,
   "licence": "OCM-RETL-24-000032",
   "menuLink": "found",
-  "productsSeen": 66,
+  "productsSeen": 22,
   "rejected": {
-   "category-not-flower": 15,
-   "sameStrainAnotherSize": 16,
-   "title-not-flower": 19
+   "title-not-flower": 6
   },
   "scrollRounds": 1,
   "shop": "Maison Canal",
@@ -2897,9 +2852,10 @@
   "flower": 0,
   "licence": "OCM-RETL-24-000041",
   "menuLink": "found",
-  "productsSeen": 13,
+  "productsSeen": 33,
   "rejected": {
-   "category-not-flower": 13
+   "category-not-flower": 32,
+   "title-not-flower": 1
   },
   "scrollRounds": 1,
   "shop": "Bright Elephant, LLC",
@@ -2907,18 +2863,18 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000047": {
-  "declaredTotal": 253,
-  "flower": 9,
+  "declaredTotal": 259,
+  "flower": 28,
   "licence": "OCM-RETL-24-000047",
   "menuLink": "found",
-  "pagedFrom": 157,
-  "pagedTo": 167,
-  "pagesAsked": 2,
-  "productsSeen": 167,
+  "pagedFrom": 176,
+  "pagedTo": 176,
+  "pagesAsked": 1,
+  "productsSeen": 176,
   "rejected": {
-   "category-not-flower": 71,
-   "sameStrainAnotherSize": 3,
-   "title-not-flower": 84
+   "category-not-flower": 62,
+   "sameStrainAnotherSize": 13,
+   "title-not-flower": 73
   },
   "scrollRounds": 1,
   "shop": "FUMI Dispensary LLC",
@@ -2926,14 +2882,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000048": {
-  "declaredTotal": 118,
+  "declaredTotal": 117,
   "flower": 76,
   "licence": "OCM-RETL-24-000048",
   "menuLink": "found",
   "productsSeen": 125,
   "rejected": {
-   "sameStrainAnotherSize": 24,
-   "title-not-flower": 25
+   "sameStrainAnotherSize": 28,
+   "title-not-flower": 21
   },
   "scrollRounds": 1,
   "shop": "MIDNIGHT MOON CORP",
@@ -2989,17 +2945,18 @@
   "usedKnownEndpoint": true
  },
  "OCM-RETL-24-000064": {
-  "declaredTotal": 205,
-  "flower": 148,
+  "declaredTotal": 492,
+  "flower": 160,
   "licence": "OCM-RETL-24-000064",
   "menuLink": "found",
-  "pagedFrom": 125,
-  "pagedTo": 225,
-  "pagesAsked": 1,
-  "productsSeen": 225,
+  "pagedFrom": 150,
+  "pagedTo": 254,
+  "pagesAsked": 3,
+  "productsSeen": 254,
   "rejected": {
+   "category-not-flower": 6,
    "sameStrainAnotherSize": 31,
-   "title-not-flower": 46
+   "title-not-flower": 57
   },
   "scrollRounds": 1,
   "shop": "GREEN FLOWER WELLNESS",
@@ -3019,25 +2976,19 @@
  },
  "OCM-RETL-24-000070": {
   "flower": 0,
-  "foundMenuByGuess": true,
-  "guessedMenuPaths": [
-   "/menu",
-   "/shop"
-  ],
   "licence": "OCM-RETL-24-000070",
-  "menuLink": "found",
+  "menuLink": "none",
   "productsSeen": 0,
   "rejected": {},
-  "scrollRounds": 1,
   "shop": "Good Company",
   "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000075": {
-  "flower": 120,
+  "flower": 119,
   "licence": "OCM-RETL-24-000075",
   "menuLink": "found",
-  "productsSeen": 156,
+  "productsSeen": 155,
   "rejected": {
    "category-not-flower": 3,
    "sameStrainAnotherSize": 5,
@@ -3111,9 +3062,9 @@
   "menuLink": "found",
   "productsSeen": 174,
   "rejected": {
-   "category-not-flower": 20,
+   "category-not-flower": 17,
    "sameStrainAnotherSize": 23,
-   "title-not-flower": 34
+   "title-not-flower": 37
   },
   "scrollRounds": 1,
   "shop": "Cloud 914",
@@ -3141,9 +3092,9 @@
   "flower": 16,
   "licence": "OCM-RETL-24-000093",
   "menuLink": "found",
-  "productsSeen": 140,
+  "productsSeen": 144,
   "rejected": {
-   "category-not-flower": 118,
+   "category-not-flower": 122,
    "sameStrainAnotherSize": 5,
    "title-not-flower": 1
   },
@@ -3174,14 +3125,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000103": {
-  "declaredTotal": 178,
-  "flower": 171,
+  "declaredTotal": 177,
+  "flower": 170,
   "licence": "OCM-RETL-24-000103",
   "menuLink": "found",
   "pagedFrom": 100,
-  "pagedTo": 178,
+  "pagedTo": 177,
   "pagesAsked": 1,
-  "productsSeen": 178,
+  "productsSeen": 177,
   "rejected": {
    "title-not-flower": 7
   },
@@ -3197,8 +3148,8 @@
   "menuLink": "found",
   "productsSeen": 76,
   "rejected": {
-   "sameStrainAnotherSize": 22,
-   "title-not-flower": 9
+   "sameStrainAnotherSize": 21,
+   "title-not-flower": 10
   },
   "scrollRounds": 1,
   "shop": "Alta Dispensary",
@@ -3209,11 +3160,11 @@
   "flower": 58,
   "licence": "OCM-RETL-24-000105",
   "menuLink": "found",
-  "productsSeen": 130,
+  "productsSeen": 134,
   "rejected": {
    "category-not-flower": 9,
    "sameStrainAnotherSize": 2,
-   "title-not-flower": 61
+   "title-not-flower": 65
   },
   "scrollRounds": 4,
   "shop": "Vereleaf",
@@ -3239,16 +3190,10 @@
  },
  "OCM-RETL-24-000107": {
   "flower": 0,
-  "foundMenuByGuess": true,
-  "guessedMenuPaths": [
-   "/menu",
-   "/shop"
-  ],
   "licence": "OCM-RETL-24-000107",
-  "menuLink": "found",
+  "menuLink": "none",
   "productsSeen": 0,
   "rejected": {},
-  "scrollRounds": 1,
   "shop": "The Hootch LLC",
   "status": "no-products",
   "usedKnownEndpoint": false
@@ -3307,20 +3252,20 @@
   "usedKnownEndpoint": true
  },
  "OCM-RETL-24-000144": {
-  "declaredTotal": 171,
-  "flower": 134,
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
   "licence": "OCM-RETL-24-000144",
   "menuLink": "found",
-  "pagedFrom": 25,
-  "pagedTo": 171,
-  "pagesAsked": 6,
-  "productsSeen": 171,
-  "rejected": {
-   "title-not-flower": 37
-  },
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
   "scrollRounds": 2,
   "shop": "Case Management",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": true
  },
  "OCM-RETL-24-000146": {
@@ -3354,8 +3299,8 @@
   "pagesAsked": 1,
   "productsSeen": 217,
   "rejected": {
-   "sameStrainAnotherSize": 27,
-   "title-not-flower": 26
+   "sameStrainAnotherSize": 28,
+   "title-not-flower": 25
   },
   "retried": true,
   "scrollRounds": 1,
@@ -3390,8 +3335,8 @@
   "pagesAsked": 8,
   "productsSeen": 315,
   "rejected": {
-   "category-not-flower": 182,
-   "title-not-flower": 112
+   "category-not-flower": 179,
+   "title-not-flower": 115
   },
   "scrollRounds": 1,
   "shop": "Herbwell",
@@ -3400,12 +3345,12 @@
  },
  "OCM-RETL-24-000159": {
   "declaredTotal": 2,
-  "flower": 12,
+  "flower": 13,
   "licence": "OCM-RETL-24-000159",
   "menuLink": "found",
   "productsSeen": 20,
   "rejected": {
-   "title-not-flower": 8
+   "title-not-flower": 7
   },
   "scrollRounds": 1,
   "shop": "Star Life Retail Group LLC",
@@ -3444,32 +3389,34 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000171": {
-  "declaredTotal": 60,
-  "flower": 59,
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
   "licence": "OCM-RETL-24-000171",
   "menuLink": "found",
-  "productsSeen": 85,
-  "rejected": {
-   "sameStrainAnotherSize": 25,
-   "title-not-flower": 1
-  },
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
   "scrollRounds": 1,
   "shop": "GUARDIAN WELLNESS LLC",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": true
  },
  "OCM-RETL-24-000175": {
-  "declaredTotal": 587,
-  "flower": 519,
+  "declaredTotal": 584,
+  "flower": 516,
   "licence": "OCM-RETL-24-000175",
   "menuLink": "found",
-  "pagedFrom": 150,
-  "pagedTo": 637,
+  "pagedFrom": 125,
+  "pagedTo": 609,
   "pagesAsked": 5,
-  "productsSeen": 637,
+  "productsSeen": 609,
   "rejected": {
-   "sameStrainAnotherSize": 64,
-   "title-not-flower": 54
+   "sameStrainAnotherSize": 43,
+   "title-not-flower": 50
   },
   "scrollRounds": 1,
   "shop": "Canna Blooms",
@@ -3533,15 +3480,11 @@
   "flower": 0,
   "licence": "OCM-RETL-24-000197",
   "menuLink": "found",
-  "productsSeen": 169,
-  "rejected": {
-   "category-not-flower": 116,
-   "flower-no-size": 42,
-   "title-not-flower": 11
-  },
+  "productsSeen": 0,
+  "rejected": {},
   "scrollRounds": 1,
   "shop": "Canna Buddha Corp",
-  "status": "no-flower",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000220": {
@@ -3551,29 +3494,23 @@
  },
  "OCM-RETL-24-000222": {
   "flower": 0,
-  "foundMenuByGuess": true,
-  "guessedMenuPaths": [
-   "/menu",
-   "/shop"
-  ],
   "licence": "OCM-RETL-24-000222",
-  "menuLink": "found",
+  "menuLink": "none",
   "productsSeen": 0,
   "rejected": {},
-  "scrollRounds": 1,
   "shop": "Garden Bliss LLC",
   "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000225": {
-  "flower": 99,
+  "flower": 97,
   "licence": "OCM-RETL-24-000225",
   "menuLink": "found",
-  "productsSeen": 147,
+  "productsSeen": 145,
   "rejected": {
    "category-not-flower": 9,
-   "sameStrainAnotherSize": 3,
-   "title-not-flower": 36
+   "sameStrainAnotherSize": 2,
+   "title-not-flower": 37
   },
   "scrollRounds": 1,
   "shop": "Skones Dispensary",
@@ -3581,18 +3518,18 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000233": {
-  "declaredTotal": 205,
-  "flower": 148,
+  "declaredTotal": 492,
+  "flower": 160,
   "licence": "OCM-RETL-24-000233",
   "menuLink": "found",
-  "pagedFrom": 150,
-  "pagedTo": 250,
-  "pagesAsked": 1,
-  "productsSeen": 250,
+  "pagedFrom": 175,
+  "pagedTo": 279,
+  "pagesAsked": 3,
+  "productsSeen": 279,
   "rejected": {
-   "category-not-flower": 11,
+   "category-not-flower": 17,
    "sameStrainAnotherSize": 32,
-   "title-not-flower": 59
+   "title-not-flower": 70
   },
   "scrollRounds": 1,
   "shop": "GREEN FLOWER WELLNESS 5 LLC",
@@ -3616,41 +3553,37 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000241": {
-  "declaredTotal": 82,
-  "flower": 34,
-  "licence": "OCM-RETL-24-000241",
-  "menuLink": "found",
-  "productsSeen": 89,
-  "rejected": {
-   "category-not-flower": 9,
-   "sameStrainAnotherSize": 20,
-   "title-not-flower": 26
-  },
-  "scrollRounds": 1,
-  "shop": "SOULMATE",
-  "status": "ok",
-  "usedKnownEndpoint": false
- },
- "OCM-RETL-24-000242": {
-  "declaredTotal": 51,
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 25,
+  "flower": 0,
+  "licence": "OCM-RETL-24-000241",
+  "menuLink": "found",
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
+  "scrollRounds": 1,
+  "shop": "SOULMATE",
+  "status": "no-products",
+  "usedKnownEndpoint": false
+ },
+ "OCM-RETL-24-000242": {
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
   "licence": "OCM-RETL-24-000242",
   "menuLink": "found",
-  "productsSeen": 130,
-  "rejected": {
-   "category-not-flower": 21,
-   "sameStrainAnotherSize": 25,
-   "title-not-flower": 59
-  },
+  "productsSeen": 0,
+  "rejected": {},
   "retried": true,
   "scrollRounds": 1,
   "shop": "Bellanova",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000244": {
@@ -3732,10 +3665,10 @@
   "flower": 0,
   "licence": "OCM-RETL-24-000263",
   "menuLink": "found",
-  "productsSeen": 98,
+  "productsSeen": 102,
   "rejected": {
-   "category-not-flower": 52,
-   "title-not-flower": 46
+   "category-not-flower": 55,
+   "title-not-flower": 47
   },
   "scrollRounds": 2,
   "shop": "The Flower Pot",
@@ -3775,20 +3708,22 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000274": {
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 0,
-   "status": "no-products"
-  },
-  "flower": 0,
+  "declaredTotal": 383,
+  "flower": 57,
   "licence": "OCM-RETL-25-000274",
   "menuLink": "found",
-  "productsSeen": 0,
-  "rejected": {},
-  "retried": true,
+  "pagedFrom": 163,
+  "pagedTo": 388,
+  "pagesAsked": 9,
+  "productsSeen": 388,
+  "rejected": {
+   "category-not-flower": 165,
+   "sameStrainAnotherSize": 29,
+   "title-not-flower": 137
+  },
   "scrollRounds": 1,
   "shop": "Greene street cannabis co.",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000283": {
@@ -3818,43 +3753,34 @@
   "usedKnownEndpoint": true
  },
  "OCM-RETL-25-000285": {
-  "declaredTotal": 70,
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 63,
+  "flower": 0,
   "licence": "OCM-RETL-25-000285",
   "menuLink": "found",
-  "productsSeen": 70,
-  "rejected": {
-   "title-not-flower": 7
-  },
+  "productsSeen": 0,
+  "rejected": {},
   "retried": true,
-  "scrollRounds": 1,
+  "scrollRounds": 2,
   "shop": "Buzzy NY, LLC",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": true
  },
  "OCM-RETL-25-000288": {
-  "declaredTotal": 140,
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 0,
-   "status": "error: page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://web-ui-prime.sweedpos.com/s98/menu/flower-2936"
-  },
+  "declaredTotal": 139,
   "flower": 7,
   "licence": "OCM-RETL-25-000288",
   "menuLink": "found",
-  "productsSeen": 92,
+  "productsSeen": 95,
   "rejected": {
-   "category-not-flower": 68,
-   "flower-no-size": 9,
+   "category-not-flower": 73,
+   "flower-no-size": 7,
    "sameStrainAnotherSize": 3,
    "title-not-flower": 5
   },
-  "retried": true,
   "scrollRounds": 1,
   "shop": "Up the River Cannabis Dispensary",
   "status": "ok",
@@ -3864,11 +3790,11 @@
   "flower": 89,
   "licence": "OCM-RETL-25-000293",
   "menuLink": "found",
-  "productsSeen": 100,
+  "productsSeen": 99,
   "rejected": {
    "flower-no-size": 1,
    "sameStrainAnotherSize": 3,
-   "title-not-flower": 7
+   "title-not-flower": 6
   },
   "scrollRounds": 1,
   "shop": "HORNBILL INC.",
@@ -3905,18 +3831,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000298": {
-  "declaredTotal": 519,
-  "flower": 29,
+  "declaredTotal": 29,
+  "flower": 25,
   "licence": "OCM-RETL-25-000298",
   "menuLink": "found",
-  "pagedFrom": 79,
-  "pagedTo": 79,
-  "pagesAsked": 1,
-  "productsSeen": 79,
+  "productsSeen": 54,
   "rejected": {
-   "category-not-flower": 14,
    "sameStrainAnotherSize": 26,
-   "title-not-flower": 10
+   "title-not-flower": 3
   },
   "scrollRounds": 1,
   "shop": "Verdi Park Slope",
@@ -3924,10 +3846,10 @@
   "usedKnownEndpoint": true
  },
  "OCM-RETL-25-000303": {
-  "flower": 65,
+  "flower": 64,
   "licence": "OCM-RETL-25-000303",
   "menuLink": "found",
-  "productsSeen": 93,
+  "productsSeen": 92,
   "rejected": {
    "flower-no-size": 6,
    "sameStrainAnotherSize": 7,
@@ -3942,15 +3864,14 @@
   "flower": 42,
   "licence": "OCM-RETL-25-000306",
   "menuLink": "found",
-  "pagedFrom": 51,
-  "pagedTo": 82,
+  "pagedFrom": 20,
+  "pagedTo": 51,
   "pagesAsked": 3,
-  "productsSeen": 82,
+  "productsSeen": 51,
   "rejected": {
-   "sameStrainAnotherSize": 23,
-   "title-not-flower": 17
+   "title-not-flower": 9
   },
-  "scrollRounds": 3,
+  "scrollRounds": 1,
   "shop": "7 Leaf Clover",
   "status": "ok",
   "usedKnownEndpoint": false
@@ -3982,33 +3903,35 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000318": {
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 0,
-   "status": "no-products"
-  },
-  "flower": 0,
+  "declaredTotal": 458,
+  "flower": 29,
   "licence": "OCM-RETL-25-000318",
   "menuLink": "found",
-  "productsSeen": 0,
-  "rejected": {},
-  "retried": true,
+  "pagedFrom": 219,
+  "pagedTo": 219,
+  "pagesAsked": 1,
+  "pagingRefused": "Failed to fetch",
+  "productsSeen": 219,
+  "rejected": {
+   "category-not-flower": 69,
+   "sameStrainAnotherSize": 50,
+   "title-not-flower": 71
+  },
   "scrollRounds": 1,
   "shop": "Twenty8Gramz",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000319": {
-  "declaredTotal": 127,
-  "flower": 125,
+  "declaredTotal": 125,
+  "flower": 124,
   "licence": "OCM-RETL-25-000319",
   "menuLink": "found",
   "pagedFrom": 100,
-  "pagedTo": 127,
+  "pagedTo": 125,
   "pagesAsked": 1,
-  "productsSeen": 127,
+  "productsSeen": 125,
   "rejected": {
-   "sameStrainAnotherSize": 1,
    "title-not-flower": 1
   },
   "scrollRounds": 1,
@@ -4030,12 +3953,12 @@
   "flower": 107,
   "licence": "OCM-RETL-25-000324",
   "menuLink": "found",
-  "productsSeen": 436,
+  "productsSeen": 435,
   "rejected": {
-   "category-not-flower": 124,
+   "category-not-flower": 104,
    "flower-no-size": 2,
-   "sameStrainAnotherSize": 72,
-   "title-not-flower": 131
+   "sameStrainAnotherSize": 73,
+   "title-not-flower": 149
   },
   "scrollRounds": 1,
   "shop": "Weedly NYC",
@@ -4054,13 +3977,13 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000339": {
-  "declaredTotal": 249,
-  "flower": 13,
+  "declaredTotal": 253,
+  "flower": 12,
   "licence": "OCM-RETL-25-000339",
   "menuLink": "found",
   "productsSeen": 154,
   "rejected": {
-   "category-not-flower": 140,
+   "category-not-flower": 141,
    "title-not-flower": 1
   },
   "scrollRounds": 1,
@@ -4070,16 +3993,10 @@
  },
  "OCM-RETL-25-000343": {
   "flower": 0,
-  "foundMenuByGuess": true,
-  "guessedMenuPaths": [
-   "/menu",
-   "/shop"
-  ],
   "licence": "OCM-RETL-25-000343",
-  "menuLink": "found",
+  "menuLink": "none",
   "productsSeen": 0,
   "rejected": {},
-  "scrollRounds": 1,
   "shop": "Green Land Retail LLC",
   "status": "no-products",
   "usedKnownEndpoint": false
@@ -4101,11 +4018,6 @@
  },
  "OCM-RETL-25-000349": {
   "declaredTotal": 107,
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 0,
-   "status": "no-products"
-  },
   "flower": 49,
   "licence": "OCM-RETL-25-000349",
   "menuLink": "found",
@@ -4114,25 +4026,32 @@
   "pagesAsked": 1,
   "productsSeen": 128,
   "rejected": {
-   "category-not-flower": 45,
+   "category-not-flower": 44,
    "sameStrainAnotherSize": 1,
-   "title-not-flower": 33
+   "title-not-flower": 34
   },
-  "retried": true,
   "scrollRounds": 1,
   "shop": "Forest Chills",
   "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000351": {
+  "declaredTotal": 87,
   "flower": 0,
   "licence": "OCM-RETL-25-000351",
   "menuLink": "found",
-  "productsSeen": 0,
-  "rejected": {},
+  "pagedFrom": 50,
+  "pagedTo": 50,
+  "pagesAsked": 1,
+  "pagingRefused": "Failed to fetch",
+  "productsSeen": 50,
+  "rejected": {
+   "category-not-flower": 40,
+   "title-not-flower": 10
+  },
   "scrollRounds": 1,
   "shop": "Studio57NY",
-  "status": "no-products",
+  "status": "no-flower",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000355": {
@@ -4178,9 +4097,10 @@
   "flower": 0,
   "licence": "OCM-RETL-25-000379",
   "menuLink": "found",
-  "productsSeen": 13,
+  "productsSeen": 12,
   "rejected": {
-   "category-not-flower": 13
+   "category-not-flower": 11,
+   "title-not-flower": 1
   },
   "scrollRounds": 1,
   "shop": "GEORGIA HEIGHTS, LLC",
@@ -4232,14 +4152,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000416": {
-  "declaredTotal": 221,
-  "flower": 204,
+  "declaredTotal": 219,
+  "flower": 202,
   "licence": "OCM-RETL-25-000416",
   "menuLink": "found",
   "pagedFrom": 24,
-  "pagedTo": 221,
+  "pagedTo": 219,
   "pagesAsked": 9,
-  "productsSeen": 221,
+  "productsSeen": 219,
   "rejected": {
    "category-not-flower": 10,
    "sameStrainAnotherSize": 5,
@@ -4322,17 +4242,18 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000438": {
-  "declaredTotal": 205,
+  "declaredTotal": 204,
   "flower": 148,
   "licence": "OCM-RETL-25-000438",
   "menuLink": "found",
-  "pagedFrom": 125,
-  "pagedTo": 225,
+  "pagedFrom": 150,
+  "pagedTo": 250,
   "pagesAsked": 1,
-  "productsSeen": 225,
+  "productsSeen": 250,
   "rejected": {
-   "sameStrainAnotherSize": 31,
-   "title-not-flower": 46
+   "category-not-flower": 11,
+   "sameStrainAnotherSize": 32,
+   "title-not-flower": 59
   },
   "scrollRounds": 1,
   "shop": "GREEN FLOWER WELLNESS",
@@ -4340,23 +4261,20 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000441": {
-  "declaredTotal": 47,
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 43,
+  "flower": 0,
   "licence": "OCM-RETL-25-000441",
   "menuLink": "found",
-  "productsSeen": 47,
-  "rejected": {
-   "title-not-flower": 4
-  },
+  "productsSeen": 0,
+  "rejected": {},
   "retried": true,
   "scrollRounds": 1,
   "shop": "Sunflower Dispensary",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000448": {
@@ -4382,14 +4300,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000450": {
-  "declaredTotal": 127,
-  "flower": 126,
+  "declaredTotal": 125,
+  "flower": 124,
   "licence": "OCM-RETL-25-000450",
   "menuLink": "found",
   "pagedFrom": 100,
-  "pagedTo": 127,
+  "pagedTo": 125,
   "pagesAsked": 1,
-  "productsSeen": 127,
+  "productsSeen": 125,
   "rejected": {
    "title-not-flower": 1
   },
@@ -4400,7 +4318,12 @@
  },
  "OCM-RETL-25-000454": {
   "declaredTotal": 113,
-  "flower": 24,
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 23,
   "licence": "OCM-RETL-25-000454",
   "menuLink": "found",
   "pagedFrom": 100,
@@ -4410,8 +4333,9 @@
   "rejected": {
    "category-not-flower": 58,
    "sameStrainAnotherSize": 2,
-   "title-not-flower": 41
+   "title-not-flower": 42
   },
+  "retried": true,
   "scrollRounds": 1,
   "shop": "Poppin",
   "status": "ok",
@@ -4423,16 +4347,18 @@
   "status": "error: page.goto: net::ERR_NAME_NOT_RESOLVED at https://greenriseny.com/\nCall log:\n  - navigating to \"https://greenriseny.com/\""
  },
  "OCM-RETL-25-000460": {
-  "declaredTotal": 143,
-  "flower": 135,
+  "declaredTotal": 203,
+  "flower": 137,
   "licence": "OCM-RETL-25-000460",
   "menuLink": "found",
-  "pagedFrom": 100,
-  "pagedTo": 143,
+  "pagedFrom": 175,
+  "pagedTo": 220,
   "pagesAsked": 1,
-  "productsSeen": 143,
+  "productsSeen": 220,
   "rejected": {
-   "title-not-flower": 8
+   "category-not-flower": 27,
+   "sameStrainAnotherSize": 22,
+   "title-not-flower": 34
   },
   "scrollRounds": 1,
   "shop": "NATURAL LEAF INC.",
@@ -4474,16 +4400,10 @@
  },
  "OCM-RETL-26-000481": {
   "flower": 0,
-  "foundMenuByGuess": true,
-  "guessedMenuPaths": [
-   "/menu",
-   "/shop"
-  ],
   "licence": "OCM-RETL-26-000481",
-  "menuLink": "found",
+  "menuLink": "none",
   "productsSeen": 0,
   "rejected": {},
-  "scrollRounds": 1,
   "shop": "CannaBees",
   "status": "no-products",
   "usedKnownEndpoint": false
@@ -4510,8 +4430,7 @@
   "flower": 102,
   "foundMenuByGuess": true,
   "guessedMenuPaths": [
-   "/menu",
-   "/shop"
+   "/menu"
   ],
   "licence": "OCM-RETL-26-000489",
   "menuLink": "found",
@@ -4563,13 +4482,13 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-26-000504": {
-  "declaredTotal": 747,
+  "declaredTotal": 746,
   "flower": 105,
   "licence": "OCM-RETL-26-000504",
   "menuLink": "found",
-  "productsSeen": 1119,
+  "productsSeen": 1118,
   "rejected": {
-   "category-not-flower": 504,
+   "category-not-flower": 503,
    "sameStrainAnotherSize": 116,
    "title-not-flower": 394
   },
@@ -4606,20 +4525,24 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-26-000511": {
+  "declaredTotal": 114,
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 0,
+  "flower": 99,
   "licence": "OCM-RETL-26-000511",
   "menuLink": "found",
-  "productsSeen": 0,
-  "rejected": {},
+  "productsSeen": 125,
+  "rejected": {
+   "sameStrainAnotherSize": 21,
+   "title-not-flower": 5
+  },
   "retried": true,
   "scrollRounds": 1,
   "shop": "Hibernica Central Park",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  }
 }
