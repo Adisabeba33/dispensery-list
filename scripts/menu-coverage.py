@@ -57,6 +57,9 @@ KEEP = (
     "pagingIgnored",
     "pagingRefused",
     "hitPagingBudget",
+    "pagedQueryProducts",
+    "pagingStoppedBecause",
+    "pagedQueryIsPageable",
     "retried",
     "firstAttempt",
     "willAskAgain",
@@ -141,24 +144,72 @@ def report():
 
     # Меню назвало своё число. Это единственная проверка полноты, которая не
     # зависит ни от вчерашнего чтения, ни от наших догадок.
+    # Обе стороны сравнения берутся из одного запроса. Раньше слева стояло
+    # самое большое число из всего ответа, а справа — сумма товаров изо всех
+    # запросов страницы сразу, и это сравнивало несравнимое: FUMI объявлял 259
+    # (это был другой запрос), Verdi — 519 в одном прогоне и 29 в следующем с
+    # той же полки.
     short = [
         r
         for r in rows
         if r.get("declaredTotal")
-        and r.get("productsSeen") is not None
-        and r["declaredTotal"] > r["productsSeen"]
+        and r.get("pagedQueryProducts") is not None
+        and r["declaredTotal"] > r["pagedQueryProducts"]
     ]
-    short.sort(key=lambda r: r["productsSeen"] - r["declaredTotal"])
+    short.sort(key=lambda r: r["pagedQueryProducts"] - r["declaredTotal"])
     section(
         lines,
         "⚠ Меню объявляет больше, чем мы прочитали",
-        "Число слева пришло тем же ответом, что и товары, — то есть это\n"
-        "счётчик того самого запроса, который мы прочитали, а не общий\n"
-        "каталог магазина. Расхождение почти всегда значит недолистанную\n"
-        "страницу.",
+        "Слева — число, которое меню назвало в том же ответе, где лежали\n"
+        "товары. Справа — сколько мы прочитали **того же самого запроса**, а не\n"
+        "всего, что страница успела нафетчить. Расхождение здесь значит\n"
+        "недочитанную полку, а не другой вопрос.",
         [
-            f"**{shop_name(r)}**: меню говорит {r['declaredTotal']}, прочитали {r['productsSeen']}"
+            f"**{shop_name(r)}**: меню говорит {r['declaredTotal']}, "
+            f"прочитали {r['pagedQueryProducts']}"
+            + (f" (остановились: {r['pagingStoppedBecause']})" if r.get("pagingStoppedBecause") else "")
             for r in short
+        ],
+    )
+
+    # Чем кончилось листание, по всем магазинам сразу. Три из пяти выходов из
+    # цикла раньше молчали, и «полка кончилась» было не отличить от «ответ не
+    # дошёл».
+    why_stop = {}
+    for r in rows:
+        key = r.get("pagingStoppedBecause")
+        if key:
+            why_stop[key] = why_stop.get(key, 0) + 1
+    if why_stop:
+        WORDS = {
+            "ran-out-of-pages": "дошли до лимита страниц",
+            "out-of-time": "кончилось время",
+            "read-everything-declared": "прочитали всё, что меню объявило",
+            "no-page-in-request": "в запросе нет номера страницы",
+            "refused": "следующую страницу не отдали",
+            "answer-not-captured": "⚠ ответ пришёл, но мы его не поймали",
+            "nothing-arrived": "ответ не пришёл",
+            "answer-had-no-products": "в ответе не было товаров",
+            "same-products-again": "вернули ту же страницу",
+        }
+        lines += ["", "### Чем кончилось листание", ""]
+        lines += [
+            f"- {WORDS.get(k, k)}: **{n}**"
+            for k, n in sorted(why_stop.items(), key=lambda x: -x[1])
+        ]
+
+    blind = [r for r in rows if r.get("pagingStoppedBecause") == "no-page-in-request"]
+    section(
+        lines,
+        "Листать нечем",
+        "В запросе, которым магазин отдал товары, номера страницы нет вовсе —\n"
+        "так отвечают карусели «рекомендуем» и «новинки». Настоящий список\n"
+        "обычно лежит рядом и листается; если полка коротка, магазину нужен\n"
+        "свой адрес меню в data/menu-endpoints.json.",
+        [
+            f"**{shop_name(r)}**: прочитано {r.get('productsSeen', 0)}"
+            + (f" из {r['declaredTotal']}" if r.get("declaredTotal") else "")
+            for r in blind
         ],
     )
 
