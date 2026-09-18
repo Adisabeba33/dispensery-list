@@ -14,7 +14,7 @@ on:
     inputs:
       licences:
         description: Лицензии через запятую
-        default: OCM-RETL-25-000403,OCM-CAURD-24-000084,OCM-CAURD-24-000196,OCM-CAURD-24-000094,OCM-CAURD-24-000211,OCM-CAURD-24-000217,OCM-RETL-24-000144,OCM-RETL-26-000499
+        default: OCM-CAURD-25-000229,OCM-CAURD-24-000131,OCM-RETL-26-000511,OCM-CAURD-24-000196,OCM-CAURD-24-000094
 
 permissions:
   contents: read
@@ -38,10 +38,11 @@ jobs:
 
       - name: Read the eight with the requests written down
         env:
-          # MILLIGRAMS 151 из 659 · ENFLOR 50 из 532 · Fireleaf 25 из 481
-          # Misha's 24 из 464 · Kaya Bliss 25 из 382 · Stashmaster 25 из 376
-          # Case Management 25 из 172 · Buzzwick 24 из 118
-          LICENCES: ${{ inputs.licences || 'OCM-RETL-25-000403,OCM-CAURD-24-000084,OCM-CAURD-24-000196,OCM-CAURD-24-000094,OCM-CAURD-24-000211,OCM-CAURD-24-000217,OCM-RETL-24-000144,OCM-RETL-26-000499' }}
+          # Три магазина со скриншотов: OC Dispensary (у нас 14 по половинке,
+          # на сайте около 50) и обе Hibernica (у нас 10, на сайте 15) — все
+          # три в базе с 16 сентября, то есть последние прогоны их не читали.
+          # Плюс Fireleaf и Misha's, чтобы видеть, помогла ли им починка.
+          LICENCES: ${{ inputs.licences || 'OCM-CAURD-25-000229,OCM-CAURD-24-000131,OCM-RETL-26-000511,OCM-CAURD-24-000196,OCM-CAURD-24-000094' }}
         run: node scripts/menu-render.mjs --only "$LICENCES" --dump-requests 3
 
       - name: What each of them actually asks for
