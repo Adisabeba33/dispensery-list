@@ -1,0 +1,66 @@
+name: Undercut probe
+
+# Разовая диагностика восьми магазинов, которые отдают заметно меньше, чем
+# объявляют, и которым листание не помогло: в их запросе не нашлось ничего
+# похожего на номер страницы. Нужно увидеть, что они шлют на самом деле.
+# Ничего не коммитит. Живёт на ветке и уезжает вместе с ней.
+on:
+  push:
+    branches:
+      - claude/probe-undercut
+    paths:
+      - .github/workflows/menu-probe-undercut.yml
+  workflow_dispatch:
+    inputs:
+      licences:
+        description: Лицензии через запятую
+        default: OCM-RETL-25-000403,OCM-CAURD-24-000084,OCM-CAURD-24-000196,OCM-CAURD-24-000094,OCM-CAURD-24-000211,OCM-CAURD-24-000217,OCM-RETL-24-000144,OCM-RETL-26-000499
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Read the eight with the requests written down
+        env:
+          # MILLIGRAMS 151 из 659 · ENFLOR 50 из 532 · Fireleaf 25 из 481
+          # Misha's 24 из 464 · Kaya Bliss 25 из 382 · Stashmaster 25 из 376
+          # Case Management 25 из 172 · Buzzwick 24 из 118
+          LICENCES: ${{ inputs.licences || 'OCM-RETL-25-000403,OCM-CAURD-24-000084,OCM-CAURD-24-000196,OCM-CAURD-24-000094,OCM-CAURD-24-000211,OCM-CAURD-24-000217,OCM-RETL-24-000144,OCM-RETL-26-000499' }}
+        run: node scripts/menu-render.mjs --only "$LICENCES" --dump-requests 3
+
+      - name: What each of them actually asks for
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          summary = json.loads(Path("enrichment-output/menu-summary.json").read_text())
+          for shop in summary.get("perShop", []):
+              print("=" * 72)
+              print(shop.get("shop"), "|", shop.get("licence"))
+              for key in ("status", "menuLink", "landedOn", "productsSeen", "declaredTotal",
+                          "flower", "scrollRounds", "pagesAsked", "pagedFrom", "pagedTo",
+                          "pagingIgnored", "hitPagingBudget", "usedKnownEndpoint"):
+                  if shop.get(key) is not None:
+                      print(f"  {key}: {shop[key]}")
+              for req in shop.get("requests") or []:
+                  print(f"  -- {req['products']:>4} products  {req['method']} {req['url']}")
+                  if req.get("body"):
+                      print(f"     body: {req['body']}")
+          PY
