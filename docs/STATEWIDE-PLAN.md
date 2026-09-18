@@ -1,5 +1,18 @@
 # Covering the rest of New York
 
+> **Decided 2026-09-18: three territories, kept apart.** NYC + Westchester,
+> Upstate, and Long Island are separate datasets, separate collection runs and
+> separate pages. Nothing merges. The original scope keeps its files at
+> `data/*.json` — nothing moved, nothing added to it — and each new territory
+> owns a directory beside it. See `data/territories.json`.
+>
+> **Stage 0 is done for both new territories.** Built offline from the
+> 2026-09-06 snapshot, so all three are cut from one source and are exactly
+> comparable: **Upstate 517 shops, Long Island 45.** `npm run validate` passes
+> on all three, and `data/dispensaries.json` is byte-identical to before.
+>
+> What stage 0 cost, and what it found, is §7.
+
 The register holds NYC's five boroughs and Westchester: 468 licences, 328 of
 them open, 157 with a menu collected. This is the plan for the other 56
 counties — and, because that is the real reason to do it, for learning what a
@@ -200,3 +213,50 @@ print(len(act), len(out), opened(out))
 print(collections.Counter((r.get('region') or '?').strip() for r in out).most_common())
 "
 ```
+
+
+---
+
+## 7. What stage 0 actually cost — the trial's first real numbers
+
+Five NYC-shaped assumptions had to be found and removed. None was in the plan
+above, and that is the point of running a region rather than estimating one.
+
+| # | The assumption | How it showed up |
+|---|---|---|
+| 1 | `canonicalCounty` was a six-county **whitelist** | First upstate run returned **0 records** from a snapshot holding 807. Every unknown county resolved to null and was filtered out as unreadable. Now an alias table with a title-case fallback. |
+| 2 | `address.county` was an **enum of six** in the shared schema | 562 records rejected. County membership is a territory question, so the check moved to the validator, where each territory is checked against its own scope. A Brooklyn file still cannot hold an Erie shop. |
+| 3 | ZIP-range check returned **false** for any county it did not know | 562 fabricated failures — Erie and Delaware reported "outside the range" by a function never told what their range is. Returns `null` now, and the caller skips rather than inventing a verdict. |
+| 4 | One licence = one row | The state publishes some shops **twice**, under two `location_id` values with two spellings of one address. 99 upstate, 3 Long Island, and 10 hiding in the original six. Collapsed at ingest, deterministically. |
+| 5 | Every licence has a premises address | **152 upstate microbusinesses have none at all**, against zero in NYC. Dropped rather than published addressless — a directory whose job is to send someone to a licensed door cannot list a shop with no door — and counted in the run so the gap is visible. |
+
+Plus two smaller ones: a slug of name + city collides for a real two-shop
+operator in one town (disambiguated by the licence tail, the shape the original
+scope already carries), and one licensee publishes its DBA as the literal
+string `N/A`.
+
+### The ratio this trial exists to measure
+
+**Code: five assumptions, four files, roughly 120 lines.** One afternoon.
+
+**Municipal research: not started, and unchanged in size** — 53 records on file
+against roughly 1,500 statewide.
+
+So the early read is the one §5 predicted: **the engineering is cheap and the
+research is not.** A second state would pay the ingest-adapter cost again
+(§5) plus the whole municipal cost, and almost nothing else.
+
+### What stage 0 deliberately did NOT do
+
+- **No menus.** Neither new territory has `flower-listings.json`; the validator
+  skips a file a territory has not collected, because an empty placeholder
+  would claim coverage nobody has done.
+- **No municipalities**, so **opt-out status upstate is unknown**. Every record
+  carries a licence number and an address from the state registry and nothing
+  more. That must be said on the page before it is published.
+- **No geocodes.** The Census geocoder pass has not been run for them.
+- **No site pages.** `/upstate` and `/long-island` are next.
+- **Nothing touched in the original scope.** `data/dispensaries.json` is
+  byte-identical, and re-running NYC ingest is deliberately avoided: today's
+  snapshot would legitimately add 40 shops and reshape `contact`, and that is a
+  decision to take on purpose rather than as a side effect of this work.

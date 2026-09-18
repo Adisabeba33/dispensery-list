@@ -38,8 +38,29 @@ export const read = (row: SocrataRow, map: FieldMap, field: LogicalField): strin
   return text === '' ? null : text;
 };
 
-export const canonicalCounty = (raw: string | null): string | null =>
-  raw ? (CANONICAL_COUNTY[raw.toLowerCase().replace(/\s+county$/, '').trim()] ?? null) : null;
+/**
+ * The registry's county name, canonicalised.
+ *
+ * CANONICAL_COUNTY resolves the names New York City goes by two ways —
+ * Brooklyn is Kings, Staten Island is Richmond — and it used to be the whole
+ * of this function, which made it a six-county WHITELIST: every other county
+ * in the state came back null and was filtered out as unreadable. That was
+ * invisible while the register covered six counties and became the reason the
+ * first upstate run returned zero records from a snapshot holding 807 of them.
+ *
+ * So the map is what it always should have been — an alias table — and a
+ * county it does not know is title-cased rather than discarded. The six
+ * in-scope names are all in the table, so their output is unchanged.
+ */
+export const canonicalCounty = (raw: string | null): string | null => {
+  if (!raw) return null;
+  const key = raw.toLowerCase().replace(/\s+county$/, '').trim();
+  if (!key) return null;
+  return (
+    CANONICAL_COUNTY[key] ??
+    key.replace(/(^|[\s-])([a-z])/g, (_, sep: string, c: string) => sep + c.toUpperCase())
+  );
+};
 
 export const boroughFor = (county: string | null): string | null =>
   county ? (NYC_COUNTY_TO_BOROUGH[county.toLowerCase()] ?? null) : null;
@@ -85,6 +106,13 @@ export const operationalStatusFor = (rawOperational: string | null, licenseStatu
   return 'UNKNOWN';
 };
 
+/** A trading name, or null when the registry printed a placeholder. */
+export const usableName = (raw: string | null): string | null => {
+  if (!raw) return null;
+  const t = raw.trim();
+  return /^(n\/?a|none|null|tbd|unknown)$/i.test(t) ? null : t;
+};
+
 export const slugify = (...parts: (string | null)[]): string =>
   parts
     .filter((p): p is string => Boolean(p))
@@ -127,7 +155,10 @@ export const toDispensary = (row: SocrataRow, ctx: NormalizeContext) => {
   const licenseStatus = licenseStatusFor(read(row, map, 'licenseStatus'));
 
   return {
-    id: slugify(dba ?? entityName, city),
+    // Some licensees publish the DBA as the literal string "N/A", which
+    // slugifies to "na" and is neither a name nor unique. Treat a DBA that
+    // carries no letters beyond that as absent.
+    id: slugify(usableName(dba) ?? entityName, city),
     licenseNumber,
     applicationNumber: read(row, map, 'applicationNumber'),
     licenseType: licenseTypeFor(read(row, map, 'licenseType')),

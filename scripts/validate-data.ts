@@ -17,6 +17,7 @@ import addFormats from 'ajv-formats';
 // writes the field.
 // @ts-expect-error — plain ES module, no types alongside it.
 import { brandKeyOf } from './menu-render.mjs';
+import { TERRITORIES, inTerritory } from './ingest/territory.js';
 
 const ROOT = resolve(import.meta.dirname, '..');
 
@@ -79,11 +80,25 @@ const TRADING_STATUS = new Set(['OPEN', 'APPROVED_NOT_OPEN']);
  * 105xx-108xx. A ZIP outside its county's range means the address was pasted
  * from the wrong row, which is exactly the failure this catches.
  */
-const zipMatchesCounty = (zip: string, county: string): boolean => {
+/**
+ * Does the ZIP sit inside the county?
+ *
+ * Only answerable where we hold the county's real ZIP range, which today means
+ * the original six. It used to return FALSE for everything else, which was
+ * correct while nothing else existed and became 562 false failures the moment
+ * upstate arrived — every Erie and Delaware record reported as out of range by
+ * a function that had never been told what their range is.
+ *
+ * `null` means "no range on file", and the caller skips the rule rather than
+ * inventing a verdict. Extending it upstate is real work: a county's ZIP
+ * prefixes have to come from a source, not from a guess. Until they do, an
+ * unchecked field is honest and a fabricated failure is not.
+ */
+const zipMatchesCounty = (zip: string, county: string): boolean | null => {
   const n = Number(zip.slice(0, 3));
   if (county === 'Westchester') return n >= 105 && n <= 108;
   if (NYC_COUNTIES.has(county)) return (n >= 100 && n <= 104) || (n >= 110 && n <= 119);
-  return false;
+  return null;
 };
 
 /**
@@ -121,6 +136,9 @@ const validateDispensaries = (FILE: string, requireRegistry: boolean) => {
   }
 
   const validate = compile('data/schema/dispensary.schema.json');
+  /* Which territory this file belongs to, so a county can be checked against
+     the scope that claims it. The schema deliberately no longer knows. */
+  const territory = TERRITORIES.find((t) => `${t.dataDir}/dispensaries.json` === FILE);
 
   const seenIds = new Map<string, number>();
   const seenLicences = new Map<string, number>();
@@ -172,6 +190,13 @@ const validateDispensaries = (FILE: string, requireRegistry: boolean) => {
     const county = r.address?.county;
     const borough = r.address?.borough ?? null;
     if (typeof county === 'string') {
+      /* A record must sit in the territory whose file it is in. This is the
+         check the schema's county enum used to perform for the original six;
+         moving it here keeps the guarantee — a Brooklyn file cannot hold an
+         Erie shop — while letting each territory define its own scope. */
+      if (territory && !inTerritory(territory, county)) {
+        fail(FILE, at('address.county'), `${county} is not part of ${territory.label}`);
+      }
       if (NYC_COUNTIES.has(county)) {
         const expected = COUNTY_TO_BOROUGH[county];
         if (borough !== expected) {
@@ -183,7 +208,7 @@ const validateDispensaries = (FILE: string, requireRegistry: boolean) => {
 
       // Rule 6 — ZIP must sit inside the county.
       const zip = r.address?.zip;
-      if (typeof zip === 'string' && !zipMatchesCounty(zip, county)) {
+      if (typeof zip === 'string' && zipMatchesCounty(zip, county) === false) {
         fail(FILE, at('address.zip'), `ZIP ${zip} is outside the range for ${county} county`);
       }
     }
@@ -532,6 +557,22 @@ const validateProducers = (FILE: string) => {
 
 validateDispensaries('data/dispensaries.json', true);
 validateDispensaries('data/dispensaries.demo.json', false);
+
+/* The other two territories, each validated on its own.
+ *
+ * They are checked against the SAME schema and the same rules — a record from
+ * Erie County has to be as defensible as one from Brooklyn — but they are
+ * never counted together. A file a territory has not collected yet is simply
+ * absent, and absence is not a failure: the register is meant to grow one
+ * territory at a time, and an empty placeholder would claim coverage that
+ * nobody has done. See data/territories.json. */
+for (const t of TERRITORIES) {
+  if (t.dataDir === 'data') continue; // the original scope, validated above
+  const file = `${t.dataDir}/dispensaries.json`;
+  if (existsSync(resolve(ROOT, file))) validateDispensaries(file, true);
+  const listings = `${t.dataDir}/flower-listings.json`;
+  if (existsSync(resolve(ROOT, listings))) validateFlowerListings(listings);
+}
 validateMunicipalities();
 validateFlowerListings('data/flower-listings.json');
 validateStrainReference('data/strain-reference.json');

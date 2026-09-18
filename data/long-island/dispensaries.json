@@ -1,0 +1,2477 @@
+[
+  {
+    "id": "ab-cann-llc-west-babylon",
+    "licenseNumber": "OCM-RETL-24-000001",
+    "applicationNumber": "OCMRETL-2023-001580",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "AB CANN LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "111 Cabot St",
+      "line2": null,
+      "city": "West Babylon",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11704"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-02-22",
+      "licenseEffective": "2026-02-23",
+      "licenseExpiration": "2028-02-22",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "aromatic-gardens-west-babylon",
+    "licenseNumber": "OCM-CAURD-25-000260",
+    "applicationNumber": "OCMCAURDP-2024-000135",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Empire Genetics New York Inc.",
+    "dbaName": "Aromatic Gardens",
+    "address": {
+      "line1": "231 Edison Ave",
+      "line2": null,
+      "city": "West Babylon",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11704"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-03-28",
+      "licenseEffective": "2025-03-28",
+      "licenseExpiration": "2027-03-28",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "beleaf-calverton-calverton",
+    "licenseNumber": "OCM-CAURD-24-000216",
+    "applicationNumber": "OCMCAURDP-2024-000015",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Beyond Beleaf NY INC",
+    "dbaName": "Beleaf Calverton",
+    "address": {
+      "line1": "4462 Middle Country Rd",
+      "line2": null,
+      "city": "Calverton",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11933"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-11-08",
+      "licenseEffective": "2024-11-08",
+      "licenseExpiration": "2026-11-08",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "big-apple-bud-co-farmingdale",
+    "licenseNumber": "OCM-CAURD-24-000168",
+    "applicationNumber": "OCMCAURDP-2023-000174",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "NYCC 1 LLC",
+    "dbaName": "Big Apple Bud Co.",
+    "address": {
+      "line1": "228 Route 109",
+      "line2": null,
+      "city": "Farmingdale",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11735"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-07-12",
+      "licenseEffective": "2024-07-12",
+      "licenseExpiration": "2026-07-12",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "big-jule-s-dispensary-inc-deer-park",
+    "licenseNumber": "OCM-CAURD-25-000264",
+    "applicationNumber": "OCMCAURDP-2025-000010",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Big Jule's Dispensary Inc.",
+    "dbaName": null,
+    "address": {
+      "line1": "1070 Long Island Ave",
+      "line2": null,
+      "city": "Deer Park",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11729"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-04-11",
+      "licenseEffective": "2025-04-11",
+      "licenseExpiration": "2027-04-11",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "brown-budda-new-york-southampton",
+    "licenseNumber": "OCM-CAURD-24-000157",
+    "applicationNumber": "OCMCAURDP-2023-000094",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Brown Budda New York LLC",
+    "dbaName": "Brown Budda New York",
+    "address": {
+      "line1": "1533 County Road 39",
+      "line2": null,
+      "city": "Southampton",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11968"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-06-14",
+      "licenseEffective": "2026-06-15",
+      "licenseExpiration": "2028-06-14",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "budhampton-llc-bridgehampton",
+    "licenseNumber": "OCM-RETL-24-000258",
+    "applicationNumber": "OCMRETL-2023-001200",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Budhampton LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "2033 Montauk Hwy",
+      "line2": null,
+      "city": "Bridgehampton",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11932"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-12-10",
+      "licenseEffective": "2024-12-10",
+      "licenseExpiration": "2026-12-10",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "canna-blooms-farmingville",
+    "licenseNumber": "OCM-RETL-25-000401",
+    "applicationNumber": "OCMRETL-2023-001808",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Small Leaf 79 LLC",
+    "dbaName": "CANNA BLOOMS",
+    "address": {
+      "line1": "2400 N Ocean Ave",
+      "line2": null,
+      "city": "Farmingville",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11738"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-07-29",
+      "licenseEffective": "2025-07-29",
+      "licenseExpiration": "2027-07-29",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "curaleaf-ny-llc-carle-place",
+    "licenseNumber": "MM1005D",
+    "applicationNumber": "OCMXROD-2024-000007",
+    "licenseType": "REGISTERED_ORGANIZATION_MEDICAL",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Curaleaf NY, LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "255 Glen Cove Rd.",
+      "line2": null,
+      "city": "Carle Place",
+      "county": "Nassau",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11514"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": null,
+      "licenseEffective": null,
+      "licenseExpiration": null,
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "ddrj-holdings-llc-deer-park",
+    "licenseNumber": "OCM-CAURD-24-000150",
+    "applicationNumber": "OCMCAURDP-2023-000206",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "DDRJ Holdings LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "880 Grand Blvd",
+      "line2": null,
+      "city": "Deer Park",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11729"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-05-28",
+      "licenseEffective": "2026-05-29",
+      "licenseExpiration": "2028-05-28",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "deep-xy-holding-llc-southhampton",
+    "licenseNumber": "OCM-RETL-25-000273",
+    "applicationNumber": "OCMRETL-2023-001353",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Deep XY Holding LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "10 Montauk Highway",
+      "line2": null,
+      "city": "Southhampton",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11977"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-01-03",
+      "licenseEffective": "2025-01-03",
+      "licenseExpiration": "2027-01-03",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "dutchmen-of-central-llc-farmingdale",
+    "licenseNumber": "OCM-RETL-25-000420",
+    "applicationNumber": "OCMRETL-2023-001448",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "DUTCHMEN OF CENTRAL LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "79 Gazza Blvd",
+      "line2": null,
+      "city": "Farmingdale",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11735"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-09-17",
+      "licenseEffective": "2025-09-17",
+      "licenseExpiration": "2027-09-17",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "east-end-arrivals-southampton",
+    "licenseNumber": "OCM-RETL-25-000333",
+    "applicationNumber": "OCMRETL-2023-001867",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Birchwyn & Tess LLC",
+    "dbaName": "East End Arrivals",
+    "address": {
+      "line1": "471 County Road 39 # CR-39",
+      "line2": null,
+      "city": "Southampton",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11968"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-04-23",
+      "licenseEffective": "2025-04-23",
+      "licenseExpiration": "2027-04-23",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "hampton-premium-green-water-mill",
+    "licenseNumber": "OCM-RETL-24-000094",
+    "applicationNumber": "OCMRETL-2023-001900",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Ashley Capraro LLC",
+    "dbaName": "Hampton Premium Green",
+    "address": {
+      "line1": "978 Montauk Hwy",
+      "line2": null,
+      "city": "Water Mill",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11976"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-05-13",
+      "licenseEffective": "2026-05-14",
+      "licenseExpiration": "2028-05-13",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "happy-days-dispensary-inc-farmingdale",
+    "licenseNumber": "OCM-CAURD-23-000035",
+    "applicationNumber": "OCMCAURDP-2023-000049",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Happy Days Dispensary Inc.",
+    "dbaName": null,
+    "address": {
+      "line1": "105 Route 109",
+      "line2": null,
+      "city": "Farmingdale",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11735"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2023-12-12",
+      "licenseEffective": "2025-12-13",
+      "licenseExpiration": "2027-12-12",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "hb-v-enterprises-inc-patchogue",
+    "licenseNumber": "OCM-RETL-25-000404",
+    "applicationNumber": "OCMRETL-2023-001193",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "HB&V ENTERPRISES INC",
+    "dbaName": null,
+    "address": {
+      "line1": "615 Route 112",
+      "line2": null,
+      "city": "Patchogue",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11772"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-07-30",
+      "licenseEffective": "2025-07-30",
+      "licenseExpiration": "2027-07-30",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "highview-farms-inc-bridgehampton",
+    "licenseNumber": "OCM-MICR-24-000020",
+    "applicationNumber": "OCMMICR-2023-000304",
+    "licenseType": "MICROBUSINESS",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Highview Farms, Inc.",
+    "dbaName": null,
+    "address": {
+      "line1": "181 Hayground Rd",
+      "line2": null,
+      "city": "Bridgehampton",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11932"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-03-04",
+      "licenseEffective": "2026-03-05",
+      "licenseExpiration": "2028-03-04",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "island-leaf-llc-west-babylon",
+    "licenseNumber": "OCM-RETL-24-000039",
+    "applicationNumber": "OCMRETL-2023-001890",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Island Leaf LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "9 Mahan Street",
+      "line2": null,
+      "city": "West Babylon",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11704"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-04-08",
+      "licenseEffective": "2026-04-09",
+      "licenseExpiration": "2028-04-08",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "jdr-cann-llc-farmingdale",
+    "licenseNumber": "OCM-RETL-25-000337",
+    "applicationNumber": "OCMRETL-2023-001785",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "JDR CANN LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "67 Milbar Blvd",
+      "line2": null,
+      "city": "Farmingdale",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11735"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-04-30",
+      "licenseEffective": "2025-04-30",
+      "licenseExpiration": "2027-04-30",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "joint-venture-cannabis-dispensary-medford",
+    "licenseNumber": "OCM-RETL-25-000461",
+    "applicationNumber": "OCMRETL-2023-000306",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Enterprise HQ Corp.",
+    "dbaName": "Joint Venture Cannabis Dispensary",
+    "address": {
+      "line1": "2 Munsell Road",
+      "line2": null,
+      "city": "Medford",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11763"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-12-19",
+      "licenseEffective": "2025-12-19",
+      "licenseExpiration": "2027-12-19",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "joyful-shores-west-babylon",
+    "licenseNumber": "OCM-CAURD-24-000201",
+    "applicationNumber": "OCMCAURDP-2023-000139",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Bo's Buds LLC",
+    "dbaName": "Joyful Shores",
+    "address": {
+      "line1": "108 Lamar St",
+      "line2": null,
+      "city": "West Babylon",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11704"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-08-29",
+      "licenseEffective": "2026-08-30",
+      "licenseExpiration": "2028-08-29",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "kaur-consulting-llc-riverhead",
+    "licenseNumber": "OCM-RETL-24-000223",
+    "applicationNumber": "OCMRETL-2023-001324",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Kaur Consulting LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "1871 Old Country Rd",
+      "line2": null,
+      "city": "Riverhead",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11901"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-11-14",
+      "licenseEffective": "2024-11-14",
+      "licenseExpiration": "2026-11-14",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "large-leaf-618-llc-riverhead",
+    "licenseNumber": "OCM-RETL-26-000469",
+    "applicationNumber": "OCMRETL-2023-001901",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Large Leaf 618 LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "840 Old Country Rd",
+      "line2": null,
+      "city": "Riverhead",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11901"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2026-02-05",
+      "licenseEffective": "2026-02-05",
+      "licenseExpiration": "2028-02-05",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "leaf-spirit-riverhead",
+    "licenseNumber": "OCM-RETL-26-000500",
+    "applicationNumber": "OCMRETL-2023-000666",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Leaf Spirit LLC",
+    "dbaName": "Leaf Spirit",
+    "address": {
+      "line1": "1352 E Main St",
+      "line2": null,
+      "city": "Riverhead",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11901"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2026-04-16",
+      "licenseEffective": "2026-04-16",
+      "licenseExpiration": "2028-04-16",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "legendary-bliss-llc-deer-park",
+    "licenseNumber": "OCM-CAURD-24-000143",
+    "applicationNumber": "OCMCAURDP-2023-000134",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Legendary Bliss, LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "9 Connor Ln",
+      "line2": null,
+      "city": "Deer Park",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11729"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-05-15",
+      "licenseEffective": "2026-05-16",
+      "licenseExpiration": "2028-05-15",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "long-island-cannabis-club-deer-park",
+    "licenseNumber": "OCM-CAURD-23-000012",
+    "applicationNumber": "OCMCAURDP-2023-000021",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Budding Industry Group LLC",
+    "dbaName": "Long Island Cannabis Club",
+    "address": {
+      "line1": "94 East Industry Court",
+      "line2": null,
+      "city": "Deer Park",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11729"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2023-06-02",
+      "licenseEffective": "2025-06-03",
+      "licenseExpiration": "2027-06-02",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "metropolis-cannabis-riverhead",
+    "licenseNumber": "OCM-CAURD-24-000170",
+    "applicationNumber": "OCMCAURDP-2023-000169",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Brian Stark Enterprises LLC",
+    "dbaName": "Metropolis Cannabis",
+    "address": {
+      "line1": "1086 Old Country Rd",
+      "line2": null,
+      "city": "Riverhead",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11901"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-07-12",
+      "licenseEffective": "2026-07-13",
+      "licenseExpiration": "2028-07-12",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "neo-wellness-farmingdale",
+    "licenseNumber": "OCM-CAURD-26-000360",
+    "applicationNumber": "OCMCAURDP-2023-000232",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Neo Wellness LLC",
+    "dbaName": "Neo Wellness",
+    "address": {
+      "line1": "135 Allen Blvd",
+      "line2": null,
+      "city": "Farmingdale",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11735"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2026-07-17",
+      "licenseEffective": "2026-07-17",
+      "licenseExpiration": "2028-07-17",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "official-jjm-inc-medford",
+    "licenseNumber": "OCM-RETL-24-000198",
+    "applicationNumber": "OCMRETL-2023-001891",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "OFFICIAL JJM INC.",
+    "dbaName": null,
+    "address": {
+      "line1": "262 Middle Island Rd",
+      "line2": null,
+      "city": "Medford",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11763"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-10-15",
+      "licenseEffective": "2024-10-15",
+      "licenseExpiration": "2026-10-15",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "peace-of-woodstock-coram",
+    "licenseNumber": "OCM-CAURD-25-000295",
+    "applicationNumber": "OCMCAURDP-2023-000095",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Simply Green Natural Lifestyle Remedies LLC",
+    "dbaName": "Peace of Woodstock",
+    "address": {
+      "line1": "406 Middle Country Rd",
+      "line2": null,
+      "city": "Coram",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11727"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-09-09",
+      "licenseEffective": "2025-09-09",
+      "licenseExpiration": "2027-09-09",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "planet-nugg-farmingdale",
+    "licenseNumber": "OCM-CAURD-24-000069",
+    "applicationNumber": "OCMCAURDP-2023-000082",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "AQR Development Funding LLC",
+    "dbaName": "PLANET NUGG",
+    "address": {
+      "line1": "2043 Wellwood Ave",
+      "line2": null,
+      "city": "Farmingdale",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11735"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-02-02",
+      "licenseEffective": "2026-02-03",
+      "licenseExpiration": "2028-02-02",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "primary-care-group-llc-shirley",
+    "licenseNumber": "OCM-RETL-24-000184",
+    "applicationNumber": "OCMRETL-2023-001361",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Primary Care Group LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "53 Ramsey Rd",
+      "line2": null,
+      "city": "Shirley",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11967"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-09-19",
+      "licenseEffective": "2024-09-19",
+      "licenseExpiration": "2026-09-19",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "psuw-llc-bellport",
+    "licenseNumber": "OCM-CAURD-25-000286",
+    "applicationNumber": "OCMCAURDP-2024-000004",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "PSUW LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "28 Sawgrass Dr",
+      "line2": null,
+      "city": "Bellport",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11713"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-07-01",
+      "licenseEffective": "2025-07-01",
+      "licenseExpiration": "2027-07-01",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "rise-long-beach",
+    "licenseNumber": "MM0703D",
+    "applicationNumber": "OCMXROD-2024-000006",
+    "licenseType": "REGISTERED_ORGANIZATION_MEDICAL",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Fiorello Pharmaceuticals, Inc.",
+    "dbaName": "Rise",
+    "address": {
+      "line1": "309 W Park Ave",
+      "line2": null,
+      "city": "Long Beach",
+      "county": "Nassau",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11561"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": null,
+      "licenseEffective": null,
+      "licenseExpiration": null,
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "smiley-370-llc-lake-ronkonkoma",
+    "licenseNumber": "OCM-RETL-25-000447",
+    "applicationNumber": "OCMRETL-2023-001823",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Smiley 370 LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "370 Ronkonkoma Ave",
+      "line2": null,
+      "city": "Lake Ronkonkoma",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11779"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-11-19",
+      "licenseEffective": "2025-11-19",
+      "licenseExpiration": "2027-11-19",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "southampton-deep-blue-sea-llc-southampton",
+    "licenseNumber": "OCM-RETL-25-000413",
+    "applicationNumber": "OCMRETL-2023-000931",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Southampton Deep Blue Sea LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "125 Tuckahoe Ln",
+      "line2": null,
+      "city": "Southampton",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11968"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-08-26",
+      "licenseEffective": "2025-08-26",
+      "licenseExpiration": "2027-08-26",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "strain-stars-farmingdale",
+    "licenseNumber": "OCM-CAURD-23-000016",
+    "applicationNumber": "OCMCAURDP-2023-000022",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Strain Stars LLC",
+    "dbaName": "Strain Stars",
+    "address": {
+      "line1": "1815 Broadhollow Rd",
+      "line2": null,
+      "city": "Farmingdale",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11735"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2023-06-29",
+      "licenseEffective": "2025-06-30",
+      "licenseExpiration": "2027-06-29",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "stratus-dispensary-babylon",
+    "licenseNumber": "OCM-CAURD-25-000285",
+    "applicationNumber": "OCMCAURDP-2023-000207",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "WAO Industries LLC",
+    "dbaName": "Stratus Dispensary",
+    "address": {
+      "line1": "1258 Deer Park Ave",
+      "line2": null,
+      "city": "Babylon",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11703"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-07-01",
+      "licenseEffective": "2025-07-01",
+      "licenseExpiration": "2027-07-01",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "strong-strains-east-setauket",
+    "licenseNumber": "OCM-CAURD-25-000272",
+    "applicationNumber": "OCMCAURDP-2024-000094",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Strong Island Chronic LLC",
+    "dbaName": "Strong Strains",
+    "address": {
+      "line1": "19 Technology Dr",
+      "line2": null,
+      "city": "East Setauket",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11733"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-05-09",
+      "licenseEffective": "2025-05-09",
+      "licenseExpiration": "2027-05-09",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "the-botanist-farmingdale",
+    "licenseNumber": "MM0603D",
+    "applicationNumber": "OCMXROD-2024-000004",
+    "licenseType": "REGISTERED_ORGANIZATION_ADULT_USE",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "NYCANNA, LLC",
+    "dbaName": "The Botanist",
+    "address": {
+      "line1": "2365 Broadhollow Rd.",
+      "line2": null,
+      "city": "Farmingdale",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11737"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": null,
+      "licenseEffective": null,
+      "licenseExpiration": null,
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "the-hamptons-collective-southampton",
+    "licenseNumber": "OCM-CAURD-24-000194",
+    "applicationNumber": "OCMCAURDP-2023-000231",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "High Rise Brands LLC",
+    "dbaName": "The Hamptons Collective",
+    "address": {
+      "line1": "257 County Road 39A",
+      "line2": null,
+      "city": "Southampton",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11968"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2024-08-23",
+      "licenseEffective": "2026-08-24",
+      "licenseExpiration": "2028-08-23",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "the-high-life-west-babylon",
+    "licenseNumber": "OCM-CAURD-25-000277",
+    "applicationNumber": "OCMCAURDP-2022-000002",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Hydro Phonics,llc",
+    "dbaName": "THE HIGH LIFE",
+    "address": {
+      "line1": "1300 Wellwood Ave",
+      "line2": null,
+      "city": "West Babylon",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11704"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-06-06",
+      "licenseEffective": "2025-06-06",
+      "licenseExpiration": "2027-06-06",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "tink-e-co-inc-riverhead",
+    "licenseNumber": "OCM-RETL-25-000457",
+    "applicationNumber": "OCMRETL-2023-002090",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Tink & E Co. Inc.",
+    "dbaName": null,
+    "address": {
+      "line1": "1201 Ostrander Ave",
+      "line2": null,
+      "city": "Riverhead",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11901"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-12-08",
+      "licenseEffective": "2025-12-08",
+      "licenseExpiration": "2027-12-08",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "total-cannabis-inc-riverhead",
+    "licenseNumber": "OCM-CAURD-26-000363",
+    "applicationNumber": "OCMCAURDP-2024-000131",
+    "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "Total Cannabis, Inc",
+    "dbaName": null,
+    "address": {
+      "line1": "720 Main Rd",
+      "line2": null,
+      "city": "Riverhead",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11901"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2026-09-04",
+      "licenseEffective": "2026-09-04",
+      "licenseExpiration": "2028-09-04",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  },
+  {
+    "id": "tw-of-ny-retail-llc-farmingdale",
+    "licenseNumber": "OCM-MICR-25-000296",
+    "applicationNumber": "OCMMICR-2023-000446",
+    "licenseType": "MICROBUSINESS",
+    "licenseStatus": "ACTIVE",
+    "operationalStatus": "UNKNOWN",
+    "seeCategory": null,
+    "legalName": "TW of NY Retail LLC",
+    "dbaName": null,
+    "address": {
+      "line1": "39-49 Allen Blvd",
+      "line2": null,
+      "city": "Farmingdale",
+      "county": "Suffolk",
+      "borough": null,
+      "neighborhood": null,
+      "state": "NY",
+      "zip": "11735"
+    },
+    "geo": null,
+    "contact": {
+      "phone": null,
+      "email": null,
+      "website": null,
+      "orderOnlineUrl": null,
+      "instagram": null
+    },
+    "hours": null,
+    "services": null,
+    "menu": null,
+    "dates": {
+      "licenseIssued": "2025-09-11",
+      "licenseEffective": "2025-09-11",
+      "licenseExpiration": "2027-09-11",
+      "openedOn": null
+    },
+    "sources": [
+      {
+        "url": "https://data.ny.gov/resource/jskf-tt3q.json",
+        "label": "NYS Office of Cannabis Management — Current OCM Licenses",
+        "type": "OFFICIAL_REGISTRY",
+        "retrievedAt": "2026-09-18T20:57:47.791Z"
+      }
+    ],
+    "verification": {
+      "status": "VERIFIED_OFFICIAL",
+      "confidence": "LOW",
+      "verifiedAt": "2026-09-18T20:57:47.791Z",
+      "checkedAgainstOcmTool": null,
+      "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
+    },
+    "warnings": [],
+    "lastUpdated": "2026-09-18T20:57:47.791Z"
+  }
+]
