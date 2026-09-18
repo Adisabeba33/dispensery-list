@@ -97,6 +97,14 @@ jobs:
           done
           # Put every batch's held shelves back where the report looks.
           python scripts/held-shelves.py merge || true
+          # And keep the per-shop diagnostics, which the work list is built
+          # from: without this they die with the runner and the list cannot
+          # say why any shop is empty.
+          if python scripts/menu-coverage.py save; then
+            python scripts/menu-endpoints-wanted.py || true
+            git add data/menu-coverage.json docs/MENU_ENDPOINTS_WANTED.md
+            git diff --cached --quiet || git commit -q -m "menu: coverage and the endpoints still wanted"
+          fi
           echo "batches_failed=$failed" >> "$GITHUB_ENV"
 
       # menu-diff reads the collector's summary for the shelves it held back, so
