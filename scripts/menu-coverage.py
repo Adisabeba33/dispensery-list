@@ -40,6 +40,19 @@ KEEP = (
     "shop",
     "status",
     "menuLink",
+    # Где мы в итоге стояли и что магазин назвал своими категориями. Коллектор
+    # считает и то и другое с самого начала — и выбрасывал на пороге отчёта,
+    # из-за чего восемьдесят восемь магазинов «меню открыли, товаров ноль»
+    # нельзя было разобрать вообще: ни адреса, ни того, что там лежало.
+    "landedOn",
+    "categories",
+    "ageGate",
+    "foundMenuByGuess",
+    "guessedMenuPaths",
+    "foundMenuOnSecondLook",
+    "payloads",
+    "settled",
+    "jsonApiProducts",
     "productsSeen",
     "declaredTotal",
     "flower",
@@ -279,6 +292,59 @@ def report():
             + (f"{r['status']}" if r.get("status") else "пусто")
             for r in owed
         ],
+    )
+
+    # Самая большая дыра, и до сих пор безымянная: страница открылась, JSON
+    # приходил, товаров в нём не оказалось. Адрес и названные магазином
+    # категории — единственное, по чему это можно разобрать, не заводя пробу.
+    silent = [
+        r
+        for r in rows
+        if not (r.get("flower") or 0)
+        and r.get("menuLink") == "found"
+        and not str(r.get("status") or "").startswith("error")
+        and r.get("status") != "no-flower"
+    ]
+    section(
+        lines,
+        "⚠ Меню открыли — товаров ноль",
+        "Страница открылась, ответы приходили, товаров в них не было. Справа —\n"
+        "адрес, на котором мы в итоге стояли: по нему видно, попали ли мы на\n"
+        "меню, на возрастную стену, на филиал другого города или на витрину\n"
+        "сети, которой магазин не принадлежит.",
+        [
+            f"**{shop_name(r)}**: {(r.get('landedOn') or '—')[:90]}"
+            + (f" · ответов {r['payloads']}" if r.get("payloads") else "")
+            for r in sorted(silent, key=lambda r: shop_name(r))
+        ],
+        limit=40,
+    )
+
+    # Магазин назвал категории, и цветка среди них нет. Это либо магазин без
+    # цветка, либо мы стоим не на той странице — и список категорий говорит,
+    # что именно.
+    wrong_shelf = [r for r in rows if r.get("status") == "no-flower" and r.get("categories")]
+    section(
+        lines,
+        "⚠ Товары есть, цветка нет",
+        "Магазин назвал свои категории — цветка среди них нет. Если в списке\n"
+        "справа одни вейпы и съедобное, мы почти наверняка стоим не на той\n"
+        "странице, а не нашли магазин без травы.",
+        [
+            f"**{shop_name(r)}**: {', '.join(r['categories'][:5])}"
+            for r in sorted(wrong_shelf, key=lambda r: -(r.get("productsSeen") or 0))
+        ],
+        limit=20,
+    )
+
+    dead = [r for r in rows if str(r.get("status") or "").startswith("error")]
+    section(
+        lines,
+        "⚠ Сайт не открылся",
+        "Не меню не нашлось — сам сайт не ответил. Это данные реестра, а не\n"
+        "коллектор: адрес мёртв, сертификат сломан или имя не резолвится.\n"
+        "Чинится только рукой — новым адресом в data/dispensaries.json.",
+        [f"**{shop_name(r)}**: {str(r['status']).split(chr(10))[0][:110]}" for r in dead],
     )
 
     ignored = [r for r in rows if r.get("pagingIgnored")]

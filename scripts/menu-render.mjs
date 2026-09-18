@@ -369,11 +369,29 @@ export const sameEstate = (href, siteUrl, shopName = '') => {
  *
  * These are the addresses a person would try next, in the order a person would
  * try them. Tried only when nothing was found, only on the shop's own site,
- * and only until one of them answers — a guess that costs four HEAD requests
+ * and only until one of them answers — a guess that costs a few HEAD requests
  * and at most two page loads is worth forty shops; a guess that costs forty
  * page loads per shop is a crawler, which is not what this is.
+ *
+ * The flower addresses come first, and not only to save a page load. A general
+ * menu makes the classifier do the filter's work, and that is where the
+ * mistakes are: of 193 shops with a shelf, 38 are read from a page that names
+ * no category, and those are the ones whose vapes and gummies have to be told
+ * apart from their jars by name alone. Landing on the flower page instead
+ * skips the question.
  */
-const GUESSED_MENU_PATHS = ['/menu', '/shop', '/order', '/products'];
+const GUESSED_MENU_PATHS = [
+  '/menu/flower',
+  '/shop/flower',
+  '/products/flower',
+  '/categories/flower',
+  '/collections/flower',
+  '/menu',
+  '/shop',
+  '/order',
+  '/products',
+  '/store',
+];
 
 /** Higher is better; 0 means "never follow this". */
 export const rankMenuLink = (href = '', text = '') => {
