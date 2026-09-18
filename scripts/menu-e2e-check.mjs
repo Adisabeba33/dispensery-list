@@ -51,7 +51,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '1',
+    '--limit', '2',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -72,6 +72,15 @@ try {
   check('flower found', shop.flower, 2);
   check('pre-roll and edible refused', shop.rejected['title-not-flower'], 2);
   check('tax row refused', shop.rejected['category-not-flower'], 1);
+
+  /* The second fixture shop is the shape forty real ones have: a site with
+     nothing on it that points at the menu. Nothing here scores above zero, so
+     the only way to its shelf is to try where a menu usually lives. */
+  const guessed = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000998');
+  check('a shop with no menu link is not given up on', guessed?.status, 'ok');
+  check('the menu was found by guessing', guessed?.foundMenuByGuess, true);
+  check('and it was guessed, not stumbled on', guessed?.guessedMenuPaths, ['/menu']);
+  check('its shelf came back', guessed?.flower, 2);
 
   const collected = JSON.parse(readFileSync(LISTINGS, 'utf8'))
     .filter((l) => l.licenseNumber === 'OCM-CAURD-24-000999')

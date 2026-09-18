@@ -47,6 +47,8 @@ KEEP = (
     "scrollRounds",
     "landedOnProductPage",
     "usedKnownEndpoint",
+    "foundMenuByGuess",
+    "guessedMenuPaths",
     "pagesAsked",
     "pagedFrom",
     "pagedTo",
@@ -171,6 +173,20 @@ def report():
                 for r in gainers
             ],
         )
+
+    # Магазины, до меню которых дошли перебором адресов, а не по ссылке.
+    guessed = [r for r in rows if r.get("foundMenuByGuess")]
+    section(
+        lines,
+        "Меню найдено перебором адресов",
+        "Ссылки на меню на сайте не было — попробовали, где меню обычно лежит.\n"
+        "Если полка при этом пустая, адрес стоит найти руками.",
+        [
+            f"**{shop_name(r)}**: {', '.join(r.get('guessedMenuPaths') or [])} → "
+            f"{r.get('flower', 0)} сортов"
+            for r in sorted(guessed, key=lambda r: -(r.get("flower") or 0))
+        ],
+    )
 
     ignored = [r for r in rows if r.get("pagingIgnored")]
     section(
