@@ -32,10 +32,9 @@
   "usedKnownEndpoint": false
  },
  "MM1004D": {
-  "ageGate": false,
   "categories": [
-   "ccpa (2)",
-   "gdpr (2)"
+   "ccpa (3)",
+   "gdpr (3)"
   ],
   "flower": 0,
   "foundMenuByGuess": true,
@@ -47,25 +46,22 @@
   "licence": "MM1004D",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 178,
+  "pagedQueryProducts": 6,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 14,
-  "productsSeen": 182,
+  "parkedOn": "/age-gate",
+  "payloads": 21,
+  "productsSeen": 6,
   "rejected": {
-   "category-not-flower": 4,
-   "no-category": 178
-  },
-  "rejectedShape": {
-   "no-category": "DurationType,Host,IsSession,Length,Name,category,description,firstPartyKey,id,isThirdParty,patternKey,thirdPartyDescription,thirdPartyKey"
+   "category-not-flower": 6
   },
   "scrollRounds": 1,
   "settled": true,
   "shop": "Curaleaf NY, LLC",
   "status": "no-flower",
-  "usedKnownEndpoint": false
+  "usedKnownEndpoint": false,
+  "wentOnwardTo": "/menu/flower"
  },
  "OCM-CAURD-23-000003": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://www.thetravelagency.co/flower/",
@@ -81,27 +77,26 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-23-000007": {
-  "ageGate": false,
   "categories": [
-   "flower (72)",
+   "flower (74)",
    "edibles (70)",
    "accessories (68)",
    "pre-rolls (36)",
    "vapes (12)",
    "concentrates (4)"
   ],
-  "flower": 34,
+  "flower": 35,
   "landedOn": "https://goodgradesnyc.com/category/flower",
   "licence": "OCM-CAURD-23-000007",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 262,
+  "pagedQueryProducts": 264,
   "pagingStoppedBecause": "no-page-in-request",
   "payloads": 46,
-  "productsSeen": 262,
+  "productsSeen": 264,
   "rejected": {
    "category-not-flower": 112,
-   "sameStrainAnotherSize": 38,
+   "sameStrainAnotherSize": 39,
    "title-not-flower": 78
   },
   "scrollRounds": 1,
@@ -111,13 +106,12 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-23-000008": {
-  "ageGate": false,
   "categories": [
    "vaporizers reload_pod vaporizers (10)",
-   "edibles drink edibles (9)",
-   "vaporizers aio_vape vaporizers (4)",
-   "tinctures tincture tinctures (2)",
-   "topicals topical topicals (2)"
+   "edibles drink edibles (7)",
+   "vaporizers aio_vape vaporizers (3)",
+   "topicals topical topicals (2)",
+   "tinctures tincture tinctures (2)"
   ],
   "firstAttempt": {
    "menuLink": "found",
@@ -128,13 +122,16 @@
   "landedOn": "https://dazed.fun/categories/flower/?category=flower",
   "licence": "OCM-CAURD-23-000008",
   "menuLink": "found",
+  "offersDismissed": [
+   "close"
+  ],
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 14,
+  "pagedQueryProducts": 13,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 32,
-  "productsSeen": 27,
+  "payloads": 31,
+  "productsSeen": 24,
   "rejected": {
-   "category-not-flower": 27
+   "category-not-flower": 24
   },
   "retried": true,
   "scrollRounds": 1,
@@ -144,7 +141,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-23-000009": {
-  "ageGate": false,
   "categories": [
    "flower whole flower (49)",
    "flower default (34)",
@@ -176,26 +172,26 @@
  "OCM-CAURD-23-000020": {
   "ageGate": true,
   "categories": [
-   "flower (186)",
+   "flower (179)",
    "pre-ground flower (12)",
+   "whole-flower flower (6)",
    "small-buds flower (5)",
-   "whole-flower flower (3)",
-   "infused-buds flower (1)",
-   "premium flower (1)"
+   "premium flower (3)",
+   "infused-buds flower (1)"
   ],
-  "declaredTotal": 183,
-  "flower": 172,
+  "declaredTotal": 181,
+  "flower": 170,
   "landedOn": "https://terpbrosnyc.com/stores/terp-bros-astoria/products/flower",
   "licence": "OCM-CAURD-23-000020",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 183,
-  "pagedTo": 183,
+  "pagedQueryProducts": 181,
+  "pagedTo": 181,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
   "payloads": 32,
-  "productsSeen": 208,
+  "productsSeen": 206,
   "rejected": {
    "sameStrainAnotherSize": 18,
    "title-not-flower": 18
@@ -213,10 +209,13 @@
   "landedOn": "https://conbud.com/new-york-to-expand-marijuana-market-after-slow-start/?dtche%5Bcategory%5D=flower",
   "licence": "OCM-CAURD-23-000021",
   "menuLink": "found",
-  "payloads": 26,
+  "offersDismissed": [
+   "Close dialog"
+  ],
+  "payloads": 28,
   "productsSeen": 0,
   "rejected": {},
-  "scrollRounds": 1,
+  "scrollRounds": 2,
   "settled": true,
   "shop": "CONBUD LLC",
   "status": "no-products",
@@ -224,39 +223,27 @@
  },
  "OCM-CAURD-23-000023": {
   "ageGate": true,
-  "categories": [
-   "flower (54)",
-   "disposables vaporizers (30)",
-   "gummies edible (28)",
-   "edible (20)",
-   "cartridges vaporizers (14)",
-   "vaporizers (4)",
-   "trays accessories (4)",
-   "live-resin vaporizers (2)"
-  ],
-  "declaredTotal": 96,
-  "flower": 25,
+  "categories": [],
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
   "landedOn": "https://gothambudsny.com/",
   "licence": "OCM-CAURD-23-000023",
   "menuLink": "found",
-  "pagedFrom": 50,
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 50,
-  "pagedTo": 50,
-  "pagesAsked": 1,
-  "pagingRefused": "Failed to fetch",
-  "pagingStoppedBecause": "refused",
-  "payloads": 51,
-  "productsSeen": 160,
-  "rejected": {
-   "category-not-flower": 50,
-   "sameStrainAnotherSize": 31,
-   "title-not-flower": 54
-  },
+  "offersDismissed": [
+   "Close"
+  ],
+  "payloads": 4,
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "Gotham Buds LLC",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-23-000026": {
@@ -277,12 +264,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-23-000029": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://dagmarcannabis.com/categories/flower/?category=flower",
   "licence": "OCM-CAURD-23-000029",
   "menuLink": "found",
+  "offersDismissed": [
+   "Close"
+  ],
   "payloads": 12,
   "productsSeen": 0,
   "rejected": {},
@@ -293,28 +282,27 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-23-000030": {
-  "ageGate": false,
   "categories": [
-   "flower (373)",
+   "flower (372)",
    "pre-ground flower (18)",
    "small-buds flower (16)",
    "whole-flower flower (8)",
    "premium flower (4)",
    "shake-trim flower (1)"
   ],
-  "declaredTotal": 395,
-  "flower": 322,
+  "declaredTotal": 394,
+  "flower": 321,
   "landedOn": "https://www.elevatecannabisny.com/stores/elivate-ny/products/flower",
   "licence": "OCM-CAURD-23-000030",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 395,
-  "pagedTo": 395,
+  "pagedQueryProducts": 394,
+  "pagedTo": 394,
   "pagesAsked": 3,
   "pagingStoppedBecause": "read-everything-declared",
   "payloads": 24,
-  "productsSeen": 420,
+  "productsSeen": 419,
   "rejected": {
    "sameStrainAnotherSize": 35,
    "title-not-flower": 63
@@ -337,7 +325,6 @@
   "status": "error: page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://bkdispensary.com/\", waiting until \"domcontentl"
  },
  "OCM-CAURD-23-000036": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "foundMenuByGuess": true,
@@ -359,17 +346,20 @@
  "OCM-CAURD-23-000038": {
   "ageGate": true,
   "categories": [
-   "flower (376)"
+   "flower (368)"
   ],
-  "flower": 328,
+  "flower": 320,
   "landedOn": "https://lenoxhillcannabis.com/store/main-location/category/flower/",
   "licence": "OCM-CAURD-23-000038",
   "menuLink": "found",
+  "offersDismissed": [
+   "Close"
+  ],
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 376,
+  "pagedQueryProducts": 368,
   "pagingStoppedBecause": "no-page-in-request",
   "payloads": 35,
-  "productsSeen": 376,
+  "productsSeen": 368,
   "rejected": {
    "sameStrainAnotherSize": 9,
    "title-not-flower": 39
@@ -381,63 +371,79 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-23-000041": {
-  "ageGate": false,
-  "categories": [],
-  "flower": 0,
-  "landedOn": "https://www.thefloweryny.com/welcome?r=%2Fshop%2Fcategory%2Fflower",
+  "ageGate": true,
+  "categories": [
+   "flower whole flower (103)",
+   "edibles gummies (15)",
+   "flower premium (15)",
+   "flower small buds (12)",
+   "flower default (10)",
+   "flower pre ground (8)",
+   "topicals balms (8)",
+   "tinctures unflavored (7)"
+  ],
+  "declaredTotal": 42,
+  "flower": 48,
+  "landedOn": "https://www.thefloweryny.com/shop/category/flower",
   "licence": "OCM-CAURD-23-000041",
   "menuLink": "found",
-  "payloads": 17,
-  "productsSeen": 0,
-  "rejected": {},
+  "pagedQueryIsPageable": false,
+  "pagedQueryProducts": 50,
+  "pagingStoppedBecause": "read-everything-declared",
+  "payloads": 87,
+  "productsSeen": 221,
+  "rejected": {
+   "category-not-flower": 32,
+   "sameStrainAnotherSize": 98,
+   "title-not-flower": 43
+  },
   "scrollRounds": 1,
   "settled": true,
   "shop": "The Flowery",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-23-000042": {
   "ageGate": true,
   "categories": [
-   "flowers regular (141)",
+   "flowers regular (137)",
    "edibles regular (3)"
   ],
-  "flower": 137,
-  "jsonApiProducts": 144,
+  "flower": 134,
+  "jsonApiProducts": 140,
   "landedOn": "https://urbanweedsny.com/menu/categories/flowers/",
   "licence": "OCM-CAURD-23-000042",
   "menuLink": "found",
-  "payloads": 30,
-  "productsSeen": 144,
+  "payloads": 31,
+  "productsSeen": 140,
   "rejected": {
    "sameStrainAnotherSize": 2,
-   "title-not-flower": 5
+   "title-not-flower": 4
   },
-  "scrollRounds": 9,
+  "scrollRounds": 8,
   "settled": true,
   "shop": "Urban Weeds LLC",
   "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-23-000044": {
-  "ageGate": false,
   "categories": [
-   "flower (63)",
-   "whole-flower flower (2)",
-   "small-buds flower (2)",
+   "flower (61)",
    "pre-ground flower (2)",
-   "premium flower (2)"
+   "small-buds flower (2)",
+   "premium flower (2)",
+   "whole-flower flower (2)"
   ],
-  "declaredTotal": 46,
-  "flower": 39,
+  "declaredTotal": 44,
+  "flower": 37,
   "landedOn": "https://verdicannabis.com/stores/verdi/products/flower",
   "licence": "OCM-CAURD-23-000044",
   "menuLink": "found",
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 46,
+  "pagedQueryProducts": 44,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 26,
-  "productsSeen": 71,
+  "payloads": 51,
+  "productsSeen": 69,
   "rejected": {
    "sameStrainAnotherSize": 24,
    "title-not-flower": 8
@@ -449,7 +455,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000045": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "http://www.tikileaves.com/",
@@ -463,7 +468,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000046": {
-  "ageGate": false,
   "categories": [
    "0df826d5e6023226 flower 3.5g 3.5g (4)",
    "0df826d5e6023226 flower heavy weight hea (3)",
@@ -502,7 +506,7 @@
   "pagedQueryIsPageable": true,
   "pagedQueryProducts": 42,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 63,
+  "payloads": 50,
   "productsSeen": 67,
   "rejected": {
    "sameStrainAnotherSize": 25
@@ -514,7 +518,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000048": {
-  "ageGate": false,
   "categories": [
    "60f423bec901a25a flower flower flower (40)",
    "f1d7499476aeb6c8 vaporizers disposables  (6)",
@@ -545,19 +548,19 @@
  "OCM-CAURD-24-000051": {
   "ageGate": true,
   "categories": [
-   "flowers regular (18)",
+   "flowers regular (16)",
    "vape pens regular (12)",
    "accessories regular (10)",
    "topicals regular (8)",
    "edibles regular (1)"
   ],
-  "flower": 18,
-  "jsonApiProducts": 49,
+  "flower": 16,
+  "jsonApiProducts": 47,
   "landedOn": "https://thespotdispensary.com/menu/?category=flowers",
   "licence": "OCM-CAURD-24-000051",
   "menuLink": "found",
   "payloads": 28,
-  "productsSeen": 49,
+  "productsSeen": 47,
   "rejected": {
    "category-not-flower": 17,
    "title-not-flower": 14
@@ -569,7 +572,6 @@
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-24-000052": {
-  "ageGate": false,
   "categories": [],
   "firstAttempt": {
    "menuLink": "found",
@@ -591,7 +593,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000057": {
-  "ageGate": false,
   "categories": [],
   "firstAttempt": {
    "menuLink": "found",
@@ -619,17 +620,17 @@
  "OCM-CAURD-24-000060": {
   "ageGate": true,
   "categories": [
-   "flower regular (38)",
+   "flower regular (33)",
    "edibles regular (1)",
    "merch regular (1)"
   ],
-  "flower": 38,
-  "jsonApiProducts": 40,
+  "flower": 33,
+  "jsonApiProducts": 35,
   "landedOn": "https://www.nycbud.com/shop/queens/categories/flower/?order=-inserted_at",
   "licence": "OCM-CAURD-24-000060",
   "menuLink": "found",
-  "payloads": 40,
-  "productsSeen": 40,
+  "payloads": 37,
+  "productsSeen": 35,
   "rejected": {
    "category-not-flower": 1,
    "title-not-flower": 1
@@ -641,7 +642,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000061": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://newmetro.club/shop/c/flower/",
@@ -657,15 +657,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000062": {
-  "ageGate": false,
   "categories": [
-   "accessories default (31)",
+   "accessories default (32)",
    "edibles gummies (9)",
-   "pre_rolls packs (9)",
+   "pre_rolls singles (9)",
    "vaporizers live_resin_disposable (8)",
    "edibles drinks (6)",
-   "pre_rolls singles (6)",
    "flower default (5)",
+   "pre_rolls packs (5)",
    "topicals balms (3)"
   ],
   "flower": 2,
@@ -678,8 +677,8 @@
   "payloads": 10,
   "productsSeen": 89,
   "rejected": {
-   "category-not-flower": 56,
-   "title-not-flower": 31
+   "category-not-flower": 57,
+   "title-not-flower": 30
   },
   "scrollRounds": 1,
   "settled": true,
@@ -709,7 +708,7 @@
   "pagedTo": 272,
   "pagesAsked": 8,
   "pagingStoppedBecause": "answer-had-no-products",
-  "payloads": 33,
+  "payloads": 32,
   "productsSeen": 272,
   "rejected": {
    "sameStrainAnotherSize": 103,
@@ -722,25 +721,25 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000064": {
-  "ageGate": false,
+  "ageGate": true,
   "categories": [
-   "flower (295)",
+   "flower (292)",
    "shake-trim flower (11)",
    "premium flower (6)"
   ],
-  "declaredTotal": 287,
-  "flower": 256,
+  "declaredTotal": 284,
+  "flower": 253,
   "landedOn": "https://thebronxjoint.com/stores/bronx-joint/products/flower",
   "licence": "OCM-CAURD-24-000064",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 287,
-  "pagedTo": 287,
+  "pagedQueryProducts": 284,
+  "pagedTo": 284,
   "pagesAsked": 2,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 32,
-  "productsSeen": 312,
+  "payloads": 35,
+  "productsSeen": 309,
   "rejected": {
    "sameStrainAnotherSize": 26,
    "title-not-flower": 30
@@ -752,7 +751,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000065": {
-  "ageGate": false,
   "categories": [
    "flower (61)",
    "pre-ground flower (12)",
@@ -773,7 +771,7 @@
   "pagedQueryIsPageable": true,
   "pagedQueryProducts": 60,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 37,
+  "payloads": 47,
   "productsSeen": 84,
   "rejected": {
    "sameStrainAnotherSize": 21,
@@ -790,28 +788,28 @@
   "ageGate": true,
   "categories": [
    "edibles gummies (6)",
+   "flower indoor (5)",
    "concentrates hash (5)",
-   "flower sungrown (4)",
    "vapes 510 thread cart  cart (4)",
-   "flower indoor (3)",
+   "flower sungrown (3)",
    "vapes disposable all-in-one (2)",
    "edibles (2)",
    "flower greenhouse (1)"
   ],
-  "declaredTotal": 36,
-  "flower": 7,
+  "declaredTotal": 34,
+  "flower": 8,
   "landedOn": "https://shop.matawanany.com/brooklyn",
   "licence": "OCM-CAURD-24-000071",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
   "pagedQueryProducts": 37,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 25,
+  "payloads": 24,
   "productsSeen": 37,
   "rejected": {
    "category-not-flower": 24,
    "flower-no-size": 2,
-   "title-not-flower": 4
+   "title-not-flower": 3
   },
   "scrollRounds": 1,
   "settled": true,
@@ -822,29 +820,24 @@
  "OCM-CAURD-24-000073": {
   "ageGate": true,
   "categories": [
-   "bulk-flower flower (81)",
-   "all-in-one vaporizers (14)",
+   "bulk-flower flower (59)",
    "flower (10)",
-   "whole-flower flower (7)",
    "premium flower (7)",
-   "cartridges vaporizers (5)",
-   "pre-ground flower (5)",
-   "live-resin vaporizers (3)"
+   "whole-flower flower (6)",
+   "pre-ground flower (3)"
   ],
-  "declaredTotal": 86,
+  "declaredTotal": 85,
   "flower": 80,
   "landedOn": "https://purovita.com/stores/puro-vita-retail/products/flower",
   "licence": "OCM-CAURD-24-000073",
   "menuLink": "found",
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 86,
+  "pagedQueryProducts": 85,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 54,
-  "productsSeen": 136,
+  "payloads": 26,
+  "productsSeen": 85,
   "rejected": {
-   "category-not-flower": 13,
-   "sameStrainAnotherSize": 23,
-   "title-not-flower": 20
+   "title-not-flower": 5
   },
   "scrollRounds": 1,
   "settled": true,
@@ -891,25 +884,25 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000077": {
-  "ageGate": false,
   "categories": [
-   "flower default (54)",
-   "vaporizers disposables (14)",
-   "flower whole_flower (8)",
+   "flower default (49)",
+   "vaporizers disposables (12)",
+   "flower whole_flower (7)",
    "flower premium (3)",
    "edibles drinks (2)",
-   "flower small_buds (2)",
-   "flower pre_ground (1)"
+   "vaporizers cartridges (2)",
+   "flower pre_ground (1)",
+   "flower small_buds (1)"
   ],
-  "flower": 62,
+  "flower": 55,
   "landedOn": "https://torches.nyc/flower/",
   "licence": "OCM-CAURD-24-000077",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 64,
+  "pagedQueryProducts": 57,
   "pagingStoppedBecause": "no-page-in-request",
   "payloads": 26,
-  "productsSeen": 84,
+  "productsSeen": 77,
   "rejected": {
    "sameStrainAnotherSize": 4,
    "title-not-flower": 18
@@ -937,59 +930,60 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000080": {
-  "ageGate": false,
   "categories": [
-   "gummies (33)",
+   "gummies (32)",
    "flower (28)",
    "pre-rolls (25)",
    "disposable vape (22)",
    "merchandise (15)",
    "cbd (14)",
-   "beverage (9)",
+   "beverage (10)",
    "accessories (6)"
   ],
   "flower": 20,
   "landedOn": "https://thecannabisplace.org/store/new-york/",
   "licence": "OCM-CAURD-24-000080",
   "menuLink": "found",
+  "offersDismissed": [
+   "Close"
+  ],
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 141,
+  "pagedQueryProducts": 140,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 28,
-  "productsSeen": 166,
+  "payloads": 26,
+  "productsSeen": 165,
   "rejected": {
-   "category-not-flower": 98,
+   "category-not-flower": 96,
    "no-title": 1,
    "sameStrainAnotherSize": 1,
-   "title-not-flower": 46
+   "title-not-flower": 47
   },
   "rejectedShape": {
    "no-title": "batchId,batchName,brand,cashOptions,cashPriceRange,categoryName,categorySlug,id,imageHash,imageHashAndroid,imageHashIos,isWeightBased,master,masterCategoryName,masterCategoryNameAndroid,masterCategoryNameIos,masterCatego"
   },
-  "scrollRounds": 4,
+  "scrollRounds": 1,
   "settled": true,
   "shop": "The Cannabis Place",
   "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000082": {
-  "ageGate": false,
   "categories": [
-   "vaporizers pods vaporizers (5)",
-   "pre_rolls shorties_minies pre_rolls (3)"
+   "pre_rolls infused_pre_roll_packs pre_rol (12)",
+   "vaporizers disposables vaporizers (6)"
   ],
   "flower": 0,
   "landedOn": "https://stoopsnyc.com/categories/flower/?category=flower&sort=default",
   "licence": "OCM-CAURD-24-000082",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 5,
+  "pagedQueryProducts": 18,
   "pagingStoppedBecause": "no-page-in-request",
   "payloads": 36,
-  "productsSeen": 8,
+  "productsSeen": 18,
   "rejected": {
-   "category-not-flower": 5,
-   "title-not-flower": 3
+   "category-not-flower": 4,
+   "title-not-flower": 14
   },
   "scrollRounds": 3,
   "settled": true,
@@ -1004,42 +998,27 @@
  },
  "OCM-CAURD-24-000084": {
   "ageGate": true,
-  "categories": [
-   "flower (29)",
-   "disposables vaporizers (6)",
-   "infused pre-rolls (4)",
-   "singles pre-rolls (4)",
-   "cartridges vaporizers (4)",
-   "premium flower (2)",
-   "unflavored tincture (1)"
-  ],
-  "declaredTotal": 531,
-  "flower": 22,
+  "categories": [],
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
   "landedOn": "https://enflor.com/products/flower/",
   "licence": "OCM-CAURD-24-000084",
   "menuLink": "found",
-  "pagedFrom": 25,
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 25,
-  "pagedTo": 25,
-  "pagesAsked": 1,
-  "pagingRefused": "Failed to fetch",
-  "pagingStoppedBecause": "refused",
-  "payloads": 24,
-  "productsSeen": 50,
-  "rejected": {
-   "category-not-flower": 3,
-   "sameStrainAnotherSize": 5,
-   "title-not-flower": 20
-  },
+  "payloads": 0,
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "ENFLOR LLC",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000087": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "foundMenuByGuess": true,
@@ -1050,17 +1029,18 @@
   "landedOn": "https://blissandlex.com/age-gate?returnUrl=%2Fmenu%2Fflower",
   "licence": "OCM-CAURD-24-000087",
   "menuLink": "found",
-  "payloads": 2,
+  "parkedOn": "/age-gate",
+  "payloads": 3,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
   "settled": true,
   "shop": "Weedish LLC",
   "status": "no-products",
-  "usedKnownEndpoint": false
+  "usedKnownEndpoint": false,
+  "wentOnwardTo": "/menu/flower"
  },
  "OCM-CAURD-24-000091": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://www.thetravelagency.co/flower/",
@@ -1078,31 +1058,31 @@
  "OCM-CAURD-24-000094": {
   "ageGate": true,
   "categories": [
-   "flower (417)",
+   "flower (415)",
    "flower small buds (14)",
    "flower infused pre-ground (10)",
    "flower pre-ground (9)",
-   "flower infused flower (7)",
+   "flower infused flower (6)",
    "flower smalls (4)",
    "flower moon rocks (1)"
   ],
-  "declaredTotal": 462,
-  "flower": 400,
+  "declaredTotal": 459,
+  "flower": 399,
   "landedOn": "https://shop.mishasflowershop.com/mishasflower/menu/flower-5423",
   "licence": "OCM-CAURD-24-000094",
   "menuLink": "found",
   "pagedFrom": 24,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 462,
-  "pagedTo": 462,
+  "pagedQueryProducts": 459,
+  "pagedTo": 459,
   "pagesAsked": 19,
   "pagingStoppedBecause": "read-everything-declared",
   "payloads": 55,
-  "productsSeen": 462,
+  "productsSeen": 459,
   "rejected": {
    "category-not-flower": 5,
-   "sameStrainAnotherSize": 35,
-   "title-not-flower": 22
+   "sameStrainAnotherSize": 34,
+   "title-not-flower": 21
   },
   "scrollRounds": 1,
   "settled": true,
@@ -1112,35 +1092,24 @@
  },
  "OCM-CAURD-24-000096": {
   "ageGate": true,
-  "categories": [
-   "gummies edible (32)",
-   "whole-flower flower (28)",
-   "all-in-one vaporizers (21)",
-   "hash concentrate (14)",
-   "drinks edible (12)",
-   "pre-ground flower (10)",
-   "flower (10)",
-   "cartridges vaporizers (5)"
-  ],
-  "declaredTotal": 35,
-  "flower": 19,
+  "categories": [],
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
   "landedOn": "https://smileyexoticsny.com/shop/",
   "licence": "OCM-CAURD-24-000096",
   "menuLink": "found",
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 50,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 71,
-  "productsSeen": 144,
-  "rejected": {
-   "category-not-flower": 85,
-   "sameStrainAnotherSize": 19,
-   "title-not-flower": 21
-  },
+  "payloads": 5,
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
   "scrollRounds": 2,
   "settled": true,
   "shop": "SMILEY EXOTICS",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000100": {
@@ -1162,7 +1131,7 @@
   "pagedTo": 43,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 28,
+  "payloads": 29,
   "productsSeen": 43,
   "rejected": {
    "sameStrainAnotherSize": 3
@@ -1190,29 +1159,29 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000102": {
-  "ageGate": false,
   "categories": [
-   "flower (141)",
-   "whole-flower flower (70)",
-   "premium flower (55)",
+   "flower (142)",
+   "whole-flower flower (69)",
+   "premium flower (58)",
+   "small-buds flower (1)",
    "packs flower (1)"
   ],
-  "declaredTotal": 242,
-  "flower": 236,
+  "declaredTotal": 246,
+  "flower": 241,
   "landedOn": "https://hiinyc.com/stores/hii-williamsburg/products/flower",
   "licence": "OCM-CAURD-24-000102",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 242,
-  "pagedTo": 242,
+  "pagedQueryProducts": 246,
+  "pagedTo": 246,
   "pagesAsked": 2,
   "pagingStoppedBecause": "read-everything-declared",
   "payloads": 26,
-  "productsSeen": 267,
+  "productsSeen": 271,
   "rejected": {
    "sameStrainAnotherSize": 29,
-   "title-not-flower": 2
+   "title-not-flower": 1
   },
   "scrollRounds": 1,
   "settled": true,
@@ -1221,27 +1190,27 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000104": {
-  "ageGate": false,
   "categories": [
-   "flower (193)",
+   "flower (186)",
    "premium flower (83)",
    "pre-ground flower (24)",
    "infused-bud flower (6)",
-   "small-buds flower (3)"
+   "small-buds flower (3)",
+   "bulk-flower flower (3)"
   ],
-  "declaredTotal": 309,
-  "flower": 276,
+  "declaredTotal": 305,
+  "flower": 272,
   "landedOn": "https://kingshouseoffire.com/stores/cortlandt-manor-dispensary/products/flower?sortby=relevance",
   "licence": "OCM-CAURD-24-000104",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 309,
-  "pagedTo": 309,
+  "pagedQueryProducts": 305,
+  "pagedTo": 305,
   "pagesAsked": 3,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 27,
-  "productsSeen": 309,
+  "payloads": 26,
+  "productsSeen": 305,
   "rejected": {
    "title-not-flower": 33
   },
@@ -1254,21 +1223,21 @@
  "OCM-CAURD-24-000105": {
   "ageGate": true,
   "categories": [
-   "flower (235)"
+   "flower (243)"
   ],
-  "flower": 176,
+  "flower": 179,
   "landedOn": "https://twobudsdispensary.nyc/store/main-location/category/flower/",
   "licence": "OCM-CAURD-24-000105",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 235,
+  "pagedQueryProducts": 243,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 20,
-  "productsSeen": 235,
+  "payloads": 19,
+  "productsSeen": 243,
   "rejected": {
    "flower-no-size": 31,
-   "sameStrainAnotherSize": 9,
-   "title-not-flower": 19
+   "sameStrainAnotherSize": 10,
+   "title-not-flower": 23
   },
   "scrollRounds": 1,
   "settled": true,
@@ -1279,25 +1248,25 @@
  "OCM-CAURD-24-000112": {
   "ageGate": true,
   "categories": [
-   "whole-flower flower (179)",
-   "flower (18)",
+   "whole-flower flower (182)",
+   "flower (16)",
    "infused-buds flower (13)",
    "pre-ground flower (7)",
    "infused-bud flower (1)"
   ],
-  "declaredTotal": 193,
-  "flower": 172,
+  "declaredTotal": 194,
+  "flower": 173,
   "landedOn": "https://leafologycannabiscompany.com/stores/leafology-ny-white-plains/products/flower",
   "licence": "OCM-CAURD-24-000112",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 193,
-  "pagedTo": 193,
+  "pagedQueryProducts": 194,
+  "pagedTo": 194,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 25,
-  "productsSeen": 218,
+  "payloads": 26,
+  "productsSeen": 219,
   "rejected": {
    "category-not-flower": 1,
    "sameStrainAnotherSize": 23,
@@ -1312,20 +1281,20 @@
  "OCM-CAURD-24-000114": {
   "ageGate": true,
   "categories": [
-   "af47559e7bb38d28 flower flowers flowers (187)"
+   "af47559e7bb38d28 flower flowers flowers (185)"
   ],
-  "flower": 151,
+  "flower": 149,
   "landedOn": "https://cannadreams.nyc/menu/categories/flower",
   "licence": "OCM-CAURD-24-000114",
   "menuLink": "found",
   "pagedFrom": 20,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 187,
-  "pagedTo": 187,
+  "pagedQueryProducts": 185,
+  "pagedTo": 185,
   "pagesAsked": 10,
   "pagingStoppedBecause": "answer-had-no-products",
-  "payloads": 41,
-  "productsSeen": 187,
+  "payloads": 42,
+  "productsSeen": 185,
   "rejected": {
    "sameStrainAnotherSize": 13,
    "title-not-flower": 23
@@ -1339,25 +1308,25 @@
  "OCM-CAURD-24-000116": {
   "ageGate": true,
   "categories": [
-   "fca688b65442daf3 flower flower flower (516)"
+   "fca688b65442daf3 flower flower flower (509)"
   ],
-  "flower": 256,
+  "flower": 251,
   "landedOn": "https://menu.bleuleafdispensary.com/categories/flower",
   "licence": "OCM-CAURD-24-000116",
   "menuLink": "found",
-  "pagedFrom": 306,
+  "pagedFrom": 299,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 506,
-  "pagedTo": 506,
+  "pagedQueryProducts": 499,
+  "pagedTo": 499,
   "pagesAsked": 10,
   "pagingStoppedBecause": "ran-out-of-pages",
-  "payloads": 45,
-  "productsSeen": 516,
+  "payloads": 44,
+  "productsSeen": 509,
   "rejected": {
-   "sameStrainAnotherSize": 202,
-   "title-not-flower": 58
+   "sameStrainAnotherSize": 203,
+   "title-not-flower": 55
   },
-  "scrollRounds": 16,
+  "scrollRounds": 15,
   "settled": true,
   "shop": "Bleu Leaf Dispensary Inc.",
   "status": "ok",
@@ -1367,21 +1336,21 @@
   "ageGate": true,
   "categories": [
    "b2e25c333b6fcb52 flower small batch smal (61)",
-   "b2e25c333b6fcb52 flower flower flower (47)",
+   "b2e25c333b6fcb52 flower flower flower (46)",
    "b2e25c333b6fcb52 flower flower flower fl (2)"
   ],
-  "flower": 101,
+  "flower": 100,
   "landedOn": "https://menus.dispenseapp.com/5a5a16f11218bf58/menu/categories/flower",
   "licence": "OCM-CAURD-24-000119",
   "menuLink": "found",
   "pagedFrom": 20,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 110,
-  "pagedTo": 110,
+  "pagedQueryProducts": 109,
+  "pagedTo": 109,
   "pagesAsked": 6,
   "pagingStoppedBecause": "answer-had-no-products",
-  "payloads": 28,
-  "productsSeen": 110,
+  "payloads": 29,
+  "productsSeen": 109,
   "rejected": {
    "sameStrainAnotherSize": 2,
    "title-not-flower": 7
@@ -1393,7 +1362,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000120": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://indoortreez.com/",
@@ -1407,10 +1375,9 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000123": {
-  "ageGate": false,
   "categories": [
-   "cannabis flower products (89)",
-   "pre rolls (12)",
+   "cannabis flower products (90)",
+   "pre rolls (11)",
    "gel-based foods (4)",
    "edibles (2)",
    "solid chocolates (2)",
@@ -1427,8 +1394,8 @@
   "productsSeen": 110,
   "rejected": {
    "category-not-flower": 3,
-   "sameStrainAnotherSize": 4,
-   "title-not-flower": 28
+   "sameStrainAnotherSize": 5,
+   "title-not-flower": 27
   },
   "scrollRounds": 1,
   "settled": true,
@@ -1439,26 +1406,26 @@
  "OCM-CAURD-24-000124": {
   "ageGate": true,
   "categories": [
-   "small-buds flower (26)",
+   "small-buds flower (25)",
    "whole-flower flower (8)",
-   "pre-ground flower (6)",
+   "pre-ground flower (8)",
    "infused-shake flower (6)",
    "infused-bud flower (4)"
   ],
-  "declaredTotal": 25,
+  "declaredTotal": 26,
   "flower": 19,
   "landedOn": "https://thepurpleowldispensary.com/stores/purple-owl/products/flower",
   "licence": "OCM-CAURD-24-000124",
   "menuLink": "found",
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 25,
+  "pagedQueryProducts": 26,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 39,
-  "productsSeen": 50,
+  "payloads": 27,
+  "productsSeen": 51,
   "rejected": {
    "category-not-flower": 4,
-   "sameStrainAnotherSize": 19,
-   "title-not-flower": 8
+   "sameStrainAnotherSize": 18,
+   "title-not-flower": 10
   },
   "scrollRounds": 1,
   "settled": true,
@@ -1467,7 +1434,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000125": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://www.thetravelagency.co/flower/",
@@ -1483,7 +1449,7 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000127": {
-  "ageGate": false,
+  "ageGate": true,
   "categories": [],
   "firstAttempt": {
    "menuLink": "found",
@@ -1494,7 +1460,10 @@
   "landedOn": "https://qubenyc.com/?dtche%5Bpath%5D=products",
   "licence": "OCM-CAURD-24-000127",
   "menuLink": "found",
-  "payloads": 33,
+  "offersDismissed": [
+   "No Thanks"
+  ],
+  "payloads": 31,
   "productsSeen": 0,
   "rejected": {},
   "retried": true,
@@ -1507,24 +1476,24 @@
  "OCM-CAURD-24-000129": {
   "ageGate": true,
   "categories": [
-   "flowers regular (87)",
+   "flowers regular (85)",
    "edibles regular (35)",
    "vape pens regular (16)",
-   "preroll regular (13)",
+   "preroll regular (12)",
    "bulk flower regular (5)",
    "drinks regular (5)",
    "accessories regular (3)"
   ],
-  "flower": 91,
-  "jsonApiProducts": 164,
+  "flower": 89,
+  "jsonApiProducts": 161,
   "landedOn": "https://altocanna.nyc/menu/categories/flowers/?order=-inserted_at",
   "licence": "OCM-CAURD-24-000129",
   "menuLink": "found",
-  "payloads": 50,
-  "productsSeen": 164,
+  "payloads": 49,
+  "productsSeen": 161,
   "rejected": {
    "category-not-flower": 33,
-   "title-not-flower": 40
+   "title-not-flower": 39
   },
   "scrollRounds": 6,
   "settled": true,
@@ -1533,7 +1502,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000130": {
-  "ageGate": false,
   "categories": [
    "flower (28)"
   ],
@@ -1544,7 +1512,7 @@
   "pagedQueryIsPageable": false,
   "pagedQueryProducts": 28,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 20,
+  "payloads": 21,
   "productsSeen": 28,
   "rejected": {
    "title-not-flower": 1
@@ -1556,43 +1524,64 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000131": {
-  "ageGate": false,
-  "categories": [],
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 0,
-   "status": "no-products"
-  },
-  "flower": 0,
+  "categories": [
+   "whole-flower flower (103)",
+   "premium flower (18)",
+   "flower (11)",
+   "bulk-flower flower (7)",
+   "pre-ground flower (5)"
+  ],
+  "declaredTotal": 119,
+  "flower": 113,
   "landedOn": "https://shophibernica.com/dispensary-bronx-menu/?dtche%5Bcategory%5D=flower",
   "licence": "OCM-CAURD-24-000131",
   "menuLink": "found",
-  "payloads": 3,
-  "productsSeen": 0,
-  "rejected": {},
-  "retried": true,
+  "pagedFrom": 100,
+  "pagedQueryIsPageable": true,
+  "pagedQueryProducts": 119,
+  "pagedTo": 119,
+  "pagesAsked": 1,
+  "pagingStoppedBecause": "read-everything-declared",
+  "payloads": 30,
+  "productsSeen": 144,
+  "rejected": {
+   "sameStrainAnotherSize": 26,
+   "title-not-flower": 5
+  },
   "scrollRounds": 1,
   "settled": true,
   "shop": "Hibernica",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-24-000132": {
-  "ageGate": false,
-  "categories": [],
-  "flower": 0,
-  "landedOn": "https://www.thefloweryny.com/welcome?r=%2F",
+  "ageGate": true,
+  "categories": [
+   "pre rolls singles (6)",
+   "pre rolls packs (5)",
+   "vaporizers cartridges (5)",
+   "pre rolls single infused pre roll (4)",
+   "topicals balms (4)",
+   "flower whole flower (3)",
+   "flower pre ground (2)",
+   "flower default (2)"
+  ],
+  "flower": 5,
+  "landedOn": "https://www.thefloweryny.com/",
   "licence": "OCM-CAURD-24-000132",
   "menuLink": "none",
-  "payloads": 9,
-  "productsSeen": 0,
-  "rejected": {},
+  "pagedQueryProducts": 21,
+  "payloads": 59,
+  "productsSeen": 39,
+  "rejected": {
+   "category-not-flower": 11,
+   "title-not-flower": 23
+  },
   "shop": "Elevate Soho Cannabis",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000136": {
-  "ageGate": false,
   "categories": [
    "flower (20)"
   ],
@@ -1619,7 +1608,7 @@
   "landedOn": "https://freshlybaked.nyc/stores/bronx/shop/menu/flower-96218",
   "licence": "OCM-CAURD-24-000137",
   "menuLink": "found",
-  "payloads": 418,
+  "payloads": 48,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
@@ -1629,30 +1618,29 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000138": {
-  "ageGate": true,
   "categories": [
-   "flower default (214)",
-   "flower pre_ground (18)",
-   "flower small_buds (16)",
-   "orals capsules_tablets (16)",
+   "flower default (216)",
+   "orals capsules_tablets (24)",
+   "flower small_buds (20)",
+   "flower pre_ground (19)",
    "edibles gummies (15)",
-   "pre_rolls packs (11)",
-   "accessories papers_rolling_supplies (8)",
-   "accessories trays (8)"
+   "accessories papers_rolling_supplies (12)",
+   "accessories trays (12)",
+   "pre_rolls packs (12)"
   ],
-  "flower": 85,
+  "flower": 83,
   "landedOn": "https://valleygreensny.com/categories/flower/?pagination=1&sort=NAME_ASC&retailer_id=0cdb605d-e0de-42e6-b947-3074ada84843&menu_type=RECREATIONAL&collection_type=PICKUP&categories=FLOWER",
   "licence": "OCM-CAURD-24-000138",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 95,
+  "pagedQueryProducts": 93,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 55,
-  "productsSeen": 393,
+  "payloads": 58,
+  "productsSeen": 411,
   "rejected": {
-   "category-not-flower": 79,
-   "sameStrainAnotherSize": 146,
-   "title-not-flower": 83
+   "category-not-flower": 94,
+   "sameStrainAnotherSize": 155,
+   "title-not-flower": 79
   },
   "scrollRounds": 1,
   "settled": true,
@@ -1661,27 +1649,27 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000140": {
-  "ageGate": false,
+  "ageGate": true,
   "categories": [
    "whole-flower flower (73)",
-   "flower (65)",
+   "flower (67)",
    "infused-bud flower (6)",
    "premium flower (2)",
    "pre-ground flower (1)"
   ],
-  "declaredTotal": 122,
-  "flower": 118,
+  "declaredTotal": 124,
+  "flower": 120,
   "landedOn": "https://nunaharvest.com/stores/nuna-harvest/products/flower",
   "licence": "OCM-CAURD-24-000140",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 122,
-  "pagedTo": 122,
+  "pagedQueryProducts": 124,
+  "pagedTo": 124,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 34,
-  "productsSeen": 147,
+  "payloads": 33,
+  "productsSeen": 149,
   "rejected": {
    "sameStrainAnotherSize": 22,
    "title-not-flower": 7
@@ -1693,35 +1681,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000142": {
-  "ageGate": false,
-  "categories": [
-   "flower (48)",
-   "whole-flower flower (40)",
-   "premium flower (4)",
-   "small-buds flower (2)"
-  ],
-  "declaredTotal": 69,
-  "flower": 66,
-  "landedOn": "https://budnhoneydispensary.com/menu/?dtche%5Bcategory%5D=flower",
-  "licence": "OCM-CAURD-24-000142",
-  "menuLink": "found",
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 69,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 24,
-  "productsSeen": 94,
-  "rejected": {
-   "sameStrainAnotherSize": 27,
-   "title-not-flower": 1
-  },
-  "scrollRounds": 1,
-  "settled": true,
-  "shop": "Bud & Honey Dispensary Inc.",
-  "status": "ok",
-  "usedKnownEndpoint": false
- },
- "OCM-CAURD-24-000145": {
-  "ageGate": true,
   "categories": [],
   "firstAttempt": {
    "menuLink": "found",
@@ -1729,8 +1688,8 @@
    "status": "no-products"
   },
   "flower": 0,
-  "landedOn": "https://byanyothernamebk.com/shop/?dtche%5Bcategory%5D=flower",
-  "licence": "OCM-CAURD-24-000145",
+  "landedOn": "https://budnhoneydispensary.com/menu/?dtche%5Bcategory%5D=flower",
+  "licence": "OCM-CAURD-24-000142",
   "menuLink": "found",
   "payloads": 0,
   "productsSeen": 0,
@@ -1738,32 +1697,78 @@
   "retried": true,
   "scrollRounds": 1,
   "settled": true,
-  "shop": "BY ANY OTHER NAME",
+  "shop": "Bud & Honey Dispensary Inc.",
   "status": "no-products",
+  "usedKnownEndpoint": false
+ },
+ "OCM-CAURD-24-000145": {
+  "ageGate": true,
+  "categories": [
+   "whole-flower flower (71)",
+   "cartridges vaporizers (16)",
+   "flower (8)",
+   "pre-ground flower (6)",
+   "live-resin vaporizers (5)",
+   "live-resin concentrate (3)",
+   "gummies edible (2)",
+   "live-resin-disposable vaporizers (2)"
+  ],
+  "declaredTotal": 35,
+  "flower": 32,
+  "landedOn": "https://byanyothernamebk.com/shop/?dtche%5Bcategory%5D=flower",
+  "licence": "OCM-CAURD-24-000145",
+  "menuLink": "found",
+  "pagedQueryIsPageable": true,
+  "pagedQueryProducts": 35,
+  "pagingStoppedBecause": "read-everything-declared",
+  "payloads": 51,
+  "productsSeen": 118,
+  "rejected": {
+   "category-not-flower": 13,
+   "sameStrainAnotherSize": 44,
+   "title-not-flower": 29
+  },
+  "scrollRounds": 1,
+  "settled": true,
+  "shop": "BY ANY OTHER NAME",
+  "status": "ok",
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-24-000146": {
-  "ageGate": false,
-  "categories": [],
+  "categories": [
+   "flower (19)",
+   "gummies edible (16)",
+   "vaporizers (10)",
+   "disposables vaporizers (6)",
+   "premium flower (5)",
+   "cartridges vaporizers (3)",
+   "live-resin vaporizers (3)",
+   "live-resin-gummies edible (3)"
+  ],
+  "declaredTotal": 62,
   "firstAttempt": {
    "menuLink": "none",
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 0,
+  "flower": 26,
   "landedOn": "https://emeralddispensary.nyc/",
   "licence": "OCM-CAURD-24-000146",
   "menuLink": "none",
-  "payloads": 1,
-  "productsSeen": 0,
-  "rejected": {},
+  "pagedQueryProducts": 25,
+  "payloads": 27,
+  "productsSeen": 91,
+  "rejected": {
+   "category-not-flower": 38,
+   "sameStrainAnotherSize": 2,
+   "title-not-flower": 25
+  },
   "retried": true,
   "shop": "Emerald Dispensary",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000149": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://sparkborony.com/",
@@ -1777,31 +1782,31 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000151": {
-  "ageGate": false,
   "categories": [
-   "flower whole_flower (10)",
-   "pre_rolls packs (6)",
-   "pre_rolls singles (4)",
-   "flower pre_ground (3)",
-   "flower small_buds (3)",
-   "flower premium (2)",
-   "flower infused_bud (1)",
-   "flower default (1)"
+   "edibles gummies (57)",
+   "flower whole_flower (21)",
+   "pre_rolls packs (15)",
+   "pre_rolls infused_pre_roll_packs (15)",
+   "pre_rolls singles (10)",
+   "vaporizers default (10)",
+   "flower pre_ground (8)",
+   "vaporizers disposables (5)"
   ],
   "flower": 16,
   "landedOn": "https://nicklzny.com/categories/flower/?pagination=1&sort=NAME_ASC&retailer_id=ca5237a9-0a4b-469e-98ce-21934a1a76e6&menu_type=RECREATIONAL&collection_type=PICKUP&categories=FLOWER",
   "licence": "OCM-CAURD-24-000151",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 20,
+  "pagedQueryProducts": 60,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 37,
-  "productsSeen": 30,
+  "payloads": 65,
+  "productsSeen": 155,
   "rejected": {
-   "category-not-flower": 9,
-   "title-not-flower": 5
+   "category-not-flower": 71,
+   "sameStrainAnotherSize": 10,
+   "title-not-flower": 58
   },
-  "scrollRounds": 2,
+  "scrollRounds": 1,
   "settled": true,
   "shop": "Nicklz",
   "status": "ok",
@@ -1809,42 +1814,27 @@
  },
  "OCM-CAURD-24-000153": {
   "ageGate": true,
-  "categories": [
-   "small-buds flower (73)",
-   "flower (36)",
-   "pre-ground flower (10)",
-   "infused-shake flower (9)",
-   "vaporizers (4)",
-   "live-resin concentrate (3)",
-   "singles pre-rolls (2)",
-   "packs pre-rolls (2)"
-  ],
-  "declaredTotal": 119,
-  "flower": 90,
+  "categories": [],
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
   "landedOn": "https://nyelitecannabis.com/shop/?dtche%5Bsortby%5D=relevance&dtche%5Bcategory%5D=flower",
   "licence": "OCM-CAURD-24-000153",
   "menuLink": "found",
-  "pagedFrom": 100,
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 119,
-  "pagedTo": 119,
-  "pagesAsked": 1,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 79,
-  "productsSeen": 155,
-  "rejected": {
-   "category-not-flower": 17,
-   "sameStrainAnotherSize": 12,
-   "title-not-flower": 36
-  },
-  "scrollRounds": 2,
+  "payloads": 22,
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
+  "scrollRounds": 1,
   "settled": true,
   "shop": "NY ELITE CANNABIS",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000156": {
-  "ageGate": false,
   "categories": [
    "flower (14)"
   ],
@@ -1893,7 +1883,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000163": {
-  "ageGate": false,
   "categories": [
    "cartridge all-in-one all-in-one indica (41)",
    "cartridge all-in-one all-in-one hybrid (34)",
@@ -1901,25 +1890,26 @@
    "preroll infused infused hybrid (22)",
    "cartridge pod pod sativa (19)",
    "cartridge 510 thread 510 thread sativa (19)",
-   "preroll infused infused sativa (19)",
+   "preroll infused infused sativa (18)",
    "preroll infused infused indica (16)"
   ],
-  "declaredTotal": 461,
-  "flower": 32,
+  "declaredTotal": 462,
+  "flower": 33,
   "landedOn": "https://www.nug.com/new-york-cannabis-dispensary/nug-yonkers/products",
   "licence": "OCM-CAURD-24-000163",
   "menuLink": "found",
   "pagedFrom": 25,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 461,
-  "pagedTo": 461,
+  "pagedQueryProducts": 462,
+  "pagedTo": 462,
   "pagesAsked": 18,
   "pagingStoppedBecause": "read-everything-declared",
   "payloads": 24,
-  "productsSeen": 461,
+  "productsSeen": 462,
   "rejected": {
    "category-not-flower": 235,
-   "title-not-flower": 194
+   "sameStrainAnotherSize": 1,
+   "title-not-flower": 193
   },
   "scrollRounds": 1,
   "settled": true,
@@ -1928,56 +1918,58 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000165": {
-  "ageGate": false,
   "categories": [
-   "flower flower flower (11)",
-   "edibles beverage edibles (7)",
-   "topicals topical topicals (3)",
-   "flower none flower (2)",
-   "pre_rolls pre_roll pre_rolls (2)",
-   "vaporizers vape vaporizers (2)"
+   "edibles edibles edibles (12)"
   ],
-  "flower": 12,
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 12,
+   "status": "no-flower"
+  },
+  "flower": 0,
   "landedOn": "https://frassboxcannabis.com/categories/flower/?category=flower&sort=best-selling",
   "licence": "OCM-CAURD-24-000165",
   "menuLink": "found",
+  "offersDismissed": [
+   "close"
+  ],
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 14,
+  "pagedQueryProducts": 12,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 41,
-  "productsSeen": 27,
+  "payloads": 39,
+  "productsSeen": 12,
   "rejected": {
-   "category-not-flower": 9,
-   "title-not-flower": 6
+   "title-not-flower": 12
   },
+  "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "Frass Box Cannabis LLC",
-  "status": "ok",
+  "status": "no-flower",
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-24-000166": {
-  "ageGate": false,
   "categories": [
-   "flower (80)",
-   "whole-flower flower (45)",
+   "flower (78)",
+   "whole-flower flower (43)",
    "pre-ground flower (3)",
+   "small-buds flower (2)",
    "infused-shake flower (2)",
-   "small-buds flower (1)"
+   "premium flower (1)"
   ],
-  "declaredTotal": 106,
-  "flower": 102,
+  "declaredTotal": 104,
+  "flower": 100,
   "landedOn": "https://greengeniusnyc.com/stores/green-genius-nyc/products/flower",
   "licence": "OCM-CAURD-24-000166",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 106,
-  "pagedTo": 106,
+  "pagedQueryProducts": 104,
+  "pagedTo": 104,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 28,
-  "productsSeen": 131,
+  "payloads": 27,
+  "productsSeen": 129,
   "rejected": {
    "sameStrainAnotherSize": 25,
    "title-not-flower": 4
@@ -1989,13 +1981,15 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000169": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://clouditudedispensary.com/categories/flower/?category=flower",
   "licence": "OCM-CAURD-24-000169",
   "menuLink": "found",
-  "payloads": 11,
+  "offersDismissed": [
+   "close"
+  ],
+  "payloads": 12,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
@@ -2005,14 +1999,13 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000173": {
-  "ageGate": false,
   "categories": [
    "aa5e75106b169eb0 flower whole flower who (276)",
    "aa5e75106b169eb0 flower infused shake in (24)",
    "aa5e75106b169eb0 flower pre-ground pre-g (22)",
    "aa5e75106b169eb0 flower infused buds inf (18)"
   ],
-  "flower": 137,
+  "flower": 136,
   "landedOn": "https://menus.dispenseapp.com/3954c7760ccdd296/menu/categories/flower",
   "licence": "OCM-CAURD-24-000173",
   "menuLink": "found",
@@ -2022,11 +2015,11 @@
   "pagedTo": 340,
   "pagesAsked": 9,
   "pagingStoppedBecause": "answer-had-no-products",
-  "payloads": 35,
+  "payloads": 36,
   "productsSeen": 340,
   "rejected": {
    "sameStrainAnotherSize": 136,
-   "title-not-flower": 67
+   "title-not-flower": 68
   },
   "scrollRounds": 10,
   "settled": true,
@@ -2035,13 +2028,12 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000174": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "foundMenuByGuess": true,
   "guessedMenuPaths": [
    "/menu/flower",
-   "/shop/flower"
+   "/menu"
   ],
   "landedOn": "https://greencup.nyc/menu/flower",
   "licence": "OCM-CAURD-24-000174",
@@ -2094,26 +2086,27 @@
   "landedOn": "https://maryjanecannabisco.com/menu/age-gate?returnUrl=%2Fmenu%2Fcollection%2Fflower",
   "licence": "OCM-CAURD-24-000180",
   "menuLink": "found",
-  "payloads": 9,
+  "parkedOn": "/menu/age-gate",
+  "payloads": 10,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
   "settled": true,
   "shop": "Bad Maryjane",
   "status": "no-products",
-  "usedKnownEndpoint": false
+  "usedKnownEndpoint": false,
+  "wentOnwardTo": "/menu/collection/flower"
  },
  "OCM-CAURD-24-000183": {
-  "ageGate": false,
+  "ageGate": true,
   "categories": [
    "flower (135)",
    "premium flower (54)",
-   "whole-flower flower (26)",
-   "pre-ground flower (22)",
-   "infused-bud flower (8)",
+   "whole-flower flower (25)",
+   "pre-ground flower (21)",
+   "infused-bud flower (7)",
    "bulk-flower flower (6)",
-   "small-buds flower (4)",
-   "live-resin-cartridge vaporizers (2)"
+   "small-buds flower (4)"
   ],
   "declaredTotal": 227,
   "flower": 188,
@@ -2126,12 +2119,11 @@
   "pagedTo": 227,
   "pagesAsked": 2,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 47,
-  "productsSeen": 268,
+  "payloads": 28,
+  "productsSeen": 252,
   "rejected": {
-   "category-not-flower": 7,
-   "sameStrainAnotherSize": 26,
-   "title-not-flower": 47
+   "sameStrainAnotherSize": 25,
+   "title-not-flower": 39
   },
   "scrollRounds": 1,
   "settled": true,
@@ -2140,15 +2132,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000184": {
-  "ageGate": false,
   "categories": [
    "whole-flower flower (66)",
    "flower (46)",
    "infused pre-rolls (20)",
    "pre-ground flower (16)",
    "disposables vaporizers (13)",
-   "cartridges vaporizers (10)",
    "rosin concentrate (10)",
+   "cartridges vaporizers (10)",
    "gummies edible (9)"
   ],
   "declaredTotal": 113,
@@ -2176,16 +2167,15 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000185": {
-  "ageGate": false,
   "categories": [
    "flower default (38)",
    "pre_rolls packs (21)",
+   "vaporizers disposables (11)",
    "flower infused_bud (10)",
-   "vaporizers disposables (10)",
    "vaporizers default (8)",
-   "pre_rolls infused (7)",
+   "concentrates live_rosin (6)",
    "flower small_buds (4)",
-   "concentrates live_rosin (4)"
+   "pre_rolls infused (4)"
   ],
   "flower": 18,
   "landedOn": "https://highstone.nyc/categories/flower/?pagination=1&sort=NAME_ASC&retailer_id=2179d8d8-cfe7-4862-87df-a930b6fbecf7&menu_type=RECREATIONAL&collection_type=DELIVERY&categories=FLOWER",
@@ -2194,12 +2184,12 @@
   "pagedQueryIsPageable": false,
   "pagedQueryProducts": 40,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 50,
+  "payloads": 49,
   "productsSeen": 110,
   "rejected": {
-   "category-not-flower": 33,
+   "category-not-flower": 35,
    "sameStrainAnotherSize": 26,
-   "title-not-flower": 33
+   "title-not-flower": 31
   },
   "scrollRounds": 1,
   "settled": true,
@@ -2213,7 +2203,7 @@
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
-   "status": "error: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.brooklynbourne.com/store.html?dtche%5Bcategory%5D=flower\nCall lo"
+   "status": "no-products"
   },
   "flower": 0,
   "landedOn": "https://www.brooklynbourne.com/store.html?dtche%5Bcategory%5D=flower",
@@ -2230,7 +2220,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000191": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://twistedvibration.com/",
@@ -2244,32 +2233,38 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000196": {
-  "ageGate": false,
   "categories": [
-   "flower (97)",
-   "whole-flower flower (32)",
+   "flower (94)",
+   "whole-flower flower (33)",
    "pre-ground flower (9)",
    "infused-bud flower (7)",
    "small-buds flower (5)",
-   "smalls-popcorn flower (3)"
+   "smalls-popcorn flower (3)",
+   "premium flower (1)"
   ],
-  "declaredTotal": 128,
-  "flower": 111,
+  "declaredTotal": 127,
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 110,
   "landedOn": "https://fireleafny.com/shop/?dtche%5Bcategory%5D=flower",
   "licence": "OCM-CAURD-24-000196",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 128,
-  "pagedTo": 128,
+  "pagedQueryProducts": 127,
+  "pagedTo": 127,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 24,
-  "productsSeen": 153,
+  "payloads": 26,
+  "productsSeen": 152,
   "rejected": {
    "sameStrainAnotherSize": 22,
    "title-not-flower": 20
   },
+  "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "Fireleaf, LLC",
@@ -2277,7 +2272,6 @@
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-24-000200": {
-  "ageGate": false,
   "categories": [
    "655fef6035474301 flowers flower flower (30)"
   ],
@@ -2303,7 +2297,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000203": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://www.munchiesdispensaryny.com/age-gate?returnUrl=%2F",
@@ -2317,19 +2310,18 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000205": {
-  "ageGate": false,
   "categories": [
-   "flower (194)"
+   "flower (193)"
   ],
-  "flower": 172,
+  "flower": 171,
   "landedOn": "https://elevationhqnyc.com/store/elevation-hq-main/category/flower/",
   "licence": "OCM-CAURD-24-000205",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 194,
+  "pagedQueryProducts": 193,
   "pagingStoppedBecause": "no-page-in-request",
   "payloads": 17,
-  "productsSeen": 194,
+  "productsSeen": 193,
   "rejected": {
    "sameStrainAnotherSize": 6,
    "title-not-flower": 16
@@ -2341,7 +2333,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000206": {
-  "ageGate": false,
   "categories": [
    "flower whole flower (49)",
    "flower default (34)",
@@ -2371,23 +2362,22 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000207": {
-  "ageGate": false,
   "categories": [
    "flower (91)",
    "premium flower (6)",
-   "whole-flower flower (4)",
-   "pre-ground flower (3)"
+   "pre-ground flower (3)",
+   "whole-flower flower (2)"
   ],
-  "declaredTotal": 79,
-  "flower": 75,
+  "declaredTotal": 77,
+  "flower": 73,
   "landedOn": "https://store.rnrdispensary.com/stores/rnr-dispensary/products/flower",
   "licence": "OCM-CAURD-24-000207",
   "menuLink": "found",
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 79,
+  "pagedQueryProducts": 77,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 22,
-  "productsSeen": 104,
+  "payloads": 21,
+  "productsSeen": 102,
   "rejected": {
    "sameStrainAnotherSize": 24,
    "title-not-flower": 5
@@ -2405,6 +2395,9 @@
   "landedOn": "https://budrcannabis.com/flower-pre-rolls/",
   "licence": "OCM-CAURD-24-000208",
   "menuLink": "found",
+  "offersDismissed": [
+   "Close dialog"
+  ],
   "payloads": 1,
   "productsSeen": 0,
   "rejected": {},
@@ -2415,7 +2408,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000209": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://nucleusdispensary.com/shop/",
@@ -2433,29 +2425,35 @@
  "OCM-CAURD-24-000210": {
   "ageGate": true,
   "categories": [
-   "flower (96)",
+   "flower (92)",
    "pre-ground flower (10)",
    "premium flower (4)",
-   "shake-trim flower (4)",
+   "shake-trim flower (3)",
    "whole-flower flower (1)"
   ],
-  "declaredTotal": 119,
-  "flower": 96,
+  "declaredTotal": 116,
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 91,
   "landedOn": "https://dutchie.com/dispensary/the-plug-brooklyn/products/flower",
   "licence": "OCM-CAURD-24-000210",
   "menuLink": "found",
-  "pagedFrom": 72,
+  "pagedFrom": 70,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 115,
-  "pagedTo": 115,
+  "pagedQueryProducts": 110,
+  "pagedTo": 110,
   "pagesAsked": 2,
   "pagingStoppedBecause": "answer-had-no-products",
   "payloads": 33,
-  "productsSeen": 115,
+  "productsSeen": 110,
   "rejected": {
    "sameStrainAnotherSize": 1,
    "title-not-flower": 18
   },
+  "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "Exotic Herbals LLC",
@@ -2463,7 +2461,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000211": {
-  "ageGate": false,
   "categories": [],
   "firstAttempt": {
    "menuLink": "found",
@@ -2487,28 +2484,29 @@
  "OCM-CAURD-24-000212": {
   "ageGate": true,
   "categories": [
-   "premium flower (79)",
-   "whole-flower flower (37)",
-   "flower (15)",
+   "premium flower (52)",
+   "whole-flower flower (32)",
    "small-buds flower (13)",
    "pre-ground flower (11)",
+   "flower (5)",
    "infused-buds flower (4)",
    "infused-shake flower (3)",
    "infused-bud flower (3)"
   ],
   "declaredTotal": 143,
-  "flower": 126,
+  "flower": 83,
   "landedOn": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
   "licence": "OCM-CAURD-24-000212",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 143,
-  "pagedTo": 143,
+  "pagedQueryProducts": 100,
+  "pagedTo": 100,
   "pagesAsked": 1,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 22,
-  "productsSeen": 168,
+  "pagingRefused": "HTTP 403",
+  "pagingStoppedBecause": "refused",
+  "payloads": 17,
+  "productsSeen": 125,
   "rejected": {
    "sameStrainAnotherSize": 19,
    "title-not-flower": 23
@@ -2520,7 +2518,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000214": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://www.thealchemy.nyc/categories/cannabis-flower-nyc",
@@ -2547,6 +2544,9 @@
   "landedOn": "https://stashmasternyc.com/products/flower/",
   "licence": "OCM-CAURD-24-000217",
   "menuLink": "found",
+  "offersDismissed": [
+   "Close"
+  ],
   "payloads": 3,
   "productsSeen": 0,
   "rejected": {},
@@ -2560,29 +2560,31 @@
  "OCM-CAURD-24-000220": {
   "ageGate": true,
   "categories": [
-   "edibles gummies (5)",
+   "edibles gummies (6)",
    "flower (4)",
-   "pre-rolls (4)",
-   "drinks infused (4)",
    "pre-rolls single (3)",
    "pre-rolls 5 pack (3)",
-   "vapes distillate all-in-one (3)",
-   "edibles live resin gummies gummies (3)"
+   "flower bigs (2)",
+   "flower sun grown flower whole flower (2)",
+   "flower indoor flower (2)",
+   "pre-rolls (2)"
   ],
-  "declaredTotal": 41,
+  "declaredTotal": 40,
   "flower": 11,
   "landedOn": "https://shop.conbud.com/conbud/",
   "licence": "OCM-CAURD-24-000220",
   "menuLink": "found",
+  "offersDismissed": [
+   "Close dialog"
+  ],
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 62,
+  "pagedQueryProducts": 51,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 57,
-  "productsSeen": 62,
+  "payloads": 56,
+  "productsSeen": 51,
   "rejected": {
-   "category-not-flower": 48,
-   "sameStrainAnotherSize": 1,
-   "title-not-flower": 2
+   "category-not-flower": 39,
+   "sameStrainAnotherSize": 1
   },
   "scrollRounds": 1,
   "settled": true,
@@ -2591,19 +2593,36 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-24-000222": {
-  "ageGate": false,
-  "categories": [],
-  "flower": 0,
-  "landedOn": "https://www.thefloweryny.com/welcome?r=%2Fshop%2Fcategory%2Fflower",
+  "ageGate": true,
+  "categories": [
+   "flower whole flower (100)",
+   "flower premium (15)",
+   "edibles gummies (15)",
+   "flower small buds (12)",
+   "flower default (9)",
+   "topicals balms (8)",
+   "tinctures unflavored (7)",
+   "flower pre ground (6)"
+  ],
+  "declaredTotal": 29,
+  "flower": 46,
+  "landedOn": "https://www.thefloweryny.com/shop/category/flower",
   "licence": "OCM-CAURD-24-000222",
   "menuLink": "found",
-  "payloads": 17,
-  "productsSeen": 0,
-  "rejected": {},
+  "pagedQueryIsPageable": false,
+  "pagedQueryProducts": 50,
+  "pagingStoppedBecause": "read-everything-declared",
+  "payloads": 76,
+  "productsSeen": 200,
+  "rejected": {
+   "category-not-flower": 29,
+   "sameStrainAnotherSize": 96,
+   "title-not-flower": 29
+  },
   "scrollRounds": 1,
   "settled": true,
   "shop": "The Flowery",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000226": {
@@ -2612,32 +2631,31 @@
   "status": "error: page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://astoriabudboutique.com/\", waiting until \"domco"
  },
  "OCM-CAURD-25-000229": {
-  "ageGate": false,
   "categories": [
-   "flower (344)",
-   "bulk-flower flower (63)",
-   "pre-ground flower (26)",
-   "whole-flower flower (22)",
+   "flower (342)",
+   "bulk-flower flower (60)",
+   "pre-ground flower (27)",
+   "whole-flower flower (21)",
    "infused-shake flower (11)",
    "premium flower (7)",
    "small-buds flower (2)"
   ],
-  "declaredTotal": 450,
-  "flower": 414,
+  "declaredTotal": 445,
+  "flower": 408,
   "landedOn": "https://ocdispensary.co/shop/?dtche%5Bcategory%5D=flower",
   "licence": "OCM-CAURD-25-000229",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 450,
-  "pagedTo": 450,
+  "pagedQueryProducts": 445,
+  "pagedTo": 445,
   "pagesAsked": 4,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 26,
-  "productsSeen": 475,
+  "payloads": 25,
+  "productsSeen": 470,
   "rejected": {
    "sameStrainAnotherSize": 26,
-   "title-not-flower": 35
+   "title-not-flower": 36
   },
   "scrollRounds": 1,
   "settled": true,
@@ -2648,33 +2666,39 @@
  "OCM-CAURD-25-000230": {
   "ageGate": true,
   "categories": [
-   "disposables vaporizers (25)",
-   "pods vaporizers (19)",
-   "cartridges vaporizers (13)",
-   "singles pre-rolls (12)",
-   "live-rosin concentrate (12)",
-   "gummies edible (11)",
-   "drinks edible (11)",
-   "whole-flower flower (11)"
+   "gummies edible (46)",
+   "drinks edible (28)",
+   "chocolates edible (20)",
+   "disposables vaporizers (16)",
+   "pods vaporizers (13)",
+   "live-rosin-gummies edible (12)",
+   "capsules-tablets edible (12)",
+   "whole-flower flower (10)"
   ],
-  "declaredTotal": 71,
-  "flower": 17,
+  "declaredTotal": 123,
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 18,
   "landedOn": "https://aromafarmsinc.com/menu",
   "licence": "OCM-CAURD-25-000230",
   "menuLink": "found",
   "pagedFrom": 25,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 74,
-  "pagedTo": 74,
-  "pagesAsked": 2,
+  "pagedQueryProducts": 123,
+  "pagedTo": 123,
+  "pagesAsked": 4,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 44,
-  "productsSeen": 174,
+  "payloads": 34,
+  "productsSeen": 223,
   "rejected": {
-   "category-not-flower": 83,
+   "category-not-flower": 125,
    "sameStrainAnotherSize": 2,
-   "title-not-flower": 72
+   "title-not-flower": 78
   },
+  "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "Aroma Farms Inc",
@@ -2682,21 +2706,20 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000233": {
-  "ageGate": false,
   "categories": [
-   "flower (36)"
+   "flower (9)"
   ],
-  "flower": 32,
-  "landedOn": "https://justalittlehigher.com/store/jalh-fishkill/category/flower/",
+  "flower": 8,
+  "landedOn": "https://justalittlehigher.com/store/jalh-troy/category/flower/",
   "licence": "OCM-CAURD-25-000233",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 36,
+  "pagedQueryProducts": 9,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 40,
-  "productsSeen": 36,
+  "payloads": 39,
+  "productsSeen": 9,
   "rejected": {
-   "title-not-flower": 4
+   "sameStrainAnotherSize": 1
   },
   "scrollRounds": 1,
   "settled": true,
@@ -2705,7 +2728,6 @@
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-25-000234": {
-  "ageGate": false,
   "categories": [
    "flower (150)"
   ],
@@ -2716,7 +2738,7 @@
   "pagedQueryIsPageable": false,
   "pagedQueryProducts": 150,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 17,
+  "payloads": 16,
   "productsSeen": 150,
   "rejected": {
    "flower-no-size": 2,
@@ -2730,7 +2752,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000236": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://nube.nyc/home#",
@@ -2759,21 +2780,20 @@
   "pagedTo": 100,
   "pagesAsked": 9,
   "pagingStoppedBecause": "answer-had-no-products",
-  "payloads": 54,
+  "payloads": 61,
   "productsSeen": 110,
   "rejected": {
    "category-not-flower": 10,
    "sameStrainAnotherSize": 15,
    "title-not-flower": 12
   },
-  "scrollRounds": 3,
+  "scrollRounds": 2,
   "settled": true,
   "shop": "Tetra",
   "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000238": {
-  "ageGate": false,
   "categories": [
    "flower whole flower (49)",
    "flower default (34)",
@@ -2803,24 +2823,23 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000239": {
-  "ageGate": false,
   "categories": [
-   "85a8841a8f3e49cf flower flower flower (28)"
+   "85a8841a8f3e49cf flower flower flower (26)"
   ],
-  "flower": 24,
+  "flower": 23,
   "landedOn": "https://menus.dispenseapp.com/82e60824108fcf5a/menu/categories/flower",
   "licence": "OCM-CAURD-25-000239",
   "menuLink": "found",
-  "pagedFrom": 24,
+  "pagedFrom": 23,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 28,
-  "pagedTo": 28,
+  "pagedQueryProducts": 26,
+  "pagedTo": 26,
   "pagesAsked": 2,
   "pagingStoppedBecause": "answer-had-no-products",
-  "payloads": 16,
-  "productsSeen": 28,
+  "payloads": 18,
+  "productsSeen": 26,
   "rejected": {
-   "sameStrainAnotherSize": 4
+   "sameStrainAnotherSize": 3
   },
   "scrollRounds": 2,
   "settled": true,
@@ -2829,28 +2848,19 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000240": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
-  "foundMenuByGuess": true,
-  "guessedMenuPaths": [
-   "/menu/flower",
-   "/shop/flower"
-  ],
-  "landedOn": "https://renaissant.nyc/.well-known/sgcaptcha/?r=%2Fmenu%2Fflower&y=ipc:172.184.247.96:1789765201.899",
+  "landedOn": "https://renaissant.nyc/",
   "licence": "OCM-CAURD-25-000240",
-  "menuLink": "found",
+  "menuLink": "none",
   "payloads": 0,
   "productsSeen": 0,
   "rejected": {},
-  "scrollRounds": 1,
-  "settled": true,
   "shop": "RENAISSANT NYC",
   "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000241": {
-  "ageGate": false,
   "categories": [
    "flower (97)"
   ],
@@ -2874,7 +2884,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000242": {
-  "ageGate": false,
   "categories": [
    "b7a3f3a372f71999 flower flower flower (34)",
    "10b234d3ecf51c2b accessories accessories (27)",
@@ -2895,7 +2904,7 @@
   "pagedTo": 110,
   "pagesAsked": 10,
   "pagingStoppedBecause": "ran-out-of-pages",
-  "payloads": 29,
+  "payloads": 30,
   "productsSeen": 110,
   "rejected": {
    "category-not-flower": 50,
@@ -2911,28 +2920,28 @@
  "OCM-CAURD-25-000245": {
   "ageGate": true,
   "categories": [
-   "57b11429368ff62a flower flower flower (313)",
-   "57b11429368ff62a flower ground flower gr (28)",
-   "57b11429368ff62a flower smalls smalls (17)",
-   "57b11429368ff62a flower infused flower i (14)"
+   "57b11429368ff62a flower flower flower (91)",
+   "57b11429368ff62a flower smalls smalls (8)",
+   "57b11429368ff62a flower ground flower gr (7)",
+   "57b11429368ff62a flower infused flower i (4)"
   ],
-  "flower": 164,
+  "flower": 95,
   "landedOn": "https://www.gooddaze.nyc/shop/categories/flower",
   "licence": "OCM-CAURD-25-000245",
   "menuLink": "found",
-  "pagedFrom": 191,
+  "pagedFrom": 10,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 362,
-  "pagedTo": 362,
+  "pagedQueryProducts": 110,
+  "pagedTo": 110,
   "pagesAsked": 10,
-  "pagingStoppedBecause": "answer-had-no-products",
-  "payloads": 54,
-  "productsSeen": 372,
+  "pagingStoppedBecause": "ran-out-of-pages",
+  "payloads": 31,
+  "productsSeen": 110,
   "rejected": {
-   "sameStrainAnotherSize": 168,
-   "title-not-flower": 40
+   "sameStrainAnotherSize": 5,
+   "title-not-flower": 10
   },
-  "scrollRounds": 10,
+  "scrollRounds": 1,
   "settled": true,
   "shop": "Good Daze Dispensary",
   "status": "ok",
@@ -2945,6 +2954,10 @@
   "landedOn": "https://www.piffords.online/browse/flower",
   "licence": "OCM-CAURD-25-000246",
   "menuLink": "found",
+  "offersDismissed": [
+   "Dismiss",
+   "Dismiss"
+  ],
   "payloads": 7,
   "productsSeen": 0,
   "rejected": {},
@@ -2969,7 +2982,7 @@
   "pagedTo": 60,
   "pagesAsked": 3,
   "pagingStoppedBecause": "answer-had-no-products",
-  "payloads": 32,
+  "payloads": 33,
   "productsSeen": 60,
   "rejected": {},
   "scrollRounds": 1,
@@ -3010,7 +3023,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000256": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://www.thegoatdispensary.com/",
@@ -3026,37 +3038,37 @@
  "OCM-CAURD-25-000263": {
   "ageGate": true,
   "categories": [
-   "all-in-one vaporizers (28)",
-   "gummies edible (24)",
-   "whole-flower flower (23)",
-   "drinks edible (9)",
+   "all-in-one vaporizers (53)",
+   "whole-flower flower (18)",
+   "gummies edible (17)",
+   "cartridges vaporizers (10)",
    "concentrates-oil concentrate (9)",
    "flower (8)",
-   "cartridges vaporizers (8)",
-   "singles pre-rolls (7)"
+   "drinks edible (7)",
+   "hash concentrate (5)"
   ],
-  "declaredTotal": 33,
+  "declaredTotal": 62,
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 29,
+  "flower": 23,
   "landedOn": "https://dutchie.com/dispensary/big-city-flavors-dispensary",
   "licence": "OCM-CAURD-25-000263",
   "menuLink": "found",
   "pagedFrom": 25,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 33,
-  "pagedTo": 33,
-  "pagesAsked": 1,
+  "pagedQueryProducts": 62,
+  "pagedTo": 62,
+  "pagesAsked": 2,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 29,
-  "productsSeen": 156,
+  "payloads": 27,
+  "productsSeen": 160,
   "rejected": {
-   "category-not-flower": 97,
+   "category-not-flower": 108,
    "sameStrainAnotherSize": 7,
-   "title-not-flower": 23
+   "title-not-flower": 22
   },
   "retried": true,
   "scrollRounds": 1,
@@ -3066,22 +3078,22 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000265": {
-  "ageGate": false,
+  "ageGate": true,
   "categories": [
-   "a33100a37ffb11cc flower flower flower (58)"
+   "a33100a37ffb11cc flower flower flower (57)"
   ],
-  "flower": 43,
+  "flower": 42,
   "landedOn": "https://budega.nyc/shop/categories/flower",
   "licence": "OCM-CAURD-25-000265",
   "menuLink": "found",
   "pagedFrom": 20,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 58,
-  "pagedTo": 58,
+  "pagedQueryProducts": 57,
+  "pagedTo": 57,
   "pagesAsked": 3,
   "pagingStoppedBecause": "answer-had-no-products",
-  "payloads": 25,
-  "productsSeen": 58,
+  "payloads": 28,
+  "productsSeen": 57,
   "rejected": {
    "sameStrainAnotherSize": 4,
    "title-not-flower": 11
@@ -3109,7 +3121,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000268": {
-  "ageGate": false,
   "categories": [
    "flower regular buds (234)",
    "flower (117)",
@@ -3142,7 +3153,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000270": {
-  "ageGate": false,
   "categories": [],
   "firstAttempt": {
    "menuLink": "found",
@@ -3164,34 +3174,50 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000271": {
-  "ageGate": false,
-  "categories": [],
-  "flower": 0,
-  "landedOn": "https://www.thefloweryny.com/welcome?r=%2Fshop%2Fcategory%2Fflower",
+  "ageGate": true,
+  "categories": [
+   "flower whole flower (100)",
+   "edibles gummies (15)",
+   "flower premium (15)",
+   "flower small buds (12)",
+   "flower default (9)",
+   "topicals balms (8)",
+   "tinctures unflavored (7)",
+   "flower pre ground (6)"
+  ],
+  "declaredTotal": 52,
+  "flower": 46,
+  "landedOn": "https://www.thefloweryny.com/shop/category/flower",
   "licence": "OCM-CAURD-25-000271",
   "menuLink": "found",
-  "payloads": 12,
-  "productsSeen": 0,
-  "rejected": {},
+  "pagedQueryIsPageable": false,
+  "pagedQueryProducts": 50,
+  "pagingStoppedBecause": "no-page-in-request",
+  "payloads": 77,
+  "productsSeen": 200,
+  "rejected": {
+   "category-not-flower": 29,
+   "sameStrainAnotherSize": 96,
+   "title-not-flower": 29
+  },
   "scrollRounds": 1,
   "settled": true,
   "shop": "The Flowery",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000274": {
-  "ageGate": false,
   "categories": [
    "vape (68)",
-   "pre-roll (64)",
-   "flower (56)",
-   "edibles (46)",
+   "pre-roll (62)",
+   "flower (58)",
+   "edibles (42)",
    "concentrates (24)",
-   "beverage (16)",
+   "beverage (20)",
    "topicals (8)",
    "cbd (8)"
   ],
-  "flower": 21,
+  "flower": 23,
   "landedOn": "https://erudito.nyc/store/brooklyn/",
   "licence": "OCM-CAURD-25-000274",
   "menuLink": "found",
@@ -3201,8 +3227,8 @@
   "payloads": 37,
   "productsSeen": 294,
   "rejected": {
-   "category-not-flower": 168,
-   "sameStrainAnotherSize": 27,
+   "category-not-flower": 162,
+   "sameStrainAnotherSize": 31,
    "title-not-flower": 78
   },
   "scrollRounds": 2,
@@ -3212,7 +3238,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000275": {
-  "ageGate": false,
   "categories": [
    "flower (33)"
   ],
@@ -3223,7 +3248,7 @@
   "pagedQueryIsPageable": false,
   "pagedQueryProducts": 33,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 39,
+  "payloads": 40,
   "productsSeen": 33,
   "rejected": {
    "flower-no-size": 1,
@@ -3236,18 +3261,22 @@
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-25-000279": {
-  "ageGate": false,
   "categories": [
    "premium flower (36)",
    "whole-flower flower (19)",
    "flower (19)",
-   "disposables vaporizers (12)",
+   "disposables vaporizers (13)",
    "cartridges vaporizers (9)",
-   "pods vaporizers (6)",
+   "gummies edible (6)",
    "rosin concentrate (6)",
-   "gummies edible (5)"
+   "pods vaporizers (5)"
   ],
   "declaredTotal": 79,
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
   "flower": 75,
   "landedOn": "https://cannafamilynyc.com/shop/",
   "licence": "OCM-CAURD-25-000279",
@@ -3258,13 +3287,14 @@
   "pagedTo": 79,
   "pagesAsked": 3,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 45,
-  "productsSeen": 152,
+  "payloads": 44,
+  "productsSeen": 153,
   "rejected": {
-   "category-not-flower": 50,
+   "category-not-flower": 49,
    "sameStrainAnotherSize": 7,
-   "title-not-flower": 20
+   "title-not-flower": 22
   },
+  "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "Cannafamily Dispensary",
@@ -3272,24 +3302,20 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000281": {
-  "ageGate": false,
   "categories": [
-   "vaporizers disposables vaporizers (2)",
-   "edibles candies edibles (1)",
-   "edibles none edibles (1)"
+   "edibles candies edibles (12)"
   ],
   "flower": 0,
   "landedOn": "https://flynnstoned.com/categories/flower/?category=flower",
   "licence": "OCM-CAURD-25-000281",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 2,
+  "pagedQueryProducts": 12,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 35,
-  "productsSeen": 4,
+  "payloads": 25,
+  "productsSeen": 12,
   "rejected": {
-   "category-not-flower": 3,
-   "title-not-flower": 1
+   "category-not-flower": 12
   },
   "scrollRounds": 1,
   "settled": true,
@@ -3298,29 +3324,48 @@
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-25-000282": {
-  "ageGate": false,
-  "categories": [],
-  "flower": 0,
-  "landedOn": "https://www.thefloweryny.com/welcome?r=%2Fshop%2Fcategory%2Fflower",
+  "ageGate": true,
+  "categories": [
+   "flower whole flower (100)",
+   "edibles gummies (15)",
+   "flower premium (15)",
+   "flower small buds (12)",
+   "flower default (9)",
+   "topicals balms (8)",
+   "tinctures unflavored (7)",
+   "flower pre ground (6)"
+  ],
+  "declaredTotal": 43,
+  "flower": 46,
+  "landedOn": "https://www.thefloweryny.com/shop/category/flower",
   "licence": "OCM-CAURD-25-000282",
   "menuLink": "found",
-  "payloads": 12,
-  "productsSeen": 0,
-  "rejected": {},
+  "pagedQueryIsPageable": false,
+  "pagedQueryProducts": 50,
+  "pagingStoppedBecause": "read-everything-declared",
+  "payloads": 76,
+  "productsSeen": 200,
+  "rejected": {
+   "category-not-flower": 29,
+   "sameStrainAnotherSize": 96,
+   "title-not-flower": 29
+  },
   "scrollRounds": 1,
   "settled": true,
   "shop": "The Flowery",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000284": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://chromeflwrs.com/categories/flower/?category=flower",
   "licence": "OCM-CAURD-25-000284",
   "menuLink": "found",
-  "payloads": 12,
+  "offersDismissed": [
+   "close"
+  ],
+  "payloads": 16,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 3,
@@ -3330,43 +3375,60 @@
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-25-000287": {
-  "ageGate": false,
-  "categories": [],
-  "flower": 0,
-  "landedOn": "https://www.thefloweryny.com/welcome?r=%2Fshop%2Fcategory%2Fflower",
+  "ageGate": true,
+  "categories": [
+   "flower whole flower (100)",
+   "edibles gummies (15)",
+   "flower premium (15)",
+   "flower small buds (12)",
+   "flower default (9)",
+   "topicals balms (8)",
+   "tinctures unflavored (7)",
+   "flower pre ground (6)"
+  ],
+  "declaredTotal": 43,
+  "flower": 46,
+  "landedOn": "https://www.thefloweryny.com/shop/category/flower",
   "licence": "OCM-CAURD-25-000287",
   "menuLink": "found",
-  "payloads": 12,
-  "productsSeen": 0,
-  "rejected": {},
+  "pagedQueryIsPageable": false,
+  "pagedQueryProducts": 50,
+  "pagingStoppedBecause": "read-everything-declared",
+  "payloads": 76,
+  "productsSeen": 200,
+  "rejected": {
+   "category-not-flower": 29,
+   "sameStrainAnotherSize": 96,
+   "title-not-flower": 29
+  },
   "scrollRounds": 1,
   "settled": true,
   "shop": "THE FLOWERY",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000288": {
   "ageGate": true,
   "categories": [
-   "flower (129)",
+   "flower (126)",
    "pre-ground flower (6)",
    "premium flower (3)",
    "whole-flower flower (3)",
    "small-buds flower (2)"
   ],
-  "declaredTotal": 143,
-  "flower": 131,
+  "declaredTotal": 140,
+  "flower": 128,
   "landedOn": "https://strainsforlife.com/stores/strains-for-life-corp/products/flower",
   "licence": "OCM-CAURD-25-000288",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 143,
-  "pagedTo": 143,
+  "pagedQueryProducts": 140,
+  "pagedTo": 140,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 28,
-  "productsSeen": 143,
+  "payloads": 25,
+  "productsSeen": 140,
   "rejected": {
    "sameStrainAnotherSize": 3,
    "title-not-flower": 9
@@ -3378,16 +3440,15 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000290": {
-  "ageGate": false,
   "categories": [
    "premium flower (24)",
    "whole-flower flower (23)",
-   "all-in-one vaporizers (17)",
-   "gummies edible (14)",
+   "all-in-one vaporizers (16)",
+   "gummies edible (13)",
    "smalls-popcorn flower (12)",
+   "cartridges vaporizers (5)",
    "chocolates edible (5)",
-   "bulk-flower flower (4)",
-   "small-buds flower (4)"
+   "live-resin concentrate (4)"
   ],
   "declaredTotal": 70,
   "flower": 67,
@@ -3400,13 +3461,13 @@
   "pagedTo": 70,
   "pagesAsked": 2,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 41,
+  "payloads": 42,
   "productsSeen": 126,
   "rejected": {
-   "category-not-flower": 35,
-   "title-not-flower": 24
+   "category-not-flower": 34,
+   "title-not-flower": 25
   },
-  "scrollRounds": 2,
+  "scrollRounds": 1,
   "settled": true,
   "shop": "Lighthouse Cannabis",
   "status": "ok",
@@ -3415,17 +3476,17 @@
  "OCM-CAURD-25-000291": {
   "ageGate": true,
   "categories": [
-   "flower regular (38)",
+   "flower regular (33)",
    "edibles regular (1)",
    "merch regular (1)"
   ],
-  "flower": 38,
-  "jsonApiProducts": 40,
+  "flower": 33,
+  "jsonApiProducts": 35,
   "landedOn": "https://www.nycbud.com/shop/queens/categories/flower/?order=-inserted_at",
   "licence": "OCM-CAURD-25-000291",
   "menuLink": "found",
-  "payloads": 40,
-  "productsSeen": 40,
+  "payloads": 37,
+  "productsSeen": 35,
   "rejected": {
    "category-not-flower": 1,
    "title-not-flower": 1
@@ -3437,7 +3498,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000292": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://celestialherbs.dispensary.shop/rec/flower/nb/k3w",
@@ -3455,26 +3515,26 @@
  "OCM-CAURD-25-000294": {
   "ageGate": true,
   "categories": [
-   "flower (186)",
+   "flower (179)",
    "pre-ground flower (12)",
+   "whole-flower flower (6)",
    "small-buds flower (5)",
-   "whole-flower flower (3)",
-   "infused-buds flower (1)",
-   "premium flower (1)"
+   "premium flower (3)",
+   "infused-buds flower (1)"
   ],
-  "declaredTotal": 183,
-  "flower": 172,
+  "declaredTotal": 181,
+  "flower": 170,
   "landedOn": "https://terpbrosnyc.com/stores/terp-bros-astoria/products/flower",
   "licence": "OCM-CAURD-25-000294",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 183,
-  "pagedTo": 183,
+  "pagedQueryProducts": 181,
+  "pagedTo": 181,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 31,
-  "productsSeen": 208,
+  "payloads": 30,
+  "productsSeen": 206,
   "rejected": {
    "sameStrainAnotherSize": 18,
    "title-not-flower": 18
@@ -3486,12 +3546,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000296": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://dagmarcannabis.com/categories/flower/?category=flower",
   "licence": "OCM-CAURD-25-000296",
   "menuLink": "found",
+  "offersDismissed": [
+   "Close"
+  ],
   "payloads": 12,
   "productsSeen": 0,
   "rejected": {},
@@ -3507,11 +3569,11 @@
    "flower whole_flower (135)",
    "pre_rolls infused_pre_roll_packs (10)",
    "edibles gummies (8)",
-   "pre_rolls packs (6)",
+   "vaporizers cartridges (6)",
+   "vaporizers disposables (6)",
    "accessories batteries (6)",
    "accessories papers_rolling_supplies (6)",
-   "vaporizers cartridges (6)",
-   "vaporizers disposables (6)"
+   "concentrates badder (6)"
   ],
   "flower": 93,
   "landedOn": "https://bxbuddiez.com/categories/flower/?pagination=1&sort=NAME_ASC&retailer_id=e68d3af5-4e4a-4c19-90b7-05b995eddbc0&menu_type=RECREATIONAL&collection_type=PICKUP&categories=FLOWER",
@@ -3534,20 +3596,19 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000301": {
-  "ageGate": false,
   "categories": [
-   "flower (96)",
+   "flower (95)",
    "infused flower (1)"
   ],
-  "flower": 92,
+  "flower": 91,
   "landedOn": "https://handinbush.com/store/brooklyn/category/flower/",
   "licence": "OCM-CAURD-25-000301",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 97,
+  "pagedQueryProducts": 96,
   "pagingStoppedBecause": "no-page-in-request",
   "payloads": 18,
-  "productsSeen": 97,
+  "productsSeen": 96,
   "rejected": {
    "flower-no-size": 1,
    "sameStrainAnotherSize": 1,
@@ -3566,7 +3627,7 @@
   "landedOn": "https://rezidueny.com/shop/flower",
   "licence": "OCM-CAURD-25-000303",
   "menuLink": "found",
-  "payloads": 2,
+  "payloads": 1,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 2,
@@ -3597,7 +3658,7 @@
   "pagedTo": 213,
   "pagesAsked": 2,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 36,
+  "payloads": 35,
   "productsSeen": 238,
   "rejected": {
    "sameStrainAnotherSize": 23,
@@ -3614,30 +3675,30 @@
   "ageGate": true,
   "categories": [
    "flower pre-packaged flower eighth (50)",
-   "flower pre-packaged flower half ounce (8)",
-   "flower pre-packaged flower full ounce (4)",
+   "flower pre-packaged flower half ounce (7)",
    "flower pre-packaged flower quarter ounce (3)",
    "flower infused pre-packaged flower half  (3)",
+   "flower pre-packaged flower full ounce (3)",
    "flower pre-ground flower half ounce (3)",
    "flower pre-packaged flower dime (2)",
    "flower pre-ground flower quarter ounce (1)"
   ],
-  "declaredTotal": 74,
-  "flower": 64,
+  "declaredTotal": 73,
+  "flower": 63,
   "landedOn": "https://shop.flowerdaddy.nyc/newyork/menu/flower-3325",
   "licence": "OCM-CAURD-25-000305",
   "menuLink": "found",
   "pagedFrom": 24,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 74,
-  "pagedTo": 74,
+  "pagedQueryProducts": 72,
+  "pagedTo": 72,
   "pagesAsked": 3,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 20,
-  "productsSeen": 74,
+  "pagingStoppedBecause": "answer-had-no-products",
+  "payloads": 21,
+  "productsSeen": 72,
   "rejected": {
    "category-not-flower": 3,
-   "sameStrainAnotherSize": 3,
+   "sameStrainAnotherSize": 2,
    "title-not-flower": 4
   },
   "scrollRounds": 1,
@@ -3647,7 +3708,6 @@
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-25-000308": {
-  "ageGate": false,
   "categories": [
    "flower (139)",
    "prerolls (27)",
@@ -3665,12 +3725,12 @@
   "pagedQueryIsPageable": false,
   "pagedQueryProducts": 164,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 34,
+  "payloads": 33,
   "productsSeen": 313,
   "rejected": {
-   "category-not-flower": 95,
+   "category-not-flower": 94,
    "sameStrainAnotherSize": 21,
-   "title-not-flower": 98
+   "title-not-flower": 99
   },
   "scrollRounds": 1,
   "settled": true,
@@ -3685,7 +3745,7 @@
   "landedOn": "https://flowerpowerdispensers.com/shop",
   "licence": "OCM-CAURD-25-000309",
   "menuLink": "found",
-  "payloads": 34,
+  "payloads": 33,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
@@ -3695,21 +3755,23 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000310": {
-  "ageGate": false,
   "categories": [
-   "vaporizers disposables vaporizers (10)"
+   "pre_rolls infused pre_rolls (8)",
+   "edibles candies edibles (5)",
+   "pre_rolls infused_packs pre_rolls (3)",
+   "vaporizers disposables vaporizers (1)"
   ],
   "flower": 0,
   "landedOn": "https://flynnstoned.com/categories/flower/?category=flower",
   "licence": "OCM-CAURD-25-000310",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 7,
+  "pagedQueryProducts": 12,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 23,
-  "productsSeen": 10,
+  "payloads": 24,
+  "productsSeen": 17,
   "rejected": {
-   "category-not-flower": 10
+   "category-not-flower": 17
   },
   "scrollRounds": 1,
   "settled": true,
@@ -3718,7 +3780,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000311": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://indoortreez.com/",
@@ -3746,7 +3807,7 @@
   "pagedTo": 32,
   "pagesAsked": 4,
   "pagingStoppedBecause": "answer-had-no-products",
-  "payloads": 29,
+  "payloads": 27,
   "productsSeen": 32,
   "rejected": {
    "title-not-flower": 2
@@ -3758,7 +3819,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000316": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://www.sofaclub.nyc/shop/Flower",
@@ -3774,7 +3834,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000317": {
-  "ageGate": false,
   "categories": [],
   "firstAttempt": {
    "menuLink": "found",
@@ -3796,7 +3855,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000319": {
-  "ageGate": false,
   "categories": [
    "flower (23)"
   ],
@@ -3822,33 +3880,28 @@
   "ageGate": true,
   "categories": [
    "flowers (204)",
-   "preroll (195)",
-   "vape pens (143)",
+   "preroll (193)",
+   "vape pens (142)",
    "edibles (112)",
    "drinks (38)",
    "accessories (35)",
    "wax (25)",
    "combo deals (7)"
   ],
-  "declaredTotal": 195,
+  "declaredTotal": 193,
   "flower": 89,
   "landedOn": "https://www.thehibraryclub.com/?category=Flowers",
   "licence": "OCM-CAURD-25-000321",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 667,
+  "pagedQueryProducts": 664,
   "pagingStoppedBecause": "read-everything-declared",
   "payloads": 14,
-  "productsSeen": 809,
+  "productsSeen": 766,
   "rejected": {
-   "category-not-flower": 219,
-   "flower-no-size": 4,
-   "no-category": 24,
+   "category-not-flower": 218,
    "sameStrainAnotherSize": 89,
-   "title-not-flower": 384
-  },
-  "rejectedShape": {
-   "no-category": "__typename,count,id,name,subcategory"
+   "title-not-flower": 370
   },
   "scrollRounds": 1,
   "settled": true,
@@ -3858,41 +3911,27 @@
  },
  "OCM-CAURD-25-000322": {
   "ageGate": true,
-  "categories": [
-   "gummies edible (42)",
-   "premium flower (15)",
-   "all-in-one vaporizers (14)",
-   "drinks edible (9)",
-   "live-resin concentrate (7)",
-   "disposables vaporizers (6)",
-   "chocolates edible (6)",
-   "sugar concentrate (4)"
-  ],
-  "declaredTotal": 58,
-  "flower": 23,
+  "categories": [],
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
   "landedOn": "https://hudsonhaze.com/menu",
   "licence": "OCM-CAURD-25-000322",
   "menuLink": "found",
-  "pagedFrom": 25,
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 58,
-  "pagedTo": 58,
-  "pagesAsked": 2,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 27,
-  "productsSeen": 125,
-  "rejected": {
-   "category-not-flower": 59,
-   "title-not-flower": 43
-  },
+  "payloads": 1,
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "HUDSON HAZeLLC",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-25-000324": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://victorydispensaryny.com/collection/flower",
@@ -3919,7 +3958,7 @@
   "landedOn": "https://shop.bkurbanbud.com/shop/categories/flower/",
   "licence": "OCM-CAURD-26-000325",
   "menuLink": "found",
-  "payloads": 27,
+  "payloads": 26,
   "productsSeen": 58,
   "rejected": {
    "sameStrainAnotherSize": 2,
@@ -3934,17 +3973,17 @@
  "OCM-CAURD-26-000329": {
   "ageGate": true,
   "categories": [
-   "flowers regular (140)",
+   "flowers regular (137)",
    "tinctures regular (2)",
    "topicals regular (1)"
   ],
-  "flower": 105,
-  "jsonApiProducts": 143,
+  "flower": 102,
+  "jsonApiProducts": 140,
   "landedOn": "https://holduprollup.com/menu/categories/flowers/",
   "licence": "OCM-CAURD-26-000329",
   "menuLink": "found",
   "payloads": 32,
-  "productsSeen": 143,
+  "productsSeen": 140,
   "rejected": {
    "category-not-flower": 3,
    "sameStrainAnotherSize": 4,
@@ -3957,29 +3996,29 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-26-000330": {
-  "ageGate": false,
   "categories": [
-   "flower (141)",
-   "whole-flower flower (70)",
-   "premium flower (55)",
+   "flower (142)",
+   "whole-flower flower (69)",
+   "premium flower (58)",
+   "small-buds flower (1)",
    "packs flower (1)"
   ],
-  "declaredTotal": 242,
-  "flower": 236,
+  "declaredTotal": 246,
+  "flower": 241,
   "landedOn": "https://hiinyc.com/stores/hii-williamsburg/products/flower",
   "licence": "OCM-CAURD-26-000330",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 242,
-  "pagedTo": 242,
+  "pagedQueryProducts": 246,
+  "pagedTo": 246,
   "pagesAsked": 2,
   "pagingStoppedBecause": "read-everything-declared",
   "payloads": 26,
-  "productsSeen": 267,
+  "productsSeen": 271,
   "rejected": {
    "sameStrainAnotherSize": 29,
-   "title-not-flower": 2
+   "title-not-flower": 1
   },
   "scrollRounds": 1,
   "settled": true,
@@ -3998,7 +4037,7 @@
   "landedOn": "https://caldwellsny.com/menu/categories/flower/",
   "licence": "OCM-CAURD-26-000331",
   "menuLink": "found",
-  "payloads": 36,
+  "payloads": 37,
   "productsSeen": 85,
   "rejected": {
    "title-not-flower": 4
@@ -4010,22 +4049,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-26-000332": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
-  "foundMenuByGuess": true,
-  "guessedMenuPaths": [
-   "/menu/flower",
-   "/shop/flower"
-  ],
-  "landedOn": "https://thebridgecannabis.com/menu/flower",
+  "landedOn": "https://thebridgecannabis.com/",
   "licence": "OCM-CAURD-26-000332",
-  "menuLink": "found",
+  "menuLink": "none",
   "payloads": 0,
   "productsSeen": 0,
   "rejected": {},
-  "scrollRounds": 1,
-  "settled": true,
   "shop": "The Bridge A Cannabis Experience",
   "status": "no-products",
   "usedKnownEndpoint": false
@@ -4033,23 +4064,21 @@
  "OCM-CAURD-26-000333": {
   "ageGate": true,
   "categories": [
-   "c1ed98ec68e5bf63 flower flower flower (26)"
+   "c1ed98ec68e5bf63 flower flower flower (27)"
   ],
-  "flower": 25,
+  "flower": 27,
   "landedOn": "https://upliftroyal.com/shop/",
   "licence": "OCM-CAURD-26-000333",
   "menuLink": "found",
   "pagedFrom": 10,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 26,
-  "pagedTo": 26,
+  "pagedQueryProducts": 27,
+  "pagedTo": 27,
   "pagesAsked": 3,
   "pagingStoppedBecause": "answer-had-no-products",
   "payloads": 33,
-  "productsSeen": 26,
-  "rejected": {
-   "title-not-flower": 1
-  },
+  "productsSeen": 27,
+  "rejected": {},
   "scrollRounds": 1,
   "settled": true,
   "shop": "Uplift Royal LLC",
@@ -4057,25 +4086,20 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-26-000334": {
-  "ageGate": false,
   "categories": [
-   "edibles candies edibles (11)",
-   "flower flower flower (5)",
-   "edibles none edibles (1)"
+   "edibles candies edibles (24)"
   ],
   "flower": 0,
   "landedOn": "https://flynnstoned.com/categories/flower/?category=flower",
   "licence": "OCM-CAURD-26-000334",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 12,
+  "pagedQueryProducts": 24,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 29,
-  "productsSeen": 17,
+  "payloads": 32,
+  "productsSeen": 24,
   "rejected": {
-   "category-not-flower": 11,
-   "flower-no-size": 5,
-   "title-not-flower": 1
+   "category-not-flower": 24
   },
   "scrollRounds": 1,
   "settled": true,
@@ -4084,7 +4108,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-26-000335": {
-  "ageGate": false,
   "categories": [
    "flower (22)",
    "flower > pre-roll (20)",
@@ -4119,30 +4142,20 @@
  "OCM-CAURD-26-000336": {
   "ageGate": true,
   "categories": [
-   "whole-flower flower (46)",
-   "gummies edible (35)",
-   "all-in-one vaporizers (17)",
-   "infused-pre-roll-packs pre-rolls (10)",
+   "whole-flower flower (25)",
    "small-buds flower (2)"
   ],
-  "declaredTotal": 35,
-  "flower": 25,
+  "declaredTotal": 27,
+  "flower": 27,
   "landedOn": "https://dutchie.com/dispensary/emerald-dispensary-carroll-gardens/products/flower",
   "licence": "OCM-CAURD-26-000336",
   "menuLink": "found",
-  "pagedFrom": 25,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 35,
-  "pagedTo": 35,
-  "pagesAsked": 1,
+  "pagedQueryProducts": 27,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 53,
-  "productsSeen": 110,
-  "rejected": {
-   "category-not-flower": 29,
-   "sameStrainAnotherSize": 23,
-   "title-not-flower": 33
-  },
+  "payloads": 25,
+  "productsSeen": 27,
+  "rejected": {},
   "scrollRounds": 1,
   "settled": true,
   "shop": "Emerald Dispensary Carroll Gardens",
@@ -4150,21 +4163,21 @@
   "usedKnownEndpoint": true
  },
  "OCM-CAURD-26-000339": {
-  "ageGate": false,
   "categories": [
-   "edibles candies edibles (26)"
+   "pre_rolls infused pre_rolls (12)",
+   "pre_rolls infused_packs pre_rolls (6)"
   ],
   "flower": 0,
   "landedOn": "https://flynnstoned.com/categories/flower/?category=flower",
   "licence": "OCM-CAURD-26-000339",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 26,
+  "pagedQueryProducts": 18,
   "pagingStoppedBecause": "no-page-in-request",
   "payloads": 23,
-  "productsSeen": 26,
+  "productsSeen": 18,
   "rejected": {
-   "category-not-flower": 26
+   "category-not-flower": 18
   },
   "scrollRounds": 1,
   "settled": true,
@@ -4173,34 +4186,33 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-26-000340": {
-  "ageGate": false,
   "categories": [
-   "flower (45)",
-   "singles pre-rolls (32)",
-   "gummies edible (31)",
-   "drinks edible (25)",
-   "whole-flower flower (12)",
-   "chocolates edible (9)",
-   "all-in-one vaporizers (8)",
-   "live-rosin-gummies edible (6)"
+   "flower (32)",
+   "gummies edible (24)",
+   "drinks edible (19)",
+   "singles pre-rolls (9)",
+   "whole-flower flower (8)",
+   "chocolates edible (5)",
+   "dissolvables edible (4)",
+   "live-rosin-gummies edible (3)"
   ],
-  "declaredTotal": 147,
-  "flower": 22,
+  "declaredTotal": 59,
+  "flower": 21,
   "landedOn": "https://mellotymes.com/menu/",
   "licence": "OCM-CAURD-26-000340",
   "menuLink": "found",
   "pagedFrom": 25,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 147,
-  "pagedTo": 147,
-  "pagesAsked": 5,
+  "pagedQueryProducts": 59,
+  "pagedTo": 59,
+  "pagesAsked": 2,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 28,
-  "productsSeen": 207,
+  "payloads": 25,
+  "productsSeen": 117,
   "rejected": {
-   "category-not-flower": 58,
-   "sameStrainAnotherSize": 35,
-   "title-not-flower": 92
+   "category-not-flower": 33,
+   "sameStrainAnotherSize": 19,
+   "title-not-flower": 44
   },
   "scrollRounds": 1,
   "settled": true,
@@ -4209,7 +4221,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-26-000341": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "foundMenuByGuess": true,
@@ -4220,21 +4231,23 @@
   "landedOn": "https://www.theyetti.club/age-gate?returnUrl=%2Fmenu%2Fflower",
   "licence": "OCM-CAURD-26-000341",
   "menuLink": "found",
-  "payloads": 2,
+  "parkedOn": "/age-gate",
+  "payloads": 3,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
   "settled": true,
   "shop": "The Yetti Club Corp",
   "status": "no-products",
-  "usedKnownEndpoint": false
+  "usedKnownEndpoint": false,
+  "wentOnwardTo": "/menu/flower"
  },
  "OCM-CAURD-26-000343": {
   "ageGate": true,
   "categories": [
    "vape regular (10)",
-   "pre-roll pack regular (10)",
    "pipes & bongs regular (10)",
+   "pre-roll pack regular (10)",
    "pre-roll regular (10)",
    "tincture regular (5)",
    "beverages regular (2)",
@@ -4261,22 +4274,22 @@
  "OCM-CAURD-26-000349": {
   "ageGate": true,
   "categories": [
-   "e31dfabb03d1afc0 flower flower flower (62)"
+   "e31dfabb03d1afc0 flower flower flower (60)"
   ],
-  "flower": 55,
+  "flower": 54,
   "landedOn": "https://junglekingdomflower.com/order/categories/flower",
   "licence": "OCM-CAURD-26-000349",
   "menuLink": "found",
   "pagedFrom": 20,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 62,
-  "pagedTo": 62,
-  "pagesAsked": 4,
+  "pagedQueryProducts": 60,
+  "pagedTo": 60,
+  "pagesAsked": 3,
   "pagingStoppedBecause": "answer-had-no-products",
-  "payloads": 18,
-  "productsSeen": 62,
+  "payloads": 17,
+  "productsSeen": 60,
   "rejected": {
-   "title-not-flower": 7
+   "title-not-flower": 6
   },
   "scrollRounds": 1,
   "settled": true,
@@ -4285,25 +4298,39 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-26-000350": {
-  "ageGate": false,
-  "categories": [],
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 0,
-   "status": "no-products"
-  },
-  "flower": 0,
+  "categories": [
+   "disposables vaporizers (50)",
+   "premium flower (32)",
+   "gummies edible (28)",
+   "flower (16)",
+   "drinks edible (10)",
+   "edible (8)",
+   "hash concentrate (8)",
+   "live-resin concentrate (6)"
+  ],
+  "declaredTotal": 91,
+  "flower": 24,
   "landedOn": "https://www.goodvibes.nyc/shop",
   "licence": "OCM-CAURD-26-000350",
   "menuLink": "found",
-  "payloads": 8,
-  "productsSeen": 0,
-  "rejected": {},
-  "retried": true,
+  "pagedFrom": 50,
+  "pagedQueryIsPageable": true,
+  "pagedQueryProducts": 50,
+  "pagedTo": 50,
+  "pagesAsked": 1,
+  "pagingRefused": "Failed to fetch",
+  "pagingStoppedBecause": "refused",
+  "payloads": 49,
+  "productsSeen": 174,
+  "rejected": {
+   "category-not-flower": 66,
+   "sameStrainAnotherSize": 24,
+   "title-not-flower": 60
+  },
   "scrollRounds": 1,
   "settled": true,
   "shop": "GOOD VIBES NYC, inc",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-26-000351": {
@@ -4323,7 +4350,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-CAURD-26-000359": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://www.sofaclub.nyc/shop/Flower",
@@ -4339,7 +4365,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-MICR-24-000030": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://www.gaeas.garden/age-gate?returnUrl=%2F",
@@ -4355,24 +4380,16 @@
  "OCM-MICR-24-000068": {
   "ageGate": true,
   "categories": [
-   "flower regular (20)",
-   "pre-rolls regular (14)",
-   "edible regular (13)",
-   "vape pens regular (8)",
-   "beverages regular (5)",
-   "accessories regular (2)"
+   "flower regular (20)"
   ],
   "flower": 20,
-  "jsonApiProducts": 62,
+  "jsonApiProducts": 20,
   "landedOn": "https://qualityhigh.com/store/categories/flower/",
   "licence": "OCM-MICR-24-000068",
   "menuLink": "found",
-  "payloads": 33,
-  "productsSeen": 62,
-  "rejected": {
-   "category-not-flower": 14,
-   "title-not-flower": 28
-  },
+  "payloads": 28,
+  "productsSeen": 20,
+  "rejected": {},
   "scrollRounds": 2,
   "settled": true,
   "shop": "Art of Flower Farm & Dispensary LLC",
@@ -4380,7 +4397,7 @@
   "usedKnownEndpoint": false
  },
  "OCM-MICR-24-000069": {
-  "ageGate": false,
+  "ageGate": true,
   "categories": [],
   "flower": 0,
   "landedOn": "https://www.hellskitchencannabis.co/",
@@ -4408,7 +4425,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-MICR-24-000186": {
-  "ageGate": false,
   "categories": [],
   "firstAttempt": {
    "menuLink": "found",
@@ -4419,7 +4435,7 @@
   "landedOn": "https://www.greenklubnyc.com/store",
   "licence": "OCM-MICR-24-000186",
   "menuLink": "found",
-  "payloads": 5,
+  "payloads": 6,
   "productsSeen": 0,
   "rejected": {},
   "retried": true,
@@ -4437,15 +4453,15 @@
   "licence": "OCM-MICR-24-000204",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 122,
+  "pagedQueryProducts": 110,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 19,
-  "productsSeen": 122,
+  "payloads": 21,
+  "productsSeen": 110,
   "rejected": {
-   "flower-no-size": 4,
-   "no-category": 96,
+   "flower-no-size": 2,
+   "no-category": 88,
    "sameStrainAnotherSize": 5,
-   "title-not-flower": 12
+   "title-not-flower": 10
   },
   "rejectedShape": {
    "no-category": "archivedAt,brand,cbdAmount,cbdAmountEach,cbdAmountRangeHigh,cbdAmountRangeLow,cbdUnit,createdAt,description,id,inStock,inventory,inventoryType,isActive,isCompliant,isFeatured,leaflyCategory,meta,name,options,organization"
@@ -4457,7 +4473,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-MICR-25-000223": {
-  "ageGate": false,
   "categories": [],
   "firstAttempt": {
    "menuLink": "found",
@@ -4479,7 +4494,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-MICR-25-000249": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://rustiksmokes.com/shop/",
@@ -4495,7 +4509,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000003": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://esh.us/products/flower/",
@@ -4516,69 +4529,46 @@
   "status": "error: page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://sageseed.com/\nCall log:\n  - navigating to \"https://sagesee"
  },
  "OCM-RETL-24-000008": {
-  "ageGate": false,
-  "categories": [
-   "flower (204)",
-   "premium flower (7)",
-   "infused-bud flower (1)"
-  ],
-  "declaredTotal": 187,
-  "flower": 177,
+  "ageGate": true,
+  "categories": [],
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
   "landedOn": "https://mybud420.com/shop/?dtche%5Bcategory%5D=flower",
   "licence": "OCM-RETL-24-000008",
   "menuLink": "found",
-  "pagedFrom": 100,
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 187,
-  "pagedTo": 187,
-  "pagesAsked": 1,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 32,
-  "productsSeen": 212,
-  "rejected": {
-   "sameStrainAnotherSize": 22,
-   "title-not-flower": 13
-  },
-  "scrollRounds": 1,
+  "payloads": 8,
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
+  "scrollRounds": 2,
   "settled": true,
   "shop": "My Bud 420 Inc.",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": true
  },
  "OCM-RETL-24-000011": {
-  "ageGate": false,
-  "categories": [
-   "gummies edible (30)",
-   "flower (26)",
-   "edible (25)",
-   "drinks edible (15)",
-   "disposables vaporizers (11)",
-   "chocolates edible (10)",
-   "vaporizers (4)",
-   "live-resin-gummies edible (4)"
-  ],
-  "declaredTotal": 84,
-  "flower": 22,
+  "categories": [],
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
   "landedOn": "https://www.qiscannabis.com/pages/shop-now",
   "licence": "OCM-RETL-24-000011",
   "menuLink": "found",
-  "pagedFrom": 25,
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 84,
-  "pagedTo": 84,
-  "pagesAsked": 3,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 40,
-  "productsSeen": 143,
-  "rejected": {
-   "category-not-flower": 72,
-   "sameStrainAnotherSize": 1,
-   "title-not-flower": 48
-  },
+  "payloads": 25,
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "OET INC.",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000014": {
@@ -4588,7 +4578,10 @@
   "landedOn": "https://transcendwps.com/26/products?category=100&sortField=popularity&sortValue=1&page=1&pageSize=12&searchValue=&csv=0&minPrice=7&maxPrice=133&scrollMode=off",
   "licence": "OCM-RETL-24-000014",
   "menuLink": "found",
-  "payloads": 37,
+  "offersDismissed": [
+   "close"
+  ],
+  "payloads": 38,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 2,
@@ -4598,13 +4591,13 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000016": {
-  "ageGate": false,
+  "ageGate": true,
   "categories": [],
   "flower": 0,
-  "landedOn": "https://shop.blueforestfarmsdispensary.com/",
+  "landedOn": "https://shop.blueforestfarmsdispensary.com/shop-cannabis-flower/",
   "licence": "OCM-RETL-24-000016",
   "menuLink": "found",
-  "payloads": 2,
+  "payloads": 4,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
@@ -4616,32 +4609,32 @@
  "OCM-RETL-24-000020": {
   "ageGate": true,
   "categories": [
-   "flower (130)",
+   "flower (129)",
+   "gummies edible (14)",
    "live-resin vaporizers (7)",
    "disposables vaporizers (7)",
+   "chocolates edible (6)",
    "cartridges vaporizers (6)",
    "whole-flower flower (5)",
-   "pre-ground flower (5)",
-   "small-buds flower (5)",
-   "accessories (4)"
+   "pre-ground flower (5)"
   ],
-  "declaredTotal": 112,
-  "flower": 99,
+  "declaredTotal": 113,
+  "flower": 100,
   "landedOn": "https://centralbudz.com/stores/yonkers-dream/products/flower",
   "licence": "OCM-RETL-24-000020",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 112,
-  "pagedTo": 112,
+  "pagedQueryProducts": 113,
+  "pagedTo": 113,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 39,
-  "productsSeen": 186,
+  "payloads": 49,
+  "productsSeen": 212,
   "rejected": {
-   "category-not-flower": 24,
+   "category-not-flower": 45,
    "sameStrainAnotherSize": 32,
-   "title-not-flower": 31
+   "title-not-flower": 35
   },
   "scrollRounds": 1,
   "settled": true,
@@ -4650,7 +4643,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000021": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "foundMenuByGuess": true,
@@ -4671,10 +4663,10 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000026": {
-  "ageGate": false,
+  "ageGate": true,
   "categories": [
-   "whole-flower flower (253)",
-   "flower (173)",
+   "whole-flower flower (254)",
+   "flower (172)",
    "pre-ground flower (34)",
    "premium flower (29)",
    "infused-buds flower (25)",
@@ -4693,7 +4685,7 @@
   "pagedTo": 526,
   "pagesAsked": 5,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 32,
+  "payloads": 31,
   "productsSeen": 551,
   "rejected": {
    "category-not-flower": 3,
@@ -4707,22 +4699,14 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000027": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
-  "foundMenuByGuess": true,
-  "guessedMenuPaths": [
-   "/menu/flower",
-   "/shop/flower"
-  ],
-  "landedOn": "https://ourthcshop.com/menu/flower",
+  "landedOn": "https://ourthcshop.com/",
   "licence": "OCM-RETL-24-000027",
-  "menuLink": "found",
+  "menuLink": "none",
   "payloads": 0,
   "productsSeen": 0,
   "rejected": {},
-  "scrollRounds": 1,
-  "settled": true,
   "shop": "Hudson Park Agency LLC",
   "status": "no-products",
   "usedKnownEndpoint": false
@@ -4740,7 +4724,7 @@
   "pagedQueryIsPageable": true,
   "pagedQueryProducts": 23,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 22,
+  "payloads": 24,
   "productsSeen": 23,
   "rejected": {
    "title-not-flower": 6
@@ -4752,7 +4736,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000033": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://ignyteny.com/",
@@ -4782,23 +4765,20 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000041": {
-  "ageGate": false,
   "categories": [
-   "edibles candies edibles (1)",
-   "edibles none edibles (1)"
+   "edibles candies edibles (12)"
   ],
   "flower": 0,
   "landedOn": "https://flynnstoned.com/categories/flower/?category=flower",
   "licence": "OCM-RETL-24-000041",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 2,
+  "pagedQueryProducts": 12,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 35,
-  "productsSeen": 2,
+  "payloads": 33,
+  "productsSeen": 12,
   "rejected": {
-   "category-not-flower": 1,
-   "title-not-flower": 1
+   "category-not-flower": 12
   },
   "scrollRounds": 1,
   "settled": true,
@@ -4807,63 +4787,49 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000047": {
-  "ageGate": true,
-  "categories": [
-   "whole-flower flower (28)",
-   "apparel (25)",
-   "singles pre-rolls (22)",
-   "packs pre-rolls (21)",
-   "gummies edible (19)",
-   "premium flower (13)",
-   "drinks edible (11)",
-   "papers-rolling-supplies accessories (7)"
-  ],
-  "declaredTotal": 29,
-  "flower": 28,
-  "landedOn": "https://dutchie.com/dispensary/fumi-dispensary/products/flower",
-  "licence": "OCM-RETL-24-000047",
-  "menuLink": "found",
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 29,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 56,
-  "productsSeen": 176,
-  "rejected": {
-   "category-not-flower": 62,
-   "sameStrainAnotherSize": 13,
-   "title-not-flower": 73
+  "categories": [],
+  "firstAttempt": {
+   "menuLink": "none",
+   "productsSeen": 0,
+   "status": "no-products"
   },
-  "scrollRounds": 1,
-  "settled": true,
+  "flower": 0,
+  "landedOn": "https://dutchie.com/dispensary/fumi-dispensary",
+  "licence": "OCM-RETL-24-000047",
+  "menuLink": "none",
+  "payloads": 0,
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
   "shop": "FUMI Dispensary LLC",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000048": {
   "ageGate": true,
   "categories": [
-   "whole-flower flower (107)",
+   "whole-flower flower (102)",
    "infused-buds flower (12)",
    "premium flower (10)",
-   "infused-shake flower (6)",
-   "pre-ground flower (5)"
+   "pre-ground flower (6)",
+   "infused-shake flower (6)"
   ],
-  "declaredTotal": 115,
-  "flower": 89,
+  "declaredTotal": 111,
+  "flower": 85,
   "landedOn": "https://midnightmoon.nyc/stores/midnight-moon/products/flower",
   "licence": "OCM-RETL-24-000048",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 115,
-  "pagedTo": 115,
+  "pagedQueryProducts": 111,
+  "pagedTo": 111,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 28,
-  "productsSeen": 140,
+  "payloads": 26,
+  "productsSeen": 136,
   "rejected": {
-   "sameStrainAnotherSize": 28,
-   "title-not-flower": 23
+   "sameStrainAnotherSize": 27,
+   "title-not-flower": 24
   },
   "scrollRounds": 1,
   "settled": true,
@@ -4872,7 +4838,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000051": {
-  "ageGate": false,
   "categories": [
    "flowers (50)"
   ],
@@ -4883,7 +4848,7 @@
   "pagedQueryIsPageable": false,
   "pagedQueryProducts": 50,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 28,
+  "payloads": 27,
   "productsSeen": 50,
   "rejected": {},
   "scrollRounds": 1,
@@ -4893,7 +4858,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000055": {
-  "ageGate": false,
   "categories": [
    "1b9f87dc130f1fa3 flower pre-pack pre-pac (357)",
    "1b9f87dc130f1fa3 flower infused infused (45)",
@@ -4938,44 +4902,53 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000063": {
-  "ageGate": false,
-  "categories": [],
+  "ageGate": true,
+  "categories": [
+   "apparel default (6)",
+   "accessories glassware (4)",
+   "topicals balms (1)",
+   "accessories grinders (1)"
+  ],
   "flower": 0,
   "landedOn": "https://budcityny.com/shop/flower/",
   "licence": "OCM-RETL-24-000063",
   "menuLink": "found",
-  "payloads": 8,
-  "productsSeen": 0,
-  "rejected": {},
-  "scrollRounds": 1,
+  "pagedQueryIsPageable": false,
+  "pagedQueryProducts": 12,
+  "pagingStoppedBecause": "no-page-in-request",
+  "payloads": 15,
+  "productsSeen": 12,
+  "rejected": {
+   "category-not-flower": 12
+  },
+  "scrollRounds": 2,
   "settled": true,
   "shop": "Bud City Cannabis LLC",
-  "status": "no-products",
+  "status": "no-flower",
   "usedKnownEndpoint": true
  },
  "OCM-RETL-24-000064": {
-  "ageGate": false,
   "categories": [
-   "whole-flower flower (183)",
+   "whole-flower flower (184)",
    "pre-ground flower (25)",
    "infused-buds flower (16)",
    "infused-bud flower (4)"
   ],
-  "declaredTotal": 203,
+  "declaredTotal": 204,
   "flower": 152,
   "landedOn": "https://greenflowerwellness.com/stores/green-flower-wellness-oakland-gardens/products/flower",
   "licence": "OCM-RETL-24-000064",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 203,
-  "pagedTo": 203,
+  "pagedQueryProducts": 204,
+  "pagedTo": 204,
   "pagesAsked": 2,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 28,
-  "productsSeen": 228,
+  "payloads": 26,
+  "productsSeen": 229,
   "rejected": {
-   "sameStrainAnotherSize": 30,
+   "sameStrainAnotherSize": 31,
    "title-not-flower": 46
   },
   "scrollRounds": 1,
@@ -4991,6 +4964,9 @@
   "landedOn": "https://cannabiscowboy.dispensary.shop/rec/search?category=Flower&title=Flower",
   "licence": "OCM-RETL-24-000068",
   "menuLink": "found",
+  "offersDismissed": [
+   "MAYBE LATER"
+  ],
   "payloads": 1,
   "productsSeen": 0,
   "rejected": {},
@@ -5001,7 +4977,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000070": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://goodcompanyshop.com/",
@@ -5025,7 +5000,7 @@
    "concentrates regular (2)",
    "tinctures regular (1)"
   ],
-  "flower": 119,
+  "flower": 120,
   "jsonApiProducts": 155,
   "landedOn": "https://happyaltaridgewood.com/menu/categories/flowers/",
   "licence": "OCM-RETL-24-000075",
@@ -5034,7 +5009,7 @@
   "productsSeen": 155,
   "rejected": {
    "category-not-flower": 3,
-   "sameStrainAnotherSize": 5,
+   "sameStrainAnotherSize": 4,
    "title-not-flower": 28
   },
   "scrollRounds": 9,
@@ -5060,7 +5035,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000077": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://ignyteny.com/",
@@ -5080,7 +5054,7 @@
   "landedOn": "https://herbarium.co/",
   "licence": "OCM-RETL-24-000078",
   "menuLink": "none",
-  "payloads": 27,
+  "payloads": 25,
   "productsSeen": 0,
   "rejected": {},
   "shop": "Caurd Wellness LLC",
@@ -5104,19 +5078,18 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000085": {
-  "ageGate": false,
   "categories": [
-   "flower (55)"
+   "flower (57)"
   ],
-  "flower": 42,
+  "flower": 44,
   "landedOn": "https://cloudninelcd.com/store/cloud-nine-main/category/flower/",
   "licence": "OCM-RETL-24-000085",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 55,
+  "pagedQueryProducts": 57,
   "pagingStoppedBecause": "no-page-in-request",
   "payloads": 17,
-  "productsSeen": 55,
+  "productsSeen": 57,
   "rejected": {
    "sameStrainAnotherSize": 11,
    "title-not-flower": 2
@@ -5129,59 +5102,45 @@
  },
  "OCM-RETL-24-000087": {
   "ageGate": true,
-  "categories": [
-   "flower (69)",
-   "whole-flower flower (62)",
-   "cartridges vaporizers (18)",
-   "all-in-one vaporizers (7)",
-   "bulk-flower flower (3)",
-   "pre-ground flower (2)",
-   "small-buds flower (2)",
-   "premium flower (2)"
-  ],
-  "declaredTotal": 116,
-  "flower": 107,
+  "categories": [],
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
   "landedOn": "https://cloud914.com/peekskill-dispensary-menu/?dtche%5Bcategory%5D=flower",
   "licence": "OCM-RETL-24-000087",
   "menuLink": "found",
-  "pagedFrom": 99,
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 116,
-  "pagedTo": 116,
-  "pagesAsked": 1,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 42,
-  "productsSeen": 166,
-  "rejected": {
-   "category-not-flower": 4,
-   "sameStrainAnotherSize": 24,
-   "title-not-flower": 31
-  },
+  "payloads": 0,
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "Cloud 914",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000088": {
   "ageGate": true,
   "categories": [
-   "e31dfabb03d1afc0 flower flower flower (62)"
+   "e31dfabb03d1afc0 flower flower flower (60)"
   ],
-  "flower": 55,
+  "flower": 54,
   "landedOn": "https://www.junglekingdomflower.com/order/categories/flower",
   "licence": "OCM-RETL-24-000088",
   "menuLink": "found",
   "pagedFrom": 20,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 62,
-  "pagedTo": 62,
-  "pagesAsked": 4,
+  "pagedQueryProducts": 60,
+  "pagedTo": 60,
+  "pagesAsked": 3,
   "pagingStoppedBecause": "answer-had-no-products",
-  "payloads": 17,
-  "productsSeen": 62,
+  "payloads": 16,
+  "productsSeen": 60,
   "rejected": {
-   "title-not-flower": 7
+   "title-not-flower": 6
   },
   "scrollRounds": 1,
   "settled": true,
@@ -5192,27 +5151,27 @@
  "OCM-RETL-24-000093": {
   "ageGate": true,
   "categories": [
-   "edible gummy (27)",
+   "edible gummy (32)",
    "pre-rolls pre-roll (25)",
-   "flower pre-pack (15)",
-   "cartridge all-in-one (15)",
-   "beverage beverage (7)",
-   "cartridge cartridge (7)",
+   "flower pre-pack (18)",
+   "edible edible (14)",
+   "cartridge all-in-one (11)",
    "beverage juice (6)",
-   "cartridge 510 thread (6)"
+   "cartridge 510 thread (6)",
+   "pre-rolls infused (5)"
   ],
-  "flower": 14,
+  "flower": 16,
   "landedOn": "https://store.thesanctuarygarden.co/garden",
   "licence": "OCM-RETL-24-000093",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 71,
+  "pagedQueryProducts": 69,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 88,
-  "productsSeen": 148,
+  "payloads": 97,
+  "productsSeen": 136,
   "rejected": {
-   "category-not-flower": 130,
-   "sameStrainAnotherSize": 3,
+   "category-not-flower": 115,
+   "sameStrainAnotherSize": 4,
    "title-not-flower": 1
   },
   "scrollRounds": 1,
@@ -5227,7 +5186,6 @@
   "status": "error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.coneyislandcannabisny.com/\nCall log:\n  - navigating to \"http://www.c"
  },
  "OCM-RETL-24-000099": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "foundMenuByGuess": true,
@@ -5248,27 +5206,27 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000103": {
-  "ageGate": false,
+  "ageGate": true,
   "categories": [
-   "flower (164)",
+   "flower (162)",
    "premium flower (9)",
    "small-buds flower (2)",
    "whole-flower flower (1)",
    "infused-shake flower (1)"
   ],
-  "declaredTotal": 177,
-  "flower": 170,
+  "declaredTotal": 175,
+  "flower": 168,
   "landedOn": "https://thevaultsi.com/stores/the-vault-staten-island/products/flower",
   "licence": "OCM-RETL-24-000103",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 177,
-  "pagedTo": 177,
+  "pagedQueryProducts": 175,
+  "pagedTo": 175,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 36,
-  "productsSeen": 177,
+  "payloads": 38,
+  "productsSeen": 175,
   "rejected": {
    "title-not-flower": 7
   },
@@ -5281,21 +5239,21 @@
  "OCM-RETL-24-000104": {
   "ageGate": true,
   "categories": [
-   "whole-flower flower (60)",
-   "pre-ground flower (6)",
+   "whole-flower flower (59)",
    "infused-shake flower (6)",
+   "pre-ground flower (6)",
    "bulk-flower flower (4)"
   ],
-  "declaredTotal": 51,
-  "flower": 45,
+  "declaredTotal": 50,
+  "flower": 44,
   "landedOn": "https://altadispensary.nyc/stores/alta-lower-manhattan/products/flower",
   "licence": "OCM-RETL-24-000104",
   "menuLink": "found",
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 51,
+  "pagedQueryProducts": 50,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 30,
-  "productsSeen": 76,
+  "payloads": 28,
+  "productsSeen": 75,
   "rejected": {
    "sameStrainAnotherSize": 21,
    "title-not-flower": 10
@@ -5309,25 +5267,26 @@
  "OCM-RETL-24-000105": {
   "ageGate": true,
   "categories": [
-   "flowers regular (64)",
-   "preroll regular (24)",
-   "edibles-gel regular (18)",
-   "vape pens regular (11)",
-   "drinks regular (7)",
+   "flowers regular (63)",
+   "preroll regular (27)",
+   "edibles-gel regular (20)",
+   "vape pens regular (13)",
+   "drinks regular (8)",
+   "vape carts regular (1)",
    "tincture regular (1)",
    "topicals regular (1)"
   ],
-  "flower": 58,
-  "jsonApiProducts": 126,
+  "flower": 57,
+  "jsonApiProducts": 134,
   "landedOn": "https://shop.vereleaf.com/shop/categories/flowers/",
   "licence": "OCM-RETL-24-000105",
   "menuLink": "found",
-  "payloads": 52,
-  "productsSeen": 126,
+  "payloads": 51,
+  "productsSeen": 134,
   "rejected": {
-   "category-not-flower": 9,
+   "category-not-flower": 10,
    "sameStrainAnotherSize": 2,
-   "title-not-flower": 57
+   "title-not-flower": 65
   },
   "scrollRounds": 4,
   "settled": true,
@@ -5363,7 +5322,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000107": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://www.sweetlife.nyc/",
@@ -5377,38 +5335,54 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000114": {
-  "ageGate": false,
-  "categories": [],
-  "flower": 0,
-  "landedOn": "https://www.thefloweryny.com/welcome?r=%2Fshop%2Fcategory%2Fflower",
+  "ageGate": true,
+  "categories": [
+   "flower whole flower (100)",
+   "edibles gummies (15)",
+   "flower premium (15)",
+   "flower small buds (12)",
+   "flower default (9)",
+   "topicals balms (8)",
+   "tinctures unflavored (7)",
+   "flower pre ground (6)"
+  ],
+  "declaredTotal": 4,
+  "flower": 46,
+  "landedOn": "https://www.thefloweryny.com/shop/category/flower",
   "licence": "OCM-RETL-24-000114",
   "menuLink": "found",
-  "payloads": 17,
-  "productsSeen": 0,
-  "rejected": {},
+  "pagedQueryIsPageable": false,
+  "pagedQueryProducts": 50,
+  "pagingStoppedBecause": "read-everything-declared",
+  "payloads": 76,
+  "productsSeen": 200,
+  "rejected": {
+   "category-not-flower": 29,
+   "sameStrainAnotherSize": 96,
+   "title-not-flower": 29
+  },
   "scrollRounds": 1,
   "settled": true,
   "shop": "960 bloomingdale road LLC",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000120": {
-  "ageGate": false,
   "categories": [
-   "flower - pre-pack (309)",
+   "flower - pre-pack (308)",
    "flower - pre-ground (3)",
    "flower - pre-pack smalls (2)",
    "flower - infused (1)"
   ],
-  "flower": 290,
+  "flower": 289,
   "landedOn": "https://seaweedrbny.com/shop/rockaway-beach/category/flower/",
   "licence": "OCM-RETL-24-000120",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 315,
+  "pagedQueryProducts": 314,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 34,
-  "productsSeen": 315,
+  "payloads": 35,
+  "productsSeen": 314,
   "rejected": {
    "category-not-flower": 1,
    "sameStrainAnotherSize": 8,
@@ -5421,7 +5395,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000127": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://kayablissnyc.com/products/flower/",
@@ -5437,7 +5410,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000133": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "foundMenuByGuess": true,
@@ -5448,61 +5420,74 @@
   "landedOn": "https://www.forever420ny.com/age-gate?returnUrl=%2Fcollection%2Fflower",
   "licence": "OCM-RETL-24-000133",
   "menuLink": "found",
-  "payloads": 2,
+  "parkedOn": "/age-gate",
+  "payloads": 3,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
   "settled": true,
   "shop": "Forever 4 20",
   "status": "no-products",
-  "usedKnownEndpoint": true
+  "usedKnownEndpoint": true,
+  "wentOnwardTo": "/collection/flower"
  },
  "OCM-RETL-24-000144": {
   "ageGate": true,
-  "categories": [],
+  "categories": [
+   "flower (145)",
+   "pre-ground flower (26)",
+   "infused-bud flower (10)",
+   "whole-flower flower (1)"
+  ],
+  "declaredTotal": 182,
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 0,
+  "flower": 146,
   "landedOn": "https://qualitycontroldispensary.com/flower-brooklyn",
   "licence": "OCM-RETL-24-000144",
   "menuLink": "found",
-  "payloads": 9,
-  "productsSeen": 0,
-  "rejected": {},
+  "pagedFrom": 25,
+  "pagedQueryIsPageable": true,
+  "pagedQueryProducts": 182,
+  "pagedTo": 182,
+  "pagesAsked": 7,
+  "pagingStoppedBecause": "read-everything-declared",
+  "payloads": 30,
+  "productsSeen": 182,
+  "rejected": {
+   "title-not-flower": 36
+  },
   "retried": true,
   "scrollRounds": 2,
   "settled": true,
   "shop": "Case Management",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": true
  },
  "OCM-RETL-24-000146": {
   "ageGate": true,
   "categories": [
-   "premium flower (45)",
-   "whole-flower flower (25)",
+   "premium flower (44)",
+   "whole-flower flower (24)",
    "pre-ground flower (6)",
-   "advertising (2)",
-   "essential (2)",
-   "flower (1)",
-   "small-buds flower (1)"
+   "small-buds flower (2)",
+   "flower (1)"
   ],
-  "declaredTotal": 54,
-  "flower": 52,
+  "declaredTotal": 52,
+  "flower": 50,
   "landedOn": "https://shop.vaporizeny.com/stores/vaporize/products/flower",
   "licence": "OCM-RETL-24-000146",
   "menuLink": "found",
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 54,
+  "pagedQueryProducts": 52,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 68,
-  "productsSeen": 82,
+  "payloads": 70,
+  "productsSeen": 77,
   "rejected": {
-   "category-not-flower": 4,
-   "sameStrainAnotherSize": 22,
+   "sameStrainAnotherSize": 23,
    "title-not-flower": 4
   },
   "scrollRounds": 1,
@@ -5536,22 +5521,22 @@
  "OCM-RETL-24-000151": {
   "ageGate": true,
   "categories": [
-   "fd7df1d082d1de9b flower flowers flowers (100)"
+   "fd7df1d082d1de9b flower flowers flowers (98)"
   ],
-  "flower": 92,
+  "flower": 91,
   "landedOn": "https://stayallgood.com/shop/categories/flower",
   "licence": "OCM-RETL-24-000151",
   "menuLink": "found",
   "pagedFrom": 20,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 100,
-  "pagedTo": 100,
+  "pagedQueryProducts": 98,
+  "pagedTo": 98,
   "pagesAsked": 5,
   "pagingStoppedBecause": "answer-had-no-products",
   "payloads": 21,
-  "productsSeen": 100,
+  "productsSeen": 98,
   "rejected": {
-   "sameStrainAnotherSize": 5,
+   "sameStrainAnotherSize": 4,
    "title-not-flower": 3
   },
   "scrollRounds": 1,
@@ -5561,63 +5546,38 @@
   "usedKnownEndpoint": true
  },
  "OCM-RETL-24-000154": {
-  "ageGate": true,
-  "categories": [
-   "gummies edible (136)",
-   "drinks edible (34)",
-   "disposables vaporizers (16)",
-   "live-resin-gummies edible (14)",
-   "badder concentrate (13)",
-   "flower (12)",
-   "live-rosin-gummies edible (10)",
-   "chocolates edible (10)"
-  ],
-  "declaredTotal": 205,
-  "flower": 21,
-  "landedOn": "https://dutchie.com/dispensary/herbwell-madison-ave",
-  "licence": "OCM-RETL-24-000154",
-  "menuLink": "found",
-  "pagedFrom": 25,
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 205,
-  "pagedTo": 205,
-  "pagesAsked": 8,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 38,
-  "productsSeen": 295,
-  "rejected": {
-   "category-not-flower": 157,
-   "title-not-flower": 117
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
   },
-  "scrollRounds": 1,
-  "settled": true,
+  "licence": "OCM-RETL-24-000154",
+  "retried": true,
   "shop": "Herbwell",
-  "status": "ok",
-  "usedKnownEndpoint": false
+  "status": "error: page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.herbwellcannabis.com/\", waiting until \"dom"
  },
  "OCM-RETL-24-000159": {
-  "ageGate": false,
   "categories": [
-   "bbfd9e66dca363b5 flower flower flower (183)",
+   "bbfd9e66dca363b5 flower flower flower (182)",
    "bbfd9e66dca363b5 flower preground flower (10)",
-   "bbfd9e66dca363b5 flower infused pregroun (9)",
+   "bbfd9e66dca363b5 flower infused pregroun (8)",
    "bbfd9e66dca363b5 flower infused flower i (7)"
   ],
-  "flower": 167,
+  "flower": 166,
   "landedOn": "https://starlifedispensary.com/shop/categories/flower",
   "licence": "OCM-RETL-24-000159",
   "menuLink": "found",
   "pagedFrom": 20,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 209,
-  "pagedTo": 209,
+  "pagedQueryProducts": 207,
+  "pagedTo": 207,
   "pagesAsked": 10,
   "pagingStoppedBecause": "ran-out-of-pages",
   "payloads": 31,
-  "productsSeen": 209,
+  "productsSeen": 207,
   "rejected": {
    "sameStrainAnotherSize": 7,
-   "title-not-flower": 35
+   "title-not-flower": 34
   },
   "scrollRounds": 1,
   "settled": true,
@@ -5626,20 +5586,19 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000169": {
-  "ageGate": false,
   "categories": [
-   "flower (60)",
+   "flower (59)",
    "infused flower (3)"
   ],
-  "flower": 60,
+  "flower": 59,
   "landedOn": "https://aandpdispensary.com/store/kew-gardens-ny/category/flower/",
   "licence": "OCM-RETL-24-000169",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 63,
+  "pagedQueryProducts": 62,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 18,
-  "productsSeen": 63,
+  "payloads": 17,
+  "productsSeen": 62,
   "rejected": {
    "title-not-flower": 3
   },
@@ -5650,38 +5609,28 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000170": {
-  "ageGate": false,
-  "categories": [
-   "flower (128)",
-   "infused-bud flower (8)",
-   "premium flower (7)",
-   "whole-flower flower (6)"
-  ],
-  "declaredTotal": 150,
-  "flower": 130,
-  "landedOn": "https://hightidezci.com/stores/cbj-retail/products/flower",
+  "ageGate": true,
+  "categories": [],
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
+  "landedOn": "https://hightidezci.com/cbj-retail/products/flower",
   "licence": "OCM-RETL-24-000170",
   "menuLink": "found",
-  "pagedFrom": 100,
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 149,
-  "pagedTo": 149,
-  "pagesAsked": 2,
-  "pagingStoppedBecause": "answer-had-no-products",
-  "payloads": 25,
-  "productsSeen": 149,
-  "rejected": {
-   "sameStrainAnotherSize": 5,
-   "title-not-flower": 14
-  },
-  "scrollRounds": 1,
+  "payloads": 7,
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
+  "scrollRounds": 2,
   "settled": true,
   "shop": "High Tidez CI",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000171": {
-  "ageGate": false,
   "categories": [],
   "firstAttempt": {
    "menuLink": "found",
@@ -5703,30 +5652,30 @@
   "usedKnownEndpoint": true
  },
  "OCM-RETL-24-000175": {
-  "ageGate": false,
+  "ageGate": true,
   "categories": [
-   "flower (496)",
-   "whole-flower flower (49)",
+   "flower (504)",
+   "whole-flower flower (50)",
    "premium flower (42)",
-   "pre-ground flower (12)",
+   "pre-ground flower (8)",
    "small-buds flower (3)"
   ],
-  "declaredTotal": 577,
-  "flower": 510,
+  "declaredTotal": 582,
+  "flower": 511,
   "landedOn": "https://cannablooms.com/stores/small-leaf-79/products/flower",
   "licence": "OCM-RETL-24-000175",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 577,
-  "pagedTo": 577,
+  "pagedQueryProducts": 582,
+  "pagedTo": 582,
   "pagesAsked": 5,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 29,
-  "productsSeen": 602,
+  "payloads": 30,
+  "productsSeen": 607,
   "rejected": {
-   "sameStrainAnotherSize": 43,
-   "title-not-flower": 49
+   "sameStrainAnotherSize": 45,
+   "title-not-flower": 51
   },
   "scrollRounds": 1,
   "settled": true,
@@ -5737,29 +5686,35 @@
  "OCM-RETL-24-000178": {
   "ageGate": true,
   "categories": [
-   "flower (195)",
+   "flower (193)",
    "whole-flower flower (10)",
-   "premium flower (6)",
+   "premium flower (7)",
    "small-buds flower (3)",
    "infused-bud flower (2)"
   ],
-  "declaredTotal": 191,
-  "flower": 163,
+  "declaredTotal": 190,
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 162,
   "landedOn": "https://nycannabisco.com/shop?dtche%5Bcategory%5D=flower",
   "licence": "OCM-RETL-24-000178",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 191,
-  "pagedTo": 191,
+  "pagedQueryProducts": 190,
+  "pagedTo": 190,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 34,
-  "productsSeen": 216,
+  "payloads": 37,
+  "productsSeen": 215,
   "rejected": {
    "sameStrainAnotherSize": 28,
    "title-not-flower": 25
   },
+  "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "AA 301 W. 45th St Inc.",
@@ -5767,7 +5722,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000186": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://thegardenclubbk.com/shop/flower",
@@ -5783,7 +5737,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000189": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://dispostore.com/shop/",
@@ -5799,7 +5752,6 @@
   "usedKnownEndpoint": true
  },
  "OCM-RETL-24-000191": {
-  "ageGate": false,
   "categories": [
    "cannabis flower products (78)"
   ],
@@ -5823,34 +5775,18 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000197": {
-  "ageGate": false,
-  "categories": [
-   "bulk flower (48)",
-   "vape (25)",
-   "concentrate (25)",
-   "edibles (25)",
-   "pre-rolls (24)",
-   "topical (19)",
-   "infused prerolls (3)"
-  ],
+  "categories": [],
   "flower": 0,
-  "landedOn": "https://cannabuddha.us/store/hobbs/",
+  "landedOn": "https://cannabuddha.us/store/thief-river/",
   "licence": "OCM-RETL-24-000197",
   "menuLink": "found",
-  "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 144,
-  "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 24,
-  "productsSeen": 169,
-  "rejected": {
-   "category-not-flower": 116,
-   "flower-no-size": 42,
-   "title-not-flower": 11
-  },
+  "payloads": 18,
+  "productsSeen": 0,
+  "rejected": {},
   "scrollRounds": 1,
   "settled": true,
   "shop": "Canna Buddha Corp",
-  "status": "no-flower",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000220": {
@@ -5859,7 +5795,6 @@
   "status": "error: page.goto: net::ERR_CONNECTION_CLOSED at https://420expressway.com/\nCall log:\n  - navigating to \"https://420expressway.c"
  },
  "OCM-RETL-24-000222": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://ourthcshop.com/bronx/",
@@ -5873,23 +5808,22 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000225": {
-  "ageGate": false,
   "categories": [
-   "flower (119)",
+   "flower (122)",
    "pre-rolls (11)",
    "beverages (9)",
    "vapes (3)",
    "edibles (1)"
   ],
-  "flower": 96,
+  "flower": 99,
   "landedOn": "https://skonesdispensary.com/flower/",
   "licence": "OCM-RETL-24-000225",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 118,
+  "pagedQueryProducts": 121,
   "pagingStoppedBecause": "no-page-in-request",
   "payloads": 14,
-  "productsSeen": 143,
+  "productsSeen": 146,
   "rejected": {
    "category-not-flower": 9,
    "sameStrainAnotherSize": 1,
@@ -5902,26 +5836,25 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000233": {
-  "ageGate": false,
   "categories": [
-   "whole-flower flower (183)",
+   "whole-flower flower (184)",
    "pre-ground flower (25)",
    "infused-buds flower (16)",
    "infused-bud flower (4)"
   ],
-  "declaredTotal": 203,
-  "flower": 151,
+  "declaredTotal": 204,
+  "flower": 152,
   "landedOn": "https://greenflowerwellness.com/stores/green-flower-wellness-oakland-gardens/products/flower",
   "licence": "OCM-RETL-24-000233",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 203,
-  "pagedTo": 203,
+  "pagedQueryProducts": 204,
+  "pagedTo": 204,
   "pagesAsked": 2,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 43,
-  "productsSeen": 228,
+  "payloads": 26,
+  "productsSeen": 229,
   "rejected": {
    "sameStrainAnotherSize": 31,
    "title-not-flower": 46
@@ -5933,7 +5866,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000234": {
-  "ageGate": false,
   "categories": [
    "flower (160)",
    "prerolls (8)",
@@ -5964,85 +5896,66 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000241": {
-  "ageGate": false,
+  "ageGate": true,
   "categories": [
-   "whole-flower flower (36)",
+   "whole-flower flower (35)",
    "small-buds flower (20)",
-   "packs pre-rolls (19)",
-   "gummies edible (14)",
-   "capsules-tablets edible (7)",
+   "gummies edible (17)",
+   "packs pre-rolls (17)",
+   "singles pre-rolls (7)",
+   "capsules-tablets edible (6)",
    "pre-ground flower (6)",
-   "singles pre-rolls (5)",
-   "drinks edible (3)"
+   "infused-buds flower (2)"
   ],
-  "declaredTotal": 39,
+  "declaredTotal": 38,
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 34,
+  "flower": 33,
   "landedOn": "https://soulmatebk.com/shop/?dtche%5Bcategory%5D=flower",
   "licence": "OCM-RETL-24-000241",
   "menuLink": "found",
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 39,
+  "pagedQueryProducts": 38,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 55,
-  "productsSeen": 114,
+  "payloads": 63,
+  "productsSeen": 113,
   "rejected": {
-   "category-not-flower": 15,
+   "category-not-flower": 12,
    "sameStrainAnotherSize": 20,
-   "title-not-flower": 45
+   "title-not-flower": 48
   },
   "retried": true,
-  "scrollRounds": 1,
+  "scrollRounds": 3,
   "settled": true,
   "shop": "SOULMATE",
   "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000242": {
-  "ageGate": false,
-  "categories": [
-   "flower (38)",
-   "singles pre-rolls (25)",
-   "gummies edible (15)",
-   "vaporizers (9)",
-   "premium flower (8)",
-   "disposables vaporizers (6)",
-   "whole-flower flower (4)",
-   "cartridges vaporizers (4)"
-  ],
-  "declaredTotal": 33,
+  "categories": [],
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 25,
+  "flower": 0,
   "landedOn": "https://www.bellanovany.com/menu/",
   "licence": "OCM-RETL-24-000242",
   "menuLink": "found",
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 50,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 39,
-  "productsSeen": 130,
-  "rejected": {
-   "category-not-flower": 21,
-   "sameStrainAnotherSize": 25,
-   "title-not-flower": 59
-  },
+  "payloads": 0,
+  "productsSeen": 0,
+  "rejected": {},
   "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "Bellanova",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000244": {
-  "ageGate": false,
   "categories": [
    "0df826d5e6023226 flower 3.5g 3.5g (4)",
    "0df826d5e6023226 flower heavy weight hea (3)",
@@ -6069,7 +5982,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000247": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "foundMenuByGuess": true,
@@ -6090,13 +6002,15 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000254": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://thedailygreennyc.com/",
   "licence": "OCM-RETL-24-000254",
   "menuLink": "none",
-  "payloads": 28,
+  "offersDismissed": [
+   "close"
+  ],
+  "payloads": 24,
   "productsSeen": 0,
   "rejected": {},
   "shop": "Charlie Fox",
@@ -6104,38 +6018,28 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000260": {
-  "ageGate": true,
-  "categories": [
-   "flower (109)",
-   "pre-ground flower (8)",
-   "whole-flower flower (5)",
-   "premium flower (2)"
-  ],
-  "declaredTotal": 128,
-  "flower": 110,
+  "categories": [],
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
   "landedOn": "https://dutchie.com/dispensary/herbwell-bronx/products/flower",
   "licence": "OCM-RETL-24-000260",
   "menuLink": "found",
-  "pagedFrom": 94,
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 124,
-  "pagedTo": 124,
-  "pagesAsked": 2,
-  "pagingStoppedBecause": "answer-had-no-products",
-  "payloads": 29,
-  "productsSeen": 124,
-  "rejected": {
-   "sameStrainAnotherSize": 1,
-   "title-not-flower": 13
-  },
+  "payloads": 2,
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "Herbwell",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": true
  },
  "OCM-RETL-24-000261": {
-  "ageGate": false,
+  "ageGate": true,
   "categories": [
    "flower (99)",
    "small-buds flower (14)",
@@ -6157,7 +6061,7 @@
   "pagedTo": 114,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 33,
+  "payloads": 34,
   "productsSeen": 114,
   "rejected": {
    "title-not-flower": 8
@@ -6172,25 +6076,25 @@
  "OCM-RETL-24-000263": {
   "ageGate": true,
   "categories": [
-   "vape pens regular (28)",
-   "edibles regular (27)",
-   "preroll regular (11)",
+   "vape pens regular (35)",
+   "edibles regular (28)",
+   "preroll regular (12)",
    "accessories regular (9)",
    "drinks regular (3)",
-   "wax regular (2)",
-   "tincture regular (1)",
-   "gift cards gift_card (1)"
+   "tincture regular (3)",
+   "topicals regular (2)",
+   "wax regular (2)"
   ],
   "flower": 0,
-  "jsonApiProducts": 82,
+  "jsonApiProducts": 95,
   "landedOn": "https://shop.cannabisonlex.com/shop/?order=-inserted_at",
   "licence": "OCM-RETL-24-000263",
   "menuLink": "found",
   "payloads": 29,
-  "productsSeen": 82,
+  "productsSeen": 95,
   "rejected": {
-   "category-not-flower": 45,
-   "title-not-flower": 37
+   "category-not-flower": 51,
+   "title-not-flower": 44
   },
   "scrollRounds": 2,
   "settled": true,
@@ -6199,7 +6103,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-24-000266": {
-  "ageGate": false,
   "categories": [
    "flower (133)",
    "shake-trim flower (6)",
@@ -6207,7 +6110,7 @@
    "small-buds flower (1)"
   ],
   "declaredTotal": 119,
-  "flower": 109,
+  "flower": 110,
   "landedOn": "https://www.greenapple.nyc/stores/green-apple-distributors/products/flower",
   "licence": "OCM-RETL-24-000266",
   "menuLink": "found",
@@ -6220,7 +6123,7 @@
   "payloads": 24,
   "productsSeen": 144,
   "rejected": {
-   "sameStrainAnotherSize": 29,
+   "sameStrainAnotherSize": 28,
    "title-not-flower": 6
   },
   "scrollRounds": 1,
@@ -6234,25 +6137,25 @@
   "categories": [
    "flower whole flower whole flower (36)",
    "flower whole flower big nugs (26)",
-   "flower whole flower smalls (12)",
-   "flower preground flower preground (2)",
-   "flower whole flower (1)"
+   "flower whole flower smalls (11)",
+   "flower whole flower (1)",
+   "flower preground flower preground (1)"
   ],
-  "declaredTotal": 77,
-  "flower": 75,
+  "declaredTotal": 75,
+  "flower": 74,
   "landedOn": "https://terminal420.com/rosedale/menu/flower-8619",
   "licence": "OCM-RETL-25-000269",
   "menuLink": "found",
   "pagedFrom": 24,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 77,
-  "pagedTo": 77,
+  "pagedQueryProducts": 75,
+  "pagedTo": 75,
   "pagesAsked": 3,
   "pagingStoppedBecause": "read-everything-declared",
   "payloads": 21,
-  "productsSeen": 77,
+  "productsSeen": 75,
   "rejected": {
-   "sameStrainAnotherSize": 2
+   "sameStrainAnotherSize": 1
   },
   "scrollRounds": 1,
   "settled": true,
@@ -6262,42 +6165,27 @@
  },
  "OCM-RETL-25-000274": {
   "ageGate": true,
-  "categories": [
-   "flower (35)",
-   "singles pre-rolls (34)",
-   "packs pre-rolls (32)",
-   "infused pre-rolls (31)",
-   "disposables vaporizers (28)",
-   "infused-pre-roll-packs pre-rolls (21)",
-   "gummies edible (17)",
-   "cartridges vaporizers (7)"
-  ],
-  "declaredTotal": 105,
-  "flower": 30,
+  "categories": [],
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
   "landedOn": "https://www.gstnydispensary.com/shop-brooklyn",
   "licence": "OCM-RETL-25-000274",
   "menuLink": "found",
-  "pagedFrom": 25,
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 105,
-  "pagedTo": 105,
-  "pagesAsked": 4,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 40,
-  "productsSeen": 246,
-  "rejected": {
-   "category-not-flower": 82,
-   "sameStrainAnotherSize": 12,
-   "title-not-flower": 122
-  },
+  "payloads": 9,
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "Greene street cannabis co.",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000283": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://newamsterdam.nyc/products/flower/",
@@ -6313,10 +6201,9 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000284": {
-  "ageGate": false,
   "categories": [
-   "cannabis flower products (52)",
-   "pre rolls (12)",
+   "cannabis flower products (53)",
+   "pre rolls (11)",
    "gel-based foods (4)",
    "edibles (2)",
    "solid chocolates (2)",
@@ -6333,8 +6220,8 @@
   "productsSeen": 73,
   "rejected": {
    "category-not-flower": 3,
-   "sameStrainAnotherSize": 2,
-   "title-not-flower": 26
+   "sameStrainAnotherSize": 3,
+   "title-not-flower": 25
   },
   "scrollRounds": 1,
   "settled": true,
@@ -6343,66 +6230,52 @@
   "usedKnownEndpoint": true
  },
  "OCM-RETL-25-000285": {
-  "ageGate": false,
-  "categories": [],
+  "categories": [
+   "whole-flower flower (33)",
+   "premium flower (25)",
+   "pre-ground flower (7)",
+   "small-buds flower (3)",
+   "flower (1)"
+  ],
+  "declaredTotal": 69,
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 0,
+  "flower": 62,
   "landedOn": "https://getbuzzy.com/menu/?dtche%5Bcategory%5D=flower",
   "licence": "OCM-RETL-25-000285",
   "menuLink": "found",
-  "payloads": 8,
-  "productsSeen": 0,
-  "rejected": {},
+  "pagedQueryIsPageable": true,
+  "pagedQueryProducts": 69,
+  "pagingStoppedBecause": "read-everything-declared",
+  "payloads": 27,
+  "productsSeen": 69,
+  "rejected": {
+   "title-not-flower": 7
+  },
   "retried": true,
-  "scrollRounds": 2,
+  "scrollRounds": 1,
   "settled": true,
   "shop": "Buzzy NY, LLC",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": true
  },
  "OCM-RETL-25-000288": {
-  "ageGate": true,
-  "categories": [
-   "vapes vapes (79)",
-   "vapes reload pod (35)",
-   "beverages (24)",
-   "vapes starter kit aio (23)",
-   "flower eighth  eighth (18)",
-   "flower 3.5g eighth (10)",
-   "pre roll single pre roll infused (9)",
-   "pre roll multi pack pre roll multi pack (9)"
-  ],
-  "declaredTotal": 137,
-  "flower": 18,
-  "landedOn": "https://web-ui-prime.sweedpos.com/s98/menu/flower-2936/eighth-hybrid-lemon-head-eighth-35g-573662",
+  "categories": [],
+  "flower": 0,
+  "landedOn": "https://uptheriver914.com/",
   "licence": "OCM-RETL-25-000288",
-  "menuLink": "found",
-  "pagedFrom": 10,
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 137,
-  "pagedTo": 137,
-  "pagesAsked": 13,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 45,
-  "productsSeen": 282,
-  "rejected": {
-   "category-not-flower": 245,
-   "flower-no-size": 12,
-   "sameStrainAnotherSize": 1,
-   "title-not-flower": 6
-  },
-  "scrollRounds": 1,
-  "settled": true,
+  "menuLink": "robots-disallowed",
+  "payloads": 0,
+  "productsSeen": 0,
+  "rejected": {},
   "shop": "Up the River Cannabis Dispensary",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000293": {
-  "ageGate": false,
   "categories": [
    "flower (97)",
    "flower on sale (1)"
@@ -6465,23 +6338,23 @@
  "OCM-RETL-25-000295": {
   "ageGate": true,
   "categories": [
-   "572c60b2b3611222 flower pre-pack pre-pac (353)",
+   "572c60b2b3611222 flower pre-pack pre-pac (352)",
    "572c60b2b3611222 flower pre-ground pre-g (39)",
    "572c60b2b3611222 flower infused infused (20)",
    "572c60b2b3611222 flower pre-pack smalls  (16)"
   ],
-  "flower": 188,
+  "flower": 187,
   "landedOn": "https://mindsettarrytown.com/menu/categories/flower",
   "licence": "OCM-RETL-25-000295",
   "menuLink": "found",
-  "pagedFrom": 228,
+  "pagedFrom": 227,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 428,
-  "pagedTo": 428,
+  "pagedQueryProducts": 427,
+  "pagedTo": 427,
   "pagesAsked": 10,
   "pagingStoppedBecause": "ran-out-of-pages",
   "payloads": 40,
-  "productsSeen": 428,
+  "productsSeen": 427,
   "rejected": {
    "sameStrainAnotherSize": 185,
    "title-not-flower": 55
@@ -6493,30 +6366,22 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000298": {
-  "ageGate": false,
   "categories": [
-   "flower (58)",
-   "disposables vaporizers (10)",
-   "cartridges vaporizers (4)",
-   "pods vaporizers (2)",
-   "packs pre-rolls (2)",
-   "gummies edible (2)",
-   "infused pre-rolls (1)"
+   "flower (54)"
   ],
   "declaredTotal": 29,
-  "flower": 29,
+  "flower": 25,
   "landedOn": "https://verdicannabis.com/stores/verdi-park-slope/products/flower",
   "licence": "OCM-RETL-25-000298",
   "menuLink": "found",
   "pagedQueryIsPageable": true,
   "pagedQueryProducts": 29,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 66,
-  "productsSeen": 79,
+  "payloads": 25,
+  "productsSeen": 54,
   "rejected": {
-   "category-not-flower": 15,
    "sameStrainAnotherSize": 26,
-   "title-not-flower": 9
+   "title-not-flower": 3
   },
   "scrollRounds": 1,
   "settled": true,
@@ -6527,20 +6392,20 @@
  "OCM-RETL-25-000303": {
   "ageGate": true,
   "categories": [
-   "flower (91)"
+   "flower (89)"
   ],
   "flower": 69,
   "landedOn": "https://flushingcannabis.com/store/flushing-ny/category/flower",
   "licence": "OCM-RETL-25-000303",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 91,
+  "pagedQueryProducts": 89,
   "pagingStoppedBecause": "no-page-in-request",
   "payloads": 26,
-  "productsSeen": 91,
+  "productsSeen": 89,
   "rejected": {
    "sameStrainAnotherSize": 7,
-   "title-not-flower": 15
+   "title-not-flower": 13
   },
   "scrollRounds": 1,
   "settled": true,
@@ -6569,7 +6434,7 @@
   "pagedTo": 78,
   "pagesAsked": 3,
   "pagingStoppedBecause": "answer-had-no-products",
-  "payloads": 42,
+  "payloads": 41,
   "productsSeen": 78,
   "rejected": {
    "sameStrainAnotherSize": 22,
@@ -6582,7 +6447,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000308": {
-  "ageGate": false,
   "categories": [
    "flower (62)"
   ],
@@ -6613,7 +6477,7 @@
   "landedOn": "https://www.happybudsbk.com/collections",
   "licence": "OCM-RETL-25-000317",
   "menuLink": "found",
-  "payloads": 10,
+  "payloads": 20,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
@@ -6623,34 +6487,34 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000318": {
-  "ageGate": false,
   "categories": [
-   "whole-flower flower (54)",
-   "live-rosin concentrate (46)",
+   "whole-flower flower (80)",
+   "gummies edible (32)",
+   "live-rosin concentrate (25)",
    "disposables vaporizers (25)",
-   "gummies edible (21)",
-   "hash concentrate (17)",
-   "live-resin concentrate (9)",
-   "live-rosin-gummies edible (8)",
-   "applicators concentrate (5)"
+   "live-rosin-gummies edible (15)",
+   "live-resin-gummies edible (8)",
+   "drinks edible (5)",
+   "infused-pre-roll-packs pre-rolls (4)"
   ],
-  "declaredTotal": 75,
-  "flower": 29,
+  "declaredTotal": 204,
+  "flower": 30,
   "landedOn": "https://twenty8gramz.com/shop-now/",
   "licence": "OCM-RETL-25-000318",
   "menuLink": "found",
-  "pagedFrom": 25,
+  "pagedFrom": 50,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 75,
-  "pagedTo": 75,
-  "pagesAsked": 2,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 45,
+  "pagedQueryProducts": 50,
+  "pagedTo": 50,
+  "pagesAsked": 1,
+  "pagingRefused": "Failed to fetch",
+  "pagingStoppedBecause": "refused",
+  "payloads": 58,
   "productsSeen": 219,
   "rejected": {
-   "category-not-flower": 111,
-   "sameStrainAnotherSize": 25,
-   "title-not-flower": 54
+   "category-not-flower": 70,
+   "sameStrainAnotherSize": 50,
+   "title-not-flower": 69
   },
   "scrollRounds": 1,
   "settled": true,
@@ -6659,29 +6523,27 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000319": {
-  "ageGate": false,
   "categories": [
-   "flower (111)",
-   "premium flower (6)",
-   "whole-flower flower (4)",
+   "flower (105)",
+   "premium flower (7)",
+   "whole-flower flower (6)",
    "infused-buds flower (3)",
    "small-buds flower (3)"
   ],
-  "declaredTotal": 127,
-  "flower": 123,
+  "declaredTotal": 124,
+  "flower": 121,
   "landedOn": "https://dankley.com/stores/dankley-manhattan/products/flower",
   "licence": "OCM-RETL-25-000319",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 127,
-  "pagedTo": 127,
+  "pagedQueryProducts": 124,
+  "pagedTo": 124,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 33,
-  "productsSeen": 127,
+  "payloads": 31,
+  "productsSeen": 124,
   "rejected": {
-   "sameStrainAnotherSize": 1,
    "title-not-flower": 3
   },
   "scrollRounds": 1,
@@ -6691,7 +6553,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000321": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://www.atthefactory.co/age-gate?returnUrl=%2F",
@@ -6705,31 +6566,30 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000324": {
-  "ageGate": false,
   "categories": [
    "flower (205)",
    "edible (36)",
-   "pre-roll (34)",
    "vape (34)",
-   "concentrate (28)",
+   "pre-roll (33)",
+   "concentrate (29)",
    "cbd (25)",
    "accessories (25)",
    "beverage (19)"
   ],
-  "flower": 109,
+  "flower": 108,
   "landedOn": "https://weedlynyc.com/store/weedly-brooklyn/category/flower/",
   "licence": "OCM-RETL-25-000324",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 280,
+  "pagedQueryProducts": 281,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 33,
+  "payloads": 34,
   "productsSeen": 437,
   "rejected": {
-   "category-not-flower": 104,
+   "category-not-flower": 105,
    "flower-no-size": 2,
-   "sameStrainAnotherSize": 74,
-   "title-not-flower": 148
+   "sameStrainAnotherSize": 75,
+   "title-not-flower": 147
   },
   "scrollRounds": 1,
   "settled": true,
@@ -6773,7 +6633,7 @@
   "pagedQueryIsPageable": false,
   "pagedQueryProducts": 154,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 25,
+  "payloads": 24,
   "productsSeen": 154,
   "rejected": {
    "category-not-flower": 141,
@@ -6786,7 +6646,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000343": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "foundMenuByGuess": true,
@@ -6794,10 +6653,10 @@
    "/menu/flower",
    "/shop/flower"
   ],
-  "landedOn": "https://greenlandny.com/.well-known/sgcaptcha/?r=%2Fmenu%2Fflower&y=ipc:172.184.247.96:1789765344.241",
+  "landedOn": "https://greenlandny.com/menu/flower",
   "licence": "OCM-RETL-25-000343",
   "menuLink": "found",
-  "payloads": 3,
+  "payloads": 5,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
@@ -6807,7 +6666,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000346": {
-  "ageGate": false,
   "categories": [
    "flower (152)"
   ],
@@ -6833,63 +6691,57 @@
  },
  "OCM-RETL-25-000349": {
   "ageGate": true,
-  "categories": [],
-  "firstAttempt": {
-   "menuLink": "found",
-   "productsSeen": 0,
-   "status": "no-products"
-  },
-  "flower": 0,
+  "categories": [
+   "disposables vaporizers (50)",
+   "cartridges vaporizers (40)",
+   "flower (25)",
+   "gummies edible (19)",
+   "pods vaporizers (15)",
+   "lozenges edible (13)",
+   "badder concentrate (7)",
+   "drinks edible (5)"
+  ],
+  "declaredTotal": 105,
+  "flower": 24,
   "landedOn": "https://forestchillsdispensary.com/menu",
   "licence": "OCM-RETL-25-000349",
   "menuLink": "found",
-  "payloads": 6,
-  "productsSeen": 0,
-  "rejected": {},
-  "retried": true,
+  "pagedFrom": 25,
+  "pagedQueryIsPageable": true,
+  "pagedQueryProducts": 105,
+  "pagedTo": 105,
+  "pagesAsked": 4,
+  "pagingStoppedBecause": "read-everything-declared",
+  "payloads": 35,
+  "productsSeen": 183,
+  "rejected": {
+   "category-not-flower": 47,
+   "sameStrainAnotherSize": 1,
+   "title-not-flower": 111
+  },
   "scrollRounds": 1,
   "settled": true,
   "shop": "Forest Chills",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000351": {
   "ageGate": true,
-  "categories": [
-   "gummies edible (23)",
-   "disposables vaporizers (8)",
-   "vaporizers (6)",
-   "all-in-one vaporizers (6)",
-   "cartridges vaporizers (4)",
-   "drinks edible (2)",
-   "live-resin vaporizers (1)"
-  ],
-  "declaredTotal": 51,
+  "categories": [],
   "flower": 0,
   "landedOn": "https://studio57ny.com/products/flower",
   "licence": "OCM-RETL-25-000351",
   "menuLink": "found",
-  "pagedFrom": 25,
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 25,
-  "pagedTo": 25,
-  "pagesAsked": 1,
-  "pagingRefused": "Failed to fetch",
-  "pagingStoppedBecause": "refused",
-  "payloads": 30,
-  "productsSeen": 50,
-  "rejected": {
-   "category-not-flower": 40,
-   "title-not-flower": 10
-  },
+  "payloads": 0,
+  "productsSeen": 0,
+  "rejected": {},
   "scrollRounds": 1,
   "settled": true,
   "shop": "Studio57NY",
-  "status": "no-flower",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000355": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://www.thetravelagency.co/flower/",
@@ -6905,7 +6757,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000360": {
-  "ageGate": false,
   "categories": [
    "flower (42)"
   ],
@@ -6917,7 +6768,7 @@
   "pagedQueryIsPageable": true,
   "pagedQueryProducts": 42,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 33,
+  "payloads": 32,
   "productsSeen": 42,
   "rejected": {
    "title-not-flower": 1
@@ -6929,7 +6780,6 @@
   "usedKnownEndpoint": true
  },
  "OCM-RETL-25-000368": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://www.thealchemy.nyc/categories/cannabis-flower-nyc",
@@ -6945,26 +6795,20 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000379": {
-  "ageGate": false,
   "categories": [
-   "vaporizers disposables vaporizers (9)",
-   "pre_rolls infused pre_rolls (5)",
-   "vaporizers specialty_pod_packs vaporizer (2)",
-   "accessories vaporizers accessories (1)",
-   "accessories none accessories (1)",
-   "vaporizers specialty_pods vaporizers (1)"
+   "edibles candies edibles (12)"
   ],
   "flower": 0,
   "landedOn": "https://flynnstoned.com/categories/flower/?category=flower",
   "licence": "OCM-RETL-25-000379",
   "menuLink": "found",
   "pagedQueryIsPageable": false,
-  "pagedQueryProducts": 14,
+  "pagedQueryProducts": 12,
   "pagingStoppedBecause": "no-page-in-request",
-  "payloads": 32,
-  "productsSeen": 19,
+  "payloads": 25,
+  "productsSeen": 12,
   "rejected": {
-   "category-not-flower": 19
+   "category-not-flower": 12
   },
   "scrollRounds": 1,
   "settled": true,
@@ -6975,8 +6819,8 @@
  "OCM-RETL-25-000383": {
   "ageGate": true,
   "categories": [
-   "flower (51)",
-   "pre-rolls (37)",
+   "flower (52)",
+   "pre-rolls (36)",
    "accessories (27)",
    "edible (27)",
    "vapes (27)",
@@ -6994,8 +6838,8 @@
   "productsSeen": 180,
   "rejected": {
    "category-not-flower": 64,
-   "sameStrainAnotherSize": 8,
-   "title-not-flower": 69
+   "sameStrainAnotherSize": 9,
+   "title-not-flower": 68
   },
   "scrollRounds": 1,
   "settled": true,
@@ -7004,26 +6848,25 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000403": {
-  "ageGate": false,
+  "ageGate": true,
   "categories": [
-   "flower (92)",
-   "whole-flower flower (31)",
-   "pre-ground flower (2)",
-   "bulk-flower flower (1)"
+   "flower (90)",
+   "whole-flower flower (32)",
+   "pre-ground flower (2)"
   ],
-  "declaredTotal": 126,
-  "flower": 118,
+  "declaredTotal": 124,
+  "flower": 116,
   "landedOn": "https://milligrams.co/stores/brooklyn-greenpoint-ny/products/flower",
   "licence": "OCM-RETL-25-000403",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 126,
-  "pagedTo": 126,
+  "pagedQueryProducts": 124,
+  "pagedTo": 124,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 29,
-  "productsSeen": 126,
+  "payloads": 30,
+  "productsSeen": 124,
   "rejected": {
    "sameStrainAnotherSize": 1,
    "title-not-flower": 7
@@ -7035,7 +6878,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000414": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://indoortreez.com/",
@@ -7051,7 +6893,7 @@
  "OCM-RETL-25-000416": {
   "ageGate": true,
   "categories": [
-   "flower (176)",
+   "flower (172)",
    "flower flower (21)",
    "flower small buds (5)",
    "flower pre-ground (4)",
@@ -7060,19 +6902,19 @@
    "flower kosher (3)",
    "flower pre-ground diamond infused infuse (2)"
   ],
-  "declaredTotal": 223,
-  "flower": 206,
+  "declaredTotal": 219,
+  "flower": 202,
   "landedOn": "https://esh.us/shop/rosedale-ny/menu/flower-8861",
   "licence": "OCM-RETL-25-000416",
   "menuLink": "found",
   "pagedFrom": 24,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 223,
-  "pagedTo": 223,
+  "pagedQueryProducts": 219,
+  "pagedTo": 219,
   "pagesAsked": 9,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 26,
-  "productsSeen": 223,
+  "payloads": 27,
+  "productsSeen": 219,
   "rejected": {
    "category-not-flower": 10,
    "sameStrainAnotherSize": 5,
@@ -7085,7 +6927,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000417": {
-  "ageGate": false,
   "categories": [],
   "firstAttempt": {
    "menuLink": "found",
@@ -7107,35 +6948,40 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000418": {
-  "ageGate": false,
   "categories": [
-   "live-rosin concentrate (25)",
-   "whole-flower flower (23)",
+   "all-in-one vaporizers (87)",
+   "cartridges vaporizers (56)",
+   "live-resin vaporizers (23)",
+   "whole-flower flower (21)",
+   "disposables vaporizers (19)",
+   "live-rosin concentrate (16)",
    "premium flower (15)",
-   "gummies edible (15)",
-   "all-in-one vaporizers (14)",
-   "flower (12)",
-   "live-rosin-gummies edible (9)",
-   "cartridges vaporizers (9)"
+   "gummies edible (15)"
   ],
-  "declaredTotal": 43,
-  "flower": 36,
+  "declaredTotal": 194,
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 35,
   "landedOn": "https://www.nytokes.com/shop-yonkers/",
   "licence": "OCM-RETL-25-000418",
   "menuLink": "found",
   "pagedFrom": 25,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 43,
-  "pagedTo": 43,
-  "pagesAsked": 1,
+  "pagedQueryProducts": 194,
+  "pagedTo": 194,
+  "pagesAsked": 7,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 33,
-  "productsSeen": 165,
+  "payloads": 37,
+  "productsSeen": 316,
   "rejected": {
-   "category-not-flower": 61,
+   "category-not-flower": 107,
    "sameStrainAnotherSize": 14,
-   "title-not-flower": 54
+   "title-not-flower": 160
   },
+  "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "Green Bar",
@@ -7143,7 +6989,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000425": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "foundMenuByGuess": true,
@@ -7154,17 +6999,18 @@
   "landedOn": "https://www.avaflowerco.com/age-gate?returnUrl=%2Fmenu%2Fflower",
   "licence": "OCM-RETL-25-000425",
   "menuLink": "found",
-  "payloads": 2,
+  "parkedOn": "/age-gate",
+  "payloads": 3,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
   "settled": true,
   "shop": "Ava Flower Co",
   "status": "no-products",
-  "usedKnownEndpoint": false
+  "usedKnownEndpoint": false,
+  "wentOnwardTo": "/menu/flower"
  },
  "OCM-RETL-25-000428": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://twinnleafnyc.com/",
@@ -7178,13 +7024,12 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000430": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://primetimecannabis.dispensary.shop/rec/menu",
   "licence": "OCM-RETL-25-000430",
   "menuLink": "found",
-  "payloads": 3,
+  "payloads": 2,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
@@ -7194,28 +7039,27 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000438": {
-  "ageGate": false,
   "categories": [
-   "whole-flower flower (183)",
+   "whole-flower flower (184)",
    "pre-ground flower (25)",
    "infused-buds flower (16)",
    "infused-bud flower (4)"
   ],
-  "declaredTotal": 203,
+  "declaredTotal": 204,
   "flower": 152,
   "landedOn": "https://greenflowerwellness.com/stores/green-flower-wellness-oakland-gardens/products/flower",
   "licence": "OCM-RETL-25-000438",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 203,
-  "pagedTo": 203,
+  "pagedQueryProducts": 204,
+  "pagedTo": 204,
   "pagesAsked": 2,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 31,
-  "productsSeen": 228,
+  "payloads": 26,
+  "productsSeen": 229,
   "rejected": {
-   "sameStrainAnotherSize": 30,
+   "sameStrainAnotherSize": 31,
    "title-not-flower": 46
   },
   "scrollRounds": 1,
@@ -7226,40 +7070,33 @@
  },
  "OCM-RETL-25-000441": {
   "ageGate": true,
-  "categories": [
-   "flower (15)",
-   "whole-flower flower (15)",
-   "premium flower (14)",
-   "pre-ground flower (2)",
-   "small-buds flower (1)"
-  ],
-  "declaredTotal": 47,
-  "flower": 43,
-  "landedOn": "https://sunflowerbk.com/menu?dtche%5Bcategory%5D=flower",
+  "categories": [],
+  "firstAttempt": {
+   "menuLink": "found",
+   "productsSeen": 0,
+   "status": "no-products"
+  },
+  "flower": 0,
+  "landedOn": "https://sunflowerbk.com/menu?dtche[category]=flower",
   "licence": "OCM-RETL-25-000441",
   "menuLink": "found",
-  "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 47,
-  "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 26,
-  "productsSeen": 47,
-  "rejected": {
-   "title-not-flower": 4
-  },
+  "payloads": 1,
+  "productsSeen": 0,
+  "rejected": {},
+  "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "Sunflower Dispensary",
-  "status": "ok",
+  "status": "no-products",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000448": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://happytimescannabis.com/categories/flower/?category=flower&sort=default",
   "licence": "OCM-RETL-25-000448",
   "menuLink": "found",
-  "payloads": 45,
+  "payloads": 44,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
@@ -7285,27 +7122,26 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000450": {
-  "ageGate": false,
   "categories": [
-   "flower (112)",
+   "flower (106)",
    "premium flower (6)",
-   "whole-flower flower (4)",
+   "whole-flower flower (6)",
    "infused-buds flower (3)",
    "small-buds flower (3)"
   ],
-  "declaredTotal": 128,
-  "flower": 125,
+  "declaredTotal": 124,
+  "flower": 121,
   "landedOn": "https://dankley.com/stores/dankley-manhattan/products/flower",
   "licence": "OCM-RETL-25-000450",
   "menuLink": "found",
   "pagedFrom": 100,
   "pagedQueryIsPageable": true,
-  "pagedQueryProducts": 128,
-  "pagedTo": 128,
+  "pagedQueryProducts": 124,
+  "pagedTo": 124,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 31,
-  "productsSeen": 128,
+  "payloads": 29,
+  "productsSeen": 124,
   "rejected": {
    "title-not-flower": 3
   },
@@ -7316,25 +7152,44 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000454": {
-  "ageGate": false,
-  "categories": [],
+  "categories": [
+   "whole-flower flower (56)",
+   "gummies edible (22)",
+   "all-in-one vaporizers (10)",
+   "drinks edible (9)",
+   "small-buds flower (9)",
+   "vaporizers (8)",
+   "pre-ground flower (6)",
+   "infused-pre-roll-packs pre-rolls (5)"
+  ],
+  "declaredTotal": 70,
   "firstAttempt": {
    "menuLink": "found",
    "productsSeen": 0,
    "status": "no-products"
   },
-  "flower": 0,
+  "flower": 63,
   "landedOn": "https://nycpoppin.com/shop/",
   "licence": "OCM-RETL-25-000454",
   "menuLink": "found",
-  "payloads": 0,
-  "productsSeen": 0,
-  "rejected": {},
+  "pagedFrom": 25,
+  "pagedQueryIsPageable": true,
+  "pagedQueryProducts": 70,
+  "pagedTo": 70,
+  "pagesAsked": 2,
+  "pagingStoppedBecause": "read-everything-declared",
+  "payloads": 27,
+  "productsSeen": 146,
+  "rejected": {
+   "category-not-flower": 49,
+   "sameStrainAnotherSize": 2,
+   "title-not-flower": 32
+  },
   "retried": true,
   "scrollRounds": 1,
   "settled": true,
   "shop": "Poppin",
-  "status": "no-products",
+  "status": "ok",
   "usedKnownEndpoint": false
  },
  "OCM-RETL-25-000456": {
@@ -7343,16 +7198,15 @@
   "status": "error: page.goto: net::ERR_NAME_NOT_RESOLVED at https://greenriseny.com/\nCall log:\n  - navigating to \"https://greenriseny.com/\""
  },
  "OCM-RETL-25-000460": {
-  "ageGate": false,
   "categories": [
-   "flower (149)",
+   "flower (146)",
    "gummies edible (18)",
    "disposables vaporizers (11)",
    "pre-ground flower (7)",
-   "premium flower (6)",
+   "premium flower (7)",
    "drinks edible (6)",
-   "small-buds flower (5)",
-   "cartridges vaporizers (5)"
+   "cartridges vaporizers (5)",
+   "small-buds flower (5)"
   ],
   "declaredTotal": 145,
   "flower": 137,
@@ -7365,7 +7219,7 @@
   "pagedTo": 145,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 42,
+  "payloads": 41,
   "productsSeen": 220,
   "rejected": {
    "category-not-flower": 27,
@@ -7410,7 +7264,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-26-000477": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "foundMenuByGuess": true,
@@ -7421,32 +7274,26 @@
   "landedOn": "https://www.kingsofbud.com/age-gate?returnUrl=%2Fmenu%2Fflower",
   "licence": "OCM-RETL-26-000477",
   "menuLink": "found",
-  "payloads": 2,
+  "parkedOn": "/age-gate",
+  "payloads": 3,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
   "settled": true,
   "shop": "HIGH CLASS CONVENIENCE CORPORATION",
   "status": "no-products",
-  "usedKnownEndpoint": false
+  "usedKnownEndpoint": false,
+  "wentOnwardTo": "/menu/flower"
  },
  "OCM-RETL-26-000481": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
-  "foundMenuByGuess": true,
-  "guessedMenuPaths": [
-   "/menu/flower",
-   "/shop/flower"
-  ],
-  "landedOn": "https://cannabeesdispensary.com/.well-known/sgcaptcha/?r=%2Fmenu%2Fflower&y=ipc:172.184.247.96:1789764590.363",
+  "landedOn": "https://cannabeesdispensary.com/",
   "licence": "OCM-RETL-26-000481",
-  "menuLink": "found",
+  "menuLink": "none",
   "payloads": 0,
   "productsSeen": 0,
   "rejected": {},
-  "scrollRounds": 1,
-  "settled": true,
   "shop": "CannaBees",
   "status": "no-products",
   "usedKnownEndpoint": false
@@ -7472,7 +7319,7 @@
   "pagedTo": 56,
   "pagesAsked": 2,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 2031,
+  "payloads": 60,
   "productsSeen": 56,
   "rejected": {
    "category-not-flower": 5,
@@ -7485,7 +7332,6 @@
   "usedKnownEndpoint": true
  },
  "OCM-RETL-26-000489": {
-  "ageGate": false,
   "categories": [],
   "firstAttempt": {
    "menuLink": "found",
@@ -7496,7 +7342,7 @@
   "foundMenuByGuess": true,
   "guessedMenuPaths": [
    "/menu/flower",
-   "/shop/flower"
+   "/menu"
   ],
   "landedOn": "https://kushieny.com/menu/flower",
   "licence": "OCM-RETL-26-000489",
@@ -7512,7 +7358,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-26-000492": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "foundMenuByGuess": true,
@@ -7523,28 +7368,30 @@
   "landedOn": "https://thegalleryny.com/age-gate?returnUrl=%2Fmenu%2Fflower",
   "licence": "OCM-RETL-26-000492",
   "menuLink": "found",
-  "payloads": 2,
+  "parkedOn": "/age-gate",
+  "payloads": 3,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
   "settled": true,
   "shop": "The Gallery at Dumbo",
   "status": "no-products",
-  "usedKnownEndpoint": false
+  "usedKnownEndpoint": false,
+  "wentOnwardTo": "/menu/flower"
  },
  "OCM-RETL-26-000499": {
   "ageGate": true,
   "categories": [
-   "flower whole flower whole flower (57)",
+   "flower whole flower whole flower (56)",
    "flower whole flower big nugs (31)",
-   "flower whole flower smalls (15)",
+   "flower whole flower smalls (16)",
    "flower preground flower infused flower (6)",
    "flower whole flower bud/flower (4)",
    "flower whole flower large bud (4)",
    "flower mixed buds whole flower (1)"
   ],
   "declaredTotal": 118,
-  "flower": 109,
+  "flower": 108,
   "landedOn": "https://buzzwicknyc.com/store/menu/flower-8507",
   "licence": "OCM-RETL-26-000499",
   "menuLink": "found",
@@ -7558,7 +7405,7 @@
   "productsSeen": 118,
   "rejected": {
    "category-not-flower": 6,
-   "sameStrainAnotherSize": 3
+   "sameStrainAnotherSize": 4
   },
   "scrollRounds": 1,
   "settled": true,
@@ -7570,13 +7417,13 @@
   "ageGate": true,
   "categories": [
    "flower whole buds whole buds flower (289)",
-   "vaporizers all in one all in one vaporiz (146)",
+   "vaporizers all in one all in one vaporiz (145)",
    "pre rolls single (infused) single (infus (132)",
-   "pre rolls single single pre_rolls (124)",
-   "edibles gummies gummies edibles (111)",
+   "pre rolls single single pre_rolls (127)",
+   "edibles gummies gummies edibles (109)",
    "vaporizers 510 cart 510 cart vaporizers (76)",
    "pre rolls pack (infused) pack (infused)  (66)",
-   "accessories accessories accessories acce (61)"
+   "accessories accessories accessories acce (62)"
   ],
   "declaredTotal": 743,
   "flower": 104,
@@ -7592,9 +7439,9 @@
   "payloads": 16,
   "productsSeen": 1358,
   "rejected": {
-   "category-not-flower": 606,
+   "category-not-flower": 608,
    "sameStrainAnotherSize": 200,
-   "title-not-flower": 448
+   "title-not-flower": 446
   },
   "scrollRounds": 1,
   "settled": true,
@@ -7603,7 +7450,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-26-000507": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "foundMenuByGuess": true,
@@ -7614,22 +7460,26 @@
   "landedOn": "https://nirvana-springs-prod-theta.treezecomm.app/age-gate?returnUrl=%2Fmenu%2Fflower",
   "licence": "OCM-RETL-26-000507",
   "menuLink": "found",
-  "payloads": 2,
+  "parkedOn": "/age-gate",
+  "payloads": 3,
   "productsSeen": 0,
   "rejected": {},
   "scrollRounds": 1,
   "settled": true,
   "shop": "Nirvana Springs, LLC",
   "status": "no-products",
-  "usedKnownEndpoint": false
+  "usedKnownEndpoint": false,
+  "wentOnwardTo": "/menu/flower"
  },
  "OCM-RETL-26-000510": {
-  "ageGate": false,
   "categories": [],
   "flower": 0,
   "landedOn": "https://dagmarcannabis.com/categories/flower/?category=flower",
   "licence": "OCM-RETL-26-000510",
   "menuLink": "found",
+  "offersDismissed": [
+   "Close"
+  ],
   "payloads": 12,
   "productsSeen": 0,
   "rejected": {},
@@ -7640,7 +7490,6 @@
   "usedKnownEndpoint": false
  },
  "OCM-RETL-26-000511": {
-  "ageGate": false,
   "categories": [
    "whole-flower flower (103)",
    "premium flower (18)",
@@ -7664,7 +7513,7 @@
   "pagedTo": 119,
   "pagesAsked": 1,
   "pagingStoppedBecause": "read-everything-declared",
-  "payloads": 31,
+  "payloads": 32,
   "productsSeen": 144,
   "rejected": {
    "sameStrainAnotherSize": 26,
