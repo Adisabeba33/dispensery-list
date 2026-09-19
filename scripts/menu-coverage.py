@@ -51,6 +51,8 @@ KEEP = (
     "foundMenuByGuess",
     "guessedMenuPaths",
     "foundMenuOnSecondLook",
+    "parkedOn",
+    "wentOnwardTo",
     "payloads",
     "settled",
     "jsonApiProducts",
@@ -353,6 +355,24 @@ def report():
             f"**{shop_name(r)}** ({reason}): {keys[:150]}"
             for r in sorted(shapes, key=lambda r: shop_name(r))
             for reason, keys in (r.get("rejectedShape") or {}).items()
+        ],
+        limit=25,
+    )
+
+    # Магазины, которые встретили нас стеной, назвавшей, куда мы шли.
+    parked = [r for r in rows if r.get("parkedOn")]
+    helped = [r for r in parked if (r.get("flower") or 0) > 0]
+    section(
+        lines,
+        "Стена назвала, куда мы шли",
+        f"Помогло в {len(helped)} из {len(parked)}. Страница, на которой мы\n"
+        "оказались, не была меню — и несла в своём же адресе путь, по которому\n"
+        "мы шли. Мы сходили туда один раз. Капчу так не обходим и не пробуем:\n"
+        "это контроль, поставленный магазином намеренно.",
+        [
+            f"**{shop_name(r)}**: {r['parkedOn']} → {r.get('wentOnwardTo', '—')}"
+            + (f", {r['flower']} сортов" if (r.get("flower") or 0) > 0 else ", всё равно пусто")
+            for r in sorted(parked, key=lambda r: -(r.get("flower") or 0))
         ],
         limit=25,
     )

@@ -561,6 +561,67 @@ export const sameEstate = (href, siteUrl, shopName = '') => {
  * apart from their jars by name alone. Landing on the flower page instead
  * skips the question.
  */
+/**
+ * Where a page that is not the menu says the menu was.
+ *
+ * Twenty-two shops end their visit parked on something that is not a shelf and
+ * never was — an age wall, a splash screen — and every one of them carries the
+ * address we were going to in its own query string:
+ *
+ *   /age-gate?returnUrl=%2Fmenu%2Fflower          eleven shops
+ *   /welcome?r=%2Fshop%2Fcategory%2Fflower        six, the Flowery's licences
+ *
+ * The page is telling us where we were headed. Reading it is not a trick and
+ * not a way around anything: the same parameter is what the site's own button
+ * uses when a visitor answers.
+ *
+ * A captcha is different in kind and is never followed. Three shops park on
+ * /.well-known/sgcaptcha/ and those are left alone — going near one would be
+ * working around a control the shop put there deliberately, which is not
+ * something this collector does.
+ */
+const DESTINATION_PARAMS = new Set([
+  'r',
+  'return',
+  'returnurl',
+  'returnto',
+  'redirect',
+  'redirecturl',
+  'redirect_to',
+  'next',
+  'continue',
+]);
+const NEVER_FOLLOW = /captcha|challenge|cdn-cgi|cloudflare|__cf/i;
+
+/** The onward address a parked page names, or null. Same site only. */
+export const destinationOf = (here) => {
+  let url;
+  try {
+    url = new URL(here);
+  } catch {
+    return null;
+  }
+  if (NEVER_FOLLOW.test(url.pathname) || NEVER_FOLLOW.test(url.search)) return null;
+  for (const [key, value] of url.searchParams) {
+    if (!DESTINATION_PARAMS.has(key.toLowerCase())) continue;
+    /* A path on this site, and nothing else. A protocol-relative value —
+       //elsewhere.example — is a different site wearing a leading slash, and
+       an absolute one is a different site outright. */
+    if (!value || !value.startsWith('/') || value.startsWith('//')) continue;
+    let next;
+    try {
+      next = new URL(value, url.origin);
+    } catch {
+      continue;
+    }
+    if (next.origin !== url.origin) continue;
+    // "/" is the door we already came in by; it names nothing new.
+    if (next.pathname === url.pathname || next.pathname === '/') continue;
+    return next.toString();
+  }
+  return null;
+};
+
 const GUESSED_MENU_PATHS = [
   '/menu/flower',
   '/shop/flower',
@@ -1865,6 +1926,28 @@ const main = async () => {
         await settle(1500, 10000);
         await clearWalls(page, entry);
         entry.settled = await settle(3000, 25000);
+
+        /* Still standing on something that is not the menu, and it says where
+           the menu was. Followed once: an age wall answered on the way in sets
+           its cookie, so the second arrival is usually the shelf. Recorded
+           either way, because "we followed and it still was not the menu" and
+           "we never left the wall" want different things done about them. */
+        const onward = destinationOf(page.url());
+        if (onward && onward !== page.url()) {
+          entry.parkedOn = new URL(page.url()).pathname;
+          if (await robotsAllows(onward)) {
+            entry.wentOnwardTo = new URL(onward).pathname;
+            await page.goto(onward, { waitUntil: 'domcontentloaded', timeout: 30000 });
+            await settle(1500, 10000);
+            /* The same walls can stand on the other side of the door: the
+               Flowery's welcome screen leads to a shop page that asks the age
+               question again. */
+            await clearWalls(page, entry);
+            entry.settled = await settle(3000, 25000);
+          } else {
+            entry.menuLink = 'robots-disallowed';
+          }
+        }
 
         /* Then scroll until nothing new arrives. Menus that page in as you go
            gave us their first screen and no more.

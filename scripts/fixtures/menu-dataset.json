@@ -124,6 +124,42 @@
   }
  },
  {
+  "id": "fixture-shop-parked",
+  "licenseNumber": "OCM-CAURD-24-000992",
+  "legalName": "Eighth Fixture Dispensary LLC",
+  "dbaName": "Eighth Fixture Dispensary",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "PROPRIETARY"
+  },
+  "contact": {
+   "website": "http://localhost:4399/parked"
+  },
+  "address": {
+   "line1": "8 Test St",
+   "city": "Brooklyn",
+   "zip": "11201"
+  }
+ },
+ {
+  "id": "fixture-shop-walled",
+  "licenseNumber": "OCM-CAURD-24-000991",
+  "legalName": "Ninth Fixture Dispensary LLC",
+  "dbaName": "Ninth Fixture Dispensary",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "PROPRIETARY"
+  },
+  "contact": {
+   "website": "http://localhost:4399/walled"
+  },
+  "address": {
+   "line1": "9 Test St",
+   "city": "Brooklyn",
+   "zip": "11201"
+  }
+ },
+ {
   "id": "fixture-shop-walls",
   "licenseNumber": "OCM-CAURD-24-000990",
   "legalName": "Tenth Fixture Dispensary LLC",
