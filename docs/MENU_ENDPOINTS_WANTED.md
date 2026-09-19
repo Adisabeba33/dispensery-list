@@ -34,8 +34,8 @@
 | Магазин | Город | Сайт | Почему пусто |
 |---|---|---|---|
 | Astoria Bud Boutique | Astoria | https://astoriabudboutique.com | страница не открылась |
-| The Bridge A Cannabis Experience | Astoria | https://thebridgecannabis.com | ссылку на меню не нашли |
-| Canna Buddha Corp | Bayside | https://cannabuddha.us | страница вернула ноль товаров |
+| The Bridge A Cannabis Experience | Astoria | https://thebridgecannabis.com | страница вернула ноль товаров |
+| Canna Buddha Corp | Bayside | https://cannabuddha.us | товары есть (169), цветка нет |
 | Weed Mart By New Metro | Bayside | https://newmetro.club | страница вернула ноль товаров |
 | Celestial Herbs ✳️ | Bronx | https://celestialherbsllc.com | страница вернула ноль товаров |
 | Conbud | Bronx | https://www.conbudbx.com | страница не открылась |
@@ -78,7 +78,7 @@
 | Nirvana Springs, LLC | Jamaica | https://nirvana-springs-prod-theta.treezecomm.app | страница вернула ноль товаров |
 | Dispensary Near Me by Liberty Buds | Little Neck | https://420expressway.com | страница не открылась |
 | MAMBO WELLNESS INC. | Long Island City | https://saintcannabisny.com | ссылку на меню не нашли |
-| CannaBees | Maspeth | https://cannabeesdispensary.com | ссылку на меню не нашли |
+| CannaBees | Maspeth | https://cannabeesdispensary.com | страница вернула ноль товаров |
 | Flower Power Dispensers | Maspeth | https://www.flowerpowerdispensers.com | страница вернула ноль товаров |
 | ZenZest Cannabis Dispensary | New Hyde Park | https://zenzest.com | страница вернула ноль товаров |
 | Highlife Health, LLC | New Rochelle | https://highlifehealth.co | страница вернула ноль товаров |
@@ -88,14 +88,14 @@
 | Ava Flower Co | New York | https://www.avaflowerco.com | страница вернула ноль товаров |
 | Bad Maryjane | New York | https://maryjanecannabisco.com | страница вернула ноль товаров |
 | Blue Forest Farms Dispensary LLC | New York | https://blueforestfarmsdispensary.com | страница вернула ноль товаров |
-| Bright Elephant, LLC | New York | https://flynnstoned.com | товары есть (12), цветка нет |
+| Bright Elephant, LLC | New York | https://flynnstoned.com | товары есть (28), цветка нет |
 | CONBUD LLC | New York | https://conbud.com | страница вернула ноль товаров |
 | Charlie Fox | New York | https://www.shopcharliefox.com | ссылку на меню не нашли |
 | Dagmar Cannabis | New York | https://dagmarcannabis.com | страница вернула ноль товаров |
-| FLYNNSTONED CANNABIS COMPANY | New York | https://flynnstoned.com | товары есть (24), цветка нет |
+| FLYNNSTONED CANNABIS COMPANY | New York | https://flynnstoned.com | товары есть (6), цветка нет |
 | Flower Power Dispensers | New York | https://www.flowerpowerdispensers.com | страница вернула ноль товаров |
 | Fluent | New York | https://www.etain.com | страница вернула ноль товаров |
-| FlynnStoned Cannabis Company | New York | https://flynnstoned.com/dispensaries/new-york/midtown-manhattan/ | товары есть (17), цветка нет |
+| FlynnStoned Cannabis Company | New York | https://flynnstoned.com/dispensaries/new-york/midtown-manhattan/ | товары есть (42), цветка нет |
 | Good Company | New York | https://goodcompanyshop.com | ссылку на меню не нашли |
 | Green Rise Inc. | New York | https://greenriseny.com | страница не открылась |
 | Happy Munkey | New York | https://happymunkey.com | страница вернула ноль товаров |
@@ -113,7 +113,7 @@
 | THE TRAVEL AGENCY SOHO | New York | https://www.thetravelagency.co | страница вернула ноль товаров |
 | Terrapin Greens | New York | https://www.thetravelagency.co | страница вернула ноль товаров |
 | The Alchemy | New York | https://www.thealchemy.nyc | страница вернула ноль товаров |
-| The Flower Pot | New York | https://www.cannabisonlex.com | товары есть (95), цветка нет |
+| The Flower Pot | New York | https://www.cannabisonlex.com | товары есть (81), цветка нет |
 | The Hootch LLC | New York | https://www.sweetlife.nyc | ссылку на меню не нашли |
 | The Yetti Club Corp | New York | https://www.theyetti.club/ | страница вернула ноль товаров |
 | Tru Cannabis | New York | https://trucannabisny.com | страница вернула ноль товаров |
@@ -129,30 +129,34 @@
 | Munchie's Dispensary NY LLC | Rockaway Beach | https://munchiesdispensaryny.com | ссылку на меню не нашли |
 | Hudson Park Agency LLC | Rosedale | https://ourthcshop.com | ссылку на меню не нашли |
 | Clouditude Dispensary | Staten Island | https://clouditudedispensary.com | страница вернула ноль товаров |
-| GEORGIA HEIGHTS, LLC | Staten Island | https://flynnstoned.com/?loc=nyc-staten-island | товары есть (12), цветка нет |
-| Green Land Retail LLC | Staten Island | https://greenlandny.com | страница вернула ноль товаров |
+| GEORGIA HEIGHTS, LLC | Staten Island | https://flynnstoned.com/?loc=nyc-staten-island | товары есть (10), цветка нет |
+| Green Land Retail LLC | Staten Island | https://greenlandny.com | ссылку на меню не нашли |
 | Happy Times Cannabis Co. | Staten Island | https://happytimescannabis.com | страница вернула ноль товаров |
-| Studio57NY | Staten Island | https://studio57ny.com | страница вернула ноль товаров |
+| Studio57NY | Staten Island | https://studio57ny.com | товары есть (50), цветка нет |
 | ZenZest LLC | Staten Island | https://zenzest.com | страница вернула ноль товаров |
-| RENAISSANT NYC | Sunnyside | https://renaissant.nyc | ссылку на меню не нашли |
+| RENAISSANT NYC | Sunnyside | https://renaissant.nyc | страница вернула ноль товаров |
 | Fluent | White Plains | https://etainhealth.com/ | страница вернула ноль товаров |
 | NY Flos LLC | White Plains | https://www.getflos.com/ | товары есть (49), цветка нет |
 | Cannabis Group NY, LLC | Whitestone | https://ignyteny.com | robots.txt запрещает — **не трогать** |
 | MECCA CANNABIS | Woodhaven | https://meccany.com | страница вернула ноль товаров |
 | Budr Cannabis | Yonkers | https://budrcannabis.com | страница вернула ноль товаров |
-| 3JsUmiNDre LLC | new york | https://flynnstoned.com/stores/flynnstoned-cannabis-dispensary-astoria-ny/ | товары есть (18), цветка нет |
+| 3JsUmiNDre LLC | new york | https://flynnstoned.com/stores/flynnstoned-cannabis-dispensary-astoria-ny/ | товары есть (55), цветка нет |
 
 ✳️ — адрес в `menu-endpoints.json` уже есть, и всё равно пусто: значит записанный адрес больше не тот.
 
-## Полка читается не до конца — 4
+## Полка читается не до конца — 8
 
 Здесь адрес есть и меню отвечает, но отдаёт меньше, чем само объявляет. Листание таким не помогло — им нужен прямой адрес категории.
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| OZ Dispensary | 83 | 143 | https://ozdispensary.com/ |
+| ENFLOR LLC | 50 | 523 | https://enflor.com |
+| Stashmaster | 22 | 231 | https://stashmasternyc.com |
+| Mello Tymes LLC | 21 | 145 | https://mellotymes.com |
+| Emerald Dispensary | 26 | 116 | https://emeralddispensary.nyc |
 | The Cannabis Reserve | 12 | 163 | https://www.thereservenewyork.com |
 | Exotic Herbals LLC | 91 | 116 | https://theplugny.com/ |
+| Herbwell | 109 | 127 | https://www.herbwellcannabis.com |
 | Flower Daddy | 63 | 73 | https://flowerdaddy.nyc |
 
 ## Сюда не ходим
