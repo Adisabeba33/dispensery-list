@@ -149,6 +149,24 @@ createServer((req, res) => {
 
   /* Products with no category field whatsoever — the shape that cost Liberty
      Buds its whole shelf. What they are is in the name, and nowhere else. */
+  /* A menu link that bounces to a wall naming where it bounced us from. */
+  if (url.pathname === '/parked-menu') {
+    res.writeHead(302, { location: '/gate?returnUrl=%2Fparked-shelf' });
+    res.end();
+    return;
+  }
+  /* The same bounce, but onto a captcha, which is never followed. */
+  if (url.pathname === '/walled-menu') {
+    res.writeHead(302, { location: '/.well-known/sgcaptcha/?r=%2Fparked-shelf' });
+    res.end();
+    return;
+  }
+  if (url.pathname === '/.well-known/sgcaptcha/') {
+    res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
+    res.end('<!doctype html><title>Checking your browser</title><h1>Checking your browser</h1>');
+    return;
+  }
+
   if (url.pathname === '/api/nocat.json') {
     res.writeHead(200, { 'content-type': 'application/json' });
     res.end(
@@ -211,6 +229,10 @@ createServer((req, res) => {
       '/carousel-menu': 'carousel-menu.html',
       '/nocat': 'nocat.html',
       '/nocat-menu': 'nocat-menu.html',
+      '/parked': 'parked.html',
+      '/gate': 'gate.html',
+      '/parked-shelf': 'parked-shelf.html',
+      '/walled': 'walled.html',
       /* The same shelf under a flower address as well as a general one. The
          second fixture shop links to neither, so which of the two the
          collector tries first is what this route is here to prove. */
