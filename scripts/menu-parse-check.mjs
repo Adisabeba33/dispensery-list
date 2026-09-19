@@ -11,7 +11,7 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  categoryFromProductUrl, classify, cleanStrainName, flattenJsonApiProducts, isProductPage,
+  categoryFromProductUrl, classify, cleanStrainName, destinationOf, flattenJsonApiProducts, isProductPage,
   mergeBySize, pagedRequest, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
@@ -584,6 +584,39 @@ check('a number the weight left behind goes too',
      every time. */
   check('no page, no request', pagedRequest({ method: 'GET', url: 'https://shop.test/menu.json', body: null }, 1), null);
   check('nothing to advance to', pagedRequest(dutchie, 0), null);
+}
+
+/* Where a page that is not the menu says the menu was. Built from the twenty-two
+   shops that end their visit parked on one, and from the three that park on a
+   captcha, which is never followed. */
+{
+  const at = (u) => destinationOf(u);
+  check(
+    'an age wall names where we were going',
+    at('https://shop.test/age-gate?returnUrl=%2Fmenu%2Fflower'),
+    'https://shop.test/menu/flower',
+  );
+  check(
+    'a splash screen does too',
+    at('https://shop.test/welcome?r=%2Fshop%2Fcategory%2Fflower'),
+    'https://shop.test/shop/category/flower',
+  );
+  check('and the parameter may be spelled otherwise', at('https://shop.test/gate?next=%2Fmenu'), 'https://shop.test/menu');
+
+  /* A captcha is a control the shop put there deliberately. Going near one is
+     not something this collector does, whatever the address says. */
+  check('a captcha is never followed', at('https://shop.test/.well-known/sgcaptcha/?r=%2Fmenu%2Fflower'), null);
+  check('nor a challenge page', at('https://shop.test/cdn-cgi/challenge?next=%2Fmenu'), null);
+
+  // Same site only: a leading slash is not a promise about the host.
+  check('no protocol-relative hop', at('https://shop.test/age-gate?returnUrl=%2F%2Felsewhere.test%2Fmenu'), null);
+  check('no absolute hop', at('https://shop.test/age-gate?returnUrl=https%3A%2F%2Felsewhere.test%2Fmenu'), null);
+
+  // Nothing new named, nothing to follow.
+  check('the door we came in by names nothing', at('https://shop.test/age-gate?returnUrl=%2F'), null);
+  check('nor does a parameter pointing at itself', at('https://shop.test/age-gate?r=%2Fage-gate'), null);
+  check('a page with no destination at all', at('https://shop.test/menu/flower'), null);
+  check('and rubbish is refused, not thrown', at('not a url'), null);
 }
 
 if (failures) {

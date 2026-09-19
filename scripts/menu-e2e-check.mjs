@@ -75,7 +75,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '7',
+    '--limit', '9',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -197,6 +197,23 @@ try {
   /* 3.5 from "| 3.5g |", and 7 from a name that ends "- 7" with the unit left
      off, which is how The Hibrary writes an eighth. */
   check('both weights were read, unit or no unit', nocatShelf, [3.5, 7]);
+
+  /* A menu link that bounces to a wall which answers nothing and names, in its
+     own query string, the address it bounced us from. The wall here is
+     deliberately unanswerable — a date-of-birth form, no button — so a shelf
+     coming back proves the address was read, not that something was clicked. */
+  const parked = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000992');
+  check('we noticed we were parked', parked?.parkedOn, '/gate');
+  check('and went where the page said', parked?.wentOnwardTo, '/parked-shelf');
+  check('the shelf came back', parked?.flower, 2);
+
+  /* The same bounce onto a captcha. That is a control the shop put there on
+     purpose, and it is left alone however clearly the address names what is
+     behind it. */
+  const walled = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000991');
+  check('a captcha is not followed', walled?.wentOnwardTo, undefined);
+  check('nor even noted as somewhere to go', walled?.parkedOn, undefined);
+  check('and the shop stays empty', walled?.flower, 0);
 
   // Shelves the run did not visit must survive it.
   check('other shelves carried forward', summary.shelvesCarriedForward > 0, true);
