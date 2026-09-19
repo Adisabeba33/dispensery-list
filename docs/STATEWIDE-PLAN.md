@@ -260,3 +260,75 @@ research is not.** A second state would pay the ingest-adapter cost again
   byte-identical, and re-running NYC ingest is deliberately avoided: today's
   snapshot would legitimately add 40 shops and reshape `contact`, and that is a
   decision to take on purpose rather than as a side effect of this work.
+
+
+---
+
+## 8. Municipalities — an adapter, not a research project
+
+The plan above budgeted this as the dominant cost: 53 records on file against
+~1,500 statewide, checked one municipality at a time. **That estimate was
+wrong, in a useful direction.**
+
+OCM publishes opt-out status in **LOCAL**, its Legal Online Cannabis Activities
+Locator. LOCAL is an ArcGIS Experience Builder application, and every one of
+those is backed by FeatureServer layers that answer JSON over REST. So the
+statewide opt-out list is a fetch, not a phone call.
+
+`scripts/ingest/opt-out.ts` is that adapter.
+
+### How it behaves
+
+- **It discovers rather than hard-codes.** It walks the app's own
+  configuration to find its layers, scores each one on the fields a municipal
+  opt-out layer must carry, and when it cannot decide it prints what it found
+  instead of emitting plausible nulls. Same posture as the Socrata adapter, for
+  the same reason: an id written down today breaks silently tomorrow.
+- **Unknown is null, never false.** A municipality the map does not cover, or
+  a value it encodes in a way the reader does not recognise, comes back null.
+  `false` means "we established it did not opt out"; sending somebody to a shop
+  in a town that banned retail is the fabricated record this register refuses,
+  and the two are one careless default apart. The run prints the null count.
+- **A village is never inferred from its town.** They opt out independently —
+  the schema already records Mamaroneck, which is both — so each stays its own
+  record.
+- **It refuses to overwrite the original scope.** `data/municipalities.json`
+  was checked by hand; a first machine run does not get to replace it.
+
+### The step that decides whether to trust it
+
+```bash
+npx tsx scripts/ingest/opt-out.ts --verify
+```
+
+Runs the adapter against the **six original counties** and diffs it against the
+53 hand-checked records, writing nothing. It reports agreements,
+disagreements, municipalities the map does not carry, and ones it carries that
+nobody checked.
+
+**Run this before trusting the adapter upstate.** A disagreement is either a
+stale hand record or a misread field, and which one it is decides whether the
+map or the person was right. Zero disagreements is the only result that earns
+a statewide run.
+
+### Not run here
+
+The proxy in this environment blocks `arcgis.com`, `cannabis.ny.gov` and
+`data.ny.gov` alike, so the adapter is written and its failure path verified,
+but no municipal data has been fetched. Sequence, wherever the network is open:
+
+```bash
+npx tsx scripts/ingest/opt-out.ts --verify                      # must agree
+npx tsx scripts/ingest/opt-out.ts --territory upstate --dry-run # inspect
+npx tsx scripts/ingest/opt-out.ts --territory upstate           # write
+npx tsx scripts/ingest/opt-out.ts --territory long-island
+npm run validate
+```
+
+### What this does to §5's ratio
+
+The engineering side grew by one adapter. The research side — the part that
+was supposed to dominate — may collapse to a verification pass. If `--verify`
+comes back clean, the honest read of the trial changes: **a new state costs an
+ingest adapter per public dataset, and municipal research only where the state
+does not publish one.** New York publishes one. Not every state will.

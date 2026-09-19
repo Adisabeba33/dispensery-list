@@ -269,8 +269,7 @@ const validateDispensaries = (FILE: string, requireRegistry: boolean) => {
 // Municipalities
 // ---------------------------------------------------------------------------
 
-const validateMunicipalities = () => {
-  const FILE = 'data/municipalities.json';
+const validateMunicipalities = (FILE = 'data/municipalities.json') => {
   const raw = readJson(FILE);
 
   if (raw === undefined) {
@@ -572,6 +571,8 @@ for (const t of TERRITORIES) {
   if (existsSync(resolve(ROOT, file))) validateDispensaries(file, true);
   const listings = `${t.dataDir}/flower-listings.json`;
   if (existsSync(resolve(ROOT, listings))) validateFlowerListings(listings);
+  const munis = `${t.dataDir}/municipalities.json`;
+  if (existsSync(resolve(ROOT, munis))) validateMunicipalities(munis);
 }
 validateMunicipalities();
 validateFlowerListings('data/flower-listings.json');
