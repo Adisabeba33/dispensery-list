@@ -2,7 +2,7 @@
 <style>
   .wall { position: fixed; inset: 0; display: flex; flex-direction: column;
           align-items: center; justify-content: center; background: #fff; }
-  #spin { z-index: 1 } #loop { z-index: 2 } #age { z-index: 3 }
+  #spin { z-index: 1; display: none } #loop { z-index: 2 } #age { z-index: 3 }
   button, a.link { display: block; margin: 8px; padding: 12px 24px; }
 </style>
 
@@ -48,7 +48,13 @@
   document.getElementById('age-yes').onclick = () => hide('age');
   document.getElementById('age-no').onclick = () => { submitted = true; hide('age'); };
   document.getElementById('loop-go').onclick = () => { submitted = true; hide('loop'); };
-  document.getElementById('loop-no').onclick = () => hide('loop');
+  /* The draw does not arrive with the newsletter box; it arrives after it,
+     and it takes its time. QUBE's does, and the first run that declined one
+     offer stopped a second and a half too early. */
+  document.getElementById('loop-no').onclick = () => {
+    hide('loop');
+    setTimeout(() => { document.getElementById('spin').style.display = 'flex'; }, 1800);
+  };
   document.getElementById('spin-go').onclick = () => { submitted = true; hide('spin'); shelf(); };
   document.getElementById('spin-no').onclick = () => { hide('spin'); shelf(); };
 </script>
