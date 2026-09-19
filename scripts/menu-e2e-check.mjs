@@ -75,7 +75,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '9',
+    '--limit', '10',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -214,6 +214,26 @@ try {
   check('a captcha is not followed', walled?.wentOnwardTo, undefined);
   check('nor even noted as somewhere to go', walled?.parkedOn, undefined);
   check('and the shop stays empty', walled?.flower, 0);
+
+  /* Three things between the door and the shelf, as QUBE serves them: an age
+     question on top, a newsletter box under it, a prize draw under that. The
+     draw is rendered first, so "Continue" — which submits a name and an email
+     — is the first control on the page to match the old age vocabulary.
+
+     The fixture poisons itself: press Join Now, Continue, or NOT YET and the
+     shelf is never served. Two strains coming back is proof that only the
+     declines were pressed. */
+  const walls = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000990');
+  check('the age question was answered', walls?.ageGate, true);
+  check(
+    'and both offers were declined, in the order they were met',
+    walls?.offersDismissed,
+    ['No Thanks', 'No thanks, let me browse'],
+  );
+  /* The newsletter box prints "You Must Be 21+" across its top, so a wall
+     detected by its words would still look up here and nothing would ever be
+     dismissed. It is detected by its buttons. */
+  check('the shelf behind all three came back', walls?.flower, 2);
 
   // Shelves the run did not visit must survive it.
   check('other shelves carried forward', summary.shelvesCarriedForward > 0, true);

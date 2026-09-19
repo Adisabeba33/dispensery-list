@@ -12,6 +12,7 @@
  */
 import {
   categoryFromProductUrl, classify, cleanStrainName, destinationOf, flattenJsonApiProducts, isProductPage,
+  wallAction,
   mergeBySize, pagedRequest, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
@@ -617,6 +618,41 @@ check('a number the weight left behind goes too',
   check('nor does a parameter pointing at itself', at('https://shop.test/age-gate?r=%2Fage-gate'), null);
   check('a page with no destination at all', at('https://shop.test/menu/flower'), null);
   check('and rubbish is refused, not thrown', at('not a url'), null);
+}
+
+/* Every button here was read off a live shop — QUBE's screenshots and the
+   Flowery's own page — not invented. */
+{
+  const t = (text, expected) => check(`button «${text}»`, wallAction(text), expected);
+  t('YES I AM', 'affirm-age');
+  t('Yes, I Am', 'affirm-age');
+  t('I am 21 or older', 'affirm-age');
+
+  // The answer of someone who is not 21. This collector does not give it.
+  t('NOT YET', 'refuse');
+  t('No, Not Yet', 'refuse');
+  t('No', 'refuse');
+
+  // A shop's own way out of its newsletter box.
+  t('No Thanks', 'decline-offer');
+  t('No thanks, let me browse', 'decline-offer');
+  t('Not now', 'decline-offer');
+  t('Close', 'decline-offer');
+
+  /* Agreeing to something on behalf of somebody who is not there. "Continue"
+     is the one that submits a name and an email on QUBE's prize draw, and it
+     is never a decline; it is only ever pressed as a last-resort age
+     affirmation, on a page that is asking about age and nothing else. */
+  t('Join Now', 'refuse');
+  t('Sign Up', 'refuse');
+  t('Continue', 'ignore');
+
+  /* The accessibility link every site carries, and the reason the decline
+     patterns are anchored whole rather than matched loosely on "skip". */
+  t('Skip to main content', 'ignore');
+  t('Clear', 'ignore');
+  t('Shop Now', 'ignore');
+  t('Flower', 'ignore');
 }
 
 if (failures) {

@@ -233,6 +233,8 @@ createServer((req, res) => {
       '/gate': 'gate.html',
       '/parked-shelf': 'parked-shelf.html',
       '/walled': 'walled.html',
+      '/walls': 'walls.html',
+      '/walls-menu': 'walls-menu.html',
       /* The same shelf under a flower address as well as a general one. The
          second fixture shop links to neither, so which of the two the
          collector tries first is what this route is here to prove. */
