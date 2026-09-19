@@ -216,7 +216,8 @@ const AGE_AFFIRM_VAGUE = /^(enter(\s*site)?|confirm|agree|i agree|continue)$/i;
 
 /* Never pressed on an age wall, whatever else matches. "Not yet" is the
    answer of someone who is not 21, and this collector does not give it. */
-const AGE_DECLINE = /^(no|nope|not yet|i am not|i'?m not|under\s*21|exit|leave|go back)$/i;
+const AGE_DECLINE =
+  /^(no|nope|no[,.!]?\s*not yet|not yet|i am not|i'?m not|no[,.!]?\s*i'?m not.*|under\s*21|not 21|exit|leave|go back|take me back)$/i;
 
 const AGE_WORDS = /(age|older|over|verify|confirm)/i;
 
@@ -250,6 +251,31 @@ const OFFER_ACCEPT =
   /^(join( now)?|sign ?up|subscribe|submit|get (my )?(offer|discount|code)|spin|spin (the )?wheel|claim|yes.*|count me in|unlock)$/i;
 
 const MAX_OFFERS_DISMISSED = 3;
+
+/**
+ * What this collector would do with a button, by its words alone.
+ *
+ * Exported so the whole vocabulary can be held against the buttons the shops
+ * actually carry — these came out of QUBE's screenshots and the Flowery's
+ * page, not out of anyone's head:
+ *
+ *   YES I AM · Yes, I Am              affirm the age question
+ *   NOT YET  · No, Not Yet            never pressed
+ *   No Thanks · No thanks, let me browse   decline the offer
+ *   Join Now · Continue · Shop Now    never pressed
+ *   Skip to main content              never pressed — the accessibility link
+ *                                     every site carries, and the reason the
+ *                                     decline patterns are anchored whole
+ */
+export const wallAction = (text) => {
+  const words = String(text ?? '').trim();
+  if (!words) return 'ignore';
+  if (AGE_DECLINE.test(words)) return 'refuse';
+  if (AGE_AFFIRM_CLEAR.test(words)) return 'affirm-age';
+  if (OFFER_ACCEPT.test(words)) return 'refuse';
+  if (OFFER_DECLINE.test(words)) return 'decline-offer';
+  return 'ignore';
+};
 
 const dismissOffers = async (page) => {
   const pressed = [];
