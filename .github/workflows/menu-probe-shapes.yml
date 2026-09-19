@@ -1,0 +1,54 @@
+# Throwaway. Answers one question: the menu answered, the answer held JSON,
+# and we saw no products in it — what shape was it?
+#
+# Twelve shops from run #18's own diagnostics: the ones standing on a flower
+# page, on their own domain, past no age wall, with dozens of JSON answers in
+# hand and nothing read out of them. Nothing is committed.
+name: Probe — what shape is the shelf we cannot see
+
+on:
+  push:
+    branches: [claude/probe-shapes]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Read the twelve shops whose shelf we cannot see
+        run: |
+          node scripts/menu-render.mjs \
+            --only OCM-CAURD-23-000026,OCM-RETL-24-000061,OCM-RETL-25-000448,OCM-RETL-24-000014,OCM-CAURD-25-000309,OCM-CAURD-24-000101,OCM-CAURD-24-000127,OCM-CAURD-23-000021,OCM-RETL-24-000186,OCM-CAURD-23-000041,OCM-CAURD-24-000222,OCM-RETL-24-000114 \
+            --limit 15 --dump-shapes 14 --dump-requests 3 || true
+      - name: Every array of objects the page sent
+        run: |
+          python3 - <<'PY'
+          import json
+          s = json.load(open('enrichment-output/menu-summary.json'))
+          for e in s.get('perShop', []):
+              print('=' * 78)
+              print(f"{e.get('shop')} | {e.get('licence')}")
+              print(f"  landedOn: {e.get('landedOn')}")
+              print(f"  status={e.get('status')}  payloads={e.get('payloads')}  "
+                    f"productArrays={e.get('productArrays')}  productsSeen={e.get('productsSeen')}  "
+                    f"flower={e.get('flower')}  jsonApi={e.get('jsonApiProducts')}")
+              print(f"  ageGate={e.get('ageGate')}  settled={e.get('settled')}  "
+                    f"scrollRounds={e.get('scrollRounds')}  rejected={e.get('rejected')}")
+              print(f"  topLevelKeys={e.get('topLevelKeys')}")
+              for sh in e.get('shapes') or []:
+                  print(f"  SHAPE {sh[:1000]}")
+              for r in e.get('requests') or []:
+                  print(f"  REQ {r.get('products')}x {r.get('method')} {str(r.get('url'))[:150]}")
+                  if r.get('body'):
+                      print(f"      body: {str(r.get('body'))[:300]}")
+          PY
