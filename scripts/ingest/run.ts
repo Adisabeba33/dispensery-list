@@ -168,7 +168,10 @@ const main = async () => {
       record.seeCategory = old.seeCategory ?? record.seeCategory;
       record.contact = { ...record.contact, ...(old.contact ?? {}) };
       record.address.neighborhood = old.address?.neighborhood ?? null;
-      if (old.dates?.openedOn) record.dates.openedOn = old.dates.openedOn;
+      // The registry now publishes this itself, so it wins. The hand-collected
+      // value only fills the silence it leaves — the other way round would let
+      // a stale note overwrite the source of record.
+      record.dates.openedOn = record.dates.openedOn ?? old.dates?.openedOn ?? null;
       // The registry cannot confirm a shop is trading; only the earlier check can.
       if (old.operationalStatus && old.operationalStatus !== 'UNKNOWN') {
         record.operationalStatus = old.operationalStatus;

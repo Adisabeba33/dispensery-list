@@ -41,7 +41,12 @@ scripts/
   validate-data.ts                 schema + semantic validation (runs in CI)
   ingest/                          pulls the state registry into the schema
   build-preview.ts                 renders everything into one shareable HTML file
-src/                               the Next.js site
+src/
+  app/                             the Next.js site — / and /westchester/ are the
+                                   NYC register; /upstate/ and /long-island/ are
+                                   registry imports only and say so on the page
+  lib/data.ts                      NYC + Westchester, borough-shaped
+  lib/territory-data.ts            the newer territories, county-shaped, kept apart
 preview/index.html                 generated single-file snapshot
 ```
 

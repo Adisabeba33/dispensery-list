@@ -194,7 +194,11 @@ export const toDispensary = (row: SocrataRow, ctx: NormalizeContext) => {
       licenseIssued: isoDate(read(row, map, 'issuedDate')),
       licenseEffective: isoDate(read(row, map, 'effectiveDate')),
       licenseExpiration: isoDate(read(row, map, 'expirationDate')),
-      openedOn: null,
+      // Published by the registry itself, so it is a registry fact, not an
+      // enrichment. Null where the registry is silent: a licence with no
+      // opening date has not been shown to have opened, which is not the same
+      // as having been shown not to.
+      openedOn: isoDate(read(row, map, 'openedOn')),
     },
     sources: [
       {

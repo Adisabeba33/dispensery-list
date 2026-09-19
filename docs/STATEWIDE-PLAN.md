@@ -140,9 +140,17 @@ A drop that arrives silently makes months of ratcheting unreadable. So:
 borough. Statewide needs region as a first-class dimension — and the raw feed
 already carries a `region` field, so it is available rather than inventable.
 
+> **Resolved 2026-09-19, by NOT generalising it.** See §9. The NYC pages were
+> left exactly as they are and the new territories got their own route, data
+> module, card and explorer. County is the grouping key there, not borough.
+
 ### 4c. `address.borough` is NYC-only
 
 Fine as a nullable NYC extra; it must not be the grouping key statewide.
+
+> **Resolved 2026-09-19.** `src/lib/territory-data.ts` types a territory record
+> with `borough: null` and a plain-string county, so the six-value `County`
+> union stays NYC's and no upstate county can reach an NYC-only code path.
 
 ---
 
@@ -347,3 +355,66 @@ was supposed to dominate — may collapse to a verification pass. If `--verify`
 comes back clean, the honest read of the trial changes: **a new state costs an
 ingest adapter per public dataset, and municipal research only where the state
 does not publish one.** New York publishes one. Not every state will.
+
+---
+
+## 9. Stage 1 — the two territories got pages, 2026-09-19
+
+`/upstate/` and `/long-island/`, built without touching the existing site.
+
+### The proof that nothing broke
+
+The site was built at HEAD, the changes applied, and the build compared page by
+page. Across every existing route — home, Method, Westchester, Shelves, Map,
+Notices and a generated shop page — the **only** difference in rendered text is
+the two new nav links. `data/dispensaries.json` is byte-identical throughout
+(same md5 before and after).
+
+### Why the NYC directory was not generalised
+
+`DirectoryExplorer` offers six controls: near-me, ZIP search, open-now,
+delivers, flower-menu-collected, and distance sort. In these two territories
+**every one of them would return nothing** — no record has coordinates, a
+confirmed trading status, a service flag or a collected shelf. Teaching one
+component to hide most of itself makes the NYC page pay for upstate's gaps, and
+a page of dead controls reads as broken rather than as honest.
+
+So the new territories got their own: `TerritoryExplorer` (search, county
+filter, opening-date filter, three sorts) and `TerritoryCard`. `DispensaryCard`
+would have been worse than useless here — it renders `regionOf()`, which
+returns "Westchester" for anything without a borough, and links to a detail
+route generated only for NYC slugs.
+
+### What the pages say they do not know
+
+Not prose — counts, derived from the records at build time, so the page cannot
+drift from the data: trading status 517/517 unconfirmed, coordinates 517/517
+absent, hours 517/517, phone or website 517/517, menus none, municipal opt-out
+not checked. Enrich the territory and each line disappears on its own. The
+panel sits ABOVE the list: a reader who learns this at the bottom has already
+formed a view from the top.
+
+### A registry field that was being thrown away
+
+`retail_date_opened_to_public` is published in the same dataset every record
+already comes from, and `normalize.ts` hard-coded `openedOn: null`. The six
+original counties got the same fact by hand, which is why it looked like
+enrichment rather than registry truth — and why every new-territory record read
+"status unconfirmed" with nothing behind it.
+
+Mapping it costs one line and yields **353 upstate and 17 Long Island** shops
+the state itself records as having opened to the public. It is the only quality
+signal these datasets carry, and it is now the default sort.
+
+It does NOT set `operationalStatus: OPEN`. The registry says the doors opened
+once; the register's own rule is that OPEN means trading today and requires the
+state verification tool. Both facts are true and they are not the same fact.
+
+The territories were regenerated offline from `data/raw/ocm-licenses-2026-09-06.json`,
+the same snapshot as before, so all three remain cut from one source. The only
+changes in those files are the timestamps and the new field.
+
+### Still not done here
+
+Menus, geocodes, hours, contact details, and municipal opt-out (frozen — §8).
+Until those land these are licence lists, and the pages say so in as many words.
