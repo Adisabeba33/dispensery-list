@@ -122,5 +122,23 @@
    "city": "Brooklyn",
    "zip": "11201"
   }
+ },
+ {
+  "id": "fixture-shop-walls",
+  "licenseNumber": "OCM-CAURD-24-000990",
+  "legalName": "Tenth Fixture Dispensary LLC",
+  "dbaName": "Tenth Fixture Dispensary",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "PROPRIETARY"
+  },
+  "contact": {
+   "website": "http://localhost:4399/walls"
+  },
+  "address": {
+   "line1": "10 Test St",
+   "city": "Brooklyn",
+   "zip": "11201"
+  }
  }
 ]

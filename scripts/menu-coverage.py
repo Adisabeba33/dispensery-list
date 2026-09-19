@@ -47,6 +47,7 @@ KEEP = (
     "landedOn",
     "categories",
     "ageGate",
+    "offersDismissed",
     "foundMenuByGuess",
     "guessedMenuPaths",
     "foundMenuOnSecondLook",
@@ -352,6 +353,24 @@ def report():
             f"**{shop_name(r)}** ({reason}): {keys[:150]}"
             for r in sorted(shapes, key=lambda r: shop_name(r))
             for reason, keys in (r.get("rejectedShape") or {}).items()
+        ],
+        limit=25,
+    )
+
+    # Предложения, от которых мы отказались их же кнопкой по дороге к полке.
+    offers = [r for r in rows if r.get("offersDismissed")]
+    got = [r for r in offers if (r.get("flower") or 0) > 0]
+    section(
+        lines,
+        "Отказались от предложений по дороге",
+        f"Полка потом нашлась у {len(got)} из {len(offers)}. Нажимаем только\n"
+        "кнопку отказа, которую магазин написал сам: «No Thanks», «Not now».\n"
+        "Кнопку согласия, галочку и поля не трогаем — ничего не отправляем,\n"
+        "только закрываем. Возрастная стена отвечается отдельно и честно.",
+        [
+            f"**{shop_name(r)}**: {', '.join(r['offersDismissed'])}"
+            + (f" → {r['flower']} сортов" if (r.get("flower") or 0) > 0 else " → всё равно пусто")
+            for r in sorted(offers, key=lambda r: -(r.get("flower") or 0))
         ],
         limit=25,
     )

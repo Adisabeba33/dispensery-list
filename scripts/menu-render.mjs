@@ -199,35 +199,190 @@ const robotsAllows = async (url) => {
  * actually asking about age, only on a control whose own words affirm it, and
  * it is recorded per shop in the report.
  */
-const AGE_AFFIRM =
-  /^(yes|yes[,.!]?\s*i\s*am\s*21.*|i\s*am\s*21.*|i'?m\s*21.*|21\s*\+?|21\s*(or|and)\s*(over|older)|over\s*21|enter(\s*site)?|confirm|continue)$/i;
+/* Ranked, not merely matched.
+ *
+ * QUBE stacks its age question on top of a prize draw, so one page carries
+ * "YES I AM" and "NOT YET" from the wall and "Continue" and "No thanks, let
+ * me browse" from the form underneath. Taking the first control that matched
+ * took whichever the site had rendered first — and the draw is rendered
+ * first, which makes "Continue" a button that submits a name and an email.
+ *
+ * So the words that can only mean "I am of age" outrank the words that merely
+ * move a page along, and a control is only pressed if it is the thing you
+ * would actually press: on screen, and not behind the wall it belongs to. */
+const AGE_AFFIRM_CLEAR =
+  /^(yes|yeah|yes[,.!]?\s*i\s*am(\s*21.*)?|i\s*am\s*(of\s*age|21.*)|i'?m\s*21.*|21\s*\+?|21\s*(or|and)\s*(over|older)|over\s*21|yes[,.!]?\s*i'?m\s*over\s*21)$/i;
+const AGE_AFFIRM_VAGUE = /^(enter(\s*site)?|confirm|agree|i agree|continue)$/i;
+
+/* Never pressed on an age wall, whatever else matches. "Not yet" is the
+   answer of someone who is not 21, and this collector does not give it. */
+const AGE_DECLINE = /^(no|nope|not yet|i am not|i'?m not|under\s*21|exit|leave|go back)$/i;
+
+const AGE_WORDS = /(age|older|over|verify|confirm)/i;
+
+const AGE_AFFIRM = new RegExp(`${AGE_AFFIRM_CLEAR.source}|${AGE_AFFIRM_VAGUE.source}`, 'i');
+
+/**
+ * Declining the offers a shop puts between its door and its shelf.
+ *
+ * QUBE asks three things before it shows a menu: whether you are 21, then for
+ * a name and an email to "stay in the loop", then for a name and an email to
+ * spin a prize wheel. Each of the last two carries its own way out —
+ * "No Thanks", "No thanks, let me browse" — and this collector takes it.
+ *
+ * Pressing a shop's own decline is not getting around anything. It is the
+ * answer the shop wrote for a visitor who does not want the newsletter, and
+ * it leaves the visitor exactly where the shop intended: on the menu. What is
+ * never pressed is the other button. "Join Now" agrees to marketing messages
+ * on behalf of a person who does not exist; a tick box is never ticked and a
+ * field is never filled. Nothing is submitted, only dismissed.
+ *
+ * The age wall is not dismissed here. It is answered by affirmAge, on its own
+ * terms, and if it is still up this does nothing at all — a decline pressed on
+ * an age wall would be a lie in the other direction.
+ */
+const OFFER_DECLINE =
+  /^(no[,.!]?\s*thanks?([,.!]?\s*(let me browse|i'?ll browse|browse)?)?[.!]?|no[,.!]?\s*thank you|not now|maybe later|later|skip([\s-]for[\s-]now)?|dismiss|close|close dialog|continue without.*|browse( only| the site| without)?)$/i;
+
+/* Never pressed. Each of these agrees to something on behalf of somebody who
+   is not there. */
+const OFFER_ACCEPT =
+  /^(join( now)?|sign ?up|subscribe|submit|get (my )?(offer|discount|code)|spin|spin (the )?wheel|claim|yes.*|count me in|unlock)$/i;
+
+const MAX_OFFERS_DISMISSED = 3;
+
+const dismissOffers = async (page) => {
+  const pressed = [];
+  for (let round = 0; round < MAX_OFFERS_DISMISSED; round += 1) {
+    let label;
+    try {
+      label = await page.evaluate(
+        ({ decline, accept, clear, ageDecline }) => {
+          const isDecline = new RegExp(decline, 'i');
+          const isAccept = new RegExp(accept, 'i');
+          const onScreen = (el) => {
+            const box = el.getBoundingClientRect();
+            if (box.width <= 0 || box.height <= 0) return false;
+            const cx = box.left + box.width / 2;
+            const cy = box.top + box.height / 2;
+            if (cx < 0 || cy < 0 || cx > innerWidth || cy > innerHeight) return false;
+            const atPoint = document.elementFromPoint(cx, cy);
+            return Boolean(atPoint && (el === atPoint || el.contains(atPoint) || atPoint.contains(el)));
+          };
+          const controls = [
+            ...document.querySelectorAll(
+              'button, a, input[type="button"], [role="button"], [aria-label]',
+            ),
+          ];
+          const wordsOf = (el) =>
+            (el.innerText || el.value || el.getAttribute('aria-label') || '').trim();
+
+          /* Is the age wall still up? Not "does the page say 21" — it does,
+             long after: QUBE prints "You Must Be 21+ To Access This Site"
+             across the top of the newsletter box that comes next, so a test on
+             the words would refuse to touch anything, for ever. The wall is up
+             when its buttons are: a visible "YES I AM" or "NOT YET". Once
+             pressed, those are gone and the words are not. */
+          const isClear = new RegExp(clear, 'i');
+          const isAgeDecline = new RegExp(ageDecline, 'i');
+          const wallUp = controls.some((el) => {
+            const words = wordsOf(el);
+            if (!words || words.length > 40) return false;
+            if (!isClear.test(words) && !isAgeDecline.test(words)) return false;
+            return onScreen(el);
+          });
+          if (wallUp) return null;
+          for (const el of controls) {
+            const words = wordsOf(el);
+            if (!words || words.length > 45) continue;
+            if (isAccept.test(words)) continue;
+            if (!isDecline.test(words)) continue;
+            if (!onScreen(el)) continue;
+            el.click();
+            return words.replace(/\s+/g, ' ').slice(0, 45);
+          }
+          return null;
+        },
+        {
+          decline: OFFER_DECLINE.source,
+          accept: OFFER_ACCEPT.source,
+          clear: AGE_AFFIRM_CLEAR.source,
+          ageDecline: AGE_DECLINE.source,
+        },
+      );
+    } catch {
+      return pressed;
+    }
+    if (!label) break;
+    pressed.push(label);
+    await page.waitForTimeout(1200);
+  }
+  return pressed;
+};
+
+/**
+ * Everything between the door and the shelf, in the order a visitor meets it.
+ *
+ * The age question is answered first because it is usually on top; the offers
+ * under it are then declined; and the age question is asked about again,
+ * because on some shops the offer is the thing on top and answering it reveals
+ * the wall rather than the menu.
+ */
+const clearWalls = async (page, entry) => {
+  if (await affirmAge(page)) entry.ageGate = true;
+  const pressed = await dismissOffers(page);
+  if (pressed.length) {
+    entry.offersDismissed = [...(entry.offersDismissed ?? []), ...pressed];
+    if (await affirmAge(page)) entry.ageGate = true;
+  }
+};
 
 const affirmAge = async (page) => {
   try {
-    const asking = await page.evaluate(() => {
+    const asking = await page.evaluate((words) => {
       const t = document.body?.innerText ?? '';
-      return /\b21\b/.test(t) && /(age|older|over|verify|confirm)/i.test(t);
-    });
+      return /\b21\b/.test(t) && new RegExp(words, 'i').test(t);
+    }, AGE_WORDS.source);
     if (!asking) return false;
 
     const clicked = await page.evaluate(
-      (src) => {
-        const affirm = new RegExp(src, 'i');
+      ({ clear, vague, decline }) => {
+        const isClear = new RegExp(clear, 'i');
+        const isVague = new RegExp(vague, 'i');
+        const isDecline = new RegExp(decline, 'i');
         const controls = [
           ...document.querySelectorAll('button, a, input[type="button"], input[type="submit"], [role="button"]'),
         ];
-        const target = controls.find((el) => {
+        let best = null;
+        let bestRank = 0;
+        for (const el of controls) {
           const text = (el.innerText || el.value || el.getAttribute('aria-label') || '').trim();
-          if (!text || text.length > 40) return false;
-          if (!affirm.test(text)) return false;
+          if (!text || text.length > 40) continue;
+          if (isDecline.test(text)) continue;
+          const rank = isClear.test(text) ? 2 : isVague.test(text) ? 1 : 0;
+          if (rank <= bestRank) continue;
           const box = el.getBoundingClientRect();
-          return box.width > 0 && box.height > 0;
-        });
-        if (!target) return false;
-        target.click();
+          if (box.width <= 0 || box.height <= 0) continue;
+          /* On screen and on top. A control lying under the wall belongs to
+             whatever the wall is covering, and pressing it presses something
+             the visitor never saw. */
+          const cx = box.left + box.width / 2;
+          const cy = box.top + box.height / 2;
+          if (cx < 0 || cy < 0 || cx > innerWidth || cy > innerHeight) continue;
+          const atPoint = document.elementFromPoint(cx, cy);
+          if (!atPoint || !(el === atPoint || el.contains(atPoint) || atPoint.contains(el))) continue;
+          best = el;
+          bestRank = rank;
+        }
+        if (!best) return false;
+        best.click();
         return true;
       },
-      AGE_AFFIRM.source,
+      {
+        clear: AGE_AFFIRM_CLEAR.source,
+        vague: AGE_AFFIRM_VAGUE.source,
+        decline: AGE_DECLINE.source,
+      },
     );
     if (clicked) await page.waitForTimeout(2500);
     return clicked;
@@ -1591,7 +1746,7 @@ const main = async () => {
 
       await page.goto(site, { waitUntil: 'domcontentloaded', timeout: 30000 });
       await settle(1500, 8000);
-      entry.ageGate = await affirmAge(page);
+      await clearWalls(page, entry);
 
       // A menu address written down by hand beats anything found by guessing.
       const known = ENDPOINTS[shop.licenseNumber] ?? null;
@@ -1616,8 +1771,9 @@ const main = async () => {
          difference between a shelf and a silence when it did not. */
       if (!found) {
         await settle(1500, 8000);
-        if (await affirmAge(page)) {
-          entry.ageGate = true;
+        const before = entry.ageGate;
+        await clearWalls(page, entry);
+        if (entry.ageGate && !before) {
           await settle(1500, 8000);
         }
         links = await readLinks();
@@ -1681,7 +1837,7 @@ const main = async () => {
       if (href && entry.menuLink !== 'robots-disallowed') {
         await page.goto(href, { waitUntil: 'domcontentloaded', timeout: 30000 });
         await settle(1500, 10000);
-        entry.ageGate = (await affirmAge(page)) || entry.ageGate;
+        await clearWalls(page, entry);
         entry.settled = await settle(3000, 25000);
 
         /* Then scroll until nothing new arrives. Menus that page in as you go
