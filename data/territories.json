@@ -14,7 +14,12 @@
         "Richmond",
         "Westchester"
       ],
-      "note": "The original scope. Its files stay at data/*.json — do not move them."
+      "note": "The original scope. Its files stay at data/*.json — do not move them.",
+      "municipalOptOut": {
+        "status": "HAND_CHECKED",
+        "file": "data/municipalities.json",
+        "note": "Checked one municipality at a time. No NYC borough opted out and Westchester is recorded in full, so the field is settled for this territory. It is also the reference the LOCAL-map adapter is measured against — see scripts/ingest/opt-out.ts --verify."
+      }
     },
     {
       "id": "upstate",
@@ -31,7 +36,12 @@
         "Suffolk",
         "Nassau"
       ],
-      "note": "Everything above Westchester to the Canadian border — defined as every county that is neither the original scope nor Long Island."
+      "note": "Everything above Westchester to the Canadian border — defined as every county that is neither the original scope nor Long Island.",
+      "municipalOptOut": {
+        "status": "NOT_ESTABLISHED",
+        "file": null,
+        "note": "DELIBERATELY FROZEN, not forgotten. Roughly a third of upstate municipalities opted out of retail, and we have not established which. Every page built on this territory must render opt-out as 'not checked' — never as 'no ban'. Thawing it is one command: docs/FROZEN-municipal-opt-out.md."
+      }
     },
     {
       "id": "long-island",
@@ -42,7 +52,12 @@
         "Suffolk",
         "Nassau"
       ],
-      "note": "Suffolk and Nassau. Neither upstate nor in the original scope; kept separate so it is never silently folded into either."
+      "note": "Suffolk and Nassau. Neither upstate nor in the original scope; kept separate so it is never silently folded into either.",
+      "municipalOptOut": {
+        "status": "NOT_ESTABLISHED",
+        "file": null,
+        "note": "DELIBERATELY FROZEN, not forgotten. Same rule as upstate: unknown renders as unknown. docs/FROZEN-municipal-opt-out.md."
+      }
     }
   ]
 }

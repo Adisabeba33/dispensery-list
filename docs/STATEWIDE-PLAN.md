@@ -266,6 +266,16 @@ research is not.** A second state would pay the ingest-adapter cost again
 
 ## 8. Municipalities — an adapter, not a research project
 
+> **FROZEN 2026-09-19.** The adapter below is finished and committed; it has
+> deliberately **not been run**. Upstate and Long Island declare
+> `municipalOptOut: NOT_ESTABLISHED` in `data/territories.json`, the validator
+> enforces that declaration, and the pages must render opt-out as *not checked*
+> rather than *no ban*. The reason is in §2 of
+> **[`FROZEN-municipal-opt-out.md`](FROZEN-municipal-opt-out.md)**: opt-out
+> status contributes nothing to SOMA's shelf coverage and is required only if
+> the register is published as a directory. That document is the thaw
+> procedure — read it instead of improvising from this section.
+
 The plan above budgeted this as the dominant cost: 53 records on file against
 ~1,500 statewide, checked one municipality at a time. **That estimate was
 wrong, in a useful direction.**
@@ -311,7 +321,7 @@ stale hand record or a misread field, and which one it is decides whether the
 map or the person was right. Zero disagreements is the only result that earns
 a statewide run.
 
-### Not run here
+### Not run here — and now frozen on purpose
 
 The proxy in this environment blocks `arcgis.com`, `cannabis.ny.gov` and
 `data.ny.gov` alike, so the adapter is written and its failure path verified,
@@ -324,6 +334,11 @@ npx tsx scripts/ingest/opt-out.ts --territory upstate           # write
 npx tsx scripts/ingest/opt-out.ts --territory long-island
 npm run validate
 ```
+
+…then flip each territory's `municipalOptOut` to `MAP_INGESTED` with its file
+path, which is what makes the validator and the pages believe it. The full
+procedure, including the reconciliation rule for `--verify` and what to do if
+OCM moves the map, is **[`FROZEN-municipal-opt-out.md`](FROZEN-municipal-opt-out.md)**.
 
 ### What this does to §5's ratio
 

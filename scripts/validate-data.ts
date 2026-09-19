@@ -17,7 +17,7 @@ import addFormats from 'ajv-formats';
 // writes the field.
 // @ts-expect-error — plain ES module, no types alongside it.
 import { brandKeyOf } from './menu-render.mjs';
-import { TERRITORIES, inTerritory } from './ingest/territory.js';
+import { TERRITORIES, type Territory, getTerritory, inTerritory } from './ingest/territory.js';
 
 const ROOT = resolve(import.meta.dirname, '..');
 
@@ -553,6 +553,46 @@ const validateProducers = (FILE: string) => {
 };
 
 // ---------------------------------------------------------------------------
+// Municipal opt-out coverage
+//
+// Each territory declares in data/territories.json whether it knows its
+// municipal opt-out status. This checks the declaration against the files on
+// disk, in both directions. A territory that claims coverage must have the
+// data; a territory that declares NOT_ESTABLISHED must NOT have a half-filled
+// file sitting there, because that is how a partial collection quietly starts
+// being read as complete. Absence is fine. Absence pretending to be a result
+// is not.
+
+const checkOptOutDeclaration = (t: Territory) => {
+  const FILE = 'data/territories.json';
+  const where = `territories[${t.id}].municipalOptOut`;
+  const decl = t.municipalOptOut;
+  if (!decl) {
+    fail(FILE, where, `territory "${t.id}" does not say whether its municipal opt-out status is known — declare it, even as NOT_ESTABLISHED`);
+    return;
+  }
+  const onDisk = `${t.dataDir}/municipalities.json`;
+  const present = existsSync(resolve(ROOT, onDisk));
+
+  if (decl.status === 'NOT_ESTABLISHED') {
+    if (decl.file !== null) {
+      fail(FILE, where, `status NOT_ESTABLISHED but file is "${decl.file}" — an unknown has no file`);
+    }
+    if (present) {
+      fail(FILE, where, `${onDisk} exists but the territory still declares NOT_ESTABLISHED — either it was collected, in which case say so, or it is partial and should not be on disk at all`);
+    }
+    return;
+  }
+  if (decl.file === null) {
+    fail(FILE, where, `status ${decl.status} claims the opt-out status is known but names no file`);
+    return;
+  }
+  if (!existsSync(resolve(ROOT, decl.file))) {
+    fail(FILE, where, `status ${decl.status} names ${decl.file}, which does not exist`);
+  }
+};
+
+// ---------------------------------------------------------------------------
 
 validateDispensaries('data/dispensaries.json', true);
 validateDispensaries('data/dispensaries.demo.json', false);
@@ -573,8 +613,10 @@ for (const t of TERRITORIES) {
   if (existsSync(resolve(ROOT, listings))) validateFlowerListings(listings);
   const munis = `${t.dataDir}/municipalities.json`;
   if (existsSync(resolve(ROOT, munis))) validateMunicipalities(munis);
+  checkOptOutDeclaration(t);
 }
 validateMunicipalities();
+checkOptOutDeclaration(getTerritory('nyc'));
 validateFlowerListings('data/flower-listings.json');
 validateStrainReference('data/strain-reference.json');
 validateProducers('data/producers.json');

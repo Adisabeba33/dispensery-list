@@ -1,8 +1,22 @@
 /**
  * Municipal opt-out status, from the state's own LOCAL map.
  *
- *   npx tsx scripts/ingest/opt-out.ts --territory upstate
+ *   npx tsx scripts/ingest/opt-out.ts --verify                     # do this FIRST
  *   npx tsx scripts/ingest/opt-out.ts --territory upstate --dry-run
+ *   npx tsx scripts/ingest/opt-out.ts --territory upstate
+ *
+ * ── FROZEN, 2026-09-19 ────────────────────────────────────────────────
+ *
+ * This has deliberately NOT been run. Opt-out status contributes nothing to
+ * SOMA's shelf coverage — SOMA is fed by menus — and matters only if the
+ * register is published as a directory somebody navigates by. So upstate and
+ * Long Island declare `municipalOptOut: NOT_ESTABLISHED` in
+ * data/territories.json, the validator enforces that declaration, and their
+ * pages render opt-out as "not checked".
+ *
+ * Nothing here is unfinished: it is ready and waiting on a decision plus an
+ * open network. Read docs/FROZEN-municipal-opt-out.md before running it — in
+ * particular §4 step 1, which is not optional.
  *
  * ── Why this is an ingest and not a research project ──────────────────
  *

@@ -24,6 +24,22 @@ export interface Territory {
   counties?: string[];
   /** Everything EXCEPT these. Used by upstate so a new county is covered. */
   excludeCounties?: string[];
+  /**
+   * Whether this territory's municipal opt-out status has been established.
+   *
+   * The MRTA let every city, town and village ban retail, and about a third
+   * of them did. It is declared here rather than inferred from whether a
+   * municipalities.json happens to exist, because a missing file is
+   * ambiguous — it reads as "not collected yet" and as "nothing to collect"
+   * equally well, and only one of those is safe to publish. NOT_ESTABLISHED
+   * is a claim we are making on purpose: we do not know, the pages must say
+   * so, and the validator holds us to it.
+   */
+  municipalOptOut?: {
+    status: 'HAND_CHECKED' | 'MAP_INGESTED' | 'NOT_ESTABLISHED';
+    file: string | null;
+    note?: string;
+  };
   note?: string;
 }
 
@@ -62,4 +78,17 @@ export function inTerritory(t: Territory, county: string | null): boolean {
 /** An absolute path inside the territory's data directory. */
 export function dataPath(t: Territory, file: string): string {
   return resolve(ROOT, t.dataDir, file);
+}
+
+/**
+ * Has this territory's opt-out status been established?
+ *
+ * The one question any page renderer must ask before drawing the field. False
+ * means render "not checked" — never "no ban", which is a claim nobody made.
+ */
+export function optOutIsKnown(t: Territory): boolean {
+  return (
+    t.municipalOptOut?.status === 'HAND_CHECKED' ||
+    t.municipalOptOut?.status === 'MAP_INGESTED'
+  );
 }
