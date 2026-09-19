@@ -279,7 +279,10 @@ export const wallAction = (text) => {
 
 const dismissOffers = async (page) => {
   const pressed = [];
-  for (let round = 0; round < MAX_OFFERS_DISMISSED; round += 1) {
+  let waitedOnce = false;
+  /* Rounds count what was pressed plus the one patient look after the last of
+     them, so a shop with three offers is not cut short by its own pauses. */
+  for (let round = 0; round < MAX_OFFERS_DISMISSED * 2; round += 1) {
     let label;
     try {
       label = await page.evaluate(
@@ -339,7 +342,18 @@ const dismissOffers = async (page) => {
     } catch {
       return pressed;
     }
-    if (!label) break;
+    if (!label) {
+      /* Nothing to decline this instant does not mean nothing is coming. QUBE
+         answers its newsletter box by raising a prize draw behind it, and the
+         draw takes a moment to arrive: the first run with this code declined
+         one of its two offers and stopped, a second and a half too early.
+         So the first empty look is not the answer — it is waited out once. */
+      if (waitedOnce) break;
+      waitedOnce = true;
+      await page.waitForTimeout(2500);
+      continue;
+    }
+    waitedOnce = false;
     pressed.push(label);
     await page.waitForTimeout(1200);
   }
