@@ -167,6 +167,37 @@ createServer((req, res) => {
     return;
   }
 
+  /* A search engine's answer: every product inside a result record, the count
+     spelled across two fields, and a facet bucket beside it that is not a
+     shelf however much it looks like a list. */
+  if (url.pathname === '/api/search.json') {
+    const shelf = PRODUCTS.slice(0, 3);
+    res.writeHead(200, { 'content-type': 'application/json' });
+    res.end(
+      JSON.stringify({
+        took: 7,
+        hits: {
+          total: { value: shelf.length, relation: 'eq' },
+          max_score: 4.2,
+          hits: shelf.map((p, i) => ({
+            _index: 'products',
+            _id: `hit-${i}`,
+            _score: 4.2 - i,
+            _source: p,
+            sort: [i],
+          })),
+        },
+        aggregations: {
+          facet_bucket_category: { category: { buckets: [
+            { key: 'Flower', doc_count: 3 },
+            { key: 'Edibles', doc_count: 41 },
+          ] } },
+        },
+      }),
+    );
+    return;
+  }
+
   if (url.pathname === '/api/nocat.json') {
     res.writeHead(200, { 'content-type': 'application/json' });
     res.end(
@@ -229,6 +260,8 @@ createServer((req, res) => {
       '/carousel-menu': 'carousel-menu.html',
       '/nocat': 'nocat.html',
       '/nocat-menu': 'nocat-menu.html',
+      '/search': 'search.html',
+      '/search-menu': 'search-menu.html',
       '/parked': 'parked.html',
       '/gate': 'gate.html',
       '/parked-shelf': 'parked-shelf.html',

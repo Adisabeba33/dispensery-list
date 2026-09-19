@@ -714,8 +714,15 @@ const totalIn = (container) => {
   if (!container || typeof container !== 'object' || Array.isArray(container)) return null;
   let found = null;
   const take = (k, v) => {
-    if (declaresTotal(k) && typeof v === 'number' && v >= 0 && v <= 100000) {
+    if (!declaresTotal(k)) return;
+    if (typeof v === 'number' && v >= 0 && v <= 100000) {
       found = Math.max(found ?? 0, v);
+      return;
+    }
+    /* Elasticsearch states it as { value: 1234, relation: "eq" }, which is a
+       total under a key that says total, spelled across two fields. */
+    if (v && typeof v === 'object' && !Array.isArray(v) && typeof v.value === 'number') {
+      if (v.value >= 0 && v.value <= 100000) found = Math.max(found ?? 0, v.value);
     }
   };
   for (const [k, v] of Object.entries(container)) {
@@ -730,11 +737,69 @@ const totalIn = (container) => {
   return found;
 };
 
+/**
+ * A search engine's envelope, and the product inside it.
+ *
+ * Happy Times answers its flower page with Elasticsearch, which wraps every
+ * product in a result record:
+ *
+ *   hits.hits[] = { _index, _id, _score, _source: {…the product…}, sort }
+ *
+ * From outside, that array is a list of things with no name, no category and
+ * nothing for sale — so it was walked straight past, and the shop published
+ * nothing while its menu answered twenty-four times. Same shape of problem as
+ * Tymber's JSON:API, one floor down instead of two.
+ *
+ * The unwrapped rows are then held to the ordinary shelf test: a search index
+ * can hold articles and shops as easily as products, and an envelope is not a
+ * promise about what is in it.
+ */
+const isSearchHit = (v) =>
+  Boolean(v) &&
+  typeof v === 'object' &&
+  !Array.isArray(v) &&
+  Boolean(v._source) &&
+  typeof v._source === 'object' &&
+  !Array.isArray(v._source);
+
+const unwrapHit = (hit) => {
+  const flat = { ...hit._source };
+  if (flat.id === undefined && hit._id !== undefined) flat.id = hit._id;
+  return flat;
+};
+
+export const flattenSearchHits = (payloads) => {
+  const out = [];
+  const walk = (value, depth) => {
+    if (depth > 8 || !value || typeof value !== 'object' || out.length > 4000) return;
+    if (Array.isArray(value)) {
+      const hits = value.filter(isSearchHit);
+      if (hits.length >= 2) {
+        const unwrapped = hits.map(unwrapHit);
+        if (looksLikeShelf(unwrapped)) out.push(...unwrapped);
+      }
+      for (const v of value.slice(0, 400)) walk(v, depth + 1);
+      return;
+    }
+    for (const v of Object.values(value)) walk(v, depth + 1);
+  };
+  for (const payload of payloads) walk(payload, 0);
+  return out;
+};
+
 /** Every shelf in a payload, each with the total its own container states. */
 const shelvesWithTotals = (value, container = null, depth = 0, out = []) => {
   if (depth > 7 || !value || typeof value !== 'object' || out.length > 40) return out;
   if (Array.isArray(value)) {
-    if (looksLikeShelf(value)) out.push({ count: value.length, total: totalIn(container) });
+    /* Opened before it is judged. A search engine's result records carry no
+       name and nothing for sale, so the array looks like anything but a
+       shelf — and the total sits beside it, under hits.total, where the
+       ordinary rule finds it the moment the array is recognised. */
+    const hits = value.filter(isSearchHit);
+    const opened = hits.length >= 2 ? hits.map(unwrapHit) : null;
+    if (looksLikeShelf(value) || (opened && looksLikeShelf(opened))) {
+      out.push({ count: value.length, total: totalIn(container) });
+    }
     for (const item of value.slice(0, 20)) shelvesWithTotals(item, container, depth + 1, out);
     return out;
   }
@@ -2150,6 +2215,14 @@ const main = async () => {
       if (jsonApi.length) {
         entry.jsonApiProducts = jsonApi.length;
         arrays.push(jsonApi);
+      }
+      /* Products a search engine wrapped in result records. Lifted the same
+         way and appended, so everything downstream — the flower filter, the
+         size reader, the merge — stays one path. */
+      const searchHits = flattenSearchHits(payloads);
+      if (searchHits.length) {
+        entry.searchHitProducts = searchHits.length;
+        arrays.push(searchHits);
       }
 
       /* Asked for, always printed. The condition used to be "only when we
