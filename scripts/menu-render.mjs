@@ -621,6 +621,38 @@ export const flattenJsonApiProducts = (payloads) => {
   return rows;
 };
 
+/**
+ * What a thing for sale carries and a description of a thing does not: a
+ * price, a potency, a weight, or a word about stock.
+ *
+ * Name plus category was not enough. Curaleaf's cookie banner arrives as
+ *
+ *   DurationType,Host,IsSession,Length,Name,category,description,…
+ *
+ * and The Hibrary's list of its own categories arrives as
+ *
+ *   __typename,count,id,name,subcategory
+ *
+ * Both have a name. Both have a category. Neither is for sale, and both were
+ * read as a shelf — 178 cookies at Curaleaf alone, counted as products,
+ * inflating every completeness figure derived from "products read".
+ *
+ * Checked against the shops this would have to keep, not only the junk it has
+ * to drop: Liberty Buds' products carry customerPrice and cbd, PACHA's carry
+ * cbdAmount and inStock, The Cannabis Place's carry cashPriceRange. All stay.
+ */
+const SHELF_EVIDENCE =
+  /^(price|prices|unitprice|unitprices|saleprice|discountprice|customerprice|cashprice|cashpricerange|cashoptions|weightprices|msrp|cost|thc|cbd|cbn|thca|thcpercentage|thccontent|potencythc|potency|minthc|maxthc|cbdamount|thcamount|weight|weightingrams|gram|grams|gramrange|unitweight|size|sizes|options|variants|instock|quantity|availability)$/i;
+
+/* Read off the first few rather than only the first: a shelf sometimes opens
+   with an oddity, and one strange row should not disqualify the shelf behind
+   it. A weight in the name counts too — Liberty Buds writes the whole
+   description there, and a menu that states its weights nowhere else is still
+   a menu. */
+const forSale = (item) =>
+  Object.keys(item).some((k) => SHELF_EVIDENCE.test(k.replace(/[_\s-]/g, ''))) ||
+  Boolean(sizeFromText(String(flatten(pick(item, NAME_KEYS)) ?? '')));
+
 /** Whether this array is a shelf of products rather than, say, a tax table. */
 const looksLikeShelf = (value) => {
   if (!Array.isArray(value)) return null;
@@ -634,7 +666,8 @@ const looksLikeShelf = (value) => {
     keys.some((k) =>
       /^(category|productCategory|productCategoryName|subcategory|brand|brandName|strainType|cannabisType|variants|weightInGrams|potencyThc|thcContent)$/i.test(k),
     ) &&
-    !keys.some((k) => /^(taxBasis|deliveryPolicy|applyTo|stages)$/i.test(k));
+    !keys.some((k) => /^(taxBasis|deliveryPolicy|applyTo|stages)$/i.test(k)) &&
+    objects.slice(0, 3).some(forSale);
   return looksLikeProduct ? objects : null;
 };
 

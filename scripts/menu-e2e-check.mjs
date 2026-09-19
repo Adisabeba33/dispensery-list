@@ -163,6 +163,10 @@ try {
      this shop has 500 products and we have read five of them. */
   const facets = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000995');
   check('the shelf was read', facets?.flower, 2);
+  /* Its answer also carries a list of its own categories and a cookie banner,
+     both shaped exactly like the real ones: a name, a category, and nothing
+     for sale. Counted as products they were 178 of Curaleaf's 182. */
+  check('only the things for sale were counted', facets?.productsSeen, 5);
   check('the total is the one beside the products', facets?.declaredTotal, 5);
   check('and it is compared against that query alone', facets?.pagedQueryProducts, 5);
   check('so the shop reads as complete', facets?.pagingStoppedBecause, 'read-everything-declared');

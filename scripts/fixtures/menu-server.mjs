@@ -73,11 +73,39 @@ createServer((req, res) => {
     res.writeHead(200, { 'content-type': 'application/json' });
     res.end(
       JSON.stringify({
+        /* The category list, shaped the way The Hibrary's arrives: a name and
+           a subcategory, which is everything "looks like a product" used to
+           ask for. Nothing here is for sale. */
         filters: {
           categories: [
-            { name: 'Edibles', count: 500 },
-            { name: 'Vapes', count: 320 },
-            { name: 'Flower', count: 5 },
+            { __typename: 'Category', id: '1', name: 'Edibles', count: 500, subcategory: null },
+            { __typename: 'Category', id: '2', name: 'Vapes', count: 320, subcategory: null },
+            { __typename: 'Category', id: '3', name: 'Flower', count: 5, subcategory: null },
+          ],
+        },
+        /* And the cookie banner, shaped the way Curaleaf's arrives — 178 of
+           these were read as products from its age wall. A name, a category,
+           and no price, potency or weight anywhere. */
+        consent: {
+          cookies: [
+            {
+              id: 'c1',
+              Name: 'FPAU',
+              Host: 'example.test',
+              IsSession: false,
+              Length: '365',
+              category: 'C0002',
+              description: 'Analytics cookie',
+            },
+            {
+              id: 'c2',
+              Name: '__qca',
+              Host: 'example.test',
+              IsSession: false,
+              Length: '395',
+              category: 'C0004',
+              description: 'Advertising cookie',
+            },
           ],
         },
         data: {
