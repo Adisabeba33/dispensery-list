@@ -1937,6 +1937,32 @@ const main = async () => {
           .map((pl) => (pl && typeof pl === 'object' ? Object.keys(pl).slice(0, 14).join(',') : typeof pl))
           .filter((v, i, a) => a.indexOf(v) === i);
       }
+      /* Probe only: what the page is actually showing us, and what it offers
+         to click. A visit that ends behind a wall we never answered looks the
+         same as one that read an empty shelf, and the difference is a button
+         with three words on it. */
+      if (dumpRequests > 0) {
+        entry.wallText = await page
+          .evaluate(() => (document.body?.innerText ?? '').replace(/\s+/g, ' ').slice(0, 400))
+          .catch(() => null);
+        entry.controls = await page
+          .evaluate(() => {
+            const seen = [];
+            for (const el of document.querySelectorAll(
+              'button, a, input[type="button"], input[type="submit"], [role="button"]',
+            )) {
+              const text = (el.innerText || el.value || el.getAttribute('aria-label') || '').trim();
+              if (!text || text.length > 45) continue;
+              const box = el.getBoundingClientRect();
+              if (box.width <= 0 || box.height <= 0) continue;
+              const line = `${el.tagName.toLowerCase()} «${text.replace(/\s+/g, ' ')}»`;
+              if (!seen.includes(line)) seen.push(line);
+              if (seen.length >= 40) break;
+            }
+            return seen;
+          })
+          .catch(() => null);
+      }
       if (dumpRequests > 0) {
         /* Biggest first: the one carrying the shelf is the one to read. */
         entry.requests = [...requests]

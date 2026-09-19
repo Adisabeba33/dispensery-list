@@ -1,0 +1,49 @@
+# Throwaway. The user walked QUBE's site by hand and found three walls in a
+# row: an age question, then two asking for a name and an email, each with a
+# "no thanks". This collector answers one wall, and only an age one, so it has
+# been standing behind the second ever since.
+#
+# This reads what those pages actually say and what they offer to click, so the
+# decline vocabulary is taken from the shops rather than guessed.
+name: Probe — what the walls say
+
+on:
+  push:
+    branches: [claude/probe-walls]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Read the fourteen shops standing behind a wall
+        run: |
+          node scripts/menu-render.mjs \
+            --only OCM-RETL-25-000448,OCM-CAURD-24-000127,OCM-RETL-24-000186,OCM-CAURD-23-000041,OCM-CAURD-24-000222,OCM-RETL-24-000114,OCM-CAURD-23-000003,OCM-CAURD-24-000091,OCM-CAURD-24-000125,OCM-RETL-25-000355,OCM-CAURD-23-000029,OCM-CAURD-25-000271,OCM-CAURD-25-000282,OCM-CAURD-25-000284 \
+            --limit 16 --dump-requests 1 || true
+      - name: What the page says, and what it offers to click
+        run: |
+          python3 - <<'PY'
+          import json
+          s = json.load(open('enrichment-output/menu-summary.json'))
+          for e in s.get('perShop', []):
+              print('=' * 78)
+              print(f"{e.get('shop')} | {e.get('licence')}")
+              print(f"  landedOn: {e.get('landedOn')}")
+              print(f"  status={e.get('status')} payloads={e.get('payloads')} "
+                    f"productsSeen={e.get('productsSeen')} flower={e.get('flower')} "
+                    f"ageGate={e.get('ageGate')} parkedOn={e.get('parkedOn')}")
+              print(f"  TEXT {e.get('wallText')}")
+              for c in e.get('controls') or []:
+                  print(f"    CLICK {c}")
+          PY
