@@ -3203,11 +3203,11 @@
     "county": "Saratoga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-25",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://cannabiscentralny.com/",
+    "menuUrl": "https://cannabiscentralny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Cannabis Central site identifies 1520 Crescent Rd, Halfmoon and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3308,11 +3308,11 @@
     "county": "Schenectady",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-03-16",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://cloud9evolution.com/",
+    "menuUrl": "https://cloud9evolution.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Cloud 9 Evolution site identifies 1610 Eastern Pkwy, Schenectady and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3353,11 +3353,11 @@
     "county": "Schenectady",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-11",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://milllaneprovisions.com/",
+    "menuUrl": "https://milllaneprovisions.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Mill Lane Provisions site identifies 102 State St, Schenectady and exposes online shopping/menu."
   },
   {
     "territory": "upstate",
@@ -3368,11 +3368,11 @@
     "county": "Schenectady",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-12-20",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://ripecannabisny.com/",
+    "menuUrl": "https://ripecannabisny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Ripe Cannabis site identifies 245 Broadway, Schenectady and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3413,11 +3413,11 @@
     "county": "St Lawrence",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-12",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://nextgencanton.com/",
+    "menuUrl": "https://nextgencanton.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party NextGen Canton site identifies 51 Main St, Canton and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3443,11 +3443,11 @@
     "county": "St Lawrence",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-22",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://thegreendoorny.com/",
+    "menuUrl": "https://thegreendoorny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Green Door Dispensary site identifies 3748 State Highway 37, Ogdensburg and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3863,11 +3863,11 @@
     "county": "Wayne",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-02-18",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://hazeandharvest.com/",
+    "menuUrl": "https://hazeandharvest.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Haze and Harvest site identifies 6740 State Route 31 E, Newark and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3893,11 +3893,11 @@
     "county": "Wayne",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-04-18",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://purelycannabis.co/",
+    "menuUrl": "https://purelycannabis.co/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Purely Cannabis Co site identifies 1645 State Route 104, Ontario NY and exposes retail/menu information."
   },
   {
     "territory": "upstate",
