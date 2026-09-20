@@ -1,13 +1,13 @@
 [
   {
     "licenseNumber": "OCM-CAURD-23-000004",
-    "menuUrl": "https://justbreathelife.org/home-copy/",
-    "platform": "DUTCHIE",
+    "menuUrl": "https://justbreathelife.org/categories/flower/",
+    "platform": "OTHER",
     "robotsAllows": null,
     "flowerVisibleWithoutLogin": true,
-    "ageGate": "click-through",
+    "ageGate": null,
     "checkedAt": "2026-09-20",
-    "notes": "Just Breathe first-party page at 75 Court St exposes full menu and Shop All Flower; Dutchie-backed product embed."
+    "notes": "Opened first-party Flower category for Just Breathe at 75 Court St, Binghamton. Page visibly exposes flower content; unverified robots/age-gate fields left null."
   },
   {
     "licenseNumber": "OCM-CAURD-23-000020",
@@ -190,16 +190,6 @@
     "notes": "Dutchie is embedded on the first-party Shop page; explicit Flower category avoids the generic menu shell."
   },
   {
-    "licenseNumber": "OCM-CAURD-24-000197",
-    "menuUrl": "https://gotham.nyc/locations/",
-    "platform": "OTHER",
-    "robotsAllows": null,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "click-through",
-    "checkedAt": "2026-09-20",
-    "notes": "Gotham Hudson location page identifies 260 Warren St and links online shopping for the location."
-  },
-  {
     "licenseNumber": "OCM-CAURD-25-000233",
     "menuUrl": "https://justalittlehigher.com/store/category/flower?locId=5",
     "platform": "PROPRIETARY",
@@ -308,16 +298,6 @@
     "ageGate": "simple-button",
     "checkedAt": "2026-09-06",
     "notes": "menu platform: Sweed; direct Flower category lists products without registration. The gate is a yes/confirm 21+ notice, not a date-of-birth form."
-  },
-  {
-    "licenseNumber": "OCM-CAURD-25-000313",
-    "menuUrl": "https://cannabicity.net/stores/albany-ny/",
-    "platform": "OTHER",
-    "robotsAllows": null,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "click-through",
-    "checkedAt": "2026-09-20",
-    "notes": "Cannabicity Albany store-specific page; 489 Delaware Ave, with Shop This Location and Flower navigation."
   },
   {
     "licenseNumber": "OCM-CAURD-25-000319",
