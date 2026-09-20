@@ -49,11 +49,27 @@ export const FIELD_CANDIDATES = {
 
 export type LogicalField = keyof typeof FIELD_CANDIDATES;
 
-/** Resolves each logical field to a real column, using the keys actually present. */
+/**
+ * Resolves each logical field to a real column, using the keys actually present.
+ *
+ * Across EVERY row, not one sample. Socrata omits a key entirely when the value
+ * is empty, so a column exists in the dataset only as often as it is filled:
+ * business_website appears on 788 of 2,980 rows and hours_of_operation on 731.
+ * Resolving from row zero asks whether one arbitrary licence happens to have a
+ * website, and if it does not — which was the case — the column is declared
+ * absent and every record in every territory is written with website: null.
+ * 788 published addresses were read as none, which is also why the upstate
+ * territory had nothing for the menu collector to visit.
+ *
+ * Scanning the lot costs one pass over keys already in memory.
+ */
 export const resolveFieldMap = (
-  sampleRow: SocrataRow,
+  rows: SocrataRow | SocrataRow[],
 ): { map: Partial<Record<LogicalField, string>>; unresolved: LogicalField[] } => {
-  const present = new Set(Object.keys(sampleRow).map((k) => k.toLowerCase()));
+  const present = new Set<string>();
+  for (const row of Array.isArray(rows) ? rows : [rows]) {
+    for (const key of Object.keys(row)) present.add(key.toLowerCase());
+  }
   const map: Partial<Record<LogicalField, string>> = {};
   const unresolved: LogicalField[] = [];
 

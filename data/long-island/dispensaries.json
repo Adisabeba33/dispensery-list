@@ -41,18 +41,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "aromatic-gardens-west-babylon",
@@ -96,18 +96,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "beleaf-calverton-calverton",
@@ -151,18 +151,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "big-apple-bud-co-farmingdale",
@@ -206,18 +206,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "big-jule-s-dispensary-inc-deer-park",
@@ -261,18 +261,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "brown-budda-new-york-southampton",
@@ -298,7 +298,7 @@
     "contact": {
       "phone": null,
       "email": null,
-      "website": null,
+      "website": "https://www.brownbuddanewyork.com/",
       "orderOnlineUrl": null,
       "instagram": null
     },
@@ -316,18 +316,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "budhampton-llc-bridgehampton",
@@ -353,7 +353,7 @@
     "contact": {
       "phone": null,
       "email": null,
-      "website": null,
+      "website": "https://www.budhamptonny.com/",
       "orderOnlineUrl": null,
       "instagram": null
     },
@@ -371,18 +371,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "canna-blooms-farmingville",
@@ -426,18 +426,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "curaleaf-ny-llc-carle-place",
@@ -463,7 +463,7 @@
     "contact": {
       "phone": null,
       "email": null,
-      "website": null,
+      "website": "https://curaleaf.com/dispensary/new-york",
       "orderOnlineUrl": null,
       "instagram": null
     },
@@ -481,18 +481,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "ddrj-holdings-llc-deer-park",
@@ -536,18 +536,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "deep-xy-holding-llc-southhampton",
@@ -591,18 +591,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "dutchmen-of-central-llc-farmingdale",
@@ -646,18 +646,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "east-end-arrivals-southampton",
@@ -701,18 +701,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "hampton-premium-green-water-mill",
@@ -738,7 +738,7 @@
     "contact": {
       "phone": null,
       "email": null,
-      "website": null,
+      "website": "https://hamptonpremiumgreen.com/",
       "orderOnlineUrl": null,
       "instagram": null
     },
@@ -756,18 +756,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "happy-days-dispensary-inc-farmingdale",
@@ -793,7 +793,7 @@
     "contact": {
       "phone": null,
       "email": null,
-      "website": null,
+      "website": "https://www.happydaysdispensary.com/",
       "orderOnlineUrl": null,
       "instagram": null
     },
@@ -811,18 +811,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "hb-v-enterprises-inc-patchogue",
@@ -866,18 +866,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "highview-farms-inc-bridgehampton",
@@ -921,18 +921,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "island-leaf-llc-west-babylon",
@@ -976,18 +976,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "jdr-cann-llc-farmingdale",
@@ -1031,18 +1031,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "joint-venture-cannabis-dispensary-medford",
@@ -1086,18 +1086,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "joyful-shores-west-babylon",
@@ -1141,18 +1141,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "kaur-consulting-llc-riverhead",
@@ -1196,18 +1196,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "large-leaf-618-llc-riverhead",
@@ -1251,18 +1251,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "leaf-spirit-riverhead",
@@ -1306,18 +1306,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "legendary-bliss-llc-deer-park",
@@ -1361,18 +1361,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "long-island-cannabis-club-deer-park",
@@ -1416,18 +1416,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "metropolis-cannabis-riverhead",
@@ -1453,7 +1453,7 @@
     "contact": {
       "phone": null,
       "email": null,
-      "website": null,
+      "website": "https://www.metropoliscannabis.com/",
       "orderOnlineUrl": null,
       "instagram": null
     },
@@ -1471,18 +1471,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "neo-wellness-farmingdale",
@@ -1526,18 +1526,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "official-jjm-inc-medford",
@@ -1581,18 +1581,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "peace-of-woodstock-coram",
@@ -1636,18 +1636,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "planet-nugg-farmingdale",
@@ -1673,7 +1673,7 @@
     "contact": {
       "phone": null,
       "email": null,
-      "website": null,
+      "website": "https://planetnugg.com/",
       "orderOnlineUrl": null,
       "instagram": null
     },
@@ -1691,18 +1691,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "primary-care-group-llc-shirley",
@@ -1746,18 +1746,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "psuw-llc-bellport",
@@ -1801,18 +1801,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "rise-long-beach",
@@ -1838,7 +1838,7 @@
     "contact": {
       "phone": null,
       "email": null,
-      "website": null,
+      "website": "https://risecannabis.com/",
       "orderOnlineUrl": null,
       "instagram": null
     },
@@ -1856,18 +1856,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "smiley-370-llc-lake-ronkonkoma",
@@ -1911,18 +1911,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "southampton-deep-blue-sea-llc-southampton",
@@ -1966,18 +1966,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "strain-stars-farmingdale",
@@ -2003,7 +2003,7 @@
     "contact": {
       "phone": null,
       "email": null,
-      "website": null,
+      "website": "https://strainstarsny.com/",
       "orderOnlineUrl": null,
       "instagram": null
     },
@@ -2021,18 +2021,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "stratus-dispensary-babylon",
@@ -2076,18 +2076,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "strong-strains-east-setauket",
@@ -2113,7 +2113,7 @@
     "contact": {
       "phone": null,
       "email": null,
-      "website": null,
+      "website": "https://strongstrains.com/",
       "orderOnlineUrl": null,
       "instagram": null
     },
@@ -2131,18 +2131,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "the-botanist-farmingdale",
@@ -2168,7 +2168,7 @@
     "contact": {
       "phone": null,
       "email": null,
-      "website": null,
+      "website": "https://shopbotanist.com/",
       "orderOnlineUrl": null,
       "instagram": null
     },
@@ -2186,18 +2186,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "the-hamptons-collective-southampton",
@@ -2223,7 +2223,7 @@
     "contact": {
       "phone": null,
       "email": null,
-      "website": null,
+      "website": "https://thehighrise.co/",
       "orderOnlineUrl": null,
       "instagram": null
     },
@@ -2241,18 +2241,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "the-high-life-west-babylon",
@@ -2278,7 +2278,7 @@
     "contact": {
       "phone": null,
       "email": null,
-      "website": null,
+      "website": "https://hydrophonics.net/",
       "orderOnlineUrl": null,
       "instagram": null
     },
@@ -2296,18 +2296,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "tink-e-co-inc-riverhead",
@@ -2351,18 +2351,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "total-cannabis-inc-riverhead",
@@ -2406,18 +2406,18 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   },
   {
     "id": "tw-of-ny-retail-llc-farmingdale",
@@ -2461,17 +2461,17 @@
         "url": "https://data.ny.gov/resource/jskf-tt3q.json",
         "label": "NYS Office of Cannabis Management — Current OCM Licenses",
         "type": "OFFICIAL_REGISTRY",
-        "retrievedAt": "2026-09-20T02:27:47.500Z"
+        "retrievedAt": "2026-09-20T15:03:15.751Z"
       }
     ],
     "verification": {
       "status": "VERIFIED_OFFICIAL",
       "confidence": "LOW",
-      "verifiedAt": "2026-09-20T02:27:47.500Z",
+      "verifiedAt": "2026-09-20T15:03:15.751Z",
       "checkedAgainstOcmTool": null,
       "notes": "Imported from the state registry. Contact details, hours and services are not yet enriched."
     },
     "warnings": [],
-    "lastUpdated": "2026-09-20T02:27:47.500Z"
+    "lastUpdated": "2026-09-20T15:03:15.751Z"
   }
 ]

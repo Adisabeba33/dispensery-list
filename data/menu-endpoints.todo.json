@@ -2126,5 +2126,21 @@
     "ageGate": null,
     "checkedAt": null,
     "notes": "Run #45 (2026-09-20): the researched address https://dankley.com/queens-store/?dtche%5Bcategory%5D=flower REDIRECTED to /queens-store/dankley-main/ and the category parameter did not apply — 97 products seen, only 8 of them flower, 32 dropped as another category and 57 by title. So it read the whole menu, not the flower category. The row was removed. Wanted: the address that lands on this store's flower category with the filter applied."
+  },
+  {
+    "licenseNumber": "MM0603D",
+    "shop": "The Botanist — 2365 Broadhollow Rd., Farmingdale",
+    "website": "https://shopbotanist.com/",
+    "provider": "OTHER",
+    "collectorSaw": "foreign-shelf",
+    "menuLink": "found",
+    "productsSeen": 181,
+    "ageGateAnswered": true,
+    "menuUrl": null,
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": null,
+    "notes": "Long Island collection 2026-09-20: shopbotanist.com is a multi-state chain and its default store is Columbus, OHIO. The collector landed on https://shopbotanist.com/stores/columbus-menu/products/flower and read 149 Ohio products — Buckeye, Butterfly Effect by Grow Ohio, King City Gardens, Meigs County, Riviera Creek — which were filed under this New York licence and have now been removed. Only 12% of those brands appear on any New York shelf, and all three that do are multi-state house brands. Wanted: the flower category of the FARMINGDALE, NY store. The chain's URL carries a store slug, so the address is probably a sibling of columbus-menu — confirm by the address the page itself shows, not by the slug."
   }
 ]

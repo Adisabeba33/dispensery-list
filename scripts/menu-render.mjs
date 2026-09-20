@@ -41,10 +41,33 @@ const offset = offsetArg > -1 ? Math.max(0, Number(process.argv[offsetArg + 1]) 
 const countOnly = process.argv.includes('--count');
 const NOW = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
 
+/* --territory <id> collects a territory other than New York City and
+   Westchester, reading its register and writing its shelf. The three are kept
+   apart everywhere else in this repository and there is no reason for the
+   collector to be the place they meet: upstate's menu-platform mix, its
+   coverage and its opt-out rules are all different, and one blended shelf file
+   would hide every one of those differences.
+
+   data/territories.json is the same file the ingest and the site read. This
+   parses it directly rather than importing scripts/ingest/territory.ts, which
+   is TypeScript and this is not. */
+const territoryArg = process.argv.indexOf('--territory');
+const territoryId = territoryArg > -1 ? process.argv[territoryArg + 1] : 'nyc';
+const ALL_TERRITORIES = JSON.parse(
+  readFileSync(resolve(ROOT, 'data/territories.json'), 'utf8'),
+).territories;
+const TERRITORY = ALL_TERRITORIES.find((t) => t.id === territoryId);
+if (!TERRITORY) {
+  console.error(`Unknown territory "${territoryId}".`);
+  process.exit(1);
+}
+
 // --dataset points the collector at a different register: used by the local
 // end-to-end check, which runs it against a fixture storefront on localhost.
 const datasetArg = process.argv.indexOf('--dataset');
-const datasetPath = datasetArg > -1 ? process.argv[datasetArg + 1] : 'data/dispensaries.json';
+const datasetPath =
+  datasetArg > -1 ? process.argv[datasetArg + 1] : `${TERRITORY.dataDir}/dispensaries.json`;
+const SHELF_PATH = `${TERRITORY.dataDir}/flower-listings.json`;
 const dispensaries = JSON.parse(readFileSync(resolve(ROOT, datasetPath), 'utf8'));
 
 /* Menus hosted on Leafly or Weedmaps belong to those companies, not the shop,
@@ -123,7 +146,7 @@ const dumpRequests = requestsArg > -1 ? Number(process.argv[requestsArg + 1]) ||
  */
 const PREVIOUS_SHELF = new Map();
 try {
-  for (const l of JSON.parse(readFileSync(resolve(ROOT, 'data/flower-listings.json'), 'utf8'))) {
+  for (const l of JSON.parse(readFileSync(resolve(ROOT, SHELF_PATH), 'utf8'))) {
     PREVIOUS_SHELF.set(l.licenseNumber, (PREVIOUS_SHELF.get(l.licenseNumber) ?? 0) + 1);
   }
 } catch {
@@ -152,9 +175,86 @@ try {
   /* not delivered yet; the collector hunts for the link as before */
 }
 
+/* Visited unless we have ESTABLISHED that it is not trading.
+ *
+ * The rule was operationalStatus === 'OPEN', which is a verdict only New York
+ * City and Westchester carry: OPEN there means somebody matched the licence
+ * against OCM's public-open list. No such pass has run upstate, so all 518 of
+ * its records read UNKNOWN and the collector had nothing to visit — not one
+ * shop, however plainly open.
+ *
+ * Unknown is not closed. What we do know is recorded: APPROVED_NOT_OPEN and
+ * PERMANENTLY_CLOSED are findings, and a shop carrying one is skipped. For the
+ * six original counties this changes the candidate set by a single shop, which
+ * has a registry opening date and should have been visited all along.
+ *
+ * A shop that never opened costs one page load and returns nothing, which is
+ * the cheaper mistake: the expensive one is a real shelf nobody reads. */
+const NOT_TRADING = new Set(['APPROVED_NOT_OPEN', 'PERMANENTLY_CLOSED']);
+
+/**
+ * A shelf that is not this state's.
+ *
+ * The Botanist is licensed in Farmingdale, Long Island. shopbotanist.com is a
+ * multi-state chain and its default store is Columbus, Ohio, so the collector
+ * read 149 products and filed them under a New York licence: Buckeye, Butterfly
+ * Effect by Grow Ohio, King City Gardens, Meigs County, Riviera Creek. Ohio
+ * cultivators, on a New York shelf, in a register whose whole claim is that a
+ * reader can check our work.
+ *
+ * Cannabis does not cross state lines — moving it is a federal offence, and no
+ * New York dispensary stocks Ohio flower. So a shelf is testable against the
+ * brands already seen on New York shelves. Measured on this first Long Island
+ * collection, the three real shops shared 83%, 83% and 100% of their brands
+ * with what 202 New York shops carry; the Ohio shelf shared 12%, and all three
+ * of those were multi-state house brands that exist in both places.
+ *
+ * A quarter is the line, which sits in the middle of that gap rather than
+ * against either edge, and a shelf with fewer than ten brands is not judged at
+ * all: too few to mean anything, and a small shop with an unusual supplier
+ * should not lose its shelf to arithmetic.
+ *
+ * Returns the share when the shelf reads as another state's, null when it is
+ * fine or when there is not enough of it to say.
+ */
+export const foreignShelfShare = (brandKeys, known, { minBrands = 10, minShare = 0.25 } = {}) => {
+  if (brandKeys.length < minBrands) return null;
+  const hit = brandKeys.filter((k) => known.has(k)).length;
+  const share = hit / brandKeys.length;
+  return share < minShare ? share : null;
+};
+
+/* Every brand this register has already seen on a New York shelf, across all
+   three territories. A shop's own previous listings are excluded when it is
+   judged, so a shelf that got in wrong once cannot vouch for itself. */
+const KNOWN_BRANDS = new Map();
+for (const t of ALL_TERRITORIES) {
+  try {
+    for (const l of JSON.parse(
+      readFileSync(resolve(ROOT, `${t.dataDir}/flower-listings.json`), 'utf8'),
+    )) {
+      if (!l.brandKey) continue;
+      if (!KNOWN_BRANDS.has(l.brandKey)) KNOWN_BRANDS.set(l.brandKey, new Set());
+      KNOWN_BRANDS.get(l.brandKey).add(l.licenseNumber);
+    }
+  } catch {
+    /* a territory not collected yet */
+  }
+}
+/** The brands vouched for by some shop OTHER than this one. */
+const brandsKnownApartFrom = (licence) => {
+  const out = new Set();
+  for (const [key, shops] of KNOWN_BRANDS) {
+    for (const s of shops) {
+      if (s !== licence) { out.add(key); break; }
+    }
+  }
+  return out;
+};
+
 const candidates = dispensaries.filter(
   (d) =>
-    d.operationalStatus === 'OPEN' &&
+    !NOT_TRADING.has(d.operationalStatus) &&
     !THIRD_PARTY_MENU.has(d.menu?.provider) &&
     d.contact?.website &&
     !alreadyCollected.has(d.licenseNumber) &&
@@ -1383,6 +1483,33 @@ const RETRY_BUDGET_MS = process.env.MENU_RETRY_BUDGET_MS
    which branch stocks them is not established. */
 const SHELF_SHARED = 'SHELF_SHARED_WITH_OTHER_LICENCES';
 
+/**
+ * Two addresses that are the same page.
+ *
+ * The shared-shelf marking grouped listings by the raw source string, so
+ * eastleafdispensary.com and www.eastleafdispensary.com were two menus and the
+ * two licences reading the identical Cheektowaga shelf — same 256 products,
+ * same 21 strains — went unmarked. One "www." was the whole of it.
+ *
+ * The fragment is KEPT. On this very page it is what names the store
+ * (/store#/cheektowaga/), so dropping it would fold a chain's branches into
+ * one and produce the opposite error. Same for the query: it carries the store
+ * id on several platforms.
+ */
+export const menuKey = (url) => {
+  try {
+    const u = new URL(url);
+    return [
+      u.hostname.toLowerCase().replace(/^www\./, ''),
+      u.pathname.replace(/\/+$/, ''),
+      u.search,
+      u.hash,
+    ].join('');
+  } catch {
+    return String(url ?? '');
+  }
+};
+
 /* Nobody sells flower by the hundredth of a gram. A figure below the floor
    came from some other field — a discount, a rating, a tax rate — and reading
    it as a weight puts a size on the shelf that a buyer cannot ask for.
@@ -2580,6 +2707,27 @@ const main = async () => {
       }
       entry.flower = seen.size;
       entry.rejected = why;
+
+      /* Before anything else is recorded about this shelf: is it this state's?
+         See foreignShelfShare. A shelf that fails is not kept and marked — it
+         is refused, because a listing filed under a licence that cannot legally
+         stock it is the fabricated record this register exists to refuse. */
+      const mine = listings.filter((l) => l.licenseNumber === shop.licenseNumber);
+      const myBrands = [...new Set(mine.map((l) => l.brandKey).filter(Boolean))];
+      const foreign = foreignShelfShare(myBrands, brandsKnownApartFrom(shop.licenseNumber));
+      if (foreign !== null) {
+        for (let i = listings.length - 1; i >= 0; i -= 1) {
+          if (listings[i].licenseNumber === shop.licenseNumber) listings.splice(i, 1);
+        }
+        entry.foreignShelf = {
+          brands: myBrands.length,
+          shareSeenInNewYork: Number(foreign.toFixed(3)),
+          landedOn: entry.landedOn ?? null,
+        };
+        entry.flower = 0;
+        seen.clear();
+      }
+
       if (Object.keys(rejectedShape).length) entry.rejectedShape = rejectedShape;
       if (dumpProducts > 0) {
         entry.rejectedSample = Object.fromEntries(
@@ -2590,7 +2738,13 @@ const main = async () => {
         .sort((a, b) => b[1] - a[1])
         .slice(0, 8)
         .map(([name, n]) => `${name} (${n})`);
-      entry.status = seen.size ? 'ok' : entry.productsSeen ? 'no-flower' : 'no-products';
+      entry.status = entry.foreignShelf
+        ? 'foreign-shelf'
+        : seen.size
+          ? 'ok'
+          : entry.productsSeen
+            ? 'no-flower'
+            : 'no-products';
     } catch (e) {
       entry.status = `error: ${e.message.slice(0, 120)}`;
     }
@@ -2653,7 +2807,7 @@ const main = async () => {
    * month old, at which point a stale shelf is worse than no shelf.
    */
   const CARRY_FORWARD_DAYS = 30;
-  const listingsPath = resolve(ROOT, 'data/flower-listings.json');
+  const listingsPath = resolve(ROOT, SHELF_PATH);
   let previous = [];
   try {
     previous = JSON.parse(readFileSync(listingsPath, 'utf8'));
@@ -2744,12 +2898,13 @@ const main = async () => {
   for (const l of merged) {
     const url = l.sources?.[0]?.url;
     if (!url) continue;
-    if (!licencesByMenu.has(url)) licencesByMenu.set(url, new Set());
-    licencesByMenu.get(url).add(l.licenseNumber);
+    const key = menuKey(url);
+    if (!licencesByMenu.has(key)) licencesByMenu.set(key, new Set());
+    licencesByMenu.get(key).add(l.licenseNumber);
   }
   for (const l of merged) {
     const url = l.sources?.[0]?.url;
-    const shared = (licencesByMenu.get(url)?.size ?? 0) > 1;
+    const shared = (licencesByMenu.get(menuKey(url))?.size ?? 0) > 1;
     const warnings = new Set(l.warnings ?? []);
     if (shared) warnings.add(SHELF_SHARED);
     else warnings.delete(SHELF_SHARED);

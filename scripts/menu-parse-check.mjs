@@ -11,7 +11,8 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, destinationOf,
+  brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, destinationOf, foreignShelfShare,
+  menuKey,
   flattenJsonApiProducts, isProductPage, wallAction,
   mergeBySize, pagedRequest, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
@@ -289,6 +290,49 @@ check('an empty status says nothing either way',
   check('a plural products route survives',
     rankMenuLink('https://verdicannabis.com/stores/verdi/products/flower', 'Flower'), 100);
   check('a brand page is never followed', rankMenuLink('https://shop.test/brands/dada', 'Shop Dada'), 0);
+
+  /* A shelf that is not this state's. The Botanist is licensed in Farmingdale,
+     Long Island; shopbotanist.com defaults to its Columbus, Ohio store, and
+     149 Ohio products were filed under a New York licence. Cannabis cannot
+     cross a state line, so a New York shelf is made of brands New York shelves
+     carry — and on the first Long Island collection the three real shops
+     shared 83%, 83% and 100% of their brands with what 202 New York shops
+     stock, against the Ohio shelf's 12%. */
+  const ny = new Set(['nanticoke', 'preferred', 'alchemypure', 'bouket', 'find', 'highfalls',
+    'grassroots', 'flyweight', 'gypsy', '1937', 'zizzle', 'roemerfarms']);
+  const ohio = ['buckeye', 'butterflyeffectbygrowohio', 'kingcitygardens', 'meigscounty',
+    'rivieracreek', 'woodwardfinecannabis', 'certified', 'modernflower', 'seeker', 'supply',
+    'rythm', 'goodgreen'];
+  check('an Ohio shelf under a New York licence is refused',
+    foreignShelfShare(ohio, ny) !== null, true);
+  check('a New York shelf is not', foreignShelfShare([...ny], ny), null);
+
+  /* One "www." was enough to hide a shared shelf. AMSM LLC and East Leaf
+     Dispensary read the identical Cheektowaga menu — same 256 products, same
+     21 strains — under two licences, and went unmarked because the two source
+     addresses differed by a subdomain. */
+  check('www is not a different menu',
+    menuKey('https://www.eastleafdispensary.com/store#/cheektowaga/'),
+    menuKey('https://eastleafdispensary.com/store#/cheektowaga/'));
+  check('nor is a trailing slash',
+    menuKey('https://shop.test/menu/flower/'), menuKey('https://shop.test/menu/flower'));
+  /* But the fragment names the STORE on this very page, so folding it in would
+     merge a chain's branches and make the opposite mistake. */
+  check('a fragment that names a branch keeps them apart',
+    menuKey('https://eastleafdispensary.com/store#/cheektowaga/')
+      !== menuKey('https://eastleafdispensary.com/store#/buffalo/'),
+    true);
+  check('and so does a store id in the query',
+    menuKey('https://menus.test/menu?retailer=a') !== menuKey('https://menus.test/menu?retailer=b'),
+    true);
+  /* Too few brands to judge. A small shop with one unusual supplier must not
+     lose its shelf to arithmetic. */
+  check('a shelf of three brands is not judged at all',
+    foreignShelfShare(['buckeye', 'meigscounty', 'rivieracreek'], ny), null);
+  /* The multi-state house brands are exactly the overlap that exists in both
+     places, and three of them is not enough to vouch for twenty-two others. */
+  check('house brands common to both states do not vouch for the rest',
+    foreignShelfShare(ohio, new Set(['rythm', 'goodgreen', 'botanist'])) !== null, true);
   /* A category slug that merely CARRIES the word flower is not the flower
      category. Cannabis Realm of New York publishes ten items on
      /menu/categories/new-flower-drops and its whole shelf elsewhere; that slug

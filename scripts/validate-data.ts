@@ -16,7 +16,7 @@ import addFormats from 'ajv-formats';
 // The collector's own normalizer, so the check cannot disagree with what
 // writes the field.
 // @ts-expect-error — plain ES module, no types alongside it.
-import { brandKeyOf } from './menu-render.mjs';
+import { brandKeyOf, menuKey } from './menu-render.mjs';
 import { TERRITORIES, type Territory, getTerritory, inTerritory } from './ingest/territory.js';
 
 const ROOT = resolve(import.meta.dirname, '..');
@@ -333,7 +333,12 @@ const validateFlowerListings = (FILE: string) => {
   const validate = compile('data/schema/flower-listing.schema.json');
 
   // Listings must attach to a dispensary we actually publish.
-  const dispensaries = readJson('data/dispensaries.json');
+  /* A shelf belongs to the register that sits beside it. data/ holds New York
+     City and Westchester; data/upstate/ and data/long-island/ hold their own,
+     and a listing must attach to a licence in ITS territory's register — not
+     in the city's, which was the only one this ever looked at. */
+  const registerFor = FILE.replace(/flower-listings\.json$/, 'dispensaries.json');
+  const dispensaries = readJson(registerFor);
   const knownLicences = new Set(
     Array.isArray(dispensaries) ? dispensaries.map((d: any) => d?.licenseNumber) : [],
   );
@@ -426,13 +431,18 @@ const validateFlowerListings = (FILE: string) => {
     const r = record as Record<string, any>;
     const url = r?.sources?.[0]?.url;
     if (typeof url !== 'string' || typeof r.licenseNumber !== 'string') return;
-    if (!licencesByUrl.has(url)) licencesByUrl.set(url, new Set());
-    licencesByUrl.get(url)!.add(r.licenseNumber);
+    /* Normalised, because the collector groups the same way: one "www." made
+       two licences reading the identical Cheektowaga shelf look like two
+       menus. See menuKey — the fragment and query are kept, since on several
+       platforms they are what names the branch. */
+    const key = menuKey(url);
+    if (!licencesByUrl.has(key)) licencesByUrl.set(key, new Set());
+    licencesByUrl.get(key)!.add(r.licenseNumber);
   });
   raw.forEach((record, i) => {
     const r = record as Record<string, any>;
     const url = r?.sources?.[0]?.url;
-    const sharing = typeof url === 'string' ? licencesByUrl.get(url) : undefined;
+    const sharing = typeof url === 'string' ? licencesByUrl.get(menuKey(url)) : undefined;
     const shared = (sharing?.size ?? 0) > 1;
     const marked = Array.isArray(r.warnings) && r.warnings.includes(SHELF_SHARED);
     const at = `[${i}] ${r.listingId ?? 'unknown'} → sources[0].url`;

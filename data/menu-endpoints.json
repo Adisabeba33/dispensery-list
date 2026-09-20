@@ -1,5 +1,15 @@
 [
   {
+    "licenseNumber": "OCM-CAURD-23-000004",
+    "menuUrl": "https://justbreathelife.org/home-copy/",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Just Breathe first-party page at 75 Court St exposes full menu and Shop All Flower; Dutchie-backed product embed."
+  },
+  {
     "licenseNumber": "OCM-CAURD-23-000020",
     "menuUrl": "https://terpbrosnyc.com/stores/terp-bros-astoria/products/flower",
     "platform": "OTHER",
@@ -40,6 +50,16 @@
     "notes": "Direct Flowers menu; page markup identifies BLAZE. A login link exists but is not required to browse products."
   },
   {
+    "licenseNumber": "OCM-CAURD-24-000056",
+    "menuUrl": "https://royaleflower.com/dutchie-menu/?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Royale Flower menu explicitly identifies 7 Point Dispensary INC and OCM-CAURD-24-000056."
+  },
+  {
     "licenseNumber": "OCM-CAURD-24-000080",
     "menuUrl": "https://thecannabisplace.org/store/?cat=flower&locId=1",
     "platform": "OTHER",
@@ -48,6 +68,26 @@
     "ageGate": "none",
     "checkedAt": "2026-09-20",
     "notes": "First-party Store page exposes Flower through cat=flower and locId=1; page footer identifies the New York store at 74-03 Metropolitan Ave, Queens. This is the full Flower category rather than the generic /store/new-york/ landing page."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000088",
+    "menuUrl": "https://blackmarketcanna.co/",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Black Market Canna first-party site at 89 Main St exposes Shop Now and Flower browse."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000092",
+    "menuUrl": "https://518bakery.com/shop/?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "The Bakery first-party site prints 1099 Loudon Rd and OCM-CAURD-24-000092; direct Flower category parameter."
   },
   {
     "licenseNumber": "OCM-CAURD-24-000102",
@@ -80,6 +120,16 @@
     "notes": "Bronx location has a location-specific Dutchie menu page; direct Flower parameter avoids the generic shell."
   },
   {
+    "licenseNumber": "OCM-CAURD-24-000135",
+    "menuUrl": "https://content.holduprollup.com/shop/",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Hold Up Roll Up Albany first-party shop; parent site maps HURU Albany to 196 Washington Ave."
+  },
+  {
     "licenseNumber": "OCM-CAURD-24-000136",
     "menuUrl": "https://justalittlehigher.com/store/category/flower?locId=3",
     "platform": "PROPRIETARY",
@@ -110,6 +160,26 @@
     "notes": "JALH Murray Hill (698 2nd Ave) — locId=4."
   },
   {
+    "licenseNumber": "OCM-CAURD-24-000157",
+    "menuUrl": "https://www.brownbuddanewyork.co/order-now?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Brown Budda Southampton; first-party page gives 1533 County Road 39 and OCM-CAURD-24-000157."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000161",
+    "menuUrl": "https://dutchie.com/dispensary/robinsons-flower/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Robinson's Albany store-specific Dutchie Flower route; OCM verification maps storefront to 106 Everett Rd."
+  },
+  {
     "licenseNumber": "OCM-CAURD-24-000165",
     "menuUrl": "https://frassboxcannabis.com/categories/flower/",
     "platform": "PROPRIETARY",
@@ -130,6 +200,16 @@
     "notes": "Dutchie is embedded on the first-party Shop page; explicit Flower category avoids the generic menu shell."
   },
   {
+    "licenseNumber": "OCM-CAURD-24-000197",
+    "menuUrl": "https://gotham.nyc/locations/",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Gotham Hudson location page identifies 260 Warren St and links online shopping for the location."
+  },
+  {
     "licenseNumber": "OCM-CAURD-25-000233",
     "menuUrl": "https://justalittlehigher.com/store/category/flower?locId=5",
     "platform": "PROPRIETARY",
@@ -140,6 +220,16 @@
     "notes": "JALH Briarwood (138-72 Queens Blvd) — locId=5."
   },
   {
+    "licenseNumber": "OCM-CAURD-25-000272",
+    "menuUrl": "https://strongstrains.com/stores/strong-strains/categories/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Strong Strains store-specific Flower route; footer gives 19 Technology Dr and OCM-CAURD-25-000272."
+  },
+  {
     "licenseNumber": "OCM-CAURD-25-000275",
     "menuUrl": "https://justalittlehigher.com/store/category/flower?locId=1",
     "platform": "PROPRIETARY",
@@ -148,6 +238,16 @@
     "ageGate": "simple-button",
     "checkedAt": "2026-09-08",
     "notes": "JALH Queens Plaza (2415 Queens Plz N) — locId=1 «JALH – QUEENS PLAZA»."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000278",
+    "menuUrl": "https://flynnstoned.com/stores/flynnstoned-cannabis-dispensary-binghamton-ny/",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "FlynnStoned Binghamton store-specific page; 1143 Upper Front St and online shopping context."
   },
   {
     "licenseNumber": "OCM-CAURD-25-000281",
@@ -218,6 +318,16 @@
     "ageGate": "simple-button",
     "checkedAt": "2026-09-06",
     "notes": "menu platform: Sweed; direct Flower category lists products without registration. The gate is a yes/confirm 21+ notice, not a date-of-birth form."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000313",
+    "menuUrl": "https://cannabicity.net/stores/albany-ny/",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Cannabicity Albany store-specific page; 489 Delaware Ave, with Shop This Location and Flower navigation."
   },
   {
     "licenseNumber": "OCM-CAURD-25-000319",
@@ -380,6 +490,16 @@
     "notes": "Opened page identifies Cannabis Realm of NY - Queens and Premium Cannabis Flower in Queens. Company and NY OCM pages map 172-02 Hillside Ave to OCM-RETL-24-000244; Comfort Care is the licence entity but Cannabis Realm is the trading site/store."
   },
   {
+    "licenseNumber": "OCM-RETL-24-000255",
+    "menuUrl": "https://holysmokes2.store/store/",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Holy Smokes live menu; first-party site prints 309 South Main St and OCM-RETL-24-000255."
+  },
+  {
     "licenseNumber": "OCM-RETL-24-000260",
     "menuUrl": "https://dutchie.com/dispensary/herbwell-bronx/products/flower",
     "platform": "DUTCHIE",
@@ -438,6 +558,16 @@
     "ageGate": "simple-button",
     "checkedAt": "2026-09-06",
     "notes": "Dutchie is embedded client-side; the original HTML-only crawler reached the menu shell but not the rendered Flower inventory."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000400",
+    "menuUrl": "https://www.blissfulbudsny.com/?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Blissful Buds first-party site at 1332 Upper Front St; Flower is exposed via Dutchie category parameter."
   },
   {
     "licenseNumber": "OCM-RETL-25-000438",

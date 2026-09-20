@@ -125,6 +125,36 @@ export const slugify = (...parts: (string | null)[]): string =>
     .replace(/-+$/g, '');
 
 /** Registry dates arrive in several shapes; anything unparseable becomes null. */
+/**
+ * The registry's website column, made into something a browser can open.
+ *
+ * It publishes bare hosts — "716Cannabisllc.com", "www.middletownindoor.com" —
+ * and only 94 of 788 carry a scheme. The schema asks for a URI and the menu
+ * collector asks for something it can navigate to, so the scheme is added
+ * rather than the value dropped.
+ *
+ * Anything that is not plausibly a host comes back null: an email address, a
+ * phone number typed into the wrong box, or the literal "N/A" are not websites,
+ * and a collector sent to one wastes a browser on it.
+ */
+export const websiteUrl = (raw: string | null): string | null => {
+  const value = String(raw ?? '').trim();
+  if (!value || value.includes('@')) return null;
+  const withScheme = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+  let url: URL;
+  try {
+    url = new URL(withScheme);
+  } catch {
+    return null;
+  }
+  // A host with no dot is not a domain, and a trailing dot is not a host.
+  if (!/^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$/i.test(url.hostname)) {
+    return null;
+  }
+  url.hostname = url.hostname.toLowerCase();
+  return url.toString();
+};
+
 export const isoDate = (raw: string | null): string | null => {
   if (!raw) return null;
   const d = new Date(raw);
@@ -183,7 +213,7 @@ export const toDispensary = (row: SocrataRow, ctx: NormalizeContext) => {
     contact: {
       phone: null,
       email: null,
-      website: read(row, map, 'website'),
+      website: websiteUrl(read(row, map, 'website')),
       orderOnlineUrl: null,
       instagram: null,
     },
