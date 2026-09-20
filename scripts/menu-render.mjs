@@ -2446,6 +2446,37 @@ const main = async () => {
           .map((pl) => (pl && typeof pl === 'object' ? Object.keys(pl).slice(0, 14).join(',') : typeof pl))
           .filter((v, i, a) => a.indexOf(v) === i);
       }
+      /* Probe only: every frame the page is made of, and what each offers to
+         click. A prize-wheel widget lives in a frame of its own, and a search
+         of the top document alone never sees its button — which is the
+         hypothesis this is here to settle. */
+      if (dumpRequests > 0) {
+        entry.frameReport = [];
+        for (const f of page.frames()) {
+          try {
+            const found = await f.evaluate(() => {
+              const out = [];
+              for (const el of document.querySelectorAll(
+                'button, a, input[type="button"], [role="button"], [aria-label]',
+              )) {
+                const t = (el.innerText || el.value || el.getAttribute('aria-label') || '').trim();
+                if (!t || t.length > 45) continue;
+                const b = el.getBoundingClientRect();
+                if (b.width <= 0 || b.height <= 0) continue;
+                const line = t.replace(/\s+/g, ' ');
+                if (!out.includes(line)) out.push(line);
+                if (out.length >= 18) break;
+              }
+              return { text: (document.body?.innerText ?? '').replace(/\s+/g, ' ').slice(0, 140), out };
+            });
+            entry.frameReport.push(
+              `${f.url().slice(0, 90)} :: «${found.text}» :: ${found.out.map((x) => `«${x}»`).join(' ')}`,
+            );
+          } catch (e) {
+            entry.frameReport.push(`${f.url().slice(0, 90)} :: unreadable ${String(e.message).slice(0, 50)}`);
+          }
+        }
+      }
       if (dumpRequests > 0) {
         /* Biggest first: the one carrying the shelf is the one to read. */
         entry.requests = [...requests]

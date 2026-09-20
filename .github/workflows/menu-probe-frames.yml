@@ -1,0 +1,47 @@
+# Throwaway. One question: is the button we cannot find in a frame of its own?
+#
+# QUBE declines one of its two offers and stops, with the patience fix in
+# place — so the prize wheel is not merely slow. Its screenshot shows a
+# floating "Spin-to-Win" pill, which is how a third-party widget looks, and a
+# third-party widget lives in its own frame. We search the top document only.
+name: Probe — is the button in another frame
+
+on:
+  push:
+    branches: [claude/probe-frames]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Read ten shops that answer and hand over nothing
+        run: |
+          node scripts/menu-render.mjs \
+            --only OCM-CAURD-24-000065,OCM-CAURD-24-000127,OCM-CAURD-25-000230,OCM-CAURD-26-000350,OCM-RETL-24-000144,OCM-RETL-24-000241,OCM-RETL-25-000274,OCM-RETL-25-000285,OCM-RETL-25-000360,OCM-RETL-26-000511 \
+            --limit 12 --dump-requests 1 || true
+      - name: Every frame, and what it offers to click
+        run: |
+          python3 - <<'PY'
+          import json
+          s = json.load(open('enrichment-output/menu-summary.json'))
+          for e in s.get('perShop', []):
+              print('=' * 78)
+              print(f"{e.get('shop')} | {e.get('licence')}")
+              print(f"  landedOn: {e.get('landedOn')}")
+              print(f"  status={e.get('status')} payloads={e.get('payloads')} "
+                    f"productsSeen={e.get('productsSeen')} flower={e.get('flower')} "
+                    f"ageGate={e.get('ageGate')} offers={e.get('offersDismissed')}")
+              for line in e.get('frameReport') or []:
+                  print(f"  FRAME {line}")
+          PY
