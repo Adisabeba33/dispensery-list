@@ -848,11 +848,11 @@
     "county": "Dutchess",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-07-28",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://bestbudsofny.com/",
+    "menuUrl": "https://bestbudsofny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Best Buds of New York site identifies 4-10 Taft Ave, Poughkeepsie and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -938,11 +938,11 @@
     "county": "Dutchess",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-08-27",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://hudsonstrands.com/",
+    "menuUrl": "https://hudsonstrands.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Hudson Strands site identifies 1839 South Rd, Wappingers Falls and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -968,11 +968,11 @@
     "county": "Dutchess",
     "licenseType": "MICROBUSINESS",
     "registrySaysOpened": "2025-11-21",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://ladygreensleeves.com/",
+    "menuUrl": "https://ladygreensleeves.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Lady Green Sleeves site identifies 7536 N Broadway, Red Hook and provides retail/product information."
   },
   {
     "territory": "upstate",
@@ -1028,11 +1028,11 @@
     "county": "Dutchess",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-29",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://twobudz.com/",
+    "menuUrl": "https://twobudz.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Two Budz site identifies 7723 S Main St, Pine Plains and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -1703,11 +1703,11 @@
     "county": "Essex",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-01-05",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://themellowmoose.com/",
+    "menuUrl": "https://themellowmoose.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party The Mellow Moose site identifies 2192 Saranac Ave, Lake Placid and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -1733,11 +1733,11 @@
     "county": "Greene",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-08",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://catskillcannabisny.com/",
+    "menuUrl": "https://catskillcannabisny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Catskill Cannabis NY site identifies 170 W Bridge St, Catskill and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -1748,11 +1748,11 @@
     "county": "Greene",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-13",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://thegreenhutny.com/",
+    "menuUrl": "https://thegreenhutny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party The Green Hut site identifies 12187 State Route 9W, West Coxsackie and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -1763,11 +1763,11 @@
     "county": "Greene",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-04-24",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://wintergreencannabis.com/",
+    "menuUrl": "https://wintergreencannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Wintergreen site identifies 6320 Main St, Tannersville and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
