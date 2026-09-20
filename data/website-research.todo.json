@@ -2963,11 +2963,11 @@
     "county": "Oswego",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-08-15",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://clcannaholdings.com/",
+    "menuUrl": "https://clcannaholdings.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party CL Canna site identifies 3808 State Route 13, Pulaski and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -2993,11 +2993,11 @@
     "county": "Oswego",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-07",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://thecannaguyny.com/",
+    "menuUrl": "https://thecannaguyny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party The Canna Guy site identifies 411 US-11, Central Square and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3023,11 +3023,11 @@
     "county": "Rensselaer",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-24",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://highfrequencycannabis.com/",
+    "menuUrl": "https://highfrequencycannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party High Frequency site identifies 96 Columbia St, Rensselaer and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3038,11 +3038,11 @@
     "county": "Rensselaer",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-25",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://nonamecannabiscompany.com/",
+    "menuUrl": "https://nonamecannabiscompany.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party No Name Cannabis Company site identifies 137 4th St, Troy and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3053,11 +3053,11 @@
     "county": "Rensselaer",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-14",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://smokeyparadise.com/",
+    "menuUrl": "https://smokeyparadise.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Smokey Paradise site identifies 574 Columbia Tpke, East Greenbush and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -3488,11 +3488,11 @@
     "county": "Sullivan",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-30",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://libertynycannabis.com/",
+    "menuUrl": "https://libertynycannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Liberty NY Cannabis site identifies 187 Mill St, Liberty and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3548,11 +3548,11 @@
     "county": "Tompkins",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-06",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://drydendispensary.com/",
+    "menuUrl": "https://drydendispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Dryden Dispensary site identifies 2207 Dryden Rd, Dryden and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3563,11 +3563,11 @@
     "county": "Tompkins",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-29",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://royalbudsny.com/",
+    "menuUrl": "https://royalbudsny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Royal Buds site identifies 5 Washington St, Trumansburg and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
