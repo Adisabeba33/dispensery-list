@@ -2378,11 +2378,11 @@
     "county": "Niagara",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-30",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://lovenug.com/",
+    "menuUrl": "https://lovenug.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Love Nug site identifies 3176 Niagara Falls Blvd, North Tonawanda and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2393,11 +2393,11 @@
     "county": "Niagara",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-18",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://satisfiedmindny.com/",
+    "menuUrl": "https://satisfiedmindny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Satisfied Mind site identifies 31 Webster St, North Tonawanda and exposes online shopping/menu."
   },
   {
     "territory": "upstate",
@@ -2408,11 +2408,11 @@
     "county": "Niagara",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-06-15",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://upstateexotics.com/",
+    "menuUrl": "https://upstateexotics.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Upstate Exotics site identifies 9200 Niagara Falls Blvd, Niagara Falls and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2543,11 +2543,11 @@
     "county": "Onondaga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-03",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://flynnstoned.com/",
+    "menuUrl": "https://flynnstoned.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party FlynnStoned brand site covers North Syracuse location at 3711 Brewerton Rd; chain attribution matched to address. Direct store-specific endpoint not independently proven in this pass."
   },
   {
     "territory": "upstate",
@@ -2573,11 +2573,11 @@
     "county": "Onondaga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-20",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://joesbuds.com/",
+    "menuUrl": "https://joesbuds.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Joe's Buds site identifies 4658 Onondaga Blvd, Syracuse and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2588,11 +2588,11 @@
     "county": "Onondaga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-04-10",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://loudpackexotics.com/",
+    "menuUrl": "https://loudpackexotics.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Loudpack Exotics site identifies 6606 Kinne Rd, Syracuse/East Syracuse and exposes shop/menu."
   },
   {
     "territory": "upstate",
@@ -2648,11 +2648,11 @@
     "county": "Ontario",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-25",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://goodlifecollective.com/",
+    "menuUrl": "https://goodlifecollective.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Good Life Collective identifies Finger Lakes/Canandaigua operation at 230 S Main St and exposes online shopping/menu."
   },
   {
     "territory": "upstate",
@@ -2663,11 +2663,11 @@
     "county": "Ontario",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-03-28",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://highpointsdispensary.net/",
+    "menuUrl": "https://highpointsdispensary.net/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party High Points Dispensary site identifies 811 Canandaigua Rd, Geneva and exposes online menu/order."
   },
   {
     "territory": "upstate",
