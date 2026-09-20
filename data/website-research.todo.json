@@ -653,11 +653,11 @@
     "county": "Cayuga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-04",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://flynnstoned.com/",
+    "menuUrl": "https://flynnstoned.com/stores/flynnstoned-cannabis-dispensary-auburn-ny/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party FlynnStoned Auburn store page identifies 48 E Genesee St; multi-location chain, store-specific page retained."
   },
   {
     "territory": "upstate",
@@ -683,11 +683,11 @@
     "county": "Chautauqua",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-08-31",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://liftedjamestown.com/",
+    "menuUrl": "https://liftedjamestown.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Lifted Jamestown site identifies 320 N Main St, Jamestown and exposes online shopping/menu."
   },
   {
     "territory": "upstate",
@@ -713,11 +713,11 @@
     "county": "Chautauqua",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-01-02",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://thenaturaldispensary.com/",
+    "menuUrl": "https://thenaturaldispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Natural Dispensary site identifies Jamestown location at 1067 E 2nd St and exposes Shop/Menu."
   },
   {
     "territory": "upstate",
@@ -878,11 +878,11 @@
     "county": "Dutchess",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-03-15",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://cannaplanet.com/",
+    "menuUrl": "https://cannaplanet.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party CannaPlanet site identifies Wappingers location at 1444 Route 9D and provides online shopping."
   },
   {
     "territory": "upstate",
@@ -1013,11 +1013,11 @@
     "county": "Dutchess",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-01-10",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://thestationbeacon.com/",
+    "menuUrl": "https://thestationbeacon.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party The Station Beacon site identifies 463 Main St, Beacon and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -1073,11 +1073,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-12-02",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://82jdispensary.com/",
+    "menuUrl": "https://82jdispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party 82-J dispensary site identifies 1673 Hertel Ave, Buffalo and exposes Shop/Menu."
   },
   {
     "territory": "upstate",
@@ -1133,11 +1133,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-07-05",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://buffalocannabisoutlet.com/",
+    "menuUrl": "https://buffalocannabisoutlet.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Buffalo Cannabis Outlet site identifies 3807 Harlem Rd and exposes online ordering/menu."
   },
   {
     "territory": "upstate",
