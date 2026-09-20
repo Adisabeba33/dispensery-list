@@ -289,6 +289,36 @@ check('an empty status says nothing either way',
   check('a plural products route survives',
     rankMenuLink('https://verdicannabis.com/stores/verdi/products/flower', 'Flower'), 100);
   check('a brand page is never followed', rankMenuLink('https://shop.test/brands/dada', 'Shop Dada'), 0);
+  /* A category slug that merely CARRIES the word flower is not the flower
+     category. Cannabis Realm of New York publishes ten items on
+     /menu/categories/new-flower-drops and its whole shelf elsewhere; that slug
+     scored 100, and the depth tie-break then preferred it for being deeper.
+     The shop reads as a ten-strain shop, which for a large Westchester menu
+     with exclusives on it is worse than reading as none. */
+  check('a new-drops slice ranks below the shelf it came from',
+    rankMenuLink('https://cannabisrealmny.com/rockland/menu/categories/new-flower-drops', 'New Drops')
+      < rankMenuLink('https://cannabisrealmny.com/rockland/menu/categories/flower', 'Flower'),
+    true);
+  check('a sale slice does too, leading number and all',
+    rankMenuLink('https://menus.dispenseapp.com/f1c1/menu/categories/35-flower-sale', 'Sale')
+      < rankMenuLink('https://menus.dispenseapp.com/f1c1/menu/categories/flower', 'Flower'),
+    true);
+  check('but a slice still beats a bare menu route, being real flower',
+    rankMenuLink('https://cannabisrealmny.com/rockland/menu/categories/new-flower-drops', 'New Drops')
+      > rankMenuLink('https://cannabisrealmny.com/rockland/menu', 'Menu'),
+    true);
+  check('the whole shelf wins even when the slice sits deeper',
+    pickMenuLink([
+      { href: 'https://cannabisrealmny.com/rockland/menu/categories/new-flower-drops', text: 'New Drops' },
+      { href: 'https://cannabisrealmny.com/menu/categories/flower', text: 'Flower' },
+    ], 'https://cannabisrealmny.com', 'Cannabis Realm of New York'),
+    'https://cannabisrealmny.com/menu/categories/flower');
+  /* A qualifier is not a promotion. These name the whole of a flower category,
+     not a slice of it, and must keep scoring as the category. */
+  check('a qualified flower category is still the category',
+    rankMenuLink('https://s.test/menu/categories/whole-flower', 'Whole Flower'), 100);
+  check('and so is a shop that brands its own',
+    rankMenuLink('https://www.thealchemy.nyc/categories/cannabis-flower-nyc', 'Flower'), 100);
   check('a flower category beats a bare menu', rankMenuLink('https://s.test/menu/flower', 'x') > rankMenuLink('https://s.test/menu', 'Menu'), true);
   check('a nav item reading Flower counts', rankMenuLink('https://s.test/c/1b9f87', 'Flower') > 0, true);
   check(
