@@ -176,7 +176,17 @@ export const strainsAsText = (rows: FlowerListing[]): string => {
   const seen = new Set<string>();
   const names: string[] = [];
   for (const l of rows) {
-    const name = l.strainNameRaw.trim();
+    /* The CANONICAL name, not the shop's own words.
+     *
+     * This is the list somebody copies out of the register and pastes into
+     * SŌMA, and a shop writes "Animal Cookies Flower", "Blue Dream - Premium
+     * Flower", "Titan Express Small Buds". Pasted raw, those reach the engine
+     * as three cultivars nobody has ever heard of — 12.6% of every listing in
+     * the register ends in a grade or a category word.
+     *
+     * The clean name was computed at collection time and has been sitting in
+     * the file all along; this was reading past it. */
+    const name = (l.strainNameCanonical ?? l.strainNameRaw).trim();
     const key = name.toLowerCase();
     if (!name || seen.has(key)) continue;
     seen.add(key);
