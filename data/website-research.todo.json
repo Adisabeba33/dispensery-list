@@ -248,11 +248,11 @@
     "county": "Albany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-12-18",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://cannabicity.net/",
+    "menuUrl": "https://cannabicity.net/stores/albany-ny/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Cannabicity site identifies Albany at 489 Delaware Ave and exposes Shop This Location / Flower; NY OCM verification also maps Cannabicity Albany to cannabicity.net."
   },
   {
     "territory": "upstate",
@@ -548,11 +548,11 @@
     "county": "Broome",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-01-27",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://www.blissfulbudsny.com/",
+    "menuUrl": "https://www.blissfulbudsny.com/?dtche%5Bcategory%5D=flower",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Blissful Buds site gives 1332 Upper Front St, Binghamton; its Shop Now navigation exposes Flower through Dutchie category parameters."
   },
   {
     "territory": "upstate",
@@ -578,11 +578,11 @@
     "county": "Broome",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-07-09",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://flynnstoned.com/",
+    "menuUrl": "https://flynnstoned.com/stores/flynnstoned-cannabis-dispensary-binghamton-ny/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party FlynnStoned Binghamton store page gives 1143 Upper Front St and live store context; multi-location chain, so the Binghamton store-specific page is retained as menuUrl."
   },
   {
     "territory": "upstate",
@@ -593,11 +593,11 @@
     "county": "Broome",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2023-02-07",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://justbreathelife.org/",
+    "menuUrl": "https://justbreathelife.org/home-copy/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Just Breathe page states Upstate New York legal dispensary at 75 Court St, Binghamton and exposes full menu / Flower links backed by Dutchie."
   },
   {
     "territory": "upstate",
@@ -728,11 +728,11 @@
     "county": "Chemung",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-05-27",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://holysmokes2.store/",
+    "menuUrl": "https://holysmokes2.store/store/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Holy Smokes site gives 309 South Main St, Elmira and explicitly prints OCM-RETL-24-000255; /store/ is its live menu."
   },
   {
     "territory": "upstate",
@@ -773,11 +773,11 @@
     "county": "Clinton",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-12-27",
-    "website": null,
+    "website": "https://www.plattsburghcannabis.com/ny-dispensary-herb-cave",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Store-specific Herb Cave page gives 519 State Route 3, Plattsburgh and advertises licensed recreational flower plus Buy Flower Online. Kept as website evidence; direct hosted menu endpoint was not proven in this pass."
   },
   {
     "territory": "upstate",
@@ -788,11 +788,11 @@
     "county": "Columbia",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-10",
-    "website": null,
+    "website": "https://goldleafcannabis.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party GoldLeaf site gives 235 Fairview Ave, Hudson and explicitly prints OCM-RETL-24-000044."
   },
   {
     "territory": "upstate",
@@ -803,11 +803,11 @@
     "county": "Columbia",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-05",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://gotham.nyc/",
+    "menuUrl": "https://gotham.nyc/locations/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Gotham locations page identifies Gotham Hudson at 260 Warren St and provides online shopping for the Hudson concept store; multi-location chain, so location page is retained."
   },
   {
     "territory": "upstate",
@@ -863,11 +863,11 @@
     "county": "Dutchess",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-03-22",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://blackmarketcanna.co/",
+    "menuUrl": "https://blackmarketcanna.co/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Black Market Canna site gives 89 Main Street, Poughkeepsie and exposes SHOP NOW plus FLOWER browse from the homepage. NY OCM verification lists the same premises under Black Market Canna Co."
   },
   {
     "territory": "upstate",
