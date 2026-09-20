@@ -1088,11 +1088,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-25",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://bestbudzcannabis.com/",
+    "menuUrl": "https://bestbudzcannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Best Budz Cannabis site identifies 146 Virginia St, Buffalo and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -1118,11 +1118,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-06-20",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://buffalocannabisconnect.com/",
+    "menuUrl": "https://buffalocannabisconnect.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Buffalo Cannabis Connect site identifies 904 Elmwood Ave, Buffalo and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -1148,11 +1148,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-09",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://buffalocannabisstore.com/",
+    "menuUrl": "https://buffalocannabisstore.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Buffalo Cannabis Store site identifies 2760 Union Rd, Cheektowaga and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -1208,11 +1208,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-02-28",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://commandcannabis.com/",
+    "menuUrl": "https://commandcannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Command Cannabis site identifies 3871 S Park Ave, Blasdell and exposes online shopping/menu."
   },
   {
     "territory": "upstate",
@@ -1268,11 +1268,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-01",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://eriecountycannabis.com/",
+    "menuUrl": "https://eriecountycannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Erie County Cannabis site identifies 1727 Genesee St, Buffalo and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -1313,11 +1313,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-01",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://happytimescannabis.com/",
+    "menuUrl": "https://happytimescannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Happy Times Cannabis site identifies 9170 Transit Rd, East Amherst and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -1358,11 +1358,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-06",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://highcloudzny.com/",
+    "menuUrl": "https://highcloudzny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party High Cloudz site identifies 3478 Walden Ave, Depew and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -1643,11 +1643,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-12-15",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://wnygreenhouse.com/",
+    "menuUrl": "https://wnygreenhouse.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party WNY Greenhouse site identifies 2675 Main St, Buffalo and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
