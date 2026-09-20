@@ -1,0 +1,41 @@
+name: Probe — what the silent shops actually send
+on: push
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Look at the shapes
+        run: |
+          node scripts/menu-render.mjs \
+            --only OCM-CAURD-24-000137,OCM-CAURD-23-000026,OCM-RETL-24-000061,OCM-RETL-24-000076,OCM-RETL-24-000014,OCM-CAURD-24-000101,OCM-CAURD-24-000127,OCM-RETL-24-000254,OCM-RETL-24-000186,OCM-CAURD-24-000065,OCM-RETL-24-000078,OCM-RETL-25-000317,OCM-RETL-24-000197,OCM-RETL-26-000511,OCM-CAURD-25-000230,OCM-CAURD-23-000003,OCM-CAURD-26-000359,MM0407D,OCM-RETL-24-000241,OCM-CAURD-24-000052,OCM-CAURD-24-000180,OCM-RETL-25-000360,OCM-RETL-24-000144,OCM-RETL-25-000274 \
+            --dump-shapes 14 --dump-requests 3 || true
+      - name: Print it
+        run: |
+          python3 - <<'PY'
+          import json
+          d = json.load(open('enrichment-output/menu-summary.json'))
+          for s in d.get('perShop', []):
+              print('=' * 78)
+              print(f"{s.get('shop')}  [{s.get('licence')}]  status={s.get('status')}")
+              print(f"  landedOn: {s.get('landedOn')}")
+              print(f"  payloads={s.get('payloads')} productsSeen={s.get('productsSeen')} "
+                    f"flower={s.get('flower')} settled={s.get('settled')} ageGate={s.get('ageGate')}")
+              if s.get('walledFrames'): print(f"  walledFrames: {s['walledFrames']}")
+              if s.get('offersDismissed'): print(f"  offersDismissed: {s['offersDismissed']}")
+              for k in ('topLevelKeys', 'shapes', 'requests', 'rejected', 'rejectedShape'):
+                  v = s.get(k)
+                  if not v: continue
+                  print(f"  {k}:")
+                  if isinstance(v, list):
+                      for item in v: print(f"    - {str(item)[:1400]}")
+                  else:
+                      print(f"    {json.dumps(v, ensure_ascii=False)[:900]}")
+          PY
