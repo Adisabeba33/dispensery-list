@@ -1483,6 +1483,33 @@ const RETRY_BUDGET_MS = process.env.MENU_RETRY_BUDGET_MS
    which branch stocks them is not established. */
 const SHELF_SHARED = 'SHELF_SHARED_WITH_OTHER_LICENCES';
 
+/**
+ * Two addresses that are the same page.
+ *
+ * The shared-shelf marking grouped listings by the raw source string, so
+ * eastleafdispensary.com and www.eastleafdispensary.com were two menus and the
+ * two licences reading the identical Cheektowaga shelf — same 256 products,
+ * same 21 strains — went unmarked. One "www." was the whole of it.
+ *
+ * The fragment is KEPT. On this very page it is what names the store
+ * (/store#/cheektowaga/), so dropping it would fold a chain's branches into
+ * one and produce the opposite error. Same for the query: it carries the store
+ * id on several platforms.
+ */
+export const menuKey = (url) => {
+  try {
+    const u = new URL(url);
+    return [
+      u.hostname.toLowerCase().replace(/^www\./, ''),
+      u.pathname.replace(/\/+$/, ''),
+      u.search,
+      u.hash,
+    ].join('');
+  } catch {
+    return String(url ?? '');
+  }
+};
+
 /* Nobody sells flower by the hundredth of a gram. A figure below the floor
    came from some other field — a discount, a rating, a tax rate — and reading
    it as a weight puts a size on the shelf that a buyer cannot ask for.
@@ -2871,12 +2898,13 @@ const main = async () => {
   for (const l of merged) {
     const url = l.sources?.[0]?.url;
     if (!url) continue;
-    if (!licencesByMenu.has(url)) licencesByMenu.set(url, new Set());
-    licencesByMenu.get(url).add(l.licenseNumber);
+    const key = menuKey(url);
+    if (!licencesByMenu.has(key)) licencesByMenu.set(key, new Set());
+    licencesByMenu.get(key).add(l.licenseNumber);
   }
   for (const l of merged) {
     const url = l.sources?.[0]?.url;
-    const shared = (licencesByMenu.get(url)?.size ?? 0) > 1;
+    const shared = (licencesByMenu.get(menuKey(url))?.size ?? 0) > 1;
     const warnings = new Set(l.warnings ?? []);
     if (shared) warnings.add(SHELF_SHARED);
     else warnings.delete(SHELF_SHARED);

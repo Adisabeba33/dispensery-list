@@ -12,6 +12,7 @@
  */
 import {
   brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, destinationOf, foreignShelfShare,
+  menuKey,
   flattenJsonApiProducts, isProductPage, wallAction,
   mergeBySize, pagedRequest, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
@@ -305,6 +306,25 @@ check('an empty status says nothing either way',
   check('an Ohio shelf under a New York licence is refused',
     foreignShelfShare(ohio, ny) !== null, true);
   check('a New York shelf is not', foreignShelfShare([...ny], ny), null);
+
+  /* One "www." was enough to hide a shared shelf. AMSM LLC and East Leaf
+     Dispensary read the identical Cheektowaga menu — same 256 products, same
+     21 strains — under two licences, and went unmarked because the two source
+     addresses differed by a subdomain. */
+  check('www is not a different menu',
+    menuKey('https://www.eastleafdispensary.com/store#/cheektowaga/'),
+    menuKey('https://eastleafdispensary.com/store#/cheektowaga/'));
+  check('nor is a trailing slash',
+    menuKey('https://shop.test/menu/flower/'), menuKey('https://shop.test/menu/flower'));
+  /* But the fragment names the STORE on this very page, so folding it in would
+     merge a chain's branches and make the opposite mistake. */
+  check('a fragment that names a branch keeps them apart',
+    menuKey('https://eastleafdispensary.com/store#/cheektowaga/')
+      !== menuKey('https://eastleafdispensary.com/store#/buffalo/'),
+    true);
+  check('and so does a store id in the query',
+    menuKey('https://menus.test/menu?retailer=a') !== menuKey('https://menus.test/menu?retailer=b'),
+    true);
   /* Too few brands to judge. A small shop with one unusual supplier must not
      lose its shelf to arithmetic. */
   check('a shelf of three brands is not judged at all',
