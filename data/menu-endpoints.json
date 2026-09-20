@@ -10,6 +10,16 @@
     "notes": "Existing store-specific route is Terp Bros Astoria and opens All Flower; retained explicitly so the two licences no longer depend on a shared default."
   },
   {
+    "licenseNumber": "OCM-CAURD-23-000021",
+    "menuUrl": "https://conbud.com/stores/conbud-les",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "CONBUD's first-party LES storefront is a real menu, not the blog post the collector followed. The page identifies CONBUD LES and exposes Flower as a menu category; licence OCM-CAURD-23-000021 is listed by CONBUD for LES."
+  },
+  {
     "licenseNumber": "OCM-CAURD-24-000046",
     "menuUrl": "https://cannabisrealmny.com/white-plains/menu/categories/flower",
     "platform": "OTHER",
@@ -28,6 +38,16 @@
     "ageGate": "none",
     "checkedAt": "2026-09-06",
     "notes": "Direct Flowers menu; page markup identifies BLAZE. A login link exists but is not required to browse products."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000080",
+    "menuUrl": "https://thecannabisplace.org/store/?cat=flower&locId=1",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "none",
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Store page exposes Flower through cat=flower and locId=1; page footer identifies the New York store at 74-03 Metropolitan Ave, Queens. This is the full Flower category rather than the generic /store/new-york/ landing page."
   },
   {
     "licenseNumber": "OCM-CAURD-24-000102",
