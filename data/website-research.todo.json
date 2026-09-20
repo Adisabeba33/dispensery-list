@@ -3758,11 +3758,11 @@
     "county": "Warren",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-27",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://highrollersdispensary.com/",
+    "menuUrl": "https://highrollersdispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party High Rollers Cannabis site identifies Queensbury location at 909 State Route 9 and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3773,11 +3773,11 @@
     "county": "Warren",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-27",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://rrcannabisny.com/",
+    "menuUrl": "https://rrcannabisny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party R&R Cannabis site identifies 12 Hudson Ave, Glens Falls and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3803,11 +3803,11 @@
     "county": "Warren",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-11-08",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://windyhillwellness.com/",
+    "menuUrl": "https://windyhillwellness.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Windy Hill Wellness site identifies Glens Falls location at 130 Broad St and exposes online shopping/menu."
   },
   {
     "territory": "upstate",
@@ -3833,11 +3833,11 @@
     "county": "Washington",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-27",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://highsocietydispensary.com/",
+    "menuUrl": "https://highsocietydispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party High Society Dispensary site identifies 345 Main St, Hudson Falls and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3848,11 +3848,11 @@
     "county": "Washington",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-18",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://windyhillwellness.com/",
+    "menuUrl": "https://windyhillwellness.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Windy Hill Wellness site identifies Greenwich location at 106 Main St and exposes online shopping/menu; chain attribution matched to address."
   },
   {
     "territory": "upstate",
@@ -3878,11 +3878,11 @@
     "county": "Wayne",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-15",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://nativehazecannabis.com/",
+    "menuUrl": "https://nativehazecannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Native Haze Cannabis Co site identifies 1503 Canandaigua Rd, Macedon and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3908,11 +3908,11 @@
     "county": "Wayne",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-07-29",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://thecoughieshop.com/",
+    "menuUrl": "https://thecoughieshop.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Coughie Shop site identifies 12044 E Main St, Wolcott and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3923,10 +3923,10 @@
     "county": "Yates",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-18",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://bloomcannabisny.com/",
+    "menuUrl": "https://bloomcannabisny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Bloom Cannabis Dispensary site identifies 242 Lake Street Plaza, Penn Yan and exposes online menu/order."
   }
 ]
