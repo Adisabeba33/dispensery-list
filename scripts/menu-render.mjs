@@ -18,6 +18,7 @@
  * browser already on the machine; both exist for scripts/menu-e2e-check.mjs.
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { canonicalStrain } from './strain-name.mjs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -46,8 +47,20 @@ const datasetArg = process.argv.indexOf('--dataset');
 const datasetPath = datasetArg > -1 ? process.argv[datasetArg + 1] : 'data/dispensaries.json';
 const dispensaries = JSON.parse(readFileSync(resolve(ROOT, datasetPath), 'utf8'));
 
-// Menus hosted on Leafly or Weedmaps belong to those companies, not the shop.
-const OWN_SITE = new Set(['DUTCHIE', 'BLAZE', 'TREEZ', 'IHEARTJANE', 'MEADOW', 'PROPRIETARY', 'OTHER']);
+/* Menus hosted on Leafly or Weedmaps belong to those companies, not the shop,
+   and are the only providers this collector refuses.
+
+   It used to be the other way round — an allowlist of the seven platforms we
+   had names for — and the cost of that was invisible: `provider` is null for a
+   shop nobody has looked at yet, so "we have never checked what menu this shop
+   runs" read as "not ours to read". Sixty-three open shops with a website of
+   their own were excluded by the register's own empty field, and because they
+   were never visited the field stayed empty. A shop left out for not being
+   classified can never be classified.
+
+   A denylist inverts that: the unknown is visited, and what it runs is learnt
+   from the visit. */
+const THIRD_PARTY_MENU = new Set(['LEAFLY', 'WEEDMAPS']);
 
 /**
  * --skip-collected leaves out shops whose shelf we already hold, so a sweep
@@ -78,18 +91,45 @@ const onlyLicences = onlyArg > -1
    off the chain's own page. */
 const linksArg = process.argv.indexOf('--dump-links');
 const dumpLinks = linksArg > -1 ? Number(process.argv[linksArg + 1]) || 25 : 0;
+/* --dump-shapes describes what a page DID send when we recognised none of it.
+   --dump-products cannot answer that: it samples what was already classified
+   as flower, so at zero it shows nothing. Nineteen shops declare a hundred
+   products and give us none, and the only way to learn why is to look at the
+   shape of what arrived. */
+const shapesArg = process.argv.indexOf('--dump-shapes');
+const dumpShapes = shapesArg > -1 ? Number(process.argv[shapesArg + 1]) || 8 : 0;
 const dumpArg = process.argv.indexOf('--dump-products');
 const dumpProducts = dumpArg > -1 ? Number(process.argv[dumpArg + 1]) || 5 : 0;
-const alreadyCollected = new Set();
-if (skipCollected) {
-  try {
-    for (const l of JSON.parse(readFileSync(resolve(ROOT, 'data/flower-listings.json'), 'utf8'))) {
-      alreadyCollected.add(l.licenseNumber);
-    }
-  } catch {
-    /* nothing collected yet */
+/* --dump-requests names the address the shelf actually came from, and for a
+   menu that pages, the parameters it was asked for. A shop that declares 83
+   products and gives 20 is being paged, and neither the shapes nor the
+   products can say which knob turns the page — only the request can. It also
+   hands the menu's real address to whoever is filling data/menu-endpoints.json
+   by hand. */
+const requestsArg = process.argv.indexOf('--dump-requests');
+const dumpRequests = requestsArg > -1 ? Number(process.argv[requestsArg + 1]) || 8 : 0;
+/**
+ * What each licence had on its shelf at the last reading.
+ *
+ * The carry-forward rule keeps a shop's previous shelf whenever today's visit
+ * comes back with nothing, which is right — a site that is down must not empty
+ * the page — but it is also silent, and silence is how a shop goes on showing
+ * a reading from the sixteenth for days. Hibernica Central Park did exactly
+ * that: read fine on the sixteenth and the seventeenth, nothing on the
+ * eighteenth from the same address, shelf held, nobody told.
+ *
+ * So a shop that had a shelf and comes back empty is asked a second time
+ * before the emptiness is believed. This is the list of who had one.
+ */
+const PREVIOUS_SHELF = new Map();
+try {
+  for (const l of JSON.parse(readFileSync(resolve(ROOT, 'data/flower-listings.json'), 'utf8'))) {
+    PREVIOUS_SHELF.set(l.licenseNumber, (PREVIOUS_SHELF.get(l.licenseNumber) ?? 0) + 1);
   }
+} catch {
+  /* first run, or the file was removed on purpose */
 }
+const alreadyCollected = skipCollected ? new Set(PREVIOUS_SHELF.keys()) : new Set();
 
 /**
  * Menu addresses found by hand, keyed by licence number.
@@ -115,7 +155,7 @@ try {
 const candidates = dispensaries.filter(
   (d) =>
     d.operationalStatus === 'OPEN' &&
-    OWN_SITE.has(d.menu?.provider) &&
+    !THIRD_PARTY_MENU.has(d.menu?.provider) &&
     d.contact?.website &&
     !alreadyCollected.has(d.licenseNumber) &&
     (!onlyEndpoints || ENDPOINTS[d.licenseNumber]) &&
@@ -159,35 +199,216 @@ const robotsAllows = async (url) => {
  * actually asking about age, only on a control whose own words affirm it, and
  * it is recorded per shop in the report.
  */
-const AGE_AFFIRM =
-  /^(yes|yes[,.!]?\s*i\s*am\s*21.*|i\s*am\s*21.*|i'?m\s*21.*|21\s*\+?|21\s*(or|and)\s*(over|older)|over\s*21|enter(\s*site)?|confirm|continue)$/i;
+/* Ranked, not merely matched.
+ *
+ * QUBE stacks its age question on top of a prize draw, so one page carries
+ * "YES I AM" and "NOT YET" from the wall and "Continue" and "No thanks, let
+ * me browse" from the form underneath. Taking the first control that matched
+ * took whichever the site had rendered first — and the draw is rendered
+ * first, which makes "Continue" a button that submits a name and an email.
+ *
+ * So the words that can only mean "I am of age" outrank the words that merely
+ * move a page along, and a control is only pressed if it is the thing you
+ * would actually press: on screen, and not behind the wall it belongs to. */
+const AGE_AFFIRM_CLEAR =
+  /^(yes|yeah|yes[,.!]?\s*i\s*am(\s*21.*)?|i\s*am\s*(of\s*age|21.*)|i'?m\s*21.*|21\s*\+?|21\s*(or|and)\s*(over|older)|over\s*21|yes[,.!]?\s*i'?m\s*over\s*21)$/i;
+const AGE_AFFIRM_VAGUE = /^(enter(\s*site)?|confirm|agree|i agree|continue)$/i;
+
+/* Never pressed on an age wall, whatever else matches. "Not yet" is the
+   answer of someone who is not 21, and this collector does not give it. */
+const AGE_DECLINE =
+  /^(no|nope|no[,.!]?\s*not yet|not yet|i am not|i'?m not|no[,.!]?\s*i'?m not.*|under\s*21|not 21|exit|leave|go back|take me back)$/i;
+
+const AGE_WORDS = /(age|older|over|verify|confirm)/i;
+
+const AGE_AFFIRM = new RegExp(`${AGE_AFFIRM_CLEAR.source}|${AGE_AFFIRM_VAGUE.source}`, 'i');
+
+/**
+ * Declining the offers a shop puts between its door and its shelf.
+ *
+ * QUBE asks three things before it shows a menu: whether you are 21, then for
+ * a name and an email to "stay in the loop", then for a name and an email to
+ * spin a prize wheel. Each of the last two carries its own way out —
+ * "No Thanks", "No thanks, let me browse" — and this collector takes it.
+ *
+ * Pressing a shop's own decline is not getting around anything. It is the
+ * answer the shop wrote for a visitor who does not want the newsletter, and
+ * it leaves the visitor exactly where the shop intended: on the menu. What is
+ * never pressed is the other button. "Join Now" agrees to marketing messages
+ * on behalf of a person who does not exist; a tick box is never ticked and a
+ * field is never filled. Nothing is submitted, only dismissed.
+ *
+ * The age wall is not dismissed here. It is answered by affirmAge, on its own
+ * terms, and if it is still up this does nothing at all — a decline pressed on
+ * an age wall would be a lie in the other direction.
+ */
+const OFFER_DECLINE =
+  /^(no[,.!]?\s*thanks?([,.!]?\s*(let me browse|i'?ll browse|browse)?)?[.!]?|no[,.!]?\s*thank you|not now|maybe later|later|skip([\s-]for[\s-]now)?|dismiss|close|close dialog|continue without.*|browse( only| the site| without)?)$/i;
+
+/* Never pressed. Each of these agrees to something on behalf of somebody who
+   is not there. */
+const OFFER_ACCEPT =
+  /^(join( now)?|sign ?up|subscribe|submit|get (my )?(offer|discount|code)|spin|spin (the )?wheel|claim|yes.*|count me in|unlock)$/i;
+
+const MAX_OFFERS_DISMISSED = 3;
+
+/**
+ * What this collector would do with a button, by its words alone.
+ *
+ * Exported so the whole vocabulary can be held against the buttons the shops
+ * actually carry — these came out of QUBE's screenshots and the Flowery's
+ * page, not out of anyone's head:
+ *
+ *   YES I AM · Yes, I Am              affirm the age question
+ *   NOT YET  · No, Not Yet            never pressed
+ *   No Thanks · No thanks, let me browse   decline the offer
+ *   Join Now · Continue · Shop Now    never pressed
+ *   Skip to main content              never pressed — the accessibility link
+ *                                     every site carries, and the reason the
+ *                                     decline patterns are anchored whole
+ */
+export const wallAction = (text) => {
+  const words = String(text ?? '').trim();
+  if (!words) return 'ignore';
+  if (AGE_DECLINE.test(words)) return 'refuse';
+  if (AGE_AFFIRM_CLEAR.test(words)) return 'affirm-age';
+  if (OFFER_ACCEPT.test(words)) return 'refuse';
+  if (OFFER_DECLINE.test(words)) return 'decline-offer';
+  return 'ignore';
+};
+
+const dismissOffers = async (page) => {
+  const pressed = [];
+  for (let round = 0; round < MAX_OFFERS_DISMISSED; round += 1) {
+    let label;
+    try {
+      label = await page.evaluate(
+        ({ decline, accept, clear, ageDecline }) => {
+          const isDecline = new RegExp(decline, 'i');
+          const isAccept = new RegExp(accept, 'i');
+          const onScreen = (el) => {
+            const box = el.getBoundingClientRect();
+            if (box.width <= 0 || box.height <= 0) return false;
+            const cx = box.left + box.width / 2;
+            const cy = box.top + box.height / 2;
+            if (cx < 0 || cy < 0 || cx > innerWidth || cy > innerHeight) return false;
+            const atPoint = document.elementFromPoint(cx, cy);
+            return Boolean(atPoint && (el === atPoint || el.contains(atPoint) || atPoint.contains(el)));
+          };
+          const controls = [
+            ...document.querySelectorAll(
+              'button, a, input[type="button"], [role="button"], [aria-label]',
+            ),
+          ];
+          const wordsOf = (el) =>
+            (el.innerText || el.value || el.getAttribute('aria-label') || '').trim();
+
+          /* Is the age wall still up? Not "does the page say 21" — it does,
+             long after: QUBE prints "You Must Be 21+ To Access This Site"
+             across the top of the newsletter box that comes next, so a test on
+             the words would refuse to touch anything, for ever. The wall is up
+             when its buttons are: a visible "YES I AM" or "NOT YET". Once
+             pressed, those are gone and the words are not. */
+          const isClear = new RegExp(clear, 'i');
+          const isAgeDecline = new RegExp(ageDecline, 'i');
+          const wallUp = controls.some((el) => {
+            const words = wordsOf(el);
+            if (!words || words.length > 40) return false;
+            if (!isClear.test(words) && !isAgeDecline.test(words)) return false;
+            return onScreen(el);
+          });
+          if (wallUp) return null;
+          for (const el of controls) {
+            const words = wordsOf(el);
+            if (!words || words.length > 45) continue;
+            if (isAccept.test(words)) continue;
+            if (!isDecline.test(words)) continue;
+            if (!onScreen(el)) continue;
+            el.click();
+            return words.replace(/\s+/g, ' ').slice(0, 45);
+          }
+          return null;
+        },
+        {
+          decline: OFFER_DECLINE.source,
+          accept: OFFER_ACCEPT.source,
+          clear: AGE_AFFIRM_CLEAR.source,
+          ageDecline: AGE_DECLINE.source,
+        },
+      );
+    } catch {
+      return pressed;
+    }
+    if (!label) break;
+    pressed.push(label);
+    await page.waitForTimeout(1200);
+  }
+  return pressed;
+};
+
+/**
+ * Everything between the door and the shelf, in the order a visitor meets it.
+ *
+ * The age question is answered first because it is usually on top; the offers
+ * under it are then declined; and the age question is asked about again,
+ * because on some shops the offer is the thing on top and answering it reveals
+ * the wall rather than the menu.
+ */
+const clearWalls = async (page, entry) => {
+  if (await affirmAge(page)) entry.ageGate = true;
+  const pressed = await dismissOffers(page);
+  if (pressed.length) {
+    entry.offersDismissed = [...(entry.offersDismissed ?? []), ...pressed];
+    if (await affirmAge(page)) entry.ageGate = true;
+  }
+};
 
 const affirmAge = async (page) => {
   try {
-    const asking = await page.evaluate(() => {
+    const asking = await page.evaluate((words) => {
       const t = document.body?.innerText ?? '';
-      return /\b21\b/.test(t) && /(age|older|over|verify|confirm)/i.test(t);
-    });
+      return /\b21\b/.test(t) && new RegExp(words, 'i').test(t);
+    }, AGE_WORDS.source);
     if (!asking) return false;
 
     const clicked = await page.evaluate(
-      (src) => {
-        const affirm = new RegExp(src, 'i');
+      ({ clear, vague, decline }) => {
+        const isClear = new RegExp(clear, 'i');
+        const isVague = new RegExp(vague, 'i');
+        const isDecline = new RegExp(decline, 'i');
         const controls = [
           ...document.querySelectorAll('button, a, input[type="button"], input[type="submit"], [role="button"]'),
         ];
-        const target = controls.find((el) => {
+        let best = null;
+        let bestRank = 0;
+        for (const el of controls) {
           const text = (el.innerText || el.value || el.getAttribute('aria-label') || '').trim();
-          if (!text || text.length > 40) return false;
-          if (!affirm.test(text)) return false;
+          if (!text || text.length > 40) continue;
+          if (isDecline.test(text)) continue;
+          const rank = isClear.test(text) ? 2 : isVague.test(text) ? 1 : 0;
+          if (rank <= bestRank) continue;
           const box = el.getBoundingClientRect();
-          return box.width > 0 && box.height > 0;
-        });
-        if (!target) return false;
-        target.click();
+          if (box.width <= 0 || box.height <= 0) continue;
+          /* On screen and on top. A control lying under the wall belongs to
+             whatever the wall is covering, and pressing it presses something
+             the visitor never saw. */
+          const cx = box.left + box.width / 2;
+          const cy = box.top + box.height / 2;
+          if (cx < 0 || cy < 0 || cx > innerWidth || cy > innerHeight) continue;
+          const atPoint = document.elementFromPoint(cx, cy);
+          if (!atPoint || !(el === atPoint || el.contains(atPoint) || atPoint.contains(el))) continue;
+          best = el;
+          bestRank = rank;
+        }
+        if (!best) return false;
+        best.click();
         return true;
       },
-      AGE_AFFIRM.source,
+      {
+        clear: AGE_AFFIRM_CLEAR.source,
+        vague: AGE_AFFIRM_VAGUE.source,
+        decline: AGE_DECLINE.source,
+      },
     );
     if (clicked) await page.waitForTimeout(2500);
     return clicked;
@@ -204,9 +425,79 @@ const affirmAge = async (page) => {
  * are now scored rather than raced, the address counts for more than the words
  * on it, and the routes that are never a menu are refused outright.
  */
-const PROMO_ROUTE = /\/(specials?|offers?|deals?|promo|blog|news|about|contact|account|login|cart|checkout|brands?|careers)\b/i;
-const FLOWER_ROUTE = /(categor(y|ies)[=/][^/?#]*flower|\/flower\b|flower\/?$|[?&]category=flower|\/rec\/flower|\/bud\b)/i;
+/* `product` singular is one item's own page, never a menu. `products` plural
+   is a menu route on several platforms, and \b keeps them apart: the word
+   boundary after "product" does not fall inside "products". */
+const PROMO_ROUTE = /\/(specials?|offers?|deals?|promo|blog|news|about|contact|account|login|sign-?up|register|cart|checkout|brands?|careers|product)\b/i;
+
+/**
+ * A category page for something we do not collect.
+ *
+ * NY Flos publishes no flower link on its front page at all — its highest
+ * scoring link is an ordinary menu route — so the tie-break handed the shelf
+ * to /menu/categories/accessories/ and we read sixteen grinders. The shop's
+ * own word for the category is right there in the address, and when that word
+ * is "accessories" the page cannot hold flower whatever else is true.
+ *
+ * Only category routes are judged this way. A shop called Vape City is not a
+ * vape category, and "edibles" inside a product slug is a product, not a page.
+ */
+const CATEGORY_ROUTE = /(categor(y|ies)[=/]|[?&]category=)/i;
+const NOT_FLOWER_CATEGORY =
+  /^(accessor\w*|vapes?|vaporizers?|carts?|cartridges?|edibles?|gumm\w*|beverages?|drinks?|concentrates?|extracts?|dabs?|pre-?rolls?|prerolls?|joints?|blunts?|cbd|topicals?|tinctures?|apparel|merch\w*|gear|clothing|seeds?|clones?)$/i;
+const isNotFlowerCategory = (href) => {
+  if (!CATEGORY_ROUTE.test(href)) return false;
+  let url;
+  try {
+    url = new URL(href);
+  } catch {
+    return false;
+  }
+  const last = url.pathname.split('/').filter(Boolean).pop() ?? '';
+  const named = url.searchParams.get('category') ?? '';
+  return NOT_FLOWER_CATEGORY.test(last) || NOT_FLOWER_CATEGORY.test(named);
+};
+/* A path segment that IS "flower" names the category. A segment that merely
+   ends in "-flower" is a product slug, and `flower\/?$` could not tell them
+   apart: BX Buddiez's whole shelf was replaced by whatever sits on
+   /product/nanticoke-coconut-cream-flower/ — sixteen items where the shop has
+   ninety-two. Two runs read it the same way, which is what makes a wrong page
+   so much more dangerous than a flaky one. */
+const FLOWER_ROUTE = /(categor(y|ies)[=/][^/?#]*flower|\/flower\b|\/flowers?\/?$|[?&]category=flower|\/rec\/flower|\/bud\b)/i;
 const MENU_ROUTE = /\/(menu|shop|order|products?|browse|store|dispensary)\b/i;
+
+/**
+ * One product's own page, told from the listing that holds many.
+ *
+ * NY Flos declares 107 products and we read none, because the link we followed
+ * was
+ *
+ *   /menu/products/ayrloom-766427/edibles/ayrloom-island-time-...-8453750/
+ *
+ * — a single packet of gummies. It scored as a menu (the path says "products")
+ * and then won the tie-break for being the deepest address on the page, which
+ * is the rule that exists to prefer a branch over its chain. The two need
+ * telling apart, and the shop's own address says which is which: a product
+ * sits under its brand and its category, and the last segment is its slug.
+ *
+ * /products/flower is the other case and stays a listing.
+ */
+const FLOWER_SEGMENT = /^(flowers?|buds?)$/i;
+const SLUG_SEGMENT = (s) => /-/.test(s) && (s.split('-').length >= 3 || /\d{3,}$/.test(s));
+export const isProductPage = (href) => {
+  let parts;
+  try {
+    parts = new URL(href).pathname.split('/').filter(Boolean);
+  } catch {
+    return false;
+  }
+  const i = parts.findIndex((p) => /^products?$/i.test(p));
+  if (i === -1) return false;
+  const after = parts.slice(i + 1);
+  if (!after.length) return false;
+  if (FLOWER_SEGMENT.test(after[after.length - 1])) return false;
+  return after.length >= 2 || SLUG_SEGMENT(after[after.length - 1]);
+};
 const FLOWER_WORD = /^\s*(flower|flowers|bud|buds|whole\s*flower)\s*$/i;
 const MENU_WORD = /\b(menu|shop|order|browse|products?)\b/i;
 
@@ -249,9 +540,105 @@ export const sameEstate = (href, siteUrl, shopName = '') => {
   return false;
 };
 
+/* Where a menu lives when the shop's own pages do not say.
+ *
+ * Forty open shops came back with menuLink: none — a website, a robots.txt
+ * that allows us, and not one link on the page that scored above zero. Some
+ * put the menu behind a button that is not a link, some behind a script that
+ * writes it after we have read the markup, and some simply do not mention it
+ * on the home page at all.
+ *
+ * These are the addresses a person would try next, in the order a person would
+ * try them. Tried only when nothing was found, only on the shop's own site,
+ * and only until one of them answers — a guess that costs a few HEAD requests
+ * and at most two page loads is worth forty shops; a guess that costs forty
+ * page loads per shop is a crawler, which is not what this is.
+ *
+ * The flower addresses come first, and not only to save a page load. A general
+ * menu makes the classifier do the filter's work, and that is where the
+ * mistakes are: of 193 shops with a shelf, 38 are read from a page that names
+ * no category, and those are the ones whose vapes and gummies have to be told
+ * apart from their jars by name alone. Landing on the flower page instead
+ * skips the question.
+ */
+/**
+ * Where a page that is not the menu says the menu was.
+ *
+ * Twenty-two shops end their visit parked on something that is not a shelf and
+ * never was — an age wall, a splash screen — and every one of them carries the
+ * address we were going to in its own query string:
+ *
+ *   /age-gate?returnUrl=%2Fmenu%2Fflower          eleven shops
+ *   /welcome?r=%2Fshop%2Fcategory%2Fflower        six, the Flowery's licences
+ *
+ * The page is telling us where we were headed. Reading it is not a trick and
+ * not a way around anything: the same parameter is what the site's own button
+ * uses when a visitor answers.
+ *
+ * A captcha is different in kind and is never followed. Three shops park on
+ * /.well-known/sgcaptcha/ and those are left alone — going near one would be
+ * working around a control the shop put there deliberately, which is not
+ * something this collector does.
+ */
+const DESTINATION_PARAMS = new Set([
+  'r',
+  'return',
+  'returnurl',
+  'returnto',
+  'redirect',
+  'redirecturl',
+  'redirect_to',
+  'next',
+  'continue',
+]);
+const NEVER_FOLLOW = /captcha|challenge|cdn-cgi|cloudflare|__cf/i;
+
+/** The onward address a parked page names, or null. Same site only. */
+export const destinationOf = (here) => {
+  let url;
+  try {
+    url = new URL(here);
+  } catch {
+    return null;
+  }
+  if (NEVER_FOLLOW.test(url.pathname) || NEVER_FOLLOW.test(url.search)) return null;
+  for (const [key, value] of url.searchParams) {
+    if (!DESTINATION_PARAMS.has(key.toLowerCase())) continue;
+    /* A path on this site, and nothing else. A protocol-relative value —
+       //elsewhere.example — is a different site wearing a leading slash, and
+       an absolute one is a different site outright. */
+    if (!value || !value.startsWith('/') || value.startsWith('//')) continue;
+    let next;
+    try {
+      next = new URL(value, url.origin);
+    } catch {
+      continue;
+    }
+    if (next.origin !== url.origin) continue;
+    // "/" is the door we already came in by; it names nothing new.
+    if (next.pathname === url.pathname || next.pathname === '/') continue;
+    return next.toString();
+  }
+  return null;
+};
+
+const GUESSED_MENU_PATHS = [
+  '/menu/flower',
+  '/shop/flower',
+  '/products/flower',
+  '/categories/flower',
+  '/collections/flower',
+  '/menu',
+  '/shop',
+  '/order',
+  '/products',
+  '/store',
+];
+
 /** Higher is better; 0 means "never follow this". */
 export const rankMenuLink = (href = '', text = '') => {
-  if (!href || PROMO_ROUTE.test(href)) return 0;
+  if (!href || PROMO_ROUTE.test(href) || isProductPage(href)) return 0;
+  if (isNotFlowerCategory(href)) return 0;
   if (FLOWER_ROUTE.test(href)) return 100;          // the flower category itself
   if (FLOWER_WORD.test(text)) return 90;            // a nav item that says Flower
   if (MENU_ROUTE.test(href) && FLOWER_WORD.test(text)) return 85;
@@ -273,18 +660,22 @@ const depth = (href) => {
   }
 };
 
+const FLOWER_SPECIFIC = 90;
 export const pickMenuLink = (links, siteUrl = null, shopName = '') => {
   let best = null;
   let bestScore = 0;
-  let bestDepth = -1;
+  let bestRank = -Infinity;
   for (const link of links) {
     if (siteUrl && !sameEstate(link.href, siteUrl, shopName)) continue;
     const score = rankMenuLink(link.href, link.text);
     if (score === 0) continue;
     const d = depth(link.href);
-    if (score > bestScore || (score === bestScore && d > bestDepth)) {
+    /* Deeper wins among flower categories, shallower among plain menu links,
+       and a bare address beats the same page carrying a query. */
+    const rank = (score >= FLOWER_SPECIFIC ? d : -d) * 2 - (link.href.includes('?') ? 1 : 0);
+    if (score > bestScore || (score === bestScore && rank > bestRank)) {
       bestScore = score;
-      bestDepth = d;
+      bestRank = rank;
       best = link.href;
     }
   }
@@ -297,36 +688,236 @@ export const pickMenuLink = (links, siteUrl = null, shopName = '') => {
    without that a truncated collection looks exactly like a small shop. Only
    keys that name a total count are read, and only when the number is one a
    menu could plausibly state. */
-const TOTAL_KEY = /^(total|totalCount|totalResults|totalItems|totalProducts|resultCount|numResults|count)$/i;
-const findDeclaredTotal = (value, depth = 0, best = { n: 0 }) => {
-  if (depth > 6 || !value || typeof value !== 'object') return best.n;
+/* Tested against the key with its underscores removed, because the same field
+   arrives as totalCount from one platform and total_count from the next — and
+   the fixture storefront, which states total_count, went unnoticed by this for
+   as long as it existed. */
+const TOTAL_KEY = /^(total|totalCount|totalResults|totalItems|totalProducts|resultCount|numResults|count|found)$/i;
+const declaresTotal = (key) => TOTAL_KEY.test(String(key).replace(/_/g, ''));
+/**
+ * The total stated in the same breath as a shelf, and only that one.
+ *
+ * The old rule — the largest total-ish number anywhere in the payload — is
+ * what made the completeness check unusable. A menu answers a page with the
+ * count for THAT query, and a page carries several: FUMI's six product
+ * payloads state 259, 16, 35, 98, 5 and 72, one per query it fired, and
+ * taking 259 read the shop as hiding eighty-one products it had never been
+ * asked for. Verdi Park Slope declared 519 one run and 29 the next from the
+ * same shelf, which is not a shop restocking — it is a number that belongs to
+ * a different question.
+ *
+ * So the total is looked for where a total for THIS shelf would be written:
+ * in the object that holds the array, or one floor down inside it, which is
+ * where Dutchie keeps queryInfo.totalCount. Nowhere else.
+ */
+const totalIn = (container) => {
+  if (!container || typeof container !== 'object' || Array.isArray(container)) return null;
+  let found = null;
+  const take = (k, v) => {
+    if (declaresTotal(k) && typeof v === 'number' && v >= 0 && v <= 100000) {
+      found = Math.max(found ?? 0, v);
+    }
+  };
+  for (const [k, v] of Object.entries(container)) {
+    take(k, v);
+    /* One floor down, into plain objects only: Dutchie writes the count under
+       queryInfo beside the products, and a sibling array is another shelf, not
+       this one's total. */
+    if (v && typeof v === 'object' && !Array.isArray(v)) {
+      for (const [k2, v2] of Object.entries(v)) take(k2, v2);
+    }
+  }
+  return found;
+};
+
+/** Every shelf in a payload, each with the total its own container states. */
+const shelvesWithTotals = (value, container = null, depth = 0, out = []) => {
+  if (depth > 7 || !value || typeof value !== 'object' || out.length > 40) return out;
   if (Array.isArray(value)) {
-    for (const item of value.slice(0, 20)) findDeclaredTotal(item, depth + 1, best);
-    return best.n;
+    if (looksLikeShelf(value)) out.push({ count: value.length, total: totalIn(container) });
+    for (const item of value.slice(0, 20)) shelvesWithTotals(item, container, depth + 1, out);
+    return out;
   }
-  for (const [k, v] of Object.entries(value)) {
-    if (TOTAL_KEY.test(k) && typeof v === 'number' && v > best.n && v <= 100000) best.n = v;
-    findDeclaredTotal(v, depth + 1, best);
+  for (const v of Object.values(value)) shelvesWithTotals(v, value, depth + 1, out);
+  return out;
+};
+
+/** What one response says about itself: how many it carried, of how many. */
+const shelfOf = (payload) => {
+  const shelves = shelvesWithTotals(payload);
+  if (!shelves.length) return { count: 0, total: null };
+  const carried = shelves.reduce((n, sh) => n + sh.count, 0);
+  /* The biggest array in the answer is the shelf it is an answer about; the
+     smaller ones beside it are carousels and "you might also like". */
+  const main = [...shelves].sort((a, b) => b.count - a.count)[0];
+  return { count: carried, total: main.total };
+};
+
+/**
+ * JSON:API menus — Tymber/Blaze, nineteen of the silent shops — keep nothing
+ * where a parser looks for it. A product arrives as
+ *
+ *   { id, type: "products", attributes: { name, size, terpenoids, ... },
+ *     relationships: { category: { data: { id, type: "product_categories" } } } }
+ *
+ * so every field is one floor down, and the two that decide whether we keep
+ * the row — its category and its brand — are not there at all: they are ids
+ * pointing into a sibling `included` array. `findProductArrays` looked at
+ * `id, type, attributes, relationships`, saw no name and no category, and
+ * walked past a hundred and twenty products at a time.
+ *
+ * Three things are needed and all three are in the payloads already:
+ *
+ *   1. the fields lifted out of `attributes`;
+ *   2. relationships resolved against `included`, so `category` becomes the
+ *      word "Flower" rather than 14966;
+ *   3. products merged by id across payloads. The same shelf arrives several
+ *      times with different fields each time — one response carries `name`,
+ *      another carries only potency and `store_url` — and a product read from
+ *      the second alone has no title to publish.
+ *
+ * Nothing here guesses: every key used below was read off one whole product
+ * resource that a diagnostic run printed in full.
+ */
+const isResource = (v) =>
+  v && typeof v === 'object' && !Array.isArray(v) &&
+  typeof v.type === 'string' && v.id !== undefined &&
+  v.attributes && typeof v.attributes === 'object' && !Array.isArray(v.attributes);
+
+const JSONAPI_PRODUCT = /^products?$/i;
+
+/**
+ * The category the shop itself filed the product under, taken from the address
+ * the shop publishes for it:
+ *
+ *   /menu/products/level-384256/edibles/level-edible-hybrid-protab-5ct100mg
+ *                 └ brand ────┘ └ cat ┘ └ product ─────────────────────────┘
+ *
+ * This is a fallback for the payloads that send products without including the
+ * category resource they point at. It is the shop's own word, not ours.
+ */
+export const categoryFromProductUrl = (url) => {
+  if (typeof url !== 'string') return null;
+  let path;
+  try {
+    path = new URL(url).pathname;
+  } catch {
+    return null;
   }
-  return best.n;
+  const parts = path.split('/').filter(Boolean);
+  // The product slug is last; what it sits under is the category.
+  return parts.length >= 2 ? decodeURIComponent(parts[parts.length - 2]) : null;
+};
+
+export const flattenJsonApiProducts = (payloads) => {
+  const index = new Map();          // "type:id" -> attributes, for relationships
+  const products = new Map();       // id -> merged attributes
+  const relationships = new Map();  // id -> merged relationships
+
+  const remember = (r) => {
+    const key = `${r.type}:${r.id}`;
+    if (!index.has(key)) index.set(key, r.attributes);
+    if (!JSONAPI_PRODUCT.test(r.type)) return;
+    // Merged rather than replaced: a field present in one response and absent
+    // in another must survive, whichever order they arrive in.
+    const merged = products.get(r.id) ?? {};
+    for (const [k, v] of Object.entries(r.attributes)) {
+      if (v !== null && v !== undefined && (merged[k] === null || merged[k] === undefined)) merged[k] = v;
+    }
+    products.set(r.id, merged);
+    if (r.relationships && typeof r.relationships === 'object') {
+      relationships.set(r.id, { ...(relationships.get(r.id) ?? {}), ...r.relationships });
+    }
+  };
+
+  const walk = (value, depth) => {
+    if (depth > 7 || !value || typeof value !== 'object') return;
+    if (Array.isArray(value)) {
+      for (const v of value.slice(0, 400)) walk(v, depth + 1);
+      return;
+    }
+    if (isResource(value)) remember(value);
+    for (const v of Object.values(value)) walk(v, depth + 1);
+  };
+  for (const payload of payloads) walk(payload, 0);
+
+  const rows = [];
+  for (const [id, attributes] of products) {
+    const flat = { ...attributes };
+    flat.id = attributes.id ?? id;
+    for (const [name, rel] of Object.entries(relationships.get(id) ?? {})) {
+      const target = rel && typeof rel === 'object' ? rel.data : null;
+      if (!target || Array.isArray(target) || target.id === undefined) continue;
+      const attrs = index.get(`${target.type}:${target.id}`);
+      const label = attrs && (attrs.name ?? attrs.title);
+      // `category` and `brand` are the two that matter; anything else that
+      // resolves to a name is kept under its own key and costs nothing.
+      if (typeof label === 'string' && label.trim() && flat[name] === undefined) flat[name] = label;
+    }
+    if (flat.category === undefined) {
+      const fromUrl = categoryFromProductUrl(flat.store_url);
+      if (fromUrl) flat.category = fromUrl;
+    }
+    rows.push(flat);
+  }
+  return rows;
+};
+
+/**
+ * What a thing for sale carries and a description of a thing does not: a
+ * price, a potency, a weight, or a word about stock.
+ *
+ * Name plus category was not enough. Curaleaf's cookie banner arrives as
+ *
+ *   DurationType,Host,IsSession,Length,Name,category,description,…
+ *
+ * and The Hibrary's list of its own categories arrives as
+ *
+ *   __typename,count,id,name,subcategory
+ *
+ * Both have a name. Both have a category. Neither is for sale, and both were
+ * read as a shelf — 178 cookies at Curaleaf alone, counted as products,
+ * inflating every completeness figure derived from "products read".
+ *
+ * Checked against the shops this would have to keep, not only the junk it has
+ * to drop: Liberty Buds' products carry customerPrice and cbd, PACHA's carry
+ * cbdAmount and inStock, The Cannabis Place's carry cashPriceRange. All stay.
+ */
+const SHELF_EVIDENCE =
+  /^(price|prices|unitprice|unitprices|saleprice|discountprice|customerprice|cashprice|cashpricerange|cashoptions|weightprices|msrp|cost|thc|cbd|cbn|thca|thcpercentage|thccontent|potencythc|potency|minthc|maxthc|cbdamount|thcamount|weight|weightingrams|gram|grams|gramrange|unitweight|size|sizes|options|variants|instock|quantity|availability)$/i;
+
+/* Read off the first few rather than only the first: a shelf sometimes opens
+   with an oddity, and one strange row should not disqualify the shelf behind
+   it. A weight in the name counts too — Liberty Buds writes the whole
+   description there, and a menu that states its weights nowhere else is still
+   a menu. */
+const forSale = (item) =>
+  Object.keys(item).some((k) => SHELF_EVIDENCE.test(k.replace(/[_\s-]/g, ''))) ||
+  Boolean(sizeFromText(String(flatten(pick(item, NAME_KEYS)) ?? '')));
+
+/** Whether this array is a shelf of products rather than, say, a tax table. */
+const looksLikeShelf = (value) => {
+  if (!Array.isArray(value)) return null;
+  const objects = value.filter((v) => v && typeof v === 'object' && !Array.isArray(v));
+  if (objects.length < 2) return null;
+  const keys = Object.keys(objects[0]);
+  // The first pilot matched a Dutchie tax table: it has `name` and `type`
+  // like a product does. Demand something only a shelf item carries.
+  const looksLikeProduct =
+    keys.some((k) => /^(name|productName|title)$/i.test(k)) &&
+    keys.some((k) =>
+      /^(category|productCategory|productCategoryName|subcategory|brand|brandName|strainType|cannabisType|variants|weightInGrams|potencyThc|thcContent)$/i.test(k),
+    ) &&
+    !keys.some((k) => /^(taxBasis|deliveryPolicy|applyTo|stages)$/i.test(k)) &&
+    objects.slice(0, 3).some(forSale);
+  return looksLikeProduct ? objects : null;
 };
 
 const findProductArrays = (value, depth = 0, out = []) => {
   if (depth > 6 || out.length > 40) return out;
   if (Array.isArray(value)) {
-    const objects = value.filter((v) => v && typeof v === 'object' && !Array.isArray(v));
-    if (objects.length >= 2) {
-      const keys = Object.keys(objects[0]);
-      // The first pilot matched a Dutchie tax table: it has `name` and `type`
-      // like a product does. Demand something only a shelf item carries.
-      const looksLikeProduct =
-        keys.some((k) => /^(name|productName|title)$/i.test(k)) &&
-        keys.some((k) =>
-          /^(category|productCategory|productCategoryName|subcategory|brand|brandName|strainType|cannabisType|variants|weightInGrams|potencyThc|thcContent)$/i.test(k),
-        ) &&
-        !keys.some((k) => /^(taxBasis|deliveryPolicy|applyTo|stages)$/i.test(k));
-      if (looksLikeProduct) out.push(objects);
-    }
+    const shelf = looksLikeShelf(value);
+    if (shelf) out.push(shelf);
     for (const item of value.slice(0, 20)) findProductArrays(item, depth + 1, out);
   } else if (value && typeof value === 'object') {
     for (const v of Object.values(value)) findProductArrays(v, depth + 1, out);
@@ -435,27 +1026,285 @@ const slug = (...parts) =>
    name is not read as an ounce. */
 const SIZE_RULES = [
   [/\b(\d+(?:\.\d+)?)\s*(?:g|gr|gram|grams)\b/i, (m) => parseFloat(m[1])],
-  [/\b1\s*\/\s*8(?!\d)|\beighth\b/i, () => 3.5],
-  [/\b1\s*\/\s*4(?!\d)|\bquarter\b/i, () => 7],
-  [/\b1\s*\/\s*2(?!\d)|\bhalf\b/i, () => 14],
-  [/(?<![a-z])(?:oz|ounce|zip)\b/i, () => 28],
+  /* A fraction means a fraction of an ounce — unless a pound follows it.
+     "Quarter pound" was read as a quarter ounce: 7 grams for 113, wrong by
+     sixteen times and silently. Nobody may sell one in New York, so the right
+     answer is to refuse it, not to shrink it. */
+  [/(?:\b1\s*\/\s*8(?!\d)|\beighth\b)(?!\s*(?:pound|lb|#))/i, () => 3.5],
+  [/(?:\b1\s*\/\s*4(?!\d)|\bquarter\b)(?!\s*(?:pound|lb|#))/i, () => 7],
+  [/(?:\b1\s*\/\s*2(?!\d)|\bhalf\b)(?!\s*(?:pound|lb|#))/i, () => 14],
+  /* The multiplier used to be thrown away: this returned a flat 28 for "oz",
+     "2oz" and "4oz" alike, so a two-ounce jar entered the register as one
+     ounce. A wrong weight is worse than a missing one — a reader cannot tell
+     it is wrong. Shops label an ounce 28g, so an ounce is 28 here too, which
+     makes 2.5oz exactly the 70g Bleu Leaf prints on its own filter. */
+  [/(\d+(?:\.\d+)?)?\s*(?<![a-z])(?:oz|ounces?|zips?)\b/i,
+    (m) => (m[1] ? parseFloat(m[1]) : 1) * 28],
 ];
 
-/* Nobody sells flower by the hundredth of a gram. A figure below this came
-   from some other field — a discount, a rating, a tax rate — and reading it as
-   a weight puts a size on the shelf that a buyer cannot ask for. */
+/* ---------------------------------------------------------------- paging --
+ * Scrolling is not how most of these menus give up their shelf.
+ *
+ * The first run that could see it said so plainly: 55 shops handed over fewer
+ * products than their own answer counted, and the numbers they stopped at were
+ * 25, 50, 75, 100, 125, 150, 200. Multiples of a page size are not assortments.
+ * The collector was taking whatever lazy-loading delivered while the wheel was
+ * turning, and a menu that pages on a click, or on a route change, delivers one
+ * page however long you scroll it.
+ *
+ * So the page is asked again, the way it asked itself. The request that carried
+ * products is replayed from inside the page — same origin, same cookies, same
+ * headers — with its page number advanced. Which is also why this is not a
+ * second crawler: nothing is requested that the shop's own menu would not
+ * request of itself if a visitor pressed "next".
+ */
+
+/* Where a page number hides. Three shapes, in the order they are trusted:
+   an explicit page index, an offset in items, and the size that an offset has
+   to be advanced by. */
+const PAGE_KEYS = ['page', 'pageNumber', 'pageIndex', 'currentPage', 'pageNum'];
+const OFFSET_KEYS = ['offset', 'skip', 'from', 'start'];
+const SIZE_KEYS = ['perPage', 'pageSize', 'per_page', 'page_size', 'limit', 'first', 'take'];
+
+/** The first numeric value under any of `keys`, with the path that reaches it. */
+const findNumber = (value, keys, path = [], depth = 0) => {
+  if (depth > 6 || !value || typeof value !== 'object') return null;
+  if (Array.isArray(value)) return null;
+  for (const key of Object.keys(value)) {
+    if (keys.includes(key) && typeof value[key] === 'number') return { path: [...path, key], value: value[key] };
+  }
+  for (const [key, v] of Object.entries(value)) {
+    const found = findNumber(v, keys, [...path, key], depth + 1);
+    if (found) return found;
+  }
+  return null;
+};
+
+const setAt = (object, path, value) => {
+  let node = object;
+  for (const key of path.slice(0, -1)) node = node[key];
+  node[path.at(-1)] = value;
+  return object;
+};
+
+/** Advance a page knob inside a JSON value. Returns a copy, or null. */
+const advanceJson = (value, nth, fallbackSize) => {
+  const paged = findNumber(value, PAGE_KEYS);
+  if (paged) {
+    return setAt(structuredClone(value), paged.path, paged.value + nth);
+  }
+  const offset = findNumber(value, OFFSET_KEYS);
+  if (offset) {
+    /* An offset means nothing without the step. The menu usually states it in
+       the same breath — perPage, limit, first — and where it does not, the
+       number of products the first answer carried is the step it used. */
+    const size = findNumber(value, SIZE_KEYS)?.value || fallbackSize;
+    if (!size) return null;
+    return setAt(structuredClone(value), offset.path, offset.value + nth * size);
+  }
+  return null;
+};
+
+/** The same JSON with its page knob wound back to the start. */
+const withoutPage = (value) => {
+  const paged = findNumber(value, PAGE_KEYS);
+  if (paged) return setAt(structuredClone(value), paged.path, 0);
+  const offset = findNumber(value, OFFSET_KEYS);
+  if (offset) return setAt(structuredClone(value), offset.path, 0);
+  return value;
+};
+
+/**
+ * One name for every page of one query.
+ *
+ * A menu page fires several different queries and we read products from all of
+ * them, so "products seen" is a sum across questions while "the total" belongs
+ * to one. Comparing the two is how a complete shop comes out looking truncated.
+ * Keyed this way, each query's pages can be counted against that query's own
+ * stated total, and nothing else.
+ */
+const keyCache = new WeakMap();
+const queryKey = (req) => {
+  const cached = keyCache.get(req);
+  if (cached !== undefined) return cached;
+  const key = buildQueryKey(req);
+  keyCache.set(req, key);
+  return key;
+};
+
+/* Worked out once per request and remembered: the paging loop counts a query's
+   pages on every turn, and re-parsing forty URLs to answer the same question
+   forty times is forty times the work for one answer. */
+const buildQueryKey = (req) => {
+  let key = `${req.method} `;
+  try {
+    const url = new URL(req.url);
+    for (const [k, raw] of [...url.searchParams]) {
+      if (!raw.trim().startsWith('{')) continue;
+      try {
+        url.searchParams.set(k, JSON.stringify(withoutPage(JSON.parse(raw))));
+      } catch {
+        /* only looked like JSON */
+      }
+    }
+    const numeric = Object.fromEntries(
+      [...url.searchParams].map(([k, v]) => [k, Number(v)]).filter(([, v]) => Number.isFinite(v)),
+    );
+    const flattened = withoutPage(numeric);
+    for (const [k, v] of Object.entries(flattened)) {
+      if (numeric[k] !== v) url.searchParams.set(k, String(v));
+    }
+    url.searchParams.sort();
+    key += url.toString();
+  } catch {
+    key += req.url;
+  }
+  if (req.body) {
+    try {
+      key += ` ${JSON.stringify(withoutPage(JSON.parse(req.body)))}`;
+    } catch {
+      key += ` ${req.body}`;
+    }
+  }
+  return key;
+};
+
+/**
+ * The request that asks for page `nth` after the one we captured, or null when
+ * the request carries no page at all.
+ *
+ * `req` is what the page actually sent: {method, url, body}. A page number
+ * lives in one of three places, and Dutchie uses the third: a query parameter
+ * whose value is itself JSON.
+ */
+const pagedRequest = (req, nth, fallbackSize) => {
+  if (!req || nth < 1) return null;
+
+  if (req.body) {
+    try {
+      const advanced = advanceJson(JSON.parse(req.body), nth, fallbackSize);
+      if (advanced) return { ...req, body: JSON.stringify(advanced) };
+    } catch {
+      /* not JSON; the address may still carry the page */
+    }
+  }
+
+  let url;
+  try {
+    url = new URL(req.url);
+  } catch {
+    return null;
+  }
+
+  // A parameter that is itself JSON — operationName=…&variables={"page":0,…}
+  for (const [key, raw] of [...url.searchParams]) {
+    if (!raw.trim().startsWith('{')) continue;
+    try {
+      const advanced = advanceJson(JSON.parse(raw), nth, fallbackSize);
+      if (advanced) {
+        const next = new URL(url);
+        next.searchParams.set(key, JSON.stringify(advanced));
+        return { ...req, url: next.toString() };
+      }
+    } catch {
+      /* the parameter only looked like JSON */
+    }
+  }
+
+  // A plain numeric parameter.
+  const params = Object.fromEntries([...url.searchParams].map(([k, v]) => [k, Number(v)]));
+  const numeric = Object.fromEntries(Object.entries(params).filter(([, v]) => Number.isFinite(v)));
+  const advanced = advanceJson(numeric, nth, fallbackSize);
+  if (!advanced) return null;
+  const next = new URL(url);
+  for (const [key, value] of Object.entries(advanced)) {
+    if (numeric[key] !== value) next.searchParams.set(key, String(value));
+  }
+  return { ...req, url: next.toString() };
+};
+
+/* How far the asking goes. A shop that states its total is asked until the
+   total is reached; one that states nothing is asked a few times and then left
+   alone, because "ask until it stops giving" against a menu that ignores the
+   parameter is a loop that never ends. */
+/** What a batch of payloads holds, named: the ids of the products in it. */
+const signatureOf = (somePayloads) => {
+  const ids = somePayloads
+    .flatMap((pl) => findProductArrays(pl))
+    .flat()
+    .map((p) => String(p?.id ?? p?._id ?? p?.sku ?? p?.slug ?? p?.name ?? p?.Name ?? ''))
+    .filter(Boolean);
+  return ids.length ? ids.slice(0, 40).join('|') : null;
+};
+
+const MAX_PAGES_DECLARED = 40;
+const MAX_PAGES_UNDECLARED = 10;
+const PAGING_BUDGET_MS = 45000;
+const BETWEEN_PAGES_MS = 400;
+
 /* A menu is read by scrolling it, and the only honest stopping condition is
    that it stopped growing. These bound the effort, not the result: when
    either is reached the shelf is marked as cut short. */
 const MAX_SCROLL_ROUNDS = 60;
 const SCROLL_BUDGET_MS = 150000;
 
+/* Asking again, and what it is allowed to cost.
+ *
+ * Only a shop that had a shelf at the last reading and has none now is asked
+ * again: that is the one case where we know the emptiness is wrong, because
+ * the same address gave us products before. Once, not until it works — a shop
+ * that has genuinely emptied its shelf would otherwise be visited twice every
+ * day forever.
+ *
+ * The budget is the whole batch's, not the shop's. Nine batches of thirty-five
+ * run inside a five-hour job, and a day on which every site is unreachable
+ * would otherwise double the run and lose the batches at the end of it. When
+ * it runs out the shop says so rather than looking like it was asked.
+ *
+ * Overridable only so that running out of it can be tested in seconds instead
+ * of in six minutes of real visiting; unset, which is every real run, is six
+ * minutes. */
+const RETRY_BUDGET_MS = process.env.MENU_RETRY_BUDGET_MS
+  ? Number(process.env.MENU_RETRY_BUDGET_MS) || 0
+  : 360000;
+
 /* A shelf read from a menu that serves several licences: the strains are real,
    which branch stocks them is not established. */
 const SHELF_SHARED = 'SHELF_SHARED_WITH_OTHER_LICENCES';
 
+/* Nobody sells flower by the hundredth of a gram. A figure below the floor
+   came from some other field — a discount, a rating, a tax rate — and reading
+   it as a weight puts a size on the shelf that a buyer cannot ask for.
+
+   The ceiling was 30, which is an ounce and a rounding. It silently discarded
+   every larger format: across 10244 collected listings, 70g appears exactly
+   zero times while Bleu Leaf's own filter counts five of them, and nothing
+   above 28.35 has ever been recorded from any of 175 shops. So the bound is
+   the one the state sets — three ounces, 85 grams, the most an adult may buy
+   in New York in a day — and not a guess at what shops stock. A quarter pound
+   is still refused, because nobody may sell one. */
 const MIN_PLAUSIBLE_GRAMS = 0.5;
-const plausibleSize = (g) => (typeof g === 'number' && g >= MIN_PLAUSIBLE_GRAMS && g <= 30 ? g : null);
+const MAX_PLAUSIBLE_GRAMS = 85;
+const plausibleSize = (g) =>
+  typeof g === 'number' && g >= MIN_PLAUSIBLE_GRAMS && g <= MAX_PLAUSIBLE_GRAMS ? g : null;
+
+/**
+ * A weight with its unit left off, at the very end of a name.
+ *
+ * The Hibrary lists "JULIA - Lemon Sherbert - flower - 3.5" and means an
+ * eighth. Read anywhere in a name a bare number is as likely to be a
+ * percentage, a pack count or a deal number, so this reads only the end, only
+ * the weights a shop actually sells by, and only after every other rule has
+ * declined — a flower listing with no weight is dropped whole, so the last
+ * resort is worth having.
+ */
+const RETAIL_GRAMS = new Set([1, 1.75, 2, 3.5, 7, 14, 28]);
+const bareWeightAtEnd = (text) => {
+  const m = String(text ?? '').trim().match(/(?:^|[\s\-|·,])(\d+(?:\.\d+)?)\s*$/);
+  if (!m) return null;
+  const g = parseFloat(m[1]);
+  return RETAIL_GRAMS.has(g) ? g : null;
+};
 
 const sizeFromText = (text) => {
   for (const [re, take] of SIZE_RULES) {
@@ -614,6 +1463,14 @@ const TERPENES = {
   eucalyptol: 'EUCALYPTOL', guaiol: 'GUAIOL', farnesene: 'FARNESENE',
   geraniol: 'GERANIOL', borneol: 'BORNEOL', terpineol: 'TERPINEOL',
   phellandrene: 'PHELLANDRENE', carene: 'CARENE', sabinene: 'SABINENE', fenchol: 'FENCHOL',
+  /* Both are on every NY panel and neither had a word here, so a shop that
+     quantified them handed us OTHER. The strain references were already
+     carrying them under names the shelf side could not match. */
+  caryophylleneoxide: 'CARYOPHYLLENE_OXIDE', betacaryophylleneoxide: 'CARYOPHYLLENE_OXIDE',
+  terpinene: 'TERPINENE', gammaterpinene: 'TERPINENE', alphaterpinene: 'TERPINENE',
+  /* Both arrived in the first JSON:API run: seven products apiece published a
+     figure for them, and both would have gone down as OTHER. */
+  isopulegol: 'ISOPULEGOL', pcymene: 'CYMENE', cymene: 'CYMENE', paracymene: 'CYMENE',
   // Spellings seen in the pilot payloads.
   betamyrcene: 'MYRCENE', bmyrcene: 'MYRCENE', alphahumulene: 'HUMULENE',
   betaocimene: 'OCIMENE', alphaterpineol: 'TERPINEOL', alphacedrene: 'OTHER',
@@ -685,12 +1542,32 @@ const categoryText = (p) =>
  * that rejects thousands of products should be able to report what it was
  * rejecting them for.
  */
+/**
+ * What a shop calls the thing when it is naming the product, not the shelf.
+ *
+ * Read only when there is no category to read, which is not a rare corner:
+ * Liberty Buds publishes two hundred and six products from /shop/c/flower/,
+ * its own menu states two hundred and six, we read all two hundred and six —
+ * and every one of them was dropped for want of a category field, while its
+ * name said
+ *
+ *   1937 | Flower | Kilimanjaro Mixed Bud | 3.5g | 23.2% | Sativa
+ *
+ * The weight, the potency and the lineage are all in there. Refusing to look
+ * at the name because a field is missing threw away a whole shop.
+ */
+const FLOWER_TITLE = /\b(flowers?|buds?|nugs?|smalls?|popcorn)\b/i;
+
 const classify = (p) => {
   const title = String(flatten(pick(p, NAME_KEYS)) ?? '');
   if (!title.trim()) return 'no-title';
   if (NOT_FLOWER_TITLE.test(title)) return 'title-not-flower';
   const text = categoryText(p);
-  if (!text) return 'no-category';
+  /* No category to go on, so the name decides — and only when it says so
+     outright. A name that names no product type stays refused: guessing from
+     a bare strain name would sweep in every pre-roll a shop lists without a
+     category, and an empty field beats a plausible guess. */
+  if (!text) return FLOWER_TITLE.test(title) ? 'flower' : 'no-category';
   if (/pre[\s-]?roll|infused|blunt|joint/.test(text)) return 'category-not-flower';
   return /flower|bud/.test(text) ? 'flower' : 'category-not-flower';
 };
@@ -782,14 +1659,14 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const brand = flatten(pick(p, ['brandName', 'brand', 'producer', 'vendor', 'cultivator']));
   const name = cleanStrainName(rawName, brand);
   const lineageRaw = String(
-    flatten(pick(p, ['strainType', 'lineage', 'cannabisType', 'cannabisStrain', 'classification'])) ?? '',
+    flatten(pick(p, ['strainType', 'lineage', 'cannabisType', 'cannabisStrain', 'flowerType', 'classification'])) ?? '',
   )
     .toLowerCase()
     .replace(/[^a-z]/g, '');
 
   const profile = [];
   let totalPercent = null;
-  const terps = pick(p, ['terpenes', 'terpeneProfile', 'terps']);
+  const terps = pick(p, ['terpenes', 'terpeneProfile', 'terpenoids', 'terps']);
   if (Array.isArray(terps)) {
     for (const t of terps) {
       const raw = terpeneName(t);
@@ -817,7 +1694,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
      quantities and prices wearing a weight's clothes. A figure counts only
      from a key that means weight, or from text that states its unit. */
   const WEIGHT_KEYS = ['gramAmount', 'weightInGrams', 'netWeight'];
-  const UNIT_TEXT_KEYS = ['weightFormatted', 'label', 'name', 'title', 'weight', 'size', 'option'];
+  const UNIT_TEXT_KEYS = ['weightFormatted', 'label', 'name', 'title', 'displayName', 'displayText', 'weight', 'size', 'option'];
 
   const sizeOf = (v) => {
     if (typeof v === 'string') return sizeFromText(v);
@@ -826,6 +1703,16 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
 
     const stated = num(pick(v, WEIGHT_KEYS));
     if (stated) return stated;
+
+    /* Tymber states the unit in a field of its own: { amount: 3.5, units: "g" }.
+       That is a key that means weight, spelled across two fields rather than
+       one, so it counts — and it is what keeps "each" from becoming a gram. */
+    const units = flatten(pick(v, ['units', 'unit', 'uom']));
+    const amount = num(pick(v, ['amount', 'weightAmount']));
+    if (typeof units === 'string' && amount) {
+      const g = sizeFromText(`${amount} ${units}`);
+      if (g) return g;
+    }
 
     for (const text of pickAll(v, UNIT_TEXT_KEYS)) {
       if (typeof text === 'string') {
@@ -837,7 +1724,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   };
 
   const sizes = [];
-  const variants = pick(p, ['variants', 'weights', 'options', 'sizes', 'priceOptions', 'measurements']);
+  const variants = pick(p, ['variants', 'weights', 'weightPrices', 'options', 'sizes', 'priceOptions', 'unitPrices', 'measurements']);
   if (Array.isArray(variants)) {
     for (const v of variants) {
       const g = plausibleSize(sizeOf(v));
@@ -850,14 +1737,14 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const statedGrams = plausibleSize(num(pick(p, ['weightInGrams', 'flowerEquivalentInGrams'])));
   if (statedGrams) sizes.push(statedGrams);
   if (!sizes.length) {
-    for (const text of pickAll(p, ['weightFormatted', 'weight', 'size'])) {
-      const g = typeof text === 'string' ? plausibleSize(sizeFromText(text)) : null;
+    for (const value of pickAll(p, ['weightFormatted', 'weight', 'size', 'cannabisWeight'])) {
+      const g = plausibleSize(sizeOf(value));
       if (g) sizes.push(g);
     }
   }
 
   if (!sizes.length) {
-    const fromTitle = sizeFromText(String(rawName));
+    const fromTitle = sizeFromText(String(rawName)) ?? bareWeightAtEnd(rawName);
     if (fromTitle) sizes.push(fromTitle);
   }
 
@@ -943,10 +1830,37 @@ const main = async () => {
   let done = 0;
   let skipped = 0;
 
-  for (const shop of candidates) {
-    if (done >= limit) break;
-    if (skipped < offset) {
+  /* Time already spent on second visits, against RETRY_BUDGET_MS. */
+  let retrySpent = 0;
+
+  /* The visit list, which the run is allowed to add to.
+   *
+   * Appending to the array a for…of is walking is deliberate: a shop put back
+   * on the end is visited after every other shop has had its first turn, which
+   * is half an hour later in a batch of thirty-five. That gap is the whole
+   * value of the second visit. Knocking again five seconds later asks the same
+   * unfinished page the same question; asking after the rest of the batch gives
+   * a site that was deploying, throttling or simply slow the time to come back. */
+  const queue = candidates.map((shop) => ({ shop, attempt: 1 }));
+
+  for (const job of queue) {
+    const { shop } = job;
+    /* Only first visits count against the batch. A retry that consumed one of
+       the thirty-five would push a shop off the end of the batch and out of the
+       day's run entirely — the offsets the workflow walks are fixed. And the
+       list cannot be broken out of once the limit is reached, because the
+       retries are queued behind it. */
+    if (job.attempt === 1 && done >= limit) continue;
+    if (job.attempt === 1 && skipped < offset) {
       skipped += 1;
+      continue;
+    }
+    if (job.attempt > 1 && retrySpent >= RETRY_BUDGET_MS) {
+      /* Said, not swallowed. A shop that was owed a second visit and did not
+         get one looks exactly like a shop that got one and stayed empty, and
+         those want opposite things done about them. */
+      const at = report.findIndex((r) => r.licence === shop.licenseNumber);
+      if (at > -1) report[at].retryBudgetSpent = true;
       continue;
     }
     const site = shop.contact.website;
@@ -961,11 +1875,15 @@ const main = async () => {
       report.push({ shop: shop.dbaName ?? shop.legalName, status: 'robots-disallowed' });
       continue;
     }
-    done += 1;
+    if (job.attempt === 1) done += 1;
+    const startedAt = Date.now();
 
     const context = await browser.newContext({ userAgent: UA });
     const page = await context.newPage();
     const payloads = [];
+    /* One entry per JSON response that carried products: where it came from,
+       and what was asked for. Kept only when --dump-requests asks. */
+    const requests = [];
 
     // When the last payload landed. A menu that is still fetching has not
     // finished, and a fixed wait either cuts it off or wastes time on a shop
@@ -981,6 +1899,41 @@ const main = async () => {
         const body = await res.json();
         payloads.push(body);
         lastPayloadAt = Date.now();
+        /* Kept for every run, not only when asked to print: the request that
+           carried products is the one the paging replays. Truncating it would
+           make it unusable for that, so the recorded address is whole and the
+           dump shortens it at printing time instead. */
+        const { count: carried, total: declaredHere } = shelfOf(body);
+        if (carried > 0) {
+          const req = res.request();
+          /* Every header the request carried. The browser refuses the ones
+             that are its own to set — origin, referer, cookie, host — and
+             drops them silently, which is right: replaying a request must not
+             be a way to claim to be someone else. Everything else goes back,
+             because an allowlist of accept, content-type and x-* is a guess
+             about what a platform needs, and SweedPOS answered that guess with
+             HTTP 400. */
+          const headers = { ...req.headers() };
+          requests.push({
+            products: carried,
+            /* What THIS answer said its query holds. Kept on the request rather
+               than summed across the page, because the page asks several
+               questions and each answer counts only its own. */
+            declared: declaredHere,
+            method: req.method(),
+            url: res.url(),
+            headers,
+            /* Asked again from the frame that asked the first time. A menu in
+               an iframe belongs to the platform's origin, and a fetch for it
+               from the top frame is cross-origin — which is how Stashmaster's
+               second page came back as "Failed to fetch" while the same code
+               paged other Dutchie shops fine. */
+            frame: req.frame(),
+            // GraphQL keeps the page and the filters in the body, not the
+            // address, so the address alone would say nothing.
+            body: req.method() === 'POST' ? String(req.postData() ?? '') : null,
+          });
+        }
       } catch {
         /* non-JSON or aborted; nothing to capture */
       }
@@ -1005,7 +1958,7 @@ const main = async () => {
 
       await page.goto(site, { waitUntil: 'domcontentloaded', timeout: 30000 });
       await settle(1500, 8000);
-      entry.ageGate = await affirmAge(page);
+      await clearWalls(page, entry);
 
       // A menu address written down by hand beats anything found by guessing.
       const known = ENDPOINTS[shop.licenseNumber] ?? null;
@@ -1013,12 +1966,71 @@ const main = async () => {
 
       /* The page hands back its links; the choosing happens here, where it can
          be tested against a real page's worth of them. */
-      const links = await page.evaluate(() =>
-        [...document.querySelectorAll('a[href]')]
-          .slice(0, 400)
-          .map((a) => ({ href: a.href, text: (a.textContent || '').trim().slice(0, 60) })),
-      );
-      const found = pickMenuLink(links, site, shop.dbaName ?? shop.legalName);
+      const readLinks = () =>
+        page.evaluate(() =>
+          [...document.querySelectorAll('a[href]')]
+            .slice(0, 400)
+            .map((a) => ({ href: a.href, text: (a.textContent || '').trim().slice(0, 60) })),
+        );
+      let links = await readLinks();
+      let found = pickMenuLink(links, site, shop.dbaName ?? shop.legalName);
+
+      /* An age wall that is a page of its own carries no menu links, and the
+         click that answers it waits a flat two and a half seconds — not long
+         enough for a site that then loads its home page from scratch. So the
+         first read can be of the wall rather than of the shop.
+         Reading again costs nothing when the first read worked, and it is the
+         difference between a shelf and a silence when it did not. */
+      if (!found) {
+        await settle(1500, 8000);
+        const before = entry.ageGate;
+        await clearWalls(page, entry);
+        if (entry.ageGate && !before) {
+          await settle(1500, 8000);
+        }
+        links = await readLinks();
+        const second = pickMenuLink(links, site, shop.dbaName ?? shop.legalName);
+        if (second) {
+          entry.foundMenuOnSecondLook = true;
+          found = second;
+        }
+      }
+
+      /* Still nothing said where the menu is, so try where it usually is.
+         Asked from inside the page, which keeps it to one request per address
+         and leaves the browser out of it until something answers. */
+      if (!found) {
+        const origin = (() => {
+          try {
+            return new URL(site).origin;
+          } catch {
+            return null;
+          }
+        })();
+        const candidates = [];
+        for (const path of origin ? GUESSED_MENU_PATHS : []) {
+          const url = `${origin}${path}`;
+          if (!(await robotsAllows(url))) continue;
+          const ok = await page.evaluate(async (target) => {
+            try {
+              const res = await fetch(target, { method: 'HEAD', redirect: 'follow' });
+              return res.ok;
+            } catch {
+              return false;
+            }
+          }, url);
+          if (ok) candidates.push(url);
+          // Two is enough to try; a site that answers 200 to everything would
+          // otherwise hand us its whole list of guesses as though each were a
+          // menu.
+          if (candidates.length >= 2) break;
+        }
+        if (candidates.length) {
+          entry.guessedMenuPaths = candidates.map((u) => new URL(u).pathname);
+          found = candidates[0];
+          entry.foundMenuByGuess = true;
+        }
+      }
       if (dumpLinks > 0) {
         const shopName = shop.dbaName ?? shop.legalName;
         entry.links = links
@@ -1037,8 +2049,30 @@ const main = async () => {
       if (href && entry.menuLink !== 'robots-disallowed') {
         await page.goto(href, { waitUntil: 'domcontentloaded', timeout: 30000 });
         await settle(1500, 10000);
-        entry.ageGate = (await affirmAge(page)) || entry.ageGate;
+        await clearWalls(page, entry);
         entry.settled = await settle(3000, 25000);
+
+        /* Still standing on something that is not the menu, and it says where
+           the menu was. Followed once: an age wall answered on the way in sets
+           its cookie, so the second arrival is usually the shelf. Recorded
+           either way, because "we followed and it still was not the menu" and
+           "we never left the wall" want different things done about them. */
+        const onward = destinationOf(page.url());
+        if (onward && onward !== page.url()) {
+          entry.parkedOn = new URL(page.url()).pathname;
+          if (await robotsAllows(onward)) {
+            entry.wentOnwardTo = new URL(onward).pathname;
+            await page.goto(onward, { waitUntil: 'domcontentloaded', timeout: 30000 });
+            await settle(1500, 10000);
+            /* The same walls can stand on the other side of the door: the
+               Flowery's welcome screen leads to a shop page that asks the age
+               question again. */
+            await clearWalls(page, entry);
+            entry.settled = await settle(3000, 25000);
+          } else {
+            entry.menuLink = 'robots-disallowed';
+          }
+        }
 
         /* Then scroll until nothing new arrives. Menus that page in as you go
            gave us their first screen and no more.
@@ -1064,20 +2098,279 @@ const main = async () => {
           entry.scrollRounds = round + 1;
         }
         if (round >= MAX_SCROLL_ROUNDS) entry.hitScrollCap = true;
+
+        /* Then ask for the pages scrolling never reached. */
+        /* The biggest answer is not always the one that can be paged. The
+           Cannabis Reserve's page opens with eight carousels in a single
+           answer — 154 products, more than any other request it makes — and
+           that answer is POST /_api/Products/GetProductCarouselList with a body
+           of {"platformOs":"web"}: there is no page in it and there never will
+           be. Its real product list is a smaller answer next to it, and it
+           pages. So pageability is asked first and size only decides between
+           the ones that have it. */
+        const pageable = requests.filter((r) => pagedRequest(r, 1, r.products));
+        const biggest = [...(pageable.length ? pageable : requests)].sort(
+          (a, b) => b.products - a.products,
+        )[0];
+        if (biggest) {
+          entry.pagedQueryIsPageable = pageable.length > 0;
+          /* The total belongs to the query, so the reading it is compared
+             against has to belong to the same query. Everything the page
+             fetched, summed, is a different quantity from what one question
+             was answered with — and comparing those two is what read complete
+             shops as truncated. */
+          const key = queryKey(biggest);
+          const declared = biggest.declared ?? 0;
+          const seenBefore = () =>
+            requests.filter((r) => queryKey(r) === key).reduce((n, r) => n + r.products, 0);
+          const cap = declared ? MAX_PAGES_DECLARED : MAX_PAGES_UNDECLARED;
+          const pageUntil = Date.now() + PAGING_BUDGET_MS;
+          let asked = 0;
+          /* Compared against everything already in hand, not just the previous
+             answer: a menu that ignores the parameter usually has handed over
+             exactly one product payload, and this catches it on the first ask
+             rather than the second. */
+          let previousPageAt = 0;
+          const pagedFrom = seenBefore();
+
+          /* Why the asking stopped, named.
+           *
+           * Five ways out of this loop and three of them were silent, which is
+           * why "read 151, menu says 659, asked 2 pages" could not be acted on:
+           * reaching the end of the shelf, being handed an empty answer, and
+           * hearing nothing back at all all looked identical from outside. The
+           * two that already spoke — a refusal, and a menu that ignores the
+           * parameter — are the two that got fixed. */
+          let stopped = 'ran-out-of-pages';
+
+          for (let nth = 1; nth <= cap; nth += 1) {
+            if (Date.now() > pageUntil) {
+              entry.hitPagingBudget = true;
+              stopped = 'out-of-time';
+              break;
+            }
+            if (declared && seenBefore() >= declared) {
+              stopped = 'read-everything-declared';
+              break;
+            }
+
+            const next = pagedRequest(biggest, nth, biggest.products);
+            if (!next) {
+              // No page knob anywhere in the request: nothing to advance.
+              stopped = 'no-page-in-request';
+              break;
+            }
+
+            const before = payloads.length;
+            const seenIds = signatureOf(payloads.slice(previousPageAt));
+            /* Asked from inside the page, so the shop sees the request its own
+               menu makes: same origin, same cookies, same headers. The response
+               is captured by the listener above like any other, which is why
+               nothing is pushed here. */
+            /* The frame may be gone by now — a menu that re-renders detaches
+               its iframe — and the page is the honest fallback. */
+            let asker = page;
+            try {
+              if (biggest.frame && !biggest.frame.isDetached()) asker = biggest.frame;
+            } catch {
+              asker = page;
+            }
+            // A Frame is a handle on this side of the wire and cannot be
+            // serialised into the page, so it is left behind here.
+            const { frame: _frame, products: _products, ...sendable } = next;
+            const outcome = await asker.evaluate(async (req) => {
+              try {
+                /* No credentials option, which means the browser default:
+                   cookies on a same-origin request, none across origins. The
+                   alternative would break the biggest platform outright —
+                   Dutchie's menu lives on dutchie.com and answers the shop's
+                   site with Access-Control-Allow-Origin: *, and a wildcard and
+                   credentials cannot be used together. */
+                const res = await fetch(req.url, {
+                  method: req.method,
+                  body: req.body ?? undefined,
+                  headers: req.headers ?? undefined,
+                });
+                const text = await res.text();
+                return { status: res.status, length: text.length };
+              } catch (e) {
+                return { status: 0, error: String(e && e.message ? e.message : e).slice(0, 120) };
+              }
+            }, sendable);
+            /* Said out loud. A page asked for and not delivered used to end the
+               loop in silence, which is indistinguishable from a shelf that
+               ended — and the difference is the whole question for a shop that
+               declares 464 and hands over 24. */
+            const carried = outcome.status >= 200 && outcome.status < 300 ? outcome.length : -1;
+            if (carried === -1) entry.pagingRefused = outcome.error ?? `HTTP ${outcome.status}`;
+
+            asked += 1;
+            if (carried === -1) {
+              stopped = 'refused';
+              break; // refused or failed; do not keep knocking
+            }
+            await settle(800, 6000);
+            /* The answer was fetched — its length says so — and no payload was
+               recorded for it. That is not a menu that ended: it is an answer
+               the listener did not keep, because it was not JSON or was still
+               arriving when the wait ran out. */
+            if (payloads.length === before) {
+              stopped = carried > 0 ? 'answer-not-captured' : 'nothing-arrived';
+              break;
+            }
+            /* Something arrived, but the same something. A menu that ignores
+               the page parameter answers page two with page one, and without
+               this the collector asks it forty times and calls the result a
+               shelf. */
+            const arrived = signatureOf(payloads.slice(before));
+            // No products in the answer: the menu has run out, which is the
+            // ordinary way this ends.
+            if (!arrived) {
+              stopped = 'answer-had-no-products';
+              break;
+            }
+            /* Products, but the same products. A menu that ignores the page
+               parameter answers page two with page one, and without this the
+               collector asks it forty times and calls the result a shelf. */
+            if (arrived === seenIds) {
+              entry.pagingIgnored = true;
+              stopped = 'same-products-again';
+              break;
+            }
+            previousPageAt = before;
+            await new Promise((r) => setTimeout(r, BETWEEN_PAGES_MS));
+          }
+
+          if (asked > 0) {
+            entry.pagesAsked = asked;
+            entry.pagedFrom = pagedFrom;
+            entry.pagedTo = seenBefore();
+          }
+          /* Recorded whether anything was asked or not: "no page in this
+             request" is the whole finding for a shop that was never paged, and
+             it is invisible in pagesAsked. */
+          entry.pagingStoppedBecause = stopped;
+          /* Both sides of the completeness check, taken from one query. */
+          entry.declaredTotal = declared || null;
+          entry.pagedQueryProducts = seenBefore();
+        }
       }
       entry.payloads = payloads.length;
       /* Where we actually ended up. A shop that returns five products when its
          site shows twenty is either being paged or we are standing on the wrong
          page, and the URL is the difference between those two. */
       entry.landedOn = page.url();
+      /* Said out loud rather than left to be inferred from a short shelf. Two
+         runs read BX Buddiez's sixteen items off one product's page and agreed
+         with each other, which is exactly why a wrong page has to announce
+         itself: agreement between runs is not evidence of a right one. */
+      if (isProductPage(entry.landedOn)) entry.landedOnProductPage = true;
 
       const arrays = payloads.flatMap((p) => findProductArrays(p));
+      /* JSON:API products are not found by shape — their own keys are id,
+         type, attributes and relationships, which look nothing like a shelf.
+         They are lifted separately and appended, so everything downstream —
+         the flower filter, the size reader, the merge — stays one path. */
+      const jsonApi = flattenJsonApiProducts(payloads);
+      if (jsonApi.length) {
+        entry.jsonApiProducts = jsonApi.length;
+        arrays.push(jsonApi);
+      }
+
+      /* Asked for, always printed. The condition used to be "only when we
+         recognised nothing", which is exactly wrong for the shops that are
+         standing on the right page and reading the wrong products: eight
+         licences land on /categories/flower/ and come back holding fifteen
+         edibles, and the payload that has the flower in it is the one the
+         dump was refusing to describe. */
+      if (dumpShapes > 0) {
+        /* Every array of objects the page sent, wherever it sits, with the
+           keys of its first item. Whatever the shelf is, it is in here. */
+        const found = [];
+        const walk = (value, path, depth) => {
+          if (depth > 7 || found.length > 60 || !value || typeof value !== 'object') return;
+          if (Array.isArray(value)) {
+            const objects = value.filter((v) => v && typeof v === 'object' && !Array.isArray(v));
+            if (objects.length >= 2) {
+              const first = objects[0];
+              let line = `${path} [${value.length}] keys: ${Object.keys(first).slice(0, 24).join(',')}`;
+              /* JSON:API keeps the fields one floor down, under `attributes`,
+                 and says what the thing is in `type`. Both are what a parser
+                 needs to know, and neither shows in the outer key list. */
+              if (first.attributes && typeof first.attributes === 'object') {
+                line += ` | type=${JSON.stringify(first.type)} attributes: ${Object.keys(first.attributes).slice(0, 30).join(',')}`;
+              }
+              found.push(line);
+              /* The keys alone stopped one floor short twice. For the resource
+                 that actually holds the shelf, print the whole thing once:
+                 where the name lives, how the weights are shaped, what the
+                 relationships point at. One item answers all of it. */
+              if (/product/i.test(String(first.type ?? '')) && !found.some((f) => f.startsWith('ITEM '))) {
+                found.push(`ITEM ${JSON.stringify(first).slice(0, 2200)}`);
+              }
+            }
+            value.slice(0, 6).forEach((v, i) => walk(v, `${path}[${i}]`, depth + 1));
+            return;
+          }
+          for (const [k, v] of Object.entries(value)) walk(v, path ? `${path}.${k}` : k, depth + 1);
+        };
+        payloads.slice(0, 40).forEach((pl, i) => walk(pl, `payload${i}`, 0));
+        /* Same shape from twenty pages of one menu is one finding, not twenty. */
+        const bySignature = new Map();
+        for (const f of found) {
+          const sig = f.replace(/payload\d+/, '').replace(/\[\d+\]/g, '[]');
+          if (!bySignature.has(sig)) bySignature.set(sig, f);
+        }
+        entry.shapes = [...bySignature.values()].slice(0, dumpShapes);
+        entry.topLevelKeys = payloads
+          .slice(0, 6)
+          .map((pl) => (pl && typeof pl === 'object' ? Object.keys(pl).slice(0, 14).join(',') : typeof pl))
+          .filter((v, i, a) => a.indexOf(v) === i);
+      }
+      if (dumpRequests > 0) {
+        /* Biggest first: the one carrying the shelf is the one to read. */
+        entry.requests = [...requests]
+          .sort((a, b) => b.products - a.products)
+          .slice(0, dumpRequests)
+          .map((r) => ({
+            products: r.products,
+            method: r.method,
+            headerNames: Object.keys(r.headers ?? {}).sort().join(','),
+            url: r.url.slice(0, 300),
+            body: r.body ? r.body.slice(0, 700) : null,
+          }));
+      }
       entry.productArrays = arrays.length;
       entry.productsSeen = arrays.reduce((n, a) => n + a.length, 0);
-      entry.declaredTotal = payloads.reduce((n, pl) => Math.max(n, findDeclaredTotal(pl)), 0) || null;
+      /* What we have of the one query the total belongs to. The number beside
+         it in the report has to be this, not productsSeen: productsSeen is
+         every answer the page gave, to every question it asked. */
+      if (entry.pagedQueryProducts === undefined && requests.length) {
+        const main = [...requests].sort((a, b) => b.products - a.products)[0];
+        const key = queryKey(main);
+        entry.pagedQueryProducts = requests
+          .filter((r) => queryKey(r) === key)
+          .reduce((n, r) => n + r.products, 0);
+      }
+      /* The total worth comparing against is the one that came back WITH the
+         products, not the largest number anywhere the page fetched. Gotham
+         Bowery's menu answers a flower query with twenty products and the site
+         elsewhere says 83 — its whole catalogue, edibles and vapes included.
+         Read the way it was, that shop looked like it was hiding sixty-three
+         products; what it was hiding was a filter. */
+      /* Stated by the menu for the shelf we read, not the largest number
+         anywhere it sent. See totalIn() for what that difference cost. */
+      entry.declaredTotal =
+        (entry.declaredTotal ?? [...requests].sort((a, b) => b.products - a.products)[0]?.declared) ||
+        null;
 
       if (arrays.length) {
-        capturedShapes[shop.menu.provider] ??= Object.keys(arrays[0][0]).sort().slice(0, 60);
+        /* `menu` is null for every shop nobody has classified — which, now
+           that those are visited, is sixty-three of them. Reading .provider
+           off it threw, inside the try that turns anything thrown into
+           "error", so the shelf would have been read and then dropped on the
+           way to a diagnostic. */
+        capturedShapes[shop.menu?.provider ?? 'UNKNOWN'] ??= Object.keys(arrays[0][0]).sort().slice(0, 60);
       }
 
       if (dumpProducts > 0) {
@@ -1114,6 +2407,18 @@ const main = async () => {
          shop's own website by hand is how the last three data-losing bugs
          were found. */
       const rejectedNames = {};
+      /* The fields of the first thing refused for each of the two reasons that
+         mean "we could not tell what this is".
+         
+         We read things that are not products at all: Curaleaf's cookie banner
+         arrives as FPAU, __qca and sa-user-id-v3, and The Hibrary's list of
+         categories arrives as Flowers, Wax, LIGHTERS. Both pass for a shelf
+         because they carry a name and a category. Telling them from products
+         needs to know what a product carries and they do not — a price, a
+         potency, a weight — and that cannot be read off the ones we accept.
+         One key list per reason per shop, which is what the next fix needs and
+         is small enough to carry every day. */
+      const rejectedShape = {};
       const categoriesSeen = new Map();
       const seen = new Set();
       for (const arr of arrays) {
@@ -1123,6 +2428,9 @@ const main = async () => {
           if (cat) categoriesSeen.set(cat, (categoriesSeen.get(cat) ?? 0) + 1);
           if (verdict !== 'flower') {
             why[verdict] = (why[verdict] ?? 0) + 1;
+            if ((verdict === 'no-category' || verdict === 'no-title') && !rejectedShape[verdict]) {
+              rejectedShape[verdict] = Object.keys(product).sort().join(',').slice(0, 220);
+            }
             if (dumpProducts > 0) {
               (rejectedNames[verdict] ??= []).push(
                 `${String(flatten(pick(product, NAME_KEYS)) ?? '').slice(0, 70)}  [${cat}]`,
@@ -1153,6 +2461,7 @@ const main = async () => {
       }
       entry.flower = seen.size;
       entry.rejected = why;
+      if (Object.keys(rejectedShape).length) entry.rejectedShape = rejectedShape;
       if (dumpProducts > 0) {
         entry.rejectedSample = Object.fromEntries(
           Object.entries(rejectedNames).map(([k, v]) => [k, v.slice(0, dumpProducts)]),
@@ -1167,8 +2476,50 @@ const main = async () => {
       entry.status = `error: ${e.message.slice(0, 120)}`;
     }
 
-    report.push(entry);
-    console.log(`${done}/${limit} ${entry.shop}: ${entry.status}`);
+    /* Nothing today from a shop that had a shelf yesterday. That is rarely a
+       shop that sold out and never restocked — it is a page that had not
+       finished, a host that refused this one visit, a menu that was being
+       swapped. Believing it costs nothing visible, because the carry-forward
+       rule quietly keeps the old shelf; the shop simply goes on showing a
+       reading from days ago while the site next to it shows today's.
+
+       So it is asked once more, at the end of the batch. Once: a shop that
+       genuinely emptied its shelf would otherwise be visited twice a day for
+       the rest of time. Not the three whose robots.txt says no — those are not
+       ours to ask twice, or once. */
+    if (
+      job.attempt === 1 &&
+      !entry.flower &&
+      entry.menuLink !== 'robots-disallowed' &&
+      (PREVIOUS_SHELF.get(shop.licenseNumber) ?? 0) > 0
+    ) {
+      entry.willAskAgain = true;
+      queue.push({
+        shop,
+        attempt: 2,
+        first: { status: entry.status, productsSeen: entry.productsSeen ?? 0, menuLink: entry.menuLink ?? null },
+      });
+    }
+
+    if (job.attempt === 1) {
+      report.push(entry);
+    } else {
+      /* One shop, one row: the second reading replaces the first rather than
+         joining it, or every count in the report would see this shop twice.
+         What the first visit saw is carried inside it, because "asked again and
+         got the same nothing" and "asked again and the shelf was there" are
+         different findings and the report has to tell them apart. */
+      entry.retried = true;
+      entry.firstAttempt = job.first;
+      delete entry.willAskAgain;
+      const at = report.findIndex((r) => r.licence === entry.licence);
+      if (at > -1) report[at] = entry;
+      else report.push(entry);
+      retrySpent += Date.now() - startedAt;
+    }
+    console.log(
+      `${done}/${limit} ${entry.shop}: ${entry.status}${job.attempt > 1 ? ' (asked again)' : ''}`,
+    );
     await context.close();
     await new Promise((r) => setTimeout(r, 1500)); // be a considerate visitor
   }
@@ -1193,21 +2544,57 @@ const main = async () => {
   const refreshed = new Set(report.filter((r) => r.flower > 0).map((r) => r.licence));
 
   /* A capture that comes back much smaller than the last one is more often a
-     page that had not finished than a shop that stopped stocking. We still take
-     what we saw — inventing the difference would be worse — but the run says so
-     rather than letting the shelf quietly shrink. */
+     page that had not finished — or, as at BX Buddiez, a page that was never
+     the shelf — than a shop that stopped stocking. Such a shelf is not
+     published: the shop keeps the reading we believe, and the run says whose
+     and why.
+
+     It is held, not held forever. If the shop really has sold down, the
+     shelf we are keeping ages out of the window below within a couple of
+     days and the small reading is taken. That way a wrong page is masked at
+     once and a true one is only delayed.
+
+     Holding a shelf must never be quiet. This is exactly the shape of thing
+     that hides a collector fault for weeks, so the licences are named in the
+     summary and the report repeats them. */
+  const SUSPECT_CARRY_DAYS = 2;
   const previousCounts = {};
-  for (const l of previous) previousCounts[l.licenseNumber] = (previousCounts[l.licenseNumber] ?? 0) + 1;
+  const previousCapturedAt = {};
+  for (const l of previous) {
+    previousCounts[l.licenseNumber] = (previousCounts[l.licenseNumber] ?? 0) + 1;
+    const at = Date.parse(l.capturedAt);
+    if (!(previousCapturedAt[l.licenseNumber] >= at)) previousCapturedAt[l.licenseNumber] = at;
+  }
+  const suspectCutoff = Date.now() - SUSPECT_CARRY_DAYS * 24 * 60 * 60 * 1000;
+  const held = new Set(
+    report
+      .filter(
+        (r) =>
+          r.flower > 0 &&
+          previousCounts[r.licence] > 0 &&
+          r.flower * 2 < previousCounts[r.licence] &&
+          previousCapturedAt[r.licence] >= suspectCutoff,
+      )
+      .map((r) => r.licence),
+  );
   const shrank = report
     .filter((r) => r.flower > 0 && previousCounts[r.licence] > 0 && r.flower * 2 < previousCounts[r.licence])
-    .map((r) => `${r.shop}: ${previousCounts[r.licence]} → ${r.flower}`);
+    .map((r) => `${r.shop}: ${previousCounts[r.licence]} → ${r.flower}`
+      + (held.has(r.licence) ? ' — held at the earlier reading' : ' — taken; the earlier reading has aged out'));
+
   const cutoff = Date.now() - CARRY_FORWARD_DAYS * 24 * 60 * 60 * 1000;
   const carried = previous.filter(
-    (l) => !refreshed.has(l.licenseNumber) && Date.parse(l.capturedAt) >= cutoff,
+    (l) =>
+      (!refreshed.has(l.licenseNumber) || held.has(l.licenseNumber)) &&
+      Date.parse(l.capturedAt) >= cutoff,
   );
   const dropped = previous.length - carried.length - previous.filter((l) => refreshed.has(l.licenseNumber)).length;
 
-  const merged = mergeBySize([...listings, ...carried]);
+  /* One shop's suspect shelf used to stop the whole run publishing, and two
+     days of everyone else's shelves sat on a branch because of it. The shelf
+     is dropped, the run is not. */
+  const takenThisRun = listings.filter((l) => !held.has(l.licenseNumber));
+  const merged = mergeBySize([...takenThisRun, ...carried]);
   merged.sort((a, b) =>
     a.licenseNumber === b.licenseNumber
       ? a.strainNameRaw.localeCompare(b.strainNameRaw)
@@ -1225,6 +2612,15 @@ const main = async () => {
      stopped it, which is the invariant working and the placement not. Reading
      one branch properly clears its own mark on the next run, with nothing to
      remember. */
+  /* The name a shop published is kept as it was published; the name the strain
+     goes by is derived beside it. Done here, over the whole file, because
+     recognising a grower's name inside a listing needs every grower's name the
+     register holds — which is not knowable while reading one shop. */
+  const brandVocabulary = new Set(merged.map((l) => l.brand).filter(Boolean));
+  for (const l of merged) {
+    l.strainNameCanonical = canonicalStrain(l.strainNameRaw, l.brand, brandVocabulary);
+  }
+
   const licencesByMenu = new Map();
   for (const l of merged) {
     const url = l.sources?.[0]?.url;
@@ -1251,10 +2647,37 @@ const main = async () => {
       return acc;
     }, {}),
     usedKnownEndpoint: report.filter((r) => r.usedKnownEndpoint).length,
+    /* Second visits, and what came of them. A shop that had a shelf and came
+       back empty is asked once more; this is how often that was needed, how
+       often it worked, and how often the run ran out of time to do it. */
+    askedAgain: report.filter((r) => r.retried).length,
+    askedAgainAndAnswered: report.filter((r) => r.retried && r.flower > 0).length,
+    owedASecondVisit: report.filter((r) => r.retryBudgetSpent).length,
     shelvesThatShrankByHalf: shrank,
+    /* The licences whose collapse we decided to accept because the reading we
+       were protecting has aged out. Named on their own, because the daily
+       workflow has to be able to tell them apart from a collapse nobody has
+       adjudicated: refusing to publish these is refusing to ever let the hold
+       expire, and that is a deadlock — unpublished shelves age, ageing expires
+       the hold, the expired hold blocks the publish. */
+    shelvesTakenAfterTheHoldExpired: report
+      .filter(
+        (r) =>
+          r.flower > 0 &&
+          previousCounts[r.licence] > 0 &&
+          r.flower * 2 < previousCounts[r.licence] &&
+          !held.has(r.licence),
+      )
+      .map((r) => r.licence),
     hitTheSettleCap: report.filter((r) => r.settled === false).length,
     /* Shelves that were cut short rather than finished. Ten ounces went
        missing from one Bronx shop this way, and nothing in the run said so. */
+    /* Named, because a shelf quietly kept from yesterday is how a collector
+       fault survives a fortnight of green runs. */
+    shelvesHeldAtPreviousReading: [...held].map((lic) => {
+      const r = report.find((x) => x.licence === lic);
+      return `${r?.shop ?? lic}: read ${r?.flower ?? '?'}, kept ${previousCounts[lic]} from the last run`;
+    }),
     shelvesCutShort: report
       .filter((r) => r.hitScrollCap || r.hitScrollBudget)
       .map((r) => `${r.shop}: stopped scrolling with the menu still growing`),
@@ -1285,7 +2708,9 @@ const main = async () => {
 };
 
 /** Exported for scripts/menu-parse-check.mjs, which tests them against fixtures. */
-export { brandKeyOf, classify, categoryText, cleanStrainName, mergeBySize, sizeFromText, toListing };
+export {
+  brandKeyOf, classify, categoryText, cleanStrainName, mergeBySize, pagedRequest, sizeFromText, toListing,
+};
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   main().catch((e) => {

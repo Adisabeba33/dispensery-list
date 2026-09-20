@@ -25,7 +25,7 @@ export const metadata: Metadata = {
    the weaker pages are as complete as the stronger ones. */
 const NAV = [
   { href: '/', label: 'Directory' },
-  { href: '/menus/', label: 'Shelves' },
+  { href: '/menus/', label: 'Strains' },
   { href: '/map/', label: 'Map' },
   { href: '/westchester/', label: 'Westchester' },
   { href: '/about/', label: 'Method' },

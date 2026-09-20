@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import clsx from 'clsx';
+import { prettyDateTime } from '@/lib/format';
 import {
   LINEAGE_LABEL,
   PROVENANCE,
@@ -195,7 +196,7 @@ export const FlowerMenu = ({ listings }: { listings: FlowerListing[] }) => {
         <div className="flex items-center gap-3">
           {capturedAt && (
             <span className="text-xs text-chalk-500">
-              as read {new Date(capturedAt).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}
+              as read {prettyDateTime(capturedAt)}
             </span>
           )}
           <button

@@ -35,6 +35,9 @@ ROOT = Path(__file__).resolve().parents[1]
 UA = ("Mozilla/5.0 (compatible; dispensary-list-menu/1.0; "
       "+https://github.com/Adisabeba33/dispensery-list)")
 TIMEOUT = 15
+# Below this a figure came from some other field; above it nobody may sell.
+MIN_GRAMS = 0.5
+MAX_GRAMS = 85
 PER_HOST_PAUSE = 1.0
 NOW = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
@@ -356,7 +359,11 @@ def build_listing(product, shop, source_url):
         for v in variants:
             grams = as_number(v.get("gramAmount") if isinstance(v, dict) else v) or \
                     as_number(v.get("weight") if isinstance(v, dict) else None)
-            if grams and 0 < grams <= 30:
+            # The same ceiling the browser collector carried, with the same
+            # cost: 30 grams is an ounce and a rounding, and it discarded every
+            # larger format in silence. The bound is the state's — three
+            # ounces, 85 grams, the most an adult may buy in New York in a day.
+            if grams and MIN_GRAMS <= grams <= MAX_GRAMS:
                 sizes.append(grams)
 
     stock = flatten(pick(product, "inStock"))

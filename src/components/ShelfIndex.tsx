@@ -12,6 +12,8 @@ export type StrainEntry = {
   thcPercent: number | null;
   sizes: number[];
   brands: string[];
+  /** Every way the shops wrote it: what a search for the jar's label matches. */
+  labels: string[];
   hasTerpenes: boolean;
   shops: { id: string; name: string; region: string }[];
 };
@@ -73,7 +75,13 @@ const StrainRow = ({ s }: { s: StrainEntry }) => (
   </li>
 );
 
-export const ShelfIndex = ({ strains }: { strains: StrainEntry[] }) => {
+export const ShelfIndex = ({
+  strains,
+  shopsRead,
+}: {
+  strains: StrainEntry[];
+  shopsRead: number;
+}) => {
   const [query, setQuery] = useState('');
   const [size, setSize] = useState<number | null>(null);
   const [lineage, setLineage] = useState<string | null>(null);
@@ -96,7 +104,12 @@ export const ShelfIndex = ({ strains }: { strains: StrainEntry[] }) => {
       if (multiOnly && s.shops.length < 2) return false;
       if (!q) return true;
       return (
+        s.key.includes(q) ||
         s.name.toLowerCase().includes(q) ||
+        // The name shown is the strain; what a shop printed on the jar can be
+        // "Premium Cannabis Flower Jar Sour Diesel", and that is what someone
+        // reading a menu has in hand.
+        s.labels.some((label) => label.toLowerCase().includes(q)) ||
         s.brands.some((b) => b.toLowerCase().includes(q)) ||
         s.shops.some((shop) => shop.name.toLowerCase().includes(q))
       );
@@ -195,7 +208,7 @@ export const ShelfIndex = ({ strains }: { strains: StrainEntry[] }) => {
 
       {results.length === 0 ? (
         <p className="mt-8 text-sm text-chalk-400">
-          Nothing on the collected shelves matches that. Only thirteen shops have had their menus
+          Nothing on the collected shelves matches that. {shopsRead} shops have had their menus
           read so far — a strain missing here is not a strain nobody stocks.
         </p>
       ) : (

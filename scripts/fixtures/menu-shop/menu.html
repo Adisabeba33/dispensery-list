@@ -8,8 +8,11 @@
   // Like the real storefronts: the shelf only exists once the page fetches it.
   document.getElementById('yes').onclick = async () => {
     document.getElementById('gate').style.display = 'none';
-    const r = await fetch('/api/products.json');
+    // One page, and no control that loads the next: this is the shape that
+    // scrolling cannot get past.
+    const r = await fetch('/api/products.json?page=0&perPage=3');
     const j = await r.json();
-    document.getElementById('menu').textContent = j.data.products.length + ' products';
+    document.getElementById('menu').textContent =
+      j.data.products.length + ' of ' + j.data.total_count + ' products';
   };
 </script>

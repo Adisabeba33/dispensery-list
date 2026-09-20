@@ -11,9 +11,11 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  brandKeyOf,
-  classify, cleanStrainName, mergeBySize, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
+  brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, destinationOf,
+  flattenJsonApiProducts, isProductPage, wallAction,
+  mergeBySize, pagedRequest, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
+import { canonicalStrain, strainKey } from './strain-name.mjs';
 
 const shop = { licenseNumber: 'OCM-CAURD-24-000001' };
 const SRC = 'https://example-dispensary.test/menu';
@@ -266,6 +268,26 @@ check('an empty status says nothing either way',
   ];
   check('picks the flower category over a promo', pickMenuLink(links), 'https://shop.test/stores/x/categories/flower');
   check('a specials route is never followed', rankMenuLink('https://shop.test/specials/offer/1', 'Shop now'), 0);
+  /* One item's own page is not the shelf. BX Buddiez's ninety-two strains were
+     replaced by the sixteen that sit on /product/nanticoke-coconut-cream-flower/,
+     because the slug ends in "flower" and the pattern could not tell a segment
+     that IS "flower" from one that merely ends in it. Both runs that day read
+     it the same way: a wrong page is steadier than a flaky one, and steadier
+     is worse. */
+  check('one product\'s page is never the menu',
+    rankMenuLink('https://bxbuddiez.com/product/nanticoke-coconut-cream-flower/', 'Coconut Cream'), 0);
+  check('and the category still is',
+    rankMenuLink('https://bxbuddiez.com/categories/flower/?sort=NAME_ASC', 'Flower'), 100);
+  check('the shelf wins over the item',
+    pickMenuLink([
+      { href: 'https://bxbuddiez.com/product/nanticoke-coconut-cream-flower/', text: 'Coconut Cream' },
+      { href: 'https://bxbuddiez.com/categories/flower/', text: 'Flower' },
+    ], 'https://bxbuddiez.com', 'BX Buddiez'),
+    'https://bxbuddiez.com/categories/flower/');
+  /* products, plural, is a menu route on several platforms — the word boundary
+     after "product" does not fall inside it. */
+  check('a plural products route survives',
+    rankMenuLink('https://verdicannabis.com/stores/verdi/products/flower', 'Flower'), 100);
   check('a brand page is never followed', rankMenuLink('https://shop.test/brands/dada', 'Shop Dada'), 0);
   check('a flower category beats a bare menu', rankMenuLink('https://s.test/menu/flower', 'x') > rankMenuLink('https://s.test/menu', 'Menu'), true);
   check('a nav item reading Flower counts', rankMenuLink('https://s.test/c/1b9f87', 'Flower') > 0, true);
@@ -342,6 +364,368 @@ check('a number the weight left behind goes too',
   for (const name of drops) {
     check(`dropped, not flower: ${name}`, classify(flower(name)), 'title-not-flower');
   }
+}
+
+/* --------------------------------------------------- the strain behind the name */
+/* A menu writes the grower, the packaging, its own stock number and a lab
+   figure around the cultivar. Counted raw, New York's shelves held 5771
+   "strains"; read this way, 3065. The guards matter as much as the stripping:
+   Flower Power and Whole Lotta Love open with packaging words and are still
+   cultivars, Runtz is a brand AND a cultivar, and Gelato 41 is not Gelato. */
+{
+  const brands = new Set([
+    'Dank', 'GRASSROOTS', "Papa's Herb", 'Runtz', 'TTM', 'Bouket', 'Matter',
+    // Growers whose names sit in the shelf-label cases below.
+    '5 Boro', 'Leal', 'Honest PharmCo',
+  ]);
+  const c = (raw, brand = null) => canonicalStrain(raw, brand, brands);
+
+  check('packaging around the name', c('Premium Cannabis Flower Jar Sour Diesel'), 'Sour Diesel');
+  check('the shop\'s own stock number', c('#337 - Black Maple Flower'), 'Black Maple');
+  check('a lab figure is not a name', c('BANANA KUSH - THC 28.8%'), 'BANANA KUSH');
+  check('grade words at both ends', c('Banana Kush - Indoor Large Bud Flower'), 'Banana Kush');
+  check('a grower fenced by a dash', c('Matter - Grape Gas', 'Matter'), 'Grape Gas');
+  check('a grower with no fence at all', c('Dank Agent Orange Flower'), 'Agent Orange');
+  check('an item code left at the end', c("Papa's Herb - OG Kush - ITEM #513KH"), 'OG Kush');
+  check('emptied brackets', c('ICE CREAM CAKE ( BAG)'), 'ICE CREAM CAKE');
+
+  /* What must survive. Each of these was broken by an earlier draft. */
+  check('a cultivar that opens with a packaging word', c('Flower Power'), 'Flower Power');
+  check('and another', c('Whole Lotta Love'), 'Whole Lotta Love');
+  check('a brand that is also a cultivar, alone', c('Runtz', 'Runtz'), 'Runtz');
+  check('a brand that is also the head of a cultivar', c('Runtz Cake'), 'Runtz Cake');
+  check('a numbered cut is not its parent', c('Gelato 41'), 'Gelato 41');
+  check('Gelato 41 and Gelato stay apart', strainKey(c('Gelato 41')) === strainKey(c('Gelato')), false);
+
+  /* What a shop writes around the cultivar. Each line below is a real menu
+     entry that the register counted as a strain of its own. */
+  check('a shelf label is not a strain',
+    c('Amnesia Haze -Sativa- 21.04% THC - Dime Bag . Flower - 5 Boro -gg11 FRONT'), 'Amnesia Haze');
+  check('nor the aisle it sits in', c('Trump Runtz -Hybrid - (Flower) - Y1'), 'Trump Runtz');
+  check('a shop code glued to a grade word', c('R14-Flower -Black Magic'), 'Black Magic');
+  check('a grower carrying packaging', c('Leal Flower- Lemon Venom'), 'Lemon Venom');
+  check('a grade word behind a hyphen', c('Sherb - Micro Grown'), 'Sherb');
+  check('a grower ahead of a grade word',
+    c('Runtz Premium Flower', 'Honest PharmCo'), 'Runtz');
+
+  /* And what must survive all of that. A cultivar whose name is a letter and
+     a number reads as noise twice over — "g" is a unit, "13" is a number —
+     and an earlier draft of the shelf-label rule deleted it outright. */
+  check('a cultivar that is a letter and a number', c('G-13'), 'G-13');
+  check('and another', c('AK-47'), 'AK-47');
+  check('a bare code that is a cultivar', c('GG4'), 'GG4');
+  check('a code the shop did name a strain', c('RS11 Premium Cannabis Flower'), 'RS11');
+  check('a numbered cut with no grade word', c('Z1 #4'), 'Z1 #4');
+
+  /* Spelling and punctuation fold away; the strain does not. */
+  check('spacing and case fold', strainKey('Sunset  SHERBERT') === strainKey('sunset-sherbert'), true);
+  check('Superboof meets Super Boof', strainKey(c('Superboof')) === strainKey(c('Super Boof')), true);
+}
+
+/* ---------------------------------------------------------------- Routing --
+ * Which address is the shelf. Every URL below was read off a real run's log,
+ * including the two that cost us a shelf each.
+ */
+{
+  const page = (url) => isProductPage(url);
+  // NY Flos: 107 products declared, none read — we were standing on one packet
+  // of gummies, which won the tie-break for being the deepest link on the page.
+  check('a product under its brand and category',
+    page('https://getflos.com/menu/products/ayrloom-766427/edibles/ayrloom-island-time-100mg-8453750/'), true);
+  // BX Buddiez: sixteen items where the shop has ninety-two.
+  check('a product under /product/', page('https://bxbuddiez.com/product/nanticoke-coconut-cream-flower/'), true);
+  check('a slug on its own is still a product', page('https://example.test/products/blue-dream-3-5g-8453750'), true);
+
+  /* And what must not be mistaken for one. */
+  check('a category listing', page('https://qualityhigh.com/store/categories/flower/'), false);
+  check('a branch category listing', page('https://www.nycbud.com/shop/queens/categories/flower/?order=-x'), false);
+  check('products/flower is a listing', page('https://example.test/products/flower'), false);
+  check('a bare products route', page('https://example.test/shop/products/'), false);
+  check('a one-word category', page('https://example.test/products/edibles'), false);
+
+  /* Link sets copied from a run's own log, in the order the page gave them. */
+  const flos = [
+    { href: 'https://getflos.com/menu/?search_active=true', text: '' },
+    { href: 'https://getflos.com/menu/?open_cart=true', text: '' },
+    { href: 'https://getflos.com/locations/menu', text: 'NY FLOS LLC' },
+    { href: 'https://getflos.com/menu/signup/', text: 'Sign Up' },
+    { href: 'https://getflos.com/menu/', text: 'SHOP NOW' },
+    { href: 'https://getflos.com/menu/categories/accessories/', text: 'Accessories' },
+    { href: 'https://getflos.com/menu/categories/beverages/', text: 'Beverages' },
+    { href: 'https://getflos.com/menu/categories/cbd/', text: 'CBD' },
+  ];
+  // NY Flos publishes no flower link at all. The whole menu is the answer;
+  // sixteen grinders was the old one.
+  check('no flower link means the whole menu',
+    pickMenuLink(flos, 'https://www.getflos.com/', 'NY Flos LLC'), 'https://getflos.com/menu/');
+  check('a category we do not collect is not a menu',
+    rankMenuLink('https://getflos.com/menu/categories/accessories/', 'Accessories'), 0);
+  check('nor is the signup page', rankMenuLink('https://getflos.com/menu/signup/', 'Sign Up'), 0);
+
+  const caldwell = [
+    { href: 'https://caldwellsny.com/menu/', text: 'SHOP NOW' },
+    { href: 'https://caldwellsny.com/menu/categories/flower/', text: '' },
+    { href: 'https://caldwellsny.com/menu/categories/vape/', text: '' },
+    { href: 'https://caldwellsny.com/menu/categories/edibles/', text: '' },
+  ];
+  check('the flower category still beats the menu root',
+    pickMenuLink(caldwell, 'https://caldwellsny.com', 'CALDWELL CANNABIS CO'),
+    'https://caldwellsny.com/menu/categories/flower/');
+
+  /* The rule the depth tie-break was written for, which must survive its
+     reversal: three licences all took the chain page and its eight
+     placeholder items. */
+  const chain = [
+    { href: 'https://gfw.test/stores/products/flower', text: 'Flower' },
+    { href: 'https://gfw.test/stores/harlem/products/flower', text: 'Flower' },
+  ];
+  check('a branch page still beats its chain',
+    pickMenuLink(chain, 'https://gfw.test', 'Green Flower Wellness'),
+    'https://gfw.test/stores/harlem/products/flower');
+
+  check('a product page cannot be the menu',
+    rankMenuLink('https://getflos.com/menu/products/ayrloom-766427/edibles/ayrloom-island-100mg-8453750/', 'Shop'), 0);
+  check('the flower category still wins',
+    rankMenuLink('https://qualityhigh.com/store/categories/flower/', 'Flower'), 100);
+}
+
+/* --------------------------------------------------------------- JSON:API --
+ * Tymber/Blaze. Nineteen shops declared a hundred products apiece and handed
+ * us none of them, because a product here is a resource — its own keys are
+ * id, type, attributes, relationships — and the shelf fields are one floor
+ * down, with the category and the brand held as ids into `included`.
+ *
+ * The two products below are copied from a resource a diagnostic run printed
+ * in full, so what is tested is the payload the shop really sends: an edible
+ * that must be rejected, and the same shape carrying flower.
+ */
+{
+  const edible = {
+    id: 3976845,
+    type: 'products',
+    attributes: {
+      id: 3976845,
+      name: 'Level | Edible | Hybrid Protab | 5ct/100MG',
+      size: { amount: 1, display_text: null, type: 'EACH', units: 'each' },
+      weight_prices: null,
+      unit_prices: [{ display_name: '1 each', quantity: 1, price: { amount: 2400, currency: 'usd' } }],
+      potency: { thc: 25, units: 'mg' },
+      terpenoids: null,
+      strain: null,
+      flower_type: 'Hybrid',
+      in_stock: true,
+      store_url: 'https://urbanweedsny.com/menu/products/level-384256/edibles/level-edible-hybrid-protab-5ct100mg-3976845',
+    },
+    relationships: {
+      category: { data: { id: 14966, type: 'product_categories' } },
+      brand: { data: { id: 384256, type: 'product_brands' } },
+    },
+  };
+
+  /* The same product arriving a second time with fewer fields — the response
+     that broke the first reading of this menu, because on its own it has no
+     title at all. */
+  const sparse = {
+    id: 7781002,
+    type: 'products',
+    attributes: {
+      id: 7781002,
+      potency: { thc: 27.4, units: '%' },
+      terpenoids: [{ name: 'β-Caryophyllene', value: 0.61 }, { name: 'Limonene', value: 0.44 }],
+      in_stock: true,
+      store_url: 'https://urbanweedsny.com/menu/products/hepworth-2211/flower/hepworth-blue-dream-3-5g-7781002',
+    },
+  };
+  const full = {
+    id: 7781002,
+    type: 'products',
+    attributes: {
+      id: 7781002,
+      name: 'Hepworth | Blue Dream | 3.5g',
+      flower_type: 'Sativa',
+      size: { amount: 3.5, display_text: '3.5g', type: 'WEIGHT', units: 'g' },
+      weight_prices: [{ display_name: '3.5g', price: { amount: 4000, currency: 'usd' } }],
+    },
+    relationships: {
+      category: { data: { id: 14970, type: 'product_categories' } },
+      brand: { data: { id: 2211, type: 'product_brands' } },
+    },
+  };
+
+  const payloads = [
+    { data: [sparse], included: [] },
+    {
+      data: [edible, full],
+      included: [
+        { id: 14966, type: 'product_categories', attributes: { name: 'Edibles' } },
+        { id: 14970, type: 'product_categories', attributes: { name: 'Flower' } },
+        { id: 384256, type: 'product_brands', attributes: { name: 'Level' } },
+        { id: 2211, type: 'product_brands', attributes: { name: 'Hepworth' } },
+      ],
+    },
+  ];
+
+  const rows = flattenJsonApiProducts(payloads);
+  check('two products, not four', rows.length, 2);
+
+  const byId = new Map(rows.map((r) => [r.id, r]));
+  const e = byId.get(3976845);
+  check('attributes are lifted', e?.name, 'Level | Edible | Hybrid Protab | 5ct/100MG');
+  check('category is resolved to a word', e?.category, 'Edibles');
+  check('brand is resolved to a word', e?.brand, 'Level');
+  // Caught by the title before the category is even read; both would do.
+  check('an edible is not flower', classify(e), 'title-not-flower');
+
+  const f = byId.get(7781002);
+  check('a product split across payloads keeps its title', f?.name, 'Hepworth | Blue Dream | 3.5g');
+  check('and its terpenes', f?.terpenoids?.length, 2);
+  check('flower is flower', classify(f), 'flower');
+
+  const listing = toListing(f, shop, SRC, {});
+  check('jsonapi strain', listing?.strainNameRaw, 'Blue Dream');
+  check('jsonapi brand', listing?.brand, 'Hepworth');
+  check('jsonapi size', listing?.availableSizesGrams, [3.5]);
+  check('jsonapi lineage', listing?.lineage, 'SATIVA');
+  check('jsonapi terpenes', listing?.terpenes?.profile?.map((t) => t.name), ['CARYOPHYLLENE', 'LIMONENE']);
+  check('jsonapi terpene source', listing?.terpenes?.source, 'MENU_LISTING');
+
+  /* "each" is a count, not a weight. Reading it as one put single gummies on
+     the shelf as one-gram flower in an earlier draft of the size reader. */
+  check('an each is not a gram', toListing(edible, shop, SRC, {}), null);
+
+  check('category off the product address', categoryFromProductUrl(
+    'https://urbanweedsny.com/menu/products/hepworth-2211/flower/hepworth-blue-dream-3-5g'), 'flower');
+}
+
+/* ------------------------------------------------------------------ paging --
+ * Asking a menu for its second page. Every shape below was taken off a real
+ * request: Dutchie keeps the page inside a query parameter that is itself JSON,
+ * others put it in the address, and a GraphQL POST keeps it in the body.
+ *
+ * These matter more than they look. A wrong guess here does not fail loudly —
+ * it re-fetches page one over and over, and the shelf comes out the same size
+ * it was before, with the shop asked ten times for it.
+ */
+{
+  const dutchie = {
+    method: 'GET',
+    url: 'https://dutchie.com/api-3/graphql?operationName=FilteredProducts&variables='
+      + encodeURIComponent(JSON.stringify({
+        productsFilter: { dispensaryId: '64a2', pricingType: 'rec', Status: 'Active' },
+        page: 0,
+        perPage: 25,
+      })),
+    body: null,
+  };
+  const variablesOf = (url) => JSON.parse(new URL(url).searchParams.get('variables'));
+
+  check('dutchie page 1', variablesOf(pagedRequest(dutchie, 1).url).page, 1);
+  check('dutchie page 3 is not three page-ones', variablesOf(pagedRequest(dutchie, 3).url).page, 3);
+  check('dutchie filter survives', variablesOf(pagedRequest(dutchie, 1).url).productsFilter.dispensaryId, '64a2');
+  check('dutchie page size untouched', variablesOf(pagedRequest(dutchie, 1).url).perPage, 25);
+
+  // A plain address, one-based, as several storefronts write it.
+  const plain = { method: 'GET', url: 'https://shop.test/api/products?category=flower&page=1', body: null };
+  check('plain page', new URL(pagedRequest(plain, 1).url).searchParams.get('page'), '2');
+  check('plain filter survives', new URL(pagedRequest(plain, 1).url).searchParams.get('category'), 'flower');
+
+  /* An offset advances by the page size, not by one. Reading it as a page
+     number would ask for item 1, then item 2 — and re-read the whole shelf
+     minus its first product, twenty times over. */
+  const offset = { method: 'GET', url: 'https://shop.test/products?offset=0&limit=24', body: null };
+  check('offset steps by the size', new URL(pagedRequest(offset, 1).url).searchParams.get('offset'), '24');
+  check('offset page 2', new URL(pagedRequest(offset, 2).url).searchParams.get('offset'), '48');
+  check('limit untouched', new URL(pagedRequest(offset, 1).url).searchParams.get('limit'), '24');
+
+  /* No size stated: the step is what the first answer carried, which is what
+     the menu itself used. */
+  const bare = { method: 'GET', url: 'https://shop.test/products?skip=0', body: null };
+  check('offset falls back to what arrived', new URL(pagedRequest(bare, 1, 20).url).searchParams.get('skip'), '20');
+  check('offset with no step at all is refused', pagedRequest(bare, 1), null);
+
+  // GraphQL over POST keeps everything in the body.
+  const post = {
+    method: 'POST',
+    url: 'https://shop.test/graphql',
+    body: JSON.stringify({ operationName: 'Products', variables: { menuId: 'x', page: 2, perPage: 50 } }),
+  };
+  check('post body page', JSON.parse(pagedRequest(post, 1).body).variables.page, 3);
+  check('post body address untouched', pagedRequest(post, 1).url, 'https://shop.test/graphql');
+  check('post body keeps its menu', JSON.parse(pagedRequest(post, 1).body).variables.menuId, 'x');
+
+  /* A request with no page in it at all. Returning something here would send
+     the collector round a loop against a menu that answers the same thing
+     every time. */
+  check('no page, no request', pagedRequest({ method: 'GET', url: 'https://shop.test/menu.json', body: null }, 1), null);
+  check('nothing to advance to', pagedRequest(dutchie, 0), null);
+}
+
+/* Where a page that is not the menu says the menu was. Built from the twenty-two
+   shops that end their visit parked on one, and from the three that park on a
+   captcha, which is never followed. */
+{
+  const at = (u) => destinationOf(u);
+  check(
+    'an age wall names where we were going',
+    at('https://shop.test/age-gate?returnUrl=%2Fmenu%2Fflower'),
+    'https://shop.test/menu/flower',
+  );
+  check(
+    'a splash screen does too',
+    at('https://shop.test/welcome?r=%2Fshop%2Fcategory%2Fflower'),
+    'https://shop.test/shop/category/flower',
+  );
+  check('and the parameter may be spelled otherwise', at('https://shop.test/gate?next=%2Fmenu'), 'https://shop.test/menu');
+
+  /* A captcha is a control the shop put there deliberately. Going near one is
+     not something this collector does, whatever the address says. */
+  check('a captcha is never followed', at('https://shop.test/.well-known/sgcaptcha/?r=%2Fmenu%2Fflower'), null);
+  check('nor a challenge page', at('https://shop.test/cdn-cgi/challenge?next=%2Fmenu'), null);
+
+  // Same site only: a leading slash is not a promise about the host.
+  check('no protocol-relative hop', at('https://shop.test/age-gate?returnUrl=%2F%2Felsewhere.test%2Fmenu'), null);
+  check('no absolute hop', at('https://shop.test/age-gate?returnUrl=https%3A%2F%2Felsewhere.test%2Fmenu'), null);
+
+  // Nothing new named, nothing to follow.
+  check('the door we came in by names nothing', at('https://shop.test/age-gate?returnUrl=%2F'), null);
+  check('nor does a parameter pointing at itself', at('https://shop.test/age-gate?r=%2Fage-gate'), null);
+  check('a page with no destination at all', at('https://shop.test/menu/flower'), null);
+  check('and rubbish is refused, not thrown', at('not a url'), null);
+}
+
+/* Every button here was read off a live shop — QUBE's screenshots and the
+   Flowery's own page — not invented. */
+{
+  const t = (text, expected) => check(`button «${text}»`, wallAction(text), expected);
+  t('YES I AM', 'affirm-age');
+  t('Yes, I Am', 'affirm-age');
+  t('I am 21 or older', 'affirm-age');
+
+  // The answer of someone who is not 21. This collector does not give it.
+  t('NOT YET', 'refuse');
+  t('No, Not Yet', 'refuse');
+  t('No', 'refuse');
+
+  // A shop's own way out of its newsletter box.
+  t('No Thanks', 'decline-offer');
+  t('No thanks, let me browse', 'decline-offer');
+  t('Not now', 'decline-offer');
+  t('Close', 'decline-offer');
+
+  /* Agreeing to something on behalf of somebody who is not there. "Continue"
+     is the one that submits a name and an email on QUBE's prize draw, and it
+     is never a decline; it is only ever pressed as a last-resort age
+     affirmation, on a page that is asking about age and nothing else. */
+  t('Join Now', 'refuse');
+  t('Sign Up', 'refuse');
+  t('Continue', 'ignore');
+
+  /* The accessibility link every site carries, and the reason the decline
+     patterns are anchored whole rather than matched loosely on "skip". */
+  t('Skip to main content', 'ignore');
+  t('Clear', 'ignore');
+  t('Shop Now', 'ignore');
+  t('Flower', 'ignore');
 }
 
 if (failures) {

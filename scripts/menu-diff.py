@@ -90,11 +90,80 @@ lines += [f"- {n}" for n in gone_from_market[:40]] or ["_ничего_"]
 if len(gone_from_market) > 40:
     lines.append(f"- …и ещё {len(gone_from_market) - 40}")
 
-broken = bool(collapsed or vanished)
+# Полки, которые прогон НЕ взял, а оставил от прошлого чтения. Их нет в
+# разнице по определению — файл-то не изменился — и именно поэтому о них надо
+# сказать отдельно. Молча придержанная полка это способ спрятать поломку
+# коллектора на две недели вперёд.
+held = []
+summary_path = ROOT / "enrichment-output" / "menu-summary.json"
+if summary_path.exists():
+    try:
+        held = json.loads(summary_path.read_text()).get("shelvesHeldAtPreviousReading") or []
+    except (ValueError, OSError):
+        held = []
+
+# Обвал, который коллектор физически не мог придержать: он держит полку, только
+# пока чтение, которое он защищает, моложе двух дней. Если прежнее чтение
+# старше — выдержка истекла, новое чтение взято осознанно, и запрещать за это
+# публикацию значит не давать выдержке истечь никогда.
+#
+# Вердикт считается здесь, по самим данным, а не принимается из сводки
+# коллектора. Сводка переписывается каждой партией из тридцати пяти магазинов,
+# так что до сюда доезжает вердикт по последним тридцати пяти из четырёхсот
+# шестидесяти восьми. Именно поэтому вчерашняя починка пропустила AFI и не
+# пропустила пятерых из ранних партий.
+SUSPECT_CARRY_DAYS = 2
+cutoff = datetime.now(timezone.utc).timestamp() - SUSPECT_CARRY_DAYS * 86400
+
+def newest_reading(rows, lic):
+    stamps = []
+    for l in rows:
+        if l.get("licenseNumber") != lic:
+            continue
+        at = l.get("capturedAt")
+        if not at:
+            continue
+        try:
+            stamps.append(datetime.fromisoformat(at.replace("Z", "+00:00")).timestamp())
+        except ValueError:
+            pass
+    return max(stamps) if stamps else None
+
+def aged_out(lic):
+    at = newest_reading(before, lic)
+    # Без отметки времени судить не о чем — пусть решает человек.
+    return at is not None and at < cutoff
+
+adjudicated = {lic for lic, _b, _a in collapsed if aged_out(lic)}
+if held:
+    lines += ["", f"### Полки, оставленные от прошлого чтения: {len(held)}", "",
+              "Прочитано заметно меньше прежнего — не публикуем, держим прежнее.",
+              "Если магазин правда распродался, через пару дней прежнее чтение",
+              "устареет и будет взято новое.", ""]
+    lines += [f"- {h}" for h in held[:20]]
+
+# Обвал, который коллектор уже рассудил. Полку держали, прежнее чтение
+# устарело за два дня, новое взяли осознанно. Если такой обвал запрещает
+# публикацию, то выдержка не может истечь никогда: неопубликованные полки
+# стареют, старение снимает выдержку, снятая выдержка запрещает публикацию.
+# Ровно так три прогона подряд ушли на ветки вместо сайта.
+#
+# Про такой обвал надо сказать громко — но он не повод не публиковать.
+settled = [(lic, b, a) for lic, b, a in collapsed if lic in adjudicated]
+unsettled = [(lic, b, a) for lic, b, a in collapsed if lic not in adjudicated]
+
+broken = bool(unsettled or vanished)
+if settled:
+    lines += ["", f"### Полки, принятые после выдержки: {len(settled)}", "",
+              "Держали прежнее чтение, оно устарело за два дня — взяли новое.",
+              "Если магазин на самом деле не распродался, это недочитанная",
+              "страница, и её надо смотреть руками.", ""]
+    for lic, b, a in sorted(settled, key=lambda x: x[2] - x[1])[:20]:
+        lines.append(f"- **{shops.get(lic, lic)}**: {b} → {a}")
 if broken:
     lines += ["", "### ⚠ Полки, которые выглядят оборванными", "",
               "Это скорее всего недолистанная страница, а не распроданный товар.", ""]
-    for lic, b, a in sorted(collapsed, key=lambda x: x[2] - x[1])[:20]:
+    for lic, b, a in sorted(unsettled, key=lambda x: x[2] - x[1])[:20]:
         lines.append(f"- **{shops.get(lic, lic)}**: {b} → {a}")
     for lic in vanished[:20]:
         lines.append(f"- **{shops.get(lic, lic)}**: {len(sb[lic])} → полка пропала целиком")

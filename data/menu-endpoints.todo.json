@@ -44,8 +44,8 @@
     "robotsAllows": null,
     "flowerVisibleWithoutLogin": null,
     "ageGate": null,
-    "checkedAt": null,
-    "notes": null
+    "checkedAt": "2026-09-11",
+    "notes": "ЧУЖОЙ ШТАТ. Магазин в Bayside NY, сайт отдаёт cannabuddha.us/store/hobbs/ (Нью-Мексико) и /store/thief-river/ (Миннесота) — сеть многоштатная, нью-йоркской точки под этой ссылкой нет. НЕ СОБИРАТЬ, пока не найден адрес нью-йоркского магазина: 42 товара уже опознаются как цветок и выпадают только из-за нечитаемого веса (поле unitWeight). Платформа — Typesense, товары в results[0].hits[].document."
   },
   {
     "licenseNumber": "OCM-CAURD-23-000008",
@@ -76,8 +76,8 @@
     "robotsAllows": null,
     "flowerVisibleWithoutLogin": null,
     "ageGate": null,
-    "checkedAt": null,
-    "notes": null
+    "checkedAt": "2026-09-11",
+    "notes": "Витрины среди перехваченного нет вообще. То, что читалось как товары, — GTM datalayer (account_id,source_id,item_id,list,variant) и рекламная сеть Kevel (ad_token,flight_id,kevel_token). Меню, судя по nb_hits, ищется через Algolia. Нужен перехват именно поискового запроса."
   },
   {
     "licenseNumber": "OCM-CAURD-25-000310",
@@ -124,8 +124,8 @@
     "robotsAllows": null,
     "flowerVisibleWithoutLogin": null,
     "ageGate": null,
-    "checkedAt": null,
-    "notes": null
+    "checkedAt": "2026-09-11",
+    "notes": "Dutchie. Читаются menuSections — редакторские карусели на главной, а не результат категории /products/flower. Настоящая витрина приходит другим GraphQL-запросом."
   },
   {
     "licenseNumber": "OCM-CAURD-24-000074",
@@ -188,8 +188,8 @@
     "robotsAllows": null,
     "flowerVisibleWithoutLogin": null,
     "ageGate": null,
-    "checkedAt": null,
-    "notes": null
+    "checkedAt": "2026-09-11",
+    "notes": "То же, что Flynnstoned: читается GTM datalayer, не витрина."
   },
   {
     "licenseNumber": "OCM-RETL-24-000014",

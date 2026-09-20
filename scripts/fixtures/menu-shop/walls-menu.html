@@ -1,0 +1,54 @@
+<!doctype html><meta charset="utf-8"><title>Menu — Tenth Fixture Dispensary</title>
+<style>
+  .wall { position: fixed; inset: 0; display: flex; flex-direction: column;
+          align-items: center; justify-content: center; background: #fff; }
+  #spin { z-index: 1 } #loop { z-index: 2 } #age { z-index: 3 }
+  button, a.link { display: block; margin: 8px; padding: 12px 24px; }
+</style>
+
+<!-- Rendered first, sits underneath: the prize draw. -->
+<div class="wall" id="spin">
+  <h2>Welcome, Spin to Win!</h2>
+  <input placeholder="First name" /><input placeholder="Email address" />
+  <button id="spin-go">Continue</button>
+  <button id="spin-no">No thanks, let me browse</button>
+</div>
+
+<!-- Then the newsletter box. Note the age line across the top: the words "21+"
+     are still on the page long after the age wall has been answered, which is
+     why the wall is detected by its buttons and not by its text. -->
+<div class="wall" id="loop">
+  <p>You Must Be 21+ To Access This Site</p>
+  <h2>Stay in the Loop!</h2>
+  <input placeholder="First Name" /><input placeholder="Email Address" />
+  <label><input type="checkbox" checked /> I agree to receive marketing messages.</label>
+  <button id="loop-go">Join Now</button>
+  <button id="loop-no">No Thanks</button>
+</div>
+
+<!-- And the age question on top. -->
+<div class="wall" id="age">
+  <h1>ARE YOU OVER 21?</h1>
+  <button id="age-yes">YES I AM</button>
+  <button id="age-no">NOT YET</button>
+</div>
+
+<div id="menu">loading…</div>
+<script>
+  /* Anything submitted on behalf of a person who is not here poisons the well:
+     the shelf is never served afterwards, so a shelf coming back is proof that
+     only the declines were pressed. */
+  let submitted = false;
+  const hide = (id) => { document.getElementById(id).style.display = 'none'; };
+  const shelf = async () => {
+    const r = await fetch(submitted ? '/api/empty.json' : '/api/products.json?page=0&perPage=5');
+    const j = await r.json();
+    document.getElementById('menu').textContent = (j.data.products || []).length + ' products';
+  };
+  document.getElementById('age-yes').onclick = () => hide('age');
+  document.getElementById('age-no').onclick = () => { submitted = true; hide('age'); };
+  document.getElementById('loop-go').onclick = () => { submitted = true; hide('loop'); };
+  document.getElementById('loop-no').onclick = () => hide('loop');
+  document.getElementById('spin-go').onclick = () => { submitted = true; hide('spin'); shelf(); };
+  document.getElementById('spin-no').onclick = () => { hide('spin'); shelf(); };
+</script>
