@@ -75,7 +75,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '10',
+    '--limit', '11',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -245,6 +245,20 @@ try {
      detected by its words would still look up here and nothing would ever be
      dismissed. It is detected by its buttons. */
   check('the shelf behind all three came back', walls?.flower, 2);
+
+  /* A menu that is a search engine. Every product arrives inside a result
+     record — _index, _id, _score, _source — so from outside the array is a
+     list of things with no name and nothing for sale, and it was walked
+     straight past. Happy Times answered twenty-four times and published
+     nothing. */
+  const search = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000989');
+  check('the products inside the envelopes were found', search?.searchHitProducts, 3);
+  check('and read as a shelf', search?.flower, 2);
+  /* The count is spelled across two fields — { value: 3, relation: "eq" } —
+     and the facet bucket beside it is not a shelf however much it looks like
+     a list. */
+  check('the total was read through its wrapper', search?.declaredTotal, 3);
+  check('and the facet buckets were not read as products', search?.productsSeen, 3);
 
   // Shelves the run did not visit must survive it.
   check('other shelves carried forward', summary.shelvesCarriedForward > 0, true);

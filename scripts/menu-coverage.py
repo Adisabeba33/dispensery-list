@@ -56,6 +56,7 @@ KEEP = (
     "payloads",
     "settled",
     "jsonApiProducts",
+    "searchHitProducts",
     "rejectedShape",
     "productsSeen",
     "declaredTotal",
