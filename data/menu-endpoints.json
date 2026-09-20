@@ -162,12 +162,12 @@
   {
     "licenseNumber": "OCM-CAURD-24-000157",
     "menuUrl": "https://www.brownbuddanewyork.co/order-now?dtche%5Bcategory%5D=flower",
-    "platform": "DUTCHIE",
+    "platform": null,
     "robotsAllows": null,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "click-through",
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
     "checkedAt": "2026-09-20",
-    "notes": "Brown Budda Southampton; first-party page gives 1533 County Road 39 and OCM-CAURD-24-000157."
+    "notes": "Brown Budda first-party .co page gives 1533 County Road 39 and OCM-CAURD-24-000157; direct Flower-category URL resolves on the same current .co site. Unrechecked platform/robots/age-gate metadata cleared rather than guessed."
   },
   {
     "licenseNumber": "OCM-CAURD-24-000161",
@@ -608,5 +608,15 @@
     "ageGate": "none",
     "checkedAt": "2026-09-20",
     "notes": "Opened Central Park store menu; page store picker marks Central Park current, gives 111 W 110th St and OCM-RETL-26-000511. dtche category selects Flower."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000084",
+    "menuUrl": "https://greensgreenery.dispensary.shop/rec/flower/nb/1u7",
+    "platform": null,
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-20",
+    "notes": "Greens Greenery Flower page visibly lists flower products and prints 54 State Highway 357, Unadilla plus OCM-RETL-24-000084-D1. Platform/robots/age-gate left null because not independently checked."
   }
 ]
