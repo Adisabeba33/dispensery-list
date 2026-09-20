@@ -53,9 +53,10 @@ const NOW = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
    is TypeScript and this is not. */
 const territoryArg = process.argv.indexOf('--territory');
 const territoryId = territoryArg > -1 ? process.argv[territoryArg + 1] : 'nyc';
-const TERRITORY = JSON.parse(
+const ALL_TERRITORIES = JSON.parse(
   readFileSync(resolve(ROOT, 'data/territories.json'), 'utf8'),
-).territories.find((t) => t.id === territoryId);
+).territories;
+const TERRITORY = ALL_TERRITORIES.find((t) => t.id === territoryId);
 if (!TERRITORY) {
   console.error(`Unknown territory "${territoryId}".`);
   process.exit(1);
@@ -190,6 +191,66 @@ try {
  * A shop that never opened costs one page load and returns nothing, which is
  * the cheaper mistake: the expensive one is a real shelf nobody reads. */
 const NOT_TRADING = new Set(['APPROVED_NOT_OPEN', 'PERMANENTLY_CLOSED']);
+
+/**
+ * A shelf that is not this state's.
+ *
+ * The Botanist is licensed in Farmingdale, Long Island. shopbotanist.com is a
+ * multi-state chain and its default store is Columbus, Ohio, so the collector
+ * read 149 products and filed them under a New York licence: Buckeye, Butterfly
+ * Effect by Grow Ohio, King City Gardens, Meigs County, Riviera Creek. Ohio
+ * cultivators, on a New York shelf, in a register whose whole claim is that a
+ * reader can check our work.
+ *
+ * Cannabis does not cross state lines — moving it is a federal offence, and no
+ * New York dispensary stocks Ohio flower. So a shelf is testable against the
+ * brands already seen on New York shelves. Measured on this first Long Island
+ * collection, the three real shops shared 83%, 83% and 100% of their brands
+ * with what 202 New York shops carry; the Ohio shelf shared 12%, and all three
+ * of those were multi-state house brands that exist in both places.
+ *
+ * A quarter is the line, which sits in the middle of that gap rather than
+ * against either edge, and a shelf with fewer than ten brands is not judged at
+ * all: too few to mean anything, and a small shop with an unusual supplier
+ * should not lose its shelf to arithmetic.
+ *
+ * Returns the share when the shelf reads as another state's, null when it is
+ * fine or when there is not enough of it to say.
+ */
+export const foreignShelfShare = (brandKeys, known, { minBrands = 10, minShare = 0.25 } = {}) => {
+  if (brandKeys.length < minBrands) return null;
+  const hit = brandKeys.filter((k) => known.has(k)).length;
+  const share = hit / brandKeys.length;
+  return share < minShare ? share : null;
+};
+
+/* Every brand this register has already seen on a New York shelf, across all
+   three territories. A shop's own previous listings are excluded when it is
+   judged, so a shelf that got in wrong once cannot vouch for itself. */
+const KNOWN_BRANDS = new Map();
+for (const t of ALL_TERRITORIES) {
+  try {
+    for (const l of JSON.parse(
+      readFileSync(resolve(ROOT, `${t.dataDir}/flower-listings.json`), 'utf8'),
+    )) {
+      if (!l.brandKey) continue;
+      if (!KNOWN_BRANDS.has(l.brandKey)) KNOWN_BRANDS.set(l.brandKey, new Set());
+      KNOWN_BRANDS.get(l.brandKey).add(l.licenseNumber);
+    }
+  } catch {
+    /* a territory not collected yet */
+  }
+}
+/** The brands vouched for by some shop OTHER than this one. */
+const brandsKnownApartFrom = (licence) => {
+  const out = new Set();
+  for (const [key, shops] of KNOWN_BRANDS) {
+    for (const s of shops) {
+      if (s !== licence) { out.add(key); break; }
+    }
+  }
+  return out;
+};
 
 const candidates = dispensaries.filter(
   (d) =>
@@ -2619,6 +2680,27 @@ const main = async () => {
       }
       entry.flower = seen.size;
       entry.rejected = why;
+
+      /* Before anything else is recorded about this shelf: is it this state's?
+         See foreignShelfShare. A shelf that fails is not kept and marked — it
+         is refused, because a listing filed under a licence that cannot legally
+         stock it is the fabricated record this register exists to refuse. */
+      const mine = listings.filter((l) => l.licenseNumber === shop.licenseNumber);
+      const myBrands = [...new Set(mine.map((l) => l.brandKey).filter(Boolean))];
+      const foreign = foreignShelfShare(myBrands, brandsKnownApartFrom(shop.licenseNumber));
+      if (foreign !== null) {
+        for (let i = listings.length - 1; i >= 0; i -= 1) {
+          if (listings[i].licenseNumber === shop.licenseNumber) listings.splice(i, 1);
+        }
+        entry.foreignShelf = {
+          brands: myBrands.length,
+          shareSeenInNewYork: Number(foreign.toFixed(3)),
+          landedOn: entry.landedOn ?? null,
+        };
+        entry.flower = 0;
+        seen.clear();
+      }
+
       if (Object.keys(rejectedShape).length) entry.rejectedShape = rejectedShape;
       if (dumpProducts > 0) {
         entry.rejectedSample = Object.fromEntries(
@@ -2629,7 +2711,13 @@ const main = async () => {
         .sort((a, b) => b[1] - a[1])
         .slice(0, 8)
         .map(([name, n]) => `${name} (${n})`);
-      entry.status = seen.size ? 'ok' : entry.productsSeen ? 'no-flower' : 'no-products';
+      entry.status = entry.foreignShelf
+        ? 'foreign-shelf'
+        : seen.size
+          ? 'ok'
+          : entry.productsSeen
+            ? 'no-flower'
+            : 'no-products';
     } catch (e) {
       entry.status = `error: ${e.message.slice(0, 120)}`;
     }
