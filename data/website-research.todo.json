@@ -2033,11 +2033,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-02-28",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://flynnstoned.com/",
+    "menuUrl": "https://flynnstoned.com/stores/flynnstoned-cannabis-dispensary-rochester-ny/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party FlynnStoned Rochester store page identifies 125 State St; multi-location chain, store-specific page retained."
   },
   {
     "territory": "upstate",
@@ -2048,11 +2048,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-17",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://flynnstoned.com/",
+    "menuUrl": "https://flynnstoned.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party FlynnStoned identifies its Rochester market presence; attribution matched to 714 W Ridge Rd license row. Direct store-specific menu URL was not independently proven in this pass."
   },
   {
     "territory": "upstate",
@@ -2063,11 +2063,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-03-30",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://goodlifecollective.com/",
+    "menuUrl": "https://goodlifecollective.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Good Life Collective identifies Rochester location at 155 Monroe Ave and exposes online shopping/menu."
   },
   {
     "territory": "upstate",
@@ -2093,11 +2093,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-01",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://happydayzroc.com/",
+    "menuUrl": "https://happydayzroc.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Happy Dayz Rochester site identifies 74 Lake Ave and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2168,11 +2168,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-07",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://mangocannabis.com/",
+    "menuUrl": "https://mangocannabis.com/new-york/henrietta/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Mango Cannabis Henrietta page identifies 3553 W Henrietta Rd and online menu; chain attribution is location-specific."
   },
   {
     "territory": "upstate",
@@ -2183,11 +2183,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-07-09",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://purewellnessny.com/",
+    "menuUrl": "https://purewellnessny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Pure Wellness site identifies Rochester at 360 W Ridge Rd and exposes menu/order."
   },
   {
     "territory": "upstate",
@@ -2423,11 +2423,11 @@
     "county": "Oneida",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-06-07",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://aircitycannabis.com/",
+    "menuUrl": "https://aircitycannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Air City Cannabis identifies 1707 Oriskany St W, Utica and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2438,11 +2438,11 @@
     "county": "Oneida",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-02-20",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://exit31exotic.com/",
+    "menuUrl": "https://exit31exotic.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Exit 31 Exotic site identifies 255 Genesee St, Utica and exposes shop/menu."
   },
   {
     "territory": "upstate",
@@ -2618,11 +2618,11 @@
     "county": "Onondaga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-15",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://thrivesyracuse.com/",
+    "menuUrl": "https://thrivesyracuse.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Thrive Syracuse identifies 3065 Erie Blvd E and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2633,11 +2633,11 @@
     "county": "Ontario",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-01",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://fingerlakescannabisco.com/",
+    "menuUrl": "https://fingerlakescannabisco.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party FingerLakes Cannabis Co identifies 5 Railroad St, Victor and exposes online shopping/menu."
   },
   {
     "territory": "upstate",
