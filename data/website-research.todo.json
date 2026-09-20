@@ -743,11 +743,11 @@
     "county": "Chemung",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-11-08",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://thegoodiebagny.com/",
+    "menuUrl": "https://thegoodiebagny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party The Goodie Bag site identifies 260 Clemens Center Pkwy, Elmira and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -758,11 +758,11 @@
     "county": "Chemung",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-01-05",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://worldpiececannabis.com/",
+    "menuUrl": "https://worldpiececannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party World Piece site identifies 3162 Lake Rd, Horseheads and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -818,11 +818,11 @@
     "county": "Delaware",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-08-28",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://greensgreenery.com/",
+    "menuUrl": "https://greensgreenery.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Greens Greenery site identifies 54 State Highway 357, Unadilla and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -1688,11 +1688,11 @@
     "county": "Essex",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-09-10",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://chesterfieldcannabis.com/",
+    "menuUrl": "https://chesterfieldcannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Chesterfield Cannabis site identifies 89 Kent St, Keeseville and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -1718,11 +1718,11 @@
     "county": "Franklin",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-10",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://pnuggs.com/",
+    "menuUrl": "https://pnuggs.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party P. Nuggs site identifies 236 Meehan Rd, Malone and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2513,11 +2513,11 @@
     "county": "Onondaga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-12",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://createkindnesscannabis.com/",
+    "menuUrl": "https://createkindnesscannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Create Kindness site identifies 911 N Salina St, Syracuse and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -2528,11 +2528,11 @@
     "county": "Onondaga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-10",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://dunelilly.com/",
+    "menuUrl": "https://dunelilly.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Dune Lilly site identifies 1011 W Genesee St, Syracuse and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2558,11 +2558,11 @@
     "county": "Onondaga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-18",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://insidetheparkdispensary.com/",
+    "menuUrl": "https://insidetheparkdispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Inside the Park Dispensary site identifies 135-137 Marshall St, Syracuse and exposes online menu/order."
   },
   {
     "territory": "upstate",
