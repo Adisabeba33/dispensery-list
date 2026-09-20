@@ -131,6 +131,13 @@ const dumpProducts = dumpArg > -1 ? Number(process.argv[dumpArg + 1]) || 5 : 0;
    by hand. */
 const requestsArg = process.argv.indexOf('--dump-requests');
 const dumpRequests = requestsArg > -1 ? Number(process.argv[requestsArg + 1]) || 8 : 0;
+/* PROBE ONLY. --dump-dom asks what is on the PAGE when no JSON ever arrived.
+   Thirty-two shops send not one JSON body, and thirteen of those are standing
+   on a real flower address — which is what a menu rendered on the server looks
+   like from here. The shapes dump cannot see those: it reads payloads, and
+   there are none. */
+const domArg = process.argv.indexOf('--dump-dom');
+const dumpDom = domArg > -1 ? Number(process.argv[domArg + 1]) || 8 : 0;
 /**
  * What each licence had on its shelf at the last reading.
  *
@@ -2732,6 +2739,64 @@ const main = async () => {
           .slice(0, 6)
           .map((pl) => (pl && typeof pl === 'object' ? Object.keys(pl).slice(0, 14).join(',') : typeof pl))
           .filter((v, i, a) => a.indexOf(v) === i);
+      }
+      if (dumpDom > 0) {
+        /* Repeated cards carrying a price, in the page and in every frame it
+           holds. If a shelf is written into the HTML this finds it; if the
+           page is empty, that is the answer too. */
+        const look = async (frame) => {
+          try {
+            return await frame.evaluate((limit) => {
+              const PRICE = /\$\s?\d[\d,]*(\.\d\d)?/;
+              const holders = [];
+              for (const el of document.querySelectorAll('*')) {
+                if (el.children.length) continue;
+                const t = (el.textContent || '').trim();
+                if (t.length > 24 || !PRICE.test(t)) continue;
+                holders.push(el);
+                if (holders.length > 400) break;
+              }
+              const sig = (el) =>
+                `${el.tagName.toLowerCase()}${[...el.classList].slice(0, 3).map((c) => '.' + c).join('')}`;
+              const cards = new Map();
+              for (const h of holders) {
+                let card = h;
+                for (let up = 0; up < 6 && card.parentElement; up += 1) {
+                  card = card.parentElement;
+                  if (card.children.length >= 2 && (card.className || card.tagName === 'LI')) break;
+                }
+                const k = sig(card);
+                const row = cards.get(k) ?? { count: 0, sample: '' };
+                row.count += 1;
+                if (!row.sample) row.sample = (card.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 180);
+                cards.set(k, row);
+              }
+              return {
+                url: location.href,
+                textLength: (document.body?.innerText || '').length,
+                priceNodes: holders.length,
+                headings: [...document.querySelectorAll('h1,h2,h3')]
+                  .map((h) => (h.textContent || '').replace(/\s+/g, ' ').trim())
+                  .filter(Boolean).slice(0, 8),
+                cards: [...cards.entries()]
+                  .sort((a, b) => b[1].count - a[1].count)
+                  .slice(0, limit)
+                  .map(([k, v]) => `${k} ×${v.count} :: ${v.sample}`),
+              };
+            }, dumpDom);
+          } catch {
+            return null;
+          }
+        };
+        const seenFrames = [];
+        for (const frame of page.frames().slice(0, 10)) {
+          const got = await look(frame);
+          if (got) seenFrames.push(got);
+        }
+        entry.dom = seenFrames.filter((f) => f.priceNodes > 0 || f.textLength > 200).slice(0, 6);
+        entry.frameUrls = page.frames().slice(0, 12).map((f) => {
+          try { return f.url().slice(0, 120); } catch { return '?'; }
+        });
       }
       if (dumpRequests > 0) {
         /* Biggest first: the one carrying the shelf is the one to read. */

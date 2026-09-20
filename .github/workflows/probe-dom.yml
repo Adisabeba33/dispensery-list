@@ -1,0 +1,40 @@
+name: Probe — the shops that send no JSON at all
+on: push
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Look at the pages
+        run: |
+          node scripts/menu-render.mjs \
+            --only OCM-CAURD-23-000034,OCM-CAURD-24-000196,OCM-CAURD-25-000229,OCM-CAURD-25-000292,OCM-CAURD-25-000324,OCM-RETL-24-000037,OCM-RETL-24-000189,OCM-RETL-24-000242,OCM-RETL-25-000283,OCM-RETL-25-000351,OCM-RETL-25-000449,OCM-RETL-25-000454,OCM-RETL-25-000460 \
+            --dump-dom 8 --dump-shapes 4 || true
+      - name: Print it
+        run: |
+          python3 - <<'PY'
+          import json
+          d = json.load(open('enrichment-output/menu-summary.json'))
+          for s in d.get('perShop', []):
+              print('=' * 78)
+              print(f"{s.get('shop')}  [{s.get('licence')}]  status={s.get('status')}")
+              print(f"  landedOn: {s.get('landedOn')}")
+              print(f"  payloads={s.get('payloads')} productsSeen={s.get('productsSeen')} "
+                    f"flower={s.get('flower')} settled={s.get('settled')} ageGate={s.get('ageGate')}")
+              if s.get('offersDismissed'): print(f"  offersDismissed: {s['offersDismissed']}")
+              if s.get('walledFrames'): print(f"  walledFrames: {s['walledFrames']}")
+              for u in (s.get('frameUrls') or []): print(f"  frame: {u}")
+              for f in (s.get('dom') or []):
+                  print(f"  --- {f.get('url','')[:100]}")
+                  print(f"      textLength={f.get('textLength')} priceNodes={f.get('priceNodes')}")
+                  if f.get('headings'): print(f"      headings: {' | '.join(f['headings'])[:300]}")
+                  for c in (f.get('cards') or []): print(f"      {str(c)[:260]}")
+              for c in (s.get('shapes') or []): print(f"  shape: {str(c)[:400]}")
+          PY
