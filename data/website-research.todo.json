@@ -3713,11 +3713,11 @@
     "county": "Ulster",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-07",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://rosiesbotanicals.com/",
+    "menuUrl": "https://rosiesbotanicals.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Rosie's Botanicals site identifies 3565 US Highway 9W, Highland and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -3728,11 +3728,11 @@
     "county": "Ulster",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-08-30",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://royalblenddispensary.com/",
+    "menuUrl": "https://royalblenddispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Royal Blend Dispensary site identifies 2223 State Route 32, Kingston and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3743,11 +3743,11 @@
     "county": "Ulster",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-25",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://sagedispensary.com/",
+    "menuUrl": "https://sagedispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Sage dispensary site identifies Kingston location at 268 Forest Hill Dr and exposes online shopping/menu; matched to Sage Holdco license row."
   },
   {
     "territory": "upstate",
@@ -3818,11 +3818,11 @@
     "county": "Washington",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-01",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://greenwitchdispensary.com/",
+    "menuUrl": "https://greenwitchdispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Green Witch Dispensary site identifies 1156 Route 29, Greenwich and exposes online menu/order."
   },
   {
     "territory": "upstate",
