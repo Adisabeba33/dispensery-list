@@ -234,10 +234,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-05-23",
     "website": "https://cannabiqueny.com/",
-    "menuUrl": "https://cannabiqueny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Cannabique site identifies Wolf Road/Colonie location and exposes dispensary shopping/menu information."
+    "notes": "First-party Cannabique site identifies Wolf Road/Colonie location and exposes dispensary shopping/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -264,10 +264,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-06",
     "website": "https://capitalcannabisny.com/",
-    "menuUrl": "https://capitalcannabisny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Capital Cannabis site identifies 2028 Western Ave, Albany and exposes online menu/order."
+    "notes": "First-party Capital Cannabis site identifies 2028 Western Ave, Albany and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -309,10 +309,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-06-02",
     "website": "https://darkhorseny.com/",
-    "menuUrl": "https://darkhorseny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Dark Horse site identifies 15 Centre St, Albany and exposes online menu/order."
+    "notes": "First-party Dark Horse site identifies 15 Centre St, Albany and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -384,10 +384,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-03-22",
     "website": "https://mrgoodvybz.com/",
-    "menuUrl": "https://mrgoodvybz.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Mr Good Vybz site identifies 25 N Pearl St, Albany and exposes online shopping/menu."
+    "notes": "First-party Mr Good Vybz site identifies 25 N Pearl St, Albany and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -504,10 +504,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-03-23",
     "website": "https://thechronicdispensary.com/",
-    "menuUrl": "https://thechronicdispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party The Chronic Dispensary site identifies 1284 Central Ave, Albany/Colonie and exposes online menu/order."
+    "notes": "First-party The Chronic Dispensary site identifies 1284 Central Ave, Albany/Colonie and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -519,10 +519,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-09-02",
     "website": "https://thehighendny.com/",
-    "menuUrl": "https://thehighendny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party The HighEnd Dispensary site identifies 1410 Central Ave, Colonie and exposes online menu/order."
+    "notes": "First-party The HighEnd Dispensary site identifies 1410 Central Ave, Colonie and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -564,10 +564,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-06-22",
     "website": "https://cannabloomsvestal.com/",
-    "menuUrl": "https://cannabloomsvestal.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Canna Blooms site identifies 4535 Vestal Rd, Vestal and exposes online menu/order."
+    "notes": "First-party Canna Blooms site identifies 4535 Vestal Rd, Vestal and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -624,10 +624,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-02-06",
     "website": "https://sologreenery.com/",
-    "menuUrl": "https://sologreenery.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Solo Greenery site identifies 439 Court St, Binghamton and exposes online menu/order."
+    "notes": "First-party Solo Greenery site identifies 439 Court St, Binghamton and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -684,10 +684,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-08-31",
     "website": "https://liftedjamestown.com/",
-    "menuUrl": "https://liftedjamestown.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Lifted Jamestown site identifies 320 N Main St, Jamestown and exposes online shopping/menu."
+    "notes": "First-party Lifted Jamestown site identifies 320 N Main St, Jamestown and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -714,10 +714,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-01-02",
     "website": "https://thenaturaldispensary.com/",
-    "menuUrl": "https://thenaturaldispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Natural Dispensary site identifies Jamestown location at 1067 E 2nd St and exposes Shop/Menu."
+    "notes": "First-party Natural Dispensary site identifies Jamestown location at 1067 E 2nd St and exposes Shop/Menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -849,10 +849,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-07-28",
     "website": "https://bestbudsofny.com/",
-    "menuUrl": "https://bestbudsofny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Best Buds of New York site identifies 4-10 Taft Ave, Poughkeepsie and exposes online menu/order."
+    "notes": "First-party Best Buds of New York site identifies 4-10 Taft Ave, Poughkeepsie and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -864,10 +864,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-03-22",
     "website": "https://blackmarketcanna.co/",
-    "menuUrl": "https://blackmarketcanna.co/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Black Market Canna site gives 89 Main Street, Poughkeepsie and exposes SHOP NOW plus FLOWER browse from the homepage. NY OCM verification lists the same premises under Black Market Canna Co."
+    "notes": "First-party Black Market Canna site gives 89 Main Street, Poughkeepsie and exposes SHOP NOW plus FLOWER browse from the homepage. NY OCM verification lists the same premises under Black Market Canna Co. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -879,10 +879,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-03-15",
     "website": "https://cannaplanet.com/",
-    "menuUrl": "https://cannaplanet.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party CannaPlanet site identifies Wappingers location at 1444 Route 9D and provides online shopping."
+    "notes": "First-party CannaPlanet site identifies Wappingers location at 1444 Route 9D and provides online shopping. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -909,10 +909,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-22",
     "website": "https://fishkillcannabis.com/",
-    "menuUrl": "https://fishkillcannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Fishkill Cannabis site prints 814 NY-52 and OCM-CAURD-24-000109; Shop Now / online menu is exposed. Site notes former name Gratitude Buds."
+    "notes": "First-party Fishkill Cannabis site prints 814 NY-52 and OCM-CAURD-24-000109; Shop Now / online menu is exposed. Site notes former name Gratitude Buds. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -939,10 +939,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-08-27",
     "website": "https://hudsonstrands.com/",
-    "menuUrl": "https://hudsonstrands.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Hudson Strands site identifies 1839 South Rd, Wappingers Falls and exposes dispensary/menu information."
+    "notes": "First-party Hudson Strands site identifies 1839 South Rd, Wappingers Falls and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -969,10 +969,10 @@
     "licenseType": "MICROBUSINESS",
     "registrySaysOpened": "2025-11-21",
     "website": "https://ladygreensleeves.com/",
-    "menuUrl": "https://ladygreensleeves.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Lady Green Sleeves site identifies 7536 N Broadway, Red Hook and provides retail/product information."
+    "notes": "First-party Lady Green Sleeves site identifies 7536 N Broadway, Red Hook and provides retail/product information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -999,10 +999,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-18",
     "website": "https://root9dispensary.com/",
-    "menuUrl": "https://root9dispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Root 9 site prints 1546 Route 9, Wappingers Falls and license OCM-CAURD-24-000195; site exposes online ordering/menu."
+    "notes": "First-party Root 9 site prints 1546 Route 9, Wappingers Falls and license OCM-CAURD-24-000195; site exposes online ordering/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1014,10 +1014,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-01-10",
     "website": "https://thestationbeacon.com/",
-    "menuUrl": "https://thestationbeacon.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party The Station Beacon site identifies 463 Main St, Beacon and exposes online menu/order."
+    "notes": "First-party The Station Beacon site identifies 463 Main St, Beacon and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1029,10 +1029,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-29",
     "website": "https://twobudz.com/",
-    "menuUrl": "https://twobudz.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Two Budz site identifies 7723 S Main St, Pine Plains and exposes online menu/order."
+    "notes": "First-party Two Budz site identifies 7723 S Main St, Pine Plains and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1044,10 +1044,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-12-10",
     "website": "https://www.upstatepines.com/",
-    "menuUrl": "https://www.upstatepines.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Upstate Pines pages print 7345 South Broadway, Red Hook and OCM-RETL-24-000224; site documents Dutchie Pay/delivery ordering."
+    "notes": "First-party Upstate Pines pages print 7345 South Broadway, Red Hook and OCM-RETL-24-000224; site documents Dutchie Pay/delivery ordering. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1074,10 +1074,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-12-02",
     "website": "https://82jdispensary.com/",
-    "menuUrl": "https://82jdispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party 82-J dispensary site identifies 1673 Hertel Ave, Buffalo and exposes Shop/Menu."
+    "notes": "First-party 82-J dispensary site identifies 1673 Hertel Ave, Buffalo and exposes Shop/Menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1089,10 +1089,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-25",
     "website": "https://bestbudzcannabis.com/",
-    "menuUrl": "https://bestbudzcannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Best Budz Cannabis site identifies 146 Virginia St, Buffalo and exposes dispensary/menu information."
+    "notes": "First-party Best Budz Cannabis site identifies 146 Virginia St, Buffalo and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1119,10 +1119,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-06-20",
     "website": "https://buffalocannabisconnect.com/",
-    "menuUrl": "https://buffalocannabisconnect.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Buffalo Cannabis Connect site identifies 904 Elmwood Ave, Buffalo and exposes online menu/order."
+    "notes": "First-party Buffalo Cannabis Connect site identifies 904 Elmwood Ave, Buffalo and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1134,10 +1134,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-07-05",
     "website": "https://buffalocannabisoutlet.com/",
-    "menuUrl": "https://buffalocannabisoutlet.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Buffalo Cannabis Outlet site identifies 3807 Harlem Rd and exposes online ordering/menu."
+    "notes": "First-party Buffalo Cannabis Outlet site identifies 3807 Harlem Rd and exposes online ordering/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1149,10 +1149,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-09",
     "website": "https://buffalocannabisstore.com/",
-    "menuUrl": "https://buffalocannabisstore.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Buffalo Cannabis Store site identifies 2760 Union Rd, Cheektowaga and exposes online menu/order."
+    "notes": "First-party Buffalo Cannabis Store site identifies 2760 Union Rd, Cheektowaga and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1209,10 +1209,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-02-28",
     "website": "https://commandcannabis.com/",
-    "menuUrl": "https://commandcannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Command Cannabis site identifies 3871 S Park Ave, Blasdell and exposes online shopping/menu."
+    "notes": "First-party Command Cannabis site identifies 3871 S Park Ave, Blasdell and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1224,10 +1224,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2023-07-19",
     "website": "https://dank716.com/",
-    "menuUrl": "https://dank716.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Dank 716 site identifies 501 Main St, Buffalo and provides online menu/order."
+    "notes": "First-party Dank 716 site identifies 501 Main St, Buffalo and provides online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1239,10 +1239,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-04-05",
     "website": "https://devilslettuce716.com/",
-    "menuUrl": "https://devilslettuce716.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Devil's Lettuce site identifies 650 Orchard Park Rd, West Seneca and exposes online menu/order."
+    "notes": "First-party Devil's Lettuce site identifies 650 Orchard Park Rd, West Seneca and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1269,10 +1269,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-01",
     "website": "https://eriecountycannabis.com/",
-    "menuUrl": "https://eriecountycannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Erie County Cannabis site identifies 1727 Genesee St, Buffalo and exposes dispensary/menu information."
+    "notes": "First-party Erie County Cannabis site identifies 1727 Genesee St, Buffalo and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1284,10 +1284,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-09",
     "website": "https://ethercannabis.com/",
-    "menuUrl": "https://ethercannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Ether Cannabis site identifies 5100 Genesee St, Buffalo/Cheektowaga and exposes online shopping/menu."
+    "notes": "First-party Ether Cannabis site identifies 5100 Genesee St, Buffalo/Cheektowaga and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1314,10 +1314,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-01",
     "website": "https://happytimescannabis.com/",
-    "menuUrl": "https://happytimescannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Happy Times Cannabis site identifies 9170 Transit Rd, East Amherst and exposes online menu/order."
+    "notes": "First-party Happy Times Cannabis site identifies 9170 Transit Rd, East Amherst and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1329,10 +1329,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2023-07-21",
     "website": "https://herbaliq.org/",
-    "menuUrl": "https://herbaliq.org/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Herbal IQ site identifies 6300 Transit Rd, Depew and exposes online shopping/menu."
+    "notes": "First-party Herbal IQ site identifies 6300 Transit Rd, Depew and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1359,10 +1359,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-06",
     "website": "https://highcloudzny.com/",
-    "menuUrl": "https://highcloudzny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party High Cloudz site identifies 3478 Walden Ave, Depew and exposes online menu/order."
+    "notes": "First-party High Cloudz site identifies 3478 Walden Ave, Depew and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1374,10 +1374,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-13",
     "website": "https://hightide716.com/",
-    "menuUrl": "https://hightide716.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party High Tide site identifies 1829 Como Park Blvd, Lancaster and provides online menu/order."
+    "notes": "First-party High Tide site identifies 1829 Como Park Blvd, Lancaster and provides online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1404,10 +1404,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-08",
     "website": "https://kingofbudz.com/",
-    "menuUrl": "https://kingofbudz.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party King of Budz site includes Cheektowaga/Buffalo-area location at 2200 Walden Ave and online menu; multi-location brand attribution checked to this address."
+    "notes": "First-party King of Budz site includes Cheektowaga/Buffalo-area location at 2200 Walden Ave and online menu; multi-location brand attribution checked to this address. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1419,10 +1419,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-06-16",
     "website": "https://kushmartny.com/",
-    "menuUrl": "https://kushmartny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party KushMart NY site identifies Lancaster location at 5211 Broadway and exposes shop/menu."
+    "notes": "First-party KushMart NY site identifies Lancaster location at 5211 Broadway and exposes shop/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1434,10 +1434,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-08-23",
     "website": "https://leafplug.com/",
-    "menuUrl": "https://leafplug.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Leaf Plug site identifies Amherst location at 3341 Sheridan Dr and online shopping; chain attribution matched to address."
+    "notes": "First-party Leaf Plug site identifies Amherst location at 3341 Sheridan Dr and online shopping; chain attribution matched to address. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1449,10 +1449,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-03-25",
     "website": "https://leafplug.com/",
-    "menuUrl": "https://leafplug.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Leaf Plug site identifies Springville location at 29 N Cascade Dr and online shopping; chain attribution matched to address."
+    "notes": "First-party Leaf Plug site identifies Springville location at 29 N Cascade Dr and online shopping; chain attribution matched to address. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1464,10 +1464,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-03-21",
     "website": "https://nickelcitygreen.com/",
-    "menuUrl": "https://nickelcitygreen.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Nickel City Green site identifies 2981 Delaware Ave, Kenmore and exposes shop/menu."
+    "notes": "First-party Nickel City Green site identifies 2981 Delaware Ave, Kenmore and exposes shop/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1494,10 +1494,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2023-12-08",
     "website": "https://premierearth.com/",
-    "menuUrl": "https://premierearth.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Premier Earth site identifies 1297 Hertel Ave, Buffalo and exposes online ordering/menu."
+    "notes": "First-party Premier Earth site identifies 1297 Hertel Ave, Buffalo and exposes online ordering/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1524,10 +1524,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-28",
     "website": "https://secretgarden716.com/",
-    "menuUrl": "https://secretgarden716.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Secret Garden 716 site identifies 1363 Delaware Ave, Buffalo and provides online shopping/menu."
+    "notes": "First-party Secret Garden 716 site identifies 1363 Delaware Ave, Buffalo and provides online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1539,10 +1539,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-18",
     "website": "https://starbuds.us/",
-    "menuUrl": "https://starbuds.us/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Star Buds site identifies Buffalo/Kenmore location at 396 Kenmore Ave and exposes online menu; location attribution matched to address."
+    "notes": "First-party Star Buds site identifies Buffalo/Kenmore location at 396 Kenmore Ave and exposes online menu; location attribution matched to address. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1569,10 +1569,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-02-19",
     "website": "https://bontemps716.com/",
-    "menuUrl": "https://bontemps716.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party BonTemps site identifies 232 Allen St, Buffalo and exposes menu/order."
+    "notes": "First-party BonTemps site identifies 232 Allen St, Buffalo and exposes menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1599,10 +1599,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-02-26",
     "website": "https://treeheadculture.com/",
-    "menuUrl": "https://treeheadculture.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Tree Head Culture site identifies 665 N French Rd, Amherst and provides online menu/order."
+    "notes": "First-party Tree Head Culture site identifies 665 N French Rd, Amherst and provides online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1644,10 +1644,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-12-15",
     "website": "https://wnygreenhouse.com/",
-    "menuUrl": "https://wnygreenhouse.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party WNY Greenhouse site identifies 2675 Main St, Buffalo and exposes dispensary/menu information."
+    "notes": "First-party WNY Greenhouse site identifies 2675 Main St, Buffalo and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1659,10 +1659,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-06-29",
     "website": "https://weedkingny.com/",
-    "menuUrl": "https://weedkingny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Weed King NY site identifies 2121 Niagara Falls Blvd, Amherst and exposes online menu/order."
+    "notes": "First-party Weed King NY site identifies 2121 Niagara Falls Blvd, Amherst and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1704,10 +1704,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-01-05",
     "website": "https://themellowmoose.com/",
-    "menuUrl": "https://themellowmoose.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party The Mellow Moose site identifies 2192 Saranac Ave, Lake Placid and exposes online menu/order."
+    "notes": "First-party The Mellow Moose site identifies 2192 Saranac Ave, Lake Placid and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1734,10 +1734,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-08",
     "website": "https://catskillcannabisny.com/",
-    "menuUrl": "https://catskillcannabisny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Catskill Cannabis NY site identifies 170 W Bridge St, Catskill and exposes online menu/order."
+    "notes": "First-party Catskill Cannabis NY site identifies 170 W Bridge St, Catskill and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1749,10 +1749,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-13",
     "website": "https://thegreenhutny.com/",
-    "menuUrl": "https://thegreenhutny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party The Green Hut site identifies 12187 State Route 9W, West Coxsackie and exposes online menu/order."
+    "notes": "First-party The Green Hut site identifies 12187 State Route 9W, West Coxsackie and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1764,10 +1764,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-04-24",
     "website": "https://wintergreencannabis.com/",
-    "menuUrl": "https://wintergreencannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Wintergreen site identifies 6320 Main St, Tannersville and exposes dispensary/menu information."
+    "notes": "First-party Wintergreen site identifies 6320 Main St, Tannersville and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1794,10 +1794,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-02-01",
     "website": "https://blackriversupply.com/",
-    "menuUrl": "https://blackriversupply.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Black River Supply Company site identifies 15 Bridge St, Carthage and exposes online menu/order."
+    "notes": "First-party Black River Supply Company site identifies 15 Bridge St, Carthage and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1809,10 +1809,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-21",
     "website": "https://cannabisdepotny.com/",
-    "menuUrl": "https://cannabisdepotny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Cannabis Depot site identifies Murrock Circle, Watertown and exposes dispensary/menu information."
+    "notes": "First-party Cannabis Depot site identifies Murrock Circle, Watertown and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1869,10 +1869,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-06-05",
     "website": "https://dansvilledispensary.com/",
-    "menuUrl": "https://dansvilledispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Dansville Dispensary site identifies 9483 Foster Wheeler Rd, Dansville and exposes dispensary/menu information."
+    "notes": "First-party Dansville Dispensary site identifies 9483 Foster Wheeler Rd, Dansville and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1899,10 +1899,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-04-17",
     "website": "https://nyflowerdepot.com/",
-    "menuUrl": "https://nyflowerdepot.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party NY Flower Depot site identifies 4245 Lakeville Rd, Geneseo and exposes online menu/order."
+    "notes": "First-party NY Flower Depot site identifies 4245 Lakeville Rd, Geneseo and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1914,10 +1914,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-11-08",
     "website": "https://thechosenpot.com/",
-    "menuUrl": "https://thechosenpot.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party The Chosen Pot site identifies 6669 W Main Rd, Lima and exposes online menu/order."
+    "notes": "First-party The Chosen Pot site identifies 6669 W Main Rd, Lima and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1944,10 +1944,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-02-02",
     "website": "https://browncroftbudz.com/",
-    "menuUrl": "https://browncroftbudz.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Browncroft Budz site identifies 722 N Winton Rd, Rochester and exposes dispensary/menu information."
+    "notes": "First-party Browncroft Budz site identifies 722 N Winton Rd, Rochester and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -1989,10 +1989,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-05-30",
     "website": "https://cannabiscornerroc.com/",
-    "menuUrl": "https://cannabiscornerroc.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Cannabis Corner site identifies 2227 Clifford Ave, Rochester and exposes online menu/order."
+    "notes": "First-party Cannabis Corner site identifies 2227 Clifford Ave, Rochester and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2004,10 +2004,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-03-19",
     "website": "https://evergreenretailny.com/",
-    "menuUrl": "https://evergreenretailny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Evergreen Retail site identifies 51 N Main St, Brockport and exposes online menu/order."
+    "notes": "First-party Evergreen Retail site identifies 51 N Main St, Brockport and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2019,10 +2019,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-31",
     "website": "https://exoticfarmsny.com/",
-    "menuUrl": "https://exoticfarmsny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Exotic Farms site identifies 203 Main St, Brockport and exposes dispensary/menu information."
+    "notes": "First-party Exotic Farms site identifies 203 Main St, Brockport and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2049,10 +2049,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-17",
     "website": "https://flynnstoned.com/",
-    "menuUrl": "https://flynnstoned.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party FlynnStoned identifies its Rochester market presence; attribution matched to 714 W Ridge Rd license row. Direct store-specific menu URL was not independently proven in this pass."
+    "notes": "First-party FlynnStoned identifies its Rochester market presence; attribution matched to 714 W Ridge Rd license row. Direct store-specific menu URL was not independently proven in this pass. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2064,10 +2064,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-03-30",
     "website": "https://goodlifecollective.com/",
-    "menuUrl": "https://goodlifecollective.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Good Life Collective identifies Rochester location at 155 Monroe Ave and exposes online shopping/menu."
+    "notes": "First-party Good Life Collective identifies Rochester location at 155 Monroe Ave and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2079,10 +2079,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-13",
     "website": "https://greencomfortny.com/",
-    "menuUrl": "https://greencomfortny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Green Comfort site identifies 999 S Clinton Ave, Rochester and exposes online menu/order."
+    "notes": "First-party Green Comfort site identifies 999 S Clinton Ave, Rochester and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2094,10 +2094,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-01",
     "website": "https://happydayzroc.com/",
-    "menuUrl": "https://happydayzroc.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Happy Dayz Rochester site identifies 74 Lake Ave and exposes online menu/order."
+    "notes": "First-party Happy Dayz Rochester site identifies 74 Lake Ave and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2109,10 +2109,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-09-01",
     "website": "https://highendny.com/",
-    "menuUrl": "https://highendny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party High End New York site identifies 545 Clinton Ave S, Rochester and exposes online menu/order."
+    "notes": "First-party High End New York site identifies 545 Clinton Ave S, Rochester and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2124,10 +2124,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-02-06",
     "website": "https://mjdispensary.com/",
-    "menuUrl": "https://mjdispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party MJ Dispensary site identifies Honeoye Falls location at 201 W Main St; multi-location attribution matched to address and online menu."
+    "notes": "First-party MJ Dispensary site identifies Honeoye Falls location at 201 W Main St; multi-location attribution matched to address and online menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2139,10 +2139,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-27",
     "website": "https://mjdispensary.com/",
-    "menuUrl": "https://mjdispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party MJ Dispensary site identifies Rochester/Park Ave location at 649 Park Ave; multi-location attribution matched to address and online menu."
+    "notes": "First-party MJ Dispensary site identifies Rochester/Park Ave location at 649 Park Ave; multi-location attribution matched to address and online menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2154,10 +2154,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-11-19",
     "website": "https://mjdispensary.com/",
-    "menuUrl": "https://mjdispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party MJ Dispensary site identifies Spencerport location at 377 S Union St; multi-location attribution matched to address and online menu."
+    "notes": "First-party MJ Dispensary site identifies Spencerport location at 377 S Union St; multi-location attribution matched to address and online menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2184,10 +2184,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-07-09",
     "website": "https://purewellnessny.com/",
-    "menuUrl": "https://purewellnessny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Pure Wellness site identifies Rochester at 360 W Ridge Rd and exposes menu/order."
+    "notes": "First-party Pure Wellness site identifies Rochester at 360 W Ridge Rd and exposes menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2199,10 +2199,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-07-15",
     "website": "https://serenitynowdispensary.com/",
-    "menuUrl": "https://serenitynowdispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Serenity Now Dispensary site identifies 1150 University Ave, Rochester and exposes online menu/order."
+    "notes": "First-party Serenity Now Dispensary site identifies 1150 University Ave, Rochester and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2229,10 +2229,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-02-20",
     "website": "https://flynnstoned.com/",
-    "menuUrl": "https://flynnstoned.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party FlynnStoned site covers Rochester location at 348 N Goodman St; multi-location attribution matched to address."
+    "notes": "First-party FlynnStoned site covers Rochester location at 348 N Goodman St; multi-location attribution matched to address. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2244,10 +2244,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-10",
     "website": "https://wonderlanddispensary.com/",
-    "menuUrl": "https://wonderlanddispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Wonderland Dispensary site identifies 545 W Ridge Rd, Rochester and exposes online menu/order."
+    "notes": "First-party Wonderland Dispensary site identifies 545 W Ridge Rd, Rochester and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2259,10 +2259,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-01",
     "website": "https://zenzony.com/",
-    "menuUrl": "https://zenzony.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party ZenZo site identifies 1900 Empire Blvd, Webster/Rochester area and exposes dispensary/menu information."
+    "notes": "First-party ZenZo site identifies 1900 Empire Blvd, Webster/Rochester area and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2274,10 +2274,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2023-12-09",
     "website": "https://amsterdamcannabisny.com/",
-    "menuUrl": "https://amsterdamcannabisny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Amsterdam Cannabis site identifies 1451 State Highway 5S, Amsterdam and exposes online menu/order."
+    "notes": "First-party Amsterdam Cannabis site identifies 1451 State Highway 5S, Amsterdam and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2379,10 +2379,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-30",
     "website": "https://lovenug.com/",
-    "menuUrl": "https://lovenug.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Love Nug site identifies 3176 Niagara Falls Blvd, North Tonawanda and exposes online menu/order."
+    "notes": "First-party Love Nug site identifies 3176 Niagara Falls Blvd, North Tonawanda and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2394,10 +2394,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-18",
     "website": "https://satisfiedmindny.com/",
-    "menuUrl": "https://satisfiedmindny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Satisfied Mind site identifies 31 Webster St, North Tonawanda and exposes online shopping/menu."
+    "notes": "First-party Satisfied Mind site identifies 31 Webster St, North Tonawanda and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2409,10 +2409,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-06-15",
     "website": "https://upstateexotics.com/",
-    "menuUrl": "https://upstateexotics.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Upstate Exotics site identifies 9200 Niagara Falls Blvd, Niagara Falls and exposes online menu/order."
+    "notes": "First-party Upstate Exotics site identifies 9200 Niagara Falls Blvd, Niagara Falls and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2424,10 +2424,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-06-07",
     "website": "https://aircitycannabis.com/",
-    "menuUrl": "https://aircitycannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Air City Cannabis identifies 1707 Oriskany St W, Utica and exposes online menu/order."
+    "notes": "First-party Air City Cannabis identifies 1707 Oriskany St W, Utica and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2439,10 +2439,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-02-20",
     "website": "https://exit31exotic.com/",
-    "menuUrl": "https://exit31exotic.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Exit 31 Exotic site identifies 255 Genesee St, Utica and exposes shop/menu."
+    "notes": "First-party Exit 31 Exotic site identifies 255 Genesee St, Utica and exposes shop/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2454,10 +2454,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-16",
     "website": "https://luxusbotanica.com/",
-    "menuUrl": "https://luxusbotanica.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Luxus Botanica site identifies 8234 Turin Rd, Rome and exposes dispensary/menu information."
+    "notes": "First-party Luxus Botanica site identifies 8234 Turin Rd, Rome and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2469,10 +2469,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-03-23",
     "website": "https://millscannabis.com/",
-    "menuUrl": "https://millscannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Mills Cannabis site identifies 4790 Commercial Dr, New Hartford and exposes online menu/order."
+    "notes": "First-party Mills Cannabis site identifies 4790 Commercial Dr, New Hartford and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2484,10 +2484,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-12-17",
     "website": "https://pufftheorycannabis.com/",
-    "menuUrl": "https://pufftheorycannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Puff Theory Cannabis site identifies 221 Oriskany St E, Utica and exposes online menu/order."
+    "notes": "First-party Puff Theory Cannabis site identifies 221 Oriskany St E, Utica and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2499,10 +2499,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-12-06",
     "website": "https://villagegreendispensary.com/",
-    "menuUrl": "https://villagegreendispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Village Green Dispensary site identifies New Hartford Shopping Center location and exposes online menu/order."
+    "notes": "First-party Village Green Dispensary site identifies New Hartford Shopping Center location and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2544,10 +2544,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-03",
     "website": "https://flynnstoned.com/",
-    "menuUrl": "https://flynnstoned.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party FlynnStoned brand site covers North Syracuse location at 3711 Brewerton Rd; chain attribution matched to address. Direct store-specific endpoint not independently proven in this pass."
+    "notes": "First-party FlynnStoned brand site covers North Syracuse location at 3711 Brewerton Rd; chain attribution matched to address. Direct store-specific endpoint not independently proven in this pass. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2574,10 +2574,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-20",
     "website": "https://joesbuds.com/",
-    "menuUrl": "https://joesbuds.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Joe's Buds site identifies 4658 Onondaga Blvd, Syracuse and exposes online menu/order."
+    "notes": "First-party Joe's Buds site identifies 4658 Onondaga Blvd, Syracuse and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2589,10 +2589,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-04-10",
     "website": "https://loudpackexotics.com/",
-    "menuUrl": "https://loudpackexotics.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Loudpack Exotics site identifies 6606 Kinne Rd, Syracuse/East Syracuse and exposes shop/menu."
+    "notes": "First-party Loudpack Exotics site identifies 6606 Kinne Rd, Syracuse/East Syracuse and exposes shop/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2604,10 +2604,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-06-03",
     "website": "https://meadowflower.com/",
-    "menuUrl": "https://meadowflower.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Meadow Flower site identifies 7621 Oswego Rd, Liverpool and exposes dispensary/menu information."
+    "notes": "First-party Meadow Flower site identifies 7621 Oswego Rd, Liverpool and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2619,10 +2619,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-15",
     "website": "https://thrivesyracuse.com/",
-    "menuUrl": "https://thrivesyracuse.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Thrive Syracuse identifies 3065 Erie Blvd E and exposes online menu/order."
+    "notes": "First-party Thrive Syracuse identifies 3065 Erie Blvd E and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2634,10 +2634,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-01",
     "website": "https://fingerlakescannabisco.com/",
-    "menuUrl": "https://fingerlakescannabisco.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party FingerLakes Cannabis Co identifies 5 Railroad St, Victor and exposes online shopping/menu."
+    "notes": "First-party FingerLakes Cannabis Co identifies 5 Railroad St, Victor and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2649,10 +2649,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-25",
     "website": "https://goodlifecollective.com/",
-    "menuUrl": "https://goodlifecollective.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Good Life Collective identifies Finger Lakes/Canandaigua operation at 230 S Main St and exposes online shopping/menu."
+    "notes": "First-party Good Life Collective identifies Finger Lakes/Canandaigua operation at 230 S Main St and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2664,10 +2664,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-03-28",
     "website": "https://highpointsdispensary.net/",
-    "menuUrl": "https://highpointsdispensary.net/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party High Points Dispensary site identifies 811 Canandaigua Rd, Geneva and exposes online menu/order."
+    "notes": "First-party High Points Dispensary site identifies 811 Canandaigua Rd, Geneva and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2739,10 +2739,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-28",
     "website": "https://aclassyjoint.com/",
-    "menuUrl": "https://aclassyjoint.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party A Classy Joint site identifies 46 Ronald Reagan Blvd, Warwick and exposes shop/menu."
+    "notes": "First-party A Classy Joint site identifies 46 Ronald Reagan Blvd, Warwick and exposes shop/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2769,10 +2769,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-08",
     "website": "https://cannabishuts.com/",
-    "menuUrl": "https://cannabishuts.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Cannabis Huts site identifies 165 S Plank Rd, Newburgh and exposes online menu/order."
+    "notes": "First-party Cannabis Huts site identifies 165 S Plank Rd, Newburgh and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2784,10 +2784,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-11",
     "website": "https://cannablissrecreational.com/",
-    "menuUrl": "https://cannablissrecreational.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Cannabliss Recreational site identifies 217 S Plank Rd, Newburgh and exposes online menu/order."
+    "notes": "First-party Cannabliss Recreational site identifies 217 S Plank Rd, Newburgh and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2799,10 +2799,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-01-30",
     "website": "https://easyjayscannabis.com/",
-    "menuUrl": "https://easyjayscannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Easy Jay's Cannabis site identifies 279 E Main St, Port Jervis and exposes online shopping/menu."
+    "notes": "First-party Easy Jay's Cannabis site identifies 279 E Main St, Port Jervis and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2829,10 +2829,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-14",
     "website": "https://greenleafnewburgh.com/",
-    "menuUrl": "https://greenleafnewburgh.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Green Leaf site identifies 1400 Route 300, Newburgh and exposes dispensary/menu information."
+    "notes": "First-party Green Leaf site identifies 1400 Route 300, Newburgh and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2844,10 +2844,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-12-31",
     "website": "https://happytreecannabis.com/",
-    "menuUrl": "https://happytreecannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Happy Tree site identifies 99 Route 17K, Newburgh and exposes online menu/order."
+    "notes": "First-party Happy Tree site identifies 99 Route 17K, Newburgh and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2874,10 +2874,10 @@
     "licenseType": "MICROBUSINESS",
     "registrySaysOpened": "2026-04-20",
     "website": "https://newburghkushfactory.com/",
-    "menuUrl": "https://newburghkushfactory.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Newburgh Kush Factory site identifies 1255 NY-300, Newburgh and provides cannabis retail/product information."
+    "notes": "First-party Newburgh Kush Factory site identifies 1255 NY-300, Newburgh and provides cannabis retail/product information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2889,10 +2889,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-01-05",
     "website": "https://orangecountycannabisco.com/",
-    "menuUrl": "https://orangecountycannabisco.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Orange County Cannabis Co site identifies 1308 Dolsontown Rd, Middletown/Waywayanda and exposes online menu/order."
+    "notes": "First-party Orange County Cannabis Co site identifies 1308 Dolsontown Rd, Middletown/Waywayanda and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2904,10 +2904,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-01-15",
     "website": "https://rosebudclubny.com/",
-    "menuUrl": "https://rosebudclubny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Rosebud Club site identifies 400 North Galleria Dr, Middletown and exposes online menu/order."
+    "notes": "First-party Rosebud Club site identifies 400 North Galleria Dr, Middletown and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2919,10 +2919,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-02-02",
     "website": "https://thefloweryny.com/",
-    "menuUrl": "https://thefloweryny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party The Flowery NY site identifies Newburgh location at 142 Route 17K and exposes online menu/order; location matched to license row."
+    "notes": "First-party The Flowery NY site identifies Newburgh location at 142 Route 17K and exposes online menu/order; location matched to license row. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2934,10 +2934,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-06",
     "website": "https://whiteatmoss.com/",
-    "menuUrl": "https://whiteatmoss.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party White Atmoss site identifies 200 Lake St, Newburgh and exposes dispensary/menu information."
+    "notes": "First-party White Atmoss site identifies 200 Lake St, Newburgh and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2949,10 +2949,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-01-02",
     "website": "https://buddispensary.com/",
-    "menuUrl": "https://buddispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Bud Dispensary site identifies 143 George St, Oswego and exposes online shopping/menu."
+    "notes": "First-party Bud Dispensary site identifies 143 George St, Oswego and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2964,10 +2964,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-08-15",
     "website": "https://clcannaholdings.com/",
-    "menuUrl": "https://clcannaholdings.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party CL Canna site identifies 3808 State Route 13, Pulaski and exposes dispensary/menu information."
+    "notes": "First-party CL Canna site identifies 3808 State Route 13, Pulaski and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2979,10 +2979,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-15",
     "website": "https://leafywonders.com/",
-    "menuUrl": "https://leafywonders.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Leafy Wonders site identifies 956 S 1st St, Fulton and exposes online menu/order."
+    "notes": "First-party Leafy Wonders site identifies 956 S 1st St, Fulton and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -2994,10 +2994,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-07",
     "website": "https://thecannaguyny.com/",
-    "menuUrl": "https://thecannaguyny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party The Canna Guy site identifies 411 US-11, Central Square and exposes online menu/order."
+    "notes": "First-party The Canna Guy site identifies 411 US-11, Central Square and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3009,10 +3009,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-05-09",
     "website": "https://hoosickdispensary.com/",
-    "menuUrl": "https://hoosickdispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Hoosick Dispensary site identifies 514 Congress St, Troy and exposes online menu/order."
+    "notes": "First-party Hoosick Dispensary site identifies 514 Congress St, Troy and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3024,10 +3024,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-24",
     "website": "https://highfrequencycannabis.com/",
-    "menuUrl": "https://highfrequencycannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party High Frequency site identifies 96 Columbia St, Rensselaer and exposes online menu/order."
+    "notes": "First-party High Frequency site identifies 96 Columbia St, Rensselaer and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3039,10 +3039,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-25",
     "website": "https://nonamecannabiscompany.com/",
-    "menuUrl": "https://nonamecannabiscompany.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party No Name Cannabis Company site identifies 137 4th St, Troy and exposes online menu/order."
+    "notes": "First-party No Name Cannabis Company site identifies 137 4th St, Troy and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3054,10 +3054,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-14",
     "website": "https://smokeyparadise.com/",
-    "menuUrl": "https://smokeyparadise.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Smokey Paradise site identifies 574 Columbia Tpke, East Greenbush and exposes dispensary/menu information."
+    "notes": "First-party Smokey Paradise site identifies 574 Columbia Tpke, East Greenbush and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3069,10 +3069,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-12-06",
     "website": "https://transcendwellnessny.com/",
-    "menuUrl": "https://transcendwellnessny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Transcend Wellness site identifies 289 Oakwood Ave, Troy and exposes cannabis retail/menu information."
+    "notes": "First-party Transcend Wellness site identifies 289 Oakwood Ave, Troy and exposes cannabis retail/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3084,10 +3084,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-12-07",
     "website": "https://wilderootsdispensary.com/",
-    "menuUrl": "https://wilderootsdispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Wilde Roots Dispensary site identifies 4179 State Route 20, Castleton and exposes online menu/order."
+    "notes": "First-party Wilde Roots Dispensary site identifies 4179 State Route 20, Castleton and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3099,10 +3099,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-29",
     "website": "https://202cannabis.com/",
-    "menuUrl": "https://202cannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party 202 Cannabis Co site identifies 81 W Ramapo Rd, Haverstraw and exposes online menu/order."
+    "notes": "First-party 202 Cannabis Co site identifies 81 W Ramapo Rd, Haverstraw and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3114,10 +3114,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-18",
     "website": "https://296cannabis.com/",
-    "menuUrl": "https://296cannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party 296 Cannabis site identifies 296 Route 59, Airmont and exposes dispensary/menu information."
+    "notes": "First-party 296 Cannabis site identifies 296 Route 59, Airmont and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3129,10 +3129,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-21",
     "website": "https://cannabiscompanyny.com/",
-    "menuUrl": "https://cannabiscompanyny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Cannabis Company of New York site identifies 76 Route 59, Spring Valley and exposes online menu/order."
+    "notes": "First-party Cannabis Company of New York site identifies 76 Route 59, Spring Valley and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3144,10 +3144,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-25",
     "website": "https://highlandbotanicals.com/",
-    "menuUrl": "https://highlandbotanicals.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Highland Botanicals site identifies 501 Route 9W, Piermont and exposes online shopping/menu."
+    "notes": "First-party Highland Botanicals site identifies 501 Route 9W, Piermont and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3159,10 +3159,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-27",
     "website": "https://kushmartny.com/",
-    "menuUrl": "https://kushmartny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party KushMart NY site identifies Haverstraw location at 147 Route 9W and exposes shop/menu; chain attribution matched to address."
+    "notes": "First-party KushMart NY site identifies Haverstraw location at 147 Route 9W and exposes shop/menu; chain attribution matched to address. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3174,10 +3174,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-27",
     "website": "https://thefloweryny.com/",
-    "menuUrl": "https://thefloweryny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party The Flowery NY site identifies Haverstraw location at 35 Route 9W and exposes online menu/order; chain attribution matched to address."
+    "notes": "First-party The Flowery NY site identifies Haverstraw location at 35 Route 9W and exposes online menu/order; chain attribution matched to address. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3189,10 +3189,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-05-04",
     "website": "https://tokecannabis.com/",
-    "menuUrl": "https://tokecannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Toke Cannabis site identifies Rockland/Spring Valley location at 2 S Central Ave and exposes online menu/order."
+    "notes": "First-party Toke Cannabis site identifies Rockland/Spring Valley location at 2 S Central Ave and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3204,10 +3204,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-25",
     "website": "https://cannabiscentralny.com/",
-    "menuUrl": "https://cannabiscentralny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Cannabis Central site identifies 1520 Crescent Rd, Halfmoon and exposes online menu/order."
+    "notes": "First-party Cannabis Central site identifies 1520 Crescent Rd, Halfmoon and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3219,10 +3219,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-14",
     "website": "https://leafandfog.com/",
-    "menuUrl": "https://leafandfog.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Leaf & Fog site identifies 2124 Doubleday Ave, Ballston Spa and exposes online shopping/menu."
+    "notes": "First-party Leaf & Fog site identifies 2124 Doubleday Ave, Ballston Spa and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3234,10 +3234,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-13",
     "website": "https://reefcannabisny.com/",
-    "menuUrl": "https://reefcannabisny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Reef Cannabis NY site identifies 2532 Route 9N, Greenfield Center and exposes online menu/order."
+    "notes": "First-party Reef Cannabis NY site identifies 2532 Route 9N, Greenfield Center and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3249,10 +3249,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-07-05",
     "website": "https://spacitycannabis.com/",
-    "menuUrl": "https://spacitycannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Spa City Cannabis site identifies 75 Weibel Ave, Saratoga Springs and exposes online menu/order."
+    "notes": "First-party Spa City Cannabis site identifies 75 Weibel Ave, Saratoga Springs and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3264,10 +3264,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-03-28",
     "website": "https://tridentru.com/",
-    "menuUrl": "https://tridentru.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Trident site identifies 131-135 Saratoga Ave, South Glens Falls and exposes dispensary/menu information."
+    "notes": "First-party Trident site identifies 131-135 Saratoga Ave, South Glens Falls and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3279,10 +3279,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-18",
     "website": "https://1650dispensary.com/",
-    "menuUrl": "https://1650dispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party 1650 Crane Street Dispensary site identifies 1650 Crane St, Schenectady and exposes online menu/order."
+    "notes": "First-party 1650 Crane Street Dispensary site identifies 1650 Crane St, Schenectady and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3309,10 +3309,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-03-16",
     "website": "https://cloud9evolution.com/",
-    "menuUrl": "https://cloud9evolution.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Cloud 9 Evolution site identifies 1610 Eastern Pkwy, Schenectady and exposes online menu/order."
+    "notes": "First-party Cloud 9 Evolution site identifies 1610 Eastern Pkwy, Schenectady and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3324,10 +3324,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-20",
     "website": "https://electriccitycannabis.com/",
-    "menuUrl": "https://electriccitycannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Electric City Cannabis Co site identifies 1354 Lower Broadway, Schenectady and exposes online menu/order."
+    "notes": "First-party Electric City Cannabis Co site identifies 1354 Lower Broadway, Schenectady and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3354,10 +3354,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-11",
     "website": "https://milllaneprovisions.com/",
-    "menuUrl": "https://milllaneprovisions.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Mill Lane Provisions site identifies 102 State St, Schenectady and exposes online shopping/menu."
+    "notes": "First-party Mill Lane Provisions site identifies 102 State St, Schenectady and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3369,10 +3369,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-12-20",
     "website": "https://ripecannabisny.com/",
-    "menuUrl": "https://ripecannabisny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Ripe Cannabis site identifies 245 Broadway, Schenectady and exposes online menu/order."
+    "notes": "First-party Ripe Cannabis site identifies 245 Broadway, Schenectady and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3384,10 +3384,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-08-22",
     "website": "https://theweedspot.com/",
-    "menuUrl": "https://theweedspot.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party The Weed Spot site identifies 501 State St, Schenectady and exposes shop/menu."
+    "notes": "First-party The Weed Spot site identifies 501 State St, Schenectady and exposes shop/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3399,10 +3399,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2023-04-01",
     "website": "https://upstatecanna.co/",
-    "menuUrl": "https://upstatecanna.co/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Upstate Canna/Upstate CBD site identifies 1613 Union St, Schenectady and exposes online ordering/menu."
+    "notes": "First-party Upstate Canna/Upstate CBD site identifies 1613 Union St, Schenectady and exposes online ordering/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3414,10 +3414,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-12",
     "website": "https://nextgencanton.com/",
-    "menuUrl": "https://nextgencanton.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party NextGen Canton site identifies 51 Main St, Canton and exposes online menu/order."
+    "notes": "First-party NextGen Canton site identifies 51 Main St, Canton and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3429,10 +3429,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2023-12-13",
     "website": "https://thefirehausny.com/",
-    "menuUrl": "https://thefirehausny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Firehaus NY site identifies 7479 US Highway 11, Potsdam and exposes online menu/order."
+    "notes": "First-party Firehaus NY site identifies 7479 US Highway 11, Potsdam and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3444,10 +3444,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-22",
     "website": "https://thegreendoorny.com/",
-    "menuUrl": "https://thegreendoorny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Green Door Dispensary site identifies 3748 State Highway 37, Ogdensburg and exposes online menu/order."
+    "notes": "First-party Green Door Dispensary site identifies 3748 State Highway 37, Ogdensburg and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3459,10 +3459,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-03-19",
     "website": "https://culturecannabisclub.com/",
-    "menuUrl": "https://culturecannabisclub.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Culture Cannabis site identifies Corning location at 90 E Market St and exposes online shopping/menu; location attribution matched to address."
+    "notes": "First-party Culture Cannabis site identifies Corning location at 90 E Market St and exposes online shopping/menu; location attribution matched to address. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3474,10 +3474,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-01-17",
     "website": "https://cannaplanet.com/",
-    "menuUrl": "https://cannaplanet.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party CannaPlanet site identifies Monticello location at 73 Pleasant St and provides online shopping; chain attribution matched to address."
+    "notes": "First-party CannaPlanet site identifies Monticello location at 73 Pleasant St and provides online shopping; chain attribution matched to address. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3489,10 +3489,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-30",
     "website": "https://libertynycannabis.com/",
-    "menuUrl": "https://libertynycannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Liberty NY Cannabis site identifies 187 Mill St, Liberty and exposes online menu/order."
+    "notes": "First-party Liberty NY Cannabis site identifies 187 Mill St, Liberty and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3504,10 +3504,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-10",
     "website": "https://ntnrdispensary.com/",
-    "menuUrl": "https://ntnrdispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party NTNR Dispensary site identifies 332 Broad St, Waverly and exposes online menu/order."
+    "notes": "First-party NTNR Dispensary site identifies 332 Broad St, Waverly and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3519,10 +3519,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-04",
     "website": "https://ithacacannabis.com/",
-    "menuUrl": "https://ithacacannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party retail site identifies 105 Dryden Rd, Ithaca; matched to ATNC Inc license row and exposes online menu/order."
+    "notes": "First-party retail site identifies 105 Dryden Rd, Ithaca; matched to ATNC Inc license row and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3534,10 +3534,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-03-25",
     "website": "https://aspirecannabisny.com/",
-    "menuUrl": "https://aspirecannabisny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Aspire Cannabis site identifies 205 N Fulton St, Ithaca and exposes shop/menu."
+    "notes": "First-party Aspire Cannabis site identifies 205 N Fulton St, Ithaca and exposes shop/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3549,10 +3549,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-06",
     "website": "https://drydendispensary.com/",
-    "menuUrl": "https://drydendispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Dryden Dispensary site identifies 2207 Dryden Rd, Dryden and exposes online menu/order."
+    "notes": "First-party Dryden Dispensary site identifies 2207 Dryden Rd, Dryden and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3564,10 +3564,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-29",
     "website": "https://royalbudsny.com/",
-    "menuUrl": "https://royalbudsny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Royal Buds site identifies 5 Washington St, Trumansburg and exposes dispensary/menu information."
+    "notes": "First-party Royal Buds site identifies 5 Washington St, Trumansburg and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3579,10 +3579,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-09",
     "website": "https://thehighlyconnected.com/",
-    "menuUrl": "https://thehighlyconnected.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Highly Connected site identifies 423 Franklin St, Ithaca and exposes online menu/order."
+    "notes": "First-party Highly Connected site identifies 423 Franklin St, Ithaca and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3594,10 +3594,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-16",
     "website": "https://williamjane420.com/",
-    "menuUrl": "https://williamjane420.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party William Jane site identifies 119 E State St, Ithaca and exposes online menu/order."
+    "notes": "First-party William Jane site identifies 119 E State St, Ithaca and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3609,10 +3609,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-01-20",
     "website": "https://cannaplanet.com/",
-    "menuUrl": "https://cannaplanet.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party CannaPlanet site identifies Ellenville location at 37 N Main St and provides online shopping; chain attribution matched to address."
+    "notes": "First-party CannaPlanet site identifies Ellenville location at 37 N Main St and provides online shopping; chain attribution matched to address. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3624,10 +3624,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-01-20",
     "website": "https://cannaplanet.com/",
-    "menuUrl": "https://cannaplanet.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party CannaPlanet site identifies Kingston location at 1221 Ulster Ave and provides online shopping; chain attribution matched to address."
+    "notes": "First-party CannaPlanet site identifies Kingston location at 1221 Ulster Ave and provides online shopping; chain attribution matched to address. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3639,10 +3639,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-01",
     "website": "https://daydreamdispensary.com/",
-    "menuUrl": "https://daydreamdispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Day Dream Dispensary site identifies 600 State Route 299, Highland and exposes dispensary/menu information."
+    "notes": "First-party Day Dream Dispensary site identifies 600 State Route 299, Highland and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3669,10 +3669,10 @@
     "licenseType": "MICROBUSINESS",
     "registrySaysOpened": "2025-12-24",
     "website": "https://greengoatgardens.com/",
-    "menuUrl": "https://greengoatgardens.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Green Goat Gardens site identifies 3 Cherry Hill Rd, New Paltz and provides cannabis retail/product information."
+    "notes": "First-party Green Goat Gardens site identifies 3 Cherry Hill Rd, New Paltz and provides cannabis retail/product information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3684,10 +3684,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-03-28",
     "website": "https://herbalwoodstock.com/",
-    "menuUrl": "https://herbalwoodstock.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Herbal Woodstock site identifies 17 Tinker St, Woodstock and exposes online menu/order."
+    "notes": "First-party Herbal Woodstock site identifies 17 Tinker St, Woodstock and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3699,10 +3699,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-09-01",
     "website": "https://kingstoncannabis.com/",
-    "menuUrl": "https://kingstoncannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Kingston Cannabis site identifies 728 Broadway, Kingston and exposes online menu/order."
+    "notes": "First-party Kingston Cannabis site identifies 728 Broadway, Kingston and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3714,10 +3714,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-07",
     "website": "https://rosiesbotanicals.com/",
-    "menuUrl": "https://rosiesbotanicals.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Rosie's Botanicals site identifies 3565 US Highway 9W, Highland and exposes dispensary/menu information."
+    "notes": "First-party Rosie's Botanicals site identifies 3565 US Highway 9W, Highland and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3729,10 +3729,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-08-30",
     "website": "https://royalblenddispensary.com/",
-    "menuUrl": "https://royalblenddispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Royal Blend Dispensary site identifies 2223 State Route 32, Kingston and exposes online menu/order."
+    "notes": "First-party Royal Blend Dispensary site identifies 2223 State Route 32, Kingston and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3744,10 +3744,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-25",
     "website": "https://sagedispensary.com/",
-    "menuUrl": "https://sagedispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Sage dispensary site identifies Kingston location at 268 Forest Hill Dr and exposes online shopping/menu; matched to Sage Holdco license row."
+    "notes": "First-party Sage dispensary site identifies Kingston location at 268 Forest Hill Dr and exposes online shopping/menu; matched to Sage Holdco license row. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3759,10 +3759,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-27",
     "website": "https://highrollersdispensary.com/",
-    "menuUrl": "https://highrollersdispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party High Rollers Cannabis site identifies Queensbury location at 909 State Route 9 and exposes online menu/order."
+    "notes": "First-party High Rollers Cannabis site identifies Queensbury location at 909 State Route 9 and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3774,10 +3774,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-27",
     "website": "https://rrcannabisny.com/",
-    "menuUrl": "https://rrcannabisny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party R&R Cannabis site identifies 12 Hudson Ave, Glens Falls and exposes online menu/order."
+    "notes": "First-party R&R Cannabis site identifies 12 Hudson Ave, Glens Falls and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3804,10 +3804,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-11-08",
     "website": "https://windyhillwellness.com/",
-    "menuUrl": "https://windyhillwellness.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Windy Hill Wellness site identifies Glens Falls location at 130 Broad St and exposes online shopping/menu."
+    "notes": "First-party Windy Hill Wellness site identifies Glens Falls location at 130 Broad St and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3819,10 +3819,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-01",
     "website": "https://greenwitchdispensary.com/",
-    "menuUrl": "https://greenwitchdispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Green Witch Dispensary site identifies 1156 Route 29, Greenwich and exposes online menu/order."
+    "notes": "First-party Green Witch Dispensary site identifies 1156 Route 29, Greenwich and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3834,10 +3834,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-27",
     "website": "https://highsocietydispensary.com/",
-    "menuUrl": "https://highsocietydispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party High Society Dispensary site identifies 345 Main St, Hudson Falls and exposes online menu/order."
+    "notes": "First-party High Society Dispensary site identifies 345 Main St, Hudson Falls and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3849,10 +3849,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-18",
     "website": "https://windyhillwellness.com/",
-    "menuUrl": "https://windyhillwellness.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Windy Hill Wellness site identifies Greenwich location at 106 Main St and exposes online shopping/menu; chain attribution matched to address."
+    "notes": "First-party Windy Hill Wellness site identifies Greenwich location at 106 Main St and exposes online shopping/menu; chain attribution matched to address. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3864,10 +3864,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-02-18",
     "website": "https://hazeandharvest.com/",
-    "menuUrl": "https://hazeandharvest.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Haze and Harvest site identifies 6740 State Route 31 E, Newark and exposes online menu/order."
+    "notes": "First-party Haze and Harvest site identifies 6740 State Route 31 E, Newark and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3879,10 +3879,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-15",
     "website": "https://nativehazecannabis.com/",
-    "menuUrl": "https://nativehazecannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Native Haze Cannabis Co site identifies 1503 Canandaigua Rd, Macedon and exposes online menu/order."
+    "notes": "First-party Native Haze Cannabis Co site identifies 1503 Canandaigua Rd, Macedon and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3894,10 +3894,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-04-18",
     "website": "https://purelycannabis.co/",
-    "menuUrl": "https://purelycannabis.co/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Purely Cannabis Co site identifies 1645 State Route 104, Ontario NY and exposes retail/menu information."
+    "notes": "First-party Purely Cannabis Co site identifies 1645 State Route 104, Ontario NY and exposes retail/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3909,10 +3909,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-07-29",
     "website": "https://thecoughieshop.com/",
-    "menuUrl": "https://thecoughieshop.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Coughie Shop site identifies 12044 E Main St, Wolcott and exposes online menu/order."
+    "notes": "First-party Coughie Shop site identifies 12044 E Main St, Wolcott and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -3924,9 +3924,9 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-18",
     "website": "https://bloomcannabisny.com/",
-    "menuUrl": "https://bloomcannabisny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Bloom Cannabis Dispensary site identifies 242 Lake Street Plaza, Penn Yan and exposes online menu/order."
+    "notes": "First-party Bloom Cannabis Dispensary site identifies 242 Lake Street Plaza, Penn Yan and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
   }
 ]
