@@ -23,11 +23,11 @@
     "county": "Suffolk",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-12",
-    "website": "https://www.brownbuddanewyork.com/",
+    "website": "https://www.brownbuddanewyork.co/",
     "menuUrl": "https://www.brownbuddanewyork.co/order-now?dtche%5Bcategory%5D=flower",
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Brown Budda site gives 1533 County Road 39, Southampton and license OCM-CAURD-24-000157; Order Now is the public menu and accepts the Dutchie Flower category parameter."
+    "notes": "QA: current first-party .co site gives 1533 County Road 39, Southampton and OCM-CAURD-24-000157; the .co Order Now Flower URL resolves on that same first-party site. Replaced mixed .com/.co attribution with current .co canonical site."
   },
   {
     "territory": "long-island",
