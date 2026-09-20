@@ -2948,11 +2948,11 @@
     "county": "Oswego",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-01-02",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://buddispensary.com/",
+    "menuUrl": "https://buddispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Bud Dispensary site identifies 143 George St, Oswego and exposes online shopping/menu."
   },
   {
     "territory": "upstate",
@@ -2978,11 +2978,11 @@
     "county": "Oswego",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-15",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://leafywonders.com/",
+    "menuUrl": "https://leafywonders.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Leafy Wonders site identifies 956 S 1st St, Fulton and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3008,11 +3008,11 @@
     "county": "Rensselaer",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-05-09",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://hoosickdispensary.com/",
+    "menuUrl": "https://hoosickdispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Hoosick Dispensary site identifies 514 Congress St, Troy and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3068,11 +3068,11 @@
     "county": "Rensselaer",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-12-06",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://transcendwellnessny.com/",
+    "menuUrl": "https://transcendwellnessny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Transcend Wellness site identifies 289 Oakwood Ave, Troy and exposes cannabis retail/menu information."
   },
   {
     "territory": "upstate",
@@ -3083,11 +3083,11 @@
     "county": "Rensselaer",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-12-07",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://wilderootsdispensary.com/",
+    "menuUrl": "https://wilderootsdispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Wilde Roots Dispensary site identifies 4179 State Route 20, Castleton and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3458,11 +3458,11 @@
     "county": "Steuben",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-03-19",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://culturecannabisclub.com/",
+    "menuUrl": "https://culturecannabisclub.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Culture Cannabis site identifies Corning location at 90 E Market St and exposes online shopping/menu; location attribution matched to address."
   },
   {
     "territory": "upstate",
@@ -3473,11 +3473,11 @@
     "county": "Sullivan",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-01-17",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://cannaplanet.com/",
+    "menuUrl": "https://cannaplanet.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party CannaPlanet site identifies Monticello location at 73 Pleasant St and provides online shopping; chain attribution matched to address."
   },
   {
     "territory": "upstate",
@@ -3503,11 +3503,11 @@
     "county": "Tioga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-10",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://ntnrdispensary.com/",
+    "menuUrl": "https://ntnrdispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party NTNR Dispensary site identifies 332 Broad St, Waverly and exposes online menu/order."
   },
   {
     "territory": "upstate",
