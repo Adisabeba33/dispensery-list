@@ -3533,11 +3533,11 @@
     "county": "Tompkins",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-03-25",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://aspirecannabisny.com/",
+    "menuUrl": "https://aspirecannabisny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Aspire Cannabis site identifies 205 N Fulton St, Ithaca and exposes shop/menu."
   },
   {
     "territory": "upstate",
@@ -3578,11 +3578,11 @@
     "county": "Tompkins",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-09",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://thehighlyconnected.com/",
+    "menuUrl": "https://thehighlyconnected.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Highly Connected site identifies 423 Franklin St, Ithaca and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3593,11 +3593,11 @@
     "county": "Tompkins",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-16",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://williamjane420.com/",
+    "menuUrl": "https://williamjane420.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party William Jane site identifies 119 E State St, Ithaca and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3608,11 +3608,11 @@
     "county": "Ulster",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-01-20",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://cannaplanet.com/",
+    "menuUrl": "https://cannaplanet.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party CannaPlanet site identifies Ellenville location at 37 N Main St and provides online shopping; chain attribution matched to address."
   },
   {
     "territory": "upstate",
@@ -3623,11 +3623,11 @@
     "county": "Ulster",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-01-20",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://cannaplanet.com/",
+    "menuUrl": "https://cannaplanet.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party CannaPlanet site identifies Kingston location at 1221 Ulster Ave and provides online shopping; chain attribution matched to address."
   },
   {
     "territory": "upstate",
@@ -3653,11 +3653,11 @@
     "county": "Ulster",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-06-04",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://farmerschoicedispensary.com/",
+    "menuUrl": "https://farmerschoicedispensary.com/dispensaries/new-york/ulster-county/new-paltz/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Farmers Choice New Paltz page identifies 1 Old Route 299 and exposes Order Now; store-specific attribution retained."
   },
   {
     "territory": "upstate",
@@ -3683,11 +3683,11 @@
     "county": "Ulster",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-03-28",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://herbalwoodstock.com/",
+    "menuUrl": "https://herbalwoodstock.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Herbal Woodstock site identifies 17 Tinker St, Woodstock and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3788,11 +3788,11 @@
     "county": "Warren",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-05-23",
-    "website": null,
+    "website": "https://silver-therapeutics.com/location/recreational-cannabis-dispensary-lake-george-ny-12845/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Silver Therapeutics location page identifies 1471 State Route 9, Lake George; multi-location attribution matched to this address."
   },
   {
     "territory": "upstate",
