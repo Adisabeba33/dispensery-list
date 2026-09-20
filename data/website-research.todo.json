@@ -2018,11 +2018,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-31",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://exoticfarmsny.com/",
+    "menuUrl": "https://exoticfarmsny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Exotic Farms site identifies 203 Main St, Brockport and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -2078,11 +2078,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-13",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://greencomfortny.com/",
+    "menuUrl": "https://greencomfortny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Green Comfort site identifies 999 S Clinton Ave, Rochester and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2108,11 +2108,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-09-01",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://highendny.com/",
+    "menuUrl": "https://highendny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party High End New York site identifies 545 Clinton Ave S, Rochester and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2198,11 +2198,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-07-15",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://serenitynowdispensary.com/",
+    "menuUrl": "https://serenitynowdispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Serenity Now Dispensary site identifies 1150 University Ave, Rochester and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2243,11 +2243,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-10",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://wonderlanddispensary.com/",
+    "menuUrl": "https://wonderlanddispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Wonderland Dispensary site identifies 545 W Ridge Rd, Rochester and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2258,11 +2258,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-01",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://zenzony.com/",
+    "menuUrl": "https://zenzony.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party ZenZo site identifies 1900 Empire Blvd, Webster/Rochester area and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -2273,11 +2273,11 @@
     "county": "Montgomery",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2023-12-09",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://amsterdamcannabisny.com/",
+    "menuUrl": "https://amsterdamcannabisny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Amsterdam Cannabis site identifies 1451 State Highway 5S, Amsterdam and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2468,11 +2468,11 @@
     "county": "Oneida",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-03-23",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://millscannabis.com/",
+    "menuUrl": "https://millscannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Mills Cannabis site identifies 4790 Commercial Dr, New Hartford and exposes online menu/order."
   },
   {
     "territory": "upstate",
