@@ -1,5 +1,35 @@
 [
   {
+    "licenseNumber": "OCM-CAURD-23-000020",
+    "menuUrl": "https://terpbrosnyc.com/stores/terp-bros-astoria/products/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Existing store-specific route is Terp Bros Astoria and opens All Flower; retained explicitly so the two licences no longer depend on a shared default."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-23-000021",
+    "menuUrl": "https://conbud.com/stores/conbud-les",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "CONBUD's first-party LES storefront is a real menu, not the blog post the collector followed. The page identifies CONBUD LES and exposes Flower as a menu category; licence OCM-CAURD-23-000021 is listed by CONBUD for LES."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000046",
+    "menuUrl": "https://cannabisrealmny.com/white-plains/menu/categories/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Opened page identifies Cannabis Realm of NY - White Plains and Premium Cannabis Flower in Westchester; company page maps 475 Central Ave to OCM-CAURD-24-000046."
+  },
+  {
     "licenseNumber": "OCM-CAURD-24-000051",
     "menuUrl": "https://thespotdispensary.com/menu/?category=flowers",
     "platform": "BLAZE",
@@ -8,6 +38,26 @@
     "ageGate": "none",
     "checkedAt": "2026-09-06",
     "notes": "Direct Flowers menu; page markup identifies BLAZE. A login link exists but is not required to browse products."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000080",
+    "menuUrl": "https://thecannabisplace.org/store/?cat=flower&locId=1",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "none",
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Store page exposes Flower through cat=flower and locId=1; page footer identifies the New York store at 74-03 Metropolitan Ave, Queens. This is the full Flower category rather than the generic /store/new-york/ landing page."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000102",
+    "menuUrl": "https://hiinyc.com/stores/hii-williamsburg/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Hii identifies Williamsburg at 152 Bedford Ave as OCM-CAURD-24-000102 and describes the live store menu as Dutchie-backed."
   },
   {
     "licenseNumber": "OCM-CAURD-24-000123",
@@ -120,6 +170,16 @@
     "notes": "Direct first-party Flower category; the apparent login text is not required for browsing, while the actual access gate is only a 21+ yes/no notice."
   },
   {
+    "licenseNumber": "OCM-CAURD-25-000291",
+    "menuUrl": "https://www.nycbud.com/shop/manhattan/categories/flower/",
+    "platform": "BLAZE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "none",
+    "checkedAt": "2026-09-20",
+    "notes": "Opened Manhattan Flower category; NYC Bud lists its Manhattan location at 405 W 39th St under OCM-CAURD-25-000291. The menu exposes a BLAZE assistant host."
+  },
+  {
     "licenseNumber": "OCM-CAURD-25-000292",
     "menuUrl": "https://celestialherbs.dispensary.shop/rec/flower/nb/k3w",
     "platform": "OTHER",
@@ -128,6 +188,16 @@
     "ageGate": "none",
     "checkedAt": "2026-09-06",
     "notes": "menu platform: Flowhub Ecommerce (dispensary.shop); direct recreational Flower category is public."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000294",
+    "menuUrl": "https://terpbrosnyc.com/stores/terp-bros-ozone-park/products/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Opened store-specific route identifies Terp Bros Ozone Park and lists All Flower; distinct sibling of the Astoria route."
   },
   {
     "licenseNumber": "OCM-CAURD-25-000304",
@@ -180,6 +250,16 @@
     "notes": "Direct public Flower category; page evidence identifies BLAZE, correcting the brief's provisional OTHER guess. A login link is optional, not a browsing requirement."
   },
   {
+    "licenseNumber": "OCM-CAURD-26-000330",
+    "menuUrl": "https://hiinyc.com/stores/hii-3rd-ave/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Opened route says Flower | Hii Bay Ridge. Hii's store picker maps Bay Ridge to 9206 3rd Ave and OCM-CAURD-26-000330; site states online pickup is via Dutchie."
+  },
+  {
     "licenseNumber": "OCM-CAURD-26-000336",
     "menuUrl": "https://dutchie.com/dispensary/emerald-dispensary-carroll-gardens/products/flower",
     "platform": "DUTCHIE",
@@ -218,6 +298,16 @@
     "ageGate": "simple-button",
     "checkedAt": "2026-09-06",
     "notes": "Direct Flower route on the first-party site; Dutchie markers are present in the menu page."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000064",
+    "menuUrl": "https://greenflowerwellness.com/stores/green-flower-wellness-oakland-gardens/products/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Oakland Gardens/Bayside store route opens All Flower; Green Flower's location page maps this store to 214-24 73rd Ave and licence OCM-RETL-24-000064."
   },
   {
     "licenseNumber": "OCM-RETL-24-000133",
@@ -270,6 +360,26 @@
     "notes": "The Shop page is the human-facing Meadow menu; category data is rendered client-side, so the original HTML parser saw no products."
   },
   {
+    "licenseNumber": "OCM-RETL-24-000233",
+    "menuUrl": "https://greenflowerwellness.com/stores/green-flower-wellness-new-hyde-park/products/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Store-specific All Flower route identifies New Hyde Park LI; site location page maps Glen Oaks/North New Hyde Park to 270-01 Hillside Ave and licence OCM-RETL-24-000233."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000244",
+    "menuUrl": "https://cannabisrealmny.com/queens/menu/categories/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Opened page identifies Cannabis Realm of NY - Queens and Premium Cannabis Flower in Queens. Company and NY OCM pages map 172-02 Hillside Ave to OCM-RETL-24-000244; Comfort Care is the licence entity but Cannabis Realm is the trading site/store."
+  },
+  {
     "licenseNumber": "OCM-RETL-24-000260",
     "menuUrl": "https://dutchie.com/dispensary/herbwell-bronx/products/flower",
     "platform": "DUTCHIE",
@@ -320,6 +430,16 @@
     "notes": "Verdi Park Slope (360 7th Ave) — слаг verdi-park-slope из ссылки «Shop Park Slope, nyc». Слаг verdi — это Chelsea."
   },
   {
+    "licenseNumber": "OCM-RETL-25-000319",
+    "menuUrl": "https://dankley.com/queens-store/?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Queens store page identifies Dankley - Queens (Hillside), 219-17 Hillside Ave; dtche category parameter is the store-specific Flower view."
+  },
+  {
     "licenseNumber": "OCM-RETL-25-000360",
     "menuUrl": "https://www.bkgreenery.com/menu?dtche%5Bcategory%5D=flower",
     "platform": "DUTCHIE",
@@ -328,6 +448,26 @@
     "ageGate": "simple-button",
     "checkedAt": "2026-09-06",
     "notes": "Dutchie is embedded client-side; the original HTML-only crawler reached the menu shell but not the rendered Flower inventory."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000438",
+    "menuUrl": "https://greenflowerwellness.com/stores/green-flower-wellness-new-ozone-park/products/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Store-specific All Flower route is Green Flower Wellness Ozone Park; site maps it to 8508 Pitkin Ave and licence OCM-RETL-25-000438."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000450",
+    "menuUrl": "https://dankley.com/manhattan-store/?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-20",
+    "notes": "Opened Manhattan Flower view identifies Dankley - Manhattan (FiDi), 85 Nassau Street; distinct store page from Queens."
   },
   {
     "licenseNumber": "OCM-RETL-25-000466",
@@ -348,5 +488,15 @@
     "ageGate": "simple-button",
     "checkedAt": "2026-09-06",
     "notes": "menu platform: Sweed; Midtown-specific Flower category is publicly browseable after a simple 21+ confirmation."
+  },
+  {
+    "licenseNumber": "OCM-RETL-26-000511",
+    "menuUrl": "https://shophibernica.com/centralpark/dispensary-centralpark-menu/?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "none",
+    "checkedAt": "2026-09-20",
+    "notes": "Opened Central Park store menu; page store picker marks Central Park current, gives 111 W 110th St and OCM-RETL-26-000511. dtche category selects Flower."
   }
 ]

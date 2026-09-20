@@ -30,6 +30,9 @@ data/
   raw/                             raw registry snapshots, kept as provenance
 docs/
   AGENT_RESEARCH_BRIEF.md          phase 1 — collecting the register from the state
+  AGENT_STORE_ATTRIBUTION_BRIEF.md open — twenty licences whose shelf was read from
+                                   another store's menu, and the shops that declared
+                                   more than we read
   AGENT_ENRICHMENT_BRIEF.md        phase 2 — menus, geocodes, phones, services
   AGENT_MENU_BRIEF.md              phase 3 — reading flower off the shelves
   RESEARCH_REPORT.md               what phase 1 found, and what it could not

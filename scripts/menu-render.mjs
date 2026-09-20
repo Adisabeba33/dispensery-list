@@ -478,6 +478,36 @@ const isNotFlowerCategory = (href) => {
    ninety-two. Two runs read it the same way, which is what makes a wrong page
    so much more dangerous than a flaky one. */
 const FLOWER_ROUTE = /(categor(y|ies)[=/][^/?#]*flower|\/flower\b|\/flowers?\/?$|[?&]category=flower|\/rec\/flower|\/bud\b)/i;
+
+/*
+ * A flower category that is only PART of the flower.
+ *
+ * FLOWER_ROUTE's first alternative accepts any category slug carrying the word
+ * flower anywhere in it, which is how Cannabis Realm's whole shelf became the
+ * ten items on /menu/categories/new-flower-drops, and Smoking Scholars' became
+ * the twenty-five on /menu/categories/35-flower-sale. Both scored 100 — the
+ * flower category itself — and the depth tie-break, added so a shop's own page
+ * beats its chain's, then preferred them for being deeper than the real one.
+ *
+ * These are real flower and worth reading when there is nothing else, so they
+ * are demoted rather than refused: above a bare menu route, below the category
+ * that holds the whole shelf. A shop with both now reads the whole shelf; a
+ * shop that publishes only its new drops still gets its new drops.
+ */
+const SUBSET_CATEGORY =
+  /(^|[-_])(new|newest|drop|drops|sale|sales|deal|deals|special|specials|clearance|discount|discounted|bogo|featured|popular|trending|bestseller|bestsellers|staff|pick|picks|last|chance)([-_]|$)|^\d+[-_%]/i;
+const SUBSET_FLOWER = 70;
+const isSubsetFlowerCategory = (href) => {
+  if (!CATEGORY_ROUTE.test(href)) return false;
+  let url;
+  try {
+    url = new URL(href);
+  } catch {
+    return false;
+  }
+  const last = url.pathname.split('/').filter(Boolean).pop() ?? '';
+  return SUBSET_CATEGORY.test(last);
+};
 const MENU_ROUTE = /\/(menu|shop|order|products?|browse|store|dispensary)\b/i;
 
 /**
@@ -653,6 +683,8 @@ const GUESSED_MENU_PATHS = [
 export const rankMenuLink = (href = '', text = '') => {
   if (!href || PROMO_ROUTE.test(href) || isProductPage(href)) return 0;
   if (isNotFlowerCategory(href)) return 0;
+  // A slice of the shelf ranks below the shelf, but above a bare menu route.
+  if (FLOWER_ROUTE.test(href) && isSubsetFlowerCategory(href)) return SUBSET_FLOWER;
   if (FLOWER_ROUTE.test(href)) return 100;          // the flower category itself
   if (FLOWER_WORD.test(text)) return 90;            // a nav item that says Flower
   if (MENU_ROUTE.test(href) && FLOWER_WORD.test(text)) return 85;
