@@ -323,11 +323,11 @@
     "county": "Albany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-04-18",
-    "website": null,
+    "website": "https://dazed.fun/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Official Dazed Albany location page gives 399 Albany Shaker Rd, Loudonville; NY OCM location verification independently lists dazed.fun for this address."
   },
   {
     "territory": "upstate",
@@ -338,11 +338,11 @@
     "county": "Albany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-04-24",
-    "website": null,
+    "website": "https://exotickingdomny.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Official Exotic Kingdom site prints OCM-CAURD-26-000337 and identifies 151 Hoosick St, Troy as the licensed principal premises; NY OCM location verification lists exotickingdomny.com for the same address."
   },
   {
     "territory": "upstate",
@@ -398,11 +398,11 @@
     "county": "Albany",
     "licenseType": "MICROBUSINESS",
     "registrySaysOpened": "2025-09-03",
-    "website": null,
+    "website": "https://nauticalblaze.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Official Nautical Blaze site gives 2079 Leicester Rd, Leicester and license OCM-MICR-000105."
   },
   {
     "territory": "upstate",
@@ -430,9 +430,9 @@
     "registrySaysOpened": "2025-03-06",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -533,11 +533,11 @@
     "county": "Allegany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-01-19",
-    "website": null,
+    "website": "https://stcannabis.co/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Official Southern Tier Cannabis site gives 30 N Main St, Alfred and license OCM-RETL-25-000350."
   },
   {
     "territory": "upstate",
@@ -608,11 +608,11 @@
     "county": "Broome",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-01-14",
-    "website": null,
+    "website": "https://skalz.store/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "NY OCM dispensary location verification lists Skalz at 2520 Vestal Pkwy E, Vestal with skalz.store."
   },
   {
     "territory": "upstate",
@@ -640,9 +640,9 @@
     "registrySaysOpened": "2025-07-17",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -670,9 +670,9 @@
     "registrySaysOpened": "2025-01-17",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -698,11 +698,11 @@
     "county": "Chautauqua",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-09-24",
-    "website": null,
+    "website": "https://organicbloomsny.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Official Organic Blooms site gives 2971 Route 426, Findley Lake and license OCM-RETL-25-000378."
   },
   {
     "territory": "upstate",
@@ -744,10 +744,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-11-08",
     "website": "https://thegoodiebagny.com/",
-    "menuUrl": "https://thegoodiebagny.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party The Goodie Bag site identifies 260 Clemens Center Pkwy, Elmira and exposes online menu/order."
+    "notes": "First-party domain was previously attributed to 260 Clemens Center Pkwy, Elmira. QA removed homepage from menuUrl because no direct flower/menu endpoint was verified in this pass."
   },
   {
     "territory": "upstate",
@@ -758,11 +758,11 @@
     "county": "Chemung",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-01-05",
-    "website": "https://worldpiececannabis.com/",
-    "menuUrl": "https://worldpiececannabis.com/",
+    "website": "https://worldpieceshop.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party World Piece site identifies 3162 Lake Rd, Horseheads and exposes dispensary/menu information."
+    "notes": "Official World Piece site gives 3162 Lake Rd Suite 4, Horseheads and license OCM-RETL-000437. Previous worldpiececannabis.com attribution was not sufficiently verified; removed. No first-party flower endpoint verified."
   },
   {
     "territory": "upstate",
@@ -819,10 +819,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-08-28",
     "website": "https://greensgreenery.com/",
-    "menuUrl": "https://greensgreenery.com/",
+    "menuUrl": "https://greensgreenery.dispensary.shop/rec/flower/nb/1u7",
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Greens Greenery site identifies 54 State Highway 357, Unadilla and exposes online menu/order."
+    "notes": "Official Greens Greenery menu gives 54 State Highway 357, Unadilla and state license OCM-RETL-24-000084-D1. Direct Flower category opened with products visible."
   },
   {
     "territory": "upstate",
@@ -835,9 +835,9 @@
     "registrySaysOpened": "2025-03-20",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -983,11 +983,11 @@
     "county": "Dutchess",
     "licenseType": "MICROBUSINESS",
     "registrySaysOpened": "2024-07-04",
-    "website": null,
+    "website": "https://lotusworkswellness.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Official LotusWorks site gives 261 Main St, Beacon and license OCM-MICR-24-000017; NY OCM verification lists the same domain."
   },
   {
     "territory": "upstate",
@@ -1060,9 +1060,9 @@
     "registrySaysOpened": "2025-05-28",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1105,9 +1105,9 @@
     "registrySaysOpened": "2025-01-02",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1165,9 +1165,9 @@
     "registrySaysOpened": "2025-12-13",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1178,11 +1178,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-11-17",
-    "website": null,
+    "website": "https://cannaspaceny.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Official CannaSpace site gives 4151 McKinley Pkwy, Hamburg and license OCM-RETL-24-000228."
   },
   {
     "territory": "upstate",
@@ -1195,9 +1195,9 @@
     "registrySaysOpened": "2025-08-18",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1253,11 +1253,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-03-26",
-    "website": null,
+    "website": "https://thedreamdaze.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Official Dream Daze site gives 5100 Transit Rd, Depew and identifies itself as a NY licensed adult-use dispensary."
   },
   {
     "territory": "upstate",
@@ -1300,9 +1300,9 @@
     "registrySaysOpened": "2025-01-29",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1345,9 +1345,9 @@
     "registrySaysOpened": "2025-04-09",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1390,9 +1390,9 @@
     "registrySaysOpened": "2025-07-12",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1480,9 +1480,9 @@
     "registrySaysOpened": "2026-04-01",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1510,9 +1510,9 @@
     "registrySaysOpened": "2026-01-09",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1553,11 +1553,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-01-28",
-    "website": null,
+    "website": "https://thephinestbuds.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Official The Phinest Buds site gives 576 Dick Rd Suite 10A, Cheektowaga and license OCM-RETL-24-000155."
   },
   {
     "territory": "upstate",
@@ -1585,9 +1585,9 @@
     "registrySaysOpened": "2024-11-29",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1615,9 +1615,9 @@
     "registrySaysOpened": "2026-02-16",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1630,9 +1630,9 @@
     "registrySaysOpened": "2025-04-15",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1675,9 +1675,9 @@
     "registrySaysOpened": "2024-09-30",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1689,10 +1689,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-09-10",
     "website": "https://chesterfieldcannabis.com/",
-    "menuUrl": "https://chesterfieldcannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Chesterfield Cannabis site identifies 89 Kent St, Keeseville and exposes dispensary/menu information."
+    "notes": "First-party Chesterfield attribution remains tied to 89 Kent St, Keeseville. QA removed homepage from menuUrl because a homepage is not a verified flower endpoint."
   },
   {
     "territory": "upstate",
@@ -1719,10 +1719,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-10",
     "website": "https://pnuggs.com/",
-    "menuUrl": "https://pnuggs.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party P. Nuggs site identifies 236 Meehan Rd, Malone and exposes online menu/order."
+    "notes": "P. Nuggs is tied to 236 Meehan Rd, Malone by current store evidence. QA removed homepage from menuUrl because no direct flower endpoint was verified."
   },
   {
     "territory": "upstate",
@@ -1780,9 +1780,9 @@
     "registrySaysOpened": "2025-02-07",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1825,9 +1825,9 @@
     "registrySaysOpened": "2025-03-10",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1840,9 +1840,9 @@
     "registrySaysOpened": "2026-06-18",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1855,9 +1855,9 @@
     "registrySaysOpened": "2025-05-29",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1885,9 +1885,9 @@
     "registrySaysOpened": "2025-09-02",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1928,11 +1928,11 @@
     "county": "Monroe",
     "licenseType": "MICROBUSINESS",
     "registrySaysOpened": "2025-10-31",
-    "website": null,
+    "website": "https://6pointcannabis.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Public store record for 6 Point Cannabis ties 6pointcannabis.com to 190-194 E Main St, Rochester and OCM-MICR-24-000037."
   },
   {
     "territory": "upstate",
@@ -1960,9 +1960,9 @@
     "registrySaysOpened": "2025-01-18",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -1973,11 +1973,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-01-05",
-    "website": null,
+    "website": "https://cannahealthandwellness.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "NY OCM dispensary location verification lists Canna Health and Wellness at 6075 E Henrietta Rd, Rush with cannahealthandwellness.com."
   },
   {
     "territory": "upstate",
@@ -2213,11 +2213,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-02-10",
-    "website": null,
+    "website": "https://sesscocannabis.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Official SessCo site gives 115 Main St, East Rochester and license OCM-RETL-24-000249."
   },
   {
     "territory": "upstate",
@@ -2290,9 +2290,9 @@
     "registrySaysOpened": "2026-02-25",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -2305,9 +2305,9 @@
     "registrySaysOpened": "2024-11-23",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -2320,9 +2320,9 @@
     "registrySaysOpened": "2025-04-14",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -2333,11 +2333,11 @@
     "county": "Niagara",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-03",
-    "website": null,
+    "website": "https://gocarryon.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Official Carry-On Niagara Falls page gives 8529 Niagara Falls Blvd; chain homepage distinguishes the NY and NJ locations."
   },
   {
     "territory": "upstate",
@@ -2350,9 +2350,9 @@
     "registrySaysOpened": "2025-11-19",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -2365,9 +2365,9 @@
     "registrySaysOpened": "2026-02-13",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -2514,10 +2514,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-12",
     "website": "https://createkindnesscannabis.com/",
-    "menuUrl": "https://createkindnesscannabis.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Create Kindness site identifies 911 N Salina St, Syracuse and exposes dispensary/menu information."
+    "notes": "Create Kindness attribution remains tied to 911 N Salina St, Syracuse. QA removed homepage from menuUrl because no direct flower endpoint was verified."
   },
   {
     "territory": "upstate",
@@ -2529,10 +2529,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-10",
     "website": "https://dunelilly.com/",
-    "menuUrl": "https://dunelilly.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Dune Lilly site identifies 1011 W Genesee St, Syracuse and exposes online menu/order."
+    "notes": "Dune Lilly attribution remains tied to 1011 W Genesee St, Syracuse. QA removed homepage from menuUrl because no direct flower endpoint was verified."
   },
   {
     "territory": "upstate",
@@ -2559,10 +2559,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-18",
     "website": "https://insidetheparkdispensary.com/",
-    "menuUrl": "https://insidetheparkdispensary.com/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Inside the Park Dispensary site identifies 135-137 Marshall St, Syracuse and exposes online menu/order."
+    "notes": "Inside the Park attribution remains tied to 135-137 Marshall St, Syracuse. QA removed homepage from menuUrl because no direct flower endpoint was verified."
   },
   {
     "territory": "upstate",
@@ -2678,11 +2678,11 @@
     "county": "Ontario",
     "licenseType": "MICROBUSINESS",
     "registrySaysOpened": "2025-03-29",
-    "website": null,
+    "website": "https://sunwalkerfarms.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Public OCM-cross-referenced storefront record ties Sunwalker Farms at 39 Eastern Blvd Unit 101, Canandaigua to sunwalkerfarms.com."
   },
   {
     "territory": "upstate",
@@ -2693,11 +2693,11 @@
     "county": "Ontario",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-06-12",
-    "website": null,
+    "website": "https://twistedcannabisflx.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Official Twisted Cannabis FLX locations page identifies the Bloomfield location and OCM-RETL-26-000495."
   },
   {
     "territory": "upstate",
@@ -2708,11 +2708,11 @@
     "county": "Ontario",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-04-11",
-    "website": null,
+    "website": "https://twistedcannabisflx.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "Official Twisted Cannabis FLX locations page gives 4123 State Route 96, Manchester and OCM-RETL-26-000485."
   },
   {
     "territory": "upstate",
@@ -2725,9 +2725,9 @@
     "registrySaysOpened": "2024-08-12",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -2755,9 +2755,9 @@
     "registrySaysOpened": "2024-09-23",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -2815,9 +2815,9 @@
     "registrySaysOpened": "2026-08-07",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -2860,9 +2860,9 @@
     "registrySaysOpened": "2025-08-25",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
@@ -3340,9 +3340,9 @@
     "registrySaysOpened": "2025-10-23",
     "website": null,
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": true,
+    "checkedAt": "2026-09-20",
+    "notes": "Exact-name/address web research found no sufficiently verified first-party website or public flower endpoint. Third-party/directory/social-only results were not promoted to website."
   },
   {
     "territory": "upstate",
