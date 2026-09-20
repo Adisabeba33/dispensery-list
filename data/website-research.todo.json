@@ -1793,11 +1793,11 @@
     "county": "Jefferson",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-02-01",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://blackriversupply.com/",
+    "menuUrl": "https://blackriversupply.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Black River Supply Company site identifies 15 Bridge St, Carthage and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -1808,11 +1808,11 @@
     "county": "Jefferson",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-21",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://cannabisdepotny.com/",
+    "menuUrl": "https://cannabisdepotny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Cannabis Depot site identifies Murrock Circle, Watertown and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -1868,11 +1868,11 @@
     "county": "Livingston",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-06-05",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://dansvilledispensary.com/",
+    "menuUrl": "https://dansvilledispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Dansville Dispensary site identifies 9483 Foster Wheeler Rd, Dansville and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -1898,11 +1898,11 @@
     "county": "Livingston",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-04-17",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://nyflowerdepot.com/",
+    "menuUrl": "https://nyflowerdepot.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party NY Flower Depot site identifies 4245 Lakeville Rd, Geneseo and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -1913,11 +1913,11 @@
     "county": "Livingston",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-11-08",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://thechosenpot.com/",
+    "menuUrl": "https://thechosenpot.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party The Chosen Pot site identifies 6669 W Main Rd, Lima and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -1943,11 +1943,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-02-02",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://browncroftbudz.com/",
+    "menuUrl": "https://browncroftbudz.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Browncroft Budz site identifies 722 N Winton Rd, Rochester and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -1988,11 +1988,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-05-30",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://cannabiscornerroc.com/",
+    "menuUrl": "https://cannabiscornerroc.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Cannabis Corner site identifies 2227 Clifford Ave, Rochester and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2003,11 +2003,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-03-19",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://evergreenretailny.com/",
+    "menuUrl": "https://evergreenretailny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Evergreen Retail site identifies 51 N Main St, Brockport and exposes online menu/order."
   },
   {
     "territory": "upstate",
