@@ -249,10 +249,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-12-18",
     "website": "https://cannabicity.net/",
-    "menuUrl": "https://cannabicity.net/stores/albany-ny/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Cannabicity site identifies Albany at 489 Delaware Ave and exposes Shop This Location / Flower; NY OCM verification also maps Cannabicity Albany to cannabicity.net."
+    "notes": "First-party Cannabicity site identifies Albany at 489 Delaware Ave and exposes Shop This Location / Flower; NY OCM verification also maps Cannabicity Albany to cannabicity.net. QA: store info page links into shopping but is not itself the verified Flower endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
@@ -594,10 +594,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2023-02-07",
     "website": "https://justbreathelife.org/",
-    "menuUrl": "https://justbreathelife.org/home-copy/",
+    "menuUrl": "https://justbreathelife.org/categories/flower/",
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Just Breathe page states Upstate New York legal dispensary at 75 Court St, Binghamton and exposes full menu / Flower links backed by Dutchie."
+    "notes": "First-party Just Breathe page states Upstate New York legal dispensary at 75 Court St, Binghamton and exposes full menu / Flower links backed by Dutchie. QA: replaced Home Copy with opened first-party Flower category."
   },
   {
     "territory": "upstate",
@@ -804,10 +804,10 @@
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-05",
     "website": "https://gotham.nyc/",
-    "menuUrl": "https://gotham.nyc/locations/",
+    "menuUrl": null,
     "hasNoWebsite": false,
     "checkedAt": "2026-09-20",
-    "notes": "First-party Gotham locations page identifies Gotham Hudson at 260 Warren St and provides online shopping for the Hudson concept store; multi-location chain, so location page is retained."
+    "notes": "First-party Gotham locations page identifies Gotham Hudson at 260 Warren St and provides online shopping for the Hudson concept store; multi-location chain, so location page is retained. QA: locations page is not itself a verified Hudson menu endpoint, so menuUrl was cleared."
   },
   {
     "territory": "upstate",
