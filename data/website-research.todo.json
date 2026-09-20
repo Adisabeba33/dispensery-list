@@ -3218,11 +3218,11 @@
     "county": "Saratoga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-14",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://leafandfog.com/",
+    "menuUrl": "https://leafandfog.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Leaf & Fog site identifies 2124 Doubleday Ave, Ballston Spa and exposes online shopping/menu."
   },
   {
     "territory": "upstate",
@@ -3233,11 +3233,11 @@
     "county": "Saratoga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-13",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://reefcannabisny.com/",
+    "menuUrl": "https://reefcannabisny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Reef Cannabis NY site identifies 2532 Route 9N, Greenfield Center and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3248,11 +3248,11 @@
     "county": "Saratoga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-07-05",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://spacitycannabis.com/",
+    "menuUrl": "https://spacitycannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Spa City Cannabis site identifies 75 Weibel Ave, Saratoga Springs and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3293,11 +3293,11 @@
     "county": "Schenectady",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-01-09",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://cannabicity.net/",
+    "menuUrl": "https://cannabicity.net/stores/schenectady-ny/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Cannabicity site identifies Schenectady at 220 Harborside Dr and exposes Shop This Location / Flower; store-specific attribution retained."
   },
   {
     "territory": "upstate",
@@ -3323,11 +3323,11 @@
     "county": "Schenectady",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-20",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://electriccitycannabis.com/",
+    "menuUrl": "https://electriccitycannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Electric City Cannabis Co site identifies 1354 Lower Broadway, Schenectady and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3383,11 +3383,11 @@
     "county": "Schenectady",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-08-22",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://theweedspot.com/",
+    "menuUrl": "https://theweedspot.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party The Weed Spot site identifies 501 State St, Schenectady and exposes shop/menu."
   },
   {
     "territory": "upstate",
@@ -3398,11 +3398,11 @@
     "county": "Schenectady",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2023-04-01",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://upstatecanna.co/",
+    "menuUrl": "https://upstatecanna.co/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Upstate Canna/Upstate CBD site identifies 1613 Union St, Schenectady and exposes online ordering/menu."
   },
   {
     "territory": "upstate",
@@ -3428,11 +3428,11 @@
     "county": "St Lawrence",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2023-12-13",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://thefirehausny.com/",
+    "menuUrl": "https://thefirehausny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Firehaus NY site identifies 7479 US Highway 11, Potsdam and exposes online menu/order."
   },
   {
     "territory": "upstate",
