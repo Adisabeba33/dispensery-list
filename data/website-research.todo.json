@@ -893,11 +893,11 @@
     "county": "Dutchess",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-25",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://farmerschoicedispensary.com/",
+    "menuUrl": "https://farmerschoicedispensary.com/dispensaries/new-york/dutchess-county/fishkill/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Farmers Choice identifies Fishkill at 18 Westage Drive under OCM-RETL-24-000045 and exposes Order Now; New Paltz is a separate license."
   },
   {
     "territory": "upstate",
@@ -908,11 +908,11 @@
     "county": "Dutchess",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-22",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://fishkillcannabis.com/",
+    "menuUrl": "https://fishkillcannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Fishkill Cannabis site prints 814 NY-52 and OCM-CAURD-24-000109; Shop Now / online menu is exposed. Site notes former name Gratitude Buds."
   },
   {
     "territory": "upstate",
@@ -923,11 +923,11 @@
     "county": "Dutchess",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-12-28",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://hvgrounded.com/",
+    "menuUrl": "https://hvgrounded.com/visit-us/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Grounded page prints 3665 Albany Post Rd and OCM-CAURD-24-000097; Order Ahead/pre-order is available."
   },
   {
     "territory": "upstate",
@@ -953,11 +953,11 @@
     "county": "Dutchess",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-01-12",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://justalittlehigher.com/",
+    "menuUrl": "https://justalittlehigher.com/dispensary/jalh-fishkill/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party JALH Fishkill page prints 982 Main Street Suite 5 and OCM-RETL-25-000445 and exposes Shop Now; chain attribution is store-specific."
   },
   {
     "territory": "upstate",
@@ -998,11 +998,11 @@
     "county": "Dutchess",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-18",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://root9dispensary.com/",
+    "menuUrl": "https://root9dispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Root 9 site prints 1546 Route 9, Wappingers Falls and license OCM-CAURD-24-000195; site exposes online ordering/menu."
   },
   {
     "territory": "upstate",
@@ -1043,11 +1043,11 @@
     "county": "Dutchess",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-12-10",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://www.upstatepines.com/",
+    "menuUrl": "https://www.upstatepines.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Upstate Pines pages print 7345 South Broadway, Red Hook and OCM-RETL-24-000224; site documents Dutchie Pay/delivery ordering."
   },
   {
     "territory": "upstate",
