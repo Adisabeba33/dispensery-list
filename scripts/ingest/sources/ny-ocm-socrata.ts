@@ -39,6 +39,11 @@ export const FIELD_CANDIDATES = {
   issuedDate: ['issued_date', 'issue_date', 'date_issued'],
   effectiveDate: ['effective_date', 'license_effective_date'],
   expirationDate: ['expiration_date', 'expiry_date', 'license_expiration_date'],
+  // The registry records the day a retailer opened its doors. It was being
+  // dropped, and the six original counties got the same fact by hand instead
+  // — which is why the field looked like enrichment rather than registry
+  // truth, and why every upstate record read "status unconfirmed".
+  openedOn: ['retail_date_opened_to_public', 'date_opened_to_public', 'opened_to_public', 'retail_open_date'],
   hours: ['hours_of_operation', 'hours', 'business_hours'],
 } as const;
 

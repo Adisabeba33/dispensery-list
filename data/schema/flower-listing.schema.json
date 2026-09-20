@@ -5,7 +5,15 @@
   "description": "One cannabis FLOWER product currently listed by one licensed dispensary. Flower only — whole bud. Pre-rolls, vapes, concentrates, hash, edibles, tinctures and topicals are out of scope even though some are made from flower. No prices: this project does not compare cost, and collecting price data would turn it into a price aggregator, which is both outside its purpose and the part of a menu platforms defend hardest.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["listingId", "licenseNumber", "capturedAt", "strainNameRaw", "inStock", "terpenes", "sources"],
+  "required": [
+    "listingId",
+    "licenseNumber",
+    "capturedAt",
+    "strainNameRaw",
+    "inStock",
+    "terpenes",
+    "sources"
+  ],
   "properties": {
     "listingId": {
       "type": "string",
@@ -28,28 +36,79 @@
       "description": "Exactly as printed on the menu, including punctuation and numbering: 'Gelato #33', 'Blue Dream '. Never cleaned up in this field."
     },
     "strainNameCanonical": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Normalized for matching: lowercase, '#' dropped, spacing collapsed — 'gelato 33'. Null when the raw name cannot be confidently resolved to a known strain, which is common for house crosses."
     },
     "brand": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "The cultivator. As important as the strain name: the same genetics grown by two people is two different products by taste, which is why a recommendation keyed on strain alone is approximate."
     },
+    "brandKey": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-z0-9]+$",
+      "description": "The cultivator's identity, derived from `brand` so the same operation is one thing across shops. The register stores a brand exactly as each shop prints it, which is right — `brand` is evidence — but it means ElectraLeaf arrives as six spellings (ElectraLeaf, Electraleaf, ELECTRALEAF, Electra Leaf, ElectraLeaf NY, Electraleaf NY) and one outreach target splits six ways. Derived by: strip accents, lowercase, drop everything but letters and digits, and remove the corporate and category words a shop may or may not print — cannabis, co, company, farm(s), lab(s), brand(s), ny, nyc, llc, inc. Across 9,542 listings that collapses 673 spellings to 398 cultivators. Null when the menu states no brand, and null rather than empty when normalization leaves nothing: a key of \"\" would silently merge every anonymous listing."
+    },
     "lineage": {
-      "enum": ["INDICA", "SATIVA", "HYBRID", "INDICA_DOMINANT", "SATIVA_DOMINANT", "CBD", "UNKNOWN"],
+      "enum": [
+        "INDICA",
+        "SATIVA",
+        "HYBRID",
+        "INDICA_DOMINANT",
+        "SATIVA_DOMINANT",
+        "CBD",
+        "UNKNOWN"
+      ],
       "description": "As stated by the menu. UNKNOWN when the menu does not say — never inferred from the strain's reputation."
     },
-    "thcPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
-    "cbdPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
-    "totalCannabinoidsPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "thcPercent": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 100
+    },
+    "cbdPercent": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 100
+    },
+    "totalCannabinoidsPercent": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 100
+    },
     "terpenes": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["source", "profile"],
+      "required": [
+        "source",
+        "profile"
+      ],
       "description": "The sensory core of the record, and the field most often missing. `source` decides how a recommendation built on it may be phrased, so it is required and never guessed.",
       "properties": {
         "source": {
-          "enum": ["LAB_COA", "MENU_LISTING", "STRAIN_REFERENCE", "NONE"],
+          "enum": [
+            "LAB_COA",
+            "MENU_LISTING",
+            "STRAIN_REFERENCE",
+            "NONE"
+          ],
           "description": "LAB_COA: from this batch's certificate of analysis — the only measurement of what is actually in this jar. MENU_LISTING: percentages the menu states without a linked COA. STRAIN_REFERENCE: the strain's typical profile from the reference table, NOT this batch — a recommendation on this basis is a sensory expectation, not a measurement, and must be presented as such. NONE: nothing known."
         },
         "profile": {
@@ -58,7 +117,9 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["name"],
+            "required": [
+              "name"
+            ],
             "properties": {
               "name": {
                 "enum": [
@@ -68,14 +129,20 @@
                   "FARNESENE", "GERANIOL", "BORNEOL", "TERPINEOL", "PHELLANDRENE",
                   "CARENE", "SABINENE", "FENCHOL", "TERPINENE", "CARYOPHYLLENE_OXIDE", "ISOPULEGOL", "CYMENE", "OTHER"
                 ],
-                "description": "Controlled vocabulary. Menus spell these many ways — 'β-Caryophyllene', 'Beta-Caryophyllene', 'b caryophyllene' all normalize to CARYOPHYLLENE."
+                "description": "Controlled vocabulary. Menus spell these many ways — 'β-Caryophyllene', 'Beta-Caryophyllene', 'b caryophyllene' all normalize to CARYOPHYLLENE. CARYOPHYLLENE_OXIDE is deliberately separate from CARYOPHYLLENE: it is the oxidation product that accumulates as flower ages, and it reads woody and medicinal rather than peppery, so folding it into its parent would report a cured jar as a fresh one."
               },
               "rawName": {
-                "type": ["string", "null"],
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "The spelling used on the source. Required in practice when name is OTHER, so an unmapped terpene is recoverable rather than lost."
               },
               "percent": {
-                "type": ["number", "null"],
+                "type": [
+                  "number",
+                  "null"
+                ],
                 "minimum": 0,
                 "maximum": 20,
                 "description": "Percent by weight. Null when the source names a terpene without quantifying it — a common case worth keeping, since presence still carries sensory information."
@@ -83,44 +150,131 @@
             }
           }
         },
-        "totalPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 20 },
-        "labName": { "type": ["string", "null"] },
-        "testedOn": { "type": ["string", "null"], "format": "date" },
-        "coaUrl": { "type": ["string", "null"], "format": "uri" },
+        "totalPercent": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 20
+        },
+        "labName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "testedOn": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "coaUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
         "referenceStrain": {
-          "type": ["string", "null"],
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Which reference entry the fallback profile came from. Required when source is STRAIN_REFERENCE, so a reader can see what the expectation was based on."
         }
       }
     },
-    "harvestedOn": { "type": ["string", "null"], "format": "date" },
+    "harvestedOn": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
     "packagedOn": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "format": "date",
       "description": "Freshness materially changes terpene content: volatile terpenes evaporate over months. An old package will not taste like its COA."
     },
-    "inStock": { "type": "boolean" },
+    "inStock": {
+      "type": "boolean"
+    },
     "availableSizesGrams": {
-      "type": ["array", "null"],
-      "items": { "type": "number", "exclusiveMinimum": 0 },
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
       "description": "Recorded only when the menu gives it for free, e.g. [3.5, 7, 28]. Kept without price so a reader can see a strain exists only by the ounce. Never a reason to make an extra request."
     },
-    "productUrl": { "type": ["string", "null"], "format": "uri" },
+    "productUrl": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri",
+      "description": "The product's own page on the shop's menu, absolute. Accepted only when the menu states a URL or a root-relative path; a bare slug is dropped rather than built into a link that may not exist. This is the route to a batch id, and therefore the difference between a collected terpene panel being a lead and being a record."
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 2000,
+      "description": "The menu's own copy for this product, tags stripped and whitespace collapsed, otherwise verbatim. Rule 5 in the source hierarchy: written to sell, corroboration only, and NEVER a lone source for a lineage, an aroma or an effect. It is captured because menu copy routinely states parentage and sensory notes for cultivars no aggregator covers, and it costs nothing to take at collection time — but a curator reading it must treat it as a claim by the seller, not a fact about the plant. Null when the menu gives none."
+    },
     "sources": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["url", "type", "retrievedAt"],
+        "required": [
+          "url",
+          "type",
+          "retrievedAt"
+        ],
         "properties": {
-          "url": { "type": "string", "format": "uri" },
-          "label": { "type": ["string", "null"] },
-          "type": { "enum": ["MENU_PLATFORM", "BUSINESS_WEBSITE", "LAB_COA", "DISPENSARY_FEED", "STRAIN_REFERENCE"] },
-          "retrievedAt": { "type": "string", "format": "date-time" }
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "type": {
+            "enum": [
+              "MENU_PLATFORM",
+              "BUSINESS_WEBSITE",
+              "LAB_COA",
+              "DISPENSARY_FEED",
+              "STRAIN_REFERENCE"
+            ]
+          },
+          "retrievedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
         }
       }
     },
-    "warnings": { "type": "array", "items": { "type": "string" } }
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
   }
 }

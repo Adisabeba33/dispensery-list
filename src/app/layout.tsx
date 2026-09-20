@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   },
 };
 
+/* The first four are New York City and Westchester — the register proper, with
+   menus, coordinates and hand-checked opt-outs behind them. Upstate and Long
+   Island are registry imports and nothing more, so they sit after a divider
+   rather than among them: a reader who cannot tell which is which will assume
+   the weaker pages are as complete as the stronger ones. */
 const NAV = [
   { href: '/', label: 'Directory' },
   { href: '/menus/', label: 'Strains' },
@@ -25,6 +30,11 @@ const NAV = [
   { href: '/westchester/', label: 'Westchester' },
   { href: '/about/', label: 'Method' },
   { href: '/legal/', label: 'Notices' },
+];
+
+const TERRITORY_NAV = [
+  { href: '/upstate/', label: 'Upstate' },
+  { href: '/long-island/', label: 'Long Island' },
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -54,6 +64,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   key={item.href}
                   href={item.href}
                   className="rounded-lg px-3 py-2 text-chalk-200 transition-colors hover:bg-ink-800 hover:text-chalk-50"
+                >
+                  {item.label}
+                </Link>
+              ))}
+
+              <span aria-hidden className="mx-1 hidden h-5 w-px bg-ink-700 sm:block" />
+
+              {TERRITORY_NAV.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  title="Registry import only — no menus, hours or opt-out data"
+                  className="rounded-lg px-3 py-2 text-chalk-400 transition-colors hover:bg-ink-800 hover:text-chalk-100"
                 >
                   {item.label}
                 </Link>

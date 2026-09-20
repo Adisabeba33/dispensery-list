@@ -1474,6 +1474,45 @@ const TERPENES = {
   // Spellings seen in the pilot payloads.
   betamyrcene: 'MYRCENE', bmyrcene: 'MYRCENE', alphahumulene: 'HUMULENE',
   betaocimene: 'OCIMENE', alphaterpineol: 'TERPINEOL', alphacedrene: 'OTHER',
+  /* Found by auditing what the register filed as OTHER: 772 entries across ten
+     spellings, most of them real compounds the map simply did not know.
+
+     Caryophyllene oxide is deliberately NOT caryophyllene. It is the oxidation
+     product — the note that arrives as flower ages — and it reads woody and
+     medicinal rather than peppery. Folding it into its parent would report a
+     cured jar as a fresh one. */
+  caryophylleneoxide: 'CARYOPHYLLENE_OXIDE',
+  isopulegol: 'ISOPULEGOL',
+  pcymene: 'CYMENE', paracymene: 'CYMENE', cymene: 'CYMENE',
+  terpinene: 'TERPINENE', alphaterpinene: 'TERPINENE', gammaterpinene: 'TERPINENE',
+};
+
+/* Rows a certificate prints that are NOT compounds. "Total Terpenes" is the
+   sum and belongs in totalPercent; "Other Terpenes" is the residual bucket and
+   belongs nowhere — storing either as a terpene invents a compound and then
+   double-counts the mass it stands for. */
+const TERPENE_TOTAL = /^(total|sum)\s*terp/i;
+const TERPENE_RESIDUAL = /^(other|misc|remaining)\s*terp/i;
+
+/* The compound's name, however the payload nests it.
+   Reading `t.name` alone produced "[object Object]" 394 times in the register:
+   some platforms file the name as an object of its own ({ name: { en: ... } },
+   { terpene: { name: ... } }). A name we cannot read is skipped, never stored
+   as the string "[object Object]" — a placeholder in a controlled vocabulary is
+   worse than an absence, because it looks like data. */
+const terpeneName = (t) => {
+  const seen = new Set();
+  const dig = (v, depth) => {
+    if (typeof v === 'string') return v.trim() || null;
+    if (!v || typeof v !== 'object' || depth > 3 || seen.has(v)) return null;
+    seen.add(v);
+    for (const key of ['name', 'terpene', 'terpeneName', 'label', 'title', 'en', 'value']) {
+      const hit = dig(v[key], depth + 1);
+      if (hit) return hit;
+    }
+    return null;
+  };
+  return dig(t, 0);
 };
 
 const NAME_KEYS = ['name', 'productName', 'title', 'displayName'];
@@ -1535,6 +1574,85 @@ const classify = (p) => {
 
 const inRange = (v, max) => (v === null || v === undefined || v < 0 || v > max ? null : v);
 
+
+/* The cultivator's identity, as opposed to the cultivator's name.
+ *
+ * `brand` stays exactly as the shop printed it, because that is the evidence.
+ * This is what two shops printing the same operation have in common: accents
+ * folded, letters and digits only, and the corporate/category words a shop may
+ * or may not bother with removed. Across the register that turns 673 spellings
+ * into 398 cultivators — ElectraLeaf alone arrives six ways, and without this
+ * one outreach target splits six ways with it.
+ *
+ * Null, never "", when nothing survives: an empty key would quietly merge every
+ * brandless listing into one enormous cultivator. */
+const BRAND_NOISE = /\b(cannabis|co|company|farms?|labs?|brands?|nyc?|llc|inc)\b/g;
+
+const brandKeyOf = (brand) => {
+  if (!brand) return null;
+  const key = String(brand)
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9 ]/g, ' ')
+    .replace(BRAND_NOISE, ' ')
+    .replace(/[^a-z0-9]/g, '');
+  return key || null;
+};
+
+/* A product's own page, when the menu gives one that can actually be opened.
+ *
+ * Menus state this three ways: an absolute URL, a root-relative path, and a
+ * bare slug ("blue-burst"). The first two resolve; the third does not, and
+ * building "https://shop.example/blue-burst" from it would be inventing a link
+ * — the platform's real path might be /product/, /menu/, /shop/p/ or nothing
+ * at all. An empty field beats a plausible guess, so a bare slug is dropped.
+ *
+ * This is the field that turns a collected terpene panel from a lead into a
+ * record: without a product page there is no route to the batch id a tier-C
+ * terpene reading requires, which is why 127 collected panels are unusable. */
+const productPage = (p, sourceUrl) => {
+  const raw = flatten(pick(p, ['productUrl', 'url', 'permalink', 'link', 'href', 'canonicalUrl']));
+  if (!raw || typeof raw !== 'string') return null;
+  const value = raw.trim();
+  if (!value || value.length > 500) return null;
+  try {
+    if (/^https?:\/\//i.test(value)) return new URL(value).toString();
+    if (value.startsWith('/')) return new URL(value, sourceUrl).toString();
+  } catch {
+    return null;
+  }
+  return null;
+};
+
+/* The menu's own words about the product.
+ *
+ * Rule 5 in the source hierarchy — written to sell, corroboration only, never
+ * a lone source for anything. It earns its place anyway: menu copy routinely
+ * states parentage ("a Gelato x Sherb cross") and sensory notes for cultivars
+ * no aggregator covers, and it costs nothing to capture at collection time.
+ *
+ * Stored close to verbatim: tags stripped and whitespace collapsed so it is
+ * readable, but no summarising, because a curator has to see what the shop
+ * actually claimed. Capped so one shop's essay cannot dominate the file. */
+const cleanDescription = (p) => {
+  const raw = flatten(
+    pick(p, ['description', 'productDescription', 'longDescription', 'shortDescription',
+             'details', 'body', 'summary', 'about']),
+  );
+  if (!raw || typeof raw !== 'string') return null;
+  const text = raw
+    .replace(/<br\s*\/?>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&quot;/gi, '"')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return text.length >= 12 ? text.slice(0, 2000) : null;
+};
+
 const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const rawName = flatten(pick(p, ['name', 'productName', 'title', 'displayName']));
   if (!rawName) return null;
@@ -1547,21 +1665,26 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     .replace(/[^a-z]/g, '');
 
   const profile = [];
+  let totalPercent = null;
   const terps = pick(p, ['terpenes', 'terpeneProfile', 'terpenoids', 'terps']);
   if (Array.isArray(terps)) {
     for (const t of terps) {
-      const raw = t && typeof t === 'object' ? t.name ?? t.terpene : t;
+      const raw = terpeneName(t);
       if (!raw) continue;
-      rawTerpNames[String(raw)] = (rawTerpNames[String(raw)] ?? 0) + 1;
-      const mapped = TERPENES[String(raw).toLowerCase().replace(/[^a-z]/g, '')];
+      rawTerpNames[raw] = (rawTerpNames[raw] ?? 0) + 1;
+      const amount = (() => {
+        const v = inRange(num(t && typeof t === 'object' ? t.value ?? t.percent : null), 20);
+        return v === 0 ? null : v;
+      })();
+      // Summary rows are not compounds.
+      if (TERPENE_TOTAL.test(raw)) { totalPercent ??= amount; continue; }
+      if (TERPENE_RESIDUAL.test(raw)) continue;
+      const mapped = TERPENES[raw.toLowerCase().replace(/[^a-z]/g, '')];
       profile.push({
         name: mapped ?? 'OTHER',
-        rawName: mapped ? null : String(raw).slice(0, 60),
+        rawName: mapped ? null : raw.slice(0, 60),
         // A menu that prints 0% is stating nothing, not stating zero.
-        percent: (() => {
-          const v = inRange(num(t && typeof t === 'object' ? t.value ?? t.percent : null), 20);
-          return v === 0 ? null : v;
-        })(),
+        percent: amount,
       });
     }
   }
@@ -1654,6 +1777,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
 
     strainNameCanonical: String(name).toLowerCase().replace(/#/g, '').replace(/\s+/g, ' ').trim() || null,
     brand: brand ? String(brand).slice(0, 120) : null,
+    brandKey: brandKeyOf(brand),
     lineage: LINEAGE[lineageRaw] ?? lineageFromTitle(rawName) ?? 'UNKNOWN',
     thcPercent: inRange(num(pick(p, ['thcContent', 'potencyThc', 'thc', 'thcPercent'])), 100),
     cbdPercent: inRange(num(pick(p, ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent'])), 100),
@@ -1663,7 +1787,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
       // not a measurement, and the schema keeps that distinction.
       source: profile.length ? 'MENU_LISTING' : 'NONE',
       profile,
-      totalPercent: null,
+      totalPercent,
       labName: null,
       testedOn: null,
       coaUrl: null,
@@ -1679,7 +1803,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
           ? stock > 0
           : Boolean(stock),
     availableSizesGrams: sizes.length ? [...new Set(sizes)].sort((a, b) => a - b) : null,
-    productUrl: null,
+    productUrl: productPage(p, sourceUrl),
+    description: cleanDescription(p),
     sources: [{ url: sourceUrl, label: 'Shop menu', type: 'MENU_PLATFORM', retrievedAt: NOW }],
     warnings: [],
   };
@@ -2583,7 +2708,9 @@ const main = async () => {
 };
 
 /** Exported for scripts/menu-parse-check.mjs, which tests them against fixtures. */
-export { classify, categoryText, cleanStrainName, mergeBySize, pagedRequest, sizeFromText, toListing };
+export {
+  brandKeyOf, classify, categoryText, cleanStrainName, mergeBySize, pagedRequest, sizeFromText, toListing,
+};
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   main().catch((e) => {

@@ -13,6 +13,11 @@ import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import Ajv2020, { type ErrorObject } from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
+// The collector's own normalizer, so the check cannot disagree with what
+// writes the field.
+// @ts-expect-error — plain ES module, no types alongside it.
+import { brandKeyOf } from './menu-render.mjs';
+import { TERRITORIES, type Territory, getTerritory, inTerritory } from './ingest/territory.js';
 
 const ROOT = resolve(import.meta.dirname, '..');
 
@@ -75,11 +80,25 @@ const TRADING_STATUS = new Set(['OPEN', 'APPROVED_NOT_OPEN']);
  * 105xx-108xx. A ZIP outside its county's range means the address was pasted
  * from the wrong row, which is exactly the failure this catches.
  */
-const zipMatchesCounty = (zip: string, county: string): boolean => {
+/**
+ * Does the ZIP sit inside the county?
+ *
+ * Only answerable where we hold the county's real ZIP range, which today means
+ * the original six. It used to return FALSE for everything else, which was
+ * correct while nothing else existed and became 562 false failures the moment
+ * upstate arrived — every Erie and Delaware record reported as out of range by
+ * a function that had never been told what their range is.
+ *
+ * `null` means "no range on file", and the caller skips the rule rather than
+ * inventing a verdict. Extending it upstate is real work: a county's ZIP
+ * prefixes have to come from a source, not from a guess. Until they do, an
+ * unchecked field is honest and a fabricated failure is not.
+ */
+const zipMatchesCounty = (zip: string, county: string): boolean | null => {
   const n = Number(zip.slice(0, 3));
   if (county === 'Westchester') return n >= 105 && n <= 108;
   if (NYC_COUNTIES.has(county)) return (n >= 100 && n <= 104) || (n >= 110 && n <= 119);
-  return false;
+  return null;
 };
 
 /**
@@ -117,6 +136,9 @@ const validateDispensaries = (FILE: string, requireRegistry: boolean) => {
   }
 
   const validate = compile('data/schema/dispensary.schema.json');
+  /* Which territory this file belongs to, so a county can be checked against
+     the scope that claims it. The schema deliberately no longer knows. */
+  const territory = TERRITORIES.find((t) => `${t.dataDir}/dispensaries.json` === FILE);
 
   const seenIds = new Map<string, number>();
   const seenLicences = new Map<string, number>();
@@ -168,6 +190,13 @@ const validateDispensaries = (FILE: string, requireRegistry: boolean) => {
     const county = r.address?.county;
     const borough = r.address?.borough ?? null;
     if (typeof county === 'string') {
+      /* A record must sit in the territory whose file it is in. This is the
+         check the schema's county enum used to perform for the original six;
+         moving it here keeps the guarantee — a Brooklyn file cannot hold an
+         Erie shop — while letting each territory define its own scope. */
+      if (territory && !inTerritory(territory, county)) {
+        fail(FILE, at('address.county'), `${county} is not part of ${territory.label}`);
+      }
       if (NYC_COUNTIES.has(county)) {
         const expected = COUNTY_TO_BOROUGH[county];
         if (borough !== expected) {
@@ -179,7 +208,7 @@ const validateDispensaries = (FILE: string, requireRegistry: boolean) => {
 
       // Rule 6 — ZIP must sit inside the county.
       const zip = r.address?.zip;
-      if (typeof zip === 'string' && !zipMatchesCounty(zip, county)) {
+      if (typeof zip === 'string' && zipMatchesCounty(zip, county) === false) {
         fail(FILE, at('address.zip'), `ZIP ${zip} is outside the range for ${county} county`);
       }
     }
@@ -240,8 +269,7 @@ const validateDispensaries = (FILE: string, requireRegistry: boolean) => {
 // Municipalities
 // ---------------------------------------------------------------------------
 
-const validateMunicipalities = () => {
-  const FILE = 'data/municipalities.json';
+const validateMunicipalities = (FILE = 'data/municipalities.json') => {
   const raw = readJson(FILE);
 
   if (raw === undefined) {
@@ -317,6 +345,19 @@ const validateFlowerListings = (FILE: string) => {
     if (!validate(record)) formatAjvErrors(FILE, i, validate.errors);
     const r = record as Record<string, any>;
     const at = (field: string) => `[${i}] ${r.listingId ?? 'unknown'} → ${field}`;
+
+    // brandKey is DERIVED from brand, so the only way it can be wrong is by
+    // drifting — a hand edit, or a second normalizer growing somewhere else.
+    // Recomputing it here with the collector's own function makes drift a
+    // build failure instead of a silently split cultivator.
+    const expectedKey = brandKeyOf(r.brand ?? null);
+    if ((r.brandKey ?? null) !== expectedKey) {
+      fail(
+        FILE,
+        at('brandKey'),
+        `is ${JSON.stringify(r.brandKey ?? null)} but brand ${JSON.stringify(r.brand ?? null)} derives ${JSON.stringify(expectedKey)}`,
+      );
+    }
 
     // A listing is one shelf item at one shop; the pair must be unique.
     const key = `${r.licenseNumber}::${r.listingId}`;
@@ -538,10 +579,70 @@ const validateProducers = (FILE: string) => {
 };
 
 // ---------------------------------------------------------------------------
+// Municipal opt-out coverage
+//
+// Each territory declares in data/territories.json whether it knows its
+// municipal opt-out status. This checks the declaration against the files on
+// disk, in both directions. A territory that claims coverage must have the
+// data; a territory that declares NOT_ESTABLISHED must NOT have a half-filled
+// file sitting there, because that is how a partial collection quietly starts
+// being read as complete. Absence is fine. Absence pretending to be a result
+// is not.
+
+const checkOptOutDeclaration = (t: Territory) => {
+  const FILE = 'data/territories.json';
+  const where = `territories[${t.id}].municipalOptOut`;
+  const decl = t.municipalOptOut;
+  if (!decl) {
+    fail(FILE, where, `territory "${t.id}" does not say whether its municipal opt-out status is known — declare it, even as NOT_ESTABLISHED`);
+    return;
+  }
+  const onDisk = `${t.dataDir}/municipalities.json`;
+  const present = existsSync(resolve(ROOT, onDisk));
+
+  if (decl.status === 'NOT_ESTABLISHED') {
+    if (decl.file !== null) {
+      fail(FILE, where, `status NOT_ESTABLISHED but file is "${decl.file}" — an unknown has no file`);
+    }
+    if (present) {
+      fail(FILE, where, `${onDisk} exists but the territory still declares NOT_ESTABLISHED — either it was collected, in which case say so, or it is partial and should not be on disk at all`);
+    }
+    return;
+  }
+  if (decl.file === null) {
+    fail(FILE, where, `status ${decl.status} claims the opt-out status is known but names no file`);
+    return;
+  }
+  if (!existsSync(resolve(ROOT, decl.file))) {
+    fail(FILE, where, `status ${decl.status} names ${decl.file}, which does not exist`);
+  }
+};
+
+// ---------------------------------------------------------------------------
 
 validateDispensaries('data/dispensaries.json', true);
 validateDispensaries('data/dispensaries.demo.json', false);
+
+/* The other two territories, each validated on its own.
+ *
+ * They are checked against the SAME schema and the same rules — a record from
+ * Erie County has to be as defensible as one from Brooklyn — but they are
+ * never counted together. A file a territory has not collected yet is simply
+ * absent, and absence is not a failure: the register is meant to grow one
+ * territory at a time, and an empty placeholder would claim coverage that
+ * nobody has done. See data/territories.json. */
+for (const t of TERRITORIES) {
+  if (t.dataDir === 'data') continue; // the original scope, validated above
+  const file = `${t.dataDir}/dispensaries.json`;
+  if (existsSync(resolve(ROOT, file))) validateDispensaries(file, true);
+  const listings = `${t.dataDir}/flower-listings.json`;
+  if (existsSync(resolve(ROOT, listings))) validateFlowerListings(listings);
+  const munis = `${t.dataDir}/municipalities.json`;
+  if (existsSync(resolve(ROOT, munis))) validateMunicipalities(munis);
+  checkOptOutDeclaration(t);
+}
 validateMunicipalities();
+checkOptOutDeclaration(getTerritory('nyc'));
 validateFlowerListings('data/flower-listings.json');
 validateStrainReference('data/strain-reference.json');
 validateProducers('data/producers.json');

@@ -23,19 +23,30 @@ data/
   schema/strain-reference.schema.json  fallback terpene profiles by strain
   dispensaries.json                the delivered dataset (empty until research lands)
   dispensaries.demo.json           7-record sample so the site has something to show
-  municipalities.json              Westchester opt-outs + NYC boroughs
+  municipalities.json              Westchester opt-outs + NYC boroughs (hand-checked)
+  territories.json                 the three territories, kept apart — and what each
+                                   one does and does not know about municipal opt-outs
+  upstate/, long-island/           the two newer territories, collected separately
   raw/                             raw registry snapshots, kept as provenance
 docs/
   AGENT_RESEARCH_BRIEF.md          phase 1 — collecting the register from the state
   AGENT_ENRICHMENT_BRIEF.md        phase 2 — menus, geocodes, phones, services
   AGENT_MENU_BRIEF.md              phase 3 — reading flower off the shelves
   RESEARCH_REPORT.md               what phase 1 found, and what it could not
+  STATEWIDE-PLAN.md                covering the rest of New York, and what a 2nd state costs
+  FROZEN-municipal-opt-out.md      opt-out outside NYC: why it is NOT collected, and
+                                   the exact procedure for when it is needed
   SOURCE_COLUMNS.md                the registry's real columns and the filter used
 scripts/
   validate-data.ts                 schema + semantic validation (runs in CI)
   ingest/                          pulls the state registry into the schema
   build-preview.ts                 renders everything into one shareable HTML file
-src/                               the Next.js site
+src/
+  app/                             the Next.js site — / and /westchester/ are the
+                                   NYC register; /upstate/ and /long-island/ are
+                                   registry imports only and say so on the page
+  lib/data.ts                      NYC + Westchester, borough-shaped
+  lib/territory-data.ts            the newer territories, county-shaped, kept apart
 preview/index.html                 generated single-file snapshot
 ```
 

@@ -11,8 +11,8 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  categoryFromProductUrl, classify, cleanStrainName, destinationOf, flattenJsonApiProducts, isProductPage,
-  wallAction,
+  brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, destinationOf,
+  flattenJsonApiProducts, isProductPage, wallAction,
   mergeBySize, pagedRequest, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
@@ -112,6 +112,79 @@ check('unrelated type field', classify({ name: 'Grape Cake', type: 'variant', ca
 // Flower with no weight anywhere is dropped: the shelf view is entirely about
 // which strains come by the eighth, quarter, half or ounce.
 check('flower without a size', toListing({ Name: 'Nameless Bud', type: 'Flower' }, shop, SRC, {}), null);
+
+/* --------------------------------------------------------------- brand key --
+ * The register stores a brand exactly as each shop prints it, which is right.
+ * It also means ElectraLeaf arrives six ways and one outreach target splits
+ * six ways with it. brandKey is the cultivator's identity behind the spelling.
+ */
+check('case and spacing collapse', ['ElectraLeaf', 'ELECTRALEAF', 'Electra Leaf', 'Electraleaf NY'].map(brandKeyOf),
+  ['electraleaf', 'electraleaf', 'electraleaf', 'electraleaf']);
+check('accents fold', brandKeyOf('Boukét'), brandKeyOf('Bouket'));
+check('corporate words dropped', brandKeyOf('Rolling Green Cannabis'), brandKeyOf('Rolling Green'));
+// Null rather than "": an empty key would merge every brandless listing into
+// one enormous cultivator.
+check('nothing left is null, not empty', brandKeyOf('Cannabis Co'), null);
+check('no brand is null', brandKeyOf(null), null);
+// Two genuinely different cultivators must not collide.
+check('different brands stay different', brandKeyOf('Florist Farms') === brandKeyOf('Hurley Grown'), false);
+check('the listing carries it', toListing({ Name: 'X', type: 'Flower', Options: ['3.5g'], brandName: 'ElectraLeaf NY' }, shop, SRC, {})?.brandKey, 'electraleaf');
+
+/* ----------------------------------------------------------------- terpenes --
+ * Audited against what the register actually filed as OTHER: 772 entries over
+ * ten spellings. Four defects, each of which silently lost or invented data.
+ */
+const terps = (list) =>
+  toListing({ Name: 'Zoap', type: 'Flower', Options: ['3.5g'], terpenes: list }, shop, SRC, {})?.terpenes;
+
+// 394 entries were stored under the literal name "[object Object]" because the
+// platform files the compound's name as an object of its own.
+check('nested name read, not stringified',
+  terps([{ name: { en: 'Limonene' }, value: 0.4 } ])?.profile[0],
+  { name: 'LIMONENE', rawName: null, percent: 0.4 });
+check('unreadable name skipped, never stored as a placeholder',
+  terps([{ name: { code: 7 }, value: 0.4 }])?.profile, []);
+
+// Real compounds the map did not know. Caryophyllene oxide is NOT
+// caryophyllene: it is what accumulates as flower ages.
+check('caryophyllene oxide is its own compound',
+  terps([{ name: 'Caryophyllene Oxide', value: 0.2 }])?.profile[0]?.name, 'CARYOPHYLLENE_OXIDE');
+check('isopulegol mapped', terps([{ name: 'Isopulegol', value: 0.1 }])?.profile[0]?.name, 'ISOPULEGOL');
+check('p-cymene mapped', terps([{ name: 'pCymene', value: 0.1 }])?.profile[0]?.name, 'CYMENE');
+check('terpinene mapped', terps([{ name: '\u03b1-Terpinene', value: 0.1 }])?.profile[0]?.name, 'TERPINENE');
+
+// Summary rows are not compounds. Storing them invents one and double-counts
+// the mass it stands for.
+const withTotals = terps([
+  { name: 'Limonene', value: 0.4 },
+  { name: 'Total Terpenes', value: 1.8 },
+  { name: 'Other Terpenes', value: 0.2 },
+]);
+check('total goes to totalPercent', withTotals?.totalPercent, 1.8);
+check('residual bucket dropped', withTotals?.profile.map((t) => t.name), ['LIMONENE']);
+
+/* ------------------------------------------------------- product page + copy --
+ * Both were hardcoded null for every one of 9,542 collected listings, which is
+ * why 127 collected terpene panels are leads rather than records: without a
+ * product page there is no route to the batch id a tier-C reading requires.
+ */
+const withUrl = (v) => toListing({ Name: 'Blue Burst', type: 'Flower', Options: ['3.5g'], url: v }, shop, SRC, {});
+check('absolute product url kept', withUrl('https://x.test/p/a')?.productUrl, 'https://x.test/p/a');
+check('root-relative url resolved', withUrl('/product/b')?.productUrl, 'https://example-dispensary.test/product/b');
+// A bare slug is NOT a URL. Building one would invent a link: the platform's
+// real path might be /product/, /menu/, /shop/p/ or nothing at all.
+check('bare slug refused', withUrl('blue-burst')?.productUrl, null);
+check('junk url refused', withUrl('javascript:void(0)')?.productUrl, null);
+check('missing url stays null', toListing({ Name: 'X', type: 'Flower', Options: ['3.5g'] }, shop, SRC, {})?.productUrl, null);
+
+const withDesc = (v) => toListing({ Name: 'Blue Burst', type: 'Flower', Options: ['3.5g'], description: v }, shop, SRC, {});
+check('menu copy kept, tags stripped',
+  withDesc('<p>A <b>Gelato</b> x Sherb cross, sweet citrus.</p>')?.description,
+  'A Gelato x Sherb cross, sweet citrus.');
+check('entities decoded', withDesc('Sweet &amp; loud, the grower&#39;s pick')?.description, "Sweet & loud, the grower's pick");
+// Rule 5 evidence is only worth keeping when there is a sentence to read.
+check('too short to be copy', withDesc('Nice')?.description, null);
+check('missing copy stays null', toListing({ Name: 'X', type: 'Flower', Options: ['3.5g'] }, shop, SRC, {})?.description, null);
 
 /* --------------------------------------------- one product per weight ----
  * Some platforms publish each weight as its own product with an empty variants

@@ -13,29 +13,46 @@
  * preserves those enriched fields for licences that already exist in the file.
  */
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { dirname, resolve } from 'node:path';
 import {
   SODA_ENDPOINT,
   REQUIRED_FIELDS,
   RETAIL_TYPE_PATTERNS,
-  SCOPE_COUNTIES,
   fetchAll,
   resolveFieldMap,
   type SocrataRow,
 } from './sources/ny-ocm-socrata.js';
 import { canonicalCounty, read, toDispensary } from './normalize.js';
+import { dataPath, inTerritory, territoryFromArgv } from './territory.js';
 
 const ROOT = resolve(import.meta.dirname, '..', '..');
-const OUT = resolve(ROOT, 'data/dispensaries.json');
+// Which of the three territories this run is for. Absent means nyc, whose
+// dataDir is `data` — i.e. the exact path this script always wrote to.
+const territory = territoryFromArgv();
+const OUT = dataPath(territory, 'dispensaries.json');
 const RAW_DIR = resolve(ROOT, 'data/raw');
 
 const dryRun = process.argv.includes('--dry-run');
+// --from-raw <path> rebuilds from a snapshot already on disk instead of
+// calling the portal. The snapshots in data/raw are the provenance for every
+// record, so a territory can be cut from one without a network round trip —
+// and two territories cut from the SAME snapshot are exactly comparable.
+const fromRawAt = process.argv.indexOf('--from-raw');
+const fromRaw = fromRawAt === -1 ? null : process.argv[fromRawAt + 1];
 const today = new Date().toISOString().slice(0, 10);
 const retrievedAt = new Date().toISOString();
 
 const main = async () => {
-  console.log(`Fetching ${SODA_ENDPOINT} ...`);
-  const rows = await fetchAll(SODA_ENDPOINT, process.env.NY_APP_TOKEN);
+  console.log(`Territory: ${territory.label} → ${territory.dataDir}/dispensaries.json`);
+  let rows: SocrataRow[];
+  if (fromRaw) {
+    const at = resolve(ROOT, fromRaw);
+    console.log(`Reading snapshot ${at} ...`);
+    rows = JSON.parse(readFileSync(at, 'utf8')) as SocrataRow[];
+  } else {
+    console.log(`Fetching ${SODA_ENDPOINT} ...`);
+    rows = await fetchAll(SODA_ENDPOINT, process.env.NY_APP_TOKEN);
+  }
   console.log(`  ${rows.length} rows`);
 
   if (rows.length === 0) throw new Error('Registry returned no rows — refusing to overwrite existing data.');
@@ -59,15 +76,15 @@ const main = async () => {
 
   mkdirSync(RAW_DIR, { recursive: true });
   const rawPath = resolve(RAW_DIR, `ocm-licenses-${today}.json`);
-  if (!dryRun) {
+  if (!dryRun && !fromRaw) {
     writeFileSync(rawPath, JSON.stringify(rows, null, 2));
     console.log(`  raw snapshot → ${rawPath}`);
   }
 
-  // Filter to retail licences inside the phase 1 counties.
+  // Filter to retail licences inside this territory.
   const inScope = rows.filter((row: SocrataRow) => {
     const county = canonicalCounty(read(row, map, 'county'));
-    if (!county || !SCOPE_COUNTIES.includes(county)) return false;
+    if (!inTerritory(territory, county)) return false;
 
     const type = read(row, map, 'licenseType')?.toLowerCase() ?? '';
     if (!RETAIL_TYPE_PATTERNS.some((p) => type.includes(p))) return false;
@@ -77,9 +94,60 @@ const main = async () => {
     return Boolean(read(row, map, 'licenseNumber'));
   });
 
-  console.log(`  ${inScope.length} retail licences in scope`);
+  /* The state publishes some shops TWICE.
+   *
+   * The same licence appears under two location_id values with two spellings
+   * of one address — "43005 State Route 28" and "43005 NY-28" are the same
+   * door in Arkville. That is not a multi-store operator, and treating it as
+   * one would put a shop in the register that does not exist.
+   *
+   * It is not a new problem, only a newly visible one: ten licences in the
+   * original six counties, and 104 upstate, where the scale finally made the
+   * register's own rule — one licence is one location — fail out loud.
+   *
+   * Keeps the first row for each licence, preferring the one with the fuller
+   * address, so the choice is deterministic rather than feed-order luck. */
+  const byLicence = new Map<string, SocrataRow>();
+  let duplicates = 0;
+  for (const row of inScope) {
+    const licence = read(row, map, 'licenseNumber')!;
+    const seen = byLicence.get(licence);
+    if (!seen) {
+      byLicence.set(licence, row);
+      continue;
+    }
+    duplicates += 1;
+    const detail = (r: SocrataRow) =>
+      [read(r, map, 'addressLine1'), read(r, map, 'city'), read(r, map, 'zip')]
+        .filter(Boolean)
+        .join(' ').length;
+    if (detail(row) > detail(seen)) byLicence.set(licence, row);
+  }
+  /* A licence with no premises address is not a shop anyone can visit.
+   *
+   * The registry publishes 152 upstate microbusinesses with no address line at
+   * all — every one of them operational status UNKNOWN — against zero in the
+   * original six counties. They are real licences and the state is right to
+   * list them; a directory whose whole job is to send somebody to a licensed
+   * door is not, because there is no door on file.
+   *
+   * Dropped rather than published with a null address, and COUNTED, so the gap
+   * is visible in the run instead of quietly shrinking the register. */
+  const withAddress = [...byLicence.values()].filter(
+    (row) => read(row, map, 'addressLine1') !== null,
+  );
+  const addressless = byLicence.size - withAddress.length;
+  const deduped = withAddress;
 
-  const records = inScope.map((row) => toDispensary(row, { map, retrievedAt, sourceUrl: SODA_ENDPOINT }));
+  console.log(`  ${deduped.length} retail licences in ${territory.label}`);
+  if (duplicates > 0) {
+    console.log(`  ${duplicates} duplicate row(s) collapsed — the registry lists some shops twice`);
+  }
+  if (addressless > 0) {
+    console.log(`  ${addressless} licence(s) skipped — the registry publishes no premises address for them`);
+  }
+
+  const records = deduped.map((row) => toDispensary(row, { map, retrievedAt, sourceUrl: SODA_ENDPOINT }));
 
   // Carry forward enrichment already present for the same licence, so a re-run
   // refreshes registry facts without discarding hand-collected detail.
@@ -100,7 +168,10 @@ const main = async () => {
       record.seeCategory = old.seeCategory ?? record.seeCategory;
       record.contact = { ...record.contact, ...(old.contact ?? {}) };
       record.address.neighborhood = old.address?.neighborhood ?? null;
-      if (old.dates?.openedOn) record.dates.openedOn = old.dates.openedOn;
+      // The registry now publishes this itself, so it wins. The hand-collected
+      // value only fills the silence it leaves — the other way round would let
+      // a stale note overwrite the source of record.
+      record.dates.openedOn = record.dates.openedOn ?? old.dates?.openedOn ?? null;
       // The registry cannot confirm a shop is trading; only the earlier check can.
       if (old.operationalStatus && old.operationalStatus !== 'UNKNOWN') {
         record.operationalStatus = old.operationalStatus;
@@ -127,7 +198,28 @@ const main = async () => {
     return;
   }
 
+  /* One operator, two shops, one town — a real thing, and the slug is name +
+     city, so it collides. The licence number is the only guaranteed-unique
+     fact we hold, so its tail disambiguates, which is the shape the original
+     scope already carries (…-bronx-000215). Applied after the sort by licence
+     so the suffix a shop gets never depends on feed order. */
+  const bySlug = new Map<string, typeof records>();
+  for (const r of records) {
+    if (!bySlug.has(r.id)) bySlug.set(r.id, []);
+    bySlug.get(r.id)!.push(r);
+  }
+  for (const group of bySlug.values()) {
+    if (group.length < 2) continue;
+    group.sort((a, b) => (a.licenseNumber ?? '').localeCompare(b.licenseNumber ?? ''));
+    for (const r of group) {
+      const tail = (r.licenseNumber ?? '').split('-').pop();
+      if (tail) r.id = `${r.id}-${tail}`;
+    }
+  }
+
   records.sort((a, b) => a.id.localeCompare(b.id));
+  // A territory added after this script was written has no directory yet.
+  mkdirSync(dirname(OUT), { recursive: true });
   writeFileSync(OUT, `${JSON.stringify(records, null, 2)}\n`);
   console.log(`\nWrote ${records.length} records → ${OUT}`);
   console.log('Next: npm run validate');

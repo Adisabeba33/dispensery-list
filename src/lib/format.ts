@@ -34,7 +34,9 @@ export const fullAddress = (d: Dispensary): string =>
  * have no verified geocode, and a maps search on a correct address beats a
  * pin dropped on a guessed one.
  */
-export const mapsUrl = (d: Dispensary): string =>
+export const mapsUrl = (d: {
+  address: { line1: string; city: string; zip: string };
+}): string =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
     `${d.address.line1}, ${d.address.city}, NY ${d.address.zip}`,
   )}`;

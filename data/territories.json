@@ -1,0 +1,63 @@
+{
+  "$comment": "The three territories this register covers, kept deliberately APART. NYC+Westchester is the delivered dataset and keeps the original file paths at data/*.json — nothing about it moves, so nothing about it breaks. Each newer territory owns a directory beside it and is collected, validated and published on its own. They are never merged: coverage, opt-out rules and menu-platform mix all differ by region, and one blended figure would hide every difference. A territory names EITHER the counties it contains or the ones it excludes — upstate is defined by exclusion on purpose, so a county that issues its first licence tomorrow is covered instead of silently dropped by a list written today.",
+  "territories": [
+    {
+      "id": "nyc",
+      "label": "New York City & Westchester",
+      "dataDir": "data",
+      "route": "/",
+      "counties": [
+        "New York",
+        "Kings",
+        "Queens",
+        "Bronx",
+        "Richmond",
+        "Westchester"
+      ],
+      "note": "The original scope. Its files stay at data/*.json — do not move them.",
+      "municipalOptOut": {
+        "status": "HAND_CHECKED",
+        "file": "data/municipalities.json",
+        "note": "Checked one municipality at a time. No NYC borough opted out and Westchester is recorded in full, so the field is settled for this territory. It is also the reference the LOCAL-map adapter is measured against — see scripts/ingest/opt-out.ts --verify."
+      }
+    },
+    {
+      "id": "upstate",
+      "label": "Upstate New York",
+      "dataDir": "data/upstate",
+      "route": "/upstate",
+      "excludeCounties": [
+        "New York",
+        "Kings",
+        "Queens",
+        "Bronx",
+        "Richmond",
+        "Westchester",
+        "Suffolk",
+        "Nassau"
+      ],
+      "note": "Everything above Westchester to the Canadian border — defined as every county that is neither the original scope nor Long Island.",
+      "municipalOptOut": {
+        "status": "NOT_ESTABLISHED",
+        "file": null,
+        "note": "DELIBERATELY FROZEN, not forgotten. Roughly a third of upstate municipalities opted out of retail, and we have not established which. Every page built on this territory must render opt-out as 'not checked' — never as 'no ban'. Thawing it is one command: docs/FROZEN-municipal-opt-out.md."
+      }
+    },
+    {
+      "id": "long-island",
+      "label": "Long Island",
+      "dataDir": "data/long-island",
+      "route": "/long-island",
+      "counties": [
+        "Suffolk",
+        "Nassau"
+      ],
+      "note": "Suffolk and Nassau. Neither upstate nor in the original scope; kept separate so it is never silently folded into either.",
+      "municipalOptOut": {
+        "status": "NOT_ESTABLISHED",
+        "file": null,
+        "note": "DELIBERATELY FROZEN, not forgotten. Same rule as upstate: unknown renders as unknown. docs/FROZEN-municipal-opt-out.md."
+      }
+    }
+  ]
+}
