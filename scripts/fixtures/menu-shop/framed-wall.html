@@ -1,0 +1,38 @@
+<!doctype html><meta charset="utf-8"><title>Welcome</title>
+<style>
+  .wall { position: fixed; inset: 0; display: flex; flex-direction: column;
+          align-items: center; justify-content: center; background: #fff; }
+  #offer { display: none }
+  button { display: block; margin: 8px; padding: 12px 24px; }
+  #offer-close { position: absolute; top: 12px; right: 12px; padding: 6px 12px; }
+</style>
+
+<div class="wall" id="age">
+  <h1>ARE YOU OVER 21?</h1>
+  <button id="age-yes">I am over 21</button>
+  <button id="age-no">I am under 21</button>
+</div>
+
+<!-- And when the age question is out of the way, the loyalty box: a form, a
+     Sign Up, and no words anywhere on the way out. The only thing that closes
+     it is the mark in the corner. -->
+<div class="wall" id="offer">
+  <h2>Join our rewards</h2>
+  <input placeholder="Phone number" />
+  <label><input type="checkbox" checked /> Text me offers.</label>
+  <button id="offer-go">Sign Up</button>
+  <button id="offer-close">&times;</button>
+</div>
+
+<script>
+  const tell = (what) => parent.postMessage(what, '*');
+  const hide = (id) => { document.getElementById(id).style.display = 'none'; };
+  document.getElementById('age-yes').onclick = () => {
+    hide('age');
+    /* The offer does not arrive with the answer; it arrives after it. */
+    setTimeout(() => { document.getElementById('offer').style.display = 'flex'; }, 700);
+  };
+  document.getElementById('age-no').onclick = () => { tell('poison'); hide('age'); };
+  document.getElementById('offer-go').onclick = () => { tell('poison'); hide('offer'); tell('closed'); };
+  document.getElementById('offer-close').onclick = () => { hide('offer'); tell('closed'); };
+</script>

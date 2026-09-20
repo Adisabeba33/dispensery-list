@@ -194,5 +194,23 @@
    "city": "Brooklyn",
    "zip": "11201"
   }
+ },
+ {
+  "id": "fixture-shop-framed",
+  "licenseNumber": "OCM-CAURD-24-000988",
+  "legalName": "Twelfth Fixture Dispensary LLC",
+  "dbaName": "Twelfth Fixture Dispensary",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "PROPRIETARY"
+  },
+  "contact": {
+   "website": "http://localhost:4399/framed"
+  },
+  "address": {
+   "line1": "12 Test St",
+   "city": "Brooklyn",
+   "zip": "11201"
+  }
  }
 ]

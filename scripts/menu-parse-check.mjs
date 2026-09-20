@@ -730,17 +730,42 @@ check('a number the weight left behind goes too',
   t('YES I AM', 'affirm-age');
   t('Yes, I Am', 'affirm-age');
   t('I am 21 or older', 'affirm-age');
+  /* GOOD VIBES asks this way, and for a whole run we walked past it: the
+     branch after "I am" wanted a number next, and the branch for "over 21"
+     wanted those words at the start. The shop was recorded as having no age
+     gate at all. */
+  t('I am over 21', 'affirm-age');
+  t("I'm over 21", 'affirm-age');
 
   // The answer of someone who is not 21. This collector does not give it.
   t('NOT YET', 'refuse');
   t('No, Not Yet', 'refuse');
   t('No', 'refuse');
+  t('I am under 21', 'refuse');
+  t("I'm under 21", 'refuse');
 
   // A shop's own way out of its newsletter box.
   t('No Thanks', 'decline-offer');
   t('No thanks, let me browse', 'decline-offer');
   t('Not now', 'decline-offer');
   t('Close', 'decline-offer');
+
+  /* Read off live pages. Every Dutchie menu carries these two, sitting over
+     the shelf until something closes them; Aroma Farms puts Decline beside
+     Accept on its cookie notice. */
+  t('Close Login Nudge', 'decline-offer');
+  t('Dismiss notification', 'decline-offer');
+  t('Decline', 'decline-offer');
+  t('Decline all', 'decline-offer');
+
+  /* QUBE closes its prize draw with a sign and no word at all. Whole label
+     only: a lone mark is a close control, a word that begins with one is a
+     word. */
+  t('\u00d7', 'decline-offer');
+  t('\u2715', 'decline-offer');
+  t('X', 'decline-offer');
+  t('X marks the spot', 'ignore');
+  t('Xmas Deals', 'ignore');
 
   /* Agreeing to something on behalf of somebody who is not there. "Continue"
      is the one that submits a name and an email on QUBE's prize draw, and it
@@ -749,6 +774,10 @@ check('a number the weight left behind goes too',
   t('Join Now', 'refuse');
   t('Sign Up', 'refuse');
   t('Continue', 'ignore');
+  /* The other half of a cookie notice. Nobody here can agree to it. */
+  t('Accept', 'refuse');
+  t('Accept all', 'refuse');
+  t('Allow all', 'refuse');
 
   /* The accessibility link every site carries, and the reason the decline
      patterns are anchored whole rather than matched loosely on "skip". */

@@ -210,14 +210,17 @@ const robotsAllows = async (url) => {
  * So the words that can only mean "I am of age" outrank the words that merely
  * move a page along, and a control is only pressed if it is the thing you
  * would actually press: on screen, and not behind the wall it belongs to. */
+/* "I am over 21" is Good Vibes' button and it fell between two branches:
+   the one after "i am" wanted "21" next, and the one for "over 21" wanted the
+   words at the start. Read off the live page, like every entry here. */
 const AGE_AFFIRM_CLEAR =
-  /^(yes|yeah|yes[,.!]?\s*i\s*am(\s*21.*)?|i\s*am\s*(of\s*age|21.*)|i'?m\s*21.*|21\s*\+?|21\s*(or|and)\s*(over|older)|over\s*21|yes[,.!]?\s*i'?m\s*over\s*21)$/i;
+  /^(yes|yeah|yes[,.!]?\s*i\s*am(\s*(over|of age)?\s*21.*)?|i'?m?\s*am?\s*(of\s*age|(over\s*)?21.*)|i'?m\s*(over\s*)?21.*|21\s*\+?|21\s*(or|and)\s*(over|older)|over\s*21|yes[,.!]?\s*i'?m\s*over\s*21)$/i;
 const AGE_AFFIRM_VAGUE = /^(enter(\s*site)?|confirm|agree|i agree|continue)$/i;
 
 /* Never pressed on an age wall, whatever else matches. "Not yet" is the
    answer of someone who is not 21, and this collector does not give it. */
 const AGE_DECLINE =
-  /^(no|nope|no[,.!]?\s*not yet|not yet|i am not|i'?m not|no[,.!]?\s*i'?m not.*|under\s*21|not 21|exit|leave|go back|take me back)$/i;
+  /^(no|nope|no[,.!]?\s*not yet|not yet|i am not|i'?m not|no[,.!]?\s*i'?m not.*|i am under\s*21|i'?m under\s*21|under\s*21|not 21|exit|leave|go back|take me back)$/i;
 
 const AGE_WORDS = /(age|older|over|verify|confirm)/i;
 
@@ -242,13 +245,23 @@ const AGE_AFFIRM = new RegExp(`${AGE_AFFIRM_CLEAR.source}|${AGE_AFFIRM_VAGUE.sou
  * terms, and if it is still up this does nothing at all — a decline pressed on
  * an age wall would be a lie in the other direction.
  */
+/* Every entry read off a live shop. The last four came out of one probe:
+   QUBE closes its prize draw with a multiplication sign and no word at all;
+   Aroma Farms puts Decline beside Accept on its cookie notice; and every
+   Dutchie menu carries "Dismiss notification" and "Close Login Nudge", which
+   sit over the shelf until something closes them. */
 const OFFER_DECLINE =
-  /^(no[,.!]?\s*thanks?([,.!]?\s*(let me browse|i'?ll browse|browse)?)?[.!]?|no[,.!]?\s*thank you|not now|maybe later|later|skip([\s-]for[\s-]now)?|dismiss|close|close dialog|continue without.*|browse( only| the site| without)?)$/i;
+  /^(no[,.!]?\s*thanks?([,.!]?\s*(let me browse|i'?ll browse|browse)?)?[.!]?|no[,.!]?\s*thank you|not now|maybe later|later|skip([\s-]for[\s-]now)?|dismiss(\s+\w+)?|close(\s+(dialog|login nudge|modal|popup|banner|notification|this))?|decline([\s-]all)?|reject([\s-]all)?|continue without.*|browse( only| the site| without)?)$/i;
+
+/* A close control with no word on it. Read as a whole label only, and only
+   these shapes: the multiplication signs a close button is drawn with, and a
+   lone X. Anything longer is a word that happens to start with one. */
+const OFFER_CLOSE_MARK = /^[×✕✖⨯xX✗✘]$/;
 
 /* Never pressed. Each of these agrees to something on behalf of somebody who
    is not there. */
 const OFFER_ACCEPT =
-  /^(join( now)?|sign ?up|subscribe|submit|get (my )?(offer|discount|code)|spin|spin (the )?wheel|claim|yes.*|count me in|unlock)$/i;
+  /^(join( now)?|sign ?up|subscribe|submit|get (my )?(offer|discount|code)|spin|spin (the )?wheel|claim|yes.*|count me in|unlock|accept([\s-]all)?|allow([\s-]all)?)$/i;
 
 const MAX_OFFERS_DISMISSED = 3;
 
@@ -263,6 +276,8 @@ const MAX_OFFERS_DISMISSED = 3;
  *   NOT YET  · No, Not Yet            never pressed
  *   No Thanks · No thanks, let me browse   decline the offer
  *   Join Now · Continue · Shop Now    never pressed
+ *   ×                                 decline the offer — a close control
+ *                                     drawn instead of written
  *   Skip to main content              never pressed — the accessibility link
  *                                     every site carries, and the reason the
  *                                     decline patterns are anchored whole
@@ -274,74 +289,199 @@ export const wallAction = (text) => {
   if (AGE_AFFIRM_CLEAR.test(words)) return 'affirm-age';
   if (OFFER_ACCEPT.test(words)) return 'refuse';
   if (OFFER_DECLINE.test(words)) return 'decline-offer';
+  if (OFFER_CLOSE_MARK.test(words)) return 'decline-offer';
   return 'ignore';
 };
 
-const dismissOffers = async (page) => {
+/**
+ * Everywhere a wall can be standing: the page, and anything the page has
+ * framed.
+ *
+ * SOULMATE's loyalty box is an AlpineIQ page in a frame of its own, and the
+ * only control visible in it was "Sign Up" — the thing that closes it lives
+ * inside that frame, where nothing was looking. So a frame is read like the
+ * page it sits in.
+ *
+ * Two frames are left alone. A captcha frame is never touched, by the rule
+ * that already refuses to follow a captcha's address (NEVER_FOLLOW, declared
+ * with destinationOf further down) — a click inside a challenge is an attempt
+ * at the challenge. And a frame drawn at no size is nothing a visitor can see,
+ * so it holds nothing a visitor could press.
+ */
+const MAX_WALL_FRAMES = 12;
+
+/* A frame that does not answer is a frame we walk past. Nothing here is worth
+   a stall: a page with a dozen frames and no cap would spend the whole shop's
+   budget asking them each whether anyone is home. The work behind an
+   abandoned wait is dropped with the page when the shop is done. */
+const FRAME_PATIENCE_MS = 5000;
+
+const within = async (promise, fallback) => {
+  let timer;
+  /* The catch goes on the promise itself, not on the race. Once the race has
+     been won by the clock, a rejection arriving afterwards has nobody left to
+     tell, and an unhandled one takes the whole process down with it. */
+  const answered = Promise.resolve(promise).catch(() => fallback);
+  try {
+    return await Promise.race([
+      answered,
+      new Promise((resolve) => {
+        timer = setTimeout(() => resolve(fallback), FRAME_PATIENCE_MS);
+      }),
+    ]);
+  } finally {
+    clearTimeout(timer);
+  }
+};
+
+const wallFrames = async (page) => {
+  let frames;
+  try {
+    frames = page.frames();
+  } catch {
+    return [];
+  }
+  const main = page.mainFrame();
+  const found = [];
+  for (const frame of frames) {
+    if (found.length >= MAX_WALL_FRAMES) break;
+    try {
+      if (frame.isDetached()) continue;
+      const url = frame.url() ?? '';
+      if (url && NEVER_FOLLOW.test(url)) continue;
+    } catch {
+      continue;
+    }
+    if (frame === main) {
+      found.push(frame);
+      continue;
+    }
+    /* Drawn at a size, in the page that holds it. */
+    let element = null;
+    try {
+      element = await within(frame.frameElement(), null);
+      if (!element) continue;
+      const box = await within(element.boundingBox(), null);
+      if (box && box.width > 0 && box.height > 0) found.push(frame);
+    } catch {
+      /* A frame we cannot reach from the outside is a frame we leave alone. */
+    } finally {
+      if (element) await element.dispose().catch(() => {});
+    }
+  }
+  return found;
+};
+
+/* Which frame a wall turned out to be standing in — nothing when it was the
+   page itself. Without this there is no way to tell, next run, whether looking
+   into frames found anything at all. Hosts only: the rest of the address is a
+   session key on some of these. */
+const noteFrame = (page, frame, entry) => {
+  if (!entry) return;
+  try {
+    if (frame === page.mainFrame()) return;
+    const host = new URL(frame.url()).host;
+    if (!host) return;
+    const seen = entry.walledFrames ?? [];
+    if (!seen.includes(host)) entry.walledFrames = [...seen, host];
+  } catch {
+    /* A frame with no address of its own is a frame we cannot name. */
+  }
+};
+
+/**
+ * Decline one offer in one frame, if there is one to decline.
+ *
+ * Returns `{ wall: true }` when the age question is still up in that frame —
+ * the caller stops there, because a decline pressed on an age wall is the
+ * wrong answer to a question we do mean to answer.
+ */
+const declineOneOffer = async (frame) => {
+  try {
+    return await frame.evaluate(
+      ({ decline, mark, accept, clear, ageDecline }) => {
+        const isDecline = new RegExp(decline, 'i');
+        const isMark = new RegExp(mark);
+        const isAccept = new RegExp(accept, 'i');
+        const onScreen = (el) => {
+          const box = el.getBoundingClientRect();
+          if (box.width <= 0 || box.height <= 0) return false;
+          const cx = box.left + box.width / 2;
+          const cy = box.top + box.height / 2;
+          if (cx < 0 || cy < 0 || cx > innerWidth || cy > innerHeight) return false;
+          const atPoint = document.elementFromPoint(cx, cy);
+          return Boolean(atPoint && (el === atPoint || el.contains(atPoint) || atPoint.contains(el)));
+        };
+        const controls = [
+          ...document.querySelectorAll(
+            'button, a, input[type="button"], [role="button"], [aria-label]',
+          ),
+        ];
+        const wordsOf = (el) =>
+          (el.innerText || el.value || el.getAttribute('aria-label') || '').trim();
+
+        /* Is the age wall still up? Not "does the page say 21" — it does,
+           long after: QUBE prints "You Must Be 21+ To Access This Site"
+           across the top of the newsletter box that comes next, so a test on
+           the words would refuse to touch anything, for ever. The wall is up
+           when its buttons are: a visible "YES I AM" or "NOT YET". Once
+           pressed, those are gone and the words are not. */
+        const isClear = new RegExp(clear, 'i');
+        const isAgeDecline = new RegExp(ageDecline, 'i');
+        const wallUp = controls.some((el) => {
+          const words = wordsOf(el);
+          if (!words || words.length > 40) return false;
+          if (!isClear.test(words) && !isAgeDecline.test(words)) return false;
+          return onScreen(el);
+        });
+        if (wallUp) return { wall: true };
+        for (const el of controls) {
+          const words = wordsOf(el);
+          if (!words || words.length > 45) continue;
+          if (isAccept.test(words)) continue;
+          if (!isDecline.test(words) && !isMark.test(words)) continue;
+          if (!onScreen(el)) continue;
+          el.click();
+          return { label: words.replace(/\s+/g, ' ').slice(0, 45) };
+        }
+        return null;
+      },
+      {
+        decline: OFFER_DECLINE.source,
+        mark: OFFER_CLOSE_MARK.source,
+        accept: OFFER_ACCEPT.source,
+        clear: AGE_AFFIRM_CLEAR.source,
+        ageDecline: AGE_DECLINE.source,
+      },
+    );
+  } catch {
+    /* A frame that navigated out from under us, or one we may not read. */
+    return null;
+  }
+};
+
+const dismissOffers = async (page, entry) => {
   const pressed = [];
   let waitedOnce = false;
   /* Rounds count what was pressed plus the one patient look after the last of
      them, so a shop with three offers is not cut short by its own pauses. */
   for (let round = 0; round < MAX_OFFERS_DISMISSED * 2; round += 1) {
-    let label;
-    try {
-      label = await page.evaluate(
-        ({ decline, accept, clear, ageDecline }) => {
-          const isDecline = new RegExp(decline, 'i');
-          const isAccept = new RegExp(accept, 'i');
-          const onScreen = (el) => {
-            const box = el.getBoundingClientRect();
-            if (box.width <= 0 || box.height <= 0) return false;
-            const cx = box.left + box.width / 2;
-            const cy = box.top + box.height / 2;
-            if (cx < 0 || cy < 0 || cx > innerWidth || cy > innerHeight) return false;
-            const atPoint = document.elementFromPoint(cx, cy);
-            return Boolean(atPoint && (el === atPoint || el.contains(atPoint) || atPoint.contains(el)));
-          };
-          const controls = [
-            ...document.querySelectorAll(
-              'button, a, input[type="button"], [role="button"], [aria-label]',
-            ),
-          ];
-          const wordsOf = (el) =>
-            (el.innerText || el.value || el.getAttribute('aria-label') || '').trim();
-
-          /* Is the age wall still up? Not "does the page say 21" — it does,
-             long after: QUBE prints "You Must Be 21+ To Access This Site"
-             across the top of the newsletter box that comes next, so a test on
-             the words would refuse to touch anything, for ever. The wall is up
-             when its buttons are: a visible "YES I AM" or "NOT YET". Once
-             pressed, those are gone and the words are not. */
-          const isClear = new RegExp(clear, 'i');
-          const isAgeDecline = new RegExp(ageDecline, 'i');
-          const wallUp = controls.some((el) => {
-            const words = wordsOf(el);
-            if (!words || words.length > 40) return false;
-            if (!isClear.test(words) && !isAgeDecline.test(words)) return false;
-            return onScreen(el);
-          });
-          if (wallUp) return null;
-          for (const el of controls) {
-            const words = wordsOf(el);
-            if (!words || words.length > 45) continue;
-            if (isAccept.test(words)) continue;
-            if (!isDecline.test(words)) continue;
-            if (!onScreen(el)) continue;
-            el.click();
-            return words.replace(/\s+/g, ' ').slice(0, 45);
-          }
-          return null;
-        },
-        {
-          decline: OFFER_DECLINE.source,
-          accept: OFFER_ACCEPT.source,
-          clear: AGE_AFFIRM_CLEAR.source,
-          ageDecline: AGE_DECLINE.source,
-        },
-      );
-    } catch {
-      return pressed;
+    let label = null;
+    let wallUp = false;
+    for (const frame of await wallFrames(page)) {
+      const answer = await within(declineOneOffer(frame), null);
+      if (!answer) continue;
+      if (answer.wall) {
+        wallUp = true;
+        break;
+      }
+      label = answer.label;
+      noteFrame(page, frame, entry);
+      break;
     }
+    /* The age question is up somewhere. It gets answered by affirmAge, and
+       until it is, nothing underneath it is ours to press. */
+    if (wallUp) break;
     if (!label) {
       /* Nothing to decline this instant does not mean nothing is coming. QUBE
          answers its newsletter box by raising a prize draw behind it, and the
@@ -369,23 +509,28 @@ const dismissOffers = async (page) => {
  * the wall rather than the menu.
  */
 const clearWalls = async (page, entry) => {
-  if (await affirmAge(page)) entry.ageGate = true;
-  const pressed = await dismissOffers(page);
+  if (await affirmAge(page, entry)) entry.ageGate = true;
+  const pressed = await dismissOffers(page, entry);
   if (pressed.length) {
     entry.offersDismissed = [...(entry.offersDismissed ?? []), ...pressed];
-    if (await affirmAge(page)) entry.ageGate = true;
+    if (await affirmAge(page, entry)) entry.ageGate = true;
   }
 };
 
-const affirmAge = async (page) => {
+const askedAgeIn = async (frame) => {
   try {
-    const asking = await page.evaluate((words) => {
+    return await frame.evaluate((words) => {
       const t = document.body?.innerText ?? '';
       return /\b21\b/.test(t) && new RegExp(words, 'i').test(t);
     }, AGE_WORDS.source);
-    if (!asking) return false;
+  } catch {
+    return false;
+  }
+};
 
-    const clicked = await page.evaluate(
+const answerAgeIn = async (frame) => {
+  try {
+    return await frame.evaluate(
       ({ clear, vague, decline }) => {
         const isClear = new RegExp(clear, 'i');
         const isVague = new RegExp(vague, 'i');
@@ -424,11 +569,26 @@ const affirmAge = async (page) => {
         decline: AGE_DECLINE.source,
       },
     );
-    if (clicked) await page.waitForTimeout(2500);
-    return clicked;
   } catch {
     return false;
   }
+};
+
+/**
+ * Answer the age question wherever it is being asked.
+ *
+ * The page first, then its frames — a Dutchie menu asks inside its own frame,
+ * and until now that question went unanswered and the shelf behind it unread.
+ */
+const affirmAge = async (page, entry) => {
+  for (const frame of await wallFrames(page)) {
+    if (!(await within(askedAgeIn(frame), false))) continue;
+    if (!(await within(answerAgeIn(frame), false))) continue;
+    noteFrame(page, frame, entry);
+    await page.waitForTimeout(2500);
+    return true;
+  }
+  return false;
 };
 
 /**
