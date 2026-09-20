@@ -1,0 +1,40 @@
+name: Probe — the twelve the last log cut off
+on: push
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Look at the shapes
+        run: |
+          node scripts/menu-render.mjs \
+            --only OCM-CAURD-24-000127,OCM-CAURD-24-000065,OCM-RETL-26-000511,OCM-RETL-24-000061,OCM-RETL-24-000076,OCM-CAURD-25-000230,OCM-CAURD-23-000003,OCM-CAURD-26-000359,MM0407D,OCM-CAURD-24-000052,OCM-RETL-24-000078,OCM-RETL-24-000197 \
+            --dump-shapes 10 || true
+      - name: Print it, briefly
+        run: |
+          python3 - <<'PY'
+          import json
+          d = json.load(open('enrichment-output/menu-summary.json'))
+          for s in d.get('perShop', []):
+              print('=' * 70)
+              print(f"{s.get('shop')}  status={s.get('status')}  "
+                    f"payloads={s.get('payloads')} seen={s.get('productsSeen')} flower={s.get('flower')} "
+                    f"settled={s.get('settled')} ageGate={s.get('ageGate')}")
+              print(f"  on: {str(s.get('landedOn'))[:100]}")
+              if s.get('walledFrames'): print(f"  frames: {s['walledFrames']}")
+              if s.get('offersDismissed'): print(f"  closed: {s['offersDismissed']}")
+              if s.get('rejected'): print(f"  rejected: {json.dumps(s['rejected'])[:200]}")
+              print(f"  top: {' | '.join(str(k)[:60] for k in (s.get('topLevelKeys') or []))[:240]}")
+              # Только массивы, а не служебные ветки — остальное уже насмотрелись.
+              for c in (s.get('shapes') or []):
+                  if any(w in str(c).lower() for w in ('taxconfig', 'banner', 'schedule', 'theme', 'urls [', 'features')):
+                      continue
+                  print(f"    {str(c)[:300]}")
+          PY
