@@ -70,16 +70,6 @@
     "notes": "First-party Store page exposes Flower through cat=flower and locId=1; page footer identifies the New York store at 74-03 Metropolitan Ave, Queens. This is the full Flower category rather than the generic /store/new-york/ landing page."
   },
   {
-    "licenseNumber": "OCM-CAURD-24-000088",
-    "menuUrl": "https://blackmarketcanna.co/",
-    "platform": "OTHER",
-    "robotsAllows": null,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "click-through",
-    "checkedAt": "2026-09-20",
-    "notes": "Black Market Canna first-party site at 89 Main St exposes Shop Now and Flower browse."
-  },
-  {
     "licenseNumber": "OCM-CAURD-24-000092",
     "menuUrl": "https://518bakery.com/shop/?dtche%5Bcategory%5D=flower",
     "platform": "DUTCHIE",
