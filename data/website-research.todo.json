@@ -2768,11 +2768,11 @@
     "county": "Orange",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-08",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://cannabishuts.com/",
+    "menuUrl": "https://cannabishuts.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Cannabis Huts site identifies 165 S Plank Rd, Newburgh and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2783,11 +2783,11 @@
     "county": "Orange",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-11",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://cannablissrecreational.com/",
+    "menuUrl": "https://cannablissrecreational.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Cannabliss Recreational site identifies 217 S Plank Rd, Newburgh and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2828,11 +2828,11 @@
     "county": "Orange",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-14",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://greenleafnewburgh.com/",
+    "menuUrl": "https://greenleafnewburgh.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Green Leaf site identifies 1400 Route 300, Newburgh and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -2843,11 +2843,11 @@
     "county": "Orange",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-12-31",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://happytreecannabis.com/",
+    "menuUrl": "https://happytreecannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Happy Tree site identifies 99 Route 17K, Newburgh and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2873,11 +2873,11 @@
     "county": "Orange",
     "licenseType": "MICROBUSINESS",
     "registrySaysOpened": "2026-04-20",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://newburghkushfactory.com/",
+    "menuUrl": "https://newburghkushfactory.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Newburgh Kush Factory site identifies 1255 NY-300, Newburgh and provides cannabis retail/product information."
   },
   {
     "territory": "upstate",
@@ -2903,11 +2903,11 @@
     "county": "Orange",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-01-15",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://rosebudclubny.com/",
+    "menuUrl": "https://rosebudclubny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Rosebud Club site identifies 400 North Galleria Dr, Middletown and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2933,11 +2933,11 @@
     "county": "Orange",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-06",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://whiteatmoss.com/",
+    "menuUrl": "https://whiteatmoss.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party White Atmoss site identifies 200 Lake St, Newburgh and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -3188,11 +3188,11 @@
     "county": "Rockland",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-05-04",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://tokecannabis.com/",
+    "menuUrl": "https://tokecannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Toke Cannabis site identifies Rockland/Spring Valley location at 2 S Central Ave and exposes online menu/order."
   },
   {
     "territory": "upstate",
