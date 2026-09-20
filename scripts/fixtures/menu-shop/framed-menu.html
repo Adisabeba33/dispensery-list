@@ -1,0 +1,29 @@
+<!doctype html><meta charset="utf-8"><title>Menu — Twelfth Fixture Dispensary</title>
+<style>
+  #wall { position: fixed; inset: 0; width: 100%; height: 100%;
+          border: 0; z-index: 9; background: #fff; }
+</style>
+
+<!-- The age question and the offer behind it both live in here. Read from the
+     outside this page says nothing about 21 and carries no button at all. -->
+<iframe id="wall" src="/framed-wall" title="Welcome"></iframe>
+
+<div id="menu">loading…</div>
+<script>
+  /* Same well, same poison: anything pressed on behalf of a person who is not
+     here means the shelf is never served, so a shelf coming back is proof
+     that only the age question was answered and only the close mark was
+     pressed. */
+  let submitted = false;
+  const shelf = async () => {
+    const r = await fetch(submitted ? '/api/empty.json' : '/api/products.json?page=0&perPage=5');
+    const j = await r.json();
+    document.getElementById('menu').textContent = (j.data.products || []).length + ' products';
+  };
+  addEventListener('message', (e) => {
+    if (e.data === 'poison') { submitted = true; return; }
+    if (e.data !== 'closed') return;
+    document.getElementById('wall').style.display = 'none';
+    shelf();
+  });
+</script>

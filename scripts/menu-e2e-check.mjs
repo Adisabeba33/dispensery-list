@@ -75,7 +75,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '11',
+    '--limit', '12',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -259,6 +259,19 @@ try {
      a list. */
   check('the total was read through its wrapper', search?.declaredTotal, 3);
   check('and the facet buckets were not read as products', search?.productsSeen, 3);
+
+  /* The same walls, one frame down. Read from outside, the menu page says
+     nothing about 21 and carries no button at all: the age question and the
+     loyalty box behind it are both served in a frame of their own, the way
+     SOULMATE's arrives from lab.alpineiq.com. And the only way out of that
+     box is a multiplication sign with no word on it.
+
+     This fixture poisons itself too: press Sign Up or "I am under 21" and the
+     shelf is never served. */
+  const framed = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000988');
+  check('the age question inside the frame was answered', framed?.ageGate, true);
+  check('and the box behind it was closed by its mark', framed?.offersDismissed, ['\u00d7']);
+  check('so the shelf behind the frame came back', framed?.flower, 2);
 
   // Shelves the run did not visit must survive it.
   check('other shelves carried forward', summary.shelvesCarriedForward > 0, true);

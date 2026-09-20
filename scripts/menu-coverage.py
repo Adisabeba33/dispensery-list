@@ -48,6 +48,7 @@ KEEP = (
     "categories",
     "ageGate",
     "offersDismissed",
+    "walledFrames",
     "foundMenuByGuess",
     "guessedMenuPaths",
     "foundMenuOnSecondLook",
@@ -392,6 +393,25 @@ def report():
             f"**{shop_name(r)}**: {', '.join(r['offersDismissed'])}"
             + (f" → {r['flower']} сортов" if (r.get("flower") or 0) > 0 else " → всё равно пусто")
             for r in sorted(offers, key=lambda r: -(r.get("flower") or 0))
+        ],
+        limit=25,
+    )
+
+    # Стены, которые стояли не на самой странице, а во вложенном фрейме.
+    framed = [r for r in rows if r.get("walledFrames")]
+    framed_got = [r for r in framed if (r.get("flower") or 0) > 0]
+    section(
+        lines,
+        "Стена стояла во фрейме",
+        f"У {len(framed)} магазинов возрастной вопрос или окно с предложением\n"
+        f"жили не на самой странице, а во вложенном фрейме; полка после этого\n"
+        f"нашлась у {len(framed_got)}. Раньше мы туда не смотрели вовсе:\n"
+        "страница снаружи выглядела чистой, а пройти её было нечем.\n"
+        "Фрейм с капчей не трогаем — то же правило, что и с её адресом.",
+        [
+            f"**{shop_name(r)}**: {', '.join(r['walledFrames'])}"
+            + (f" → {r['flower']} сортов" if (r.get("flower") or 0) > 0 else " → всё равно пусто")
+            for r in sorted(framed, key=lambda r: -(r.get("flower") or 0))
         ],
         limit=25,
     )
