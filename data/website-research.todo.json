@@ -3113,11 +3113,11 @@
     "county": "Rockland",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-18",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://296cannabis.com/",
+    "menuUrl": "https://296cannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party 296 Cannabis site identifies 296 Route 59, Airmont and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -3128,11 +3128,11 @@
     "county": "Rockland",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-21",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://cannabiscompanyny.com/",
+    "menuUrl": "https://cannabiscompanyny.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Cannabis Company of New York site identifies 76 Route 59, Spring Valley and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3263,11 +3263,11 @@
     "county": "Saratoga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-03-28",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://tridentru.com/",
+    "menuUrl": "https://tridentru.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Trident site identifies 131-135 Saratoga Ave, South Glens Falls and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -3278,11 +3278,11 @@
     "county": "Schenectady",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-18",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://1650dispensary.com/",
+    "menuUrl": "https://1650dispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party 1650 Crane Street Dispensary site identifies 1650 Crane St, Schenectady and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3518,11 +3518,11 @@
     "county": "Tompkins",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-04",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://ithacacannabis.com/",
+    "menuUrl": "https://ithacacannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party retail site identifies 105 Dryden Rd, Ithaca; matched to ATNC Inc license row and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -3638,11 +3638,11 @@
     "county": "Ulster",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-01",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://daydreamdispensary.com/",
+    "menuUrl": "https://daydreamdispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Day Dream Dispensary site identifies 600 State Route 299, Highland and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -3668,11 +3668,11 @@
     "county": "Ulster",
     "licenseType": "MICROBUSINESS",
     "registrySaysOpened": "2025-12-24",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://greengoatgardens.com/",
+    "menuUrl": "https://greengoatgardens.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Green Goat Gardens site identifies 3 Cherry Hill Rd, New Paltz and provides cannabis retail/product information."
   },
   {
     "territory": "upstate",
@@ -3698,11 +3698,11 @@
     "county": "Ulster",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-09-01",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://kingstoncannabis.com/",
+    "menuUrl": "https://kingstoncannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Kingston Cannabis site identifies 728 Broadway, Kingston and exposes online menu/order."
   },
   {
     "territory": "upstate",
