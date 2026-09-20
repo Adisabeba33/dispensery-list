@@ -75,7 +75,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '12',
+    '--limit', '13',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -272,6 +272,17 @@ try {
   check('the age question inside the frame was answered', framed?.ageGate, true);
   check('and the box behind it was closed by its mark', framed?.offersDismissed, ['\u00d7']);
   check('so the shelf behind the frame came back', framed?.flower, 2);
+
+  /* A menu that answers with records about stock. From outside, each item is
+     { location_id, stock, price, product } — no name, no category — so the
+     whole array was walked past. 4081 Companies and Hush send exactly this on
+     two unrelated platforms, and between them gave a hundred payloads and no
+     products at all. */
+  const stock = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000987');
+  check('the products inside the stock records were found', stock?.stockRecordProducts, 5);
+  check('and read as a shelf', stock?.flower, 2);
+  /* That the price survives the unwrapping is held by a unit case in
+     menu-parse-check.mjs, where the object itself can be looked at. */
 
   // Shelves the run did not visit must survive it.
   check('other shelves carried forward', summary.shelvesCarriedForward > 0, true);

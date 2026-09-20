@@ -13,7 +13,7 @@
 import {
   brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, destinationOf, foreignShelfShare,
   menuKey,
-  flattenJsonApiProducts, isProductPage, wallAction,
+  flattenJsonApiProducts, flattenStockRecords, isProductPage, wallAction,
   mergeBySize, pagedRequest, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
@@ -765,6 +765,113 @@ check('a number the weight left behind goes too',
   check('nor does a parameter pointing at itself', at('https://shop.test/age-gate?r=%2Fage-gate'), null);
   check('a page with no destination at all', at('https://shop.test/menu/flower'), null);
   check('and rubbish is refused, not thrown', at('not a url'), null);
+}
+
+/* Both shapes below were read off live shops by a probe, key for key.
+   4081 Companies (transcendwps.com) sends items of
+     { price, location_id, stock, product }
+   and Hush (hushny.com) sends data of
+     { _id, productDetails, inventoryId, hubQuantity, productPrice, variants, category }
+   Between them: a hundred payloads, and not one product recognised, because
+   from outside neither record has a name. */
+{
+  const fourOhEightOne = {
+    items: [
+      {
+        price: 45,
+        location_id: 26,
+        stock: 7,
+        product: {
+          name: 'Kilimanjaro Mixed Bud',
+          category: 'Flower',
+          brand: '1937',
+          weight: '3.5g',
+          strain: { moods: [{ id: 1, mood: 'calm' }] },
+        },
+      },
+      {
+        price: 70,
+        location_id: 26,
+        stock: 3,
+        product: { name: 'Lemon Sherbert', category: 'Flower', brand: 'JULIA', weight: '7g' },
+      },
+    ],
+  };
+  const lifted = flattenStockRecords([fourOhEightOne]);
+  check('the product inside a stock record is found', lifted.length, 2);
+  check('and it is named by the thing inside', lifted[0].name, 'Kilimanjaro Mixed Bud');
+  /* The price lives on the record, not on the product. Dropping the record
+     would lose it, and with it the size reader's best evidence. */
+  check('the price the record around it knew survives', lifted[0].price, 45);
+  check('so does the stock', lifted[1].stock, 3);
+
+  const hush = {
+    meta: {},
+    data: [
+      {
+        _id: 'a1',
+        inventoryId: 'i1',
+        hubQuantity: 4,
+        totalQuantity: 4,
+        productPrice: 50,
+        variants: [{ weight: '3.5', price: 50 }],
+        category: [{ _id: 'c1', categoryId: 9, categoryName: 'Flower', slug: 'flower' }],
+        productDetails: { productName: 'Blue Dream', productCategory: 'Flower', brandName: 'Somebody' },
+      },
+      {
+        _id: 'a2',
+        inventoryId: 'i2',
+        hubQuantity: 1,
+        totalQuantity: 1,
+        productPrice: 90,
+        variants: [{ weight: '7', price: 90 }],
+        category: [{ _id: 'c1', categoryId: 9, categoryName: 'Flower', slug: 'flower' }],
+        productDetails: { productName: 'Gelato 41', productCategory: 'Flower', brandName: 'Somebody' },
+      },
+    ],
+  };
+  const fromHush = flattenStockRecords([hush]);
+  check('a productDetails record opens the same way', fromHush.length, 2);
+  check('with the name from inside', fromHush[0].productName, 'Blue Dream');
+  check('and the pack sizes from outside', fromHush[1].variants[0].weight, '7');
+}
+
+/* What must NOT be opened. Each of these would turn something that is not a
+   product into one, which is the mistake this register refuses to make. */
+{
+  // A product in its own right. Opening it would throw away its own name.
+  const plain = {
+    rows: [
+      { name: 'Wedding Cake', category: 'Flower', price: 40, product: { id: 1, sku: 'x', note: 'ref' } },
+      { name: 'Gelato', category: 'Flower', price: 40, product: { id: 2, sku: 'y', note: 'ref' } },
+    ],
+  };
+  const kept = flattenStockRecords([plain]);
+  check('a record that already has a name is left alone', kept.length, 0);
+
+  // A reference, not a thing: an id and a slug is not a product.
+  const stubs = {
+    rows: [
+      { price: 10, product: { id: 1, slug: 'a' } },
+      { price: 20, product: { id: 2, slug: 'b' } },
+    ],
+  };
+  check('a stub of two fields is not opened', flattenStockRecords([stubs]).length, 0);
+
+  // Brands and categories are objects too, and they are not products.
+  const brands = {
+    rows: [
+      { count: 12, brand: { id: 1, name: 'Bouket', logo: 'x.png', slug: 'bouket' } },
+      { count: 9, brand: { id: 2, name: '1937', logo: 'y.png', slug: '1937' } },
+    ],
+  };
+  check('a brand beside a count is not a shelf', flattenStockRecords([brands]).length, 0);
+
+  // One record is not an array worth lifting.
+  const single = {
+    items: [{ price: 45, product: { name: 'Solo', category: 'Flower', brand: 'X', weight: '3.5g' } }],
+  };
+  check('one record alone is not lifted', flattenStockRecords([single]).length, 0);
 }
 
 /* Every button here was read off a live shop — QUBE's screenshots and the
