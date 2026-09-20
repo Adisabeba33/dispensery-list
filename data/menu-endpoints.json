@@ -1,13 +1,13 @@
 [
   {
     "licenseNumber": "OCM-CAURD-23-000004",
-    "menuUrl": "https://justbreathelife.org/home-copy/",
-    "platform": "DUTCHIE",
+    "menuUrl": "https://justbreathelife.org/categories/flower/",
+    "platform": "OTHER",
     "robotsAllows": null,
     "flowerVisibleWithoutLogin": true,
-    "ageGate": "click-through",
+    "ageGate": null,
     "checkedAt": "2026-09-20",
-    "notes": "Just Breathe first-party page at 75 Court St exposes full menu and Shop All Flower; Dutchie-backed product embed."
+    "notes": "Opened first-party Flower category for Just Breathe at 75 Court St, Binghamton. Page visibly exposes flower content; unverified robots/age-gate fields left null."
   },
   {
     "licenseNumber": "OCM-CAURD-23-000020",
@@ -68,16 +68,6 @@
     "ageGate": "none",
     "checkedAt": "2026-09-20",
     "notes": "First-party Store page exposes Flower through cat=flower and locId=1; page footer identifies the New York store at 74-03 Metropolitan Ave, Queens. This is the full Flower category rather than the generic /store/new-york/ landing page."
-  },
-  {
-    "licenseNumber": "OCM-CAURD-24-000088",
-    "menuUrl": "https://blackmarketcanna.co/",
-    "platform": "OTHER",
-    "robotsAllows": null,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "click-through",
-    "checkedAt": "2026-09-20",
-    "notes": "Black Market Canna first-party site at 89 Main St exposes Shop Now and Flower browse."
   },
   {
     "licenseNumber": "OCM-CAURD-24-000092",
@@ -162,12 +152,12 @@
   {
     "licenseNumber": "OCM-CAURD-24-000157",
     "menuUrl": "https://www.brownbuddanewyork.co/order-now?dtche%5Bcategory%5D=flower",
-    "platform": "DUTCHIE",
+    "platform": null,
     "robotsAllows": null,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "click-through",
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
     "checkedAt": "2026-09-20",
-    "notes": "Brown Budda Southampton; first-party page gives 1533 County Road 39 and OCM-CAURD-24-000157."
+    "notes": "Brown Budda first-party .co page gives 1533 County Road 39 and OCM-CAURD-24-000157; direct Flower-category URL resolves on the same current .co site. Unrechecked platform/robots/age-gate metadata cleared rather than guessed."
   },
   {
     "licenseNumber": "OCM-CAURD-24-000161",
@@ -198,16 +188,6 @@
     "ageGate": "simple-button",
     "checkedAt": "2026-09-06",
     "notes": "Dutchie is embedded on the first-party Shop page; explicit Flower category avoids the generic menu shell."
-  },
-  {
-    "licenseNumber": "OCM-CAURD-24-000197",
-    "menuUrl": "https://gotham.nyc/locations/",
-    "platform": "OTHER",
-    "robotsAllows": null,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "click-through",
-    "checkedAt": "2026-09-20",
-    "notes": "Gotham Hudson location page identifies 260 Warren St and links online shopping for the location."
   },
   {
     "licenseNumber": "OCM-CAURD-25-000233",
@@ -318,16 +298,6 @@
     "ageGate": "simple-button",
     "checkedAt": "2026-09-06",
     "notes": "menu platform: Sweed; direct Flower category lists products without registration. The gate is a yes/confirm 21+ notice, not a date-of-birth form."
-  },
-  {
-    "licenseNumber": "OCM-CAURD-25-000313",
-    "menuUrl": "https://cannabicity.net/stores/albany-ny/",
-    "platform": "OTHER",
-    "robotsAllows": null,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "click-through",
-    "checkedAt": "2026-09-20",
-    "notes": "Cannabicity Albany store-specific page; 489 Delaware Ave, with Shop This Location and Flower navigation."
   },
   {
     "licenseNumber": "OCM-CAURD-25-000319",
@@ -608,5 +578,15 @@
     "ageGate": "none",
     "checkedAt": "2026-09-20",
     "notes": "Opened Central Park store menu; page store picker marks Central Park current, gives 111 W 110th St and OCM-RETL-26-000511. dtche category selects Flower."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000084",
+    "menuUrl": "https://greensgreenery.dispensary.shop/rec/flower/nb/1u7",
+    "platform": null,
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-20",
+    "notes": "Greens Greenery Flower page visibly lists flower products and prints 54 State Highway 357, Unadilla plus OCM-RETL-24-000084-D1. Platform/robots/age-gate left null because not independently checked."
   }
 ]
