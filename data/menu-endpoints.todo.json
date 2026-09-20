@@ -612,16 +612,16 @@
     "shop": "CONBUD LLC",
     "website": "https://conbud.com",
     "provider": "OTHER",
-    "collectorSaw": "no-products",
+    "collectorSaw": "ok",
     "menuLink": "found",
-    "productsSeen": 0,
+    "productsSeen": 244,
     "ageGateAnswered": true,
     "menuUrl": null,
     "robotsAllows": null,
     "flowerVisibleWithoutLogin": null,
     "ageGate": null,
     "checkedAt": null,
-    "notes": null
+    "notes": "Run #45 (2026-09-20): the endpoint https://conbud.com/stores/conbud-les is the STORE page, not the flower category — 244 products seen, 36 kept, 130 dropped as another category. That is a large improvement on the blog post the collector used to follow (0), so the row stays, but it is still not the shelf. Wanted: the LES store's flower category address."
   },
   {
     "licenseNumber": "OCM-CAURD-24-000136",
@@ -2094,5 +2094,37 @@
     "ageGate": null,
     "checkedAt": null,
     "notes": null
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000450",
+    "shop": "Dankley Canna — Manhattan (FiDi), 85 Nassau St",
+    "website": "https://dankley.com",
+    "provider": "DUTCHIE",
+    "collectorSaw": "no-products",
+    "menuLink": "found",
+    "productsSeen": 0,
+    "ageGateAnswered": false,
+    "menuUrl": null,
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": null,
+    "notes": "Run #45 (2026-09-20): the researched address https://dankley.com/manhattan-store/?dtche%5Bcategory%5D=flower returned 8 payloads and NO products, so the row was removed and this licence is back to hunting. Wanted: the address of the Manhattan store's flower menu that actually answers with products. Dankley embeds Dutchie, and the dtche category parameter did not filter on either of its stores, so the menu is probably served from an iframe or a path the parameter does not reach."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000319",
+    "shop": "Dankley Canna — Queens (Hillside), 219-17 Hillside Ave",
+    "website": "https://dankley.com",
+    "provider": "DUTCHIE",
+    "collectorSaw": "no-flower",
+    "menuLink": "found",
+    "productsSeen": 97,
+    "ageGateAnswered": false,
+    "menuUrl": null,
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": null,
+    "notes": "Run #45 (2026-09-20): the researched address https://dankley.com/queens-store/?dtche%5Bcategory%5D=flower REDIRECTED to /queens-store/dankley-main/ and the category parameter did not apply — 97 products seen, only 8 of them flower, 32 dropped as another category and 57 by title. So it read the whole menu, not the flower category. The row was removed. Wanted: the address that lands on this store's flower category with the filter applied."
   }
 ]

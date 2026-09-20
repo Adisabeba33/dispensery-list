@@ -430,16 +430,6 @@
     "notes": "Verdi Park Slope (360 7th Ave) — слаг verdi-park-slope из ссылки «Shop Park Slope, nyc». Слаг verdi — это Chelsea."
   },
   {
-    "licenseNumber": "OCM-RETL-25-000319",
-    "menuUrl": "https://dankley.com/queens-store/?dtche%5Bcategory%5D=flower",
-    "platform": "DUTCHIE",
-    "robotsAllows": null,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "click-through",
-    "checkedAt": "2026-09-20",
-    "notes": "Queens store page identifies Dankley - Queens (Hillside), 219-17 Hillside Ave; dtche category parameter is the store-specific Flower view."
-  },
-  {
     "licenseNumber": "OCM-RETL-25-000360",
     "menuUrl": "https://www.bkgreenery.com/menu?dtche%5Bcategory%5D=flower",
     "platform": "DUTCHIE",
@@ -458,16 +448,6 @@
     "ageGate": "click-through",
     "checkedAt": "2026-09-20",
     "notes": "Store-specific All Flower route is Green Flower Wellness Ozone Park; site maps it to 8508 Pitkin Ave and licence OCM-RETL-25-000438."
-  },
-  {
-    "licenseNumber": "OCM-RETL-25-000450",
-    "menuUrl": "https://dankley.com/manhattan-store/?dtche%5Bcategory%5D=flower",
-    "platform": "DUTCHIE",
-    "robotsAllows": null,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "click-through",
-    "checkedAt": "2026-09-20",
-    "notes": "Opened Manhattan Flower view identifies Dankley - Manhattan (FiDi), 85 Nassau Street; distinct store page from Queens."
   },
   {
     "licenseNumber": "OCM-RETL-25-000466",
