@@ -2123,11 +2123,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-02-06",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://mjdispensary.com/",
+    "menuUrl": "https://mjdispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party MJ Dispensary site identifies Honeoye Falls location at 201 W Main St; multi-location attribution matched to address and online menu."
   },
   {
     "territory": "upstate",
@@ -2138,11 +2138,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-27",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://mjdispensary.com/",
+    "menuUrl": "https://mjdispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party MJ Dispensary site identifies Rochester/Park Ave location at 649 Park Ave; multi-location attribution matched to address and online menu."
   },
   {
     "territory": "upstate",
@@ -2153,11 +2153,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-11-19",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://mjdispensary.com/",
+    "menuUrl": "https://mjdispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party MJ Dispensary site identifies Spencerport location at 377 S Union St; multi-location attribution matched to address and online menu."
   },
   {
     "territory": "upstate",
@@ -2228,11 +2228,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-02-20",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://flynnstoned.com/",
+    "menuUrl": "https://flynnstoned.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party FlynnStoned site covers Rochester location at 348 N Goodman St; multi-location attribution matched to address."
   },
   {
     "territory": "upstate",
@@ -2453,11 +2453,11 @@
     "county": "Oneida",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-16",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://luxusbotanica.com/",
+    "menuUrl": "https://luxusbotanica.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Luxus Botanica site identifies 8234 Turin Rd, Rome and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
@@ -2483,11 +2483,11 @@
     "county": "Oneida",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-12-17",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://pufftheorycannabis.com/",
+    "menuUrl": "https://pufftheorycannabis.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Puff Theory Cannabis site identifies 221 Oriskany St E, Utica and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2498,11 +2498,11 @@
     "county": "Oneida",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-12-06",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://villagegreendispensary.com/",
+    "menuUrl": "https://villagegreendispensary.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Village Green Dispensary site identifies New Hartford Shopping Center location and exposes online menu/order."
   },
   {
     "territory": "upstate",
@@ -2603,11 +2603,11 @@
     "county": "Onondaga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-06-03",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://meadowflower.com/",
+    "menuUrl": "https://meadowflower.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Meadow Flower site identifies 7621 Oswego Rd, Liverpool and exposes dispensary/menu information."
   },
   {
     "territory": "upstate",
