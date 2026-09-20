@@ -237,6 +237,26 @@ createServer((req, res) => {
     return;
   }
 
+  /* Records about stock, each carrying its product a floor down and keeping
+     the price outside it. Read from the outside these have no name and no
+     category, so the shelf test walks past the whole array — which is what it
+     did on two live shops until the records were opened first. */
+  if (url.pathname === '/api/stock.json') {
+    res.writeHead(200, { 'content-type': 'application/json' });
+    res.end(
+      JSON.stringify({
+        items: PRODUCTS.map((p, i) => ({
+          location_id: 13,
+          stock: 5 - i,
+          /* Only out here. A reader that drops the record loses it. */
+          price: 30 + i * 10,
+          product: { ...p, price: undefined },
+        })),
+      }),
+    );
+    return;
+  }
+
   if (url.pathname === '/api/empty.json') {
     res.writeHead(200, { 'content-type': 'application/json' });
     res.end(JSON.stringify({ data: { products: [] } }));
@@ -268,6 +288,8 @@ createServer((req, res) => {
       '/walled': 'walled.html',
       '/walls': 'walls.html',
       '/walls-menu': 'walls-menu.html',
+      '/stock': 'stock.html',
+      '/stock-menu': 'stock-menu.html',
       '/framed': 'framed.html',
       '/framed-menu': 'framed-menu.html',
       '/framed-wall': 'framed-wall.html',

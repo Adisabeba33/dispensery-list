@@ -1074,6 +1074,80 @@ const unwrapHit = (hit) => {
   return flat;
 };
 
+/**
+ * A record about stock that carries the product one floor down.
+ *
+ * Read from outside, `{ price, location_id, stock, product }` is not a shelf
+ * item: it has no name and no category, so the shelf test walks past the whole
+ * array. The thing with a name is inside `product`. Two shops on two different
+ * platforms send exactly this — 4081 Companies writes `product`, Hush writes
+ * `productDetails` beside inventoryId, hubQuantity and productPrice — and
+ * between them they gave us a hundred payloads and nothing at all.
+ *
+ * Only these field names, spelled out. A rule like "any object-valued field"
+ * would open `category`, `brand` and `strain` too, and start reading brands as
+ * products.
+ */
+const PRODUCT_INSIDE =
+  /^(product|productDetails?|productInfo|productData|catalogItem|catalogProduct)$/i;
+
+const productKeyOf = (record) => {
+  if (!record || typeof record !== 'object' || Array.isArray(record)) return null;
+  /* Already a product in its own right: nothing to open, and opening it would
+     throw away the fields it is named by. */
+  if (Object.keys(record).some((k) => /^(name|productName|title)$/i.test(k))) return null;
+  for (const [k, v] of Object.entries(record)) {
+    if (!PRODUCT_INSIDE.test(k)) continue;
+    if (!v || typeof v !== 'object' || Array.isArray(v)) continue;
+    /* A stub — an id and a slug — is a reference to a product, not one. */
+    if (Object.keys(v).length < 3) continue;
+    return k;
+  }
+  return null;
+};
+
+const isStockRecord = (v) => productKeyOf(v) !== null;
+
+/**
+ * The product, carrying what the record around it knew.
+ *
+ * The price and the pack sizes live outside on both shops — 4081 puts `price`
+ * beside the product, Hush puts `productPrice` and `variants` — so dropping
+ * the outer record would lose the two fields the size reader needs most. The
+ * inner object wins every collision: it is the one that is actually the thing.
+ */
+const unwrapStock = (record) => {
+  const key = productKeyOf(record);
+  if (!key) return record;
+  const { [key]: inner, ...around } = record;
+  return { ...around, ...inner };
+};
+
+/**
+ * Products lifted out of the stock records that wrap them.
+ *
+ * Shaped after flattenSearchHits, and for the same reason: the array is opened
+ * first and judged afterwards, because unopened it cannot pass.
+ */
+export const flattenStockRecords = (payloads) => {
+  const out = [];
+  const walk = (value, depth) => {
+    if (depth > 8 || !value || typeof value !== 'object' || out.length > 4000) return;
+    if (Array.isArray(value)) {
+      const records = value.filter(isStockRecord);
+      if (records.length >= 2) {
+        const unwrapped = records.map(unwrapStock);
+        if (looksLikeShelf(unwrapped)) out.push(...unwrapped);
+      }
+      for (const v of value.slice(0, 400)) walk(v, depth + 1);
+      return;
+    }
+    for (const v of Object.values(value)) walk(v, depth + 1);
+  };
+  for (const payload of payloads) walk(payload, 0);
+  return out;
+};
+
 export const flattenSearchHits = (payloads) => {
   const out = [];
   const walk = (value, depth) => {
@@ -1102,7 +1176,12 @@ const shelvesWithTotals = (value, container = null, depth = 0, out = []) => {
        shelf — and the total sits beside it, under hits.total, where the
        ordinary rule finds it the moment the array is recognised. */
     const hits = value.filter(isSearchHit);
-    const opened = hits.length >= 2 ? hits.map(unwrapHit) : null;
+    const stock = value.filter(isStockRecord);
+    const opened = hits.length >= 2
+      ? hits.map(unwrapHit)
+      : stock.length >= 2
+        ? stock.map(unwrapStock)
+        : null;
     if (looksLikeShelf(value) || (opened && looksLikeShelf(opened))) {
       out.push({ count: value.length, total: totalIn(container) });
     }
@@ -2681,6 +2760,13 @@ const main = async () => {
       if (searchHits.length) {
         entry.searchHitProducts = searchHits.length;
         arrays.push(searchHits);
+      }
+      /* Products wrapped in a record about their stock. Same treatment, same
+         single path downstream. */
+      const stockRecords = flattenStockRecords(payloads);
+      if (stockRecords.length) {
+        entry.stockRecordProducts = stockRecords.length;
+        arrays.push(stockRecords);
       }
 
       /* Asked for, always printed. The condition used to be "only when we

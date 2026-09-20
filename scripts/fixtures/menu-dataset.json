@@ -212,5 +212,23 @@
    "city": "Brooklyn",
    "zip": "11201"
   }
+ },
+ {
+  "id": "fixture-shop-stock",
+  "licenseNumber": "OCM-CAURD-24-000987",
+  "legalName": "Thirteenth Fixture Dispensary LLC",
+  "dbaName": "Thirteenth Fixture Dispensary",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "PROPRIETARY"
+  },
+  "contact": {
+   "website": "http://localhost:4399/stock"
+  },
+  "address": {
+   "line1": "13 Test St",
+   "city": "Brooklyn",
+   "zip": "11201"
+  }
  }
 ]
