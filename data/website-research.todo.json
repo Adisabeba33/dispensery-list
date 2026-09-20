@@ -23,11 +23,11 @@
     "county": "Suffolk",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-12",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://www.brownbuddanewyork.com/",
+    "menuUrl": "https://www.brownbuddanewyork.co/order-now?dtche%5Bcategory%5D=flower",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Brown Budda site gives 1533 County Road 39, Southampton and license OCM-CAURD-24-000157; Order Now is the public menu and accepts the Dutchie Flower category parameter."
   },
   {
     "territory": "long-island",
@@ -68,11 +68,11 @@
     "county": "Suffolk",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-01-23",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://hamptonpremiumgreen.com/",
+    "menuUrl": "https://hamptonpremiumgreen.com/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party site identifies Hampton Premium Green at 978 Montauk Hwy, Water Mill and prints OCM-RETL-24-000094; homepage exposes Browse Our Menu including Flower."
   },
   {
     "territory": "long-island",
@@ -173,11 +173,11 @@
     "county": "Suffolk",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2023-07-07",
-    "website": null,
+    "website": "https://strainstarsny.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party locations page maps Farmingdale to 1815 Broadhollow Rd and prints Strain Stars Farmingdale: OCM-CAURD-23-000016. Multi-location chain, so this evidence specifically identifies the Farmingdale licence."
   },
   {
     "territory": "long-island",
@@ -188,11 +188,11 @@
     "county": "Suffolk",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-06-09",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://strongstrains.com/",
+    "menuUrl": "https://strongstrains.com/stores/strong-strains/categories/flower",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Strong Strains storefront footer gives 19 Technology Dr, Setauket-East Setauket and OCM-CAURD-25-000272; its Shop Our Menu navigation exposes Flower."
   },
   {
     "territory": "upstate",
@@ -203,11 +203,11 @@
     "county": "Albany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2023-12-07",
-    "website": null,
+    "website": "https://420-bliss.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party 420 Bliss contact page gives 740 Hoosick Rd, Troy, NY 12180 and current store phone/hours. Address matches the licensed premises; page also contains obvious template placeholder contact text, so only the matched store address is relied on."
   },
   {
     "territory": "upstate",
@@ -218,11 +218,11 @@
     "county": "Albany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-02-02",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://royaleflower.com/",
+    "menuUrl": "https://royaleflower.com/dutchie-menu/?dtche%5Bcategory%5D=flower",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Royale Flower menu states 7 Point Dispensary INC DBA Royale Flower and license OCM-CAURD-24-000056. Direct Dutchie menu supports Flower category."
   },
   {
     "territory": "upstate",
@@ -278,11 +278,11 @@
     "county": "Albany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2023-12-08",
-    "website": null,
+    "website": "https://capitaldistrictcannabis.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party store locator gives Albany at 997 Central Ave and footer explicitly maps OCM-CAURD-23-000028 to Albany; distinct Clifton Park and Schenectady licences are listed separately."
   },
   {
     "territory": "upstate",
@@ -293,11 +293,11 @@
     "county": "Albany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-07-26",
-    "website": null,
+    "website": "https://cussinscanna.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "New York OCM dispensary verification lists Cussin's Cannabis at 2075 Central Ave, Schenectady with first-party domain cussinscanna.com; premises address matches this licence row."
   },
   {
     "territory": "upstate",
@@ -353,11 +353,11 @@
     "county": "Albany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-05-08",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://holduprollup.com/",
+    "menuUrl": "https://content.holduprollup.com/shop/",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party site identifies HURU Albany at 196 Washington Avenue, Albany; separate Brooklyn branch is shown independently. First-party Shop page exposes Flowers among product categories."
   },
   {
     "territory": "upstate",
@@ -368,11 +368,11 @@
     "county": "Albany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-17",
-    "website": null,
+    "website": "https://mistergreensny.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party footer/contact page gives 81 Wolf Rd, Colonie and explicitly prints OCM-CAURD-24-000192."
   },
   {
     "territory": "upstate",
@@ -413,11 +413,11 @@
     "county": "Albany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-07-25",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://dutchie.com/dispensary/robinsons-flower",
+    "menuUrl": "https://dutchie.com/dispensary/robinsons-flower/products/flower",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "New York OCM dispensary verification maps Robinson's Cannabis at 106 Everett Rd, Albany to this Dutchie storefront. This is a hosted store site rather than a directory; direct Flower route follows Dutchie's store-specific products path."
   },
   {
     "territory": "upstate",
@@ -443,11 +443,11 @@
     "county": "Albany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-03-21",
-    "website": null,
+    "website": "https://silver-therapeutics.com/location/recreational-cannabis-dispensary-albany-ny-12206/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party Silver site gives Albany at 10 Executive Park Dr and explicitly prints Silver Therapeutics Albany: OCM-CAURD-25-000228; Saratoga and Lake George licences are listed separately."
   },
   {
     "territory": "upstate",
@@ -458,11 +458,11 @@
     "county": "Albany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-02-28",
-    "website": null,
+    "website": "https://itssom.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party State of Mind site maps Albany to 351 Southern Blvd and explicitly prints Albany license OCM-RETL-26-000470; Latham is separately identified under its own licence."
   },
   {
     "territory": "upstate",
@@ -473,11 +473,11 @@
     "county": "Albany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-05",
-    "website": null,
+    "website": "https://itssom.com/",
     "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party State of Mind site maps Latham to 521 Troy Schenectady Rd and explicitly prints Latham license OCM-CAURD-24-000178; Albany is separately identified under its own licence."
   },
   {
     "territory": "upstate",
@@ -488,11 +488,11 @@
     "county": "Albany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-03-08",
-    "website": null,
-    "menuUrl": null,
-    "hasNoWebsite": null,
-    "checkedAt": null,
-    "notes": null
+    "website": "https://518bakery.com/",
+    "menuUrl": "https://518bakery.com/shop/?dtche%5Bcategory%5D=flower",
+    "hasNoWebsite": false,
+    "checkedAt": "2026-09-20",
+    "notes": "First-party The Bakery site gives 1099 Loudon Rd, Cohoes and explicitly prints OCM-CAURD-24-000092. Shop is Dutchie-backed; Flower category parameter is the direct category route."
   },
   {
     "territory": "upstate",
