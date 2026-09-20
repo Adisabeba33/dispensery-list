@@ -104,6 +104,22 @@ check('proprietary blank terpene', pr?.terpenes.profile[0].percent, null);
  */
 check('pre-roll', classify({ Name: 'Blue Dream Pre-Roll 1g', type: 'Pre-Rolls', Options: ['1g'] }), 'title-not-flower');
 check('roll by category', classify({ Name: 'Sunset Sherbet', type: 'Pre-Rolls' }), 'category-not-flower');
+/* Ground flower is shake, whatever the shop calls it after the word. The rule
+   was the phrase "ground flower", so a shop writing "Bulky's Ground" or
+   "Pluto - Indica Ground" put two-ounce bags of shake on a flower shelf. Found
+   by a person checking one Westchester shop against its own menu and asking
+   what those were. The word appears 98 times in 22,289 collected listings and
+   is a product every single time. */
+check('ground is shake, however it is worded',
+  classify({ Name: "Bulky's Ground", type: 'Flower' }), 'title-not-flower');
+check('and pre-ground is too',
+  classify({ Name: 'Amnesia Haze - Pre Ground', type: 'Flower' }), 'title-not-flower');
+check('and ground leading the name',
+  classify({ Name: 'Ground - Tahoe OG', type: 'Flower' }), 'title-not-flower');
+/* On a word boundary, so a cultivar that merely contains the letters keeps its
+   place — no catalog name carries "ground" as a word. */
+check('but a name that only contains the letters is flower',
+  classify({ Name: 'Playground Punch', type: 'Flower' }), 'flower');
 check('infused', classify({ Name: 'Infused Pouch 14g', type: 'Flower' }), 'title-not-flower');
 check('vape', classify({ Name: 'Blue Dream Cartridge', type: 'Vaporizers' }), 'title-not-flower');
 check('edible', classify({ Name: 'Peach Gummies 10mg', type: 'Edibles' }), 'title-not-flower');
