@@ -15,7 +15,7 @@ export default function UpstatePage() {
         <>
           <p>
             Everything above Westchester, to the Canadian border — fifty-two counties, and more
-            licensed retail than the city register covers: 517 licences against 468. It is not one
+            licensed retail than the city register covers: 518 licences against 469. It is not one
             market, though. Erie County holds 75 of them; the twenty-five smallest counties hold
             68 between them, and five have exactly one.
           </p>

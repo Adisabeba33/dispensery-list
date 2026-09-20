@@ -8,7 +8,10 @@
 >
 > **Stage 0 is done for both new territories.** Built offline from the
 > 2026-09-06 snapshot, so all three are cut from one source and are exactly
-> comparable: **Upstate 517 shops, Long Island 45.** `npm run validate` passes
+> comparable: **Upstate 517 shops, Long Island 45.** (Re-cut from the
+> 2026-09-14 snapshot when main's refresh moved NYC onto it — upstate 518,
+> Long Island 45, New York City and Westchester 469. Still one source for all
+> three, which is the property that matters.) `npm run validate` passes
 > on all three, and `data/dispensaries.json` is byte-identical to before.
 >
 > What stage 0 cost, and what it found, is §7.
@@ -388,8 +391,8 @@ route generated only for NYC slugs.
 ### What the pages say they do not know
 
 Not prose — counts, derived from the records at build time, so the page cannot
-drift from the data: trading status 517/517 unconfirmed, coordinates 517/517
-absent, hours 517/517, phone or website 517/517, menus none, municipal opt-out
+drift from the data: trading status 518/518 unconfirmed, coordinates 518/518
+absent, hours 518/518, phone or website 518/518, menus none, municipal opt-out
 not checked. Enrich the territory and each line disappears on its own. The
 panel sits ABOVE the list: a reader who learns this at the bottom has already
 formed a view from the top.
@@ -410,9 +413,11 @@ It does NOT set `operationalStatus: OPEN`. The registry says the doors opened
 once; the register's own rule is that OPEN means trading today and requires the
 state verification tool. Both facts are true and they are not the same fact.
 
-The territories were regenerated offline from `data/raw/ocm-licenses-2026-09-06.json`,
-the same snapshot as before, so all three remain cut from one source. The only
-changes in those files are the timestamps and the new field.
+The territories were regenerated offline from the state snapshot in `data/raw/`
+— first 2026-09-06, then 2026-09-14 when merging main moved New York City onto
+it — so all three stay cut from one source. That is the property worth keeping:
+a coverage figure compared across territories cut from different days compares
+two things at once.
 
 ### Still not done here
 
