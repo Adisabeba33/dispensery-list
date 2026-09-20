@@ -6,6 +6,11 @@ on:
       - agent/menu-flower-nyc
   workflow_dispatch:
     inputs:
+      territory:
+        description: Which register to collect — nyc, upstate or long-island
+        type: choice
+        options: [nyc, upstate, long-island]
+        default: nyc
       limit:
         description: How many reachable shops to visit
         default: '40'
@@ -64,6 +69,7 @@ jobs:
       - name: Read flower off a pilot set of menus
         run: >-
           node scripts/menu-render.mjs
+          --territory ${{ inputs.territory || 'nyc' }}
           --limit ${{ inputs.limit || '40' }}
           ${{ inputs.offset != '0' && format('--offset {0}', inputs.offset) || '' }}
           ${{ inputs.skip_collected && '--skip-collected' || '' }}
@@ -93,7 +99,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/flower-listings.json
+          # Each territory writes its own shelf, and a territory that has never
+          # been collected has no file yet — naming a missing path would fail
+          # the step rather than the collection.
+          for f in data/flower-listings.json data/upstate/flower-listings.json data/long-island/flower-listings.json; do
+            [ -f "$f" ] && git add "$f"
+          done
           if git diff --cached --quiet; then
             echo "Nothing changed."
             exit 0
@@ -106,7 +117,7 @@ jobs:
             echo "Refusing to commit to the default branch. Re-run this on a working branch."
             exit 1
           fi
-          git commit -m "menu: collect flower listings from pilot shops"
+          git commit -m "menu: collect flower listings from ${{ inputs.territory || 'nyc' }} shops"
 
           # A collection run takes minutes, and anything pushed to the branch
           # meanwhile makes this push a non-fast-forward — which threw away a

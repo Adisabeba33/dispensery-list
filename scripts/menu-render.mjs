@@ -41,10 +41,32 @@ const offset = offsetArg > -1 ? Math.max(0, Number(process.argv[offsetArg + 1]) 
 const countOnly = process.argv.includes('--count');
 const NOW = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
 
+/* --territory <id> collects a territory other than New York City and
+   Westchester, reading its register and writing its shelf. The three are kept
+   apart everywhere else in this repository and there is no reason for the
+   collector to be the place they meet: upstate's menu-platform mix, its
+   coverage and its opt-out rules are all different, and one blended shelf file
+   would hide every one of those differences.
+
+   data/territories.json is the same file the ingest and the site read. This
+   parses it directly rather than importing scripts/ingest/territory.ts, which
+   is TypeScript and this is not. */
+const territoryArg = process.argv.indexOf('--territory');
+const territoryId = territoryArg > -1 ? process.argv[territoryArg + 1] : 'nyc';
+const TERRITORY = JSON.parse(
+  readFileSync(resolve(ROOT, 'data/territories.json'), 'utf8'),
+).territories.find((t) => t.id === territoryId);
+if (!TERRITORY) {
+  console.error(`Unknown territory "${territoryId}".`);
+  process.exit(1);
+}
+
 // --dataset points the collector at a different register: used by the local
 // end-to-end check, which runs it against a fixture storefront on localhost.
 const datasetArg = process.argv.indexOf('--dataset');
-const datasetPath = datasetArg > -1 ? process.argv[datasetArg + 1] : 'data/dispensaries.json';
+const datasetPath =
+  datasetArg > -1 ? process.argv[datasetArg + 1] : `${TERRITORY.dataDir}/dispensaries.json`;
+const SHELF_PATH = `${TERRITORY.dataDir}/flower-listings.json`;
 const dispensaries = JSON.parse(readFileSync(resolve(ROOT, datasetPath), 'utf8'));
 
 /* Menus hosted on Leafly or Weedmaps belong to those companies, not the shop,
@@ -123,7 +145,7 @@ const dumpRequests = requestsArg > -1 ? Number(process.argv[requestsArg + 1]) ||
  */
 const PREVIOUS_SHELF = new Map();
 try {
-  for (const l of JSON.parse(readFileSync(resolve(ROOT, 'data/flower-listings.json'), 'utf8'))) {
+  for (const l of JSON.parse(readFileSync(resolve(ROOT, SHELF_PATH), 'utf8'))) {
     PREVIOUS_SHELF.set(l.licenseNumber, (PREVIOUS_SHELF.get(l.licenseNumber) ?? 0) + 1);
   }
 } catch {
@@ -152,9 +174,26 @@ try {
   /* not delivered yet; the collector hunts for the link as before */
 }
 
+/* Visited unless we have ESTABLISHED that it is not trading.
+ *
+ * The rule was operationalStatus === 'OPEN', which is a verdict only New York
+ * City and Westchester carry: OPEN there means somebody matched the licence
+ * against OCM's public-open list. No such pass has run upstate, so all 518 of
+ * its records read UNKNOWN and the collector had nothing to visit — not one
+ * shop, however plainly open.
+ *
+ * Unknown is not closed. What we do know is recorded: APPROVED_NOT_OPEN and
+ * PERMANENTLY_CLOSED are findings, and a shop carrying one is skipped. For the
+ * six original counties this changes the candidate set by a single shop, which
+ * has a registry opening date and should have been visited all along.
+ *
+ * A shop that never opened costs one page load and returns nothing, which is
+ * the cheaper mistake: the expensive one is a real shelf nobody reads. */
+const NOT_TRADING = new Set(['APPROVED_NOT_OPEN', 'PERMANENTLY_CLOSED']);
+
 const candidates = dispensaries.filter(
   (d) =>
-    d.operationalStatus === 'OPEN' &&
+    !NOT_TRADING.has(d.operationalStatus) &&
     !THIRD_PARTY_MENU.has(d.menu?.provider) &&
     d.contact?.website &&
     !alreadyCollected.has(d.licenseNumber) &&
@@ -2653,7 +2692,7 @@ const main = async () => {
    * month old, at which point a stale shelf is worse than no shelf.
    */
   const CARRY_FORWARD_DAYS = 30;
-  const listingsPath = resolve(ROOT, 'data/flower-listings.json');
+  const listingsPath = resolve(ROOT, SHELF_PATH);
   let previous = [];
   try {
     previous = JSON.parse(readFileSync(listingsPath, 'utf8'));

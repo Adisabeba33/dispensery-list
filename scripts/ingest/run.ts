@@ -59,7 +59,7 @@ const main = async () => {
 
   // Resolve logical fields against the columns actually present. This is the
   // step that catches a dataset the publisher has reshaped since we last ran.
-  const { map, unresolved } = resolveFieldMap(rows[0]);
+  const { map, unresolved } = resolveFieldMap(rows);
   const missingRequired = unresolved.filter((f) => REQUIRED_FIELDS.includes(f));
 
   if (missingRequired.length > 0) {
@@ -166,7 +166,13 @@ const main = async () => {
       record.services = old.services ?? record.services;
       record.menu = old.menu ?? record.menu;
       record.seeCategory = old.seeCategory ?? record.seeCategory;
-      record.contact = { ...record.contact, ...(old.contact ?? {}) };
+      /* Hand-collected detail wins, but only where it exists. A plain spread
+         put old.contact's explicit nulls back over values the registry had
+         just supplied — so a licence researched before the registry published
+         its website kept the null forever. */
+      for (const [field, value] of Object.entries(old.contact ?? {})) {
+        if (value !== null && value !== undefined) (record.contact as any)[field] = value;
+      }
       record.address.neighborhood = old.address?.neighborhood ?? null;
       // The registry now publishes this itself, so it wins. The hand-collected
       // value only fills the silence it leaves — the other way round would let

@@ -333,7 +333,12 @@ const validateFlowerListings = (FILE: string) => {
   const validate = compile('data/schema/flower-listing.schema.json');
 
   // Listings must attach to a dispensary we actually publish.
-  const dispensaries = readJson('data/dispensaries.json');
+  /* A shelf belongs to the register that sits beside it. data/ holds New York
+     City and Westchester; data/upstate/ and data/long-island/ hold their own,
+     and a listing must attach to a licence in ITS territory's register — not
+     in the city's, which was the only one this ever looked at. */
+  const registerFor = FILE.replace(/flower-listings\.json$/, 'dispensaries.json');
+  const dispensaries = readJson(registerFor);
   const knownLicences = new Set(
     Array.isArray(dispensaries) ? dispensaries.map((d: any) => d?.licenseNumber) : [],
   );
