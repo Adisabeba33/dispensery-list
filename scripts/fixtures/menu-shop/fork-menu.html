@@ -14,11 +14,25 @@
   <button id="no">I'M UNDER 21</button>
 </div>
 
+<!-- The site's own navigation, which stands on the page beside the fork and
+     has a town in it. Read as branches of the chain, BROOKLYN here is a link
+     to a marketing page and ORDER NOW is a checkout: DISPO/BK served exactly
+     this, and the fork read all eight of them. The question's own group is
+     the only thing that may be answered. -->
+<nav>
+  <a href="/nowhere">SHOP</a>
+  <a href="/nowhere">LOCATIONS</a>
+  <a href="/nowhere" id="nav-bk">BROOKLYN</a>
+  <a href="/nowhere">ORDER NOW</a>
+</nav>
+
 <h2>Welcome to the neighborhood.</h2>
-<h3>Choose your store.</h3>
-<button id="a">Brooklyn</button>
-<button id="b">Minneapolis</button>
-<button id="c">St Paul</button>
+<div id="fork">
+  <h3>Choose your store.</h3>
+  <button id="a">Brooklyn</button>
+  <button id="b">Minneapolis</button>
+  <button id="c">St Paul</button>
+</div>
 <div id="menu">loading…</div>
 <script>
   /* Only this licence's own shop serves a shelf, and only if the age question
@@ -31,6 +45,9 @@
   };
   yes.onclick = () => { document.getElementById('age').style.display = 'none'; };
   no.onclick = () => { poisoned = true; document.getElementById('age').style.display = 'none'; };
+  for (const link of document.querySelectorAll('nav a')) {
+    link.onclick = (e) => { e.preventDefault(); poisoned = true; };
+  }
   a.onclick = () => shelf(true);
   b.onclick = () => shelf(false);
   c.onclick = () => shelf(false);
