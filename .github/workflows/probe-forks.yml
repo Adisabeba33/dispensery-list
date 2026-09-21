@@ -1,0 +1,35 @@
+name: Probe — did the two-question wall open
+on: push
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Visit the forks
+        run: |
+          node scripts/menu-render.mjs --limit 20 \
+            --only OCM-CAURD-23-000003,OCM-CAURD-24-000091,OCM-RETL-25-000355,OCM-CAURD-24-000125,OCM-RETL-26-000511,OCM-RETL-24-000189,OCM-RETL-24-000037,OCM-RETL-24-000197,OCM-RETL-24-000063 || true
+      - name: Report
+        run: |
+          python3 - <<'PY'
+          import json
+          d = json.load(open('enrichment-output/menu-summary.json'))
+          for s in d.get('perShop', []):
+              print('=' * 68)
+              print(f"{str(s.get('shop'))[:44]:44s} flower={s.get('flower')} status={s.get('status')}")
+              print(f"  on: {str(s.get('landedOn'))[:96]}")
+              print(f"  age={s.get('ageGate')} seen={s.get('productsSeen')} payloads={s.get('payloads')}")
+              if s.get('offersDismissed'): print(f"  закрыли: {s['offersDismissed']}")
+              if s.get('choseStore'): print(f"  ВЫБРАЛИ: {s['choseStore']!r} по {s.get('choseStoreBy')!r}")
+              if s.get('storeForkRefused'):
+                  print(f"  ОТКАЗ: {s['storeForkRefused']}")
+                  for o in (s.get('storeForkOptions') or []): print(f"      {o!r}")
+              if s.get('rejected'): print(f"  отбросили: {json.dumps(s['rejected'])[:160]}")
+          PY
