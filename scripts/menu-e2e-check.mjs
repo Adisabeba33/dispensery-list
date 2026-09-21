@@ -75,7 +75,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '13',
+    '--limit', '15',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -283,6 +283,30 @@ try {
   check('and read as a shelf', stock?.flower, 2);
   /* That the price survives the unwrapping is held by a unit case in
      menu-parse-check.mjs, where the object itself can be looked at. */
+
+  /* A chain that asks which of its shops you are standing in. DISPO/BK offers
+     Brooklyn, Minneapolis, St Paul and Rochester; Beleaf offers Brooklyn,
+     Calverton and Medford. Both licences are Brooklyn licences, and both came
+     back with nothing, because the collector stood at the fork and read the
+     question instead of answering it.
+
+     Only this licence's own shop serves a shelf here, so two strains coming
+     back is proof that Brooklyn was the button pressed. */
+  const fork = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000986');
+  check('the chain fork was answered', fork?.choseStore, 'Brooklyn');
+  check('by the name the register holds', fork?.choseStoreBy, 'Brooklyn');
+  check('and the shop behind it was read', fork?.flower, 2);
+
+  /* And the fork where none of the shops are ours. Brooklyn Park is a suburb
+     of Minneapolis: it carries our licence's town inside its name and it is in
+     another state, where a New York dispensary may not stock a thing.
+
+     Every button here serves a full shelf, so a shelf coming back would be
+     proof that one was pressed. Nothing may be. */
+  const away = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000985');
+  check('a fork with none of our shops in it is not answered', away?.choseStore, undefined);
+  check('the run records why', away?.storeForkRefused, 'no-match');
+  check('and nothing is read from it', away?.flower, 0);
 
   // Shelves the run did not visit must survive it.
   check('other shelves carried forward', summary.shelvesCarriedForward > 0, true);

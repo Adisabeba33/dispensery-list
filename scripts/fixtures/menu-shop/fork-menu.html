@@ -1,0 +1,20 @@
+<!doctype html><meta charset="utf-8"><title>Menu — Fourteenth Fixture Dispensary</title>
+<style>button { display: block; margin: 8px; padding: 12px 24px; }</style>
+<h2>Welcome to the neighborhood.</h2>
+<h3>Choose your store.</h3>
+<button id="a">Brooklyn</button>
+<button id="b">Minneapolis</button>
+<button id="c">St Paul</button>
+<div id="menu">loading…</div>
+<script>
+  /* Only this licence's own shop serves a shelf. Two strains coming back is
+     proof that the Brooklyn button was the one pressed. */
+  const shelf = async (ours) => {
+    const r = await fetch(ours ? '/api/products.json?page=0&perPage=5' : '/api/empty.json');
+    const j = await r.json();
+    document.getElementById('menu').textContent = (j.data.products || []).length + ' products';
+  };
+  a.onclick = () => shelf(true);
+  b.onclick = () => shelf(false);
+  c.onclick = () => shelf(false);
+</script>

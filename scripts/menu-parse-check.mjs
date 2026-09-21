@@ -13,7 +13,7 @@
 import {
   brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, destinationOf, foreignShelfShare,
   menuKey,
-  flattenJsonApiProducts, flattenStockRecords, isProductPage, wallAction,
+  flattenJsonApiProducts, flattenStockRecords, isProductPage, pickStore, placeNamesOf, wallAction,
   mergeBySize, pagedRequest, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
@@ -888,6 +888,70 @@ check('a number the weight left behind goes too',
     items: [{ price: 45, product: { name: 'Solo', category: 'Flower', brand: 'X', weight: '3.5g' } }],
   };
   check('one record alone is not lifted', flattenStockRecords([single]).length, 0);
+}
+
+/* The fork where a chain asks which of its shops you are standing in. Both
+   wordings below were read off live pages by a probe. */
+{
+  const at = (city, zip, extra) => placeNamesOf({ address: { city, zip, ...extra } });
+
+  check('the register is read most telling first',
+    at('Brooklyn', '11215', { borough: 'BROOKLYN' }), ['11215', 'Brooklyn']);
+  check('a neighbourhood counts, and outranks the city',
+    at('New York', '10032', { neighborhood: 'Washington Heights', borough: 'MANHATTAN' }),
+    ['10032', 'Washington Heights', 'New York', 'MANHATTAN']);
+
+  const brooklyn = at('Brooklyn', '11215', { borough: 'BROOKLYN' });
+
+  // DISPO/BK. Three of its four shops are in Minnesota.
+  check('the Brooklyn licence takes the Brooklyn shop',
+    pickStore(['Brooklyn', 'Minneapolis', 'St Paul', 'Rochester'], brooklyn).index, 0);
+
+  // Beleaf, where every option carries the chain's name as well as the town.
+  check('the town is found inside the shop name',
+    pickStore(['Beleaf Brooklyn', 'Beleaf Calverton', 'Beleaf Medford'], brooklyn).index, 0);
+
+  /* Canna Buddha is licensed in Bayside, Queens, and the address it lands on
+     is /store/thief-river/ — Minnesota. Nothing here is ours, and the right
+     answer is to press nothing. */
+  const bayside = at('Bayside', '11361', { borough: 'QUEENS' });
+  const nothingOurs = pickStore(['Thief River Falls', 'Bemidji', 'Brainerd'], bayside);
+  check('a fork with none of our shops in it is not answered', nothingOurs.index, -1);
+  check('and the run says so', nothingOurs.why, 'no-match');
+
+  // Two branches in the same town cannot be told apart by the town.
+  const twoBrooklyns = pickStore(['Brooklyn - Atlantic Ave', 'Brooklyn - 4th Ave'], brooklyn);
+  check('two shops in our town is not a choice we may make', twoBrooklyns.index, -1);
+  check('and it is recorded as the ambiguity it is', twoBrooklyns.why, 'ambiguous');
+
+  // Unless the postcode is on them, which is why it is tried first.
+  check('a postcode settles what the town cannot',
+    pickStore(['Brooklyn 11238', 'Brooklyn 11215'], brooklyn).index, 1);
+
+  /* Rochester is a city in New York and a city in Minnesota, and the name
+     alone cannot tell them apart. */
+  const rochester = at('Rochester', '14604', { borough: null });
+  check('the one that says which state it is in wins',
+    pickStore(['Rochester, MN', 'Rochester, NY'], rochester).index, 1);
+  check('and if the only Rochester is the other one, we take nothing',
+    pickStore(['Rochester, MN', 'Minneapolis, MN'], rochester).index, -1);
+
+  /* Washington Heights is a neighbourhood of Manhattan, not the state of
+     Washington, which is why a state is only read where an address writes
+     one — after a comma, or at the end. */
+  const heights = at('New York', '10032', { neighborhood: 'Washington Heights' });
+  check('a neighbourhood is not mistaken for a state',
+    pickStore(['Washington Heights', 'Harlem'], heights).index, 0);
+
+  // Whole words only: Brooklynville is not Brooklyn.
+  check('the town is matched whole',
+    pickStore(['Brooklynville', 'Brooklyn'], brooklyn).index, 1);
+
+  // One option is not a fork, and nothing about it needs answering.
+  check('a single option is not a fork', pickStore(['Brooklyn'], brooklyn).why, 'not-a-fork');
+
+  // A licence the register knows no place for may not answer a fork at all.
+  check('no place, no choice', pickStore(['Brooklyn', 'Queens'], []).index, -1);
 }
 
 /* Every button here was read off a live shop — QUBE's screenshots and the
