@@ -1,0 +1,33 @@
+<!doctype html><meta charset="utf-8"><title>Menu — Sixteenth Fixture Dispensary</title>
+<style>
+  #wall { position: fixed; inset: 0; background: #fff; display: flex;
+          flex-direction: column; align-items: center; justify-content: center; }
+  button { display: block; margin: 8px; padding: 12px 24px; }
+</style>
+
+<!-- Read off The Travel Agency. The age question and the collect-or-deliver
+     question are the same three buttons: the two yes buttons both answer the
+     age question honestly, and the no button says it with three dots and an
+     adverb, which every anchored pattern walks past. -->
+<div id="wall">
+  <h1>Are you 21 or older?</h1>
+  <button id="pickup">Yes! Shop store pick-up</button>
+  <button id="deliver">Yes! Shop quick delivery</button>
+  <button id="no">No... Unfortunately I'm not yet 21</button>
+</div>
+
+<div id="menu">loading…</div>
+<script>
+  /* Only pick-up serves the shelf. Delivery would be a choice made for
+     somebody who is not here, and the third button is a lie; both poison the
+     well. Two strains coming back is proof that pick-up was the one pressed. */
+  const shelf = async (ours) => {
+    const r = await fetch(ours ? '/api/products.json?page=0&perPage=5' : '/api/empty.json');
+    const j = await r.json();
+    document.getElementById('menu').textContent = (j.data.products || []).length + ' products';
+  };
+  const done = (ours) => { document.getElementById('wall').style.display = 'none'; shelf(ours); };
+  pickup.onclick = () => done(true);
+  deliver.onclick = () => done(false);
+  no.onclick = () => done(false);
+</script>
