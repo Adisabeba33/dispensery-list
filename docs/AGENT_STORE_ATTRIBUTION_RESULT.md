@@ -141,3 +141,46 @@ flower category: 244 products seen, 36 kept, 130 dropped as another category.
 It used to follow a blog article and read nothing, so 36 is a large
 improvement and the row stays. It is still not the shelf, and the existing
 todo entry for this licence has been updated to say so.
+
+---
+
+# Checked by hand against the shop's own menu — Cannabis Realm, White Plains
+
+2026-09-20. Not a script: a person opened
+`cannabisrealmny.com/white-plains/menu/categories/flower`, went through it, and
+compared it to what the register holds for `OCM-CAURD-24-000046`.
+
+**Every weight matched, item for item**, except 3.5g, which has 401 listings
+and was too many to read by eye. What was checked: 1g, 2g, 4g, 7g, 14g, 28g and
+the bulk sizes above it.
+
+**The exclusions were right.** Infused, Moonrocks and ground flower were all
+kept off the shelf, which is the harder half of the job — a collector that
+takes everything is easy to write and useless.
+
+This is the first independent check of the collector against a live shop, and
+it is worth more than any of the fixture tests, because a fixture only ever
+asks whether the parser still does what it did yesterday.
+
+## What it found anyway
+
+Two listings from The Bulk Boys, on that same shelf:
+
+| | |
+|---|---|
+| `Bulky's Ground` | 56g |
+| `Bulky's Blend of Bits` | 84g |
+
+Both are bulk shake. The rule refusing shake was the phrase `ground flower`, so
+a shop writing "Bulky's Ground" walked past it — as did "Pluto - Indica
+Ground", "Ground - Tahoe OG" and every "Pre Ground" on any shelf.
+
+The word appears 98 times across 22,289 collected listings and is a product
+every single time; no name in SŌMA's catalog carries it. So the rule is now the
+word on its own, on a word boundary, and "Playground Punch" keeps its place.
+98 listings were removed from the collected files: 85 from New York City, 10
+upstate, 3 on Long Island.
+
+`Bulky's Blend of Bits` is still there. It is one listing, "bits" names nothing
+in particular, and a vocabulary entry invented for a single product is how a
+filter starts eating real cultivars. It stays until there is a second one.

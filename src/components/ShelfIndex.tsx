@@ -87,6 +87,7 @@ export const ShelfIndex = ({
   const [lineage, setLineage] = useState<string | null>(null);
   const [multiOnly, setMultiOnly] = useState(false);
   const [limit, setLimit] = useState(60);
+  const [copied, setCopied] = useState(false);
 
   const sizesPresent = useMemo(() => {
     const all: number[] = [];
@@ -205,6 +206,53 @@ export const ShelfIndex = ({
           </>
         )}
       </p>
+
+      {/* The names, and nothing else.
+       *
+       * Somebody filtering to "sativa, by the ounce" is building a shopping
+       * list to take to SŌMA, and they were retyping it. A brand or a shop
+       * name in that list is not wrong, it is just noise the taste engine has
+       * to parse back out — so this copies the cultivar names alone, one per
+       * line, in the order the page shows them. */}
+      {results.length > 0 && (
+        <p className="mt-2 text-sm">
+          <button
+            type="button"
+            className="link"
+            onClick={async () => {
+              const text = results.map((s) => s.name).join('\n');
+              try {
+                await navigator.clipboard.writeText(text);
+              } catch {
+                /* Clipboard refused — an insecure origin, or a browser that
+                   asks. Fall back to a selection the reader can copy by hand
+                   rather than failing in silence. */
+                const box = document.createElement('textarea');
+                box.value = text;
+                box.style.position = 'fixed';
+                box.style.opacity = '0';
+                document.body.appendChild(box);
+                box.select();
+                try {
+                  document.execCommand('copy');
+                } catch {
+                  /* Nothing left to try; the message below stays honest. */
+                }
+                box.remove();
+              }
+              setCopied(true);
+              setTimeout(() => setCopied(false), 2500);
+            }}
+          >
+            {copied
+              ? `${results.length} names copied`
+              : `Copy ${results.length === 1 ? 'this name' : `all ${results.length} names`}`}
+          </button>
+          <span className="ml-2 text-chalk-500">
+            names only — paste straight into a taste match
+          </span>
+        </p>
+      )}
 
       {results.length === 0 ? (
         <p className="mt-8 text-sm text-chalk-400">

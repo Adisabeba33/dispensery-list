@@ -1828,7 +1828,14 @@ const NOT_FLOWER_TITLE = new RegExp(
     '\\bedibles?\\b',
     '\\bshake\\b',
     '\\btrim\\b',
-    'ground\\s+flower',
+    /* Ground flower is shake, whatever the shop calls it after the word.
+       "ground flower" was the whole rule, so "Bulky's Ground" and "Pluto -
+       Indica Ground" walked straight past it — found when a person checked
+       one Westchester shop against its own menu by hand and asked why two
+       bulk bags were on a flower shelf. Across 22,289 collected listings the
+       word appears 98 times and is a product every single time; no cultivar
+       in the catalog carries it. */
+    '\\bground\\b',
     'ready\\s+to\\s+roll',
     'flower\\s+flight',
   ].join('|'),
