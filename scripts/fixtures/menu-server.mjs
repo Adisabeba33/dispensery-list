@@ -288,6 +288,8 @@ createServer((req, res) => {
       '/walled': 'walled.html',
       '/walls': 'walls.html',
       '/walls-menu': 'walls-menu.html',
+      '/wall3': 'wall3.html',
+      '/wall3-menu': 'wall3-menu.html',
       '/fork': 'fork.html',
       '/fork-menu': 'fork-menu.html',
       '/fork-away': 'fork-away.html',

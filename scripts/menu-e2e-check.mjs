@@ -75,7 +75,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '15',
+    '--limit', '16',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -312,6 +312,27 @@ try {
   check('a fork with none of our shops in it is not answered', away?.choseStore, undefined);
   check('the run records why', away?.storeForkRefused, 'no-match');
   check('and nothing is read from it', away?.flower, 0);
+
+  /* A wall that asks two questions with the same three buttons, the way The
+     Travel Agency does for four licences at once:
+
+       Yes! Shop store pick-up   Yes! Shop quick delivery
+       No... Unfortunately I'm not yet 21
+
+     Only pick-up is pressed. Delivery would be a choice made for somebody who
+     is not here, and the third is a lie told with three dots and an adverb,
+     which every anchored pattern walked past. Both poison the shelf here, so
+     two strains coming back is proof that pick-up was the one pressed.
+
+     landedOn is checked too: the fixture server answers /menu/flower for every
+     shop on it, so a shop that reads nothing falls through to the guess and
+     comes back with somebody else's two strains. That is how a fixture passes
+     while proving nothing, and it happened once already today. */
+  const wall3 = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000983');
+  check('the two-question wall was answered', wall3?.ageGate, true);
+  check('and the shelf behind it read', wall3?.flower, 2);
+  check('off its own page, not the guessed one', wall3?.landedOn, 'http://localhost:4399/wall3-menu');
+  check('nothing was guessed at all', wall3?.foundMenuByGuess, undefined);
 
 
   // Shelves the run did not visit must survive it.
