@@ -1,6 +1,6 @@
 # Research report — NYC + Westchester dispensaries
 
-Snapshot time: **2026-09-14T16:46:51.662Z**
+Snapshot time: **2026-09-21T16:47:24.873Z**
 
 ## Result
 
@@ -25,7 +25,7 @@ Published current-license records: **469**.
 
 The official OCM public-open page text advertises 717 adult-use dispensaries statewide, while the HTML table snapshot parsed into **725 data rows**. This mismatch is preserved as a source inconsistency; no synthetic 717th row was created.
 
-The raw Current OCM Licenses snapshot contains **2980** rows. The first-pass six-county retail-ish filter produced **471** OCM-format licensed rows: **458 Active** and **8 Inactive/expired** before geography sanity filtering.
+The raw Current OCM Licenses snapshot contains **2981** rows. The first-pass six-county retail-ish filter produced **471** OCM-format licensed rows: **458 Active** and **8 Inactive/expired** before geography sanity filtering.
 
 Two rows are tagged `county=New York` / `region=Manhattan` in the official registry but have clearly upstate addresses and ZIPs; they are excluded from the NYC/Westchester deliverable and kept in the raw evidence:
 - `OCM-MICR-24-000199` — Copperhead Grow, LLC — 10242 State Route 12, Remsen NY 13438.
