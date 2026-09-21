@@ -1,5 +1,19 @@
 <!doctype html><meta charset="utf-8"><title>Menu — Fourteenth Fixture Dispensary</title>
-<style>button { display: block; margin: 8px; padding: 12px 24px; }</style>
+<style>
+  button { display: block; margin: 8px; padding: 12px 24px; }
+  #age { position: fixed; inset: 0; background: #fff; display: flex;
+         flex-direction: column; align-items: center; justify-content: center; }
+</style>
+
+<!-- DISPO/BK serves it exactly this way: the age wall on top, and the words
+     "Choose your store." already on the page behind it. Read without
+     answering the wall first, the fork is the wall's own two buttons. -->
+<div id="age">
+  <h1>Are you 21 or older?</h1>
+  <button id="yes">YES, I'M 21+</button>
+  <button id="no">I'M UNDER 21</button>
+</div>
+
 <h2>Welcome to the neighborhood.</h2>
 <h3>Choose your store.</h3>
 <button id="a">Brooklyn</button>
@@ -7,13 +21,16 @@
 <button id="c">St Paul</button>
 <div id="menu">loading…</div>
 <script>
-  /* Only this licence's own shop serves a shelf. Two strains coming back is
-     proof that the Brooklyn button was the one pressed. */
+  /* Only this licence's own shop serves a shelf, and only if the age question
+     was answered honestly. Two strains coming back is proof of both. */
+  let poisoned = false;
   const shelf = async (ours) => {
-    const r = await fetch(ours ? '/api/products.json?page=0&perPage=5' : '/api/empty.json');
+    const r = await fetch(ours && !poisoned ? '/api/products.json?page=0&perPage=5' : '/api/empty.json');
     const j = await r.json();
     document.getElementById('menu').textContent = (j.data.products || []).length + ' products';
   };
+  yes.onclick = () => { document.getElementById('age').style.display = 'none'; };
+  no.onclick = () => { poisoned = true; document.getElementById('age').style.display = 'none'; };
   a.onclick = () => shelf(true);
   b.onclick = () => shelf(false);
   c.onclick = () => shelf(false);

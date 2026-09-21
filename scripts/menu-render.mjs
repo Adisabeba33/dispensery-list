@@ -312,9 +312,15 @@ const robotsAllows = async (url) => {
  * would actually press: on screen, and not behind the wall it belongs to. */
 /* "I am over 21" is Good Vibes' button and it fell between two branches:
    the one after "i am" wanted "21" next, and the one for "over 21" wanted the
-   words at the start. Read off the live page, like every entry here. */
+   words at the start. Read off the live page, like every entry here.
+
+   "YES, I'M 21+" is DISPO/BK's, and it fell further still: the branch after
+   "yes" spelled out "i am" and had no room for "i'm", so the whole label
+   dropped through to the never-press list, where `yes.*` caught it. A wall
+   this collector is allowed to answer went unanswered because of an
+   apostrophe. */
 const AGE_AFFIRM_CLEAR =
-  /^(yes|yeah|yes[,.!]?\s*i\s*am(\s*(over|of age)?\s*21.*)?|i'?m?\s*am?\s*(of\s*age|(over\s*)?21.*)|i'?m\s*(over\s*)?21.*|21\s*\+?|21\s*(or|and)\s*(over|older)|over\s*21|yes[,.!]?\s*i'?m\s*over\s*21)$/i;
+  /^(yes|yeah|yes[,.!]?\s*(i\s*am|i'?m)(\s*(over|of age)?\s*21.*)?|i'?m?\s*am?\s*(of\s*age|(over\s*)?21.*)|i'?m\s*(over\s*)?21.*|21\s*\+?|21\s*(or|and)\s*(over|older)|over\s*21)$/i;
 const AGE_AFFIRM_VAGUE = /^(enter(\s*site)?|confirm|agree|i agree|continue)$/i;
 
 /* Never pressed on an age wall, whatever else matches. "Not yet" is the
@@ -722,6 +728,25 @@ const readStoreFork = async (frame) => {
 };
 
 /**
+ * Whether what is on screen is an age wall rather than a chain's fork.
+ *
+ * DISPO/BK prints "Choose your store." on the page behind its age wall, so a
+ * fork read before the wall is answered is the wall's own two buttons —
+ * "YES, I'M 21+" and "I'M UNDER 21" — read as two branches of a chain that
+ * does not exist. The run then records a fork problem where there is an age
+ * problem, which is what sent this session looking for the wrong fault.
+ *
+ * Kept out of the page and exported, so the rule sits in one place and can be
+ * held against the labels a probe actually read rather than trusted.
+ */
+export const looksLikeAgeWall = (labels) =>
+  labels.some((text) => {
+    const words = String(text ?? '').trim();
+    if (!words || words.length > 40) return false;
+    return AGE_AFFIRM_CLEAR.test(words) || AGE_DECLINE.test(words);
+  });
+
+/**
  * Stand in the shop this licence is for, or stand still.
  *
  * Nothing is pressed unless the register's own words for where this shop is
@@ -736,6 +761,9 @@ const chooseStore = async (page, entry) => {
   for (const frame of await wallFrames(page)) {
     const options = await within(readStoreFork(frame), null);
     if (!options || options.length < 2) continue;
+    /* The wall is answered first, by affirmAge, and the fork is read on the
+       page that comes after it. A wall still standing is not a fork. */
+    if (looksLikeAgeWall(options)) continue;
     const choice = pickStore(options, names);
     if (choice.index < 0) {
       entry.storeForkRefused = choice.why;

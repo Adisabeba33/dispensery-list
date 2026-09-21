@@ -293,6 +293,11 @@ try {
      Only this licence's own shop serves a shelf here, so two strains coming
      back is proof that Brooklyn was the button pressed. */
   const fork = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000986');
+  /* The wall stands in front of the fork, and the words "Choose your store."
+     are on the page behind it from the start — so a fork read before the wall
+     is answered is the wall's own two buttons, which is what DISPO/BK
+     recorded: no-match, options ["YES, I'M 21+", "I'M UNDER 21"]. */
+  check('the wall in front of the fork was answered', fork?.ageGate, true);
   check('the chain fork was answered', fork?.choseStore, 'Brooklyn');
   check('by the name the register holds', fork?.choseStoreBy, 'Brooklyn');
   check('and the shop behind it was read', fork?.flower, 2);
@@ -307,6 +312,7 @@ try {
   check('a fork with none of our shops in it is not answered', away?.choseStore, undefined);
   check('the run records why', away?.storeForkRefused, 'no-match');
   check('and nothing is read from it', away?.flower, 0);
+
 
   // Shelves the run did not visit must survive it.
   check('other shelves carried forward', summary.shelvesCarriedForward > 0, true);
