@@ -1,0 +1,55 @@
+name: Census 1 — what still says nothing
+on: push
+
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Visit them
+        run: node scripts/menu-render.mjs --only MM0407D,MM0408D,MM1004D,OCM-CAURD-23-000003,OCM-CAURD-23-000023,OCM-CAURD-23-000026,OCM-CAURD-23-000034,OCM-CAURD-23-000036,OCM-CAURD-24-000045,OCM-CAURD-24-000052,OCM-CAURD-24-000061,OCM-CAURD-24-000065,OCM-CAURD-24-000079,OCM-CAURD-24-000087,OCM-CAURD-24-000091,OCM-CAURD-24-000096,OCM-CAURD-24-000101,OCM-CAURD-24-000120,OCM-CAURD-24-000125,OCM-CAURD-24-000127,OCM-CAURD-24-000131,OCM-CAURD-24-000137,OCM-CAURD-24-000149,OCM-CAURD-24-000174,OCM-CAURD-24-000176,OCM-CAURD-24-000177,OCM-CAURD-24-000180,OCM-CAURD-24-000191,OCM-CAURD-24-000196,OCM-CAURD-24-000203,OCM-CAURD-24-000208,OCM-CAURD-24-000209,OCM-CAURD-24-000211,OCM-CAURD-24-000214,OCM-CAURD-24-000217,OCM-CAURD-25-000226,OCM-CAURD-25-000229,OCM-CAURD-25-000230,OCM-CAURD-25-000236,OCM-CAURD-25-000240,OCM-CAURD-25-000246,OCM-CAURD-25-000256,OCM-CAURD-25-000267,OCM-CAURD-25-000270,OCM-CAURD-25-000279,OCM-CAURD-25-000292,OCM-CAURD-25-000303,OCM-CAURD-25-000309,OCM-CAURD-25-000311,OCM-CAURD-25-000316,OCM-CAURD-25-000322,OCM-CAURD-25-000324,OCM-CAURD-26-000332,OCM-CAURD-26-000341,OCM-CAURD-26-000343,OCM-CAURD-26-000350,OCM-CAURD-26-000351,OCM-CAURD-26-000359,OCM-MICR-24-000030,OCM-MICR-24-000069,OCM-MICR-24-000098,OCM-MICR-24-000186 --dump-shapes 4 || true
+      - name: Report
+        run: |
+          python3 - <<'PY'
+          import json
+          d = json.load(open('enrichment-output/menu-summary.json'))
+          rows = d.get('perShop', [])
+          skip = ('taxconfig','banner','schedule','theme','urls [','features','dynamiczones',
+                  'usefullinks','sidenav','infocontent','speciality','timeranges','reviews')
+          print('### ФОРМЫ ###')
+          for s in rows:
+              if (s.get('flower') or 0) > 0: continue
+              keep = [c for c in (s.get('shapes') or [])
+                      if not any(w in str(c).lower() for w in skip)][:3]
+              if not keep and not s.get('storeForkRefused'): continue
+              print(f"-- {s.get('shop')} | {str(s.get('landedOn'))[:80]}")
+              if s.get('storeForkRefused'):
+                  print(f"     развилка: {s['storeForkRefused']} {s.get('storeForkOptions')}")
+              for c in keep: print(f"     {str(c)[:240]}")
+          print()
+          print('### ИТОГ ###')
+          won = [s for s in rows if (s.get('flower') or 0) > 0]
+          print(f"прочитано теперь: {len(won)} из {len(rows)}; цветка {sum(s.get('flower') or 0 for s in won)}")
+          for s in sorted(won, key=lambda s: -(s.get('flower') or 0)):
+              why = []
+              if s.get('walledFrames'): why.append('фрейм ' + ','.join(s['walledFrames']))
+              if s.get('offersDismissed'): why.append('закрыли ' + ','.join(s['offersDismissed'][:3]))
+              if s.get('choseStore'): why.append('магазин ' + str(s['choseStore']))
+              if s.get('stockRecordProducts'): why.append(f"конверт {s['stockRecordProducts']}")
+              if s.get('searchHitProducts'): why.append(f"поиск {s['searchHitProducts']}")
+              print(f"  {s.get('flower'):5d}  {str(s.get('shop'))[:32]:32s} {'; '.join(why)[:90]}")
+          print()
+          still = [s for s in rows if (s.get('flower') or 0) == 0]
+          import collections
+          print('молчат:', len(still))
+          for k, v in collections.Counter(str(s.get('status'))[:40] for s in still).most_common():
+              print(f"   {v:4d}  {k}")
+          nojson = [s for s in still if (s.get('payloads') or 0) == 0]
+          print(f"   из них без единого json: {len(nojson)}")
+          PY
