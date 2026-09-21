@@ -1,0 +1,57 @@
+name: Census 4 — all of them this time
+on: push
+
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Visit them
+        run: node scripts/menu-render.mjs --limit 200 --only OCM-MICR-25-000249,OCM-RETL-24-000003,OCM-RETL-24-000014,OCM-RETL-24-000016,OCM-RETL-24-000021,OCM-RETL-24-000027,OCM-RETL-24-000037,OCM-RETL-24-000061,OCM-RETL-24-000063,OCM-RETL-24-000068,OCM-RETL-24-000070,OCM-RETL-24-000076,OCM-RETL-24-000078,OCM-RETL-24-000083,OCM-RETL-24-000099,OCM-RETL-24-000107,OCM-RETL-24-000127,OCM-RETL-24-000133,OCM-RETL-24-000144,OCM-RETL-24-000147,OCM-RETL-24-000170,OCM-RETL-24-000171,OCM-RETL-24-000178,OCM-RETL-24-000186,OCM-RETL-24-000189,OCM-RETL-24-000197,OCM-RETL-24-000222,OCM-RETL-24-000241,OCM-RETL-24-000242,OCM-RETL-24-000247,OCM-RETL-24-000254,OCM-RETL-24-000260,OCM-RETL-24-000261,OCM-RETL-24-000263,OCM-RETL-25-000274,OCM-RETL-25-000283,OCM-RETL-25-000285,OCM-RETL-25-000317,OCM-RETL-25-000321,OCM-RETL-25-000325,OCM-RETL-25-000343,OCM-RETL-25-000349,OCM-RETL-25-000351,OCM-RETL-25-000355,OCM-RETL-25-000360,OCM-RETL-25-000368,OCM-RETL-25-000414,OCM-RETL-25-000417,OCM-RETL-25-000418,OCM-RETL-25-000425,OCM-RETL-25-000428,OCM-RETL-25-000430,OCM-RETL-25-000449,OCM-RETL-25-000454,OCM-RETL-25-000460,OCM-RETL-26-000477,OCM-RETL-26-000481,OCM-RETL-26-000489,OCM-RETL-26-000492,OCM-RETL-26-000507,OCM-RETL-26-000511 --dump-shapes 4 || true
+      - name: Report
+        run: |
+          python3 - <<'PY'
+          import json, collections
+          d = json.load(open('enrichment-output/menu-summary.json'))
+          rows = d.get('perShop', [])
+          skip = ('taxconfig','banner','schedule','theme','urls [','features','dynamiczones',
+                  'usefullinks','sidenav','infocontent','speciality','timeranges','reviews',
+                  'menusections','menufilters','categoriessub','customcategory')
+          print('### ФОРМЫ У МОЛЧАЩИХ ###')
+          for s in rows:
+              if (s.get('flower') or 0) > 0: continue
+              keep = [c for c in (s.get('shapes') or [])
+                      if not any(w in str(c).lower() for w in skip)][:2]
+              if not keep and not s.get('storeForkRefused'): continue
+              print(f"-- {s.get('shop')} | {str(s.get('landedOn'))[:74]}")
+              if s.get('storeForkRefused'):
+                  print(f"     развилка: {s['storeForkRefused']} {str(s.get('storeForkOptions'))[:120]}")
+              for c in keep: print(f"     {str(c)[:200]}")
+          print()
+          print('### ИТОГ ###')
+          won = [s for s in rows if (s.get('flower') or 0) > 0]
+          print(f"посещено {len(rows)}; читается {len(won)}; цветка {sum(s.get('flower') or 0 for s in won)}")
+          for s in sorted(won, key=lambda s: -(s.get('flower') or 0)):
+              why = []
+              if s.get('walledFrames'): why.append('фрейм')
+              if s.get('offersDismissed'): why.append('закрыли ' + ','.join(s['offersDismissed'][:2]))
+              if s.get('choseStore'): why.append('магазин ' + str(s['choseStore']))
+              if s.get('stockRecordProducts'): why.append(f"конверт {s['stockRecordProducts']}")
+              if s.get('searchHitProducts'): why.append(f"поиск {s['searchHitProducts']}")
+              if s.get('ageGate'): why.append('возраст')
+              print(f"  {s.get('flower'):5d}  {str(s.get('shop'))[:30]:30s} {'; '.join(why)[:80]}")
+          still = [s for s in rows if (s.get('flower') or 0) == 0]
+          print()
+          print('молчат:', len(still))
+          for k, v in collections.Counter(str(s.get('status'))[:36] for s in still).most_common(6):
+              print(f"   {v:4d}  {k}")
+          print(f"   без единого json: {sum(1 for s in still if (s.get('payloads') or 0) == 0)}")
+          print(f"   меню открыли, товаров ноль: {sum(1 for s in still if (s.get('payloads') or 0) > 0 and (s.get('productsSeen') or 0) == 0)}")
+          print(f"   товары есть, цветка нет: {sum(1 for s in still if (s.get('productsSeen') or 0) > 0)}")
+          PY
