@@ -13,7 +13,7 @@
 import {
   brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, destinationOf, foreignShelfShare,
   menuKey,
-  flattenJsonApiProducts, flattenStockRecords, isProductPage, pickStore, placeNamesOf, wallAction,
+  flattenJsonApiProducts, flattenStockRecords, isProductPage, looksLikeAgeWall, pickStore, placeNamesOf, wallAction,
   mergeBySize, pagedRequest, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
@@ -952,6 +952,15 @@ check('a number the weight left behind goes too',
 
   // A licence the register knows no place for may not answer a fork at all.
   check('no place, no choice', pickStore(['Brooklyn', 'Queens'], []).index, -1);
+
+  /* DISPO/BK prints "Choose your store." on the page behind its age wall. Read
+     before the wall is answered, the fork is the wall's own two buttons — and
+     the run then records a fork problem where there is an age problem. These
+     are the exact labels it recorded. */
+  check('the wall is not a fork', looksLikeAgeWall(["YES, I'M 21+", "I'M UNDER 21"]), true);
+  check('nor is it one with only the refusal showing', looksLikeAgeWall(['NOT YET']), true);
+  check('a fork of towns is a fork', looksLikeAgeWall(['Brooklyn', 'Minneapolis', 'St Paul']), false);
+  check('and so is one naming the chain', looksLikeAgeWall(['Beleaf Brooklyn', 'Beleaf Medford']), false);
 }
 
 /* Every button here was read off a live shop — QUBE's screenshots and the
@@ -967,6 +976,14 @@ check('a number the weight left behind goes too',
      gate at all. */
   t('I am over 21', 'affirm-age');
   t("I'm over 21", 'affirm-age');
+  /* DISPO/BK's, and it fell further than Good Vibes' did: the branch after
+     "yes" spelled out "i am" with no room for "i'm", so the label dropped
+     through to the never-press list, where `yes.*` caught it. A whole shop
+     stood behind an age wall this collector is allowed to answer, because of
+     an apostrophe. */
+  t("YES, I'M 21+", 'affirm-age');
+  t("Yes, I'm 21", 'affirm-age');
+  t('YES, I AM 21+', 'affirm-age');
 
   // The answer of someone who is not 21. This collector does not give it.
   t('NOT YET', 'refuse');
@@ -974,6 +991,7 @@ check('a number the weight left behind goes too',
   t('No', 'refuse');
   t('I am under 21', 'refuse');
   t("I'm under 21", 'refuse');
+  t("I'M UNDER 21", 'refuse');
 
   // A shop's own way out of its newsletter box.
   t('No Thanks', 'decline-offer');
