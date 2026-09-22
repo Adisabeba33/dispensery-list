@@ -312,9 +312,26 @@ const robotsAllows = async (url) => {
  * would actually press: on screen, and not behind the wall it belongs to. */
 /* "I am over 21" is Good Vibes' button and it fell between two branches:
    the one after "i am" wanted "21" next, and the one for "over 21" wanted the
-   words at the start. Read off the live page, like every entry here. */
+   words at the start. Read off the live page, like every entry here.
+
+   "YES, I'M 21+" is DISPO/BK's, and it fell further still: the branch after
+   "yes" spelled out "i am" and had no room for "i'm", so the whole label
+   dropped through to the never-press list, where `yes.*` caught it. A wall
+   this collector is allowed to answer went unanswered because of an
+   apostrophe. */
 const AGE_AFFIRM_CLEAR =
-  /^(yes|yeah|yes[,.!]?\s*i\s*am(\s*(over|of age)?\s*21.*)?|i'?m?\s*am?\s*(of\s*age|(over\s*)?21.*)|i'?m\s*(over\s*)?21.*|21\s*\+?|21\s*(or|and)\s*(over|older)|over\s*21|yes[,.!]?\s*i'?m\s*over\s*21)$/i;
+  /^(yes|yeah|yes[,.!]?\s*(i\s*am|i'?m)(\s*(over|of age)?\s*21.*)?|i'?m?\s*am?\s*(of\s*age|(over\s*)?21.*)|i'?m\s*(over\s*)?21.*|21\s*\+?|21\s*(or|and)\s*(over|older)|over\s*21)$/i;
+/* Read off The Travel Agency's wall, where the age question and the choice
+   between collecting and delivery are asked by the same three buttons:
+
+     Yes! Shop store pick-up   Yes! Shop quick delivery   No... Unfortunately
+                                                          I'm not yet 21
+
+   Only the pick-up one is pressed. Both say yes to the age question honestly,
+   but pick-up is the answer that asks nobody for an address, and no live shop
+   needs the other — a delivery-only wall has not been seen, and adding it on
+   the chance would be guessing at a page nobody has read. */
+const AGE_AFFIRM_PICKUP = /^yes[!,.]?\s*shop\s*(store\s*)?pick[-\s]?up$/i;
 const AGE_AFFIRM_VAGUE = /^(enter(\s*site)?|confirm|agree|i agree|continue)$/i;
 
 /* Never pressed on an age wall, whatever else matches. "Not yet" is the
@@ -322,7 +339,23 @@ const AGE_AFFIRM_VAGUE = /^(enter(\s*site)?|confirm|agree|i agree|continue)$/i;
 const AGE_DECLINE =
   /^(no|nope|no[,.!]?\s*not yet|not yet|i am not|i'?m not|no[,.!]?\s*i'?m not.*|i am under\s*21|i'?m under\s*21|under\s*21|not 21|exit|leave|go back|take me back)$/i;
 
+/* The decline may be read loosely, and the affirmation may not. Missing a
+   decline means pressing something we should not; missing an affirmation only
+   means a shelf goes unread. So anything that says "not 21" anywhere in its
+   label is refused, wherever the words sit and whatever surrounds them.
+
+   The Travel Agency writes it "No... Unfortunately I'm not yet 21" — three
+   dots and an adverb, which the anchored patterns above walk straight past.
+   Four licences stood behind that wall. */
+const AGE_DECLINE_ANYWHERE = /\b(not\s*yet\s*21|not\s*21|under\s*21|too\s*young)\b/i;
+
 const AGE_WORDS = /(age|older|over|verify|confirm)/i;
+
+/* What the page-side code is handed. The vocabulary is spelled out in pieces
+   above, for reading; these are the pieces joined, so no caller has to
+   remember which of them it needs. */
+const AGE_AFFIRM_ALL = new RegExp(`${AGE_AFFIRM_CLEAR.source}|${AGE_AFFIRM_PICKUP.source}`, 'i');
+const AGE_DECLINE_ALL = new RegExp(`${AGE_DECLINE.source}|${AGE_DECLINE_ANYWHERE.source}`, 'i');
 
 const AGE_AFFIRM = new RegExp(`${AGE_AFFIRM_CLEAR.source}|${AGE_AFFIRM_VAGUE.source}`, 'i');
 
@@ -385,8 +418,8 @@ const MAX_OFFERS_DISMISSED = 3;
 export const wallAction = (text) => {
   const words = String(text ?? '').trim();
   if (!words) return 'ignore';
-  if (AGE_DECLINE.test(words)) return 'refuse';
-  if (AGE_AFFIRM_CLEAR.test(words)) return 'affirm-age';
+  if (AGE_DECLINE.test(words) || AGE_DECLINE_ANYWHERE.test(words)) return 'refuse';
+  if (AGE_AFFIRM_CLEAR.test(words) || AGE_AFFIRM_PICKUP.test(words)) return 'affirm-age';
   if (OFFER_ACCEPT.test(words)) return 'refuse';
   if (OFFER_DECLINE.test(words)) return 'decline-offer';
   if (OFFER_CLOSE_MARK.test(words)) return 'decline-offer';
@@ -550,8 +583,8 @@ const declineOneOffer = async (frame) => {
         decline: OFFER_DECLINE.source,
         mark: OFFER_CLOSE_MARK.source,
         accept: OFFER_ACCEPT.source,
-        clear: AGE_AFFIRM_CLEAR.source,
-        ageDecline: AGE_DECLINE.source,
+        clear: AGE_AFFIRM_ALL.source,
+        ageDecline: AGE_DECLINE_ALL.source,
       },
     );
   } catch {
@@ -601,6 +634,247 @@ const dismissOffers = async (page, entry) => {
 };
 
 /**
+ * The fork where a chain asks which of its shops you are standing in.
+ *
+ * DISPO/BK offers Brooklyn, Minneapolis, St Paul and Rochester. Beleaf offers
+ * Brooklyn, Calverton and Medford. Both licences are Brooklyn licences, and
+ * both came back with nothing at all, because the collector stood at the fork
+ * and read the question.
+ *
+ * Getting this wrong is worse than not answering it. Canna Buddha's licence is
+ * Bayside, Queens, and the address it lands on is /store/thief-river/ — Thief
+ * River Falls, Minnesota. Filing that shelf under a New York licence is the
+ * fabricated record this register exists to refuse, and it is exactly the
+ * mistake The Botanist made with Ohio.
+ *
+ * So the shop is chosen only when the register's own words for where it stands
+ * pick out exactly one option. Otherwise nothing is pressed and the run says
+ * why.
+ */
+/* A question, and only a question. The bare phrase "ordering from" also
+   appears in ordinary copy — "when ordering from us", an accessibility
+   statement, a footer — and the census recorded a fork at QUBE and at Budr
+   where there is none, offering "Accessibility Menu" and "About Us" as
+   branches of a chain. Nothing was pressed, but the record lied, and a lying
+   record is what sent this session after the wrong fault once already. */
+const STORE_CHOICE =
+  /(choose|select|pick)\s+(your\s+|a\s+)?(store|location|dispensary)|which\s+(store|location|shop)\b|where\s+are\s+you\s+(ordering|shopping)/i;
+
+/* An option that names another state is never ours, whatever else it says.
+   Written the way an address writes it — after a comma, or at the end — so
+   that Washington Heights stays a neighbourhood of Manhattan rather than the
+   state of Washington. */
+const OTHER_STATE_ABBR =
+  /,\s*(A[LKZR]|C[AOT]|DE|FL|GA|HI|I[DLAN]|K[SY]|LA|M[EDAINSOT]|N[EVHJMCD]|O[HKR]|PA|RI|S[CD]|T[NX]|UT|V[TA]|W[AVIY])\b/;
+const OTHER_STATE_NAME =
+  /(,\s*|\b)(alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|florida|georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|louisiana|maine|maryland|massachusetts|michigan|minnesota|mississippi|missouri|montana|nebraska|nevada|new hampshire|new jersey|new mexico|north carolina|north dakota|ohio|oklahoma|oregon|pennsylvania|rhode island|south carolina|south dakota|tennessee|texas|utah|vermont|virginia|west virginia|wisconsin|wyoming)\s*$/i;
+
+const namesAnotherState = (text) =>
+  OTHER_STATE_ABBR.test(text) || OTHER_STATE_NAME.test(text);
+
+/**
+ * The register's own words for where this shop stands, most telling first.
+ *
+ * The first name that picks out exactly one option decides, so a chain with
+ * two Brooklyn branches is settled by the postcode rather than guessed at.
+ */
+export const placeNamesOf = (shop) => {
+  const where = shop?.address ?? {};
+  const seen = new Set();
+  const out = [];
+  for (const value of [where.zip, where.neighborhood, where.city, where.borough]) {
+    const name = String(value ?? '').trim();
+    if (!name || seen.has(name.toLowerCase())) continue;
+    seen.add(name.toLowerCase());
+    out.push(name);
+  }
+  return out;
+};
+
+const escapeForRegExp = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/**
+ * Everything else the register knows how to name this shop by: the street it
+ * is on, and what it trades as.
+ *
+ * Hibernica Central Park is licensed at 111 Central Park North, in a city the
+ * register calls New York and a borough it calls MANHATTAN. Its chain's fork
+ * offers "Central Park" and "Bronx", and neither of the register's words for
+ * the place is in either option — so the shop was refused, correctly but
+ * uselessly, while the words "Central Park" sat in its own address.
+ *
+ * This reads the other way round: not the register's name inside the option,
+ * but the option inside what the register wrote down.
+ */
+export const registerTextOf = (shop) => {
+  const where = shop?.address ?? {};
+  return [where.line1, where.line2, shop?.dbaName, shop?.legalName]
+    .map((v) => String(v ?? '').trim())
+    .filter(Boolean)
+    .join(' ')
+    .replace(/\s+/g, ' ');
+};
+
+/* Short enough to be a coincidence. "Shop", "Menu" and "Main" all turn up in
+   a shop's own name, and an option that short proves nothing about which
+   branch it is. The places this rule is for — Central Park, Union Square,
+   Jackson Heights — are all longer. */
+const MIN_NAMED_OPTION = 6;
+
+/**
+ * Which of a chain's shops is the one this licence is for.
+ *
+ * Returns the index of the option to press, or why none was pressed. Kept out
+ * of the page and exported so it can be held against the real wordings — the
+ * ones a probe read off DISPO/BK and Beleaf — rather than tested by visiting
+ * them.
+ */
+export const pickStore = (options, names, registerText = '') => {
+  const usable = options.map((text) => String(text ?? '').trim());
+  if (usable.length < 2) return { index: -1, why: 'not-a-fork' };
+  let sawTooMany = false;
+  for (const name of names) {
+    const whole = new RegExp(`(^|[^\\p{L}\\p{N}])${escapeForRegExp(name)}([^\\p{L}\\p{N}]|$)`, 'iu');
+    const hits = [];
+    for (let i = 0; i < usable.length; i += 1) {
+      if (!whole.test(usable[i])) continue;
+      /* Rochester is a city in New York and a city in Minnesota. The name
+         alone cannot tell them apart, so an option that says which state it
+         is in, and does not say New York, is not ours. */
+      if (namesAnotherState(usable[i])) continue;
+      hits.push(i);
+    }
+    if (hits.length === 1) return { index: hits[0], by: name };
+    if (hits.length > 1) sawTooMany = true;
+  }
+
+  /* Last, and the other way round: an option written inside what the register
+     wrote down. Only once none of the register's words for the place has
+     picked anything out, because the place is the better evidence when it is
+     there at all. */
+  const wrote = String(registerText ?? '').toLowerCase();
+  if (wrote) {
+    const named = [];
+    for (let i = 0; i < usable.length; i += 1) {
+      const option = usable[i];
+      if (option.length < MIN_NAMED_OPTION) continue;
+      if (namesAnotherState(option)) continue;
+      if (!wrote.includes(option.toLowerCase())) continue;
+      named.push(i);
+    }
+    if (named.length === 1) return { index: named[0], by: usable[named[0]] };
+    if (named.length > 1) sawTooMany = true;
+  }
+
+  return { index: -1, why: sawTooMany ? 'ambiguous' : 'no-match' };
+};
+/**
+ * Read the fork, if the page is one. Every option is marked as it is read, so
+ * the one chosen can be pressed afterwards without collecting them twice and
+ * hoping the second reading matches the first.
+ */
+const readStoreFork = async (frame) => {
+  try {
+    return await frame.evaluate((ask) => {
+      const asking = new RegExp(ask, 'i');
+      if (!asking.test(document.body?.innerText ?? '')) return null;
+      const onScreen = (el) => {
+        const box = el.getBoundingClientRect();
+        if (box.width <= 0 || box.height <= 0) return false;
+        const cx = box.left + box.width / 2;
+        const cy = box.top + box.height / 2;
+        if (cx < 0 || cy < 0 || cx > innerWidth || cy > innerHeight) return false;
+        const atPoint = document.elementFromPoint(cx, cy);
+        return Boolean(atPoint && (el === atPoint || el.contains(atPoint) || atPoint.contains(el)));
+      };
+      const found = [];
+      for (const el of document.querySelectorAll('a, button, [role="button"], [role="option"], li')) {
+        const words = (el.innerText || el.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim();
+        /* A shop's name and town, not a paragraph and not a single letter. */
+        if (words.length < 3 || words.length > 60) continue;
+        if (!onScreen(el)) continue;
+        /* A link wrapping the whole card would be counted twice with its own
+           child. The one nearest the words wins. */
+        if (found.some((f) => f.el.contains(el) || el.contains(f.el))) continue;
+        found.push({ el, words });
+        if (found.length > 40) break;
+      }
+      found.forEach((f, i) => f.el.setAttribute('data-menu-fork', String(i)));
+      return found.map((f) => f.words);
+    }, STORE_CHOICE.source);
+  } catch {
+    return null;
+  }
+};
+
+/**
+ * Whether what is on screen is an age wall rather than a chain's fork.
+ *
+ * DISPO/BK prints "Choose your store." on the page behind its age wall, so a
+ * fork read before the wall is answered is the wall's own two buttons —
+ * "YES, I'M 21+" and "I'M UNDER 21" — read as two branches of a chain that
+ * does not exist. The run then records a fork problem where there is an age
+ * problem, which is what sent this session looking for the wrong fault.
+ *
+ * Kept out of the page and exported, so the rule sits in one place and can be
+ * held against the labels a probe actually read rather than trusted.
+ */
+export const looksLikeAgeWall = (labels) =>
+  labels.some((text) => {
+    const words = String(text ?? '').trim();
+    if (!words || words.length > 45) return false;
+    return (
+      AGE_AFFIRM_CLEAR.test(words) ||
+      AGE_AFFIRM_PICKUP.test(words) ||
+      AGE_DECLINE.test(words) ||
+      AGE_DECLINE_ANYWHERE.test(words)
+    );
+  });
+
+/**
+ * Stand in the shop this licence is for, or stand still.
+ *
+ * Nothing is pressed unless the register's own words for where this shop is
+ * pick out exactly one of the options on screen. Two matches, or none, and the
+ * run records why and reads nothing: a shelf filed under the wrong branch is
+ * worse than no shelf, and a shelf filed under the wrong STATE is the thing
+ * this register refuses outright.
+ */
+const chooseStore = async (page, entry) => {
+  const names = entry?.place ?? [];
+  if (!names.length) return false;
+  for (const frame of await wallFrames(page)) {
+    const options = await within(readStoreFork(frame), null);
+    if (!options || options.length < 2) continue;
+    /* The wall is answered first, by affirmAge, and the fork is read on the
+       page that comes after it. A wall still standing is not a fork. */
+    if (looksLikeAgeWall(options)) continue;
+    const choice = pickStore(options, names, entry?.placeText ?? '');
+    if (choice.index < 0) {
+      entry.storeForkRefused = choice.why;
+      entry.storeForkOptions = options.slice(0, 8);
+      return false;
+    }
+    const pressed = await within(
+      frame.evaluate((i) => {
+        const el = document.querySelector(`[data-menu-fork="${i}"]`);
+        if (!el) return false;
+        el.click();
+        return true;
+      }, choice.index),
+      false,
+    );
+    if (!pressed) continue;
+    entry.choseStore = options[choice.index];
+    entry.choseStoreBy = choice.by;
+    noteFrame(page, frame, entry);
+    await page.waitForTimeout(2500);
+    return true;
+  }
+  return false;
+};
+
+/**
  * Everything between the door and the shelf, in the order a visitor meets it.
  *
  * The age question is answered first because it is usually on top; the offers
@@ -614,6 +888,15 @@ const clearWalls = async (page, entry) => {
   if (pressed.length) {
     entry.offersDismissed = [...(entry.offersDismissed ?? []), ...pressed];
     if (await affirmAge(page, entry)) entry.ageGate = true;
+  }
+  /* Last, because the fork is usually behind the age question rather than in
+     front of it, and because answering it navigates: anything still unanswered
+     when we move would be answered on the wrong page. Choosing a shop can
+     raise a wall of its own, so the walls are cleared again after it. */
+  if (!entry.choseStore && (await chooseStore(page, entry))) {
+    if (await affirmAge(page, entry)) entry.ageGate = true;
+    const again = await dismissOffers(page, entry);
+    if (again.length) entry.offersDismissed = [...(entry.offersDismissed ?? []), ...again];
   }
 };
 
@@ -664,9 +947,9 @@ const answerAgeIn = async (frame) => {
         return true;
       },
       {
-        clear: AGE_AFFIRM_CLEAR.source,
+        clear: AGE_AFFIRM_ALL.source,
         vague: AGE_AFFIRM_VAGUE.source,
-        decline: AGE_DECLINE.source,
+        decline: AGE_DECLINE_ALL.source,
       },
     );
   } catch {
@@ -2424,6 +2707,12 @@ const main = async () => {
     });
 
     const entry = { shop: shop.dbaName ?? shop.legalName, licence: shop.licenseNumber, status: null };
+    /* What the register says about where this shop stands. The only thing a
+       fork between a chain's branches may be answered with. */
+    entry.place = placeNamesOf(shop);
+    /* The street it is on and what it trades as — read the other way round,
+       when none of the register's words for the place picks out a branch. */
+    entry.placeText = registerTextOf(shop);
     try {
       /* Wait for the fetching to stop rather than for a fixed number of
          seconds. The same shop returned forty products one day and none the

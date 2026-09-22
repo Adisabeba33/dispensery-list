@@ -13,7 +13,7 @@
 import {
   brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, destinationOf, foreignShelfShare,
   menuKey,
-  flattenJsonApiProducts, flattenStockRecords, isProductPage, wallAction,
+  flattenJsonApiProducts, flattenStockRecords, isProductPage, looksLikeAgeWall, pickStore, placeNamesOf, registerTextOf, wallAction,
   mergeBySize, pagedRequest, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
@@ -890,6 +890,120 @@ check('a number the weight left behind goes too',
   check('one record alone is not lifted', flattenStockRecords([single]).length, 0);
 }
 
+/* The fork where a chain asks which of its shops you are standing in. Both
+   wordings below were read off live pages by a probe. */
+{
+  const at = (city, zip, extra) => placeNamesOf({ address: { city, zip, ...extra } });
+
+  check('the register is read most telling first',
+    at('Brooklyn', '11215', { borough: 'BROOKLYN' }), ['11215', 'Brooklyn']);
+  check('a neighbourhood counts, and outranks the city',
+    at('New York', '10032', { neighborhood: 'Washington Heights', borough: 'MANHATTAN' }),
+    ['10032', 'Washington Heights', 'New York', 'MANHATTAN']);
+
+  const brooklyn = at('Brooklyn', '11215', { borough: 'BROOKLYN' });
+
+  // DISPO/BK. Three of its four shops are in Minnesota.
+  check('the Brooklyn licence takes the Brooklyn shop',
+    pickStore(['Brooklyn', 'Minneapolis', 'St Paul', 'Rochester'], brooklyn).index, 0);
+
+  // Beleaf, where every option carries the chain's name as well as the town.
+  check('the town is found inside the shop name',
+    pickStore(['Beleaf Brooklyn', 'Beleaf Calverton', 'Beleaf Medford'], brooklyn).index, 0);
+
+  /* Canna Buddha is licensed in Bayside, Queens, and the address it lands on
+     is /store/thief-river/ — Minnesota. Nothing here is ours, and the right
+     answer is to press nothing. */
+  const bayside = at('Bayside', '11361', { borough: 'QUEENS' });
+  const nothingOurs = pickStore(['Thief River Falls', 'Bemidji', 'Brainerd'], bayside);
+  check('a fork with none of our shops in it is not answered', nothingOurs.index, -1);
+  check('and the run says so', nothingOurs.why, 'no-match');
+
+  // Two branches in the same town cannot be told apart by the town.
+  const twoBrooklyns = pickStore(['Brooklyn - Atlantic Ave', 'Brooklyn - 4th Ave'], brooklyn);
+  check('two shops in our town is not a choice we may make', twoBrooklyns.index, -1);
+  check('and it is recorded as the ambiguity it is', twoBrooklyns.why, 'ambiguous');
+
+  // Unless the postcode is on them, which is why it is tried first.
+  check('a postcode settles what the town cannot',
+    pickStore(['Brooklyn 11238', 'Brooklyn 11215'], brooklyn).index, 1);
+
+  /* Rochester is a city in New York and a city in Minnesota, and the name
+     alone cannot tell them apart. */
+  const rochester = at('Rochester', '14604', { borough: null });
+  check('the one that says which state it is in wins',
+    pickStore(['Rochester, MN', 'Rochester, NY'], rochester).index, 1);
+  check('and if the only Rochester is the other one, we take nothing',
+    pickStore(['Rochester, MN', 'Minneapolis, MN'], rochester).index, -1);
+
+  /* Washington Heights is a neighbourhood of Manhattan, not the state of
+     Washington, which is why a state is only read where an address writes
+     one — after a comma, or at the end. */
+  const heights = at('New York', '10032', { neighborhood: 'Washington Heights' });
+  check('a neighbourhood is not mistaken for a state',
+    pickStore(['Washington Heights', 'Harlem'], heights).index, 0);
+
+  // Whole words only: Brooklynville is not Brooklyn.
+  check('the town is matched whole',
+    pickStore(['Brooklynville', 'Brooklyn'], brooklyn).index, 1);
+
+  // One option is not a fork, and nothing about it needs answering.
+  check('a single option is not a fork', pickStore(['Brooklyn'], brooklyn).why, 'not-a-fork');
+
+  // A licence the register knows no place for may not answer a fork at all.
+  check('no place, no choice', pickStore(['Brooklyn', 'Queens'], []).index, -1);
+
+  /* Hibernica has two licences and its chain offers two branches. The Bronx
+     one is settled by the city. The other is licensed at 111 Central Park
+     North, in a city the register calls New York and a borough it calls
+     MANHATTAN — so none of its words for the place is in either option, while
+     the words "Central Park" sit in its own street address. Read the other way
+     round, the option is inside what the register wrote down. */
+  const park = {
+    address: { city: 'New York', zip: '10026', borough: 'MANHATTAN',
+               line1: '111 Central Park North', line2: 'Store FRNT B' },
+    dbaName: 'Hibernica Central Park',
+  };
+  const bronx = {
+    address: { city: 'Bronx', zip: '10461', borough: 'BRONX', line1: '3220 Westchester Ave' },
+    dbaName: 'Hibernica',
+  };
+  const branches = ['Central Park', 'Bronx'];
+  check('the street address names the branch',
+    pickStore(branches, placeNamesOf(park), registerTextOf(park)).index, 0);
+  check('and the other licence still goes by its city',
+    pickStore(branches, placeNamesOf(bronx), registerTextOf(bronx)).index, 1);
+
+  /* The place is the better evidence and is tried first. A chain whose branch
+     names carry the chain's own name must not be settled by that. */
+  const beleaf = { address: { city: 'Brooklyn', zip: '11238' }, dbaName: 'Beleaf Brooklyn' };
+  check('the chain name in every option settles nothing',
+    pickStore(['Beleaf Calverton', 'Beleaf Medford'], [], registerTextOf(beleaf)).why, 'no-match');
+
+  // Short enough to be a coincidence: "Shop" and "Menu" are in half the names.
+  check('a four-letter option proves nothing',
+    pickStore(['Shop', 'Menu'], [], 'Shop Hibernica Menu').index, -1);
+
+  // And the state guard holds on this path too.
+  check('nor may the register vouch for another state',
+    pickStore(['Brooklyn Park, MN', 'Bronx'], [], 'Hibernica Brooklyn Park, MN').index, -1);
+
+  /* DISPO/BK prints "Choose your store." on the page behind its age wall. Read
+     before the wall is answered, the fork is the wall's own two buttons — and
+     the run then records a fork problem where there is an age problem. These
+     are the exact labels it recorded. */
+  check('the wall is not a fork', looksLikeAgeWall(["YES, I'M 21+", "I'M UNDER 21"]), true);
+  /* The Travel Agency's, which the fork read as three branches of a chain and
+     refused as none of ours — a fork problem recorded where there is an age
+     problem, on four licences at once. */
+  check('nor is the one that asks two questions at once', looksLikeAgeWall([
+    'Yes! Shop store pick-up', 'Yes! Shop quick delivery', "No... Unfortunately I'm not yet 21",
+  ]), true);
+  check('nor is it one with only the refusal showing', looksLikeAgeWall(['NOT YET']), true);
+  check('a fork of towns is a fork', looksLikeAgeWall(['Brooklyn', 'Minneapolis', 'St Paul']), false);
+  check('and so is one naming the chain', looksLikeAgeWall(['Beleaf Brooklyn', 'Beleaf Medford']), false);
+}
+
 /* Every button here was read off a live shop — QUBE's screenshots and the
    Flowery's own page — not invented. */
 {
@@ -903,6 +1017,20 @@ check('a number the weight left behind goes too',
      gate at all. */
   t('I am over 21', 'affirm-age');
   t("I'm over 21", 'affirm-age');
+  /* DISPO/BK's, and it fell further than Good Vibes' did: the branch after
+     "yes" spelled out "i am" with no room for "i'm", so the label dropped
+     through to the never-press list, where `yes.*` caught it. A whole shop
+     stood behind an age wall this collector is allowed to answer, because of
+     an apostrophe. */
+  t("YES, I'M 21+", 'affirm-age');
+  /* The Travel Agency asks the age question and the collect-or-deliver
+     question with the same three buttons. Four licences stood behind it. Only
+     the pick-up one is pressed: it says yes as honestly as the other and asks
+     nobody for an address. */
+  t('Yes! Shop store pick-up', 'affirm-age');
+  t('Yes! Shop quick delivery', 'refuse');
+  t("Yes, I'm 21", 'affirm-age');
+  t('YES, I AM 21+', 'affirm-age');
 
   // The answer of someone who is not 21. This collector does not give it.
   t('NOT YET', 'refuse');
@@ -910,6 +1038,14 @@ check('a number the weight left behind goes too',
   t('No', 'refuse');
   t('I am under 21', 'refuse');
   t("I'm under 21", 'refuse');
+  t("I'M UNDER 21", 'refuse');
+  /* Three dots and an adverb, which every anchored pattern walks past. The
+     decline may be read loosely and the affirmation may not: missing a
+     decline means pressing what we should not, missing an affirmation only
+     means a shelf goes unread. */
+  t("No... Unfortunately I'm not yet 21", 'refuse');
+  t('Sorry, I am under 21', 'refuse');
+  t('I am too young', 'refuse');
 
   // A shop's own way out of its newsletter box.
   t('No Thanks', 'decline-offer');

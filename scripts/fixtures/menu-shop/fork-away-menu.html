@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><title>Menu — Fifteenth Fixture Dispensary</title>
+<style>button { display: block; margin: 8px; padding: 12px 24px; }</style>
+<h3>Where are you ordering from?</h3>
+<!-- Brooklyn Park is a suburb of Minneapolis. It carries our licence's town
+     inside its name and it is eight hundred miles away, in another state,
+     where a New York dispensary may not stock a thing. Pressing it would file
+     Minnesota's shelf under a Brooklyn licence — the fabricated record this
+     register exists to refuse. -->
+<button id="a">Brooklyn Park, MN</button>
+<button id="b">Minneapolis, MN</button>
+<button id="c">St Paul, MN</button>
+<div id="menu">loading…</div>
+<script>
+  /* Every one of these serves a full shelf. So a shelf coming back is proof
+     that something was pressed, and an empty one is proof that nothing was. */
+  const shelf = async () => {
+    const r = await fetch('/api/products.json?page=0&perPage=5');
+    const j = await r.json();
+    document.getElementById('menu').textContent = (j.data.products || []).length + ' products';
+  };
+  a.onclick = shelf; b.onclick = shelf; c.onclick = shelf;
+</script>

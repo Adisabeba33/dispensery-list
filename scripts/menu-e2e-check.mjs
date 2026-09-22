@@ -75,7 +75,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '13',
+    '--limit', '16',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -283,6 +283,57 @@ try {
   check('and read as a shelf', stock?.flower, 2);
   /* That the price survives the unwrapping is held by a unit case in
      menu-parse-check.mjs, where the object itself can be looked at. */
+
+  /* A chain that asks which of its shops you are standing in. DISPO/BK offers
+     Brooklyn, Minneapolis, St Paul and Rochester; Beleaf offers Brooklyn,
+     Calverton and Medford. Both licences are Brooklyn licences, and both came
+     back with nothing, because the collector stood at the fork and read the
+     question instead of answering it.
+
+     Only this licence's own shop serves a shelf here, so two strains coming
+     back is proof that Brooklyn was the button pressed. */
+  const fork = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000986');
+  /* The wall stands in front of the fork, and the words "Choose your store."
+     are on the page behind it from the start — so a fork read before the wall
+     is answered is the wall's own two buttons, which is what DISPO/BK
+     recorded: no-match, options ["YES, I'M 21+", "I'M UNDER 21"]. */
+  check('the wall in front of the fork was answered', fork?.ageGate, true);
+  check('the chain fork was answered', fork?.choseStore, 'Brooklyn');
+  check('by the name the register holds', fork?.choseStoreBy, 'Brooklyn');
+  check('and the shop behind it was read', fork?.flower, 2);
+
+  /* And the fork where none of the shops are ours. Brooklyn Park is a suburb
+     of Minneapolis: it carries our licence's town inside its name and it is in
+     another state, where a New York dispensary may not stock a thing.
+
+     Every button here serves a full shelf, so a shelf coming back would be
+     proof that one was pressed. Nothing may be. */
+  const away = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000985');
+  check('a fork with none of our shops in it is not answered', away?.choseStore, undefined);
+  check('the run records why', away?.storeForkRefused, 'no-match');
+  check('and nothing is read from it', away?.flower, 0);
+
+  /* A wall that asks two questions with the same three buttons, the way The
+     Travel Agency does for four licences at once:
+
+       Yes! Shop store pick-up   Yes! Shop quick delivery
+       No... Unfortunately I'm not yet 21
+
+     Only pick-up is pressed. Delivery would be a choice made for somebody who
+     is not here, and the third is a lie told with three dots and an adverb,
+     which every anchored pattern walked past. Both poison the shelf here, so
+     two strains coming back is proof that pick-up was the one pressed.
+
+     landedOn is checked too: the fixture server answers /menu/flower for every
+     shop on it, so a shop that reads nothing falls through to the guess and
+     comes back with somebody else's two strains. That is how a fixture passes
+     while proving nothing, and it happened once already today. */
+  const wall3 = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000983');
+  check('the two-question wall was answered', wall3?.ageGate, true);
+  check('and the shelf behind it read', wall3?.flower, 2);
+  check('off its own page, not the guessed one', wall3?.landedOn, 'http://localhost:4399/wall3-menu');
+  check('nothing was guessed at all', wall3?.foundMenuByGuess, undefined);
+
 
   // Shelves the run did not visit must survive it.
   check('other shelves carried forward', summary.shelvesCarriedForward > 0, true);

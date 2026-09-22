@@ -49,6 +49,10 @@ KEEP = (
     "ageGate",
     "offersDismissed",
     "walledFrames",
+    "choseStore",
+    "choseStoreBy",
+    "storeForkRefused",
+    "storeForkOptions",
     "foundMenuByGuess",
     "guessedMenuPaths",
     "foundMenuOnSecondLook",
@@ -414,6 +418,32 @@ def report():
             for r in sorted(framed, key=lambda r: -(r.get("flower") or 0))
         ],
         limit=25,
+    )
+
+    # Сети, которые сперва спрашивают, в каком из их магазинов ты стоишь.
+    chose = [r for r in rows if r.get("choseStore")]
+    refused = [r for r in rows if r.get("storeForkRefused")]
+    section(
+        lines,
+        "Развилка «в каком магазине сети вы стоите»",
+        f"Выбрали свой магазин у {len(chose)}, отказались выбирать у {len(refused)}.\n"
+        "Жмём только тот вариант, который однозначно опознан по адресу самой\n"
+        "лицензии — индексу, району или городу. Два совпадения или ни одного —\n"
+        "не жмём ничего: полка чужого филиала хуже, чем никакой, а полка\n"
+        "чужого штата — это тот самый выдуманный факт, который реестр\n"
+        "отказывается публиковать.",
+        [
+            f"**{shop_name(r)}**: {r['choseStore']} (по «{r.get('choseStoreBy')}»)"
+            + (f" → {r['flower']} сортов" if (r.get("flower") or 0) > 0 else " → всё равно пусто")
+            for r in sorted(chose, key=lambda r: -(r.get("flower") or 0))
+        ]
+        + [
+            f"**{shop_name(r)}**: не выбрали — {r['storeForkRefused']}"
+            + (f"; предлагали: {', '.join(r.get('storeForkOptions') or [])[:120]}"
+               if r.get("storeForkOptions") else "")
+            for r in refused
+        ],
+        limit=30,
     )
 
     dead = [r for r in rows if str(r.get("status") or "").startswith("error")]
