@@ -988,6 +988,41 @@ check('a number the weight left behind goes too',
   check('nor may the register vouch for another state',
     pickStore(['Brooklyn Park, MN', 'Bronx'], [], 'Hibernica Brooklyn Park, MN').index, -1);
 
+  /* Read out of a real run. FlynnStoned is licensed at 388 West St, New York,
+     NY 10014. Its chain's fork offered Bright Elephant's address — a different
+     company — the city matched, and the run filed another shop's shelf under
+     FlynnStoned's licence. A postcode settles it: an option that states one,
+     and states a different one, is not ours whatever else it shares. */
+  const flynn = {
+    address: { line1: '388 West St', city: 'New York', zip: '10014', borough: 'MANHATTAN' },
+    dbaName: 'FLYNNSTONED CANNABIS COMPANY',
+  };
+  const bright = {
+    address: { line1: '206 8th Ave', city: 'New York', zip: '10011', borough: 'MANHATTAN' },
+    dbaName: 'Bright Elephant, LLC',
+  };
+  const addresses = ['206 8th Ave, New York, NY 10011', '820 2nd Ave, New York, NY 10017'];
+  check('another branch in our own city is not ours',
+    pickStore(addresses, placeNamesOf(flynn), registerTextOf(flynn)).why, 'no-match');
+  check('and the licence whose postcode it is takes it',
+    pickStore(addresses, placeNamesOf(bright), registerTextOf(bright)).index, 0);
+
+  /* A house number of five digits is not a postcode. Liberty Buds is at 24502
+     Horace Harding Expy, Little Neck, NY 11362, and reading 24502 as a
+     postcode would refuse the shop its own address. */
+  const littleNeck = {
+    address: { line1: '24502 Horace Harding Expy', city: 'Little Neck', zip: '11362' },
+    dbaName: 'Dispensary Near Me by Liberty Buds',
+  };
+  check('a house number is not a postcode',
+    pickStore(['24502 Horace Harding Expy, Little Neck, NY 11362', 'Bronx'],
+      placeNamesOf(littleNeck), registerTextOf(littleNeck)).index, 0);
+
+  /* An option that states no postcode at all says nothing either way, and is
+     still judged by the town — which is how DISPO/BK and Beleaf are read. */
+  check('no postcode stated, no opinion',
+    pickStore(['Brooklyn', 'Minneapolis'], ['11215', 'Brooklyn']).index, 0);
+
   /* DISPO/BK prints "Choose your store." on the page behind its age wall. Read
      before the wall is answered, the fork is the wall's own two buttons — and
      the run then records a fork problem where there is an age problem. These

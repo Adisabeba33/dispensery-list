@@ -715,6 +715,26 @@ export const registerTextOf = (shop) => {
     .replace(/\s+/g, ' ');
 };
 
+/**
+ * The postcode an option writes down, if it writes one the way an address does.
+ *
+ * FlynnStoned is licensed at 388 West St, New York, NY 10014. Its chain's fork
+ * offered "206 8th Ave, New York, NY 10011" — Bright Elephant's address, a
+ * different company — and the city matched, so the run took it and filed
+ * another shop's shelf under FlynnStoned's licence.
+ *
+ * A postcode settles that outright: an option that states one, and states a
+ * different one, is not this licence's shop whatever else it shares. Read only
+ * where an address writes it — after the state — so that a house number of
+ * five digits, 24502 Horace Harding Expy, stays a house number.
+ */
+const ZIP_IN_ADDRESS = /\b(?:N\.?Y\.?|NEW\s+YORK)[\s,]+(\d{5})\b/i;
+
+const zipIn = (text) => {
+  const found = ZIP_IN_ADDRESS.exec(String(text ?? ''));
+  return found ? found[1] : null;
+};
+
 /* Short enough to be a coincidence. "Shop", "Menu" and "Main" all turn up in
    a shop's own name, and an option that short proves nothing about which
    branch it is. The places this rule is for — Central Park, Union Square,
@@ -733,6 +753,13 @@ export const pickStore = (options, names, registerText = '') => {
   const usable = options.map((text) => String(text ?? '').trim());
   if (usable.length < 2) return { index: -1, why: 'not-a-fork' };
   let sawTooMany = false;
+  /* The register's own postcode, if it has one. An option that states a
+     different one is another branch, however much else it shares. */
+  const ourZip = names.find((name) => /^\d{5}$/.test(String(name ?? '')));
+  const wrongZip = (option) => {
+    const stated = zipIn(option);
+    return Boolean(stated && ourZip && stated !== ourZip);
+  };
   for (const name of names) {
     const whole = new RegExp(`(^|[^\\p{L}\\p{N}])${escapeForRegExp(name)}([^\\p{L}\\p{N}]|$)`, 'iu');
     const hits = [];
@@ -742,6 +769,8 @@ export const pickStore = (options, names, registerText = '') => {
          alone cannot tell them apart, so an option that says which state it
          is in, and does not say New York, is not ours. */
       if (namesAnotherState(usable[i])) continue;
+      /* And a branch of our own chain, in our own city, is still not ours. */
+      if (wrongZip(usable[i])) continue;
       hits.push(i);
     }
     if (hits.length === 1) return { index: hits[0], by: name };
@@ -759,6 +788,7 @@ export const pickStore = (options, names, registerText = '') => {
       const option = usable[i];
       if (option.length < MIN_NAMED_OPTION) continue;
       if (namesAnotherState(option)) continue;
+      if (wrongZip(option)) continue;
       if (!wrote.includes(option.toLowerCase())) continue;
       named.push(i);
     }
@@ -787,16 +817,50 @@ const readStoreFork = async (frame) => {
         const atPoint = document.elementFromPoint(cx, cy);
         return Boolean(atPoint && (el === atPoint || el.contains(atPoint) || atPoint.contains(el)));
       };
-      const found = [];
-      for (const el of document.querySelectorAll('a, button, [role="button"], [role="option"], li')) {
-        const words = (el.innerText || el.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim();
+      /* The fork is what stands with the question, not everything on the page
+         that can be clicked. DISPO/BK's wall was answered, the page behind it
+         still said "Choose your store.", and the controls read off it were
+         the site's navigation bar — SHOP, LOCATIONS, SPECIALS, LEARN,
+         REWARDS, CONTACT, BROOKLYN, ORDER NOW. One of those is a town, and
+         reading a nav bar as a chain's branches is how a collector ends up
+         pressing "ORDER NOW" because it sat next to the word Brooklyn.
+
+         So: find where the question is actually written, then climb until the
+         element around it holds more than one control, and read only those. */
+      const SELECTOR = 'a, button, [role="button"], [role="option"], li';
+      const wordsOf = (el) =>
+        (el.innerText || el.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim();
+      const usable = (el) => {
+        const words = wordsOf(el);
         /* A shop's name and town, not a paragraph and not a single letter. */
-        if (words.length < 3 || words.length > 60) continue;
-        if (!onScreen(el)) continue;
+        return words.length >= 3 && words.length <= 60 && onScreen(el);
+      };
+
+      /* Where the question is written: the smallest element that says it. */
+      let question = null;
+      for (const el of document.querySelectorAll('h1,h2,h3,h4,h5,p,span,div,legend,label')) {
+        const own = (el.textContent || '').replace(/\s+/g, ' ').trim();
+        if (own.length > 160 || !asking.test(own)) continue;
+        if (question && question.contains(el)) question = el;
+        else if (!question) question = el;
+      }
+      if (!question) return null;
+
+      let group = question;
+      let controls = [];
+      for (let up = 0; up < 6 && group; up += 1) {
+        controls = [...group.querySelectorAll(SELECTOR)].filter(usable);
+        if (controls.length >= 2) break;
+        group = group.parentElement;
+      }
+      if (controls.length < 2) return null;
+
+      const found = [];
+      for (const el of controls) {
         /* A link wrapping the whole card would be counted twice with its own
            child. The one nearest the words wins. */
         if (found.some((f) => f.el.contains(el) || el.contains(f.el))) continue;
-        found.push({ el, words });
+        found.push({ el, words: wordsOf(el) });
         if (found.length > 40) break;
       }
       found.forEach((f, i) => f.el.setAttribute('data-menu-fork', String(i)));
