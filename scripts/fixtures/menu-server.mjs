@@ -16,6 +16,11 @@ import { fileURLToPath } from 'node:url';
 
 const HERE = resolve(dirname(fileURLToPath(import.meta.url)), 'menu-shop');
 const PORT = Number(process.argv[2]) || 4399;
+/* A second instance, started with --refuse, answers /robots.txt with a refusal
+   and nothing else changes. robots.txt is read per origin, so a shop that says
+   no cannot be one route on the storefront above — it has to be its own host,
+   which is why this is a flag rather than a path. */
+const REFUSES = process.argv.includes('--refuse');
 
 const PRODUCTS = JSON.parse(readFileSync(resolve(HERE, 'api/products.json'), 'utf8')).data.products;
 
@@ -42,6 +47,19 @@ const file = (name) => {
 
 createServer((req, res) => {
   const url = new URL(req.url, `http://localhost:${PORT}`);
+
+  if (url.pathname === '/robots.txt') {
+    /* Without --refuse there is no robots.txt at all, which is the ordinary
+       case and the one every other fixture shop is read under. */
+    if (!REFUSES) {
+      res.writeHead(404, { 'content-type': 'text/plain' });
+      res.end('not found');
+      return;
+    }
+    res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8' });
+    res.end('User-agent: *\nDisallow: /\n');
+    return;
+  }
 
   if (url.pathname === '/api/products.json') {
     const page = Number(url.searchParams.get('page') ?? 0);

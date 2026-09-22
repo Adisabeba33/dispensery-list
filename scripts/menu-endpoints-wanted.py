@@ -62,7 +62,20 @@ def main(to_stdout):
         return (s.get("menu") or {}).get("provider")
 
     swept = [s for s in open_shops if provider(s) not in THIRD_PARTY and site(s)]
-    empty = [s for s in swept if not held.get(s["licenseNumber"])]
+    # Магазин, чей robots.txt отказал целому сайту, обход не читает вовсе.
+    # Адрес меню ему не нужен — его нужно оставить в покое, — так что он
+    # уходит из «Пусто» вниз, к остальным, куда мы не ходим. Отказ только в
+    # адресе меню (status другой, menuLink — этот) остаётся в «Пусто»:
+    # разрешённая страница у такого магазина может и найтись.
+    refused = [
+        s for s in swept
+        if (coverage.get(s["licenseNumber"]) or {}).get("status") == "robots-disallowed"
+    ]
+    refused_ids = {s["licenseNumber"] for s in refused}
+    empty = [
+        s for s in swept
+        if not held.get(s["licenseNumber"]) and s["licenseNumber"] not in refused_ids
+    ]
     short = [
         (s, coverage.get(s["licenseNumber"]))
         for s in swept
@@ -76,7 +89,8 @@ def main(to_stdout):
         "# Магазины, которым нужен адрес меню",
         "",
         f"Работающих магазинов в реестре: **{len(open_shops)}**. Обход заходит в "
-        f"**{len(swept)}**, полку отдают **{len(swept) - len(empty)}**.",
+        f"**{len(swept) - len(refused)}**, полку отдают "
+        f"**{len(swept) - len(refused) - len(empty)}**.",
         "",
         "Этот файл собирается скриптом `scripts/menu-endpoints-wanted.py` по "
         "последнему прогону — правит его не рука, а следующий запуск.",
@@ -168,8 +182,20 @@ def main(to_stdout):
         "адрес такого меню в файл добавлять не нужно.",
         f"- **{len(nosite)}** магазинов не имеют сайта в реестре; см. "
         "`docs/MISSING_WEBSITES.md`. Найдётся сайт — магазин сам попадёт в обход.",
-        "",
     ]
+    if refused:
+        lines.append(
+            f"- **{len(refused)}** магазинов запретили обход в своём `robots.txt`. "
+            "Мы спросили и получили отказ — это ответ, а не пробел, и искать им "
+            "адрес меню не нужно. Состав меняется от прогона к прогону: сайт, "
+            "который не отдал `robots.txt`, считается разрешившим."
+        )
+        for r in sorted(refused, key=lambda x: (x["address"]["city"], x.get("dbaName") or x["legalName"])):
+            lines.append(
+                f"  - {r.get('dbaName') or r['legalName']} — "
+                f"{r['address']['city']}, {site(r)}"
+            )
+    lines.append("")
 
     text = "\n".join(lines)
     if to_stdout:

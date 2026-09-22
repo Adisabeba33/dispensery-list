@@ -33,6 +33,15 @@ const run = (cmd, args, opts = {}) =>
 
 const serve = () =>
   spawn('node', ['scripts/fixtures/menu-server.mjs', String(PORT)], { cwd: ROOT, stdio: 'ignore' });
+/* The seventeenth fixture shop, on its own host because robots.txt is read per
+   origin. It refuses everything, and the collector has to say so by licence
+   rather than drop the shop on the floor. */
+const REFUSING_PORT = PORT + 1;
+const refusing = spawn(
+  'node',
+  ['scripts/fixtures/menu-server.mjs', String(REFUSING_PORT), '--refuse'],
+  { cwd: ROOT, stdio: 'ignore' },
+);
 /* Restartable: the flaky shop's menu is empty to its first caller and stocked
    to every one after, and the second run below needs it to be flaky again. */
 let server = serve();
@@ -75,7 +84,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '16',
+    '--limit', '17',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -133,6 +142,20 @@ try {
   check('and is not asked again', neverRead?.retried, undefined);
   // Nor is a shop that answered the first time.
   check('a shop that answered is not asked twice', summary.perShop[0].retried, undefined);
+
+  /* A shop whose robots.txt says no. The refusal is a reading — we asked and
+     were answered — so it has to arrive in the diagnostic like any other, and
+     it has to arrive named. The row used to carry only a shop name, and the
+     diagnostic is keyed by licence, so it was dropped where it was collected
+     and the shop afterwards read as "not visited in the last run". That sends
+     somebody hunting for a menu address for a shop that asked to be left
+     alone, which is the opposite of what the refusal said. */
+  const refused = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000984');
+  check('a refusal arrives in the diagnostic', refused?.status, 'robots-disallowed');
+  check('and says so where the report reads it', refused?.menuLink, 'robots-disallowed');
+  check('the refusal is named by licence', refused?.licence, 'OCM-CAURD-24-000984');
+  check('the run counts it', summary.robotsDisallowed, 1);
+  check('and does not count it as a shop it read', summary.shopsVisited, 16);
 
   /* The retry replaces the empty reading rather than being carried alongside
      it: the shelf published for this shop is today's, not yesterday's held
@@ -375,8 +398,38 @@ try {
       .length,
     2,
   );
+
+  /* A batch that meets a refusal has to stop at its own edge. The workflow
+     walks fixed offsets, so a batch that does not count the shop it was
+     refused reads one index past its window and the next batch reads that
+     index again — nine refusals in the daily run of the twenty-second cost
+     nine shops a second reading for nothing.
+
+     One shop, starting at the refusing one, which is the second to last in the
+     dataset. Exactly one row, and it is the refusal: reaching the shop behind
+     it means the window ran over. */
+  const edge = await run('node', [
+    'scripts/menu-render.mjs',
+    '--dataset', 'scripts/fixtures/menu-dataset.json',
+    '--limit', '1', '--offset', '15',
+  ]);
+  if (edge.code !== 0) {
+    console.log(edge.out.slice(-1500));
+    throw new Error(`collector exited ${edge.code}`);
+  }
+  const oneShop = JSON.parse(
+    readFileSync(resolve(ROOT, 'enrichment-output/menu-summary.json'), 'utf8'),
+  );
+  check('a batch of one reads one shop', oneShop.perShop.length, 1);
+  check('and it is the shop that refused', oneShop.perShop[0]?.licence, 'OCM-CAURD-24-000984');
+  check(
+    'the shop behind it was left for the next batch',
+    oneShop.perShop.some((s) => s.licence === 'OCM-CAURD-24-000983'),
+    false,
+  );
 } finally {
   server.kill();
+  refusing.kill();
   if (existsSync(BACKUP)) {
     copyFileSync(BACKUP, LISTINGS);
     rmSync(BACKUP);

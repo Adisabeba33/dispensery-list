@@ -272,6 +272,26 @@
   }
  },
  {
+  "id": "fixture-shop-refuses",
+  "licenseNumber": "OCM-CAURD-24-000984",
+  "legalName": "Fixture Dispensary 17 LLC",
+  "dbaName": "Fixture Dispensary 17",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "PROPRIETARY"
+  },
+  "contact": {
+   "website": "http://localhost:4400/"
+  },
+  "address": {
+   "line1": "17 Test St",
+   "city": "Brooklyn",
+   "borough": "BROOKLYN",
+   "state": "NY",
+   "zip": "11201"
+  }
+ },
+ {
   "id": "fixture-shop-wall3",
   "licenseNumber": "OCM-CAURD-24-000983",
   "legalName": "Fixture Dispensary 16 LLC",

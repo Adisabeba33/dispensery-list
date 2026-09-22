@@ -2702,11 +2702,27 @@ const main = async () => {
     } catch {
       allowed = true;
     }
+    /* The refusal costs the batch a slot, like any other first visit. The
+       workflow walks fixed offsets, so a batch that does not count a shop it
+       passed reads one index beyond its window — and the next batch, starting
+       at its own offset, reads that index a second time. Nine refusals in the
+       run of the twenty-second meant nine shops read twice for nothing. */
+    if (job.attempt === 1) done += 1;
     if (!allowed) {
-      report.push({ shop: shop.dbaName ?? shop.legalName, status: 'robots-disallowed' });
+      /* Named by its licence, because the diagnostic is keyed by licence and a
+         row without one is dropped where it is collected. Dropped, the shop
+         reads afterwards as "not visited in the last run" — and somebody goes
+         hunting for a menu address for a shop that has asked not to be
+         crawled. The refusal is the finding; it has to arrive. */
+      report.push({
+        licence: shop.licenseNumber,
+        shop: shop.dbaName ?? shop.legalName,
+        status: 'robots-disallowed',
+        menuLink: 'robots-disallowed',
+      });
+      console.log(`${done}/${limit} ${shop.dbaName ?? shop.legalName}: robots-disallowed`);
       continue;
     }
-    if (job.attempt === 1) done += 1;
     const startedAt = Date.now();
 
     const context = await browser.newContext({ userAgent: UA });
