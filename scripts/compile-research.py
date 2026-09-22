@@ -358,7 +358,26 @@ base_units = [(x, "CITY") for x in cities] + [(x, "TOWN") for x in towns] + [(x,
 for x in town_villages:
     base_units.extend([(x, "TOWN"), (x, "VILLAGE")])
 
-workbook = openpyxl.load_workbook(SRC / "ocm-local-opt-out-data.xlsx", data_only=True)
+# The workbook this run actually has, and when it was actually obtained.
+#
+# research-bootstrap.mjs writes the opt-out workbook only when the download
+# succeeded (`if (localOptOutRes.ok)`), which is right — a half-written xlsx
+# would be worse. But this file then stamped `retrieved`, the run's own clock,
+# on every municipality source regardless. A week when cannabis.ny.gov was
+# unreachable would have produced 53 records claiming to have been read from
+# the state that morning, off a workbook downloaded a week earlier. That is a
+# fabricated provenance claim, which is the one thing this register forbids.
+#
+# So the source carries the workbook's own mtime. Downloaded this run, that is
+# now; carried over from an earlier one, it says so, and the record stays true
+# without the weekly job having to go red over somebody else's outage.
+OPTOUT_WORKBOOK = SRC / "ocm-local-opt-out-data.xlsx"
+optout_retrieved = (
+    datetime.fromtimestamp(OPTOUT_WORKBOOK.stat().st_mtime, tz=timezone.utc)
+    .isoformat(timespec="milliseconds")
+    .replace("+00:00", "Z")
+)
+workbook = openpyxl.load_workbook(OPTOUT_WORKBOOK, data_only=True)
 ws = workbook.active
 optouts = {}
 for county, municipality, license_type, municipality_type in list(ws.iter_rows(values_only=True))[1:]:
@@ -373,8 +392,20 @@ for county, municipality, license_type, municipality_type in list(ws.iter_rows(v
     optouts[key] = {"retail": "Retail Dispensary" in types, "onsite": "On-Site Consumption" in types}
 
 municipalities = []
-muni_source = {"url": OCM_OPTOUT_URL, "label": "OCM — Official Local Opt-Out List", "type": "OFFICIAL_REGISTRY", "retrievedAt": retrieved}
-county_source = {"url": WESTCHESTER_MUNI_URL, "label": "Westchester County GIS — Municipal Boundary layer", "type": "REGULATOR_PAGE", "retrievedAt": retrieved}
+muni_source = {"url": OCM_OPTOUT_URL, "label": "OCM — Official Local Opt-Out List", "type": "OFFICIAL_REGISTRY", "retrievedAt": optout_retrieved}
+# The county's forty-five local-government units, transcribed from the GIS
+# layer into the lists above on 2026-09-04 and unchanged since — municipal
+# boundaries do not move weekly.
+#
+# Nothing in this pipeline fetches that layer. It was citing it with the run's
+# own clock, so every week 53 records claimed to have been read from
+# Westchester GIS that morning off a list nobody had called. A source cited but
+# never read, with a timestamp that moves, reads as freshly verified and is not.
+#
+# So it carries the date it was actually transcribed. If the county
+# reorganises, that is a code change and this date moves with it.
+WESTCHESTER_MUNI_TRANSCRIBED = "2026-09-04T00:00:00.000Z"
+county_source = {"url": WESTCHESTER_MUNI_URL, "label": "Westchester County GIS — Municipal Boundary layer", "type": "REGULATOR_PAGE", "retrievedAt": WESTCHESTER_MUNI_TRANSCRIBED}
 for name, kind in base_units:
     flags = optouts.get((name, kind), {"retail": False, "onsite": False})
     notes = None

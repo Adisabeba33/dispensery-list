@@ -2,8 +2,13 @@ name: Weekly registry refresh
 
 on:
   schedule:
-    # Monday morning, New York time. Nothing is published automatically; the
-    # run opens a pull request for a person to look at.
+    # Monday morning, New York time.
+    #
+    # A week that only restamps timestamps lands on main by itself; a week in
+    # which a licence, a municipality or an opt-out verdict moved opens a pull
+    # request instead. See the significance step below — the old rule published
+    # nothing automatically and opened a pull request every week, which meant
+    # five of them went unread.
     - cron: '0 11 * * 1'
   workflow_dispatch:
 
@@ -31,6 +36,11 @@ jobs:
 
       - name: Keep the current data for comparison
         run: |
+          mkdir -p /tmp/previous
+          cp data/dispensaries.json /tmp/previous/dispensaries.json
+          cp data/producers.json /tmp/previous/producers.json
+          cp data/municipalities.json /tmp/previous/municipalities.json
+          # weekly-report.py still wants these two by path.
           cp data/dispensaries.json /tmp/previous-dispensaries.json
           cp data/producers.json /tmp/previous-producers.json
 
@@ -69,7 +79,55 @@ jobs:
             --previous-dispensaries /tmp/previous-dispensaries.json \
             --previous-producers /tmp/previous-producers.json
 
-      - name: Open a pull request if anything changed
+      # Does this week need a person, or only a commit? Every run restamps
+      # lastUpdated, retrievedAt and verifiedAt on every record, so "anything
+      # changed" was always true and the answer was always "a person" — five
+      # branches piled up unread, and the one week that mattered would have
+      # arrived looking exactly like the four that did not.
+      - name: Decide whether a person is needed
+        id: significance
+        run: |
+          python scripts/refresh-significance.py --previous-dir /tmp/previous > /tmp/significance.json
+          cat /tmp/significance.json
+          echo "verdict=$(python -c "import json;print(json.load(open('/tmp/significance.json'))['verdict'])")" >> "$GITHUB_OUTPUT"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          d = json.load(open('/tmp/significance.json'))
+          print(f"## Weekly refresh: {d['verdict']}\n")
+          for r in d['reasons'] or ['Nothing beyond timestamps and recomputed brand tallies.']:
+              print(f"- {r}")
+          print(f"\nProducer brand tallies moved on {d['brandTalliesMoved']} records.")
+          PY
+
+      # Timestamps and recomputed tallies. Nobody has to approve arithmetic, and
+      # a review that is always waiting is a review nobody reads — so this lands
+      # on main and says what moved in the log.
+      - name: Commit the refresh when nothing needs deciding
+        if: steps.significance.outputs.verdict == 'provenance'
+        run: |
+          if git diff --quiet -- data/ docs/; then
+            echo "Registry unchanged — nothing to commit."
+            exit 0
+          fi
+          MOVED=$(python -c "import json;print(json.load(open('/tmp/significance.json'))['brandTalliesMoved'])")
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ docs/
+          git commit -m "data: weekly registry refresh — provenance only"             -m "No licence appeared or disappeared, no opt-out verdict moved, and nothing about a shop changed beyond its timestamps. Producer brand tallies moved on ${MOVED} records, which are listing and shop counts recomputed off the shelf."             -m "Classified by scripts/refresh-significance.py; a substantive week opens a pull request instead."
+          # The daily collector pushes to main too, so a refresh that took a
+          # few minutes can find the branch moved under it. Only data files
+          # changed here, so replaying them onto whatever arrived is safe.
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push rejected; replaying onto main as it now stands (attempt $attempt)."
+            git fetch origin main
+            git rebase FETCH_HEAD || { git rebase --abort || true; exit 1; }
+          done
+          echo "::error::Could not push the weekly refresh to main."
+          exit 1
+
+      - name: Open a pull request when something needs deciding
+        if: steps.significance.outputs.verdict == 'substantive'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -77,6 +135,18 @@ jobs:
             echo "Registry unchanged — nothing to review."
             exit 0
           fi
+          # The reasons go at the top of the report, so the pull request opens
+          # on what changed rather than on a wall of timestamps.
+          python - <<'PY' > /tmp/why.md
+          import json
+          d = json.load(open('/tmp/significance.json'))
+          print("## Why this needs a look\n")
+          for r in d['reasons']:
+              print(f"- {r}")
+          print()
+          PY
+          cat /tmp/why.md refresh-report.md > /tmp/pr-body.md
+          mv /tmp/pr-body.md refresh-report.md
 
           # The run number keeps two refreshes on the same day from colliding.
           # Without it the second one is rejected as a non-fast-forward and the
