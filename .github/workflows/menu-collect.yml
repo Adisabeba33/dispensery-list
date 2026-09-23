@@ -179,6 +179,13 @@ jobs:
                   print(f"    payload top-level keys: {r['topLevelKeys']}")
               for shape in r.get('shapes', []):
                   print(f"    SHAPE {shape}")
+              for key in ('choseStore', 'choseStoreBy', 'storeForkConfirmed', 'returnedAfterStore', 'storeForkRefused', 'storeForkOptions'):
+                  if r.get(key):
+                      print(f"    {key}: {r[key]}")
+              if r.get('responseTypes'):
+                  print(f"    responses: {r['responseTypes']}")
+              if r.get('embedded'):
+                  print(f"    embedded: {r['embedded']}")
               for link in r.get('links', []):
                   print(f"    LINK {link}")
               # The request that carried the products, with the knob the paging

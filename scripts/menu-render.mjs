@@ -3098,9 +3098,21 @@ const main = async () => {
     let lastPayloadAt = Date.now();
 
     // Capture what the page asks for; that is the menu the shop publishes.
+    /* What else the page was answered with, by type. Kept for the diagnostic
+       only: a site that sends its shelf as a Remix stream, a React Server
+       Components flight or plain HTML shows up here and nowhere else, because
+       everything below this line reads JSON and nothing but JSON. */
+    const responseTypes = {};
     page.on('response', async (res) => {
       try {
         const ct = res.headers()['content-type'] ?? '';
+        if (dumpShapes > 0) {
+          const kind = res.request().resourceType();
+          if (kind === 'fetch' || kind === 'xhr' || kind === 'document') {
+            const type = `${kind}:${ct.split(';')[0].trim() || '?'}`;
+            responseTypes[type] = (responseTypes[type] ?? 0) + 1;
+          }
+        }
         if (!ct.includes('json')) return;
         if (res.request().resourceType() === 'document') return;
         const body = await res.json();
@@ -3512,6 +3524,34 @@ const main = async () => {
          edibles, and the payload that has the flower in it is the one the
          dump was refusing to describe. */
       if (dumpShapes > 0) {
+        entry.responseTypes = responseTypes;
+        /* What the page carries inside itself. A site rendered on the server
+           ships its first screen's data in the HTML — Remix and React Router
+           in a context object, Next.js in __NEXT_DATA__ or a flight stream,
+           and many shops in JSON-LD for the search engines — and none of that
+           is ever a response the listener above can hear. */
+        entry.embedded = await within(
+          page.evaluate(() => {
+            const scripts = [...document.querySelectorAll('script')];
+            const text = (el) => el.textContent || '';
+            let jsonLdProducts = 0;
+            for (const el of document.querySelectorAll('script[type="application/ld+json"]')) {
+              const t = text(el);
+              jsonLdProducts += (t.match(/"@type"\s*:\s*"Product"/g) || []).length;
+            }
+            const has = (re) => scripts.some((el) => re.test(text(el)));
+            return {
+              remixContext: typeof window.__remixContext === 'object' || has(/__remixContext/),
+              reactRouterContext: typeof window.__reactRouterContext === 'object' || has(/__reactRouterContext/),
+              turboStream: has(/streamController\.enqueue/),
+              nextData: Boolean(document.getElementById('__NEXT_DATA__')),
+              nextFlight: has(/self\.__next_f/),
+              jsonLdProducts,
+              priceTexts: (document.body?.innerText.match(/\$\s?\d+(\.\d{2})?/g) || []).length,
+            };
+          }),
+          null,
+        );
         /* Every array of objects the page sent, wherever it sits, with the
            keys of its first item. Whatever the shelf is, it is in here. */
         const found = [];
