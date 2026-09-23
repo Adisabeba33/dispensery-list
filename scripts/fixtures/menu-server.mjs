@@ -48,14 +48,12 @@ const file = (name) => {
 createServer((req, res) => {
   const url = new URL(req.url, `http://localhost:${PORT}`);
 
-  if (url.pathname === '/robots.txt') {
-    /* Without --refuse there is no robots.txt at all, which is the ordinary
-       case and the one every other fixture shop is read under. */
-    if (!REFUSES) {
-      res.writeHead(404, { 'content-type': 'text/plain' });
-      res.end('not found');
-      return;
-    }
+  /* Only --refuse touches robots.txt. Without it the storefront serves the one
+     in menu-shop/, which disallows /admin and nothing else — that file is
+     there to prove the collector reads the record rather than treating any
+     robots.txt as a closed door, and answering 404 here would quietly retire
+     it. */
+  if (REFUSES && url.pathname === '/robots.txt') {
     res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8' });
     res.end('User-agent: *\nDisallow: /\n');
     return;
