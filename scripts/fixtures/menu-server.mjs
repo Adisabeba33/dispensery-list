@@ -332,6 +332,9 @@ createServer((req, res) => {
       /* One site, several shops, the shop remembered by the browser. */
       '/radio': 'radio.html',
       '/radio-menu': 'radio-menu.html',
+      /* A server-rendered menu whose shelf is only inside the page. */
+      '/remix': 'remix.html',
+      '/remix-menu': 'remix-menu.html',
     };
     const name = ROUTES[url.pathname] ?? url.pathname.slice(1);
     const [body, type] = file(name);

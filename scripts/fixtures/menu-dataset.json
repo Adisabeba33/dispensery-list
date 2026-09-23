@@ -373,5 +373,25 @@
    "state": "NY",
    "zip": "10012"
   }
+ },
+ {
+  "id": "fixture-shop-remix",
+  "licenseNumber": "OCM-CAURD-24-000979",
+  "legalName": "Fixture Dispensary 21 LLC",
+  "dbaName": "Fixture Dispensary 21",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "PROPRIETARY"
+  },
+  "contact": {
+   "website": "http://localhost:4399/remix"
+  },
+  "address": {
+   "line1": "21 Test St",
+   "city": "Brooklyn",
+   "borough": "BROOKLYN",
+   "state": "NY",
+   "zip": "11201"
+  }
  }
 ]

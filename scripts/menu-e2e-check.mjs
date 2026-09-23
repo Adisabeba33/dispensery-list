@@ -84,7 +84,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '20',
+    '--limit', '21',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -199,12 +199,21 @@ try {
     false,
   );
 
+  /* A menu rendered on the server, whose shelf is never sent as a response at
+     all: it is inside the page, and once the router hydrates it sits decoded
+     in state.loaderData. The Travel Agency's flower page shows twenty-one
+     prices this way and the run heard none of them. */
+  const remix = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000979');
+  check('a shelf that only lives inside the page is read', remix?.readEmbeddedRouterData, true);
+  check('its flower comes back', remix?.flower, 2);
+  check('and its pre-roll is still refused', remix?.rejected?.['title-not-flower'] ?? remix?.rejected?.['category-not-flower'], 1);
+
   const refused = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000984');
   check('a refusal arrives in the diagnostic', refused?.status, 'robots-disallowed');
   check('and says so where the report reads it', refused?.menuLink, 'robots-disallowed');
   check('the refusal is named by licence', refused?.licence, 'OCM-CAURD-24-000984');
   check('the run counts it', summary.robotsDisallowed, 1);
-  check('and does not count it as a shop it read', summary.shopsVisited, 19);
+  check('and does not count it as a shop it read', summary.shopsVisited, 20);
 
   /* The retry replaces the empty reading rather than being carried alongside
      it: the shelf published for this shop is today's, not yesterday's held

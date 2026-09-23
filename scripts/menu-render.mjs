@@ -3486,6 +3486,47 @@ const main = async () => {
           entry.pagedQueryProducts = seenBefore();
         }
       }
+      /* The data a server-rendered page already holds. Remix and React Router
+         render the first screen on the server and hand the browser its data
+         inside the page — The Travel Agency's flower page shows twenty-one
+         prices and sends not one of them as a response the listener can hear.
+         Once the page has hydrated, the router keeps that data decoded, per
+         route, in state.loaderData; it is read from there and treated as one
+         more answer the page gave. Only what the page itself was given is
+         taken — nothing is asked of the site that a visitor's browser did not
+         already receive. */
+      const embedded = await within(
+        page.evaluate(() => {
+          const router = window.__remixRouter || window.__reactRouterDataRouter || null;
+          const data = router?.state?.loaderData;
+          if (!data || typeof data !== 'object') return null;
+          const seen = new WeakSet();
+          const plain = (value, depth) => {
+            if (depth > 12 || value === null || value === undefined) return value ?? null;
+            if (typeof value === 'function') return undefined;
+            if (typeof value !== 'object') return value;
+            if (value instanceof Date) return value.toISOString();
+            /* A deferred value that has settled keeps its result beside it. */
+            if (typeof value.then === 'function') return '_data' in value ? plain(value._data, depth + 1) : null;
+            if (seen.has(value)) return null;
+            seen.add(value);
+            if (Array.isArray(value)) return value.slice(0, 2000).map((v) => plain(v, depth + 1));
+            const out = {};
+            for (const [k, v] of Object.entries(value)) {
+              const p = plain(v, depth + 1);
+              if (p !== undefined) out[k] = p;
+            }
+            return out;
+          };
+          return plain(data, 0);
+        }),
+        null,
+      );
+      if (embedded && typeof embedded === 'object' && Object.keys(embedded).length) {
+        payloads.push(embedded);
+        entry.readEmbeddedRouterData = true;
+      }
+
       entry.payloads = payloads.length;
       /* Where we actually ended up. A shop that returns five products when its
          site shows twenty is either being paged or we are standing on the wrong

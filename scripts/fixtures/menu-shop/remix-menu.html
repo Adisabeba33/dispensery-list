@@ -1,0 +1,37 @@
+<!doctype html><meta charset="utf-8"><title>Flower</title>
+<h1>Shop Flower</h1>
+<ul id="menu"></ul>
+<!-- A page rendered on the server, in the shape Remix leaves behind: its data
+     arrives inside the page, and once the router has hydrated it keeps that
+     data decoded per route in state.loaderData. Nothing is fetched, so the
+     listener hears nothing — the shelf is only here.
+
+     The shelf is deferred, the way loaders stream slow data: a promise that
+     has settled keeps its result beside it. -->
+<script>
+  const shelf = [
+    { id: 'r1', brandName: 'Good Green', Name: 'Good Green - Creamsicle Sunset - 3.5g', type: 'Flower',
+      strainType: 'Hybrid', THC: { range: [25.95, 25.95], unit: 'PERCENTAGE' }, Options: ['1/8oz'], Prices: [32] },
+    { id: 'r2', brandName: 'Nanticoke', Name: 'Nanticoke - Sour Diesel - 3.5g', type: 'Flower',
+      strainType: 'Sativa', THC: { range: [26.2, 26.2], unit: 'PERCENTAGE' }, Options: ['1/8oz'], Prices: [45] },
+    { id: 'r3', brandName: 'Nanticoke', Name: 'Nanticoke - Sour Diesel Pre-Roll 1g', type: 'Pre-Rolls',
+      Options: ['1g'], Prices: [12] },
+  ];
+  const deferred = Promise.resolve(shelf);
+  deferred._tracked = true;
+  deferred._data = shelf;
+  window.__remixRouter = {
+    state: {
+      loaderData: {
+        root: { user: null, store: { id: 7, name: 'Union Square' } },
+        'routes/_layout': { banners: [] },
+        'routes/_layout.flower': { category: 'flower', products: deferred },
+      },
+    },
+  };
+  for (const p of shelf) {
+    const li = document.createElement('li');
+    li.textContent = p.Name + ' — $' + p.Prices[0];
+    document.getElementById('menu').appendChild(li);
+  }
+</script>
