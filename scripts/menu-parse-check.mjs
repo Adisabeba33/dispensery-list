@@ -17,6 +17,9 @@ import {
   mergeBySize, pagedRequest, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
+import { readFileSync } from 'node:fs';
+import Ajv2020 from 'ajv/dist/2020.js';
+import addFormats from 'ajv-formats';
 
 const shop = { licenseNumber: 'OCM-CAURD-24-000001' };
 const SRC = 'https://example-dispensary.test/menu';
@@ -1260,4 +1263,38 @@ if (failures) {
   console.log(`\n${failures} check(s) failed.`);
   process.exit(1);
 }
+/* ------------------------------------------------------------- SCHEMA -----
+ * What the collector writes has to be what the register accepts. The source
+ * of a Travel Agency listing gained a `branch` — the shop chosen on a site that
+ * keeps it out of the address — and the schema, which allows no property it
+ * does not name, refused all seventy-three of them in the first live run. Had
+ * that been the daily run, every batch holding one would have been discarded.
+ * Nothing local had ever put the collector's output through the schema, so
+ * nothing local could have said so. */
+{
+  const ajv = new Ajv2020({ allErrors: true, strict: false });
+  addFormats(ajv);
+  const listingSchema = JSON.parse(
+    readFileSync(new URL('../data/schema/flower-listing.schema.json', import.meta.url), 'utf8'),
+  );
+  const valid = ajv.compile(listingSchema);
+  const errorsOf = (listing) =>
+    valid(listing) ? [] : (valid.errors ?? []).map((e) => `${e.instancePath} ${e.message} ${JSON.stringify(e.params)}`);
+
+  const plain = toListing(dutchie, shop, SRC, {});
+  check('a collected listing is one the schema accepts', errorsOf(plain), []);
+
+  const chosen = structuredClone(plain);
+  chosen.sources[0].branch = 'Union Square 835 Broadway, NY, NY';
+  check('and so is one read for a chosen shop', errorsOf(chosen), []);
+
+  const dated = toListing(
+    { Name: 'Datey', type: 'Flower', Options: ['3.5g'], packagedOn: '2026-08-14', harvestDate: '2026-06-02', totalCannabinoids: 31.4 },
+    shop,
+    SRC,
+    {},
+  );
+  check('and one carrying dates and a whole panel', errorsOf(dated), []);
+}
+
 console.log('menu parser: all fixture checks passed.');

@@ -254,6 +254,15 @@
               "null"
             ]
           },
+          "branch": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "Which of a chain's shops this shelf was read for, when the site remembers the chosen shop itself instead of naming it in the address — the option as the site worded it, e.g. 'Union Square 835 Broadway, NY, NY'. Absent when the address alone names the menu. Two listings on one address with different branches are two shelves, not one shared shelf."
+          },
           "type": {
             "enum": [
               "MENU_PLATFORM",
