@@ -2582,10 +2582,19 @@ const inRange = (v, max) => (v === null || v === undefined || v < 0 || v > max ?
  * range writes the bottom as zero, and zero per cent THC is not a thing a
  * flower menu means — so a zero is passed over rather than believed, and the
  * next name is tried. */
-const potency = (p, names, list, compound) => {
+/* Whether a zero is a reading depends on the compound, and treating the two
+   alike cost the register four thousand CBD figures in one night. Zero per
+   cent THC is not a thing a flower menu means: it is a field nobody filled,
+   and five hundred and seventy-three of them had been published as if it were
+   a measurement. Zero per cent CBD is the ordinary truth about nearly every
+   jar on a New York shelf — ninety-five in every hundred CBD figures read were
+   exactly that — and passing it over as silence replaced a true answer with
+   no answer. So THC's zero is not believed and CBD's is. */
+const potency = (p, names, list, compound, { zeroIsSilence = false } = {}) => {
+  const reads = (v) => (zeroIsSilence ? Boolean(v) : v !== null && v !== undefined);
   for (const n of names) {
     const v = inRange(num(pick(p, [n])), 100);
-    if (v) return v;
+    if (reads(v)) return v;
   }
   /* The array form: [{ name: 'THC', value: 24.1 }, …]. Read last, because a
      named field is the platform's own answer and this is a panel to search. */
@@ -2595,7 +2604,7 @@ const potency = (p, names, list, compound) => {
       const name = String(flatten(pick(row, ['name', 'type', 'label', 'cannabinoid'])) ?? '');
       if (!compound.test(name)) continue;
       const v = inRange(num(pick(row, ['value', 'percent', 'amount', 'displayValue', 'rangeLow'])), 100);
-      if (v) return v;
+      if (reads(v)) return v;
     }
   }
   return null;
@@ -2844,6 +2853,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
       ['thcContent', 'potencyThc', 'thc', 'thcPercent', 'potencyThcRangeLow', 'potencyThcRangeHigh', 'potencyThcDisplayValue'],
       CANNABINOID_PANEL,
       THC_NAME,
+      { zeroIsSilence: true },
     ),
     cbdPercent: potency(
       p,

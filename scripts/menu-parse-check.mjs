@@ -177,6 +177,14 @@ check('so does the low end of a range', potent({ potencyThcRangeLow: 19.8, poten
    cent THC is not a thing a flower menu means. */
 check('a zero low end falls through to the top', potent({ potencyThcRangeLow: 0, potencyThcRangeHigh: 22 })?.thcPercent, 22);
 check('CBD is read the same way', potent({ potencyCbdDisplayValue: '0.4%' })?.cbdPercent, 0.4);
+/* The night the zero-skip ran over CBD, the share of listings with a CBD figure
+   fell from 23.3 per cent to 4.3: ninety-five in every hundred of those figures
+   were an honest zero. A zero THC is a field nobody filled; a zero CBD is what
+   nearly every jar actually contains. */
+check('a stated zero CBD is a reading', potent({ cbd: 0 })?.cbdPercent, 0);
+check('and so is a zero CBD range', potent({ potencyCbdRangeLow: 0, potencyCbdRangeHigh: 0 })?.cbdPercent, 0);
+check('a stated zero THC is not', potent({ thc: 0 })?.thcPercent, null);
+check('a zero CBD in a panel is a reading too', potent({ cannabinoids: [{ name: 'CBD', value: 0 }] })?.cbdPercent, 0);
 check('and a quiet menu still says nothing', potent({})?.thcPercent, null);
 
 /* The array form, read only after every named field has stayed quiet. */
