@@ -694,8 +694,7 @@ export const placeNamesOf = (shop) => {
 const escapeForRegExp = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 /**
- * Everything else the register knows how to name this shop by: the street it
- * is on, and what it trades as.
+ * The street the register says this shop stands on.
  *
  * Hibernica Central Park is licensed at 111 Central Park North, in a city the
  * register calls New York and a borough it calls MANHATTAN. Its chain's fork
@@ -705,10 +704,17 @@ const escapeForRegExp = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
  *
  * This reads the other way round: not the register's name inside the option,
  * but the option inside what the register wrote down.
+ *
+ * The address and nothing else. This used to read the trade name as well, and
+ * a chain's own name is always inside the trade name of each of its licences —
+ * so an option that was only the chain's name, with no place in it, matched
+ * every time. ZenZest's New Hyde Park licence pressed "ZenZest CANNABIS" and
+ * landed on the chain's Queens store; its address, 272-06 Union Turnpike, says
+ * nothing about ZenZest. A street names a branch. A trade name names a company.
  */
 export const registerTextOf = (shop) => {
   const where = shop?.address ?? {};
-  return [where.line1, where.line2, shop?.dbaName, shop?.legalName]
+  return [where.line1, where.line2]
     .map((v) => String(v ?? '').trim())
     .filter(Boolean)
     .join(' ')

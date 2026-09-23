@@ -1095,6 +1095,22 @@ check('a number the weight left behind goes too',
   check('the chain name in every option settles nothing',
     pickStore(['Beleaf Calverton', 'Beleaf Medford'], [], registerTextOf(beleaf)).why, 'no-match');
 
+  /* Read out of the daily run of 23 September. ZenZest's New Hyde Park licence
+     trades as "ZenZest Cannabis Dispensary", and its chain's fork offered the
+     chain's own name as one of the options. Matched against the trade name,
+     that option is always inside it — so it was pressed, and the run landed on
+     the chain's Queens store. The address is 272-06 Union Turnpike and says
+     nothing of the kind. A trade name names the company, not the branch. */
+  const zenzest = {
+    address: { line1: '272-06 UNION TURNPIKE', city: 'New Hyde Park', zip: '11040' },
+    dbaName: 'ZenZest Cannabis Dispensary',
+    legalName: 'HerbHub LLC',
+  };
+  check('the chain\'s own name is not a branch',
+    pickStore(['ZenZest CANNABIS', 'Staten Island'], placeNamesOf(zenzest), registerTextOf(zenzest)).index, -1);
+  check('because the trade name is not what the branch is read against',
+    registerTextOf(zenzest), '272-06 UNION TURNPIKE');
+
   // Short enough to be a coincidence: "Shop" and "Menu" are in half the names.
   check('a four-letter option proves nothing',
     pickStore(['Shop', 'Menu'], [], 'Shop Hibernica Menu').index, -1);
