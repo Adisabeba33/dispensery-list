@@ -660,6 +660,12 @@ const dismissOffers = async (page, entry) => {
 const STORE_CHOICE =
   /(choose|select|pick)\s+(your\s+|a\s+)?(store|location|dispensary)|which\s+(store|location|shop)\b|where\s+are\s+you\s+(ordering|shopping)/i;
 
+/* The button that commits a choice made from radio buttons. Named narrowly —
+   "Shop now" and "Go" stand in navigation bars too — and only ever looked for
+   beside the fork itself. */
+const STORE_CONFIRM =
+  /^(continue( to (shop|menu|store|shopping))?|confirm( (store|location|selection))?|start shopping|select (this )?store|set (as my )?store|done|apply|save|let'?s go)$/i;
+
 /* An option that names another state is never ours, whatever else it says.
    Written the way an address writes it — after a comma, or at the end — so
    that Washington Heights stays a neighbourhood of Manhattan rather than the
@@ -678,11 +684,40 @@ const namesAnotherState = (text) =>
  * The first name that picks out exactly one option decides, so a chain with
  * two Brooklyn branches is settled by the postcode rather than guessed at.
  */
+/* The ordinals a street name is written with, spelled out. The Travel Agency
+   writes "587 Fifth Avenue" where the register writes "587 5th Ave", and
+   neither is wrong. */
+const ORDINAL_WORDS = {
+  first: '1st', second: '2nd', third: '3rd', fourth: '4th', fifth: '5th', sixth: '6th',
+  seventh: '7th', eighth: '8th', ninth: '9th', tenth: '10th', eleventh: '11th', twelfth: '12th',
+};
+export const addressWords = (text) =>
+  String(text ?? '')
+    .toLowerCase()
+    .replace(/\b(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|eleventh|twelfth)\b/g, (w) => ORDINAL_WORDS[w]);
+
+/**
+ * The house number and the street it is on, as the register writes them:
+ * "835 broadway", "587 5th".
+ *
+ * Three Travel Agency shops stand in Manhattan. The register calls all three
+ * New York, MANHATTAN; their fork calls all three "NY, NY". Nothing the
+ * register says about the place tells them apart — but the number on the door
+ * does, and both sides write it down: 835 Broadway is Union Square, 598
+ * Broadway is SoHo, 587 Fifth Avenue is the one licensed as Terrapin Greens.
+ * It comes straight after the postcode, because a door is more particular
+ * than a city.
+ */
+const streetOf = (line1) => {
+  const m = /^\s*(\d+[a-z]?)\s+([a-z0-9]+)/i.exec(addressWords(line1));
+  return m ? `${m[1]} ${m[2]}` : null;
+};
+
 export const placeNamesOf = (shop) => {
   const where = shop?.address ?? {};
   const seen = new Set();
   const out = [];
-  for (const value of [where.zip, where.neighborhood, where.city, where.borough]) {
+  for (const value of [where.zip, streetOf(where.line1), where.neighborhood, where.city, where.borough]) {
     const name = String(value ?? '').trim();
     if (!name || seen.has(name.toLowerCase())) continue;
     seen.add(name.toLowerCase());
@@ -752,6 +787,9 @@ const MIN_NAMED_OPTION = 6;
 export const pickStore = (options, names, registerText = '') => {
   const usable = options.map((text) => String(text ?? '').trim());
   if (usable.length < 2) return { index: -1, why: 'not-a-fork' };
+  /* Read as well with its ordinals spelled the way the register spells them,
+     so "587 Fifth Avenue" is found by "587 5th". */
+  const plain = usable.map(addressWords);
   let sawTooMany = false;
   /* The register's own postcode, if it has one. An option that states a
      different one is another branch, however much else it shares. */
@@ -764,7 +802,7 @@ export const pickStore = (options, names, registerText = '') => {
     const whole = new RegExp(`(^|[^\\p{L}\\p{N}])${escapeForRegExp(name)}([^\\p{L}\\p{N}]|$)`, 'iu');
     const hits = [];
     for (let i = 0; i < usable.length; i += 1) {
-      if (!whole.test(usable[i])) continue;
+      if (!whole.test(usable[i]) && !whole.test(plain[i])) continue;
       /* Rochester is a city in New York and a city in Minnesota. The name
          alone cannot tell them apart, so an option that says which state it
          is in, and does not say New York, is not ours. */
@@ -831,7 +869,10 @@ const readStoreFork = async (frame) => {
 
          So: find where the question is actually written, then climb until the
          element around it holds more than one control, and read only those. */
-      const SELECTOR = 'a, button, [role="button"], [role="option"], li';
+      /* A radio group is a fork too. The Travel Agency lists its four shops as
+         radio buttons, each inside a label that carries the shop's name and
+         door, and nothing on that list is a link or a button. */
+      const SELECTOR = 'a, button, [role="button"], [role="option"], [role="radio"], label, li';
       const wordsOf = (el) =>
         (el.innerText || el.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim();
       const usable = (el) => {
@@ -974,6 +1015,7 @@ const chooseStore = async (page, entry) => {
       entry.storeForkOptions = options.slice(0, 8);
       return false;
     }
+    const before = page.url();
     const pressed = await within(
       frame.evaluate((i) => {
         const el = document.querySelector(`[data-menu-fork="${i}"]`);
@@ -987,6 +1029,56 @@ const chooseStore = async (page, entry) => {
     entry.choseStore = options[choice.index];
     entry.choseStoreBy = choice.by;
     noteFrame(page, frame, entry);
+    await page.waitForTimeout(800);
+
+    /* A choice that goes nowhere until it is confirmed. The Travel Agency's
+       four shops are radio buttons, and nothing happens when one is picked:
+       the button under them — "Continue to shop" — is what commits it. Only
+       controls near the chosen option are considered, so a "Continue" in the
+       page's own navigation is never mistaken for the fork's. */
+    const confirmed = await within(
+      frame.evaluate(([pattern, index]) => {
+        const confirm = new RegExp(pattern, 'i');
+        const chosen = document.querySelector(`[data-menu-fork="${index}"]`);
+        let scope = chosen?.parentElement ?? null;
+        for (let up = 0; up < 5 && scope; up += 1) {
+          for (const el of scope.querySelectorAll(
+            'button, [role="button"], a, input[type="submit"], input[type="button"]',
+          )) {
+            /* The commit button stands in the fork's own group, so it was read
+               as one of the options and marked like them. Only the option
+               just chosen is passed over. */
+            if (el === chosen) continue;
+            const words = (el.innerText || el.value || el.getAttribute('aria-label') || '')
+              .replace(/\s+/g, ' ')
+              .trim();
+            if (!confirm.test(words)) continue;
+            if (el.disabled || el.getAttribute('aria-disabled') === 'true') continue;
+            el.click();
+            return words;
+          }
+          scope = scope.parentElement;
+        }
+        return null;
+      }, [STORE_CONFIRM.source, choice.index]),
+      null,
+    );
+    if (confirmed) {
+      entry.storeForkConfirmed = confirmed;
+      await page.waitForTimeout(2500);
+      /* Having committed the choice, the site takes the visitor home. The
+         shop is remembered by the site from here on, so the page we were
+         reading is asked for again rather than abandoned. A fork whose options
+         are links is not sent back: there the link was the way to the shop. */
+      if (page.url() !== before) {
+        try {
+          await page.goto(before, { waitUntil: 'domcontentloaded', timeout: 30000 });
+          entry.returnedAfterStore = before;
+        } catch {
+          /* the page we left is gone; read where we are */
+        }
+      }
+    }
     await page.waitForTimeout(2500);
     return true;
   }
@@ -2227,6 +2319,19 @@ const SHELF_SHARED = 'SHELF_SHARED_WITH_OTHER_LICENCES';
  * one and produce the opposite error. Same for the query: it carries the store
  * id on several platforms.
  */
+/**
+ * Which menu a listing was read from: its address, and — where the chain keeps
+ * the shop out of the address — the shop that was chosen on it.
+ *
+ * Shared between the collector and the validator, so the two cannot disagree
+ * about whether a shelf stands alone.
+ */
+export const menuIdentity = (source) => {
+  const key = menuKey(source?.url ?? '');
+  const branch = String(source?.branch ?? '').toLowerCase().replace(/\s+/g, ' ').trim();
+  return branch ? `${key} @ ${branch}` : key;
+};
+
 export const menuKey = (url) => {
   try {
     const u = new URL(url);
@@ -3586,6 +3691,11 @@ const main = async () => {
              That is why a shop with twenty ounce products showed four. */
           if (seen.has(listing.listingId)) why['sameStrainAnotherSize'] = (why['sameStrainAnotherSize'] ?? 0) + 1;
           seen.add(listing.listingId);
+          /* Which of a chain's shops this shelf was read for, when the site
+             keeps that to itself rather than in the address. Without it four
+             Travel Agency shelves, each read with its own shop chosen, all
+             carry the same address and are marked as one shared shelf. */
+          if (entry.choseStore) listing.sources[0].branch = entry.choseStore;
           listings.push(listing);
         }
       }
@@ -3782,13 +3892,12 @@ const main = async () => {
   for (const l of merged) {
     const url = l.sources?.[0]?.url;
     if (!url) continue;
-    const key = menuKey(url);
+    const key = menuIdentity(l.sources[0]);
     if (!licencesByMenu.has(key)) licencesByMenu.set(key, new Set());
     licencesByMenu.get(key).add(l.licenseNumber);
   }
   for (const l of merged) {
-    const url = l.sources?.[0]?.url;
-    const shared = (licencesByMenu.get(menuKey(url))?.size ?? 0) > 1;
+    const shared = (licencesByMenu.get(menuIdentity(l.sources?.[0]))?.size ?? 0) > 1;
     const warnings = new Set(l.warnings ?? []);
     if (shared) warnings.add(SHELF_SHARED);
     else warnings.delete(SHELF_SHARED);

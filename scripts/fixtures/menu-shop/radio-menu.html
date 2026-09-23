@@ -1,0 +1,43 @@
+<!doctype html><meta charset="utf-8"><title>Flower</title>
+<style>
+  #pick { position: fixed; inset: 0; background: #fff; padding: 24px; }
+  label { display: block; margin: 12px 0; padding: 8px; }
+  button { margin-top: 16px; padding: 12px 24px; }
+</style>
+<nav><a href="/nowhere">Shop Now</a></nav>
+<h1>Shop Flower</h1>
+<div id="menu">loading…</div>
+
+<!-- The shop is chosen from radio buttons, and choosing does nothing until the
+     button under them is pressed — which then takes the visitor home, exactly
+     as The Travel Agency does. Only then does this page know which shelf to
+     show. -->
+<div id="pick" hidden>
+  <h2>Select store</h2>
+  <label><input type="radio" name="store" value="union"><b>Union Square</b><br>835 Broadway, NY, NY</label>
+  <label><input type="radio" name="store" value="brooklyn"><b>Downtown Brooklyn</b><br>122 Flatbush, BK, NY</label>
+  <label><input type="radio" name="store" value="fifth"><b>Fifth Avenue</b><br>587 Fifth Avenue, NY, NY</label>
+  <label><input type="radio" name="store" value="soho"><b>SoHo</b><br>598 Broadway, NY, NY</label>
+  <button id="go" disabled>Continue to shop</button>
+</div>
+<script>
+  const SHELVES = {
+    union: '/api/products.json?page=0&perPage=5',
+    soho: '/api/soho.json',
+  };
+  const store = localStorage.getItem('store');
+  if (!store) {
+    document.getElementById('pick').hidden = false;
+    for (const r of document.querySelectorAll('input[name=store]')) {
+      r.onchange = () => { document.getElementById('go').disabled = false; };
+    }
+    document.getElementById('go').onclick = () => {
+      localStorage.setItem('store', document.querySelector('input[name=store]:checked').value);
+      location.href = '/radio';
+    };
+  } else {
+    fetch(SHELVES[store] || '/api/empty.json').then((r) => r.json()).then((j) => {
+      document.getElementById('menu').textContent = (j.data.products || []).length + ' products';
+    });
+  }
+</script>

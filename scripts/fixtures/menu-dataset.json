@@ -331,5 +331,47 @@
    "state": "NY",
    "zip": "11361"
   }
+ },
+ {
+  "id": "fixture-shop-radio-19",
+  "licenseNumber": "OCM-CAURD-24-000981",
+  "legalName": "Fixture Dispensary 19 LLC",
+  "dbaName": "Fixture Dispensary 19",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "PROPRIETARY"
+  },
+  "contact": {
+   "website": "http://localhost:4399/radio"
+  },
+  "address": {
+   "line1": "835 Broadway",
+   "city": "New York",
+   "county": "New York",
+   "borough": "MANHATTAN",
+   "state": "NY",
+   "zip": "10003"
+  }
+ },
+ {
+  "id": "fixture-shop-radio-20",
+  "licenseNumber": "OCM-CAURD-24-000980",
+  "legalName": "Fixture Dispensary 20 LLC",
+  "dbaName": "Fixture Dispensary 20",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "PROPRIETARY"
+  },
+  "contact": {
+   "website": "http://localhost:4399/radio"
+  },
+  "address": {
+   "line1": "598 Broadway",
+   "city": "New York",
+   "county": "New York",
+   "borough": "MANHATTAN",
+   "state": "NY",
+   "zip": "10012"
+  }
  }
 ]

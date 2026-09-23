@@ -16,7 +16,7 @@ import addFormats from 'ajv-formats';
 // The collector's own normalizer, so the check cannot disagree with what
 // writes the field.
 // @ts-expect-error — plain ES module, no types alongside it.
-import { brandKeyOf, menuKey } from './menu-render.mjs';
+import { brandKeyOf, menuIdentity } from './menu-render.mjs';
 import { TERRITORIES, type Territory, getTerritory, inTerritory } from './ingest/territory.js';
 
 const ROOT = resolve(import.meta.dirname, '..');
@@ -435,14 +435,14 @@ const validateFlowerListings = (FILE: string) => {
        two licences reading the identical Cheektowaga shelf look like two
        menus. See menuKey — the fragment and query are kept, since on several
        platforms they are what names the branch. */
-    const key = menuKey(url);
+    const key = menuIdentity(r.sources[0]);
     if (!licencesByUrl.has(key)) licencesByUrl.set(key, new Set());
     licencesByUrl.get(key)!.add(r.licenseNumber);
   });
   raw.forEach((record, i) => {
     const r = record as Record<string, any>;
     const url = r?.sources?.[0]?.url;
-    const sharing = typeof url === 'string' ? licencesByUrl.get(menuKey(url)) : undefined;
+    const sharing = typeof url === 'string' ? licencesByUrl.get(menuIdentity(r.sources[0])) : undefined;
     const shared = (sharing?.size ?? 0) > 1;
     const marked = Array.isArray(r.warnings) && r.warnings.includes(SHELF_SHARED);
     const at = `[${i}] ${r.listingId ?? 'unknown'} → sources[0].url`;

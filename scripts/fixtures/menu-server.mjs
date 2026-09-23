@@ -329,6 +329,9 @@ createServer((req, res) => {
       '/silent-jal-menu': 'silent-jal-menu.html',
       '/silent-hobbs-menu': 'silent-hobbs-menu.html',
       '/silent-bayside-menu': 'silent-bayside-menu.html',
+      /* One site, several shops, the shop remembered by the browser. */
+      '/radio': 'radio.html',
+      '/radio-menu': 'radio-menu.html',
     };
     const name = ROUTES[url.pathname] ?? url.pathname.slice(1);
     const [body, type] = file(name);

@@ -1,0 +1,30 @@
+{
+ "data": {
+  "products": [
+   {
+    "_id": "s1",
+    "id": "s1",
+    "brandName": "Nanticoke",
+    "Name": "Nanticoke - Sour Diesel - 3.5g",
+    "type": "Flower",
+    "subcategory": "Whole Flower",
+    "strainType": "Sativa",
+    "THC": { "range": [26.2, 26.2], "unit": "PERCENTAGE" },
+    "Options": ["1/8oz"],
+    "Prices": [45]
+   },
+   {
+    "_id": "s2",
+    "id": "s2",
+    "brandName": "Good Green",
+    "Name": "Good Green - Creamsicle Sunset - 3.5g",
+    "type": "Flower",
+    "subcategory": "Whole Flower",
+    "strainType": "Hybrid",
+    "THC": { "range": [25.95, 25.95], "unit": "PERCENTAGE" },
+    "Options": ["1/8oz"],
+    "Prices": [32]
+   }
+  ]
+ }
+}

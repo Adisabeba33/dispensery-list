@@ -84,7 +84,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '18',
+    '--limit', '20',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -168,12 +168,43 @@ try {
     true,
   );
 
+  /* The Travel Agency, in shape: four shops, one site, one address for every
+     shop's flower. The shop is chosen from radio buttons and nothing happens
+     until "Continue to shop" is pressed, which then takes the visitor home.
+     Three of the four are in Manhattan and the register calls all three New
+     York, so only the number on the door tells them apart.
+
+     Two licences on that one site must come back as two shelves — each the
+     shelf of its own shop, and neither marked as shared with the other. */
+  const union = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000981');
+  const soho = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000980');
+  check('a shop chosen from radio buttons', union?.choseStore, 'Union Square 835 Broadway, NY, NY');
+  check('told from its neighbours by the door', union?.choseStoreBy, '835 broadway');
+  check('and the choice committed', union?.storeForkConfirmed, 'Continue to shop');
+  check('the menu was read again after the site went home', union?.landedOn?.endsWith('/radio-menu'), true);
+  check('Union Square served its own shelf', union?.flower, 2);
+  check('the other Broadway shop chose its own door', soho?.choseStoreBy, '598 broadway');
+  check('and served its own shelf', soho?.flower, 2);
+  const radioShelf = JSON.parse(readFileSync(LISTINGS, 'utf8')).filter(
+    (l) => l.licenseNumber === 'OCM-CAURD-24-000981' || l.licenseNumber === 'OCM-CAURD-24-000980',
+  );
+  check(
+    'each listing says which shop it was read for',
+    radioShelf.every((l) => typeof l.sources?.[0]?.branch === 'string'),
+    true,
+  );
+  check(
+    'two shops on one address are not one shared shelf',
+    radioShelf.some((l) => (l.warnings ?? []).includes('SHELF_SHARED_WITH_OTHER_LICENCES')),
+    false,
+  );
+
   const refused = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000984');
   check('a refusal arrives in the diagnostic', refused?.status, 'robots-disallowed');
   check('and says so where the report reads it', refused?.menuLink, 'robots-disallowed');
   check('the refusal is named by licence', refused?.licence, 'OCM-CAURD-24-000984');
   check('the run counts it', summary.robotsDisallowed, 1);
-  check('and does not count it as a shop it read', summary.shopsVisited, 17);
+  check('and does not count it as a shop it read', summary.shopsVisited, 19);
 
   /* The retry replaces the empty reading rather than being carried alongside
      it: the shelf published for this shop is today's, not yesterday's held
