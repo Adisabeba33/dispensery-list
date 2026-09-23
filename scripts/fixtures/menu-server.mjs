@@ -319,6 +319,16 @@ createServer((req, res) => {
          second fixture shop links to neither, so which of the two the
          collector tries first is what this route is here to prove. */
       '/menu/flower': 'menu.html',
+      /* A chain whose front page asks nothing — three buttons and a
+         photograph. Two of the towns are in New Mexico and only Bayside is
+         ours, so only Bayside serves a shelf. */
+      '/silent-fork': 'silent-fork.html',
+      '/silent-jal': 'silent-jal.html',
+      '/silent-hobbs': 'silent-hobbs.html',
+      '/silent-bayside': 'silent-bayside.html',
+      '/silent-jal-menu': 'silent-jal-menu.html',
+      '/silent-hobbs-menu': 'silent-hobbs-menu.html',
+      '/silent-bayside-menu': 'silent-bayside-menu.html',
     };
     const name = ROUTES[url.pathname] ?? url.pathname.slice(1);
     const [body, type] = file(name);

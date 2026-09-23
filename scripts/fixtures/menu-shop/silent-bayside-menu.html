@@ -1,0 +1,8 @@
+<!doctype html><meta charset="utf-8"><title>Flower — Bayside</title>
+<h1>Flower</h1>
+<div id="menu">loading…</div>
+<script>
+  fetch('/api/products.json?page=0&perPage=5').then((r) => r.json()).then((j) => {
+    document.getElementById('menu').textContent = (j.data.products || []).length + ' products';
+  });
+</script>

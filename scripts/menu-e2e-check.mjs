@@ -84,7 +84,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '17',
+    '--limit', '18',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -150,12 +150,30 @@ try {
      and the shop afterwards read as "not visited in the last run". That sends
      somebody hunting for a menu address for a shop that asked to be left
      alone, which is the opposite of what the refusal said. */
+  /* A chain whose front page asks nothing. Canna Buddha's is a photograph and
+     three buttons — Shop Jal, Shop Hobbs, Shop Bayside — with no question
+     anywhere on it, and two of those towns are in New Mexico. Reading no fork
+     there, the run followed the site's default and read a New Mexico shelf
+     under a Queens licence.
+
+     The decoys stand beside the branches and say the same verb: Shop Now,
+     Shop All, Shop Edibles. None of them is a place. */
+  const silent = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000982');
+  check('a fork that asks nothing is still a fork', silent?.choseStore, 'Shop Bayside');
+  check('and it was the register that chose', silent?.choseStoreBy, 'Bayside');
+  check('the New York branch served its shelf', silent?.flower, 2);
+  check(
+    'the shelf was read off the New York branch',
+    silent?.landedOn?.endsWith('/silent-bayside-menu'),
+    true,
+  );
+
   const refused = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000984');
   check('a refusal arrives in the diagnostic', refused?.status, 'robots-disallowed');
   check('and says so where the report reads it', refused?.menuLink, 'robots-disallowed');
   check('the refusal is named by licence', refused?.licence, 'OCM-CAURD-24-000984');
   check('the run counts it', summary.robotsDisallowed, 1);
-  check('and does not count it as a shop it read', summary.shopsVisited, 16);
+  check('and does not count it as a shop it read', summary.shopsVisited, 17);
 
   /* The retry replaces the empty reading rather than being carried alongside
      it: the shelf published for this shop is today's, not yesterday's held

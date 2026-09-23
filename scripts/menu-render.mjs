@@ -807,7 +807,11 @@ const readStoreFork = async (frame) => {
   try {
     return await frame.evaluate((ask) => {
       const asking = new RegExp(ask, 'i');
-      if (!asking.test(document.body?.innerText ?? '')) return null;
+      /* A page that asks nothing used to be dismissed here, before anything on
+         it had been looked at. That is right for most pages and wrong for the
+         chains that put their branches in plain buttons and no question at
+         all, so the shape of the options gets its turn below. */
+      const asks = asking.test(document.body?.innerText ?? '');
       const onScreen = (el) => {
         const box = el.getBoundingClientRect();
         if (box.width <= 0 || box.height <= 0) return false;
@@ -838,13 +842,64 @@ const readStoreFork = async (frame) => {
 
       /* Where the question is written: the smallest element that says it. */
       let question = null;
-      for (const el of document.querySelectorAll('h1,h2,h3,h4,h5,p,span,div,legend,label')) {
+      for (const el of asks ? document.querySelectorAll('h1,h2,h3,h4,h5,p,span,div,legend,label') : []) {
         const own = (el.textContent || '').replace(/\s+/g, ' ').trim();
         if (own.length > 160 || !asking.test(own)) continue;
         if (question && question.contains(el)) question = el;
         else if (!question) question = el;
       }
-      if (!question) return null;
+      if (!question) {
+        /* A fork that does not ask anything.
+         *
+         * Canna Buddha's front page is a photograph and three buttons — Shop
+         * Jal, Shop Hobbs, Shop Bayside — and no question at all. Two of those
+         * towns are in New Mexico. Reading no fork there, the run followed the
+         * site's own default and read a New Mexico shelf under a Queens
+         * licence.
+         *
+         * So a fork is also recognised by the shape of its options: several
+         * controls saying the same verb and a different place after it. The
+         * verb has to be shared, because "Shop Bayside" beside "Shop Now" is
+         * one branch and one button, and the places have to differ, because
+         * one option is not a choice.
+         *
+         * A wrong guess here is cheap and a wrong silence is not: the register
+         * decides which option is pressed, and when none of its words match,
+         * nothing is pressed at all. */
+        const GENERIC = new RegExp(
+          '^(now|all|online|here|local|today|us|more|menu|menus|online now'
+          + '|flower|pre[\\s-]?rolls?|edibles?|vapes?|carts?|concentrates?'
+          + '|topicals?|tinctures?|beverages?|drinks?|accessories|apparel'
+          + '|merch|gear|bundles?|brands?|deals?|specials?|sale|gifts?)$',
+          'i',
+        );
+        const byVerb = new Map();
+        for (const el of document.querySelectorAll(SELECTOR)) {
+          if (!usable(el)) continue;
+          const said = /^(shop|order|visit|browse|enter)\s+(.{2,30})$/i.exec(wordsOf(el));
+          if (!said) continue;
+          const tail = said[2].trim();
+          if (GENERIC.test(tail)) continue;
+          const verb = said[1].toLowerCase();
+          if (!byVerb.has(verb)) byVerb.set(verb, new Map());
+          const places = byVerb.get(verb);
+          if (!places.has(tail.toLowerCase())) places.set(tail.toLowerCase(), el);
+        }
+        let places = null;
+        for (const [, found] of byVerb) {
+          if (found.size < 2) continue;
+          if (!places || found.size > places.size) places = found;
+        }
+        if (!places) return null;
+        const silent = [];
+        for (const el of places.values()) {
+          if (silent.some((f) => f.el.contains(el) || el.contains(f.el))) continue;
+          silent.push({ el, words: wordsOf(el) });
+        }
+        if (silent.length < 2) return null;
+        silent.forEach((f, i) => f.el.setAttribute('data-menu-fork', String(i)));
+        return silent.map((f) => f.words);
+      }
 
       let group = question;
       let controls = [];

@@ -1,0 +1,9 @@
+<!doctype html><meta charset="utf-8"><title>Flower — hobbs</title>
+<h1>Flower</h1>
+<div id="menu">loading…</div>
+<script>
+  /* Another state's branch. It has a menu and nothing of ours on it. */
+  fetch('/api/empty.json').then((r) => r.json()).then((j) => {
+    document.getElementById('menu').textContent = (j.data.products || []).length + ' products';
+  });
+</script>
