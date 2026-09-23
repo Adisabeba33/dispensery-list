@@ -130,6 +130,41 @@ check('unrelated type field', classify({ name: 'Grape Cake', type: 'variant', ca
 // which strains come by the eighth, quarter, half or ounce.
 check('flower without a size', toListing({ Name: 'Nameless Bud', type: 'Flower' }, shop, SRC, {}), null);
 
+/* ------------------------------------------------------- HARVEST & PACKAGE --
+ * Three fields the mapper wrote null into whatever the payload said:
+ * harvestedOn, packagedOn and the whole-panel cannabinoid figure. The
+ * validator has warned on a stale packagedOn since it was written and never
+ * had one to warn about.
+ *
+ * Freshness is the field a reader most wants and the one most easily faked by
+ * a bad parse, so a date that cannot be read is left empty rather than
+ * guessed. */
+const dated = (extra) => toListing({ Name: 'Datey', type: 'Flower', Options: ['3.5g'], ...extra }, shop, SRC, {});
+
+check('an ISO packaged date is read', dated({ packagedOn: '2026-08-14' })?.packagedOn, '2026-08-14');
+check('so is one written with slashes', dated({ packagedDate: '08/14/2026' })?.packagedOn, '2026-08-14');
+check('an epoch in seconds is read', dated({ packageDate: 1786665600 })?.packagedOn, '2026-08-14');
+check('and the same epoch in milliseconds', dated({ packagedAt: 1786665600000 })?.packagedOn, '2026-08-14');
+check('an epoch arriving as a string is still an epoch', dated({ packagedOn: '1786665600' })?.packagedOn, '2026-08-14');
+check('a harvest date is read from its own names', dated({ harvestDate: '2026-06-02' })?.harvestedOn, '2026-06-02');
+
+/* The refusals. A wrong date here reads as freshness, which is worse than an
+   empty field — so anything unreadable, anything from before adult-use flower
+   could have been grown, and anything dated after today is refused. */
+check('a date that is not a date is refused', dated({ packagedOn: 'fresh!' })?.packagedOn, null);
+check('an empty string is refused', dated({ packagedOn: '' })?.packagedOn, null);
+check('a date before the trade existed is refused', dated({ packagedOn: '1999-01-01' })?.packagedOn, null);
+check(
+  'a date in the future is refused',
+  dated({ packagedOn: new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10) })?.packagedOn,
+  null,
+);
+check('and a shop with nothing to say still says nothing', dated({})?.packagedOn, null);
+
+check('the whole cannabinoid panel is read', dated({ totalCannabinoids: 31.4 })?.totalCannabinoidsPercent, 31.4);
+check('under its other name too', dated({ tac: 28 })?.totalCannabinoidsPercent, 28);
+check('a panel above a hundred per cent is refused', dated({ totalCannabinoids: 140 })?.totalCannabinoidsPercent, null);
+
 /* --------------------------------------------------------------- brand key --
  * The register stores a brand exactly as each shop prints it, which is right.
  * It also means ElectraLeaf arrives six ways and one outreach target splits

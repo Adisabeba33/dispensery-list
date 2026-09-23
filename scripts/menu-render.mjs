@@ -2406,6 +2406,54 @@ const classify = (p) => {
 const inRange = (v, max) => (v === null || v === undefined || v < 0 || v > max ? null : v);
 
 
+/* A date the menu prints about the flower itself — when it was cut, when it
+ * was sealed.
+ *
+ * This is the number the shelf is least willing to give and the reader wants
+ * most: terpenes fade, and a jar packed in March is not the same product as
+ * the same strain packed last week. The validator has warned on a stale
+ * packagedOn all along and never once had one to warn about, because the
+ * mapper wrote null here whatever the payload said.
+ *
+ * Menus write dates as ISO strings, as US slashes, and as epochs in both
+ * seconds and milliseconds. All of those are read. Anything else is not
+ * guessed at: a value that does not parse, one from before adult-use flower
+ * could have been grown, and one dated after today are all refused, because a
+ * wrong date is worse here than no date — it would be read as freshness.
+ *
+ * Returned as a plain day. The hour a jar was sealed is not something a menu
+ * actually knows, and printing one would claim a precision nobody has. */
+const EARLIEST_SANE_MENU_DATE = Date.UTC(2015, 0, 1);
+const menuDate = (value) => {
+  const raw = flatten(value);
+  if (raw === null || raw === undefined) return null;
+  let ms = null;
+  if (typeof raw === 'number' && Number.isFinite(raw)) {
+    /* Ten digits is seconds, thirteen is milliseconds. Told apart by size
+       rather than by length, so a number carrying a fraction is still read. */
+    ms = raw > 1e11 ? raw : raw * 1000;
+  } else if (typeof raw === 'string') {
+    const text = raw.trim();
+    if (!text) return null;
+    /* A bare number in a string is still an epoch. Date would read "1719792000"
+       as a year. */
+    if (/^\d{9,14}$/.test(text)) {
+      const n = Number(text);
+      ms = n > 1e11 ? n : n * 1000;
+    } else {
+      const parsed = Date.parse(text);
+      ms = Number.isNaN(parsed) ? null : parsed;
+    }
+  }
+  if (ms === null || !Number.isFinite(ms)) return null;
+  if (ms < EARLIEST_SANE_MENU_DATE) return null;
+  /* Tomorrow, to allow for a shop on a clock ahead of ours. Beyond that a
+     harvest has not happened yet. */
+  if (ms > Date.now() + 86_400_000) return null;
+  return new Date(ms).toISOString().slice(0, 10);
+};
+
+
 /* The cultivator's identity, as opposed to the cultivator's name.
  *
  * `brand` stays exactly as the shop printed it, because that is the evidence.
@@ -2612,7 +2660,13 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     lineage: LINEAGE[lineageRaw] ?? lineageFromTitle(rawName) ?? 'UNKNOWN',
     thcPercent: inRange(num(pick(p, ['thcContent', 'potencyThc', 'thc', 'thcPercent'])), 100),
     cbdPercent: inRange(num(pick(p, ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent'])), 100),
-    totalCannabinoidsPercent: null,
+    /* What the menu calls the whole panel. Read for the same reason THC is:
+       it is the figure a lab actually reports, and the one a reader comparing
+       two jars is usually after. */
+    totalCannabinoidsPercent: inRange(
+      num(pick(p, ['totalCannabinoids', 'totalCannabinoidsPercent', 'total_cannabinoids', 'totalActiveCannabinoids', 'cannabinoidTotal', 'tac'])),
+      100,
+    ),
     terpenes: {
       // Numbers a menu prints without a certificate behind them are a claim,
       // not a measurement, and the schema keeps that distinction.
@@ -2624,8 +2678,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
       coaUrl: null,
       referenceStrain: null,
     },
-    harvestedOn: null,
-    packagedOn: null,
+    harvestedOn: menuDate(pick(p, ['harvestedOn', 'harvestDate', 'harvestedAt', 'harvest_date', 'harvestedOnDate', 'dateHarvested'])),
+    packagedOn: menuDate(pick(p, ['packagedOn', 'packagedDate', 'packageDate', 'packagedAt', 'packaged_date', 'packDate', 'datePackaged'])),
     inStock: notYet
       ? false
       : stock === null || stock === undefined
