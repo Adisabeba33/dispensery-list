@@ -186,7 +186,10 @@ jobs:
               # and no reading of our own source says which parameter the
               # platform actually honours — the request does.
               for req in r.get('requests', []):
-                  print(f"    REQ {req}")
+                  knob = req.pop('knob', None)
+                  keys = req.pop('bodyKeys', None)
+                  print(f"    REQ knob={knob} bodyKeys={keys}")
+                  print(f"        {req}")
               for sample in r.get('sample', []):
                   print(f"    RAW {sample}")
               if r.get('rejected'):

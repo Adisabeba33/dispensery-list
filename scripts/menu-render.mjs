@@ -1887,6 +1887,22 @@ const SIZE_KEYS = ['perPage', 'pageSize', 'per_page', 'page_size', 'limit', 'fir
    Reaching through one of these and turning what is found there does not ask
    for the next page — it asks a different question, and the menu answers it
    with nothing. Which is what fourteen shelves have been reporting. */
+/* For the diagnostic dump only: the top-level shape of a request body, and
+   the knob the paging would turn in it. A shelf that stops short is explained
+   by one of the two — either the query keeps its offset somewhere this does
+   not look, or it is turning the wrong number. */
+export const pagingKeysOf = (body) => {
+  if (!body) return null;
+  try {
+    const parsed = JSON.parse(body);
+    if (Array.isArray(parsed)) return `[${parsed.length}]`;
+    if (!parsed || typeof parsed !== 'object') return null;
+    return Object.keys(parsed).slice(0, 30).join(',');
+  } catch {
+    return null;
+  }
+};
+
 const NOT_A_PAGE_KNOB = new Set([
   'range', 'aggs', 'aggregations', 'filter', 'filters', 'facet', 'facets',
   'query', 'bool', 'must', 'should', 'must_not', 'post_filter', 'terms',
@@ -2010,6 +2026,44 @@ const buildQueryKey = (req) => {
  * lives in one of three places, and Dutchie uses the third: a query parameter
  * whose value is itself JSON.
  */
+/* Which number the paging would turn in this request, named by its path. A
+   shelf that stops short is explained by one of two answers: null, meaning the
+   query keeps its offset somewhere the search does not look, or a path that is
+   not the page at all. */
+export const pageKnobOf = (req) => {
+  const from = (value) => {
+    const paged = findNumber(value, PAGE_KEYS);
+    if (paged) return `page ${paged.path.join('.')}=${paged.value}`;
+    const offset = findNumber(value, OFFSET_KEYS);
+    if (offset) return `offset ${offset.path.join('.')}=${offset.value}`;
+    return null;
+  };
+  if (req?.body) {
+    try {
+      const found = from(JSON.parse(req.body));
+      if (found) return `body: ${found}`;
+    } catch {
+      /* not JSON; the address may still carry it */
+    }
+  }
+  try {
+    const params = Object.fromEntries(
+      [...new URL(req.url).searchParams].map(([k, v]) => [k, Number.isNaN(Number(v)) ? v : Number(v)]),
+    );
+    const found = from(params);
+    if (found) return `url: ${found}`;
+    /* Dutchie hides the whole query, paging and all, inside one parameter. */
+    const variables = new URL(req.url).searchParams.get('variables');
+    if (variables) {
+      const inside = from(JSON.parse(variables));
+      if (inside) return `variables: ${inside}`;
+    }
+  } catch {
+    /* an address we cannot read is not a knob */
+  }
+  return null;
+};
+
 const pagedRequest = (req, nth, fallbackSize) => {
   if (!req || nth < 1) return null;
 
@@ -3342,6 +3396,13 @@ const main = async () => {
             headerNames: Object.keys(r.headers ?? {}).sort().join(','),
             url: r.url.slice(0, 300),
             body: r.body ? r.body.slice(0, 700) : null,
+            /* The body itself is truncated, and on an Elasticsearch menu the
+               aggregations alone are longer than the cut — the paging keys sit
+               behind them and never reach the report. These two say in a few
+               bytes what the whole body was being printed for: what the query
+               is made of, and which number the collector decided to turn. */
+            bodyKeys: pagingKeysOf(r.body),
+            knob: pageKnobOf(r),
           }));
       }
       entry.productArrays = arrays.length;
