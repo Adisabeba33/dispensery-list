@@ -1863,16 +1863,52 @@ const PAGE_KEYS = ['page', 'pageNumber', 'pageIndex', 'currentPage', 'pageNum'];
 const OFFSET_KEYS = ['offset', 'skip', 'from', 'start'];
 const SIZE_KEYS = ['perPage', 'pageSize', 'per_page', 'page_size', 'limit', 'first', 'take'];
 
-/** The first numeric value under any of `keys`, with the path that reaches it. */
-const findNumber = (value, keys, path = [], depth = 0) => {
-  if (depth > 6 || !value || typeof value !== 'object') return null;
-  if (Array.isArray(value)) return null;
-  for (const key of Object.keys(value)) {
-    if (keys.includes(key) && typeof value[key] === 'number') return { path: [...path, key], value: value[key] };
-  }
-  for (const [key, v] of Object.entries(value)) {
-    const found = findNumber(v, keys, [...path, key], depth + 1);
-    if (found) return found;
+/**
+ * The shallowest numeric value under any of `keys`, with the path that reaches
+ * it.
+ *
+ * Breadth first, and through arrays as well as objects.
+ *
+ * Depth first read the wrong number. An Elasticsearch menu body carries the
+ * page offset at the top and a facet's own `size: 100` several levels down
+ * inside `aggs`; the shallowest match is the query's, and a deeper one is some
+ * other question's. Shallowest-wins states that rule instead of relying on the
+ * order object keys happen to come in.
+ *
+ * Refusing arrays was worse than wrong, it was silent. Algolia sends its whole
+ * query as `{"requests":[{…, "page": 0}]}` — one array, one step down, and the
+ * search stopped at it and reported no way to page. The Flowery's shelf backs
+ * six licences and has never been read past its first fifty products for that
+ * reason alone.
+ */
+/* Where a page knob is never kept. `from` is Elasticsearch's offset at the top
+   of a query and the low end of a range filter inside one; `page` and `size`
+   likewise belong to the query, not to the aggregation counting its facets.
+   Reaching through one of these and turning what is found there does not ask
+   for the next page — it asks a different question, and the menu answers it
+   with nothing. Which is what fourteen shelves have been reporting. */
+const NOT_A_PAGE_KNOB = new Set([
+  'range', 'aggs', 'aggregations', 'filter', 'filters', 'facet', 'facets',
+  'query', 'bool', 'must', 'should', 'must_not', 'post_filter', 'terms',
+]);
+
+const findNumber = (value, keys, maxDepth = 6) => {
+  const queue = [{ node: value, path: [] }];
+  while (queue.length) {
+    const { node, path } = queue.shift();
+    if (!node || typeof node !== 'object' || path.length > maxDepth) continue;
+    if (path.some((k) => typeof k === 'string' && NOT_A_PAGE_KNOB.has(k))) continue;
+    const entries = Array.isArray(node)
+      ? node.map((v, i) => [i, v])
+      : Object.entries(node);
+    for (const [key, v] of entries) {
+      if (typeof v === 'number' && !Array.isArray(node) && keys.includes(key)) {
+        return { path: [...path, key], value: v };
+      }
+    }
+    for (const [key, v] of entries) {
+      if (v && typeof v === 'object') queue.push({ node: v, path: [...path, key] });
+    }
   }
   return null;
 };

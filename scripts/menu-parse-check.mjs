@@ -785,6 +785,55 @@ check('a number the weight left behind goes too',
   check('offset page 2', new URL(pagedRequest(offset, 2).url).searchParams.get('offset'), '48');
   check('limit untouched', new URL(pagedRequest(offset, 1).url).searchParams.get('limit'), '24');
 
+  /* Algolia keeps the whole query inside an array — {"requests":[{…}]} — and
+     the search for a page knob used to refuse arrays outright and report that
+     this menu could not be paged at all. The Flowery's shelf backs six
+     licences and had never been read past its first fifty products. */
+  const algolia = {
+    method: 'POST',
+    url: 'https://r72-dsn.algolia.net/1/indexes/*/queries',
+    body: JSON.stringify({
+      requests: [
+        { indexName: 'staging_thefloweryny', hitsPerPage: 50, page: 0, query: '' },
+        { indexName: 'staging_thefloweryny', hitsPerPage: 0, page: 0 },
+      ],
+    }),
+  };
+  check('a query inside an array is still pageable', JSON.parse(pagedRequest(algolia, 1).body).requests[0].page, 1);
+  check('its page size is left alone', JSON.parse(pagedRequest(algolia, 1).body).requests[0].hitsPerPage, 50);
+  check('and the index it asks is unchanged', JSON.parse(pagedRequest(algolia, 2).body).requests[0].indexName, 'staging_thefloweryny');
+  check('page three is three, not one thrice', JSON.parse(pagedRequest(algolia, 3).body).requests[0].page, 3);
+
+  /* Elasticsearch, which the joint-ecommerce menus run on. The offset sits at
+     the top of the query; a facet several levels down inside aggs keeps its
+     own `size`, and that number is not the page size. Shallowest wins. */
+  const elastic = {
+    method: 'POST',
+    url: 'https://shop.test/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search',
+    body: JSON.stringify({ from: 0, size: 20, aggs: { facet_bucket_category: { terms: { field: 'category', size: 100 } } } }),
+  };
+  check('the query offset advances', JSON.parse(pagedRequest(elastic, 1, 20).body).from, 20);
+  check("a facet's own size is not the page size", JSON.parse(pagedRequest(elastic, 1, 20).body).aggs.facet_bucket_category.terms.size, 100);
+
+  /* And the refusal that matters most. `from` is an offset at the top of a
+     query and the low end of a range filter inside one. Turning the filter's
+     does not ask for the next page — it asks a different question, and the
+     menu answers with nothing, which is exactly what fourteen shelves
+     reported. */
+  const ranged = {
+    method: 'POST',
+    url: 'https://shop.test/_search',
+    body: JSON.stringify({ query: { range: { price: { from: 0, to: 99 } } } }),
+  };
+  check('a range filter is not a page knob', pagedRequest(ranged, 1, 20), null);
+  const bothOf = {
+    method: 'POST',
+    url: 'https://shop.test/_search',
+    body: JSON.stringify({ from: 0, query: { range: { price: { from: 5, to: 99 } } } }),
+  };
+  check('the query offset is taken, not the filter', JSON.parse(pagedRequest(bothOf, 1, 20).body).from, 20);
+  check('and the filter is left exactly as it was', JSON.parse(pagedRequest(bothOf, 1, 20).body).query.range.price.from, 5);
+
   /* No size stated: the step is what the first answer carried, which is what
      the menu itself used. */
   const bare = { method: 'GET', url: 'https://shop.test/products?skip=0', body: null };
