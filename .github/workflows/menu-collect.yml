@@ -181,6 +181,12 @@ jobs:
                   print(f"    SHAPE {shape}")
               for link in r.get('links', []):
                   print(f"    LINK {link}")
+              # The request that carried the products, with the knob the paging
+              # turns in it. Fourteen shops stop after one empty second page,
+              # and no reading of our own source says which parameter the
+              # platform actually honours — the request does.
+              for req in r.get('requests', []):
+                  print(f"    REQ {req}")
               for sample in r.get('sample', []):
                   print(f"    RAW {sample}")
               if r.get('rejected'):

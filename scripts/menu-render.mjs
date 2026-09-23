@@ -2423,6 +2423,42 @@ const inRange = (v, max) => (v === null || v === undefined || v < 0 || v > max ?
  *
  * Returned as a plain day. The hour a jar was sealed is not something a menu
  * actually knows, and printing one would claim a precision nobody has. */
+/* The potency a menu prints, wherever it keeps it.
+ *
+ * One platform — the one behind /categories/flower on six chains and a dozen
+ * single shops — states nothing under thc or potencyThc. It writes
+ * potencyThcDisplayValue ("24.1%"), potencyThcRangeLow and High, and a
+ * cannabinoids array beside them. Four thousand listings came off it with no
+ * potency at all, and no CBD whatsoever, while the rest of the register reads
+ * two thirds and a third.
+ *
+ * A range states a figure at its low end, which is the reading already taken
+ * of Dutchie's [24.1, 24.1]. But a platform that knows only the top of the
+ * range writes the bottom as zero, and zero per cent THC is not a thing a
+ * flower menu means — so a zero is passed over rather than believed, and the
+ * next name is tried. */
+const potency = (p, names, list, compound) => {
+  for (const n of names) {
+    const v = inRange(num(pick(p, [n])), 100);
+    if (v) return v;
+  }
+  /* The array form: [{ name: 'THC', value: 24.1 }, …]. Read last, because a
+     named field is the platform's own answer and this is a panel to search. */
+  const panel = pick(p, list);
+  if (Array.isArray(panel)) {
+    for (const row of panel) {
+      const name = String(flatten(pick(row, ['name', 'type', 'label', 'cannabinoid'])) ?? '');
+      if (!compound.test(name)) continue;
+      const v = inRange(num(pick(row, ['value', 'percent', 'amount', 'displayValue', 'rangeLow'])), 100);
+      if (v) return v;
+    }
+  }
+  return null;
+};
+const THC_NAME = /^\s*(thc|thca|delta[\s-]?9[\s-]?thc)\s*$/i;
+const CBD_NAME = /^\s*(cbd|cbda)\s*$/i;
+const CANNABINOID_PANEL = ['cannabinoids', 'potencies', 'cannabinoidProfile'];
+
 const EARLIEST_SANE_MENU_DATE = Date.UTC(2015, 0, 1);
 const menuDate = (value) => {
   const raw = flatten(value);
@@ -2658,8 +2694,18 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     brand: brand ? String(brand).slice(0, 120) : null,
     brandKey: brandKeyOf(brand),
     lineage: LINEAGE[lineageRaw] ?? lineageFromTitle(rawName) ?? 'UNKNOWN',
-    thcPercent: inRange(num(pick(p, ['thcContent', 'potencyThc', 'thc', 'thcPercent'])), 100),
-    cbdPercent: inRange(num(pick(p, ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent'])), 100),
+    thcPercent: potency(
+      p,
+      ['thcContent', 'potencyThc', 'thc', 'thcPercent', 'potencyThcRangeLow', 'potencyThcRangeHigh', 'potencyThcDisplayValue'],
+      CANNABINOID_PANEL,
+      THC_NAME,
+    ),
+    cbdPercent: potency(
+      p,
+      ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent', 'potencyCbdRangeLow', 'potencyCbdRangeHigh', 'potencyCbdDisplayValue'],
+      CANNABINOID_PANEL,
+      CBD_NAME,
+    ),
     /* What the menu calls the whole panel. Read for the same reason THC is:
        it is the figure a lab actually reports, and the one a reader comparing
        two jars is usually after. */

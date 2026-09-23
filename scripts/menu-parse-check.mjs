@@ -162,6 +162,29 @@ check(
 check('and a shop with nothing to say still says nothing', dated({})?.packagedOn, null);
 
 check('the whole cannabinoid panel is read', dated({ totalCannabinoids: 31.4 })?.totalCannabinoidsPercent, 31.4);
+
+/* ------------------------------------------------------------- POTENCY -----
+ * The platform behind /categories/flower states nothing under thc or
+ * potencyThc. Four thousand listings came off it with potency on eighteen per
+ * cent of them and CBD on none, against two thirds and a third everywhere
+ * else — not because the menu is quiet but because we were reading the wrong
+ * names. */
+const potent = (extra) => toListing({ Name: 'Potent', type: 'Flower', Options: ['3.5g'], ...extra }, shop, SRC, {});
+
+check('a display value carries the figure', potent({ potencyThcDisplayValue: '24.1%' })?.thcPercent, 24.1);
+check('so does the low end of a range', potent({ potencyThcRangeLow: 19.8, potencyThcRangeHigh: 22 })?.thcPercent, 19.8);
+/* A platform that knows only the top writes the bottom as zero, and zero per
+   cent THC is not a thing a flower menu means. */
+check('a zero low end falls through to the top', potent({ potencyThcRangeLow: 0, potencyThcRangeHigh: 22 })?.thcPercent, 22);
+check('CBD is read the same way', potent({ potencyCbdDisplayValue: '0.4%' })?.cbdPercent, 0.4);
+check('and a quiet menu still says nothing', potent({})?.thcPercent, null);
+
+/* The array form, read only after every named field has stayed quiet. */
+const panel = [{ name: 'THCA', value: 26.5 }, { name: 'CBD', value: 0.9 }, { name: 'CBG', value: 1.1 }];
+check('a cannabinoid panel yields THC', potent({ cannabinoids: panel })?.thcPercent, 26.5);
+check('and CBD', potent({ cannabinoids: panel })?.cbdPercent, 0.9);
+check('a named field still wins over the panel', potent({ thc: 21, cannabinoids: panel })?.thcPercent, 21);
+check('CBG is not mistaken for CBD', potent({ cannabinoids: [{ name: 'CBG', value: 1.1 }] })?.cbdPercent, null);
 check('under its other name too', dated({ tac: 28 })?.totalCannabinoidsPercent, 28);
 check('a panel above a hundred per cent is refused', dated({ totalCannabinoids: 140 })?.totalCannabinoidsPercent, null);
 
