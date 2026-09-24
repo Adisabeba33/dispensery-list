@@ -68,8 +68,22 @@ export const strainEntries = (): StrainEntry[] => {
     // highest any of them states, and the shop's own page carries its own.
     if (l.thcPercent !== null) entry.thcPercent = Math.max(entry.thcPercent ?? 0, l.thcPercent);
     if (l.terpenes.profile.length > 0) entry.hasTerpenes = true;
-    if (!entry.shops.some((s) => s.id === shop.id)) {
-      entry.shops.push({ id: shop.id, name: displayName(shop), region: regionOf(shop) });
+    /* Each shop keeps the weights it sells this strain in. The strain's own
+       sizes are every shop's together, and a filter to the ounce that reads
+       only those lists a shop that has nothing but halves: Crusty Crustacean
+       comes in an ounce at eight of its fourteen shops, and the other six
+       were listed as if they had it too. */
+    const sizes = l.availableSizesGrams ?? [];
+    const at = entry.shops.find((s) => s.id === shop.id);
+    if (at) {
+      at.sizes = [...new Set([...at.sizes, ...sizes])].sort((a, b) => a - b);
+    } else {
+      entry.shops.push({
+        id: shop.id,
+        name: displayName(shop),
+        region: regionOf(shop),
+        sizes: [...new Set(sizes)].sort((a, b) => a - b),
+      });
     }
   }
 

@@ -15,12 +15,25 @@ export type StrainEntry = {
   /** Every way the shops wrote it: what a search for the jar's label matches. */
   labels: string[];
   hasTerpenes: boolean;
-  shops: { id: string; name: string; region: string }[];
+  /** The weights each shop sells it in, which are not the strain's sizes: one
+   *  shop can have only halves of a strain another sells by the ounce. */
+  shops: { id: string; name: string; region: string; sizes: number[] }[];
+};
+
+/** A strain as the filters leave it: the shops that still answer, of all it has. */
+type StrainView = { s: StrainEntry; shops: StrainEntry['shops'] };
+
+/** "On the shelf at 14 shops", or with a size chosen, how many of them sell that. */
+const shelfLine = (shown: number, total: number, size: number | null): string => {
+  if (size === null) return shown === 1 ? 'On the shelf at' : `On the shelf at ${shown} shops`;
+  const by = `By the ${sizeLabel(size).toLowerCase()} at`;
+  if (shown === total) return shown === 1 ? by : `${by} ${shown} shops`;
+  return `${by} ${shown} of its ${total} shops`;
 };
 
 const LINEAGE_FILTERS = ['INDICA', 'INDICA_DOMINANT', 'HYBRID', 'SATIVA_DOMINANT', 'SATIVA'];
 
-const StrainRow = ({ s }: { s: StrainEntry }) => (
+const StrainRow = ({ s, shops, size }: StrainView & { size: number | null }) => (
   <li className="card p-4">
     <div className="flex items-start justify-between gap-3">
       <div className="min-w-0">
@@ -43,14 +56,19 @@ const StrainRow = ({ s }: { s: StrainEntry }) => (
 
     {s.sizes.length > 0 && (
       <ul className="mt-3 flex flex-wrap gap-1.5">
-        {sizeChips(s.sizes).map((size) => (
+        {sizeChips(s.sizes).map((chip) => (
           <li
-            key={size.grams}
-            className="rounded-md border border-ink-700 bg-ink-900/70 px-2 py-1 text-[0.7rem] text-chalk-200"
+            key={chip.grams}
+            className={clsx(
+              'rounded-md border px-2 py-1 text-[0.7rem]',
+              chip.grams === size
+                ? 'border-moss-600 bg-moss-600/15 text-moss-400'
+                : 'border-ink-700 bg-ink-900/70 text-chalk-200',
+            )}
           >
-            <span className="font-medium">{size.label}</span>
-            {size.label !== size.short && (
-              <span className="ml-1.5 tabular-nums text-chalk-500">{size.short}</span>
+            <span className="font-medium">{chip.label}</span>
+            {chip.label !== chip.short && (
+              <span className="ml-1.5 tabular-nums text-chalk-500">{chip.short}</span>
             )}
           </li>
         ))}
@@ -59,10 +77,10 @@ const StrainRow = ({ s }: { s: StrainEntry }) => (
 
     <div className="mt-3 border-t border-ink-700/60 pt-3">
       <p className="text-[0.7rem] uppercase tracking-[0.12em] text-chalk-500">
-        {s.shops.length === 1 ? 'On the shelf at' : `On the shelf at ${s.shops.length} shops`}
+        {shelfLine(shops.length, s.shops.length, size)}
       </p>
       <ul className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-sm">
-        {s.shops.map((shop) => (
+        {shops.map((shop) => (
           <li key={shop.id}>
             <Link href={`/dispensary/${shop.id}/#menu`} className="link">
               {shop.name}
@@ -99,22 +117,37 @@ export const ShelfIndex = ({
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return strains.filter((s) => {
-      if (size !== null && !s.sizes.includes(size)) return false;
-      if (lineage && s.lineage !== lineage) return false;
-      if (multiOnly && s.shops.length < 2) return false;
-      if (!q) return true;
-      return (
-        s.key.includes(q) ||
-        s.name.toLowerCase().includes(q) ||
-        // The name shown is the strain; what a shop printed on the jar can be
-        // "Premium Cannabis Flower Jar Sour Diesel", and that is what someone
-        // reading a menu has in hand.
-        s.labels.some((label) => label.toLowerCase().includes(q)) ||
-        s.brands.some((b) => b.toLowerCase().includes(q)) ||
-        s.shops.some((shop) => shop.name.toLowerCase().includes(q))
-      );
-    });
+    const views: StrainView[] = [];
+    for (const s of strains) {
+      /* A size narrows the shops as well as the strains. Asking for an ounce
+         and being sent to a shop that has only halves is the trip this page
+         exists to save, so every count below — one shop or more than one, a
+         shop's name in the search — is of the shops that sell that size. */
+      const shops = size === null ? s.shops : s.shops.filter((shop) => shop.sizes.includes(size));
+      if (shops.length === 0) continue;
+      if (lineage && s.lineage !== lineage) continue;
+      if (multiOnly && shops.length < 2) continue;
+      if (
+        q &&
+        !(
+          s.key.includes(q) ||
+          s.name.toLowerCase().includes(q) ||
+          // The name shown is the strain; what a shop printed on the jar can be
+          // "Premium Cannabis Flower Jar Sour Diesel", and that is what someone
+          // reading a menu has in hand.
+          s.labels.some((label) => label.toLowerCase().includes(q)) ||
+          s.brands.some((b) => b.toLowerCase().includes(q)) ||
+          shops.some((shop) => shop.name.toLowerCase().includes(q))
+        )
+      )
+        continue;
+      views.push({ s, shops });
+    }
+    // Most shops first, as the page arrives — counting the ones that sell the size.
+    if (size !== null) {
+      views.sort((a, b) => b.shops.length - a.shops.length || a.s.name.localeCompare(b.s.name));
+    }
+    return views;
   }, [strains, query, size, lineage, multiOnly]);
 
   const shown = results.slice(0, limit);
@@ -220,7 +253,7 @@ export const ShelfIndex = ({
             type="button"
             className="link"
             onClick={async () => {
-              const text = results.map((s) => s.name).join('\n');
+              const text = results.map((v) => v.s.name).join('\n');
               try {
                 await navigator.clipboard.writeText(text);
               } catch {
@@ -262,8 +295,8 @@ export const ShelfIndex = ({
       ) : (
         <>
           <ul className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-            {shown.map((s) => (
-              <StrainRow key={s.key} s={s} />
+            {shown.map((v) => (
+              <StrainRow key={v.s.key} s={v.s} shops={v.shops} size={size} />
             ))}
           </ul>
           {shown.length < results.length && (
