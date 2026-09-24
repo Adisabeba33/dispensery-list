@@ -135,6 +135,23 @@ check('unrelated type field', classify({ name: 'Grape Cake', type: 'variant', ca
 // which strains come by the eighth, quarter, half or ounce.
 check('flower without a size', toListing({ Name: 'Nameless Bud', type: 'Flower' }, shop, SRC, {}), null);
 
+/* Where the twelve sites that published no THC keep it — shapes as a probe
+   read them off Bleu Leaf, StarLife, Misha's and Elevation HQ. */
+const lab = (extra, Name = 'Lab Shape') => toListing({ Name, type: 'Flower', Options: ['3.5g'], ...extra }, shop, SRC, {});
+check('labs: the THC figure',
+  lab({ labs: { thc: 32.44, thcMax: 32.44, thcA: null, thcContentUnit: '%', cbd: null, cbdMax: 0.1 } })?.thcPercent, 32.44);
+check('labs: CBD beside it', lab({ labs: { thc: 32.44, cbd: null, cbdMax: 0.1, cbdContentUnit: '%' } })?.cbdPercent, 0.1);
+check('labs: the Max when nothing else is filled', lab({ labs: { thc: null, thcMax: 27.1, thcContentUnit: null } })?.thcPercent, 27.1);
+check('labs: a zero THC is still silence', lab({ labs: { thc: 0, thcMax: 0, thcContentUnit: '%' } })?.thcPercent, null);
+check('labs: milligrams are not a percentage', lab({ labs: { thc: 250, thcContentUnit: 'mg' } })?.thcPercent, null);
+check('variants: the lab test on the size',
+  lab({ variants: [{ labTests: { thc: { value: [27.1], unitAbbr: '%' }, cbd: null } }] }, 'GMO 3.5g')?.thcPercent, 27.1);
+check('variants: the first size that states one',
+  lab({ variants: [{ labTests: { thc: null } }, { labTests: { thc: { value: [34.7444], unitAbbr: '%' } } }] }, 'Hickory Hash 3.5g')?.thcPercent, 34.74);
+check('thcPercentage beside labResults', lab({ thcPercentage: 32.13, thcDisplay: '32.13%' })?.thcPercent, 32.13);
+check('a named field wins over the lab block',
+  lab({ THCContent: { range: [24.1, 24.1] }, labs: { thc: 32.44, thcContentUnit: '%' } })?.thcPercent, 24.1);
+
 /* ------------------------------------------------------- HARVEST & PACKAGE --
  * Three fields the mapper wrote null into whatever the payload said:
  * harvestedOn, packagedOn and the whole-panel cannabinoid figure. The

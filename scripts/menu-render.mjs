@@ -2994,6 +2994,44 @@ const potency = (p, names, list, compound, { zeroIsSilence = false } = {}) => {
 };
 const THC_NAME = /^\s*(thc|thca|delta[\s-]?9[\s-]?thc)\s*$/i;
 const CBD_NAME = /^\s*(cbd|cbda)\s*$/i;
+
+/* Two more places a menu keeps the certificate's figures, found by reading
+ * one shop of each of the twelve sites that published no THC at all — 7,494
+ * listings, 38% of the register, every one of them with the figure in the
+ * payload:
+ *
+ *   labs: { thc: 32.44, thcMax: 32.44, thcContentUnit: '%', cbd: … }
+ *       Bleu Leaf, Cannabis Realm, Elevated 718, Good Daze, Mindset, StarLife
+ *   variants: [{ labTests: { thc: { value: [27.1], unitAbbr: '%' } } }]
+ *       Misha's, esh.us
+ *
+ * (The third, Two Buds, Elevation, Lenox Hill and Seaweed, writes a plain
+ * thcPercentage beside its labResults, and is read with the other names.)
+ *
+ * `labs` is read at the compound itself, and at its Max only when that is
+ * empty: StarLife fills thcMax and nothing else. A figure in a unit other than
+ * per cent — milligrams — is not a percentage and is not read as one. */
+const labFigure = (p, compound, { zeroIsSilence = false } = {}) => {
+  const reads = (v) => (zeroIsSilence ? Boolean(v) : v !== null && v !== undefined);
+  const percent = (unit) => unit === null || unit === undefined || String(unit).trim() === '%';
+  const labs = pick(p, ['labs']);
+  if (labs && typeof labs === 'object' && percent(pick(labs, [`${compound}ContentUnit`]))) {
+    for (const n of [compound, `${compound}Max`]) {
+      const v = inRange(num(pick(labs, [n])), 100);
+      if (reads(v)) return v;
+    }
+  }
+  const variants = pick(p, ['variants']);
+  if (Array.isArray(variants)) {
+    for (const variant of variants) {
+      const test = pick(pick(variant, ['labTests']), [compound]);
+      if (!test || !percent(pick(test, ['unitAbbr', 'unit']))) continue;
+      const v = inRange(num(pick(test, ['value'])), 100);
+      if (reads(v)) return v;
+    }
+  }
+  return null;
+};
 const CANNABINOID_PANEL = ['cannabinoids', 'potencies', 'cannabinoidProfile'];
 
 const EARLIEST_SANE_MENU_DATE = Date.UTC(2015, 0, 1);
@@ -3231,19 +3269,21 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     brand: brand ? String(brand).slice(0, 120) : null,
     brandKey: brandKeyOf(brand),
     lineage: LINEAGE[lineageRaw] ?? lineageFromTitle(rawName) ?? 'UNKNOWN',
-    thcPercent: potency(
-      p,
-      ['thcContent', 'potencyThc', 'thc', 'thcPercent', 'potencyThcRangeLow', 'potencyThcRangeHigh', 'potencyThcDisplayValue'],
-      CANNABINOID_PANEL,
-      THC_NAME,
-      { zeroIsSilence: true },
-    ),
-    cbdPercent: potency(
-      p,
-      ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent', 'potencyCbdRangeLow', 'potencyCbdRangeHigh', 'potencyCbdDisplayValue'],
-      CANNABINOID_PANEL,
-      CBD_NAME,
-    ),
+    thcPercent:
+      potency(
+        p,
+        ['thcContent', 'potencyThc', 'thc', 'thcPercent', 'thcPercentage', 'potencyThcRangeLow', 'potencyThcRangeHigh', 'potencyThcDisplayValue'],
+        CANNABINOID_PANEL,
+        THC_NAME,
+        { zeroIsSilence: true },
+      ) ?? labFigure(p, 'thc', { zeroIsSilence: true }),
+    cbdPercent:
+      potency(
+        p,
+        ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent', 'cbdPercentage', 'potencyCbdRangeLow', 'potencyCbdRangeHigh', 'potencyCbdDisplayValue'],
+        CANNABINOID_PANEL,
+        CBD_NAME,
+      ) ?? labFigure(p, 'cbd'),
     /* What the menu calls the whole panel. Read for the same reason THC is:
        it is the figure a lab actually reports, and the one a reader comparing
        two jars is usually after. */
@@ -4078,6 +4118,31 @@ const main = async () => {
               allKeys: Object.keys(product).join(','),
             }).slice(0, 1600);
           });
+        /* Where a menu keeps what the jar's certificate says — potency, the
+           lab, the batch, its dates. Found by name at any depth, because the
+           shops that print no THC at all are exactly the ones that keep it
+           somewhere we have not looked. */
+        const LABISH = /thc|cbd|potenc|cannabin|terp|lab|test|coa|certif|batch|lot|harvest|packag|cure|expir/i;
+        const labFields = (value, path = '', out = {}, depth = 0) => {
+          if (depth > 3 || value === null || typeof value !== 'object') return out;
+          for (const [k, v] of Object.entries(value)) {
+            const at = path ? `${path}.${k}` : k;
+            if (LABISH.test(k)) out[at] = typeof v === 'object' ? JSON.stringify(v)?.slice(0, 160) : v;
+            if (typeof v === 'object') labFields(v, at, out, depth + 1);
+          }
+          return out;
+        };
+        entry.labSample = arrays
+          .flat()
+          .filter((product) => classify(product) === 'flower')
+          .slice(0, dumpProducts)
+          .map((product) =>
+            JSON.stringify({
+              name: String(flatten(pick(product, NAME_KEYS)) ?? '').slice(0, 60),
+              weRead: toListing(product, shop, page.url(), {})?.thcPercent ?? null,
+              fields: labFields(product),
+            }).slice(0, 3000),
+          );
       }
 
       // Why products were dropped, not merely how many. A run that collects
