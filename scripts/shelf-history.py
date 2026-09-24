@@ -37,6 +37,24 @@
 бывает несколько («14g», «28g», «(Indoor)»), и их идентификаторы меняются
 вместе с тем, как магазин или наш разбор пишут название. Сорт от этого не
 меняется.
+
+Партия. THC до сотых — это число из лабораторного сертификата партии, и
+меню переписывают его как есть: у 93% сортов бренда, стоящих в нескольких
+магазинах, значение совпадает до сотых, а у партий, чьи терпены публикуют
+два магазина, совпадают и терпены. Поэтому значение THC, которого у сорта
+бренда раньше не было ни в одном магазине, — это новая партия. Это сигнал
+точнее, чем «впервые увидели в магазине»: сорт мог стоять на полке давно,
+а партия в нём — новая. Считается так же осторожно:
+
+- магазин устойчив, как для завоза, и сорт стоял на прошлом чтении с THC —
+  или сам только что появился и прошёл как кандидат в завоз;
+- целое число — округление, партию оно не называет; «28» и 28.41, 22.3 и
+  22.34 — одна партия, как и значения ближе 0,1;
+- THC, который раньше не показывали вовсе, — новое в нашем чтении, а не в
+  партии;
+- если за день THC сменился у многих позиций магазина сразу, поменялось
+  наше чтение потенции, а не партии;
+- значение держится до следующего чтения магазина.
 """
 import hashlib
 import json
@@ -46,6 +64,7 @@ import sys
 import unicodedata
 from collections import Counter, defaultdict
 from datetime import date, datetime, timedelta, timezone
+from decimal import ROUND_DOWN, ROUND_HALF_UP, Decimal
 from difflib import SequenceMatcher
 from pathlib import Path
 
@@ -59,6 +78,9 @@ READER = ("scripts/menu-render.mjs", "scripts/strain-name.mjs", "data/menu-endpo
 NEW_SHARE_MAX = 0.15  # больше — полку переписало наше чтение, а не завоз
 LOPSIDED_MIN = 5      # столько новых при сменившемся сборщике и почти без ушедших —
                       # это чтение стало глубже, а не завоз
+MIN_THC_STEP = 0.1    # ближе — то же лабораторное число, записанное иначе
+THC_BURST_SHARE = 0.3 # THC сменился у большей доли позиций магазина за день —
+THC_BURST_MIN = 5     # поменялось наше чтение потенции, а не партии
 RECENT_SWEEPS = 3     # прошлое чтение магазина не старше стольких прогонов
 CONFIRM_WITHIN = 3    # столько прогонов ждём следующего чтения магазина
 WAVE_SHELVES = 3
@@ -117,18 +139,24 @@ def similar(a, b):
 
 
 def shelves_read(rows, day):
-    """Полки магазинов, прочитанных в этот день: {лицензия: {сорт бренда: строка}}.
+    """Полки магазинов, прочитанных в этот день: {лицензия: {сорт бренда: строка}} и
+    {лицензия: {сорт бренда: значения THC}}.
 
     Полка, которую сборщик придержал от прошлого чтения, лежит в файле со
     старым capturedAt. Это не чтение, и сравнивать её не с чем."""
-    out = {}
+    shelves, potency = {}, {}
     for row in rows:
         if (row.get("capturedAt") or "")[:10] != day:
             continue
         key = key_of(row)
-        if key:
-            out.setdefault(row["licenseNumber"], {}).setdefault(key, row)
-    return out
+        if not key:
+            continue
+        shelves.setdefault(row["licenseNumber"], {}).setdefault(key, row)
+        thc = row.get("thcPercent")
+        # Ноль — не ответ: так сборщик до 23 сентября записывал молчание меню.
+        if isinstance(thc, (int, float)) and thc > 0:
+            potency.setdefault(row["licenseNumber"], {}).setdefault(key, set()).add(float(thc))
+    return shelves, potency
 
 
 def signature(shelf):
@@ -136,22 +164,62 @@ def signature(shelf):
     return hashlib.sha1("\n".join(sorted(shelf)).encode()).hexdigest()[:10]
 
 
+def num(v):
+    """26.49 → «26.49», 28.0 → «28»: столько знаков, сколько написало меню."""
+    return format(Decimal(repr(float(v))).normalize(), "f")
+
+
+def places(v):
+    text = num(v)
+    return len(text.split(".")[1]) if "." in text else 0
+
+
+def same_batch(a, b):
+    """Одна партия, записанная разными меню: ближе MIN_THC_STEP, или менее точное
+    значение — округление либо отсечение более точного («28» и 28.41)."""
+    if round(abs(a - b), 2) < MIN_THC_STEP:
+        return True
+    pa, pb = places(a), places(b)
+    if pa == pb:
+        return False
+    rough, exact = (a, b) if pa < pb else (b, a)
+    step = Decimal(1).scaleb(-min(pa, pb))
+    exact = Decimal(repr(float(exact)))
+    return Decimal(repr(float(rough))) in (exact.quantize(step, ROUND_HALF_UP), exact.quantize(step, ROUND_DOWN))
+
+
+def parse(entry):
+    """«первое/последнее THC…» → (первое, последнее или None, если на полке, [THC])."""
+    span, *thc = entry.split(" ")
+    first, last = span.split("/")
+    return first, (None if last == OPEN else last), [float(v) for v in thc]
+
+
+def written(first, last, thc=()):
+    return " ".join([f"{first}/{last or OPEN}"] + [num(v) for v in sorted(set(thc))])
+
+
 def empty():
     return {
-        "about": "Когда сорт бренда был на полке каждого магазина: первое и последнее чтение, "
-                 "«..» — на полке и сейчас. Пишется scripts/shelf-history.py после "
-                 "ежедневного прогона; правила — в его описании.",
+        "about": "Когда сорт бренда был на полке каждого магазина: первое и последнее чтение "
+                 "(«..» — на полке и сейчас) и THC на последнем чтении; thc — какие значения "
+                 "THC, то есть партии, сорт бренда уже показывал хоть где-то. Пишется "
+                 "scripts/shelf-history.py после ежедневного прогона; правила — в его описании.",
         "rules": {
             "newShareMax": NEW_SHARE_MAX, "lopsidedMin": LOPSIDED_MIN, "recentSweeps": RECENT_SWEEPS,
             "confirmWithin": CONFIRM_WITHIN, "waveShelves": WAVE_SHELVES,
-            "waveDays": WAVE_DAYS, "keepDays": KEEP_DAYS,
+            "waveDays": WAVE_DAYS, "keepDays": KEEP_DAYS, "minThcStep": MIN_THC_STEP,
+            "thcBurstShare": THC_BURST_SHARE, "thcBurstMin": THC_BURST_MIN,
         },
         "sweeps": [],
         "collector": {},
         "days": {},
         "arrivals": [],
         "pending": [],
+        "batches": [],
+        "pendingBatches": [],
         "reads": {},
+        "thc": {},
         "seen": {},
     }
 
@@ -159,7 +227,7 @@ def empty():
 def fold(hist, day, rows, collector=None):
     """Сложить в историю один прогон. None — если в этот день не прочитан ни один магазин
     или история уже дальше. collector — версия сборщика, которым читали."""
-    shelves = shelves_read(rows, day)
+    shelves, potency = shelves_read(rows, day)
     sweeps = hist["sweeps"]
     if not shelves or (sweeps and day <= sweeps[-1]):
         return None
@@ -172,57 +240,53 @@ def fold(hist, day, rows, collector=None):
         versions[day] = collector
     sweeps.append(day)
 
-    # Кандидаты прошлых прогонов: стоит ли сорт на полке при следующем чтении.
-    waiting = []
-    for cand in hist["pending"]:
-        shelf = shelves.get(cand["licence"])
-        if shelf is not None:
-            # Тот же сорт, записанный за ночь иначе (сборщик поменял разбор
-            # названия), — всё тот же сорт на полке.
-            if cand["key"] in shelf or any(similar(cand["key"], k) for k in shelf):
-                hist["arrivals"].append({**cand, "confirmed": day})
-                count["confirmed"] += 1
-            else:
-                count["flicker"] += 1
-        elif sum(1 for s in sweeps if s > cand["seen"]) < CONFIRM_WITHIN:
-            waiting.append(cand)
-        else:
-            count["unconfirmed"] += 1
-    hist["pending"] = waiting
+    # Кандидаты прошлых прогонов: стоят ли они на полке при следующем чтении
+    # магазина. Сорт, который сборщик за ночь записал иначе, — всё тот же сорт.
+    settle(hist, "pending", "arrivals", shelves, sweeps, day, count,
+           ("confirmed", "flicker", "unconfirmed"),
+           lambda c: c["key"] in shelves[c["licence"]]
+           or any(similar(c["key"], k) for k in shelves[c["licence"]]))
+    settle(hist, "pendingBatches", "batches", shelves, sweeps, day, count,
+           ("batchConfirmed", "batchFlicker", "batchUnconfirmed"),
+           lambda c: any(same_batch(c["thc"], v)
+                         for v in potency.get(c["licence"], {}).get(c["key"], ())))
 
     for lic, shelf in shelves.items():
         reads = hist["reads"].setdefault(lic, [])
         seen = hist["seen"].setdefault(lic, {})
         r1 = reads[-1] if reads else None
         r2 = reads[-2] if len(reads) > 1 else None
+        was = {key: parse(entry) for key, entry in seen.items()}
+        thc_now = potency.get(lic, {})
 
         # Что ушло с полки: последний раз оно стояло на прошлом чтении.
         departed = 0
-        for key, span in seen.items():
-            if span.endswith("/" + OPEN) and key not in shelf:
-                seen[key] = f"{span[:10]}/{r1}"
+        for key, (first, last, thc) in was.items():
+            if last is None and key not in shelf:
+                seen[key] = written(first, r1, thc)
                 departed += 1
 
         new = []
         for key in shelf:
-            span = seen.get(key)
-            if span is None:
+            got = was.get(key)
+            first = day
+            if got is None:
                 new.append((key, False))
-                seen[key] = f"{day}/{OPEN}"
-            elif not span.endswith("/" + OPEN):
+            else:
+                first, last, _thc = got
                 # Ушёл и вернулся. Если стоял на одном из двух прошлых чтений,
                 # это мигание, а не появление.
-                if r2 is None or span[11:] < r2:
+                if last is not None and (r2 is None or last < r2):
                     new.append((key, True))
-                seen[key] = f"{span[:10]}/{OPEN}"
+            seen[key] = written(first, None, thc_now.get(key, ()))
         reads.append(day)
         del reads[:-KEEP_READS]
-        if not new:
-            continue
+        if new:
+            count["appeared"] += len(new)
 
-        count["appeared"] += len(new)
         if r2 is None or r1 not in recent:
-            count["unsteady"] += len(new)
+            if new:
+                count["unsteady"] += len(new)
             continue
         if len(new) > NEW_SHARE_MAX * len(shelf):
             count["rewritten"] += len(new)
@@ -237,35 +301,126 @@ def fold(hist, day, rows, collector=None):
             count["deeper"] += len(new)
             count["deeperShops"] += 1
             continue
-        lately = [k for k, span in seen.items() if not span.endswith("/" + OPEN) and span[11:] >= r2]
         shelf_sig = signature(shelf)
-        for key, returned in new:
-            if any(similar(key, gone) for gone in lately):
-                count["renamed"] += 1
-                continue
-            row = shelf[key]
-            hist["pending"].append({
-                "seen": day,
-                "licence": lic,
-                "key": key,
-                "brand": row.get("brand"),
-                "strain": row.get("strainNameCanonical") or row.get("strainNameRaw"),
-                "shelf": shelf_sig,
-                "returned": returned,
-            })
-            count["candidates"] += 1
+        arrived = arrivals(hist, lic, shelf, new, seen, r2, day, shelf_sig, count)
+        batches(hist, lic, shelf, was, thc_now, arrived, day, shelf_sig, count)
 
+    remember_potency(hist, potency, day)
     hist["days"][day] = dict(sorted(count.items()))
     prune(hist, day)
     return count
 
 
+def settle(hist, queue, done, shelves, sweeps, day, count, names, holds):
+    """Кандидат подтверждается на следующем чтении своего магазина; магазин, который
+    CONFIRM_WITHIN прогонов не читался, его не подтвердит."""
+    confirmed, flicker, expired = names
+    waiting = []
+    for cand in hist[queue]:
+        if cand["licence"] in shelves:
+            if holds(cand):
+                hist[done].append({**cand, "confirmed": day})
+                count[confirmed] += 1
+            else:
+                count[flicker] += 1
+        elif sum(1 for s in sweeps if s > cand["seen"]) < CONFIRM_WITHIN:
+            waiting.append(cand)
+        else:
+            count[expired] += 1
+    hist[queue] = waiting
+
+
+def arrivals(hist, lic, shelf, new, seen, r2, day, shelf_sig, count):
+    """Кандидаты в завоз из новых на полке устойчивого магазина. Возвращает их ключи."""
+    if not new:
+        return set()
+    lately = [k for k, entry in seen.items() if (parse(entry)[1] or "") >= r2]
+    arrived = set()
+    for key, returned in new:
+        if any(similar(key, gone) for gone in lately):
+            count["renamed"] += 1
+            continue
+        row = shelf[key]
+        hist["pending"].append({
+            "seen": day,
+            "licence": lic,
+            "key": key,
+            "brand": row.get("brand"),
+            "strain": row.get("strainNameCanonical") or row.get("strainNameRaw"),
+            "shelf": shelf_sig,
+            "returned": returned,
+        })
+        count["candidates"] += 1
+        arrived.add(key)
+    return arrived
+
+
+def batches(hist, lic, shelf, was, thc_now, arrived, day, shelf_sig, count):
+    """Кандидаты в новую партию: THC, которого у сорта бренда не было ни в одном магазине."""
+    changed, comparable = [], 0
+    for key, values in thc_now.items():
+        got = was.get(key)
+        if got is None or got[1] is not None:
+            continue  # на прошлом чтении сорта на полке не было: это не смена партии на полке
+        if not got[2]:
+            count["thcNewlyShown"] += 1  # THC раньше не показывали: новое здесь наше чтение
+            continue
+        comparable += 1
+        fresh = [v for v in values if not v.is_integer() and not any(same_batch(v, p) for p in got[2])]
+        if fresh:
+            changed.append((key, fresh))
+    if len(changed) >= THC_BURST_MIN and len(changed) > THC_BURST_SHARE * comparable:
+        count["thcRewritten"] += len(changed)
+        count["thcRewrittenShops"] += 1
+        return
+    for key in sorted(arrived):
+        fresh = [v for v in thc_now.get(key, ()) if not v.is_integer()]
+        if fresh:
+            changed.append((key, fresh))
+    for key, fresh in changed:
+        market = [v for v, _first in hist["thc"].get(key, [])]
+        if not market:
+            continue  # сорт бренда, которого мы раньше не видели: это завоз, а не новая партия
+        for v in sorted(set(fresh)):
+            if any(same_batch(v, m) for m in market):
+                continue  # эта партия уже стояла в других магазинах
+            row = shelf[key]
+            hist["pendingBatches"].append({
+                "seen": day,
+                "licence": lic,
+                "key": key,
+                "thc": v,
+                "before": sorted(market),
+                "brand": row.get("brand"),
+                "strain": row.get("strainNameCanonical") or row.get("strainNameRaw"),
+                "shelf": shelf_sig,
+            })
+            count["batchCandidates"] += 1
+
+
+def remember_potency(hist, potency, day):
+    """Какие значения THC сорт бренда показывал хоть в одном магазине — с любых полок,
+    устойчивых или нет: партия, которую уже видели, не новая. Целое — округление, и
+    в память оно не идёт: «28» заслонило бы всё от 27,5 до 29."""
+    for keys in potency.values():
+        for key, values in keys.items():
+            for v in sorted(values):
+                if v.is_integer():
+                    continue
+                have = hist["thc"].setdefault(key, [])
+                if all(v != known for known, _first in have):
+                    have.append([v, day])
+
+
 def prune(hist, day):
     horizon = (date.fromisoformat(day) - timedelta(days=KEEP_DAYS)).isoformat()
     for seen in hist["seen"].values():
-        for key in [k for k, span in seen.items() if not span.endswith("/" + OPEN) and span[11:] < horizon]:
+        for key in [k for k, entry in seen.items() if (parse(entry)[1] or horizon) < horizon]:
             del seen[key]
+    alive = {key for seen in hist["seen"].values() for key in seen}
+    hist["thc"] = {key: values for key, values in hist["thc"].items() if key in alive}
     hist["arrivals"] = [a for a in hist["arrivals"] if a["seen"] >= horizon]
+    hist["batches"] = [b for b in hist["batches"] if b["seen"] >= horizon]
     hist["days"] = {d: c for d, c in hist["days"].items() if d >= horizon}
     hist["collector"] = {d: v for d, v in hist["collector"].items() if d >= horizon}
     del hist["sweeps"][:-KEEP_SWEEPS]
@@ -281,6 +436,16 @@ def waves(hist, day):
     found = [(key, found) for key, found in groups.items()
              if len({a["shelf"] for a in found}) >= WAVE_SHELVES]
     return sorted(found, key=lambda kv: (-len({a["shelf"] for a in kv[1]}), kv[0]))
+
+
+def new_batches(hist, day):
+    """Новые партии за WAVE_DAYS дней до day: {(сорт бренда, THC): подтверждения}."""
+    since = (date.fromisoformat(day) - timedelta(days=WAVE_DAYS - 1)).isoformat()
+    groups = defaultdict(list)
+    for b in hist["batches"]:
+        if since <= b["seen"] <= day:
+            groups[(b["key"], b["thc"])].append(b)
+    return groups
 
 
 def render(value, indent=0, depth=3):
@@ -306,7 +471,12 @@ def save(hist):
 
 
 def load():
-    return json.loads(HISTORY.read_text()) if HISTORY.exists() else empty()
+    """История с диска. Раздел, которого в ней ещё нет (файл писала прежняя версия
+    скрипта), начинается пустым, а не роняет прогон."""
+    hist = json.loads(HISTORY.read_text()) if HISTORY.exists() else {}
+    for part, blank in empty().items():
+        hist.setdefault(part, blank)
+    return hist
 
 
 def collector_at(ref):
@@ -353,7 +523,10 @@ def line(day, c):
             f"полка переписана {c.get('rewritten', 0)} ({c.get('rewrittenShops', 0)} маг.), "
             f"сборщик глубже {c.get('deeper', 0)} ({c.get('deeperShops', 0)} маг.), "
             f"переименовано {c.get('renamed', 0)}, кандидатов {c.get('candidates', 0)}; "
-            f"подтверждено {c.get('confirmed', 0)}, мигнуло {c.get('flicker', 0)}")
+            f"подтверждено {c.get('confirmed', 0)}, мигнуло {c.get('flicker', 0)}; "
+            f"партии: кандидатов {c.get('batchCandidates', 0)}, подтверждено {c.get('batchConfirmed', 0)}, "
+            f"THC переписан {c.get('thcRewritten', 0)} ({c.get('thcRewrittenShops', 0)} маг.), "
+            f"THC впервые показан {c.get('thcNewlyShown', 0)}")
 
 
 def backfill():
@@ -375,7 +548,7 @@ def backfill():
     save(hist)
     print(f"\n{HISTORY.relative_to(ROOT)}: {len(hist['sweeps'])} прогонов, "
           f"{sum(len(s) for s in hist['seen'].values())} сортов в магазинах, "
-          f"{len(hist['arrivals'])} подтверждённых появлений")
+          f"{len(hist['arrivals'])} подтверждённых появлений, {len(hist['batches'])} новых партий")
 
 
 def update(day):
@@ -432,6 +605,7 @@ def report(day):
                    + ", ".join(shops[:5]) + (f" и ещё {len(shops) - 5}" if len(shops) > 5 else ""))
     if not found:
         out.append("_нет_")
+    out += batch_section(hist, day, c, names)
     # Бренд — по ключу: GRASSROOTS и Grassroots — один бренд, написанный двумя меню.
     by_brand = defaultdict(list)
     for a in confirmed:
@@ -443,11 +617,46 @@ def report(day):
     print("\n".join(out))
 
 
+def batch_section(hist, day, c, names):
+    groups = new_batches(hist, day)
+    # Где партия стоит сейчас: её первые магазины — это только начало.
+    carrying = defaultdict(lambda: defaultdict(set))
+    for row in listings_of(LISTINGS.read_text()):
+        thc = row.get("thcPercent")
+        if isinstance(thc, (int, float)) and thc > 0 and key_of(row):
+            carrying[key_of(row)][row["licenseNumber"]].add(float(thc))
+    ranked = []
+    for (key, thc), found in groups.items():
+        shops = {lic for lic, values in carrying[key].items() if any(same_batch(thc, v) for v in values)}
+        ranked.append((len(shops), min(b["seen"] for b in found), key, thc, found, shops))
+    ranked.sort(key=lambda r: (-r[0], r[1], r[2]))
+    today_n = sum(1 for b in hist["batches"] if b["confirmed"] == day)
+    out = ["", f"**Новые партии за {WAVE_DAYS} дней** — у сорта бренда THC, которого раньше не было "
+           f"ни в одном магазине (THC до сотых — число из сертификата партии): {len(ranked)}", "",
+           f"- подтверждено сегодня: {today_n}; ждут следующего чтения: {len(hist['pendingBatches'])}",
+           f"- отсеяно: THC сменился разом у многих позиций магазина — {c.get('thcRewritten', 0)} "
+           f"в {where(c.get('thcRewrittenShops', 0))} (поменялось наше чтение потенции); "
+           f"THC раньше не показывали — {c.get('thcNewlyShown', 0)}", ""]
+    for n, first, key, thc, found, shops in ranked[:15]:
+        before = found[0]["before"]
+        named = sorted(names.get(lic, lic) for lic in shops)
+        out.append(f"- **{spelled(b['brand'] for b in found) or 'бренд не указан'} · "
+                   f"{spelled(b['strain'] for b in found)}** — THC {num(thc)}% "
+                   f"(раньше {', '.join(num(v) for v in before[:4])}{' …' if len(before) > 4 else ''}), "
+                   f"с {first[8:10]}.{first[5:7]}, сейчас в {where(n)}"
+                   + (": " + ", ".join(named[:5]) + (f" и ещё {len(named) - 5}" if len(named) > 5 else "")
+                      if named else ""))
+    if not ranked:
+        out.append("_нет_")
+    return out
+
+
 def check():
     """Правила на выдуманной неделе: каждое должно сработать и не задеть соседнее."""
-    def row(lic, strain, day, brand="Find"):
+    def row(lic, strain, day, brand="Find", thc=None):
         return {"licenseNumber": lic, "strainNameCanonical": strain, "brand": brand,
-                "brandKey": brand.lower() if brand else None, "capturedAt": f"{day}T12:00:00Z"}
+                "brandKey": brand.lower() if brand else None, "capturedAt": f"{day}T12:00:00Z",
+                "thcPercent": thc}
 
     base = [f"Old {n}" for n in range(20)]
     days = ["2026-01-01", "2026-01-02", "2026-01-03", "2026-01-04", "2026-01-05"]
@@ -456,6 +665,9 @@ def check():
         # У каждого магазина свой товар, у сети на общей витрине — общий.
         own = [f"House {house or lic}"]
         return [row(lic, s, day) for s in base + own if s not in drop] + [row(lic, s, day) for s in extra]
+
+    def potent(lic, day, values):
+        return shelf(lic, day) + [row(lic, s, day, thc=v) for s, v in values.items()]
 
     plan = {
         # Настоящий завоз: появился на третьем чтении и устоял на четвёртом.
@@ -482,6 +694,19 @@ def check():
         # Тот же рост, но в день, когда сборщик не менялся, — это завоз.
         "Q": lambda i, d: shelf("Q", d, extra=[f"Stock {n}" for n in range(20)]
                                 + ([f"Drop {n}" for n in range(6)] if i >= 3 else [])),
+        # Новая партия: THC сорта сменился на значение, которого не было нигде.
+        # Рядом — сорт, пришедший впервые с THC: это завоз, а не новая партия.
+        "T1": lambda i, d: potent("T1", d, {"Batch Strain": 20.11 if i < 2 else 22.35,
+                                            **({"Brand New": 24.44} if i >= 2 else {})}),
+        # «25» и 25.3 — одна партия, записанная точнее.
+        "T2": lambda i, d: potent("T2", d, {"Round Strain": 25 if i < 2 else 25.3}),
+        # Магазин получил партию, которая уже стояла в другом магазине.
+        "T3": lambda i, d: potent("T3", d, {"Known Strain": 19.87 if i < 2 else 21.5}),
+        "T4": lambda i, d: potent("T4", d, {"Known Strain": 21.5}),
+        # THC раньше не показывали — новое здесь наше чтение.
+        "T5": lambda i, d: potent("T5", d, {"Shown Strain": None if i < 2 else 23.45}),
+        # THC сменился у всех позиций сразу — поменялось чтение потенции.
+        "T6": lambda i, d: potent("T6", d, {f"Burst {n}": 20.11 + n + (3 if i >= 2 else 0) for n in range(10)}),
     }
     version = ["v1", "v1", "v2", "v2", "v2"]
     hist = empty()
@@ -515,6 +740,16 @@ def check():
     expect("общая витрина — одна полка", len({a["shelf"] for a in hist["arrivals"] if a["licence"] in ("F1", "F2")}), 1)
     expect("ушедшее помнит последнее чтение", hist["seen"]["D"]["find|old 5"], f"{days[0]}/{days[1]}")
     expect("стоящее открыто", hist["seen"]["A"]["find|crusty crustacean"], f"{days[2]}/{OPEN}")
+    expect("новая партия", [(b["licence"], b["key"], b["thc"], b["before"], b["seen"], b["confirmed"])
+                            for b in hist["batches"]],
+           [("T1", "find|batch strain", 22.35, [20.11], days[2], days[3])])
+    expect("кандидат партии", (third["batchCandidates"], fourth["batchConfirmed"]), (1, 1))
+    expect("чтение потенции сменилось", (third["thcRewritten"], third["thcRewrittenShops"]), (10, 1))
+    expect("THC впервые показан", third["thcNewlyShown"], 1)
+    expect("THC помнится по полке", hist["seen"]["T1"]["find|batch strain"], f"{days[0]}/{OPEN} 22.35")
+    expect("одна партия", (same_batch(28, 28.41), same_batch(28.4, 28.41), same_batch(22.3, 22.36),
+                           same_batch(25, 25.3), same_batch(28.41, 28.51), same_batch(27, 30.52),
+                           same_batch(26.49, 28.41)), (True, True, True, True, False, False, False))
     expect("похожие", (similar("find|old 5", "find|old 5 flower"), similar("find|gelato", "jeeter|gelato"),
                        similar("|crusty crustacean", "find|crusty crustacean"),
                        similar("find|blue dream", "find|blueberry")), (True, False, True, False))
