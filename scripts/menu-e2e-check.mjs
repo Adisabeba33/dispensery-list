@@ -84,7 +84,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '21',
+    '--limit', '23',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -208,12 +208,25 @@ try {
   check('its flower comes back', remix?.flower, 2);
   check('and its pre-roll is still refused', remix?.rejected?.['title-not-flower'] ?? remix?.rejected?.['category-not-flower'], 1);
 
+  /* A server-rendered menu hands over its first page and no more — The Travel
+     Agency's shows twenty of seventy-nine. The rest come the way they come for
+     a visitor, and both common ways are held here: a "Load More" button that
+     loads through a fetcher, and page numbers that replace one page's data
+     with the next. Each shelf is two pages of two strains. */
+  const loadMore = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000978');
+  check('a "Load More" menu is read to its end', loadMore?.flower, 4);
+  check('by pressing it', loadMore?.embeddedPaging?.[0], 'more: Load More → +2');
+  const numbered = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000977');
+  check('a numbered menu is read to its end', numbered?.flower, 4);
+  check('by turning to page two', numbered?.embeddedPaging?.[0], 'page: 2 → +2');
+  check('and it stops when nothing more comes', numbered?.embeddedProducts, 4);
+
   const refused = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000984');
   check('a refusal arrives in the diagnostic', refused?.status, 'robots-disallowed');
   check('and says so where the report reads it', refused?.menuLink, 'robots-disallowed');
   check('the refusal is named by licence', refused?.licence, 'OCM-CAURD-24-000984');
   check('the run counts it', summary.robotsDisallowed, 1);
-  check('and does not count it as a shop it read', summary.shopsVisited, 20);
+  check('and does not count it as a shop it read', summary.shopsVisited, 22);
 
   /* The retry replaces the empty reading rather than being carried alongside
      it: the shelf published for this shop is today's, not yesterday's held

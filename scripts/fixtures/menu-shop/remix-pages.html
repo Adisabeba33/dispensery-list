@@ -1,0 +1,15 @@
+<!doctype html><meta charset="utf-8"><title>Flower</title>
+<h1>Shop Flower</h1>
+<ul id="menu"></ul>
+<!-- A server-rendered menu read a page at a time: the page number is in the
+     address, and each page's data replaces the last one's in loaderData, so
+     what has been read has to be kept as it goes. -->
+<nav aria-label="pagination"><a href="/remix-pages?page=1">1</a> <a href="/remix-pages?page=2">2</a></nav>
+<script src="/remix-shelves.js"></script>
+<script>
+  const n = Number(new URLSearchParams(location.search).get('page') || 1);
+  window.__remixRouter = {
+    state: { loaderData: { root: { user: null }, 'routes/_layout.flower': { products: __shelfPages[n] || [], page: n } } },
+  };
+  __render(__shelfPages[n] || []);
+</script>

@@ -393,5 +393,45 @@
    "state": "NY",
    "zip": "11201"
   }
+ },
+ {
+  "id": "fixture-shop-remix-22",
+  "licenseNumber": "OCM-CAURD-24-000978",
+  "legalName": "Fixture Dispensary 22 LLC",
+  "dbaName": "Fixture Dispensary 22",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "PROPRIETARY"
+  },
+  "contact": {
+   "website": "http://localhost:4399/remix-more-home"
+  },
+  "address": {
+   "line1": "22 Test St",
+   "city": "Brooklyn",
+   "borough": "BROOKLYN",
+   "state": "NY",
+   "zip": "11201"
+  }
+ },
+ {
+  "id": "fixture-shop-remix-23",
+  "licenseNumber": "OCM-CAURD-24-000977",
+  "legalName": "Fixture Dispensary 23 LLC",
+  "dbaName": "Fixture Dispensary 23",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "PROPRIETARY"
+  },
+  "contact": {
+   "website": "http://localhost:4399/remix-pages-home"
+  },
+  "address": {
+   "line1": "23 Test St",
+   "city": "Brooklyn",
+   "borough": "BROOKLYN",
+   "state": "NY",
+   "zip": "11201"
+  }
  }
 ]

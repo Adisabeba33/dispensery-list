@@ -37,6 +37,7 @@ const TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.txt': 'text/plain; charset=utf-8',
   '.json': 'application/json',
+  '.js': 'text/javascript',
 };
 
 const file = (name) => {
@@ -335,6 +336,12 @@ createServer((req, res) => {
       /* A server-rendered menu whose shelf is only inside the page. */
       '/remix': 'remix.html',
       '/remix-menu': 'remix-menu.html',
+      /* Server-rendered menus that hand over one page at a time. */
+      '/remix-shelves.js': 'remix-shelves.js',
+      '/remix-more-home': 'remix-more-home.html',
+      '/remix-more': 'remix-more.html',
+      '/remix-pages-home': 'remix-pages-home.html',
+      '/remix-pages': 'remix-pages.html',
     };
     const name = ROUTES[url.pathname] ?? url.pathname.slice(1);
     const [body, type] = file(name);

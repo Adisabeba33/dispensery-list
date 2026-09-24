@@ -1863,6 +1863,116 @@ const looksLikeShelf = (value) => {
   return looksLikeProduct ? objects : null;
 };
 
+/* How far a server-rendered menu is walked: twelve steps is two hundred and
+   forty products at twenty a page, more than any New York shelf has shown. */
+const EMBEDDED_PAGE_CAP = 12;
+
+/**
+ * What a hydrated Remix or React Router page holds, made plain: every route's
+ * loader data, and every fetcher's. The first screen's data sits in
+ * loaderData; a "Load more" button usually loads through a fetcher, whose
+ * answer never reaches loaderData at all, so both are read.
+ */
+const readRouterData = (page) =>
+  within(
+    page.evaluate(() => {
+      const router = window.__remixRouter || window.__reactRouterDataRouter || null;
+      const state = router?.state;
+      if (!state || typeof state.loaderData !== 'object') return null;
+      const seen = new WeakSet();
+      const plain = (value, depth) => {
+        if (depth > 12 || value === null || value === undefined) return value ?? null;
+        if (typeof value === 'function') return undefined;
+        if (typeof value !== 'object') return value;
+        if (value instanceof Date) return value.toISOString();
+        /* A deferred value that has settled keeps its result beside it. */
+        if (typeof value.then === 'function') return '_data' in value ? plain(value._data, depth + 1) : null;
+        if (seen.has(value)) return null;
+        seen.add(value);
+        if (Array.isArray(value)) return value.slice(0, 2000).map((v) => plain(v, depth + 1));
+        const out = {};
+        for (const [k, v] of Object.entries(value)) {
+          const p = plain(v, depth + 1);
+          if (p !== undefined) out[k] = p;
+        }
+        return out;
+      };
+      const fetchers = state.fetchers && typeof state.fetchers.values === 'function'
+        ? [...state.fetchers.values()].map((f) => plain(f?.data, 0)).filter(Boolean)
+        : [];
+      const loaderData = plain(state.loaderData, 0);
+      if (!loaderData || !Object.keys(loaderData).length) return null;
+      return { loaderData, fetchers };
+    }),
+    null,
+  );
+
+/** The products in a router snapshot, each by id and name, to tell new from seen. */
+const routerNames = (snapshot) =>
+  findProductArrays(snapshot)
+    .flat()
+    .map((p) => `${flatten(pick(p, ['id', '_id', 'sku', 'slug'])) ?? ''}|${flatten(pick(p, NAME_KEYS)) ?? ''}`)
+    .filter((key) => key !== '|');
+
+/**
+ * One step further down a menu, the way a visitor takes it. Tried in order: a
+ * button that loads more, the next page number in a row of page numbers, a
+ * "Next" control, and last the plain act of scrolling to the bottom. A kind of
+ * step that has already brought nothing new is not tried again.
+ *
+ * Runs in the page. Returns what it did, as "kind: words", or null when there
+ * is nothing left to try.
+ */
+const stepThroughMenu = ([current, exhausted]) => {
+  const skip = new Set(exhausted);
+  const visible = (el) => {
+    const box = el.getBoundingClientRect();
+    return box.width > 0 && box.height > 0 && getComputedStyle(el).visibility !== 'hidden';
+  };
+  const words = (el) => (el.innerText || el.getAttribute('aria-label') || el.value || '').replace(/\s+/g, ' ').trim();
+  const controls = [...document.querySelectorAll('button, a[href], [role="button"]')].filter(
+    (el) => visible(el) && !el.disabled && el.getAttribute('aria-disabled') !== 'true',
+  );
+  if (!skip.has('more')) {
+    const MORE = /^(load|show|view|see)\s+more(\s+(products|items|results|flower))?$|^more\s+products$/i;
+    const more = controls.filter((el) => MORE.test(words(el))).pop();
+    if (more) {
+      more.scrollIntoView({ block: 'center' });
+      more.click();
+      return `more: ${words(more)}`;
+    }
+  }
+  if (!skip.has('page')) {
+    const want = String(current + 1);
+    const numbered = controls.find((el) => {
+      if (words(el) !== want) return false;
+      const row = el.parentElement?.parentElement ?? el.parentElement;
+      const numbers = [...(row?.querySelectorAll('a, button') ?? [])].filter((x) => /^\d+$/.test(words(x)));
+      return numbers.length >= 2;
+    });
+    if (numbered) {
+      numbered.click();
+      return `page: ${want}`;
+    }
+  }
+  if (!skip.has('next')) {
+    const NEXT = /^(next( page)?|›|»)$/i;
+    const nextEl = controls.find((el) => {
+      const label = el.getAttribute('aria-label') || '';
+      return NEXT.test(words(el)) || (/next/i.test(label) && /page/i.test(label));
+    });
+    if (nextEl) {
+      nextEl.click();
+      return `next: ${words(nextEl) || nextEl.getAttribute('aria-label')}`;
+    }
+  }
+  if (!skip.has('scroll')) {
+    window.scrollTo(0, document.body.scrollHeight);
+    return 'scroll: to the bottom';
+  }
+  return null;
+};
+
 const findProductArrays = (value, depth = 0, out = []) => {
   if (depth > 6 || out.length > 40) return out;
   if (Array.isArray(value)) {
@@ -3495,36 +3605,60 @@ const main = async () => {
          more answer the page gave. Only what the page itself was given is
          taken — nothing is asked of the site that a visitor's browser did not
          already receive. */
-      const embedded = await within(
-        page.evaluate(() => {
-          const router = window.__remixRouter || window.__reactRouterDataRouter || null;
-          const data = router?.state?.loaderData;
-          if (!data || typeof data !== 'object') return null;
-          const seen = new WeakSet();
-          const plain = (value, depth) => {
-            if (depth > 12 || value === null || value === undefined) return value ?? null;
-            if (typeof value === 'function') return undefined;
-            if (typeof value !== 'object') return value;
-            if (value instanceof Date) return value.toISOString();
-            /* A deferred value that has settled keeps its result beside it. */
-            if (typeof value.then === 'function') return '_data' in value ? plain(value._data, depth + 1) : null;
-            if (seen.has(value)) return null;
-            seen.add(value);
-            if (Array.isArray(value)) return value.slice(0, 2000).map((v) => plain(v, depth + 1));
-            const out = {};
-            for (const [k, v] of Object.entries(value)) {
-              const p = plain(v, depth + 1);
-              if (p !== undefined) out[k] = p;
-            }
-            return out;
-          };
-          return plain(data, 0);
-        }),
-        null,
-      );
-      if (embedded && typeof embedded === 'object' && Object.keys(embedded).length) {
+      const embedded = await readRouterData(page);
+      if (embedded) {
         payloads.push(embedded);
         entry.readEmbeddedRouterData = true;
+        /* A server-rendered menu hands over its first page and no more. The
+           Travel Agency's shows twenty of the seventy-nine flower products it
+           has, and the rest arrive the way they arrive for a visitor — a "Load
+           more" button, page numbers, or the list growing as it is scrolled —
+           each landing back in the router's data. So the page is walked the way
+           a visitor would walk it, the router read again after every step, and
+           whatever is new kept. It stops when a step brings nothing new, when
+           the steps run out, or at the cap; and a step that takes the visitor
+           off the menu altogether is undone and not tried again. */
+        const names = new Set(routerNames(embedded));
+        const startPath = new URL(page.url()).pathname;
+        const exhausted = new Set();
+        const steps = [];
+        let pageNo = 1;
+        for (let round = 0; round < EMBEDDED_PAGE_CAP; round += 1) {
+          const did = await within(page.evaluate(stepThroughMenu, [pageNo, [...exhausted]]), null);
+          if (!did) break;
+          const kind = did.split(':')[0];
+          await page.waitForTimeout(2500);
+          let where = startPath;
+          try {
+            where = new URL(page.url()).pathname;
+          } catch {
+            /* keep the menu's own path */
+          }
+          if (where !== startPath) {
+            steps.push(`${did} → left the menu`);
+            exhausted.add(kind);
+            try {
+              await page.goBack({ waitUntil: 'domcontentloaded', timeout: 20000 });
+              await page.waitForTimeout(1500);
+            } catch {
+              break;
+            }
+            continue;
+          }
+          const next = await readRouterData(page);
+          const fresh = next ? routerNames(next).filter((n) => !names.has(n)) : [];
+          if (!fresh.length) {
+            steps.push(`${did} → nothing new`);
+            exhausted.add(kind);
+            continue;
+          }
+          for (const n of fresh) names.add(n);
+          payloads.push(next);
+          steps.push(`${did} → +${fresh.length}`);
+          if (kind === 'page') pageNo += 1;
+        }
+        if (steps.length) entry.embeddedPaging = steps;
+        entry.embeddedProducts = names.size;
       }
 
       entry.payloads = payloads.length;

@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><title>Flower</title>
+<h1>Shop Flower</h1>
+<ul id="menu"></ul>
+<button id="more">Load More</button>
+<!-- A server-rendered menu that hands over its first page and loads the rest
+     through a fetcher when "Load More" is pressed. The fetcher's answer never
+     reaches loaderData, which is why fetchers are read as well. -->
+<script src="/remix-shelves.js"></script>
+<script>
+  window.__remixRouter = {
+    state: {
+      loaderData: { root: { user: null }, 'routes/_layout.flower': { products: __shelfPages[1], page: 1, pages: 2 } },
+      fetchers: new Map(),
+    },
+  };
+  __render(__shelfPages[1]);
+  document.getElementById('more').onclick = () => {
+    window.__remixRouter.state.fetchers.set('more', { state: 'idle', data: { products: __shelfPages[2], page: 2 } });
+    __render(__shelfPages[2]);
+    document.getElementById('more').style.display = 'none';
+  };
+</script>
