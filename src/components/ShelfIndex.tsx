@@ -33,7 +33,20 @@ const shelfLine = (shown: number, total: number, size: number | null): string =>
 
 const LINEAGE_FILTERS = ['INDICA', 'INDICA_DOMINANT', 'HYBRID', 'SATIVA_DOMINANT', 'SATIVA'];
 
-const StrainRow = ({ s, shops, size }: StrainView & { size: number | null }) => (
+/* The shops sit behind their own count. Open, every card was a column of
+   links — Agent Z alone lists fifty-two — and a brand's page became a long
+   scroll through shop names to reach the next strain. The count is the
+   button; the list is one tap away. With three strains or fewer on screen
+   they start open, because a search for one strain is a search for where
+   it is. */
+const StrainRow = ({
+  s,
+  shops,
+  size,
+  openByDefault,
+}: StrainView & { size: number | null; openByDefault: boolean }) => {
+  const [open, setOpen] = useState(openByDefault);
+  return (
   <li className="card p-4">
     <div className="flex items-start justify-between gap-3">
       <div className="min-w-0">
@@ -76,22 +89,38 @@ const StrainRow = ({ s, shops, size }: StrainView & { size: number | null }) => 
     )}
 
     <div className="mt-3 border-t border-ink-700/60 pt-3">
-      <p className="text-[0.7rem] uppercase tracking-[0.12em] text-chalk-500">
-        {shelfLine(shops.length, s.shops.length, size)}
-      </p>
-      <ul className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-sm">
-        {shops.map((shop) => (
-          <li key={shop.id}>
-            <Link href={`/dispensary/${shop.id}/#menu`} className="link">
-              {shop.name}
-            </Link>
-            <span className="text-chalk-500"> · {shop.region}</span>
-          </li>
-        ))}
-      </ul>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className={clsx(
+          'flex w-full items-center justify-between gap-3 rounded-md border px-3 py-2 text-left text-[0.7rem] uppercase tracking-[0.12em] transition',
+          open
+            ? 'border-moss-600 bg-moss-600/10 text-moss-400'
+            : 'border-ink-700 bg-ink-900/70 text-chalk-300 hover:border-moss-600 hover:text-moss-400',
+        )}
+      >
+        <span>{shelfLine(shops.length, s.shops.length, size)}</span>
+        <span aria-hidden className={clsx('text-base leading-none transition', open && 'rotate-180')}>
+          ▾
+        </span>
+      </button>
+      {open && (
+        <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm">
+          {shops.map((shop) => (
+            <li key={shop.id}>
+              <Link href={`/dispensary/${shop.id}/#menu`} className="link">
+                {shop.name}
+              </Link>
+              <span className="text-chalk-500"> · {shop.region}</span>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   </li>
-);
+  );
+};
 
 export const ShelfIndex = ({
   strains,
@@ -296,7 +325,15 @@ export const ShelfIndex = ({
         <>
           <ul className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             {shown.map((v) => (
-              <StrainRow key={v.s.key} s={v.s} shops={v.shops} size={size} />
+              <StrainRow
+                /* The threshold is part of the key, so narrowing a search to
+                   one strain opens it rather than leaving the card as it was. */
+                key={`${v.s.key}:${results.length <= 3 ? 'few' : 'many'}`}
+                s={v.s}
+                shops={v.shops}
+                size={size}
+                openByDefault={results.length <= 3}
+              />
             ))}
           </ul>
           {shown.length < results.length && (
