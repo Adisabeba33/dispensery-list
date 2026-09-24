@@ -1,6 +1,7 @@
 import type { StrainEntry } from '@/components/ShelfIndex';
 import { dispensaries, displayName, regionOf } from './data';
 import { listings, sizeChips } from './menu';
+import type { FlowerListing } from './menu-format';
 
 /**
  * The two readings of the same shelves: by strain and by shop.
@@ -22,13 +23,19 @@ const shopOf = new Map(dispensaries.map((d) => [d.licenseNumber, d]));
  * were three rows holding three different subsets of the shops that stock one
  * plant — 4, 81 and 1 — and whichever a visitor found was short.
  */
-export const strainEntries = (): StrainEntry[] => {
+export const strainEntries = (): StrainEntry[] => strainEntriesOf(listings);
+
+/* The same gathering over any set of listings — one brand's, for its page. */
+export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
   const byStrain = new Map<string, StrainEntry>();
   const spellings = new Map<string, Map<string, number>>();
 
-  for (const l of listings) {
+  for (const l of rows) {
     const written = l.strainNameCanonical ?? l.strainNameRaw;
-    const key = written.toLowerCase();
+    /* Case, spaces and punctuation folded away, as the register's own strain
+       key does: "B.A.M" and "BAM", "Paw Paw" and "PawPaw" are one strain two
+       shops typed differently, and on a brand's page they were two rows. */
+    const key = written.toLowerCase().replace(/[^a-z0-9]/g, '') || written.toLowerCase();
     const shop = shopOf.get(l.licenseNumber);
     if (!shop) continue;
 
@@ -149,4 +156,77 @@ export const shelfFreshness = () => {
     .sort()
     .at(0) ?? null;
   return { latest, oldest, shops: shelves.length, fresh, stale: shelves.length - fresh };
+};
+
+/**
+ * Every brand on the collected shelves, and what it has out there today.
+ *
+ * Grouped on brandKey, which the collector writes beside the brand a shop
+ * printed: "Find.", "FIND" and "Find" are one cultivator printed three ways,
+ * and a page per spelling would show each a third of what the brand sells.
+ * The name shown is the spelling most shops use, SHOUTING losing a tie, as
+ * with strains.
+ *
+ * A listing a shop printed no brand for belongs to no brand here, rather than
+ * to one called "unknown".
+ */
+export type BrandSummary = {
+  key: string;
+  name: string;
+  strains: number;
+  shops: number;
+  sizes: number[];
+};
+
+const shouts = (w: string) => (w === w.toUpperCase() && /[A-Z]/.test(w) ? 1 : 0);
+
+const listingsByBrand = (() => {
+  let cache: Map<string, FlowerListing[]> | null = null;
+  return () => {
+    if (cache) return cache;
+    cache = new Map();
+    for (const l of listings) {
+      const key = l.brandKey;
+      if (!key || !shopOf.has(l.licenseNumber)) continue;
+      const own = cache.get(key) ?? [];
+      own.push(l);
+      cache.set(key, own);
+    }
+    return cache;
+  };
+})();
+
+const brandName = (rows: FlowerListing[]): string => {
+  const counted = new Map<string, number>();
+  for (const l of rows) if (l.brand) counted.set(l.brand, (counted.get(l.brand) ?? 0) + 1);
+  return (
+    [...counted].sort(
+      (a, b) => b[1] - a[1] || shouts(a[0]) - shouts(b[0]) || a[0].localeCompare(b[0]),
+    )[0]?.[0] ?? ''
+  );
+};
+
+export const brandSummaries = (): BrandSummary[] =>
+  [...listingsByBrand()]
+    .map(([key, rows]) => ({
+      key,
+      name: brandName(rows),
+      strains: strainEntriesOf(rows).length,
+      shops: new Set(rows.map((l) => l.licenseNumber)).size,
+      sizes: [...new Set(rows.flatMap((l) => l.availableSizesGrams ?? []))].sort((a, b) => a - b),
+    }))
+    .filter((b) => b.name)
+    .sort((a, b) => b.shops - a.shops || b.strains - a.strains || a.name.localeCompare(b.name));
+
+/** One brand: its name and every strain of it on a collected shelf. */
+export const brandShelf = (key: string) => {
+  const rows = listingsByBrand().get(key);
+  if (!rows) return null;
+  return {
+    key,
+    name: brandName(rows),
+    strains: strainEntriesOf(rows),
+    shops: new Set(rows.map((l) => l.licenseNumber)).size,
+    readAt: rows.map((l) => l.capturedAt).sort().at(-1) ?? null,
+  };
 };
