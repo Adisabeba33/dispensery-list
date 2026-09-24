@@ -124,6 +124,23 @@ jobs:
           python scripts/menu-coverage.py report >> menu-report.md || true
           if [ $code -eq 0 ]; then echo "sane=true"; else echo "sane=false"; fi >> "$GITHUB_OUTPUT"
 
+      # Свежие завозы: когда сорт бренда впервые появился на полке и что из
+      # этого похоже на завоз, а не на наше чтение. Пока только раздел отчёта —
+      # сайт их не покажет, пока неделя отчётов не скажет, насколько чистый
+      # сигнал. История едет вместе с полками дня, а поломка здесь не должна
+      # стоить дню его полок: отсюда continue-on-error.
+      - name: Shelf history
+        continue-on-error: true
+        run: |
+          if python scripts/shelf-history.py check && python scripts/shelf-history.py update; then
+            git add data/shelf-history.json
+            git diff --cached --quiet || git commit -q -m "menu: shelf history"
+            python scripts/shelf-history.py report >> menu-report.md
+          else
+            printf '\n### Свежие завозы\n\n_История полок сегодня не обновлена — см. шаг Shelf history в прогоне._\n' >> menu-report.md
+            exit 1
+          fi
+
       # Menus are the point of the site and they change daily, so a clean run
       # publishes itself. A run that produced a collapsed shelf does not: that
       # is nearly always a page we failed to read, and republishing it would
