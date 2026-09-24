@@ -382,6 +382,10 @@ createServer((req, res) => {
       '/remix-pages': 'remix-pages.html',
       '/remix-stream-home': 'remix-stream-home.html',
       '/remix-stream': 'remix-stream.html',
+      /* A Next.js app-router page: the shelf is one row of the flight, and
+         the flight is gone from self.__next_f by the time anyone reads it. */
+      '/flight-home': 'flight-home.html',
+      '/flight': 'flight.html',
     };
     const name = ROUTES[url.pathname] ?? url.pathname.slice(1);
     const [body, type] = file(name);

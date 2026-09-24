@@ -598,5 +598,95 @@
     "ageGate": "click-through",
     "checkedAt": "2026-09-24",
     "notes": "Piffords' www site shows a 24-product SEO list at /browse/flower; the real menu is its Carrot store under shop.piffords.online/store/ (Typesense search, 101 flower on 2026-09-24). Category pages exist only inside the store app and answer 404 when asked for directly."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000316",
+    "menuUrl": "https://www.sofaclub.nyc/shop/Flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-24",
+    "storeCookie": {
+      "name": "selectedStore",
+      "value": "752e45d3284c520b"
+    },
+    "branch": "MIDTOWN 56TH & LEX, 127 East 56th Street",
+    "notes": "Dispense storefront (Next.js). One address serves every branch; the branch is the selectedStore cookie a visitor's 'change location' sets. 752e45d3284c520b is Midtown 56th & Lex, 127 E 56th St — this licence. With no cookie the page shows Downtown 14th & Ave B, which is not this licence. Products are in the page's RSC flight."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-26-000359",
+    "menuUrl": "https://www.sofaclub.nyc/shop/Flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-24",
+    "storeCookie": {
+      "name": "selectedStore",
+      "value": "1cf9ea9a5cfa24d2"
+    },
+    "branch": "UPTOWN 78TH & BROADWAY, 2195 Broadway",
+    "notes": "Swan Lake Equity LLC is Sofa Club's Upper West Side branch at 2195 Broadway. selectedStore 1cf9ea9a5cfa24d2 is Uptown 78th & Broadway (checked against the page's activeStore)."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000303",
+    "menuUrl": "https://rezidueny.com/store",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-24",
+    "notes": "/shop/flower is an SEO article with no products; the live menu is a Dutchie embed on /store, which prints this licence number."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000214",
+    "menuUrl": "https://www.thealchemy.nyc/stores/blazinup/products/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-24",
+    "notes": "The Alchemy Chelsea, 302 8th Avenue. /categories/cannabis-flower-nyc is an SEO page; its 'BROWSE MENU & ORDER' goes to /stores/blazinup, which names Chelsea, 302 8th Avenue."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000368",
+    "menuUrl": "https://www.thealchemy.nyc/stores/the-alchemy-flatiron/products/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-24",
+    "notes": "69 Graham Dispensary LLC is The Alchemy Flatiron, 12 West 18th Street; its own store route names that address."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000174",
+    "menuUrl": "https://greencup.nyc/shop/?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-24",
+    "notes": "/menu/flower answers 404; the site's own Flower link is this Dutchie category route."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-23-000036",
+    "menuUrl": "https://thctheherbalcare.com/shop/categories/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-24",
+    "notes": "/shop/flower answers 404; the home page's Flower link is /shop/categories/flower."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000351",
+    "menuUrl": "https://studio57ny.com/menu?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-24",
+    "notes": "/products/flower is an SEO page; 'Shop Menu' is /menu, a Dutchie embed (sla-services-retail) with the dtche category route."
   }
 ]

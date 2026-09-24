@@ -453,5 +453,25 @@
    "state": "NY",
    "zip": "11201"
   }
+ },
+ {
+  "id": "fixture-shop-flight-25",
+  "licenseNumber": "OCM-CAURD-24-000975",
+  "legalName": "Fixture Dispensary 25 LLC",
+  "dbaName": "Fixture Dispensary 25",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "PROPRIETARY"
+  },
+  "contact": {
+   "website": "http://localhost:4399/flight-home"
+  },
+  "address": {
+   "line1": "25 Test St",
+   "city": "Brooklyn",
+   "borough": "BROOKLYN",
+   "state": "NY",
+   "zip": "11201"
+  }
  }
 ]

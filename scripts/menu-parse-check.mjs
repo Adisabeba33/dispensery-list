@@ -12,7 +12,7 @@
  */
 import {
   brandKeyOf, categoryFromProductUrl, classify, cleanStrainName,
-  decodeTurboStream, destinationOf, flattenJsonApiProducts, flattenSearchHits, flattenStockRecords,
+  decodeFlight, decodeTurboStream, destinationOf, flattenJsonApiProducts, flattenSearchHits, flattenStockRecords,
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
   mergeBySize, pagedRequest, pickFlowerInside, pickMenuLink, pickStore,
   placeNamesOf, rankMenuLink, registerTextOf, sameEstate, signatureOf, sizeFromText,
@@ -1499,6 +1499,29 @@ check('something that is not a stream is nothing', decodeTurboStream('<html>'), 
     {},
   );
   check('and one carrying dates and a whole panel', errorsOf(dated), []);
+}
+
+/* ------------------------------------------------------------- RSC FLIGHT ---
+ * Next.js's app router: rows of "<id>:<payload>", JSON where the row is data.
+ * Sofa Club's hundred and eleven products are one such row. */
+{
+  const product = (name, type) => ({ id: name, name: `Dank | Flower | 3.5g | ${name}`, productCategoryName: 'Flower', weight: 3.5, weightUnit: 'GRAMS', price: 51, cannabisType: type, labs: { thc: 27.2, cbd: 0 } });
+  const text = [
+    '1:"$Sreact.fragment"',
+    '2:I[75637,[],""]',
+    ':HL["/_next/static/css/app.css","style"]',
+    `5:${JSON.stringify(['$', 'div', null, { products: [product('Jealousy', 'HYBRID'), product('Stank41', 'HYBRID_INDICA')] }])}`,
+    '6:T1a,plain text, not a row',
+    '7:{"torn":',
+  ].join('\n');
+  const rows = decodeFlight(text);
+  check('only the row that is an object or array is parsed; strings, imports, hints, text and a torn row are left', rows.length, 1);
+  check('its products are found', flowerIn(rows[0]), 2);
+  check('nothing in an empty flight', decodeFlight(''), []);
+  check('nor in an answer that is not one', decodeFlight('<html>not found</html>'), []);
+  const [, stank] = rows[0][3].products;
+  check('Dispense writes indica-dominant as HYBRID_INDICA', toListing(stank, shop, SRC, {}).lineage, 'INDICA_DOMINANT');
+  check('and sativa-dominant as HYBRID_SATIVA', toListing({ ...stank, cannabisType: 'HYBRID_SATIVA' }, shop, SRC, {}).lineage, 'SATIVA_DOMINANT');
 }
 
 /* Taken last, after every check. It used to sit halfway down, and every

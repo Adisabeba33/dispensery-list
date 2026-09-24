@@ -166,10 +166,21 @@ const alreadyCollected = skipCollected ? new Set(PREVIOUS_SHELF.keys()) : new Se
  * The file is optional and hand-maintained; see docs/AGENT_MENU_ENDPOINTS_BRIEF.md.
  */
 let ENDPOINTS = {};
+/* A chain that serves every branch from one address chooses the branch by a
+   cookie — the one a visitor's own click on "change location" sets. Sofa
+   Club's /shop/Flower is Midtown, Uptown or Downtown depending on
+   selectedStore alone, and without it the page shows Downtown, a shop neither
+   of our two Sofa Club licences is. Where the file names the cookie, it is set
+   before the first visit, and the branch it names goes on every listing, so
+   two branches reading one address are not taken for one shelf. */
+let ENDPOINT_STORES = {};
 try {
   const raw = JSON.parse(readFileSync(resolve(ROOT, 'data/menu-endpoints.json'), 'utf8'));
   for (const e of raw) {
     if (e?.licenseNumber && e?.menuUrl) ENDPOINTS[e.licenseNumber] = e.menuUrl;
+    if (e?.licenseNumber && e?.menuUrl && e?.storeCookie?.name && e?.storeCookie?.value && e?.branch) {
+      ENDPOINT_STORES[e.licenseNumber] = { cookie: e.storeCookie, branch: String(e.branch), url: e.menuUrl };
+    }
   }
 } catch {
   /* not delivered yet; the collector hunts for the link as before */
@@ -2039,6 +2050,65 @@ const EMBEDDED_PAGE_CAP = 12;
  * loaderData; a "Load more" button usually loads through a fetcher, whose
  * answer never reaches loaderData at all, so both are read.
  */
+/**
+ * A React Server Components flight, decoded as far as a shelf needs.
+ *
+ * Next.js's app router sends its pages as rows — "5:[…]", "a:{…}", "3:I[…]" —
+ * one per line: an id, a colon, and either JSON or a tagged thing (a module
+ * import, a hint, a length-prefixed text). Sofa Club's flower page carries all
+ * hundred and eleven of its products in one of these rows, as plain JSON with
+ * a name, a category, a price and a lab panel, and the collector noticed the
+ * flight and read none of it. The rows that are JSON are parsed and returned;
+ * everything else is left alone, and a row that does not parse is dropped
+ * rather than guessed at. The same format arrives as text/x-component when the
+ * page navigates or loads more.
+ */
+export const decodeFlight = (text) => {
+  const out = [];
+  for (const row of String(text ?? '').split(/\n(?=[0-9a-f]{1,8}:)/)) {
+    const m = row.match(/^[0-9a-f]{1,8}:([[{][\s\S]*)$/);
+    if (!m) continue;
+    try {
+      out.push(JSON.parse(m[1].trim()));
+    } catch {
+      /* a text row that happened to start with a bracket, or a torn one */
+    }
+  }
+  return out;
+};
+
+/* Only the rows that carry products are kept: a flight is mostly the page's
+   own markup, and none of that is a shelf. */
+const flightShelves = (text) => decodeFlight(text).filter((v) => productsIn([v]).length > 0);
+
+/* The flight the page was rendered from. It arrives as inline scripts —
+   self.__next_f.push([1, "<text>"]) — and once the page has hydrated Next.js
+   empties the array and replaces its push, so the array is read if anything
+   is still in it and the scripts, which stay in the document, otherwise. */
+const readFlightData = async (page) => {
+  const text = await within(
+    page.evaluate(() => {
+      const entries = Array.isArray(self.__next_f) && self.__next_f.length
+        ? self.__next_f
+        : [...document.scripts].flatMap((script) => {
+            const m = script.textContent.match(/self\.__next_f\.push\((\[[\s\S]*\])\)\s*;?\s*$/);
+            if (!m) return [];
+            try {
+              return [JSON.parse(m[1])];
+            } catch {
+              return [];
+            }
+          });
+      return entries
+        .filter((e) => Array.isArray(e) && e[0] === 1 && typeof e[1] === 'string')
+        .map((e) => e[1])
+        .join('');
+    }),
+    '',
+  );
+  return text ? flightShelves(text) : [];
+};
+
 const readRouterData = (page) =>
   within(
     page.evaluate(() => {
@@ -2880,6 +2950,8 @@ const LINEAGE = {
   indica: 'INDICA', sativa: 'SATIVA', hybrid: 'HYBRID',
   indicadominant: 'INDICA_DOMINANT', indicahybrid: 'INDICA_DOMINANT',
   sativadominant: 'SATIVA_DOMINANT', sativahybrid: 'SATIVA_DOMINANT', cbd: 'CBD',
+  // Dispense (Sofa Club) writes the pair the other way round.
+  hybridindica: 'INDICA_DOMINANT', hybridsativa: 'SATIVA_DOMINANT',
 };
 const TERPENES = {
   myrcene: 'MYRCENE', limonene: 'LIMONENE', caryophyllene: 'CARYOPHYLLENE',
@@ -3489,6 +3561,12 @@ const main = async () => {
     const startedAt = Date.now();
 
     const context = await browser.newContext({ userAgent: UA });
+    const knownStore = ENDPOINT_STORES[shop.licenseNumber] ?? null;
+    if (knownStore) {
+      await context.addCookies([
+        { name: knownStore.cookie.name, value: String(knownStore.cookie.value), url: new URL(knownStore.url).origin },
+      ]);
+    }
     const page = await context.newPage();
     const payloads = [];
     /* One entry per JSON response that carried products: where it came from,
@@ -3507,6 +3585,7 @@ const main = async () => {
        everything below this line reads JSON and nothing but JSON. */
     const responseTypes = {};
     let streamResponses = null;
+    let flightAnswers = 0;
     page.on('response', async (res) => {
       try {
         const ct = res.headers()['content-type'] ?? '';
@@ -3529,6 +3608,18 @@ const main = async () => {
             (streamResponses ??= []).push(
               `${res.url().slice(0, 160)} → ${decoded ? findProductArrays(decoded).flat().length + ' products' : 'not decoded'}`,
             );
+          }
+          return;
+        }
+        /* Next.js's answers to navigation and to "load more": a flight, not
+           JSON. Rezidue's shop sent six hundred of them and was heard as
+           silence. */
+        if (ct.includes('text/x-component')) {
+          const shelves = flightShelves(await res.text());
+          if (shelves.length) {
+            payloads.push(...shelves);
+            lastPayloadAt = Date.now();
+            flightAnswers += 1;
           }
           return;
         }
@@ -3582,6 +3673,10 @@ const main = async () => {
     });
 
     const entry = { shop: shop.dbaName ?? shop.legalName, licence: shop.licenseNumber, status: null };
+    if (knownStore) {
+      entry.choseStore = knownStore.branch;
+      entry.choseStoreBy = 'known-endpoint-cookie';
+    }
     /* What the register says about where this shop stands. The only thing a
        fork between a chain's branches may be answered with. */
     entry.place = placeNamesOf(shop);
@@ -3734,7 +3829,14 @@ const main = async () => {
               .filter((l, i, all) => all.indexOf(l) === i)
               .slice(0, dumpLinks);
           }
-          const flowerHref = pickFlowerInside(inside, page.url(), shopName);
+          /* Not past an address written down by hand. Those were checked by
+             someone standing on the page, and several are the live menu
+             sitting one link away from an article about flower: Rezidue's
+             /store is its Dutchie menu and its "Cannabis Flower in NYC" link
+             is /shop/flower, prose with no products on it; Studio57's /menu
+             links to /products/flower, the same. Stepping "into" flower from
+             there stepped out of the menu. */
+          const flowerHref = known ? null : pickFlowerInside(inside, page.url(), shopName);
           if (flowerHref && (await robotsAllows(flowerHref))) {
             entry.enteredFlowerFrom = new URL(page.url()).pathname;
             await page.goto(flowerHref, { waitUntil: 'domcontentloaded', timeout: 30000 });
@@ -4009,6 +4111,15 @@ const main = async () => {
         if (steps.length) entry.embeddedPaging = steps;
         entry.embeddedProducts = names.size;
       }
+
+      /* The flight the page was rendered from. Read once the menu has settled,
+         so a page that navigated on its way in is read where it ended. */
+      const flight = await readFlightData(page);
+      if (flight.length) {
+        payloads.push(...flight);
+        entry.readFlightProducts = productsIn(flight).length;
+      }
+      if (flightAnswers) entry.flightAnswers = flightAnswers;
 
       entry.payloads = payloads.length;
       /* Where we actually ended up. A shop that returns five products when its

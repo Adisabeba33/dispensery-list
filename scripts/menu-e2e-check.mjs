@@ -84,7 +84,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '24',
+    '--limit', '25',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -233,12 +233,20 @@ try {
     ['more: Load More → +2', 'more: Load More → +2'],
   );
 
+  /* Sofa Club's way: a Next.js app-router page whose products are one row of
+     the RSC flight inside the HTML, which Next.js empties out of
+     self.__next_f once it has hydrated. The collector noticed the flight and
+     read none of it. */
+  const flight = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000975');
+  check('a shelf inside a Next.js flight is read', flight?.flower, 3);
+  check('from the scripts, after the page has emptied its own copy', flight?.readFlightProducts, 4);
+
   const refused = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000984');
   check('a refusal arrives in the diagnostic', refused?.status, 'robots-disallowed');
   check('and says so where the report reads it', refused?.menuLink, 'robots-disallowed');
   check('the refusal is named by licence', refused?.licence, 'OCM-CAURD-24-000984');
   check('the run counts it', summary.robotsDisallowed, 1);
-  check('and does not count it as a shop it read', summary.shopsVisited, 23);
+  check('and does not count it as a shop it read', summary.shopsVisited, 24);
 
   /* The retry replaces the empty reading rather than being carried alongside
      it: the shelf published for this shop is today's, not yesterday's held
