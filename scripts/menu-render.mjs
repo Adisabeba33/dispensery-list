@@ -338,7 +338,9 @@ const AGE_AFFIRM_CLEAR =
    needs the other — a delivery-only wall has not been seen, and adding it on
    the chance would be guessing at a page nobody has read. */
 const AGE_AFFIRM_PICKUP = /^yes[!,.]?\s*shop\s*(store\s*)?pick[-\s]?up$/i;
-const AGE_AFFIRM_VAGUE = /^(enter(\s*site)?|confirm|agree|i agree|continue)$/i;
+/* "I Confirm" is Carrot's — Piffords' store asks its age question in a modal
+   over the menu and answers it with nothing else. */
+const AGE_AFFIRM_VAGUE = /^(enter(\s*site)?|confirm|i confirm|agree|i agree|continue)$/i;
 
 /* Never pressed on an age wall, whatever else matches. "Not yet" is the
    answer of someone who is not 21, and this collector does not give it. */
@@ -1574,7 +1576,22 @@ const isSearchHit = (v) =>
   typeof v._source === 'object' &&
   !Array.isArray(v._source);
 
+/* Typesense wraps the same way under another name: { document, highlight,
+   highlights }. Carrot's stores — Piffords — send their whole shelf so. Only
+   an object whose other keys are Typesense's own is opened; `document` on its
+   own is too common a word to be taken for an envelope. */
+const TYPESENSE_HIT_KEYS = new Set(['document', 'highlight', 'highlights', 'text_match', 'text_match_info', 'geo_distance_meters', 'vector_distance', 'hybrid_search_info']);
+const isTypesenseHit = (v) =>
+  Boolean(v) &&
+  typeof v === 'object' &&
+  !Array.isArray(v) &&
+  Boolean(v.document) &&
+  typeof v.document === 'object' &&
+  !Array.isArray(v.document) &&
+  Object.keys(v).every((k) => TYPESENSE_HIT_KEYS.has(k));
+
 const unwrapHit = (hit) => {
+  if (isTypesenseHit(hit)) return { ...hit.document };
   const flat = { ...hit._source };
   if (flat.id === undefined && hit._id !== undefined) flat.id = hit._id;
   return flat;
@@ -1659,7 +1676,7 @@ export const flattenSearchHits = (payloads) => {
   const walk = (value, depth) => {
     if (depth > 8 || !value || typeof value !== 'object' || out.length > 4000) return;
     if (Array.isArray(value)) {
-      const hits = value.filter(isSearchHit);
+      const hits = value.filter((v) => isSearchHit(v) || isTypesenseHit(v));
       if (hits.length >= 2) {
         const unwrapped = hits.map(unwrapHit);
         if (looksLikeShelf(unwrapped)) out.push(...unwrapped);
@@ -1681,7 +1698,7 @@ const shelvesWithTotals = (value, container = null, depth = 0, out = []) => {
        name and nothing for sale, so the array looks like anything but a
        shelf — and the total sits beside it, under hits.total, where the
        ordinary rule finds it the moment the array is recognised. */
-    const hits = value.filter(isSearchHit);
+    const hits = value.filter((v) => isSearchHit(v) || isTypesenseHit(v));
     const stock = value.filter(isStockRecord);
     const opened = hits.length >= 2
       ? hits.map(unwrapHit)
@@ -2295,11 +2312,44 @@ const setAt = (object, path, value) => {
   return object;
 };
 
+/* The same knob in every query of a batch.
+
+   A multi-search sends several queries in one body — Algolia's
+   {"requests":[…]}, Typesense's {"searches":[…]} — and the first of them is
+   usually the whole store, unfiltered, asked for its facet counts. The one
+   carrying the category is further down. Turning only the first number found
+   asked page two of the store and page one of the flower again: The Flowery
+   got an unfiltered second page, and Piffords' flower, a hundred and one
+   products at ten a page, stopped at ten. So when the knob sits inside an
+   array, each sibling holding a number at the same place is turned with it,
+   from its own value. */
+const alongsideInBatch = (value, path) => {
+  const at = path.findLastIndex((k) => typeof k === 'number');
+  if (at < 0) return [path];
+  let array = value;
+  for (const key of path.slice(0, at)) array = array?.[key];
+  if (!Array.isArray(array)) return [path];
+  const rest = path.slice(at + 1);
+  const paths = [];
+  array.forEach((_, i) => {
+    let node = array[i];
+    for (const key of rest) node = node?.[key];
+    if (typeof node === 'number') paths.push([...path.slice(0, at), i, ...rest]);
+  });
+  return paths.length ? paths : [path];
+};
+
+const numberAt = (value, path) => path.reduce((node, key) => node?.[key], value);
+
 /** Advance a page knob inside a JSON value. Returns a copy, or null. */
 const advanceJson = (value, nth, fallbackSize) => {
   const paged = findNumber(value, PAGE_KEYS);
   if (paged) {
-    return setAt(structuredClone(value), paged.path, paged.value + nth);
+    const copy = structuredClone(value);
+    for (const path of alongsideInBatch(value, paged.path)) {
+      setAt(copy, path, numberAt(value, path) + nth);
+    }
+    return copy;
   }
   const offset = findNumber(value, OFFSET_KEYS);
   if (offset) {
@@ -2474,10 +2524,13 @@ const pagedRequest = (req, nth, fallbackSize) => {
    alone, because "ask until it stops giving" against a menu that ignores the
    parameter is a loop that never ends. */
 /** What a batch of payloads holds, named: the ids of the products in it. */
-const signatureOf = (somePayloads) => {
-  const ids = somePayloads
-    .flatMap((pl) => findProductArrays(pl))
-    .flat()
+/* Found every way the shelf is read. By shape alone it saw nothing inside a
+   search engine's envelopes, so every page after the first of an
+   Elasticsearch or Typesense menu looked empty and the paging stopped there,
+   calling it the end — after one page asked, on every Gap Commerce shop and
+   on Piffords' Carrot store. */
+export const signatureOf = (somePayloads) => {
+  const ids = productsIn(somePayloads)
     .map((p) => String(p?.id ?? p?._id ?? p?.sku ?? p?.slug ?? p?.name ?? p?.Name ?? ''))
     .filter(Boolean);
   return ids.length ? ids.slice(0, 40).join('|') : null;
@@ -2486,6 +2539,12 @@ const signatureOf = (somePayloads) => {
 const MAX_PAGES_DECLARED = 40;
 const MAX_PAGES_UNDECLARED = 10;
 const PAGING_BUDGET_MS = 45000;
+/* When the menu has said how many it holds and the pages are still bringing
+   new products, the shelf is known to be unfinished and the time is not
+   wasted: Piffords pages ten at a time through three hundred and forty-one
+   and ran out of the ordinary budget at two hundred and eighty. A menu that
+   states no total keeps the short budget. */
+const PAGING_BUDGET_DECLARED_MS = 120000;
 const BETWEEN_PAGES_MS = 400;
 
 /* A menu is read by scrolling it, and the only honest stopping condition is
@@ -2605,9 +2664,26 @@ const sizeFromText = (text) => {
 
 /** Shops mark lineage in the title as (H), (S) or (I) — 197 of 330 did. */
 const LINEAGE_MARK = { h: 'HYBRID', s: 'SATIVA', i: 'INDICA', hybrid: 'HYBRID', sativa: 'SATIVA', indica: 'INDICA' };
+/* Or as a segment of its own between dashes, as Carrot's shops write every
+   name: "Bouket - Banana Kush - INDICA DOM - Flower - (3.5g jar)". Read only
+   when the whole segment is the lineage and nothing else; "HYRBID", which one
+   Piffords jar carries, is not read as anything. */
+const LINEAGE_SEGMENT = /^(?:(hybrid)|(?:hybrid\s+)?(indica|sativa)(\s*[-\s]?\s*dom(?:inant)?)?)$/i;
+export const lineageSegmentOf = (part) => {
+  const m = String(part).trim().match(LINEAGE_SEGMENT);
+  if (!m) return null;
+  if (m[1]) return 'HYBRID';
+  const base = m[2].toUpperCase();
+  return m[3] ? `${base}_DOMINANT` : base;
+};
 const lineageFromTitle = (raw) => {
   const m = String(raw).match(/\((h|s|i|hybrid|sativa|indica)\)/i);
-  return m ? LINEAGE_MARK[m[1].toLowerCase()] : null;
+  if (m) return LINEAGE_MARK[m[1].toLowerCase()];
+  for (const part of String(raw).split(/\s+[-–—|]\s+/)) {
+    const lineage = lineageSegmentOf(part);
+    if (lineage) return lineage;
+  }
+  return null;
 };
 
 /**
@@ -2674,6 +2750,8 @@ const cleanStrainName = (raw, brand) => {
   const tidy = (s) =>
     s
       .replace(/\(\s*\)/g, ' ')                                  // "Cherry Pie ( )"
+      // What taking the weight out of "(3.5g jar)" leaves: the package alone.
+      .replace(/\(\s*(?:jar|jars|bag|bags|pouch|tin|can)\s*\)/gi, ' ')
       .replace(/\s{2,}/g, ' ')
       .replace(/[\s\-–—|]+$/, '')
       .replace(/\s*[-–—|]\s*(flower\s*jar|flower|jar|bag|jars|bags|pouch)\s*$/gi, '')
@@ -2699,6 +2777,10 @@ const cleanStrainName = (raw, brand) => {
     // Grade words a menu files a strain under, never a strain itself. Matched
     // whole, so a strain called "Whole Lotta Love" survives.
     if (/^(flower|bud|buds|whole|whole flower|indoor flower)$/.test(p)) return false;
+    // The lineage as a segment of its own; it is read into lineage instead.
+    if (lineageSegmentOf(p)) return false;
+    // The package as a segment of its own: "… - (0.7g) Dime Bag".
+    if (/^(dime bag|jar|bag|pouch)$/.test(p)) return false;
     if (sizeFromText(part) !== null && /^[\d\s./]*(g|gr|gram|grams|oz|ounce|eighth|quarter|half|zip)?$/i.test(p)) return false;
     return true;
   });
@@ -2870,13 +2952,15 @@ const classify = (p) => {
    stock records — so the count matches what the shelf will be read from.
    Search-hit menus are exactly the ones that ask one question per category,
    and a count by shape alone sees none of their products. */
+export const productsIn = (bodies) => [
+  ...bodies.flatMap((body) => findProductArrays(body)).flat(),
+  ...flattenJsonApiProducts(bodies),
+  ...flattenSearchHits(bodies),
+  ...flattenStockRecords(bodies),
+];
+
 export const flowerIn = (body) =>
-  [
-    ...findProductArrays(body).flat(),
-    ...flattenJsonApiProducts([body]),
-    ...flattenSearchHits([body]),
-    ...flattenStockRecords([body]),
-  ].filter((product) => classify(product) === 'flower').length;
+  productsIn([body]).filter((product) => classify(product) === 'flower').length;
 
 const inRange = (v, max) => (v === null || v === undefined || v < 0 || v > max ? null : v);
 
@@ -3180,14 +3264,15 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     lineage: LINEAGE[lineageRaw] ?? lineageFromTitle(rawName) ?? 'UNKNOWN',
     thcPercent: potency(
       p,
-      ['thcContent', 'potencyThc', 'thc', 'thcPercent', 'potencyThcRangeLow', 'potencyThcRangeHigh', 'potencyThcDisplayValue'],
+      // thcPercentage is Carrot's (Piffords).
+      ['thcContent', 'potencyThc', 'thc', 'thcPercent', 'thcPercentage', 'potencyThcRangeLow', 'potencyThcRangeHigh', 'potencyThcDisplayValue'],
       CANNABINOID_PANEL,
       THC_NAME,
       { zeroIsSilence: true },
     ),
     cbdPercent: potency(
       p,
-      ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent', 'potencyCbdRangeLow', 'potencyCbdRangeHigh', 'potencyCbdDisplayValue'],
+      ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent', 'cbdPercentage', 'potencyCbdRangeLow', 'potencyCbdRangeHigh', 'potencyCbdDisplayValue'],
       CANNABINOID_PANEL,
       CBD_NAME,
     ),
@@ -3604,7 +3689,7 @@ const main = async () => {
           const seenBefore = () =>
             requests.filter((r) => queryKey(r) === key).reduce((n, r) => n + r.products, 0);
           const cap = declared ? MAX_PAGES_DECLARED : MAX_PAGES_UNDECLARED;
-          const pageUntil = Date.now() + PAGING_BUDGET_MS;
+          const pageUntil = Date.now() + (declared ? PAGING_BUDGET_DECLARED_MS : PAGING_BUDGET_MS);
           let asked = 0;
           /* Compared against everything already in hand, not just the previous
              answer: a menu that ignores the parameter usually has handed over
