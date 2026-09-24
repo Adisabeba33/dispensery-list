@@ -15,7 +15,7 @@ import {
   menuKey,
   flattenJsonApiProducts, flattenStockRecords, isProductPage, looksLikeAgeWall, pickStore, placeNamesOf, registerTextOf, wallAction,
   mergeBySize, pagedRequest, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
-  decodeTurboStream,
+  decodeTurboStream, flowerIn,
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 import { readFileSync } from 'node:fs';
@@ -1201,6 +1201,13 @@ check('a number the weight left behind goes too',
   t('Yes! Shop quick delivery', 'refuse');
   t("Yes, I'm 21", 'affirm-age');
   t('YES, I AM 21+', 'affirm-age');
+  /* Ten licences on one storefront builder, all behind this one button, all
+     left standing at the wall because "at least" had no place in the
+     pattern. Its neighbour on the wall is "Exit the site". */
+  t("I'M AT LEAST 21 YEARS OLD", 'affirm-age');
+  t('I am at least 21 years of age', 'affirm-age');
+  t('Yes, I am at least 21', 'affirm-age');
+  t('Exit the site', 'ignore');
 
   // The answer of someone who is not 21. This collector does not give it.
   t('NOT YET', 'refuse');
@@ -1260,10 +1267,30 @@ check('a number the weight left behind goes too',
   t('Flower', 'ignore');
 }
 
-if (failures) {
-  console.log(`\n${failures} check(s) failed.`);
-  process.exit(1);
+/* Gap Commerce asks one question per category, and every answer is a page of
+   the same length. Ava Flower's pre-rolls were paged and its flower was not,
+   because the tie went to whichever came first. The paging now chooses by
+   flower, which it can only do if flower is counted inside search hits — the
+   envelope these answers arrive in. */
+{
+  const hits = (category, names) => ({
+    took: 3,
+    hits: {
+      total: { value: 33 },
+      hits: names.map((name, i) => ({
+        _index: 'products',
+        _id: `${category}-${i}`,
+        _source: { name, category, price: 35, customSize: '3.5g' },
+      })),
+    },
+  });
+  const flower = hits('FLOWER', ['Blue Dream', 'Gelato 41', 'Runtz']);
+  const preroll = hits('PREROLL', ['Blue Dream Pre-Roll', 'Gelato Pre-Roll', 'Runtz Pre-Roll']);
+  check('flower is counted inside search hits', flowerIn(flower), 3);
+  check('and pre-rolls of the same length are not flower', flowerIn(preroll), 0);
+  check('an answer with no products counts none', flowerIn({ ok: true }), 0);
 }
+
 /* --------------------------------------------------------- TURBO STREAM ---
  * Remix's single-fetch answer: The Travel Agency's "LOAD MORE" brought its
  * second page back as text/x-script, a flattened graph, and nothing read it.
@@ -1332,4 +1359,11 @@ check('something that is not a stream is nothing', decodeTurboStream('<html>'), 
   check('and one carrying dates and a whole panel', errorsOf(dated), []);
 }
 
+/* Taken last, after every check. It used to sit halfway down, and every
+   check below it — the turbo stream, the schema — could print FAIL and still
+   let the run pass. */
+if (failures) {
+  console.log(`\n${failures} check(s) failed.`);
+  process.exit(1);
+}
 console.log('menu parser: all fixture checks passed.');

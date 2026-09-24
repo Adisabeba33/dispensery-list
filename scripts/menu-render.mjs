@@ -319,8 +319,14 @@ const robotsAllows = async (url) => {
    dropped through to the never-press list, where `yes.*` caught it. A wall
    this collector is allowed to answer went unanswered because of an
    apostrophe. */
+/* "I'M AT LEAST 21 YEARS OLD" is the button of one storefront builder, the
+   one whose wall lives at /age-gate?returnUrl=…, and ten New York licences
+   stand behind it — Gallery at Dumbo, Ava Flower, Yetti Club, Kings of Bud,
+   Nirvana Springs and five more. "At least" had no room between "I'm" and
+   "21", so every one of them was left on the wall, recorded as having no
+   gate at all. */
 const AGE_AFFIRM_CLEAR =
-  /^(yes|yeah|yes[,.!]?\s*(i\s*am|i'?m)(\s*(over|of age)?\s*21.*)?|i'?m?\s*am?\s*(of\s*age|(over\s*)?21.*)|i'?m\s*(over\s*)?21.*|21\s*\+?|21\s*(or|and)\s*(over|older)|over\s*21)$/i;
+  /^(yes|yeah|yes[,.!]?\s*(i\s*am|i'?m)(\s*(over|of age|at\s*least)?\s*21.*)?|i'?m?\s*am?\s*(of\s*age|(over\s*|at\s*least\s*)?21.*)|i'?m\s*(over\s*|at\s*least\s*)?21.*|21\s*\+?|21\s*(or|and)\s*(over|older)|over\s*21)$/i;
 /* Read off The Travel Agency's wall, where the age question and the choice
    between collecting and delivery are asked by the same three buttons:
 
@@ -2859,6 +2865,19 @@ const classify = (p) => {
   return /flower|bud/.test(text) ? 'flower' : 'category-not-flower';
 };
 
+/* How many flower products one answer carries, found every way the reading
+   finds them — by shape, as JSON:API records, inside search hits, inside
+   stock records — so the count matches what the shelf will be read from.
+   Search-hit menus are exactly the ones that ask one question per category,
+   and a count by shape alone sees none of their products. */
+export const flowerIn = (body) =>
+  [
+    ...findProductArrays(body).flat(),
+    ...flattenJsonApiProducts([body]),
+    ...flattenSearchHits([body]),
+    ...flattenStockRecords([body]),
+  ].filter((product) => classify(product) === 'flower').length;
+
 const inRange = (v, max) => (v === null || v === undefined || v < 0 || v > max ? null : v);
 
 
@@ -3357,6 +3376,10 @@ const main = async () => {
           const headers = { ...req.headers() };
           requests.push({
             products: carried,
+            /* How much of the answer is flower. A menu that asks one question
+               per category answers each with a page of the same size, and the
+               paging has to choose the flower one — see below. */
+            flower: flowerIn(body),
             /* What THIS answer said its query holds. Kept on the request rather
                than summed across the page, because the page asks several
                questions and each answer counts only its own. */
@@ -3554,10 +3577,20 @@ const main = async () => {
            of {"platformOs":"web"}: there is no page in it and there never will
            be. Its real product list is a smaller answer next to it, and it
            pages. So pageability is asked first and size only decides between
-           the ones that have it. */
+           the ones that have it.
+
+           And flower before size. Gap Commerce storefronts — Ava Flower, Kings
+           of Bud, Yetti Club and the rest behind "I'M AT LEAST 21" — ask one
+           question per category, twenty products each: pre-rolls, flower,
+           cartridges, edibles, all the same length. The first of the ties won,
+           which was pre-rolls, and pre-rolls were paged to the end while the
+           flower query, full at twenty and with more behind it, was left at
+           its first page. The shelf being read is flower, so the query that
+           answered with the most flower is the one paged; size decides only
+           between queries that brought equal flower, none included. */
         const pageable = requests.filter((r) => pagedRequest(r, 1, r.products));
         const biggest = [...(pageable.length ? pageable : requests)].sort(
-          (a, b) => b.products - a.products,
+          (a, b) => (b.flower ?? 0) - (a.flower ?? 0) || b.products - a.products,
         )[0];
         if (biggest) {
           entry.pagedQueryIsPageable = pageable.length > 0;
@@ -3899,6 +3932,7 @@ const main = async () => {
           .slice(0, dumpRequests)
           .map((r) => ({
             products: r.products,
+            flower: r.flower,
             method: r.method,
             headerNames: Object.keys(r.headers ?? {}).sort().join(','),
             url: r.url.slice(0, 300),
