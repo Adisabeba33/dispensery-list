@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { AgeGate } from '@/components/AgeGate';
+import { SiteNav } from '@/components/SiteNav';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -43,8 +44,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen antialiased">
         <AgeGate />
         <header className="sticky top-0 z-40 border-b border-ink-700/80 bg-ink-950/80 backdrop-blur-md">
-          <div className="shell flex h-16 items-center justify-between gap-6">
-            <Link href="/" className="group flex items-center gap-2.5">
+          {/* On a phone the name keeps a line of its own and the menu gets the
+              screen's whole width below it; it was wrapping to three lines
+              beside a menu squeezed to nothing. */}
+          <div className="shell flex flex-col sm:h-16 sm:flex-row sm:items-center sm:gap-6">
+            <Link href="/" className="group flex h-12 shrink-0 items-center gap-2.5 sm:h-auto">
               <span
                 aria-hidden
                 className="grid h-8 w-8 place-items-center rounded-lg border border-moss-600/50 bg-moss-600/10 text-moss-400"
@@ -53,35 +57,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
-              <span className="text-[0.95rem] font-semibold tracking-tight text-chalk-50">
+              <span className="whitespace-nowrap text-[0.95rem] font-semibold tracking-tight text-chalk-50">
                 NY Dispensary Register
               </span>
             </Link>
 
-            <nav className="flex items-center gap-1 text-sm">
-              {NAV.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="rounded-lg px-3 py-2 text-chalk-200 transition-colors hover:bg-ink-800 hover:text-chalk-50"
-                >
-                  {item.label}
-                </Link>
-              ))}
-
-              <span aria-hidden className="mx-1 hidden h-5 w-px bg-ink-700 sm:block" />
-
-              {TERRITORY_NAV.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  title="Registry import only — no menus, hours or opt-out data"
-                  className="rounded-lg px-3 py-2 text-chalk-400 transition-colors hover:bg-ink-800 hover:text-chalk-100"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
+            <SiteNav nav={NAV} territories={TERRITORY_NAV} />
           </div>
         </header>
 

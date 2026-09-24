@@ -71,3 +71,12 @@ body {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
+
+/* A strip that scrolls sideways and says so with its own fades, not with a
+   scrollbar drawn across the header. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
