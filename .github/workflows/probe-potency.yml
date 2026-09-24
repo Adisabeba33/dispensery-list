@@ -6,6 +6,9 @@ on:
   push:
     branches: [claude/probe-potency]
 
+env:
+  SHOPS: OCM-CAURD-24-000046,OCM-CAURD-24-000094,OCM-CAURD-23-000038,OCM-RETL-24-000120,OCM-CAURD-24-000116,OCM-RETL-25-000416,OCM-RETL-24-000055,OCM-CAURD-24-000105,OCM-RETL-25-000295,OCM-RETL-24-000159,OCM-CAURD-24-000205,OCM-CAURD-25-000245
+
 jobs:
   probe:
     runs-on: ubuntu-latest
@@ -20,8 +23,6 @@ jobs:
           npm install --no-save playwright
           npx playwright install --with-deps chromium
       - name: Read the shops that print no THC
-        env:
-          SHOPS: OCM-CAURD-24-000046,OCM-CAURD-24-000094,OCM-CAURD-23-000038,OCM-RETL-24-000120,OCM-CAURD-24-000116,OCM-RETL-25-000416,OCM-RETL-24-000055,OCM-CAURD-24-000105,OCM-RETL-25-000295,OCM-RETL-24-000159,OCM-CAURD-24-000205,OCM-CAURD-25-000245
         run: node scripts/menu-render.mjs --only "$SHOPS" --limit 20 --dump-products 3 || true
       - name: What their products carry
         run: |
@@ -31,3 +32,17 @@ jobs:
               console.log(`=== ${e.licence} ${e.landedOn ?? ""} status=${e.status} flower=${e.flower ?? 0}`);
               for (const p of e.labSample || []) console.log(p);
             }'
+      - name: How much THC the run read
+        run: |
+          node -e '
+            const L = require("./data/flower-listings.json");
+            const today = new Date().toISOString().slice(0, 10);
+            let all = 0, thc = 0;
+            for (const s of process.env.SHOPS.split(",")) {
+              const own = L.filter((l) => l.licenseNumber === s && l.capturedAt.startsWith(today));
+              const t = own.filter((l) => l.thcPercent).length;
+              const c = own.filter((l) => l.cbdPercent !== null).length;
+              all += own.length; thc += t;
+              console.log(`THC ${s} listings=${own.length} thc=${t} cbd=${c}`);
+            }
+            console.log(`THC total listings=${all} thc=${thc}`);'
