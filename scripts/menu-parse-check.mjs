@@ -11,11 +11,11 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, destinationOf, foreignShelfShare,
-  menuKey,
-  flattenJsonApiProducts, flattenStockRecords, isProductPage, looksLikeAgeWall, pickStore, placeNamesOf, registerTextOf, wallAction,
-  mergeBySize, pagedRequest, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
-  decodeTurboStream,
+  brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, decodeTurboStream,
+  destinationOf, flattenJsonApiProducts, flattenStockRecords, foreignShelfShare,
+  isProductPage, looksLikeAgeWall, menuKey, mergeBySize, pagedRequest,
+  pickFlowerInside, pickMenuLink, pickStore, placeNamesOf, rankMenuLink,
+  registerTextOf, sameEstate, sizeFromText, toListing, wallAction
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 import { readFileSync } from 'node:fs';
@@ -1258,6 +1258,32 @@ check('a number the weight left behind goes too',
   t('Clear', 'ignore');
   t('Shop Now', 'ignore');
   t('Flower', 'ignore');
+}
+
+/* ------------------------------------------------------- Front door --
+ * A menu root is a showcase: a row of carousels, ten products apiece. Easy
+ * Times gave us 121 products that way, 37 of them flower and two ounces,
+ * while its own Flower page holds twenty-three ounces. The Flower link is on
+ * the page we already stand on.
+ */
+{
+  const here = 'https://menus.dispenseapp.com/ebc5c94b7fa54813/menu';
+  const tile = { href: 'https://menus.dispenseapp.com/ebc5c94b7fa54813/menu/flower', text: 'Flower' };
+  check('the flower tile on the menu front page',
+    pickFlowerInside([{ href: here, text: 'Menu' }, tile], here, 'Lease From Me'), tile.href);
+
+  /* One address serves every shop the platform hosts; the first path
+     segment is the shop. Another venue's Flower is another shop's shelf. */
+  check('not another venue on the same platform', pickFlowerInside(
+    [{ href: 'https://menus.dispenseapp.com/0000aaaa1111bbbb/menu/flower', text: 'Flower' }],
+    here, 'Lease From Me'), null);
+
+  check('not a category we do not collect', pickFlowerInside(
+    [{ href: 'https://menus.dispenseapp.com/ebc5c94b7fa54813/menu/pre-rolls', text: 'Pre-Rolls' }],
+    here, 'Lease From Me'), null);
+
+  check('nothing to do once already on the flower page', pickFlowerInside(
+    [tile], 'https://caldwellsny.com/menu/categories/flower/', 'Caldwell'), null);
 }
 
 if (failures) {

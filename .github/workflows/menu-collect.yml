@@ -190,6 +190,10 @@ jobs:
                   print(f"    embedded: {r['embedded']}")
               for link in r.get('links', []):
                   print(f"    LINK {link}")
+              if r.get('enteredFlowerAt'):
+                  print(f"    stepped from {r.get('enteredFlowerFrom')} into {r['enteredFlowerAt']}")
+              for link in r.get('linksInside') or []:
+                  print(f"    INSIDE {link}")
               # The request that carried the products, with the knob the paging
               # turns in it. Fourteen shops stop after one empty second page,
               # and no reading of our own source says which parameter the

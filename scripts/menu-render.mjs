@@ -1467,6 +1467,59 @@ const depth = (href) => {
 };
 
 const FLOWER_SPECIFIC = 90;
+
+/**
+ * The flower category, found on the menu we already landed on.
+ *
+ * A menu's front door is a showcase, not the shelf. Easy Times (licensed as
+ * Lease From Me) is filed under its dispenseapp menu root, and that page is a
+ * row of carousels — "New", "Featured", one row per category, ten products
+ * apiece and a "View All" on each. We read the carousels and stopped: 121
+ * products seen, 37 of them flower, two ounces. The shop's own Flower page
+ * holds twenty-three ounces and forty-one halves.
+ *
+ * The link to the Flower page is on the page we are standing on; it was only
+ * ever looked for on the shop's own website, which is one step earlier.
+ *
+ * Followed only when it stays inside the same venue. On a platform host one
+ * address serves every shop it hosts, and the first path segment is the shop:
+ * a Flower link into another venue's menu is another shop's shelf.
+ */
+const sameVenue = (href, here) => {
+  let a;
+  let b;
+  try {
+    a = new URL(href);
+    b = new URL(here);
+  } catch {
+    return false;
+  }
+  if (a.hostname !== b.hostname) return false;
+  if (!MENU_PLATFORM_HOST.test(a.hostname)) return true;
+  const first = (u) => u.pathname.split('/').filter(Boolean)[0] ?? '';
+  return first(a) === first(b);
+};
+
+export const pickFlowerInside = (links, here, shopName = '') => {
+  if (rankMenuLink(here, '') >= FLOWER_SPECIFIC) return null;
+  const bare = (u) => u.replace(/[?#].*$/, '').replace(/\/+$/, '');
+  let best = null;
+  let bestScore = 0;
+  let bestDepth = -1;
+  for (const link of links) {
+    if (!link?.href || bare(link.href) === bare(here)) continue;
+    if (!sameEstate(link.href, here, shopName) || !sameVenue(link.href, here)) continue;
+    const score = rankMenuLink(link.href, link.text);
+    if (score < FLOWER_SPECIFIC) continue;
+    const d = depth(link.href);
+    if (score > bestScore || (score === bestScore && d > bestDepth)) {
+      best = link.href;
+      bestScore = score;
+      bestDepth = d;
+    }
+  }
+  return best;
+};
 export const pickMenuLink = (links, siteUrl = null, shopName = '') => {
   let best = null;
   let bestScore = 0;
@@ -3518,6 +3571,29 @@ const main = async () => {
             entry.settled = await settle(3000, 25000);
           } else {
             entry.menuLink = 'robots-disallowed';
+          }
+        }
+
+        /* Standing on the menu's front door rather than its flower shelf:
+           step through, the way a person would, before scrolling anything. */
+        {
+          const shopName = shop.dbaName ?? shop.legalName;
+          const inside = await readLinks();
+          if (dumpLinks > 0) {
+            entry.linksInside = inside
+              .filter((l) => rankMenuLink(l.href, l.text) > 0)
+              .map((l) => `${String(rankMenuLink(l.href, l.text)).padStart(3)}  ${l.href}   «${l.text}»`)
+              .filter((l, i, all) => all.indexOf(l) === i)
+              .slice(0, dumpLinks);
+          }
+          const flowerHref = pickFlowerInside(inside, page.url(), shopName);
+          if (flowerHref && (await robotsAllows(flowerHref))) {
+            entry.enteredFlowerFrom = new URL(page.url()).pathname;
+            await page.goto(flowerHref, { waitUntil: 'domcontentloaded', timeout: 30000 });
+            await settle(1500, 10000);
+            await clearWalls(page, entry);
+            entry.settled = await settle(3000, 25000);
+            entry.enteredFlowerAt = new URL(page.url()).pathname;
           }
         }
 
