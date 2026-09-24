@@ -40,6 +40,10 @@ export default function MenusPage() {
         <Link href="/menus/shops/" className="link">
           see which shops
         </Link>
+        , or{' '}
+        <Link href="/menus/brands/" className="link">
+          browse by brand
+        </Link>
         . A shop whose menu we have not read shows no strains at all, so a strain missing here is
         not a strain nobody stocks.
       </p>

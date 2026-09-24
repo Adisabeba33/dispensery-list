@@ -27,6 +27,7 @@ export const metadata: Metadata = {
 const NAV = [
   { href: '/', label: 'Directory' },
   { href: '/menus/', label: 'Strains' },
+  { href: '/menus/brands/', label: 'Brands' },
   { href: '/map/', label: 'Map' },
   { href: '/westchester/', label: 'Westchester' },
   { href: '/about/', label: 'Method' },

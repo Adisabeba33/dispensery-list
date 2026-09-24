@@ -19,6 +19,8 @@ export type FlowerListing = {
   strainNameRaw: string;
   strainNameCanonical: string | null;
   brand: string | null;
+  /** The cultivator the brand names, folded across the ways shops print it. */
+  brandKey?: string | null;
   lineage: string;
   thcPercent: number | null;
   cbdPercent: number | null;
