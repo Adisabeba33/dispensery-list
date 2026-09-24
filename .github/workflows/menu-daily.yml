@@ -35,6 +35,14 @@ jobs:
     timeout-minutes: 300
     steps:
       - uses: actions/checkout@v4
+        with:
+          # The branch as it stands when this run starts, not the commit it was
+          # queued at. The scheduled run of 2026-09-24 was queued at 15:48
+          # behind a manual one, started at 15:58 from the commit before that
+          # run's shelves, read every menu for three and a half hours — and
+          # then could not publish: its shelves and the published ones were
+          # two different edits of the same file.
+          ref: ${{ github.ref_name }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22

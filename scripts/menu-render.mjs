@@ -108,6 +108,22 @@ const onlyArg = process.argv.indexOf('--only');
 const onlyLicences = onlyArg > -1
   ? new Set(String(process.argv[onlyArg + 1] ?? '').split(',').map((s) => s.trim()).filter(Boolean))
   : null;
+/* --provider DUTCHIE reads only the shops on one menu platform, and
+   --skip-provider DUTCHIE reads everything else; --pause 90 waits that many
+   seconds before each shop after the first.
+
+   Dutchie hosts ninety-seven of our shops, and on the twenty-fourth it began
+   answering many of them with its bot wall — forty-five read that day, fifty-two
+   did not, scattered through the run rather than after some count. Asking one
+   platform for ninety-seven menus back to back is a burst, whatever else it is.
+   These let the platform be read on its own, slowly, at an hour of our
+   choosing: fewer requests a minute, not a disguise. */
+const providerArg = process.argv.indexOf('--provider');
+const onlyProvider = providerArg > -1 ? String(process.argv[providerArg + 1] ?? '').toUpperCase() || null : null;
+const skipProviderArg = process.argv.indexOf('--skip-provider');
+const skipProvider = skipProviderArg > -1 ? String(process.argv[skipProviderArg + 1] ?? '').toUpperCase() || null : null;
+const pauseArg = process.argv.indexOf('--pause');
+const PAUSE_MS = pauseArg > -1 ? Math.max(0, Number(process.argv[pauseArg + 1]) || 0) * 1000 : 0;
 /* --dump-links reports the menu links a shop publishes, scored. A chain hands
    every licence the same shelf until someone writes down which address belongs
    to which branch, and that cannot be guessed from here — it has to be read
@@ -270,7 +286,9 @@ const candidates = dispensaries.filter(
     d.contact?.website &&
     !alreadyCollected.has(d.licenseNumber) &&
     (!onlyEndpoints || ENDPOINTS[d.licenseNumber]) &&
-    (!onlyLicences || onlyLicences.has(d.licenseNumber)),
+    (!onlyLicences || onlyLicences.has(d.licenseNumber)) &&
+    (!onlyProvider || String(d.menu?.provider ?? '').toUpperCase() === onlyProvider) &&
+    (!skipProvider || String(d.menu?.provider ?? '').toUpperCase() !== skipProvider),
 );
 
 /** robots.txt still applies: a browser does not change who is welcome. */
@@ -3495,6 +3513,7 @@ const main = async () => {
   const capturedShapes = {};
   let done = 0;
   let skipped = 0;
+  let visitedOnce = false;
 
   /* Time already spent on second visits, against RETRY_BUDGET_MS. */
   let retrySpent = 0;
@@ -3530,6 +3549,9 @@ const main = async () => {
       continue;
     }
     const site = shop.contact.website;
+
+    if (PAUSE_MS && visitedOnce) await new Promise((r) => setTimeout(r, PAUSE_MS));
+    visitedOnce = true;
 
     let allowed = false;
     try {

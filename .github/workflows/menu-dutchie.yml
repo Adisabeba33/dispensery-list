@@ -1,0 +1,94 @@
+name: Dutchie menus, slowly
+
+# Dutchie hosts about a hundred of our shops. On 2026-09-24 it began answering
+# many of them with its bot wall — scattered through the run, not after some
+# count — and the daily run, which reads every platform back to back, asks it
+# for its whole share within a couple of hours.
+#
+# This reads only the Dutchie shops, one at a time with a pause before each:
+# fewer requests a minute, at an hour when the platform is quiet. It is a
+# slower way of asking, not a disguise — same browser, same robots.txt, same
+# rules as the daily run.
+#
+# Manual only for now. If the daily run keeps losing Dutchie shelves, the
+# daily run gets --skip-provider DUTCHIE and this gets a schedule.
+on:
+  workflow_dispatch:
+    inputs:
+      pause:
+        description: Seconds to wait before each shop
+        default: '60'
+      batch:
+        description: Shops per batch (each batch is validated and committed)
+        default: '15'
+
+permissions:
+  contents: write
+
+concurrency:
+  # The same group as the daily run: two runs writing the same shelves at once
+  # is exactly how the run of the twenty-fourth lost its publish.
+  group: menu-daily
+  cancel-in-progress: false
+
+jobs:
+  dutchie:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The branch as it stands when this run starts, not as it stood when
+          # it was queued: a run that waited behind the daily one has to begin
+          # from the shelves that run published.
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Check the parser against captured payload shapes
+        run: node scripts/menu-parse-check.mjs
+      - run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Read the Dutchie menus, slowly
+        env:
+          BATCH: ${{ inputs.batch || '15' }}
+          PAUSE: ${{ inputs.pause || '60' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          total=$(node scripts/menu-render.mjs --count --provider DUTCHIE)
+          echo "$total Dutchie shops, $BATCH at a time, $PAUSE s before each"
+          failed=0
+          for offset in $(seq 0 "$BATCH" $((total - 1))); do
+            echo "::group::shops $offset – $((offset + BATCH))"
+            if node scripts/menu-render.mjs --provider DUTCHIE --pause "$PAUSE" --limit "$BATCH" --offset "$offset"; then
+              if npm run validate > /tmp/validate.txt 2>&1; then
+                git add data/flower-listings.json
+                git diff --cached --quiet || git commit -q -m "menu: Dutchie, slowly, shops $offset+"
+              else
+                echo "::warning::Batch at $offset did not validate; its listings were not kept."
+                tail -20 /tmp/validate.txt
+                git checkout -- data/flower-listings.json
+                failed=$((failed + 1))
+              fi
+            else
+              echo "::warning::Batch at $offset failed to run."
+              git checkout -- data/flower-listings.json || true
+              failed=$((failed + 1))
+            fi
+            echo "::endgroup::"
+          done
+          echo "batches_failed=$failed" >> "$GITHUB_ENV"
+
+      - name: Publish
+        run: |
+          for attempt in 1 2 3; do
+            git push origin HEAD:main && exit 0
+            git fetch origin main
+            git rebase FETCH_HEAD || { git rebase --abort || true; exit 1; }
+          done
+          echo "::error::Could not push the Dutchie shelves."
+          exit 1
