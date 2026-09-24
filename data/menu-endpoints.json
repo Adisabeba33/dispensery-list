@@ -588,5 +588,15 @@
     "ageGate": null,
     "checkedAt": "2026-09-20",
     "notes": "Greens Greenery Flower page visibly lists flower products and prints 54 State Highway 357, Unadilla plus OCM-RETL-24-000084-D1. Platform/robots/age-gate left null because not independently checked."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000246",
+    "menuUrl": "https://shop.piffords.online/store/",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-24",
+    "notes": "Piffords' www site shows a 24-product SEO list at /browse/flower; the real menu is its Carrot store under shop.piffords.online/store/ (Typesense search, 101 flower on 2026-09-24). Category pages exist only inside the store app and answer 404 when asked for directly."
   }
 ]

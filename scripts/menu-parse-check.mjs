@@ -12,10 +12,10 @@
  */
 import {
   brandKeyOf, categoryFromProductUrl, classify, cleanStrainName,
-  decodeTurboStream, destinationOf, flattenJsonApiProducts, flattenStockRecords,
-  flowerIn, foreignShelfShare, isProductPage, looksLikeAgeWall, menuKey,
+  decodeTurboStream, destinationOf, flattenJsonApiProducts, flattenSearchHits, flattenStockRecords,
+  flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
   mergeBySize, pagedRequest, pickFlowerInside, pickMenuLink, pickStore,
-  placeNamesOf, rankMenuLink, registerTextOf, sameEstate, sizeFromText,
+  placeNamesOf, rankMenuLink, registerTextOf, sameEstate, signatureOf, sizeFromText,
   toListing, wallAction
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
@@ -833,6 +833,33 @@ check('a number the weight left behind goes too',
   check('its page size is left alone', JSON.parse(pagedRequest(algolia, 1).body).requests[0].hitsPerPage, 50);
   check('and the index it asks is unchanged', JSON.parse(pagedRequest(algolia, 2).body).requests[0].indexName, 'staging_thefloweryny');
   check('page three is three, not one thrice', JSON.parse(pagedRequest(algolia, 3).body).requests[0].page, 3);
+  check('the second query of the batch turns with the first', JSON.parse(pagedRequest(algolia, 2).body).requests[1].page, 2);
+
+  /* Typesense's multi-search, as Piffords' Carrot store sends it on its flower
+     page: the whole store first, for facet counts, then the flower query. The
+     first page knob found is the store's; turning only that one asked page two
+     of the store and page one of the flower, again and again. Each query turns
+     from its own number. */
+  const typesense = {
+    method: 'POST',
+    url: 'https://api.nevada.getcarrot.io/api/v1/store/search-products?locId=1',
+    body: JSON.stringify({
+      searches: [
+        { q: '*', facet_by: 'masterCategoryName', page: 1 },
+        { q: '*', filter_by: 'masterCategoryName:=[`Flower`]', per_page: 10, page: 1 },
+      ],
+    }),
+  };
+  const turned = JSON.parse(pagedRequest(typesense, 1).body).searches;
+  check('a multi-search turns every query — the store', turned[0].page, 2);
+  check('and the flower query beside it', turned[1].page, 2);
+  check('its filter is left alone', turned[1].filter_by, 'masterCategoryName:=[`Flower`]');
+  const staggered = {
+    ...typesense,
+    body: JSON.stringify({ searches: [{ q: '*', page: 1 }, { q: 'x' }, { q: '*', page: 4 }] }),
+  };
+  const s3 = JSON.parse(pagedRequest(staggered, 1).body).searches;
+  check('each from its own number', [s3[0].page, s3[1].page, s3[2].page], [2, undefined, 5]);
 
   /* Elasticsearch, which the joint-ecommerce menus run on. The offset sits at
      the top of the query; a facet several levels down inside aggs keeps its
@@ -1307,6 +1334,66 @@ check('a number the weight left behind goes too',
   check('flower is counted inside search hits', flowerIn(flower), 3);
   check('and pre-rolls of the same length are not flower', flowerIn(preroll), 0);
   check('an answer with no products counts none', flowerIn({ ok: true }), 0);
+
+  /* Typesense wraps a product in { document, highlight, highlights } — Carrot
+     sends Piffords' whole store so. */
+  const carrot = {
+    results: [
+      {
+        found: 101,
+        out_of: 341,
+        page: 1,
+        hits: ['Rain Sherbet 11', 'Sour Diesel', 'Colombian Cream'].map((strain, i) => ({
+          document: {
+            id: String(8914630807 + i),
+            name: `Skyrose - ${strain} - HYBRID - Flower - (3.5g jar)`,
+            categoryName: 'Flower',
+            brand: '',
+            option1Price: 23.99,
+            unitWeight: 3.5,
+            thcPercentage: 27.84,
+          },
+          highlight: {},
+          highlights: [],
+        })),
+      },
+    ],
+  };
+  check('flower is counted inside Typesense hits', flowerIn(carrot), 3);
+  check('a hit envelope is opened only when every key is Typesense\'s own',
+    flowerIn({ items: carrot.results[0].hits.map((h) => ({ ...h, owner: 'x' })) }), 0);
+
+  /* The paging judges each answer by the products in it. By shape alone it saw
+     none inside these envelopes, so every page after the first looked empty and
+     the paging stopped, calling it the end. */
+  /* One Carrot product through the mapper. Its name carries the brand, the
+     strain, the lineage, the category and the package, each between dashes;
+     its THC is under a key no other menu used. */
+  const [piff] = flattenSearchHits([
+    {
+      results: [
+        {
+          hits: [
+            { document: { id: '1', name: 'Bouket - Banana Kush - INDICA DOM - Flower - (3.5g jar)', categoryName: 'Flower', brand: '', option1Price: 35.99, unitWeight: 3.5, thcPercentage: 27.84, cbdPercentage: 0.07 }, highlight: {}, highlights: [] },
+            { document: { id: '2', name: 'Bouket - Noir - HYBRID - Flower - (3.5g jar)', categoryName: 'Flower', brand: '', option1Price: 35.99, unitWeight: 3.5, thcPercentage: 22.1 }, highlight: {}, highlights: [] },
+          ],
+        },
+      ],
+    },
+  ]);
+  const carrotRow = toListing(piff, shop, SRC, {});
+  check('Carrot: THC read from thcPercentage', carrotRow.thcPercent, 27.84);
+  check('Carrot: CBD read from cbdPercentage', carrotRow.cbdPercent, 0.07);
+  check('Carrot: the lineage segment is read', carrotRow.lineage, 'INDICA_DOMINANT');
+  check('Carrot: and taken out of the name, with the empty package', carrotRow.strainNameRaw, 'Bouket - Banana Kush');
+  check('Carrot: the size is kept', carrotRow.availableSizesGrams, [3.5]);
+  check('Carrot: an empty brand stays empty — the name is not mined for one', carrotRow.brand, null);
+  check('a whole segment is a lineage', ['HYBRID', 'Indica', 'SATIVA DOM', 'HYBRID INDICA DOM', 'Sativa-Dom', 'indica dominant'].map(lineageSegmentOf),
+    ['HYBRID', 'INDICA', 'SATIVA_DOMINANT', 'INDICA_DOMINANT', 'SATIVA_DOMINANT', 'INDICA_DOMINANT']);
+  check('a misspelling or a strain is not', ['HYRBID', 'Indica Kush', 'Hybrid Haze', 'Blue Dream'].map(lineageSegmentOf), [null, null, null, null]);
+
+  check('a page of search hits has a signature', signatureOf([carrot]) !== null, true);
+  check('and so does a page of Elasticsearch hits', signatureOf([hits('FLOWER', ['A', 'B'])]) !== null, true);
 }
 
 /* ------------------------------------------------------- Front door --
