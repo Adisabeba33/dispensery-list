@@ -1,8 +1,8 @@
 {
   "name": "dispensary-list",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
-  "description": "Verified directory of state-licensed cannabis dispensaries \u2014 New York (NYC + Westchester)",
+  "description": "Verified directory of state-licensed cannabis dispensaries — New York (NYC + Westchester)",
   "scripts": {
     "dev": "next dev",
     "build": "tsx scripts/emit-shop-menus.ts && next build",
