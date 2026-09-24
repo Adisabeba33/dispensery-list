@@ -554,7 +554,7 @@ check('a number the weight left behind goes too',
   const brands = new Set([
     'Dank', 'GRASSROOTS', "Papa's Herb", 'Runtz', 'TTM', 'Bouket', 'Matter',
     // Growers whose names sit in the shelf-label cases below.
-    '5 Boro', 'Leal', 'Honest PharmCo',
+    '5 Boro', 'Leal', 'Honest PharmCo', 'Grassroots',
   ]);
   const c = (raw, brand = null) => canonicalStrain(raw, brand, brands);
 
@@ -594,6 +594,17 @@ check('a number the weight left behind goes too',
   check('a bare code that is a cultivar', c('GG4'), 'GG4');
   check('a code the shop did name a strain', c('RS11 Premium Cannabis Flower'), 'RS11');
   check('a numbered cut with no grade word', c('Z1 #4'), 'Z1 #4');
+
+  /* How a jar was filled, which Find's shelves print in five ways. On the
+     brand's own page each was a strain of its own. */
+  check('prepack with a lineage between colons', c('Prepack Whole Flower :Indica:Tri Berry'), 'Tri Berry');
+  check('and a grower ahead of it', c('Grassroots Prepack Whole Flower :Sativa:Orange Z', 'Grassroots'), 'Orange Z');
+  check('bagged', c('Bagged Flower - Agent Z'), 'Agent Z');
+  check('a lineage abbreviation after the grade', c('Silver Dollar Flower - IND'), 'Silver Dollar');
+  check('preground', c('Pomme Jelly - Preground'), 'Pomme Jelly');
+  check('a bracketed lineage mark', c('Tri Berry (IN)'), 'Tri Berry');
+  /* The colon rule must not split a name made of a time. */
+  check('a cultivar with a colon in it', c('11:11 (Indoor)'), '11:11');
 
   /* Spelling and punctuation fold away; the strain does not. */
   check('spacing and case fold', strainKey('Sunset  SHERBERT') === strainKey('sunset-sherbert'), true);

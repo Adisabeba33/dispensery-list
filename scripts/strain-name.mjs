@@ -34,6 +34,13 @@ const GRADE = [
   'limited edition', 'limited edition premium flower', 'new', 'sale',
   'cannabis', 'weed', 'strain', 'strains', 'smokeable', 'smokable',
   'item', 'sku', 'spray can', 'large', 'small', 'mixed',
+  /* How a jar was filled rather than what is in it. "Prepack Whole Flower
+     :Indica:Tri Berry", "Bagged Flower - Agent Z" and "Pomme Jelly -
+     Preground" are Tri Berry, Agent Z and Pomme Jelly, and on a brand's own
+     page each was a strain of its own: Find showed eighty where it sells
+     fifty-four. */
+  'bagged', 'bagged flower', 'prepack', 'pre-pack', 'pre pack', 'prepack whole flower',
+  'preground', 'pre-ground', 'pre ground',
   'package', 'packaging', 'sun grown flower', 'grown', 'micro', 'micro grown',
 ];
 
@@ -43,6 +50,7 @@ const LINEAGE = [
   'indica dominant', 'sativa dominant', 'indica-dominant', 'sativa-dominant',
   'dominant', 'dominant hybrid',
   'ih', 'sh', 'i', 's', 'h',
+  'ind', 'hyb', 'sat',
 ];
 
 const norm = (s) => String(s ?? '').toLowerCase().replace(/\s+/g, ' ').trim();
@@ -100,7 +108,7 @@ const stripInline = (seg) =>
     .replace(/\b\d{1,2}(\.\d+)?\s*%\s*(thc|cbd)?/gi, ' ')
     .replace(/\b[\d.]+\s*(g|gr|grams?)\b/gi, ' ')
     .replace(/(?:\d\s*\/\s*\d\s*)?(?<![a-z])(?:oz|ounce)\b/gi, ' ')
-    .replace(/\((\s*|ih|sh|i|s|h|indica|sativa|hybrid)\)/gi, ' ')
+    .replace(/\((\s*|ih|sh|i|s|h|in|ind|hyb|sat|indica|sativa|hybrid)\)/gi, ' ')
     .replace(/\(\s*[\d.\s/]*\s*\)/g, ' ')
     .replace(/^#?\s*\d{2,5}\s*[a-z]{0,3}\s+(?=[a-z])/i, '')
     .replace(/\s{2,}/g, ' ')
@@ -126,7 +134,9 @@ export const canonicalStrain = (raw, brand = null, brands = new Set()) => {
        both, so "Blue Dream -Hybrid- 25.% THC" was a single segment and the
        lineage label rode along into the name. AK-47 and G-13 are untouched:
        their hyphens have a space on neither side. */
-    .split(/\s+[-–—]\s*|\s*[-–—]\s+|\s*\|\s*|\s*·\s*/)
+    /* A colon fences too — ":Indica:Tri Berry" — except between digits:
+       11:11 is a cultivar, and the first draft of this split it in two. */
+    .split(/\s+[-–—]\s*|\s*[-–—]\s+|\s*\|\s*|\s*·\s*|(?<!\d)\s*:\s*|\s*:\s*(?!\d)/)
     .map((s) => stripInline(s.replace(/^[\s\-–—|.,]+|[\s\-–—|.,]+$/g, '')))
     .filter(Boolean);
 
@@ -217,6 +227,9 @@ export const canonicalStrain = (raw, brand = null, brands = new Set()) => {
     for (let n = Math.min(4, words.length - 1); n >= 1; n -= 1) {
       if (!brandKeys.has(strainKey(words.slice(0, n).join(' ')))) continue;
       const rest = words.slice(n);
+      /* The packaging can be a phrase whose words are not packaging alone:
+         "whole" is not a grade word, "prepack whole flower" is. */
+      if (GRADE_SET.has(rest.join(' '))) return true;
       if (rest.every(isNoiseWord) && !rest.some(isShelfCode)) return true;
     }
     return false;
