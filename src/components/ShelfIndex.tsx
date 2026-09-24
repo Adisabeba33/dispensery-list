@@ -154,7 +154,7 @@ export const ShelfIndex = ({
   const active = Boolean(query.trim() || size !== null || lineage || multiOnly);
 
   return (
-    <section id="strains" className="scroll-mt-20">
+    <section id="strains" className="scroll-mt-28 sm:scroll-mt-20">
       <label className="relative block">
         <span className="sr-only">Search strains, brands or shops</span>
         <svg

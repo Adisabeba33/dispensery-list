@@ -236,7 +236,7 @@ export const DirectoryExplorer = ({
   };
 
   return (
-    <section id="directory" className="shell scroll-mt-20 py-12">
+    <section id="directory" className="shell scroll-mt-28 sm:scroll-mt-20 py-12">
       <div className="flex flex-col gap-4">
         <label className="relative block">
           <span className="sr-only">Search by name, address, ZIP or licence number</span>

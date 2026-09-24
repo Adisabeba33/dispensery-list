@@ -85,7 +85,7 @@ export const TerritoryExplorer = ({
   const shown = list.slice(0, limit);
 
   return (
-    <section id="list" className="scroll-mt-20" data-territory={storageKey}>
+    <section id="list" className="scroll-mt-28 sm:scroll-mt-20" data-territory={storageKey}>
       <div className="flex flex-col gap-4">
         <label className="relative block">
           <span className="sr-only">Search by name, town, county or licence number</span>
