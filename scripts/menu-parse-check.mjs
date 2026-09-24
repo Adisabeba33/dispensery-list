@@ -15,6 +15,7 @@ import {
   menuKey,
   flattenJsonApiProducts, flattenStockRecords, isProductPage, looksLikeAgeWall, pickStore, placeNamesOf, registerTextOf, wallAction,
   mergeBySize, pagedRequest, pickMenuLink, rankMenuLink, sameEstate, sizeFromText, toListing,
+  decodeTurboStream,
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 import { readFileSync } from 'node:fs';
@@ -1263,6 +1264,40 @@ if (failures) {
   console.log(`\n${failures} check(s) failed.`);
   process.exit(1);
 }
+/* --------------------------------------------------------- TURBO STREAM ---
+ * Remix's single-fetch answer: The Travel Agency's "LOAD MORE" brought its
+ * second page back as text/x-script, a flattened graph, and nothing read it.
+ * Keys and values are indices into one array of values; a promise is settled
+ * on a later line whose chunk is appended to that same array. */
+check('a flattened object reads back', decodeTurboStream('[{"_1":2},"page",2]'), { page: 2 });
+check(
+  'nested objects and arrays read back',
+  decodeTurboStream('[{"_1":2},"products",[3],{"_4":5,"_6":7},"name","Maui Wowie","thc",22.1]'),
+  { products: [{ name: 'Maui Wowie', thc: 22.1 }] },
+);
+check(
+  'null and a date are read as what they stand for',
+  decodeTurboStream('[{"_1":-5,"_2":3},"brand","packagedOn",["D","2026-08-14T00:00:00.000Z"]]'),
+  { brand: null, packagedOn: '2026-08-14T00:00:00.000Z' },
+);
+check(
+  'a deferred shelf is read from the line that settles it',
+  decodeTurboStream('[{"_1":2},"products",["P",0]]\nP0:[[4],{"_5":6},"name","Blue Dream"]'),
+  { products: [{ name: 'Blue Dream' }] },
+);
+check('an unsettled promise is empty, not guessed', decodeTurboStream('[{"_1":2},"products",["P",0]]'), { products: null });
+check('something that is not a stream is nothing', decodeTurboStream('<html>'), null);
+{
+  /* The shape Remix wraps a route's answer in, end to end through the mapper:
+     products read out of a decoded stream are ordinary listings. */
+  const stream = decodeTurboStream(
+    '[{"_1":2},"routes/_layout.flower",{"_3":4},"data",{"_5":6},"products",[7],'
+      + '{"_8":9,"_10":11,"_12":13,"_14":15},"Name","Florist Farms - Maui Wowie - 3.5g","type","Flower","Options",[16],"brandName","Florist Farms","1/8oz"]',
+  );
+  const product = stream?.['routes/_layout.flower']?.data?.products?.[0];
+  check('a decoded product maps to a listing', toListing(product, shop, SRC, {})?.availableSizesGrams, [3.5]);
+}
+
 /* ------------------------------------------------------------- SCHEMA -----
  * What the collector writes has to be what the register accepts. The source
  * of a Travel Agency listing gained a `branch` — the shop chosen on a site that

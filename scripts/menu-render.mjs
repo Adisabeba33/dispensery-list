@@ -1863,6 +1863,96 @@ const looksLikeShelf = (value) => {
   return looksLikeProduct ? objects : null;
 };
 
+/**
+ * Remix's single-fetch answer, decoded: the turbo-stream format.
+ *
+ * When a Remix page loads more after its first screen — The Travel Agency's
+ * "LOAD MORE" — the answer comes back as text/x-script, not JSON. It is a
+ * flattened graph: the first line is a JSON array of every value, objects
+ * name their keys and values by index into it ("_3": 4 is key values[3],
+ * value values[4]), arrays hold indices, a few negative numbers stand for
+ * null and its kin, and tagged arrays carry dates, maps, sets and promises.
+ * A promise is settled on a later line, "P<id>:<chunk>", whose chunk is
+ * appended to the same array of values.
+ *
+ * Read into ordinary objects, so everything downstream reads it exactly as
+ * it reads a menu API. Anything this does not understand comes back as null
+ * rather than as a guess.
+ */
+export const decodeTurboStream = (text) => {
+  const lines = String(text ?? '').split('\n').filter((l) => l.trim());
+  if (!lines.length) return null;
+  const values = [];
+  const settled = new Map();
+  const CONST = { '-1': undefined, '-2': NaN, '-3': -Infinity, '-4': -0, '-5': null, '-6': Infinity, '-7': undefined };
+  const memo = new Map();
+  const hydrate = (index, depth = 0) => {
+    if (typeof index !== 'number') return null;
+    if (index < 0) return String(index) in CONST ? CONST[String(index)] ?? null : null;
+    if (depth > 40 || index >= values.length) return null;
+    if (memo.has(index)) return memo.get(index);
+    const value = values[index];
+    if (value === null || typeof value !== 'object') return value;
+    if (Array.isArray(value)) {
+      if (typeof value[0] === 'string' && value.length <= 3 && /^[A-Z]$/.test(value[0])) {
+        const [tag, a, b] = value;
+        if (tag === 'D') return new Date(a).toISOString();
+        if (tag === 'P' || tag === 'Z') return settled.has(a) ? hydrate(settled.get(a), depth + 1) : null;
+        if (tag === 'U') return String(a);
+        if (tag === 'B') return String(a);
+        if (tag === 'Y') return null;
+        if (tag === 'E') return null;
+        if (tag === 'R') return null;
+        if (tag === 'M' || tag === 'S' || tag === 'N') {
+          /* Pairs of indices for a map or a null-prototype object; indices for a
+             set. Read as a plain object and a plain array. */
+          const rest = value.slice(1);
+          if (tag === 'S') return rest.map((i) => hydrate(i, depth + 1));
+          const out = {};
+          for (let i = 0; i + 1 < rest.length; i += 2) out[String(hydrate(rest[i], depth + 1))] = hydrate(rest[i + 1], depth + 1);
+          return out;
+        }
+      }
+      const out = [];
+      memo.set(index, out);
+      for (const i of value) out.push(i === -1 ? null : hydrate(i, depth + 1));
+      return out;
+    }
+    const out = {};
+    memo.set(index, out);
+    for (const [k, v] of Object.entries(value)) {
+      if (!/^_\d+$/.test(k)) continue;
+      const key = values[Number(k.slice(1))];
+      if (typeof key !== 'string') continue;
+      out[key] = hydrate(v, depth + 1);
+    }
+    return out;
+  };
+  let rootIndex;
+  try {
+    const first = JSON.parse(lines[0]);
+    if (!Array.isArray(first) || !first.length) return null;
+    values.push(...first);
+    rootIndex = 0;
+    for (const line of lines.slice(1)) {
+      const m = /^([PE])(\d+):(.*)$/s.exec(line);
+      if (!m) continue;
+      const chunk = JSON.parse(m[3]);
+      if (m[1] === 'E') continue;
+      if (typeof chunk === 'number') {
+        settled.set(Number(m[2]), chunk);
+      } else if (Array.isArray(chunk) && chunk.length) {
+        settled.set(Number(m[2]), values.length);
+        values.push(...chunk);
+      }
+    }
+  } catch {
+    return null;
+  }
+  const root = hydrate(rootIndex);
+  return root && typeof root === 'object' ? root : null;
+};
+
 /* How far a server-rendered menu is walked: twelve steps is two hundred and
    forty products at twenty a page, more than any New York shelf has shown. */
 const EMBEDDED_PAGE_CAP = 12;
@@ -3219,6 +3309,7 @@ const main = async () => {
        Components flight or plain HTML shows up here and nowhere else, because
        everything below this line reads JSON and nothing but JSON. */
     const responseTypes = {};
+    let streamResponses = null;
     page.on('response', async (res) => {
       try {
         const ct = res.headers()['content-type'] ?? '';
@@ -3228,6 +3319,21 @@ const main = async () => {
             const type = `${kind}:${ct.split(';')[0].trim() || '?'}`;
             responseTypes[type] = (responseTypes[type] ?? 0) + 1;
           }
+        }
+        /* Remix's own answers to "load more" and to client navigation. Not
+           JSON, and so never heard until now. */
+        if (ct.includes('text/x-script')) {
+          const decoded = decodeTurboStream(await res.text());
+          if (decoded) {
+            payloads.push(decoded);
+            lastPayloadAt = Date.now();
+          }
+          if (dumpShapes > 0) {
+            (streamResponses ??= []).push(
+              `${res.url().slice(0, 160)} → ${decoded ? findProductArrays(decoded).flat().length + ' products' : 'not decoded'}`,
+            );
+          }
+          return;
         }
         if (!ct.includes('json')) return;
         if (res.request().resourceType() === 'document') return;
@@ -3624,6 +3730,7 @@ const main = async () => {
         const steps = [];
         let pageNo = 1;
         for (let round = 0; round < EMBEDDED_PAGE_CAP; round += 1) {
+          const heardBefore = payloads.length;
           const did = await within(page.evaluate(stepThroughMenu, [pageNo, [...exhausted]]), null);
           if (!did) break;
           const kind = did.split(':')[0];
@@ -3645,15 +3752,23 @@ const main = async () => {
             }
             continue;
           }
+          /* What the step brought, wherever it landed: the router's own data,
+             or an answer the page was sent — which is where The Travel
+             Agency's "LOAD MORE" puts it, as a turbo stream the router hands
+             to the component and keeps nowhere it can be read back. */
           const next = await readRouterData(page);
-          const fresh = next ? routerNames(next).filter((n) => !names.has(n)) : [];
+          const heard = payloads.slice(heardBefore);
+          const fresh = [
+            ...(next ? routerNames(next) : []),
+            ...heard.flatMap((h) => routerNames(h)),
+          ].filter((n, i, all) => !names.has(n) && all.indexOf(n) === i);
           if (!fresh.length) {
             steps.push(`${did} → nothing new`);
             exhausted.add(kind);
             continue;
           }
           for (const n of fresh) names.add(n);
-          payloads.push(next);
+          if (next) payloads.push(next);
           steps.push(`${did} → +${fresh.length}`);
           if (kind === 'page') pageNo += 1;
         }
@@ -3706,6 +3821,7 @@ const main = async () => {
          dump was refusing to describe. */
       if (dumpShapes > 0) {
         entry.responseTypes = responseTypes;
+        if (streamResponses) entry.streamResponses = streamResponses.slice(0, 8);
         /* What the page carries inside itself. A site rendered on the server
            ships its first screen's data in the HTML — Remix and React Router
            in a context object, Next.js in __NEXT_DATA__ or a flight stream,

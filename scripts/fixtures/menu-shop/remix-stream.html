@@ -1,0 +1,25 @@
+<!doctype html><meta charset="utf-8"><title>Flower</title>
+<h1>Shop Flower</h1>
+<ul id="menu"></ul>
+<button id="more">Load More</button>
+<!-- The Travel Agency, in shape: the first page inside the HTML, and every
+     "Load More" after it answered as a Remix turbo stream — text/x-script, a
+     flattened graph — which the page hands to its component and keeps nowhere
+     the router can be read back from. Three pages of two strains. -->
+<script src="/remix-shelves.js"></script>
+<script>
+  window.__remixRouter = {
+    state: { loaderData: { root: { user: null }, 'routes/_layout.flower': { products: __shelfPages[1], page: 1 } }, fetchers: new Map() },
+  };
+  __render(__shelfPages[1]);
+  let next = 2;
+  document.getElementById('more').onclick = async () => {
+    const r = await fetch('/remix-stream.data?page=' + next);
+    await r.text();
+    const li = document.createElement('li');
+    li.textContent = 'page ' + next + ' loaded';
+    document.getElementById('menu').appendChild(li);
+    next += 1;
+    if (next > 3) document.getElementById('more').style.display = 'none';
+  };
+</script>

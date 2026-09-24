@@ -60,6 +60,44 @@ createServer((req, res) => {
     return;
   }
 
+  /* Remix's single-fetch answer, encoded the way turbo-stream encodes it: one
+     flat array of values, objects naming keys and values by index. */
+  if (url.pathname === '/remix-stream.data') {
+    const PAGES = {
+      2: [
+        { id: 'p3', brandName: 'Florist Farms', Name: 'Florist Farms - Maui Wowie - 3.5g', type: 'Flower', Options: ['1/8oz'], Prices: [40] },
+        { id: 'p4', brandName: 'Aeterna', Name: 'Aeterna - Blue Dream - 3.5g', type: 'Flower', Options: ['1/8oz'], Prices: [38] },
+      ],
+      3: [
+        { id: 'p5', brandName: 'Aeterna', Name: 'Aeterna - Gelato 33 - 3.5g', type: 'Flower', Options: ['1/8oz'], Prices: [42] },
+        { id: 'p6', brandName: 'Florist Farms', Name: 'Florist Farms - Runtz - 3.5g', type: 'Flower', Options: ['1/8oz'], Prices: [44] },
+      ],
+    };
+    const n = Number(url.searchParams.get('page'));
+    const values = [];
+    const put = (v) => {
+      if (v === null) return -5;
+      if (v === undefined) return -7;
+      const at = values.length;
+      values.push(null);
+      if (Array.isArray(v)) values[at] = v.map(put);
+      else if (typeof v === 'object') {
+        const o = {};
+        for (const [k, x] of Object.entries(v)) {
+          const keyAt = values.length;
+          values.push(k);
+          o[`_${keyAt}`] = put(x);
+        }
+        values[at] = o;
+      } else values[at] = v;
+      return at;
+    };
+    put({ 'routes/_layout.flower': { data: { products: PAGES[n] ?? [], page: n } } });
+    res.writeHead(200, { 'content-type': 'text/x-script' });
+    res.end(JSON.stringify(values) + '\n');
+    return;
+  }
+
   if (url.pathname === '/api/products.json') {
     const page = Number(url.searchParams.get('page') ?? 0);
     const perPage = Number(url.searchParams.get('perPage') ?? 3);
@@ -342,6 +380,8 @@ createServer((req, res) => {
       '/remix-more': 'remix-more.html',
       '/remix-pages-home': 'remix-pages-home.html',
       '/remix-pages': 'remix-pages.html',
+      '/remix-stream-home': 'remix-stream-home.html',
+      '/remix-stream': 'remix-stream.html',
     };
     const name = ROUTES[url.pathname] ?? url.pathname.slice(1);
     const [body, type] = file(name);

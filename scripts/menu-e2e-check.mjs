@@ -84,7 +84,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '23',
+    '--limit', '24',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -221,12 +221,24 @@ try {
   check('by turning to page two', numbered?.embeddedPaging?.[0], 'page: 2 → +2');
   check('and it stops when nothing more comes', numbered?.embeddedProducts, 4);
 
+  /* The Travel Agency's own way: the first page inside the HTML, every "Load
+     More" after it answered as a turbo stream the router never keeps. The
+     live run pressed the button, the page grew from twenty-one prices to
+     forty-one, and the collector saw nothing new. */
+  const streamed = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000976');
+  check('a menu that loads more as a turbo stream is read to its end', streamed?.flower, 6);
+  check(
+    'pressing its button for as long as it brings anything',
+    streamed?.embeddedPaging?.slice(0, 2),
+    ['more: Load More → +2', 'more: Load More → +2'],
+  );
+
   const refused = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000984');
   check('a refusal arrives in the diagnostic', refused?.status, 'robots-disallowed');
   check('and says so where the report reads it', refused?.menuLink, 'robots-disallowed');
   check('the refusal is named by licence', refused?.licence, 'OCM-CAURD-24-000984');
   check('the run counts it', summary.robotsDisallowed, 1);
-  check('and does not count it as a shop it read', summary.shopsVisited, 22);
+  check('and does not count it as a shop it read', summary.shopsVisited, 23);
 
   /* The retry replaces the empty reading rather than being carried alongside
      it: the shelf published for this shop is today's, not yesterday's held

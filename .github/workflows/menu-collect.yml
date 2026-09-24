@@ -184,6 +184,8 @@ jobs:
                       print(f"    {key}: {r[key]}")
               if r.get('responseTypes'):
                   print(f"    responses: {r['responseTypes']}")
+              for line in r.get('streamResponses') or []:
+                  print(f"    STREAM {line}")
               if r.get('embedded'):
                   print(f"    embedded: {r['embedded']}")
               for link in r.get('links', []):
