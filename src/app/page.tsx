@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { DirectoryExplorer } from '@/components/DirectoryExplorer';
+import { BuildStamp } from '@/components/BuildStamp';
 import { DemoBanner } from '@/components/DemoBanner';
 import { dispensaries, isDemoData, stats } from '@/lib/data';
 import { menuCounts } from '@/lib/menu';
@@ -13,7 +14,8 @@ export default function HomePage() {
       {isDemoData && <DemoBanner />}
 
       <section className="shell pb-4 pt-16 sm:pt-24">
-        <p className="label">New York City · Westchester County</p>
+        <BuildStamp />
+        <p className="label mt-3">New York City · Westchester County</p>
 
         <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-tight text-chalk-50 sm:text-5xl">
           Every dispensary here is a{' '}
