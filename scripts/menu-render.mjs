@@ -4078,6 +4078,31 @@ const main = async () => {
               allKeys: Object.keys(product).join(','),
             }).slice(0, 1600);
           });
+        /* Where a menu keeps what the jar's certificate says — potency, the
+           lab, the batch, its dates. Found by name at any depth, because the
+           shops that print no THC at all are exactly the ones that keep it
+           somewhere we have not looked. */
+        const LABISH = /thc|cbd|potenc|cannabin|terp|lab|test|coa|certif|batch|lot|harvest|packag|cure|expir/i;
+        const labFields = (value, path = '', out = {}, depth = 0) => {
+          if (depth > 3 || value === null || typeof value !== 'object') return out;
+          for (const [k, v] of Object.entries(value)) {
+            const at = path ? `${path}.${k}` : k;
+            if (LABISH.test(k)) out[at] = typeof v === 'object' ? JSON.stringify(v)?.slice(0, 160) : v;
+            if (typeof v === 'object') labFields(v, at, out, depth + 1);
+          }
+          return out;
+        };
+        entry.labSample = arrays
+          .flat()
+          .filter((product) => classify(product) === 'flower')
+          .slice(0, dumpProducts)
+          .map((product) =>
+            JSON.stringify({
+              name: String(flatten(pick(product, NAME_KEYS)) ?? '').slice(0, 60),
+              weRead: toListing(product, shop, page.url(), {})?.thcPercent ?? null,
+              fields: labFields(product),
+            }).slice(0, 3000),
+          );
       }
 
       // Why products were dropped, not merely how many. A run that collects

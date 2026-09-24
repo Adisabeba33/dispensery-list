@@ -1,0 +1,33 @@
+name: Probe potency fields
+
+# Throwaway: reads one shop of each site that prints no THC and reports where
+# its products keep potency, the lab, the batch and the dates. Commits nothing.
+on:
+  push:
+    branches: [claude/probe-potency]
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Read the shops that print no THC
+        env:
+          SHOPS: OCM-CAURD-24-000046,OCM-CAURD-24-000094,OCM-CAURD-23-000038,OCM-RETL-24-000120,OCM-CAURD-24-000116,OCM-RETL-25-000416,OCM-RETL-24-000055,OCM-CAURD-24-000105,OCM-RETL-25-000295,OCM-RETL-24-000159,OCM-CAURD-24-000205,OCM-CAURD-25-000245
+        run: node scripts/menu-render.mjs --only "$SHOPS" --limit 20 --dump-products 3 || true
+      - name: What their products carry
+        run: |
+          node -e '
+            const s = require("./enrichment-output/menu-summary.json");
+            for (const e of s.perShop || []) {
+              console.log(`=== ${e.licence} ${e.landedOn ?? ""} status=${e.status} flower=${e.flower ?? 0}`);
+              for (const p of e.labSample || []) console.log(p);
+            }'
