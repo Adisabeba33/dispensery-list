@@ -83,7 +83,12 @@
     7–13 дней       тихий        спящий     похоже, мёртвый
     14+ дней        спящий       похоже, мёртвый
 
-Магазин, который три прогона не читается, — это наша сторона, не его.
+Но магазин умирает раньше, чем застывает: товар ещё уходит, а новое не
+приходит. Поэтому вторая мерка — сколько дней на полку не было завоза (7–13 —
+не пополняется, 14 и больше — спит), и итог — худшая из двух. О завозах
+судим, только если хотя бы 60% чтений магазина за две недели были надёжными:
+иначе завозы могли спрятать наши же фильтры, и это чтение неустойчиво — наша
+сторона, как и магазин, который три прогона не читается.
 """
 import hashlib
 import json
@@ -122,6 +127,8 @@ SHAKY = "?"           # уход, записанный чтением, кото�
 QUIET_DAYS = 7        # без изменений столько дней — магазин тих…
 ASLEEP_DAYS = 14      # …столько — спит
 QUIET_READS = 3       # и тишину подтверждают хотя бы столько чтений подряд
+STALE_DAYS = 7        # без нового завоза столько дней — магазин не пополняется
+TRUSTED_SHARE = 0.6   # о завозах судим, только если надёжна хотя бы такая доля чтений
 SMALL_SHELF = 30      # меньше стольких сортов — ассортимент мал
 TINY_SHELF = 10       # меньше стольких — полка почти пуста
 RECENT_SWEEPS = 3     # прошлое чтение магазина не старше стольких прогонов
@@ -261,7 +268,7 @@ def empty():
             "goneShareMax": GONE_SHARE_MAX, "lowBelow": LOW_BELOW, "lowPeak": LOW_PEAK,
             "gonePeak": GONE_PEAK, "movesDays": MOVES_DAYS, "quietDays": QUIET_DAYS,
             "asleepDays": ASLEEP_DAYS, "quietReads": QUIET_READS, "smallShelf": SMALL_SHELF,
-            "tinyShelf": TINY_SHELF,
+            "tinyShelf": TINY_SHELF, "staleDays": STALE_DAYS, "trustedShare": TRUSTED_SHARE,
         },
         "sweeps": [],
         "collector": {},
@@ -335,10 +342,6 @@ def fold(hist, day, rows, collector=None):
             seen[key] = written(first, None, thc_now.get(key, ()))
         reads.append(day)
         del reads[:-KEEP_READS]
-        # Что сделала полка с прошлого чтения: сколько на ней, сколько встало,
-        # сколько ушло. По этому видно, живёт ли магазин.
-        added = sum(1 for key in shelf if key not in was or was[key][1] is not None)
-        hist["activity"].setdefault(lic, []).append([day, len(shelf), added, departed])
         if new:
             count["appeared"] += len(new)
 
@@ -352,6 +355,11 @@ def fold(hist, day, rows, collector=None):
         for key in gone:
             first, _last, thc, _s = was[key]
             seen[key] = written(first, r1, thc, shaky)
+        # Что сделала полка с прошлого чтения: сколько на ней, сколько встало,
+        # сколько ушло, и можно ли этому чтению верить. По этому видно, живёт
+        # ли магазин.
+        added = sum(1 for key in shelf if key not in was or was[key][1] is not None)
+        hist["activity"].setdefault(lic, []).append([day, len(shelf), added, departed, 0 if shaky else 1])
         if gone:
             count["departed" + ("Shaky" if shaky else "")] += len(gone)
 
@@ -661,13 +669,19 @@ def moves(hist, day, rows=None):
     return {"arrivals": arrivals_out, "batches": batches_out, "runningLow": low, "gone": gone}
 
 
-STATES = ("active", "quiet", "asleep", "dead")
+STATES = ("active", "stale", "quiet", "asleep", "dead")
+FROZEN = {1: "quiet", 2: "asleep", 3: "dead"}
+DRY = {1: "stale", 2: "asleep"}
 
 
 def vitality(hist, day):
     """Живёт ли магазин: {лицензия: состояние и почему}. Правила — в описании модуля."""
     recent = hist["sweeps"][-RECENT_SWEEPS:]
     window = (date.fromisoformat(day) - timedelta(days=MOVES_DAYS - 1)).isoformat()
+    delivered = {}
+    for a in hist["arrivals"] + hist["pending"]:
+        delivered[a["licence"]] = max(delivered.get(a["licence"], ""), a["seen"])
+    days_to = lambda d: (date.fromisoformat(day) - date.fromisoformat(d)).days
     out = {}
     for lic, log in hist["activity"].items():
         last_read, size = log[-1][0], log[-1][1]
@@ -676,21 +690,37 @@ def vitality(hist, day):
             continue
         # Первое чтение сравнить не с чем, и в тишину оно не идёт.
         streak = 0
-        for _day, _size, added, removed in reversed(log[1:]):
-            if added or removed:
+        for entry in reversed(log[1:]):
+            if entry[2] or entry[3]:
                 break
             streak += 1
         changed = log[len(log) - 1 - streak][0]
-        quiet = (date.fromisoformat(day) - date.fromisoformat(changed)).days
+        quiet = days_to(changed)
+        lately = [e for e in log[1:] if e[0] >= window]
+        trusted = sum(1 for e in lately if (e[4] if len(e) > 4 else 1))
+        # Завоза не было с тех пор, как начали читать, — значит, с первого чтения.
+        last_delivery = delivered.get(lic) or log[0][0]
+        dry = days_to(last_delivery)
+        info = {"size": size, "since": changed, "quietDays": quiet, "quietReads": streak,
+                "lastDelivery": last_delivery, "dryDays": dry,
+                "changes": sum(e[2] + e[3] for e in lately), "lastRead": last_read}
         if len(log) <= QUIET_READS:
-            state = "new"
-        elif streak < QUIET_READS or quiet < QUIET_DAYS:
-            state = "active"
+            out[lic] = {"state": "new", **info}
+            continue
+        frozen = 0
+        if streak >= QUIET_READS and quiet >= QUIET_DAYS:
+            frozen = 1 + min((0 if size >= SMALL_SHELF else 1 if size >= TINY_SHELF else 2)
+                             + (quiet >= ASLEEP_DAYS), 2)
+        steady = bool(lately) and trusted >= TRUSTED_SHARE * len(lately)
+        dry_level = 0 if not steady or dry < STALE_DAYS else 1 if dry < ASLEEP_DAYS else 2
+        if frozen and frozen >= dry_level:
+            state = FROZEN[frozen]
+        elif dry_level:
+            state = DRY[dry_level]
         else:
-            level = (0 if size >= SMALL_SHELF else 1 if size >= TINY_SHELF else 2) + (quiet >= ASLEEP_DAYS)
-            state = STATES[1 + min(level, 2)]
-        out[lic] = {"state": state, "size": size, "since": changed, "quietDays": quiet, "quietReads": streak,
-                    "changes": sum(e[2] + e[3] for e in log[1:] if e[0] >= window), "lastRead": last_read}
+            state = "active" if steady or frozen else "unsteady"
+        # Застыла ли полка целиком — сильнейший из двух фактов, его и покажет сайт.
+        out[lic] = {"state": state, "frozen": bool(frozen), **info}
     return out
 
 
@@ -945,19 +975,27 @@ def leaving_section(hist, day, c, names):
 def vitality_section(hist, day, names):
     v = vitality(hist, day)
     counts = Counter(x["state"] for x in v.values())
-    out = ["", "**Спящие и мёртвые магазины** — полку читаем, а она не меняется. Неизменная полка — "
-           "это либо магазин не торгует, либо его меню не обновляется; «похоже, мёртвый» — повод "
-           "проверить руками.", "",
-           f"- живых {counts['active']}, тихих {counts['quiet']}, спящих {counts['asleep']}, похоже, "
-           f"мёртвых {counts['dead']}; читаем меньше трёх раз — {counts['new']}; три прогона не "
-           f"читаются — {counts['unread']} (это наша сторона)"]
-    label = {"dead": "похоже, мёртвый", "asleep": "спит", "quiet": "тихий"}
-    for state in ("dead", "asleep", "quiet"):
+    cov_path = ROOT / "data/menu-coverage.json"
+    menu = json.loads(cov_path.read_text()) if cov_path.exists() else {}
+    out = ["", "**Спящие и мёртвые магазины** — полку читаем, а на неё ничего не приходит или она "
+           "вовсе не меняется. Снаружи это похоже и на магазин, который не торгует, и на меню, "
+           "которое не обновляют; «похоже, мёртвый» — повод проверить руками.", "",
+           f"- живых {counts['active']}, не пополняются {counts['stale']}, тихих {counts['quiet']}, "
+           f"спящих {counts['asleep']}, похоже, мёртвых {counts['dead']}; читаем меньше четырёх раз — "
+           f"{counts['new']}; чтение неустойчиво — {counts['unsteady']}, три прогона не читаются — "
+           f"{counts['unread']} (это наша сторона)"]
+    label = {"dead": "похоже, мёртвый", "asleep": "спит", "quiet": "тихий", "stale": "не пополняется"}
+    for state in ("dead", "asleep", "quiet", "stale"):
         for lic, x in sorted(((lic, x) for lic, x in v.items() if x["state"] == state),
-                             key=lambda kv: (kv[1]["size"], -kv[1]["quietDays"])):
-            out.append(f"- **{names.get(lic, lic)}** — {label[state]}: {x['size']} "
-                       f"{plural(x['size'], 'сорт', 'сорта', 'сортов')}, без изменений {x['quietDays']} "
-                       f"{plural(x['quietDays'], 'день', 'дня', 'дней')} ({x['quietReads']} чтений подряд)")
+                             key=lambda kv: (kv[1]["size"], -kv[1]["dryDays"])):
+            why = [f"{x['size']} {plural(x['size'], 'сорт', 'сорта', 'сортов')} цветка"]
+            seen_all = (menu.get(lic) or {}).get("productsSeen")
+            if seen_all:
+                why[0] += f" из {seen_all} товаров меню"
+            if x["frozen"]:
+                why.append(f"без изменений {x['quietDays']} {plural(x['quietDays'], 'день', 'дня', 'дней')}")
+            why.append(f"без завоза {x['dryDays']} {plural(x['dryDays'], 'день', 'дня', 'дней')}")
+            out.append(f"- **{names.get(lic, lic)}** — {label[state]}: " + ", ".join(why))
     return out
 
 
@@ -1097,8 +1135,15 @@ def check():
     expect("новые за неделю — волна первой", m["arrivals"][0]["strain"], "Garlic Patties")
     fake = empty()
     fake["sweeps"] = ["2026-02-01", "2026-02-10", "2026-02-15", "2026-02-16", "2026-02-17"]
+    fake["arrivals"] = [{"licence": "busy", "seen": "2026-02-15"}, {"licence": "quietbig", "seen": "2026-02-08"},
+                        {"licence": "stale", "seen": "2026-02-08"}]
     fake["activity"] = {
         "busy": [["2026-02-01", 80, 80, 0], ["2026-02-15", 80, 2, 1], ["2026-02-16", 81, 1, 0], ["2026-02-17", 81, 0, 0]],
+        # Товар уходит, новое девять дней не приходит.
+        "stale": [["2026-02-01", 60, 60, 0], ["2026-02-08", 60, 3, 1]]
+        + [[f"2026-02-{d}", 60 - d + 9, 0, 1, 1] for d in (10, 15, 16, 17)],
+        # Полка меняется, но наши чтения ненадёжны: о завозах не судим.
+        "shaky": [["2026-02-01", 60, 60, 0]] + [[f"2026-02-{d}", 60, 5, 5, 0] for d in (10, 15, 16, 17)],
         "quietbig": [["2026-02-01", 80, 80, 0], ["2026-02-08", 80, 1, 1]] + [[f"2026-02-{d}", 80, 0, 0] for d in (10, 15, 16, 17)],
         "asleepsmall": [["2026-02-01", 20, 20, 0], ["2026-02-08", 20, 0, 1]] + [[f"2026-02-{d}", 20, 0, 0] for d in (10, 15, 16, 17)],
         "deadtiny": [["2026-01-20", 2, 2, 0]] + [[f"2026-02-{d:02d}", 2, 0, 0] for d in (1, 10, 15, 16, 17)],
@@ -1107,7 +1152,8 @@ def check():
     }
     got = {lic: x["state"] for lic, x in vitality(fake, "2026-02-17").items()}
     expect("живёт ли магазин", got, {"busy": "active", "quietbig": "quiet", "asleepsmall": "asleep",
-                                     "deadtiny": "dead", "fresh": "new", "gone": "unread"})
+                                     "deadtiny": "dead", "fresh": "new", "gone": "unread",
+                                     "stale": "stale", "shaky": "unsteady"})
     expect("одна партия", (same_batch(28, 28.41), same_batch(28.4, 28.41), same_batch(22.3, 22.36),
                            same_batch(25, 25.3), same_batch(28.41, 28.51), same_batch(27, 30.52),
                            same_batch(26.49, 28.41)), (True, True, True, True, False, False, False))

@@ -62,14 +62,17 @@ export default function MenuShopsPage() {
               {readAt && (
                 <p className="mt-1 text-[0.7rem] text-chalk-500">read {prettyDate(readAt)}</p>
               )}
-              {/* A shelf read day after day that never changes. The fact,
-                  not a verdict: a shop not trading and a menu nobody updates
-                  look the same from here. */}
+              {/* A shelf read day after day that nothing new reaches, or
+                  that never changes at all. The fact, not a verdict: a shop
+                  not trading and a menu nobody updates look the same from
+                  here. */}
               {(() => {
                 const still = stillShelf(shop!.licenseNumber);
                 return still ? (
                   <p className="mt-1 text-[0.7rem] text-amber-400">
-                    Menu unchanged since {dayLabel(still.since)} · {still.quietDays} days
+                    {still.frozen
+                      ? `Menu unchanged since ${dayLabel(still.since)} · ${still.quietDays} days`
+                      : `Nothing new since ${dayLabel(still.lastDelivery)} · ${still.dryDays} days`}
                   </p>
                 ) : null;
               })()}
