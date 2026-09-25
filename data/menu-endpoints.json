@@ -688,5 +688,15 @@
     "ageGate": null,
     "checkedAt": "2026-09-24",
     "notes": "/products/flower is an SEO page; 'Shop Menu' is /menu, a Dutchie embed (sla-services-retail) with the dtche category route."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000176",
+    "menuUrl": "https://happymunkey.com/shop/dyckman/?category=flower",
+    "platform": "BLAZE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-25",
+    "notes": "Happy Munkey Dyckman, 151 Dyckman St — the shop's own Tymber/Blaze menu ('Pickup at Happy Munkey - Dyckman'). /products/flower/ is an information page with no products. The Fulton St branch (Ramon Reyes LLC) is marked 'Temporarily Closed' on the site and is deliberately not given an endpoint."
   }
 ]
