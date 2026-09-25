@@ -30,7 +30,7 @@ export const ShelfStamp = ({ linkToShops = false }: { linkToShops?: boolean }) =
       </span>
       {stale > 0 && (
         <span className="text-chalk-500">
-          · {fresh} of {shops} shops read then; {stale} still carry an earlier reading
+          · {fresh} of {shops} shops read in the 24 hours before; {stale} still carry an older reading
           {oldest ? `, the oldest from ${prettyDate(oldest)}` : ''}
           {linkToShops ? (
             <>

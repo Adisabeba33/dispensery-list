@@ -145,11 +145,18 @@ export const lastCapturedAt = (): string | undefined =>
  * from a day the collector could not reach them — one of them nine days old.
  * Saying only the newest date would present all 175 as read that afternoon.
  */
+/* A shelf counts as read on the newest sweep if it was read within a day of
+   the newest reading — not on the same calendar day. A sweep that reads only
+   one platform (the slow Dutchie run of 25.09 read 44 shops in the morning)
+   used to make the other two hundred, read the afternoon before, all "carry an
+   earlier reading", when none of them was a day old. */
+const FRESH_WINDOW_MS = 24 * 60 * 60 * 1000;
+
 export const shelfFreshness = () => {
   const shelves = shelvesRead();
   const latest = lastCapturedAt() ?? null;
-  const day = latest?.slice(0, 10) ?? null;
-  const fresh = shelves.filter((s) => s.readAt?.slice(0, 10) === day).length;
+  const since = latest ? Date.parse(latest) - FRESH_WINDOW_MS : null;
+  const fresh = shelves.filter((s) => since !== null && s.readAt && Date.parse(s.readAt) >= since).length;
   const oldest = shelves
     .map((s) => s.readAt)
     .filter((v): v is string => Boolean(v))
