@@ -69,6 +69,21 @@
 завоза — или если за день с полки пропало больше 30%: так уходит не товар, а
 наше чтение. Сорт, который магазин переименовал, не ушёл, пока на той же
 полке стоит похожий.
+
+Магазин. Живая полка меняется: товар продаётся, приходят поставки. Полка,
+которую мы читаем день за днём и на которой ничего не появляется и ничего не
+уходит, — магазин спит, закрылся или перестал обновлять меню; снаружи эти три
+не различить, поэтому «похоже, мёртвый» — повод проверить руками, а не вывод.
+Тишина считается только по чтениям без изменений подряд, не меньше трёх:
+любое изменение, даже на чтении, которому мы не верим, её прерывает — не
+знаем, значит не тихо. Сколько дней тихо и как мала полка, решают вместе:
+
+    без изменений   30+ сортов   10–29      меньше 10
+    меньше 7 дней   живой        живой      живой
+    7–13 дней       тихий        спящий     похоже, мёртвый
+    14+ дней        спящий       похоже, мёртвый
+
+Магазин, который три прогона не читается, — это наша сторона, не его.
 """
 import hashlib
 import json
@@ -104,6 +119,11 @@ LOW_PEAK = 5          # …из стольких и больше за окно
 GONE_PEAK = 3         # «ушёл»: пропал отовсюду, а стоял хотя бы в стольких
 MOVES_DAYS = 14       # окно для «уходит» и «ушёл»
 SHAKY = "?"           # уход, записанный чтением, которому уходы не доверяются
+QUIET_DAYS = 7        # без изменений столько дней — магазин тих…
+ASLEEP_DAYS = 14      # …столько — спит
+QUIET_READS = 3       # и тишину подтверждают хотя бы столько чтений подряд
+SMALL_SHELF = 30      # меньше стольких сортов — ассортимент мал
+TINY_SHELF = 10       # меньше стольких — полка почти пуста
 RECENT_SWEEPS = 3     # прошлое чтение магазина не старше стольких прогонов
 CONFIRM_WITHIN = 3    # столько прогонов ждём следующего чтения магазина
 WAVE_SHELVES = 3
@@ -239,7 +259,9 @@ def empty():
             "waveDays": WAVE_DAYS, "keepDays": KEEP_DAYS, "minThcStep": MIN_THC_STEP,
             "thcBurstShare": THC_BURST_SHARE, "thcBurstMin": THC_BURST_MIN,
             "goneShareMax": GONE_SHARE_MAX, "lowBelow": LOW_BELOW, "lowPeak": LOW_PEAK,
-            "gonePeak": GONE_PEAK, "movesDays": MOVES_DAYS,
+            "gonePeak": GONE_PEAK, "movesDays": MOVES_DAYS, "quietDays": QUIET_DAYS,
+            "asleepDays": ASLEEP_DAYS, "quietReads": QUIET_READS, "smallShelf": SMALL_SHELF,
+            "tinyShelf": TINY_SHELF,
         },
         "sweeps": [],
         "collector": {},
@@ -251,6 +273,7 @@ def empty():
         "reads": {},
         "thc": {},
         "names": {},
+        "activity": {},
         "seen": {},
     }
 
@@ -312,6 +335,10 @@ def fold(hist, day, rows, collector=None):
             seen[key] = written(first, None, thc_now.get(key, ()))
         reads.append(day)
         del reads[:-KEEP_READS]
+        # Что сделала полка с прошлого чтения: сколько на ней, сколько встало,
+        # сколько ушло. По этому видно, живёт ли магазин.
+        added = sum(1 for key in shelf if key not in was or was[key][1] is not None)
+        hist["activity"].setdefault(lic, []).append([day, len(shelf), added, departed])
         if new:
             count["appeared"] += len(new)
 
@@ -511,6 +538,8 @@ def prune(hist, day):
     alive = {key for seen in hist["seen"].values() for key in seen}
     hist["thc"] = {key: values for key, values in hist["thc"].items() if key in alive}
     hist["names"] = {key: name for key, name in hist["names"].items() if key in alive}
+    hist["activity"] = {lic: [e for e in log if e[0] >= horizon] for lic, log in hist["activity"].items()}
+    hist["activity"] = {lic: log for lic, log in hist["activity"].items() if log}
     hist["arrivals"] = [a for a in hist["arrivals"] if a["seen"] >= horizon]
     hist["batches"] = [b for b in hist["batches"] if b["seen"] >= horizon]
     hist["days"] = {d: c for d, c in hist["days"].items() if d >= horizon}
@@ -632,6 +661,39 @@ def moves(hist, day, rows=None):
     return {"arrivals": arrivals_out, "batches": batches_out, "runningLow": low, "gone": gone}
 
 
+STATES = ("active", "quiet", "asleep", "dead")
+
+
+def vitality(hist, day):
+    """Живёт ли магазин: {лицензия: состояние и почему}. Правила — в описании модуля."""
+    recent = hist["sweeps"][-RECENT_SWEEPS:]
+    window = (date.fromisoformat(day) - timedelta(days=MOVES_DAYS - 1)).isoformat()
+    out = {}
+    for lic, log in hist["activity"].items():
+        last_read, size = log[-1][0], log[-1][1]
+        if last_read not in recent:
+            out[lic] = {"state": "unread", "size": size, "lastRead": last_read}
+            continue
+        # Первое чтение сравнить не с чем, и в тишину оно не идёт.
+        streak = 0
+        for _day, _size, added, removed in reversed(log[1:]):
+            if added or removed:
+                break
+            streak += 1
+        changed = log[len(log) - 1 - streak][0]
+        quiet = (date.fromisoformat(day) - date.fromisoformat(changed)).days
+        if len(log) <= QUIET_READS:
+            state = "new"
+        elif streak < QUIET_READS or quiet < QUIET_DAYS:
+            state = "active"
+        else:
+            level = (0 if size >= SMALL_SHELF else 1 if size >= TINY_SHELF else 2) + (quiet >= ASLEEP_DAYS)
+            state = STATES[1 + min(level, 2)]
+        out[lic] = {"state": state, "size": size, "since": changed, "quietDays": quiet, "quietReads": streak,
+                    "changes": sum(e[2] + e[3] for e in log[1:] if e[0] >= window), "lastRead": last_read}
+    return out
+
+
 def signals():
     """Страница сайта читает готовое: считать дважды, на двух языках, — значит однажды
     посчитать по-разному."""
@@ -646,6 +708,8 @@ def signals():
         "rules": {"newDays": WAVE_DAYS, "waveShelves": WAVE_SHELVES, "movesDays": MOVES_DAYS,
                   "lowBelow": LOW_BELOW, "lowPeak": LOW_PEAK, "gonePeak": GONE_PEAK},
         **moves(hist, day),
+        # Для сайта — только те, про кого есть что сказать: живые молчат.
+        "shops": {lic: v for lic, v in sorted(vitality(hist, day).items()) if v["state"] in STATES[1:]},
     }
     tmp = SIGNALS.with_suffix(".tmp")
     tmp.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n")
@@ -815,6 +879,7 @@ def report(day):
         out.append("_нет_")
     out += batch_section(hist, day, c, names)
     out += leaving_section(hist, day, c, names)
+    out += vitality_section(hist, day, names)
     # Бренд — по ключу: GRASSROOTS и Grassroots — один бренд, написанный двумя меню.
     by_brand = defaultdict(list)
     for a in confirmed:
@@ -874,6 +939,25 @@ def leaving_section(hist, day, c, names):
                    f"{x['lastSeen'][8:10]}.{x['lastSeen'][5:7]}: {shops(x['lastShops'])}")
     if not m["gone"]:
         out.append("_нет_")
+    return out
+
+
+def vitality_section(hist, day, names):
+    v = vitality(hist, day)
+    counts = Counter(x["state"] for x in v.values())
+    out = ["", "**Спящие и мёртвые магазины** — полку читаем, а она не меняется. Неизменная полка — "
+           "это либо магазин не торгует, либо его меню не обновляется; «похоже, мёртвый» — повод "
+           "проверить руками.", "",
+           f"- живых {counts['active']}, тихих {counts['quiet']}, спящих {counts['asleep']}, похоже, "
+           f"мёртвых {counts['dead']}; читаем меньше трёх раз — {counts['new']}; три прогона не "
+           f"читаются — {counts['unread']} (это наша сторона)"]
+    label = {"dead": "похоже, мёртвый", "asleep": "спит", "quiet": "тихий"}
+    for state in ("dead", "asleep", "quiet"):
+        for lic, x in sorted(((lic, x) for lic, x in v.items() if x["state"] == state),
+                             key=lambda kv: (kv[1]["size"], -kv[1]["quietDays"])):
+            out.append(f"- **{names.get(lic, lic)}** — {label[state]}: {x['size']} "
+                       f"{plural(x['size'], 'сорт', 'сорта', 'сортов')}, без изменений {x['quietDays']} "
+                       f"{plural(x['quietDays'], 'день', 'дня', 'дней')} ({x['quietReads']} чтений подряд)")
     return out
 
 
@@ -1011,6 +1095,19 @@ def check():
                                                     hist["seen"]["Z"]["find|z extra 0"].endswith(" " + SHAKY)), (11, True))
     expect("имя ушедшего помнится", hist["names"].get("find|vanishing strain"), ["Find", "Vanishing Strain"])
     expect("новые за неделю — волна первой", m["arrivals"][0]["strain"], "Garlic Patties")
+    fake = empty()
+    fake["sweeps"] = ["2026-02-01", "2026-02-10", "2026-02-15", "2026-02-16", "2026-02-17"]
+    fake["activity"] = {
+        "busy": [["2026-02-01", 80, 80, 0], ["2026-02-15", 80, 2, 1], ["2026-02-16", 81, 1, 0], ["2026-02-17", 81, 0, 0]],
+        "quietbig": [["2026-02-01", 80, 80, 0], ["2026-02-08", 80, 1, 1]] + [[f"2026-02-{d}", 80, 0, 0] for d in (10, 15, 16, 17)],
+        "asleepsmall": [["2026-02-01", 20, 20, 0], ["2026-02-08", 20, 0, 1]] + [[f"2026-02-{d}", 20, 0, 0] for d in (10, 15, 16, 17)],
+        "deadtiny": [["2026-01-20", 2, 2, 0]] + [[f"2026-02-{d:02d}", 2, 0, 0] for d in (1, 10, 15, 16, 17)],
+        "fresh": [["2026-02-16", 40, 40, 0], ["2026-02-17", 40, 0, 0]],
+        "gone": [["2026-02-01", 50, 50, 0], ["2026-02-10", 50, 0, 0]],
+    }
+    got = {lic: x["state"] for lic, x in vitality(fake, "2026-02-17").items()}
+    expect("живёт ли магазин", got, {"busy": "active", "quietbig": "quiet", "asleepsmall": "asleep",
+                                     "deadtiny": "dead", "fresh": "new", "gone": "unread"})
     expect("одна партия", (same_batch(28, 28.41), same_batch(28.4, 28.41), same_batch(22.3, 22.36),
                            same_batch(25, 25.3), same_batch(28.41, 28.51), same_batch(27, 30.52),
                            same_batch(26.49, 28.41)), (True, True, True, True, False, False, False))
