@@ -1,0 +1,38 @@
+name: Probe small shelves
+
+# Throwaway: reads ten large catalogs that yield few flower strains and lists
+# what the collector refused, by name and category. Commits nothing.
+on:
+  push:
+    branches: [claude/probe-small-shelves]
+
+env:
+  SHOPS: OCM-CAURD-25-000254,OCM-CAURD-24-000163,OCM-RETL-24-000051,OCM-RETL-25-000303,OCM-RETL-25-000284,OCM-CAURD-25-000274,OCM-RETL-25-000339,OCM-RETL-24-000093,OCM-RETL-25-000417,OCM-RETL-24-000085
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Read the ten
+        run: node scripts/menu-render.mjs --only "$SHOPS" --limit 20 --dump-products 400 || true
+      - name: What was refused
+        run: |
+          node -e '
+            const s = require("./enrichment-output/menu-summary.json");
+            for (const e of s.perShop || []) {
+              console.log(`=== ${e.licence} ${e.landedOn ?? ""} status=${e.status} seen=${e.productsSeen} flower=${e.flower}`);
+              console.log(`REJ ${JSON.stringify(e.rejected)}`);
+              const cats = {};
+              for (const n of (e.rejectedSample || {})["category-not-flower"] || []) { const c = (n.match(/\[(.*)\]$/) || [])[1] || "?"; cats[c] = (cats[c] || 0) + 1; }
+              console.log(`CATS ${JSON.stringify(cats)}`);
+              for (const n of ((e.rejectedSample || {})["title-not-flower"] || []).slice(0, 400)) console.log(`TITLE ${n}`);
+            }'
