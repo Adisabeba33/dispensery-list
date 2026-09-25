@@ -11,6 +11,7 @@
     python scripts/shelf-history.py check      # правила на выдуманной неделе
     python scripts/shelf-history.py update     # сложить сегодняшнее чтение в историю
     python scripts/shelf-history.py report     # раздел ежедневного отчёта, markdown в stdout
+    python scripts/shelf-history.py signals    # data/shelf-signals.json для страницы сайта
     python scripts/shelf-history.py backfill   # пересобрать историю из git
 
 Главный шум дают не магазины, а мы сами. Каждая починка сборщика, после
@@ -55,6 +56,15 @@
 - если за день THC сменился у многих позиций магазина сразу, поменялось
   наше чтение потенции, а не партии;
 - значение держится до следующего чтения магазина.
+
+Уход. Сорт, который стоял в пяти и больше магазинах за две недели и остался
+меньше чем в пяти, уходит; сорт, стоявший хотя бы в трёх и пропавший со
+всех прочитанных полок, ушёл. Уход шумит так же, как появление, только в
+другую сторону: полка, прочитанная наполовину, выглядит распроданной. Поэтому
+уход с полки не засчитывается, если это чтение магазина не годится и для
+завоза — или если за день с полки пропало больше 30%: так уходит не товар, а
+наше чтение. Сорт, который магазин переименовал, не ушёл, пока на той же
+полке стоит похожий.
 """
 import hashlib
 import json
@@ -72,6 +82,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HISTORY = ROOT / "data/shelf-history.json"
 LISTINGS = ROOT / "data/flower-listings.json"
 REGISTER = ROOT / "data/dispensaries.json"
+SIGNALS = ROOT / "data/shelf-signals.json"
 # Что решает, как читается магазин. Версия сборщика — их общий отпечаток.
 READER = ("scripts/menu-render.mjs", "scripts/strain-name.mjs", "data/menu-endpoints.json")
 
@@ -81,6 +92,12 @@ LOPSIDED_MIN = 5      # столько новых при сменившемся 
 MIN_THC_STEP = 0.1    # ближе — то же лабораторное число, записанное иначе
 THC_BURST_SHARE = 0.3 # THC сменился у большей доли позиций магазина за день —
 THC_BURST_MIN = 5     # поменялось наше чтение потенции, а не партии
+GONE_SHARE_MAX = 0.3  # больше ушло с полки за день — ушло наше чтение, а не товар
+LOW_BELOW = 5         # «уходит»: осталось меньше стольких магазинов…
+LOW_PEAK = 5          # …из стольких и больше за окно
+GONE_PEAK = 3         # «ушёл»: пропал отовсюду, а стоял хотя бы в стольких
+MOVES_DAYS = 14       # окно для «уходит» и «ушёл»
+SHAKY = "?"           # уход, записанный чтением, которому уходы не доверяются
 RECENT_SWEEPS = 3     # прошлое чтение магазина не старше стольких прогонов
 CONFIRM_WITHIN = 3    # столько прогонов ждём следующего чтения магазина
 WAVE_SHELVES = 3
@@ -189,14 +206,18 @@ def same_batch(a, b):
 
 
 def parse(entry):
-    """«первое/последнее THC…» → (первое, последнее или None, если на полке, [THC])."""
-    span, *thc = entry.split(" ")
+    """«первое/последнее THC… ?» → (первое, последнее или None, если на полке, [THC],
+    ушёл ли он при чтении, которому уходы не доверяются)."""
+    span, *rest = entry.split(" ")
     first, last = span.split("/")
-    return first, (None if last == OPEN else last), [float(v) for v in thc]
+    shaky = bool(rest) and rest[-1] == SHAKY
+    thc = [float(v) for v in (rest[:-1] if shaky else rest)]
+    return first, (None if last == OPEN else last), thc, shaky
 
 
-def written(first, last, thc=()):
-    return " ".join([f"{first}/{last or OPEN}"] + [num(v) for v in sorted(set(thc))])
+def written(first, last, thc=(), shaky=False):
+    return " ".join([f"{first}/{last or OPEN}"] + [num(v) for v in sorted(set(thc))]
+                    + ([SHAKY] if shaky and last else []))
 
 
 def empty():
@@ -210,6 +231,8 @@ def empty():
             "confirmWithin": CONFIRM_WITHIN, "waveShelves": WAVE_SHELVES,
             "waveDays": WAVE_DAYS, "keepDays": KEEP_DAYS, "minThcStep": MIN_THC_STEP,
             "thcBurstShare": THC_BURST_SHARE, "thcBurstMin": THC_BURST_MIN,
+            "goneShareMax": GONE_SHARE_MAX, "lowBelow": LOW_BELOW, "lowPeak": LOW_PEAK,
+            "gonePeak": GONE_PEAK, "movesDays": MOVES_DAYS,
         },
         "sweeps": [],
         "collector": {},
@@ -220,6 +243,7 @@ def empty():
         "pendingBatches": [],
         "reads": {},
         "thc": {},
+        "names": {},
         "seen": {},
     }
 
@@ -260,11 +284,10 @@ def fold(hist, day, rows, collector=None):
         thc_now = potency.get(lic, {})
 
         # Что ушло с полки: последний раз оно стояло на прошлом чтении.
-        departed = 0
-        for key, (first, last, thc) in was.items():
-            if last is None and key not in shelf:
-                seen[key] = written(first, r1, thc)
-                departed += 1
+        # Записывается ниже, когда станет ясно, можно ли этому чтению верить.
+        gone = [key for key, (_f, last, _t, _s) in was.items() if last is None and key not in shelf]
+        departed = len(gone)
+        standing = sum(1 for _f, last, _t, _s in was.values() if last is None)
 
         new = []
         for key in shelf:
@@ -273,7 +296,7 @@ def fold(hist, day, rows, collector=None):
             if got is None:
                 new.append((key, False))
             else:
-                first, last, _thc = got
+                first, last, _thc, _shaky = got
                 # Ушёл и вернулся. Если стоял на одном из двух прошлых чтений,
                 # это мигание, а не появление.
                 if last is not None and (r2 is None or last < r2):
@@ -283,6 +306,19 @@ def fold(hist, day, rows, collector=None):
         del reads[:-KEEP_READS]
         if new:
             count["appeared"] += len(new)
+
+        before = versions.get(r1)
+        deeper = bool(collector and before and before != collector
+                      and len(new) >= LOPSIDED_MIN and departed * 3 < len(new))
+        # Уходам верится там же, где завозам, и ещё не там, где полка за день
+        # потеряла треть: так теряет не магазин, а наше чтение.
+        shaky = (r2 is None or r1 not in recent or len(new) > NEW_SHARE_MAX * len(shelf)
+                 or deeper or departed > GONE_SHARE_MAX * max(standing, 1))
+        for key in gone:
+            first, _last, thc, _s = was[key]
+            seen[key] = written(first, r1, thc, shaky)
+        if gone:
+            count["departed" + ("Shaky" if shaky else "")] += len(gone)
 
         if r2 is None or r1 not in recent:
             if new:
@@ -295,9 +331,7 @@ def fold(hist, day, rows, collector=None):
         # Сборщик сменился с прошлого чтения, и полка выросла в одну сторону:
         # так выглядит меню, прочитанное глубже, а не привезённый товар.
         # Настоящий завоз может попасть сюда же — пустое поле лучше догадки.
-        before = versions.get(r1)
-        if (collector and before and before != collector
-                and len(new) >= LOPSIDED_MIN and departed * 3 < len(new)):
+        if deeper:
             count["deeper"] += len(new)
             count["deeperShops"] += 1
             continue
@@ -306,6 +340,7 @@ def fold(hist, day, rows, collector=None):
         batches(hist, lic, shelf, was, thc_now, arrived, day, shelf_sig, count)
 
     remember_potency(hist, potency, day)
+    remember_names(hist, shelves)
     hist["days"][day] = dict(sorted(count.items()))
     prune(hist, day)
     return count
@@ -398,6 +433,26 @@ def batches(hist, lic, shelf, was, thc_now, arrived, day, shelf_sig, count):
             count["batchCandidates"] += 1
 
 
+def remember_names(hist, shelves):
+    """Как писать сорт бренда, когда его уже нет ни на одной полке. Только для
+    стоящих хотя бы в двух магазинах: ушедшим и уходящим показывается лишь то,
+    что стояло шире."""
+    spelled_as = defaultdict(lambda: (Counter(), Counter()))
+    for shelf in shelves.values():
+        for key, row in shelf.items():
+            brands, strains = spelled_as[key]
+            if row.get("brand"):
+                brands[row["brand"]] += 1
+            strain = row.get("strainNameCanonical") or row.get("strainNameRaw")
+            if strain:
+                strains[strain] += 1
+    standing = Counter(key for seen in hist["seen"].values()
+                       for key, entry in seen.items() if entry.split(" ", 1)[0].endswith("/" + OPEN))
+    for key, (brands, strains) in spelled_as.items():
+        if standing[key] >= 2:
+            hist["names"][key] = [spelled(brands.elements()), spelled(strains.elements())]
+
+
 def remember_potency(hist, potency, day):
     """Какие значения THC сорт бренда показывал хоть в одном магазине — с любых полок,
     устойчивых или нет: партия, которую уже видели, не новая. Целое — округление, и
@@ -419,6 +474,7 @@ def prune(hist, day):
             del seen[key]
     alive = {key for seen in hist["seen"].values() for key in seen}
     hist["thc"] = {key: values for key, values in hist["thc"].items() if key in alive}
+    hist["names"] = {key: name for key, name in hist["names"].items() if key in alive}
     hist["arrivals"] = [a for a in hist["arrivals"] if a["seen"] >= horizon]
     hist["batches"] = [b for b in hist["batches"] if b["seen"] >= horizon]
     hist["days"] = {d: c for d, c in hist["days"].items() if d >= horizon}
@@ -446,6 +502,120 @@ def new_batches(hist, day):
         if since <= b["seen"] <= day:
             groups[(b["key"], b["thc"])].append(b)
     return groups
+
+
+def carrying(groups, rows=None):
+    """Где партия стоит сейчас — по сегодняшнему файлу полок: её первые магазины — только начало."""
+    now = defaultdict(lambda: defaultdict(set))
+    for row in listings_of(LISTINGS.read_text()) if rows is None else rows:
+        thc = row.get("thcPercent")
+        if isinstance(thc, (int, float)) and thc > 0 and key_of(row):
+            now[key_of(row)][row["licenseNumber"]].add(float(thc))
+    return {(key, thc): sorted(lic for lic, values in now[key].items() if any(same_batch(thc, v) for v in values))
+            for key, thc in groups}
+
+
+def display(hist, key, brands=(), strains=()):
+    brand, strain = hist["names"].get(key, [None, None])
+    return (spelled(brands) or brand or key.split("|", 1)[0] or None,
+            spelled(strains) or strain or key.split("|", 1)[1])
+
+
+def moves(hist, day, rows=None):
+    """Что пришло за неделю, что уходит и что ушло за две — то, что показывает сайт."""
+    since_new = (date.fromisoformat(day) - timedelta(days=WAVE_DAYS - 1)).isoformat()
+    since_old = (date.fromisoformat(day) - timedelta(days=MOVES_DAYS - 1)).isoformat()
+    window = [d for d in hist["sweeps"] if since_old <= d <= day]
+
+    spans = defaultdict(dict)
+    standing = defaultdict(set)
+    for lic, seen in hist["seen"].items():
+        for key, entry in seen.items():
+            first, last, _thc, shaky = parse(entry)
+            spans[key][lic] = (first, last, shaky)
+            if last is None:
+                standing[lic].add(key)
+
+    arrived = defaultdict(list)
+    for a in hist["arrivals"]:
+        if since_new <= a["seen"] <= day:
+            arrived[a["key"]].append(a)
+    arrivals_out = []
+    for key, found in arrived.items():
+        brand, strain = display(hist, key, [a["brand"] for a in found], [a["strain"] for a in found])
+        arrivals_out.append({
+            "brand": brand, "strain": strain,
+            "first": min(a["seen"] for a in found),
+            "today": sum(1 for a in found if a["confirmed"] == day),
+            "shelves": len({a["shelf"] for a in found}),
+            "shops": sorted({a["licence"] for a in found}),
+            "now": sum(1 for sp in spans[key].values() if sp[1] is None),
+        })
+    arrivals_out.sort(key=lambda a: (-(a["shelves"] >= WAVE_SHELVES), -a["shelves"], -a["now"], a["first"], a["strain"] or ""))
+
+    groups = new_batches(hist, day)
+    shops_now = carrying(groups, rows)
+    batches_out = []
+    for (key, thc), found in groups.items():
+        brand, strain = display(hist, key, [b["brand"] for b in found], [b["strain"] for b in found])
+        batches_out.append({
+            "brand": brand, "strain": strain, "thc": thc, "before": found[0]["before"],
+            "first": min(b["seen"] for b in found), "shops": shops_now[(key, thc)],
+        })
+    batches_out.sort(key=lambda b: (-len(b["shops"]), b["first"], b["strain"] or ""))
+
+    low, gone = [], []
+    for key, at in spans.items():
+        # Уход, записанный чтением, которому уходы не доверяются, не считается
+        # вовсе: ни что было, ни что стало.
+        trusted = {lic: sp for lic, sp in at.items() if not sp[2]}
+        if len(trusted) < GONE_PEAK:
+            continue
+        peak, peak_day = 0, None
+        for d in window:
+            n = sum(1 for first, last, _s in trusted.values() if first <= d and (last is None or last >= d))
+            if n > peak:
+                peak, peak_day = n, d
+        if peak < GONE_PEAK:
+            continue
+        if sum(1 for sp in trusted.values() if sp[1] is None) >= LOW_BELOW:
+            continue
+        # Переименованный магазином сорт стоит там же под другим названием.
+        now = sorted(lic for lic, (first, last, _s) in trusted.items()
+                     if last is None or any(similar(key, other) for other in standing[lic] if other != key))
+        brand, strain = display(hist, key)
+        if now and len(now) < LOW_BELOW and peak >= LOW_PEAK:
+            low.append({"brand": brand, "strain": strain, "now": now, "peak": peak, "peakDay": peak_day})
+        elif not now:
+            last_seen = max(last for _f, last, _s in trusted.values())
+            if last_seen >= since_old:
+                gone.append({"brand": brand, "strain": strain, "lastSeen": last_seen, "peak": peak,
+                             "lastShops": sorted(lic for lic, (_f, last, _s) in trusted.items() if last >= since_old)})
+    low.sort(key=lambda m: (len(m["now"]) - m["peak"], len(m["now"]), m["strain"] or ""))
+    gone.sort(key=lambda m: (-m["peak"], m["lastSeen"], m["strain"] or ""))
+    return {"arrivals": arrivals_out, "batches": batches_out, "runningLow": low, "gone": gone}
+
+
+def signals():
+    """Страница сайта читает готовое: считать дважды, на двух языках, — значит однажды
+    посчитать по-разному."""
+    hist = load()
+    if not hist["sweeps"]:
+        raise SystemExit("история пуста — сигналам не из чего взяться")
+    day = hist["sweeps"][-1]
+    out = {
+        "about": "Что пришло на полки за неделю, что уходит и что ушло за две — по data/shelf-history.json. "
+                 "Пишется scripts/shelf-history.py signals после ежедневного прогона; читает страница /moves/.",
+        "day": day,
+        "rules": {"newDays": WAVE_DAYS, "waveShelves": WAVE_SHELVES, "movesDays": MOVES_DAYS,
+                  "lowBelow": LOW_BELOW, "lowPeak": LOW_PEAK, "gonePeak": GONE_PEAK},
+        **moves(hist, day),
+    }
+    tmp = SIGNALS.with_suffix(".tmp")
+    tmp.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n")
+    tmp.replace(SIGNALS)
+    print(f"{SIGNALS.relative_to(ROOT)}: {day} — новых {len(out['arrivals'])}, партий {len(out['batches'])}, "
+          f"уходят {len(out['runningLow'])}, ушли {len(out['gone'])}")
 
 
 def render(value, indent=0, depth=3):
@@ -606,6 +776,7 @@ def report(day):
     if not found:
         out.append("_нет_")
     out += batch_section(hist, day, c, names)
+    out += leaving_section(hist, day, c, names)
     # Бренд — по ключу: GRASSROOTS и Grassroots — один бренд, написанный двумя меню.
     by_brand = defaultdict(list)
     for a in confirmed:
@@ -619,15 +790,10 @@ def report(day):
 
 def batch_section(hist, day, c, names):
     groups = new_batches(hist, day)
-    # Где партия стоит сейчас: её первые магазины — это только начало.
-    carrying = defaultdict(lambda: defaultdict(set))
-    for row in listings_of(LISTINGS.read_text()):
-        thc = row.get("thcPercent")
-        if isinstance(thc, (int, float)) and thc > 0 and key_of(row):
-            carrying[key_of(row)][row["licenseNumber"]].add(float(thc))
+    shops_now = carrying(groups)
     ranked = []
     for (key, thc), found in groups.items():
-        shops = {lic for lic, values in carrying[key].items() if any(same_batch(thc, v) for v in values)}
+        shops = shops_now[(key, thc)]
         ranked.append((len(shops), min(b["seen"] for b in found), key, thc, found, shops))
     ranked.sort(key=lambda r: (-r[0], r[1], r[2]))
     today_n = sum(1 for b in hist["batches"] if b["confirmed"] == day)
@@ -647,6 +813,28 @@ def batch_section(hist, day, c, names):
                    + (": " + ", ".join(named[:5]) + (f" и ещё {len(named) - 5}" if len(named) > 5 else "")
                       if named else ""))
     if not ranked:
+        out.append("_нет_")
+    return out
+
+
+def leaving_section(hist, day, c, names):
+    m = moves(hist, day)
+    shops = lambda lics: ", ".join(sorted(names.get(lic, lic) for lic in lics)[:4]) + (
+        f" и ещё {len(lics) - 4}" if len(lics) > 4 else "")
+    out = ["", f"**Уходят** — стоял в {LOW_PEAK} и более магазинах за {MOVES_DAYS} дней, осталось меньше "
+           f"{LOW_BELOW}: {len(m['runningLow'])}; уходы с полок, прочитанных ненадёжно, не считаются "
+           f"(сегодня таких {c.get('departedShaky', 0)} из {c.get('departed', 0) + c.get('departedShaky', 0)})", ""]
+    for x in m["runningLow"][:12]:
+        out.append(f"- **{x['brand'] or 'бренд не указан'} · {x['strain']}** — было {x['peak']} "
+                   f"({x['peakDay'][8:10]}.{x['peakDay'][5:7]}), сейчас {len(x['now'])}: {shops(x['now'])}")
+    if not m["runningLow"]:
+        out.append("_нет_")
+    out += ["", f"**Ушли** — стоял хотя бы в {GONE_PEAK} магазинах и пропал со всех прочитанных полок: "
+            f"{len(m['gone'])}", ""]
+    for x in m["gone"][:12]:
+        out.append(f"- **{x['brand'] or 'бренд не указан'} · {x['strain']}** — было {x['peak']}, последний раз "
+                   f"{x['lastSeen'][8:10]}.{x['lastSeen'][5:7]}: {shops(x['lastShops'])}")
+    if not m["gone"]:
         out.append("_нет_")
     return out
 
@@ -708,6 +896,23 @@ def check():
         # THC сменился у всех позиций сразу — поменялось чтение потенции.
         "T6": lambda i, d: potent("T6", d, {f"Burst {n}": 20.11 + n + (3 if i >= 2 else 0) for n in range(10)}),
     }
+    # Уходит: стоял в шести магазинах, с четвёртого дня — в двух.
+    for n in range(1, 7):
+        plan[f"R{n}"] = lambda i, d, lic=f"R{n}": shelf(
+            lic, d, extra=["Fading Strain"] if i < 3 or lic in ("R1", "R2") else [])
+    # Ушёл: стоял в трёх и пропал отовсюду.
+    for n in range(1, 4):
+        plan[f"V{n}"] = lambda i, d, lic=f"V{n}": shelf(lic, d, extra=["Vanishing Strain"] if i < 3 else [])
+    # Магазины переименовали сорт: он не ушёл.
+    for n in range(1, 6):
+        plan[f"W{n}"] = lambda i, d, lic=f"W{n}": shelf(
+            lic, d, extra=["Rename Me"] if i < 3 else ["Rename Me Flower"])
+    # Полка Z за день потеряла треть: её уходам не верится, и сорт, который
+    # стоял ещё в двух магазинах, не «ушёл» из трёх.
+    plan["Z"] = lambda i, d: shelf("Z", d, extra=(["Collapse Strain"] + [f"Z extra {n}" for n in range(10)])
+                                   if i < 3 else [])
+    for n in range(1, 3):
+        plan[f"Y{n}"] = lambda i, d, lic=f"Y{n}": shelf(lic, d, extra=["Collapse Strain"] if i < 3 else [])
     version = ["v1", "v1", "v2", "v2", "v2"]
     hist = empty()
     counts = {}
@@ -747,6 +952,15 @@ def check():
     expect("чтение потенции сменилось", (third["thcRewritten"], third["thcRewrittenShops"]), (10, 1))
     expect("THC впервые показан", third["thcNewlyShown"], 1)
     expect("THC помнится по полке", hist["seen"]["T1"]["find|batch strain"], f"{days[0]}/{OPEN} 22.35")
+    m = moves(hist, days[4], rows=[])
+    expect("уходит", [(x["strain"], x["now"], x["peak"]) for x in m["runningLow"]],
+           [("Fading Strain", ["R1", "R2"], 6)])
+    expect("ушёл", [(x["strain"], x["lastSeen"], x["peak"], x["lastShops"]) for x in m["gone"]],
+           [("Vanishing Strain", days[2], 3, ["V1", "V2", "V3"])])
+    expect("уходы с обвалившейся полки не верятся", (fourth.get("departedShaky"),
+                                                    hist["seen"]["Z"]["find|z extra 0"].endswith(" " + SHAKY)), (11, True))
+    expect("имя ушедшего помнится", hist["names"].get("find|vanishing strain"), ["Find", "Vanishing Strain"])
+    expect("новые за неделю — волна первой", m["arrivals"][0]["strain"], "Garlic Patties")
     expect("одна партия", (same_batch(28, 28.41), same_batch(28.4, 28.41), same_batch(22.3, 22.36),
                            same_batch(25, 25.3), same_batch(28.41, 28.51), same_batch(27, 30.52),
                            same_batch(26.49, 28.41)), (True, True, True, True, False, False, False))
@@ -770,5 +984,7 @@ if __name__ == "__main__":
         report(when)
     elif command == "backfill":
         backfill()
+    elif command == "signals":
+        signals()
     else:
         raise SystemExit(__doc__)

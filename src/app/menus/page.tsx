@@ -26,6 +26,14 @@ export default function MenusPage() {
         by brand, or by shop.
       </p>
 
+      <p className="mt-4 max-w-2xl text-sm text-chalk-400">
+        What turned up this week, and what is running low?{' '}
+        <Link href="/moves/" className="link">
+          New &amp; leaving
+        </Link>
+        .
+      </p>
+
       <ShelfStamp linkToShops />
 
       {/* The search is the page now. It used to sit below a grid of every shop

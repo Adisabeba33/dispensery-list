@@ -142,7 +142,10 @@ jobs:
         continue-on-error: true
         run: |
           if python scripts/shelf-history.py check && python scripts/shelf-history.py update; then
-            git add data/shelf-history.json
+            # What the site's New & leaving page shows, worked out from the
+            # history just written, so the page moves with the shelves.
+            python scripts/shelf-history.py signals
+            git add data/shelf-history.json data/shelf-signals.json
             git diff --cached --quiet || git commit -q -m "menu: shelf history"
             python scripts/shelf-history.py report >> menu-report.md
           else
