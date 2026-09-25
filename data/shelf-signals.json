@@ -8853,5 +8853,43 @@
     "OCM-CAURD-24-000212"
    ]
   }
- ]
+ ],
+ "shops": {
+  "OCM-CAURD-24-000062": {
+   "state": "dead",
+   "size": 2,
+   "since": "2026-09-14",
+   "quietDays": 11,
+   "quietReads": 11,
+   "changes": 3,
+   "lastRead": "2026-09-25"
+  },
+  "OCM-CAURD-24-000130": {
+   "state": "asleep",
+   "size": 27,
+   "since": "2026-09-18",
+   "quietDays": 7,
+   "quietReads": 7,
+   "changes": 57,
+   "lastRead": "2026-09-25"
+  },
+  "OCM-CAURD-25-000233": {
+   "state": "quiet",
+   "size": 32,
+   "since": "2026-09-18",
+   "quietDays": 7,
+   "quietReads": 4,
+   "changes": 57,
+   "lastRead": "2026-09-25"
+  },
+  "OCM-MICR-24-000068": {
+   "state": "asleep",
+   "size": 20,
+   "since": "2026-09-14",
+   "quietDays": 11,
+   "quietReads": 11,
+   "changes": 0,
+   "lastRead": "2026-09-25"
+  }
+ }
 }

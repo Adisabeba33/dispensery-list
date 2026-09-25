@@ -18,6 +18,7 @@ type Raw = {
   batches: { brand: string | null; strain: string; thc: number; before: number[]; first: string; shops: string[] }[];
   runningLow: { brand: string | null; strain: string; now: string[]; peak: number; peakDay: string }[];
   gone: { brand: string | null; strain: string; lastSeen: string; peak: number; lastShops: string[] }[];
+  shops?: Record<string, { state: 'quiet' | 'asleep' | 'dead'; size: number; since: string; quietDays: number }>;
 };
 
 const raw = signalsRaw as unknown as Raw;
@@ -43,6 +44,14 @@ export const shelfSignals = () => {
     gone: raw.gone.map((m) => ({ ...m, lastShops: shopsOf(m.lastShops) })),
   };
 };
+
+/**
+ * Shops whose shelf we keep reading and which does not change: nothing
+ * arrives, nothing leaves. From outside that is a shop not trading, one that
+ * has closed, or one that stopped updating its menu — the three cannot be told
+ * apart from here, so a visitor is told the fact, not a verdict.
+ */
+export const stillShelf = (licence: string) => raw.shops?.[licence] ?? null;
 
 /** A day of the daily read, "Sep 22" — pinned to UTC, the calendar the read is kept in. */
 export const dayLabel = (day: string): string =>
