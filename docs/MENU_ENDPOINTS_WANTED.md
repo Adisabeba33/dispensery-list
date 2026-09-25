@@ -1,6 +1,6 @@
 # Магазины, которым нужен адрес меню
 
-Работающих магазинов в реестре: **330**. Обход заходит в **310**, полку отдают **248**.
+Работающих магазинов в реестре: **330**. Обход заходит в **310**, полку отдают **254**.
 
 Этот файл собирается скриптом `scripts/menu-endpoints-wanted.py` по последнему прогону — правит его не рука, а следующий запуск.
 
@@ -29,7 +29,7 @@
 
 Проверить перед коммитом: `python scripts/validate-menu-endpoints.py`.
 
-## Пусто — 62
+## Пусто — 56
 
 | Магазин | Город | Сайт | Почему пусто |
 |---|---|---|---|
@@ -62,34 +62,28 @@
 | Down To Earth Canna Inc | Jamaica | https://sageseed.com | страница не открылась |
 | Dispensary Near Me by Liberty Buds | Little Neck | https://420expressway.com | страница не открылась |
 | MAMBO WELLNESS INC. | Long Island City | https://saintcannabisny.com | ссылку на меню не нашли |
-| CannaBees | Maspeth | https://cannabeesdispensary.com | страница вернула ноль товаров |
+| CannaBees | Maspeth | https://cannabeesdispensary.com | ссылку на меню не нашли |
 | ZenZest Cannabis Dispensary | New Hyde Park | https://zenzest.com | страница вернула ноль товаров |
-| 69 Graham Dispensary LLC | New York | https://www.thealchemy.nyc | страница вернула ноль товаров |
-| Blue Forest Farms Dispensary LLC | New York | https://blueforestfarmsdispensary.com | страница вернула ноль товаров |
+| Blue Forest Farms Dispensary LLC | New York | https://blueforestfarmsdispensary.com | страница не открылась |
 | Charlie Fox | New York | https://www.shopcharliefox.com | ссылку на меню не нашли |
 | Fluent | New York | https://www.etain.com | страница вернула ноль товаров |
 | Good Company | New York | https://goodcompanyshop.com | ссылку на меню не нашли |
 | Green Rise Inc. | New York | https://greenriseny.com | страница не открылась |
-| Happy Munkey | New York | https://happymunkey.com | страница вернула ноль товаров |
 | Hells Kitchen Cannabis Company | New York | https://www.hkcc.nyc | ссылку на меню не нашли |
 | KushKlub NY LLC | New York | https://kushklub.com | страница вернула ноль товаров |
 | Leafy NYC II LLC | New York | https://www.newamsterdam.nyc | страница вернула ноль товаров |
 | Nucleus Dispensary Inc. | New York | https://nucleusdispensary.com | страница вернула ноль товаров |
-| Rezidue | New York | https://rezidueny.com/ | страница вернула ноль товаров |
-| SOFACLUB CANNABIS | New York | https://www.sofaclub.nyc | страница вернула ноль товаров |
+| Rezidue ✳️ | New York | https://rezidueny.com/ | страница вернула ноль товаров |
 | Sparkboro Inc | New York | https://sparkborony.com | ссылку на меню не нашли |
-| Swan Lake Equity LLC | New York | https://www.sofaclub.nyc | страница вернула ноль товаров |
-| THE HERBAL CARE THC LLC | New York | https://thctheherbalcare.com/ | страница вернула ноль товаров |
-| The Alchemy | New York | https://www.thealchemy.nyc | страница вернула ноль товаров |
 | The Hootch LLC | New York | https://www.sweetlife.nyc | ссылку на меню не нашли |
 | Tru Cannabis | New York | https://trucannabisny.com | страница вернула ноль товаров |
 | Twinn Leaf LLC | New York | https://twinnleafnyc.com | ссылку на меню не нашли |
-| GreenCup | Rego Park | https://greencup.nyc | страница вернула ноль товаров |
+| GreenCup ✳️ | Rego Park | https://greencup.nyc | страница вернула ноль товаров |
 | THE GOAT DISPENSARY | Rego Park | https://www.thegoatdispensary.com | ссылку на меню не нашли |
 | Caurd Wellness LLC | Ridgewood | https://herbarium.la | ссылку на меню не нашли |
-| Hudson Park Agency LLC | Rosedale | https://ourthcshop.com | страница вернула ноль товаров |
+| Hudson Park Agency LLC | Rosedale | https://ourthcshop.com | ссылку на меню не нашли |
 | Green Land Retail LLC | Staten Island | https://greenlandny.com | ссылку на меню не нашли |
-| Studio57NY | Staten Island | https://studio57ny.com | страница вернула ноль товаров |
+| Studio57NY ✳️ | Staten Island | https://studio57ny.com | страница вернула ноль товаров |
 | ZenZest LLC | Staten Island | https://zenzest.com | страница вернула ноль товаров |
 | RENAISSANT NYC | Sunnyside | https://renaissant.nyc | ссылку на меню не нашли |
 | Fluent | White Plains | https://etainhealth.com/ | страница вернула ноль товаров |
@@ -97,15 +91,6 @@
 | Budr Cannabis | Yonkers | https://budrcannabis.com | страница вернула ноль товаров |
 
 ✳️ — адрес в `menu-endpoints.json` уже есть, и всё равно пусто: значит записанный адрес больше не тот.
-
-## Полка читается не до конца — 2
-
-Здесь адрес есть и меню отвечает, но отдаёт меньше, чем само объявляет. Листание таким не помогло — им нужен прямой адрес категории.
-
-| Магазин | Держим | Меню объявляет | Сайт |
-|---|---:|---:|---|
-| Bad Maryjane | 2 | 1149 | https://maryjanecannabisco.com |
-| High Tidez CI | 122 | 140 | https://hightidezci.com |
 
 ## Сюда не ходим
 
