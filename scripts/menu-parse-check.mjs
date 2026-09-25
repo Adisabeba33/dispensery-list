@@ -109,6 +109,8 @@ check('proprietary blank terpene', pr?.terpenes.profile[0].percent, null);
  */
 check('pre-roll', classify({ Name: 'Blue Dream Pre-Roll 1g', type: 'Pre-Rolls', Options: ['1g'] }), 'title-not-flower');
 check('roll by category', classify({ Name: 'Sunset Sherbet', type: 'Pre-Rolls' }), 'category-not-flower');
+check('eighths category', classify({ name: 'Gelato 41', category: '8ths  regular' }), 'flower');
+check('eighth pre-roll pack', classify({ name: 'Gelato 41', category: '8ths pre-roll pack' }), 'category-not-flower');
 /* Ground flower is shake, whatever the shop calls it after the word. The rule
    was the phrase "ground flower", so a shop writing "Bulky's Ground" or
    "Pluto - Indica Ground" put two-ounce bags of shake on a flower shelf. Found

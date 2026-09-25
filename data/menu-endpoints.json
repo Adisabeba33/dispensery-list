@@ -698,5 +698,55 @@
     "ageGate": "click-through",
     "checkedAt": "2026-09-25",
     "notes": "Happy Munkey Dyckman, 151 Dyckman St — the shop's own Tymber/Blaze menu ('Pickup at Happy Munkey - Dyckman'). /products/flower/ is an information page with no products. The Fulton St branch (Ramon Reyes LLC) is marked 'Temporarily Closed' on the site and is deliberately not given an endpoint."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000254",
+    "menuUrl": "https://thedailygreennyc.com/categories/flower/",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-25",
+    "notes": "Charlie Fox trades as The Daily Green, 719 7th Ave (address printed on thedailygreennyc.com, which shopcharliefox.com redirects to). First-party Flower category; products come from the site's joint-ecommerce search."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000070",
+    "menuUrl": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-25",
+    "notes": "Good Company, 2273A Broadway: its own storefront (Dutchie Plus on goodcompanyshop.com), Flower category."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000414",
+    "menuUrl": "https://indoortreez.com/stores/indoor-treez-howard-beach/products/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-25",
+    "notes": "RAGTIME trades as Indoor Treez; the register address 15748 Crossbay Blvd is the Howard Beach branch in the site's store list, not the 8th Avenue default."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-26-000332",
+    "menuUrl": "https://store.thebridgecannabis.com/collection/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-25",
+    "notes": "The Bridge, Astoria: the store subdomain linked from thebridgecannabis.com; Flower collection shows prices."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000078",
+    "menuUrl": "https://shop.herbarium.co/shop-queens-new-york/categories/8th/",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-25",
+    "notes": "Caurd Wellness trades as Herbarium; the New York shop is Herbarium Queens. Category \"8ths\" is its flower shelf."
   }
 ]

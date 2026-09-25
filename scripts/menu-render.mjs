@@ -3087,7 +3087,10 @@ const classify = (p) => {
      category, and an empty field beats a plausible guess. */
   if (!text) return FLOWER_TITLE.test(title) ? 'flower' : 'no-category';
   if (/pre[\s-]?roll|infused|blunt|joint/.test(text)) return 'category-not-flower';
-  return /flower|bud/.test(text) ? 'flower' : 'category-not-flower';
+  /* An eighth is an eighth of an ounce of flower: Herbarium Queens shelves all
+     of its flower as "8ths regular", and seventy-one of them were refused for
+     not saying "flower". */
+  return /flower|bud|\b(8ths?|eighths?)\b/.test(text) ? 'flower' : 'category-not-flower';
 };
 
 /* How many flower products one answer carries, found every way the reading
