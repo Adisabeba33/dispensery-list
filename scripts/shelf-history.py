@@ -26,7 +26,11 @@
 - сборщик с прошлого чтения магазина не менялся — или менялся, но полка не
   выросла в одну сторону. Починка, после которой меню читается глубже,
   добавляет позиции и ничего не убирает; настоящий завоз приходит вместе с
-  продажами;
+  продажами. Но так же, в одну сторону, приходит и поставка целой линейкой
+  бренда — Find привёз Misha's двадцать сортов разом. Поэтому из такой полки
+  всё же засчитываются сорта бренда, который составил хотя бы половину нового
+  и не меньше трёх сортов (вторая страница меню — смесь брендов, линейка —
+  один), и сорта, которые уже пришли в другой магазин за неделю;
 - это не переименование: у того же бренда в эти дни не ушёл похожий сорт;
 - на следующем чтении сорт всё ещё на полке.
 
@@ -88,7 +92,9 @@ READER = ("scripts/menu-render.mjs", "scripts/strain-name.mjs", "data/menu-endpo
 
 NEW_SHARE_MAX = 0.15  # больше — полку переписало наше чтение, а не завоз
 LOPSIDED_MIN = 5      # столько новых при сменившемся сборщике и почти без ушедших —
-                      # это чтение стало глубже, а не завоз
+                      # это чтение стало глубже, а не завоз…
+LINEUP_MIN = 3        # …если только это не линейка одного бренда: столько сортов
+LINEUP_SHARE = 0.5    # и такая доля всего нового
 MIN_THC_STEP = 0.1    # ближе — то же лабораторное число, записанное иначе
 THC_BURST_SHARE = 0.3 # THC сменился у большей доли позиций магазина за день —
 THC_BURST_MIN = 5     # поменялось наше чтение потенции, а не партии
@@ -227,7 +233,8 @@ def empty():
                  "THC, то есть партии, сорт бренда уже показывал хоть где-то. Пишется "
                  "scripts/shelf-history.py после ежедневного прогона; правила — в его описании.",
         "rules": {
-            "newShareMax": NEW_SHARE_MAX, "lopsidedMin": LOPSIDED_MIN, "recentSweeps": RECENT_SWEEPS,
+            "newShareMax": NEW_SHARE_MAX, "lopsidedMin": LOPSIDED_MIN, "lineupMin": LINEUP_MIN,
+            "lineupShare": LINEUP_SHARE, "recentSweeps": RECENT_SWEEPS,
             "confirmWithin": CONFIRM_WITHIN, "waveShelves": WAVE_SHELVES,
             "waveDays": WAVE_DAYS, "keepDays": KEEP_DAYS, "minThcStep": MIN_THC_STEP,
             "thcBurstShare": THC_BURST_SHARE, "thcBurstMin": THC_BURST_MIN,
@@ -275,6 +282,7 @@ def fold(hist, day, rows, collector=None):
            lambda c: any(same_batch(c["thc"], v)
                          for v in potency.get(c["licence"], {}).get(c["key"], ())))
 
+    deferred = []
     for lic, shelf in shelves.items():
         reads = hist["reads"].setdefault(lic, [])
         seen = hist["seen"].setdefault(lic, {})
@@ -334,16 +342,44 @@ def fold(hist, day, rows, collector=None):
         if deeper:
             count["deeper"] += len(new)
             count["deeperShops"] += 1
+            deferred.append((lic, shelf, new, seen, r2, was, thc_now))
             continue
         shelf_sig = signature(shelf)
         arrived = arrivals(hist, lic, shelf, new, seen, r2, day, shelf_sig, count)
         batches(hist, lic, shelf, was, thc_now, arrived, day, shelf_sig, count)
 
+    keep_lineups(hist, deferred, day, count)
     remember_potency(hist, potency, day)
     remember_names(hist, shelves)
     hist["days"][day] = dict(sorted(count.items()))
     prune(hist, day)
     return count
+
+
+def keep_lineups(hist, deferred, day, count):
+    """Из полок, выросших в одну сторону при сменившемся сборщике, — то, что всё же
+    похоже на завоз. Разбирается после всех остальных магазинов дня: подтверждением
+    служат и сегодняшние кандидаты других магазинов."""
+    if not deferred:
+        return
+    kept = {}
+    for lic, shelf, new, seen, r2, was, thc_now in deferred:
+        brands = Counter(key.split("|", 1)[0] for key, _returned in new)
+        lineup = {b for b, n in brands.items() if b and n >= LINEUP_MIN and n >= LINEUP_SHARE * len(new)}
+        kept[lic] = [(key, returned) for key, returned in new if key.split("|", 1)[0] in lineup]
+    since = (date.fromisoformat(day) - timedelta(days=WAVE_DAYS - 1)).isoformat()
+    for lic, shelf, new, seen, r2, was, thc_now in deferred:
+        elsewhere = {a["key"] for a in hist["arrivals"] + hist["pending"]
+                     if a["licence"] != lic and a["seen"] >= since}
+        elsewhere |= {key for other, pairs in kept.items() if other != lic for key, _r in pairs}
+        mine = kept[lic] + [(key, returned) for key, returned in new
+                            if key in elsewhere and (key, returned) not in kept[lic]]
+        if not mine:
+            continue
+        count["deeperKept"] += len(mine)
+        shelf_sig = signature(shelf)
+        arrived = arrivals(hist, lic, shelf, mine, seen, r2, day, shelf_sig, count)
+        batches(hist, lic, shelf, was, {k: thc_now[k] for k in arrived if k in thc_now}, arrived, day, shelf_sig, count)
 
 
 def settle(hist, queue, done, shelves, sweeps, day, count, names, holds):
@@ -691,7 +727,8 @@ def line(day, c):
     return (f"{day}: прочитано {c.get('read', 0)}, появилось {c.get('appeared', 0)} — "
             f"магазин без двух прошлых чтений {c.get('unsteady', 0)}, "
             f"полка переписана {c.get('rewritten', 0)} ({c.get('rewrittenShops', 0)} маг.), "
-            f"сборщик глубже {c.get('deeper', 0)} ({c.get('deeperShops', 0)} маг.), "
+            f"сборщик глубже {c.get('deeper', 0)} ({c.get('deeperShops', 0)} маг., линейкой или "
+            f"с подтверждением оставлено {c.get('deeperKept', 0)}), "
             f"переименовано {c.get('renamed', 0)}, кандидатов {c.get('candidates', 0)}; "
             f"подтверждено {c.get('confirmed', 0)}, мигнуло {c.get('flicker', 0)}; "
             f"партии: кандидатов {c.get('batchCandidates', 0)}, подтверждено {c.get('batchConfirmed', 0)}, "
@@ -754,7 +791,8 @@ def report(day):
         f"- ждут следующего чтения магазина: {len(hist['pending'])}",
         f"- отсеяно при появлении: полку переписало наше чтение — {c.get('rewritten', 0)} "
         f"в {where(c.get('rewrittenShops', 0))}; сборщик менялся, и полка выросла в одну "
-        f"сторону — {c.get('deeper', 0)} в {where(c.get('deeperShops', 0))}; "
+        f"сторону — {c.get('deeper', 0)} в {where(c.get('deeperShops', 0))} (из них всё же "
+        f"засчитано как линейка бренда или подтверждено другими магазинами — {c.get('deeperKept', 0)}); "
         f"переименования — {c.get('renamed', 0)}; магазин не читался два прошлых раза — "
         f"{c.get('unsteady', 0)}",
         f"- не устояли до следующего чтения: {c.get('flicker', 0)}",
@@ -877,8 +915,16 @@ def check():
         "N": lambda i, d: shelf("N", d) if i >= 2 else [],
         # Сборщик сменился на третий день, и полка выросла на шесть без единого
         # ушедшего — чтение стало глубже.
-        "P": lambda i, d: shelf("P", d, extra=[f"Stock {n}" for n in range(20)]
-                                + ([f"Page two {n}" for n in range(6)] if i >= 2 else [])),
+        "P": lambda i, d: shelf("P", d, extra=[f"Stock {n}" for n in range(20)])
+        + ([row("P", f"Page two {n}", d, brand=f"Brand{n}") for n in range(6)] if i >= 2 else []),
+        # Тот же рост, но линейкой одного бренда: это поставка.
+        "L": lambda i, d: shelf("L", d, extra=[f"Stock {n}" for n in range(20)])
+        + ([row("L", f"Lineup {n}", d, brand="Revert") for n in range(6)] if i >= 2 else []),
+        # Смесь брендов, но один из новых сортов в тот же день пришёл в другие
+        # магазины — это та же поставка.
+        "K": lambda i, d: shelf("K", d, extra=[f"Stock {n}" for n in range(20)]
+                                + (["Garlic Patties"] if i >= 2 else []))
+        + ([row("K", f"Mix {n}", d, brand=f"Other{n}") for n in range(5)] if i >= 2 else []),
         # Тот же рост, но в день, когда сборщик не менялся, — это завоз.
         "Q": lambda i, d: shelf("Q", d, extra=[f"Stock {n}" for n in range(20)]
                                 + ([f"Drop {n}" for n in range(6)] if i >= 3 else [])),
@@ -935,13 +981,17 @@ def check():
     expect("не устоял", fourth["flicker"], 1)
     expect("новый магазин без прошлого", third["unsteady"], len(base) + 1)
     expect("сборщик сменился", (third.get("collectorChanged"), fourth.get("collectorChanged")), (1, None))
-    expect("чтение стало глубже", (third["deeper"], third["deeperShops"]), (6, 1))
+    expect("чтение стало глубже", (third["deeper"], third["deeperShops"], third.get("deeperKept")), (18, 3, 7))
+    expect("линейка бренда — завоз", sum(1 for a in hist["arrivals"] if a["licence"] == "L"), 6)
+    expect("смесь брендов — не завоз", any(a["licence"] in ("P",) for a in hist["arrivals"]), False)
+    expect("подтверждённый другими — завоз, а смесь вокруг — нет",
+           sorted(a["key"] for a in hist["arrivals"] if a["licence"] == "K"), ["find|garlic patties"])
     expect("тот же рост без смены сборщика", sum(1 for a in hist["arrivals"] if a["licence"] == "Q"), 6)
     expect("мелкий завоз в день смены сборщика", any(a["licence"] == "A" for a in hist["arrivals"]), True)
     again = [r for make in plan.values() for r in make(4, days[4])]
     expect("второй прогон того же дня", fold(hist, days[4], again, "v2"), None)
     found = waves(hist, days[4])
-    expect("волна", [(k, len({a["shelf"] for a in arr})) for k, arr in found], [("find|garlic patties", 3)])
+    expect("волна", [(k, len({a["shelf"] for a in arr})) for k, arr in found], [("find|garlic patties", 4)])
     expect("общая витрина — одна полка", len({a["shelf"] for a in hist["arrivals"] if a["licence"] in ("F1", "F2")}), 1)
     expect("ушедшее помнит последнее чтение", hist["seen"]["D"]["find|old 5"], f"{days[0]}/{days[1]}")
     expect("стоящее открыто", hist["seen"]["A"]["find|crusty crustacean"], f"{days[2]}/{OPEN}")
