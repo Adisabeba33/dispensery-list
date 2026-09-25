@@ -18,7 +18,19 @@ type Raw = {
   batches: { brand: string | null; strain: string; thc: number; before: number[]; first: string; shops: string[] }[];
   runningLow: { brand: string | null; strain: string; now: string[]; peak: number; peakDay: string }[];
   gone: { brand: string | null; strain: string; lastSeen: string; peak: number; lastShops: string[] }[];
-  shops?: Record<string, { state: 'quiet' | 'asleep' | 'dead'; size: number; since: string; quietDays: number }>;
+  shops?: Record<
+    string,
+    {
+      state: 'stale' | 'quiet' | 'asleep' | 'dead';
+      frozen: boolean;
+      size: number;
+      since: string;
+      quietDays: number;
+      quietReads: number;
+      lastDelivery: string;
+      dryDays: number;
+    }
+  >;
 };
 
 const raw = signalsRaw as unknown as Raw;
@@ -46,10 +58,14 @@ export const shelfSignals = () => {
 };
 
 /**
- * Shops whose shelf we keep reading and which does not change: nothing
- * arrives, nothing leaves. From outside that is a shop not trading, one that
- * has closed, or one that stopped updating its menu — the three cannot be told
+ * Shops whose shelf we keep reading and which has stopped being restocked:
+ * nothing new arrives, whether or not what is there still sells down — or
+ * nothing changes at all. From outside that is a shop not trading, one that
+ * has closed, or one that stopped updating its menu — they cannot be told
  * apart from here, so a visitor is told the fact, not a verdict.
+ *
+ * `frozen` is the stronger of the two facts: read several times running, over
+ * a week and more, without a single strain coming or going.
  */
 export const stillShelf = (licence: string) => raw.shops?.[licence] ?? null;
 
