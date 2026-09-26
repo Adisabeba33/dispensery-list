@@ -1,6 +1,6 @@
 # Магазины, которым нужен адрес меню
 
-Работающих магазинов в реестре: **330**. Обход заходит в **310**, полку отдают **254**.
+Работающих магазинов в реестре: **330**. Обход заходит в **310**, полку отдают **262**.
 
 Этот файл собирается скриптом `scripts/menu-endpoints-wanted.py` по последнему прогону — правит его не рука, а следующий запуск.
 
@@ -29,12 +29,11 @@
 
 Проверить перед коммитом: `python scripts/validate-menu-endpoints.py`.
 
-## Пусто — 56
+## Пусто — 48
 
 | Магазин | Город | Сайт | Почему пусто |
 |---|---|---|---|
 | Astoria Bud Boutique | Astoria | https://astoriabudboutique.com | страница не открылась |
-| The Bridge A Cannabis Experience | Astoria | https://thebridgecannabis.com | ссылку на меню не нашли |
 | Canna Buddha Corp | Bayside | https://cannabuddha.us | страница вернула ноль товаров |
 | Weed Mart By New Metro | Bayside | https://newmetro.club | страница вернула ноль товаров |
 | Conbud | Bronx | https://www.conbudbx.com | страница не открылась |
@@ -51,23 +50,18 @@
 | MZDZ Corp | Brooklyn | http://www.coneyislandcannabisny.com | страница не открылась |
 | OTEC | Brooklyn | https://oftheearthcanna.com | страница вернула ноль товаров |
 | PRIME TIME CANNABIS | Brooklyn | https://primetimecannabisnyc.com | страница вернула ноль товаров |
-| Ramon Reyes LLC | Brooklyn | https://happymunkey.com | страница вернула ноль товаров |
 | Rustik 471, LLC | Brooklyn | https://rustiksmokes.com | страница вернула ноль товаров |
 | Tiki Leaves LLC | Brooklyn | http://www.tikileaves.com | ссылку на меню не нашли |
 | Twisted Vibration LLC | Brooklyn | https://twistedvibration.com | ссылку на меню не нашли |
 | Upstate Edge, LLC | Brooklyn | https://ignyteny.com | robots.txt запрещает — **не трогать** |
 | Curaleaf NY, LLC | Forest Hills | https://curaleaf.com | товары есть (6), цветка нет |
-| RAGTIME NEWSTAND AND LOTTO, INC. | Howard Beach | https://www.indoortreez.com | ссылку на меню не нашли |
 | Purple Buds, Inc. | Jackson Heights | https://pbuds.com | страница вернула ноль товаров |
 | Down To Earth Canna Inc | Jamaica | https://sageseed.com | страница не открылась |
 | Dispensary Near Me by Liberty Buds | Little Neck | https://420expressway.com | страница не открылась |
 | MAMBO WELLNESS INC. | Long Island City | https://saintcannabisny.com | ссылку на меню не нашли |
 | CannaBees | Maspeth | https://cannabeesdispensary.com | ссылку на меню не нашли |
-| ZenZest Cannabis Dispensary | New Hyde Park | https://zenzest.com | страница вернула ноль товаров |
 | Blue Forest Farms Dispensary LLC | New York | https://blueforestfarmsdispensary.com | страница не открылась |
-| Charlie Fox | New York | https://www.shopcharliefox.com | ссылку на меню не нашли |
 | Fluent | New York | https://www.etain.com | страница вернула ноль товаров |
-| Good Company | New York | https://goodcompanyshop.com | ссылку на меню не нашли |
 | Green Rise Inc. | New York | https://greenriseny.com | страница не открылась |
 | Hells Kitchen Cannabis Company | New York | https://www.hkcc.nyc | ссылку на меню не нашли |
 | KushKlub NY LLC | New York | https://kushklub.com | страница вернула ноль товаров |
@@ -80,17 +74,27 @@
 | Twinn Leaf LLC | New York | https://twinnleafnyc.com | ссылку на меню не нашли |
 | GreenCup ✳️ | Rego Park | https://greencup.nyc | страница вернула ноль товаров |
 | THE GOAT DISPENSARY | Rego Park | https://www.thegoatdispensary.com | ссылку на меню не нашли |
-| Caurd Wellness LLC | Ridgewood | https://herbarium.la | ссылку на меню не нашли |
 | Hudson Park Agency LLC | Rosedale | https://ourthcshop.com | ссылку на меню не нашли |
 | Green Land Retail LLC | Staten Island | https://greenlandny.com | ссылку на меню не нашли |
 | Studio57NY ✳️ | Staten Island | https://studio57ny.com | страница вернула ноль товаров |
-| ZenZest LLC | Staten Island | https://zenzest.com | страница вернула ноль товаров |
 | RENAISSANT NYC | Sunnyside | https://renaissant.nyc | ссылку на меню не нашли |
 | Fluent | White Plains | https://etainhealth.com/ | страница вернула ноль товаров |
 | Cannabis Group NY, LLC | Whitestone | https://ignyteny.com | robots.txt запрещает — **не трогать** |
 | Budr Cannabis | Yonkers | https://budrcannabis.com | страница вернула ноль товаров |
 
 ✳️ — адрес в `menu-endpoints.json` уже есть, и всё равно пусто: значит записанный адрес больше не тот.
+
+## Полка читается не до конца — 5
+
+Здесь адрес есть и меню отвечает, но отдаёт меньше, чем само объявляет. Листание таким не помогло — им нужен прямой адрес категории.
+
+| Магазин | Держим | Меню объявляет | Сайт |
+|---|---:|---:|---|
+| Gotham Williamsburg | 77 | 81 | https://gotham.nyc |
+| Society House | 87 | 97 | https://www.societyhousebk.com/ |
+| Gotham Bowery | 77 | 81 | https://gotham.nyc/ |
+| Gotham Chelsea | 77 | 81 | https://www.gotham.nyc |
+| Stoops NYC | 74 | 81 | https://stoopsnyc.com |
 
 ## Сюда не ходим
 
