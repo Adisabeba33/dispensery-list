@@ -304,20 +304,6 @@ def product_page(product, source_url):
     return None
 
 
-def clean_description(product):
-    """The menu's own copy: rule 5 evidence, corroboration only, never alone."""
-    raw = flatten(pick(product, "description"))
-    if not isinstance(raw, str):
-        return None
-    text = re.sub(r"<br\s*/?>", " ", raw, flags=re.I)
-    text = re.sub(r"<[^>]+>", " ", text)
-    for entity, char in (("&nbsp;", " "), ("&amp;", "&"), ("&#39;", "'"),
-                         ("&apos;", "'"), ("&quot;", '"')):
-        text = text.replace(entity, char)
-    text = re.sub(r"\s+", " ", text).strip()
-    return text[:2000] if len(text) >= 12 else None
-
-
 def build_listing(product, shop, source_url):
     name = flatten(pick(product, "name"))
     if not name:
@@ -395,7 +381,8 @@ def build_listing(product, shop, source_url):
         "inStock": in_stock,
         "availableSizesGrams": sorted(set(sizes)) or None,
         "productUrl": product_page(product, source_url),
-        "description": clean_description(product),
+        # Menu copy is the brand's or the shop's writing, not a fact: never kept.
+        "description": None,
         "sources": [{"url": source_url, "label": "Shop menu", "type": "MENU_PLATFORM", "retrievedAt": NOW}],
         "warnings": [],
     }

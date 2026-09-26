@@ -3304,34 +3304,6 @@ const productPage = (p, sourceUrl) => {
   return null;
 };
 
-/* The menu's own words about the product.
- *
- * Rule 5 in the source hierarchy — written to sell, corroboration only, never
- * a lone source for anything. It earns its place anyway: menu copy routinely
- * states parentage ("a Gelato x Sherb cross") and sensory notes for cultivars
- * no aggregator covers, and it costs nothing to capture at collection time.
- *
- * Stored close to verbatim: tags stripped and whitespace collapsed so it is
- * readable, but no summarising, because a curator has to see what the shop
- * actually claimed. Capped so one shop's essay cannot dominate the file. */
-const cleanDescription = (p) => {
-  const raw = flatten(
-    pick(p, ['description', 'productDescription', 'longDescription', 'shortDescription',
-             'details', 'body', 'summary', 'about']),
-  );
-  if (!raw || typeof raw !== 'string') return null;
-  const text = raw
-    .replace(/<br\s*\/?>/gi, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&nbsp;/gi, ' ')
-    .replace(/&amp;/gi, '&')
-    .replace(/&#39;|&apos;/gi, "'")
-    .replace(/&quot;/gi, '"')
-    .replace(/\s+/g, ' ')
-    .trim();
-  return text.length >= 12 ? text.slice(0, 2000) : null;
-};
-
 const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const rawName = flatten(pick(p, ['name', 'productName', 'title', 'displayName']));
   if (!rawName) return null;
@@ -3503,7 +3475,11 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
           : Boolean(stock),
     availableSizesGrams: sizes.length ? [...new Set(sizes)].sort((a, b) => a - b) : null,
     productUrl: productPage(p, sourceUrl),
-    description: cleanDescription(p),
+    /* The menu's own words are not kept. They are the brand's or the shop's
+       writing, not facts, and nothing here reads them — they only sat in the
+       published shelf files. Name, brand, potency, weight and stock are the
+       facts, and the facts are what the directory publishes. */
+    description: null,
     sources: [{ url: sourceUrl, label: 'Shop menu', type: 'MENU_PLATFORM', retrievedAt: NOW }],
     warnings: [],
   };
@@ -4736,6 +4712,9 @@ const main = async () => {
 
   mkdirSync(resolve(ROOT, 'enrichment-output'), { recursive: true });
   writeFileSync(resolve(ROOT, 'enrichment-output/menu-summary.json'), JSON.stringify(summary, null, 2) + '\n');
+  /* Shelves carried forward from earlier runs still hold the copy captured
+     before it stopped being kept; it goes with the next write. */
+  for (const row of merged) row.description = null;
   writeFileSync(listingsPath, JSON.stringify(merged, null, 2) + '\n');
   console.log(`\nWrote ${merged.length} listings`);
 };

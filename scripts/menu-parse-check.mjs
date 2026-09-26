@@ -296,12 +296,8 @@ check('junk url refused', withUrl('javascript:void(0)')?.productUrl, null);
 check('missing url stays null', toListing({ Name: 'X', type: 'Flower', Options: ['3.5g'] }, shop, SRC, {})?.productUrl, null);
 
 const withDesc = (v) => toListing({ Name: 'Blue Burst', type: 'Flower', Options: ['3.5g'], description: v }, shop, SRC, {});
-check('menu copy kept, tags stripped',
-  withDesc('<p>A <b>Gelato</b> x Sherb cross, sweet citrus.</p>')?.description,
-  'A Gelato x Sherb cross, sweet citrus.');
-check('entities decoded', withDesc('Sweet &amp; loud, the grower&#39;s pick')?.description, "Sweet & loud, the grower's pick");
-// Rule 5 evidence is only worth keeping when there is a sentence to read.
-check('too short to be copy', withDesc('Nice')?.description, null);
+// The menu's own copy is somebody else's writing, not a fact: never kept.
+check('menu copy is not kept', withDesc('<p>A <b>Gelato</b> x Sherb cross, sweet citrus.</p>')?.description, null);
 check('missing copy stays null', toListing({ Name: 'X', type: 'Flower', Options: ['3.5g'] }, shop, SRC, {})?.description, null);
 
 /* --------------------------------------------- one product per weight ----
