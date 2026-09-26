@@ -3304,6 +3304,27 @@ const productPage = (p, sourceUrl) => {
   return null;
 };
 
+/* The lab's certificate for this batch, where the menu links it: Cannabis
+   Realm's "Download COA" is `coa`, a PDF per batch; Dutchie keeps a slot for it
+   under POSMetaData. Only an absolute address is kept — the certificate is the
+   lab's document, and we point at it rather than copy it. */
+const coaUrlOf = (p) => {
+  const candidates = [
+    pick(p, ['coa', 'coaUrl', 'coaLink', 'certificateOfAnalysisUrl', 'labResultUrl', 'labResultsUrl', 'canonicalLabResultUrl']),
+    pick(pick(p, ['POSMetaData']), ['canonicalLabResultUrl']),
+  ];
+  for (const c of candidates) {
+    const value = flatten(c);
+    if (typeof value !== 'string' || value.length > 500 || !/^https?:\/\//i.test(value.trim())) continue;
+    try {
+      return new URL(value.trim()).toString();
+    } catch {
+      /* not an address after all */
+    }
+  }
+  return null;
+};
+
 const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const rawName = flatten(pick(p, ['name', 'productName', 'title', 'displayName']));
   if (!rawName) return null;
@@ -3338,6 +3359,41 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
         percent: amount,
       });
     }
+  }
+
+  /* Dispense's Alleaves menus — Cannabis Realm's — leave the `terpenes` array
+     empty and keep the panel as flat numbers on `labs`: alphaPinene 0.17,
+     betaCaryophyllene 0.15. The same numbers the shop's own page draws as bars.
+     Only a key that names a compound we know is read, and only in percent; a
+     key we do not recognise is left alone rather than guessed at. */
+  if (!profile.some((t) => t.percent !== null)) {
+    const labs = pick(p, ['labs']);
+    if (labs && typeof labs === 'object' && !Array.isArray(labs)) {
+      const fromLabs = new Map();
+      for (const [key, value] of Object.entries(labs)) {
+        const mapped = TERPENES[key.toLowerCase().replace(/[^a-z]/g, '')];
+        if (!mapped || fromLabs.has(mapped)) continue;
+        const unit = labs[`${key}ContentUnit`];
+        if (unit !== null && unit !== undefined && String(unit).trim() !== '%') continue;
+        const amount = inRange(num(value), 20);
+        if (!amount) continue;
+        rawTerpNames[key] = (rawTerpNames[key] ?? 0) + 1;
+        fromLabs.set(mapped, { name: mapped, rawName: null, percent: amount });
+      }
+      if (fromLabs.size) profile.splice(0, profile.length, ...fromLabs.values());
+    }
+  }
+  /* The sum, where the menu states only that: Dutchie writes it as
+     { unit: "PERCENTAGE", range: [0.87] }. */
+  if (totalPercent === null) {
+    const stated = pick(p, ['totalTerpenes', 'totalTerpenesPercent', 'terpeneTotal']);
+    const unit = stated && typeof stated === 'object' ? flatten(pick(stated, ['unit'])) : null;
+    const inPercent = unit === null || /^(%|percent|percentage)$/i.test(String(unit).trim());
+    const figure = stated && typeof stated === 'object'
+      ? num(Array.isArray(stated.range) ? stated.range[0] : pick(stated, ['value']))
+      : num(stated);
+    const amount = inPercent ? inRange(figure, 20) : null;
+    if (amount) totalPercent = amount;
   }
 
   /* A bare number is not a weight. Reading `value` and `size` as grams put
@@ -3461,7 +3517,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
       totalPercent,
       labName: null,
       testedOn: null,
-      coaUrl: null,
+      coaUrl: coaUrlOf(p),
       referenceStrain: null,
     },
     harvestedOn: menuDate(pick(p, ['harvestedOn', 'harvestDate', 'harvestedAt', 'harvest_date', 'harvestedOnDate', 'dateHarvested'])),

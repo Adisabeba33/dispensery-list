@@ -295,6 +295,33 @@ check('bare slug refused', withUrl('blue-burst')?.productUrl, null);
 check('junk url refused', withUrl('javascript:void(0)')?.productUrl, null);
 check('missing url stays null', toListing({ Name: 'X', type: 'Flower', Options: ['3.5g'] }, shop, SRC, {})?.productUrl, null);
 
+/* Cannabis Realm's menu leaves `terpenes` empty and keeps the panel as flat
+   numbers on `labs`, with its certificate under `coa`; Dutchie states only the
+   sum, as { unit, range }. */
+{
+  const realm = toListing({
+    name: '6 Point Cannabis - 6 Cake (Indoor) - 3.5g', productCategoryName: 'Flower', weightInGrams: 3.5,
+    terpenes: [],
+    labs: {
+      terpenes: ['alphapinene', 'betacaryophyllene'], potency: 'STRONG',
+      alphaPinene: 0.17, betaCaryophyllene: 0.15, terpinolene: null, terpinoleneContentUnit: null,
+      betaEudesmol: 0.05, thc: 25.1, thcContentUnit: '%',
+    },
+    coa: 'https://app.alleaves.com/api/inventory/batch/buddega/coa/18766.pdf',
+  }, shop, SRC, {});
+  check('lab terpenes read from labs', realm?.terpenes.profile.map((t) => [t.name, t.percent]),
+    [['PINENE_ALPHA', 0.17], ['CARYOPHYLLENE', 0.15]]);
+  check('a compound we do not know is not guessed', realm?.terpenes.profile.some((t) => t.name === 'OTHER'), false);
+  check('the certificate is linked', realm?.terpenes.coaUrl, 'https://app.alleaves.com/api/inventory/batch/buddega/coa/18766.pdf');
+  const dutchie = toListing({
+    Name: 'Amnesia Haze', type: 'Flower', Options: ['3.5g'],
+    totalTerpenes: { unit: 'PERCENTAGE', range: [0.87] },
+    POSMetaData: { canonicalLabResultUrl: null },
+  }, shop, SRC, {});
+  check('the stated terpene total is read', dutchie?.terpenes.totalPercent, 0.87);
+  check('no certificate stays null', dutchie?.terpenes.coaUrl, null);
+}
+
 const withDesc = (v) => toListing({ Name: 'Blue Burst', type: 'Flower', Options: ['3.5g'], description: v }, shop, SRC, {});
 // The menu's own copy is somebody else's writing, not a fact: never kept.
 check('menu copy is not kept', withDesc('<p>A <b>Gelato</b> x Sherb cross, sweet citrus.</p>')?.description, null);
