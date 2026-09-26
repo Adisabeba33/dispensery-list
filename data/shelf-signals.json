@@ -15,13 +15,12 @@
    "strain": "Blue Lobster",
    "first": "2026-09-22",
    "today": 1,
-   "shelves": 6,
+   "shelves": 5,
    "shops": [
     "OCM-CAURD-24-000064",
     "OCM-CAURD-24-000114",
     "OCM-CAURD-24-000129",
     "OCM-CAURD-26-000334",
-    "OCM-RETL-24-000041",
     "OCM-RETL-25-000379"
    ],
    "now": 49
@@ -81,23 +80,6 @@
     "OCM-CAURD-26-000349",
     "OCM-RETL-24-000088",
     "OCM-RETL-24-000175"
-   ],
-   "now": 32
-  },
-  {
-   "brand": "Boukét",
-   "strain": "Sky Fire OG",
-   "first": "2026-09-22",
-   "today": 1,
-   "shelves": 4,
-   "shops": [
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000094",
-    "OCM-CAURD-24-000114",
-    "OCM-CAURD-25-000271",
-    "OCM-CAURD-25-000282",
-    "OCM-CAURD-25-000287",
-    "OCM-RETL-24-000114"
    ],
    "now": 32
   },
@@ -202,6 +184,19 @@
    "now": 7
   },
   {
+   "brand": "Find",
+   "strain": "Agent Z",
+   "first": "2026-09-22",
+   "today": 2,
+   "shelves": 3,
+   "shops": [
+    "OCM-CAURD-24-000051",
+    "OCM-CAURD-24-000064",
+    "OCM-CAURD-25-000241"
+   ],
+   "now": 53
+  },
+  {
    "brand": "Grassroots",
    "strain": "Orange Z",
    "first": "2026-09-19",
@@ -228,6 +223,19 @@
    "now": 33
   },
   {
+   "brand": "Kings & Queens",
+   "strain": "Neon Flamingo",
+   "first": "2026-09-19",
+   "today": 0,
+   "shelves": 3,
+   "shops": [
+    "OCM-CAURD-24-000105",
+    "OCM-CAURD-24-000222",
+    "OCM-RETL-24-000144"
+   ],
+   "now": 31
+  },
+  {
    "brand": "Rythm",
    "strain": "Animal Face",
    "first": "2026-09-20",
@@ -239,32 +247,6 @@
     "OCM-CAURD-24-000166"
    ],
    "now": 31
-  },
-  {
-   "brand": "Revert",
-   "strain": "FORBIDDEN KUSH",
-   "first": "2026-09-20",
-   "today": 0,
-   "shelves": 3,
-   "shops": [
-    "OCM-CAURD-24-000185",
-    "OCM-CAURD-25-000288",
-    "OCM-RETL-24-000175"
-   ],
-   "now": 31
-  },
-  {
-   "brand": "Connected Cannabis",
-   "strain": "Tropical Z",
-   "first": "2026-09-21",
-   "today": 1,
-   "shelves": 3,
-   "shops": [
-    "OCM-CAURD-24-000129",
-    "OCM-CAURD-25-000281",
-    "OCM-RETL-25-000318"
-   ],
-   "now": 30
   },
   {
    "brand": "Revert",
@@ -295,6 +277,19 @@
    "now": 27
   },
   {
+   "brand": "5 Boro",
+   "strain": "Cereal Milk",
+   "first": "2026-09-22",
+   "today": 1,
+   "shelves": 3,
+   "shops": [
+    "OCM-CAURD-24-000051",
+    "OCM-CAURD-25-000297",
+    "OCM-RETL-25-000306"
+   ],
+   "now": 27
+  },
+  {
    "brand": "Revert Cannabis",
    "strain": "Pineapple Haze",
    "first": "2026-09-20",
@@ -304,23 +299,6 @@
     "OCM-CAURD-24-000140",
     "OCM-CAURD-25-000288",
     "OCM-RETL-24-000175"
-   ],
-   "now": 26
-  },
-  {
-   "brand": "Dark Heart",
-   "strain": "Titan Express",
-   "first": "2026-09-23",
-   "today": 1,
-   "shelves": 3,
-   "shops": [
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000064",
-    "OCM-CAURD-24-000222",
-    "OCM-CAURD-25-000271",
-    "OCM-CAURD-25-000282",
-    "OCM-CAURD-25-000287",
-    "OCM-RETL-24-000114"
    ],
    "now": 26
   },
@@ -509,6 +487,32 @@
    "now": 11
   },
   {
+   "brand": "Bouket",
+   "strain": "Pinefire",
+   "first": "2026-09-19",
+   "today": 0,
+   "shelves": 3,
+   "shops": [
+    "OCM-CAURD-24-000073",
+    "OCM-CAURD-24-000105",
+    "OCM-RETL-24-000120"
+   ],
+   "now": 11
+  },
+  {
+   "brand": "1937",
+   "strain": "Sour Power",
+   "first": "2026-09-19",
+   "today": 1,
+   "shelves": 3,
+   "shops": [
+    "OCM-CAURD-24-000094",
+    "OCM-CAURD-24-000105",
+    "OCM-CAURD-25-000301"
+   ],
+   "now": 11
+  },
+  {
    "brand": "Find.",
    "strain": "B.A.M",
    "first": "2026-09-23",
@@ -600,6 +604,19 @@
    "now": 9
   },
   {
+   "brand": "Mini MART",
+   "strain": "Black Jack",
+   "first": "2026-09-22",
+   "today": 2,
+   "shelves": 3,
+   "shops": [
+    "OCM-CAURD-23-000038",
+    "OCM-CAURD-24-000119",
+    "OCM-RETL-25-000295"
+   ],
+   "now": 9
+  },
+  {
    "brand": "Herb",
    "strain": "Lemon Kush",
    "first": "2026-09-22",
@@ -609,6 +626,19 @@
     "OCM-CAURD-24-000104",
     "OCM-CAURD-24-000129",
     "OCM-CAURD-25-000308"
+   ],
+   "now": 9
+  },
+  {
+   "brand": "Mini MART",
+   "strain": "Vanilla Kush",
+   "first": "2026-09-23",
+   "today": 2,
+   "shelves": 3,
+   "shops": [
+    "OCM-CAURD-23-000038",
+    "OCM-RETL-24-000020",
+    "OCM-RETL-25-000295"
    ],
    "now": 9
   },
@@ -730,31 +760,6 @@
    "now": 5
   },
   {
-   "brand": "Strain Kings",
-   "strain": "Pineapple Frost",
-   "first": "2026-09-23",
-   "today": 0,
-   "shelves": 3,
-   "shops": [
-    "OCM-CAURD-25-000281",
-    "OCM-CAURD-26-000334",
-    "OCM-RETL-25-000379"
-   ],
-   "now": 4
-  },
-  {
-   "brand": "Find",
-   "strain": "Agent Z",
-   "first": "2026-09-24",
-   "today": 2,
-   "shelves": 2,
-   "shops": [
-    "OCM-CAURD-24-000064",
-    "OCM-CAURD-25-000241"
-   ],
-   "now": 53
-  },
-  {
    "brand": "Florist Farms",
    "strain": "La Bomba",
    "first": "2026-09-19",
@@ -827,22 +832,6 @@
    "now": 40
   },
   {
-   "brand": "Back Home Cannabis",
-   "strain": "Acapulco Gold",
-   "first": "2026-09-23",
-   "today": 0,
-   "shelves": 2,
-   "shops": [
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000222",
-    "OCM-CAURD-25-000271",
-    "OCM-CAURD-25-000282",
-    "OCM-CAURD-25-000287",
-    "OCM-RETL-24-000114"
-   ],
-   "now": 39
-  },
-  {
    "brand": "Back Home Cannabis Co.",
    "strain": "Gorilla Glue",
    "first": "2026-09-23",
@@ -867,20 +856,40 @@
    "now": 34
   },
   {
-   "brand": "Kings & Queens",
-   "strain": "Neon Flamingo",
-   "first": "2026-09-23",
+   "brand": "Bouket",
+   "strain": "Sky Fire OG",
+   "first": "2026-09-22",
+   "today": 1,
+   "shelves": 2,
+   "shops": [
+    "OCM-CAURD-24-000094",
+    "OCM-CAURD-24-000114"
+   ],
+   "now": 32
+  },
+  {
+   "brand": "Revert",
+   "strain": "Forbidden Kush",
+   "first": "2026-09-20",
    "today": 0,
    "shelves": 2,
    "shops": [
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000222",
-    "OCM-CAURD-25-000271",
-    "OCM-CAURD-25-000282",
-    "OCM-CAURD-25-000287",
-    "OCM-RETL-24-000114"
+    "OCM-CAURD-25-000288",
+    "OCM-RETL-24-000175"
    ],
    "now": 31
+  },
+  {
+   "brand": "Alien Labs",
+   "strain": "Xeno",
+   "first": "2026-09-19",
+   "today": 0,
+   "shelves": 2,
+   "shops": [
+    "OCM-CAURD-25-000301",
+    "OCM-RETL-24-000144"
+   ],
+   "now": 30
   },
   {
    "brand": "Bouket",
@@ -891,6 +900,18 @@
    "shops": [
     "OCM-CAURD-24-000073",
     "OCM-CAURD-24-000105"
+   ],
+   "now": 30
+  },
+  {
+   "brand": "Connected Cannabis",
+   "strain": "Tropical Z",
+   "first": "2026-09-21",
+   "today": 1,
+   "shelves": 2,
+   "shops": [
+    "OCM-CAURD-24-000129",
+    "OCM-RETL-25-000318"
    ],
    "now": 30
   },
@@ -946,26 +967,38 @@
   {
    "brand": "Leal",
    "strain": "Platinum Lemon Cherry Gelato",
-   "first": "2026-09-22",
+   "first": "2026-09-21",
    "today": 0,
    "shelves": 2,
    "shops": [
-    "OCM-CAURD-26-000339",
+    "OCM-CAURD-26-000335",
     "OCM-RETL-25-000416"
    ],
    "now": 27
   },
   {
-   "brand": "5 Boro",
-   "strain": "Cereal Milk",
+   "brand": "Dark Heart",
+   "strain": "Titan Express",
    "first": "2026-09-23",
    "today": 1,
    "shelves": 2,
    "shops": [
-    "OCM-CAURD-25-000297",
-    "OCM-RETL-25-000306"
+    "OCM-CAURD-24-000064",
+    "OCM-CAURD-24-000222"
    ],
-   "now": 27
+   "now": 26
+  },
+  {
+   "brand": "Bouket",
+   "strain": "Ethanol #33",
+   "first": "2026-09-19",
+   "today": 0,
+   "shelves": 2,
+   "shops": [
+    "OCM-CAURD-24-000073",
+    "OCM-CAURD-24-000105"
+   ],
+   "now": 25
   },
   {
    "brand": "Revert",
@@ -1005,6 +1038,30 @@
    "now": 24
   },
   {
+   "brand": "Grassroots",
+   "strain": "Novarine",
+   "first": "2026-09-19",
+   "today": 0,
+   "shelves": 2,
+   "shops": [
+    "OCM-RETL-24-000093",
+    "OCM-RETL-25-000274"
+   ],
+   "now": 23
+  },
+  {
+   "brand": "Leal",
+   "strain": "Grape Cake",
+   "first": "2026-09-21",
+   "today": 0,
+   "shelves": 2,
+   "shops": [
+    "OCM-CAURD-26-000335",
+    "OCM-RETL-25-000416"
+   ],
+   "now": 23
+  },
+  {
    "brand": "Knack",
    "strain": "Funk Bomb",
    "first": "2026-09-21",
@@ -1013,6 +1070,18 @@
    "shops": [
     "OCM-CAURD-25-000297",
     "OCM-RETL-24-000120"
+   ],
+   "now": 22
+  },
+  {
+   "brand": "Leal",
+   "strain": "Hella Jelly",
+   "first": "2026-09-21",
+   "today": 0,
+   "shelves": 2,
+   "shops": [
+    "OCM-CAURD-26-000335",
+    "OCM-RETL-25-000416"
    ],
    "now": 22
   },
@@ -1039,18 +1108,6 @@
     "OCM-CAURD-25-000291"
    ],
    "now": 22
-  },
-  {
-   "brand": "Revert",
-   "strain": "Ice Cream Cake",
-   "first": "2026-09-19",
-   "today": 0,
-   "shelves": 2,
-   "shops": [
-    "OCM-CAURD-23-000023",
-    "OCM-CAURD-24-000183"
-   ],
-   "now": 21
   },
   {
    "brand": "1937",
@@ -1217,6 +1274,18 @@
    "shops": [
     "OCM-CAURD-24-000064",
     "OCM-RETL-25-000460"
+   ],
+   "now": 16
+  },
+  {
+   "brand": "Kings & Queens",
+   "strain": "Frosted Flakes",
+   "first": "2026-09-23",
+   "today": 1,
+   "shelves": 2,
+   "shops": [
+    "OCM-CAURD-24-000094",
+    "OCM-RETL-25-000438"
    ],
    "now": 16
   },
@@ -1390,18 +1459,6 @@
    "now": 11
   },
   {
-   "brand": "Boukét",
-   "strain": "Pinefire",
-   "first": "2026-09-21",
-   "today": 0,
-   "shelves": 2,
-   "shops": [
-    "OCM-CAURD-24-000073",
-    "OCM-RETL-24-000120"
-   ],
-   "now": 11
-  },
-  {
    "brand": "MilkWeed",
    "strain": "White Zlushie",
    "first": "2026-09-21",
@@ -1410,18 +1467,6 @@
    "shops": [
     "OCM-CAURD-24-000151",
     "OCM-MICR-25-000223"
-   ],
-   "now": 11
-  },
-  {
-   "brand": "1937",
-   "strain": "Sour Power",
-   "first": "2026-09-22",
-   "today": 1,
-   "shelves": 2,
-   "shops": [
-    "OCM-CAURD-24-000094",
-    "OCM-CAURD-25-000301"
    ],
    "now": 11
   },
@@ -1486,18 +1531,6 @@
    "now": 10
   },
   {
-   "brand": "Strain Kings",
-   "strain": "Battle Axe",
-   "first": "2026-09-23",
-   "today": 0,
-   "shelves": 2,
-   "shops": [
-    "OCM-CAURD-25-000281",
-    "OCM-RETL-24-000041"
-   ],
-   "now": 10
-  },
-  {
    "brand": "SP Farms",
    "strain": "Rainbow Gelato",
    "first": "2026-09-23",
@@ -1510,6 +1543,18 @@
    "now": 10
   },
   {
+   "brand": "Fly Weight",
+   "strain": "Blue Nerds",
+   "first": "2026-09-21",
+   "today": 0,
+   "shelves": 2,
+   "shops": [
+    "OCM-CAURD-24-000051",
+    "OCM-CAURD-24-000162"
+   ],
+   "now": 9
+  },
+  {
    "brand": "Hepworth",
    "strain": "Mango Dog X White Runtz",
    "first": "2026-09-21",
@@ -1518,6 +1563,18 @@
    "shops": [
     "OCM-RETL-24-000026",
     "OCM-RETL-24-000103"
+   ],
+   "now": 9
+  },
+  {
+   "brand": "Fly Weight",
+   "strain": "Rainbow Sherbet",
+   "first": "2026-09-21",
+   "today": 0,
+   "shelves": 2,
+   "shops": [
+    "OCM-CAURD-24-000051",
+    "OCM-CAURD-24-000162"
    ],
    "now": 9
   },
@@ -1558,30 +1615,6 @@
    "now": 9
   },
   {
-   "brand": "Mini MART",
-   "strain": "Black Jack",
-   "first": "2026-09-24",
-   "today": 2,
-   "shelves": 2,
-   "shops": [
-    "OCM-CAURD-23-000038",
-    "OCM-RETL-25-000295"
-   ],
-   "now": 9
-  },
-  {
-   "brand": "Mini MART",
-   "strain": "Vanilla Kush",
-   "first": "2026-09-24",
-   "today": 2,
-   "shelves": 2,
-   "shops": [
-    "OCM-CAURD-23-000038",
-    "OCM-RETL-25-000295"
-   ],
-   "now": 9
-  },
-  {
    "brand": "Alchemy Pure",
    "strain": "Grape Bubblegum",
    "first": "2026-09-20",
@@ -1594,14 +1627,26 @@
    "now": 8
   },
   {
-   "brand": "Dank By Definition.",
-   "strain": "Gelato",
-   "first": "2026-09-22",
+   "brand": "Fly Weight",
+   "strain": "Sunset OG",
+   "first": "2026-09-21",
    "today": 0,
    "shelves": 2,
    "shops": [
-    "OCM-CAURD-24-000185",
-    "OCM-RETL-24-000233"
+    "OCM-CAURD-24-000051",
+    "OCM-CAURD-24-000162"
+   ],
+   "now": 8
+  },
+  {
+   "brand": "Mini-Mart",
+   "strain": "Galactic Cookies",
+   "first": "2026-09-22",
+   "today": 1,
+   "shelves": 2,
+   "shops": [
+    "OCM-CAURD-24-000119",
+    "OCM-RETL-25-000295"
    ],
    "now": 8
   },
@@ -1738,6 +1783,18 @@
    "now": 7
   },
   {
+   "brand": "Honest Pharm",
+   "strain": "Peaches & Cream Punch",
+   "first": "2026-09-19",
+   "today": 1,
+   "shelves": 2,
+   "shops": [
+    "OCM-CAURD-24-000105",
+    "OCM-RETL-25-000416"
+   ],
+   "now": 6
+  },
+  {
    "brand": "Boukét",
    "strain": "Chocolate Cosmos",
    "first": "2026-09-21",
@@ -1786,6 +1843,19 @@
    "now": 6
   },
   {
+   "brand": "Smoakland",
+   "strain": "Blackberry Kush",
+   "first": "2026-09-19",
+   "today": 2,
+   "shelves": 2,
+   "shops": [
+    "OCM-RETL-24-000144",
+    "OCM-RETL-25-000319",
+    "OCM-RETL-25-000450"
+   ],
+   "now": 5
+  },
+  {
    "brand": "Dank By Definition.",
    "strain": "Blueberry Muffin",
    "first": "2026-09-21",
@@ -1794,6 +1864,18 @@
    "shops": [
     "OCM-CAURD-24-000112",
     "OCM-RETL-24-000233"
+   ],
+   "now": 5
+  },
+  {
+   "brand": "The Botanist",
+   "strain": "Cherry Bomb",
+   "first": "2026-09-21",
+   "today": 1,
+   "shelves": 2,
+   "shops": [
+    "OCM-CAURD-24-000094",
+    "OCM-RETL-24-000093"
    ],
    "now": 5
   },
@@ -1818,6 +1900,18 @@
    "shops": [
     "OCM-CAURD-23-000042",
     "OCM-RETL-25-000324"
+   ],
+   "now": 4
+  },
+  {
+   "brand": "Strain Kings",
+   "strain": "Pineapple Frost",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 2,
+   "shops": [
+    "OCM-CAURD-26-000334",
+    "OCM-RETL-25-000379"
    ],
    "now": 4
   },
@@ -1978,17 +2072,6 @@
    "now": 2
   },
   {
-   "brand": "Runtz",
-   "strain": "Lemon Candy Runtz",
-   "first": "2026-09-19",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-RETL-25-000418"
-   ],
-   "now": 48
-  },
-  {
    "brand": "Rolling Green Cannabis",
    "strain": "SUB ZERO",
    "first": "2026-09-20",
@@ -2009,6 +2092,17 @@
     "OCM-RETL-25-000416"
    ],
    "now": 40
+  },
+  {
+   "brand": "Back Home Cannabis",
+   "strain": "Acapulco Gold",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000222"
+   ],
+   "now": 39
   },
   {
    "brand": "Boukét",
@@ -2077,6 +2171,28 @@
    "now": 33
   },
   {
+   "brand": "FIND",
+   "strain": "Lemon Creamsicle",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-25-000310"
+   ],
+   "now": 33
+  },
+  {
+   "brand": "Nanticoke",
+   "strain": "Blue Dream",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000207"
+   ],
+   "now": 33
+  },
+  {
    "brand": "Boukét",
    "strain": "Hot Sauce",
    "first": "2026-09-21",
@@ -2110,15 +2226,15 @@
    "now": 30
   },
   {
-   "brand": "Alien Labs",
-   "strain": "Xeno",
-   "first": "2026-09-23",
-   "today": 0,
+   "brand": "Dark Heart",
+   "strain": "Blackened Blue",
+   "first": "2026-09-24",
+   "today": 1,
    "shelves": 1,
    "shops": [
-    "OCM-CAURD-25-000301"
+    "OCM-CAURD-24-000064"
    ],
-   "now": 30
+   "now": 29
   },
   {
    "brand": "Back Home Farm",
@@ -2176,13 +2292,24 @@
    "now": 26
   },
   {
-   "brand": "Boukét",
-   "strain": "Ethanol #33",
-   "first": "2026-09-21",
+   "brand": "Rythm",
+   "strain": "L'Orange",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-23-000038"
+   ],
+   "now": 26
+  },
+  {
+   "brand": "RYTHM",
+   "strain": "Cookies",
+   "first": "2026-09-22",
    "today": 0,
    "shelves": 1,
    "shops": [
-    "OCM-CAURD-24-000073"
+    "OCM-CAURD-24-000140"
    ],
    "now": 25
   },
@@ -2242,13 +2369,13 @@
    "now": 24
   },
   {
-   "brand": "Grassroots",
-   "strain": "Novarine",
+   "brand": "Connected Cannabis",
+   "strain": "Gascotti",
    "first": "2026-09-19",
    "today": 0,
    "shelves": 1,
    "shops": [
-    "OCM-RETL-25-000274"
+    "OCM-RETL-24-000144"
    ],
    "now": 23
   },
@@ -2286,13 +2413,13 @@
    "now": 23
   },
   {
-   "brand": "Leal",
-   "strain": "Grape Cake",
-   "first": "2026-09-22",
+   "brand": "Grocery",
+   "strain": "Motor Cake",
+   "first": "2026-09-23",
    "today": 0,
    "shelves": 1,
    "shops": [
-    "OCM-RETL-25-000416"
+    "OCM-RETL-25-000438"
    ],
    "now": 23
   },
@@ -2319,6 +2446,17 @@
    "now": 23
   },
   {
+   "brand": "Grassroots",
+   "strain": "Fuzzy Navel",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000064"
+   ],
+   "now": 23
+  },
+  {
    "brand": "RYTHM",
    "strain": "Garlic Drip",
    "first": "2026-09-24",
@@ -2326,6 +2464,17 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-24-000233"
+   ],
+   "now": 23
+  },
+  {
+   "brand": "Grassroots",
+   "strain": "Velvet Spritz",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000064"
    ],
    "now": 23
   },
@@ -2341,17 +2490,6 @@
    "now": 22
   },
   {
-   "brand": "Leal",
-   "strain": "Hella Jelly",
-   "first": "2026-09-22",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-RETL-25-000416"
-   ],
-   "now": 22
-  },
-  {
    "brand": "Rythm",
    "strain": "Rose Gold Runtz",
    "first": "2026-09-20",
@@ -2359,6 +2497,17 @@
    "shelves": 1,
    "shops": [
     "OCM-CAURD-24-000063"
+   ],
+   "now": 21
+  },
+  {
+   "brand": "Revert Cannabis",
+   "strain": "Ice Cream Cake",
+   "first": "2026-09-21",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000183"
    ],
    "now": 21
   },
@@ -2451,6 +2600,17 @@
    "now": 20
   },
   {
+   "brand": "Runtz",
+   "strain": "Trump Runtz",
+   "first": "2026-09-22",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000051"
+   ],
+   "now": 20
+  },
+  {
    "brand": "Claybourne Co.",
    "strain": "Durban Poison",
    "first": "2026-09-21",
@@ -2517,17 +2677,6 @@
    "now": 18
   },
   {
-   "brand": "Leal",
-   "strain": "Animal Face",
-   "first": "2026-09-23",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-CAURD-26-000339"
-   ],
-   "now": 18
-  },
-  {
    "brand": "Rolling Green Cannabis",
    "strain": "Bananaconda",
    "first": "2026-09-23",
@@ -2535,6 +2684,17 @@
    "shelves": 1,
    "shops": [
     "OCM-CAURD-24-000151"
+   ],
+   "now": 18
+  },
+  {
+   "brand": "Good Green",
+   "strain": "Sour Diesel",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000166"
    ],
    "now": 18
   },
@@ -2638,6 +2798,28 @@
    "now": 16
   },
   {
+   "brand": "GRASSROOTS",
+   "strain": "Triple Mints",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-25-000295"
+   ],
+   "now": 16
+  },
+  {
+   "brand": "Dark Heart",
+   "strain": "Triple Stack",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000064"
+   ],
+   "now": 16
+  },
+  {
    "brand": "Preferred Gardens",
    "strain": "Gelato",
    "first": "2026-09-20",
@@ -2689,6 +2871,17 @@
    "shelves": 1,
    "shops": [
     "OCM-CAURD-24-000077"
+   ],
+   "now": 15
+  },
+  {
+   "brand": "Florist Farms",
+   "strain": "King Sherb",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000051"
    ],
    "now": 15
   },
@@ -2792,15 +2985,26 @@
    "now": 14
   },
   {
-   "brand": "Papa's Herb",
-   "strain": "Hella Jelly",
-   "first": "2026-09-19",
-   "today": 0,
+   "brand": "Connected Cannabis",
+   "strain": "Biscotti",
+   "first": "2026-09-24",
+   "today": 1,
    "shelves": 1,
    "shops": [
-    "OCM-RETL-25-000418"
+    "OCM-CAURD-24-000104"
    ],
-   "now": 13
+   "now": 14
+  },
+  {
+   "brand": "Dark Heart",
+   "strain": "Zesty Garlic Cookies",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000064"
+   ],
+   "now": 14
   },
   {
    "brand": "Knack",
@@ -2858,6 +3062,17 @@
    "now": 13
   },
   {
+   "brand": "Honest Pharm Co",
+   "strain": "Peanut Butter Muffin",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000026"
+   ],
+   "now": 13
+  },
+  {
    "brand": "Rolling Green Cannabis",
    "strain": "STRAWBERRY FIZZ",
    "first": "2026-09-20",
@@ -2880,17 +3095,6 @@
    "now": 12
   },
   {
-   "brand": "Alien Labs",
-   "strain": "Cosmic Cereal",
-   "first": "2026-09-23",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-RETL-24-000041"
-   ],
-   "now": 12
-  },
-  {
    "brand": "Ghost",
    "strain": "PB Cookies",
    "first": "2026-09-23",
@@ -2898,6 +3102,28 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-25-000383"
+   ],
+   "now": 12
+  },
+  {
+   "brand": "Kings & Queens",
+   "strain": "Blueberry Sugar",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000094"
+   ],
+   "now": 12
+  },
+  {
+   "brand": "1937",
+   "strain": "Cinderella",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000094"
    ],
    "now": 12
   },
@@ -2935,17 +3161,6 @@
    "now": 11
   },
   {
-   "brand": "Bouket",
-   "strain": "Pineapple Kush",
-   "first": "2026-09-20",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-CAURD-24-000071"
-   ],
-   "now": 11
-  },
-  {
    "brand": "Electraleaf NY",
    "strain": "Alien OG",
    "first": "2026-09-21",
@@ -2964,17 +3179,6 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-25-000383"
-   ],
-   "now": 11
-  },
-  {
-   "brand": "Preferred Gardens",
-   "strain": "D-Lish",
-   "first": "2026-09-22",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-CAURD-24-000057"
    ],
    "now": 11
   },
@@ -3068,28 +3272,6 @@
    "now": 10
   },
   {
-   "brand": "The Plug Pack",
-   "strain": "Lychee Dream",
-   "first": "2026-09-19",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-CAURD-26-000350"
-   ],
-   "now": 10
-  },
-  {
-   "brand": "Rolling Green",
-   "strain": "Perm Li Hi",
-   "first": "2026-09-19",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-CAURD-24-000071"
-   ],
-   "now": 10
-  },
-  {
    "brand": "VOP",
    "strain": "Super Runtz x Sherbanger",
    "first": "2026-09-19",
@@ -3157,13 +3339,24 @@
    "now": 10
   },
   {
-   "brand": "Fly Weight",
-   "strain": "Blue Nerds",
-   "first": "2026-09-21",
+   "brand": "Lion Order",
+   "strain": "Orangutan",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-25-000416"
+   ],
+   "now": 10
+  },
+  {
+   "brand": "Alien Labs",
+   "strain": "Kryptochronic",
+   "first": "2026-09-19",
    "today": 0,
    "shelves": 1,
    "shops": [
-    "OCM-CAURD-24-000162"
+    "OCM-RETL-24-000144"
    ],
    "now": 9
   },
@@ -3201,17 +3394,6 @@
    "now": 9
   },
   {
-   "brand": "Fly Weight",
-   "strain": "Rainbow Sherbet",
-   "first": "2026-09-21",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-CAURD-24-000162"
-   ],
-   "now": 9
-  },
-  {
    "brand": "To The Moon",
    "strain": "Sour Og",
    "first": "2026-09-21",
@@ -3219,6 +3401,17 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-24-000170"
+   ],
+   "now": 9
+  },
+  {
+   "brand": "Kings & Queens",
+   "strain": "Gary Payton",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000048"
    ],
    "now": 9
   },
@@ -3256,6 +3449,28 @@
    "now": 9
   },
   {
+   "brand": "Florist Farms",
+   "strain": "Tropicana Cookies",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-25-000310"
+   ],
+   "now": 9
+  },
+  {
+   "brand": "Left Coast",
+   "strain": "Cap Junky",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-23-000038"
+   ],
+   "now": 9
+  },
+  {
    "brand": "Botanist",
    "strain": "Millionaire",
    "first": "2026-09-24",
@@ -3278,6 +3493,17 @@
    "now": 9
   },
   {
+   "brand": "Connected Cannabis",
+   "strain": "Gelato 41",
+   "first": "2026-09-19",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000144"
+   ],
+   "now": 8
+  },
+  {
    "brand": "Edie Parker",
    "strain": "Ice Cream Mintz",
    "first": "2026-09-19",
@@ -3285,17 +3511,6 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-25-000403"
-   ],
-   "now": 8
-  },
-  {
-   "brand": "Alpine Agronomy",
-   "strain": "Lituya Bay",
-   "first": "2026-09-19",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-RETL-25-000339"
    ],
    "now": 8
   },
@@ -3318,28 +3533,6 @@
    "shelves": 1,
    "shops": [
     "OCM-CAURD-24-000162"
-   ],
-   "now": 8
-  },
-  {
-   "brand": "Fly Weight",
-   "strain": "Sunset OG",
-   "first": "2026-09-21",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-CAURD-24-000162"
-   ],
-   "now": 8
-  },
-  {
-   "brand": "budd",
-   "strain": "Blue Dream",
-   "first": "2026-09-22",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-RETL-24-000154"
    ],
    "now": 8
   },
@@ -3388,6 +3581,17 @@
    "now": 8
   },
   {
+   "brand": "Dank By Definition.",
+   "strain": "Gelato",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000233"
+   ],
+   "now": 8
+  },
+  {
    "brand": "Grassroots",
    "strain": "RASPBERRY TURNOVER",
    "first": "2026-09-23",
@@ -3428,17 +3632,6 @@
    "shelves": 1,
    "shops": [
     "OCM-CAURD-24-000205"
-   ],
-   "now": 8
-  },
-  {
-   "brand": "MINI MART",
-   "strain": "Galactic Cookies",
-   "first": "2026-09-24",
-   "today": 1,
-   "shelves": 1,
-   "shops": [
-    "OCM-RETL-25-000295"
    ],
    "now": 8
   },
@@ -3653,6 +3846,17 @@
    "now": 7
   },
   {
+   "brand": "Grams",
+   "strain": "Vanilla Coke",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-23-000042"
+   ],
+   "now": 7
+  },
+  {
    "brand": "Banzzy 1305",
    "strain": "8th Ave",
    "first": "2026-09-19",
@@ -3842,6 +4046,17 @@
    "now": 6
   },
   {
+   "brand": "Kings & Queens",
+   "strain": "Creme Brulee",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000094"
+   ],
+   "now": 6
+  },
+  {
    "brand": "REDO",
    "strain": "D'Evils Sour Diesel",
    "first": "2026-09-24",
@@ -3849,6 +4064,17 @@
    "shelves": 1,
    "shops": [
     "OCM-CAURD-25-000301"
+   ],
+   "now": 6
+  },
+  {
+   "brand": "Honest Pharm Co",
+   "strain": "Double Runtz",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-25-000416"
    ],
    "now": 6
   },
@@ -3873,6 +4099,17 @@
     "OCM-RETL-25-000416"
    ],
    "now": 6
+  },
+  {
+   "brand": "1937",
+   "strain": "Lemon Head",
+   "first": "2026-09-19",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000105"
+   ],
+   "now": 5
   },
   {
    "brand": "Claybourne Co.",
@@ -3952,6 +4189,17 @@
    "now": 5
   },
   {
+   "brand": "Ghost",
+   "strain": "Mr. E",
+   "first": "2026-09-21",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-26-000335"
+   ],
+   "now": 5
+  },
+  {
    "brand": "MINTZ",
    "strain": "Blackberry Kush",
    "first": "2026-09-22",
@@ -3996,28 +4244,6 @@
    "now": 5
   },
   {
-   "brand": "Hurley Grown",
-   "strain": "Lemon Cherry Gelato",
-   "first": "2026-09-22",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-CAURD-24-000057"
-   ],
-   "now": 5
-  },
-  {
-   "brand": "budd",
-   "strain": "Lemon Cherry Gelato",
-   "first": "2026-09-22",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-RETL-24-000154"
-   ],
-   "now": 5
-  },
-  {
    "brand": "MINTZ",
    "strain": "Push Pop",
    "first": "2026-09-22",
@@ -4047,17 +4273,6 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-24-000051"
-   ],
-   "now": 5
-  },
-  {
-   "brand": "Dank By Definition.",
-   "strain": "WEDDING CAKE",
-   "first": "2026-09-22",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-CAURD-24-000185"
    ],
    "now": 5
   },
@@ -4117,14 +4332,13 @@
    "now": 5
   },
   {
-   "brand": "Smoakland",
-   "strain": "Blackberry Kush",
+   "brand": "PUFF",
+   "strain": "Animal Mints",
    "first": "2026-09-24",
-   "today": 2,
+   "today": 1,
    "shelves": 1,
    "shops": [
-    "OCM-RETL-25-000319",
-    "OCM-RETL-25-000450"
+    "OCM-RETL-25-000324"
    ],
    "now": 5
   },
@@ -4136,17 +4350,6 @@
    "shelves": 1,
    "shops": [
     "OCM-CAURD-24-000129"
-   ],
-   "now": 5
-  },
-  {
-   "brand": "The Botanist",
-   "strain": "Cherry Bomb",
-   "first": "2026-09-24",
-   "today": 1,
-   "shelves": 1,
-   "shops": [
-    "OCM-CAURD-24-000094"
    ],
    "now": 5
   },
@@ -4202,6 +4405,17 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-25-000416"
+   ],
+   "now": 5
+  },
+  {
+   "brand": "Grams",
+   "strain": "Orange Tiki Cream",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-23-000042"
    ],
    "now": 5
   },
@@ -4371,6 +4585,17 @@
    "now": 4
   },
   {
+   "brand": "Pacha",
+   "strain": "Bushwick Burger",
+   "first": "2026-09-22",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-MICR-24-000204"
+   ],
+   "now": 4
+  },
+  {
    "brand": "7 SEAZ",
    "strain": "Caviar Kush",
    "first": "2026-09-22",
@@ -4426,17 +4651,6 @@
    "now": 4
   },
   {
-   "brand": "Banzzy 1305",
-   "strain": "Dark Secrets",
-   "first": "2026-09-23",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-CAURD-25-000281"
-   ],
-   "now": 4
-  },
-  {
    "brand": "Ruby Farms",
    "strain": "Jack Herer - 1/8th",
    "first": "2026-09-23",
@@ -4444,6 +4658,17 @@
    "shelves": 1,
    "shops": [
     "OCM-CAURD-25-000312"
+   ],
+   "now": 4
+  },
+  {
+   "brand": "BOUKET",
+   "strain": "Low Orbit",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000120"
    ],
    "now": 4
   },
@@ -4691,17 +4916,6 @@
    "now": 3
   },
   {
-   "brand": "Rolling Green Cannabis",
-   "strain": "Strawberry Fizz - Standard",
-   "first": "2026-09-22",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-CAURD-24-000057"
-   ],
-   "now": 3
-  },
-  {
    "brand": "PUFF Pre-Rolls",
    "strain": "Animal Mints",
    "first": "2026-09-23",
@@ -4808,6 +5022,17 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-24-000233"
+   ],
+   "now": 3
+  },
+  {
+   "brand": "Grams",
+   "strain": "Alien Probe",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-23-000042"
    ],
    "now": 3
   },
@@ -4956,6 +5181,17 @@
    "now": 3
   },
   {
+   "brand": null,
+   "strain": "Sour Diesel",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-25-000324"
+   ],
+   "now": 3
+  },
+  {
    "brand": "mini mart",
    "strain": "Flower Dosido",
    "first": "2026-09-19",
@@ -4975,6 +5211,17 @@
    "shops": [
     "OCM-CAURD-24-000102",
     "OCM-CAURD-26-000330"
+   ],
+   "now": 2
+  },
+  {
+   "brand": "Pot & Head",
+   "strain": "Garlic Butter",
+   "first": "2026-09-19",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000105"
    ],
    "now": 2
   },
@@ -5111,6 +5358,17 @@
    "now": 2
   },
   {
+   "brand": "Grocery",
+   "strain": "Aisle Flower - Dosido",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000124"
+   ],
+   "now": 2
+  },
+  {
    "brand": "Cheevo",
    "strain": "Cheddar Cheeze",
    "first": "2026-09-23",
@@ -5155,6 +5413,17 @@
    "now": 2
   },
   {
+   "brand": "mini mart",
+   "strain": "Flower SinMint Cookies",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000124"
+   ],
+   "now": 2
+  },
+  {
    "brand": "Old Pal",
    "strain": "Golden Tangie",
    "first": "2026-09-23",
@@ -5177,6 +5446,17 @@
    "now": 2
   },
   {
+   "brand": "Dank By Definition.",
+   "strain": "Melon Haze",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000166"
+   ],
+   "now": 2
+  },
+  {
    "brand": "matter.",
    "strain": "Permanent Cherries",
    "first": "2026-09-23",
@@ -5184,6 +5464,17 @@
    "shelves": 1,
    "shops": [
     "OCM-CAURD-23-000030"
+   ],
+   "now": 2
+  },
+  {
+   "brand": "Rolling Green",
+   "strain": "WCream Cookiez",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-25-000310"
    ],
    "now": 2
   },
@@ -5199,6 +5490,17 @@
    "now": 2
   },
   {
+   "brand": "ZIPS OG",
+   "strain": "Chem Cookies",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000104"
+   ],
+   "now": 2
+  },
+  {
    "brand": "Grams",
    "strain": "Cool Ranch Mintz",
    "first": "2026-09-24",
@@ -5206,6 +5508,17 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-24-000170"
+   ],
+   "now": 2
+  },
+  {
+   "brand": "Rythm",
+   "strain": "EverCrisp",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-23-000038"
    ],
    "now": 2
   },
@@ -5243,6 +5556,17 @@
    "now": 2
   },
   {
+   "brand": "PUFF",
+   "strain": "LCG",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-25-000324"
+   ],
+   "now": 2
+  },
+  {
    "brand": "The Botanist",
    "strain": "Lemon Skunk",
    "first": "2026-09-24",
@@ -5276,6 +5600,17 @@
    "now": 2
   },
   {
+   "brand": "ZIPS OG",
+   "strain": "Northern Lights",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000104"
+   ],
+   "now": 2
+  },
+  {
    "brand": "SP Farms",
    "strain": "Pineapple Ghost",
    "first": "2026-09-24",
@@ -5298,6 +5633,17 @@
    "now": 2
   },
   {
+   "brand": "ZIPS OG",
+   "strain": "White Fire OG",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000104"
+   ],
+   "now": 2
+  },
+  {
    "brand": null,
    "strain": "1937 Mixed Bud",
    "first": "2026-09-19",
@@ -5316,6 +5662,17 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-24-000260"
+   ],
+   "now": 1
+  },
+  {
+   "brand": "1937",
+   "strain": "ChemD x I95 - F",
+   "first": "2026-09-19",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000105"
    ],
    "now": 1
   },
@@ -5386,6 +5743,17 @@
    "now": 1
   },
   {
+   "brand": "Kings & Queens",
+   "strain": "Kingdom OG - F08B",
+   "first": "2026-09-19",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000105"
+   ],
+   "now": 1
+  },
+  {
    "brand": null,
    "strain": "LA Confidential",
    "first": "2026-09-19",
@@ -5397,24 +5765,24 @@
    "now": 1
   },
   {
-   "brand": "Grocery",
-   "strain": "Lemon Tai",
+   "brand": "Pot & Head",
+   "strain": "Pot & Head Skunk",
    "first": "2026-09-19",
    "today": 0,
    "shelves": 1,
    "shops": [
-    "OCM-RETL-25-000418"
+    "OCM-CAURD-24-000105"
    ],
    "now": 1
   },
   {
-   "brand": "167 Exotics",
-   "strain": "Moonbeam Gelato",
+   "brand": "1937",
+   "strain": "Silver Surfer - F08A",
    "first": "2026-09-19",
    "today": 0,
    "shelves": 1,
    "shops": [
-    "OCM-CAURD-24-000220"
+    "OCM-CAURD-24-000105"
    ],
    "now": 1
   },
@@ -5584,17 +5952,6 @@
    "now": 1
   },
   {
-   "brand": "HERITAGE COLLECTION",
-   "strain": "JACK HERER",
-   "first": "2026-09-21",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-CAURD-24-000185"
-   ],
-   "now": 1
-  },
-  {
    "brand": "Flav",
    "strain": "PINK GRAPEFRUIT X SOUR TANGIE - DUO",
    "first": "2026-09-21",
@@ -5661,24 +6018,13 @@
    "now": 1
   },
   {
-   "brand": "Hepworth Sungrown",
-   "strain": "I Green Crack Kush",
+   "brand": "Mini-Mart",
+   "strain": "Lemon Skunk",
    "first": "2026-09-22",
    "today": 0,
    "shelves": 1,
    "shops": [
-    "OCM-CAURD-24-000084"
-   ],
-   "now": 1
-  },
-  {
-   "brand": "Electraleaf NY",
-   "strain": "I Super Lemon Diesel",
-   "first": "2026-09-22",
-   "today": 0,
-   "shelves": 1,
-   "shops": [
-    "OCM-CAURD-24-000084"
+    "OCM-CAURD-24-000119"
    ],
    "now": 1
   },
@@ -5738,6 +6084,17 @@
    "now": 1
   },
   {
+   "brand": "Dragonfly Kitchen IV",
+   "strain": "Snowblower",
+   "first": "2026-09-22",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000096"
+   ],
+   "now": 1
+  },
+  {
    "brand": "NY Ounce Club",
    "strain": "Sour Strawberry",
    "first": "2026-09-22",
@@ -5756,6 +6113,17 @@
    "shelves": 1,
    "shops": [
     "OCM-CAURD-25-000284"
+   ],
+   "now": 1
+  },
+  {
+   "brand": "Dragonfly Kitchen IV",
+   "strain": "The Spice",
+   "first": "2026-09-22",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000096"
    ],
    "now": 1
   },
@@ -5789,6 +6157,17 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-25-000306"
+   ],
+   "now": 1
+  },
+  {
+   "brand": "High Peaks",
+   "strain": "AJ Sour Diesel",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000094"
    ],
    "now": 1
   },
@@ -5870,6 +6249,17 @@
    "now": 1
   },
   {
+   "brand": "Ripped - NY",
+   "strain": "Deadhead OG",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-25-000310"
+   ],
+   "now": 1
+  },
+  {
    "brand": "Untitled",
    "strain": "Empire OG - Big",
    "first": "2026-09-23",
@@ -5892,13 +6282,46 @@
    "now": 1
   },
   {
-   "brand": "Studio Farms NY",
-   "strain": "G41 x Grape Gas",
+   "brand": null,
+   "strain": "Flower Blue Dream",
    "first": "2026-09-23",
    "today": 0,
    "shelves": 1,
    "shops": [
-    "OCM-CAURD-25-000282"
+    "OCM-RETL-24-000169"
+   ],
+   "now": 1
+  },
+  {
+   "brand": null,
+   "strain": "Flower Kosher Kush",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000169"
+   ],
+   "now": 1
+  },
+  {
+   "brand": null,
+   "strain": "Flower Maui Waui",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000169"
+   ],
+   "now": 1
+  },
+  {
+   "brand": null,
+   "strain": "Flower Pink Guava",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000169"
    ],
    "now": 1
   },
@@ -5947,6 +6370,17 @@
    "now": 1
   },
   {
+   "brand": "1937",
+   "strain": "Hybrid Blend",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000120"
+   ],
+   "now": 1
+  },
+  {
    "brand": "To The Moon (TTM)",
    "strain": "Italian Ice",
    "first": "2026-09-23",
@@ -5987,6 +6421,17 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-25-000293"
+   ],
+   "now": 1
+  },
+  {
+   "brand": "Grocery Cannabis",
+   "strain": "Mixed Light Flower Atomic Breath",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000124"
    ],
    "now": 1
   },
@@ -6090,6 +6535,17 @@
    "now": 1
   },
   {
+   "brand": "Ripped - NY",
+   "strain": "Tropical Storm",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-25-000310"
+   ],
+   "now": 1
+  },
+  {
    "brand": "To The Moon (TTM)",
    "strain": "Tropicana Cookies",
    "first": "2026-09-23",
@@ -6119,6 +6575,17 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-26-000504"
+   ],
+   "now": 1
+  },
+  {
+   "brand": null,
+   "strain": "Whole Flower Purple Starfruit",
+   "first": "2026-09-23",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000169"
    ],
    "now": 1
   },
@@ -6156,6 +6623,17 @@
    "now": 1
   },
   {
+   "brand": "ZIPS OG",
+   "strain": "Chem Dawg",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000104"
+   ],
+   "now": 1
+  },
+  {
    "brand": "THE MECHANIC FARM",
    "strain": "D LISH",
    "first": "2026-09-24",
@@ -6174,6 +6652,50 @@
    "shelves": 1,
    "shops": [
     "OCM-CAURD-25-000297"
+   ],
+   "now": 1
+  },
+  {
+   "brand": "1937",
+   "strain": "Fat Cat",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000094"
+   ],
+   "now": 1
+  },
+  {
+   "brand": "Untitled ",
+   "strain": "Flower (Smalls) - Green Crack",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000075"
+   ],
+   "now": 1
+  },
+  {
+   "brand": "Untitled ",
+   "strain": "Flower (Smalls) - Ice Cream Cake",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000075"
+   ],
+   "now": 1
+  },
+  {
+   "brand": "Untitled ",
+   "strain": "Flower (Smalls) - Northern Lights",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000075"
    ],
    "now": 1
   },
@@ -6288,6 +6810,17 @@
    "now": 1
   },
   {
+   "brand": "Grocery Aisle 14G",
+   "strain": "Modified Bananas",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-23-000038"
+   ],
+   "now": 1
+  },
+  {
    "brand": null,
    "strain": "NYC Confidential",
    "first": "2026-09-24",
@@ -6295,6 +6828,17 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-24-000076"
+   ],
+   "now": 1
+  },
+  {
+   "brand": "Honest Pharm Co",
+   "strain": "Novarine Sunrise x Midnight Gelato - Split Pack",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-25-000416"
    ],
    "now": 1
   },
@@ -6365,6 +6909,28 @@
    "now": 1
   },
   {
+   "brand": "Rythm",
+   "strain": "Spritzer",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-23-000038"
+   ],
+   "now": 1
+  },
+  {
+   "brand": "Grocery Aisle 14G",
+   "strain": "Sugarcane Kush",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-23-000038"
+   ],
+   "now": 1
+  },
+  {
    "brand": "Daze Supply",
    "strain": "Sunset Sherbert",
    "first": "2026-09-24",
@@ -6387,6 +6953,17 @@
    "now": 1
   },
   {
+   "brand": "ZIPS OG",
+   "strain": "Super Boof",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000104"
+   ],
+   "now": 1
+  },
+  {
    "brand": "Capicu Exotics",
    "strain": "Tres Leches",
    "first": "2026-09-24",
@@ -6394,6 +6971,17 @@
    "shelves": 1,
    "shops": [
     "OCM-CAURD-24-000140"
+   ],
+   "now": 1
+  },
+  {
+   "brand": "1937",
+   "strain": "Triple Sccop",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000094"
    ],
    "now": 1
   },
@@ -6508,6 +7096,17 @@
    "now": 0
   },
   {
+   "brand": "Homestead 1787",
+   "strain": "Amnesia Haze - Preground",
+   "first": "2026-09-21",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000159"
+   ],
+   "now": 0
+  },
+  {
    "brand": "Homestead",
    "strain": "Amnesia Haze - Preground",
    "first": "2026-09-21",
@@ -6527,6 +7126,17 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-24-000055"
+   ],
+   "now": 0
+  },
+  {
+   "brand": "Woodstock",
+   "strain": "Biscotti - Preground",
+   "first": "2026-09-21",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000159"
    ],
    "now": 0
   },
@@ -6571,6 +7181,17 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-24-000170"
+   ],
+   "now": 0
+  },
+  {
+   "brand": "Leal",
+   "strain": "Chronic Tonic - Preground",
+   "first": "2026-09-21",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000159"
    ],
    "now": 0
   },
@@ -6663,6 +7284,17 @@
    "now": 0
   },
   {
+   "brand": "Smoakland X",
+   "strain": "Gelato 33 - Preground",
+   "first": "2026-09-21",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000159"
+   ],
+   "now": 0
+  },
+  {
    "brand": "Smartbud",
    "strain": "Girl Scout Cookies Preground",
    "first": "2026-09-21",
@@ -6674,6 +7306,17 @@
    "now": 0
   },
   {
+   "brand": "Leal",
+   "strain": "Lemon Venom - Preground",
+   "first": "2026-09-21",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000159"
+   ],
+   "now": 0
+  },
+  {
    "brand": "Revert Cannabis",
    "strain": "NYC Confidental",
    "first": "2026-09-21",
@@ -6681,6 +7324,17 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-24-000175"
+   ],
+   "now": 0
+  },
+  {
+   "brand": "Homestead 1787",
+   "strain": "OG Kush - Preground",
+   "first": "2026-09-21",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000159"
    ],
    "now": 0
   },
@@ -6730,6 +7384,17 @@
    "now": 0
   },
   {
+   "brand": "Homestead 1787",
+   "strain": "Sour Grape - Preground",
+   "first": "2026-09-21",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000159"
+   ],
+   "now": 0
+  },
+  {
    "brand": "Homestead",
    "strain": "Sour Grape - Preground",
    "first": "2026-09-21",
@@ -6753,6 +7418,17 @@
    "now": 0
   },
   {
+   "brand": "Smoakland X",
+   "strain": "Super Sour Diesel - Preground",
+   "first": "2026-09-21",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000159"
+   ],
+   "now": 0
+  },
+  {
    "brand": "SLACK HOLLOW ORGANICS",
    "strain": "TROPICAL DIESEL - PREGROUND",
    "first": "2026-09-21",
@@ -6760,6 +7436,17 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-24-000055"
+   ],
+   "now": 0
+  },
+  {
+   "brand": "Homestead 1787",
+   "strain": "Trainwreck - Preground",
+   "first": "2026-09-21",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000159"
    ],
    "now": 0
   },
@@ -6833,6 +7520,72 @@
    "now": 0
   },
   {
+   "brand": "RYTHM",
+   "strain": "Flower Brownie Scout",
+   "first": "2026-09-22",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000140"
+   ],
+   "now": 0
+  },
+  {
+   "brand": "Good Green",
+   "strain": "Flower Cereal Milk",
+   "first": "2026-09-22",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000140"
+   ],
+   "now": 0
+  },
+  {
+   "brand": "RYTHM",
+   "strain": "Flower Donut Trip",
+   "first": "2026-09-22",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000140"
+   ],
+   "now": 0
+  },
+  {
+   "brand": "RYTHM",
+   "strain": "Flower Hash Queen",
+   "first": "2026-09-22",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000140"
+   ],
+   "now": 0
+  },
+  {
+   "brand": "Good Green",
+   "strain": "Flower LA Kush Cake",
+   "first": "2026-09-22",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000140"
+   ],
+   "now": 0
+  },
+  {
+   "brand": "Good Green",
+   "strain": "Flower OMG",
+   "first": "2026-09-22",
+   "today": 0,
+   "shelves": 1,
+   "shops": [
+    "OCM-CAURD-24-000140"
+   ],
+   "now": 0
+  },
+  {
    "brand": "Celestial",
    "strain": "Purple Haze",
    "first": "2026-09-22",
@@ -6862,6 +7615,28 @@
    "shelves": 1,
    "shops": [
     "OCM-RETL-24-000233"
+   ],
+   "now": 0
+  },
+  {
+   "brand": "Revert",
+   "strain": "Black Widow Preground",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000020"
+   ],
+   "now": 0
+  },
+  {
+   "brand": "Revert Cannabis",
+   "strain": "Granddaddy Purp Preground",
+   "first": "2026-09-24",
+   "today": 1,
+   "shelves": 1,
+   "shops": [
+    "OCM-RETL-24-000020"
    ],
    "now": 0
   },
@@ -6911,6 +7686,29 @@
   }
  ],
  "batches": [
+  {
+   "brand": "Kings & Queens",
+   "strain": "Neon Flamingo",
+   "thc": 33.01,
+   "before": [
+    24.13,
+    27.71,
+    28.02,
+    28.3
+   ],
+   "first": "2026-09-19",
+   "shops": [
+    "OCM-CAURD-23-000041",
+    "OCM-CAURD-24-000116",
+    "OCM-CAURD-24-000173",
+    "OCM-CAURD-24-000222",
+    "OCM-CAURD-25-000271",
+    "OCM-CAURD-25-000282",
+    "OCM-CAURD-25-000287",
+    "OCM-RETL-24-000114",
+    "OCM-RETL-24-000144"
+   ]
+  },
   {
    "brand": "Find.",
    "strain": "BOTTOMLESS MINTS",
@@ -7138,6 +7936,23 @@
    ]
   },
   {
+   "brand": "Connected Cannabis",
+   "strain": "Gascotti",
+   "thc": 31.31,
+   "before": [
+    24.7,
+    26.77,
+    29.5
+   ],
+   "first": "2026-09-19",
+   "shops": [
+    "OCM-CAURD-24-000094",
+    "OCM-RETL-24-000120",
+    "OCM-RETL-24-000144",
+    "OCM-RETL-24-000244"
+   ]
+  },
+  {
    "brand": "LEAL",
    "strain": "Kush Cake",
    "thc": 24.1,
@@ -7321,6 +8136,22 @@
    ]
   },
   {
+   "brand": "Kings & Queens",
+   "strain": "Frosted Flakes",
+   "thc": 30.21,
+   "before": [
+    28.07,
+    28.1,
+    32.8
+   ],
+   "first": "2026-09-23",
+   "shops": [
+    "OCM-CAURD-24-000094",
+    "OCM-CAURD-24-000222",
+    "OCM-RETL-25-000438"
+   ]
+  },
+  {
    "brand": "matter",
    "strain": "Jelly Cake",
    "thc": 23.21,
@@ -7385,6 +8216,36 @@
     "OCM-CAURD-24-000112",
     "OCM-CAURD-24-000169",
     "OCM-RETL-26-000499"
+   ]
+  },
+  {
+   "brand": "PUFF",
+   "strain": "Animal Mints",
+   "thc": 21.51,
+   "before": [
+    24.74
+   ],
+   "first": "2026-09-24",
+   "shops": [
+    "OCM-CAURD-25-000242",
+    "OCM-RETL-25-000324",
+    "OCM-RETL-26-000477"
+   ]
+  },
+  {
+   "brand": "1937",
+   "strain": "Cinderella",
+   "thc": 23.98,
+   "before": [
+    18.55,
+    21.75,
+    23.6
+   ],
+   "first": "2026-09-24",
+   "shops": [
+    "OCM-CAURD-24-000094",
+    "OCM-CAURD-25-000282",
+    "OCM-CAURD-26-000343"
    ]
   },
   {
@@ -7458,6 +8319,19 @@
    "shops": [
     "OCM-CAURD-26-000339",
     "OCM-RETL-24-000175"
+   ]
+  },
+  {
+   "brand": "Alchemy Pure",
+   "strain": "Hooch",
+   "thc": 30.33,
+   "before": [
+    27.91
+   ],
+   "first": "2026-09-19",
+   "shops": [
+    "OCM-CAURD-24-000146",
+    "OCM-RETL-25-000346"
    ]
   },
   {
@@ -7674,6 +8548,19 @@
    ]
   },
   {
+   "brand": "Alien Labs",
+   "strain": "Kryptochronic",
+   "thc": 25.93,
+   "before": [
+    28.94,
+    31.15
+   ],
+   "first": "2026-09-19",
+   "shops": [
+    "OCM-RETL-24-000144"
+   ]
+  },
+  {
    "brand": "The Plug Pack",
    "strain": "Lychee Dream",
    "thc": 31.42,
@@ -7886,6 +8773,18 @@
    ]
   },
   {
+   "brand": "Fly Weight",
+   "strain": "Blue Nerds",
+   "thc": 30.57,
+   "before": [
+    30.67
+   ],
+   "first": "2026-09-23",
+   "shops": [
+    "OCM-CAURD-23-000042"
+   ]
+  },
+  {
    "brand": "RYTHM",
    "strain": "Cheddar Cheeze",
    "thc": 36.64,
@@ -7923,6 +8822,20 @@
    "first": "2026-09-23",
    "shops": [
     "OCM-RETL-24-000026"
+   ]
+  },
+  {
+   "brand": "Kings & Queens",
+   "strain": "Gary Payton",
+   "thc": 23.8,
+   "before": [
+    24.1,
+    24.11,
+    26.8
+   ],
+   "first": "2026-09-23",
+   "shops": [
+    "OCM-RETL-24-000048"
    ]
   },
   {
@@ -8089,6 +9002,22 @@
    ]
   },
   {
+   "brand": "Kings & Queens",
+   "strain": "Blueberry Sugar",
+   "thc": 22.19,
+   "before": [
+    18.52,
+    20.7,
+    20.79,
+    20.8,
+    21.41
+   ],
+   "first": "2026-09-24",
+   "shops": [
+    "OCM-CAURD-24-000094"
+   ]
+  },
+  {
    "brand": "Alpine Agronomy",
    "strain": "Boov",
    "thc": 29.76,
@@ -8161,6 +9090,18 @@
    ]
   },
   {
+   "brand": null,
+   "strain": "Sour Diesel",
+   "thc": 24.08,
+   "before": [
+    28.32
+   ],
+   "first": "2026-09-24",
+   "shops": [
+    "OCM-RETL-25-000324"
+   ]
+  },
+  {
    "brand": "ZIPS",
    "strain": "Super Boof",
    "thc": 36.47,
@@ -8171,50 +9112,33 @@
    "shops": [
     "OCM-CAURD-23-000030"
    ]
+  },
+  {
+   "brand": "Grassroots",
+   "strain": "Velvet Spritz",
+   "thc": 28.66,
+   "before": [
+    27.61,
+    30.91,
+    31.22
+   ],
+   "first": "2026-09-24",
+   "shops": [
+    "OCM-CAURD-24-000064"
+   ]
+  },
+  {
+   "brand": "Fly Weight",
+   "strain": "Sunset OG",
+   "thc": 23.74,
+   "before": [
+    23.4
+   ],
+   "first": "2026-09-23",
+   "shops": []
   }
  ],
  "runningLow": [
-  {
-   "brand": "MGP",
-   "strain": "Fire Belly Toad",
-   "now": [
-    "OCM-CAURD-25-000282"
-   ],
-   "peak": 6,
-   "peakDay": "2026-09-22"
-  },
-  {
-   "brand": "Royal Leaf",
-   "strain": "Ice Cream Cake",
-   "now": [
-    "OCM-CAURD-24-000102",
-    "OCM-CAURD-25-000282"
-   ],
-   "peak": 7,
-   "peakDay": "2026-09-19"
-  },
-  {
-   "brand": "SmartBud",
-   "strain": "Z-Cookie",
-   "now": [
-    "OCM-CAURD-24-000173",
-    "OCM-CAURD-25-000282"
-   ],
-   "peak": 7,
-   "peakDay": "2026-09-22"
-  },
-  {
-   "brand": "SmartBud",
-   "strain": "Cherry Cookie Crumble",
-   "now": [
-    "OCM-CAURD-24-000173",
-    "OCM-CAURD-25-000230",
-    "OCM-CAURD-25-000282",
-    "OCM-CAURD-25-000288"
-   ],
-   "peak": 9,
-   "peakDay": "2026-09-22"
-  },
   {
    "brand": "Grocery",
    "strain": "Ortega",
@@ -8224,18 +9148,6 @@
    ],
    "peak": 6,
    "peakDay": "2026-09-17"
-  },
-  {
-   "brand": "Dank By Definition",
-   "strain": "Colombian Cream",
-   "now": [
-    "OCM-RETL-24-000026",
-    "OCM-RETL-24-000175",
-    "OCM-RETL-24-000263",
-    "OCM-RETL-25-000325"
-   ],
-   "peak": 8,
-   "peakDay": "2026-09-19"
   },
   {
    "brand": "Dank By Definition.",
@@ -8325,15 +9237,16 @@
    "peakDay": "2026-09-20"
   },
   {
-   "brand": "To The Moon",
-   "strain": "Watermelon Z",
+   "brand": "Grocery",
+   "strain": "Cheese",
    "now": [
     "OCM-CAURD-24-000104",
-    "OCM-CAURD-24-000210",
-    "OCM-CAURD-26-000350"
+    "OCM-CAURD-25-000308",
+    "OCM-RETL-24-000144",
+    "OCM-RETL-24-000260"
    ],
-   "peak": 5,
-   "peakDay": "2026-09-14"
+   "peak": 6,
+   "peakDay": "2026-09-18"
   },
   {
    "brand": "To The Moon",
@@ -8420,16 +9333,16 @@
    "peakDay": "2026-09-18"
   },
   {
-   "brand": "Grocery",
-   "strain": "Cheese",
+   "brand": "Grassroots",
+   "strain": "Collection Delphi Diesel",
    "now": [
-    "OCM-CAURD-24-000104",
-    "OCM-CAURD-25-000308",
-    "OCM-RETL-24-000144",
-    "OCM-RETL-24-000260"
+    "OCM-CAURD-23-000034",
+    "OCM-CAURD-25-000229",
+    "OCM-CAURD-25-000290",
+    "OCM-RETL-24-000233"
    ],
    "peak": 5,
-   "peakDay": "2026-09-18"
+   "peakDay": "2026-09-21"
   },
   {
    "brand": "Rolling Green Cannabis",
@@ -8454,18 +9367,6 @@
    ],
    "peak": 5,
    "peakDay": "2026-09-21"
-  },
-  {
-   "brand": "Noizey",
-   "strain": "Dumbo Gumbo",
-   "now": [
-    "OCM-CAURD-25-000239",
-    "OCM-RETL-24-000147",
-    "OCM-RETL-24-000175",
-    "OCM-RETL-24-000178"
-   ],
-   "peak": 5,
-   "peakDay": "2026-09-18"
   },
   {
    "brand": "Next Stop",
@@ -8502,30 +9403,6 @@
    ],
    "peak": 5,
    "peakDay": "2026-09-17"
-  },
-  {
-   "brand": "Dank By Definition",
-   "strain": "Gas Truffle",
-   "now": [
-    "OCM-CAURD-23-000020",
-    "OCM-CAURD-25-000282",
-    "OCM-RETL-24-000075",
-    "OCM-RETL-24-000087"
-   ],
-   "peak": 5,
-   "peakDay": "2026-09-24"
-  },
-  {
-   "brand": "Botanist",
-   "strain": "Glitter Bomb",
-   "now": [
-    "OCM-CAURD-25-000281",
-    "OCM-CAURD-26-000334",
-    "OCM-RETL-24-000041",
-    "OCM-RETL-25-000379"
-   ],
-   "peak": 5,
-   "peakDay": "2026-09-20"
   },
   {
    "brand": "DaDa",
@@ -8708,18 +9585,6 @@
    "peakDay": "2026-09-24"
   },
   {
-   "brand": "ADK Hemp Co.",
-   "strain": "Platinum Life Breath",
-   "now": [
-    "OCM-CAURD-24-000127",
-    "OCM-CAURD-24-000173",
-    "OCM-CAURD-25-000282",
-    "OCM-RETL-24-000120"
-   ],
-   "peak": 5,
-   "peakDay": "2026-09-24"
-  },
-  {
    "brand": "Papa's Herb",
    "strain": "Purple Chemdawg",
    "now": [
@@ -8727,6 +9592,18 @@
     "OCM-CAURD-24-000166",
     "OCM-CAURD-24-000196",
     "OCM-RETL-24-000026"
+   ],
+   "peak": 5,
+   "peakDay": "2026-09-18"
+  },
+  {
+   "brand": "Dank",
+   "strain": "Purple Panty Dropper",
+   "now": [
+    "OCM-CAURD-24-000173",
+    "OCM-CAURD-25-000241",
+    "OCM-RETL-24-000234",
+    "OCM-RETL-26-000488"
    ],
    "peak": 5,
    "peakDay": "2026-09-18"
@@ -8818,20 +9695,6 @@
  ],
  "gone": [
   {
-   "brand": "Jekyll & High",
-   "strain": "Lemon Cherry Gelato",
-   "lastSeen": "2026-09-22",
-   "peak": 6,
-   "lastShops": [
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000222",
-    "OCM-CAURD-25-000271",
-    "OCM-CAURD-25-000282",
-    "OCM-CAURD-25-000287",
-    "OCM-RETL-24-000114"
-   ]
-  },
-  {
    "brand": "Good Green",
    "strain": "BLEND",
    "lastSeen": "2026-09-19",
@@ -8855,6 +9718,30 @@
   }
  ],
  "shops": {
+  "OCM-CAURD-23-000023": {
+   "state": "partial",
+   "frozen": false,
+   "size": 25,
+   "since": "2026-09-23",
+   "quietDays": 2,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-23",
+   "dryDays": 2,
+   "changes": 92,
+   "lastRead": "2026-09-23"
+  },
+  "OCM-CAURD-23-000041": {
+   "state": "partial",
+   "frozen": false,
+   "size": 65,
+   "since": "2026-09-25",
+   "quietDays": 0,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-23",
+   "dryDays": 2,
+   "changes": 121,
+   "lastRead": "2026-09-25"
+  },
   "OCM-CAURD-23-000044": {
    "state": "stale",
    "frozen": false,
@@ -8891,6 +9778,18 @@
    "changes": 31,
    "lastRead": "2026-09-25"
   },
+  "OCM-CAURD-24-000057": {
+   "state": "partial",
+   "frozen": false,
+   "size": 23,
+   "since": "2026-09-23",
+   "quietDays": 2,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-23",
+   "dryDays": 2,
+   "changes": 149,
+   "lastRead": "2026-09-23"
+  },
   "OCM-CAURD-24-000062": {
    "state": "dead",
    "frozen": true,
@@ -8915,16 +9814,28 @@
    "changes": 46,
    "lastRead": "2026-09-23"
   },
-  "OCM-CAURD-24-000096": {
-   "state": "stale",
+  "OCM-CAURD-24-000071": {
+   "state": "partial",
    "frozen": false,
-   "size": 18,
+   "size": 13,
+   "since": "2026-09-25",
+   "quietDays": 0,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-25",
+   "dryDays": 0,
+   "changes": 45,
+   "lastRead": "2026-09-25"
+  },
+  "OCM-CAURD-24-000084": {
+   "state": "partial",
+   "frozen": false,
+   "size": 23,
    "since": "2026-09-23",
    "quietDays": 2,
    "quietReads": 0,
-   "lastDelivery": "2026-09-18",
-   "dryDays": 7,
-   "changes": 31,
+   "lastDelivery": "2026-09-23",
+   "dryDays": 2,
+   "changes": 132,
    "lastRead": "2026-09-23"
   },
   "OCM-CAURD-24-000100": {
@@ -8951,6 +9862,18 @@
    "changes": 57,
    "lastRead": "2026-09-25"
   },
+  "OCM-CAURD-24-000146": {
+   "state": "partial",
+   "frozen": false,
+   "size": 24,
+   "since": "2026-09-23",
+   "quietDays": 2,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-23",
+   "dryDays": 2,
+   "changes": 108,
+   "lastRead": "2026-09-23"
+  },
   "OCM-CAURD-24-000153": {
    "state": "stale",
    "frozen": false,
@@ -8973,6 +9896,18 @@
    "lastDelivery": "2026-09-17",
    "dryDays": 8,
    "changes": 23,
+   "lastRead": "2026-09-25"
+  },
+  "OCM-CAURD-24-000185": {
+   "state": "partial",
+   "frozen": false,
+   "size": 18,
+   "since": "2026-09-25",
+   "quietDays": 0,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-25",
+   "dryDays": 0,
+   "changes": 93,
    "lastRead": "2026-09-25"
   },
   "OCM-CAURD-24-000200": {
@@ -8999,6 +9934,18 @@
    "changes": 249,
    "lastRead": "2026-09-23"
   },
+  "OCM-CAURD-24-000220": {
+   "state": "partial",
+   "frozen": false,
+   "size": 25,
+   "since": "2026-09-25",
+   "quietDays": 0,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-25",
+   "dryDays": 0,
+   "changes": 60,
+   "lastRead": "2026-09-25"
+  },
   "OCM-CAURD-25-000233": {
    "state": "asleep",
    "frozen": true,
@@ -9024,14 +9971,14 @@
    "lastRead": "2026-09-25"
   },
   "OCM-CAURD-25-000242": {
-   "state": "asleep",
+   "state": "stale",
    "frozen": false,
    "size": 28,
    "since": "2026-09-25",
    "quietDays": 0,
    "quietReads": 0,
-   "lastDelivery": "2026-09-07",
-   "dryDays": 18,
+   "lastDelivery": "2026-09-14",
+   "dryDays": 11,
    "changes": 42,
    "lastRead": "2026-09-25"
   },
@@ -9045,6 +9992,54 @@
    "lastDelivery": "2026-09-06",
    "dryDays": 19,
    "changes": 34,
+   "lastRead": "2026-09-25"
+  },
+  "OCM-CAURD-25-000271": {
+   "state": "partial",
+   "frozen": false,
+   "size": 44,
+   "since": "2026-09-25",
+   "quietDays": 0,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-23",
+   "dryDays": 2,
+   "changes": 96,
+   "lastRead": "2026-09-25"
+  },
+  "OCM-CAURD-25-000281": {
+   "state": "partial",
+   "frozen": false,
+   "size": 68,
+   "since": "2026-09-25",
+   "quietDays": 0,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-25",
+   "dryDays": 0,
+   "changes": 123,
+   "lastRead": "2026-09-25"
+  },
+  "OCM-CAURD-25-000282": {
+   "state": "partial",
+   "frozen": false,
+   "size": 732,
+   "since": "2026-09-24",
+   "quietDays": 1,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-23",
+   "dryDays": 2,
+   "changes": 760,
+   "lastRead": "2026-09-24"
+  },
+  "OCM-CAURD-25-000287": {
+   "state": "partial",
+   "frozen": false,
+   "size": 44,
+   "since": "2026-09-25",
+   "quietDays": 0,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-23",
+   "dryDays": 2,
+   "changes": 96,
    "lastRead": "2026-09-25"
   },
   "OCM-CAURD-25-000290": {
@@ -9095,6 +10090,30 @@
    "changes": 58,
    "lastRead": "2026-09-25"
   },
+  "OCM-CAURD-26-000339": {
+   "state": "partial",
+   "frozen": false,
+   "size": 106,
+   "since": "2026-09-25",
+   "quietDays": 0,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-23",
+   "dryDays": 2,
+   "changes": 131,
+   "lastRead": "2026-09-25"
+  },
+  "OCM-CAURD-26-000350": {
+   "state": "partial",
+   "frozen": false,
+   "size": 22,
+   "since": "2026-09-23",
+   "quietDays": 2,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-23",
+   "dryDays": 2,
+   "changes": 89,
+   "lastRead": "2026-09-23"
+  },
   "OCM-MICR-24-000068": {
    "state": "asleep",
    "frozen": true,
@@ -9107,28 +10126,28 @@
    "changes": 0,
    "lastRead": "2026-09-25"
   },
-  "OCM-MICR-24-000204": {
-   "state": "stale",
-   "frozen": false,
-   "size": 3,
-   "since": "2026-09-25",
-   "quietDays": 0,
-   "quietReads": 0,
-   "lastDelivery": "2026-09-18",
-   "dryDays": 7,
-   "changes": 4,
-   "lastRead": "2026-09-25"
-  },
   "OCM-RETL-24-000032": {
-   "state": "asleep",
+   "state": "stale",
    "frozen": false,
    "size": 16,
    "since": "2026-09-22",
    "quietDays": 3,
    "quietReads": 3,
-   "lastDelivery": "2026-09-06",
-   "dryDays": 19,
+   "lastDelivery": "2026-09-18",
+   "dryDays": 7,
    "changes": 14,
+   "lastRead": "2026-09-25"
+  },
+  "OCM-RETL-24-000041": {
+   "state": "partial",
+   "frozen": false,
+   "size": 65,
+   "since": "2026-09-25",
+   "quietDays": 0,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-25",
+   "dryDays": 0,
+   "changes": 124,
    "lastRead": "2026-09-25"
   },
   "OCM-RETL-24-000047": {
@@ -9155,6 +10174,18 @@
    "changes": 29,
    "lastRead": "2026-09-25"
   },
+  "OCM-RETL-24-000114": {
+   "state": "partial",
+   "frozen": false,
+   "size": 43,
+   "since": "2026-09-25",
+   "quietDays": 0,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-25",
+   "dryDays": 0,
+   "changes": 95,
+   "lastRead": "2026-09-25"
+  },
   "OCM-RETL-24-000146": {
    "state": "asleep",
    "frozen": false,
@@ -9166,6 +10197,18 @@
    "dryDays": 19,
    "changes": 59,
    "lastRead": "2026-09-25"
+  },
+  "OCM-RETL-24-000154": {
+   "state": "partial",
+   "frozen": false,
+   "size": 122,
+   "since": "2026-09-24",
+   "quietDays": 1,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-23",
+   "dryDays": 2,
+   "changes": 423,
+   "lastRead": "2026-09-24"
   },
   "OCM-RETL-24-000191": {
    "state": "stale",
@@ -9191,18 +10234,6 @@
    "changes": 46,
    "lastRead": "2026-09-23"
   },
-  "OCM-RETL-25-000298": {
-   "state": "stale",
-   "frozen": false,
-   "size": 25,
-   "since": "2026-09-25",
-   "quietDays": 0,
-   "quietReads": 0,
-   "lastDelivery": "2026-09-18",
-   "dryDays": 7,
-   "changes": 53,
-   "lastRead": "2026-09-25"
-  },
   "OCM-RETL-25-000303": {
    "state": "stale",
    "frozen": false,
@@ -9213,6 +10244,18 @@
    "lastDelivery": "2026-09-18",
    "dryDays": 7,
    "changes": 117,
+   "lastRead": "2026-09-25"
+  },
+  "OCM-RETL-25-000339": {
+   "state": "partial",
+   "frozen": false,
+   "size": 23,
+   "since": "2026-09-25",
+   "quietDays": 0,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-25",
+   "dryDays": 0,
+   "changes": 64,
    "lastRead": "2026-09-25"
   },
   "OCM-RETL-25-000346": {
@@ -9226,6 +10269,18 @@
    "dryDays": 8,
    "changes": 226,
    "lastRead": "2026-09-25"
+  },
+  "OCM-RETL-25-000418": {
+   "state": "partial",
+   "frozen": false,
+   "size": 33,
+   "since": "2026-09-23",
+   "quietDays": 2,
+   "quietReads": 0,
+   "lastDelivery": "2026-09-23",
+   "dryDays": 2,
+   "changes": 115,
+   "lastRead": "2026-09-23"
   },
   "OCM-RETL-26-000473": {
    "state": "stale",

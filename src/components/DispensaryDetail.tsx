@@ -43,12 +43,15 @@ export const DispensaryDetail = ({
   d,
   menu: given,
   hasMenu = true,
+  partialShelf = false,
 }: {
   d: Dispensary;
   menu?: FlowerListing[];
   /** The card already counted the shelf; without this we would ask for a file
       that is not there for three hundred and forty-six of the shops. */
   hasMenu?: boolean;
+  /** We read only a window onto this shop's menu (scripts/shelf-history.py). */
+  partialShelf?: boolean;
 }) => {
   const [fetched, setFetched] = useState<FlowerListing[] | null>(null);
   const [menuState, setMenuState] = useState<'idle' | 'loading' | 'failed'>('idle');
@@ -128,7 +131,7 @@ export const DispensaryDetail = ({
 
       {menu.length > 0 && (
         <div className="mt-8">
-          <FlowerMenu listings={menu} />
+          <FlowerMenu listings={menu} partialShelf={partialShelf} />
         </div>
       )}
 

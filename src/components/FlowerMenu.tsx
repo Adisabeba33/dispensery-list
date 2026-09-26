@@ -145,7 +145,13 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
   );
 };
 
-export const FlowerMenu = ({ listings }: { listings: FlowerListing[] }) => {
+export const FlowerMenu = ({
+  listings,
+  partialShelf = false,
+}: {
+  listings: FlowerListing[];
+  partialShelf?: boolean;
+}) => {
   const sharedShelf = listings.some((l) => l.warnings?.includes('SHELF_SHARED_WITH_OTHER_LICENCES'));
   const [size, setSize] = useState<number | null>(null);
   const [inStockOnly, setInStockOnly] = useState(false);
@@ -236,6 +242,16 @@ export const FlowerMenu = ({ listings }: { listings: FlowerListing[] }) => {
           This chain publishes one menu across several licensed shops, so this shelf is the
           chain&apos;s, not this branch&apos;s. The strains are on sale; which of its shops holds
           them is not established. Call ahead.
+        </p>
+      )}
+
+      {/* Our reading, not the shop: the menu's size holds from day to day
+          while the strains in it keep changing, which is a window onto a
+          bigger menu. */}
+      {partialShelf && (
+        <p className="mt-2 text-xs leading-relaxed text-amber-300/80">
+          We read only part of this shop&apos;s menu. The strains below are on it, but it carries
+          more than we list, and a strain missing here may still be on the shelf.
         </p>
       )}
 

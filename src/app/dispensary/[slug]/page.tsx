@@ -7,6 +7,7 @@ import { DispensaryDetail } from '@/components/DispensaryDetail';
 import { dispensaries, displayName, getDispensary, isDemoData, LICENSE_TYPE_LABEL, regionOf } from '@/lib/data';
 import { fullAddress } from '@/lib/format';
 import { listingsFor } from '@/lib/menu';
+import { shelfNote } from '@/lib/signals';
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -56,7 +57,11 @@ export default async function DispensaryPage({ params }: Params) {
           </div>
         </header>
 
-        <DispensaryDetail d={d} menu={listingsFor(d.licenseNumber)} />
+        <DispensaryDetail
+          d={d}
+          menu={listingsFor(d.licenseNumber)}
+          partialShelf={shelfNote(d.licenseNumber)?.state === 'partial'}
+        />
 
       </article>
     </>
