@@ -748,5 +748,25 @@
     "ageGate": null,
     "checkedAt": "2026-09-25",
     "notes": "Caurd Wellness trades as Herbarium; the New York shop is Herbarium Queens. Category \"8ths\" is its flower shelf."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000247",
+    "menuUrl": "https://zenzest.com/stores/zenzest-queens/products/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-26",
+    "notes": "ZenZest Queens, 272-06 Union Turnpike: its own storefront on zenzest.com (Dutchie Plus), Flower category. The register's /queens/menu is shared by both licences."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000099",
+    "menuUrl": "https://zenzest.com/stores/zenzest-staten-island/products/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-26",
+    "notes": "ZenZest Staten Island, 2343 Forest Ave: its own storefront on zenzest.com (Dutchie Plus), Flower category. Without it this licence was read from the Queens menu."
   }
 ]
