@@ -768,5 +768,25 @@
     "ageGate": null,
     "checkedAt": "2026-09-26",
     "notes": "ZenZest Staten Island, 2343 Forest Ave: its own storefront on zenzest.com (Dutchie Plus), Flower category. The register's /queens/menu is shared by both licences and gave neither a shelf."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000003",
+    "menuUrl": "https://esh.us/shop/jamaica-ny/menu/flower-8861",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-26",
+    "notes": "ESH Jamaica, 90-67 Sutphin Blvd: its own Sweed store (storeId 834), Flower category. Without it the collector landed on esh.us/products/flower/, an information page, and the shelf stood at its reading of the 21st."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000416",
+    "menuUrl": "https://esh.us/shop/rosedale-ny/menu/flower-8861",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-26",
+    "notes": "ESH Rosedale, 245-02 Merrick Blvd: its own Sweed store, Flower category. Written down so the two ESH branches cannot be handed each other's shelf."
   }
 ]
