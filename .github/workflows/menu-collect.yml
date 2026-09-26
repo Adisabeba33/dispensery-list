@@ -179,7 +179,7 @@ jobs:
                   print(f"    payload top-level keys: {r['topLevelKeys']}")
               for shape in r.get('shapes', []):
                   print(f"    SHAPE {shape}")
-              for key in ('choseStore', 'choseStoreBy', 'storeForkConfirmed', 'returnedAfterStore', 'storeForkRefused', 'storeForkOptions', 'embeddedProducts', 'embeddedPaging'):
+              for key in ('choseStore', 'choseStoreBy', 'storeForkConfirmed', 'returnedAfterStore', 'storeForkRefused', 'storeForkOptions', 'embeddedProducts', 'embeddedPaging', 'pagesAsked', 'pagedFrom', 'pagedTo', 'pagingStoppedBecause', 'pagingRefused', 'pagingExtended', 'declaredTotal'):
                   if r.get(key):
                       print(f"    {key}: {r[key]}")
               if r.get('responseTypes'):

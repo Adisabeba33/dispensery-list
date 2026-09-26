@@ -11,7 +11,7 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  brandKeyOf, categoryFromProductUrl, classify, cleanStrainName,
+  brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, declaredTotalOf,
   decodeFlight, decodeTurboStream, destinationOf, flattenJsonApiProducts, flattenSearchHits, flattenStockRecords,
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
   mergeBySize, pagedRequest, pickFlowerInside, pickMenuLink, pickStore,
@@ -1334,6 +1334,30 @@ check('a number the weight left behind goes too',
   t('Clear', 'ignore');
   t('Shop Now', 'ignore');
   t('Flower', 'ignore');
+}
+
+/* Algolia states each query's total as nbHits beside its hits. Without it
+   The Flowery's menus read as undeclared and stopped at the first page of
+   fifty. */
+{
+  const algolia = {
+    results: [
+      {
+        hits: ['Blue Dream', 'Gelato 41', 'Runtz'].map((name, i) => ({
+          objectID: `p${i}`,
+          name,
+          category: 'FLOWER',
+          brand: { name: 'Florist Farms' },
+          variants: [{ option: '3.5g', price: 35 }],
+        })),
+        nbHits: 81,
+        page: 0,
+        nbPages: 2,
+        hitsPerPage: 50,
+      },
+    ],
+  };
+  check('an Algolia answer declares its nbHits', declaredTotalOf(algolia), 81);
 }
 
 /* Gap Commerce asks one question per category, and every answer is a page of

@@ -1588,7 +1588,10 @@ export const pickMenuLink = (links, siteUrl = null, shopName = '') => {
    arrives as totalCount from one platform and total_count from the next — and
    the fixture storefront, which states total_count, went unnoticed by this for
    as long as it existed. */
-const TOTAL_KEY = /^(total|totalCount|totalResults|totalItems|totalProducts|resultCount|numResults|count|found)$/i;
+/* nbHits is Algolia's: the count for that one query, written beside its hits.
+   The Flowery's Chinatown shop lists eighty-one flower products fifty to a
+   page; with no total recognised the collector stopped at the first page. */
+const TOTAL_KEY = /^(total|totalCount|totalResults|totalItems|totalProducts|resultCount|numResults|count|found|nbHits)$/i;
 const declaresTotal = (key) => TOTAL_KEY.test(String(key).replace(/_/g, ''));
 /**
  * The total stated in the same breath as a shelf, and only that one.
@@ -1807,6 +1810,9 @@ const shelfOf = (payload) => {
   const main = [...shelves].sort((a, b) => b.count - a.count)[0];
   return { count: carried, total: main.total };
 };
+
+/** The total a response declares for its own shelf — for the parser check. */
+export const declaredTotalOf = (payload) => shelfOf(payload).total;
 
 /**
  * JSON:API menus — Tymber/Blaze, nineteen of the silent shops — keep nothing
