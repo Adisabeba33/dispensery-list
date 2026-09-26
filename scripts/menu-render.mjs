@@ -3937,8 +3937,9 @@ const main = async () => {
           const declared = biggest.declared ?? 0;
           const seenBefore = () =>
             requests.filter((r) => queryKey(r) === key).reduce((n, r) => n + r.products, 0);
-          const cap = declared ? MAX_PAGES_DECLARED : MAX_PAGES_UNDECLARED;
-          const pageUntil = Date.now() + (declared ? PAGING_BUDGET_DECLARED_MS : PAGING_BUDGET_MS);
+          let cap = declared ? MAX_PAGES_DECLARED : MAX_PAGES_UNDECLARED;
+          const pagingStarted = Date.now();
+          let pageUntil = pagingStarted + (declared ? PAGING_BUDGET_DECLARED_MS : PAGING_BUDGET_MS);
           let asked = 0;
           /* Compared against everything already in hand, not just the previous
              answer: a menu that ignores the parameter usually has handed over
@@ -4050,6 +4051,26 @@ const main = async () => {
               entry.pagingIgnored = true;
               stopped = 'same-products-again';
               break;
+            }
+            /* A full page says there is more, even from a menu that never says
+               how much. Good Daze's Dispense menu states no total and hands
+               over twenty at a time: 186 products take ten pages, the whole of
+               the short allowance, and read alphabetically it came out as
+               brands 1 to H every day and K to U only on the day it finished —
+               the daily run's slower machine running out of the 45 seconds
+               halfway, by every sign. So a menu still
+               answering with full pages is given the time and pages of one
+               that declared its total; the first short or empty page ends it
+               as before. */
+            if (
+              !declared &&
+              !entry.pagingExtended &&
+              biggest.products > 0 &&
+              productsIn(payloads.slice(before)).length >= biggest.products
+            ) {
+              cap = MAX_PAGES_DECLARED;
+              pageUntil = pagingStarted + PAGING_BUDGET_DECLARED_MS;
+              entry.pagingExtended = true;
             }
             previousPageAt = before;
             await new Promise((r) => setTimeout(r, BETWEEN_PAGES_MS));
