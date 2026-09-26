@@ -21,7 +21,7 @@ type Raw = {
   shops?: Record<
     string,
     {
-      state: 'stale' | 'quiet' | 'asleep' | 'dead';
+      state: 'stale' | 'quiet' | 'asleep' | 'dead' | 'partial';
       frozen: boolean;
       size: number;
       since: string;
@@ -58,6 +58,8 @@ export const shelfSignals = () => {
 };
 
 /**
+ * What there is to say about a shop's shelf, when there is anything.
+ *
  * Shops whose shelf we keep reading and which has stopped being restocked:
  * nothing new arrives, whether or not what is there still sells down — or
  * nothing changes at all. From outside that is a shop not trading, one that
@@ -66,8 +68,12 @@ export const shelfSignals = () => {
  *
  * `frozen` is the stronger of the two facts: read several times running, over
  * a week and more, without a single strain coming or going.
+ *
+ * `partial` is about us, not the shop: we read a window onto a bigger menu —
+ * its size holds while the strains in it keep changing — so what we list is
+ * on sale, but not all that is.
  */
-export const stillShelf = (licence: string) => raw.shops?.[licence] ?? null;
+export const shelfNote = (licence: string) => raw.shops?.[licence] ?? null;
 
 /** A day of the daily read, "Sep 22" — pinned to UTC, the calendar the read is kept in. */
 export const dayLabel = (day: string): string =>

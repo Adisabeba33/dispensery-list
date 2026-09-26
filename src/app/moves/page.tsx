@@ -107,8 +107,8 @@ export default function MovesPage() {
       <p className="mt-4 max-w-2xl text-sm leading-relaxed text-chalk-400">
         A date here is the day our read first saw a strain on a shelf, not the day it was packed — no
         menu we read states a packaging date. What looked new because we learned to read a menu
-        better, rather than because the shop restocked, is left out. A strain we no longer see may
-        still be on shelves we do not read.
+        better, rather than because the shop restocked, is left out, and so is a shop whose menu we
+        read only in part. A strain we no longer see may still be on shelves we do not read.
       </p>
 
       <nav aria-label="Sections" className="mt-6 flex flex-wrap gap-2 text-sm">

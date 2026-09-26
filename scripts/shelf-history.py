@@ -21,12 +21,15 @@
 
 - магазин читался в два прошлых раза, и сравнивать есть с чем;
 - сорта не было ни на одном из двух прошлых чтений, то есть это не мигание;
-- новых за день не больше 15% полки. Иначе полку переписало наше чтение, а
-  не завоз, и из неё не считается ничего;
+- новых за день не больше 15% полки — или не больше пяти сортов: на полке
+  из пятнадцати три новых — завоз, а не переписанная полка. Иначе полку
+  переписало наше чтение, а не завоз, и из неё не считается ничего;
 - сборщик с прошлого чтения магазина не менялся — или менялся, но полка не
-  выросла в одну сторону. Починка, после которой меню читается глубже,
-  добавляет позиции и ничего не убирает; настоящий завоз приходит вместе с
-  продажами. Но так же, в одну сторону, приходит и поставка целой линейкой
+  выросла в одну сторону хотя бы на десятую. Починка, после которой меню
+  читается глубже, добавляет позиции и ничего не убирает; настоящий завоз
+  приходит вместе с продажами. Сборщик в сентябре менялся почти каждый
+  прогон, и без «на десятую» каждая поставка большого магазина в такой день
+  считалась бы нашим чтением. Но так же, в одну сторону, приходит и поставка целой линейкой
   бренда — Find привёз Misha's двадцать сортов разом. Поэтому из такой полки
   всё же засчитываются сорта бренда, который составил хотя бы половину нового
   и не меньше трёх сортов (вторая страница меню — смесь брендов, линейка —
@@ -66,8 +69,8 @@
 всех прочитанных полок, ушёл. Уход шумит так же, как появление, только в
 другую сторону: полка, прочитанная наполовину, выглядит распроданной. Поэтому
 уход с полки не засчитывается, если это чтение магазина не годится и для
-завоза — или если за день с полки пропало больше 30%: так уходит не товар, а
-наше чтение. Сорт, который магазин переименовал, не ушёл, пока на той же
+завоза — или если за день с полки пропало больше 30% и больше пяти сортов:
+так уходит не товар, а наше чтение. Сорт, который магазин переименовал, не ушёл, пока на той же
 полке стоит похожий.
 
 Магазин. Живая полка меняется: товар продаётся, приходят поставки. Полка,
@@ -89,6 +92,17 @@
 судим, только если хотя бы 60% чтений магазина за две недели были надёжными:
 иначе завозы могли спрятать наши же фильтры, и это чтение неустойчиво — наша
 сторона, как и магазин, который три прогона не читается.
+
+Кусок меню. Бывает, что мы читаем не полку, а окно в меню побольше: первую
+страницу, первые двадцать пять позиций. Меню The Flowery — семьсот сортов, мы
+видели сорок пять. Окно выдаёт себя тем, что размер полки не меняется, а
+сорта в нём сменяются каждое чтение: одни выпадают, другие входят. Живая
+полка так не делает — завоз добавляет, продажа убирает. Поэтому магазин, у
+которого за две недели не меньше четырёх чтений при том же размере полки (не
+дальше чем в 1,25 раза) и больше чем на половине из них сменилась десятая
+часть полки и больше, — «видим кусок меню». Его новинки не идут ни в волны, ни в новое, его уходы —
+ни в «уходит», ни в «ушёл», и о завозах в нём не судим. Сорт, который там
+стоит, всё же стоит: «ушедшим» он не станет. Это тоже наша сторона.
 """
 import hashlib
 import json
@@ -110,9 +124,11 @@ SIGNALS = ROOT / "data/shelf-signals.json"
 # Что решает, как читается магазин. Версия сборщика — их общий отпечаток.
 READER = ("scripts/menu-render.mjs", "scripts/strain-name.mjs", "data/menu-endpoints.json")
 
-NEW_SHARE_MAX = 0.15  # больше — полку переписало наше чтение, а не завоз
+NEW_SHARE_MAX = 0.15  # больше — полку переписало наше чтение, а не завоз…
+REWRITE_MIN = 5       # …если сортов больше стольких; то же для ушедших за день
 LOPSIDED_MIN = 5      # столько новых при сменившемся сборщике и почти без ушедших —
                       # это чтение стало глубже, а не завоз…
+DEEPER_GROWTH = 1.1   # …если полка при этом выросла хотя бы во столько раз…
 LINEUP_MIN = 3        # …если только это не линейка одного бренда: столько сортов
 LINEUP_SHARE = 0.5    # и такая доля всего нового
 MIN_THC_STEP = 0.1    # ближе — то же лабораторное число, записанное иначе
@@ -129,6 +145,9 @@ ASLEEP_DAYS = 14      # …столько — спит
 QUIET_READS = 3       # и тишину подтверждают хотя бы столько чтений подряд
 STALE_DAYS = 7        # без нового завоза столько дней — магазин не пополняется
 TRUSTED_SHARE = 0.6   # о завозах судим, только если надёжна хотя бы такая доля чтений
+WINDOW_TURN = 0.1     # полка того же размера меняет такую долю за чтение — видим окно
+WINDOW_READS = 4      # и это видно хотя бы на стольких чтениях за две недели
+WINDOW_SIZE = 1.25    # «тот же размер» — не дальше чем во столько раз
 SMALL_SHELF = 30      # меньше стольких сортов — ассортимент мал
 TINY_SHELF = 10       # меньше стольких — полка почти пуста
 RECENT_SWEEPS = 3     # прошлое чтение магазина не старше стольких прогонов
@@ -269,6 +288,8 @@ def empty():
             "gonePeak": GONE_PEAK, "movesDays": MOVES_DAYS, "quietDays": QUIET_DAYS,
             "asleepDays": ASLEEP_DAYS, "quietReads": QUIET_READS, "smallShelf": SMALL_SHELF,
             "tinyShelf": TINY_SHELF, "staleDays": STALE_DAYS, "trustedShare": TRUSTED_SHARE,
+            "rewriteMin": REWRITE_MIN, "deeperGrowth": DEEPER_GROWTH, "windowTurn": WINDOW_TURN,
+            "windowReads": WINDOW_READS, "windowSize": WINDOW_SIZE,
         },
         "sweeps": [],
         "collector": {},
@@ -347,11 +368,13 @@ def fold(hist, day, rows, collector=None):
 
         before = versions.get(r1)
         deeper = bool(collector and before and before != collector
-                      and len(new) >= LOPSIDED_MIN and departed * 3 < len(new))
+                      and len(new) >= LOPSIDED_MIN and departed * 3 < len(new)
+                      and len(shelf) >= DEEPER_GROWTH * max(standing, 1))
         # Уходам верится там же, где завозам, и ещё не там, где полка за день
         # потеряла треть: так теряет не магазин, а наше чтение.
-        shaky = (r2 is None or r1 not in recent or len(new) > NEW_SHARE_MAX * len(shelf)
-                 or deeper or departed > GONE_SHARE_MAX * max(standing, 1))
+        rewritten = len(new) > max(NEW_SHARE_MAX * len(shelf), REWRITE_MIN)
+        shaky = (r2 is None or r1 not in recent or rewritten
+                 or deeper or departed > max(GONE_SHARE_MAX * standing, REWRITE_MIN))
         for key in gone:
             first, _last, thc, _s = was[key]
             seen[key] = written(first, r1, thc, shaky)
@@ -367,7 +390,7 @@ def fold(hist, day, rows, collector=None):
             if new:
                 count["unsteady"] += len(new)
             continue
-        if len(new) > NEW_SHARE_MAX * len(shelf):
+        if rewritten:
             count["rewritten"] += len(new)
             count["rewrittenShops"] += 1
             continue
@@ -555,12 +578,27 @@ def prune(hist, day):
     del hist["sweeps"][:-KEEP_SWEEPS]
 
 
+def windowed(hist, day):
+    """Магазины, где мы видим не полку, а окно в меню побольше. Правило — в описании модуля."""
+    since = (date.fromisoformat(day) - timedelta(days=MOVES_DAYS - 1)).isoformat()
+    out = set()
+    for lic, log in hist["activity"].items():
+        turns = sorted(min(e[2], e[3]) / e[1] for before, e in zip(log, log[1:])
+                       if since <= e[0] <= day and e[1] and before[1]
+                       and 1 / WINDOW_SIZE <= e[1] / before[1] <= WINDOW_SIZE)
+        # Больше чем на половине чтений: один день переименований окна не делает.
+        if len(turns) >= WINDOW_READS and turns[(len(turns) - 1) // 2] >= WINDOW_TURN:
+            out.add(lic)
+    return out
+
+
 def waves(hist, day):
     """Сорт бренда, появившийся на WAVE_SHELVES и более разных полках за WAVE_DAYS дней до day."""
     since = (date.fromisoformat(day) - timedelta(days=WAVE_DAYS - 1)).isoformat()
+    partial = windowed(hist, day)
     groups = defaultdict(list)
     for a in hist["arrivals"]:
-        if since <= a["seen"] <= day:
+        if since <= a["seen"] <= day and a["licence"] not in partial:
             groups[a["key"]].append(a)
     found = [(key, found) for key, found in groups.items()
              if len({a["shelf"] for a in found}) >= WAVE_SHELVES]
@@ -599,6 +637,7 @@ def moves(hist, day, rows=None):
     since_new = (date.fromisoformat(day) - timedelta(days=WAVE_DAYS - 1)).isoformat()
     since_old = (date.fromisoformat(day) - timedelta(days=MOVES_DAYS - 1)).isoformat()
     window = [d for d in hist["sweeps"] if since_old <= d <= day]
+    partial = windowed(hist, day)
 
     spans = defaultdict(dict)
     standing = defaultdict(set)
@@ -611,7 +650,7 @@ def moves(hist, day, rows=None):
 
     arrived = defaultdict(list)
     for a in hist["arrivals"]:
-        if since_new <= a["seen"] <= day:
+        if since_new <= a["seen"] <= day and a["licence"] not in partial:
             arrived[a["key"]].append(a)
     arrivals_out = []
     for key, found in arrived.items():
@@ -641,7 +680,8 @@ def moves(hist, day, rows=None):
     for key, at in spans.items():
         # Уход, записанный чтением, которому уходы не доверяются, не считается
         # вовсе: ни что было, ни что стало.
-        trusted = {lic: sp for lic, sp in at.items() if not sp[2]}
+        # Из окна сорт выпадает, не уходя с полки: такие магазины не в счёт.
+        trusted = {lic: sp for lic, sp in at.items() if not sp[2] and lic not in partial}
         if len(trusted) < GONE_PEAK:
             continue
         peak, peak_day = 0, None
@@ -656,6 +696,8 @@ def moves(hist, day, rows=None):
         # Переименованный магазином сорт стоит там же под другим названием.
         now = sorted(lic for lic, (first, last, _s) in trusted.items()
                      if last is None or any(similar(key, other) for other in standing[lic] if other != key))
+        # Но что стоит в окне сейчас, то стоит.
+        now += sorted(lic for lic in partial if key in standing[lic])
         brand, strain = display(hist, key)
         if now and len(now) < LOW_BELOW and peak >= LOW_PEAK:
             low.append({"brand": brand, "strain": strain, "now": now, "peak": peak, "peakDay": peak_day})
@@ -669,7 +711,7 @@ def moves(hist, day, rows=None):
     return {"arrivals": arrivals_out, "batches": batches_out, "runningLow": low, "gone": gone}
 
 
-STATES = ("active", "stale", "quiet", "asleep", "dead")
+STATES = ("active", "stale", "quiet", "asleep", "dead", "partial")
 FROZEN = {1: "quiet", 2: "asleep", 3: "dead"}
 DRY = {1: "stale", 2: "asleep"}
 
@@ -682,6 +724,7 @@ def vitality(hist, day):
     for a in hist["arrivals"] + hist["pending"]:
         delivered[a["licence"]] = max(delivered.get(a["licence"], ""), a["seen"])
     days_to = lambda d: (date.fromisoformat(day) - date.fromisoformat(d)).days
+    partial = windowed(hist, day)
     out = {}
     for lic, log in hist["activity"].items():
         last_read, size = log[-1][0], log[-1][1]
@@ -706,6 +749,10 @@ def vitality(hist, day):
                 "changes": sum(e[2] + e[3] for e in lately), "lastRead": last_read}
         if len(log) <= QUIET_READS:
             out[lic] = {"state": "new", **info}
+            continue
+        # В окне ни завоза, ни тишины не видно.
+        if lic in partial:
+            out[lic] = {"state": "partial", "frozen": False, **info}
             continue
         frozen = 0
         if streak >= QUIET_READS and quiet >= QUIET_DAYS:
@@ -982,8 +1029,8 @@ def vitality_section(hist, day, names):
            "которое не обновляют; «похоже, мёртвый» — повод проверить руками.", "",
            f"- живых {counts['active']}, не пополняются {counts['stale']}, тихих {counts['quiet']}, "
            f"спящих {counts['asleep']}, похоже, мёртвых {counts['dead']}; читаем меньше четырёх раз — "
-           f"{counts['new']}; чтение неустойчиво — {counts['unsteady']}, три прогона не читаются — "
-           f"{counts['unread']} (это наша сторона)"]
+           f"{counts['new']}; видим только кусок меню — {counts['partial']}, чтение неустойчиво — "
+           f"{counts['unsteady']}, три прогона не читаются — {counts['unread']} (это наша сторона)"]
     label = {"dead": "похоже, мёртвый", "asleep": "спит", "quiet": "тихий", "stale": "не пополняется"}
     for state in ("dead", "asleep", "quiet", "stale"):
         for lic, x in sorted(((lic, x) for lic, x in v.items() if x["state"] == state),
@@ -996,6 +1043,11 @@ def vitality_section(hist, day, names):
                 why.append(f"без изменений {x['quietDays']} {plural(x['quietDays'], 'день', 'дня', 'дней')}")
             why.append(f"без завоза {x['dryDays']} {plural(x['dryDays'], 'день', 'дня', 'дней')}")
             out.append(f"- **{names.get(lic, lic)}** — {label[state]}: " + ", ".join(why))
+    # Список для сборщика: этим меню нужно читать больше, чем первую страницу.
+    partial = sorted((x["size"], names.get(lic, lic)) for lic, x in v.items() if x["state"] == "partial")
+    if partial:
+        out.append("- видим только кусок меню — новинки и уходы отсюда не считаются: "
+                   + ", ".join(f"{name} ({size})" for size, name in partial))
     return out
 
 
@@ -1050,6 +1102,14 @@ def check():
         # Тот же рост, но в день, когда сборщик не менялся, — это завоз.
         "Q": lambda i, d: shelf("Q", d, extra=[f"Stock {n}" for n in range(20)]
                                 + ([f"Drop {n}" for n in range(6)] if i >= 3 else [])),
+        # Маленькая полка: три новых сорта — больше 15% её, но это завоз, а не
+        # переписанная полка.
+        "S": lambda i, d: shelf("S", d, drop=[f"Old {n}" for n in range(10)],
+                                extra=[f"Small Drop {n}" for n in range(3)] if i >= 2 else []),
+        # Большая полка, сборщик сменился, шесть новых разных брендов и ни одного
+        # ушедшего — но полка выросла меньше чем на десятую: это поставка.
+        "U": lambda i, d: shelf("U", d, extra=[f"Stock {n}" for n in range(60)])
+        + ([row("U", f"Delivery {n}", d, brand=f"Mixed{n}") for n in range(6)] if i >= 2 else []),
         # Новая партия: THC сорта сменился на значение, которого не было нигде.
         # Рядом — сорт, пришедший впервые с THC: это завоз, а не новая партия.
         "T1": lambda i, d: potent("T1", d, {"Batch Strain": 20.11 if i < 2 else 22.35,
@@ -1110,6 +1170,8 @@ def check():
            sorted(a["key"] for a in hist["arrivals"] if a["licence"] == "K"), ["find|garlic patties"])
     expect("тот же рост без смены сборщика", sum(1 for a in hist["arrivals"] if a["licence"] == "Q"), 6)
     expect("мелкий завоз в день смены сборщика", any(a["licence"] == "A" for a in hist["arrivals"]), True)
+    expect("завоз на маленькую полку", sum(1 for a in hist["arrivals"] if a["licence"] == "S"), 3)
+    expect("поставка большой полке в день смены сборщика", sum(1 for a in hist["arrivals"] if a["licence"] == "U"), 6)
     again = [r for make in plan.values() for r in make(4, days[4])]
     expect("второй прогон того же дня", fold(hist, days[4], again, "v2"), None)
     found = waves(hist, days[4])
@@ -1144,6 +1206,8 @@ def check():
         + [[f"2026-02-{d}", 60 - d + 9, 0, 1, 1] for d in (10, 15, 16, 17)],
         # Полка меняется, но наши чтения ненадёжны: о завозах не судим.
         "shaky": [["2026-02-01", 60, 60, 0]] + [[f"2026-02-{d}", 60, 5, 5, 0] for d in (10, 15, 16, 17)],
+        # Размер тот же, а сорта каждый раз другие: видим окно, а не полку.
+        "window": [["2026-02-01", 45, 45, 0]] + [[f"2026-02-{d}", 45, 7, 7, 1] for d in (10, 15, 16, 17)],
         "quietbig": [["2026-02-01", 80, 80, 0], ["2026-02-08", 80, 1, 1]] + [[f"2026-02-{d}", 80, 0, 0] for d in (10, 15, 16, 17)],
         "asleepsmall": [["2026-02-01", 20, 20, 0], ["2026-02-08", 20, 0, 1]] + [[f"2026-02-{d}", 20, 0, 0] for d in (10, 15, 16, 17)],
         "deadtiny": [["2026-01-20", 2, 2, 0]] + [[f"2026-02-{d:02d}", 2, 0, 0] for d in (1, 10, 15, 16, 17)],
@@ -1153,7 +1217,7 @@ def check():
     got = {lic: x["state"] for lic, x in vitality(fake, "2026-02-17").items()}
     expect("живёт ли магазин", got, {"busy": "active", "quietbig": "quiet", "asleepsmall": "asleep",
                                      "deadtiny": "dead", "fresh": "new", "gone": "unread",
-                                     "stale": "stale", "shaky": "unsteady"})
+                                     "stale": "stale", "shaky": "unsteady", "window": "partial"})
     expect("одна партия", (same_batch(28, 28.41), same_batch(28.4, 28.41), same_batch(22.3, 22.36),
                            same_batch(25, 25.3), same_batch(28.41, 28.51), same_batch(27, 30.52),
                            same_batch(26.49, 28.41)), (True, True, True, True, False, False, False))

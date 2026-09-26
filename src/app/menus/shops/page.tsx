@@ -4,7 +4,7 @@ import { ShelfStamp } from '@/components/ShelfStamp';
 import { dispensaries, displayName, regionOf } from '@/lib/data';
 import { prettyDate } from '@/lib/format';
 import { shelvesRead } from '@/lib/shelf';
-import { dayLabel, stillShelf } from '@/lib/signals';
+import { dayLabel, shelfNote } from '@/lib/signals';
 
 export const metadata: Metadata = {
   title: 'Shops with a menu',
@@ -67,14 +67,23 @@ export default function MenuShopsPage() {
                   not trading and a menu nobody updates look the same from
                   here. */}
               {(() => {
-                const still = stillShelf(shop!.licenseNumber);
-                return still ? (
+                const note = shelfNote(shop!.licenseNumber);
+                if (!note) return null;
+                /* Ours, not the shop's: said plainly, and not in the colour
+                   of a warning about the shop. */
+                if (note.state === 'partial')
+                  return (
+                    <p className="mt-1 text-[0.7rem] text-chalk-400">
+                      We read only part of this menu
+                    </p>
+                  );
+                return (
                   <p className="mt-1 text-[0.7rem] text-amber-400">
-                    {still.frozen
-                      ? `Menu unchanged since ${dayLabel(still.since)} · ${still.quietDays} days`
-                      : `Nothing new since ${dayLabel(still.lastDelivery)} · ${still.dryDays} days`}
+                    {note.frozen
+                      ? `Menu unchanged since ${dayLabel(note.since)} · ${note.quietDays} days`
+                      : `Nothing new since ${dayLabel(note.lastDelivery)} · ${note.dryDays} days`}
                   </p>
-                ) : null;
+                );
               })()}
             </Link>
           </li>
