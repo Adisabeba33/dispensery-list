@@ -4,7 +4,7 @@ import { debts, stats } from '@/lib/data';
 export const metadata: Metadata = {
   title: 'How this register is built',
   description:
-    'The sources, verification rules and known limits behind the NY Dispensary Register.',
+    'The sources, verification rules and known limits behind The Flower Index.',
 };
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (

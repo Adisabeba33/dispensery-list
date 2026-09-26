@@ -5,14 +5,16 @@ import { SiteNav } from '@/components/SiteNav';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://theflowerindex.com'),
   title: {
-    default: 'NY Dispensary Register — verified licensed cannabis dispensaries',
-    template: '%s · NY Dispensary Register',
+    default: 'The Flower Index — licensed cannabis dispensaries and the flower on their shelves',
+    template: '%s · The Flower Index',
   },
   description:
     'A directory of state-licensed cannabis dispensaries in New York City and Westchester County. Every entry carries its licence number and its sources.',
   openGraph: {
-    title: 'NY Dispensary Register',
+    title: 'The Flower Index',
+    siteName: 'The Flower Index',
     description:
       'State-licensed cannabis dispensaries in New York City and Westchester County — every entry traceable to the state registry.',
     type: 'website',
@@ -60,7 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </svg>
               </span>
               <span className="whitespace-nowrap text-[0.95rem] font-semibold tracking-tight text-chalk-50">
-                NY Dispensary Register
+                The Flower Index
               </span>
             </Link>
 

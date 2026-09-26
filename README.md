@@ -1,4 +1,6 @@
-# NY Dispensary Register
+# The Flower Index
+
+[theflowerindex.com](https://theflowerindex.com)
 
 A directory of **state-licensed** cannabis dispensaries in New York City and
 Westchester County.
