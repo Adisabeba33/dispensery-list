@@ -2860,8 +2860,14 @@ const NOT_FLOWER_TITLE = new RegExp(
        one Westchester shop against its own menu by hand and asked why two
        bulk bags were on a flower shelf. Across 22,289 collected listings the
        word appears 98 times and is a product every single time; no cultivar
-       in the catalog carries it. */
-    '\\bground\\b',
+       in the catalog carries it.
+       The word also comes glued and conjugated — "Preground", "PreGround
+       Tin", "Pre-Grounded", "Grounded Flower", "Sativa Grounds" — and none of
+       those is "ground" on a word boundary: seventy-three of them stood on
+       twenty-three shelves on 25 September. Every such name in forty days of
+       collected shelves is a bag of ground flower, and no cultivar in the
+       strain catalog carries any of the words. */
+    '\\b(?:pre[\\s-]?)?ground(?:s|ed)?\\b',
     'ready\\s+to\\s+roll',
     'flower\\s+flight',
   ].join('|'),

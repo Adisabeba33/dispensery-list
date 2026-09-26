@@ -123,10 +123,21 @@ check('and pre-ground is too',
   classify({ Name: 'Amnesia Haze - Pre Ground', type: 'Flower' }), 'title-not-flower');
 check('and ground leading the name',
   classify({ Name: 'Ground - Tahoe OG', type: 'Flower' }), 'title-not-flower');
+/* Glued to "pre" or conjugated, it is the same bag: 73 of these stood on 23
+   shelves on 25 September because none is "ground" on a word boundary. */
+for (const name of [
+  'Applescotti Preground', 'Citrus Slurp - PreGround Tin', 'Punch Breath - Pre-Grounded Flower',
+  'Grounded Flower - Titan Express', 'Nic The Bruiser - Grounded Flower', 'Sativa Grounds',
+  'Dumbo Electric ( WHITE HOT GUAVA PRE-GROUNDED FLOWER )', 'Inf. Flower - Preground - Tangerine Dream',
+]) {
+  check(`ground, glued or conjugated: ${name}`, classify({ Name: name, type: 'Flower' }), 'title-not-flower');
+}
 /* On a word boundary, so a cultivar that merely contains the letters keeps its
    place — no catalog name carries "ground" as a word. */
 check('but a name that only contains the letters is flower',
   classify({ Name: 'Playground Punch', type: 'Flower' }), 'flower');
+check('nor one where the letters run on',
+  classify({ Name: 'Underground Groundhog Kush', type: 'Flower' }), 'flower');
 check('infused', classify({ Name: 'Infused Pouch 14g', type: 'Flower' }), 'title-not-flower');
 check('vape', classify({ Name: 'Blue Dream Cartridge', type: 'Vaporizers' }), 'title-not-flower');
 check('edible', classify({ Name: 'Peach Gummies 10mg', type: 'Edibles' }), 'title-not-flower');
