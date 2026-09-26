@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
 import { AgeGate } from '@/components/AgeGate';
 import { SiteNav } from '@/components/SiteNav';
@@ -18,7 +18,25 @@ export const metadata: Metadata = {
     description:
       'State-licensed cannabis dispensaries in New York City and Westchester County — every entry traceable to the state registry.',
     type: 'website',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'The Flower Index' }],
   },
+  twitter: { card: 'summary_large_image', images: ['/og.png'] },
+  /* The mark in every size a browser or a phone asks for. The SVG is the one
+     modern browsers take; the .ico is for the ones that still look for it by
+     name, and the PNGs are what a home-screen install uses. */
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '16x16 32x32 48x48' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+  },
+  manifest: '/manifest.webmanifest',
+  appleWebApp: { title: 'Flower Index', statusBarStyle: 'black-translucent' },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#0B2419',
 };
 
 /* The first four are New York City and Westchester — the register proper, with
@@ -52,18 +70,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               screen's whole width below it; it was wrapping to three lines
               beside a menu squeezed to nothing. */}
           <div className="shell flex flex-col sm:h-16 sm:flex-row sm:items-center sm:gap-6">
-            <Link href="/" className="group flex h-12 shrink-0 items-center gap-2.5 sm:h-auto">
-              <span
-                aria-hidden
-                className="grid h-8 w-8 place-items-center rounded-lg border border-moss-600/50 bg-moss-600/10 text-moss-400"
-              >
-                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2">
-                  <path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-              <span className="whitespace-nowrap text-[0.95rem] font-semibold tracking-tight text-chalk-50">
-                The Flower Index
-              </span>
+            <Link href="/" className="group flex h-12 shrink-0 items-center sm:h-auto">
+              {/* The mark and the name as one drawing, so the name is set in
+                  the logo's serif without the site loading a font for it. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/brand/lockup.svg" alt="The Flower Index" width={180} height={32} className="h-8 w-auto" />
             </Link>
 
             <SiteNav nav={NAV} territories={TERRITORY_NAV} />

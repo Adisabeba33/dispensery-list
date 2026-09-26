@@ -45,14 +45,8 @@ export const AgeGate = () => {
       className="fixed inset-0 z-50 grid place-items-center bg-ink-950/95 p-5 backdrop-blur-sm"
     >
       <div className="card w-full max-w-md p-7 text-center">
-        <span
-          aria-hidden
-          className="mx-auto grid h-11 w-11 place-items-center rounded-xl border border-moss-600/50 bg-moss-600/10 text-moss-400"
-        >
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2">
-            <path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </span>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/brand/mark.svg" alt="" aria-hidden width={56} height={56} className="mx-auto h-14 w-14" />
 
         {state === 'asking' ? (
           <>
