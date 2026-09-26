@@ -890,21 +890,6 @@
     "notes": "The Flowery: one menu address serves every branch, and the branch is the c_f_retailer_id cookie that 'Shop this location' sets; the menu is then an Algolia query filtered on retailerId. 8c3d382e-64e9-44e1-b671-31897051181e is The Flowery - Staten Island (Richmond AVE), 2059 Richmond Avenue in the site's own retailer list (api.thefloweryny.com/v2/retailers, checked 2026-09-26). Without it every Flowery licence read the same default shelf."
   },
   {
-    "licenseNumber": "OCM-CAURD-24-000132",
-    "menuUrl": "https://www.thefloweryny.com/shop/category/flower",
-    "platform": "OTHER",
-    "robotsAllows": null,
-    "flowerVisibleWithoutLogin": true,
-    "ageGate": "click-through",
-    "checkedAt": "2026-09-26",
-    "storeCookie": {
-      "name": "c_f_retailer_id",
-      "value": "29de6377-b4cd-4ac7-aac8-1ece867fa1c3"
-    },
-    "branch": "The Flowery - Soho, 481 Broadway",
-    "notes": "Registered as Elevate Soho Cannabis; trades as The Flowery - Soho, 481 Broadway. The Flowery lists OCM-CAURD-24-000132 among its own licences on thefloweryny.com, and its retailer list places 29de6377-b4cd-4ac7-aac8-1ece867fa1c3 at this address (checked 2026-09-26). Kept only if the shop's menu has products — an active shop."
-  },
-  {
     "licenseNumber": "OCM-CAURD-25-000236",
     "menuUrl": "https://www.thefloweryny.com/shop/category/flower",
     "platform": "OTHER",
@@ -917,6 +902,6 @@
       "value": "fa865fd1-3fb1-42ee-9338-05ad3771c7bf"
     },
     "branch": "The Flowery - Bronx, 3551 Boston Road",
-    "notes": "Registered as Nube NYC; trades as The Flowery - Bronx, 3551 Boston Road. The Flowery lists OCM-CAURD-25-000236 among its own licences on thefloweryny.com, and its retailer list places fa865fd1-3fb1-42ee-9338-05ad3771c7bf at this address (checked 2026-09-26). Kept only if the shop's menu has products — an active shop."
+    "notes": "Registered as Nube NYC; trades as The Flowery - Bronx, 3551 Boston Road. The Flowery lists OCM-CAURD-25-000236 among its own licences on thefloweryny.com, and its retailer list places fa865fd1-3fb1-42ee-9338-05ad3771c7bf at this address (checked 2026-09-26). A diagnostic run on 2026-09-26 read 47 flower products for this retailer: the shop is trading."
   }
 ]
