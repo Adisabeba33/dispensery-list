@@ -798,5 +798,95 @@
     "ageGate": "click-through",
     "checkedAt": "2026-09-26",
     "notes": "Happy Munkey Fulton, 453 Fulton St — the shop's own Tymber/Blaze menu ('Pickup at Happy Munkey - Fulton'). Its 'Temporarily Closed' label is hidden on the live site (d-none); the location block shows daily hours and the menu takes pick-up orders."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000222",
+    "menuUrl": "https://www.thefloweryny.com/shop/category/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-26",
+    "storeCookie": {
+      "name": "c_f_retailer_id",
+      "value": "9200c7aa-f029-45df-abec-6f3203f783c6"
+    },
+    "branch": "The Flowery - Upper West Side, 2465 Broadway",
+    "notes": "The Flowery: one menu address serves every branch, and the branch is the c_f_retailer_id cookie that 'Shop this location' sets; the menu is then an Algolia query filtered on retailerId. 9200c7aa-f029-45df-abec-6f3203f783c6 is The Flowery - Upper West Side, 2465 Broadway in the site's own retailer list (api.thefloweryny.com/v2/retailers, checked 2026-09-26). Without it every Flowery licence read the same default shelf."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000282",
+    "menuUrl": "https://www.thefloweryny.com/shop/category/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-26",
+    "storeCookie": {
+      "name": "c_f_retailer_id",
+      "value": "a3320e44-6d18-41ca-8946-126d1335f25c"
+    },
+    "branch": "The Flowery - West Village, 112 Christopher Street",
+    "notes": "The Flowery: one menu address serves every branch, and the branch is the c_f_retailer_id cookie that 'Shop this location' sets; the menu is then an Algolia query filtered on retailerId. a3320e44-6d18-41ca-8946-126d1335f25c is The Flowery - West Village, 112 Christopher Street in the site's own retailer list (api.thefloweryny.com/v2/retailers, checked 2026-09-26). Without it every Flowery licence read the same default shelf."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000271",
+    "menuUrl": "https://www.thefloweryny.com/shop/category/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-26",
+    "storeCookie": {
+      "name": "c_f_retailer_id",
+      "value": "00d34070-d6d9-4ba7-a5af-ae99d0fdcec9"
+    },
+    "branch": "The Flowery - Chinatown, 70 Canal Street",
+    "notes": "The Flowery: one menu address serves every branch, and the branch is the c_f_retailer_id cookie that 'Shop this location' sets; the menu is then an Algolia query filtered on retailerId. 00d34070-d6d9-4ba7-a5af-ae99d0fdcec9 is The Flowery - Chinatown, 70 Canal Street in the site's own retailer list (api.thefloweryny.com/v2/retailers, checked 2026-09-26). Without it every Flowery licence read the same default shelf."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000287",
+    "menuUrl": "https://www.thefloweryny.com/shop/category/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-26",
+    "storeCookie": {
+      "name": "c_f_retailer_id",
+      "value": "4201654d-72ae-46f4-9963-457d028c7cf9"
+    },
+    "branch": "The Flowery - East Village, 101 East 10th Street",
+    "notes": "The Flowery: one menu address serves every branch, and the branch is the c_f_retailer_id cookie that 'Shop this location' sets; the menu is then an Algolia query filtered on retailerId. 4201654d-72ae-46f4-9963-457d028c7cf9 is The Flowery - East Village, 101 East 10th Street in the site's own retailer list (api.thefloweryny.com/v2/retailers, checked 2026-09-26). Without it every Flowery licence read the same default shelf."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-23-000041",
+    "menuUrl": "https://www.thefloweryny.com/shop/category/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-26",
+    "storeCookie": {
+      "name": "c_f_retailer_id",
+      "value": "b6bdff03-97c9-45f1-85e0-3e44095abea6"
+    },
+    "branch": "The Flowery - Staten Island (Veterans RD), 3022 Veterans Road West",
+    "notes": "The Flowery: one menu address serves every branch, and the branch is the c_f_retailer_id cookie that 'Shop this location' sets; the menu is then an Algolia query filtered on retailerId. b6bdff03-97c9-45f1-85e0-3e44095abea6 is The Flowery - Staten Island (Veterans RD), 3022 Veterans Road West in the site's own retailer list (api.thefloweryny.com/v2/retailers, checked 2026-09-26). Without it every Flowery licence read the same default shelf."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000114",
+    "menuUrl": "https://www.thefloweryny.com/shop/category/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-26",
+    "storeCookie": {
+      "name": "c_f_retailer_id",
+      "value": "8c3d382e-64e9-44e1-b671-31897051181e"
+    },
+    "branch": "The Flowery - Staten Island (Richmond AVE), 2059 Richmond Avenue",
+    "notes": "The Flowery: one menu address serves every branch, and the branch is the c_f_retailer_id cookie that 'Shop this location' sets; the menu is then an Algolia query filtered on retailerId. 8c3d382e-64e9-44e1-b671-31897051181e is The Flowery - Staten Island (Richmond AVE), 2059 Richmond Avenue in the site's own retailer list (api.thefloweryny.com/v2/retailers, checked 2026-09-26). Without it every Flowery licence read the same default shelf."
   }
 ]
