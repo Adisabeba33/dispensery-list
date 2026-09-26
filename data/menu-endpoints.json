@@ -903,5 +903,20 @@
     },
     "branch": "The Flowery - Bronx, 3551 Boston Road",
     "notes": "Registered as Nube NYC; trades as The Flowery - Bronx, 3551 Boston Road. The Flowery lists OCM-CAURD-25-000236 among its own licences on thefloweryny.com, and its retailer list places fa865fd1-3fb1-42ee-9338-05ad3771c7bf at this address (checked 2026-09-26). A diagnostic run on 2026-09-26 read 47 flower products for this retailer: the shop is trading."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000132",
+    "menuUrl": "https://www.thefloweryny.com/shop/category/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-26",
+    "storeCookie": {
+      "name": "c_f_retailer_id",
+      "value": "29de6377-b4cd-4ac7-aac8-1ece867fa1c3"
+    },
+    "branch": "The Flowery - Soho, 481 Broadway",
+    "notes": "Registered as Elevate Soho Cannabis; trades as The Flowery - Soho, 481 Broadway. The Flowery lists OCM-CAURD-24-000132 among its own licences on thefloweryny.com, and its retailer list places 29de6377-b4cd-4ac7-aac8-1ece867fa1c3 at this address (checked 2026-09-26). Kept only if the shop's menu has products — an active shop."
   }
 ]
