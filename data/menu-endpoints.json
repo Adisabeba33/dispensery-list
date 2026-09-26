@@ -697,7 +697,7 @@
     "flowerVisibleWithoutLogin": true,
     "ageGate": "click-through",
     "checkedAt": "2026-09-25",
-    "notes": "Happy Munkey Dyckman, 151 Dyckman St — the shop's own Tymber/Blaze menu ('Pickup at Happy Munkey - Dyckman'). /products/flower/ is an information page with no products. The Fulton St branch (Ramon Reyes LLC) is marked 'Temporarily Closed' on the site and is deliberately not given an endpoint."
+    "notes": "Happy Munkey Dyckman, 151 Dyckman St — the shop's own Tymber/Blaze menu ('Pickup at Happy Munkey - Dyckman'). /products/flower/ is an information page with no products. The Fulton St branch (Ramon Reyes LLC) has its own endpoint."
   },
   {
     "licenseNumber": "OCM-RETL-24-000254",
@@ -788,5 +788,15 @@
     "ageGate": "click-through",
     "checkedAt": "2026-09-26",
     "notes": "ESH Rosedale, 245-02 Merrick Blvd: its own Sweed store, Flower category. Written down so the two ESH branches cannot be handed each other's shelf."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000079",
+    "menuUrl": "https://happymunkey.com/shop/fulton/?category=flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "click-through",
+    "checkedAt": "2026-09-26",
+    "notes": "Happy Munkey Fulton, 453 Fulton St — the shop's own Tymber/Blaze menu ('Pickup at Happy Munkey - Fulton'). Its 'Temporarily Closed' label is hidden on the live site (d-none); the location block shows daily hours and the menu takes pick-up orders."
   }
 ]
