@@ -105,6 +105,27 @@ check('proprietary lineage', pr?.lineage, 'HYBRID');
 // A menu printing 0% is stating nothing, not stating zero.
 check('proprietary blank terpene', pr?.terpenes.profile[0].percent, null);
 
+/* ------------------------------------------------------------ CLASSIFICATION --
+ * Highlife Health's menu, as its page answered on 27 September: category and
+ * subCategory null, the shelf under ClassificationName and again, as an
+ * object, under CanonicalClassification. */
+{
+  const highlife = (Name, cls = 'Flower') => ({
+    Name, ProductName: Name, category: null, subCategory: null,
+    ClassificationName: cls, ClassificationPath: cls,
+    CanonicalClassification: { TreeId: 67604, Id: 67605, Name: cls, ParentCategories: [] },
+    THCMax: 31.1, ThcType: '%', NetWeightVal: 3.5,
+  });
+  check('a jar whose name never says flower is flower by its classification',
+    classify(highlife('Wizard Trees 3.5g - Wizard OG')), 'flower');
+  check('and a concentrate is not', classify(highlife('Some Hash 1g', 'Concentrates')), 'category-not-flower');
+  check('ground flower is still refused by its name', classify(highlife('Hashtag Honey Ground Flower 28g - Candy Fumes')), 'title-not-flower');
+  // The weight is not in every name; it is always in NetWeight, unit and all.
+  check('a name without a weight takes it from NetWeight',
+    toListing({ ...highlife('Alter Jar Flower - Garlic Cookies'), NetWeight: '3.5g', NetWeightUnit: 'g' }, shop, SRC, {})?.availableSizesGrams, [3.5]);
+  check('but a bare NetWeightVal is not a weight', toListing({ ...highlife('Alter Jar Flower - Garlic Cookies') }, shop, SRC, {}), null);
+}
+
 /* --------------------------------------------------------- what to refuse --
  * Everything the user asked us to treat as noise: rolled, infused, not flower.
  */
@@ -139,6 +160,9 @@ check('but a name that only contains the letters is flower',
   classify({ Name: 'Playground Punch', type: 'Flower' }), 'flower');
 check('nor one where the letters run on',
   classify({ Name: 'Underground Groundhog Kush', type: 'Flower' }), 'flower');
+check('Queen of Diamonds is a strain',
+  classify({ name: 'DRAGONFLY - QUEEN OF DIAMONDS - FLOWER - 3.5 G', category: 'flower', subtype: 'pre-pack' }), 'flower');
+check('but diamonds are still the extract', classify({ Name: 'Live Resin Diamonds 1g', type: 'Flower' }), 'title-not-flower');
 check('infused', classify({ Name: 'Infused Pouch 14g', type: 'Flower' }), 'title-not-flower');
 check('vape', classify({ Name: 'Blue Dream Cartridge', type: 'Vaporizers' }), 'title-not-flower');
 check('edible', classify({ Name: 'Peach Gummies 10mg', type: 'Edibles' }), 'title-not-flower');

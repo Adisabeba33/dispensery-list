@@ -2848,7 +2848,9 @@ const lineageFromTitle = (raw) => {
 const NOT_FLOWER_TITLE = new RegExp(
   [
     'infus',                                   // Infused, Infusion
-    '\\bdiamonds\\b',                            // the extract; "Black Diamond" is a strain
+    /* The extract, not "Black Diamond" — nor "Queen of Diamonds", which The
+       Bridge sells as FLOWER - 3.5 G: after "of" it is a card, not a resin. */
+    '(?<!\\bof\\s)\\bdiamonds\\b',
     '\\bdiamond\\s+(?:sauce|melt|infused)\\b',
     '\\bmoon\\s?rocks?\\b',
     '\\bpre[\\s-]?rolls?\\b',
@@ -3063,6 +3065,12 @@ const CATEGORY_KEYS = [
   'productCategory', 'productCategoryName', 'productType', 'productGroup',
   'subcategory', 'productSubcategory', 'subType', 'rootSubtype', 'subtype',
   'menuCategory', 'department', 'classification', 'class', 'kind', 'type',
+  /* The platform behind Highlife Health and Hush leaves category and
+     subCategory null and files the shelf under ClassificationName: 149 of
+     Highlife's 151 products said "Flower" there, and 68 of them — Wizard
+     Trees 3.5g, a Hashtag Honey glass jar — were thrown away for want of a
+     category, because their names do not say "flower". */
+  'classificationName', 'classificationPath', 'canonicalClassification',
 ];
 
 const categoryText = (p) =>
@@ -3468,7 +3476,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const statedGrams = plausibleSize(num(pick(p, ['weightInGrams', 'flowerEquivalentInGrams'])));
   if (statedGrams) sizes.push(statedGrams);
   if (!sizes.length) {
-    for (const value of pickAll(p, ['weightFormatted', 'weight', 'size', 'cannabisWeight'])) {
+    // netWeight is "3.5g" on Highlife's platform: the unit is in the text.
+    for (const value of pickAll(p, ['weightFormatted', 'weight', 'size', 'cannabisWeight', 'netWeight'])) {
       const g = plausibleSize(sizeOf(value));
       if (g) sizes.push(g);
     }
