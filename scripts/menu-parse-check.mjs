@@ -105,6 +105,27 @@ check('proprietary lineage', pr?.lineage, 'HYBRID');
 // A menu printing 0% is stating nothing, not stating zero.
 check('proprietary blank terpene', pr?.terpenes.profile[0].percent, null);
 
+/* ------------------------------------------------------------ CLASSIFICATION --
+ * Highlife Health's menu, as its page answered on 27 September: category and
+ * subCategory null, the shelf under ClassificationName and again, as an
+ * object, under CanonicalClassification. */
+{
+  const highlife = (Name, cls = 'Flower') => ({
+    Name, ProductName: Name, category: null, subCategory: null,
+    ClassificationName: cls, ClassificationPath: cls,
+    CanonicalClassification: { TreeId: 67604, Id: 67605, Name: cls, ParentCategories: [] },
+    THCMax: 31.1, ThcType: '%', NetWeightVal: 3.5,
+  });
+  check('a jar whose name never says flower is flower by its classification',
+    classify(highlife('Wizard Trees 3.5g - Wizard OG')), 'flower');
+  check('and a concentrate is not', classify(highlife('Some Hash 1g', 'Concentrates')), 'category-not-flower');
+  check('ground flower is still refused by its name', classify(highlife('Hashtag Honey Ground Flower 28g - Candy Fumes')), 'title-not-flower');
+  // The weight is not in every name; it is always in NetWeight, unit and all.
+  check('a name without a weight takes it from NetWeight',
+    toListing({ ...highlife('Alter Jar Flower - Garlic Cookies'), NetWeight: '3.5g', NetWeightUnit: 'g' }, shop, SRC, {})?.availableSizesGrams, [3.5]);
+  check('but a bare NetWeightVal is not a weight', toListing({ ...highlife('Alter Jar Flower - Garlic Cookies') }, shop, SRC, {}), null);
+}
+
 /* --------------------------------------------------------- what to refuse --
  * Everything the user asked us to treat as noise: rolled, infused, not flower.
  */
@@ -139,6 +160,9 @@ check('but a name that only contains the letters is flower',
   classify({ Name: 'Playground Punch', type: 'Flower' }), 'flower');
 check('nor one where the letters run on',
   classify({ Name: 'Underground Groundhog Kush', type: 'Flower' }), 'flower');
+check('Queen of Diamonds is a strain',
+  classify({ name: 'DRAGONFLY - QUEEN OF DIAMONDS - FLOWER - 3.5 G', category: 'flower', subtype: 'pre-pack' }), 'flower');
+check('but diamonds are still the extract', classify({ Name: 'Live Resin Diamonds 1g', type: 'Flower' }), 'title-not-flower');
 check('infused', classify({ Name: 'Infused Pouch 14g', type: 'Flower' }), 'title-not-flower');
 check('vape', classify({ Name: 'Blue Dream Cartridge', type: 'Vaporizers' }), 'title-not-flower');
 check('edible', classify({ Name: 'Peach Gummies 10mg', type: 'Edibles' }), 'title-not-flower');
@@ -380,6 +404,34 @@ check('missing url stays null', toListing({ Name: 'X', type: 'Flower', Options: 
   ] }, shop, SRC, {});
   check('the key travels with the panel it was made from',
     mergeBySize([bare, panelled])[0]?.labPanelKey, 'THC:22.5|HUMULENE:0.05|LIMONENE:0.3|LINALOOL:0.1|MYRCENE:0.5');
+}
+
+/* Gap Commerce sends the certificate's whole panel with each product. Nanticoke
+   Pluto as The Bridge's menu answered on 27 September, entry for entry. */
+{
+  const e = (type, v) => ({ type, amount: { minValue: v, maxValue: v }, amountType: 'PERCENTAGE' });
+  const pluto = toListing({
+    name: 'NANTICOKE - PLUTO - FLOWER - 3.5 G', brand: 'NANTICOKE', category: 'FLOWER', subtype: 'PRE-PACK',
+    thc: '29.61%', unitOfMeasurement: 'G', customSize: '3.5 G',
+    productData: { labResults: [
+      e('THC', '29.61'), e('ALPHA_BISABOLOL', '0.0602'), e('ALPHA_HUMULENE', '0.22'), e('ALPHA_PINENE', '0.4094'),
+      e('BETA_CARYOPHYLLENE', '0.608'), e('BETA_MYRCENE', '0.2038'), e('BETA_PINENE', '0.209'), e('CBGA', '0.93'),
+      e('DELTA-9_THC', '3.64'), e('LIMONENE', '0.2539'), e('LINALOOL', '0.071'), e('MOISTURE', '10.9'),
+      e('TERPINEOL', '0.0277'), e('THCA', '29.61'), e('THCVA', '0.29'), e('TOTAL_CANNABINOIDS', '34.47'),
+      e('TOTAL_TERPENES', '2.063'),
+    ] },
+  }, shop, SRC, {});
+  check('the Gap Commerce panel is read, compounds only',
+    pluto?.terpenes.profile.map((t) => [t.name, t.percent]),
+    [['BISABOLOL', 0.06], ['HUMULENE', 0.22], ['PINENE_ALPHA', 0.41], ['CARYOPHYLLENE', 0.61], ['MYRCENE', 0.2],
+      ['PINENE_BETA', 0.21], ['LIMONENE', 0.25], ['LINALOOL', 0.07], ['TERPINEOL', 0.03]]);
+  check('its terpene total', pluto?.terpenes.totalPercent, 2.06);
+  check('its cannabinoid total', pluto?.totalCannabinoidsPercent, 34.47);
+  check('and so it carries a batch key', pluto?.labPanelKey?.startsWith('THC:29.61|BISABOLOL:0.06|'), true);
+  check('an entry in milligrams is not a percentage', toListing({
+    name: 'X - FLOWER - 3.5 G', category: 'FLOWER', customSize: '3.5 G',
+    productData: { labResults: [{ type: 'LIMONENE', amount: { minValue: '4', maxValue: '4' }, amountType: 'MG' }] },
+  }, shop, SRC, {})?.terpenes.profile, []);
 }
 
 const withDesc = (v) => toListing({ Name: 'Blue Burst', type: 'Flower', Options: ['3.5g'], description: v }, shop, SRC, {});

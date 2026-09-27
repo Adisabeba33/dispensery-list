@@ -2848,7 +2848,9 @@ const lineageFromTitle = (raw) => {
 const NOT_FLOWER_TITLE = new RegExp(
   [
     'infus',                                   // Infused, Infusion
-    '\\bdiamonds\\b',                            // the extract; "Black Diamond" is a strain
+    /* The extract, not "Black Diamond" — nor "Queen of Diamonds", which The
+       Bridge sells as FLOWER - 3.5 G: after "of" it is a card, not a resin. */
+    '(?<!\\bof\\s)\\bdiamonds\\b',
     '\\bdiamond\\s+(?:sauce|melt|infused)\\b',
     '\\bmoon\\s?rocks?\\b',
     '\\bpre[\\s-]?rolls?\\b',
@@ -2997,7 +2999,7 @@ const TERPENES = {
   nerolidol: 'NEROLIDOL', valencene: 'VALENCENE', camphene: 'CAMPHENE',
   eucalyptol: 'EUCALYPTOL', guaiol: 'GUAIOL', farnesene: 'FARNESENE',
   geraniol: 'GERANIOL', borneol: 'BORNEOL', terpineol: 'TERPINEOL',
-  phellandrene: 'PHELLANDRENE', carene: 'CARENE', sabinene: 'SABINENE', fenchol: 'FENCHOL',
+  phellandrene: 'PHELLANDRENE', alphaphellandrene: 'PHELLANDRENE', transnerolidol: 'NEROLIDOL', carene: 'CARENE', sabinene: 'SABINENE', fenchol: 'FENCHOL',
   /* Both are on every NY panel and neither had a word here, so a shop that
      quantified them handed us OTHER. The strain references were already
      carrying them under names the shelf side could not match. */
@@ -3063,6 +3065,12 @@ const CATEGORY_KEYS = [
   'productCategory', 'productCategoryName', 'productType', 'productGroup',
   'subcategory', 'productSubcategory', 'subType', 'rootSubtype', 'subtype',
   'menuCategory', 'department', 'classification', 'class', 'kind', 'type',
+  /* The platform behind Highlife Health and Hush leaves category and
+     subCategory null and files the shelf under ClassificationName: 149 of
+     Highlife's 151 products said "Flower" there, and 68 of them — Wizard
+     Trees 3.5g, a Hashtag Honey glass jar — were thrown away for want of a
+     category, because their names do not say "flower". */
+  'classificationName', 'classificationPath', 'canonicalClassification',
 ];
 
 const categoryText = (p) =>
@@ -3407,6 +3415,35 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
       if (fromLabs.size) profile.splice(0, profile.length, ...fromLabs.values());
     }
   }
+  /* Gap Commerce — The Bridge, Forever 4 20, Kings of Bud and the other
+     /collection/flower storefronts — sends the certificate's whole panel with
+     each product, one entry per compound:
+       productData.labResults: [{ type: 'BETA_MYRCENE',
+         amount: { minValue: '0.2038', maxValue: '0.2038' }, amountType: 'PERCENTAGE' }, …]
+     Cannabinoids and moisture sit in the same list; only a type that names a
+     compound we know is read as a terpene, and TOTAL_TERPENES and
+     TOTAL_CANNABINOIDS as the totals. */
+  let labTotalCannabinoids = null;
+  const labResults = pick(pick(p, ['productData']), ['labResults']) ?? pick(p, ['labResults']);
+  if (Array.isArray(labResults)) {
+    const fromResults = new Map();
+    for (const r of labResults) {
+      if (!r || typeof r !== 'object' || !/^percent/i.test(String(r.amountType ?? ''))) continue;
+      const raw = String(r.type ?? '').trim();
+      const amount = r.amount && typeof r.amount === 'object' ? r.amount : {};
+      const figure = [amount.minValue, amount.maxValue].map(num).find((v) => v) ?? null;
+      if (/^total_?cannabinoids$/i.test(raw)) { labTotalCannabinoids = inRange(figure, 100); continue; }
+      const value = inRange(figure, 20);
+      if (TERPENE_TOTAL.test(raw.replace(/_/g, ' '))) { if (value) totalPercent ??= value; continue; }
+      const mapped = TERPENES[raw.toLowerCase().replace(/[^a-z]/g, '')];
+      if (!mapped || !value || fromResults.has(mapped)) continue;
+      rawTerpNames[raw] = (rawTerpNames[raw] ?? 0) + 1;
+      fromResults.set(mapped, { name: mapped, rawName: null, percent: value });
+    }
+    if (fromResults.size && !profile.some((t) => t.percent !== null)) {
+      profile.splice(0, profile.length, ...fromResults.values());
+    }
+  }
   /* The sum, where the menu states only that: Dutchie writes it as
      { unit: "PERCENTAGE", range: [0.87] }. */
   if (totalPercent === null) {
@@ -3468,7 +3505,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const statedGrams = plausibleSize(num(pick(p, ['weightInGrams', 'flowerEquivalentInGrams'])));
   if (statedGrams) sizes.push(statedGrams);
   if (!sizes.length) {
-    for (const value of pickAll(p, ['weightFormatted', 'weight', 'size', 'cannabisWeight'])) {
+    // netWeight is "3.5g" on Highlife's platform: the unit is in the text.
+    for (const value of pickAll(p, ['weightFormatted', 'weight', 'size', 'cannabisWeight', 'netWeight'])) {
       const g = plausibleSize(sizeOf(value));
       if (g) sizes.push(g);
     }
@@ -3534,7 +3572,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     totalCannabinoidsPercent: inRange(
       num(pick(p, ['totalCannabinoids', 'totalCannabinoidsPercent', 'total_cannabinoids', 'totalActiveCannabinoids', 'cannabinoidTotal', 'tac'])),
       100,
-    ),
+    ) ?? labTotalCannabinoids,
     terpenes: {
       // Numbers a menu prints without a certificate behind them are a claim,
       // not a measurement, and the schema keeps that distinction.
