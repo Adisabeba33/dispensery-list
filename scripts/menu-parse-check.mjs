@@ -305,7 +305,7 @@ check('missing url stays null', toListing({ Name: 'X', type: 'Flower', Options: 
     labs: {
       terpenes: ['alphapinene', 'betacaryophyllene'], potency: 'STRONG',
       alphaPinene: 0.17, betaCaryophyllene: 0.15, terpinolene: null, terpinoleneContentUnit: null,
-      betaEudesmol: 0.05, thc: 25.1, thcContentUnit: '%',
+      betaEudesmol: 0.05, thc: 25.1, thcContentUnit: '%', batchNumber: '18766',
     },
     coa: 'https://app.alleaves.com/api/inventory/batch/buddega/coa/18766.pdf',
   }, shop, SRC, {});
@@ -313,19 +313,30 @@ check('missing url stays null', toListing({ Name: 'X', type: 'Flower', Options: 
     [['PINENE_ALPHA', 0.17], ['CARYOPHYLLENE', 0.15]]);
   check('a compound we do not know is not guessed', realm?.terpenes.profile.some((t) => t.name === 'OTHER'), false);
   check('the certificate is linked', realm?.terpenes.coaUrl, 'https://app.alleaves.com/api/inventory/batch/buddega/coa/18766.pdf');
+  check('batch id read from labs', realm?.batchId, '18766');
   const dutchie = toListing({
     Name: 'Amnesia Haze', type: 'Flower', Options: ['3.5g'],
     totalTerpenes: { unit: 'PERCENTAGE', range: [0.87] },
-    POSMetaData: { canonicalLabResultUrl: null },
+    POSMetaData: { canonicalLabResultUrl: null, batchNumber: 'B-2024-0567' },
   }, shop, SRC, {});
   check('the stated terpene total is read', dutchie?.terpenes.totalPercent, 0.87);
   check('no certificate stays null', dutchie?.terpenes.coaUrl, null);
+  check('batch id read from POSMetaData', dutchie?.batchId, 'B-2024-0567');
 }
 
 const withDesc = (v) => toListing({ Name: 'Blue Burst', type: 'Flower', Options: ['3.5g'], description: v }, shop, SRC, {});
 // The menu's own copy is somebody else's writing, not a fact: never kept.
 check('menu copy is not kept', withDesc('<p>A <b>Gelato</b> x Sherb cross, sweet citrus.</p>')?.description, null);
 check('missing copy stays null', toListing({ Name: 'X', type: 'Flower', Options: ['3.5g'] }, shop, SRC, {})?.description, null);
+
+/* --------------------------------------------------------------- batch id ----
+ * Batch ID is for traceability. Empty strings and strings over 120 chars are refused. */
+const withBatch = (batch) => toListing({ Name: 'Strainey', type: 'Flower', Options: ['3.5g'], batchNumber: batch }, shop, SRC, {});
+check('batch id is read', withBatch('MTX-2024-001234')?.batchId, 'MTX-2024-001234');
+check('empty batch id stays null', withBatch('')?.batchId, null);
+check('whitespace-only batch is null', withBatch('   ')?.batchId, null);
+check('missing batch stays null', toListing({ Name: 'Y', type: 'Flower', Options: ['3.5g'] }, shop, SRC, {})?.batchId, null);
+check('a batch id over 120 chars is refused', withBatch('x'.repeat(121))?.batchId, null);
 
 /* --------------------------------------------- one product per weight ----
  * Some platforms publish each weight as its own product with an empty variants

@@ -187,6 +187,14 @@
         }
       }
     },
+    "batchId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 120,
+      "description": "Unique identifier for this harvest/production run, such as a METRC ID or batch number. Used for traceability and deduplication — two jars with identical potency and terps that share a batch ID are confirmed as the same batch."
+    },
     "harvestedOn": {
       "type": [
         "string",
