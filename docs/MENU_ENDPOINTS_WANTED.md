@@ -53,7 +53,7 @@
 | Tiki Leaves LLC | Brooklyn | http://www.tikileaves.com | ссылку на меню не нашли |
 | Twisted Vibration LLC | Brooklyn | https://twistedvibration.com | ссылку на меню не нашли |
 | Upstate Edge, LLC | Brooklyn | https://ignyteny.com | robots.txt запрещает — **не трогать** |
-| Curaleaf NY, LLC | Forest Hills | https://curaleaf.com | страница вернула ноль товаров |
+| Curaleaf NY, LLC | Forest Hills | https://curaleaf.com | товары есть (6), цветка нет |
 | Purple Buds, Inc. | Jackson Heights | https://pbuds.com | страница вернула ноль товаров |
 | Down To Earth Canna Inc | Jamaica | https://sageseed.com | страница не открылась |
 | Dispensary Near Me by Liberty Buds | Little Neck | https://420expressway.com | страница не открылась |
@@ -73,7 +73,7 @@
 | Twinn Leaf LLC | New York | https://twinnleafnyc.com | ссылку на меню не нашли |
 | GreenCup ✳️ | Rego Park | https://greencup.nyc | страница вернула ноль товаров |
 | THE GOAT DISPENSARY | Rego Park | https://www.thegoatdispensary.com | ссылку на меню не нашли |
-| Hudson Park Agency LLC | Rosedale | https://ourthcshop.com | страница вернула ноль товаров |
+| Hudson Park Agency LLC | Rosedale | https://ourthcshop.com | ссылку на меню не нашли |
 | Green Land Retail LLC | Staten Island | https://greenlandny.com | страница вернула ноль товаров |
 | Studio57NY ✳️ | Staten Island | https://studio57ny.com | страница вернула ноль товаров |
 | RENAISSANT NYC | Sunnyside | https://renaissant.nyc | ссылку на меню не нашли |
@@ -89,8 +89,8 @@
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| The Bridge A Cannabis Experience | 57 | 343 | https://thebridgecannabis.com |
 | Gotham Williamsburg | 77 | 81 | https://gotham.nyc |
+| High Tidez CI | 117 | 136 | https://hightidezci.com |
 | Freshly Baked NYC | 39 | 49 | https://freshlybaked.nyc/ |
 | Gotham Bowery | 77 | 81 | https://gotham.nyc/ |
 | Gotham Chelsea | 77 | 81 | https://www.gotham.nyc |
