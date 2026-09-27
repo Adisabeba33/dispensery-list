@@ -3325,27 +3325,6 @@ const coaUrlOf = (p) => {
   return null;
 };
 
-/* Batch ID for traceability: a unique identifier for a harvest/production run.
-   Formats vary by platform (METRC ID, batch number, tracking number). Only kept
-   if it is a non-empty string under 120 chars. */
-const batchIdOf = (p) => {
-  const candidates = [
-    // Algolia/Dispense: Cannabis Realm stores in labs object
-    pick(pick(p, ['labs']), ['batchNumber', 'batchId', 'metrcId', 'metrcNumber', 'trackingNumber']),
-    // Dutchie and others: top-level fields
-    pick(p, ['batchNumber', 'batchId', 'metrcId', 'metrc_id', 'metrcNumber', 'trackingNumber', 'lotNumber', 'lot_number']),
-    // Dutchie also nests in POSMetaData
-    pick(pick(p, ['POSMetaData']), ['batchNumber', 'metrcNumber']),
-  ];
-  for (const c of candidates) {
-    const value = flatten(c);
-    if (typeof value !== 'string') continue;
-    const trimmed = value.trim();
-    if (trimmed.length > 0 && trimmed.length <= 120) return trimmed;
-  }
-  return null;
-};
-
 const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const rawName = flatten(pick(p, ['name', 'productName', 'title', 'displayName']));
   if (!rawName) return null;
@@ -3541,7 +3520,6 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
       coaUrl: coaUrlOf(p),
       referenceStrain: null,
     },
-    batchId: batchIdOf(p),
     harvestedOn: menuDate(pick(p, ['harvestedOn', 'harvestDate', 'harvestedAt', 'harvest_date', 'harvestedOnDate', 'dateHarvested'])),
     packagedOn: menuDate(pick(p, ['packagedOn', 'packagedDate', 'packageDate', 'packagedAt', 'packaged_date', 'packDate', 'datePackaged'])),
     inStock: notYet
