@@ -19,6 +19,7 @@
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { canonicalStrain } from './strain-name.mjs';
+import { labPanelKeyOf } from './lab-panel.mjs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -2971,7 +2972,11 @@ const mergeBySize = (rows) => {
     existing.lineage = existing.lineage === 'UNKNOWN' ? row.lineage : existing.lineage;
     if (existing.terpenes.source === 'NONE' && row.terpenes.source !== 'NONE') {
       existing.terpenes = row.terpenes;
+      // The key was made from that row's panel and travels with it.
+      existing.labPanelKey = row.labPanelKey;
     }
+    const packages = new Set([...(existing.packageIds ?? []), ...(row.packageIds ?? [])]);
+    existing.packageIds = packages.size ? [...packages].slice(0, 20) : null;
   }
   return [...byKey.values()];
 };
@@ -3325,6 +3330,25 @@ const coaUrlOf = (p) => {
   return null;
 };
 
+/* Dutchie's own label for the stock behind a listing: POSMetaData carries a
+   canonicalPackageId for the product and one for each size, and on the menus
+   read so far it is the tracking link printed on the jar (HTTPS://1A4.COM/…).
+   It names one package in one shop — it traces a jar, it does not match a
+   batch across shops; labPanelKey does that. Kept as the menu states it. */
+const packageIdsOf = (p) => {
+  const meta = pick(p, ['POSMetaData']);
+  if (!meta || typeof meta !== 'object') return null;
+  const children = pick(meta, ['children']);
+  const found = new Set();
+  for (const source of [meta, ...(Array.isArray(children) ? children : [])]) {
+    const value = pick(source, ['canonicalPackageId']);
+    if (typeof value !== 'string') continue;
+    const id = value.trim();
+    if (id && id.length <= 200 && !/^(null|undefined)$/i.test(id)) found.add(id);
+  }
+  return found.size ? [...found].slice(0, 20) : null;
+};
+
 const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const rawName = flatten(pick(p, ['name', 'productName', 'title', 'displayName']));
   if (!rawName) return null;
@@ -3476,6 +3500,16 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const listingId = slug(String(brand ?? ''), String(name));
   if (!listingId) return null;
 
+  const thcPercent =
+    potency(
+      p,
+      // thcPercentage is Carrot's (Piffords, Two Buds, Lenox Hill, Seaweed).
+      ['thcContent', 'potencyThc', 'thc', 'thcPercent', 'thcPercentage', 'potencyThcRangeLow', 'potencyThcRangeHigh', 'potencyThcDisplayValue'],
+      CANNABINOID_PANEL,
+      THC_NAME,
+      { zeroIsSilence: true },
+    ) ?? labFigure(p, 'thc', { zeroIsSilence: true });
+
   return {
     listingId,
     licenseNumber: shop.licenseNumber,
@@ -3486,15 +3520,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     brand: brand ? String(brand).slice(0, 120) : null,
     brandKey: brandKeyOf(brand),
     lineage: LINEAGE[lineageRaw] ?? lineageFromTitle(rawName) ?? 'UNKNOWN',
-    thcPercent:
-      potency(
-        p,
-        // thcPercentage is Carrot's (Piffords, Two Buds, Lenox Hill, Seaweed).
-        ['thcContent', 'potencyThc', 'thc', 'thcPercent', 'thcPercentage', 'potencyThcRangeLow', 'potencyThcRangeHigh', 'potencyThcDisplayValue'],
-        CANNABINOID_PANEL,
-        THC_NAME,
-        { zeroIsSilence: true },
-      ) ?? labFigure(p, 'thc', { zeroIsSilence: true }),
+    thcPercent,
     cbdPercent:
       potency(
         p,
@@ -3520,6 +3546,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
       coaUrl: coaUrlOf(p),
       referenceStrain: null,
     },
+    labPanelKey: labPanelKeyOf(thcPercent, profile),
+    packageIds: packageIdsOf(p),
     harvestedOn: menuDate(pick(p, ['harvestedOn', 'harvestDate', 'harvestedAt', 'harvest_date', 'harvestedOnDate', 'dateHarvested'])),
     packagedOn: menuDate(pick(p, ['packagedOn', 'packagedDate', 'packageDate', 'packagedAt', 'packaged_date', 'packDate', 'datePackaged'])),
     inStock: notYet

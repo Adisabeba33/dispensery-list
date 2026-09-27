@@ -187,6 +187,27 @@
         }
       }
     },
+    "labPanelKey": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^THC:[0-9.]+(\\|[A-Z_]+:[0-9.]+){4,}$",
+      "description": "The lab panel as one string — THC and every quantified compound, to the hundredth, compounds in name order: 'THC:28.41|CARYOPHYLLENE:0.23|HUMULENE:0.08|…'. A menu copies its panel from the batch's certificate, so two listings with the same key — in one shop or in two — are the same batch, and two batches of one strain from one grower are not. Null unless THC and at least four compounds are quantified: with fewer, unrelated jars agree by chance. OTHER is never part of it. A shop printing one decimal where another prints two does not match; a missed match is cheaper than a false one."
+    },
+    "packageIds": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "description": "The menu's own identifiers for the stock behind this listing — on Dutchie, POSMetaData.canonicalPackageId for the product and each size, which on the menus read so far is the tracking link printed on the package (HTTPS://1A4.COM/…). One package is in one shop, so this traces a jar; it does not match a batch across shops — labPanelKey does. Null when the menu states none."
+    },
     "harvestedOn": {
       "type": [
         "string",

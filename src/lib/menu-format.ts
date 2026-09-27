@@ -33,6 +33,9 @@ export type FlowerListing = {
     coaUrl: string | null;
     referenceStrain: string | null;
   };
+  /** THC and four or more compounds as one string: equal keys are one batch. */
+  labPanelKey?: string | null;
+  packageIds?: string[] | null;
   packagedOn: string | null;
   inStock: boolean;
   availableSizesGrams: number[] | null;
