@@ -8,6 +8,9 @@ import {
   PROVENANCE,
   TERPENE_LABEL,
   TERPENE_NOTE,
+  certificateUrl,
+  provenanceOf,
+  rankedTerpenes,
   strainsAsText,
   sizeChips,
   sizeLabel,
@@ -40,9 +43,12 @@ const ProvenanceDot = ({ tone }: { tone: string }) => (
 );
 
 const StrainRow = ({ listing }: { listing: FlowerListing }) => {
-  const prov = PROVENANCE[listing.terpenes.source];
+  const prov = PROVENANCE[provenanceOf(listing.terpenes)];
+  const certificate = certificateUrl(listing.terpenes);
   const sizes = listing.availableSizesGrams ?? [];
-  const top = listing.terpenes.profile.slice(0, 3);
+  const ranked = rankedTerpenes(listing.terpenes.profile);
+  const top = ranked.slice(0, 3);
+  const total = listing.terpenes.totalPercent;
 
   return (
     <li
@@ -103,7 +109,7 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
 
       <div className="mt-3 border-t border-ink-700/60 pt-3">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
-          <span className={clsx('pill', PROVENANCE_CLASS[prov.tone])}>
+          <span className={clsx('pill', PROVENANCE_CLASS[prov.tone])} title={prov.detail}>
             <ProvenanceDot tone={prov.tone} />
             {prov.label}
           </span>
@@ -133,6 +139,37 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
               .filter(Boolean)
               .join(' · ')}
           </p>
+        )}
+
+        {/* The rest of the panel, and where to check it, for whoever wants
+            more than the three that lead. */}
+        {(ranked.length > top.length || total || certificate) && (
+          <details className="mt-2 text-[0.72rem] text-chalk-400">
+            <summary className="cursor-pointer text-moss-400">
+              {ranked.length > top.length ? `All ${ranked.length} terpenes` : 'Panel'}
+              {total ? ` · ${total}% in all` : ''}
+            </summary>
+            {ranked.length > top.length && (
+              <ul className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 sm:grid-cols-3">
+                {ranked.map((t) => (
+                  <li key={t.name} className="flex justify-between gap-2">
+                    <span className="text-chalk-300">{TERPENE_LABEL[t.name] ?? t.rawName ?? t.name}</span>
+                    {typeof t.percent === 'number' && (
+                      <span className="tabular-nums text-chalk-500">{t.percent}%</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {certificate && (
+              <p className="mt-2">
+                <a href={certificate} target="_blank" rel="noopener noreferrer" className="link">
+                  Batch certificate of analysis
+                </a>{' '}
+                <span className="text-chalk-500">— the lab’s own document, linked by the shop’s menu</span>
+              </p>
+            )}
+          </details>
         )}
 
         {listing.terpenes.source === 'STRAIN_REFERENCE' && (
@@ -169,7 +206,7 @@ export const FlowerMenu = ({
       listings.filter((l) => {
         if (size !== null && !(l.availableSizesGrams ?? []).includes(size)) return false;
         if (inStockOnly && !l.inStock) return false;
-        if (labOnly && l.terpenes.source !== 'LAB_COA') return false;
+        if (labOnly && l.terpenes.source !== 'LAB_COA' && !certificateUrl(l.terpenes)) return false;
         return true;
       }),
     [listings, size, inStockOnly, labOnly],
@@ -289,7 +326,7 @@ export const FlowerMenu = ({
           onClick={() => setLabOnly((v) => !v)}
           className={clsx('chip', labOnly && 'chip-on')}
         >
-          Lab-tested terpenes
+          Lab certificate
         </button>
       </div>
 
@@ -311,8 +348,8 @@ export const FlowerMenu = ({
 
       <div className="mt-6 border-t border-ink-700/60 pt-4">
         <p className="label">Where a terpene reading comes from</p>
-        <ul className="mt-2 grid gap-2 sm:grid-cols-3">
-          {(['LAB_COA', 'MENU_LISTING', 'STRAIN_REFERENCE'] as const).map((key) => (
+        <ul className="mt-2 grid gap-2 sm:grid-cols-2">
+          {(['LAB_COA', 'MENU_WITH_CERTIFICATE', 'MENU_LISTING', 'STRAIN_REFERENCE'] as const).map((key) => (
             <li key={key} className="flex items-start gap-2 text-[0.72rem] leading-relaxed text-chalk-400">
               <span className="mt-1">
                 <ProvenanceDot tone={PROVENANCE[key].tone} />
