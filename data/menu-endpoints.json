@@ -570,6 +570,16 @@
     "notes": "menu platform: Sweed; Midtown-specific Flower category is publicly browseable after a simple 21+ confirmation."
   },
   {
+    "licenseNumber": "OCM-CAURD-24-000137",
+    "menuUrl": "https://freshlybaked.nyc/stores/bronx/shop/menu/flower-1088",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-27",
+    "notes": "menu platform: Sweed; the Bronx store's own Flower category. The link on the site led to flower-96218, which the shop's page itself shows as 'No products found'."
+  },
+  {
     "licenseNumber": "OCM-RETL-26-000511",
     "menuUrl": "https://shophibernica.com/centralpark/dispensary-centralpark-menu/?dtche%5Bcategory%5D=flower",
     "platform": "DUTCHIE",
