@@ -10461,7 +10461,6 @@
    "first": "2026-09-23",
    "shops": [
     "OCM-CAURD-23-000038",
-    "OCM-CAURD-24-000046",
     "OCM-CAURD-24-000064",
     "OCM-CAURD-24-000087",
     "OCM-CAURD-24-000094",
@@ -10643,23 +10642,6 @@
    ]
   },
   {
-   "brand": "Herb",
-   "strain": "Gelato",
-   "thc": 27.07,
-   "before": [
-    21.06
-   ],
-   "first": "2026-09-24",
-   "shops": [
-    "OCM-CAURD-24-000203",
-    "OCM-CAURD-25-000288",
-    "OCM-RETL-24-000003",
-    "OCM-RETL-24-000026",
-    "OCM-RETL-25-000416",
-    "OCM-RETL-26-000507"
-   ]
-  },
-  {
    "brand": "Connected Cannabis",
    "strain": "AMBROZIA",
    "thc": 27.06,
@@ -10674,6 +10656,39 @@
     "OCM-CAURD-24-000222",
     "OCM-CAURD-25-000288",
     "OCM-RETL-25-000294"
+   ]
+  },
+  {
+   "brand": "Herb",
+   "strain": "Gelato",
+   "thc": 27.07,
+   "before": [
+    21.06
+   ],
+   "first": "2026-09-24",
+   "shops": [
+    "OCM-CAURD-24-000203",
+    "OCM-CAURD-25-000288",
+    "OCM-RETL-24-000026",
+    "OCM-RETL-24-000133",
+    "OCM-RETL-26-000507"
+   ]
+  },
+  {
+   "brand": "PUFF",
+   "strain": "Gumbo",
+   "thc": 25.3,
+   "before": [
+    22.01,
+    23.4
+   ],
+   "first": "2026-09-24",
+   "shops": [
+    "OCM-CAURD-24-000132",
+    "OCM-CAURD-24-000205",
+    "OCM-CAURD-25-000245",
+    "OCM-RETL-24-000078",
+    "OCM-RETL-24-000244"
    ]
   },
   {
@@ -10749,24 +10764,6 @@
     "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000165",
     "OCM-RETL-25-000303"
-   ]
-  },
-  {
-   "brand": "RYTHM",
-   "strain": "Jet Fuel OG",
-   "thc": 31.26,
-   "before": [
-    28.95,
-    29.85,
-    29.95,
-    30.71
-   ],
-   "first": "2026-09-23",
-   "shops": [
-    "OCM-CAURD-23-000038",
-    "OCM-CAURD-24-000071",
-    "OCM-CAURD-24-000165",
-    "OCM-RETL-24-000026"
    ]
   },
   {
@@ -10870,19 +10867,36 @@
    ]
   },
   {
-   "brand": "PUFF",
-   "strain": "Gumbo",
-   "thc": 25.3,
+   "brand": "Find.",
+   "strain": "Island Bloom",
+   "thc": 28.91,
    "before": [
-    22.01,
-    23.4
+    21.12,
+    27.12
    ],
    "first": "2026-09-24",
    "shops": [
+    "OCM-CAURD-24-000064",
     "OCM-CAURD-24-000132",
-    "OCM-CAURD-24-000205",
-    "OCM-RETL-24-000078",
-    "OCM-RETL-24-000244"
+    "OCM-RETL-25-000416",
+    "OCM-RETL-26-000507"
+   ]
+  },
+  {
+   "brand": "RYTHM",
+   "strain": "Jet Fuel OG",
+   "thc": 31.26,
+   "before": [
+    28.95,
+    29.85,
+    29.95,
+    30.71
+   ],
+   "first": "2026-09-23",
+   "shops": [
+    "OCM-CAURD-23-000038",
+    "OCM-CAURD-24-000071",
+    "OCM-RETL-24-000026"
    ]
   },
   {
@@ -10916,21 +10930,6 @@
     "OCM-CAURD-24-000112",
     "OCM-CAURD-24-000169",
     "OCM-RETL-26-000499"
-   ]
-  },
-  {
-   "brand": "Find.",
-   "strain": "Island Bloom",
-   "thc": 28.91,
-   "before": [
-    21.12,
-    27.12
-   ],
-   "first": "2026-09-24",
-   "shops": [
-    "OCM-CAURD-24-000064",
-    "OCM-CAURD-24-000132",
-    "OCM-RETL-25-000416"
    ]
   },
   {
@@ -11186,20 +11185,6 @@
    ]
   },
   {
-   "brand": "Herb",
-   "strain": "Runtz",
-   "thc": 30.25,
-   "before": [
-    21.93,
-    22.16
-   ],
-   "first": "2026-09-24",
-   "shops": [
-    "OCM-RETL-24-000003",
-    "OCM-RETL-25-000416"
-   ]
-  },
-  {
    "brand": "THE MECHANIC FARM",
    "strain": "STANK",
    "thc": 25.79,
@@ -11300,20 +11285,6 @@
    "shops": [
     "OCM-CAURD-24-000116",
     "OCM-CAURD-25-000297"
-   ]
-  },
-  {
-   "brand": "Major",
-   "strain": "Purple Thai",
-   "thc": 20.07,
-   "before": [
-    28.4,
-    28.43
-   ],
-   "first": "2026-09-25",
-   "shops": [
-    "OCM-RETL-25-000416",
-    "OCM-RETL-26-000507"
    ]
   },
   {
@@ -11494,18 +11465,6 @@
    "first": "2026-09-22",
    "shops": [
     "OCM-RETL-24-000175"
-   ]
-  },
-  {
-   "brand": "Fly Weight",
-   "strain": "Blue Nerds",
-   "thc": 30.57,
-   "before": [
-    30.67
-   ],
-   "first": "2026-09-23",
-   "shops": [
-    "OCM-CAURD-23-000042"
    ]
   },
   {
@@ -11701,6 +11660,18 @@
    "first": "2026-09-24",
    "shops": [
     "OCM-RETL-24-000170"
+   ]
+  },
+  {
+   "brand": "ZIPS",
+   "strain": "Cereal Milk",
+   "thc": 27.09,
+   "before": [
+    32.93
+   ],
+   "first": "2026-09-24",
+   "shops": [
+    "OCM-CAURD-23-000030"
    ]
   },
   {
@@ -12214,6 +12185,19 @@
    ]
   },
   {
+   "brand": "Major",
+   "strain": "Purple Thai",
+   "thc": 20.07,
+   "before": [
+    28.4,
+    28.43
+   ],
+   "first": "2026-09-25",
+   "shops": [
+    "OCM-RETL-25-000416"
+   ]
+  },
+  {
    "brand": "Rolling Green",
    "strain": "Rainbow Beltz",
    "thc": 31.1,
@@ -12514,6 +12498,16 @@
    ]
   },
   {
+   "brand": "Fly Weight",
+   "strain": "Blue Nerds",
+   "thc": 30.57,
+   "before": [
+    30.67
+   ],
+   "first": "2026-09-23",
+   "shops": []
+  },
+  {
    "brand": "Kings & Queens",
    "strain": "Gary Payton",
    "thc": 23.8,
@@ -12536,11 +12530,12 @@
    "shops": []
   },
   {
-   "brand": "ZIPS",
-   "strain": "Cereal Milk",
-   "thc": 27.09,
+   "brand": "Herb",
+   "strain": "Runtz",
+   "thc": 30.25,
    "before": [
-    32.93
+    21.93,
+    22.16
    ],
    "first": "2026-09-24",
    "shops": []
