@@ -146,15 +146,25 @@ export const LINEAGE_LABEL: Record<string, string> = {
  * design turns on: a certificate measures this jar, a reference profile only
  * says what the strain usually does.
  */
-export const PROVENANCE: Record<TerpeneSource, { label: string; detail: string; tone: string }> = {
+export type Provenance = TerpeneSource | 'MENU_WITH_CERTIFICATE';
+
+export const PROVENANCE: Record<Provenance, { label: string; detail: string; tone: string }> = {
   LAB_COA: {
     label: 'Lab-tested',
     detail: 'Measured from this batch’s certificate of analysis.',
     tone: 'lab',
   },
+  /* Menus copy the percentages off the batch's certificate — Alley Oop's are the
+     same, to the hundredth, on five shops and on the Kaycha certificate — and
+     some link the certificate itself, which is what separates these two. */
+  MENU_WITH_CERTIFICATE: {
+    label: 'Certificate linked',
+    detail: 'Percentages from the shop’s menu, which links this batch’s certificate of analysis to check them against.',
+    tone: 'lab',
+  },
   MENU_LISTING: {
     label: 'Shop-stated',
-    detail: 'Percentages the shop publishes, with no certificate attached.',
+    detail: 'Percentages from the shop’s menu. Menus copy them from the batch’s certificate, but this one links none, so they rest on the shop’s word.',
     tone: 'listed',
   },
   STRAIN_REFERENCE: {
@@ -164,6 +174,37 @@ export const PROVENANCE: Record<TerpeneSource, { label: string; detail: string; 
     tone: 'reference',
   },
   NONE: { label: 'Not published', detail: 'The shop publishes no terpene data.', tone: 'none' },
+};
+
+/** Where this reading comes from, told apart by whether the menu links a certificate. */
+export const provenanceOf = (terpenes: FlowerListing['terpenes']): Provenance =>
+  terpenes.source === 'MENU_LISTING' && certificateUrl(terpenes) ? 'MENU_WITH_CERTIFICATE' : terpenes.source;
+
+/** The certificate link, when the menu gave a web address and not something else. */
+export const certificateUrl = (terpenes: FlowerListing['terpenes']): string | null =>
+  terpenes.coaUrl && /^https?:\/\//i.test(terpenes.coaUrl) ? terpenes.coaUrl : null;
+
+/**
+ * A panel largest first. Menus list their compounds in a fixed order of their
+ * own — The Flowery's always opens α-Pinene, Caryophyllene, Myrcene — and taking
+ * the first three put those three on 2,178 of 3,901 cards while hiding, say,
+ * Garlic Budder's limonene at 0.79%. A compound one menu names twice with two
+ * figures is left out rather than picked between; one with no figure is shown
+ * only when no compound has one.
+ */
+export const rankedTerpenes = (profile: Terpene[]): Terpene[] => {
+  const seen = new Map<string, Terpene | null>();
+  for (const t of profile) {
+    if (t.name === 'OTHER') continue;
+    const was = seen.get(t.name);
+    if (was === undefined) seen.set(t.name, t);
+    else if (was && was.percent !== t.percent) seen.set(t.name, null);
+  }
+  const named = [...seen.values()].filter((t): t is Terpene => t !== null);
+  const measured = named.filter((t) => typeof t.percent === 'number' && t.percent > 0);
+  return measured.length
+    ? measured.sort((a, b) => (b.percent as number) - (a.percent as number))
+    : named;
 };
 
 /**
