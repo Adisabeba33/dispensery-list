@@ -19,6 +19,7 @@ import {
   toListing, wallAction
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
+import { labPanelKeyOf } from './lab-panel.mjs';
 import { readFileSync } from 'node:fs';
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
@@ -320,6 +321,65 @@ check('missing url stays null', toListing({ Name: 'X', type: 'Flower', Options: 
   }, shop, SRC, {});
   check('the stated terpene total is read', dutchie?.terpenes.totalPercent, 0.87);
   check('no certificate stays null', dutchie?.terpenes.coaUrl, null);
+}
+
+/* ------------------------------------------------------- one batch, two shelves --
+ * A panel is copied from the batch's certificate, so the same numbers on two
+ * shelves are the same batch. B.A.M. (Indoor) by Find, as Cannabis Realm's own
+ * page printed it on 27 September. */
+{
+  const bam = [
+    { name: 'Terpinolene', value: 0.91 }, { name: 'Ocimene', value: 0.37 },
+    { name: 'Caryophyllene', value: 0.23 }, { name: 'Myrcene', value: 0.2 },
+    { name: 'Limonene', value: 0.16 }, { name: 'Humulene', value: 0.08 },
+  ];
+  const key = 'THC:28.41|CARYOPHYLLENE:0.23|HUMULENE:0.08|LIMONENE:0.16|MYRCENE:0.2|OCIMENE:0.37|TERPINOLENE:0.91';
+  const listed = toListing({ Name: 'B.A.M. (Indoor)', brand: 'Find', type: 'Flower', Options: ['3.5g'], thc: 28.41, terpenes: bam }, shop, SRC, {});
+  check('a full panel carries its key', listed?.labPanelKey, key);
+  check('the order a shop lists them in does not matter',
+    toListing({ Name: 'B.A.M.', type: 'Flower', Options: ['3.5g'], thc: 28.41, terpenes: [...bam].reverse() }, shop, SRC, {})?.labPanelKey, key);
+  check('0.20 and 0.2 are one figure',
+    labPanelKeyOf(28.41, [{ name: 'MYRCENE', percent: 0.20 }, { name: 'LIMONENE', percent: 0.16 }, { name: 'HUMULENE', percent: 0.08 }, { name: 'OCIMENE', percent: 0.37 }]),
+    'THC:28.41|HUMULENE:0.08|LIMONENE:0.16|MYRCENE:0.2|OCIMENE:0.37');
+  check('a different THC is a different batch',
+    toListing({ Name: 'B.A.M.', type: 'Flower', Options: ['3.5g'], thc: 26.9, terpenes: bam }, shop, SRC, {})?.labPanelKey === key, false);
+  // Too little to tell two jars apart: no key rather than a weak one.
+  check('three compounds are not enough', labPanelKeyOf(28.41, bam.slice(0, 3).map((t) => ({ name: t.name.toUpperCase(), percent: t.value }))), null);
+  check('no THC, no key', toListing({ Name: 'B.A.M.', type: 'Flower', Options: ['3.5g'], terpenes: bam }, shop, SRC, {})?.labPanelKey, null);
+  check('named without a figure does not count',
+    labPanelKeyOf(28.41, [{ name: 'MYRCENE', percent: null }, { name: 'LIMONENE', percent: 0.16 }, { name: 'HUMULENE', percent: 0.08 }, { name: 'OCIMENE', percent: 0.37 }]), null);
+  check('OTHER is a bucket, not a compound',
+    labPanelKeyOf(28.41, [{ name: 'OTHER', percent: 0.3 }, { name: 'LIMONENE', percent: 0.16 }, { name: 'HUMULENE', percent: 0.08 }, { name: 'OCIMENE', percent: 0.37 }]), null);
+  // The Cannabis Realm fixture above states two compounds.
+  check('a two-compound panel has no key', toListing({
+    name: '6 Point Cannabis - 6 Cake (Indoor) - 3.5g', productCategoryName: 'Flower', weightInGrams: 3.5, terpenes: [],
+    labs: { alphaPinene: 0.17, betaCaryophyllene: 0.15, thc: 25.1, thcContentUnit: '%' },
+  }, shop, SRC, {})?.labPanelKey, null);
+}
+
+/* --------------------------------------------------------------- packages --
+ * Elevate's Dutchie menu, as a diagnostic run printed it: the tracking link on
+ * the product and again on each size. */
+{
+  const pkg = 'HTTPS://1A4.COM/13U2YPUQ3SJXVKQ72B7RIX';
+  const dutchiePkg = (meta) => toListing({ Name: 'Amnesia Haze Dime', type: 'Flower', Options: ['.7g'], POSMetaData: meta }, shop, SRC, {});
+  check('the package id is read once, however often it is repeated',
+    dutchiePkg({ activeBatchTags: [], canonicalPackageId: pkg, canonicalLabResultUrl: null,
+      children: [{ activeBatchTags: [], canonicalPackageId: pkg, canonicalLabResultUrl: null }] })?.packageIds, [pkg]);
+  check('each size can be its own package',
+    dutchiePkg({ canonicalPackageId: pkg, children: [{ canonicalPackageId: pkg }, { canonicalPackageId: 'HTTPS://1A4.COM/OTHERPACKAGE' }] })?.packageIds,
+    [pkg, 'HTTPS://1A4.COM/OTHERPACKAGE']);
+  check('no package stated stays null', dutchiePkg({ canonicalPackageId: null, children: [] })?.packageIds, null);
+  check('and so does a menu without the block', toListing({ Name: 'X', type: 'Flower', Options: ['3.5g'] }, shop, SRC, {})?.packageIds, null);
+  const eighth = toListing({ Name: 'Merge Me', type: 'Flower', Options: ['3.5g'], POSMetaData: { canonicalPackageId: 'A' } }, shop, SRC, {});
+  const ounce = toListing({ Name: 'Merge Me', type: 'Flower', Options: ['28g'], POSMetaData: { canonicalPackageId: 'B' } }, shop, SRC, {});
+  check('merged sizes keep every package', mergeBySize([eighth, ounce])[0]?.packageIds, ['A', 'B']);
+  const bare = toListing({ Name: 'Panel Later', type: 'Flower', Options: ['3.5g'], thc: 22.5 }, shop, SRC, {});
+  const panelled = toListing({ Name: 'Panel Later', type: 'Flower', Options: ['7g'], thc: 22.5, terpenes: [
+    { name: 'Myrcene', value: 0.5 }, { name: 'Limonene', value: 0.3 }, { name: 'Linalool', value: 0.1 }, { name: 'Humulene', value: 0.05 },
+  ] }, shop, SRC, {});
+  check('the key travels with the panel it was made from',
+    mergeBySize([bare, panelled])[0]?.labPanelKey, 'THC:22.5|HUMULENE:0.05|LIMONENE:0.3|LINALOOL:0.1|MYRCENE:0.5');
 }
 
 const withDesc = (v) => toListing({ Name: 'Blue Burst', type: 'Flower', Options: ['3.5g'], description: v }, shop, SRC, {});
