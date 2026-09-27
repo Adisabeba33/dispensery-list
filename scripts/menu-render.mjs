@@ -2999,7 +2999,7 @@ const TERPENES = {
   nerolidol: 'NEROLIDOL', valencene: 'VALENCENE', camphene: 'CAMPHENE',
   eucalyptol: 'EUCALYPTOL', guaiol: 'GUAIOL', farnesene: 'FARNESENE',
   geraniol: 'GERANIOL', borneol: 'BORNEOL', terpineol: 'TERPINEOL',
-  phellandrene: 'PHELLANDRENE', carene: 'CARENE', sabinene: 'SABINENE', fenchol: 'FENCHOL',
+  phellandrene: 'PHELLANDRENE', alphaphellandrene: 'PHELLANDRENE', transnerolidol: 'NEROLIDOL', carene: 'CARENE', sabinene: 'SABINENE', fenchol: 'FENCHOL',
   /* Both are on every NY panel and neither had a word here, so a shop that
      quantified them handed us OTHER. The strain references were already
      carrying them under names the shelf side could not match. */
@@ -3415,6 +3415,35 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
       if (fromLabs.size) profile.splice(0, profile.length, ...fromLabs.values());
     }
   }
+  /* Gap Commerce — The Bridge, Forever 4 20, Kings of Bud and the other
+     /collection/flower storefronts — sends the certificate's whole panel with
+     each product, one entry per compound:
+       productData.labResults: [{ type: 'BETA_MYRCENE',
+         amount: { minValue: '0.2038', maxValue: '0.2038' }, amountType: 'PERCENTAGE' }, …]
+     Cannabinoids and moisture sit in the same list; only a type that names a
+     compound we know is read as a terpene, and TOTAL_TERPENES and
+     TOTAL_CANNABINOIDS as the totals. */
+  let labTotalCannabinoids = null;
+  const labResults = pick(pick(p, ['productData']), ['labResults']) ?? pick(p, ['labResults']);
+  if (Array.isArray(labResults)) {
+    const fromResults = new Map();
+    for (const r of labResults) {
+      if (!r || typeof r !== 'object' || !/^percent/i.test(String(r.amountType ?? ''))) continue;
+      const raw = String(r.type ?? '').trim();
+      const amount = r.amount && typeof r.amount === 'object' ? r.amount : {};
+      const figure = [amount.minValue, amount.maxValue].map(num).find((v) => v) ?? null;
+      if (/^total_?cannabinoids$/i.test(raw)) { labTotalCannabinoids = inRange(figure, 100); continue; }
+      const value = inRange(figure, 20);
+      if (TERPENE_TOTAL.test(raw.replace(/_/g, ' '))) { if (value) totalPercent ??= value; continue; }
+      const mapped = TERPENES[raw.toLowerCase().replace(/[^a-z]/g, '')];
+      if (!mapped || !value || fromResults.has(mapped)) continue;
+      rawTerpNames[raw] = (rawTerpNames[raw] ?? 0) + 1;
+      fromResults.set(mapped, { name: mapped, rawName: null, percent: value });
+    }
+    if (fromResults.size && !profile.some((t) => t.percent !== null)) {
+      profile.splice(0, profile.length, ...fromResults.values());
+    }
+  }
   /* The sum, where the menu states only that: Dutchie writes it as
      { unit: "PERCENTAGE", range: [0.87] }. */
   if (totalPercent === null) {
@@ -3543,7 +3572,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     totalCannabinoidsPercent: inRange(
       num(pick(p, ['totalCannabinoids', 'totalCannabinoidsPercent', 'total_cannabinoids', 'totalActiveCannabinoids', 'cannabinoidTotal', 'tac'])),
       100,
-    ),
+    ) ?? labTotalCannabinoids,
     terpenes: {
       // Numbers a menu prints without a certificate behind them are a claim,
       // not a measurement, and the schema keeps that distinction.

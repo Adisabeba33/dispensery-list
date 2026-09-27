@@ -406,6 +406,34 @@ check('missing url stays null', toListing({ Name: 'X', type: 'Flower', Options: 
     mergeBySize([bare, panelled])[0]?.labPanelKey, 'THC:22.5|HUMULENE:0.05|LIMONENE:0.3|LINALOOL:0.1|MYRCENE:0.5');
 }
 
+/* Gap Commerce sends the certificate's whole panel with each product. Nanticoke
+   Pluto as The Bridge's menu answered on 27 September, entry for entry. */
+{
+  const e = (type, v) => ({ type, amount: { minValue: v, maxValue: v }, amountType: 'PERCENTAGE' });
+  const pluto = toListing({
+    name: 'NANTICOKE - PLUTO - FLOWER - 3.5 G', brand: 'NANTICOKE', category: 'FLOWER', subtype: 'PRE-PACK',
+    thc: '29.61%', unitOfMeasurement: 'G', customSize: '3.5 G',
+    productData: { labResults: [
+      e('THC', '29.61'), e('ALPHA_BISABOLOL', '0.0602'), e('ALPHA_HUMULENE', '0.22'), e('ALPHA_PINENE', '0.4094'),
+      e('BETA_CARYOPHYLLENE', '0.608'), e('BETA_MYRCENE', '0.2038'), e('BETA_PINENE', '0.209'), e('CBGA', '0.93'),
+      e('DELTA-9_THC', '3.64'), e('LIMONENE', '0.2539'), e('LINALOOL', '0.071'), e('MOISTURE', '10.9'),
+      e('TERPINEOL', '0.0277'), e('THCA', '29.61'), e('THCVA', '0.29'), e('TOTAL_CANNABINOIDS', '34.47'),
+      e('TOTAL_TERPENES', '2.063'),
+    ] },
+  }, shop, SRC, {});
+  check('the Gap Commerce panel is read, compounds only',
+    pluto?.terpenes.profile.map((t) => [t.name, t.percent]),
+    [['BISABOLOL', 0.06], ['HUMULENE', 0.22], ['PINENE_ALPHA', 0.41], ['CARYOPHYLLENE', 0.61], ['MYRCENE', 0.2],
+      ['PINENE_BETA', 0.21], ['LIMONENE', 0.25], ['LINALOOL', 0.07], ['TERPINEOL', 0.03]]);
+  check('its terpene total', pluto?.terpenes.totalPercent, 2.06);
+  check('its cannabinoid total', pluto?.totalCannabinoidsPercent, 34.47);
+  check('and so it carries a batch key', pluto?.labPanelKey?.startsWith('THC:29.61|BISABOLOL:0.06|'), true);
+  check('an entry in milligrams is not a percentage', toListing({
+    name: 'X - FLOWER - 3.5 G', category: 'FLOWER', customSize: '3.5 G',
+    productData: { labResults: [{ type: 'LIMONENE', amount: { minValue: '4', maxValue: '4' }, amountType: 'MG' }] },
+  }, shop, SRC, {})?.terpenes.profile, []);
+}
+
 const withDesc = (v) => toListing({ Name: 'Blue Burst', type: 'Flower', Options: ['3.5g'], description: v }, shop, SRC, {});
 // The menu's own copy is somebody else's writing, not a fact: never kept.
 check('menu copy is not kept', withDesc('<p>A <b>Gelato</b> x Sherb cross, sweet citrus.</p>')?.description, null);
