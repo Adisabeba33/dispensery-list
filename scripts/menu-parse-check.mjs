@@ -223,6 +223,12 @@ check('and so is a sentence about pick-up', fulfilmentAction('ORDER FOR PICKUP O
   check('Good Grades package tag is kept', gg?.packageIds, ['1A4120300000149000023827']);
 }
 
+/* Matawana writes "Flower: Cap Junky [H]": the category before the name, the
+   lineage in square brackets. */
+check('a square-bracket lineage and a leading category word leave the name', cleanStrainName('Flower: Cap Junky [H]', 'Matawana'), 'Cap Junky');
+check('and the bracket still gives the lineage',
+  toListing({ name: 'Flower: Lemon OG [I]', category: 'Flower', options: ['7g'] }, shop, SRC, {})?.lineage, 'INDICA');
+
 /* ------------------------------------------------ concentrates on a flower shelf --
  * Silk Road files "Cap Junky Wax Budder" under Flower. The words that name a
  * cultivar as well as an extract must keep the cultivar. */
