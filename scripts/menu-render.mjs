@@ -3016,6 +3016,21 @@ const NOT_FLOWER_TITLE = new RegExp(
     '\\b(?:pre[\\s-]?)?ground(?:s|ed)?\\b',
     'ready\\s+to\\s+roll',
     'flower\\s+flight',
+    /* Concentrates a shop files under Flower: Silk Road's "Cap Junky Wax
+       Budder" stood on its shelf as a gram of flower. Budder, Crumble and
+       Batter are also in cultivar names — Garlic Budder, Crumble Cake, Lemon
+       Batter — so Budder counts only as the last word after a dash ("GG#4 -
+       Indica - Budder"), and the other two not at all. Of the 31,302 listings
+       held on 28 September these match twenty, every one an extract or flower
+       coated in one. */
+    '\\bwax\\b',
+    '\\bconcentrates?\\b',
+    '\\bbadder\\b',
+    '\\b(?:live|cured)\\s+resin\\b',
+    '\\brosin\\b',
+    '\\bshatter\\b',
+    '\\bkief\\b',
+    '[-–—|]\\s*budder\\s*$',
   ].join('|'),
   'i',
 );
