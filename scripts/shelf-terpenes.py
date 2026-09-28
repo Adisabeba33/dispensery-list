@@ -25,15 +25,25 @@ Alley Oop от ElectraLeaf четыре магазина Gotham и BudBiz печ
   разными цифрами («Pinene» и «Alpha-Pinene» сборщик читает одним именем), из
   этой позиции он не берётся: пустое поле лучше правдоподобной догадки;
 - в выгрузку идут партии, у которых в панели хотя бы три терпена.
+
+Срок жизни партии — 16 недель с последнего дня, когда её видели на полке.
+Партия, которой сегодня нет ни в одном меню, из выгрузки не пропадает: её
+панель остаётся измерением этого сорта, пока партия могла ещё стоять у кого-то
+дома или на складе. Та же партия (сорт бренда, тот же THC) на сегодняшних
+полках обновляет свой последний день и сохраняет первый. Партия, не виденная
+16 недель, уходит в data/shelf-terpenes-archive.json — не удаляется.
 """
 import importlib.util
 import json
 from collections import Counter, defaultdict
+from datetime import date, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LISTINGS = ROOT / "data/flower-listings.json"
 OUT = ROOT / "data/shelf-terpenes.json"
+ARCHIVE = ROOT / "data/shelf-terpenes-archive.json"
+LIFETIME = timedelta(weeks=16)
 MIN_TERPENES = 3
 SAME = 0.005  # ближе — одна и та же цифра, записанная иначе
 
@@ -121,22 +131,64 @@ def lots(rows):
                 "certificates": sorted({t["coaUrl"] for t in terps if t.get("coaUrl")}),
                 "lineageStated": sorted({r["lineage"] for r in rows_ if r.get("lineage") not in (None, "UNKNOWN")}),
                 "read": min(r["capturedAt"][:10] for r in rows_),
+                "lastSeen": max(r["capturedAt"][:10] for r in rows_),
             })
     out.sort(key=lambda lot: (lot["key"], -lot["thcPercent"]))
     return out, stray, conflicts
+
+
+def carried(fresh, before, day):
+    """Партии прошлых выгрузок, ещё живые, рядом с сегодняшними; и те, что ушли в архив.
+
+    Сегодняшняя партия, та же, что прошлая (тот же сорт бренда, тот же THC),
+    остаётся сегодняшней — с первым днём прошлой. Прошлая партия, которой
+    сегодня нет, остаётся, пока с её последнего дня не прошло 16 недель."""
+    horizon = (date.fromisoformat(day) - LIFETIME).isoformat()
+    kept, gone = list(fresh), []
+    for old in before:
+        last = old.get("lastSeen") or old["read"]
+        twin = next((l for l in fresh if l["key"] == old["key"] and same_batch(l["thcPercent"], old["thcPercent"])), None)
+        if twin:
+            twin["read"] = min(twin["read"], old["read"])
+        elif last >= horizon:
+            kept.append({**old, "lastSeen": last})
+        else:
+            gone.append({**old, "lastSeen": last})
+    kept.sort(key=lambda lot: (lot["key"], -lot["thcPercent"]))
+    return kept, gone
+
+
+def load_lots(path):
+    try:
+        return json.loads(path.read_text()).get("lots") or []
+    except FileNotFoundError:
+        return []
 
 
 def main():
     rows = listings_of(LISTINGS.read_text())
     found, stray, conflicts = lots(rows)
     day = max((r["capturedAt"][:10] for r in rows if r.get("capturedAt")), default=None)
+    today = len(found)
+    found, gone = carried(found, load_lots(OUT), day)
     OUT.write_text(json.dumps({
         "about": "Терпеновые панели с полок Нью-Йорка, по партиям: сорт бренда при одном THC. "
-                 "Пишется scripts/shelf-terpenes.py из data/flower-listings.json; читает Сома.",
+                 "Пишется scripts/shelf-terpenes.py из data/flower-listings.json; читает Сома. "
+                 "Партия живёт 16 недель с последнего дня на полке (lastSeen), потом уходит в архив.",
         "day": day,
         "lots": found,
     }, ensure_ascii=False, indent=1) + "\n")
-    print(f"{OUT.relative_to(ROOT)}: {len(found)} партий, {len({l['key'] for l in found})} сортов брендов, "
+    if gone:
+        archived = load_lots(ARCHIVE)
+        seen = {(l["key"], l["thcPercent"], l["lastSeen"]) for l in archived}
+        archived += [l for l in gone if (l["key"], l["thcPercent"], l["lastSeen"]) not in seen]
+        ARCHIVE.write_text(json.dumps({
+            "about": "Партии, которых не было на полках 16 недель; выгрузка shelf-terpenes.json их больше не несёт.",
+            "lots": sorted(archived, key=lambda lot: (lot["key"], -lot["thcPercent"], lot["lastSeen"])),
+        }, ensure_ascii=False, indent=1) + "\n")
+    print(f"{OUT.relative_to(ROOT)}: {len(found)} партий ({today} на сегодняшних полках, "
+          f"{len(found) - today} из прошлых выгрузок, ещё живы), в архив ушло {len(gone)}; "
+          f"{len({l['key'] for l in found})} сортов брендов, "
           f"с сертификатом {sum(1 for l in found if l['certificates'])}, "
           f"в двух магазинах и больше {sum(1 for l in found if len(l['shops']) > 1)}; "
           f"позиций без THC, не узнанных ни в одной партии, {stray}; "
