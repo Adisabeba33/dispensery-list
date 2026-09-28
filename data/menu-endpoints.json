@@ -958,5 +958,15 @@
     "ageGate": null,
     "checkedAt": "2026-09-28",
     "notes": "Skones Dispensary, 743 Central Park Ave, Yonkers: Carrot store, locId=1. On 21 September /flower/ was the menu and gave 118 products; by 27 September it had become a page about flower with a carousel of 25, and the menu itself moved behind its 'Browse the full Flower menu' link to /store/category/flower?locId=1."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000062",
+    "menuUrl": "https://silkroadnyc.com/queens-ny-cannabis-dispensary-menu/?category=FLOWER",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-28",
+    "notes": "Silk Road NYC, 166-30 Jamaica Ave: /categories/flower/ is a page about the shop's flower with a carousel of a dozen products; its 'Shop Flower — Live Menu' link goes to this address. The collector read the carousel and published 2 listings for a week."
   }
 ]

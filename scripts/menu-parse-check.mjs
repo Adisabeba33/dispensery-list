@@ -211,6 +211,17 @@ check('and so is a sentence about pick-up', fulfilmentAction('ORDER FOR PICKUP O
     classify({ name: 'Blue Haze 1g', category: { id: 201, name: 'Singles', path: 'Pre-Rolls > Singles' } }), 'category-not-flower');
 }
 
+/* ------------------------------------------------ concentrates on a flower shelf --
+ * Silk Road files "Cap Junky Wax Budder" under Flower. The words that name a
+ * cultivar as well as an extract must keep the cultivar. */
+check('wax budder is an extract', classify({ name: 'Cap Junky Wax Budder', category: 'flower', subcategory: 'default' }), 'title-not-flower');
+check('budder as the last word is an extract', classify({ name: 'GG#4 - Indica - Budder', category: 'flower' }), 'title-not-flower');
+check('cured resin is an extract', classify({ name: 'Banana Nut Bread - Cured Resin Budder', category: 'flower' }), 'title-not-flower');
+check('kief is not flower', classify({ name: 'Black Panther - Golden Sand - Kief', category: 'flower' }), 'title-not-flower');
+check('Garlic Budder is a strain', classify({ name: 'Garlic Budder', category: 'flower', options: ['3.5g'] }), 'flower');
+check('Crumble Cake is a strain', classify({ name: 'Crumble Cake', category: 'flower', options: ['3.5g'] }), 'flower');
+check('Lemon Batter is a strain', classify({ name: 'Lemon Batter', category: 'flower', options: ['3.5g'] }), 'flower');
+
 /* --------------------------------------------------------- what to refuse --
  * Everything the user asked us to treat as noise: rolled, infused, not flower.
  */
