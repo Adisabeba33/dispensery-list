@@ -948,5 +948,15 @@
     "ageGate": null,
     "checkedAt": "2026-09-28",
     "notes": "Budr Cannabis, 887 Yonkers Ave: Jane store 6174 on budrcannabis.com/shop-yonkers/. The chain's home page lists its Connecticut shops; the Yonkers shop has a page of its own."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000225",
+    "menuUrl": "https://skonesdispensary.com/store/category/flower?locId=1",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-28",
+    "notes": "Skones Dispensary, 743 Central Park Ave, Yonkers: Carrot store, locId=1. On 21 September /flower/ was the menu and gave 118 products; by 27 September it had become a page about flower with a carousel of 25, and the menu itself moved behind its 'Browse the full Flower menu' link to /store/category/flower?locId=1."
   }
 ]
