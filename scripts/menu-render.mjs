@@ -3126,6 +3126,8 @@ const LINEAGE = {
   sativadominant: 'SATIVA_DOMINANT', sativahybrid: 'SATIVA_DOMINANT', cbd: 'CBD',
   // Dispense (Sofa Club) writes the pair the other way round.
   hybridindica: 'INDICA_DOMINANT', hybridsativa: 'SATIVA_DOMINANT',
+  // Carrot (The Cannabis Place) shortens it: Indica-Dom, Sativa-Dom.
+  indicadom: 'INDICA_DOMINANT', sativadom: 'SATIVA_DOMINANT',
 };
 const TERPENES = {
   myrcene: 'MYRCENE', limonene: 'LIMONENE', caryophyllene: 'CARYOPHYLLENE',
@@ -3518,6 +3520,13 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   if (!LINEAGE[lineageRaw] && lineageValue && typeof lineageValue === 'object' && !Array.isArray(lineageValue)) {
     const typed = lettersOf(pick(lineageValue, ['type']));
     if (LINEAGE[typed]) lineageRaw = typed;
+  }
+  /* Carrot (getcarrot.io) states it as strain: "Hybrid". Elsewhere `strain` is
+     the cultivar's name or an object, so it is taken only when it is a lineage word. */
+  if (!LINEAGE[lineageRaw]) {
+    const stated = pick(p, ['strain']);
+    const word = typeof stated === 'string' ? lettersOf(stated) : '';
+    if (LINEAGE[word]) lineageRaw = word;
   }
 
   const profile = [];
