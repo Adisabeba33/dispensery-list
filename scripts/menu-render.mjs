@@ -1733,8 +1733,22 @@ const isTypesenseHit = (v) =>
   !Array.isArray(v.document) &&
   Object.keys(v).every((k) => TYPESENSE_HIT_KEYS.has(k));
 
+/* Jane's menus answer from dmerch.iheartjane.com with placements whose
+   products are { product_id, store_id, ad_token, search_attributes }, the
+   whole product record under search_attributes. KushKlub's flower table:
+   89 entries, the first 60 with their record. */
+const isJaneHit = (v) =>
+  Boolean(v) &&
+  typeof v === 'object' &&
+  !Array.isArray(v) &&
+  v.product_id !== undefined &&
+  Boolean(v.search_attributes) &&
+  typeof v.search_attributes === 'object' &&
+  !Array.isArray(v.search_attributes);
+
 const unwrapHit = (hit) => {
   if (isTypesenseHit(hit)) return { ...hit.document };
+  if (isJaneHit(hit)) return { ...hit.search_attributes };
   const flat = { ...hit._source };
   if (flat.id === undefined && hit._id !== undefined) flat.id = hit._id;
   return flat;
@@ -1819,7 +1833,7 @@ export const flattenSearchHits = (payloads) => {
   const walk = (value, depth) => {
     if (depth > 8 || !value || typeof value !== 'object' || out.length > 4000) return;
     if (Array.isArray(value)) {
-      const hits = value.filter((v) => isSearchHit(v) || isTypesenseHit(v));
+      const hits = value.filter((v) => isSearchHit(v) || isTypesenseHit(v) || isJaneHit(v));
       if (hits.length >= 2) {
         const unwrapped = hits.map(unwrapHit);
         if (looksLikeShelf(unwrapped)) out.push(...unwrapped);
@@ -1841,7 +1855,7 @@ const shelvesWithTotals = (value, container = null, depth = 0, out = []) => {
        name and nothing for sale, so the array looks like anything but a
        shelf — and the total sits beside it, under hits.total, where the
        ordinary rule finds it the moment the array is recognised. */
-    const hits = value.filter((v) => isSearchHit(v) || isTypesenseHit(v));
+    const hits = value.filter((v) => isSearchHit(v) || isTypesenseHit(v) || isJaneHit(v));
     const stock = value.filter(isStockRecord);
     const opened = hits.length >= 2
       ? hits.map(unwrapHit)
@@ -2003,7 +2017,7 @@ export const flattenJsonApiProducts = (payloads) => {
  * cbdAmount and inStock, The Cannabis Place's carry cashPriceRange. All stay.
  */
 const SHELF_EVIDENCE =
-  /^(price|prices|unitprice|unitprices|saleprice|discountprice|customerprice|cashprice|cashpricerange|cashoptions|weightprices|msrp|cost|thc|cbd|cbn|thca|thcpercentage|thccontent|potencythc|potency|minthc|maxthc|cbdamount|thcamount|weight|weightingrams|gram|grams|gramrange|unitweight|size|sizes|options|variants|instock|quantity|availability)$/i;
+  /^(price|prices|unitprice|unitprices|saleprice|discountprice|customerprice|cashprice|cashpricerange|cashoptions|weightprices|msrp|cost|thc|cbd|cbn|thca|thcpercentage|thccontent|potencythc|potency|minthc|maxthc|cbdamount|thcamount|weight|weightingrams|gram|grams|gramrange|unitweight|size|sizes|options|variants|instock|quantity|availability|availableweights|percentthc|percentcbd)$/i;
 
 /* Read off the first few rather than only the first: a shelf sometimes opens
    with an oddity, and one strange row should not disqualify the shelf behind
@@ -2408,6 +2422,12 @@ const SIZE_RULES = [
      "Quarter pound" was read as a quarter ounce: 7 grams for 113, wrong by
      sixteen times and silently. Nobody may sell one in New York, so the right
      answer is to refuse it, not to shrink it. */
+  /* Grams in words, as Jane lists them in available_weights: "half gram",
+     "gram", "two gram". Before the fractions, because "half" alone means half
+     an ounce and "half gram" was read as fourteen grams. */
+  [/\bhalf[\s-]*(?:a\s*)?grams?\b/i, () => 0.5],
+  [/\btwo[\s-]*grams?\b/i, () => 2],
+  [/^\s*(?:one\s*|a\s*)?gram\s*$/i, () => 1],
   [/(?:\b1\s*\/\s*8(?!\d)|\beighth\b)(?!\s*(?:pound|lb|#))/i, () => 3.5],
   [/(?:\b1\s*\/\s*4(?!\d)|\bquarter\b)(?!\s*(?:pound|lb|#))/i, () => 7],
   [/(?:\b1\s*\/\s*2(?!\d)|\bhalf\b)(?!\s*(?:pound|lb|#))/i, () => 14],
@@ -3128,6 +3148,8 @@ const CATEGORY_KEYS = [
      Trees 3.5g, a Hashtag Honey glass jar — were thrown away for want of a
      category, because their names do not say "flower". */
   'classificationName', 'classificationPath', 'canonicalClassification',
+  // Jane's kind is 'flower' for all of it; the subtype says 'Ground Flower'.
+  'kindSubtype',
 ];
 
 const categoryText = (p) =>
@@ -3169,6 +3191,8 @@ const classify = (p) => {
      category, and an empty field beats a plausible guess. */
   if (!text) return FLOWER_TITLE.test(title) ? 'flower' : 'no-category';
   if (/pre[\s-]?roll|infused|blunt|joint/.test(text)) return 'category-not-flower';
+  // Ground flower is shake, whether the name says so or only the shelf does.
+  if (/\b(pre[\s-]?)?ground(ed)?\b/.test(text)) return 'category-not-flower';
   /* An eighth is an eighth of an ounce of flower: Herbarium Queens shelves all
      of its flower as "8ths regular", and seventy-one of them were refused for
      not saying "flower". */
@@ -3420,7 +3444,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const brand = flatten(pick(p, ['brandName', 'brand', 'producer', 'vendor', 'cultivator']));
   const name = cleanStrainName(rawName, brand);
   const lineageRaw = String(
-    flatten(pick(p, ['strainType', 'lineage', 'cannabisType', 'cannabisStrain', 'flowerType', 'classification'])) ?? '',
+    // Jane files the lineage as its category: sativa, indica, hybrid.
+    flatten(pick(p, ['strainType', 'lineage', 'cannabisType', 'cannabisStrain', 'flowerType', 'classification', 'category'])) ?? '',
   )
     .toLowerCase()
     .replace(/[^a-z]/g, '');
@@ -3549,7 +3574,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   };
 
   const sizes = [];
-  const variants = pick(p, ['variants', 'weights', 'weightPrices', 'options', 'sizes', 'priceOptions', 'unitPrices', 'measurements']);
+  const variants = pick(p, ['variants', 'weights', 'weightPrices', 'options', 'sizes', 'priceOptions', 'unitPrices', 'measurements', 'availableWeights']);
   if (Array.isArray(variants)) {
     for (const v of variants) {
       const g = plausibleSize(sizeOf(v));
@@ -3599,7 +3624,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     potency(
       p,
       // thcPercentage is Carrot's (Piffords, Two Buds, Lenox Hill, Seaweed).
-      ['thcContent', 'potencyThc', 'thc', 'thcPercent', 'thcPercentage', 'potencyThcRangeLow', 'potencyThcRangeHigh', 'potencyThcDisplayValue'],
+      ['thcContent', 'potencyThc', 'thc', 'thcPercent', 'thcPercentage', 'potencyThcRangeLow', 'potencyThcRangeHigh', 'potencyThcDisplayValue', 'percentThc'],
       CANNABINOID_PANEL,
       THC_NAME,
       { zeroIsSilence: true },
@@ -3619,7 +3644,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     cbdPercent:
       potency(
         p,
-        ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent', 'cbdPercentage', 'potencyCbdRangeLow', 'potencyCbdRangeHigh', 'potencyCbdDisplayValue'],
+        ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent', 'cbdPercentage', 'potencyCbdRangeLow', 'potencyCbdRangeHigh', 'potencyCbdDisplayValue', 'percentCbd'],
         CANNABINOID_PANEL,
         CBD_NAME,
       ) ?? labFigure(p, 'cbd'),

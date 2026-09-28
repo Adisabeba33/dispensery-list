@@ -928,5 +928,25 @@
     },
     "branch": "The Flowery - Soho, 481 Broadway",
     "notes": "Registered as Elevate Soho Cannabis; trades as The Flowery - Soho, 481 Broadway. The Flowery lists OCM-CAURD-24-000132 among its own licences on thefloweryny.com, and its retailer list places 29de6377-b4cd-4ac7-aac8-1ece867fa1c3 at this address (checked 2026-09-26). A diagnostic run on 2026-09-26 read 47 flower products for this retailer: the shop is trading."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000061",
+    "menuUrl": "https://menu.kushklub.com/nyc/menu/flower",
+    "platform": "IHEARTJANE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-28",
+    "notes": "KushKlub, 186 Orchard St: Jane store 6906 embedded on menu.kushklub.com. The page's footer names the Olympia, WA shop; the store the menu reads (api.iheartjane.com/v1/stores/6906) is the New York one."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000208",
+    "menuUrl": "https://budrcannabis.com/shop-yonkers/menu/flower",
+    "platform": "IHEARTJANE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-28",
+    "notes": "Budr Cannabis, 887 Yonkers Ave: Jane store 6174 on budrcannabis.com/shop-yonkers/. The chain's home page lists its Connecticut shops; the Yonkers shop has a page of its own."
   }
 ]
