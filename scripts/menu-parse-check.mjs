@@ -136,6 +136,32 @@ check('nor its mode button', fulfilmentAction('Delivery'), 'never');
 check('the mode toggle itself is left alone', fulfilmentAction('Pickup'), 'ignore');
 check('and so is a sentence about pick-up', fulfilmentAction('ORDER FOR PICKUP OR CLICK BELOW TO SWITCH TO DELIVERY!'), 'never');
 
+/* ------------------------------------------------------------------ Jane --
+ * KushKlub's flower table as dmerch.iheartjane.com answered it on 28
+ * September: the first 60 entries carry the product under search_attributes,
+ * the rest only an id. Lineage is Jane's category, weights are words. */
+{
+  const jane = (product_id, attrs) => ({ ad_token: 'a', my_high_d: 'b', object_id: String(product_id), product_id, store_id: 6906,
+    search_attributes: { product_id, store_id: 6906, kind: 'flower', ...attrs } });
+  const answer = { placements: [{ placement: 'menu_inline_table', nb_hits: 3, products: [
+    jane(1, { name: 'LA Pop Rocks', brand: 'Botanist', kind_subtype: 'Whole Flower', category: 'sativa', available_weights: ['eighth ounce'], percent_thc: 26.9 }),
+    jane(2, { name: 'Banana MAC', brand: 'Major', kind_subtype: 'Smalls', category: 'hybrid', available_weights: ['half ounce', 'ounce'], percent_thc: 20 }),
+    { ad_token: 'c', my_high_d: 'd', object_id: '3', product_id: 3, store_id: 6906 },
+  ] }] };
+  const records = flattenSearchHits([answer]);
+  check('Jane records are lifted out of their envelopes', records.map((r) => r.name), ['LA Pop Rocks', 'Banana MAC']);
+  const pop = toListing(records[0], shop, SRC, {});
+  check('Jane category is the lineage', pop?.lineage, 'SATIVA');
+  check('Jane weights are words', pop?.availableSizesGrams, [3.5]);
+  check('Jane THC is percent_thc', pop?.thcPercent, 26.9);
+  check('half and whole ounces', toListing(records[1], shop, SRC, {})?.availableSizesGrams, [14, 28]);
+  check('Ground Flower is shake, said only by the shelf',
+    classify({ name: 'Indica Blend', kind: 'flower', kind_subtype: 'Ground Flower', category: 'indica' }), 'category-not-flower');
+  check('a half gram is half a gram', sizeFromText('half gram'), 0.5);
+  check('two gram is two', sizeFromText('two gram'), 2);
+  check('half alone is still half an ounce', sizeFromText('1/2 oz'), 14);
+}
+
 /* --------------------------------------------------------- what to refuse --
  * Everything the user asked us to treat as noise: rolled, infused, not flower.
  */
