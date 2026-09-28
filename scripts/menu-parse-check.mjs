@@ -16,7 +16,7 @@ import {
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
   mergeBySize, pagedRequest, pickFlowerInside, pickMenuLink, pickStore,
   placeNamesOf, rankMenuLink, registerTextOf, sameEstate, signatureOf, sizeFromText,
-  toListing, wallAction
+  toListing, wallAction, fulfilmentAction
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 import { labPanelKeyOf } from './lab-panel.mjs';
@@ -125,6 +125,16 @@ check('proprietary blank terpene', pr?.terpenes.profile[0].percent, null);
     toListing({ ...highlife('Alter Jar Flower - Garlic Cookies'), NetWeight: '3.5g', NetWeightUnit: 'g' }, shop, SRC, {})?.availableSizesGrams, [3.5]);
   check('but a bare NetWeightVal is not a weight', toListing({ ...highlife('Alter Jar Flower - Garlic Cookies') }, shop, SRC, {}), null);
 }
+
+/* ---------------------------------------------------------------- pick-up --
+ * Bad Maryjane's header, read off the live page on 27 September: pick-up is
+ * already selected, and SHOP PICKUP opens the flower shelf. */
+check('SHOP PICKUP opens the shelf', fulfilmentAction('SHOP PICKUP'), 'shop-pickup');
+check('so does an order-for-pickup button', fulfilmentAction('Start pickup order'), 'shop-pickup');
+check('delivery is never chosen', fulfilmentAction('CLICK TO SEE THE EXPRESS DELIVERY MENU'), 'never');
+check('nor its mode button', fulfilmentAction('Delivery'), 'never');
+check('the mode toggle itself is left alone', fulfilmentAction('Pickup'), 'ignore');
+check('and so is a sentence about pick-up', fulfilmentAction('ORDER FOR PICKUP OR CLICK BELOW TO SWITCH TO DELIVERY!'), 'never');
 
 /* --------------------------------------------------------- what to refuse --
  * Everything the user asked us to treat as noise: rolled, infused, not flower.

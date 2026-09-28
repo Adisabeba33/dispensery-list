@@ -1130,6 +1130,61 @@ const chooseStore = async (page, entry) => {
 };
 
 /**
+ * The question of how a visitor means to collect, where it stands between the
+ * door and the flower.
+ *
+ * Bad Maryjane's storefront answers /menu/collection/flower with its whole
+ * store — 1,144 products, grinders first — until the visitor presses SHOP
+ * PICKUP beside the one shop it lists under "How do you want to shop?". Then,
+ * and only then, it asks for FLOWER and gets 124. Nothing is typed and nothing
+ * is sent: pick-up is already the selected mode, and the button only opens
+ * the shelf.
+ *
+ * Pick-up is the only answer this collector gives, as on The Travel Agency's
+ * wall: it asks nobody for an address. And it is given only when exactly one
+ * such button is on screen — a chain listing several shops is a fork, which
+ * chooseStore answers by the licence's own address or not at all.
+ */
+const PICKUP_GO =
+  /^(shop|order|start|begin|continue(\s+with)?)\s+(for\s+)?(store\s+|in[-\s]?store\s+)?pick[-\s]?up(\s+order)?$/i;
+export const fulfilmentAction = (text) => {
+  const words = String(text ?? '').trim();
+  if (/deliver/i.test(words)) return 'never';
+  return PICKUP_GO.test(words) ? 'shop-pickup' : 'ignore';
+};
+
+const choosePickup = async (page, entry) => {
+  let answer = null;
+  try {
+    answer = await page.evaluate((go) => {
+      const isGo = new RegExp(go, 'i');
+      const onScreen = (el) => {
+        const box = el.getBoundingClientRect();
+        if (box.width <= 0 || box.height <= 0) return false;
+        const cx = box.left + box.width / 2;
+        const cy = box.top + box.height / 2;
+        if (cx < 0 || cy < 0 || cx > innerWidth || cy > innerHeight) return false;
+        const atPoint = document.elementFromPoint(cx, cy);
+        return Boolean(atPoint && (el === atPoint || el.contains(atPoint) || atPoint.contains(el)));
+      };
+      const words = (el) => (el.innerText || el.value || el.getAttribute('aria-label') || '').trim().replace(/\s+/g, ' ');
+      const found = [...document.querySelectorAll('button, a, [role="button"], input[type="button"]')]
+        .filter((el) => { const w = words(el); return w && w.length <= 40 && !/deliver/i.test(w) && isGo.test(w) && onScreen(el); });
+      if (found.length !== 1) return found.length ? { several: found.length } : null;
+      found[0].click();
+      return { label: words(found[0]) };
+    }, PICKUP_GO.source);
+  } catch {
+    return false;
+  }
+  if (answer?.several) entry.pickupRefused = `${answer.several} shops offered`;
+  if (!answer?.label) return false;
+  entry.choseFulfilment = answer.label;
+  await page.waitForTimeout(2500);
+  return true;
+};
+
+/**
  * Everything between the door and the shelf, in the order a visitor meets it.
  *
  * The age question is answered first because it is usually on top; the offers
@@ -1153,6 +1208,8 @@ const clearWalls = async (page, entry) => {
     const again = await dismissOffers(page, entry);
     if (again.length) entry.offersDismissed = [...(entry.offersDismissed ?? []), ...again];
   }
+  /* After the fork: with one shop left, its pick-up button opens the shelf. */
+  if (!entry.choseFulfilment) await choosePickup(page, entry);
 };
 
 const askedAgeIn = async (frame) => {

@@ -53,6 +53,8 @@ KEEP = (
     "choseStoreBy",
     "storeForkRefused",
     "storeForkOptions",
+    "choseFulfilment",
+    "pickupRefused",
     "foundMenuByGuess",
     "guessedMenuPaths",
     "foundMenuOnSecondLook",
