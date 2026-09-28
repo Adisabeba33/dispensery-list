@@ -202,6 +202,11 @@ check('and so is a sentence about pick-up', fulfilmentAction('ORDER FOR PICKUP O
     toListing({ name: 'Munchkins | 3.5g | Indica | Grape Ape', weight: 3.5, weight_unit_short: 'g', thc_percentage: 30,
       strain_type: { type: 'Indica', id: 14 }, category: { id: 101, name: 'Pre-Packed', path: 'Flower > Pre-Packed' } },
     shop, SRC, {})?.lineage, 'INDICA');
+  check('Carrot names the lineage as strain',
+    toListing({ name: 'Gogurtz | 3.5g', brand: 'RYTHM', categoryName: 'Flower', strain: 'Hybrid', thcPercentage: 29.47, unitWeight: 3.5 },
+      shop, SRC, {})?.lineage, 'HYBRID');
+  check('but a strain that is a cultivar is not a lineage',
+    toListing({ name: 'Blue Dream 3.5g', category: 'Flower', strain: 'Blue Dream' }, shop, SRC, {})?.lineage, 'UNKNOWN');
   check('and one saying Pre-Rolls is not',
     classify({ name: 'Blue Haze 1g', category: { id: 201, name: 'Singles', path: 'Pre-Rolls > Singles' } }), 'category-not-flower');
 }
