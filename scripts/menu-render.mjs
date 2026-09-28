@@ -1649,7 +1649,8 @@ export const pickMenuLink = (links, siteUrl = null, shopName = '') => {
 /* nbHits is Algolia's: the count for that one query, written beside its hits.
    The Flowery's Chinatown shop lists eighty-one flower products fifty to a
    page; with no total recognised the collector stopped at the first page. */
-const TOTAL_KEY = /^(total|totalCount|totalResults|totalItems|totalProducts|resultCount|numResults|count|found|nbHits)$/i;
+// itemsNo is Transcend Wellness's: { items_no: 93, current_page, total_pages, items }.
+const TOTAL_KEY = /^(total|totalCount|totalResults|totalItems|totalProducts|resultCount|numResults|count|found|nbHits|itemsNo)$/i;
 const declaresTotal = (key) => TOTAL_KEY.test(String(key).replace(/_/g, ''));
 /**
  * The total stated in the same breath as a shelf, and only that one.
@@ -2460,9 +2461,36 @@ const SIZE_RULES = [
 /* Where a page number hides. Three shapes, in the order they are trusted:
    an explicit page index, an offset in items, and the size that an offset has
    to be advanced by. */
-const PAGE_KEYS = ['page', 'pageNumber', 'pageIndex', 'currentPage', 'pageNum'];
+/* prods_pageNumber is a WordPress storefront's, posted to admin-ajax.php as a
+   form: BX Buddiez's shelf answers wizard_show_products a hundred at a time
+   with pages 1 to 4 behind it, and was read to its first hundred. */
+const PAGE_KEYS = ['page', 'pageNumber', 'pageIndex', 'currentPage', 'pageNum', 'prods_pageNumber', 'current_page'];
+
+/* A body posted as a form — a=1&b=two — read as flat pairs, numbers as
+   numbers, so the page knob is found in it the same way as in JSON. Null for
+   anything that is not one. */
+const formBody = (body) => {
+  if (typeof body !== 'string' || /^\s*[[{]/.test(body) || !/^[^=&\s]+=/.test(body)) return null;
+  const out = {};
+  for (const [k, v] of new URLSearchParams(body)) {
+    out[k] = v.trim() !== '' && Number.isFinite(Number(v)) ? Number(v) : v;
+  }
+  return out;
+};
+
+/* The same form with only the changed values rewritten, byte for byte
+   elsewhere: the rest of the body is the page's own and is sent back as it
+   was. */
+const formBodyWith = (body, changes) => {
+  let out = body;
+  for (const [key, value] of Object.entries(changes)) {
+    const name = encodeURIComponent(key).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    out = out.replace(new RegExp(`(^|&)(${name})=[^&]*`), `$1$2=${encodeURIComponent(String(value))}`);
+  }
+  return out;
+};
 const OFFSET_KEYS = ['offset', 'skip', 'from', 'start'];
-const SIZE_KEYS = ['perPage', 'pageSize', 'per_page', 'page_size', 'limit', 'first', 'take'];
+const SIZE_KEYS = ['perPage', 'pageSize', 'per_page', 'page_size', 'limit', 'first', 'take', 'items_per_page'];
 
 /**
  * The shallowest numeric value under any of `keys`, with the path that reaches
@@ -2623,6 +2651,11 @@ const buildQueryKey = (req) => {
   try {
     const url = new URL(req.url);
     for (const [k, raw] of [...url.searchParams]) {
+      const nested = raw.startsWith('?') ? formBody(raw.slice(1)) : null;
+      if (nested) {
+        url.searchParams.set(k, JSON.stringify(withoutPage(nested)));
+        continue;
+      }
       if (!raw.trim().startsWith('{')) continue;
       try {
         url.searchParams.set(k, JSON.stringify(withoutPage(JSON.parse(raw))));
@@ -2646,7 +2679,8 @@ const buildQueryKey = (req) => {
     try {
       key += ` ${JSON.stringify(withoutPage(JSON.parse(req.body)))}`;
     } catch {
-      key += ` ${req.body}`;
+      const form = formBody(req.body);
+      key += ` ${form ? JSON.stringify(withoutPage(form)) : req.body}`;
     }
   }
   return key;
@@ -2677,7 +2711,9 @@ export const pageKnobOf = (req) => {
       const found = from(JSON.parse(req.body));
       if (found) return `body: ${found}`;
     } catch {
-      /* not JSON; the address may still carry it */
+      const form = formBody(req.body);
+      const found = form && from(form);
+      if (found) return `form: ${found}`;
     }
   }
   try {
@@ -2691,6 +2727,13 @@ export const pageKnobOf = (req) => {
     if (variables) {
       const inside = from(JSON.parse(variables));
       if (inside) return `variables: ${inside}`;
+    }
+    /* Or a whole query string inside one parameter: Transcend Wellness asks
+       /api/products/get-products?query=?order_by=…&items_per_page=12&current_page=1. */
+    for (const [key, raw] of new URL(req.url).searchParams) {
+      const form = raw.startsWith('?') ? formBody(raw.slice(1)) : null;
+      const inside = form && from(form);
+      if (inside) return `${key}: ${inside}`;
     }
   } catch {
     /* an address we cannot read is not a knob */
@@ -2706,7 +2749,12 @@ const pagedRequest = (req, nth, fallbackSize) => {
       const advanced = advanceJson(JSON.parse(req.body), nth, fallbackSize);
       if (advanced) return { ...req, body: JSON.stringify(advanced) };
     } catch {
-      /* not JSON; the address may still carry the page */
+      const form = formBody(req.body);
+      const advanced = form && advanceJson(form, nth, fallbackSize);
+      if (advanced) {
+        const changes = Object.fromEntries(Object.entries(advanced).filter(([k, v]) => form[k] !== v));
+        return { ...req, body: formBodyWith(req.body, changes) };
+      }
     }
   }
 
@@ -2730,6 +2778,18 @@ const pagedRequest = (req, nth, fallbackSize) => {
     } catch {
       /* the parameter only looked like JSON */
     }
+  }
+
+  // A parameter that is itself a query string — query=?…&current_page=1
+  for (const [key, raw] of [...url.searchParams]) {
+    if (!raw.startsWith('?')) continue;
+    const form = formBody(raw.slice(1));
+    const advanced = form && advanceJson(form, nth, fallbackSize);
+    if (!advanced) continue;
+    const changes = Object.fromEntries(Object.entries(advanced).filter(([k, v]) => form[k] !== v));
+    const next = new URL(url);
+    next.searchParams.set(key, `?${formBodyWith(raw.slice(1), changes)}`);
+    return { ...req, url: next.toString() };
   }
 
   // A plain numeric parameter.
@@ -3152,9 +3212,16 @@ const CATEGORY_KEYS = [
   'kindSubtype',
 ];
 
+/* A category object says where it sits as well as what it is called:
+   Transcend Wellness files its jars under { name: "Pre-Packed", path:
+   "Flower > Pre-Packed" }, and the name alone never says flower. */
 const categoryText = (p) =>
   pickAll(p, CATEGORY_KEYS)
-    .map((v) => String(flatten(v) ?? ''))
+    .map((v) => {
+      const own = String(flatten(v) ?? '');
+      const path = v && typeof v === 'object' && !Array.isArray(v) ? flatten(pick(v, ['path', 'fullPath', 'categoryPath'])) : null;
+      return typeof path === 'string' && path ? `${path} ${own}` : own;
+    })
     .join(' ')
     .toLowerCase()
     .trim();
@@ -3443,12 +3510,15 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   if (!rawName) return null;
   const brand = flatten(pick(p, ['brandName', 'brand', 'producer', 'vendor', 'cultivator']));
   const name = cleanStrainName(rawName, brand);
-  const lineageRaw = String(
-    // Jane files the lineage as its category: sativa, indica, hybrid.
-    flatten(pick(p, ['strainType', 'lineage', 'cannabisType', 'cannabisStrain', 'flowerType', 'classification', 'category'])) ?? '',
-  )
-    .toLowerCase()
-    .replace(/[^a-z]/g, '');
+  // Jane files the lineage as its category: sativa, indica, hybrid.
+  const lineageValue = pick(p, ['strainType', 'lineage', 'cannabisType', 'cannabisStrain', 'flowerType', 'classification', 'category']);
+  const lettersOf = (v) => String(v ?? '').toLowerCase().replace(/[^a-z]/g, '');
+  let lineageRaw = lettersOf(flatten(lineageValue));
+  // Transcend Wellness: strain_type: { type: "Hybrid", id: 15 }, which flatten does not read.
+  if (!LINEAGE[lineageRaw] && lineageValue && typeof lineageValue === 'object' && !Array.isArray(lineageValue)) {
+    const typed = lettersOf(pick(lineageValue, ['type']));
+    if (LINEAGE[typed]) lineageRaw = typed;
+  }
 
   const profile = [];
   let totalPercent = null;

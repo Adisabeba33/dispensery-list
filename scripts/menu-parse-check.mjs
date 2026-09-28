@@ -16,7 +16,7 @@ import {
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
   mergeBySize, pagedRequest, pickFlowerInside, pickMenuLink, pickStore,
   placeNamesOf, rankMenuLink, registerTextOf, sameEstate, signatureOf, sizeFromText,
-  toListing, wallAction, fulfilmentAction
+  toListing, wallAction, fulfilmentAction, pageKnobOf
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 import { labPanelKeyOf } from './lab-panel.mjs';
@@ -160,6 +160,50 @@ check('and so is a sentence about pick-up', fulfilmentAction('ORDER FOR PICKUP O
   check('a half gram is half a gram', sizeFromText('half gram'), 0.5);
   check('two gram is two', sizeFromText('two gram'), 2);
   check('half alone is still half an ounce', sizeFromText('1/2 oz'), 14);
+}
+
+/* ------------------------------------------------------------- form paging --
+ * BX Buddiez's WordPress storefront posts its shelf query to admin-ajax.php as
+ * a form, a hundred products a page, pages 1 to 4 behind the first. */
+{
+  const body = 'action=wizard_show_products&wizard_data%5Bage_confirm%5D=true&wizard_data%5Bcollection_method%5D=PICKUP'
+    + '&wizard_data%5Bsort%5D=NAME_ASC&wizard_data%5Bevent%5D=LOCAL+STORAGE+NULL+-+have+URL+DATA&nonce_ajax=715feb4192'
+    + '&prods_pageNumber=1&prod_categories%5Bsearch_key_word%5D=';
+  const req = { method: 'POST', url: 'https://bxbuddiez.com/wp-admin/admin-ajax.php', body };
+  check('the page in a form is found', pageKnobOf(req), 'form: page prods_pageNumber=1');
+  check('and turned, the rest of the form sent back as it was',
+    pagedRequest(req, 2, 100)?.body, body.replace('prods_pageNumber=1', 'prods_pageNumber=3'));
+  check('a form without a page is left alone',
+    pagedRequest({ ...req, body: 'action=load_retailer_name&retailer_id=e68d3af5' }, 1, 100), null);
+}
+
+/* ------------------------------------------------- a query inside a query --
+ * Transcend Wellness asks for its shelf with the whole query string packed
+ * into one parameter, twelve a page, and files its jars under a category
+ * whose name is "Pre-Packed" and whose path says Flower. It was read as one
+ * listing of ninety-three. */
+{
+  const inner = '?order_by=popularity&order_type=1&items_per_page=12&current_page=1&category=100';
+  const url = `https://transcendwps.com/api/products/get-products?query=${encodeURIComponent(inner)}`;
+  const req = { method: 'GET', url };
+  check('the page inside a packed query is found', pageKnobOf(req), 'query: page current_page=1');
+  const next = pagedRequest(req, 1, 12);
+  check('and turned, the rest of it as it was',
+    next && new URL(next.url).searchParams.get('query'), inner.replace('current_page=1', 'current_page=2'));
+  check('items_no is the shelf total',
+    declaredTotalOf({ items_no: 93, current_page: 1, items_per_page: 12, total_pages: 8,
+      items: ['Blue Haze', 'Ice Cream Cake'].map((strain) => ({ price: 45, location_id: 1, stock: 4,
+        product: { name: `Munchkins | 3.5g | Hybrid | ${strain}`, weight: 3.5, weight_unit_short: 'g', thc_percentage: 30,
+          strain_type: { type: 'Hybrid' }, category: { id: 101, name: 'Pre-Packed', path: 'Flower > Pre-Packed' } } })) }), 93);
+  check('a category path saying Flower is flower',
+    classify({ name: 'Munchkins | 3.5g | Hybrid | Blue Haze', weight: 3.5, weight_unit_short: 'g',
+      category: { id: 101, name: 'Pre-Packed', path: 'Flower > Pre-Packed' } }), 'flower');
+  check('the lineage is the strain type\'s own word',
+    toListing({ name: 'Munchkins | 3.5g | Indica | Grape Ape', weight: 3.5, weight_unit_short: 'g', thc_percentage: 30,
+      strain_type: { type: 'Indica', id: 14 }, category: { id: 101, name: 'Pre-Packed', path: 'Flower > Pre-Packed' } },
+    shop, SRC, {})?.lineage, 'INDICA');
+  check('and one saying Pre-Rolls is not',
+    classify({ name: 'Blue Haze 1g', category: { id: 201, name: 'Singles', path: 'Pre-Rolls > Singles' } }), 'category-not-flower');
 }
 
 /* --------------------------------------------------------- what to refuse --
