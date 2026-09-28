@@ -3068,7 +3068,10 @@ const cleanStrainName = (raw, brand) => {
       .replace(/\s*[-–—|]\s*(flower\s*jar|flower|jar|bag|jars|bags|pouch)\s*$/gi, '')
       .replace(/\s*[-–—|]\s*(?=[-–—|])/g, ' ')                    // collapsed separators
       .replace(/\s*[-–—|]?\s*\b(sativa|indica|hybrid)\b\s*$/i, '')
-      .replace(/\s*[-–—|]\s*\d+(?:\s*\/\s*\d+)?\s*$/, '')       // "... - 1" left by a weight
+      /* "... - 1" left by a weight. The dash has to be spaced on at least one
+         side: glued, it is part of the name — RS-11, GG-4 — and Conbud's
+         "RS-11 (H)" was published as "RS". */
+      .replace(/(?:\s+[-–—|]\s*|\s*[-–—|]\s+)\d+(?:\s*\/\s*\d+)?\s*$/, '')
       .replace(/\s+[\d.]+\s*$/, '')                              // bare trailing weight
       .trim();
 

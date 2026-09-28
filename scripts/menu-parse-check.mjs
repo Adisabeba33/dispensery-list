@@ -229,6 +229,10 @@ check('a square-bracket lineage and a leading category word leave the name', cle
 check('and the bracket still gives the lineage',
   toListing({ name: 'Flower: Lemon OG [I]', category: 'Flower', options: ['7g'] }, shop, SRC, {})?.lineage, 'INDICA');
 
+/* A number glued to the name by a dash is the name: Conbud's RS-11 was cut to RS. */
+check('RS-11 keeps its number', cleanStrainName('Wizard Trees | 3.5g Indoor Flower | RS-11 (H)', 'Wizard Trees'), 'RS-11');
+check('a spaced dash and number left by a weight still go', cleanStrainName('Afghani - 1', null), 'Afghani');
+
 /* ------------------------------------------------ concentrates on a flower shelf --
  * Silk Road files "Cap Junky Wax Budder" under Flower. The words that name a
  * cultivar as well as an extract must keep the cultivar. */
