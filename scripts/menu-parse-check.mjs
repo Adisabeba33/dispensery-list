@@ -177,6 +177,35 @@ check('and so is a sentence about pick-up', fulfilmentAction('ORDER FOR PICKUP O
     pagedRequest({ ...req, body: 'action=load_retailer_name&retailer_id=e68d3af5' }, 1, 100), null);
 }
 
+/* ------------------------------------------------- a query inside a query --
+ * Transcend Wellness asks for its shelf with the whole query string packed
+ * into one parameter, twelve a page, and files its jars under a category
+ * whose name is "Pre-Packed" and whose path says Flower. It was read as one
+ * listing of ninety-three. */
+{
+  const inner = '?order_by=popularity&order_type=1&items_per_page=12&current_page=1&category=100';
+  const url = `https://transcendwps.com/api/products/get-products?query=${encodeURIComponent(inner)}`;
+  const req = { method: 'GET', url };
+  check('the page inside a packed query is found', pageKnobOf(req), 'query: page current_page=1');
+  const next = pagedRequest(req, 1, 12);
+  check('and turned, the rest of it as it was',
+    next && new URL(next.url).searchParams.get('query'), inner.replace('current_page=1', 'current_page=2'));
+  check('items_no is the shelf total',
+    declaredTotalOf({ items_no: 93, current_page: 1, items_per_page: 12, total_pages: 8,
+      items: ['Blue Haze', 'Ice Cream Cake'].map((strain) => ({ price: 45, location_id: 1, stock: 4,
+        product: { name: `Munchkins | 3.5g | Hybrid | ${strain}`, weight: 3.5, weight_unit_short: 'g', thc_percentage: 30,
+          strain_type: { type: 'Hybrid' }, category: { id: 101, name: 'Pre-Packed', path: 'Flower > Pre-Packed' } } })) }), 93);
+  check('a category path saying Flower is flower',
+    classify({ name: 'Munchkins | 3.5g | Hybrid | Blue Haze', weight: 3.5, weight_unit_short: 'g',
+      category: { id: 101, name: 'Pre-Packed', path: 'Flower > Pre-Packed' } }), 'flower');
+  check('the lineage is the strain type\'s own word',
+    toListing({ name: 'Munchkins | 3.5g | Indica | Grape Ape', weight: 3.5, weight_unit_short: 'g', thc_percentage: 30,
+      strain_type: { type: 'Indica', id: 14 }, category: { id: 101, name: 'Pre-Packed', path: 'Flower > Pre-Packed' } },
+    shop, SRC, {})?.lineage, 'INDICA');
+  check('and one saying Pre-Rolls is not',
+    classify({ name: 'Blue Haze 1g', category: { id: 201, name: 'Singles', path: 'Pre-Rolls > Singles' } }), 'category-not-flower');
+}
+
 /* --------------------------------------------------------- what to refuse --
  * Everything the user asked us to treat as noise: rolled, infused, not flower.
  */
