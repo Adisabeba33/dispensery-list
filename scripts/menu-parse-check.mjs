@@ -211,6 +211,18 @@ check('and so is a sentence about pick-up', fulfilmentAction('ORDER FOR PICKUP O
     classify({ name: 'Blue Haze 1g', category: { id: 201, name: 'Singles', path: 'Pre-Rolls > Singles' } }), 'category-not-flower');
 }
 
+/* ------------------------------------------------------- Good Grades --
+ * Its own menu (Supabase, v_marketplace_canonical_products) leaves thc null and
+ * states the reading as resolved_thc and resolved_strain_type, beside a
+ * category that says Flower. */
+{
+  const gg = toListing({ name: 'Alley OOP', category: 'Flower', size: '3.5g', thc: null, cbd: null, brand_name: 'Electraleaf',
+    inventory_status: 'low_stock', package_id: '1A4120300000149000023827', resolved_strain_type: 'Hybrid', resolved_thc: 28.0 }, shop, SRC, {});
+  check('Good Grades THC is resolved_thc', gg?.thcPercent, 28);
+  check('Good Grades lineage is resolved_strain_type, not the Flower category', gg?.lineage, 'HYBRID');
+  check('Good Grades package tag is kept', gg?.packageIds, ['1A4120300000149000023827']);
+}
+
 /* ------------------------------------------------ concentrates on a flower shelf --
  * Silk Road files "Cap Junky Wax Budder" under Flower. The words that name a
  * cultivar as well as an extract must keep the cultivar. */

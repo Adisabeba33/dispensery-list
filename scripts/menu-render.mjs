@@ -3510,7 +3510,13 @@ const coaUrlOf = (p) => {
    batch across shops; labPanelKey does that. Kept as the menu states it. */
 const packageIdsOf = (p) => {
   const meta = pick(p, ['POSMetaData']);
-  if (!meta || typeof meta !== 'object') return null;
+  if (!meta || typeof meta !== 'object') {
+    /* Good Grades' own menu states the METRC package tag flat, as package_id:
+       "1A4120300000149000023827" — the same kind of identifier, one jar's stock. */
+    const flat = pick(p, ['packageId']);
+    const id = typeof flat === 'string' ? flat.trim() : '';
+    return id && id.length <= 200 && !/^(null|undefined)$/i.test(id) ? [id] : null;
+  }
   const children = pick(meta, ['children']);
   const found = new Set();
   for (const source of [meta, ...(Array.isArray(children) ? children : [])]) {
@@ -3528,7 +3534,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const brand = flatten(pick(p, ['brandName', 'brand', 'producer', 'vendor', 'cultivator']));
   const name = cleanStrainName(rawName, brand);
   // Jane files the lineage as its category: sativa, indica, hybrid.
-  const lineageValue = pick(p, ['strainType', 'lineage', 'cannabisType', 'cannabisStrain', 'flowerType', 'classification', 'category']);
+  // resolved_strain_type is Good Grades'; it must come before `category`, which there says Flower.
+  const lineageValue = pick(p, ['strainType', 'resolvedStrainType', 'lineage', 'cannabisType', 'cannabisStrain', 'flowerType', 'classification', 'category']);
   const lettersOf = (v) => String(v ?? '').toLowerCase().replace(/[^a-z]/g, '');
   let lineageRaw = lettersOf(flatten(lineageValue));
   // Transcend Wellness: strain_type: { type: "Hybrid", id: 15 }, which flatten does not read.
@@ -3718,7 +3725,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     potency(
       p,
       // thcPercentage is Carrot's (Piffords, Two Buds, Lenox Hill, Seaweed).
-      ['thcContent', 'potencyThc', 'thc', 'thcPercent', 'thcPercentage', 'potencyThcRangeLow', 'potencyThcRangeHigh', 'potencyThcDisplayValue', 'percentThc'],
+      // resolved_thc is Good Grades' own Supabase menu, beside a thc that is always null.
+      ['thcContent', 'potencyThc', 'thc', 'thcPercent', 'thcPercentage', 'potencyThcRangeLow', 'potencyThcRangeHigh', 'potencyThcDisplayValue', 'percentThc', 'resolvedThc'],
       CANNABINOID_PANEL,
       THC_NAME,
       { zeroIsSilence: true },
@@ -3738,7 +3746,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     cbdPercent:
       potency(
         p,
-        ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent', 'cbdPercentage', 'potencyCbdRangeLow', 'potencyCbdRangeHigh', 'potencyCbdDisplayValue', 'percentCbd'],
+        ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent', 'cbdPercentage', 'potencyCbdRangeLow', 'potencyCbdRangeHigh', 'potencyCbdDisplayValue', 'percentCbd', 'resolvedCbd'],
         CANNABINOID_PANEL,
         CBD_NAME,
       ) ?? labFigure(p, 'cbd'),
