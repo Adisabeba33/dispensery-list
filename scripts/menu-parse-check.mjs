@@ -16,7 +16,7 @@ import {
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
   mergeBySize, pagedRequest, pickFlowerInside, pickMenuLink, pickStore,
   placeNamesOf, rankMenuLink, registerTextOf, sameEstate, signatureOf, sizeFromText,
-  toListing, wallAction, fulfilmentAction
+  toListing, wallAction, fulfilmentAction, pageKnobOf
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 import { labPanelKeyOf } from './lab-panel.mjs';
@@ -160,6 +160,21 @@ check('and so is a sentence about pick-up', fulfilmentAction('ORDER FOR PICKUP O
   check('a half gram is half a gram', sizeFromText('half gram'), 0.5);
   check('two gram is two', sizeFromText('two gram'), 2);
   check('half alone is still half an ounce', sizeFromText('1/2 oz'), 14);
+}
+
+/* ------------------------------------------------------------- form paging --
+ * BX Buddiez's WordPress storefront posts its shelf query to admin-ajax.php as
+ * a form, a hundred products a page, pages 1 to 4 behind the first. */
+{
+  const body = 'action=wizard_show_products&wizard_data%5Bage_confirm%5D=true&wizard_data%5Bcollection_method%5D=PICKUP'
+    + '&wizard_data%5Bsort%5D=NAME_ASC&wizard_data%5Bevent%5D=LOCAL+STORAGE+NULL+-+have+URL+DATA&nonce_ajax=715feb4192'
+    + '&prods_pageNumber=1&prod_categories%5Bsearch_key_word%5D=';
+  const req = { method: 'POST', url: 'https://bxbuddiez.com/wp-admin/admin-ajax.php', body };
+  check('the page in a form is found', pageKnobOf(req), 'form: page prods_pageNumber=1');
+  check('and turned, the rest of the form sent back as it was',
+    pagedRequest(req, 2, 100)?.body, body.replace('prods_pageNumber=1', 'prods_pageNumber=3'));
+  check('a form without a page is left alone',
+    pagedRequest({ ...req, body: 'action=load_retailer_name&retailer_id=e68d3af5' }, 1, 100), null);
 }
 
 /* --------------------------------------------------------- what to refuse --

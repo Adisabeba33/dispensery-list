@@ -2460,7 +2460,34 @@ const SIZE_RULES = [
 /* Where a page number hides. Three shapes, in the order they are trusted:
    an explicit page index, an offset in items, and the size that an offset has
    to be advanced by. */
-const PAGE_KEYS = ['page', 'pageNumber', 'pageIndex', 'currentPage', 'pageNum'];
+/* prods_pageNumber is a WordPress storefront's, posted to admin-ajax.php as a
+   form: BX Buddiez's shelf answers wizard_show_products a hundred at a time
+   with pages 1 to 4 behind it, and was read to its first hundred. */
+const PAGE_KEYS = ['page', 'pageNumber', 'pageIndex', 'currentPage', 'pageNum', 'prods_pageNumber'];
+
+/* A body posted as a form — a=1&b=two — read as flat pairs, numbers as
+   numbers, so the page knob is found in it the same way as in JSON. Null for
+   anything that is not one. */
+const formBody = (body) => {
+  if (typeof body !== 'string' || /^\s*[[{]/.test(body) || !/^[^=&\s]+=/.test(body)) return null;
+  const out = {};
+  for (const [k, v] of new URLSearchParams(body)) {
+    out[k] = v.trim() !== '' && Number.isFinite(Number(v)) ? Number(v) : v;
+  }
+  return out;
+};
+
+/* The same form with only the changed values rewritten, byte for byte
+   elsewhere: the rest of the body is the page's own and is sent back as it
+   was. */
+const formBodyWith = (body, changes) => {
+  let out = body;
+  for (const [key, value] of Object.entries(changes)) {
+    const name = encodeURIComponent(key).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    out = out.replace(new RegExp(`(^|&)(${name})=[^&]*`), `$1$2=${encodeURIComponent(String(value))}`);
+  }
+  return out;
+};
 const OFFSET_KEYS = ['offset', 'skip', 'from', 'start'];
 const SIZE_KEYS = ['perPage', 'pageSize', 'per_page', 'page_size', 'limit', 'first', 'take'];
 
@@ -2646,7 +2673,8 @@ const buildQueryKey = (req) => {
     try {
       key += ` ${JSON.stringify(withoutPage(JSON.parse(req.body)))}`;
     } catch {
-      key += ` ${req.body}`;
+      const form = formBody(req.body);
+      key += ` ${form ? JSON.stringify(withoutPage(form)) : req.body}`;
     }
   }
   return key;
@@ -2677,7 +2705,9 @@ export const pageKnobOf = (req) => {
       const found = from(JSON.parse(req.body));
       if (found) return `body: ${found}`;
     } catch {
-      /* not JSON; the address may still carry it */
+      const form = formBody(req.body);
+      const found = form && from(form);
+      if (found) return `form: ${found}`;
     }
   }
   try {
@@ -2706,7 +2736,12 @@ const pagedRequest = (req, nth, fallbackSize) => {
       const advanced = advanceJson(JSON.parse(req.body), nth, fallbackSize);
       if (advanced) return { ...req, body: JSON.stringify(advanced) };
     } catch {
-      /* not JSON; the address may still carry the page */
+      const form = formBody(req.body);
+      const advanced = form && advanceJson(form, nth, fallbackSize);
+      if (advanced) {
+        const changes = Object.fromEntries(Object.entries(advanced).filter(([k, v]) => form[k] !== v));
+        return { ...req, body: formBodyWith(req.body, changes) };
+      }
     }
   }
 
