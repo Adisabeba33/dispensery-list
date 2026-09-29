@@ -153,6 +153,24 @@ jobs:
             exit 1
           fi
 
+      # Партии с панелями для Сомы: сегодняшние полки, сложенные в партии, с
+      # датами с сертификатов (когда упакована) и из истории (когда впервые на
+      # полке). Сома забирает их своим ежедневным импортом. Порядок: партии —
+      # чтобы стали известны ссылки на сертификаты новых партий; сертификаты —
+      # читаются только новые, прочитанные хранятся в coa-dates.json; партии ещё
+      # раз — чтобы новые получили даты. Как и история, поломка здесь не стоит
+      # дню его полок.
+      - name: Shelf lots
+        continue-on-error: true
+        run: |
+          sudo apt-get install -y -qq poppler-utils > /dev/null
+          python scripts/shelf-terpenes.py
+          python scripts/coa-dates.py
+          python scripts/shelf-terpenes.py
+          git add data/coa-dates.json data/shelf-terpenes.json
+          if [ -f data/shelf-terpenes-archive.json ]; then git add data/shelf-terpenes-archive.json; fi
+          git diff --cached --quiet || git commit -q -m "menu: shelf lots"
+
       # Menus are the point of the site and they change daily, so a clean run
       # publishes itself. A run that produced a collapsed shelf does not: that
       # is nearly always a page we failed to read, and republishing it would
