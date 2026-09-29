@@ -1623,13 +1623,33 @@ const sameVenue = (href, here) => {
   return first(a) === first(b);
 };
 
+/* Sweed names a category with its number — /menu/flower-5423 — and puts each
+   product one step under it: /menu/flower-5423/indica-bubblegum-gusher-14g-…
+   A product link scores as a flower route and, being deeper, beat the category
+   itself, so Misha's and Matawana were read from a "Deals" carousel on one
+   product's page: 39 flower listings of Misha's 158, 12 of Matawana's 33. A
+   link to a product in a numbered category is taken as a link to the category. */
+export const sweedCategoryOf = (href) => {
+  try {
+    const u = new URL(href);
+    const m = u.pathname.match(/^(.*\/menu\/[a-z0-9-]*[a-z]-\d+)\/[^/]+\/?$/i);
+    return m ? `${u.origin}${m[1]}` : null;
+  } catch {
+    return null;
+  }
+};
+const toCategory = (link) => {
+  const category = link?.href ? sweedCategoryOf(link.href) : null;
+  return category ? { ...link, href: category } : link;
+};
+
 export const pickFlowerInside = (links, here, shopName = '') => {
   if (rankMenuLink(here, '') >= FLOWER_SPECIFIC) return null;
   const bare = (u) => u.replace(/[?#].*$/, '').replace(/\/+$/, '');
   let best = null;
   let bestScore = 0;
   let bestDepth = -1;
-  for (const link of links) {
+  for (const link of links.map(toCategory)) {
     if (!link?.href || bare(link.href) === bare(here)) continue;
     if (!sameEstate(link.href, here, shopName) || !sameVenue(link.href, here)) continue;
     const score = rankMenuLink(link.href, link.text);
@@ -1647,7 +1667,7 @@ export const pickMenuLink = (links, siteUrl = null, shopName = '') => {
   let best = null;
   let bestScore = 0;
   let bestRank = -Infinity;
-  for (const link of links) {
+  for (const link of links.map(toCategory)) {
     if (siteUrl && !sameEstate(link.href, siteUrl, shopName)) continue;
     const score = rankMenuLink(link.href, link.text);
     if (score === 0) continue;
@@ -3384,17 +3404,28 @@ const potency = (p, names, list, compound, { zeroIsSilence = false } = {}) => {
      named field is the platform's own answer and this is a panel to search. */
   const panel = pick(p, list);
   if (Array.isArray(panel)) {
-    for (const row of panel) {
-      const name = String(flatten(pick(row, ['name', 'type', 'label', 'cannabinoid'])) ?? '');
-      if (!compound.test(name)) continue;
-      const v = inRange(num(pick(row, ['value', 'percent', 'amount', 'displayValue', 'rangeLow'])), 100);
-      if (reads(v)) return v;
+    /* Dispense writes the panel with its unit in the name — "% THC" 1.02,
+       "Total % THC" 27.63, "% THC-A" 30.35 — and the total is the figure a
+       label and a certificate lead with, so it is looked for first. */
+    const rows = panel.map((row) => ({
+      name: String(flatten(pick(row, ['name', 'type', 'label', 'cannabinoid'])) ?? '').replace(/%/g, ' ').replace(/\s+/g, ' ').trim(),
+      row,
+    }));
+    const passes = [
+      ({ name }) => /^total\s+/i.test(name) && compound.test(name.replace(/^total\s+/i, '')),
+      ({ name }) => compound.test(name),
+    ];
+    for (const pass of passes) {
+      for (const r of rows.filter(pass)) {
+        const v = inRange(num(pick(r.row, ['value', 'percent', 'amount', 'displayValue', 'rangeLow'])), 100);
+        if (reads(v)) return v;
+      }
     }
   }
   return null;
 };
-const THC_NAME = /^\s*(thc|thca|delta[\s-]?9[\s-]?thc)\s*$/i;
-const CBD_NAME = /^\s*(cbd|cbda)\s*$/i;
+const THC_NAME = /^\s*(thc|thc-?a|delta[\s-]?9[\s-]?thc)\s*$/i;
+const CBD_NAME = /^\s*(cbd|cbd-?a)\s*$/i;
 
 /* Two more places a menu keeps the certificate's figures, found by reading
  * one shop of each of the twelve sites that published no THC at all — 7,494
@@ -3562,6 +3593,53 @@ const packageIdsOf = (p) => {
   return found.size ? [...found].slice(0, 20) : null;
 };
 
+/**
+ * A terpene panel one shop prints on many different strains is not a
+ * measurement of any of them. Prime Time's Dispense menu carries the same
+ * list — α-bisabolol 0.27 %, camphene 0.02 %, β-caryophyllene 1.54 % … — on
+ * fifty-seven of its sixty flower products: a template its point of sale
+ * attaches, not a certificate. Read as it stands, that is fifty-seven jars
+ * given one chemistry, and every recommendation built on terpenes believes it.
+ *
+ * Two jars of one strain may share a panel (one batch, two sizes). Five
+ * differently named strains may not. The panel is the quantified compounds,
+ * four or more, to the hundredth — the same measure as labPanelKey, without
+ * THC, which a template may or may not repeat.
+ */
+export const REPEATED_PANEL_MIN_STRAINS = 5;
+const terpenePanelOf = (listing) => {
+  const quantified = (listing.terpenes?.profile ?? []).filter((t) => t.name !== 'OTHER' && typeof t.percent === 'number');
+  if (quantified.length < 4) return null;
+  return quantified
+    .map((t) => `${t.name}:${t.percent.toFixed(2)}`)
+    .sort()
+    .join('|');
+};
+export const repeatedPanels = (rows) => {
+  const strainsByPanel = new Map();
+  for (const l of rows) {
+    const panel = terpenePanelOf(l);
+    if (!panel) continue;
+    if (!strainsByPanel.has(panel)) strainsByPanel.set(panel, new Set());
+    strainsByPanel.get(panel).add(String(l.strainNameCanonical ?? l.strainNameRaw).toLowerCase().trim());
+  }
+  return new Set([...strainsByPanel].filter(([, strains]) => strains.size >= REPEATED_PANEL_MIN_STRAINS).map(([panel]) => panel));
+};
+/** Clears a repeated panel from the listings that carry it, and says so on each. */
+export const dropRepeatedPanels = (rows) => {
+  const repeated = repeatedPanels(rows);
+  let dropped = 0;
+  if (!repeated.size) return dropped;
+  for (const l of rows) {
+    if (!repeated.has(terpenePanelOf(l))) continue;
+    l.terpenes = { ...l.terpenes, source: 'NONE', profile: [], totalPercent: null };
+    l.labPanelKey = null;
+    l.warnings = [...new Set([...(l.warnings ?? []), 'TERPENE_PANEL_REPEATED_ACROSS_STRAINS'])];
+    dropped += 1;
+  }
+  return dropped;
+};
+
 const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const rawName = flatten(pick(p, ['name', 'productName', 'title', 'displayName']));
   if (!rawName) return null;
@@ -3577,12 +3655,19 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     const typed = lettersOf(pick(lineageValue, ['type']));
     if (LINEAGE[typed]) lineageRaw = typed;
   }
-  /* Carrot (getcarrot.io) states it as strain: "Hybrid". Elsewhere `strain` is
-     the cultivar's name or an object, so it is taken only when it is a lineage word. */
+  /* Carrot (getcarrot.io) states it as strain: "Hybrid", Dispense as species:
+     "Indica", and Sweed inside the strain, as strain.prevalence: { name:
+     "Hybrid" }. Elsewhere `strain` is the cultivar's name, so each is taken only
+     when it is a lineage word. */
   if (!LINEAGE[lineageRaw]) {
-    const stated = pick(p, ['strain']);
-    const word = typeof stated === 'string' ? lettersOf(stated) : '';
-    if (LINEAGE[word]) lineageRaw = word;
+    for (const stated of [pick(p, ['strain']), pick(p, ['species'])]) {
+      const said = stated && typeof stated === 'object' && !Array.isArray(stated) ? flatten(pick(stated, ['prevalence'])) : stated;
+      const word = typeof said === 'string' ? lettersOf(said) : '';
+      if (LINEAGE[word]) {
+        lineageRaw = word;
+        break;
+      }
+    }
   }
 
   const profile = [];
@@ -4790,6 +4875,10 @@ const main = async () => {
         }
       }
       entry.flower = seen.size;
+      {
+        const dropped = dropRepeatedPanels(listings.filter((l) => l.licenseNumber === shop.licenseNumber));
+        if (dropped) entry.repeatedTerpenePanelDropped = dropped;
+      }
       entry.rejected = why;
 
       /* Before anything else is recorded about this shelf: is it this state's?

@@ -16,7 +16,7 @@ import {
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
   mergeBySize, pagedRequest, pickFlowerInside, pickMenuLink, pickStore,
   placeNamesOf, rankMenuLink, registerTextOf, sameEstate, signatureOf, sizeFromText,
-  toListing, wallAction, fulfilmentAction, pageKnobOf
+  toListing, wallAction, fulfilmentAction, pageKnobOf, dropRepeatedPanels, sweedCategoryOf
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 import { labPanelKeyOf } from './lab-panel.mjs';
@@ -232,6 +232,52 @@ check('and the bracket still gives the lineage',
 /* A number glued to the name by a dash is the name: Conbud's RS-11 was cut to RS. */
 check('RS-11 keeps its number', cleanStrainName('Wizard Trees | 3.5g Indoor Flower | RS-11 (H)', 'Wizard Trees'), 'RS-11');
 check('a spaced dash and number left by a weight still go', cleanStrainName('Afghani - 1', null), 'Afghani');
+
+/* ------------------------------------------------- Dispense and Sweed --
+ * Dispense names its panel with the unit inside — "% THC" 1.02 beside "Total %
+ * THC" 27.63 — and states the lineage as species. Sweed keeps the lineage in
+ * the strain, as prevalence. */
+{
+  const dispense = toListing({ name: 'Devil-Ade 3.5G', category: 'Flower', brand: 'Grassroots', species: 'Hybrid',
+    quantity: 3, weight_volume: 3.5, weight_volume_uom: 'g',
+    potencies: [{ name: '% CBD', value: '0' }, { name: '% THC', value: '1.02' }, { name: 'Total % THC', value: '27.63' }, { name: '% THC-A', value: '30.35' }] },
+  shop, SRC, {});
+  check('Dispense THC is the total, not delta-9 alone', dispense?.thcPercent, 27.63);
+  check('Dispense lineage is species', dispense?.lineage, 'HYBRID');
+  const sweed = toListing({ name: 'Trop Cherry', category: { name: 'Flower' },
+    strain: { name: 'Trop Cherry hybrid', prevalence: { name: 'Indica Dominant', canonicalName: 'indica-dominant' } },
+    variants: [{ name: '3.5g', unitSize: { value: 3.5, unitAbbr: 'G' } }] }, shop, SRC, {});
+  check('Sweed lineage is the strain prevalence', sweed?.lineage, 'INDICA_DOMINANT');
+}
+
+/* A Sweed product link is a link to its category: Misha's was read from one
+   product's page off a "Deals" carousel. */
+{
+  const product = 'https://shop.mishasflowershop.com/mishasflower/menu/flower-5423/indica-bubblegum-gusher-14g-14g-555512?originId=carousel_1260+&originName=Deals';
+  check('a Sweed product maps to its category', sweedCategoryOf(product), 'https://shop.mishasflowershop.com/mishasflower/menu/flower-5423');
+  check('a Sweed category is left as it is', sweedCategoryOf('https://shop.newamsterdam.nyc/newamsterdam/menu/flower-7703'), null);
+  check('and the category, not the product, is the menu link',
+    pickMenuLink([{ href: product, text: 'Indica Bubblegum Gusher 14g' }], 'https://mishasflowershop.com', "Misha's Flower Shop"),
+    'https://shop.mishasflowershop.com/mishasflower/menu/flower-5423');
+  check('an ordinary product path is not a Sweed one', sweedCategoryOf('https://shop.example.com/products/flower/blue-dream'), null);
+}
+
+/* ------------------------------------------ one panel on many strains --
+ * Prime Time's point of sale attaches one terpene list to 57 of its 60 flower
+ * products. That is a template, not five measurements, and is dropped; one
+ * strain in two sizes sharing a panel is one batch and is kept. */
+{
+  const panel = [{ name: 'BISABOLOL', rawName: null, percent: 0.27 }, { name: 'CAMPHENE', rawName: null, percent: 0.02 },
+    { name: 'CARYOPHYLLENE', rawName: null, percent: 1.54 }, { name: 'LIMONENE', rawName: null, percent: 0.5 }];
+  const row = (name) => ({ strainNameRaw: name, strainNameCanonical: name.toLowerCase(), labPanelKey: 'x',
+    terpenes: { source: 'MENU_LISTING', profile: panel.map((t) => ({ ...t })), totalPercent: 2.1 } });
+  const template = ['Devil-Ade', 'Clementine', 'Lemon Gelato', 'Black Runtz', 'Animal Mints'].map(row);
+  check('five strains, one panel: all five dropped', dropRepeatedPanels(template), 5);
+  check('and each says why', template[0].warnings, ['TERPENE_PANEL_REPEATED_ACROSS_STRAINS']);
+  check('its profile is gone', template[0].terpenes.profile.length, 0);
+  const batch = [row('Gogurtz'), row('Gogurtz'), row('Gogurtz')];
+  check('one strain in three sizes keeps its panel', dropRepeatedPanels(batch), 0);
+}
 
 /* ------------------------------------------------ concentrates on a flower shelf --
  * Silk Road files "Cap Junky Wax Budder" under Flower. The words that name a
