@@ -53,7 +53,13 @@ LISTINGS = ROOT / "data/flower-listings.json"
 OUT = ROOT / "data/shelf-terpenes.json"
 ARCHIVE = ROOT / "data/shelf-terpenes-archive.json"
 COA_DATES = ROOT / "data/coa-dates.json"
+RETAIL_ID = ROOT / "data/retail-id.json"
 HISTORY = ROOT / "data/shelf-history.json"
+# Оценка даты упаковки по номеру метки — только между двумя известными
+# пакетами той же лицензии, которые упакованы не дальше этого друг от друга.
+# На 465 пакетах с известной датой, спрятанной по одному: медиана ошибки
+# 0 дней, у 90% — не больше 7.
+TAG_WINDOW_DAYS = 14
 LIFETIME = timedelta(weeks=16)
 MIN_TERPENES = 3
 SAME = 0.005  # ближе — одна и та же цифра, записанная иначе
@@ -300,14 +306,61 @@ def load_lots(path):
         return []
 
 
-def dated(found, before):
-    """Когда партию упаковали и когда она впервые встала на полку.
+def tag_reader(packages):
+    """Метка → дата упаковки по Retail ID: точно, оценкой или границей.
 
-    Упаковка — по сертификату (data/coa-dates.json, scripts/coa-dates.py):
-    лаборатория берёт пробу из уже расфасованной партии, поэтому день пробы —
-    это день, раньше которого пакета не было. Если сертификат пишет саму дату
-    упаковки, берётся она. У партии с несколькими сертификатами — самая ранняя:
-    сказать «свежее», чем есть, хуже, чем «старее».
+    Метки одной лицензии (первые 15 знаков) выдаются по порядку, и порядковый
+    номер (последние 9) растёт со временем. Между двумя пакетами с известной
+    датой упаковки, упакованными не дальше TAG_WINDOW_DAYS друг от друга, дата
+    читается интерполяцией. Метка новее всех известных — пакет упакован не
+    раньше самого нового из них: это граница «не старше», а не дата."""
+    exact = {t: p["packaged"] for t, p in packages.items() if p.get("found") and p.get("packaged")}
+    anchors = defaultdict(list)
+    for t, d in exact.items():
+        anchors[t[:15]].append((int(t[15:]), date.fromisoformat(d).toordinal()))
+    for pts in anchors.values():
+        pts.sort()
+
+    def read(tag):
+        if tag in exact:
+            return "exact", exact[tag]
+        pts = anchors.get(tag[:15])
+        if not pts:
+            return None
+        n = int(tag[15:])
+        lower = [p for p in pts if p[0] < n]
+        upper = [p for p in pts if p[0] > n]
+        if lower and upper:
+            (n0, d0), (n1, d1) = lower[-1], upper[0]
+            if 0 <= d1 - d0 <= TAG_WINDOW_DAYS:
+                return "tag", date.fromordinal(round(d0 + (d1 - d0) * (n - n0) / (n1 - n0))).isoformat()
+            return None
+        if lower:
+            return "after", date.fromordinal(lower[-1][1]).isoformat()
+        return None
+    return read
+
+
+def dated(found, before, rows):
+    """Три времени партии и откуда каждое.
+
+    - testedOn — день пробы по сертификату (data/coa-dates.json) или день теста
+      по Retail ID; testedFrom говорит, какая дата (проба, приезд пробы в
+      лабораторию, отчёт — у отчёта проба раньше).
+    - packagedOn — когда запечатали банку: по Retail ID (retail-id), по дате
+      упаковки в сертификате (certificate) или оценкой по номеру метки (tag).
+      Упаковок у партии бывает несколько, и Retail ID это видит: packagedOn —
+      самая ранняя (сказать «свежее», чем есть, хуже), packagedUntil — самая
+      поздняя, если они разные. Без даты — packagedAfter, граница: банка
+      запечатана не раньше этого дня.
+    - harvestedOn — сбор, по сертификату или Retail ID.
+
+    Проба и упаковка — разные дни: партию часто тестируют целиком, а по банкам
+    раскладывают потом, иногда через месяцы. До v1.23.0 день пробы стоял в
+    packagedOn; теперь он в testedOn.
+
+    Метки берутся у пакетов той же партии в любом магазине — того же сорта
+    бренда при том же THC: меню с метками и меню с панелями — разные магазины.
 
     Полка — по истории полок (data/shelf-history.json): в какой день такой THC
     у этого сорта бренда впервые появился хоть в одном магазине. История
@@ -318,28 +371,86 @@ def dated(found, before):
     except FileNotFoundError:
         coa = {}
     try:
+        rid = json.loads(RETAIL_ID.read_text())
+    except FileNotFoundError:
+        rid = {}
+    packages, links = rid.get("packages", {}), rid.get("links", {})
+    read_tag = tag_reader(packages)
+    try:
         hist = json.loads(HISTORY.read_text())
     except FileNotFoundError:
         hist = {"thc": {}, "sweeps": []}
     start = (hist.get("sweeps") or [None])[0]
     was = {(l["key"], l["thcPercent"]): l for l in before}
+
+    tagged = defaultdict(list)
+    for row in rows:
+        key = key_of(row)
+        tags = [links.get(t, t).upper() for t in (row.get("packageIds") or []) if t]
+        tags = [t for t in tags if re.fullmatch(r"1A4[0-9A-F]{21}", t)]
+        if key and tags and isinstance(row.get("thcPercent"), (int, float)):
+            tagged[key].append((row["thcPercent"], tags))
+
     for lot in found:
         keys = lot.pop("_history", [])
+        for field in ("packagedOn", "packagedFrom", "packagedUntil", "packagedAfter",
+                      "testedOn", "testedFrom", "harvestedOn"):
+            lot.pop(field, None)
         certs = [coa.get(u) or {} for u in lot["certificates"]]
-        packaged = sorted(c["packaged"] for c in certs if c.get("packaged"))
-        sampled = sorted(c["sampled"] for c in certs if c.get("sampled"))
-        harvested = sorted(c["harvested"] for c in certs if c.get("harvested"))
-        if packaged:
-            lot["packagedOn"], lot["packagedFrom"] = packaged[0], "certificate"
-        elif sampled:
-            lot["packagedOn"], lot["packagedFrom"] = sampled[0], "sampled"
+        tags = sorted({t for thc, ts in tagged.get(lot["key"], []) if same_batch(thc, lot["thcPercent"]) for t in ts})
+        cards = [packages[t] for t in tags if (packages.get(t) or {}).get("found")]
+        reads = [r for r in map(read_tag, tags) if r]
+
+        sampled = sorted((c["sampled"], c.get("sampledFrom") or "sampled") for c in certs if c.get("sampled"))
+        tested = sorted(c["tested"] for c in cards if c.get("tested"))
+        if sampled:
+            lot["testedOn"], lot["testedFrom"] = sampled[0]
+        elif tested:
+            lot["testedOn"], lot["testedFrom"] = tested[0], "retail-id"
+
+        harvested = sorted([c["harvested"] for c in certs if c.get("harvested")]
+                           + [c["harvested"] for c in cards if c.get("harvested")])
+        # Банка не запечатана раньше урожая. Меню иногда держит под одной
+        # позицией пакеты разных партий (Back Home Acapulco Gold: 3,5 г от
+        # 18 марта и 14 г от 14 августа из майского урожая), и дата, которая
+        # раньше урожая этой партии, — чужая.
+        floor = harvested[0] if harvested else ""
+        exact = sorted(d for kind, d in reads if kind == "exact" and d >= floor)
+        printed = sorted(c["packaged"] for c in certs if c.get("packaged") and c["packaged"] >= floor)
+        estimated = sorted(d for kind, d in reads if kind == "tag" and d >= floor)
+        after = sorted(d for kind, d in reads if kind == "after")
+        for days, source in ((exact, "retail-id"), (printed, "certificate"), (estimated, "tag")):
+            if days:
+                lot["packagedOn"], lot["packagedFrom"] = days[0], source
+                if days[-1] != days[0]:
+                    lot["packagedUntil"] = days[-1]
+                break
+        else:
+            if after:
+                lot["packagedAfter"] = after[-1]
+
         if harvested:
             lot["harvestedOn"] = harvested[0]
+
+        # Партия, чьих пакетов сегодня нет ни в одном меню, держит даты, которые
+        # у неё были: пакет, прочитанный вчера, сегодня не стал моложе.
+        prior = was.get((lot["key"], lot["thcPercent"]), {})
+        if "packagedOn" not in lot and prior.get("packagedFrom") in ("retail-id", "tag"):
+            for field in ("packagedOn", "packagedFrom", "packagedUntil"):
+                if prior.get(field):
+                    lot[field] = prior[field]
+        if "packagedOn" not in lot and "packagedAfter" not in lot and prior.get("packagedAfter"):
+            lot["packagedAfter"] = prior["packagedAfter"]
+        if "harvestedOn" not in lot and prior.get("harvestedOn"):
+            lot["harvestedOn"] = prior["harvestedOn"]
+        if "testedOn" not in lot and prior.get("testedFrom") == "retail-id":
+            lot["testedOn"], lot["testedFrom"] = prior["testedOn"], "retail-id"
+
         seen = [day for k in keys for thc, day in hist.get("thc", {}).get(k, [])
                 if same_batch(thc, lot["thcPercent"])]
         first = min(seen + [lot["read"]])
-        prior = was.get((lot["key"], lot["thcPercent"]), {}).get("firstOnShelf")
-        lot["firstOnShelf"] = min(first, prior) if prior else first
+        prior_first = prior.get("firstOnShelf")
+        lot["firstOnShelf"] = min(first, prior_first) if prior_first else first
         if start and lot["firstOnShelf"] <= start:
             lot["onShelfSinceStart"] = True
     return found
@@ -352,7 +463,7 @@ def main():
     today = len(found)
     before = load_lots(OUT)
     found, gone = carried(found, before, day)
-    found = dated(found, before)
+    found = dated(found, before, rows)
     OUT.write_text(json.dumps({
         "about": "Терпеновые панели с полок Нью-Йорка, по партиям: сорт бренда при одном THC. "
                  "Пишется scripts/shelf-terpenes.py из data/flower-listings.json; читает Сома. "
@@ -372,6 +483,10 @@ def main():
           f"{len(found) - today} из прошлых выгрузок, ещё живы), в архив ушло {len(gone)}; "
           f"{len({l['key'] for l in found})} сортов брендов, "
           f"с сертификатом {sum(1 for l in found if l['certificates'])}, "
+          f"с датой теста {sum(1 for l in found if l.get('testedOn'))}, "
+          f"с датой упаковки {sum(1 for l in found if l.get('packagedOn'))} "
+          f"({', '.join(f'{k} {v}' for k, v in Counter(l['packagedFrom'] for l in found if l.get('packagedOn')).items())}), "
+          f"с границей упаковки {sum(1 for l in found if l.get('packagedAfter'))}, "
           f"в двух магазинах и больше {sum(1 for l in found if len(l['shops']) > 1)}; "
           f"позиций без THC, не узнанных ни в одной партии, {stray}; "
           f"терпенов, где магазины разошлись поровну, {conflicts}")
