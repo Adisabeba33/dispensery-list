@@ -408,9 +408,16 @@ def dated(found, before, rows):
         elif tested:
             lot["testedOn"], lot["testedFrom"] = tested[0], "retail-id"
 
-        exact = sorted(d for kind, d in reads if kind == "exact")
-        printed = sorted(c["packaged"] for c in certs if c.get("packaged"))
-        estimated = sorted(d for kind, d in reads if kind == "tag")
+        harvested = sorted([c["harvested"] for c in certs if c.get("harvested")]
+                           + [c["harvested"] for c in cards if c.get("harvested")])
+        # Банка не запечатана раньше урожая. Меню иногда держит под одной
+        # позицией пакеты разных партий (Back Home Acapulco Gold: 3,5 г от
+        # 18 марта и 14 г от 14 августа из майского урожая), и дата, которая
+        # раньше урожая этой партии, — чужая.
+        floor = harvested[0] if harvested else ""
+        exact = sorted(d for kind, d in reads if kind == "exact" and d >= floor)
+        printed = sorted(c["packaged"] for c in certs if c.get("packaged") and c["packaged"] >= floor)
+        estimated = sorted(d for kind, d in reads if kind == "tag" and d >= floor)
         after = sorted(d for kind, d in reads if kind == "after")
         for days, source in ((exact, "retail-id"), (printed, "certificate"), (estimated, "tag")):
             if days:
@@ -422,8 +429,6 @@ def dated(found, before, rows):
             if after:
                 lot["packagedAfter"] = after[-1]
 
-        harvested = sorted([c["harvested"] for c in certs if c.get("harvested")]
-                           + [c["harvested"] for c in cards if c.get("harvested")])
         if harvested:
             lot["harvestedOn"] = harvested[0]
 
