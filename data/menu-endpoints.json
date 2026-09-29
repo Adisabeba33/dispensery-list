@@ -1018,5 +1018,25 @@
     "ageGate": null,
     "checkedAt": "2026-09-29",
     "notes": "Prime Time Cannabis, Brooklyn: Dispense menu. The collector followed a product link to one product's page; this is the menu's own Flower category, as Cannabis Cowboy's is."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000095",
+    "menuUrl": "https://shop.bedfordclub.com/menu/categories/flower/",
+    "platform": "BLAZE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-29",
+    "notes": "Bedford Club (bzd enterprises), 1102 Bedford Ave: Blaze store. Its flower category is /categories/flower/; the collector took /categories/flowers/, which the shop's own page answers with 'No matching results'."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-22-000001",
+    "menuUrl": "https://hwcannabis.co/menu/broadway/categories/flower/",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-29",
+    "notes": "Housing Works Cannabis Co, 750 Broadway (the flagship): its Tymber menu. /cannabis-products/flower/ is a page about flower. The NoMad store (846 6th Ave, OCM-CAURD-24-000225) has no menu of its own on the site — its store page links to this Broadway one — so it is given none rather than Broadway's shelf."
   }
 ]
