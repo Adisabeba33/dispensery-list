@@ -64,7 +64,16 @@ same_batch, listings_of = _history.same_batch, _history.listings_of
 # Сома складывает производителя так же (shelfGrowerKey в src/lib/terpenes.ts).
 # Ключ бренда в выгрузке меню не меняется: на нём стоит история полок.
 GROWER_NOISE = re.compile(r"\b(cannabis|co|company|farms?|labs?|brands?|nyc?|llc|inc|and|the|of)\b")
-GROWER_ALIASES = {"vop": "voiceplant", "voiceplants": "voiceplant", "voiceplantvop": "voiceplant", "kingqueens": "kingsqueens"}
+GROWER_ALIASES = {
+    "vop": "voiceplant", "voiceplants": "voiceplant", "voiceplantvop": "voiceplant", "voiceplanet": "voiceplant",
+    "kingqueens": "kingsqueens",
+    "preferred": "preferredgardens",
+    "doobies": "doobie",
+    "grassrootsdarkheartcollection": "grassroots",
+    "bouketflower": "bouket", "boukets": "bouket",
+    "naticoke": "nanticoke",
+    "5borodimebag": "5boro",
+}
 
 
 def grower_of(brand):
@@ -99,20 +108,61 @@ def differs(a, b):
     return any(abs(a[t] - b[t]) > max(0.03, 0.1 * max(a[t], b[t])) for t in a.keys() & b.keys())
 
 
-def merged(panels):
-    """Панель партии из панелей её магазинов; и сколько терпенов пришлось отбросить."""
+def merged(panels, certified=()):
+    """Панель партии из панелей её магазинов; и сколько терпенов пришлось отбросить.
+
+    При равенстве голосов побеждает цифра магазина, приложившего сертификат:
+    он её переписал с документа. У Funk Bomb от Knack так терялся ведущий
+    α-пинен 0.67 — и партия читалась не тем растением. Если сертификата нет
+    ни у одной из спорящих цифр, терпен по-прежнему не пишется."""
     votes = defaultdict(Counter)
-    for panel in panels:
+    backed = defaultdict(set)
+    for i, panel in enumerate(panels):
         for name, value in panel.items():
             votes[name][value] += 1
+            if i in certified:
+                backed[name].add(value)
     out, dropped = {}, 0
     for name, counted in votes.items():
         (value, n), *rest = counted.most_common()
         if rest and rest[0][1] == n and abs(rest[0][0] - value) > SAME:
-            dropped += 1
-            continue
+            tied = [v for v, c in counted.items() if c == n]
+            sure = [v for v in tied if v in backed[name]]
+            if len(sure) != 1:
+                dropped += 1
+                continue
+            value = sure[0]
         out[name] = value
     return dict(sorted(out.items(), key=lambda kv: -kv[1])), dropped
+
+
+def same_panel(a, b):
+    """Одна и та же панель, напечатанная разными меню: разные меню печатают
+    разное число терпенов, поэтому сравниваются общие — их не меньше четырёх,
+    среди них по три ведущих у каждой панели, и все сходятся до цифры."""
+    shared = a.keys() & b.keys()
+    lead = lambda p: set(sorted(p, key=p.get, reverse=True)[:3])
+    return (len(shared) >= 4 and lead(a) <= shared and lead(b) <= shared
+            and all(abs(a[t] - b[t]) <= SAME for t in shared))
+
+
+def fold_twins(groups):
+    def panel_of_group(g):
+        return merged([p for _r, p in g[1]])[0]
+
+    def weight(g):
+        return (len({r["licenseNumber"] for r, _p in g[1]}),
+                any((r.get("terpenes") or {}).get("coaUrl") for r, _p in g[1]))
+
+    out = []
+    for g in sorted(groups, key=weight, reverse=True):
+        mine = panel_of_group(g)
+        twin = next((h for h in out if same_panel(mine, panel_of_group(h))), None)
+        if twin:
+            twin[1].extend(g[1])
+        else:
+            out.append([g[0], list(g[1])])
+    return out
 
 
 def lots(rows):
@@ -124,6 +174,18 @@ def lots(rows):
         key = key_of(row)
         if panel and key:
             by_strain[key].append((row, panel))
+
+    # «Connected Gascotti» у Connected — это Gascotti: производитель вписал своё
+    # имя в название. Снимается, только если тот же производитель продаёт и
+    # голое название — у Bouket «Bouket Noir» остаётся, «Noir» он не продаёт.
+    for key in list(by_strain):
+        grower, strain = key.split("|", 1)
+        words = strain.split(" ")
+        for n in range(1, min(4, len(words))):
+            rest = f"{grower}|{' '.join(words[n:])}"
+            if grower_of(" ".join(words[:n])) == grower and rest in by_strain:
+                by_strain[rest].extend(by_strain.pop(key))
+                break
 
     out, stray, conflicts = [], 0, 0
     for key, found in by_strain.items():
@@ -150,8 +212,18 @@ def lots(rows):
             else:
                 stray += 1
 
+        # Один сертификат под двумя цифрами THC: у Platinum Z от Rolling Green
+        # 23.27 и 23.72 — одна и та же панель и один документ (23.7166), а в
+        # выгрузке было две партии. Одинаковые панели из четырёх и больше
+        # терпенов — одна партия; THC — той цифры, что стоит в большем числе
+        # магазинов (при равенстве — у той, где приложен сертификат).
+        # Меню печатают разное число терпенов, поэтому сравниваются общие.
+        # Так же складывается панель, которую меню приложило к нескольким
+        # партиям с разным THC: измерение одно, и считать его дважды нельзя.
+        groups = fold_twins(groups)
         for thc, members in groups:
-            panel, dropped = merged([p for _r, p in members])
+            panel, dropped = merged([p for _r, p in members],
+                                    {i for i, (r, _p) in enumerate(members) if (r.get("terpenes") or {}).get("coaUrl")})
             conflicts += dropped
             if len(panel) < MIN_TERPENES:
                 continue
@@ -182,15 +254,25 @@ def carried(fresh, before, day):
     сегодня нет, остаётся, пока с её последнего дня не прошло 16 недель."""
     horizon = (date.fromisoformat(day) - LIFETIME).isoformat()
     kept, gone = list(fresh), []
+    fresh_keys = {l["key"] for l in fresh}
     for old in before:
         # Прошлая выгрузка могла сложить производителя иначе; ключ пересчитывается.
-        old = {**old, "key": f"{grower_of(old.get('brand')) or ''}|{old['key'].split('|', 1)[1]}"}
+        grower, strain = f"{grower_of(old.get('brand')) or ''}", old["key"].split("|", 1)[1]
+        # и так же снимается имя производителя в начале названия
+        words = strain.split(" ")
+        for n in range(1, min(4, len(words))):
+            if grower_of(" ".join(words[:n])) == grower and f"{grower}|{' '.join(words[n:])}" in fresh_keys:
+                strain = " ".join(words[n:])
+                break
+        old = {**old, "key": f"{grower}|{strain}"}
         last = old.get("lastSeen") or old["read"]
-        twin = next((l for l in fresh if l["key"] == old["key"] and same_batch(l["thcPercent"], old["thcPercent"])), None)
+        twin = next((l for l in fresh if l["key"] == old["key"] and (same_batch(l["thcPercent"], old["thcPercent"])
+                                                                   or same_panel(l["terpenes"], old["terpenes"]))), None)
         if twin:
             twin["read"] = min(twin["read"], old["read"])
         elif last >= horizon:
-            same = next((l for l in kept if l["key"] == old["key"] and same_batch(l["thcPercent"], old["thcPercent"])), None)
+            same = next((l for l in kept if l["key"] == old["key"] and (same_batch(l["thcPercent"], old["thcPercent"])
+                                                                        or same_panel(l["terpenes"], old["terpenes"]))), None)
             if same:
                 same["read"] = min(same["read"], old["read"])
                 same["lastSeen"] = max(same.get("lastSeen") or same["read"], last)
