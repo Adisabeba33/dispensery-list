@@ -26,7 +26,7 @@ const GRADE = [
   'small bud', 'small buds', 'smalls', 'premium smalls', 'large bud', 'large buds',
   'mixed bud', 'mixed buds', 'mixed light flower', 'popcorn', 'shake',
   'premium', 'premium flower', 'premium cannabis', 'exotic', 'exotic flower',
-  'exotics', 'reserve', 'craft', 'top shelf', 'house', 'value',
+  'exotics', 'reserve', 'craft', 'top shelf', 'value',
   'indoor', 'indoor flower', 'outdoor', 'greenhouse', 'sungrown', 'sun grown',
   'sun powered flower', 'mixed light', 'micro grower', 'craft indoor',
   'jar', 'jars', 'flower jar', 'jar flower', 'bag', 'bags', 'flower bag',
@@ -42,6 +42,9 @@ const GRADE = [
   'bagged', 'bagged flower', 'prepack', 'pre-pack', 'pre pack', 'prepack whole flower',
   'preground', 'pre-ground', 'pre ground',
   'package', 'packaging', 'sun grown flower', 'grown', 'micro', 'micro grown',
+  /* Not "house": it read as a grade ("House Flower") and was stripped off the
+     end of Dark Heart's Grandma's House, which went to Soma as "Grandma's" on
+     24 New York listings — a cultivar nobody sells, in place of one it holds. */
 ];
 
 /* Lineage is carried in its own field; in a name it is a label, not a name. */
@@ -101,6 +104,13 @@ const isShelfCode = (seg) => {
   return /^[a-z]{1,3}\s?\d{1,3}$/i.test(s);
 };
 
+/* A grower's name with the words that dress a company rather than name it
+   left out — the same fold as grower_of in shelf-terpenes.py. */
+const COMPANY_WORDS = /\b(cannabis|co|company|farms?|labs?|brands?|nyc?|llc|inc|and|the|of)\b/g;
+const growerCore = (brand) =>
+  brand ? norm(brand).normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9 ]/g, ' ').replace(COMPANY_WORDS, ' ').replace(/[^a-z0-9]/g, '') : '';
+
 /** Noise that clings inside a segment rather than forming one. */
 const stripInline = (seg) =>
   seg
@@ -122,12 +132,19 @@ const stripInline = (seg) =>
  * something else survives: Runtz and Dank are brands AND cultivars, and a
  * listing called nothing but "Runtz" is about the cultivar.
  */
-export const canonicalStrain = (raw, brand = null, brands = new Set()) => {
+export const canonicalStrain = (raw, brand = null, brands = new Set(), foldOwn = true) => {
   const text = stripInline(String(raw ?? ''));
   if (!text) return null;
 
   const brandKeys = new Set([...brands].map(strainKey).filter((k) => k.length >= 3));
   if (brand) brandKeys.add(strainKey(brand));
+  /* The listing's own grower also goes by its name without the company words:
+     "MAJOR NY - Chimax" and "McPike Farms - Gelato Gelato" are Major's and
+     McPike's, "Ruby Exotic Flower - Blue Dream" is Ruby Farms'. Only the
+     listing's own brand is folded this way — folding every brand in the
+     register would let a "Blue Dream Farms" take Blue Dream off a jar. */
+  const own = foldOwn ? growerCore(brand) : '';
+  const isOwnGrower = (text) => own.length >= 3 && growerCore(text) === own;
 
   const segments = text
     /* A dash needs a space on only ONE side to be a fence. It used to need
@@ -151,7 +168,7 @@ export const canonicalStrain = (raw, brand = null, brands = new Set()) => {
     if (GRADE_SET.has(n) || GRADE_SET.has(h)) return 'grade';
     if (LINEAGE_SET.has(n) || LINEAGE_SET.has(h)) return 'lineage';
     if (isMeasure(n)) return 'measure';
-    if (brandKeys.has(strainKey(n))) return 'brand';
+    if (brandKeys.has(strainKey(n)) || isOwnGrower(n)) return 'brand';
     if (isShelfCode(seg)) return 'code';
     /* "Flower #284ZZ" is a grade word and a stock number and nothing else. A
        segment made entirely of such words names no cultivar.
@@ -225,7 +242,8 @@ export const canonicalStrain = (raw, brand = null, brands = new Set()) => {
        what the segment IS, and "Leal Flower" is a grower and its packaging
        however few words are left. */
     for (let n = Math.min(4, words.length - 1); n >= 1; n -= 1) {
-      if (!brandKeys.has(strainKey(words.slice(0, n).join(' ')))) continue;
+      const head = words.slice(0, n).join(' ');
+      if (!brandKeys.has(strainKey(head)) && !isOwnGrower(head)) continue;
       const rest = words.slice(n);
       /* The packaging can be a phrase whose words are not packaging alone:
          "whole" is not a grade word, "prepack whole flower" is. */
@@ -247,6 +265,10 @@ export const canonicalStrain = (raw, brand = null, brands = new Set()) => {
      cultivar, so take what it did say rather than invent one. A bare code is
      preferred to a grower here, because "GG4" on its own is the cultivar. */
   if (kept.length === 0) {
+    /* The grower's name can be the cultivar's: "Jack Herer Reserve - Jack
+       Herer" from Jack Herer™ Brands is Jack Herer. When the folded name
+       leaves nothing, read the listing as before it was folded. */
+    if (own) return canonicalStrain(raw, brand, brands, false);
     kept = segments.filter((_, i) => kinds[i] === 'code');
     if (kept.length === 0) kept = segments.filter((_, i) => kinds[i] === 'brand');
     if (kept.length === 0) return null;

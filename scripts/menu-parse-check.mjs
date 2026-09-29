@@ -818,6 +818,15 @@ check('a number the weight left behind goes too',
   check('a brand that is also the head of a cultivar', c('Runtz Cake'), 'Runtz Cake');
   check('a numbered cut is not its parent', c('Gelato 41'), 'Gelato 41');
   check('Gelato 41 and Gelato stay apart', strainKey(c('Gelato 41')) === strainKey(c('Gelato')), false);
+  check('a cultivar that ends in "House"', c("Grandma's House Whole Flower", 'Dark Heart'), "Grandma's House");
+
+  /* A grower printed without its company words is still the grower. */
+  check('the grower without its "NY"', c('MAJOR NY - Chimax', 'Major'), 'Chimax');
+  check('the grower without its "Farms"', c('Ruby Exotic Flower - Blue Dream', 'Ruby Farms'), 'Blue Dream');
+  check('only the listing\'s own grower is folded', c('Blue Dream', 'Blue Dream Farms'), 'Blue Dream');
+  check('a grower whose name is the cultivar\'s is read as before the fold',
+    c('Jack Herer Reserve - Jack Herer', 'Jack Herer™ Brands'),
+    canonicalStrain('Jack Herer Reserve - Jack Herer', 'Jack Herer™ Brands', brands, false));
 
   /* What a shop writes around the cultivar. Each line below is a real menu
      entry that the register counted as a strain of its own. */
