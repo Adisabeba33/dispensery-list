@@ -21,13 +21,13 @@
   },
   {
     "licenseNumber": "OCM-CAURD-23-000021",
-    "menuUrl": "https://conbud.com/stores/conbud-les",
+    "menuUrl": "https://conbud.com/stores/conbud-les/products/flower",
     "platform": "OTHER",
     "robotsAllows": null,
     "flowerVisibleWithoutLogin": true,
     "ageGate": "click-through",
     "checkedAt": "2026-09-20",
-    "notes": "CONBUD's first-party LES storefront is a real menu, not the blog post the collector followed. The page identifies CONBUD LES and exposes Flower as a menu category; licence OCM-CAURD-23-000021 is listed by CONBUD for LES."
+    "notes": "CONBUD's first-party LES storefront is a real menu, not the blog post the collector followed. The page identifies CONBUD LES and exposes Flower as a menu category; licence OCM-CAURD-23-000021 is listed by CONBUD for LES. Until 28 September this pointed at the store's front page, whose carousels hold about a third of the flower; the owner pasted the full Flower list, about a hundred products, against the 34 collected. The Flower category is /products/flower."
   },
   {
     "licenseNumber": "OCM-CAURD-24-000046",
@@ -968,5 +968,15 @@
     "ageGate": null,
     "checkedAt": "2026-09-28",
     "notes": "Silk Road NYC, 166-30 Jamaica Ave: /categories/flower/ is a page about the shop's flower with a carousel of a dozen products; its 'Shop Flower — Live Menu' link goes to this address. The collector read the carousel and published 2 listings for a week."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000071",
+    "menuUrl": "https://shop.matawanany.com/brooklyn/menu/flower-6643",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-28",
+    "notes": "Matawana, Brooklyn: Sweed store 490, the Brooklyn store's own Flower category. Without this the collector followed a 'New Product Drop' carousel link to one product's page and read 12 flower listings where the owner counted about 25 by hand."
   }
 ]

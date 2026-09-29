@@ -83,8 +83,18 @@ const dispensaries = JSON.parse(readFileSync(resolve(ROOT, datasetPath), 'utf8')
    classified can never be classified.
 
    A denylist inverts that: the unknown is visited, and what it runs is learnt
-   from the visit. */
-const THIRD_PARTY_MENU = new Set(['LEAFLY', 'WEEDMAPS']);
+   from the visit.
+
+   The refusal is by where the menu is, not by what the register says. It used
+   to be the register's `provider` field, and fourteen New York shops marked
+   LEAFLY or WEEDMAPS were never visited — Housing Works, Bedford Club, Le
+   Flora, High City among them — although each has a website of its own and
+   several run their own menu on it. Now every shop is visited, and the page is
+   not allowed to talk to leafly.com or weedmaps.com at all: a link there is
+   never followed (sameEstate), and a widget embedded from there is answered
+   with nothing, so no byte of their menus reaches the parser. A shop whose
+   only menu is theirs comes back as third-party-menu, not as no-products. */
+export const THIRD_PARTY_MENU_HOST = /(^|\.)(leafly\.com|weedmaps\.com)$/i;
 
 /**
  * --skip-collected leaves out shops whose shelf we already hold, so a sweep
@@ -283,7 +293,6 @@ const brandsKnownApartFrom = (licence) => {
 const candidates = dispensaries.filter(
   (d) =>
     !NOT_TRADING.has(d.operationalStatus) &&
-    !THIRD_PARTY_MENU.has(d.menu?.provider) &&
     d.contact?.website &&
     !alreadyCollected.has(d.licenseNumber) &&
     (!onlyEndpoints || ENDPOINTS[d.licenseNumber]) &&
@@ -2962,7 +2971,7 @@ export const lineageSegmentOf = (part) => {
   return m[3] ? `${base}_DOMINANT` : base;
 };
 const lineageFromTitle = (raw) => {
-  const m = String(raw).match(/\((h|s|i|hybrid|sativa|indica)\)/i);
+  const m = String(raw).match(/[(\[](h|s|i|hybrid|sativa|indica)[)\]]/i);
   if (m) return LINEAGE_MARK[m[1].toLowerCase()];
   for (const part of String(raw).split(/\s+[-–—|]\s+/)) {
     const lineage = lineageSegmentOf(part);
@@ -3039,7 +3048,10 @@ const NOT_FLOWER_TITLE = new RegExp(
 const cleanStrainName = (raw, brand) => {
   let text = String(raw)
     .replace(/\s*[-–—]\s*F\d+\s*$/i, '')          // trailing shop SKU: "- F140"
-    .replace(/\((h|s|i|hybrid|sativa|indica)\)/gi, ' ')  // lineage marker, kept separately
+    // Lineage marker, kept separately. Matawana brackets it square: "Cap Junky [H]".
+    .replace(/[(\[](h|s|i|hybrid|sativa|indica)[)\]]/gi, ' ')
+    // A category word the shop put before the name: "Flower: Lemon OG [I]".
+    .replace(/^\s*flower\s*:\s*/i, '')
     // What removing a marker or a weight leaves behind: "Cherry Pie ( )".
     .replace(/\(\s*\)/g, ' ')
     // The weight is kept in availableSizesGrams, so it is noise in the name
@@ -3065,7 +3077,10 @@ const cleanStrainName = (raw, brand) => {
       .replace(/\s*[-–—|]\s*(flower\s*jar|flower|jar|bag|jars|bags|pouch)\s*$/gi, '')
       .replace(/\s*[-–—|]\s*(?=[-–—|])/g, ' ')                    // collapsed separators
       .replace(/\s*[-–—|]?\s*\b(sativa|indica|hybrid)\b\s*$/i, '')
-      .replace(/\s*[-–—|]\s*\d+(?:\s*\/\s*\d+)?\s*$/, '')       // "... - 1" left by a weight
+      /* "... - 1" left by a weight. The dash has to be spaced on at least one
+         side: glued, it is part of the name — RS-11, GG-4 — and Conbud's
+         "RS-11 (H)" was published as "RS". */
+      .replace(/(?:\s+[-–—|]\s*|\s*[-–—|]\s+)\d+(?:\s*\/\s*\d+)?\s*$/, '')
       .replace(/\s+[\d.]+\s*$/, '')                              // bare trailing weight
       .trim();
 
@@ -3510,7 +3525,13 @@ const coaUrlOf = (p) => {
    batch across shops; labPanelKey does that. Kept as the menu states it. */
 const packageIdsOf = (p) => {
   const meta = pick(p, ['POSMetaData']);
-  if (!meta || typeof meta !== 'object') return null;
+  if (!meta || typeof meta !== 'object') {
+    /* Good Grades' own menu states the METRC package tag flat, as package_id:
+       "1A4120300000149000023827" — the same kind of identifier, one jar's stock. */
+    const flat = pick(p, ['packageId']);
+    const id = typeof flat === 'string' ? flat.trim() : '';
+    return id && id.length <= 200 && !/^(null|undefined)$/i.test(id) ? [id] : null;
+  }
   const children = pick(meta, ['children']);
   const found = new Set();
   for (const source of [meta, ...(Array.isArray(children) ? children : [])]) {
@@ -3528,7 +3549,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const brand = flatten(pick(p, ['brandName', 'brand', 'producer', 'vendor', 'cultivator']));
   const name = cleanStrainName(rawName, brand);
   // Jane files the lineage as its category: sativa, indica, hybrid.
-  const lineageValue = pick(p, ['strainType', 'lineage', 'cannabisType', 'cannabisStrain', 'flowerType', 'classification', 'category']);
+  // resolved_strain_type is Good Grades'; it must come before `category`, which there says Flower.
+  const lineageValue = pick(p, ['strainType', 'resolvedStrainType', 'lineage', 'cannabisType', 'cannabisStrain', 'flowerType', 'classification', 'category']);
   const lettersOf = (v) => String(v ?? '').toLowerCase().replace(/[^a-z]/g, '');
   let lineageRaw = lettersOf(flatten(lineageValue));
   // Transcend Wellness: strain_type: { type: "Hybrid", id: 15 }, which flatten does not read.
@@ -3718,7 +3740,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     potency(
       p,
       // thcPercentage is Carrot's (Piffords, Two Buds, Lenox Hill, Seaweed).
-      ['thcContent', 'potencyThc', 'thc', 'thcPercent', 'thcPercentage', 'potencyThcRangeLow', 'potencyThcRangeHigh', 'potencyThcDisplayValue', 'percentThc'],
+      // resolved_thc is Good Grades' own Supabase menu, beside a thc that is always null.
+      ['thcContent', 'potencyThc', 'thc', 'thcPercent', 'thcPercentage', 'potencyThcRangeLow', 'potencyThcRangeHigh', 'potencyThcDisplayValue', 'percentThc', 'resolvedThc'],
       CANNABINOID_PANEL,
       THC_NAME,
       { zeroIsSilence: true },
@@ -3738,7 +3761,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     cbdPercent:
       potency(
         p,
-        ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent', 'cbdPercentage', 'potencyCbdRangeLow', 'potencyCbdRangeHigh', 'potencyCbdDisplayValue', 'percentCbd'],
+        ['cbdContent', 'potencyCbd', 'cbd', 'cbdPercent', 'cbdPercentage', 'potencyCbdRangeLow', 'potencyCbdRangeHigh', 'potencyCbdDisplayValue', 'percentCbd', 'resolvedCbd'],
         CANNABINOID_PANEL,
         CBD_NAME,
       ) ?? labFigure(p, 'cbd'),
@@ -3878,6 +3901,14 @@ const main = async () => {
         { name: knownStore.cookie.name, value: String(knownStore.cookie.value), url: new URL(knownStore.url).origin },
       ]);
     }
+    let thirdPartyRefused = 0;
+    await context.route(
+      (url) => THIRD_PARTY_MENU_HOST.test(url.hostname),
+      (route) => {
+        thirdPartyRefused += 1;
+        return route.abort();
+      },
+    );
     const page = await context.newPage();
     const payloads = [];
     /* One entry per JSON response that carried products: where it came from,
@@ -4772,13 +4803,16 @@ const main = async () => {
         .sort((a, b) => b[1] - a[1])
         .slice(0, 8)
         .map(([name, n]) => `${name} (${n})`);
+      if (thirdPartyRefused) entry.thirdPartyMenuRefused = thirdPartyRefused;
       entry.status = entry.foreignShelf
         ? 'foreign-shelf'
         : seen.size
           ? 'ok'
-          : entry.productsSeen
-            ? 'no-flower'
-            : 'no-products';
+          : thirdPartyRefused
+            ? 'third-party-menu'
+            : entry.productsSeen
+              ? 'no-flower'
+              : 'no-products';
     } catch (e) {
       entry.status = `error: ${e.message.slice(0, 120)}`;
     }

@@ -211,6 +211,28 @@ check('and so is a sentence about pick-up', fulfilmentAction('ORDER FOR PICKUP O
     classify({ name: 'Blue Haze 1g', category: { id: 201, name: 'Singles', path: 'Pre-Rolls > Singles' } }), 'category-not-flower');
 }
 
+/* ------------------------------------------------------- Good Grades --
+ * Its own menu (Supabase, v_marketplace_canonical_products) leaves thc null and
+ * states the reading as resolved_thc and resolved_strain_type, beside a
+ * category that says Flower. */
+{
+  const gg = toListing({ name: 'Alley OOP', category: 'Flower', size: '3.5g', thc: null, cbd: null, brand_name: 'Electraleaf',
+    inventory_status: 'low_stock', package_id: '1A4120300000149000023827', resolved_strain_type: 'Hybrid', resolved_thc: 28.0 }, shop, SRC, {});
+  check('Good Grades THC is resolved_thc', gg?.thcPercent, 28);
+  check('Good Grades lineage is resolved_strain_type, not the Flower category', gg?.lineage, 'HYBRID');
+  check('Good Grades package tag is kept', gg?.packageIds, ['1A4120300000149000023827']);
+}
+
+/* Matawana writes "Flower: Cap Junky [H]": the category before the name, the
+   lineage in square brackets. */
+check('a square-bracket lineage and a leading category word leave the name', cleanStrainName('Flower: Cap Junky [H]', 'Matawana'), 'Cap Junky');
+check('and the bracket still gives the lineage',
+  toListing({ name: 'Flower: Lemon OG [I]', category: 'Flower', options: ['7g'] }, shop, SRC, {})?.lineage, 'INDICA');
+
+/* A number glued to the name by a dash is the name: Conbud's RS-11 was cut to RS. */
+check('RS-11 keeps its number', cleanStrainName('Wizard Trees | 3.5g Indoor Flower | RS-11 (H)', 'Wizard Trees'), 'RS-11');
+check('a spaced dash and number left by a weight still go', cleanStrainName('Afghani - 1', null), 'Afghani');
+
 /* ------------------------------------------------ concentrates on a flower shelf --
  * Silk Road files "Cap Junky Wax Budder" under Flower. The words that name a
  * cultivar as well as an extract must keep the cultivar. */

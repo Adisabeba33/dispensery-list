@@ -68,10 +68,16 @@ export const listingsFor = (licenseNumber: string): FlowerListing[] =>
     .filter((l) => l.licenseNumber === licenseNumber)
     .sort((a, b) => a.strainNameRaw.localeCompare(b.strainNameRaw));
 
-/** How many strains each shop has on a collected shelf, for the whole register. */
+/**
+ * How many strains each shop has in stock on a collected shelf, for the whole
+ * register. Sold-out listings stay on the shop's own page, dimmed and marked,
+ * but not in this figure: Unlimited's card said 19 strains when the shop had
+ * three it could sell, and a person checking it against the shop's site read
+ * that as the directory being wrong.
+ */
 export const menuCounts = (): Record<string, number> => {
   const counts: Record<string, number> = {};
-  for (const l of listings) counts[l.licenseNumber] = (counts[l.licenseNumber] ?? 0) + 1;
+  for (const l of listings) if (l.inStock) counts[l.licenseNumber] = (counts[l.licenseNumber] ?? 0) + 1;
   return counts;
 };
 

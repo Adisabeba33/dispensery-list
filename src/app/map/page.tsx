@@ -24,7 +24,8 @@ export default function MapPage() {
       status: d.operationalStatus,
       lat: d.geo!.lat,
       lng: d.geo!.lng,
-      menuCount: listingsFor(d.licenseNumber).length,
+      // In stock only, like the cards: the pin says what the shop can sell.
+      menuCount: listingsFor(d.licenseNumber).filter((l) => l.inStock).length,
     }));
 
   const unmapped = dispensaries.filter((d) => d.geo === null);

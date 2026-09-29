@@ -55,6 +55,9 @@ KEEP = (
     "storeForkOptions",
     "choseFulfilment",
     "pickupRefused",
+    # Запросы к leafly.com и weedmaps.com, которым страница получила отказ:
+    # меню магазина живёт у них, и мы его не читаем.
+    "thirdPartyMenuRefused",
     "foundMenuByGuess",
     "guessedMenuPaths",
     "foundMenuOnSecondLook",

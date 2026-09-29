@@ -16,7 +16,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs/MENU_ENDPOINTS_WANTED.md"
-THIRD_PARTY = {"LEAFLY", "WEEDMAPS"}
 
 
 def load(name, fallback):
@@ -58,10 +57,16 @@ def main(to_stdout):
     def site(s):
         return (s.get("contact") or {}).get("website")
 
-    def provider(s):
-        return (s.get("menu") or {}).get("provider")
+    def status(s):
+        return (coverage.get(s["licenseNumber"]) or {}).get("status")
 
-    swept = [s for s in open_shops if provider(s) not in THIRD_PARTY and site(s)]
+    # Чужое меню узнаётся по визиту, а не по полю provider в реестре: страница
+    # не может говорить с leafly.com и weedmaps.com, и такой магазин приходит
+    # со статусом third-party-menu. По полю реестра четырнадцать магазинов со
+    # своими сайтами не посещались вовсе.
+    third = [s for s in open_shops if status(s) == "third-party-menu"]
+    third_ids = {s["licenseNumber"] for s in third}
+    swept = [s for s in open_shops if site(s) and s["licenseNumber"] not in third_ids]
     # Магазин, чей robots.txt отказал целому сайту, обход не читает вовсе.
     # Адрес меню ему не нужен — его нужно оставить в покое, — так что он
     # уходит из «Пусто» вниз, к остальным, куда мы не ходим. Отказ только в
@@ -172,7 +177,6 @@ def main(to_stdout):
             )
         lines.append("")
 
-    third = [s for s in open_shops if provider(s) in THIRD_PARTY]
     nosite = [s for s in open_shops if not site(s)]
     lines += [
         "## Сюда не ходим",
