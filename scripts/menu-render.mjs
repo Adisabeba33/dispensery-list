@@ -94,6 +94,7 @@ const dispensaries = JSON.parse(readFileSync(resolve(ROOT, datasetPath), 'utf8')
    never followed (sameEstate), and a widget embedded from there is answered
    with nothing, so no byte of their menus reaches the parser. A shop whose
    only menu is theirs comes back as third-party-menu, not as no-products. */
+const WC_STORE_API = /\/wp-json\/wc\/store\/(v\d+\/)?products\b/i;
 export const THIRD_PARTY_MENU_HOST = /(^|\.)(leafly\.com|weedmaps\.com)$/i;
 
 /**
@@ -2088,7 +2089,8 @@ const looksLikeShelf = (value) => {
   const looksLikeProduct =
     keys.some((k) => /^(name|productName|title)$/i.test(k)) &&
     keys.some((k) =>
-      /^(category|productCategory|productCategoryName|subcategory|brand|brandName|strainType|cannabisType|variants|weightInGrams|potencyThc|thcContent)$/i.test(k),
+      // categories and brands, plural, are WooCommerce's Store API (Blue Forest Farms).
+      /^(category|categories|productCategory|productCategoryName|subcategory|brand|brands|brandName|strainType|cannabisType|variants|weightInGrams|potencyThc|thcContent)$/i.test(k),
     ) &&
     !keys.some((k) => /^(taxBasis|deliveryPolicy|applyTo|stages)$/i.test(k)) &&
     objects.slice(0, 3).some(forSale);
@@ -2466,7 +2468,10 @@ const slug = (...parts) =>
    back as one gram. A letter before the unit is still refused, so a strain
    name is not read as an ounce. */
 const SIZE_RULES = [
-  [/\b(\d+(?:\.\d+)?)\s*(?:g|gr|gram|grams)\b/i, (m) => parseFloat(m[1])],
+  // gm, gms and gs are Blue Forest Farms': "Greenline 5gm", "Revert … 14gs".
+  [/\b(\d+(?:\.\d+)?)\s*(?:g|gr|gram|grams|gm|gms|gs)\b/i, (m) => parseFloat(m[1])],
+  // "Moodz Pineapple Express 8th (S)": an eighth, written as the ordinal.
+  [/\b8th\b/i, () => 3.5],
   /* A fraction means a fraction of an ounce — unless a pound follows it.
      "Quarter pound" was read as a quarter ounce: 7 grams for 113, wrong by
      sixteen times and silently. Nobody may sell one in New York, so the right
@@ -3016,6 +3021,10 @@ const lineageFromTitle = (raw) => {
     const lineage = lineageSegmentOf(part);
     if (lineage) return lineage;
   }
+  /* The last word, when it is nothing but a lineage: Blue Forest writes "Dark
+     Heart Grandma's House 14g Hybrid", with no separator for the split above. */
+  const last = String(raw).trim().match(/\b(indica|sativa|hybrid)\s*$/i);
+  if (last) return LINEAGE[last[1].toLowerCase()];
   return null;
 };
 
@@ -3091,6 +3100,10 @@ const cleanStrainName = (raw, brand) => {
     .replace(/[(\[](h|s|i|hybrid|sativa|indica)[)\]]/gi, ' ')
     // A category word the shop put before the name: "Flower: Lemon OG [I]".
     .replace(/^\s*flower\s*:\s*/i, '')
+    // The potency, which is kept in thcPercent: "Alaskan Thunder - THC 27.76%" (Weed Mart).
+    .replace(/\bTHC\s*[:\-]?\s*\d+(?:\.\d+)?\s*%/gi, ' ')
+    // A slash between parts is a separator: "Flower / ClemDawg / 3.5G" (Canna Buddha's Carrot store).
+    .replace(/\s+\/\s+|^\s*\/\s*|\s*\/\s*$/g, ' - ')
     // What removing a marker or a weight leaves behind: "Cherry Pie ( )".
     .replace(/\(\s*\)/g, ' ')
     // The weight is kept in availableSizesGrams, so it is noise in the name
@@ -3640,10 +3653,22 @@ export const dropRepeatedPanels = (rows) => {
   return dropped;
 };
 
+/* WordPress sends names as HTML: "Grandma&#8217;s House". The menu prints the
+   apostrophe, and so does the register. Only character references are touched;
+   anything that is not a string passes through. */
+const NAMED_ENTITIES = { amp: '&', quot: '"', apos: "'", lt: '<', gt: '>', nbsp: ' ', ndash: '–', mdash: '—', rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“' };
+export const decodeEntities = (v) =>
+  typeof v !== 'string'
+    ? v
+    : v
+        .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+        .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
+        .replace(/&([a-z]+);/gi, (m, n) => NAMED_ENTITIES[n.toLowerCase()] ?? m);
+
 const toListing = (p, shop, sourceUrl, rawTerpNames) => {
-  const rawName = flatten(pick(p, ['name', 'productName', 'title', 'displayName']));
+  const rawName = decodeEntities(flatten(pick(p, ['name', 'productName', 'title', 'displayName'])));
   if (!rawName) return null;
-  const brand = flatten(pick(p, ['brandName', 'brand', 'producer', 'vendor', 'cultivator']));
+  const brand = decodeEntities(flatten(pick(p, ['brandName', 'brand', 'producer', 'vendor', 'cultivator'])));
   const name = cleanStrainName(rawName, brand);
   // Jane files the lineage as its category: sativa, indica, hybrid.
   // resolved_strain_type is Good Grades'; it must come before `category`, which there says Flower.
@@ -3660,7 +3685,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
      "Hybrid" }. Elsewhere `strain` is the cultivar's name, so each is taken only
      when it is a lineage word. */
   if (!LINEAGE[lineageRaw]) {
-    for (const stated of [pick(p, ['strain']), pick(p, ['species'])]) {
+    // dominance is Proteus's (Weed Mart New Metro, Saint Cannabis).
+    for (const stated of [pick(p, ['strain']), pick(p, ['species']), pick(p, ['dominance'])]) {
       const said = stated && typeof stated === 'object' && !Array.isArray(stated) ? flatten(pick(stated, ['prevalence'])) : stated;
       const word = typeof said === 'string' ? lettersOf(said) : '';
       if (LINEAGE[word]) {
@@ -3814,6 +3840,26 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     }
   }
 
+  /* WooCommerce's Store API: a size is an attribute term ("Size": 5g, 28g —
+     Rustik), or failing that `weight`, a bare number that every Blue Forest
+     title confirms is grams. Only for items shaped like the Store API's, so a
+     bare `weight` elsewhere is never guessed at. */
+  if (!sizes.length && pick(p, ['isInStock']) !== null && pick(p, ['prices']) !== null) {
+    const attributes = pick(p, ['attributes']);
+    for (const a of Array.isArray(attributes) ? attributes : []) {
+      if (!/size|weight/i.test(String(flatten(pick(a, ['name'])) ?? ''))) continue;
+      const terms = pick(a, ['terms']);
+      for (const t of Array.isArray(terms) ? terms : []) {
+        const g = plausibleSize(sizeFromText(String(flatten(pick(t, ['name'])) ?? '')));
+        if (g) sizes.push(g);
+      }
+    }
+    if (!sizes.length) {
+      const g = plausibleSize(num(pick(p, ['weight'])));
+      if (g) sizes.push(g);
+    }
+  }
+
   if (!sizes.length) {
     const fromTitle = sizeFromText(String(rawName)) ?? bareWeightAtEnd(rawName);
     if (fromTitle) sizes.push(fromTitle);
@@ -3835,7 +3881,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     (typeof status === 'string' && status.trim() !== '' && !/^active$/i.test(status.trim())) ||
     comingSoon === true;
 
-  const stock = notYet ? false : flatten(pick(p, ['inStock', 'available', 'isAvailable', 'quantity']));
+  const stock = notYet ? false : flatten(pick(p, ['inStock', 'isInStock', 'available', 'isAvailable', 'quantity']));
 
   const listingId = slug(String(brand ?? ''), String(name));
   if (!listingId) return null;
@@ -4230,9 +4276,40 @@ const main = async () => {
           .slice(0, dumpLinks)
           .map((l) => `${String(l.score).padStart(3)}  ${l.href}   «${l.text}»`);
       }
-      const href = known ?? found;
+      /* A WooCommerce shop with no menu platform prints its products into the
+         page, where nothing here reads. Its Store API is the same list as JSON,
+         public, and what the shop's own theme asks when it filters: Blue Forest
+         Farms' flower is 131 products there, two pages of a hundred. A known
+         endpoint on /wp-json/wc/store/ is read page by page from the shop's own
+         site, and nothing is navigated. */
+      let readStoreApi = false;
+      if (known && WC_STORE_API.test(known) && (await robotsAllows(known))) {
+        readStoreApi = true;
+        entry.wooStoreApi = { pages: 0, products: 0 };
+        for (let n = 1; n <= 20; n += 1) {
+          const url = new URL(known);
+          if (!url.searchParams.has('per_page')) url.searchParams.set('per_page', '100');
+          url.searchParams.set('page', String(n));
+          const body = await page.evaluate(async (target) => {
+            try {
+              const res = await fetch(target, { headers: { accept: 'application/json' } });
+              return res.ok ? await res.json() : null;
+            } catch {
+              return null;
+            }
+          }, url.toString());
+          if (!Array.isArray(body) || !body.length) break;
+          payloads.push(body);
+          lastPayloadAt = Date.now();
+          entry.wooStoreApi.pages = n;
+          entry.wooStoreApi.products += body.length;
+          if (body.length < Number(url.searchParams.get('per_page'))) break;
+          await new Promise((r) => setTimeout(r, 1000));
+        }
+      }
+      const href = readStoreApi ? null : known ?? found;
       // Said plainly, so "no products" stops covering "not allowed there".
-      entry.menuLink = href ? 'found' : 'none';
+      entry.menuLink = href || readStoreApi ? 'found' : 'none';
       if (href && !(await robotsAllows(href))) entry.menuLink = 'robots-disallowed';
 
       if (href && entry.menuLink !== 'robots-disallowed') {

@@ -16,7 +16,7 @@ import {
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
   mergeBySize, pagedRequest, pickFlowerInside, pickMenuLink, pickStore,
   placeNamesOf, rankMenuLink, registerTextOf, sameEstate, signatureOf, sizeFromText,
-  toListing, wallAction, fulfilmentAction, pageKnobOf, dropRepeatedPanels, sweedCategoryOf
+  toListing, wallAction, fulfilmentAction, pageKnobOf, dropRepeatedPanels, sweedCategoryOf, decodeEntities
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 import { labPanelKeyOf } from './lab-panel.mjs';
@@ -261,6 +261,39 @@ check('a spaced dash and number left by a weight still go', cleanStrainName('Afg
     'https://shop.mishasflowershop.com/mishasflower/menu/flower-5423');
   check('an ordinary product path is not a Sweed one', sweedCategoryOf('https://shop.example.com/products/flower/blue-dream'), null);
 }
+
+/* WooCommerce's Store API, read for Blue Forest Farms: HTML in the name, the
+   lineage as the name's last word, the size in the name and in `weight`. */
+{
+  const woo = toListing({ id: 250200, name: 'Dark Heart Grandma&#8217;s House 14g Hybrid', type: 'simple',
+    categories: [{ id: 61, name: 'Flower', slug: 'flower' }], brands: [], is_in_stock: true, weight: '14',
+    prices: { price: '12075', currency_code: 'USD' } }, shop, SRC, {});
+  check('a character reference is decoded', woo?.strainNameRaw, "Dark Heart Grandma’s House");
+  check('the last word gives the lineage', woo?.lineage, 'HYBRID');
+  check('the size comes from the name', woo?.availableSizesGrams, [14]);
+  check('Rustik states its sizes as attribute terms',
+    toListing({ id: 4140, name: 'Good Afternoon', categories: [{ name: 'Flower', slug: 'flower' }], is_in_stock: true, weight: '',
+      prices: { price: '5000' }, attributes: [{ id: 1, name: 'Size', terms: [{ id: 2, name: '5g' }, { id: 3, name: '28g' }] }] }, shop, SRC, {})?.availableSizesGrams, [5, 28]);
+  check('Blue Forest states a bare weight in grams',
+    toListing({ id: 1, name: 'Electraleaf Sour Tangie 3.5', categories: [{ name: 'Flower' }], is_in_stock: true, weight: '3.5', prices: { price: '4000' } },
+      shop, SRC, {})?.availableSizesGrams, [3.5]);
+  check('and one out of stock says so',
+    toListing({ id: 2, name: 'Moodz Pack Mule 8th (I)', categories: [{ name: 'Flower' }], is_in_stock: false, weight: '3.5', prices: { price: '4000' } },
+      shop, SRC, {})?.inStock, false);
+  check('an eighth written 8th', sizeFromText('Moodz Pineapple Express 8th (S)'), 3.5);
+  check('gm is grams', sizeFromText('Greenline 5gm - Baby Yoda'), 5);
+  check('decodeEntities leaves plain text alone', decodeEntities('Blue Dream & Co'), 'Blue Dream & Co');
+  check('and decodes named ones', decodeEntities('Cookies &amp; Cream'), 'Cookies & Cream');
+}
+
+/* Weed Mart (Proteus) writes the potency into the name and states lineage as
+   dominance; Canna Buddha's Carrot store separates with slashes. */
+check('the THC in a name is not the name', cleanStrainName('Alaskan Thunder - THC 27.76%', 'BudJet'), 'Alaskan Thunder');
+check('slashes separate parts', cleanStrainName('Flower / Titan Express / 3.5G', 'Dark Heart'), 'Titan Express');
+check('a trailing slash goes', cleanStrainName('Agent Z / 3.5G', 'Find'), 'Agent Z');
+check('Proteus lineage is dominance',
+  toListing({ name: 'Zips | Flower | 28g | Chem Cookies | THC 31.92% | Indica-Hybrid', brand: 'Zips', categoryId: 8, thc: '31.9167',
+    weight: 28.0, inStock: 1, price: 130, dominance: 'Sativa' }, shop, SRC, {})?.lineage, 'SATIVA');
 
 /* ------------------------------------------ one panel on many strains --
  * Prime Time's point of sale attaches one terpene list to 57 of its 60 flower

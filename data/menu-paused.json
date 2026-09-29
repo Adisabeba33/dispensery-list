@@ -167,6 +167,13 @@
       "lastStatus": "no-products"
     },
     {
+      "licenseNumber": "OCM-MICR-24-000069",
+      "name": "Hells Kitchen Cannabis Company",
+      "menu": "https://www.hellskitchencannabis.co/shop",
+      "lastStatus": "no-products",
+      "note": "added 2026-09-29: the shop page embeds dutchie.com/embedded-menu"
+    },
+    {
       "licenseNumber": "OCM-RETL-24-000260",
       "name": "Herbwell",
       "menu": "https://dutchie.com/dispensary/herbwell-bronx/products/flower",
