@@ -59,12 +59,14 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          total=$(node scripts/menu-render.mjs --count --provider DUTCHIE)
+          # --include-paused: the dutchie.com-window shops are paused in the daily run
+          # (data/menu-paused.json), and this slow run is how to see whether they open again.
+          total=$(node scripts/menu-render.mjs --count --provider DUTCHIE --include-paused)
           echo "$total Dutchie shops, $BATCH at a time, $PAUSE s before each"
           failed=0
           for offset in $(seq 0 "$BATCH" $((total - 1))); do
             echo "::group::shops $offset – $((offset + BATCH))"
-            if node scripts/menu-render.mjs --provider DUTCHIE --pause "$PAUSE" --limit "$BATCH" --offset "$offset"; then
+            if node scripts/menu-render.mjs --provider DUTCHIE --include-paused --pause "$PAUSE" --limit "$BATCH" --offset "$offset"; then
               if npm run validate > /tmp/validate.txt 2>&1; then
                 git add data/flower-listings.json
                 git diff --cached --quiet || git commit -q -m "menu: Dutchie, slowly, shops $offset+"

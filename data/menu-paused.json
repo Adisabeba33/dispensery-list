@@ -1,0 +1,343 @@
+{
+  "$comment": "Shops the daily run does not visit, and why. Each is on a Dutchie menu shown through a dutchie.com window, which has answered automated browsers with nothing but its bot check since 24 September (docs/DUTCHIE_ACCESS.md): no products at normal speed, none at one shop a minute. Visiting them cost the daily run a second visit each for the ones that once had a shelf, about an hour and a half of a three-and-a-half-hour run, for nothing. They stay in the register and keep the shelf last read from them. The collector still visits them on Sundays (UTC), with --include-paused, or when named with --only, so the day Dutchie opens again is noticed. Take a shop off this list when it reads again or when its menu moves.",
+  "pausedOn": "2026-09-29",
+  "reason": "dutchie.com window answers automated browsers with its bot check only",
+  "shops": [
+    {
+      "licenseNumber": "OCM-RETL-24-000178",
+      "name": "AA 301 W. 45th St Inc.",
+      "menu": "https://nycannabisco.com/shop?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-24-000242",
+      "name": "Bellanova",
+      "menu": "https://www.bellanovany.com/menu/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-25-000360",
+      "name": "BK Greenery LLC",
+      "menu": "https://www.bkgreenery.com/menu?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000188",
+      "name": "Brooklyn Bourne Dispensary",
+      "menu": "https://www.brooklynbourne.com/store.html?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000142",
+      "name": "Bud & Honey Dispensary Inc.",
+      "menu": "https://budnhoneydispensary.com/menu/?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-24-000063",
+      "name": "Bud City Cannabis LLC",
+      "menu": "https://budcityny.com/shop/flower/",
+      "lastStatus": "no-flower"
+    },
+    {
+      "licenseNumber": "OCM-RETL-25-000285",
+      "name": "Buzzy NY, LLC",
+      "menu": "https://getbuzzy.com/menu/?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000145",
+      "name": "BY ANY OTHER NAME",
+      "menu": "https://byanyothernamebk.com/shop/?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-25-000279",
+      "name": "Cannafamily Dispensary",
+      "menu": null,
+      "lastStatus": "error: page.goto: Timeout 30000ms exceed"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000052",
+      "name": "Cannavita",
+      "menu": "https://cannavitanyc.com/dispensary-nyc-free-delivery/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-24-000144",
+      "name": "Case Management",
+      "menu": "https://qualitycontroldispensary.com/flower-brooklyn",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-24-000087",
+      "name": "Cloud 914",
+      "menu": "https://cloud914.com/peekskill-dispensary-menu/?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000146",
+      "name": "Emerald Dispensary",
+      "menu": "https://emeralddispensary.nyc/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-26-000336",
+      "name": "Emerald Dispensary Carroll Gardens",
+      "menu": "https://dutchie.com/dispensary/emerald-dispensary-carroll-gardens/products/flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000084",
+      "name": "ENFLOR LLC",
+      "menu": "https://enflor.com/products/flower/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000210",
+      "name": "Exotic Herbals LLC",
+      "menu": "https://dutchie.com/dispensary/the-plug-brooklyn/products/flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000196",
+      "name": "Fireleaf, LLC",
+      "menu": "https://fireleafny.com/shop/?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-26-000350",
+      "name": "GOOD VIBES NYC, inc",
+      "menu": "https://www.goodvibes.nyc/shop",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-23-000023",
+      "name": "Gotham Buds LLC",
+      "menu": "https://gothambudsny.com/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-25-000418",
+      "name": "Green Bar",
+      "menu": "https://www.nytokes.com/shop-yonkers/#content",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-MICR-24-000186",
+      "name": "Green Klub Inc.",
+      "menu": "https://www.greenklubnyc.com/store",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000174",
+      "name": "GreenCup",
+      "menu": "https://greencup.nyc/shop/?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-25-000274",
+      "name": "Greene street cannabis co.",
+      "menu": "https://www.gstnydispensary.com/shop-brooklyn",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-23-000034",
+      "name": "Grow Together",
+      "menu": "https://dutchie.com/dispensary/grow-together-brooklyn",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-24-000171",
+      "name": "GUARDIAN WELLNESS LLC",
+      "menu": "https://guardianwellnessretail.com/order-online/?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-24-000106",
+      "name": "HEALTHY CHOICE SEAVIEW LLC",
+      "menu": "https://broadwaystrains.com/shop/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-24-000260",
+      "name": "Herbwell",
+      "menu": "https://dutchie.com/dispensary/herbwell-bronx/products/flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000131",
+      "name": "Hibernica",
+      "menu": "https://shophibernica.com/dispensary-bronx-menu/?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-26-000511",
+      "name": "Hibernica Central Park",
+      "menu": "https://shophibernica.com/centralpark/dispensary-centralpark-menu/?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-24-000127",
+      "name": "High of Brooklyn LLC",
+      "menu": "https://kayablissnyc.com/products/flower/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000211",
+      "name": "Kaya Bliss Dispensary",
+      "menu": "https://kayablissnyc.com/products/flower/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000074",
+      "name": "Late Bloomers NYC LLC",
+      "menu": "https://dutchie.com/stores/late-bloomers",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-26-000340",
+      "name": "Mello Tymes LLC",
+      "menu": "https://mellotymes.com/menu/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000065",
+      "name": "Mighty Lucky Inc.",
+      "menu": "https://mighty-lucky.com/collections/all?dtche%5Bpath%5D=products&dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-24-000008",
+      "name": "My Bud 420 Inc.",
+      "menu": "https://mybud420.com/shop/?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-24-000147",
+      "name": "NY Cannabis Co",
+      "menu": "https://nycannabisco.com/shop?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000153",
+      "name": "NY ELITE CANNABIS",
+      "menu": "https://nyelitecannabis.com/shop/?dtche%5Bsortby%5D=relevance&dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-25-000229",
+      "name": "OC DISPENSARY",
+      "menu": "https://ocdispensary.co/shop/?dtche%5Bpath%5D=products%2Fflower#menu",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-24-000011",
+      "name": "OET INC.",
+      "menu": "https://www.qiscannabis.com/pages/shop-now",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-25-000454",
+      "name": "Poppin",
+      "menu": "https://nycpoppin.com/shop/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000127",
+      "name": "QUBE",
+      "menu": "https://qubenyc.com/?dtche%5Bpath%5D=products",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-25-000303",
+      "name": "Rezidue",
+      "menu": "https://rezidueny.com/store",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-25-000304",
+      "name": "Say Less",
+      "menu": "https://saylessny.com/order-online/?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000096",
+      "name": "SMILEY EXOTICS",
+      "menu": "https://smileyexoticsny.com/shop/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-24-000241",
+      "name": "SOULMATE",
+      "menu": "https://soulmatebk.com/shop/?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-24-000261",
+      "name": "Stash House",
+      "menu": "https://stashhouseus.com/shop/?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000217",
+      "name": "Stashmaster",
+      "menu": "https://stashmasternyc.com/products/flower/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-25-000351",
+      "name": "Studio57NY",
+      "menu": "https://studio57ny.com/menu?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-25-000441",
+      "name": "Sunflower Dispensary",
+      "menu": "https://sunflowerbk.com/menu?dtche[category]=flower",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-25-000270",
+      "name": "Superfly Dispensary LLC",
+      "menu": "https://hellosuperfly.com/dispensary-in-upper-west-side-nyc/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-25-000317",
+      "name": "Take N Toke Herbal Healing Solutions Inc",
+      "menu": "https://takentoke.com/menu/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000057",
+      "name": "The Emerald Dispensary",
+      "menu": "https://theemeralddispensary.com/shop/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-MICR-25-000223",
+      "name": "Three Cord Cannabis",
+      "menu": "https://www.gramsbk.com/menu",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-26-000351",
+      "name": "Tru Cannabis",
+      "menu": "https://trucannabisny.com/#menu-section",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-25-000318",
+      "name": "Twenty8Gramz",
+      "menu": "https://twenty8gramz.com/shop-now/",
+      "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-25-000428",
+      "name": "Twinn Leaf LLC",
+      "menu": "https://twinnleafnyc.com/",
+      "lastStatus": "no-products"
+    }
+  ]
+}
