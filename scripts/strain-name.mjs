@@ -42,6 +42,9 @@ const GRADE = [
   'bagged', 'bagged flower', 'prepack', 'pre-pack', 'pre pack', 'prepack whole flower',
   'preground', 'pre-ground', 'pre ground',
   'package', 'packaging', 'sun grown flower', 'grown', 'micro', 'micro grown',
+  /* "Small Batch Premium Flower Bag Big Apple", "Batch Craft Cannabis Jar
+     Goonies", "Mylar Dime Bag - Chimera": how it was made and packed. */
+  'batch', 'small batch', 'mylar', 'tin',
   /* Not "house": it read as a grade ("House Flower") and was stripped off the
      end of Dark Heart's Grandma's House, which went to Soma as "Grandma's" on
      24 New York listings — a cultivar nobody sells, in place of one it holds. */
@@ -54,6 +57,8 @@ const LINEAGE = [
   'dominant', 'dominant hybrid',
   'ih', 'sh', 'i', 's', 'h',
   'ind', 'hyb', 'sat',
+  // "CANDYLAND SATIVA DOM", "Triple Scoop - Indica Dom".
+  'dom', 'sativa dom', 'indica dom', 'hybrid dom',
 ];
 
 const norm = (s) => String(s ?? '').toLowerCase().replace(/\s+/g, ' ').trim();
@@ -67,6 +72,9 @@ export const strainKey = (s) => norm(s).replace(/[^a-z0-9]/g, '');
 const NEVER_A_NAME = new Set([
   'premium', 'exotic', 'exotics', 'indoor', 'outdoor', 'greenhouse', 'sungrown',
   'sun grown', 'packaged', 'reserve', 'craft', 'cannabis', 'limited edition',
+  /* "Jar Zoap", "Bag Pink Zugar", "Mylar Dime Bag": a container is never the
+     first word of a cultivar. Not "pack": Pack Mule is one. */
+  'jar', 'bag', 'pouch', 'mylar', 'tin', 'dime', 'batch',
 ].map(norm));
 
 const GRADE_SET = new Set(GRADE.map(norm));
@@ -114,6 +122,13 @@ const growerCore = (brand) =>
 /** Noise that clings inside a segment rather than forming one. */
 const stripInline = (seg) =>
   seg
+    // Quotes around a word are emphasis: 'Flower "Large Bud" Blueberry Sugar', 'California Diesel "Dime"'.
+    .replace(/["“”]/g, ' ')
+    // A shop's stock number: "ITEM #548CH", "ITEM # 610BC"; a SKU: "CH-BRTD-0925-001".
+    .replace(/\bitem\s*#\s*[a-z0-9]+/gi, ' ')
+    .replace(/\b[a-z]{1,4}-[a-z]{2,6}-\d{3,}-\d{2,}\b/gi, ' ')
+    // Two lineage letters in one marker: "(I/H)", "(S/H)".
+    .replace(/\(\s*[ish]\s*\/\s*[ish]\s*\)/gi, ' ')
     .replace(/\bthc[:\s]*\d{1,2}(\.\d+)?\s*%?/gi, ' ')
     .replace(/\b\d{1,2}(\.\d+)?\s*%\s*(thc|cbd)?/gi, ' ')
     .replace(/\b[\d.]+\s*(g|gr|grams?)\b/gi, ' ')
@@ -179,13 +194,18 @@ export const canonicalStrain = (raw, brand = null, brands = new Set(), foldOwn =
        general, because AK-47 and G-13 are cultivars. Reading them apart only
        to ask "is every piece noise" is safe: a cultivar always has at least
        one word that is not. */
-    const words = n.split(/[\s-]+/).filter(Boolean);
+    /* "Flower (Smalls)": brackets around a grade word do not make it a name —
+       but only beside a grade word outside them. "1353 (Indoor)" is Sensei's
+       cultivar 1353, grown indoors, and a number is noise to this test. */
+    const bare = n.split(/[\s-]+/).filter(Boolean);
+    const words = bare.map((w) => w.replace(/[()]/g, '')).filter(Boolean);
+    const gradeOutside = bare.some((w) => !/[()]/.test(w) && (GRADE_SET.has(w) || LINEAGE_SET.has(w)));
     /* Reading hyphens apart costs something, and G-13 is what it costs: its
        two pieces are "g" (a unit) and "13" (a number), both noise, and the
        cultivar vanished. So the verdict needs an actual grade or lineage word
        present — a real one, not a measure that happens to look like one.
        "R14-Flower" has "flower"; G-13 has nothing of the kind. */
-    const hasGradeWord = words.some((w) => GRADE_SET.has(w) || LINEAGE_SET.has(w));
+    const hasGradeWord = gradeOutside;
     if (words.length > 1 && hasGradeWord && words.every(isNoiseWord)) {
       /* But a code inside such a segment is not always the shop's shelf: RS11
          and Z1 are cultivars, and "RS11 Premium Cannabis Flower" is a listing
@@ -257,9 +277,26 @@ export const canonicalStrain = (raw, brand = null, brands = new Set(), foldOwn =
     const kind = classify(seg);
     return kind === 'name' && isJustTrimmings(seg) ? 'brand' : kind;
   });
+  /* A grower and then one packaging word — "1937 Flower Animal Mints" — is
+     the grower's packaging, not a cultivar called Flower Animal Mints. Alone,
+     "Flower" may open a name (Flower Power); after a grower's name it does not. */
+  const afterBrand = (s) => {
+    const rest = stripLeadingBrand(s);
+    if (rest === s) return stripLeadingNoise(s);
+    /* After a grower, every packaging word in a row goes: "Cannabis Flower",
+       "Premium Flower", "Flower 3.5". Not a code: "HURLEY GROWN G41 FLOWER" is
+       G41, which has the shape of a shelf label and is a cultivar. */
+    const words = rest.split(/\s+/);
+    /* A weight only once a packaging word has gone before it: "BANZZY 8TH AVE"
+       is 8th Ave, and "8th" has the shape of a measure. */
+    const packaging = (w, i) => GRADE_SET.has(w) || LINEAGE_SET.has(w) || (i > 0 && isMeasure(w));
+    let i = 0;
+    while (i < words.length - 1 && packaging(norm(words[i]), i)) i += 1;
+    return words.slice(i).join(' ');
+  };
   let kept = segments
     .filter((_, i) => kinds[i] === 'name')
-    .map((s) => stripLeadingNoise(stripLeadingBrand(s)));
+    .map(afterBrand);
 
   /* Nothing but grower, packaging and shelf label: the shop told us no
      cultivar, so take what it did say rather than invent one. A bare code is
@@ -292,5 +329,9 @@ export const canonicalStrain = (raw, brand = null, brands = new Set(), foldOwn =
   }
 
   name = name.replace(/^[\s\-–—|.,]+|[\s\-–—|.,]+$/g, '').replace(/\s{2,}/g, ' ').trim();
+  // A bracket whose partner was stripped with the lineage in it: "( G13".
+  if ((name.match(/\(/g) ?? []).length !== (name.match(/\)/g) ?? []).length) {
+    name = name.replace(/^\(\s*/, '').replace(/\s*\)$/, '').replace(/\s*\($/, '').trim();
+  }
   return name || null;
 };

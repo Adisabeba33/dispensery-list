@@ -295,6 +295,31 @@ check('Proteus lineage is dominance',
   toListing({ name: 'Zips | Flower | 28g | Chem Cookies | THC 31.92% | Indica-Hybrid', brand: 'Zips', categoryId: 8, thc: '31.9167',
     weight: 28.0, inStock: 1, price: 130, dominance: 'Sativa' }, shop, SRC, {})?.lineage, 'SATIVA');
 
+/* ------------------------------------------------ packaging in a name, 29.09 --
+ * Read off the register's own residue: 803 canonical names still carried a
+ * packaging word, a lineage label or a stock number. And the ones that must
+ * not move: each of these was broken by a first draft of the rules. */
+{
+  const brands = new Set(['LivWell', 'Toke Folks', 'Lion Order', 'HURLEY GROWN', 'BANZZY', 'Alien Labs', 'CAM', 'Moodz', 'Sensei']);
+  const c = (raw, brand = null) => canonicalStrain(raw, brand, brands);
+  check('quotes and a grade run go', c('Flower "Large Bud" Superboof'), 'Superboof');
+  check('a container opens no cultivar', c('Jar Dumpster Fire'), 'Dumpster Fire');
+  check('small batch and a bag are packaging', c('Small Batch Premium Flower Bag Ninja Fruit'), 'Ninja Fruit');
+  check('mylar dime bag is packaging', c('Mylar Dime Bag - Strawberry Diesel'), 'Strawberry Diesel');
+  check('a two-letter lineage marker goes', c('Blue Lobster - (I/H)'), 'Blue Lobster');
+  check('sativa dom is a lineage', c('CANDYLAND SATIVA DOM'), 'CANDYLAND');
+  check('an item number goes', c('Blue Cookies - ITEM # 610BC'), 'Blue Cookies');
+  check('bracketed smalls beside flower is packaging', c('Flower (Smalls) - Sour Joker'), 'Sour Joker');
+  check('a grower then its packaging words', c('LivWell Cannabis Flower Mendo Breath', 'LivWell'), 'Mendo Breath');
+  check('a grower, a grade word and a weight', c('Lion Order Flower 3.5 Sunshine Kush', 'Lion Order'), 'Sunshine Kush');
+  check('G41 after a grower is the cultivar, not a shelf code', c('HURLEY GROWN G41 FLOWER', 'HURLEY GROWN'), 'G41');
+  check('8th Ave after a grower is the cultivar, not a weight', c('BANZZY 8TH AVE 3.5 Flower- IND', 'BANZZY'), '8TH AVE 3.5');
+  check('a number with a bracketed grade is a cultivar', c('Sensei - 1353 (Indoor)', 'Sensei (Micro)'), '1353');
+  check('the cultivar keeps its place beside a product line', c('Misfits - Planetary OG Indoor Flower', 'Alien Labs'), 'Misfits - Planetary OG');
+  check('Pack Mule is a cultivar', c('Pack Mule', 'Moodz'), 'Pack Mule');
+  check('a name that is only packaging names nothing', c('Small Batch Premium Flower Bag', 'TKS Sensei'), null);
+}
+
 /* ------------------------------------------ one panel on many strains --
  * Prime Time's point of sale attaches one terpene list to 57 of its 60 flower
  * products. That is a template, not five measurements, and is dropped; one
