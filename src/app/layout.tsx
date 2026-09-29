@@ -2,10 +2,11 @@ import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
 import { AgeGate } from '@/components/AgeGate';
 import { SiteNav } from '@/components/SiteNav';
+import { SITE_URL } from '@/lib/site';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://theflowerindex.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'The Flower Index — licensed cannabis dispensaries and the flower on their shelves',
     template: '%s · The Flower Index',
