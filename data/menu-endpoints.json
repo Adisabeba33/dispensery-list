@@ -311,13 +311,13 @@
   },
   {
     "licenseNumber": "OCM-CAURD-25-000324",
-    "menuUrl": "https://www.victorydispensaryny.com/collection/flower",
+    "menuUrl": "https://shop.victorydispensaryny.com/collection/flower",
     "platform": "TREEZ",
     "robotsAllows": true,
     "flowerVisibleWithoutLogin": true,
     "ageGate": "simple-button",
-    "checkedAt": "2026-09-06",
-    "notes": "Direct Treez Flower collection; the only access step observed is the standard 21+ confirmation."
+    "checkedAt": "2026-09-29",
+    "notes": "Direct Treez Flower collection; the only access step observed is the standard 21+ confirmation. On 29 September the shop had moved its menu to shop.victorydispensaryny.com, and www.victorydispensaryny.com/collection/flower (the address recorded on 6 September) answered 'The page can't be found'."
   },
   {
     "licenseNumber": "OCM-CAURD-26-000325",
@@ -1038,5 +1038,45 @@
     "ageGate": null,
     "checkedAt": "2026-09-29",
     "notes": "Housing Works Cannabis Co, 750 Broadway (the flagship): its Tymber menu. /cannabis-products/flower/ is a page about flower. The NoMad store (846 6th Ave, OCM-CAURD-24-000225) has no menu of its own on the site — its store page links to this Broadway one — so it is given none rather than Broadway's shelf."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000037",
+    "menuUrl": "https://beleafny.com/shop/collection/flower?store=canna-planet-brooklyn&fulfillment=pickup",
+    "platform": "TREEZ",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-29",
+    "notes": "Beleaf Brooklyn (KBAT Enterprises), 1077 Atlantic Ave: the chain's shop names this store canna-planet-brooklyn. /products/flower/ is a page about flower. The shop says of its three stores (Brooklyn, Calverton, Medford) 'three shops, one shelf'."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000016",
+    "menuUrl": "https://shop.blueforestfarmsdispensary.com/wp-json/wc/store/v1/products?category=flower&per_page=100",
+    "platform": "PROPRIETARY",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-29",
+    "notes": "Blue Forest Farms (BFF), Manhattan: WooCommerce shop on shop.blueforestfarmsdispensary.com with no menu platform; its products are printed into the page. This is its Store API — public, the same list as JSON — for the flower category: 131 products on 29 September."
+  },
+  {
+    "licenseNumber": "OCM-MICR-25-000249",
+    "menuUrl": "https://rustiksmokes.com/wp-json/wc/store/v1/products?category=flower&per_page=100",
+    "platform": "PROPRIETARY",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-29",
+    "notes": "Rustik Smokes, 469 Dekalb Ave: WooCommerce shop selling its own product lines; products are printed into the page. This is its Store API for the flower category: 5 products on 29 September."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000197",
+    "menuUrl": "https://cannabuddha.us/store/category/flower?locId=3",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-29",
+    "notes": "Canna Buddha, 215-46 39th Ave, Bayside: Carrot store. The chain's store list (api …/store/locations) names four stores; Bayside is locId=3. The category links on the chain's own /new-york/ page carry locId=1, which is Hobbs, New Mexico — followed, they would put a New Mexico shelf under a New York licence."
   }
 ]
