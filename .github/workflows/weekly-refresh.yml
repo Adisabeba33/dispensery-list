@@ -6,10 +6,15 @@ on:
     #
     # A week that only restamps timestamps lands on main by itself; a week in
     # which a licence, a municipality or an opt-out verdict moved opens a pull
-    # request instead. See the significance step below — the old rule published
-    # nothing automatically and opened a pull request every week, which meant
-    # five of them went unread.
-    - cron: '0 11 * * 1'
+    # request that says what moved, and merges it (the owner's call,
+    # 2026-09-29: the site must not wait a week on a person). See the
+    # significance step below — the old rule published nothing automatically
+    # and opened a pull request every week, which meant five of them went
+    # unread.
+    #
+    # 10:47 UTC, not 11:00: GitHub starts on-the-hour jobs hours late (this
+    # one ran near 16:45), and the daily menu run takes 11:17.
+    - cron: '47 10 * * 1'
   workflow_dispatch:
 
 permissions:
@@ -166,11 +171,21 @@ jobs:
           # the branch is still pushed and the data is still safe, so this must
           # not fail the run: a red weekly job that actually did its work
           # teaches everyone to ignore it.
-          if gh pr create \
+          if URL=$(gh pr create \
             --title "Registry refresh — $(date -u +%Y-%m-%d)" \
             --body-file refresh-report.md \
             --base main \
-            --head "$BRANCH"; then
+            --head "$BRANCH"); then
+            echo "Pull request: $URL" >> "$GITHUB_STEP_SUMMARY"
+            # The pull request is the record of what moved; the data went
+            # through the validator above, so it is merged at once. A merge
+            # GitHub refuses — the daily menu run changed the same file in the
+            # meantime — leaves the pull request open for a person, and says so.
+            if gh pr merge "$URL" --squash --delete-branch; then
+              echo "Merged: $URL" >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+            echo "::warning::Opened but could not merge: $URL — merge it by hand."
             exit 0
           fi
 
