@@ -1088,5 +1088,25 @@
     "ageGate": null,
     "checkedAt": "2026-09-29",
     "notes": "Renaissant NYC, 40-07 Queens Blvd, Sunnyside: its shop is a cart on cart.renaissant.nyc; the home page links its Flower category here. Before 29 September the SiteGround check stood in front of the site; a browser now passes it. Not read yet: this cart (an older Proteus) answers ajax_getproducts.cfm with HTML product cards, not JSON, and the collector reads JSON. Saint Cannabis runs the same."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000154",
+    "menuUrl": "https://dutchie.com/dispensary/herbwell-madison-ave/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-29",
+    "notes": "Herbwell Madison Avenue's own menu. The chain's home page links its Cambridge, Massachusetts shop beside it, and without this the collector went there."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-26-000343",
+    "menuUrl": "https://getflos.com/menu/categories/flower/",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-29",
+    "notes": "The home page did not always offer a menu link (menuLink: none on 29 September); the flower category read 97 strains the same day."
   }
 ]

@@ -1563,9 +1563,30 @@ const GUESSED_MENU_PATHS = [
   '/store',
 ];
 
+/* A chain that also trades in another state links every branch from the same
+   home page. Herbwell's lists shop-weed-dispensary-manhattan-ny/ beside
+   shop-weed-dispensary-cambridge-ma/, and the collector took Cambridge for
+   the Madison Avenue licence: a Massachusetts shelf filed under New York. The
+   address says which state it is, the way a slug writes it — a state's
+   two letters closing a hyphenated segment, or its name spelled out. Only
+   the letters no English word ends a slug with: "-co", "-in", "-me", "-or"
+   and "-oh" are words as often as states. */
+const OTHER_STATE_SLUG =
+  /[a-z0-9]-(nj|ma|ct|pa|vt|nh|ri|md|dc|mi|il|ca|nv|az|nm|mo|mn|wa|fl|ok|mt|ak)(?=\/|$|[?#.])/i;
+const OTHER_STATE_SLUG_NAME =
+  /(^|[/-])(new-jersey|massachusetts|connecticut|pennsylvania|vermont|new-hampshire|rhode-island|maryland|michigan|illinois|california|nevada|arizona|new-mexico|missouri|minnesota|washington-state|florida|oklahoma|montana|alaska)(?=[/-]|$|[?#.])/i;
+export const linkNamesAnotherState = (href = '', text = '') => {
+  let path = href;
+  try {
+    path = new URL(href).pathname;
+  } catch {}
+  return OTHER_STATE_SLUG.test(path) || OTHER_STATE_SLUG_NAME.test(path) || namesAnotherState(String(text ?? '').trim());
+};
+
 /** Higher is better; 0 means "never follow this". */
 export const rankMenuLink = (href = '', text = '') => {
   if (!href || PROMO_ROUTE.test(href) || isProductPage(href)) return 0;
+  if (linkNamesAnotherState(href, text)) return 0;
   if (isNotFlowerCategory(href)) return 0;
   // A slice of the shelf ranks below the shelf, but above a bare menu route.
   if (FLOWER_ROUTE.test(href) && isSubsetFlowerCategory(href)) return SUBSET_FLOWER;

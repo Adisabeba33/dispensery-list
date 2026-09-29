@@ -16,7 +16,8 @@ import {
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
   mergeBySize, pagedRequest, pickFlowerInside, pickMenuLink, pickStore,
   placeNamesOf, rankMenuLink, registerTextOf, sameEstate, signatureOf, sizeFromText,
-  toListing, wallAction, fulfilmentAction, pageKnobOf, dropRepeatedPanels, sweedCategoryOf, decodeEntities
+  toListing, wallAction, fulfilmentAction, pageKnobOf, dropRepeatedPanels, sweedCategoryOf, decodeEntities,
+  linkNamesAnotherState
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 import { labPanelKeyOf } from './lab-panel.mjs';
@@ -743,6 +744,18 @@ check('an empty status says nothing either way',
   ];
   check('picks the flower category over a promo', pickMenuLink(links), 'https://shop.test/stores/x/categories/flower');
   check('a specials route is never followed', rankMenuLink('https://shop.test/specials/offer/1', 'Shop now'), 0);
+  /* Herbwell's home page links its Manhattan and Cambridge, Massachusetts shops
+     side by side; the Madison Avenue licence was read from Cambridge. */
+  check('a branch in another state is never followed',
+    pickMenuLink([
+      { href: 'https://herbwellcannabis.com/shop-weed-dispensary-cambridge-ma/', text: 'Shop Cambridge' },
+      { href: 'https://herbwellcannabis.com/shop-weed-dispensary-manhattan-ny/', text: 'Shop Manhattan' },
+    ], 'https://herbwellcannabis.com', 'Herbwell'),
+    'https://herbwellcannabis.com/shop-weed-dispensary-manhattan-ny/');
+  check('a state spelled out in the address is another state', linkNamesAnotherState('https://x.test/new-jersey/menu'), true);
+  check('and so is one in the link text', linkNamesAnotherState('https://x.test/shop', 'Roselle, NJ'), true);
+  check('a New York slug is ours', linkNamesAnotherState('https://x.test/bronx-ny/menu'), false);
+  check('a word that ends like a state is not one', linkNamesAnotherState('https://x.test/menu/smoke-co/flower'), false);
   /* One item's own page is not the shelf. BX Buddiez's ninety-two strains were
      replaced by the sixteen that sit on /product/nanticoke-coconut-cream-flower/,
      because the slug ends in "flower" and the pattern could not tell a segment
