@@ -113,6 +113,13 @@
       "lastStatus": "no-products"
     },
     {
+      "licenseNumber": "OCM-RETL-24-000222",
+      "name": "Garden Bliss LLC (The THC Shop, Bronx)",
+      "menu": "https://ourthcshop.com/bronx/",
+      "lastStatus": "no-products",
+      "note": "added 2026-09-29: the shop's menu is dutchie.com/embedded-menu (or dutchie.com/stores)"
+    },
+    {
       "licenseNumber": "OCM-CAURD-26-000350",
       "name": "GOOD VIBES NYC, inc",
       "menu": "https://www.goodvibes.nyc/shop",
@@ -205,6 +212,13 @@
       "note": "added 2026-09-29: the site's menu page now embeds dutchie.com/embedded-menu"
     },
     {
+      "licenseNumber": "OCM-RETL-24-000027",
+      "name": "Hudson Park Agency LLC (The THC Shop, Rosedale)",
+      "menu": "https://ourthcshop.com/rosedale/",
+      "lastStatus": "no-products",
+      "note": "added 2026-09-29: the shop's menu is dutchie.com/embedded-menu (or dutchie.com/stores)"
+    },
+    {
       "licenseNumber": "OCM-CAURD-24-000211",
       "name": "Kaya Bliss Dispensary",
       "menu": "https://kayablissnyc.com/products/flower/",
@@ -293,6 +307,13 @@
       "name": "SOULMATE",
       "menu": "https://soulmatebk.com/shop/?dtche%5Bcategory%5D=flower",
       "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000149",
+      "name": "Sparkboro Inc",
+      "menu": "https://sparkborony.com/shop/?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products",
+      "note": "added 2026-09-29: the shop's menu is dutchie.com/embedded-menu (or dutchie.com/stores)"
     },
     {
       "licenseNumber": "OCM-RETL-24-000261",
