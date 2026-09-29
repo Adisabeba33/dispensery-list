@@ -978,5 +978,45 @@
     "ageGate": "simple-button",
     "checkedAt": "2026-09-28",
     "notes": "Matawana, Brooklyn: Sweed store 490, the Brooklyn store's own Flower category. Without this the collector followed a 'New Product Drop' carousel link to one product's page and read 12 flower listings where the owner counted about 25 by hand."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000349",
+    "menuUrl": "https://shop.forestchillsdispensary.com/store/forest-hills/category/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-29",
+    "notes": "Forest Chills, 71-19 Austin St, Forest Hills: Carrot store (locId=1) on shop.forestchillsdispensary.com. The main site's /menu is a page about the shop; its 'Shop' link leads here. Read to 22 September, then no products."
+  },
+  {
+    "licenseNumber": "OCM-RETL-26-000489",
+    "menuUrl": "https://kushieny.com/menu/categories/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-29",
+    "notes": "Kushie, 104-39 Queens Blvd, Forest Hills: the site moved its flower from /menu/flower (now 404) to /menu/categories/flower. Read to 18 September, then nothing."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000283",
+    "menuUrl": "https://shop.newamsterdam.nyc/newamsterdam/menu/flower-7703",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-29",
+    "notes": "New Amsterdam (Leafy NYC II), Sweed store 675: its own Flower category, 7703. newamsterdam.nyc/products/flower/ is a page about flower; its Shop links lead to shop.newamsterdam.nyc."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000430",
+    "menuUrl": "https://primetimecannabis.dispensary.shop/rec/search?category=Flower&title=Flower",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-29",
+    "notes": "Prime Time Cannabis, Brooklyn: Dispense menu. The collector followed a product link to one product's page; this is the menu's own Flower category, as Cannabis Cowboy's is."
   }
 ]

@@ -10,6 +10,13 @@
       "lastStatus": "no-products"
     },
     {
+      "licenseNumber": "OCM-CAURD-25-000230",
+      "name": "Aroma Farms Inc",
+      "menu": "https://aromafarmsinc.com/menu",
+      "lastStatus": "no-products",
+      "note": "added 2026-09-29: the site's menu page now embeds dutchie.com/embedded-menu"
+    },
+    {
       "licenseNumber": "OCM-RETL-24-000242",
       "name": "Bellanova",
       "menu": "https://www.bellanovany.com/menu/",
@@ -182,6 +189,13 @@
       "name": "High of Brooklyn LLC",
       "menu": "https://kayablissnyc.com/products/flower/",
       "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-25-000322",
+      "name": "HUDSON HAZeLLC",
+      "menu": "https://hudsonhaze.com/menu",
+      "lastStatus": "no-products",
+      "note": "added 2026-09-29: the site's menu page now embeds dutchie.com/embedded-menu"
     },
     {
       "licenseNumber": "OCM-CAURD-24-000211",
