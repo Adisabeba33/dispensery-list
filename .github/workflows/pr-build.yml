@@ -1,0 +1,33 @@
+name: Build check
+
+# Vercel builds main only (vercel.json): a preview for every push to every
+# branch was most of the build bill in September 2026 — two sessions and the
+# collector's branches pushing many times a day, each push a full build of
+# the site. That preview was also the only thing that built a pull request
+# before it merged. This puts the check back where it costs nothing: the
+# repository is public, so GitHub's runners are free for it.
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: build-check-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
