@@ -1,0 +1,5371 @@
+{
+ "about": "Даты с сертификатов партий из shelf-terpenes.json: отбор пробы (sampled — пакет не старше этого дня), упаковка и сбор, где сертификат их пишет. Пишется scripts/coa-dates.py.",
+ "certificates": {
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/18764.pdf": {
+   "lab": "DRS",
+   "sampled": "2025-11-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/18766.pdf": {
+   "lab": "DRS",
+   "sampled": "2025-11-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/18767.pdf": {
+   "lab": "DRS",
+   "sampled": "2025-11-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/19893.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-12-12",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/19894.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-12-12",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/19895.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-11-21",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/19896.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-01-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/19897.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-01-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/20139.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-11-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/20615.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-01-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/20616.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-01-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/20815.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-01-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/20818.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-01-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/21421.pdf": {
+   "lab": "Reliable",
+   "sampled": "2026-02-03",
+   "sampledFrom": "tested",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/21444.pdf": {
+   "lab": null,
+   "sampled": "2026-02-04",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/21445.pdf": {
+   "lab": null,
+   "sampled": "2026-02-05",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/21446.pdf": {
+   "lab": null,
+   "sampled": "2026-02-04",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/21660.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-01-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/21852.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22008.pdf": {
+   "lab": "Kaycha",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": "2026-02-18",
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22010.pdf": {
+   "lab": "Kaycha",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": "2026-02-18",
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22014.pdf": {
+   "lab": "Kaycha",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": "2026-02-18",
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22016.pdf": {
+   "lab": "Kaycha",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": "2026-02-18",
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22066.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-01-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22092.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-02-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22471.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2025-12-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22514.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-02-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22529.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-02-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22666.pdf": {
+   "lab": "ACT",
+   "sampled": "2025-01-28",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22706.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-01-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22709.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22710.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22789.pdf": {
+   "lab": "Green Analytics",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": "2026-03-07",
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22842.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-02-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22843.pdf": {
+   "lab": "Keystone",
+   "sampled": "2025-10-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/22844.pdf": {
+   "lab": "Keystone",
+   "sampled": "2025-10-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/23223.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/23314.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-11-12",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/23425.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-02-18",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/23427.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-02-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/23438.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-01-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/23440.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-01-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/23529.pdf": {
+   "lab": "ACT",
+   "sampled": "2025-12-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/23620.pdf": {
+   "lab": null,
+   "sampled": "2026-03-13",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/23630.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/23737.pdf": {
+   "lab": "Green Analytics",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/23738.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-01-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/23788.pdf": {
+   "lab": null,
+   "sampled": "2026-03-11",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/23789.pdf": {
+   "lab": null,
+   "sampled": "2026-03-11",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/23790.pdf": {
+   "lab": null,
+   "sampled": "2026-03-11",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/23795.pdf": {
+   "lab": "Keystone",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": "2026-03-16",
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24039.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-01-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24145.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-01-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24146.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-01-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24467.pdf": {
+   "lab": null,
+   "sampled": "2026-03-18",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24480.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-03-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24494.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-01-21",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24567.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-03-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24645.pdf": {
+   "lab": "Metrc",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": "2026-03-18",
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24656.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-03-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24670.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-03-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24677.pdf": {
+   "lab": null,
+   "sampled": "2026-03-26",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24678.pdf": {
+   "lab": null,
+   "sampled": "2026-03-22",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24686.pdf": {
+   "lab": null,
+   "sampled": "2026-03-19",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24736.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24756.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24758.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-12-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24921.pdf": {
+   "lab": "Metrc",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24922.pdf": {
+   "lab": "Metrc",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/24923.pdf": {
+   "lab": "Metrc",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25140.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25141.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25142.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25145.pdf": {
+   "lab": null,
+   "sampled": "2026-03-15",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25178.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2025-11-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25346.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25347.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-12",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25348.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-12",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25349.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25350.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-12",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25351.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25352.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25392.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25566.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25790.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/25891.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-03-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26039.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26063.pdf": {
+   "lab": null,
+   "sampled": "2026-03-26",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26155.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26156.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26157.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-31",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26221.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26225.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26226.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26227.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26278.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-03-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26279.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-03-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26280.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-03-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26281.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-03-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26282.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-03-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26290.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-03-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26291.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-03-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26294.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-01-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26375.pdf": {
+   "lab": "Metrc",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26636.pdf": {
+   "lab": "Keystone",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26637.pdf": {
+   "lab": "Keystone",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26638.pdf": {
+   "lab": "Keystone",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26639.pdf": {
+   "lab": "Keystone",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26826.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26827.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-01-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26928.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26982.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26983.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26985.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/26986.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27073.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27077.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27079.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27130.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27132.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27142.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27148.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-11-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27149.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27150.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27151.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27152.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27154.pdf": {
+   "lab": "Keystone",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27155.pdf": {
+   "lab": "Keystone",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27156.pdf": {
+   "lab": "Keystone",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27161.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27195.pdf": {
+   "lab": null,
+   "sampled": "2026-04-13",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27201.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-03-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27203.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-08",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27281.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27346.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-08",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27347.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-08",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27484.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27486.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27489.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27490.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27595.pdf": {
+   "lab": null,
+   "sampled": "2026-01-09",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27597.pdf": {
+   "lab": null,
+   "sampled": "2026-01-09",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27616.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27617.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27618.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27619.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27620.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27621.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27622.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27623.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27646.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27647.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-31",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27648.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27649.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27650.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-02-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27668.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27669.pdf": {
+   "lab": "DRS",
+   "sampled": "2025-12-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27671.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-02-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27672.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-02-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27673.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27674.pdf": {
+   "lab": "DRS",
+   "sampled": "2025-12-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27679.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-01-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27680.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-12",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27681.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27682.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27827.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27830.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27833.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-02-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27834.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-02-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27838.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-01-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27839.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-01-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/27859.pdf": {
+   "lab": null,
+   "sampled": "2026-05-01",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28047.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28048.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-18",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28049.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-18",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28057.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28058.pdf": {
+   "lab": null,
+   "sampled": "2026-03-18",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28063.pdf": {
+   "lab": null,
+   "sampled": "2026-03-12",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28065.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-18",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28073.pdf": {
+   "lab": null,
+   "sampled": "2026-01-20",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28075.pdf": {
+   "lab": "Metrc",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28080.pdf": {
+   "lab": null,
+   "sampled": "2026-04-24",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28082.pdf": {
+   "lab": null,
+   "sampled": "2026-05-01",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28109.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-08",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28118.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28204.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28205.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28297.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28300.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28435.pdf": {
+   "lab": "Keystone",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28540.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-02-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28542.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-02-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28544.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-02-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28561.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-02-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28563.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28589.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-11-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28591.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28592.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28835.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-03-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28837.pdf": {
+   "lab": "Green Analytics",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28851.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28854.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28856.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-12-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28857.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-12-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28863.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28892.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-12-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28895.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28896.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-12-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/28897.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-12-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29007.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-08",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29098.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29101.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29103.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29104.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29110.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29112.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-01-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29150.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29151.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29152.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29235.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29429.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-04-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29593.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29695.pdf": {
+   "lab": null,
+   "sampled": "2026-04-15",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29696.pdf": {
+   "lab": null,
+   "sampled": "2026-05-23",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29739.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29741.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29745.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29751.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29771.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29796.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29798.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29799.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-03-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29800.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-03-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29901.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29903.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29904.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29905.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29906.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29907.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-03-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30000.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-11-12",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30001.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-11-12",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30002.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-03-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30003.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-03-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30004.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-11-12",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30041.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-30",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30061.pdf": {
+   "lab": null,
+   "sampled": "2026-05-19",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30217.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-08",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30247.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30249.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30250.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-08",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30352.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30353.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30354.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30366.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30476.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30480.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30481.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30543.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30547.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30584.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-03-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30585.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-03-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30587.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-03-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30590.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30591.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30594.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30606.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30754.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30756.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30760.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30774.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30787.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30846.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-04-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30847.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-05-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30852.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-03-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30876.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30894.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30898.pdf": {
+   "lab": "Keystone",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30902.pdf": {
+   "lab": "Keystone",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30913.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30914.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30958.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-21",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30959.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-21",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30963.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-11-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30964.pdf": {
+   "lab": "Keystone",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30965.pdf": {
+   "lab": "Keystone",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30978.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/30979.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-30",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31050.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-11-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31052.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-11-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31154.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31157.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31174.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31175.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31176.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31177.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31178.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31212.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31214.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31216.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31218.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31272.pdf": {
+   "lab": null,
+   "sampled": "2026-05-28",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31273.pdf": {
+   "lab": null,
+   "sampled": "2026-05-28",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31274.pdf": {
+   "lab": null,
+   "sampled": "2026-05-28",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31275.pdf": {
+   "lab": null,
+   "sampled": "2026-05-28",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31276.pdf": {
+   "lab": null,
+   "sampled": "2026-05-28",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31277.pdf": {
+   "lab": null,
+   "sampled": "2026-05-28",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31278.pdf": {
+   "lab": null,
+   "sampled": "2026-05-28",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31279.pdf": {
+   "lab": null,
+   "sampled": "2026-05-28",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31280.pdf": {
+   "lab": null,
+   "sampled": "2026-05-28",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31314.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-02-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31418.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31419.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31445.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31446.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31487.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-02-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31514.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31648.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-12-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31650.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31651.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31660.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31662.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31664.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31667.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31669.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31758.pdf": {
+   "lab": "DRS",
+   "sampled": "2025-11-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31759.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31760.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31761.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31819.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-08",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31838.pdf": {
+   "lab": "Reliable",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31840.pdf": {
+   "lab": "Reliable",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31968.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31969.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31970.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31971.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31976.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32072.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-06-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32081.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32082.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32121.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32122.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-02-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32170.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32171.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32172.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32173.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32174.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32175.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32176.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32177.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32213.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-11-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32252.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32254.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32307.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-08",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32356.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32358.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32368.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-01-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32483.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32484.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32485.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32486.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32487.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32612.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32667.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32668.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32669.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32670.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32671.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32695.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32697.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-30",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32742.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32781.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-06-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32782.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-06-18",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32837.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32838.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-30",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32839.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32870.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32871.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32872.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32874.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32875.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32882.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-30",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32883.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32886.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32943.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32944.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32946.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32947.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-21",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32948.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-21",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32966.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32968.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32969.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32970.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33082.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33091.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33092.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33094.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33096.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33097.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33103.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33104.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33105.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33106.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33107.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33127.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33128.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-30",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33129.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33139.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33140.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33142.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33143.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33144.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33145.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33146.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33165.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33179.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33180.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33200.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-03-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33268.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33279.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33282.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33283.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33304.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33312.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33355.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33386.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33387.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33406.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33407.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33410.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33411.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33412.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33413.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33429.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33526.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-04-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33532.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33580.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-31",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33582.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33614.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33615.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33677.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33682.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33683.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33685.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33737.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-30",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33797.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33813.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33816.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33852.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-05-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33854.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33906.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33907.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33909.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33960.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33961.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33984.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-06-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33997.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-03-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/34252.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/34628.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-02-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/34629.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/34630.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/34732.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/34733.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/34734.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35064.pdf": {
+   "lab": null,
+   "sampled": "2025-11-14",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35066.pdf": {
+   "lab": null,
+   "sampled": "2026-03-12",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35069.pdf": {
+   "lab": null,
+   "sampled": "2026-04-24",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35071.pdf": {
+   "lab": null,
+   "sampled": "2026-05-29",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35072.pdf": {
+   "lab": null,
+   "sampled": "2026-01-20",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35139.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35140.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35141.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35153.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-30",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35157.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35158.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35159.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35160.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35209.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35278.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-06-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35279.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-06-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35281.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-06-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35288.pdf": {
+   "lab": null,
+   "sampled": "2026-06-26",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35307.pdf": {
+   "lab": null,
+   "sampled": "2026-06-26",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35344.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35401.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-30",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35402.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35443.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35444.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35448.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35449.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35450.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35461.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35463.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35466.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35504.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35588.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35616.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35618.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35619.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35679.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35682.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35684.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35686.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35688.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35712.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35714.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35716.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35726.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35727.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35728.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35729.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35730.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35731.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35733.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35734.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35735.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35736.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35739.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35740.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35741.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35784.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35786.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35788.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35792.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35794.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35796.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35803.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35805.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35807.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35809.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35811.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35813.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35815.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35824.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35827.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35828.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35829.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35831.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35834.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35835.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35837.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35857.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35858.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35859.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35860.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35861.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35862.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35863.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35864.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35865.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35868.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35872.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35873.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35875.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35893.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35894.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35895.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35896.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35897.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35898.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35899.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35900.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35901.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35902.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35903.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35904.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35905.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35906.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35907.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35908.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35909.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35910.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35911.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35948.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35949.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35996.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35997.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36019.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36020.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36034.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36090.pdf": {
+   "lab": null,
+   "sampled": "2026-04-24",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36095.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36098.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36146.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36177.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36179.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36182.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36183.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36185.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36187.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36189.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36193.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36195.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36197.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36198.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36212.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36213.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36260.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36262.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36263.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36264.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36265.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36266.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-18",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36267.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36268.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36288.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36295.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36297.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36307.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36312.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36364.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36366.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36368.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36380.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36381.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36384.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36386.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36387.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36389.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36440.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36443.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36445.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36447.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-31",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36474.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36487.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36488.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36499.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36506.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36507.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36508.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36529.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36530.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36532.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36579.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36580.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36581.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36582.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36583.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36584.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36589.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-07-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36606.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36607.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36608.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36609.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36611.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36613.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36615.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36616.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36617.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-13",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36618.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36619.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36630.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36641.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36642.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36643.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36644.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36645.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36646.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36793.pdf": {
+   "lab": null,
+   "sampled": "2026-07-07",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36794.pdf": {
+   "lab": null,
+   "sampled": "2026-08-02",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36796.pdf": {
+   "lab": null,
+   "sampled": "2026-08-02",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36805.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36806.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36809.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-02-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36814.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-10-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36827.pdf": {
+   "lab": null,
+   "sampled": "2026-06-26",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36828.pdf": {
+   "lab": null,
+   "sampled": "2026-08-02",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36829.pdf": {
+   "lab": null,
+   "sampled": "2026-07-17",
+   "sampledFrom": "reported",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36954.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-30",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36982.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-04-30",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37058.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37065.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37094.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37095.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37096.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37098.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37100.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37102.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37170.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37171.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37172.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37173.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37174.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37175.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": "2025-12-01"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37179.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-30",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37187.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37223.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37226.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37227.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-07-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37231.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-07-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37232.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-07-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37233.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-07-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37295.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-07-21",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37300.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37303.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37308.pdf": {
+   "lab": null,
+   "sampled": "2026-06-05",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37309.pdf": {
+   "lab": null,
+   "sampled": "2026-05-28",
+   "sampledFrom": "received",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37423.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37424.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37425.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37483.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-07-08",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37515.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-08-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37516.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-08-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37546.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-06-19",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37609.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37610.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37611.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37612.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-06-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37698.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-20",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37701.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37704.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-08-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37705.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37706.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37710.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-08-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37735.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37748.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37752.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37756.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37759.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37769.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37773.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37780.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-23",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37790.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37793.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37794.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37795.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37796.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37797.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37798.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37885.pdf": {
+   "lab": "Metrc",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37886.pdf": {
+   "lab": "Metrc",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37941.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-08",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38123.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38124.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38157.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38186.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-02-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38187.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-02-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38188.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-02-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38190.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38191.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-02-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38192.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38195.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-05-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38240.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-07-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38241.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-05-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38243.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38244.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-05-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38248.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-07-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38249.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38367.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38378.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-22",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38381.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-07-31",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38382.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-08-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38384.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-08-12",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38390.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-08-03",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38391.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-24",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38446.pdf": {
+   "lab": "Green Analytics",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38447.pdf": {
+   "lab": "Green Analytics",
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "no date found"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38510.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-04-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38540.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38541.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38542.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38543.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38544.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  }
+ }
+}
