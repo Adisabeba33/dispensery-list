@@ -1078,5 +1078,15 @@
     "ageGate": "simple-button",
     "checkedAt": "2026-09-29",
     "notes": "Canna Buddha, 215-46 39th Ave, Bayside: Carrot store. The chain's store list (api …/store/locations) names four stores; Bayside is locId=3. The category links on the chain's own /new-york/ page carry locId=1, which is Hobbs, New Mexico — followed, they would put a New Mexico shelf under a New York licence."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000240",
+    "menuUrl": "https://cart.renaissant.nyc/shop/c/Flower",
+    "platform": "PROPRIETARY",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-29",
+    "notes": "Renaissant NYC, 40-07 Queens Blvd, Sunnyside: its shop is a cart on cart.renaissant.nyc; the home page links its Flower category here. Before 29 September the SiteGround check stood in front of the site; a browser now passes it. Not read yet: this cart (an older Proteus) answers ajax_getproducts.cfm with HTML product cards, not JSON, and the collector reads JSON. Saint Cannabis runs the same."
   }
 ]
