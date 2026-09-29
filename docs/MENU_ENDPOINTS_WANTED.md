@@ -1,6 +1,6 @@
 # Магазины, которым нужен адрес меню
 
-Работающих магазинов в реестре: **330**. Обход заходит в **310**, полку отдают **263**.
+Работающих магазинов в реестре: **330**. Обход заходит в **310**, полку отдают **266**.
 
 Этот файл собирается скриптом `scripts/menu-endpoints-wanted.py` по последнему прогону — правит его не рука, а следующий запуск.
 
@@ -29,7 +29,7 @@
 
 Проверить перед коммитом: `python scripts/validate-menu-endpoints.py`.
 
-## Пусто — 47
+## Пусто — 44
 
 | Магазин | Город | Сайт | Почему пусто |
 |---|---|---|---|
@@ -37,8 +37,7 @@
 | Canna Buddha Corp | Bayside | https://cannabuddha.us | страница вернула ноль товаров |
 | Weed Mart By New Metro | Bayside | https://newmetro.club | страница вернула ноль товаров |
 | Conbud | Bronx | https://www.conbudbx.com | страница не открылась |
-| Freshly Baked NYC | Bronx | https://freshlybaked.nyc | страница вернула ноль товаров |
-| Garden Bliss LLC | Bronx | https://ourthcshop.com/bronx/ | ссылку на меню не нашли |
+| Garden Bliss LLC | Bronx | https://ourthcshop.com/bronx/ | страница вернула ноль товаров |
 | Victory Dispensary LLC ✳️ | Bronx | https://www.victorydispensaryny.com | страница вернула ноль товаров |
 | Bud City Cannabis LLC ✳️ | Brooklyn | https://budcityny.com | товары есть (12), цветка нет |
 | Caffiend LLC | Brooklyn | https://thebushwicknyc.com | страница вернула ноль товаров |
@@ -63,7 +62,6 @@
 | Fluent | New York | https://www.etain.com | страница вернула ноль товаров |
 | Green Rise Inc. | New York | https://greenriseny.com | страница не открылась |
 | Hells Kitchen Cannabis Company | New York | https://www.hkcc.nyc | ссылку на меню не нашли |
-| KushKlub NY LLC | New York | https://kushklub.com | страница вернула ноль товаров |
 | Leafy NYC II LLC | New York | https://www.newamsterdam.nyc | страница вернула ноль товаров |
 | Nucleus Dispensary Inc. | New York | https://nucleusdispensary.com | страница вернула ноль товаров |
 | Rezidue ✳️ | New York | https://rezidueny.com/ | страница вернула ноль товаров |
@@ -73,27 +71,23 @@
 | Twinn Leaf LLC | New York | https://twinnleafnyc.com | ссылку на меню не нашли |
 | GreenCup ✳️ | Rego Park | https://greencup.nyc | страница вернула ноль товаров |
 | THE GOAT DISPENSARY | Rego Park | https://www.thegoatdispensary.com | ссылку на меню не нашли |
-| Hudson Park Agency LLC | Rosedale | https://ourthcshop.com | ссылку на меню не нашли |
-| Green Land Retail LLC | Staten Island | https://greenlandny.com | страница вернула ноль товаров |
+| Hudson Park Agency LLC | Rosedale | https://ourthcshop.com | страница вернула ноль товаров |
+| Green Land Retail LLC | Staten Island | https://greenlandny.com | ссылку на меню не нашли |
 | Studio57NY ✳️ | Staten Island | https://studio57ny.com | страница вернула ноль товаров |
 | RENAISSANT NYC | Sunnyside | https://renaissant.nyc | ссылку на меню не нашли |
 | Fluent | White Plains | https://etainhealth.com/ | страница вернула ноль товаров |
 | Cannabis Group NY, LLC | Whitestone | https://ignyteny.com | robots.txt запрещает — **не трогать** |
-| Budr Cannabis | Yonkers | https://budrcannabis.com | страница вернула ноль товаров |
 
 ✳️ — адрес в `menu-endpoints.json` уже есть, и всё равно пусто: значит записанный адрес больше не тот.
 
-## Полка читается не до конца — 5
+## Полка читается не до конца — 2
 
 Здесь адрес есть и меню отвечает, но отдаёт меньше, чем само объявляет. Листание таким не помогло — им нужен прямой адрес категории.
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| Gotham Williamsburg | 77 | 81 | https://gotham.nyc |
-| High Tidez CI | 117 | 136 | https://hightidezci.com |
-| Freshly Baked NYC | 39 | 49 | https://freshlybaked.nyc/ |
-| Gotham Bowery | 77 | 81 | https://gotham.nyc/ |
-| Gotham Chelsea | 77 | 81 | https://www.gotham.nyc |
+| KushKlub NY LLC | 56 | 88 | https://kushklub.com |
+| High Tidez CI | 113 | 131 | https://hightidezci.com |
 
 ## Сюда не ходим
 

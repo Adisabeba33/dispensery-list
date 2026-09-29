@@ -61,13 +61,13 @@
   },
   {
     "licenseNumber": "OCM-CAURD-24-000080",
-    "menuUrl": "https://thecannabisplace.org/store/?cat=flower&locId=1",
+    "menuUrl": "https://thecannabisplace.org/store/?cat=flower&locId=2",
     "platform": "OTHER",
     "robotsAllows": null,
     "flowerVisibleWithoutLogin": true,
     "ageGate": "none",
     "checkedAt": "2026-09-20",
-    "notes": "First-party Store page exposes Flower through cat=flower and locId=1; page footer identifies the New York store at 74-03 Metropolitan Ave, Queens. This is the full Flower category rather than the generic /store/new-york/ landing page."
+    "notes": "First-party Store page exposes Flower through cat=flower and locId. locId=1 is Jersey City, NJ and locId=2 is Queens, NY (the site's own store picker links them so); locId=1 was recorded here until 28 September and the collector read the New Jersey shelf. The Queens store is 74-03 Metropolitan Ave."
   },
   {
     "licenseNumber": "OCM-CAURD-24-000092",
@@ -948,5 +948,25 @@
     "ageGate": null,
     "checkedAt": "2026-09-28",
     "notes": "Budr Cannabis, 887 Yonkers Ave: Jane store 6174 on budrcannabis.com/shop-yonkers/. The chain's home page lists its Connecticut shops; the Yonkers shop has a page of its own."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000225",
+    "menuUrl": "https://skonesdispensary.com/store/category/flower?locId=1",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-28",
+    "notes": "Skones Dispensary, 743 Central Park Ave, Yonkers: Carrot store, locId=1. On 21 September /flower/ was the menu and gave 118 products; by 27 September it had become a page about flower with a carousel of 25, and the menu itself moved behind its 'Browse the full Flower menu' link to /store/category/flower?locId=1."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000062",
+    "menuUrl": "https://silkroadnyc.com/queens-ny-cannabis-dispensary-menu/?category=FLOWER",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-28",
+    "notes": "Silk Road NYC, 166-30 Jamaica Ave: /categories/flower/ is a page about the shop's flower with a carousel of a dozen products; its 'Shop Flower — Live Menu' link goes to this address. The collector read the carousel and published 2 listings for a week."
   }
 ]
