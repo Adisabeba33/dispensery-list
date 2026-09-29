@@ -13,7 +13,8 @@ Alley Oop от ElectraLeaf четыре магазина Gotham и BudBiz печ
 Как собирается партия:
 
 - позиции одного сорта бренда с одним THC — одна партия; «31» и 30.64 — тоже
-  одна (то же правило, что для партий в shelf-history.py);
+  одна (то же правило, что для партий в shelf-history.py); но близкий и не
+  тот же THC при заметно разных панелях — два сертификата, две партии;
 - позиция без THC присоединяется к партии, только если её панель совпадает
   с панелью партии по всем общим терпенам; иначе к какой партии она относится,
   неизвестно, и она не идёт никуда;
@@ -35,6 +36,8 @@ Alley Oop от ElectraLeaf четыре магазина Gotham и BudBiz печ
 """
 import importlib.util
 import json
+import re
+import unicodedata
 from collections import Counter, defaultdict
 from datetime import date, timedelta
 from pathlib import Path
@@ -50,7 +53,31 @@ SAME = 0.005  # ближе — одна и та же цифра, записан�
 _spec = importlib.util.spec_from_file_location("shelf_history", ROOT / "scripts/shelf-history.py")
 _history = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_history)
-key_of, same_batch, listings_of = _history.key_of, _history.same_batch, _history.listings_of
+same_batch, listings_of = _history.same_batch, _history.listings_of
+
+# Производитель партии. Ключ бренда реестра (brandKey) складывает регистр,
+# акценты и «Cannabis», «Co», «Farms»; для партий этого мало: «Kings and
+# Queens» и «Kings & Queens», «The Botanist» и «Botanist», «VOP» и «Voice of the
+# Plant» — один производитель, а ключей у них два, и сорт, который продаёт он
+# один, выглядел как сорт двух производителей и не измерялся вовсе. Поэтому
+# здесь выпадают ещё «and», «the», «of», а сокращения сводятся таблицей.
+# Сома складывает производителя так же (shelfGrowerKey в src/lib/terpenes.ts).
+# Ключ бренда в выгрузке меню не меняется: на нём стоит история полок.
+GROWER_NOISE = re.compile(r"\b(cannabis|co|company|farms?|labs?|brands?|nyc?|llc|inc|and|the|of)\b")
+GROWER_ALIASES = {"vop": "voiceplant", "voiceplants": "voiceplant", "voiceplantvop": "voiceplant", "kingqueens": "kingsqueens"}
+
+
+def grower_of(brand):
+    if not brand:
+        return None
+    key = re.sub(r"[\u0300-\u036f]", "", unicodedata.normalize("NFKD", str(brand))).lower()
+    key = re.sub(r"[^a-z0-9]", "", GROWER_NOISE.sub(" ", re.sub(r"[^a-z0-9 ]", " ", key)))
+    return GROWER_ALIASES.get(key, key) or None
+
+
+def key_of(row):
+    strain = re.sub(r"\s+", " ", (row.get("strainNameCanonical") or row.get("strainNameRaw") or "").strip().lower())
+    return f"{grower_of(row.get('brand')) or ''}|{strain}" if strain else None
 
 
 def panel_of(row):
@@ -65,6 +92,11 @@ def panel_of(row):
 def agrees(a, b):
     shared = a.keys() & b.keys()
     return bool(shared) and all(abs(a[t] - b[t]) <= SAME for t in shared)
+
+
+def differs(a, b):
+    """Заметно разные панели: общий терпен расходится больше чем на 0.03 и на десятую."""
+    return any(abs(a[t] - b[t]) > max(0.03, 0.1 * max(a[t], b[t])) for t in a.keys() & b.keys())
 
 
 def merged(panels):
@@ -101,7 +133,12 @@ def lots(rows):
                        key=lambda f: -len(repr(float(f[0]["thcPercent"]))))
         for row, panel in dated:
             thc = float(row["thcPercent"])
-            home = next((g for g in groups if same_batch(g[0], thc)), None)
+            # Близкий, но не тот же THC — та же партия, только если панели не
+            # расходятся заметно: у Lemon Creamsicle от Find 26.14 и 26.22 — два
+            # сертификата (мирцен 0.33 и 0.21), и склеенные они давали панель
+            # одного под ссылками обоих. Округление меню (0.66 и 0.65) — не спор.
+            home = next((g for g in groups if same_batch(g[0], thc)
+                         and not (g[0] != thc and any(differs(panel, p) for _r, p in g[1]))), None)
             if home:
                 home[1].append((row, panel))
             else:
@@ -146,12 +183,19 @@ def carried(fresh, before, day):
     horizon = (date.fromisoformat(day) - LIFETIME).isoformat()
     kept, gone = list(fresh), []
     for old in before:
+        # Прошлая выгрузка могла сложить производителя иначе; ключ пересчитывается.
+        old = {**old, "key": f"{grower_of(old.get('brand')) or ''}|{old['key'].split('|', 1)[1]}"}
         last = old.get("lastSeen") or old["read"]
         twin = next((l for l in fresh if l["key"] == old["key"] and same_batch(l["thcPercent"], old["thcPercent"])), None)
         if twin:
             twin["read"] = min(twin["read"], old["read"])
         elif last >= horizon:
-            kept.append({**old, "lastSeen": last})
+            same = next((l for l in kept if l["key"] == old["key"] and same_batch(l["thcPercent"], old["thcPercent"])), None)
+            if same:
+                same["read"] = min(same["read"], old["read"])
+                same["lastSeen"] = max(same.get("lastSeen") or same["read"], last)
+            else:
+                kept.append({**old, "lastSeen": last})
         else:
             gone.append({**old, "lastSeen": last})
     kept.sort(key=lambda lot: (lot["key"], -lot["thcPercent"]))
