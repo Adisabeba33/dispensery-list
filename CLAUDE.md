@@ -26,3 +26,16 @@ being served.
   what to look for.
 - The commit and the build time fill themselves in at build (`next.config.mjs`);
   nothing to do for those.
+
+## Vercel builds main only
+
+Since v1.22.1, `vercel.json` turns off Vercel deployments for every branch but
+`main`. A preview for each push to each branch was most of the September 2026
+build bill. So a pull request gets no preview link and no Vercel check.
+
+- The check is `.github/workflows/pr-build.yml` on GitHub: `npm test` and
+  `npm run build` on every pull request, free on a public repository.
+- Build locally before pushing anyway. Every push to `main` is a production
+  build, and a force-push to a pull request re-runs its check.
+- A failed production build leaves the old one live; the home page version
+  simply does not move.
