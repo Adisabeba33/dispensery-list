@@ -46,6 +46,10 @@ def main(to_stdout):
     shops = load("data/dispensaries.json", [])
     listings = load("data/flower-listings.json", [])
     endpoints = {e["licenseNumber"] for e in load("data/menu-endpoints.json", [])}
+    # Магазины на паузе: обход к ним не ходит (окно dutchie.com, см.
+    # data/menu-paused.json). Адрес меню им не поможет — их нужно не искать,
+    # а ждать, пока Dutchie откроется, или договориться.
+    paused = {s["licenseNumber"] for s in (load("data/menu-paused.json", {}) or {}).get("shops", [])}
     coverage = load("data/menu-coverage.json", {})
 
     held = {}
@@ -66,7 +70,10 @@ def main(to_stdout):
     # своими сайтами не посещались вовсе.
     third = [s for s in open_shops if status(s) == "third-party-menu"]
     third_ids = {s["licenseNumber"] for s in third}
-    swept = [s for s in open_shops if site(s) and s["licenseNumber"] not in third_ids]
+    swept = [
+        s for s in open_shops
+        if site(s) and s["licenseNumber"] not in third_ids and s["licenseNumber"] not in paused
+    ]
     # Магазин, чей robots.txt отказал целому сайту, обход не читает вовсе.
     # Адрес меню ему не нужен — его нужно оставить в покое, — так что он
     # уходит из «Пусто» вниз, к остальным, куда мы не ходим. Отказ только в
@@ -181,6 +188,11 @@ def main(to_stdout):
     lines += [
         "## Сюда не ходим",
         "",
+        f"- **{len([s for s in open_shops if s['licenseNumber'] in paused])}** магазинов на паузе "
+        "(`data/menu-paused.json`): их меню Dutchie открывается в окне dutchie.com, "
+        "которое с 24.09 отвечает автоматическим браузерам только проверкой «вы не бот?». "
+        "Плановый прогон к ним не ходит, на сайте остаётся их последняя прочитанная полка. "
+        "По воскресеньям сборщик всё-таки заходит — так будет видно, если Dutchie откроется.",
         f"- **{len(third)}** магазинов держат меню на Leafly или Weedmaps. Это "
         "чужая витрина, а не витрина магазина, и читать её мы не будем — "
         "адрес такого меню в файл добавлять не нужно.",

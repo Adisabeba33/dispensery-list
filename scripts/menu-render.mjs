@@ -290,9 +290,28 @@ const brandsKnownApartFrom = (licence) => {
   return out;
 };
 
+/* Shops the daily run leaves alone for now: data/menu-paused.json says which
+   and why. Today that is the fifty-six whose Dutchie menu opens in a dutchie.com
+   window, which has answered nothing but its bot check since 24 September —
+   an hour and a half of every run, most of them visited twice, for nothing.
+   They keep the shelf last read from them. Visited anyway on Sundays (UTC), with
+   --include-paused, or when named with --only, so the day they open again is
+   seen. */
+const PAUSED = new Set(
+  (() => {
+    try {
+      return JSON.parse(readFileSync(resolve(ROOT, 'data/menu-paused.json'), 'utf8')).shops.map((s) => s.licenseNumber);
+    } catch {
+      return [];
+    }
+  })(),
+);
+const includePaused = process.argv.includes('--include-paused') || new Date().getUTCDay() === 0;
+
 const candidates = dispensaries.filter(
   (d) =>
     !NOT_TRADING.has(d.operationalStatus) &&
+    (includePaused || onlyLicences?.has(d.licenseNumber) || !PAUSED.has(d.licenseNumber)) &&
     d.contact?.website &&
     !alreadyCollected.has(d.licenseNumber) &&
     (!onlyEndpoints || ENDPOINTS[d.licenseNumber]) &&
