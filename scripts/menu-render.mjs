@@ -3100,6 +3100,10 @@ const cleanStrainName = (raw, brand) => {
     .replace(/[(\[](h|s|i|hybrid|sativa|indica)[)\]]/gi, ' ')
     // A category word the shop put before the name: "Flower: Lemon OG [I]".
     .replace(/^\s*flower\s*:\s*/i, '')
+    // The potency, which is kept in thcPercent: "Alaskan Thunder - THC 27.76%" (Weed Mart).
+    .replace(/\bTHC\s*[:\-]?\s*\d+(?:\.\d+)?\s*%/gi, ' ')
+    // A slash between parts is a separator: "Flower / ClemDawg / 3.5G" (Canna Buddha's Carrot store).
+    .replace(/\s+\/\s+|^\s*\/\s*|\s*\/\s*$/g, ' - ')
     // What removing a marker or a weight leaves behind: "Cherry Pie ( )".
     .replace(/\(\s*\)/g, ' ')
     // The weight is kept in availableSizesGrams, so it is noise in the name
@@ -3681,7 +3685,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
      "Hybrid" }. Elsewhere `strain` is the cultivar's name, so each is taken only
      when it is a lineage word. */
   if (!LINEAGE[lineageRaw]) {
-    for (const stated of [pick(p, ['strain']), pick(p, ['species'])]) {
+    // dominance is Proteus's (Weed Mart New Metro, Saint Cannabis).
+    for (const stated of [pick(p, ['strain']), pick(p, ['species']), pick(p, ['dominance'])]) {
       const said = stated && typeof stated === 'object' && !Array.isArray(stated) ? flatten(pick(stated, ['prevalence'])) : stated;
       const word = typeof said === 'string' ? lettersOf(said) : '';
       if (LINEAGE[word]) {

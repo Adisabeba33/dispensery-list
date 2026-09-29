@@ -286,6 +286,15 @@ check('a spaced dash and number left by a weight still go', cleanStrainName('Afg
   check('and decodes named ones', decodeEntities('Cookies &amp; Cream'), 'Cookies & Cream');
 }
 
+/* Weed Mart (Proteus) writes the potency into the name and states lineage as
+   dominance; Canna Buddha's Carrot store separates with slashes. */
+check('the THC in a name is not the name', cleanStrainName('Alaskan Thunder - THC 27.76%', 'BudJet'), 'Alaskan Thunder');
+check('slashes separate parts', cleanStrainName('Flower / Titan Express / 3.5G', 'Dark Heart'), 'Titan Express');
+check('a trailing slash goes', cleanStrainName('Agent Z / 3.5G', 'Find'), 'Agent Z');
+check('Proteus lineage is dominance',
+  toListing({ name: 'Zips | Flower | 28g | Chem Cookies | THC 31.92% | Indica-Hybrid', brand: 'Zips', categoryId: 8, thc: '31.9167',
+    weight: 28.0, inStock: 1, price: 130, dominance: 'Sativa' }, shop, SRC, {})?.lineage, 'SATIVA');
+
 /* ------------------------------------------ one panel on many strains --
  * Prime Time's point of sale attaches one terpene list to 57 of its 60 flower
  * products. That is a template, not five measurements, and is dropped; one
