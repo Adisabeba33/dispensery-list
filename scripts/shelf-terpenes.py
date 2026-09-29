@@ -27,6 +27,12 @@ Alley Oop от ElectraLeaf четыре магазина Gotham и BudBiz печ
   этой позиции он не берётся: пустое поле лучше правдоподобной догадки;
 - в выгрузку идут партии, у которых в панели хотя бы три терпена.
 
+У партии две даты возраста: packagedOn — с сертификата (день пробы из уже
+расфасованной партии или сама дата упаковки; packagedFrom говорит, какая) и
+firstOnShelf — первый день, когда такой THC у сорта бренда появился на полке
+хоть одного магазина (из data/shelf-history.json). Первая — сколько пакет
+лежит; вторая — сколько он уже на полках.
+
 Срок жизни партии — 16 недель с последнего дня, когда её видели на полке.
 Партия, которой сегодня нет ни в одном меню, из выгрузки не пропадает: её
 панель остаётся измерением этого сорта, пока партия могла ещё стоять у кого-то
@@ -46,6 +52,8 @@ ROOT = Path(__file__).resolve().parents[1]
 LISTINGS = ROOT / "data/flower-listings.json"
 OUT = ROOT / "data/shelf-terpenes.json"
 ARCHIVE = ROOT / "data/shelf-terpenes-archive.json"
+COA_DATES = ROOT / "data/coa-dates.json"
+HISTORY = ROOT / "data/shelf-history.json"
 LIFETIME = timedelta(weeks=16)
 MIN_TERPENES = 3
 SAME = 0.005  # ближе — одна и та же цифра, записанная иначе
@@ -241,6 +249,7 @@ def lots(rows):
                 "lineageStated": sorted({r["lineage"] for r in rows_ if r.get("lineage") not in (None, "UNKNOWN")}),
                 "read": min(r["capturedAt"][:10] for r in rows_),
                 "lastSeen": max(r["capturedAt"][:10] for r in rows_),
+                "_history": sorted({_history.key_of(r) for r in rows_} - {None}),
             })
     out.sort(key=lambda lot: (lot["key"], -lot["thcPercent"]))
     return out, stray, conflicts
@@ -291,12 +300,59 @@ def load_lots(path):
         return []
 
 
+def dated(found, before):
+    """Когда партию упаковали и когда она впервые встала на полку.
+
+    Упаковка — по сертификату (data/coa-dates.json, scripts/coa-dates.py):
+    лаборатория берёт пробу из уже расфасованной партии, поэтому день пробы —
+    это день, раньше которого пакета не было. Если сертификат пишет саму дату
+    упаковки, берётся она. У партии с несколькими сертификатами — самая ранняя:
+    сказать «свежее», чем есть, хуже, чем «старее».
+
+    Полка — по истории полок (data/shelf-history.json): в какой день такой THC
+    у этого сорта бренда впервые появился хоть в одном магазине. История
+    ведётся с первого прогона, и партия, стоявшая уже тогда, отмечена
+    onShelfSinceStart: на полке она дольше, чем видно."""
+    try:
+        coa = json.loads(COA_DATES.read_text())["certificates"]
+    except FileNotFoundError:
+        coa = {}
+    try:
+        hist = json.loads(HISTORY.read_text())
+    except FileNotFoundError:
+        hist = {"thc": {}, "sweeps": []}
+    start = (hist.get("sweeps") or [None])[0]
+    was = {(l["key"], l["thcPercent"]): l for l in before}
+    for lot in found:
+        keys = lot.pop("_history", [])
+        certs = [coa.get(u) or {} for u in lot["certificates"]]
+        packaged = sorted(c["packaged"] for c in certs if c.get("packaged"))
+        sampled = sorted(c["sampled"] for c in certs if c.get("sampled"))
+        harvested = sorted(c["harvested"] for c in certs if c.get("harvested"))
+        if packaged:
+            lot["packagedOn"], lot["packagedFrom"] = packaged[0], "certificate"
+        elif sampled:
+            lot["packagedOn"], lot["packagedFrom"] = sampled[0], "sampled"
+        if harvested:
+            lot["harvestedOn"] = harvested[0]
+        seen = [day for k in keys for thc, day in hist.get("thc", {}).get(k, [])
+                if same_batch(thc, lot["thcPercent"])]
+        first = min(seen + [lot["read"]])
+        prior = was.get((lot["key"], lot["thcPercent"]), {}).get("firstOnShelf")
+        lot["firstOnShelf"] = min(first, prior) if prior else first
+        if start and lot["firstOnShelf"] <= start:
+            lot["onShelfSinceStart"] = True
+    return found
+
+
 def main():
     rows = listings_of(LISTINGS.read_text())
     found, stray, conflicts = lots(rows)
     day = max((r["capturedAt"][:10] for r in rows if r.get("capturedAt")), default=None)
     today = len(found)
-    found, gone = carried(found, load_lots(OUT), day)
+    before = load_lots(OUT)
+    found, gone = carried(found, before, day)
+    found = dated(found, before)
     OUT.write_text(json.dumps({
         "about": "Терпеновые панели с полок Нью-Йорка, по партиям: сорт бренда при одном THC. "
                  "Пишется scripts/shelf-terpenes.py из data/flower-listings.json; читает Сома. "
