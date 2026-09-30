@@ -17,7 +17,7 @@ import {
   mergeBySize, pagedRequest, pickFlowerInside, pickMenuLink, pickStore,
   placeNamesOf, rankMenuLink, registerTextOf, sameEstate, signatureOf, sizeFromText,
   toListing, wallAction, fulfilmentAction, pageKnobOf, dropRepeatedPanels, sweedCategoryOf, decodeEntities,
-  linkNamesAnotherState
+  linkNamesAnotherState, proteusCards, proteusBrandsOf, proteusShowAll
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 import { labPanelKeyOf } from './lab-panel.mjs';
@@ -268,6 +268,30 @@ check('a spaced dash and number left by a weight still go', cleanStrainName('Afg
     pickMenuLink([{ href: product, text: 'Indica Bubblegum Gusher 14g' }], 'https://mishasflowershop.com', "Misha's Flower Shop"),
     'https://shop.mishasflowershop.com/mishasflower/menu/flower-5423');
   check('an ordinary product path is not a Sweed one', sweedCategoryOf('https://shop.example.com/products/flower/blue-dream'), null);
+}
+
+/* The older Proteus cart (Renaissant): the shelf as HTML cards, the growers in the filters beside it. */
+{
+  const filters = '<label class="custom-radio-btn filter-radio">KICKFLY\'S\n<input class="checkmark brand_type" data-type="brand" data-id="1"></label>'
+    + '<label class="custom-radio-btn filter-radio">DANK\n<input class="checkmark brand_type" data-type="brand" data-id="2"></label>';
+  const brands = proteusBrandsOf(filters);
+  check('the growers come from the filters', brands, ["KICKFLY'S", 'DANK']);
+  const html = '<span class="category-breadcrumb" title="Flower">Flower</span>'
+    + '<div data-id="12" class="col-12 products_view products_strain_750   product-card-wrapper"><a data-id="12" href="/cart/ps/3277131025272/" title="DANK (I/H) ANIMAL COOKIES FLOWER" class="desc-image">'
+    + '<p class="color-grey product_short_description">28g</p></div>'
+    + '<div data-id="13" class="col-12 products_view product-card-wrapper"><a data-id="13" href="/cart/ps/3499557822222/" title="KICKFLY&#8217;S MULE FUEL 8TH" class="desc-image">'
+    + '<p class="color-grey product_short_description">3.5g</p></div>'
+    + '<a data-whatPage="all" href="javascript:void(0)">Show All</a>';
+  const cards = proteusCards(html, brands);
+  check('each card is a product', cards.map((c) => [c.id, c.brand, c.category, c.size]),
+    [['12', 'DANK', 'Flower', '28g'], ['13', "KICKFLY'S", 'Flower', '3.5g']]);
+  const card = toListing(cards[0], shop, 'https://cart.renaissant.nyc/shop/c/Flower/', {});
+  check('and reads as flower', [card?.lineage, card?.availableSizesGrams, card?.productUrl],
+    ['INDICA_DOMINANT', [28], 'https://cart.renaissant.nyc/cart/ps/3277131025272/']);
+  check('"Show All" is asked for',
+    proteusShowAll('https://cart.renaissant.nyc/cart/ajax_getproducts.cfm?cat=8', html),
+    'https://cart.renaissant.nyc/cart/ajax_getproducts.cfm?cat=8&page=all');
+  check('and only once', proteusShowAll('https://cart.renaissant.nyc/cart/ajax_getproducts.cfm?cat=8&page=all', html), null);
 }
 
 /* WooCommerce's Store API, read for Blue Forest Farms: HTML in the name, the
@@ -988,6 +1012,13 @@ check('a number the weight left behind goes too',
   check('two codes and no cultivar: the first is the cultivar',
     c('House of Sacci - Dime Flower - RS11 - . - DF12', 'House of Sacci'), 'RS11');
   check('a code that is the whole name stays', c('GG4'), 'GG4');
+  /* Renaissant's cart: the eighth after the name, a line in quotes, a five-word grower. */
+  check('an eighth at the end', c('HASHTAG HONEY (S/H) CREAM SMOOTHIE 8TH', 'HASHTAG HONEY'), 'CREAM SMOOTHIE');
+  check('and "Flower 8th"', c('ALTER GARLIC COOKIES FLOWER 8TH', 'ALTER'), 'GARLIC COOKIES');
+  check('8th Ave still opens with it', c('BANZZY 8TH AVE', 'Banzzy'), '8TH AVE');
+  check('a product line in quotes', c("MISS GRASS 'ALL TIMES' CHERRY PIE FLOWER 8TH", 'MISS GRASS'), 'CHERRY PIE');
+  check('an apostrophe is not a quote', c("HASHTAG HONEY (I/H) KAT'S NIP FLOWER", 'HASHTAG HONEY'), "KAT'S NIP");
+  check('a grower five words long', c('NEW YORK STATE OF HIGH NY ZUSHI FLOWER 8TH', 'NEW YORK STATE OF HIGH'), 'NY ZUSHI');
   check('a grower carrying packaging', c('Leal Flower- Lemon Venom'), 'Lemon Venom');
   check('a grade word behind a hyphen', c('Sherb - Micro Grown'), 'Sherb');
   check('a grower ahead of a grade word',

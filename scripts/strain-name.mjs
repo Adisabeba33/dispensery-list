@@ -249,7 +249,8 @@ export const canonicalStrain = (raw, brand = null, brands = new Set(), foldOwn =
      from it would leave "Cake". */
   const stripLeadingBrand = (seg) => {
     const words = seg.split(/\s+/);
-    for (let n = Math.min(4, words.length - 2); n >= 1; n -= 1) {
+    // Up to six words: "New York State of High NY Zushi".
+    for (let n = Math.min(6, words.length - 2); n >= 1; n -= 1) {
       if (brandKeys.has(strainKey(words.slice(0, n).join(' ')))) {
         return words.slice(n).join(' ');
       }
@@ -303,9 +304,13 @@ export const canonicalStrain = (raw, brand = null, brands = new Set(), foldOwn =
     while (i < words.length - 1 && packaging(norm(words[i]), i)) i += 1;
     return words.slice(i).join(' ');
   };
+  /* A product line in quotes ahead of the cultivar: Miss Grass's "'All Times'
+     Cherry Pie", Trap to Table's "'After Glow' Spanish Moon". Only a quoted
+     phrase that opens the name and has more after it. */
+  const LINE_IN_QUOTES = /^['‘][^'’]{2,30}['’]\s+(?=\S)/;
   let kept = segments
     .filter((_, i) => kinds[i] === 'name')
-    .map(afterBrand);
+    .map((seg) => afterBrand(seg).replace(LINE_IN_QUOTES, ''));
 
   /* Nothing but grower, packaging and shelf label: the shop told us no
      cultivar, so take what it did say rather than invent one. A bare code is
@@ -324,7 +329,9 @@ export const canonicalStrain = (raw, brand = null, brands = new Set(), foldOwn =
   /* Grade words trailing inside the surviving segment — "Black Maple Flower",
      "Snow Day Small Bud" — go too, longest phrase first, and only from the
      end, so "Flower Power" keeps its head. */
-  const TRAIL = [...GRADE, ...LINEAGE].sort((a, b) => b.length - a.length);
+  /* And the eighth a cart writes after the name: "Cream Smoothie 8TH". Only
+     at the very end — "8th Ave" opens with it. */
+  const TRAIL = [...GRADE, ...LINEAGE, '8th', 'eighth'].sort((a, b) => b.length - a.length);
   let name = kept.join(' - ');
   let changed = true;
   while (changed) {
