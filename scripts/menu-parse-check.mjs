@@ -17,7 +17,7 @@ import {
   mergeBySize, pagedRequest, pickFlowerInside, pickMenuLink, pickStore,
   placeNamesOf, rankMenuLink, registerTextOf, sameEstate, signatureOf, sizeFromText,
   toListing, wallAction, fulfilmentAction, pageKnobOf, dropRepeatedPanels, sweedCategoryOf, decodeEntities,
-  linkNamesAnotherState, proteusCards, proteusBrandsOf, proteusShowAll
+  linkNamesAnotherState, proteusCards, proteusBrandsOf, proteusShowAll, withoutCompanionSearches
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 import { labPanelKeyOf } from './lab-panel.mjs';
@@ -178,6 +178,21 @@ check('and so is a sentence about pick-up', fulfilmentAction('ORDER FOR PICKUP O
     pagedRequest({ ...req, body: 'action=load_retailer_name&retailer_id=e68d3af5' }, 1, 100), null);
 }
 
+/* Carrot's Typesense multi-search: the category and, beside it, the whole
+   store. Only the category is paged. */
+{
+  const flower = { q: '*', per_page: 10, filter_by: 'masterCategoryName:=[`Flower`]', page: 1 };
+  const store = { q: '*', per_page: 10, page: 1, facet_by: 'brand' };
+  const req = { method: 'POST', url: 'https://api.nevada.getcarrot.io/api/v1/store/search-products?locId=1',
+    body: JSON.stringify({ searches: [flower, store] }) };
+  const next = JSON.parse(pagedRequest(req, 1, 10)?.body ?? '{}');
+  check('the whole-store companion is not paged', next.searches?.length, 1);
+  check('and the category is', [next.searches?.[0]?.filter_by, next.searches?.[0]?.page], [flower.filter_by, 2]);
+  check('a request with only the store is paged as before',
+    JSON.parse(pagedRequest({ ...req, body: JSON.stringify({ searches: [store] }) }, 1, 10)?.body ?? '{}').searches?.[0]?.page, 2);
+  check('and one where every search is filtered', withoutCompanionSearches({ searches: [flower, { ...flower, filter_by: 'brand:=x' }] }).searches.length, 2);
+}
+
 /* ------------------------------------------------- a query inside a query --
  * Transcend Wellness asks for its shelf with the whole query string packed
  * into one parameter, twelve a page, and files its jars under a category
@@ -292,6 +307,32 @@ check('a spaced dash and number left by a weight still go', cleanStrainName('Afg
     proteusShowAll('https://cart.renaissant.nyc/cart/ajax_getproducts.cfm?cat=8', html),
     'https://cart.renaissant.nyc/cart/ajax_getproducts.cfm?cat=8&page=all');
   check('and only once', proteusShowAll('https://cart.renaissant.nyc/cart/ajax_getproducts.cfm?cat=8&page=all', html), null);
+}
+
+/* Cova's range (Hush, Highlife Health); Kushmart's cannabinoid rows, mg/g
+   terpenes and "50/50". Twelve hundred listings between them carried no THC. */
+{
+  const cova = toListing({ Name: 'Cool Jazz Flower (14g)', category: 'Flower', THCMin: 0, THCMax: 30.93, ThcType: '%', CBDMin: 0, CBDMax: 0, CbdType: '' }, shop, SRC, {});
+  check("Cova's THCMax is the THC", cova?.thcPercent, 30.93);
+  check('but not in milligrams',
+    toListing({ Name: 'Cool Jazz Flower (14g)', category: 'Flower', THCMin: 0, THCMax: 100, ThcType: 'mg' }, shop, SRC, {})?.thcPercent, null);
+  const km = toListing({ productName: 'Florist Farms | Jet Fuel Gelato | Flower | 3.5g | Hybrid', category: 'Flower', speciesName: '50/50', productWeight: 3.5,
+    cannabinoidInformation: [
+      { lowerRange: 0, name: 'cbd', unitOfMeasure: '%', upperRange: 0 },
+      { lowerRange: 24.18, name: 'thc', unitOfMeasure: '%', upperRange: 24.18 },
+      { lowerRange: 0, name: 'thc-a', unitOfMeasure: '%', upperRange: 0 },
+    ],
+    terpenes: [{ 'β-Caryophyllene': '0.69 mg/g' }, { Linalool: '0.27 mg/g' }, { 'Total Terpenes': '2.227 mg/g' }] }, shop, SRC, {});
+  check("Kushmart's THC row", km?.thcPercent, 24.18);
+  check('its 50/50 is a hybrid', km?.lineage, 'HYBRID');
+  check('its terpenes in mg/g are read in per cent',
+    km?.terpenes?.profile?.map((t) => [t.name, t.percent]), [['CARYOPHYLLENE', 0.069], ['LINALOOL', 0.027]]);
+  check('and the total too', km?.terpenes?.totalPercent, 0.2227);
+  check('a milligram row is not a percentage',
+    toListing({ productName: 'X | Flower | 3.5g', category: 'Flower', productWeight: 3.5,
+      cannabinoidInformation: [{ name: 'thc', unitOfMeasure: 'mg', upperRange: 100 }] }, shop, SRC, {})?.thcPercent, null);
+  check('Indica-dom leans indica',
+    toListing({ productName: 'Y | Flower | 3.5g', category: 'Flower', speciesName: 'Indica-dom', productWeight: 3.5 }, shop, SRC, {})?.lineage, 'INDICA_DOMINANT');
 }
 
 /* WooCommerce's Store API, read for Blue Forest Farms: HTML in the name, the
@@ -1309,7 +1350,8 @@ check('a number the weight left behind goes too',
      page: the whole store first, for facet counts, then the flower query. The
      first page knob found is the store's; turning only that one asked page two
      of the store and page one of the flower, again and again. Each query turns
-     from its own number. */
+     from its own number — and the store, which is not the shelf, is not asked
+     again at all: paging it ran twenty-one shops out to the forty-page cap. */
   const typesense = {
     method: 'POST',
     url: 'https://api.nevada.getcarrot.io/api/v1/store/search-products?locId=1',
@@ -1321,9 +1363,9 @@ check('a number the weight left behind goes too',
     }),
   };
   const turned = JSON.parse(pagedRequest(typesense, 1).body).searches;
-  check('a multi-search turns every query — the store', turned[0].page, 2);
-  check('and the flower query beside it', turned[1].page, 2);
-  check('its filter is left alone', turned[1].filter_by, 'masterCategoryName:=[`Flower`]');
+  check('a multi-search asks the filtered query again, and only that', turned.length, 1);
+  check('turned from its own number', turned[0].page, 2);
+  check('its filter is left alone', turned[0].filter_by, 'masterCategoryName:=[`Flower`]');
   const staggered = {
     ...typesense,
     body: JSON.stringify({ searches: [{ q: '*', page: 1 }, { q: 'x' }, { q: '*', page: 4 }] }),

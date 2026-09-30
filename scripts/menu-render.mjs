@@ -2815,12 +2815,30 @@ export const pageKnobOf = (req) => {
   return null;
 };
 
+/**
+ * Carrot asks Typesense two questions in one request: the category, filtered
+ * (`filter_by: masterCategoryName:=[Flower]`), and beside it the whole store,
+ * unfiltered, whose facets fill the sidebar. Paging the request pages both,
+ * and the store is the one that never ends: Chronic Brooklyn's 48 flower
+ * products were all in hand after five pages, and the collector went on to
+ * forty, 524 products, and stopped at the cap — as did twenty other Carrot
+ * shops, at half a minute each. Only the filtered question is asked again;
+ * the answer then ends where the category ends.
+ */
+export const withoutCompanionSearches = (body) => {
+  if (!body || typeof body !== 'object' || !Array.isArray(body.searches) || body.searches.length < 2) return body;
+  const filtered = body.searches.filter(
+    (s) => s && typeof s === 'object' && typeof s.filter_by === 'string' && s.filter_by.trim() !== '',
+  );
+  return filtered.length > 0 && filtered.length < body.searches.length ? { ...body, searches: filtered } : body;
+};
+
 const pagedRequest = (req, nth, fallbackSize) => {
   if (!req || nth < 1) return null;
 
   if (req.body) {
     try {
-      const advanced = advanceJson(JSON.parse(req.body), nth, fallbackSize);
+      const advanced = advanceJson(withoutCompanionSearches(JSON.parse(req.body)), nth, fallbackSize);
       if (advanced) return { ...req, body: JSON.stringify(advanced) };
     } catch {
       const form = formBody(req.body);
@@ -3302,6 +3320,22 @@ const terpeneName = (t) => {
   return dig(t, 0);
 };
 
+/* Kushmart's terpenes come one compound to an object, the figure in mg/g:
+   [{ "β-Caryophyllene": "0.69 mg/g" }, …, { "Total Terpenes": "2.227 mg/g" }].
+   Ten milligrams in a gram is one per cent. The Greek letter is spelled out
+   so the name meets the map: β-Caryophyllene is beta-caryophyllene. */
+const singleKeyMeasure = (t) => {
+  if (!t || typeof t !== 'object' || Array.isArray(t)) return null;
+  const keys = Object.keys(t);
+  if (keys.length !== 1 || typeof t[keys[0]] !== 'string') return null;
+  const m = t[keys[0]].match(/^\s*(\d+(?:\.\d+)?)\s*(mg\s*\/\s*g|%)\s*$/i);
+  if (!m) return null;
+  const n = Number(m[1]);
+  if (!Number.isFinite(n)) return null;
+  const name = keys[0].trim().replace(/α/g, 'alpha-').replace(/β/g, 'beta-').replace(/γ/g, 'gamma-').replace(/-+/g, '-');
+  return { name, percent: /mg/i.test(m[2]) ? Math.round(n * 1000) / 10000 : n };
+};
+
 const NAME_KEYS = ['name', 'productName', 'title', 'displayName'];
 
 /**
@@ -3459,7 +3493,11 @@ const potency = (p, names, list, compound, { zeroIsSilence = false } = {}) => {
     ];
     for (const pass of passes) {
       for (const r of rows.filter(pass)) {
-        const v = inRange(num(pick(r.row, ['value', 'percent', 'amount', 'displayValue', 'rangeLow'])), 100);
+        /* Kushmart states the unit on the row, and its edibles' rows say mg:
+           a milligram figure is not a percentage. */
+        const unit = pick(r.row, ['unitOfMeasure', 'unit', 'unitAbbr']);
+        if (unit !== null && String(unit).trim() !== '' && String(unit).trim() !== '%') continue;
+        const v = inRange(num(pick(r.row, ['value', 'percent', 'amount', 'displayValue', 'rangeLow', 'upperRange'])), 100);
         if (reads(v)) return v;
       }
     }
@@ -3506,7 +3544,18 @@ const labFigure = (p, compound, { zeroIsSilence = false } = {}) => {
   }
   return null;
 };
-const CANNABINOID_PANEL = ['cannabinoids', 'potencies', 'cannabinoidProfile'];
+/* Cova's storefronts — Hush, Highlife Health — keep the certificate as a
+   range with its unit beside it: THCMin 0, THCMax 34.36, ThcType "%". The
+   minimum is always zero there, so the maximum is the figure, and only when
+   the unit is per cent or unstated: an edible's milligrams are not one. */
+const covaFigure = (p, compound) => {
+  const unit = pick(p, [`${compound}Type`]);
+  if (unit !== null && unit !== undefined && String(unit).trim() !== '' && String(unit).trim() !== '%') return null;
+  const v = inRange(num(pick(p, [`${compound}Max`])), 100);
+  return v ? v : null;
+};
+// cannabinoidInformation is Kushmart's: [{ name: 'thc', lowerRange, upperRange, unitOfMeasure: '%' }, …].
+const CANNABINOID_PANEL = ['cannabinoids', 'potencies', 'cannabinoidProfile', 'cannabinoidInformation'];
 
 const EARLIEST_SANE_MENU_DATE = Date.UTC(2015, 0, 1);
 const menuDate = (value) => {
@@ -3773,10 +3822,11 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
      "Hybrid" }. Elsewhere `strain` is the cultivar's name, so each is taken only
      when it is a lineage word. */
   if (!LINEAGE[lineageRaw]) {
-    // dominance is Proteus's (Weed Mart New Metro, Saint Cannabis).
-    for (const stated of [pick(p, ['strain']), pick(p, ['species']), pick(p, ['dominance'])]) {
+    // dominance is Proteus's (Weed Mart New Metro, Saint Cannabis); speciesName Kushmart's.
+    for (const stated of [pick(p, ['strain']), pick(p, ['species']), pick(p, ['speciesName']), pick(p, ['dominance'])]) {
       const said = stated && typeof stated === 'object' && !Array.isArray(stated) ? flatten(pick(stated, ['prevalence'])) : stated;
-      const word = typeof said === 'string' ? lettersOf(said) : '';
+      // Kushmart writes an even hybrid as "50/50".
+      const word = typeof said === 'string' ? (/^\s*50\s*\/\s*50\s*$/.test(said) ? 'hybrid' : lettersOf(said)) : '';
       if (LINEAGE[word]) {
         lineageRaw = word;
         break;
@@ -3789,11 +3839,12 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const terps = pick(p, ['terpenes', 'terpeneProfile', 'terpenoids', 'terps']);
   if (Array.isArray(terps)) {
     for (const t of terps) {
-      const raw = terpeneName(t);
+      const measured = singleKeyMeasure(t);
+      const raw = measured ? measured.name : terpeneName(t);
       if (!raw) continue;
       rawTerpNames[raw] = (rawTerpNames[raw] ?? 0) + 1;
       const amount = (() => {
-        const v = inRange(num(t && typeof t === 'object' ? t.value ?? t.percent : null), 20);
+        const v = inRange(measured ? measured.percent : num(t && typeof t === 'object' ? t.value ?? t.percent : null), 20);
         return v === 0 ? null : v;
       })();
       // Summary rows are not compounds.
@@ -3983,7 +4034,7 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
       CANNABINOID_PANEL,
       THC_NAME,
       { zeroIsSilence: true },
-    ) ?? labFigure(p, 'thc', { zeroIsSilence: true });
+    ) ?? labFigure(p, 'thc', { zeroIsSilence: true }) ?? covaFigure(p, 'thc');
 
   return {
     listingId,
