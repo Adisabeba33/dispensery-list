@@ -170,6 +170,21 @@ def discovered():
     return sources
 
 
+def queue_key(item):
+    """Prefer strongest discovery provenance before arbitrary tag order."""
+    tag, origins = item
+    origins = set(origins or [])
+    if "flower-listings:retail-link" in origins:
+        tier = 0  # QR/link resolved by our Retail-ID cache: strongest live lead.
+    elif "lot-twins-cache" in origins:
+        tier = 1
+    elif "retail-id-cache" in origins:
+        tier = 2
+    else:
+        tier = 3  # raw menu package IDs are often not public Retail-ID endpoints.
+    return (tier, tag)
+
+
 def cached_cards():
     out = {}
     twins = load(ROOT / "data/lot-twins.json", {})
@@ -237,7 +252,7 @@ def main():
     }
     requested = found = missing = errors = 0
     if args.network:
-        for tag in sorted(sources):
+        for tag, _origins in sorted(sources.items(), key=queue_key):
             if tag in cards or tag in known_missing or requested >= max(0, args.budget):
                 continue
             requested += 1
