@@ -19,8 +19,10 @@ b2={"total_thc":26.12,"limonene":0.424,"beta_caryophyllene":0.304,
 kind,*_=m.classify({}, {}, a,b2)
 assert kind=="near_chemical_clone"
 
-# THC alone, even exactly equal, is never enough.
+# THC alone, even exactly equal or with an equal hash, is never enough.
 kind,*_=m.classify({}, {}, {"total_thc":26.1},{"total_thc":26.1})
+assert kind is None
+kind,*_=m.classify({}, {}, {"total_thc":26.1},{"total_thc":26.1},"same","same")
 assert kind is None
 
 # Four shared terpenes but materially different fifth analyte is rejected.
