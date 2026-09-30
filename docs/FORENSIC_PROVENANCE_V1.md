@@ -120,6 +120,9 @@ by the daily menu run, before it can mean much. That is the owner's call.
   the same day).
 - **All 780 certificate links on today's shelves are one shop's POS**
   (`app.alleaves.com/.../buddega/`). The COA index covers what that shop links.
+  It stores one PDF under several product records (135 documents at 273 URLs),
+  and six of those serve lots of different names *and* different THC: one
+  certificate cannot be both lots', so those links are data errors, not twins.
 
 ## Evidence rules
 
@@ -201,7 +204,8 @@ sightings, source URL, response hash), and as they apply `lineage`,
 | MIXED_BATCH | one batch number over different certificates (a packager's production lot) | review |
 | RENAMED_IN_LINEAGE | a package made from another under another name | with its batch case, else medium |
 | CHEMICAL_CLONE | collisions without a shared batch | medium |
-| SAME_COA_DIFFERENT_IDENTITY | one certificate URL, or one document at several URLs, cited for lots with different names; a certificate's own package named otherwise | medium; high for one document at several URLs |
+| SAME_COA_DIFFERENT_IDENTITY | one certificate URL, or one document at several URLs, cited for lots with different names and one THC; a certificate's own package named otherwise | medium (the lot's link is the shop's) |
+| COA_MISATTACHED | the same with THC that differ: one certificate prints one THC, so a lot's link or THC belongs to another lot | review — a data error; the crawl of all 780 found six |
 | COA_MUTATION | one URL served another document | high if parsed fields changed, medium if only text, review if a re-render |
 | RETAIL_ID_MUTATION | one card showed another identity, or stopped answering | high for a material field or chemistry, review for spelling |
 | IMPOSSIBLE_TIMELINE | harvest after test or packaging; a date after we saw it; a tag on a menu before its package existed; within one certificate, report or receipt before the sample | medium (card), review (parsed certificate) |

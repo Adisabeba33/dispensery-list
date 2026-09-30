@@ -29,7 +29,9 @@ Signals:
   CHEMICAL_CLONE              collisions.json without a shared batch.
   SAME_COA_DIFFERENT_IDENTITY one certificate — one URL, or one document by
                               SHA-256 at several URLs — cited for lots whose
-                              names differ.
+                              names differ and whose THC agree.
+  COA_MISATTACHED             the same, with THC that differ: a shop linked
+                              another lot's certificate (review; a data error).
   COA_MUTATION                one certificate URL served another document.
   RETAIL_ID_MUTATION          one Retail ID card showed another identity, or
                               stopped answering.
@@ -303,18 +305,31 @@ def coa_cases(lots, coa, cards, history):
     grouped = {u for _k, urls, _s in groups for u in urls}
     groups += [("coa-url|" + url, [url], None) for url in by_url if url not in grouped]
     for key, urls, sha in groups:
-        cited = [lot for u in urls for lot in by_url.get(u, [])]
+        cited = list({(lot.get("brand"), lot.get("strain"), lot.get("thcPercent")): lot
+                      for u in urls for lot in by_url.get(u, [])}.values())
         named = [(f"{lot.get('brand')}|{lot.get('strain')}|{lot.get('thcPercent')}", lot.get("strain")) for lot in cited]
         if len(clusters(named)) < 2:
             continue
         names = sorted({lot.get("strain") for lot in cited if lot.get("strain")}, key=str.casefold)
-        out.append(base(key, "SAME_COA_DIFFERENT_IDENTITY", "high" if sha else "medium",
-                        f"one certificate cited for {' / '.join(names)}"
-                        + (f" ({len(urls)} URLs, one document)" if sha else ""),
+        where = f" ({len(urls)} URLs, one document)" if sha else ""
+        thcs = [float(lot["thcPercent"]) for lot in cited if isinstance(lot.get("thcPercent"), (int, float))]
+        if thcs and max(thcs) - min(thcs) > THC_SAME:
+            # A certificate prints one THC: lots that print different ones
+            # cannot all be its lot. A shop linked another lot's certificate.
+            out.append(base(key, "COA_MISATTACHED", "review",
+                            "one certificate cited for " + " / ".join(
+                                f"{lot.get('strain')} ({lot.get('thcPercent')})" for lot in cited) + where,
+                            [lot_entity(lot) for lot in cited], coa={"urls": urls, "sha256": sha}, sources=urls,
+                            limitations=["The lots' THC differ, so at least one lot's link or THC belongs to "
+                                         "another lot: a data error on the shelves, not one batch under two "
+                                         "names. The lot it misleads is not traceable by that link."]))
+            continue
+        out.append(base(key, "SAME_COA_DIFFERENT_IDENTITY", "medium",
+                        f"one certificate and one THC cited for {' / '.join(names)}{where}",
                         [lot_entity(lot) for lot in cited], coa={"urls": urls, "sha256": sha},
                         sources=urls,
-                        limitations=["A shop can attach the wrong certificate; the case says the names differ "
-                                     "under one certificate, not who attached it."]))
+                        limitations=["The link from a lot to its certificate is the shop's, not the regulator's; "
+                                     "the case says the names differ under one certificate, not who attached it."]))
     # A certificate that names its tested package: that package's card calls it otherwise.
     for url, doc in docs.items():
         versions = doc.get("versions") or []

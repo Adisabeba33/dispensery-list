@@ -94,12 +94,22 @@ variants = [lot("Aeterna", "RS", "u1"), lot("Aeterna", "RS-11", "u1"),
 assert run([], lots=variants) == []
 cases = run([], lots=[lot("A", "Blue Dream", "u5"), lot("B", "Gelato 41", "u5")])
 assert [(x["signals"][0], x["priority"]) for x in cases] == [("SAME_COA_DIFFERENT_IDENTITY", "medium")]
-# One document (same bytes) at two URLs for two names: high.
+# One document (same bytes) at two URLs for two names, one THC: the link is
+# the shop's, so medium.
 coa = {"documents": {"u6": {"versions": [{"sha256": "S", "record": {}}]},
                      "u7": {"versions": [{"sha256": "S", "record": {}}]}}}
 cases = run([], coa=coa, lots=[lot("A", "Blue Dream", "u6"), lot("B", "Gelato 41", "u7")])
 assert [(x["signals"][0], x["priority"], x["coa"]["urls"]) for x in cases] == \
-    [("SAME_COA_DIFFERENT_IDENTITY", "high", ["u6", "u7"])]
+    [("SAME_COA_DIFFERENT_IDENTITY", "medium", ["u6", "u7"])]
+# The full 780-certificate crawl of 2026-09-30: six documents cited for two
+# names, each pair with different THC (7Seaz Caviar Kush 22.53 / Permafrost x
+# Leopard Shark 24.99, one Smithers PDF at three URLs). One certificate prints
+# one THC: a shop linked another lot's certificate — a data error, review.
+seaz = [dict(lot("7Seaz", "Permafrost x Leopard Shark", "u6"), thcPercent=24.99),
+        dict(lot("7Seaz", "Permafrost x Leopard Shark", "u7"), thcPercent=24.99),
+        dict(lot("7Seaz", "Caviar Kush", "u7"), thcPercent=22.53)]
+cases = run([], coa=coa, lots=seaz)
+assert [(x["signals"][0], x["priority"], len(x["entities"])) for x in cases] == [("COA_MISATTACHED", "review", 2)]
 
 # A URL that served two documents: what changed is shown; a re-render is review.
 rec = {"lab": "Kaycha", "sampled": "2026-01-10", "analytes": {"limonene": {"value": 0.61, "qualifier": None}}}
