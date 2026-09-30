@@ -232,6 +232,13 @@ check('and the bracket still gives the lineage',
 
 /* A number glued to the name by a dash is the name: Conbud's RS-11 was cut to RS. */
 check('RS-11 keeps its number', cleanStrainName('Wizard Trees | 3.5g Indoor Flower | RS-11 (H)', 'Wizard Trees'), 'RS-11');
+/* Nucleus's shelf codes carry a letter at either end, and its lean is bracketed. */
+check('a lettered shelf code is not the name', cleanStrainName('Bannermans Batch - KY Jealousy - F8B', null), 'Bannermans Batch - KY Jealousy');
+check('nor is a dime-bag code', cleanStrainName('Canna Cure - Strawberry Diesel - DF16', 'Canna Cure'), 'Strawberry Diesel');
+check('the lean leaves the name', cleanStrainName('Canna Cure - Blockberry (Sativa/Hybrid) - F44', 'Canna Cure'), 'Blockberry');
+check('and becomes the lineage',
+  toListing({ id: 'n1', name: 'Canna Cure - Blue Zushi (Indica/Hybrid) - F46', category: 'Flower', weight: '3.5g' }, shop, SRC, {})?.lineage,
+  'INDICA_DOMINANT');
 check('a spaced dash and number left by a weight still go', cleanStrainName('Afghani - 1', null), 'Afghani');
 
 /* ------------------------------------------------- Dispense and Sweed --
@@ -921,6 +928,7 @@ check('a number the weight left behind goes too',
     'Runtz Blunt', 'Sour Joint', 'Wedding Cake Cart', 'GMO Cartridge',
     'Peach Gummies', 'Assorted Edibles', 'Sour Diesel Shake', 'House Trim',
     'Moon Rocks', 'Pre-Ground Flower', 'Ready to Roll', 'Flower Flight',
+    'Old Pal - Ready-to-Roll Flower - Electric Lemonade', // Nucleus writes it hyphenated
   ];
   for (const name of drops) {
     check(`dropped, not flower: ${name}`, classify(flower(name)), 'title-not-flower');
@@ -973,6 +981,13 @@ check('a number the weight left behind goes too',
     c('Amnesia Haze -Sativa- 21.04% THC - Dime Bag . Flower - 5 Boro -gg11 FRONT'), 'Amnesia Haze');
   check('nor the aisle it sits in', c('Trump Runtz -Hybrid - (Flower) - Y1'), 'Trump Runtz');
   check('a shop code glued to a grade word', c('R14-Flower -Black Magic'), 'Black Magic');
+  /* Nucleus: codes lettered at the end, and the lean spelled out in brackets. */
+  check('a lettered shelf code', c('Bannermans Batch - KY Jealousy - F8B', 'Bannermans Batch'), 'KY Jealousy');
+  check('a lean in brackets', c('Puff Pastry (Sativa-Hybrid)'), 'Puff Pastry');
+  check('and one that lost its opening bracket', c('Runtz - Pink Runtz Sativa/Hybrid) - F4B', 'Runtz'), 'Pink Runtz');
+  check('two codes and no cultivar: the first is the cultivar',
+    c('House of Sacci - Dime Flower - RS11 - . - DF12', 'House of Sacci'), 'RS11');
+  check('a code that is the whole name stays', c('GG4'), 'GG4');
   check('a grower carrying packaging', c('Leal Flower- Lemon Venom'), 'Lemon Venom');
   check('a grade word behind a hyphen', c('Sherb - Micro Grown'), 'Sherb');
   check('a grower ahead of a grade word',

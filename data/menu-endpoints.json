@@ -1108,5 +1108,15 @@
     "ageGate": null,
     "checkedAt": "2026-09-29",
     "notes": "The home page did not always offer a menu link (menuLink: none on 29 September); the flower category read 97 strains the same day."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000209",
+    "menuUrl": "https://nucleus.dispensary.shop/rec/search?category=Flower&title=Flower",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-09-30",
+    "notes": "Nucleus, 1819 2nd Ave: its site links single products on nucleus.dispensary.shop (Dispense) but no category, so the collector found no menu. The flower search reads 120 strains."
   }
 ]

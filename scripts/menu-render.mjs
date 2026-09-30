@@ -18,7 +18,7 @@
  * browser already on the machine; both exist for scripts/menu-e2e-check.mjs.
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { canonicalStrain } from './strain-name.mjs';
+import { canonicalStrain, LEAN_MARK } from './strain-name.mjs';
 import { labPanelKeyOf } from './lab-panel.mjs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -3035,7 +3035,10 @@ export const lineageSegmentOf = (part) => {
   const base = m[2].toUpperCase();
   return m[3] ? `${base}_DOMINANT` : base;
 };
+/* Nucleus writes the lean in brackets: "Blue Zushi (Indica/Hybrid) - F46". */
 const lineageFromTitle = (raw) => {
+  const lean = String(raw).match(new RegExp(LEAN_MARK.source, 'i'));
+  if (lean) return `${(lean[1] ?? lean[2]).toUpperCase()}_DOMINANT`;
   const m = String(raw).match(/[(\[](h|s|i|hybrid|sativa|indica)[)\]]/i);
   if (m) return LINEAGE_MARK[m[1].toLowerCase()];
   for (const part of String(raw).split(/\s+[-–—|]\s+/)) {
@@ -3092,7 +3095,7 @@ const NOT_FLOWER_TITLE = new RegExp(
        collected shelves is a bag of ground flower, and no cultivar in the
        strain catalog carries any of the words. */
     '\\b(?:pre[\\s-]?)?ground(?:s|ed)?\\b',
-    'ready\\s+to\\s+roll',
+    'ready[\\s-]+to[\\s-]+roll',
     'flower\\s+flight',
     /* Concentrates a shop files under Flower: Silk Road's "Cap Junky Wax
        Budder" stood on its shelf as a gram of flower. Budder, Crumble and
@@ -3116,8 +3119,10 @@ const NOT_FLOWER_TITLE = new RegExp(
 /** Strips the brand, the category word and the size, leaving the strain. */
 const cleanStrainName = (raw, brand) => {
   let text = String(raw)
-    .replace(/\s*[-–—]\s*F\d+\s*$/i, '')          // trailing shop SKU: "- F140"
+    // Trailing shop SKU: "- F140", and Nucleus's "- DF13" and "- F8B".
+    .replace(/\s*[-–—]\s*D?F\d+[A-Z]?\s*$/i, '')
     // Lineage marker, kept separately. Matawana brackets it square: "Cap Junky [H]".
+    .replace(LEAN_MARK, ' ')
     .replace(/[(\[](h|s|i|hybrid|sativa|indica)[)\]]/gi, ' ')
     // A category word the shop put before the name: "Flower: Lemon OG [I]".
     .replace(/^\s*flower\s*:\s*/i, '')
