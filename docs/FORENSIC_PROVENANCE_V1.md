@@ -119,3 +119,25 @@ Keystone, ACT, Smithers).
 
 All detector outputs must preserve the underlying evidence references so a
 human can reproduce the finding.
+
+
+## Collision triage
+
+After Retail-ID and COA evidence exist, run:
+
+```sh
+python scripts/forensic-collisions-check.py
+python scripts/forensic-collisions.py
+```
+
+`data/forensics/collisions.json` is a review queue, **not a misconduct list**.
+Exact chemistry hashes are surfaced, while near-clones require at least five
+shared numeric analytes, including four terpene-like measurements, with no
+shared measurement outside its tolerance. Equal THC alone is explicitly
+insufficient.
+
+High priority currently means the records expose the same batch identifier and
+different commercial identity. Medium priority means chemistry matches and a
+different commercial identity is visible without the same-batch confirmation.
+These candidates are intended to feed the unfinished Lot Twins detector only
+after human/source verification.
