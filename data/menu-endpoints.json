@@ -1128,5 +1128,25 @@
     "ageGate": null,
     "checkedAt": "2026-09-30",
     "notes": "Saint Cannabis (Mambo Wellness), 3421 Greenpoint Ave: the site is the cart itself, an older Proteus that draws its shelf as HTML cards. The flower page first asks how to shop; this is the address its own Pick-Up button leads to."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000120",
+    "menuUrl": "https://indoortreez.com/stores/indoor-treez-8th-avenue/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-30",
+    "notes": "Indoor Treez, 584 8th Ave. The home page is now a state gate (New York / New Jersey) with no menu link, and the New York page lists two Manhattan stores; this is the 8th Avenue one."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000311",
+    "menuUrl": "https://indoortreez.com/stores/indoor-treez-fashion-avenue/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-09-30",
+    "notes": "Authentic 212, 474 Fashion Ave (7th Avenue): Indoor Treez's second Manhattan store. Until now the collector took the 8th Avenue shelf for this licence too."
   }
 ]
