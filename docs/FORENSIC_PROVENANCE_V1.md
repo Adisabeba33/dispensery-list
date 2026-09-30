@@ -54,8 +54,9 @@ with evidence that it is a public card:
 
 | tier | what | why |
 |---|---|---|
-| lead | a menu's 1a4.com link, a found card's `sourcePackage`, or a Metrc tag printed in a certificate, that no collector has answered | a public source points at it |
+| lead | a menu's 1a4.com link or a Metrc tag printed in a certificate, that no collector has answered | a public page points at it; nearly always a card |
 | enrich | a public card the caches hold slim (`retail-id.py` keeps dates only) | chemistry, package chain, recall flag and test state; expected hit rate 100% |
+| source | a found card's `sourcePackage` that no collector has answered | often a grower's bulk package never enrolled (23 of 25 answered 404) |
 | reobserve | the public card observed live longest ago | a changed card shows up in the history |
 
 Never asked: a raw menu package ID (`retail-id.py` asks each one under its own
@@ -69,8 +70,10 @@ admitted tags "with Retail-ID provenance" — but `retail-id-cache` and
 `lot-twins-cache` mean *a collector holds an answer*, including 404: all 5,754
 tags passed (`skippedRawDiscovery: 0`), and the queue was 428 tags Lot Twins
 had already seen 404 as neighbours of known tags. Eligibility now reads the
-answer (found / missing), not cache membership. On 2026-09-30 that leaves 814
-of 5,785 tags: 31 leads, 641 cards to enrich, 142 to re-observe.
+answer (found / missing), not cache membership. With Lot Twins v1.27.0's card
+cache (2026-09-30) that leaves 1,491 of 6,462 tags for a first run: 505 cards
+to enrich, 281 source packages, 705 to re-observe, and the leads its
+certificates give.
 
 ## History across runs
 
@@ -112,8 +115,9 @@ by the daily menu run, before it can mean much. That is the owner's call.
   after the day we observed them are impossible.
 - **Many "COA" links are saved Retail ID pages**, not certificates (43 of 786 in
   `coa-dates.json` are read as "Metrc"). They print the package tag — a lead no
-  menu gave: Good Money's "Zeven Up" certificate is package `…870` of batch
-  `…014`, known to no collector.
+  menu gives: Good Money's "Zeven Up" certificate is package `…870` of batch
+  `…014`, reached without enumeration (Lot Twins' neighbour probing reached it
+  the same day).
 - **All 780 certificate links on today's shelves are one shop's POS**
   (`app.alleaves.com/.../buddega/`). The COA index covers what that shop links.
 
