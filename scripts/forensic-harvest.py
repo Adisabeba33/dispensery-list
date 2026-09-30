@@ -170,6 +170,16 @@ def discovered():
     return sources
 
 
+def live_eligible(origins):
+    """Only request tags with evidence that they belong to the public Retail-ID surface."""
+    origins = set(origins or [])
+    return bool(origins & {
+        "flower-listings:retail-link",
+        "retail-id-cache",
+        "lot-twins-cache",
+    })
+
+
 def queue_key(item):
     """Prefer strongest discovery provenance before arbitrary tag order."""
     tag, origins = item
@@ -251,8 +261,11 @@ def main():
         if isinstance(card, dict) and card.get("found") is False
     }
     requested = found = missing = errors = 0
+    live_eligible_count = sum(1 for origins in sources.values() if live_eligible(origins))
     if args.network:
-        for tag, _origins in sorted(sources.items(), key=queue_key):
+        for tag, origins in sorted(sources.items(), key=queue_key):
+            if not live_eligible(origins):
+                continue
             if tag in cards or tag in known_missing or requested >= max(0, args.budget):
                 continue
             requested += 1
@@ -289,6 +302,8 @@ def main():
             "enabled": args.network, "budget": args.budget, "requested": requested,
             "found": found, "notFound": missing, "errors": errors,
             "skippedKnown404": len(sources.keys() & known_missing),
+            "eligibleKnownTags": live_eligible_count,
+            "skippedRawDiscovery": len(sources) - live_eligible_count,
         },
         "about": "Forensic evidence layer. Known tags only; discovery provenance retained; no sequential tag guessing.",
     }
