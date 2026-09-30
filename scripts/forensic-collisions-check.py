@@ -49,6 +49,8 @@ assert not m.materially_different({"strain":"Grandma's"},{"strain":"Grandma's Ho
 # ...numbers still part names, and strains are compared before product codes.
 assert m.materially_different({"strain":"Gelato 33"},{"strain":"Gelato 41"})
 assert m.materially_different({"strain":"Gelato 41","product":"SCC350-G41"},{"strain":"Blue Dream","product":"SCC350"})
+# A saved Retail ID page names the product; the card calls it by strain and a code.
+assert not m.materially_different({"product":"Zeven Up"},{"strain":"Zeven Up","product":"SCC201"})
 
 # Retail ID cards fill unreported terpenes with 0 (kept as a qualifier): two
 # unrelated cards share a dozen of them, and they must not count.

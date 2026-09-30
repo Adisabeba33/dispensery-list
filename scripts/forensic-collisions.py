@@ -114,14 +114,13 @@ def same_name(x,y):
 
 
 def materially_different(a,b):
-    """Compare like with like: strains when both sides have one, else products.
-    A missing name is unknown, not different; spellings Lot Twins folds
-    ("Blue-Dream" / "blue dream", "OG #8" / "Ghost OG #8") are one name."""
-    for field in ("strain","product"):
-        x,y=a.get(field),b.get(field)
-        if x and y:
-            return not same_name(x,y)
-    return False
+    """Compare each side's best name: its strain, else its product. A packager's
+    product is often a code (SCC201) while a saved Retail ID page shows the
+    name ("Zeven Up"). A missing name is unknown, not different; spellings Lot
+    Twins folds ("Blue-Dream" / "blue dream", "OG #8" / "Ghost OG #8") are one
+    name."""
+    x,y=name_of(a),name_of(b)
+    return bool(x and y) and not same_name(x,y)
 
 
 def package(i):
