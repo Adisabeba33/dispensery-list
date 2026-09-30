@@ -24,13 +24,15 @@ No sequential tag guessing is done here. Discovery provenance is retained.
 Live requests (--network) go only to public cards and to leads a public source
 names, in the order of what they are likely to return:
   0. leads a public page points at, that no collector has an answer for yet:
-     a menu's 1a4.com link, a Metrc tag printed in a certificate
-     (data/forensics/coa-index.json) — nearly always a public card;
+     a menu's 1a4.com link, the package tag of a Retail ID page a shop saved
+     as its "COA" (data/forensics/coa-index.json) — a public card: 5 of 5 on
+     2026-09-30;
   1. enrichment: public cards the caches hold slim (retail-id.py keeps dates
      only) — chemistry, package chain, recall flag and test state;
-  2. source packages a found card names and no collector has answered: often
-     a grower's bulk package that was never enrolled (23 of 25 answered 404
-     on 2026-09-30), so after the sure things;
+  2. packages that are likely internal: a found card's source package, the
+     package a lab certificate says it sampled ("Seed to sale", "TEST PKG") —
+     often a bulk or sample package never enrolled (23 of 25 and 17 of 17
+     answered 404 on 2026-09-30), so after the sure things;
   3. re-observation: the public card observed live longest ago, so that a
      card that changes shows up in retail-history.json.
 A raw menu package ID is discovery evidence only: retail-id.py asks each one
@@ -255,9 +257,10 @@ def discovered():
     Origins: flower-listings (a menu printed the tag), flower-listings:retail-link
     (a menu printed a 1a4.com link that resolves to it), retail-id-cache and
     lot-twins-cache (a collector holds an answer for it), card:source-package
-    (a found public card names it as its source package), coa:metrc-tag (a
-    certificate a shop links prints it: a Retail ID page saved as the "COA",
-    Kaycha's "Seed to sale", TagLeaf's "TEST PKG"), lot-twins:probe-only
+    (a found public card names it as its source package), coa:retail-id-page
+    (a shop's "COA" link is a saved Retail ID page of it), coa:tested-package
+    (a lab certificate names it as the package sampled: Kaycha's "Seed to
+    sale", TagLeaf's "TEST PKG"), lot-twins:probe-only
     (inferred: Lot Twins holds it and nothing else points at it — its
     neighbour probing, or a menu tag no longer printed; Lot Twins does not
     record which). State: "found", "missing" (a collector got 404) or None."""
@@ -293,16 +296,21 @@ def discovered():
                 sources[src].add("card:source-package")
     for doc in (load(OUTDIR / "coa-index.json", {}).get("documents") or {}).values():
         for v in doc.get("versions") or []:
-            tag = str((v.get("record") or {}).get("metrcTag") or "").upper()
+            record = v.get("record") or {}
+            tag = str(record.get("metrcTag") or "").upper()
             if TAG.match(tag):
-                sources[tag].add("coa:metrc-tag")
+                page = record.get("docType") == "metrc-retail-id"
+                sources[tag].add("coa:retail-id-page" if page else "coa:tested-package")
     for origins in sources.values():
         if origins == {"lot-twins-cache"}:
             origins.add("lot-twins:probe-only")
     return sources, state
 
 
-LEAD_ORIGINS = {"flower-listings:retail-link", "card:source-package", "coa:metrc-tag"}
+LEAD_ORIGINS = {"flower-listings:retail-link", "coa:retail-id-page", "card:source-package", "coa:tested-package"}
+# Leads that are, by what points at them, public cards; the rest are often
+# internal packages and wait until the slim cards are enriched.
+PAGE_LEADS = {"flower-listings:retail-link", "coa:retail-id-page"}
 
 
 def live_eligible(origins, state=None):
@@ -342,7 +350,7 @@ def plan_live(sources, state, history, full_tags, rest=()):
         if tag in rest or not live_eligible(origins, st):
             continue
         if st != "found":
-            (leads if set(origins) & (LEAD_ORIGINS - {"card:source-package"}) else source).append(tag)
+            (leads if set(origins) & PAGE_LEADS else source).append(tag)
         elif tag not in full_tags and last_live(tags.get(tag)) is None:
             enrich.append(tag)
         else:

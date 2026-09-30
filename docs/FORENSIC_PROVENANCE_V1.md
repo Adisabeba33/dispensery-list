@@ -54,9 +54,9 @@ with evidence that it is a public card:
 
 | tier | what | why |
 |---|---|---|
-| lead | a menu's 1a4.com link or a Metrc tag printed in a certificate, that no collector has answered | a public page points at it; nearly always a card |
+| lead | a menu's 1a4.com link, or the tag of a Retail ID page a shop saved as its "COA", that no collector has answered | a public page points at it (5 of 5 public in run 9) |
 | enrich | a public card the caches hold slim (`retail-id.py` keeps dates only) | chemistry, package chain, recall flag and test state; expected hit rate 100% |
-| source | a found card's `sourcePackage` that no collector has answered | often a grower's bulk package never enrolled (23 of 25 answered 404) |
+| source | a found card's `sourcePackage`, or the package a lab certificate says it sampled, that no collector has answered | often a bulk or sample package never enrolled (23 of 25, and 17 of 17, answered 404) |
 | reobserve | the public card observed live longest ago | a changed card shows up in the history |
 
 Never asked: a raw menu package ID (`retail-id.py` asks each one under its own
