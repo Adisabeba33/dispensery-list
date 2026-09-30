@@ -228,10 +228,17 @@ def main():
 
     sources = discovered()
     cards = cached_cards()
+    # retail-id.py already maintains negative lookups with its own recheck
+    # policy. Do not burn this pilot's budget retrying the same known 404s.
+    retail_cache = load(ROOT / "data/retail-id.json", {})
+    known_missing = {
+        str(tag).upper() for tag, card in (retail_cache.get("packages") or {}).items()
+        if isinstance(card, dict) and card.get("found") is False
+    }
     requested = found = missing = errors = 0
     if args.network:
         for tag in sorted(sources):
-            if tag in cards or requested >= max(0, args.budget):
+            if tag in cards or tag in known_missing or requested >= max(0, args.budget):
                 continue
             requested += 1
             card = fetch_live(tag)
@@ -266,6 +273,7 @@ def main():
         "fingerprints": len(fps), "network": {
             "enabled": args.network, "budget": args.budget, "requested": requested,
             "found": found, "notFound": missing, "errors": errors,
+            "skippedKnown404": len(sources.keys() & known_missing),
         },
         "about": "Forensic evidence layer. Known tags only; discovery provenance retained; no sequential tag guessing.",
     }
