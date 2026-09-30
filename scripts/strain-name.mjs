@@ -109,7 +109,8 @@ const SHELF_POSITION = /\b(front|back|middle|centre|center|left|right|top|bottom
 const isShelfCode = (seg) => {
   const s = norm(seg);
   if (SHELF_POSITION.test(s) && /[a-z]{1,3}\s?\d{1,3}/i.test(s)) return true;
-  return /^[a-z]{1,3}\s?\d{1,3}$/i.test(s);
+  // Nucleus letters its codes at the end too: "F8B", "F2b".
+  return /^[a-z]{1,3}\s?\d{1,3}[a-z]?$/i.test(s);
 };
 
 /* A grower's name with the words that dress a company rather than name it
@@ -118,6 +119,12 @@ const COMPANY_WORDS = /\b(cannabis|co|company|farms?|labs?|brands?|nyc?|llc|inc|
 const growerCore = (brand) =>
   brand ? norm(brand).normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9 ]/g, ' ').replace(COMPANY_WORDS, ' ').replace(/[^a-z0-9]/g, '') : '';
+
+/* A lean, in brackets, as Nucleus writes it: "Blue Zushi (Indica/Hybrid)". A
+   closing bracket is required — "Sativa Hybrid" bare is a segment, read as
+   lineage elsewhere. */
+export const LEAN_MARK =
+  /(?:[(\[]\s*)?\b(indica|sativa)\s*[-/\s]\s*hybrid\s*[)\]]|[(\[]\s*hybrid\s*[-/\s]\s*(indica|sativa)\s*[)\]]/gi;
 
 /** Noise that clings inside a segment rather than forming one. */
 const stripInline = (seg) =>
@@ -129,6 +136,8 @@ const stripInline = (seg) =>
     .replace(/\b[a-z]{1,4}-[a-z]{2,6}-\d{3,}-\d{2,}\b/gi, ' ')
     // Two lineage letters in one marker: "(I/H)", "(S/H)".
     .replace(/\(\s*[ish]\s*\/\s*[ish]\s*\)/gi, ' ')
+    // Or spelled out: "(Indica/Hybrid)", "( Sativa- Hybrid)", and "Sativa/Hybrid)" with its bracket lost.
+    .replace(LEAN_MARK, ' ')
     .replace(/\bthc[:\s]*\d{1,2}(\.\d+)?\s*%?/gi, ' ')
     .replace(/\b\d{1,2}(\.\d+)?\s*%\s*(thc|cbd)?/gi, ' ')
     .replace(/\b[\d.]+\s*(g|gr|grams?)\b/gi, ' ')
@@ -240,7 +249,8 @@ export const canonicalStrain = (raw, brand = null, brands = new Set(), foldOwn =
      from it would leave "Cake". */
   const stripLeadingBrand = (seg) => {
     const words = seg.split(/\s+/);
-    for (let n = Math.min(4, words.length - 2); n >= 1; n -= 1) {
+    // Up to six words: "New York State of High NY Zushi".
+    for (let n = Math.min(6, words.length - 2); n >= 1; n -= 1) {
       if (brandKeys.has(strainKey(words.slice(0, n).join(' ')))) {
         return words.slice(n).join(' ');
       }
@@ -294,9 +304,13 @@ export const canonicalStrain = (raw, brand = null, brands = new Set(), foldOwn =
     while (i < words.length - 1 && packaging(norm(words[i]), i)) i += 1;
     return words.slice(i).join(' ');
   };
+  /* A product line in quotes ahead of the cultivar: Miss Grass's "'All Times'
+     Cherry Pie", Trap to Table's "'After Glow' Spanish Moon". Only a quoted
+     phrase that opens the name and has more after it. */
+  const LINE_IN_QUOTES = /^['‘][^'’]{2,30}['’]\s+(?=\S)/;
   let kept = segments
     .filter((_, i) => kinds[i] === 'name')
-    .map(afterBrand);
+    .map((seg) => afterBrand(seg).replace(LINE_IN_QUOTES, ''));
 
   /* Nothing but grower, packaging and shelf label: the shop told us no
      cultivar, so take what it did say rather than invent one. A bare code is
@@ -306,7 +320,8 @@ export const canonicalStrain = (raw, brand = null, brands = new Set(), foldOwn =
        Herer" from Jack Herer™ Brands is Jack Herer. When the folded name
        leaves nothing, read the listing as before it was folded. */
     if (own) return canonicalStrain(raw, brand, brands, false);
-    kept = segments.filter((_, i) => kinds[i] === 'code');
+    /* One code, the first: "RS11 - DF12" is RS11 on Nucleus's shelf DF12. */
+    kept = segments.filter((_, i) => kinds[i] === 'code').slice(0, 1);
     if (kept.length === 0) kept = segments.filter((_, i) => kinds[i] === 'brand');
     if (kept.length === 0) return null;
   }
@@ -314,7 +329,9 @@ export const canonicalStrain = (raw, brand = null, brands = new Set(), foldOwn =
   /* Grade words trailing inside the surviving segment — "Black Maple Flower",
      "Snow Day Small Bud" — go too, longest phrase first, and only from the
      end, so "Flower Power" keeps its head. */
-  const TRAIL = [...GRADE, ...LINEAGE].sort((a, b) => b.length - a.length);
+  /* And the eighth a cart writes after the name: "Cream Smoothie 8TH". Only
+     at the very end — "8th Ave" opens with it. */
+  const TRAIL = [...GRADE, ...LINEAGE, '8th', 'eighth'].sort((a, b) => b.length - a.length);
   let name = kept.join(' - ');
   let changed = true;
   while (changed) {

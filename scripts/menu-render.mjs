@@ -18,7 +18,7 @@
  * browser already on the machine; both exist for scripts/menu-e2e-check.mjs.
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { canonicalStrain } from './strain-name.mjs';
+import { canonicalStrain, LEAN_MARK } from './strain-name.mjs';
 import { labPanelKeyOf } from './lab-panel.mjs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -3035,7 +3035,13 @@ export const lineageSegmentOf = (part) => {
   const base = m[2].toUpperCase();
   return m[3] ? `${base}_DOMINANT` : base;
 };
+/* Nucleus writes the lean in brackets: "Blue Zushi (Indica/Hybrid) - F46". */
 const lineageFromTitle = (raw) => {
+  const lean = String(raw).match(new RegExp(LEAN_MARK.source, 'i'));
+  if (lean) return `${(lean[1] ?? lean[2]).toUpperCase()}_DOMINANT`;
+  // Or in two letters, as Renaissant's cart writes it: "DANK (I/H) ANIMAL COOKIES".
+  const letters = String(raw).match(/[(\[]\s*([is])\s*\/\s*h\s*[)\]]/i);
+  if (letters) return letters[1].toLowerCase() === 'i' ? 'INDICA_DOMINANT' : 'SATIVA_DOMINANT';
   const m = String(raw).match(/[(\[](h|s|i|hybrid|sativa|indica)[)\]]/i);
   if (m) return LINEAGE_MARK[m[1].toLowerCase()];
   for (const part of String(raw).split(/\s+[-–—|]\s+/)) {
@@ -3092,7 +3098,7 @@ const NOT_FLOWER_TITLE = new RegExp(
        collected shelves is a bag of ground flower, and no cultivar in the
        strain catalog carries any of the words. */
     '\\b(?:pre[\\s-]?)?ground(?:s|ed)?\\b',
-    'ready\\s+to\\s+roll',
+    'ready[\\s-]+to[\\s-]+roll',
     'flower\\s+flight',
     /* Concentrates a shop files under Flower: Silk Road's "Cap Junky Wax
        Budder" stood on its shelf as a gram of flower. Budder, Crumble and
@@ -3116,8 +3122,10 @@ const NOT_FLOWER_TITLE = new RegExp(
 /** Strips the brand, the category word and the size, leaving the strain. */
 const cleanStrainName = (raw, brand) => {
   let text = String(raw)
-    .replace(/\s*[-–—]\s*F\d+\s*$/i, '')          // trailing shop SKU: "- F140"
+    // Trailing shop SKU: "- F140", and Nucleus's "- DF13" and "- F8B".
+    .replace(/\s*[-–—]\s*D?F\d+[A-Z]?\s*$/i, '')
     // Lineage marker, kept separately. Matawana brackets it square: "Cap Junky [H]".
+    .replace(LEAN_MARK, ' ')
     .replace(/[(\[](h|s|i|hybrid|sativa|indica)[)\]]/gi, ' ')
     // A category word the shop put before the name: "Flower: Lemon OG [I]".
     .replace(/^\s*flower\s*:\s*/i, '')
@@ -3686,6 +3694,65 @@ export const decodeEntities = (v) =>
         .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
         .replace(/&([a-z]+);/gi, (m, n) => NAMED_ENTITIES[n.toLowerCase()] ?? m);
 
+/**
+ * The older Proteus cart — Renaissant, Saint Cannabis — answers
+ * ajax_getproducts.cfm with the shelf drawn as HTML cards, not JSON:
+ *
+ *   <div data-id="367" class="… products_view products_strain_750 …">
+ *     <a href="/cart/ps/07020/" title="HOUSE OF SACCI (H) TROP CHERRY DIME 0.7g Flower">
+ *     <p class="… product_short_description">0.7g</p>
+ *
+ * Read into the shape every other menu arrives in, so the same rules decide
+ * what is flower and what its name, lineage and size are. The category is the
+ * breadcrumb the answer opens with. The grower is not on the card; it is
+ * matched against the Brands filter the cart sends beside it, longest name
+ * first, and only at the start of the title, where the cart puts it.
+ */
+export const proteusBrandsOf = (html) =>
+  [...String(html).matchAll(/filter-radio">\s*([^<\n]+?)\s*<input[^>]*data-type="brand"/g)]
+    .map((m) => decodeEntities(m[1].trim()))
+    .filter(Boolean)
+    .sort((a, b) => b.length - a.length);
+// Kickfly's is written with a straight apostrophe in the filter and a curly one on some cards.
+const foldQuotes = (s) => String(s).toUpperCase().replace(/[‘’]/g, "'");
+const proteusBrandOf = (name, brands) => {
+  const title = foldQuotes(name);
+  return brands.find((b) => title.startsWith(`${foldQuotes(b)} `)) ?? null;
+};
+export const proteusCards = (html, brands = []) => {
+  const text = String(html);
+  const category = decodeEntities(text.match(/category-breadcrumb"\s+title="([^"]*)"/)?.[1] ?? '') || null;
+  const cards = [];
+  for (const chunk of text.split(/(?=<div data-id="\d+"[^>]*product-card-wrapper)/).slice(1)) {
+    const id = chunk.match(/^<div data-id="(\d+)"/)?.[1];
+    const name = decodeEntities(chunk.match(/<a [^>]*title="([^"]+)"/)?.[1] ?? '').trim();
+    if (!id || !name) continue;
+    const brand = proteusBrandOf(name, brands);
+    cards.push({
+      id,
+      name,
+      brand,
+      category,
+      size: decodeEntities(chunk.match(/product_short_description">\s*([^<]*?)\s*</)?.[1] ?? '') || null,
+      url: chunk.match(/<a [^>]*href="(\/cart\/ps\/[^"]+)"/)?.[1] ?? null,
+    });
+  }
+  return cards;
+};
+/* The cart pages its shelf ten or so at a time and offers "Show All" beside
+   the page numbers; the same request with page=all is the whole shelf. */
+export const proteusShowAll = (url, html) => {
+  if (!/data-whatPage="all"/i.test(String(html))) return null;
+  try {
+    const u = new URL(url);
+    if (u.searchParams.get('page') === 'all') return null;
+    u.searchParams.set('page', 'all');
+    return u.href;
+  } catch {
+    return null;
+  }
+};
+
 const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   const rawName = decodeEntities(flatten(pick(p, ['name', 'productName', 'title', 'displayName'])));
   if (!rawName) return null;
@@ -4099,6 +4166,9 @@ const main = async () => {
     const responseTypes = {};
     let streamResponses = null;
     let flightAnswers = 0;
+    let proteusBrands = [];
+    const proteusSeen = [];
+    let proteusAskedAll = false;
     page.on('response', async (res) => {
       try {
         const ct = res.headers()['content-type'] ?? '';
@@ -4133,6 +4203,28 @@ const main = async () => {
             payloads.push(...shelves);
             lastPayloadAt = Date.now();
             flightAnswers += 1;
+          }
+          return;
+        }
+        /* The older Proteus cart's shelf, drawn as HTML. See proteusCards. */
+        if (/\/ajax_getfilters\.cfm/i.test(res.url())) {
+          proteusBrands = proteusBrandsOf(await res.text());
+          for (const card of proteusSeen) card.brand ??= proteusBrandOf(card.name, proteusBrands);
+          return;
+        }
+        if (/\/ajax_getproducts\.cfm/i.test(res.url()) && !ct.includes('json')) {
+          const html = await res.text();
+          const cards = proteusCards(html, proteusBrands);
+          if (cards.length) {
+            proteusSeen.push(...cards);
+            payloads.push({ products: cards });
+            lastPayloadAt = Date.now();
+          }
+          const all = proteusShowAll(res.url(), html);
+          if (all && !proteusAskedAll && (await robotsAllows(all))) {
+            proteusAskedAll = true;
+            // Asked from the page, so it goes as the cart's own request would; the answer lands back here.
+            await page.evaluate((u) => fetch(u, { credentials: 'include' }).then((r) => r.text()), all).catch(() => {});
           }
           return;
         }
