@@ -98,7 +98,10 @@ def compare(a,b):
 
 def classify(aid,bid,ameas,bmeas,afp=None,bfp=None):
     common,matched,diff,terp=compare(ameas,bmeas)
-    if afp and bfp and afp==bfp and len(common)>=1:
+    # A hash over one or two measurements is not a chemical fingerprint in the
+    # forensic sense: common shelf THC values collide constantly. Exact hashes
+    # must meet the same dimensional evidence floor as near-clones.
+    if afp and bfp and afp==bfp and len(common)>=MIN_COMMON and len(terp)>=MIN_TERPENES:
         return "exact_fingerprint",common,matched,diff
     if len(common)>=MIN_COMMON and len(terp)>=MIN_TERPENES and not diff:
         return "near_chemical_clone",common,matched,diff
