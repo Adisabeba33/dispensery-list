@@ -1,0 +1,64 @@
+name: Forensic bounded pilot
+
+on:
+  workflow_dispatch:
+    inputs:
+      retail_budget:
+        description: Known Retail-ID requests only
+        required: true
+        default: "100"
+      coa_budget:
+        description: Known COA downloads only
+        required: true
+        default: "50"
+
+permissions:
+  contents: read
+
+jobs:
+  pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF text extractor
+        run: sudo apt-get update -qq && sudo apt-get install -y poppler-utils
+      - name: Regression checks
+        run: |
+          python scripts/forensic-harvest-check.py
+          python scripts/coa-forensics-check.py
+          python scripts/coa-harvest-check.py
+          python scripts/forensic-collisions-check.py
+      - name: Build offline Retail evidence
+        run: python scripts/forensic-harvest.py
+      - name: Bounded known Retail-ID harvest
+        run: python scripts/forensic-harvest.py --network --budget "${{ inputs.retail_budget }}"
+      - name: Bounded known COA harvest
+        run: python scripts/coa-harvest.py --network --budget "${{ inputs.coa_budget }}"
+      - name: Detect collision candidates
+        run: python scripts/forensic-collisions.py
+      - name: Pilot summary
+        run: |
+          echo "### Forensic pilot" >> "$GITHUB_STEP_SUMMARY"
+          cat data/forensics/harvest-state.json >> "$GITHUB_STEP_SUMMARY"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          from pathlib import Path
+          p=Path("data/forensics/collisions.json")
+          x=json.loads(p.read_text()) if p.exists() else {}
+          hits=x.get("candidates",[])
+          print("\nCollision candidates:",len(hits))
+          print("High priority:",sum(h.get("priority")=="high" for h in hits))
+          print("Medium priority:",sum(h.get("priority")=="medium" for h in hits))
+          for h in hits[:20]:
+              a=h.get("a",{}); b=h.get("b",{})
+              print("-",h.get("priority"),h.get("signal"),a.get("product") or a.get("strain") or a.get("id"),
+                    "<->",b.get("product") or b.get("strain") or b.get("id"),
+                    "common",h.get("commonAnalytes"))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: forensic-pilot
+          path: data/forensics/
+          if-no-files-found: error
+          retention-days: 14
