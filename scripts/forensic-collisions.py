@@ -78,6 +78,7 @@ def name_key(x):
 
 
 def materially_different(a,b):
+    """Only compare like identity fields; a missing name is unknown, not different."""
     names=[(a.get("product"),b.get("product")),(a.get("strain"),b.get("strain"))]
     known=[(name_key(x),name_key(y)) for x,y in names if x and y]
     return any(x!=y for x,y in known)
