@@ -52,7 +52,7 @@ const StrainRow = ({
       <div className="min-w-0">
         <h3 className="truncate text-[0.95rem] font-semibold tracking-tight text-chalk-50">{s.name}</h3>
         <p className="mt-0.5 truncate text-xs text-chalk-500">
-          {s.brands.length > 0 ? s.brands.slice(0, 2).join(' · ') : 'Brand not stated'}
+          {s.brands.length > 0 ? `by ${s.brands.slice(0, 2).join(' · ')}` : 'Brand not stated'}
         </p>
       </div>
       <div className="shrink-0 text-right">
