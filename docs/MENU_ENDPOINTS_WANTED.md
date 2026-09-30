@@ -52,7 +52,7 @@
 | Fluent | New York | https://www.etain.com | страница вернула ноль товаров |
 | Green Rise Inc. | New York | https://greenriseny.com | страница не открылась |
 | Housing Works Cannabis Co. | New York | https://hwcannabis.co | страница вернула ноль товаров |
-| The Hootch LLC | New York | https://www.sweetlife.nyc | ссылку на меню не нашли |
+| The Hootch LLC | New York | https://www.sweetlife.nyc | страница вернула ноль товаров |
 | THE GOAT DISPENSARY | Rego Park | https://www.thegoatdispensary.com | ссылку на меню не нашли |
 | Green Land Retail LLC | Staten Island | https://greenlandny.com | ссылку на меню не нашли |
 | Fluent | White Plains | https://etainhealth.com/ | страница вернула ноль товаров |
@@ -60,14 +60,13 @@
 
 ✳️ — адрес в `menu-endpoints.json` уже есть, и всё равно пусто: значит записанный адрес больше не тот.
 
-## Полка читается не до конца — 3
+## Полка читается не до конца — 2
 
 Здесь адрес есть и меню отвечает, но отдаёт меньше, чем само объявляет. Листание таким не помогло — им нужен прямой адрес категории.
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| The Bridge A Cannabis Experience | 57 | 351 | https://thebridgecannabis.com |
-| JUST A LITTLE HIGHER MURRAY HILL | 9 | 117 | https://justalittlehigher.com |
+| The Bridge A Cannabis Experience | 57 | 349 | https://thebridgecannabis.com |
 | KushKlub NY LLC | 58 | 91 | https://kushklub.com |
 
 ## Сюда не ходим
