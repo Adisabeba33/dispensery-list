@@ -545,7 +545,7 @@ def main():
     today = date.today().isoformat()
 
     restored = HISTORY.exists()
-    history = load(HISTORY, {})
+    history = json.loads(HISTORY.read_text()) if restored else {}  # unreadable history stops the run
     history.setdefault("tags", {})
     sources, state = discovered()
     cached = cached_cards()

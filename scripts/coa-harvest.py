@@ -105,7 +105,7 @@ def main():
     args=ap.parse_args()
     OUTDIR.mkdir(parents=True,exist_ok=True)
     restored=OUT.exists()
-    known=load(OUT,{"documents":{}})
+    known=json.loads(OUT.read_text()) if restored else {"documents":{}}  # unreadable index stops the run
     docs=known.get("documents",{})
     today=date.today().isoformat()
     counts={"same":0,"reparsed":0,"new":0,"changed":0,"rerendered":0}
