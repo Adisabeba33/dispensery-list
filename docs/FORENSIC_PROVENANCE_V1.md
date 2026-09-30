@@ -148,7 +148,7 @@ of the bytes, SHA-256 of the extracted text (new bytes, same text = a
 re-rendered PDF), first/last seen, the parsed record. A version parsed by an
 older parser is re-parsed when its bytes come back. PDFs are not stored.
 
-`scripts/coa-forensics.py` (parser v2) reads:
+`scripts/coa-forensics.py` (parser v3) reads:
 
 - `docType`: `lab-coa`, or `metrc-retail-id` for a saved Retail ID page (both
   page layouts);

@@ -169,6 +169,13 @@ assert m.physical("   Water Activity\n\n        13.6 %\n")=={}
 assert m.physical("         Water Activity        0.05        0.65        0.58        Pass")=={}
 assert m.physical("         Water Activity        0.3305      ≤ 0.65      Pass")=={"waterActivity":0.3305}  # MCR
 assert m.physical("     WATER ACTIVITY        0.32 Aw        PASS")=={"waterActivity":0.32}  # TagLeaf
+# Moisture too: CTNY prints the limit first (23788.pdf), MCR the result first.
+assert m.physical(" Moisture                         15 %                  9.8 %              Pass")=={}
+assert m.physical("     MOISTURE                     11.9 %                        PASS")=={"moisture":11.9}
+# Numbers inside method codes, dates and times are not results (MCR, Green Analytics).
+assert m.physical("        Moisture Content [TM-NY-1]      Analyst: WP      Test Date: 3/13/2026 16:10")=={}
+assert m.physical("  Moisture content analysis utilizing Moisture Balance (MB; SOP-055-GA)")=={}
+assert m.physical("        Water Activity [TM-NY-10]      Analyst: BS/WP   Test Date: 2/2/2026 18:20")=={}
 
 # Same words, new bytes (a re-rendered PDF) hash the same text.
 assert m.text_sha256("Total THC  26.10 %\n\n") == m.text_sha256("Total THC 26.10 %")

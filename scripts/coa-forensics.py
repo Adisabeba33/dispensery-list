@@ -19,7 +19,7 @@ import json
 import re
 from datetime import date
 
-PARSER_VERSION = 2
+PARSER_VERSION = 3
 DATE = r"(\d{1,2}/\d{1,2}/\d{2,4}|\d{4}-\d{2}-\d{2}|[A-Z][a-z]{2,8}\.? \d{1,2}, \d{4})"
 MONTHS = {m:i for i,m in enumerate(("jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"),1)}
 TAG = re.compile(r"\b(1A4[0-9A-F]{21})\b")
@@ -187,19 +187,24 @@ def analytes(text, printout=False):
 
 
 def physical(text):
-    """Moisture % and water activity, from one line each. Water activity is
-    taken only when it is the line's one bare number (Keystone prints LOQ,
-    limit and result: "Water Activity 0.05 0.65 0.58 Pass"); a limit written
-    with its comparator ("≤ 0.65") does not count. Out-of-range values are
-    not kept."""
+    """Moisture % and water activity, from one line each, taken only when the
+    value is the line's one bare number: labs print limit and result in either
+    order — Keystone "Water Activity 0.05 0.65 0.58 Pass" (LOQ, limit,
+    result), CTNY "Moisture 15 % 9.8 % Pass" (limit, result), MCR "Moisture
+    Content 10.0% 15.0% Pass" (result, limit). A limit written with its
+    comparator ("≤ 0.65") does not count. Out-of-range values are not kept."""
     fields={}
-    m=re.search(r"(?im)^[ \t]*(?:Moisture|Moisture Content)[ \t]*[:|]?[ \t]*([0-9]+(?:\.[0-9]+)?)[ \t]*%",text)
-    if m and 0<float(m.group(1))<100: fields["moisture"]=float(m.group(1))
-    for m in re.finditer(r"(?im)^[ \t]*(?:Water Activity|Aw)\b(?P<rest>[^\n]*)$",text):
-        bare=re.findall(r"(?<![≤≥<>=\d.])[ \t]*\b([0-9]+(?:\.[0-9]+)?)\b",re.sub(r"[≤≥<>]=?[ \t]*[0-9.]+","",m.group("rest")))
-        if len(bare)==1 and 0<float(bare[0])<=1:
-            fields["waterActivity"]=float(bare[0])
-            break
+    # A number standing alone: not part of a method code (TM-NY-1, SOP-055-GA),
+    # a date or a time. Moisture must carry its %.
+    alone=r"(?<![\w.\-/:])([0-9]+(?:\.[0-9]+)?)(?![\w.\-/:])"
+    for key,label,unit,top in (("moisture",r"Moisture(?: Content)?",r"[ \t]*%",100),
+                               ("waterActivity",r"Water Activity|Aw","",1)):
+        for m in re.finditer(r"(?im)^[ \t]*(?:"+label+r")\b(?P<rest>[^\n]*)$",text):
+            rest=re.sub(r"[≤≥<>]=?[ \t]*[0-9.]+","",m.group("rest"))
+            bare=re.findall(alone+unit,rest)
+            if len(bare)==1 and 0<float(bare[0])<=top:
+                fields[key]=float(bare[0])
+                break
     return fields
 
 
