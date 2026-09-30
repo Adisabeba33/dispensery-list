@@ -91,18 +91,19 @@ sources = {
     T(2): {"flower-listings", "retail-id-cache"},                # 404: never
     T(3): {"flower-listings", "retail-id-cache"},                # slim public card: enrich
     T(4): {"lot-twins-cache"},                                   # full public card: re-observe
-    T(5): {"card:source-package"},                               # lead
+    T(5): {"card:source-package"},                               # a source package: after enrichment
     T(6): {"flower-listings:retail-link", "retail-id-cache"},    # slim, observed live before
+    T(7): {"coa:metrc-tag"},                                     # a page points at it: first
 }
 state = {T(2): "missing", T(3): "found", T(4): "found", T(6): "found"}
 history = {"tags": {T(6): {"versions": [{"sources": ["live"], "lastSeen": "2026-09-01"}]}}}
 plan = fh.plan_live(sources, state, history, full_tags={T(4)})
-assert plan == [(T(5), "lead"), (T(3), "enrich"), (T(4), "reobserve"), (T(6), "reobserve")], plan
+assert plan == [(T(7), "lead"), (T(3), "enrich"), (T(5), "source"), (T(4), "reobserve"), (T(6), "reobserve")], plan
 # A lead that answered 404 rests RECHECK_DAYS, then is a lead again.
 fh.observe_not_public(history, T(5), "2026-09-30")
 assert T(5) in fh.resting(history, "2026-10-29") and T(5) not in fh.resting(history, "2026-10-31")
 plan = fh.plan_live(sources, state, history, {T(4)}, fh.resting(history, "2026-10-01"))
-assert (T(5), "lead") not in plan and len(plan) == 3
+assert (T(5), "source") not in plan and len(plan) == 4
 
 # ---------------------------------------------------------------- live card
 api = {

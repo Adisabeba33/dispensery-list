@@ -22,13 +22,16 @@ Outputs:
 No sequential tag guessing is done here. Discovery provenance is retained.
 
 Live requests (--network) go only to public cards and to leads a public source
-names, in this order:
-  0. leads: a menu's 1a4.com link, a found card's sourcePackage, or a Metrc tag
-     printed in a certificate (data/forensics/coa-index.json) that no collector
-     has an answer for yet;
+names, in the order of what they are likely to return:
+  0. leads a public page points at, that no collector has an answer for yet:
+     a menu's 1a4.com link, a Metrc tag printed in a certificate
+     (data/forensics/coa-index.json) — nearly always a public card;
   1. enrichment: public cards the caches hold slim (retail-id.py keeps dates
      only) — chemistry, package chain, recall flag and test state;
-  2. re-observation: the public card observed live longest ago, so that a
+  2. source packages a found card names and no collector has answered: often
+     a grower's bulk package that was never enrolled (23 of 25 answered 404
+     on 2026-09-30), so after the sure things;
+  3. re-observation: the public card observed live longest ago, so that a
      card that changes shows up in retail-history.json.
 A raw menu package ID is discovery evidence only: retail-id.py asks each one
 with its own recheck policy, and most answer 404 (pilot runs 1-8: 100 of 100).
@@ -330,22 +333,23 @@ def resting(history, today):
 
 
 def plan_live(sources, state, history, full_tags, rest=()):
-    """Ordered live queue [(tag, tier)]: leads, then enrichment, then re-observation."""
+    """Ordered live queue [(tag, tier)]: leads a page points at, enrichment,
+    source packages, re-observation."""
     tags = (history or {}).get("tags") or {}
-    leads, enrich, reobserve = [], [], []
+    leads, enrich, source, reobserve = [], [], [], []
     for tag, origins in sources.items():
         st = state.get(tag)
         if tag in rest or not live_eligible(origins, st):
             continue
         if st != "found":
-            leads.append(tag)
+            (leads if set(origins) & (LEAD_ORIGINS - {"card:source-package"}) else source).append(tag)
         elif tag not in full_tags and last_live(tags.get(tag)) is None:
             enrich.append(tag)
         else:
             reobserve.append(tag)
     reobserve.sort(key=lambda t: (last_live(tags.get(t)) or "", t))
     return ([(t, "lead") for t in sorted(leads)] + [(t, "enrich") for t in sorted(enrich)]
-            + [(t, "reobserve") for t in reobserve])
+            + [(t, "source") for t in sorted(source)] + [(t, "reobserve") for t in reobserve])
 
 
 # ------------------------------------------------------------------ history
@@ -659,8 +663,8 @@ def main():
     (OUTDIR / "harvest-state.json").write_text(json.dumps(run_state, ensure_ascii=False, indent=1) + "\n")
     print(f"forensics: {len(sources)} known tags, {len(evidence)} cards, {len(fps)} fingerprints; "
           f"network {requested} requests/{found} found/{missing} 404/{errors} errors "
-          f"(queue: {pool.get('lead', 0)} leads, {pool.get('enrich', 0)} to enrich, "
-          f"{pool.get('reobserve', 0)} to re-observe); history {'restored' if restored else 'new'}, "
+          f"(queue: {pool.get('lead', 0)} leads, {pool.get('enrich', 0)} to enrich, {pool.get('source', 0)} "
+          f"source packages, {pool.get('reobserve', 0)} to re-observe); history {'restored' if restored else 'new'}, "
           f"{run_state['history']['changedCards']} changed cards")
 
 
