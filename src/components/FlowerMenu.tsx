@@ -59,21 +59,22 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
     >
       <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
         <div className="min-w-0">
-          <h4 className="text-[1.02rem] font-semibold leading-tight tracking-tight text-chalk-50">
+          {/* The cultivar, and under it whose. The shop's own wording is kept
+              on the listing and shown on hover: the name is the one the
+              register settled on (lib/strain-review), the label is evidence. */}
+          <h4
+            className="text-[1.02rem] font-semibold leading-tight tracking-tight text-chalk-50"
+            title={
+              listing.strainNameRaw !== (listing.strainNameCanonical ?? listing.strainNameRaw)
+                ? `On the menu as “${listing.strainNameRaw}”`
+                : undefined
+            }
+          >
             {listing.strainNameCanonical ?? listing.strainNameRaw}
           </h4>
-          {/* The shop's own words, kept where they differ. The heading is the
-              cultivar; this is the evidence, and a reader comparing the jar in
-              their hand to this page needs to see what the menu actually said. */}
-          {listing.strainNameCanonical &&
-            listing.strainNameCanonical !== listing.strainNameRaw && (
-              <p className="mt-0.5 text-xs text-chalk-500">
-                on the menu as “{listing.strainNameRaw}”
-              </p>
-            )}
-          <p className="mt-1 text-sm text-chalk-400">
-            {listing.brand ?? 'Grower not stated'}
-            <span className="mx-2 text-ink-600">·</span>
+          <p className="mt-1 text-xs text-chalk-400">
+            {listing.brand ? `by ${listing.brand}` : 'Grower not stated'}
+            <span className="mx-1.5 text-ink-600">·</span>
             {LINEAGE_LABEL[listing.lineage] ?? 'Unstated'}
           </p>
         </div>
