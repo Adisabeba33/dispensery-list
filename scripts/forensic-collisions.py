@@ -141,6 +141,10 @@ def candidates(rows):
             same_batch=bool(a["identity"].get("batchTag") and
                             a["identity"].get("batchTag")==b["identity"].get("batchTag"))
             different_name=materially_different(a["identity"],b["identity"])
+            # Same commercial identity within the same known batch is ordinary
+            # packaging duplication, not a collision candidate.
+            if same_batch and not different_name:
+                continue
             found.append({
                 "signal":kind,"a":a["identity"],"b":b["identity"],
                 "sameBatch":same_batch,"differentCommercialName":different_name,
@@ -149,7 +153,18 @@ def candidates(rows):
                 "priority":"high" if same_batch and different_name else
                            "medium" if different_name else "review",
             })
-    return found
+    # Collapse package-level duplicates into one identity/batch relationship.
+    deduped={}
+    for hit in found:
+        def commercial(x):
+            return name_key(x.get("strain") or x.get("product") or x.get("id"))
+        pair=tuple(sorted((commercial(hit["a"]),commercial(hit["b"]))))
+        batch=hit["a"].get("batchTag") if hit.get("sameBatch") else None
+        key=(hit["signal"],batch,pair)
+        old=deduped.get(key)
+        if old is None or hit["commonAnalytes"]>old["commonAnalytes"]:
+            deduped[key]=hit
+    return list(deduped.values())
 
 
 def main():
