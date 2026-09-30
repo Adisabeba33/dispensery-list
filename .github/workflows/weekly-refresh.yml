@@ -13,7 +13,7 @@ on:
     # unread.
     #
     # 10:47 UTC, not 11:00: GitHub starts on-the-hour jobs hours late (this
-    # one ran near 16:45), and the daily menu run takes 11:17.
+    # one ran near 16:45), and the daily menu run takes 08:37.
     - cron: '47 10 * * 1'
   workflow_dispatch:
 
