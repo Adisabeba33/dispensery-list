@@ -327,6 +327,27 @@ check('Proteus lineage is dominance',
   toListing({ name: 'Zips | Flower | 28g | Chem Cookies | THC 31.92% | Indica-Hybrid', brand: 'Zips', categoryId: 8, thc: '31.9167',
     weight: 28.0, inStock: 1, price: 130, dominance: 'Sativa' }, shop, SRC, {})?.lineage, 'SATIVA');
 
+/* ------------------------------------- a brand that opens cultivars, 30.09 --
+ * Ghost is a grower in the register and the first word of Ghost Train Haze and
+ * Ghost OG; batch 11 found "Train Haze" ranked as a new cultivar. A grower
+ * whose name opens with a number lost it as a stock code ("Tons Ghost Train
+ * Haze"). Dark Heart's line name rode into the cultivar ("Collection Delphi
+ * Diesel"). And the ones that must not move. */
+{
+  const brands = new Set(['Ghost', '1937', '40 Tons', 'Dark Heart', 'Bouket', 'VOP']);
+  const c = (raw, brand = null) => canonicalStrain(raw, brand, brands);
+  check('Ghost opens a cultivar from another grower', c('Ghost Train Haze', '1937'), 'Ghost Train Haze');
+  check('Ghost OG keeps Ghost', c('Ghost OG (Indoor)', 'Connected'), 'Ghost OG');
+  check('Ghost is still taken off its own listing', c('Ghost - Blue Dream', 'Ghost'), 'Blue Dream');
+  check('a numbered grower written first', c('40 Tons Ghost Train Haze Flower', '40 Tons'), 'Ghost Train Haze');
+  check('a numbered grower and packaging', c('1937 Flower Ghost Train Haze', '1937'), 'Ghost Train Haze');
+  check('a line name ahead of the cultivar', c('Dark Heart Collection Delphi Diesel Small Buds', 'Grassroots'), 'Delphi Diesel');
+  check('a line name in brackets after it', c('Moonbeam Gelato (Dark Heart Collection)', 'Grassroots'), 'Moonbeam Gelato');
+  check('a line name after a dash', c('Ice Cream Cake - Bonfire - Summer Collection'), 'Ice Cream Cake - Bonfire');
+  check('a grower-named product stays', c('Bouket Noir', 'Bouket'), 'Bouket Noir');
+  check('VOP Kush stays', c('VOP Kush', 'Voice of the Plant'), 'VOP Kush');
+}
+
 /* ------------------------------------------------ packaging in a name, 29.09 --
  * Read off the register's own residue: 803 canonical names still carried a
  * packaging word, a lineage label or a stock number. And the ones that must

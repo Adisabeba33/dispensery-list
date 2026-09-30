@@ -45,6 +45,9 @@ const GRADE = [
   /* "Small Batch Premium Flower Bag Big Apple", "Batch Craft Cannabis Jar
      Goonies", "Mylar Dime Bag - Chimera": how it was made and packed. */
   'batch', 'small batch', 'mylar', 'tin',
+  /* A brand's line, not a cultivar: "Dark Heart Collection Delphi Diesel" went
+     to Soma as "Collection Delphi Diesel" once "Dark Heart" was taken off. */
+  'collection', 'limited collection',
   /* Not "house": it read as a grade ("House Flower") and was stripped off the
      end of Dark Heart's Grandma's House, which went to Soma as "Grandma's" on
      24 New York listings — a cultivar nobody sells, in place of one it holds. */
@@ -74,8 +77,14 @@ const NEVER_A_NAME = new Set([
   'sun grown', 'packaged', 'reserve', 'craft', 'cannabis', 'limited edition',
   /* "Jar Zoap", "Bag Pink Zugar", "Mylar Dime Bag": a container is never the
      first word of a cultivar. Not "pack": Pack Mule is one. */
-  'jar', 'bag', 'pouch', 'mylar', 'tin', 'dime', 'batch',
+  'jar', 'bag', 'pouch', 'mylar', 'tin', 'dime', 'batch', 'collection',
 ].map(norm));
+
+/* Brands whose name is also the first word of cultivars. Ghost is a grower in
+   the register, and taking every brand off the front of a name turned Ghost
+   Train Haze into "Train Haze" on 32 listings, and Ghost OG into "OG". Such a
+   brand is taken off only a listing that is its own. */
+const CULTIVAR_OPENERS = new Set(['ghost']);
 
 const GRADE_SET = new Set(GRADE.map(norm));
 const LINEAGE_SET = new Set(LINEAGE.map(norm));
@@ -129,6 +138,10 @@ export const LEAN_MARK =
 /** Noise that clings inside a segment rather than forming one. */
 const stripInline = (seg) =>
   seg
+    // A brand's line named after the cultivar: "Moonbeam Gelato (Dark Heart
+    // Collection)", "Ice Cream Cake - Bonfire - Summer Collection".
+    .replace(/\s*\([^()]*\bcollection\s*\)/gi, ' ')
+    .replace(/\s+[-–—]\s*[a-z' ]{0,30}\bcollection\s*$/i, ' ')
     // Quotes around a word are emphasis: 'Flower "Large Bud" Blueberry Sugar', 'California Diesel "Dime"'.
     .replace(/["“”]/g, ' ')
     // A shop's stock number: "ITEM #548CH", "ITEM # 610BC"; a SKU: "CH-BRTD-0925-001".
@@ -157,7 +170,31 @@ const stripInline = (seg) =>
  * listing called nothing but "Runtz" is about the cultivar.
  */
 export const canonicalStrain = (raw, brand = null, brands = new Set(), foldOwn = true) => {
-  const text = stripInline(String(raw ?? ''));
+  /* The listing's own grower written first comes off before anything else:
+     "1937 Flower Ghost Train Haze" and "40 Tons Ghost Train Haze Flower" lost
+     their leading number as a stock code and kept the rest of the grower —
+     "Flower Ghost Train Haze", "Tons Ghost Train Haze". */
+  /* Only for a grower whose name opens with a number: any other grower's
+     name is left to the segment rules below, which know "Bouket Noir" and
+     "VOP Kush" are products and "Claybourne Gold Cuts" is a line. */
+  let source = String(raw ?? '');
+  const ownCore = foldOwn ? growerCore(brand) : '';
+  if (ownCore.length >= 3 && /^\d/.test(ownCore)) {
+    const words = source.trim().split(/\s+/);
+    for (let n = Math.min(4, words.length - 1); n >= 1; n -= 1) {
+      if (growerCore(words.slice(0, n).join(' ')) === ownCore) {
+        /* And the packaging that follows a grower's name, as afterBrand does
+           below: "LivWell Cannabis Flower Mendo Breath" is Mendo Breath. */
+        const rest = words.slice(n);
+        let i = 0;
+        const packaging = (w, j) => GRADE_SET.has(w) || LINEAGE_SET.has(w) || (j > 0 && isMeasure(w));
+        while (i < rest.length - 1 && packaging(norm(rest[i]), i)) i += 1;
+        source = rest.slice(i).join(' ').replace(/^[\s\-–—|:.,]+/, '');
+        break;
+      }
+    }
+  }
+  const text = stripInline(source);
   if (!text) return null;
 
   const brandKeys = new Set([...brands].map(strainKey).filter((k) => k.length >= 3));
@@ -251,7 +288,9 @@ export const canonicalStrain = (raw, brand = null, brands = new Set(), foldOwn =
     const words = seg.split(/\s+/);
     // Up to six words: "New York State of High NY Zushi".
     for (let n = Math.min(6, words.length - 2); n >= 1; n -= 1) {
-      if (brandKeys.has(strainKey(words.slice(0, n).join(' ')))) {
+      const head = words.slice(0, n).join(' ');
+      if (CULTIVAR_OPENERS.has(strainKey(head)) && strainKey(head) !== strainKey(brand ?? '') && !isOwnGrower(head)) continue;
+      if (brandKeys.has(strainKey(head))) {
         return words.slice(n).join(' ');
       }
     }
