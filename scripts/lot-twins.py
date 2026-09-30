@@ -14,6 +14,7 @@ Gelato», в июне как «Zeven Up», а в мае — как «The Wrap Up
     python scripts/lot-twins.py --no-network    # без Retail ID
     python scripts/lot-twins.py --budget 60     # не больше 60 запросов к Retail ID
     python scripts/lot-twins.py report          # раздел отчёта, markdown в stdout
+    python scripts/lot-twins.py --import-cards DIR  # сырые карточки <метка>.json из папки — в кэш
 
 Сигналы, от сильного к слабому:
 
@@ -68,6 +69,35 @@ Gelato», в июне как «Zeven Up», а в мае — как «The Wrap Up
      Только цветок и прероллы: жвачки, картриджи и концентраты (по категории
      карточки, а без неё — по названию товара) не в счёт, их лежалость — про
      другое.
+- G. Один урожай Metrc под разными названиями. Поле harvestDate карточки
+     иногда держит не дату, а имена урожаев («Double Runtz H:12.01.25,
+     Double Runtz H:12.01.25 pt. 2» у Excelsior Legacy): части «pt. N» —
+     тот же урожай, дата берётся из H:ММ.ДД.ГГ. Пакеты с общим именем урожая
+     под названиями, которые различаются после нормализации, — РЕШАЮЩИЙ:
+     урожай один по определению регулятора, как и партия. У Excelsior урожай
+     «Double Runtz H:12.01.25» стоит под семью названиями четырёх брендов
+     (NoiZey C.R.E.A.M., Dumbo Gumbo и Empire Candy; Mechanic Farm Juice
+     Fruit; Synergy Lemon Cherry Gelato и Piff Haze; Superdope Cherry
+     Popperz). Когда в поле настоящая дата, она остаётся датой сбора (F).
+- H. Одна производственная партия (sourceBatch карточки) под разными
+     названиями при разных batchTag — РЕШАЮЩИЙ, если это партия сырья
+     («Biomass - Flower - MIXED» у AP Cohen под названиями бренда Herb:
+     Blue Haze, Cookie Dough, Gelato 41, Gorilla Glue, Kush Mintz…). Код,
+     похожий на упаковочный прогон (дата из шести цифр, размер 8TH/28G/1G —
+     «KB.NY.SM.WRLD.8TH.260327» у Lunulata под Red Zprite и Velvet Gushers),
+     — прогон фасовки, а не партия: только НА ЗАМЕТКУ, так и подписано.
+     Одна и та же партия по batchTag — это A, здесь не повторяется.
+- C'. Почти одинаковые панели: THC расходится не больше чем на 0,3, каждый
+     общий терпен — не больше чем на 0,02 при четырёх общих и больше, под
+     разными названиями брендов одной семьи (две панели полок или карточка и
+     панель). Само по себе — только НА ЗАМЕТКУ, «почти одинаковые панели»:
+     две партии одного переработчика в одной лаборатории легко сходятся так
+     близко. Если Retail ID показывает у этих названий свои партии и тесты
+     или у переработчика та же панель стоит под другими партиями (HM OPS:
+     Tres Dawg …2918 и Alien Dawg …2919, тест в один день), это «шаблонные
+     панели одного переработчика» — никогда не confirmed. Точное совпадение
+     остаётся C. Панели из сотых долей (0,01|0,04|0,02) не в счёт: такие
+     сошлись бы с чем угодно.
 
 Один номер партии Metrc при разных сертификатах (у HPI Mom's Spaghetti 37,5
 и GMO 32,7 в партии 001670) — не двойник: у упаковщика batchTag — это
@@ -96,12 +126,18 @@ Metrc с карточкой Retail ID — её производство и уп�
 метки (первые 15 знаков) — это лицензия, но дистрибьютор печатает метки для
 десятков брендов: префикс, который в меню стоит под четырьмя брендами и
 больше, считается упаковщиком и брендов не сливает — он записывается у
-случая отдельно. Семья названа производством и лицензией, если известны,
-иначе брендами.
+случая отдельно. Урожай (G) и производственная партия (H) — свои у
+производства: такой случай стоит при его лицензии и назван им, широкий это
+упаковщик или нет (Excelsior пакует свой урожай под пятнадцать брендов), а
+бренды, печатающие метки этих пакетов, входят в его семью. Для C' бренд
+относится к переработчику, чьи метки печатает (Doobie Labs и Runtz — к AP
+Cohen), и его карточки служат свидетельством шаблона. Семья названа
+производством и лицензией, если известны, — каждая лицензия своим юрлицом
+(«Pierre McClain LLC + Harlem Blossoms LLC»), — иначе брендами.
 
-Статус семьи: confirmed — есть A или B с двумя и более названиями; probable —
-C в двух магазинах, или C и значимый D; watch — C в одном магазине или
-только E.
+Статус семьи: confirmed — есть A, B, G или H (партия сырья) с двумя и более
+названиями; probable — C в двух магазинах, или C и значимый D; watch — C в
+одном магазине, C', H по коду прогона или только E.
 
 Retail ID (app.1a4.com) — то, что вскрыло Splash: карточка пакета отдаёт
 партию, дату теста и упаковки, лабораторию, THC и терпены. Карточки с
@@ -126,6 +162,8 @@ Retail ID (app.1a4.com) — то, что вскрыло Splash: карточка
 через 180 дней теряют терпены (даты для раздела старых тестов остаются),
 а таких без терпенов держится не больше CARDS_LOOSE — старшие уходят.
 Карточки пишутся по одной в строку, чтобы файл оставался под 5 МБ.
+Уже скачанные сырые карточки (<метка>.json, как отдаёт API) ввозятся в кэш
+через --import-cards DIR — разово, но ключ остаётся на будущее.
 """
 import argparse
 import importlib.util
@@ -136,6 +174,7 @@ import time
 import unicodedata
 from collections import Counter, defaultdict
 from datetime import date, timedelta
+from itertools import combinations
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -164,6 +203,9 @@ THC_TWINS_MIN = 3     # D в счёт: совпадений не меньше с
 ERRORS_IN_ROW = 5     # столько ошибок подряд — зондирование останавливается
 CARDS_KEEP_DAYS = 180  # карточка не на полке и не в случае держит терпены столько дней
 CARDS_LOOSE = 4000    # столько карточек без терпенов держится, старшие уходят
+NEAR_THC = 0.3        # C': THC двух панелей расходится не больше
+NEAR_TERPENE = 0.02   # C': каждый общий терпен расходится не больше
+NEAR_MIN_SUM = 0.3    # C': сумма общих терпенов не меньше — панель из сотых долей сошлась бы с чем угодно
 STRIPPED = "TERPENE_PANEL_REPEATED_ACROSS_STRAINS"
 SHARED = "SHELF_SHARED_WITH_OTHER_LICENCES"
 # Не цветок — по названию товара, когда карточка не говорит категории.
@@ -171,6 +213,10 @@ NON_FLOWER = re.compile(r"gumm|edible|chocolate|\bchews?\b|candy bar|vape|\bcart
                         r"capsule|beverage|drink|seltzer|rosin|\bhash\b|concentrate|badder|\bresin\b|\bsauce\b|"
                         r"\bdiamonds\b|infused|\b\d+\s*mg\b|\d+\s*:\s*\d+", re.I)
 FLOWER_CATEGORY = re.compile(r"bud|flower|pre.?roll|shake|trim", re.I)
+# Код упаковочного прогона, не партии сырья: дата из шести цифр или размер фасовки.
+PACKAGING_RUN = re.compile(r"\d{6}|(?<![A-Z0-9])(?:8TH|28G|14G|7G|3\.5G?|1G|OZ|PR|AIO)(?![A-Z0-9])", re.I)
+HARVEST_DATE = re.compile(r"\bH:(\d{1,2})\.(\d{1,2})\.(\d{2,4})\b")
+HARVEST_PART = re.compile(r"\s*\bpt\.?\s*\d+\s*$", re.I)
 STATUS_RANK = {"watch": 1, "probable": 2, "confirmed": 3}
 
 
@@ -330,8 +376,35 @@ def license_base(lic):
     return re.sub(r"-[A-Z]+\d*$", "", str(lic).strip().upper()) if lic else None
 
 
+def harvest_labels(text):
+    """Поле harvestDate карточки, когда в нём не дата, а имена урожаев Metrc:
+    «Double Runtz H:12.01.25, Double Runtz H:12.01.25 pt. 2» →
+    ['Double Runtz H:12.01.25']. Части урожая (pt. N) — тот же урожай."""
+    out = []
+    for part in str(text or "").split(","):
+        label = re.sub(r"\s+", " ", HARVEST_PART.sub("", part.strip()))
+        if label and label not in out:
+            out.append(label)
+    return out
+
+
+def harvest_date_of(label):
+    """«Double Runtz H:12.01.25» → 2025-12-01; None, если даты в имени нет или она кривая."""
+    m = HARVEST_DATE.search(str(label or ""))
+    if not m:
+        return None
+    mm, dd, yy = (int(x) for x in m.groups())
+    try:
+        return date(yy + 2000 if yy < 100 else yy, mm, dd).isoformat()
+    except ValueError:
+        return None
+
+
 def compact_card(data):
-    """Сырая карточка Retail ID → только то, что нужно: даты, партия, цепочка, цифры."""
+    """Сырая карточка Retail ID → только то, что нужно: даты, партия, цепочка,
+    цифры. harvestDate — дата сбора, а когда в нём имена урожаев (G) —
+    harvestLabels и дата из имени; sourceBatch — производственная партия (H);
+    sourcePackage, lotNumber, производство и откуда получен — цепочка."""
     coa = (data.get("coaCard") or {}).get("data") or {}
     while isinstance(coa, str):
         coa = json.loads(coa)
@@ -348,6 +421,11 @@ def compact_card(data):
     if thc is None:
         thc = ((coa.get("unit") or {}).get("thc") or {}).get("percent")
     manufacturer = coa.get("manufacturer") or {}
+    harvest_raw = coa.get("harvestDate")
+    harvested = _retail.day(harvest_raw)
+    labels = harvest_labels(harvest_raw) if isinstance(harvest_raw, str) and not harvested else []
+    if labels:
+        harvested = next((d for d in map(harvest_date_of, labels) if d), None)
     return {
         "found": True,
         "facility": data.get("facilityName"),
@@ -356,10 +434,12 @@ def compact_card(data):
         "strain": coa.get("strainName") or coa.get("strain") or (data.get("productCard") or {}).get("strain"),
         "packaged": _retail.day(coa.get("packagedDate") or coa.get("packageDate")),
         "tested": _retail.day(coa.get("testedDate") or coa.get("dateTested")),
-        "harvested": _retail.day(coa.get("harvestDate")),
+        "harvested": harvested,
+        **({"harvestText": harvest_raw, "harvestLabels": labels} if labels else {}),
         "lab": (coa.get("lab") or {}).get("name"),
         "batchTag": coa.get("batchTag"),
         "sourcePackage": coa.get("sourcePackage"),
+        "sourceBatch": coa.get("sourceBatch"),
         "lotNumber": coa.get("lotNumber"),
         "manufacturer": manufacturer.get("name"),
         "manufacturerLicense": manufacturer.get("licenseNumber"),
@@ -431,6 +511,21 @@ def panels_match(a, b):
         return False
     common = a[1].keys() & b[1].keys()
     return len(common) >= PANEL_COMPOUNDS and all(abs(a[1][k] - b[1][k]) < 1e-9 for k in common)
+
+
+def panels_near(a, b):
+    """Почти одна панель (C'): THC расходится не больше чем на NEAR_THC, общих
+    терпенов не меньше PANEL_COMPOUNDS, каждый расходится не больше чем на
+    NEAR_TERPENE, и общие не крохи (сумма не меньше NEAR_MIN_SUM). Точное
+    совпадение — не «почти», это panels_match."""
+    if a is None or b is None or abs(a[0] - b[0]) > NEAR_THC + 1e-9:
+        return False
+    common = a[1].keys() & b[1].keys()
+    if len(common) < PANEL_COMPOUNDS or panels_match(a, b):
+        return False
+    if sum(a[1][k] for k in common) < NEAR_MIN_SUM or sum(b[1][k] for k in common) < NEAR_MIN_SUM:
+        return False
+    return all(abs(a[1][k] - b[1][k]) <= NEAR_TERPENE + 1e-9 for k in common)
 
 
 def panel_groups(keys):
@@ -679,6 +774,49 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
             out.add(prefix_license.get(src[:15]))
         return {l for l in out if l}
 
+    def card_brand(c):
+        """Бренд по названию товара карточки («NoiZey C.R.E.A.M. 4g» → NoiZey,
+        «Herb 3.5g Cookie Dough» → Herb): ключ бренда и как напечатано.
+        Известный бренд меню — по его написанию; артикул («SCC201-TWU»)
+        или буква («R-3.5G Kami») — не бренд."""
+        head = re.split(r"\s*[-–|]\s*|\s+\d", str(c.get("product") or ""), 1)[0].strip()
+        words = head.split()
+        for n in range(min(3, len(words)), 0, -1):
+            key = grower_of(" ".join(words[:n]))
+            if key and key in brand_rows:
+                return key, brand_name(key)
+        if words and len(words[0]) >= 3 and not re.search(r"\d", words[0]):
+            return grower_of(words[0]), words[0]
+        return None, None
+
+    def link_family(tags, extra_brands=(), home=None):
+        """Карточки одной партии, сертификата или урожая — одна семья: их узкие
+        лицензии между собой, а бренды, печатающие их метки, — с первой. home —
+        лицензия урожая или производственной партии (G, H): семья и у широкого
+        упаковщика, раз урожай его собственный (Excelsior пакует свой урожай
+        под пятнадцать брендов, но общий урожай — не общий префикс)."""
+        lics = [l for t in tags for l in card_licenses(known[t]) if narrow(l)]
+        brands = [brand_key(r) for t in tags for r in listing_tags.get(t, [])] + list(extra_brands)
+        for x in lics[1:]:
+            fam.union(f"f:{lics[0]}", f"f:{x}")
+        anchor = f"f:{lics[0]}" if lics else f"f:{home}" if home else None
+        for b in brands:
+            if b:
+                fam.union(f"b:{b}", anchor or f"b:{brands[0]}")
+
+    def processor_of(b):
+        """Переработчик бренда для C': лицензия, чьи метки бренд печатает чаще
+        всего, широкая тоже (Doobie Labs и Runtz печатают метки AP Cohen)."""
+        counts = Counter()
+        for (bb, p), tags in brand_prefix_tags.items():
+            if bb == b and prefix_license.get(p):
+                counts[prefix_license[p]] += len(tags)
+        return counts.most_common(1)[0][0] if counts else None
+
+    def proc_root(b):
+        lic = processor_of(b)
+        return fam.find(f"f:{lic}") if lic else fam.find(f"b:{b}")
+
     # --- B: сертификаты
     cert_members = defaultdict(list)
     for tag, c in known.items():
@@ -691,13 +829,7 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
         clusters = name_clusters([(t, card_names(t)) for t in tags])
         if len(clusters) >= 2:
             certificates[key] = {"tags": sorted(tags), "clusters": clusters}
-            lics = [l for t in tags for l in card_licenses(known[t]) if narrow(l)]
-            brands = [brand_key(r) for t in tags for r in listing_tags.get(t, [])]
-            for x in lics[1:]:
-                fam.union(f"f:{lics[0]}", f"f:{x}")
-            for b in brands:
-                if b:
-                    fam.union(f"b:{b}", f"f:{lics[0]}" if lics else f"b:{brands[0]}")
+            link_family(tags)
 
     # --- C: панели на полках
     by_panel = defaultdict(list)
@@ -748,6 +880,9 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
     def row_order(r):
         return (r["licenseNumber"], r.get("brand") or "", display_name(r), str(r.get("thcPercent")))
 
+    def public(entry):
+        return {k: v for k, v in entry.items() if not k.startswith("_")}
+
     def named_entries(group_rows):
         """Позиции → кластеры названий → [{brand, name, shops…}], по одному на кластер и бренд."""
         group_rows = sorted(group_rows, key=row_order)  # порядок кластеров не зависит от прогона
@@ -769,6 +904,7 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
                     "lastSeen": max((r["capturedAt"][:10] for r in rs if r.get("capturedAt")), default=today),
                     "_cluster": id(cluster),
                     "_variants": [v for r in rs for v in variants(r, lines)],
+                    "_tags": sorted({t for r in rs for t in tags_of(r, links) if t in known}),
                 })
         return entries, len(clusters)
 
@@ -911,18 +1047,159 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
             continue
         batches[root] = {"tags": sorted(tags), "clusters": clusters, "id": batch_id(tags), "shelfNames": on_shelf}
         if len(clusters) >= 2:
-            lics = [l for t in tags for l in card_licenses(known[t]) if narrow(l)]
-            brands = [brand_key(r) for t in tags for r in listing_tags.get(t, [])] + [e["brandKey"] for e in on_shelf]
-            for x in lics[1:]:
-                fam.union(f"f:{lics[0]}", f"f:{x}")
-            for b in brands:
-                if b:
-                    fam.union(f"b:{b}", f"f:{lics[0]}" if lics else f"b:{brands[0]}")
+            link_family(tags, [e["brandKey"] for e in on_shelf])
     # производство ↔ упаковщик ↔ исходный пакет одной карточки — одна семья
     for tag, c in known.items():
         lics = [l for l in card_licenses(c) if narrow(l)]
         for x in lics[1:]:
             fam.union(f"f:{lics[0]}", f"f:{x}")
+
+    def card_license(c, tag):
+        return license_base(c.get("manufacturerLicense") or c.get("facilityLicense")) or tag[:15]
+
+    # --- G: урожаи Metrc. Имя урожая с карточки (harvestLabels) в пределах
+    # лицензии: пакеты с общим именем под разными названиями — один урожай.
+    harvest_members = defaultdict(set)
+    for tag, c in known.items():
+        for label in c.get("harvestLabels") or []:
+            harvest_members[(card_license(c, tag), label)].add(tag)
+    harvests = {}
+    for (lic, label), tags in sorted(harvest_members.items()):
+        if len(tags) < 2:
+            continue
+        clusters = name_clusters([(t, card_names(t)) for t in sorted(tags)])
+        if len(clusters) < 2:
+            continue
+        harvested = sorted({known[t]["harvested"] for t in tags if known[t].get("harvested")})
+        harvests[(lic, label)] = {"tags": sorted(tags), "clusters": clusters,
+                                  "harvested": harvested[0] if harvested else harvest_date_of(label)}
+        link_family(sorted(tags), home=lic)
+
+    # --- H: производственные партии. sourceBatch карточки — из чего
+    # расфасован пакет; под разными названиями при разных batchTag — одно
+    # сырьё под многими сортами. Код прогона фасовки — только на заметку.
+    production_members = defaultdict(set)
+    for tag, c in known.items():
+        label = re.sub(r"\s+", " ", str(c.get("sourceBatch") or "").strip())
+        if label and not TAG.match(label.upper()):
+            production_members[(card_license(c, tag), label)].add(tag)
+    production = {}
+    for (lic, label), tags in sorted(production_members.items()):
+        if len(tags) < 2 or len({known[t].get("batchTag") for t in tags}) < 2:
+            continue
+        clusters = name_clusters([(t, card_names(t)) for t in sorted(tags)])
+        if len(clusters) < 2:
+            continue
+        kind = "packagingRun" if PACKAGING_RUN.search(label) else "production"
+        production[(lic, label)] = {"tags": sorted(tags), "clusters": clusters, "kind": kind}
+        if kind == "production":
+            link_family(sorted(tags), home=lic)
+
+    # бренды и лицензии семьи: всё, что слилось с корнем (семьи готовы)
+    members = defaultdict(set)
+    for node in list(fam.parent):
+        members[fam.find(node)].add(node)
+
+    # --- C': почти одинаковые панели (см. докстринг). Группы панелей, у
+    # которых THC и общие терпены сходятся почти, — одна «почти панель»;
+    # названия на ней делятся по семьям брендов, и только семья с двумя и
+    # более названиями даёт запись. Точная панель C с теми же названиями —
+    # это C, не C'. Свидетельства шаблона: у названий свои партии по меткам
+    # с полок; та же панель у карточек семьи под двумя и более партиями;
+    # у карточек семьи почти одна панель под разными партиями и названиями.
+    reps = sorted(set(rep.values()), key=lambda k: (parse_panel(k)[0], k))
+    parsed_rep = {k: parse_panel(k) for k in reps}
+    near_fam = Families()
+    for i, a in enumerate(reps):
+        for b in reps[i + 1:]:
+            if parsed_rep[b][0] - parsed_rep[a][0] > NEAR_THC + 1e-9:
+                break
+            if panels_near(parsed_rep[a], parsed_rep[b]):
+                near_fam.union(a, b)
+    near_groups = defaultdict(list)
+    for k in reps:
+        near_groups[near_fam.find(k)].append(k)
+
+    def near_card_row(t):
+        c = known[t]
+        return {"tag": t, "name": c.get("strain") or c.get("product"), "batch": c.get("batchTag"),
+                "facility": c.get("facility"), "tested": c.get("tested"), "thc": c.get("thc"), "lab": c.get("lab")}
+
+    templates_cache = {}
+
+    def processor_templates(lics):
+        """Пары карточек переработчика (лицензии семьи и та, чьи метки печатают
+        бренды) с почти одной панелью под разными партиями и названиями:
+        переработчик печатает шаблонные панели."""
+        lics = frozenset(lics)
+        if lics in templates_cache:
+            return templates_cache[lics]
+        tags = sorted(t for t, c in known.items() if card_panel.get(t) and card_licenses(c) & lics)
+        pairs = []
+        for i, a in enumerate(tags):
+            for b in tags[i + 1:]:
+                if known[a].get("batchTag") and known[a]["batchTag"] == known[b].get("batchTag"):
+                    continue
+                if not panels_near(card_panel[a], card_panel[b]):
+                    continue
+                if len(name_clusters([(a, card_names(a)), (b, card_names(b))])) < 2:
+                    continue
+                pairs.append([near_card_row(a), near_card_row(b)])
+                if len(pairs) >= 5:
+                    break
+            if len(pairs) >= 5:
+                break
+        templates_cache[lics] = pairs
+        return pairs
+
+    near_panels = []
+    for group in near_groups.values():
+        if len(group) < 2:
+            continue
+        group_rows = [r for k in group for r in by_group[k]]
+        per_shelf = defaultdict(set)
+        for r in group_rows:
+            per_shelf[shelf_of(r)].add(brand_key(r))
+        if any(len(bs) >= TEMPLATE_BRANDS for bs in per_shelf.values()):
+            excluded["nearTemplate"] += 1  # почти одна панель под тремя брендами одной полки — шаблон магазина
+            continue
+        entries, n = named_entries(group_rows)
+        if n < 2:
+            continue
+        by_root = defaultdict(list)
+        for e in entries:
+            by_root[proc_root(e["brandKey"])].append(e)
+        keys = sorted(k2 for k in group for k2 in group_keys[k])
+        thc_range = [min(parsed_rep[k][0] for k in group), max(parsed_rep[k][0] for k in group)]
+        for r, es in sorted(by_root.items()):
+            if len({e["_cluster"] for e in es}) < 2:
+                continue
+            named = {(e["brandKey"], e["name"]) for e in es}
+            if any(k in panels and named <= {(x["brandKey"], x["name"]) for x in panels[k]["names"]} for k in group):
+                continue
+            family_lics = ({node[2:] for node in members.get(r, ()) if node.startswith("f:")}
+                           | {processor_of(e["brandKey"]) for e in es}) - {None}
+            near_cards = [near_card_row(t) for t in sorted(card_panel)
+                          if card_panel[t] and card_licenses(known[t]) & family_lics
+                          and any(panels_match(card_panel[t], parsed_rep[k]) or panels_near(card_panel[t], parsed_rep[k]) for k in group)]
+            evidence = []
+            own = {}
+            for e in es:
+                e["cards"] = [{"tag": t, "batch": known[t].get("batchTag"), "tested": known[t].get("tested")} for t in e["_tags"]]
+                if any(c["batch"] for c in e["cards"]):
+                    own[e["name"]] = ({c["batch"] for c in e["cards"] if c["batch"]}, sorted({c["tested"] for c in e["cards"] if c["tested"]}))
+            if len(own) >= 2 and all(a[0].isdisjoint(b[0]) for a, b in combinations(own.values(), 2)):
+                evidence.append({"kind": "namesHaveOwnBatches",
+                                 "names": [{"name": n_, "batches": sorted(b), "tested": t} for n_, (b, t) in own.items()]})
+            if len({c["batch"] for c in near_cards if c["batch"]}) >= 2:
+                evidence.append({"kind": "panelUnderOtherBatches", "cards": near_cards[:6]})
+            if processor_templates(family_lics):
+                evidence.append({"kind": "processorTemplates", "pairs": processor_templates(family_lics)[:3]})
+            near_panels.append((r, {
+                "panelKeys": keys, "thc": thc_range, "kind": "templated" if evidence else "near",
+                "names": [public(e) for e in es], "shops": len({s for e in es for s in e["shops"]}),
+                "cards": near_cards[:10], "evidence": evidence,
+            }))
 
     # --- семьи → случаи
     def root_of_brand(b):
@@ -939,19 +1216,25 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
         return f"f:{lics[0]}" if lics else None
 
     cases = defaultdict(lambda: {"batches": [], "certificates": [], "shelfPanels": [], "thcTwins": [],
-                                 "codes": [], "mixedBatches": [], "brandKeys": set(), "licenses": set(),
-                                 "packagers": set()})
+                                 "codes": [], "mixedBatches": [], "harvests": [], "productionBatches": [],
+                                 "nearPanels": [], "brandKeys": set(), "licenses": set(), "packagers": set()})
 
     def package_row(tag, batch):
         c = known[tag]
         return {"tag": tag, "name": c.get("strain"), "product": c.get("product"), "batch": batch,
                 "facility": c.get("facility"), "packaged": c.get("packaged"), "tested": c.get("tested"),
-                "harvested": c.get("harvested"), "lab": c.get("lab"),
+                "harvested": c.get("harvested"), "harvest": ", ".join(c.get("harvestLabels") or []) or None,
+                "sourceBatch": c.get("sourceBatch"), "lab": c.get("lab"),
                 "thc": c.get("thc"), "terpenes": c.get("terpenes") or {},
+                "brand": card_brand(c)[1],
                 "brands": sorted({(r.get("brand") or "").strip() for r in listing_tags.get(tag, [])} - {""})}
 
-    def public(entry):
-        return {k: v for k, v in entry.items() if not k.startswith("_")}
+    def case_tags(case, tags):
+        """Лицензии, упаковщики и бренды карточек — в случай."""
+        for t in tags:
+            case["licenses"].update(l for l in card_licenses(known[t]) if narrow(l))
+            case["packagers"].update(l for l in card_licenses(known[t]) if not narrow(l))
+            case["brandKeys"].update(brand_key(x) for x in listing_tags.get(t, []) if brand_key(x))
 
     for root, b in batches.items():
         if len(b["clusters"]) < 2:
@@ -965,11 +1248,23 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
             "packages": [package_row(t, known[t].get("batchTag")) for t in b["tags"]],
             "shelfNames": [{k: v for k, v in e.items() if k != "brandKey"} for e in b["shelfNames"]],
         })
-        for t in b["tags"]:
-            case["licenses"].update(l for l in card_licenses(known[t]) if narrow(l))
-            case["packagers"].update(l for l in card_licenses(known[t]) if not narrow(l))
-            case["brandKeys"].update(brand_key(x) for x in listing_tags.get(t, []) if brand_key(x))
+        case_tags(case, b["tags"])
         case["brandKeys"].update(e["brandKey"] for e in b["shelfNames"])
+    # Урожай и производственная партия — свои у производства: случай при его
+    # лицензии, широкий упаковщик он или нет, и лицензия названа в случае.
+    for (lic, label), h in harvests.items():
+        case = cases[fam.find(f"f:{lic}")]
+        case["harvests"].append({"harvest": label, "harvested": h["harvested"], "names": len(h["clusters"]),
+                                 "license": lic, "packages": [package_row(t, known[t].get("batchTag")) for t in h["tags"]]})
+        case_tags(case, h["tags"])
+        case["licenses"].add(lic)
+    for (lic, label), p in production.items():
+        case = cases[fam.find(f"f:{lic}")]
+        case["productionBatches"].append({"sourceBatch": label, "kind": p["kind"], "names": len(p["clusters"]),
+                                          "license": lic, "packages": [package_row(t, known[t].get("batchTag")) for t in p["tags"]]})
+        case_tags(case, p["tags"])
+        if p["kind"] == "production":
+            case["licenses"].add(lic)
     for key, c in certificates.items():
         r = root_of_tags(c["tags"])
         if not r:
@@ -989,6 +1284,9 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
         case = cases[r]
         case["shelfPanels"].append({k: v for k, v in p.items()} | {"names": [public(e) for e in p["names"]]})
         case["brandKeys"].update(brands)
+    for r, p in near_panels:
+        cases[r]["nearPanels"].append(p)
+        cases[r]["brandKeys"].update(e["brandKey"] for e in p["names"])
     # Партия с разными сертификатами — для сведения у семьи, которая и так
     # случай; сама по себе случая не делает.
     for root, b in mixed.items():
@@ -1000,10 +1298,6 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
             "packages": [package_row(t, known[t].get("batchTag")) for t in b["tags"]],
         })
 
-    # бренды семьи: всё, что слилось с корнем
-    members = defaultdict(set)
-    for node in list(fam.parent):
-        members[fam.find(node)].add(node)
     for r, case in cases.items():
         for node in members.get(r, ()):
             if node.startswith("b:"):
@@ -1088,12 +1382,13 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
 
     # --- статус, слияние с прошлым
     def status_of(case):
-        if case["batches"] or case["certificates"]:
+        if (case["batches"] or case["certificates"] or case["harvests"]
+                or any(p["kind"] == "production" for p in case["productionBatches"])):
             return "confirmed"
         strong = any(p["strength"] == "strong" for p in case["shelfPanels"])
         if strong or (case["shelfPanels"] and case["thcTwinsStats"]["meaningful"]):
             return "probable"
-        if case["shelfPanels"] or case["codes"]:
+        if case["shelfPanels"] or case["codes"] or case["productionBatches"] or case["nearPanels"]:
             return "watch"
         return None
 
@@ -1109,16 +1404,28 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
         return license_base(known[tag].get("manufacturerLicense") or known[tag].get("facilityLicense"))
 
     def licenses_by_origin(case):
-        packed = Counter(origin(p["tag"]) for g in case["batches"] + case["certificates"] for p in g["packages"])
+        packed = Counter(origin(p["tag"]) for g in case["batches"] + case["certificates"] + case["harvests"]
+                         + case["productionBatches"] for p in g["packages"])
         return sorted(case["licenses"], key=lambda l: (-packed.get(l, 0), l))
 
-    def producer_name(case):
+    def producer_names(case):
+        """Производства семьи по лицензиям, от главного: каждая лицензия со
+        своим юрлицом (Pierre McClain LLC OCM-MICR-25-000246 и Harlem Blossoms
+        LLC OCM-MICR-24-000040 — два упаковщика, не одно имя на двоих); одно
+        юрлицо на две лицензии — один раз."""
+        out, seen = [], set()
         for lic in licenses_by_origin(case):
             named = license_name.get(lic)
-            if named:
-                return named.most_common(1)[0][0]
-            if entity.get(lic):
-                return entity[lic]
+            name = named.most_common(1)[0][0] if named else entity.get(lic)
+            if name and _entity_key(name) not in seen:
+                seen.add(_entity_key(name))
+                out.append({"license": lic, "name": name})
+        return out
+
+    def producer_name(case):
+        named = producer_names(case)
+        if named:
+            return " + ".join(p["name"] for p in named)
         brands = ", ".join(brand_name(b) for b in sorted(case["brandKeys"]))
         if brands:
             return brands
@@ -1133,9 +1440,9 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
         for b in case["batches"]:
             out.update(p["name"] for p in b["packages"] if p.get("name"))
             out.update(e["name"] for e in b.get("shelfNames") or [])
-        for c in case["certificates"]:
+        for c in case["certificates"] + case["harvests"] + case["productionBatches"]:
             out.update(p["name"] for p in c["packages"] if p.get("name"))
-        for p in case["shelfPanels"]:
+        for p in case["shelfPanels"] + case["nearPanels"]:
             out.update(e["name"] for e in p["names"])
         if case["thcTwinsStats"]["meaningful"]:
             for t in case["thcTwins"]:
@@ -1203,17 +1510,25 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
             "id": (licenses_by_origin(case) or sorted(case["brandKeys"]) or ["?"])[0],
             "status": status,
             "producer": producer_name(case),
+            "producers": producer_names(case),
             "licenses": sorted(case["licenses"]),
             "packagers": sorted({f"{p} ({license_name[p].most_common(1)[0][0]})" if license_name.get(p) else p
-                                 for p in case["packagers"]}),
-            "packagerKeys": sorted(case["packagers"]),
+                                 for p in case["packagers"] - case["licenses"]}),
+            "packagerKeys": sorted(case["packagers"] - case["licenses"]),
             "brands": brands,
             "brandKeys": sorted(case["brandKeys"]),
             "signals": {"A": len(case["batches"]), "B": len(case["certificates"]),
                         "C": len(case["shelfPanels"]),
                         "D": len(case["thcTwins"]) if case["thcTwinsStats"]["meaningful"] else 0,
-                        "E": len(case["codes"]), "mixed": len(case["mixedBatches"])},
+                        "E": len(case["codes"]), "mixed": len(case["mixedBatches"]),
+                        "G": len(case["harvests"]),
+                        "H": sum(1 for p in case["productionBatches"] if p["kind"] == "production"),
+                        "Hrun": sum(1 for p in case["productionBatches"] if p["kind"] != "production"),
+                        "Cnear": len(case["nearPanels"])},
             "batches": sorted(case["batches"], key=lambda b: b["batch"]),
+            "harvests": sorted(case["harvests"], key=lambda h: (-h["names"], h["harvest"])),
+            "productionBatches": sorted(case["productionBatches"], key=lambda p: (p["kind"] != "production", -p["names"], p["sourceBatch"])),
+            "nearPanels": sorted(case["nearPanels"], key=lambda p: (p["kind"] != "templated", -p["shops"], p["panelKeys"][0])),
             "mixedBatches": sorted(case["mixedBatches"], key=lambda b: b["batch"]),
             "certificates": sorted(case["certificates"], key=lambda c: (c["tested"], c["lab"])),
             "shelfPanels": sorted(case["shelfPanels"], key=lambda p: (-p["shops"], p["panelKey"])),
@@ -1234,7 +1549,9 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
                 "isNew": not olds,
             },
         })
-    out_cases.sort(key=lambda c: (-STATUS_RANK[c["status"]], -c["signals"]["A"] - c["signals"]["B"], -c["signals"]["C"], c["producer"]))
+    out_cases.sort(key=lambda c: (-STATUS_RANK[c["status"]],
+                                  -c["signals"]["A"] - c["signals"]["B"] - c["signals"]["G"] - c["signals"]["H"],
+                                  -c["signals"]["C"], c["producer"]))
 
     # --- F: старые тесты по производствам
     facilities = defaultdict(lambda: {"packages": 0, "dated": 0, "oldTest": 0, "oldHarvest": 0, "worst": [], "worstHarvest": []})
@@ -1276,7 +1593,7 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
     old_tests.sort(key=lambda f: (-f["oldTest"], -f["oldHarvest"], f["license"] or "", f["facility"]))
 
     # что понадобится зондированию
-    strong = [c for c in out_cases if c["signals"]["A"] or c["signals"]["B"] or c["signals"]["C"]]
+    strong = [c for c in out_cases if any(c["signals"][k] for k in ("A", "B", "C", "G", "H"))]
     signal_brands = {b for c in strong for b in c["brandKeys"]}
     c_brands = {b for c in out_cases if c["signals"]["C"] for b in c["brandKeys"]}
     signal_licenses = {l for c in strong for l in c["licenses"]}
@@ -1286,7 +1603,7 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
             for tag in tags_of(row, links):
                 signal_prefixes.add(tag[:15])
     for c in strong:
-        for group in c["batches"] + c["certificates"]:
+        for group in c["batches"] + c["certificates"] + c["harvests"] + c["productionBatches"]:
             for p in group["packages"]:
                 signal_prefixes.add(p["tag"][:15])
     # Префикс-дистрибьютор (метки под четырьмя брендами и больше) — не префикс
@@ -1299,15 +1616,16 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
     # метки, которые случаи и полки держат: их карточки не худеют
     needed = {t for row in rows for t in tags_of(row, links)}
     for c in out_cases:
-        for g in c["batches"] + c["certificates"] + c["mixedBatches"]:
+        for g in c["batches"] + c["certificates"] + c["mixedBatches"] + c["harvests"] + c["productionBatches"]:
             needed.update(p["tag"] for p in g["packages"])
-        for p in c["shelfPanels"]:
+        for p in c["shelfPanels"] + c["nearPanels"]:
             needed.update(x["tag"] for x in p.get("cards") or [])
 
     return {
         "day": today,
         "cases": out_cases,
         "excluded": {"stripped": excluded["stripped"], "template": excluded["template"],
+                     "nearTemplate": excluded["nearTemplate"],
                      "templateShops": sorted(shop_name(s) for s in template_shops),
                      "pasted": excluded["pasted"], "pastedPanels": pasted[:20]},
         "oldTests": old_tests,
@@ -1525,13 +1843,18 @@ def write(out, previous, path=OUT):
     cards = {k: v for k, v in (out.get("cards") or {}).items()}
     doc = {
         "about": "Одна партия — много названий: семьи брендов, у которых одна партия Metrc (A), "
-                 "один сертификат (B) или одна полная панель терпенов (C) стоит под разными "
-                 "названиями; D (тот же THC, сверх случайного) и E (коды UPC при одном THC) — "
+                 "один сертификат (B), один урожай Metrc по имени урожая с карточки (G, harvests), "
+                 "одна производственная партия sourceBatch (H, productionBatches; код прогона "
+                 "фасовки — только watch) или одна полная панель терпенов (C) стоит под разными "
+                 "названиями; C' (nearPanels) — почти одинаковые панели, только watch: kind near "
+                 "или templated (шаблонные панели одного переработчика, evidence — почему); "
+                 "D (тот же THC, сверх случайного) и E (коды UPC при одном THC) — "
                  "подтверждающие и слабые сигналы; статусы confirmed / probable / watch. "
                  "excluded — что не в счёт (шаблоны магазинов, переписанные панели). oldTests — "
                  "производства, упаковывающие цветок через 90+ дней после теста. cards — карточки "
                  "Retail ID с цифрами (свой кэш, 404 переспрашивается через 30 дней, старые "
-                 "карточки вне случаев худеют), probing — что спрошено в этот прогон. "
+                 "карточки вне случаев худеют; --import-cards ввозит скачанные сырые карточки), "
+                 "probing — что спрошено в этот прогон. "
                  "Пишется scripts/lot-twins.py после ежедневного прогона.",
         "day": out["day"],
         "cases": out["cases"],
@@ -1563,13 +1886,80 @@ def plural(n, one, few, many):
 STATUS_RU = {"confirmed": "подтверждено", "probable": "вероятно", "watch": "на заметку"}
 
 
+def _by_brand(packages):
+    """Названия пакетов по брендам: «NoiZey: C.R.E.A.M., Dumbo Gumbo; Synergy: Piff Haze».
+    Бренд — по ключу: «Herb» и «HERB» с разных карточек — один."""
+    groups, shown = defaultdict(list), {}
+    for p in packages:
+        b = (p.get("brands") or [None])[0] or p.get("brand") or "без бренда"
+        key = grower_of(b) or b
+        shown.setdefault(key, b)
+        if p.get("name") and p["name"] not in groups[shown[key]]:
+            groups[shown[key]].append(p["name"])
+    return groups
+
+
+def _named(groups, limit=8):
+    shown, n = [], 0
+    for b, names in groups.items():
+        take = names[:max(0, limit - n)]
+        n += len(take)
+        if take:
+            shown.append(f"{b}: {', '.join(take)}")
+    total = sum(len(v) for v in groups.values())
+    return "; ".join(shown) + (f" …и ещё {total - n}" if total > n else "")
+
+
+def _why_templated(ev):
+    """Свидетельство шаблона (C') — одной фразой."""
+    if ev["kind"] == "namesHaveOwnBatches":
+        parts = [f"{x['name']} …{'/'.join(b[-4:] for b in x['batches'][:2])}"
+                 + (f" (тест {', '.join(x['tested'][:2])})" if x.get("tested") else "") for x in ev["names"][:3]]
+        return "по Retail ID у названий свои партии: " + "; ".join(parts)
+    if ev["kind"] == "panelUnderOtherBatches":
+        parts = [f"{x['name']} …{(x['batch'] or '')[-4:]}" + (f" (тест {x['tested']})" if x.get("tested") else "")
+                 for x in ev["cards"][:3]]
+        return "та же панель у переработчика под другими партиями: " + ", ".join(parts)
+    a, b = ev["pairs"][0]
+    return (f"у переработчика почти одна панель стоит под разными партиями и названиями: "
+            f"{a['name']} …{(a['batch'] or '')[-4:]} и {b['name']} …{(b['batch'] or '')[-4:]}"
+            + (f" (тест {a['tested']}, {b['tested']})" if a.get("tested") and b.get("tested") else ""))
+
+
 def case_line(c, full=True):
     brands = ", ".join(b["name"] for b in c["brands"][:6]) + (" …" if len(c["brands"]) > 6 else "")
-    lic = ", ".join(c["licenses"][:3])
-    head = f"**{c['producer']}**" + (f" ({lic})" if lic and c["producer"] not in lic else "")
+    named = c.get("producers") or []
+    if named:
+        # каждая лицензия со своим юрлицом: два упаковщика — два имени
+        head = "**" + " + ".join(f"{p['name']} ({p['license']})" for p in named[:3]) + "**"
+        rest = [l for l in c["licenses"] if l not in {p["license"] for p in named[:3]}][:3]
+        head += f" ({', '.join(rest)})" if rest else ""
+    else:
+        lic = ", ".join(c["licenses"][:3])
+        head = f"**{c['producer']}**" + (f" ({lic})" if lic and c["producer"] not in lic else "")
     if c["producer"] == brands:
         brands = ""
     bits = []
+    if c.get("harvests"):
+        h = c["harvests"][0]
+        groups = _by_brand(h["packages"])
+        bits.append(f"один урожай под {h['names']} {plural(h['names'], 'названием', 'названиями', 'названиями')}"
+                    + (f" в {len(groups)} брендах" if len(groups) > 1 else "")
+                    + f" — «{h['harvest']}»" + (f", сбор {h['harvested']}" if h.get("harvested") else "")
+                    + f" ({_named(groups)})"
+                    + (f"; таких урожаев {len(c['harvests'])}" if len(c["harvests"]) > 1 else ""))
+    prods = [p for p in c.get("productionBatches") or [] if p["kind"] == "production"]
+    runs = [p for p in c.get("productionBatches") or [] if p["kind"] != "production"]
+    if prods:
+        p = prods[0]
+        bits.append(f"одна производственная партия «{p['sourceBatch']}» под {p['names']} названиями "
+                    f"({_named(_by_brand(p['packages']))})"
+                    + (f"; таких партий {len(prods)}" if len(prods) > 1 else ""))
+    if runs:
+        p = runs[0]
+        bits.append(f"один код упаковочного прогона «{p['sourceBatch']}» под {p['names']} названиями "
+                    f"(слабый сигнал: похоже на прогон фасовки, не партию сырья; {_named(_by_brand(p['packages']), 4)})"
+                    + (f"; таких кодов {len(runs)}" if len(runs) > 1 else ""))
     if c["batches"]:
         b = c["batches"][0]
         names = []
@@ -1600,6 +1990,17 @@ def case_line(c, full=True):
         thc = ", ".join(f"THC {x['thc']}" for x in c["codes"][:2] if x.get("thc") is not None)
         bits.append(f"общих кодов {'/'.join(kinds)} при одном THC (слабый сигнал): {len(c['codes'])}"
                     + (f" ({thc})" if thc else ""))
+    near = c.get("nearPanels") or []
+    for kind, label in (("templated", "шаблонные панели одного переработчика"),
+                        ("near", "почти одинаковые панели под разными названиями, само по себе только на заметку")):
+        group = [p for p in near if p["kind"] == kind]
+        if not group:
+            continue
+        p = group[0]
+        names = " / ".join(f"{e['name']} ({e['brand']})" if len(c["brands"]) > 1 else e["name"] for e in p["names"][:4])
+        thc = f"THC {p['thc'][0]:g}" + (f"–{p['thc'][1]:g}" if p["thc"][1] != p["thc"][0] else "")
+        why = f" — {_why_templated(p['evidence'][0])}" if kind == "templated" and p.get("evidence") else ""
+        bits.append(f"{label}: {len(group)} ({thc}: {names}{why})")
     if c.get("mixedBatches"):
         b = c["mixedBatches"][0]
         names = " / ".join(f"{p['name']} (THC {p['thc']})" for p in b["packages"][:3] if p.get("name"))
@@ -1691,6 +2092,27 @@ def report(doc):
     return "\n".join(lines) + "\n"
 
 
+def import_cards(directory, cards, today):
+    """Сырые карточки Retail ID из папки (<метка>.json, как отдаёт API) — в кэш
+    через compact_card; уже скачанное не спрашивается заново. Ввозится всё,
+    что читается: битый файл или имя не метка — в счётчики, не в падение."""
+    done = Counter()
+    for path in sorted(Path(directory).glob("*.json")):
+        tag = path.stem.upper()
+        if not TAG.match(tag):
+            done["notATag"] += 1
+            continue
+        try:
+            card = compact_card(json.loads(path.read_text()))
+        except Exception as e:  # битый файл — не падение
+            done["bad"] += 1
+            print(f"  {path.name}: не читается ({type(e).__name__} {str(e)[:60]})", file=sys.stderr)
+            continue
+        done["replaced" if (cards.get(tag) or {}).get("found") else "added"] += 1
+        cards[tag] = {**card, "checked": today}
+    return dict(done)
+
+
 def nonnegative(text):
     """--budget -5 — не «без предела», а ошибка: минус снял бы ограничение среза."""
     n = int(text)
@@ -1704,6 +2126,8 @@ def main(argv=None):
     ap.add_argument("command", nargs="?", default="build", choices=["build", "report"])
     ap.add_argument("--no-network", action="store_true", help="не спрашивать Retail ID")
     ap.add_argument("--budget", type=nonnegative, default=BUDGET, help="запросов к Retail ID за прогон (0 и больше)")
+    ap.add_argument("--import-cards", action="append", default=[], metavar="DIR",
+                    help="ввезти в кэш сырые карточки <метка>.json из папки (можно несколько раз)")
     args = ap.parse_args(argv)
     if args.command == "report":
         sys.stdout.write(report(load_previous()))
@@ -1721,6 +2145,9 @@ def main(argv=None):
     cards = dict(previous.get("cards") or {})
     probed = dict(previous.get("probed") or {})
     today = max((r["capturedAt"][:10] for r in rows if r.get("capturedAt")), default=date.today().isoformat())
+    for directory in args.import_cards:
+        done = import_cards(directory, cards, today)
+        print(f"  ввоз карточек из {directory}: " + (", ".join(f"{k} {v}" for k, v in sorted(done.items())) or "пусто"))
 
     built = build(rows, cards, retail, previous, producers, coverage, history, lines, today)
     if args.no_network:
