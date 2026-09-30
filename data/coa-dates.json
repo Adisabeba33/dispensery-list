@@ -5360,6 +5360,13 @@
    "packaged": null,
    "harvested": null
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38532.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/38535.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-08-28",
@@ -5398,6 +5405,132 @@
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/38544.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-08-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38840.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38867.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38869.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38870.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38872.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38873.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38875.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38877.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38879.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38885.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38887.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38891.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38899.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38944.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-07-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38955.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-07-08",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38966.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-08-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38978.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-26",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38982.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-26",
    "sampledFrom": "sampled",
    "packaged": null,
    "harvested": null
