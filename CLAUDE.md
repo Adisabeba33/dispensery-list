@@ -26,3 +26,18 @@ being served.
   what to look for.
 - The commit and the build time fill themselves in at build (`next.config.mjs`);
   nothing to do for those.
+
+## Strain names get a second look at build
+
+The collector cleans each name as it reads it (`scripts/strain-name.mjs`). The
+site then reviews the whole shelf at once (`src/lib/strain-review.ts`, applied
+in `src/lib/menu.ts`): shouted names calmed, a grower's product lines and its
+own name taken off, one spelling per grower, and `by <grower>` under the name.
+It only removes words and changes case; `strainNameRaw` keeps the shop's text.
+
+- Product lines are removed only when listed for that brand in
+  `data/strain-lines.json`. `npx tsx scripts/strain-review.ts` prints new
+  candidates and the names still unclear; put each candidate under `lines` or,
+  if it is a cultivar, under `notLines`.
+- `scripts/strain-review-check.ts` (part of `npm test`) holds the cultivars the
+  review must not shorten. Add to it when a new rule could touch a real name.

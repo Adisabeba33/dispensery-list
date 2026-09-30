@@ -1,6 +1,6 @@
 {
   "name": "the-flower-index",
-  "version": "1.24.3",
+  "version": "1.25.0",
   "private": true,
   "description": "Verified directory of state-licensed cannabis dispensaries — New York (NYC + Westchester)",
   "scripts": {
@@ -12,7 +12,7 @@
     "validate": "tsx scripts/validate-data.ts",
     "ingest": "tsx scripts/ingest/run.ts",
     "ingest:dry": "tsx scripts/ingest/run.ts --dry-run",
-    "test": "npm run typecheck && node scripts/menu-parse-check.mjs && npm run validate",
+    "test": "npm run typecheck && node scripts/menu-parse-check.mjs && tsx scripts/strain-review-check.ts && npm run validate",
     "preview": "tsx scripts/build-preview.ts"
   },
   "dependencies": {
