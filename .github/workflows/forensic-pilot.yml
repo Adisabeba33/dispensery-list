@@ -6,6 +6,9 @@ on:
       - claude/sync-varieties-repos-jdu0q7
     paths:
       - .github/workflows/forensic-pilot.yml
+      - scripts/forensic-*.py
+      - scripts/coa-forensics*.py
+      - scripts/coa-harvest*.py
   workflow_dispatch:
     inputs:
       retail_budget:
