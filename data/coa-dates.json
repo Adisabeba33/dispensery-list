@@ -3515,6 +3515,13 @@
    "packaged": null,
    "harvested": null
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35620.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/35679.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-05-20",
