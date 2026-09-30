@@ -247,8 +247,10 @@ def main():
     for tag in sorted(cards):
         card = cards[tag]
         row = {**card, "discoveredFrom": sorted(sources.get(tag, []))}
-        evidence.append(row)
         fp, chemistry = fingerprint(row)
+        if any(chemistry.values()):
+            row["fingerprint"] = fp
+        evidence.append(row)
         if any(chemistry.values()):
             fps.append({
                 "tag": tag, "fingerprint": fp, "chemistry": chemistry,
