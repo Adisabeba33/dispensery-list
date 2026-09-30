@@ -87,6 +87,17 @@ GROWER_ALIASES = {
     "bouketflower": "bouket", "boukets": "bouket",
     "naticoke": "nanticoke",
     "5borodimebag": "5boro",
+    # Партия 11 курации: подписи Sensei (микролицензия, коллаборации), Wizard
+    # Tree в единственном числе, линия 1937 High Values; «Major (Micro)» —
+    # та же партия Felas Farm, что и «Major»; Dank By Definition и Dank, Zips
+    # OG и Zips, «TOO THE MOON» и «To The Moon (TTM)». Сома складывает так же.
+    "senseimicro": "sensei", "tksxsensei": "sensei", "tkssensei": "sensei", "senseismallbatch": "sensei",
+    "wizardtree": "wizardtrees",
+    "1937highvalues": "1937",
+    "majormicro": "major",
+    "dankbydefinition": "dank",
+    "zipsog": "zips",
+    "toomoon": "tomoon", "tomoonttm": "tomoon",
 }
 
 
@@ -179,6 +190,28 @@ def fold_twins(groups):
     return out
 
 
+def lot_name(key, rows):
+    """Название партии — то, что стоит в её ключе, в написании меню.
+
+    Ключ уже без производителя («wizardtrees|nebula»), а название бралось как
+    есть — «Wizard Trees Nebula», и Сома, которая читает название, не находила
+    восемнадцать партий, среди них сертифицированную Nebula. Из имён, чей
+    текст совпадает с ключом, берётся самое частое; иначе с самого частого
+    снимаются начальные слова, которые и есть этот производитель."""
+    grower, strain = key.split("|", 1)
+    names = Counter(r.get("strainNameCanonical") or r.get("strainNameRaw") for r in rows)
+    fold = lambda n: re.sub(r"\s+", " ", (n or "").strip().lower())
+    same = [(n, c) for n, c in names.most_common() if fold(n) == strain]
+    if same:
+        return same[0][0]
+    top = names.most_common(1)[0][0]
+    words = (top or "").split()
+    for n in range(1, min(4, len(words))):
+        if grower_of(" ".join(words[:n])) == grower and fold(" ".join(words[n:])) == strain:
+            return " ".join(words[n:])
+    return top
+
+
 def lots(rows):
     by_strain = defaultdict(list)
     for row in rows:
@@ -245,7 +278,7 @@ def lots(rows):
             terps = [r.get("terpenes") or {} for r in rows_]
             out.append({
                 "brand": Counter(r.get("brand") for r in rows_).most_common(1)[0][0],
-                "strain": Counter(r.get("strainNameCanonical") or r.get("strainNameRaw") for r in rows_).most_common(1)[0][0],
+                "strain": lot_name(key, rows_),
                 "key": key,
                 "thcPercent": thc,
                 "terpenes": panel,
