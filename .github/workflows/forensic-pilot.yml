@@ -1,6 +1,11 @@
 name: Forensic bounded pilot
 
 on:
+  push:
+    branches:
+      - claude/sync-varieties-repos-jdu0q7
+    paths:
+      - .github/workflows/forensic-pilot.yml
   workflow_dispatch:
     inputs:
       retail_budget:
@@ -32,9 +37,9 @@ jobs:
       - name: Build offline Retail evidence
         run: python scripts/forensic-harvest.py
       - name: Bounded known Retail-ID harvest
-        run: python scripts/forensic-harvest.py --network --budget "${{ inputs.retail_budget }}"
+        run: python scripts/forensic-harvest.py --network --budget "${{ inputs.retail_budget || '100' }}"
       - name: Bounded known COA harvest
-        run: python scripts/coa-harvest.py --network --budget "${{ inputs.coa_budget }}"
+        run: python scripts/coa-harvest.py --network --budget "${{ inputs.coa_budget || '50' }}"
       - name: Detect collision candidates
         run: python scripts/forensic-collisions.py
       - name: Pilot summary
