@@ -41,4 +41,11 @@ changed = {**base, "terpenes": {
 fp3, _ = fh.fingerprint(changed)
 assert fp3 != fp1
 
+q=[
+    ("1A4RAW", {"flower-listings"}),
+    ("1A4CACHE", {"retail-id-cache"}),
+    ("1A4LINK", {"flower-listings:retail-link"}),
+]
+assert [x[0] for x in sorted(q,key=fh.queue_key)] == ["1A4LINK","1A4CACHE","1A4RAW"]
+
 print("forensic-harvest-check: OK")
