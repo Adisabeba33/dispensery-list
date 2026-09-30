@@ -47,5 +47,9 @@ q=[
     ("1A4LINK", {"flower-listings:retail-link"}),
 ]
 assert [x[0] for x in sorted(q,key=fh.queue_key)] == ["1A4LINK","1A4CACHE","1A4RAW"]
+assert fh.live_eligible({"flower-listings:retail-link"})
+assert fh.live_eligible({"retail-id-cache"})
+assert fh.live_eligible({"lot-twins-cache"})
+assert not fh.live_eligible({"flower-listings"})
 
 print("forensic-harvest-check: OK")
