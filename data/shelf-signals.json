@@ -10603,7 +10603,6 @@
     "OCM-CAURD-26-000349",
     "OCM-RETL-24-000026",
     "OCM-RETL-24-000088",
-    "OCM-RETL-24-000133",
     "OCM-RETL-24-000197",
     "OCM-RETL-26-000507"
    ]
@@ -10621,6 +10620,7 @@
    ],
    "first": "2026-09-24",
    "shops": [
+    "OCM-CAURD-23-000026",
     "OCM-CAURD-23-000030",
     "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000169",
@@ -10647,24 +10647,6 @@
     "OCM-RETL-25-000324",
     "OCM-RETL-25-000430",
     "OCM-RETL-26-000477"
-   ]
-  },
-  {
-   "brand": "1937",
-   "strain": "Sour Power",
-   "thc": 22.35,
-   "before": [
-    23.85
-   ],
-   "first": "2026-09-24",
-   "shops": [
-    "OCM-CAURD-23-000030",
-    "OCM-CAURD-24-000094",
-    "OCM-CAURD-24-000105",
-    "OCM-CAURD-24-000220",
-    "OCM-CAURD-25-000301",
-    "OCM-CAURD-26-000343",
-    "OCM-RETL-24-000133"
    ]
   },
   {
@@ -10705,6 +10687,23 @@
     "OCM-CAURD-25-000245",
     "OCM-RETL-24-000078",
     "OCM-RETL-24-000244"
+   ]
+  },
+  {
+   "brand": "1937",
+   "strain": "Sour Power",
+   "thc": 22.35,
+   "before": [
+    23.85
+   ],
+   "first": "2026-09-24",
+   "shops": [
+    "OCM-CAURD-23-000030",
+    "OCM-CAURD-24-000094",
+    "OCM-CAURD-24-000105",
+    "OCM-CAURD-24-000220",
+    "OCM-CAURD-25-000301",
+    "OCM-CAURD-26-000343"
    ]
   },
   {
@@ -10848,6 +10847,24 @@
    ]
   },
   {
+   "brand": "Find.",
+   "strain": "Island Bloom",
+   "thc": 30.34,
+   "before": [
+    21.12,
+    27.12,
+    28.91,
+    30.12
+   ],
+   "first": "2026-09-25",
+   "shops": [
+    "OCM-CAURD-23-000026",
+    "OCM-CAURD-24-000116",
+    "OCM-CAURD-25-000297",
+    "OCM-RETL-25-000324"
+   ]
+  },
+  {
    "brand": "Revert Cannabis",
    "strain": "Lemon Drop",
    "thc": 27.1,
@@ -10858,9 +10875,9 @@
    "first": "2026-09-29",
    "shops": [
     "OCM-CAURD-24-000104",
-    "OCM-CAURD-25-000281",
     "OCM-CAURD-26-000334",
-    "OCM-RETL-24-000041"
+    "OCM-RETL-24-000041",
+    "OCM-RETL-25-000379"
    ]
   },
   {
@@ -10896,21 +10913,6 @@
    ]
   },
   {
-   "brand": "Akron Bloom",
-   "strain": "Strawberry Blonde OG",
-   "thc": 25.01,
-   "before": [
-    26.37,
-    29.86
-   ],
-   "first": "2026-09-24",
-   "shops": [
-    "OCM-CAURD-24-000120",
-    "OCM-CAURD-25-000311",
-    "OCM-RETL-26-000473"
-   ]
-  },
-  {
    "brand": "ZIPS",
    "strain": "Super Boof",
    "thc": 36.47,
@@ -10939,38 +10941,6 @@
     "OCM-CAURD-24-000214",
     "OCM-RETL-25-000324",
     "OCM-RETL-25-000417"
-   ]
-  },
-  {
-   "brand": "Find.",
-   "strain": "Island Bloom",
-   "thc": 30.34,
-   "before": [
-    21.12,
-    27.12,
-    28.91,
-    30.12
-   ],
-   "first": "2026-09-25",
-   "shops": [
-    "OCM-CAURD-24-000116",
-    "OCM-CAURD-25-000297",
-    "OCM-RETL-25-000324"
-   ]
-  },
-  {
-   "brand": "Major",
-   "strain": "Purple Thai",
-   "thc": 20.07,
-   "before": [
-    28.4,
-    28.43
-   ],
-   "first": "2026-09-25",
-   "shops": [
-    "OCM-RETL-24-000254",
-    "OCM-RETL-25-000416",
-    "OCM-RETL-26-000507"
    ]
   },
   {
@@ -11221,6 +11191,20 @@
    ]
   },
   {
+   "brand": "Akron Bloom",
+   "strain": "Strawberry Blonde OG",
+   "thc": 25.01,
+   "before": [
+    26.37,
+    29.86
+   ],
+   "first": "2026-09-24",
+   "shops": [
+    "OCM-CAURD-24-000120",
+    "OCM-RETL-26-000473"
+   ]
+  },
+  {
    "brand": "Grassroots",
    "strain": "Velvet Spritz",
    "thc": 28.66,
@@ -11334,6 +11318,20 @@
    "shops": [
     "OCM-CAURD-24-000166",
     "OCM-CAURD-24-000203"
+   ]
+  },
+  {
+   "brand": "Major",
+   "strain": "Purple Thai",
+   "thc": 20.07,
+   "before": [
+    28.4,
+    28.43
+   ],
+   "first": "2026-09-25",
+   "shops": [
+    "OCM-RETL-24-000254",
+    "OCM-RETL-25-000416"
    ]
   },
   {
@@ -11897,20 +11895,6 @@
    ]
   },
   {
-   "brand": "ISH",
-   "strain": "Moonbeam Gelato",
-   "thc": 26.21,
-   "before": [
-    26.58,
-    28.17,
-    29.11
-   ],
-   "first": "2026-09-25",
-   "shops": [
-    "OCM-CAURD-24-000169"
-   ]
-  },
-  {
    "brand": "Boukét",
    "strain": "Noir",
    "thc": 22.77,
@@ -12206,6 +12190,18 @@
    "first": "2026-09-27",
    "shops": [
     "OCM-CAURD-24-000169"
+   ]
+  },
+  {
+   "brand": "GRASSROOTS",
+   "strain": "Blackened Blue",
+   "thc": 29.33,
+   "before": [
+    26.84
+   ],
+   "first": "2026-09-27",
+   "shops": [
+    "OCM-CAURD-24-000082"
    ]
   },
   {
@@ -12709,6 +12705,18 @@
    "shops": []
   },
   {
+   "brand": "ISH",
+   "strain": "Moonbeam Gelato",
+   "thc": 26.21,
+   "before": [
+    26.58,
+    28.17,
+    29.11
+   ],
+   "first": "2026-09-25",
+   "shops": []
+  },
+  {
    "brand": "ElectraLeaf",
    "strain": "Wedding Cake",
    "thc": 28.92,
@@ -12718,16 +12726,6 @@
     25.12
    ],
    "first": "2026-09-25",
-   "shops": []
-  },
-  {
-   "brand": "GRASSROOTS",
-   "strain": "Blackened Blue",
-   "thc": 29.33,
-   "before": [
-    26.84
-   ],
-   "first": "2026-09-27",
    "shops": []
   },
   {
