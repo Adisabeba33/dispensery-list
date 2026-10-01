@@ -1,0 +1,125 @@
+{
+ "about": "People's verification of cases in data/forensics/cases.json (scripts/forensic-cases.py), keyed by caseId. Edited by hand. status: candidate | source_verified (checked against the original Retail ID card or certificate) | externally_confirmed (an official record says so) | dismissed (judged benign). There is no status for misconduct: a case records that identities differ, not why. checked lists what was read, when, and the SHA-256 of the bytes received, so the check can be repeated and compared.",
+ "reviews": {
+  "FX-792EF427C5": {
+   "status": "source_verified",
+   "reviewedAt": "2026-09-30",
+   "by": "Claude Code session for the repository owner (automated check against the original Retail ID cards; not a legal or regulatory review)",
+   "note": "Metrc batch 1A41203000026BA000000042 is sold as Blue Dream, Gelato 41 and Zowah. Package …823 (Blue Dream, product SCC350; manufacturer Pierre McClain LLC OCM-MICR-25-000246-P1; facility Harlem Blossoms LLC OCM-MICR-24-000040-DX1; packaged 2026-04-06) was made from 26BA…041, which has no public card (404). Packages …582 and …586 (Gelato 41, product SCC350-G41; Harlem Blossoms LLC; packaged 2026-05-27 and 2026-05-28) name …823 as their source package: the name changed when the Blue Dream package was repacked. Packages …869, …877, …878 and …879 (Zowah; Pierre McClain LLC; packaged 2026-06-11; …869 read here, the others from Lot Twins' cache) were made from 26BA…041 too. One certificate throughout: Keystone State Testing (OCM-CPL-24-00007-L1), tested 2025-12-22, THC 24.16%, eleven identical analytes; TestPassed; none on recall. The equal chemistry is that one certificate shown on each card, not an independent match. Good Money's 'Zowah' shelf lot (five shops) prints the same panel; its certificate link coa/37885.pdf is a saved Retail ID page without its package block. Not established: which name is the plant's, or whether any rule was broken.",
+   "checked": [
+    {
+     "source": "https://app.1a4.com/api/landingpage/data?id=1a4120300002719000000823&index=0",
+     "fetchedAt": "2026-09-30T22:37:33Z",
+     "http": 200,
+     "sha256": "1b957bfb26bae6c6e65b48a0051009316bc9c861988e52b78d2d7a3aa55580d6"
+    },
+    {
+     "source": "https://app.1a4.com/api/landingpage/data?id=1a4120300001e8c000000582&index=0",
+     "fetchedAt": "2026-09-30T22:37:34Z",
+     "http": 200,
+     "sha256": "d9f868ab59626ab023ffb03db6e8f8bb12188d70dfa73674682cd394bde48486"
+    },
+    {
+     "source": "https://app.1a4.com/api/landingpage/data?id=1a4120300001e8c000000586&index=0",
+     "fetchedAt": "2026-09-30T22:37:35Z",
+     "http": 200,
+     "sha256": "89eb654874fc4fb7a89a79f48aebb97e2ac8c0c4838be4a17959312fecb5f5e3"
+    },
+    {
+     "source": "https://app.1a4.com/api/landingpage/data?id=1a41203000026ba000000041&index=0",
+     "fetchedAt": "2026-09-30T22:37:38Z",
+     "http": 404,
+     "sha256": "d3ef53bfd7de7b6993190e49235381fa666a5b39ec43f247c2515de524c3935c"
+    },
+    {
+     "source": "https://app.1a4.com/api/landingpage/data?id=1a4120300002719000000869&index=0",
+     "fetchedAt": "2026-09-30T23:15:42Z",
+     "http": 200,
+     "sha256": "5acb2ab5a7913690b5591b9c24cf8c3a07dc975a2c8945d60c878fa5e09b447d"
+    }
+   ]
+  },
+  "FX-DAB81472EB": {
+   "status": "source_verified",
+   "reviewedAt": "2026-09-30",
+   "by": "Claude Code session for the repository owner (automated check against the original Retail ID cards and certificates; not a legal or regulatory review)",
+   "note": "Metrc batch 1A41203000026BA000000014 is sold under three names. From source package 26BA…013 (no public card, 404): …819 Candy Gelato (product SCC201; manufacturer Pierre McClain LLC; facility Harlem Blossoms LLC; packaged 2026-04-06) and …870 Zeven Up (Pierre McClain LLC OCM-MICR-25-000246-DX1; packaged 2026-06-11). From …819: …583 The Wrap Up (product SCC201-TWU; Harlem Blossoms LLC; packaged 2026-05-28). One certificate on all three: Keystone, tested 2025-10-28, THC 26.1%, β-myrcene 0.4265, limonene 0.4226, linalool 0.3408, β-caryophyllene 0.302, terpineol 0.1031; TestPassed; none on recall. Lot Twins' cache also holds …581 (Candy Gelato, 2026-03-06) and …860 (Zeven Up, product SCC201, 2026-06-07) of this batch. Package …870 is printed in Good Money's 'Zeven Up' certificate links (coa/30902.pdf, coa/30965.pdf), which are saved Retail ID pages of that package: the shelf's own link to the batch. Not established: which name is the plant's, or whether any rule was broken.",
+   "checked": [
+    {
+     "source": "https://app.1a4.com/api/landingpage/data?id=1a4120300002719000000819&index=0",
+     "fetchedAt": "2026-09-30T22:37:36Z",
+     "http": 200,
+     "sha256": "b7f038a4c4723d1ef4fca056b26206ac080f23fdecf53d385f8c09999fc097a7"
+    },
+    {
+     "source": "https://app.1a4.com/api/landingpage/data?id=1a4120300001e8c000000583&index=0",
+     "fetchedAt": "2026-09-30T22:37:38Z",
+     "http": 200,
+     "sha256": "c3dcd99466e81c44926a0a123ba04979fa00a3e583cf29d25cccf50d3a1ab31b"
+    },
+    {
+     "source": "https://app.1a4.com/api/landingpage/data?id=1a4120300002719000000870&index=0",
+     "fetchedAt": "2026-09-30T22:59:14Z",
+     "http": 200,
+     "sha256": "1c18354dc4f551f63179bf3b35e9e859ac582d6930632c985cfd5c73dd95d3d2"
+    },
+    {
+     "source": "https://app.1a4.com/api/landingpage/data?id=1a41203000026ba000000013&index=0",
+     "fetchedAt": "2026-09-30T22:37:39Z",
+     "http": 404,
+     "sha256": "42f4af55e3f2af380a8f533d714e7052c4c80d30f3fb0cf335c6800992024a20"
+    },
+    {
+     "source": "https://app.alleaves.com/api/inventory/batch/buddega/coa/30902.pdf",
+     "fetchedAt": "2026-09-30T22:57Z",
+     "http": 200,
+     "sha256": "ac8d2147f900a3ec1b7bd00661b0855843dc08827cb4b6a1eb566894476c4943"
+    },
+    {
+     "source": "https://app.alleaves.com/api/inventory/batch/buddega/coa/30965.pdf",
+     "fetchedAt": "2026-09-30T22:57Z",
+     "http": 200,
+     "sha256": "3acddc097ecc8232b2a8b2dd5ef54caf3ad87c1de42889e7a46f7ab3f4c48f33"
+    }
+   ]
+  },
+  "FX-A2DEA3390D": {
+   "status": "source_verified",
+   "reviewedAt": "2026-09-30",
+   "by": "Claude Code session for the repository owner (automated check against the original Retail ID cards and certificates; not a legal or regulatory review)",
+   "note": "Metrc batch 1A41203000026BA000000012 is sold as Cherry Runtz and as 03' Sour x Runrz (sic, the cards' spelling). Package 26BA…002 (Cherry Runtz 3.5g; Pierre McClain LLC; packaged 2025-10-28) is the source of …817 (Cherry Runtz 3.5g; packaged 2026-04-06), of …863 (strain 03' Sour x Runrz, product still 'Cherry Runtz 3.5g'; packaged 2026-06-07) and of …872 (03' Sour x Runrz; Pierre McClain LLC OCM-MICR-25-000246-DX1; packaged 2026-06-11): the name changed when …002 was repacked, and …863's own card carries both names. One certificate: Keystone, tested 2025-10-21, THC 25.97%, β-caryophyllene 0.2938, β-myrcene 0.2878, linalool 0.2705, limonene 0.2439; TestPassed; none on recall. Package …872 is also printed in Good Money's certificate link coa/30964.pdf, a saved Retail ID page. Not established: which name is the plant's, or whether any rule was broken.",
+   "checked": [
+    {
+     "source": "https://app.1a4.com/api/landingpage/data?id=1a41203000026ba000000002&index=0",
+     "fetchedAt": "2026-09-30T23:01:52Z",
+     "http": 200,
+     "sha256": "98894e33fe032d0a97704708e9cf43ace19e6ad7c725a6a021ad023ae8ad3425"
+    },
+    {
+     "source": "https://app.1a4.com/api/landingpage/data?id=1a4120300002719000000817&index=0",
+     "fetchedAt": "2026-09-30T23:01:53Z",
+     "http": 200,
+     "sha256": "56f3d774d0f728506756226ff72008c1968d3ff56018c8c4ba08ef6970a246ea"
+    },
+    {
+     "source": "https://app.1a4.com/api/landingpage/data?id=1a4120300002719000000863&index=0",
+     "fetchedAt": "2026-09-30T23:15:44Z",
+     "http": 200,
+     "sha256": "b37f961f39dcdebb05f3db7e1388451b044cafeb20d32336bcc0f6d221b4da0c"
+    },
+    {
+     "source": "https://app.1a4.com/api/landingpage/data?id=1a4120300002719000000872&index=0",
+     "fetchedAt": "2026-09-30T22:59:15Z",
+     "http": 200,
+     "sha256": "f0961c95865063977a6014763e069ba5558f3b3881d18a623c0488b7c8ad4aba"
+    },
+    {
+     "source": "https://app.alleaves.com/api/inventory/batch/buddega/coa/30964.pdf",
+     "fetchedAt": "2026-09-30T22:57Z",
+     "http": 200,
+     "sha256": "cb89d9542ab6488a4569a3d843eb74452e97659aaaeea2722c30b3e15e909418"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,113 @@
+name: Forensic bounded pilot
+
+on:
+  push:
+    branches:
+      - claude/sync-varieties-repos-jdu0q7
+    paths:
+      - .github/workflows/forensic-pilot.yml
+      - scripts/forensic-*.py
+      - scripts/coa-forensics*.py
+      - scripts/coa-harvest*.py
+  workflow_dispatch:
+    inputs:
+      retail_budget:
+        description: Retail ID requests (public cards and evidence leads only)
+        required: true
+        default: "100"
+      coa_budget:
+        description: Known COA downloads only
+        required: true
+        default: "50"
+
+permissions:
+  contents: read
+
+concurrency:
+  # Runs chain their state through the cache: two at once would both start
+  # from the same state and one's observations would not reach the next run.
+  group: forensic-pilot
+  cancel-in-progress: false
+
+jobs:
+  pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      # History (Retail ID card versions, menu sightings, COA versions) lives
+      # only here between runs: generated data is not committed. A cache not
+      # used for 7 days is evicted — the summary says when a run starts over.
+      - name: Restore forensic state
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/forensics/retail-history.json
+            data/forensics/coa-index.json
+          key: forensic-state-${{ github.run_id }}
+          restore-keys: forensic-state-
+      - name: Install PDF text extractor
+        run: sudo apt-get update -qq && sudo apt-get install -y poppler-utils
+      - name: Regression checks
+        run: |
+          python scripts/forensic-harvest-check.py
+          python scripts/coa-forensics-check.py
+          python scripts/coa-harvest-check.py
+          python scripts/forensic-collisions-check.py
+          python scripts/forensic-cases-check.py
+      # Certificates first: a Metrc tag printed in one is a Retail ID lead.
+      - name: Bounded known COA harvest
+        run: python scripts/coa-harvest.py --network --budget "${{ inputs.coa_budget || '50' }}"
+      - name: Build offline Retail evidence
+        run: python scripts/forensic-harvest.py
+      - name: Bounded Retail-ID harvest
+        run: python scripts/forensic-harvest.py --network --budget "${{ inputs.retail_budget || '100' }}"
+      - name: Detect collision candidates
+        run: python scripts/forensic-collisions.py
+      - name: Assemble cases
+        run: python scripts/forensic-cases.py
+      - name: Save forensic state
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/forensics/retail-history.json
+            data/forensics/coa-index.json
+          key: forensic-state-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Pilot summary
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          from pathlib import Path
+          def load(name):
+              p=Path("data/forensics")/name
+              return json.loads(p.read_text()) if p.exists() else {}
+          h=load("harvest-state.json"); n=h.get("network",{}); hist=h.get("history",{})
+          coa=load("coa-index.json").get("run",{}); col=load("collisions.json"); cases=load("cases.json")
+          print("### Forensic pilot\n")
+          print("State:", "restored from the previous run" if hist.get("restored") else
+                "**started over** (no cached history: mutation detectors have no baseline this run)",
+                f"— history since {hist.get('since')}\n")
+          print(f"- Retail ID: {n.get('requested')} requests, {n.get('found')} found, {n.get('notFound')} 404, "
+                f"{n.get('errors')} errors; by tier {n.get('byTier')}; queue {n.get('pool')}")
+          print(f"- Eligible tags {n.get('eligibleKnownTags')} of {h.get('knownTags')}; known 404 skipped "
+                f"{n.get('skippedKnown404')}; raw-only skipped {n.get('skippedRawDiscovery')}; "
+                f"Lot Twins probe-only {n.get('probeOnly')}; resting 404 {n.get('resting404')}")
+          print(f"- Cards {h.get('cards')}, fingerprints {h.get('fingerprints')}; card versions {hist.get('versions')} "
+                f"over {hist.get('publicCards')} cards, changed {hist.get('changedCards')}, no longer public "
+                f"{hist.get('noLongerPublic')}; tags on menus {hist.get('tagsOnMenus')}")
+          print(f"- COA: {coa.get('knownUrls')} URLs, {coa.get('indexedUrls')} indexed; requested {coa.get('requested')}, "
+                f"new {coa.get('parsedNewVersions')}, changed {coa.get('changedDocuments')}, re-rendered "
+                f"{coa.get('rerenderedDocuments')}, unchanged {coa.get('unchanged')}, errors {coa.get('errors')}")
+          hits=col.get("candidates",[])
+          print(f"- Collisions: {col.get('recordsCompared')} records, {len(hits)} candidates, "
+                f"{sum(x.get('priority')=='high' for x in hits)} high, {sum(x.get('priority')=='medium' for x in hits)} medium")
+          print(f"- Cases: {cases.get('counts')}\n")
+          for c in [c for c in cases.get("cases",[]) if c["priority"]!="review"][:30]:
+              print(f"- `{c['caseId']}` **{c['priority']}** {'+'.join(c['signals'])} ({c['verificationStatus']}): {c['summary']}")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: forensic-pilot
+          path: data/forensics/
+          if-no-files-found: error
+          retention-days: 14

@@ -55,7 +55,9 @@ jobs:
           python-version: '3.12'
       - run: npm ci
       - name: Check the parser against captured payload shapes
-        run: node scripts/menu-parse-check.mjs
+        run: |
+          node scripts/menu-parse-check.mjs
+          python scripts/lot-twins-check.py
       - run: |
           npm install --no-save playwright
           npx playwright install --with-deps chromium
@@ -176,6 +178,25 @@ jobs:
           git add data/coa-dates.json data/retail-id.json data/shelf-terpenes.json
           if [ -f data/shelf-terpenes-archive.json ]; then git add data/shelf-terpenes-archive.json; fi
           git diff --cached --quiet || git commit -q -m "menu: shelf lots"
+
+      # Одна партия — много названий: производители, которые продают один
+      # урожай под разными сортами и брендами (Splash: одна партия Metrc как
+      # Candy Gelato, Zeven Up и The Wrap Up под тремя брендами). Читает
+      # полки дня и карточки Retail ID — свой кэш в lot-twins.json, не больше
+      # 150 запросов за прогон, — и дописывает в отчёт новые случаи, выросшие
+      # статусы, стоящий список и производства со старыми тестами. Как и
+      # партии, поломка здесь не стоит дню его полок.
+      - name: Lot twins
+        continue-on-error: true
+        run: |
+          if python scripts/lot-twins.py; then
+            python scripts/lot-twins.py report >> menu-report.md
+            git add data/lot-twins.json
+            git diff --cached --quiet || git commit -q -m "menu: lot twins"
+          else
+            printf '\n### Одна партия — много названий\n\n_Сегодня не посчитано — см. шаг Lot twins в прогоне._\n' >> menu-report.md
+            exit 1
+          fi
 
       # Menus are the point of the site and they change daily, so a clean run
       # publishes itself. A run that produced a collapsed shelf does not: that
