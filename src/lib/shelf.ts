@@ -1,6 +1,7 @@
 import type { StrainEntry } from '@/components/ShelfIndex';
 import { dispensaries, displayName, regionOf } from './data';
 import { isPromotionalSample, listings, sizeChips } from './menu';
+import { looseKey } from './strain-review';
 import type { FlowerListing } from './menu-format';
 
 /**
@@ -36,8 +37,10 @@ export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
     const written = l.strainNameCanonical ?? l.strainNameRaw;
     /* Case, spaces and punctuation folded away, as the register's own strain
        key does: "B.A.M" and "BAM", "Paw Paw" and "PawPaw" are one strain two
-       shops typed differently, and on a brand's page they were two rows. */
-    const key = written.toLowerCase().replace(/[^a-z0-9]/g, '') || written.toLowerCase();
+       shops typed differently, and on a brand's page they were two rows. So
+       are an ending spelt two ways and a doubled letter: "Blue Nerds" and
+       "Blue Nerdz", "Kush Mints" and "Kush Mintz" (lib/strain-review). */
+    const key = looseKey(written) || written.toLowerCase();
     const shop = shopOf.get(l.licenseNumber);
     if (!shop) continue;
 
@@ -106,6 +109,8 @@ export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
       return b[1] - a[1] || shout(a[0]) - shout(b[0]) || a[0].localeCompare(b[0]);
     });
     if (counted.length > 0) entry.name = counted[0][0];
+    // Searched as the name it is shown under; every other spelling is in labels.
+    entry.key = entry.name.toLowerCase().replace(/[^a-z0-9]/g, '') || entry.key;
   }
 
   return [...byStrain.values()].sort(

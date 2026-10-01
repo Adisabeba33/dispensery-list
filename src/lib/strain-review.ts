@@ -11,9 +11,13 @@ import type { FlowerListing } from './menu-format';
  * the grower printed on the listing. This reads the whole shelf at once and
  * finishes the job before a page is built.
  *
- * It only takes words away and changes their case. It never adds a word, and
- * a listing it would leave with no name keeps the one it had. The shop's own
- * wording stays in strainNameRaw.
+ * It takes words away and changes their case, and it settles one grower's
+ * names against each other — "Crusty Crustacean - Big Flower Pack" is the
+ * Crusty Crustacean Find. sells at thirty other shops, "Nothern Lights" the
+ * Northern Lights Doobie Labs' other 45 print. It never makes a name up: what
+ * a listing ends up called is its own words, or a name the same grower is
+ * sold under at another shop. A listing it would leave with no name keeps the
+ * one it had. The shop's own wording stays in strainNameRaw.
  *
  * A grower's product lines are not guessed here: they are listed, per brand,
  * in data/strain-lines.json, confirmed by a person. `lineCandidates` finds new
@@ -27,7 +31,14 @@ export type LineBook = {
   notLines?: Record<string, string[]>;
 };
 
-export type Reason = 'capitals' | 'packaging' | 'product line' | 'grower in name' | 'stray characters';
+export type Reason =
+  | 'capitals'
+  | 'packaging'
+  | 'product line'
+  | 'grower in name'
+  | 'stray characters'
+  | 'beside the cultivar'
+  | 'same strain, other spelling';
 
 export type Reviewed = { name: string; why: Reason[] };
 
@@ -47,6 +58,7 @@ const PACKAGING = new Set([
   'prepackaged', 'pack', 'packs', 'whole', 'cannabis', 'weed', 'strain', 'item', 'sku',
   'batch', 'mylar', 'tin', 'micro', 'limited', 'edition', 'collection', 'thc', 'cbd', 'tac',
   'eighth', 'quarter', 'half', 'oz', 'ounce', 'g', 'gram', 'grams', 'indica', 'sativa',
+  'dime', 'dimes', 'dimebag', 'papers',
   'hybrid', 'dominant', 'dom', 'leaning', 'lean', 'ind', 'hyb', 'sat', 'indhyb', 'sathyb',
   'ih', 'sh', 'idh', 'sdh', 'i', 's', 'h', 'sample', 'samples',
 ]);
@@ -55,7 +67,7 @@ const isMeasure = (w: string) => /^\d+(\.\d+)?(g|gm|gr|th|oz|pk|ct|pc|pcs)?$/.te
    "light" and "sun" are not packaging by themselves: Pre-98 Bubba Kush, Bud
    Light Haze and Sun Dog are cultivars. */
 const PACKAGING_PHRASE =
-  /\bw\/\s*built[- ]in grinder\b|\bx\s*\d+\s*(ct|pk|pack)\b|\bsold in pre[- ]?pack\b|\b\d+\s*x\s*mylar\b|\bpre[- ]?(pack(ed|aged)?|ground|rolls?)\b|\bmixed[- ]light\b|\bsun[- ]?(grown|powered)\b|\b(sun)?light[- ]assist(ed)?\b|\bf[;:]ower\b/gi;
+  /\bw\/\s*built[- ]in grinder\b|\bx\s*\d+\s*(ct|pk|pack)\b|\bsold in pre[- ]?pack\b|\b\d+\s*x\s*mylar\b|\bpre[- ]?(pack(ed|aged)?|ground|rolls?)\b|\bmixed[- ]light\b|\bsun[- ]?(grown|powered)\b|\b(sun)?light[- ]assist(ed)?\b|\bf[;:]ower\b|\b(big|xl|large|small)\s+flower\s+pack\b/gi;
 /* Words no cultivar begins with, so one of them opening a name is enough:
    "Indoor Kosher Kush", "Collection Moonbeam Gelato". */
 const NEVER_FIRST = new Set([
@@ -146,6 +158,11 @@ export const reviewName = (
   const lines = linesFor(book, brandKey);
   const isLine = (s: string) => lines.has(lineKey(s)) || lines.has(lineKey(afterGrower(s, brand)));
 
+  /* One shop writes "F(Whole Flower)-Find.-Banana Papaya": its hyphens are
+     fences, but only between letters — AK-47 keeps its own. */
+  if (/^F\([^)]*\)-/i.test(written)) {
+    written = written.replace(/^F\(([^)]*)\)-/i, '$1 - ').replace(/(?<=[A-Za-z.)])-(?=[A-Za-z])/g, ' - ');
+  }
   const pieces = piecesOf(written);
 
   let kept: string[] = [];
@@ -331,10 +348,247 @@ const brandSpellings = (rows: FlowerListing[]) => {
 export type ReviewedListing = { listing: FlowerListing; before: string; after: string; why: Reason[] };
 
 /** Every listing's reviewed name, with what changed and why. */
+/* ---- One grower's names, side by side ------------------------------------- */
+
+/* Compared with "&", "and" and "N" read as one word: "Grapes N Cream",
+   "Grapes & Cream" and "Grapes and Cream" are one jar three shops typed. */
+const sameKey = (s: string) =>
+  fold(s).replace(/&/g, ' and ').replace(/\bn\b/g, ' and ').replace(/[^a-z0-9]/g, '');
+const wordsKey = (s: string) =>
+  fold(s).replace(/&/g, ' and ').replace(/\bn\b/g, ' and ').split(/[^a-z0-9]+/).filter(Boolean).sort().join(' ');
+/* A name with its plural, its apostrophes and its doubled letters folded away:
+   "Melted Strawberry's" and "Melted Strawberries", "Bottomless Mintz" and
+   "Bottomless Mints", "Biscoti" and "Biscotti" read the same. */
+export const looseKey = (s: string) =>
+  fold(s)
+    .replace(/&/g, ' and ')
+    .replace(/\bn\b/g, ' and ')
+    .replace(/'/g, '')
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean)
+    .map((w) => {
+      // Cookies, Cookie; Strawberries, Strawberry, Strawberry's; Candyz, Candy.
+      if (w.length > 4 && w.endsWith('ies')) w = `${w.slice(0, -3)}i`;
+      else if (w.length > 3 && /[sz]$/.test(w)) w = w.slice(0, -1);
+      if (w.length > 3 && w.endsWith('ie')) w = w.slice(0, -1);
+      else if (w.length > 3 && w.endsWith('y')) w = `${w.slice(0, -1)}i`;
+      return w.replace(/(.)\1+/g, '$1');
+    })
+    .join('');
+/* Where each word of a name begins, counted in its sameKey. */
+const wordStarts = (s: string) => {
+  const at = new Set<number>();
+  let n = 0;
+  for (const w of fold(s).replace(/&/g, ' and ').replace(/\bn\b/g, ' and ').split(/[^a-z0-9]+/).filter(Boolean)) {
+    at.add(n);
+    n += w.length;
+  }
+  return at;
+};
+const editDistance = (a: string, b: string) => {
+  let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i += 1) {
+    const next = [i];
+    for (let j = 1; j <= b.length; j += 1) {
+      next[j] = Math.min(prev[j] + 1, next[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+    prev = next;
+  }
+  return prev[b.length];
+};
+
+/* A piece that is plainly not a cultivar: packaging, a stray letter or a
+   number with a unit, or the grower's own name however it was typed. */
+const isNoise = (piece: string, brands: string[]) => {
+  if (isPackaging(piece) || /^[a-z]$/i.test(piece.trim()) || /^\d+(\.\d+)?\s?[a-z]{0,3}$/i.test(piece.trim())) return true;
+  if (/^(dimes?|dimebag|dime bag|jarred flower|flower\/dime)$/i.test(piece.trim())) return true;
+  const pc = growerCore(piece);
+  // Every way the grower is printed: "Harney Brothers" and "Harney Brothers Cannabis".
+  return brands.some((raw) => {
+    const brand = raw.replace(/[™®©]/g, ' ');
+    const bc = growerCore(brand);
+    if (bc.length >= 4 && pc.length >= 4) {
+      if (pc === bc || editDistance(pc, bc) <= 2) return true;
+      if (pc.length >= 5 && (bc.includes(pc) || pc.includes(bc))) return true;
+    }
+    const all = wordsOf(brand).filter((w) => !['co', 'llc', 'inc', 'micro'].includes(w));
+    return all.length >= 2 && nameKey(piece) === all.map((w) => w[0]).join('');
+  });
+};
+
+/**
+ * One cultivar a grower sells, written several ways by different shops, is
+ * one strain. "Crusty Crustacean - Big Flower Pack" at one shop and "Crusty
+ * Crustacean" at thirty-one were two rows of the strain index, as were Doobie
+ * Labs' "Northern Lights" at 45 shops and "Nothern Lights" at one. Three rules,
+ * each settled by the grower's own names on the shelves, never by a guess:
+ *
+ *  1. A name in pieces whose one piece is a name the grower sells on its own,
+ *     at two shops or more, and whose other pieces it never sells on their
+ *     own, is that cultivar: the rest is a pack, an edition or its parents
+ *     ("Twin - Zoap X Lazer Gun", "Alien Dawg - Bills NFL Edition"). When two
+ *     pieces are both names it sells — Trap to Table's "Purple Sunset - Grape
+ *     Gas" — nothing can say which, and the name stays.
+ *  2. The same words in another order, or "&" for "and": the order more shops
+ *     use ("Paradise Pomelo" over "Pomelo Paradise").
+ *  3. A misspelling: the same name once plurals, apostrophes and doubled
+ *     letters are set aside, or one letter apart and not the first letter of
+ *     a word; the same numbers; the other spelling at twice as many shops or
+ *     more — and the misspelling sold by no other grower. That last test is
+ *     what keeps 1937's Chemdawg from becoming its ClemDawg: Chemdawg is a
+ *     cultivar half the shelf sells.
+ */
+const settleWithinGrower = (rows: FlowerListing[], first: Reviewed[]) => {
+  const byGrower = new Map<string, number[]>();
+  rows.forEach((l, i) => {
+    if (!l.brandKey) return;
+    byGrower.set(l.brandKey, [...(byGrower.get(l.brandKey) ?? []), i]);
+  });
+  // Who sells each name, across the whole shelf.
+  const growersOf = new Map<string, Set<string>>();
+  rows.forEach((l, i) => {
+    if (!l.brandKey) return;
+    const k = sameKey(first[i].name);
+    growersOf.set(k, (growersOf.get(k) ?? new Set<string>()).add(l.brandKey));
+  });
+
+  const rename = (at: number[], to: string, why: Reason) => {
+    for (const i of at) {
+      if (first[i].name === to) continue;
+      first[i] = { name: to, why: [...new Set([...first[i].why, why])] };
+    }
+  };
+
+  for (const idx of byGrower.values()) {
+    const shopsOf = () => {
+      const named = new Map<string, { name: string; shops: Set<string>; at: number[] }>();
+      for (const i of idx) {
+        const k = sameKey(first[i].name);
+        const e = named.get(k) ?? { name: first[i].name, shops: new Set<string>(), at: [] };
+        e.shops.add(rows[i].licenseNumber);
+        e.at.push(i);
+        named.set(k, e);
+      }
+      return named;
+    };
+
+    // 1. A cultivar with something beside it.
+    let named = shopsOf();
+    for (const e of named.values()) {
+      const pieces = e.name.split(/\s+-\s+/);
+      if (pieces.length < 2) continue;
+      // "Alien Cookies - x Blue Moon - x Honeymoon - Flight Variety Pack" is
+      // three cultivars in one pack, not Alien Cookies with a note.
+      if (pieces.some((p) => /^(x|\+)\s/i.test(p))) continue;
+      const alone = pieces.map((p) => named.get(sameKey(p)));
+      let bases = pieces.filter((_, j) => (alone[j]?.shops.size ?? 0) >= 2);
+      /* On one shelf only, the cultivar is still the cultivar when what is
+         beside it is plainly not one: the grower's own name misspelt ("The
+         Botanis", "Stay Me70"), its initials ("HBC"), a pack ("flower/dime"),
+         a stray letter. */
+      if (bases.length === 0) {
+        const once = pieces.filter((_, j) => alone[j]);
+        const brands = [...new Set(idx.map((i) => rows[i].brand).filter((b): b is string => Boolean(b)))];
+        if (once.length === 1 && pieces.every((p) => p === once[0] || isNoise(p, brands))) bases = once;
+      }
+      const othersAlone = pieces.filter((p, j) => alone[j] && !bases.includes(p));
+      if (bases.length === 1 && othersAlone.length === 0) rename(e.at, named.get(sameKey(bases[0]))!.name, 'beside the cultivar');
+    }
+
+    // 2. The same words, another order.
+    named = shopsOf();
+    const byWords = new Map<string, { name: string; shops: Set<string>; at: number[] }[]>();
+    for (const e of named.values()) byWords.set(wordsKey(e.name), [...(byWords.get(wordsKey(e.name)) ?? []), e]);
+    for (const group of byWords.values()) {
+      if (group.length < 2) continue;
+      const sorted = [...group].sort((a, b) => b.shops.size - a.shops.size);
+      if (sorted[0].shops.size === sorted[1].shops.size) continue;
+      for (const e of sorted.slice(1)) rename(e.at, sorted[0].name, 'same strain, other spelling');
+    }
+
+    // 3. A misspelling.
+    named = shopsOf();
+    const names = [...named.entries()].sort((a, b) => b[1].shops.size - a[1].shops.size);
+    for (let m = names.length - 1; m >= 0; m -= 1) {
+      const [mk, minor] = names[m];
+      if (mk.length < 6) continue;
+      for (const [jk, major] of names) {
+        if (jk === mk || major.shops.size <= minor.shops.size) continue;
+        if (jk.replace(/\D/g, '') !== mk.replace(/\D/g, '')) continue;
+        /* "Blue Nerds" and "Blue Nerdz", "Kush Mints" and "Kush Mintz": one name
+           with its ending spelled two ways. The grower's majority decides. */
+        if (looseKey(major.name) !== looseKey(minor.name)) {
+          if (major.shops.size < 2 || major.shops.size < 2 * minor.shops.size) continue;
+          if ((growersOf.get(mk)?.size ?? 0) > 1) continue;
+          // One letter, and not the first of a word: The Botanist's Billionaire
+          // is one letter from its Millionaire, and may well be its own plant.
+          if (Math.abs(jk.length - mk.length) > 1 || editDistance(jk, mk) !== 1) continue;
+          if (jk.length === mk.length) {
+            let i = 0;
+            while (jk[i] === mk[i]) i += 1;
+            if (wordStarts(major.name).has(i) || wordStarts(minor.name).has(i)) continue;
+          }
+        }
+        rename(minor.at, major.name, 'same strain, other spelling');
+        break;
+      }
+    }
+  }
+};
+
+/**
+ * Packaging or the grower's name run onto a cultivar with no fence:
+ * "Flower Gelato 41", "Animal Face Pack", "Binski Flower Jungle Pie". "Flower"
+ * opens real names too — Flower Power — so the words go only when what is
+ * left is a name the shelves carry at two shops or more. Gelato 41 is; Power
+ * is not.
+ */
+const trimAgainstShelf = (rows: FlowerListing[], first: Reviewed[], book: LineBook) => {
+  const shops = new Map<string, Set<string>>();
+  rows.forEach((l, i) => {
+    const k = sameKey(first[i].name);
+    shops.set(k, (shops.get(k) ?? new Set<string>()).add(l.licenseNumber));
+  });
+  const known = (name: string) => (shops.get(sameKey(name))?.size ?? 0) >= 2;
+  rows.forEach((l, i) => {
+    const brands = l.brand ? [l.brand] : [];
+    const lines = linesFor(book, l.brandKey);
+    // Packaging, the grower's name misspelt, or one of its confirmed lines: "Flower BSides Chrome".
+    const noiseWord = (w: string) =>
+      PACKAGING.has(fold(w).replace(/[^a-z]/g, '')) || (/[a-z]/i.test(w) && isNoise(w, brands)) || lines.has(lineKey(w));
+    let changed = false;
+    const pieces = first[i].name.split(/\s+-\s+/).map((piece) => {
+      const w = piece.split(/\s+/);
+      if (w.length < 2) return piece;
+      let a = 0;
+      while (a < w.length - 1 && noiseWord(w[a])) a += 1;
+      let b = w.length;
+      while (b > a + 1 && noiseWord(w[b - 1])) b -= 1;
+      for (const [x, y] of [[a, b], [a, w.length], [0, b]]) {
+        if (x === 0 && y === w.length) continue;
+        const rest = w.slice(x, y).join(' ');
+        /* Packaging has to be among what goes. The grower's name alone is not
+           enough: Runtz Gelato and Lemon Cherry Runtz are cultivars that carry
+           their grower's name. */
+        const gone = [...w.slice(0, x), ...w.slice(y)];
+        if (!gone.some((g) => PACKAGING.has(fold(g).replace(/[^a-z]/g, '')))) continue;
+        if (known(rest) && !isPackaging(rest)) {
+          changed = true;
+          return rest;
+        }
+      }
+      return piece;
+    });
+    if (changed) first[i] = { name: pieces.join(' - '), why: [...new Set([...first[i].why, 'packaging' as const])] };
+  });
+};
+
 export const reviewShelf = (rows: FlowerListing[], book: LineBook): ReviewedListing[] => {
   const first = rows.map((l) =>
     reviewName(l.strainNameCanonical ?? l.strainNameRaw, l.brand, l.brandKey, book),
   );
+  trimAgainstShelf(rows, first, book);
+  settleWithinGrower(rows, first);
   const spellings = new Map<string, Map<string, number>>();
   for (const r of first) {
     const k = spellingKey(r.name);
