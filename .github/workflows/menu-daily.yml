@@ -59,6 +59,7 @@ jobs:
           node scripts/menu-parse-check.mjs
           python scripts/lot-twins-check.py
           python scripts/coa-forensics-check.py
+          python scripts/brand-trust-check.py
       - run: |
           npm install --no-save playwright
           npx playwright install --with-deps chromium
@@ -196,6 +197,23 @@ jobs:
             git diff --cached --quiet || git commit -q -m "menu: lot twins"
           else
             printf '\n### Одна партия — много названий\n\n_Сегодня не посчитано — см. шаг Lot twins в прогоне._\n' >> menu-report.md
+            exit 1
+          fi
+
+      # Паспорт доверия бренда: что карточки Retail ID, меню и семьи двойников
+      # говорят о бренде за его этикеткой — идентичность, свежесть, доверие,
+      # ярус с уликами и историей. Читает то, что только что записал Lot
+      # twins, поэтому после него. Сома забирает data/brand-trust.json для
+      # growerReliability. Поломка здесь не стоит дню его полок.
+      - name: Brand trust
+        continue-on-error: true
+        run: |
+          if python scripts/brand-trust.py; then
+            python scripts/brand-trust.py report >> menu-report.md
+            git add data/brand-trust.json
+            git diff --cached --quiet || git commit -q -m "menu: brand trust"
+          else
+            printf '\n### Доверие брендов\n\n_Сегодня не посчитано — см. шаг Brand trust в прогоне._\n' >> menu-report.md
             exit 1
           fi
 
