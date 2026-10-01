@@ -58,6 +58,7 @@ jobs:
         run: |
           node scripts/menu-parse-check.mjs
           python scripts/lot-twins-check.py
+          python scripts/coa-forensics-check.py
       - run: |
           npm install --no-save playwright
           npx playwright install --with-deps chromium

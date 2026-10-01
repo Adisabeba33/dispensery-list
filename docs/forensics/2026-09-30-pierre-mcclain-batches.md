@@ -1,9 +1,9 @@
 # Pierre McClain batches under several names — source check, 2026-09-30
 
-Cases `FX-792EF427C5` (batch …042), `FX-DAB81472EB` (batch …014) and
-`FX-A2DEA3390D` (batch …012), `source_verified` in `data/forensic-reviews.json`
-with the SHA-256 of every response read. The machine dossier of any case, as
-the latest pilot data has it: `python scripts/forensic-cases.py --dossier FX-…`.
+Batches …042, …014 and …012, `source_verified` in `data/lot-twins-reviews.json`
+(keyed by Metrc batch tag) with the SHA-256 of every response read.
+`scripts/lot-twins.py` marks them `verified` on the Pierre McClain case, and
+the daily report says «проверено вручную: 3 партии».
 
 **What this is.** Metrc batches each sold under two or three names, read from
 the regulator's Retail ID system as the packagers entered it. **What it is
@@ -25,7 +25,7 @@ Harlem Blossoms LLC's. Each card names its **source package**, the package it
 was made from — so the chain, and where a name changes along it, is on the
 record.
 
-### Batch …042 — Blue Dream, Gelato 41, Zowah (`FX-792EF427C5`)
+### Batch …042 — Blue Dream, Gelato 41, Zowah
 
 | package | name (product) | facility · manufacturer | made from | packaged |
 |---|---|---|---|---|
@@ -49,7 +49,7 @@ certificate link
 is a saved Retail ID page printed without its package block — the cards above
 are what ties the name to the batch.
 
-### Batch …014 — Candy Gelato, The Wrap Up, Zeven Up (`FX-DAB81472EB`)
+### Batch …014 — Candy Gelato, The Wrap Up, Zeven Up
 
 | package | name (product) | facility · manufacturer | made from | packaged |
 |---|---|---|---|---|
@@ -69,7 +69,7 @@ saved Retail ID pages of that package: the shelf's own link to the batch, no
 enumeration needed (Lot Twins' neighbour probing reached …860–…879 the same
 day).
 
-### Batch …012 — Cherry Runtz, then 03' Sour x Runrz (`FX-A2DEA3390D`)
+### Batch …012 — Cherry Runtz, then 03' Sour x Runrz
 
 | package | name (product) | facility · manufacturer | made from | packaged |
 |---|---|---|---|---|
@@ -86,12 +86,12 @@ certificate link
 
 ### Four more batches of the family — candidates, not checked here
 
-| case | batch | names | certificate |
-|---|---|---|---|
-| `FX-08E315DF6D` | …008 | G33 / Triangle Mintz #23 (one product code, SCC202) | Keystone 2025-10-28, THC 24.95 |
-| `FX-2542D161A2` | …016 | 44TH FLOOR / Bubblegum OG | Kaycha 2026-01-03, THC 27.8578 |
-| `FX-F58083E959` | …024 | Caviar Chop Cheese / Grape Soda / K-Lab | Keystone 2025-12-22, THC 25.59 |
-| `FX-FFA1A0266D` | …036 | CHEM 91 / Kushmintz | Keystone 2025-09-29, THC 25.57 |
+| batch | names | certificate |
+|---|---|---|
+| …008 | G33 / Triangle Mintz #23 (one product code, SCC202) | Keystone 2025-10-28, THC 24.95 |
+| …016 | 44TH FLOOR / Bubblegum OG | Kaycha 2026-01-03, THC 27.8578 |
+| …024 | Caviar Chop Cheese / Grape Soda / K-Lab | Keystone 2025-12-22, THC 25.59 |
+| …036 | CHEM 91 / Kushmintz | Keystone 2025-09-29, THC 25.57 |
 
 Same pattern (one batch tag, one test day and THC, one source package); read
 from Lot Twins' card cache, not re-read live in this check.
@@ -129,6 +129,6 @@ it is sold under.
 curl -s "https://app.1a4.com/api/landingpage/data?id=1a4120300002719000000823&index=0" | sha256sum
 ```
 
-and compare with `checked` in `data/forensic-reviews.json`; a different hash
-means the card's JSON changed since, not necessarily its identity — the
-pilot's `retail-history.json` says which fields did.
+and compare with `checked` in `data/lot-twins-reviews.json`; a different hash
+means the card's JSON changed since, not necessarily its identity — read the
+card and compare the fields.

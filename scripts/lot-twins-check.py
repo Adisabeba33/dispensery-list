@@ -35,7 +35,17 @@
   варианты написания — не случай;
 - --import-cards читает сырые карточки <метка>.json, чужие имена и битые
   файлы считает, не падает;
-- два упаковщика семьи названы каждый со своей лицензией.
+- два упаковщика семьи названы каждый со своей лицензией;
+- I: пакет, сделанный из пакета той же партии под другим названием, записан у
+  партии как переименование по цепочке; одно название — нет;
+- ручные вердикты (data/lot-twins-reviews.json) по номеру партии: проверенная
+  партия — в verified случая и в отчёте; dismissed не идёт в счёт статуса;
+  неизвестный статус не принимается;
+- J: пакет на отзыве по карточке попадает в recalls и в отчёт;
+- K: сбор после упаковки и дата из будущего — невозможные даты, долгий
+  разрыв — нет;
+- метка из сертификата (data/coa-dates.json) — в плане запросов как coa;
+- coa-dates читает отпечаток и идентификаторы сертификата через coa-forensics.
 """
 import importlib.util
 import json
@@ -85,10 +95,10 @@ def card(tag, strain, batch, license_="OCM-MICR-25-000246", facility="Pierre McC
     return out
 
 
-def run(rows, cards=None, previous=None, today=TODAY):
+def run(rows, cards=None, previous=None, today=TODAY, **kw):
     producers = [{"licenseNumber": "OCM-MICR-25-000246", "entityName": "Pierre McClain LLC"}]
     return lt.build(rows, cards or {}, {"links": {}, "packages": {}}, previous or {}, producers,
-                    {}, {}, {}, today)
+                    {}, {}, {}, today, **kw)
 
 
 # --- названия
@@ -505,4 +515,72 @@ check("A" not in cache and "B" in cache and "E" not in cache and cache["C"]["ter
 if failures:
     print(f"lot-twins-check: {len(failures)} {lt.plural(len(failures), 'ошибка', 'ошибки', 'ошибок')}")
     sys.exit(1)
+# --- I: переименование по цепочке пакетов одной партии
+chain = {
+    "1A4120300002719000000823": card("1A4120300002719000000823", "Blue Dream", "1A41203000026BA000000042", tested="2025-12-22", thc=24.16),
+    "1A4120300001E8C000000582": {**card("1A4120300001E8C000000582", "Gelato 41", "1A41203000026BA000000042", tested="2025-12-22", thc=24.16,
+                                       license_="OCM-MICR-24-000040-DX1", facility="Harlem Blossoms LLC"),
+                                 "sourcePackage": "1A4120300002719000000823"},
+    "1A4120300001E8C000000586": {**card("1A4120300001E8C000000586", "Blue Dream", "1A41203000026BA000000042", tested="2025-12-22", thc=24.16,
+                                       license_="OCM-MICR-24-000040-DX1", facility="Harlem Blossoms LLC"),
+                                 "sourcePackage": "1A4120300002719000000823"},
+}
+out = run([], chain)
+bd = [c for c in out["cases"] if "OCM-MICR-25-000246" in c["licenses"]]
+check(len(bd) == 1 and bd[0]["status"] == "confirmed", "цепочка: партия под двумя названиями — confirmed")
+if bd:
+    renamed = bd[0]["batches"][0]["renamed"]
+    check([(r["package"][-3:], r["name"], r["fromName"]) for r in renamed] == [("582", "Gelato 41", "Blue Dream")],
+          f"цепочка: одно переименование …582 из Blue Dream, а не {renamed}")
+    check(bd[0]["verified"] == [] and "review" not in bd[0]["batches"][0], "цепочка: без вердикта — не проверено")
+
+# --- ручные вердикты по номеру партии
+reviews = {"1A41203000026BA000000042": {"status": "source_verified", "reviewedAt": "2026-09-30", "note": "сверено с карточками"}}
+out = run([], chain, reviews=reviews)
+bd = [c for c in out["cases"] if "OCM-MICR-25-000246" in c["licenses"]]
+check(bd and bd[0]["verified"] == ["1A41203000026BA000000042"], "вердикт: партия в verified случая")
+check(bd and bd[0]["batches"][0]["review"]["status"] == "source_verified", "вердикт: записан у партии")
+check(bd and "проверено вручную: 1 партия" in lt.case_line(bd[0]), f"вердикт в отчёте: {lt.case_line(bd[0])[-80:] if bd else ''}")
+out = run([], chain, reviews={"1A41203000026BA000000042": {"status": "dismissed", "reviewedAt": "2026-09-30"}})
+check(not [c for c in out["cases"] if "OCM-MICR-25-000246" in c["licenses"]], "вердикт dismissed: партия не идёт в счёт, случая нет")
+out = run([], chain, reviews={"1A41203000026BA000000042": {"status": "fraud"}})
+bd = [c for c in out["cases"] if "OCM-MICR-25-000246" in c["licenses"]]
+check(bd and bd[0]["verified"] == [] and "review" not in bd[0]["batches"][0], "вердикт с неизвестным статусом не принимается")
+
+# --- J: отзыв по карточке
+rec = {"1A4120300002719000000950": {**card("1A4120300002719000000950", "Recalled OG", "1A41203000026BA000000095"), "onRecall": True}}
+out = run([listing("Splash", "Recalled OG", "OCM-CAURD-24-000047", 26.1, tags=["1A4120300002719000000950"])], rec)
+check([(r["tag"][-3:], r["onShelf"]) for r in out["recalls"]] == [("950", True)], f"отзыв: пакет в recalls, на полке: {out['recalls']}")
+doc = lt.write({**out, "cards": rec}, {}, Path(tempfile.mkdtemp()) / "lt.json")
+check("**На отзыве по карточкам Retail ID: 1**" in lt.report(doc) and "Recalled OG" in lt.report(doc), "отзыв в отчёте")
+check(not run([], chain)["recalls"], "без флага — не отзыв")
+
+# --- K: невозможные даты
+imp = {
+    "1A4120300002719000000960": {**card("1A4120300002719000000960", "Future", "1A41203000026BA000000096", packaged="2026-06-07"), "harvested": "2026-07-01"},
+    "1A4120300002719000000961": card("1A4120300002719000000961", "Tomorrow", "1A41203000026BA000000097", packaged="2026-09-02"),
+    "1A4120300002719000000962": {**card("1A4120300002719000000962", "Old", "1A41203000026BA000000098", packaged="2026-06-07"), "harvested": "2024-01-01"},
+}
+out = run([], imp)
+got = {i["tag"][-3:]: i["rules"] for i in out["impossibleDates"]}
+check(got == {"960": ["harvest_after_test", "harvest_after_packaging"], "961": ["packaged_after_today"]}, f"невозможные даты: {got}")
+check(out["oldTests"] and out["oldTests"][0]["oldHarvest"] == 1, "долгий разрыв — старый урожай, не невозможная дата")
+
+# --- метка из сертификата — в плане запросов
+out = run([], chain, coa_tags=["1A4120300002719000000870", "not-a-tag"])
+check(out["_probe"]["certificateTags"] == ["1A4120300002719000000870"], f"метки сертификатов: {out['_probe']['certificateTags']}")
+planned = lt.plan_probes(out, chain, {"packages": {}}, TODAY, {})
+check(("1A4120300002719000000870", "coa") in planned, "метка из сертификата спрашивается как coa")
+check(("1A4120300002719000000823", "coa") not in [x for x in planned if x[1] == "coa"], "известная карточка не спрашивается")
+
+# --- coa-dates: отпечаток и идентификаторы через coa-forensics
+_cd = importlib.util.spec_from_file_location("coa_dates", ROOT / "scripts/coa-dates.py")
+cd = importlib.util.module_from_spec(_cd)
+_cd.loader.exec_module(cd)
+text = "Certificate of Analysis\nKaycha Labs\nSample ID: NY12345-001\nBatch #: SCC250\nSeed to sale: 1A4120300002719000000870\nSampled Date: 12/12/25\n"
+ids = cd.identifiers(text, text.encode())
+check(len(ids["sha256"]) == 64 and ids["metrcTag"] == "1A4120300002719000000870", f"coa-dates: отпечаток и метка: {ids}")
+check(ids["docType"] == "lab-coa" and ids["sampleId"] == "NY12345-001", f"coa-dates: тип и номер образца: {ids}")
+check(cd.identifiers("", b"")["sha256"] and cd.identifiers("", b"")["metrcTag"] is None, "coa-dates: пустой текст — только отпечаток")
+
 print("lot-twins-check: ok")

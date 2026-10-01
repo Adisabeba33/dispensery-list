@@ -99,6 +99,25 @@ Gelato», в июне как «Zeven Up», а в мае — как «The Wrap Up
      остаётся C. Панели из сотых долей (0,01|0,04|0,02) не в счёт: такие
      сошлись бы с чем угодно.
 
+- I. Переименование по цепочке — та же улика A, записанная по шагам: пакет
+     сделан из известного пакета той же партии (sourcePackage), а название
+     другое. У Harlem Blossoms Gelato 41 (…582) сделан из Blue Dream (…823);
+     у Pierre McClain «03' Sour x Runrz» (…863) — из Cherry Runtz (…002).
+     Пишется у партии (renamed): видно, где именно название сменилось.
+- J. Отзыв: карточка говорит, что пакет отозван (isOnRecall), но не почему —
+     почему, в уведомлениях OCM. Все такие пакеты, в случае они или нет,
+     и отдельно те, что сегодня на полках (recalls).
+- K. Невозможные даты: сбор после теста или после упаковки, любая дата позже
+     сегодняшнего дня. Такого не бывает — это ошибка ввода на карточке или
+     чужая дата в поле. Только жёсткие правила; долгий разрыв — это F.
+
+Ручные вердикты — data/lot-twins-reviews.json, по номеру партии Metrc:
+source_verified (сверено с самими карточками или сертификатом),
+externally_confirmed (официальная запись) или dismissed (признано
+безобидным — такая партия не идёт в счёт статуса, и сертификат одних только
+её пакетов тоже). Вердикт пишется у партии
+случая (review), подтверждённые партии — у случая (verified) и в отчёте.
+
 Один номер партии Metrc при разных сертификатах (у HPI Mom's Spaghetti 37,5
 и GMO 32,7 в партии 001670) — не двойник: у упаковщика batchTag — это
 производственный лот. Записывается у семьи для сведения (mixedBatches),
@@ -143,8 +162,10 @@ Retail ID (app.1a4.com) — то, что вскрыло Splash: карточка
 партию, дату теста и упаковки, лабораторию, THC и терпены. Карточки с
 цифрами хранятся здесь же, в разделе cards; data/retail-id.json (без цифр)
 используется, где хватает. За прогон спрашиваются: метки из меню брендов
-семей с сигналом C (за цифрами), исходные пакеты найденных карточек, а потом
-соседние номера вокруг известных меток каждого префикса — ±8, ±24 у
+семей с сигналом C (за цифрами), метки, напечатанные в сертификатах и на
+сохранённых страницах Retail ID из data/coa-dates.json (публичная страница
+на них указывает — карточка почти всегда есть), исходные пакеты найденных
+карточек, а потом соседние номера вокруг известных меток каждого префикса — ±8, ±24 у
 префиксов, где соседи уже находились: производитель заводит пакеты подряд.
 Ярусы: сначала префиксы семей с сигналом, потом производства, пакующие для
 двух брендов и больше, потом остальные; префикс-дистрибьютор (метки под
@@ -185,6 +206,8 @@ COVERAGE = ROOT / "data/menu-coverage.json"
 HISTORY = ROOT / "data/shelf-history.json"
 LINES = ROOT / "data/strain-lines.json"
 OUT = ROOT / "data/lot-twins.json"
+REVIEWS = ROOT / "data/lot-twins-reviews.json"
+COA_DATES = ROOT / "data/coa-dates.json"
 API = "https://app.1a4.com/api/landingpage/data"
 TAG = re.compile(r"^1A4[0-9A-F]{21}$")
 LINK = re.compile(r"^https://1a4\.com/(\S+)$", re.I)
@@ -218,6 +241,8 @@ PACKAGING_RUN = re.compile(r"\d{6}|(?<![A-Z0-9])(?:8TH|28G|14G|7G|3\.5G?|1G|OZ|P
 HARVEST_DATE = re.compile(r"\bH:(\d{1,2})\.(\d{1,2})\.(\d{2,4})\b")
 HARVEST_PART = re.compile(r"\s*\bpt\.?\s*\d+\s*$", re.I)
 STATUS_RANK = {"watch": 1, "probable": 2, "confirmed": 3}
+REVIEW_STATUSES = ("source_verified", "externally_confirmed", "dismissed")
+VERIFIED = ("source_verified", "externally_confirmed")
 
 
 def _load(name):
@@ -446,6 +471,8 @@ def compact_card(data):
         "receivedFrom": coa.get("receivedFromFacilityName"),
         "receivedFromLicense": coa.get("receivedFromFacilityLicenseNumber"),
         "category": coa.get("category"),
+        **({"onRecall": True} if data.get("isOnRecall") is True else {}),
+        **({"testingState": coa.get("labTestingStateName")} if coa.get("labTestingStateName") else {}),
         "thc": round(float(thc), 4) if isinstance(thc, (int, float)) else None,
         "cbd": (totals.get("cbd") or {}).get("percent"),
         "totalTerpenes": (totals.get("terpenes") or {}).get("percent"),
@@ -665,10 +692,12 @@ def _distinct(gaps):
     return out
 
 
-def build(rows, cards, retail, previous, producers, coverage, history, lines, today):
+def build(rows, cards, retail, previous, producers, coverage, history, lines, today,
+          reviews=None, coa_tags=()):
     """Разбор без сети: сигналы, семьи, случаи, слияние с прошлым, старые тесты."""
     links = {k.upper(): v for k, v in (retail.get("links") or {}).items()}
     known = all_cards(cards, retail.get("packages"))
+    reviews = reviews or {}
     shop_name = lambda lic: (coverage.get(lic) or {}).get("shop") or lic
     entity = {p.get("licenseNumber"): p.get("entityName") for p in producers if p.get("licenseNumber")}
     # data/retail-id.json хранит производство по имени, без лицензии: имя ищется в реестре
@@ -1236,6 +1265,26 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
             case["packagers"].update(l for l in card_licenses(known[t]) if not narrow(l))
             case["brandKeys"].update(brand_key(x) for x in listing_tags.get(t, []) if brand_key(x))
 
+    def renamed_along_chain(tags):
+        """I: пакет сделан из известного пакета той же партии, а название
+        другое (Gelato 41 …582 из Blue Dream …823 у Harlem Blossoms)."""
+        tags, out = set(tags), []
+        for t in sorted(tags):
+            src = str(known[t].get("sourcePackage") or "").upper()
+            if src == t or src not in tags:
+                continue
+            mine, theirs = card_names(t), card_names(src)
+            if mine[0][0] and theirs[0][0] and not any(same_name(a, b) for a in mine for b in theirs):
+                out.append({"package": t, "name": known[t].get("strain") or known[t].get("product"),
+                            "madeFrom": src, "fromName": known[src].get("strain") or known[src].get("product")})
+        return out
+
+    def review_of(batch):
+        r = reviews.get(batch)
+        if not r or r.get("status") not in REVIEW_STATUSES:
+            return None
+        return {"status": r["status"], "reviewedAt": r.get("reviewedAt"), "note": r.get("note")}
+
     for root, b in batches.items():
         if len(b["clusters"]) < 2:
             continue
@@ -1243,10 +1292,13 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
         if not r:
             continue
         case = cases[r]
+        review = review_of(b["id"])
         case["batches"].append({
             "batch": b["id"], "names": len(b["clusters"]),
             "packages": [package_row(t, known[t].get("batchTag")) for t in b["tags"]],
             "shelfNames": [{k: v for k, v in e.items() if k != "brandKey"} for e in b["shelfNames"]],
+            "renamed": renamed_along_chain(b["tags"]),
+            **({"review": review} if review else {}),
         })
         case_tags(case, b["tags"])
         case["brandKeys"].update(e["brandKey"] for e in b["shelfNames"])
@@ -1381,8 +1433,19 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
             case["thcTwinsStats"] = {"pairs": 0, "spanHundredths": 0, "expectedByChance": 0.0, "observed": 0, "meaningful": False}
 
     # --- статус, слияние с прошлым
+    def counted_batches(case):
+        """Партии в счёт статуса: без тех, что человек признал безобидными."""
+        return [b for b in case["batches"] if (b.get("review") or {}).get("status") != "dismissed"]
+
+    def counted_certificates(case):
+        """Сертификат — та же улика, что партия, если все его пакеты из партий,
+        признанных безобидными: снятая партия не возвращается через B."""
+        dismissed = {p["tag"] for b in case["batches"] if (b.get("review") or {}).get("status") == "dismissed"
+                     for p in b["packages"]}
+        return [c for c in case["certificates"] if any(p["tag"] not in dismissed for p in c["packages"])]
+
     def status_of(case):
-        if (case["batches"] or case["certificates"] or case["harvests"]
+        if (counted_batches(case) or counted_certificates(case) or case["harvests"]
                 or any(p["kind"] == "production" for p in case["productionBatches"])):
             return "confirmed"
         strong = any(p["strength"] == "strong" for p in case["shelfPanels"])
@@ -1517,7 +1580,7 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
             "packagerKeys": sorted(case["packagers"] - case["licenses"]),
             "brands": brands,
             "brandKeys": sorted(case["brandKeys"]),
-            "signals": {"A": len(case["batches"]), "B": len(case["certificates"]),
+            "signals": {"A": len(counted_batches(case)), "B": len(counted_certificates(case)),
                         "C": len(case["shelfPanels"]),
                         "D": len(case["thcTwins"]) if case["thcTwinsStats"]["meaningful"] else 0,
                         "E": len(case["codes"]), "mixed": len(case["mixedBatches"]),
@@ -1526,6 +1589,7 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
                         "Hrun": sum(1 for p in case["productionBatches"] if p["kind"] != "production"),
                         "Cnear": len(case["nearPanels"])},
             "batches": sorted(case["batches"], key=lambda b: b["batch"]),
+            "verified": sorted(b["batch"] for b in case["batches"] if (b.get("review") or {}).get("status") in VERIFIED),
             "harvests": sorted(case["harvests"], key=lambda h: (-h["names"], h["harvest"])),
             "productionBatches": sorted(case["productionBatches"], key=lambda p: (p["kind"] != "production", -p["names"], p["sourceBatch"])),
             "nearPanels": sorted(case["nearPanels"], key=lambda p: (p["kind"] != "templated", -p["shops"], p["panelKeys"][0])),
@@ -1592,6 +1656,38 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
             old_tests.append(f)
     old_tests.sort(key=lambda f: (-f["oldTest"], -f["oldHarvest"], f["license"] or "", f["facility"]))
 
+    shelf_tags = {t for row in rows for t in tags_of(row, links)}
+
+    def card_row(tag, c):
+        return {"tag": tag, "name": c.get("strain") or c.get("product"), "facility": c.get("facility"),
+                "license": license_base(c.get("facilityLicense")), "batch": c.get("batchTag"),
+                "onShelf": tag in shelf_tags}
+
+    # --- J: отзывы. Карточка говорит «отозван», не почему.
+    recalls = sorted((card_row(tag, c) for tag, c in known.items() if c.get("onRecall")),
+                     key=lambda r: (not r["onShelf"], r["tag"]))
+    for c in out_cases:
+        tags_ = {p["tag"] for g in c["batches"] + c["certificates"] + c["harvests"] + c["productionBatches"] + c["mixedBatches"]
+                 for p in g["packages"]}
+        c["recalls"] = sorted(t for t in tags_ if known[t].get("onRecall"))
+
+    # --- K: невозможные даты. Сбор после теста или упаковки, дата из
+    # будущего — ошибка ввода или чужая дата в поле; только жёсткие правила.
+    impossible = []
+    for tag, c in sorted(known.items()):
+        h, t, p = c.get("harvested"), c.get("tested"), c.get("packaged")
+        rules = []
+        if h and t and (days_between(h, t) or 0) > 0:
+            rules.append("harvest_after_test")
+        if h and p and (days_between(h, p) or 0) > 0:
+            rules.append("harvest_after_packaging")
+        for field, value in (("harvested", h), ("tested", t), ("packaged", p)):
+            if value and (days_between(value, today) or 0) > 0:
+                rules.append(f"{field}_after_today")
+        if rules:
+            impossible.append({**card_row(tag, c), "rules": rules, "harvested": h, "tested": t, "packaged": p})
+    impossible.sort(key=lambda i: (not i["onShelf"], i["tag"]))
+
     # что понадобится зондированию
     strong = [c for c in out_cases if any(c["signals"][k] for k in ("A", "B", "C", "G", "H"))]
     signal_brands = {b for c in strong for b in c["brandKeys"]}
@@ -1614,7 +1710,7 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
                              if t[:15] not in wide})
     multi_brand_prefixes = {p for p, c in prefix_brands.items() if len(c) >= 2} - wide
     # метки, которые случаи и полки держат: их карточки не худеют
-    needed = {t for row in rows for t in tags_of(row, links)}
+    needed = set(shelf_tags)
     for c in out_cases:
         for g in c["batches"] + c["certificates"] + c["mixedBatches"] + c["harvests"] + c["productionBatches"]:
             needed.update(p["tag"] for p in g["packages"])
@@ -1630,7 +1726,10 @@ def build(rows, cards, retail, previous, producers, coverage, history, lines, to
                      "pasted": excluded["pasted"], "pastedPanels": pasted[:20]},
         "oldTests": old_tests,
         "oldTestsSkippedNonFlower": non_flower,
-        "_probe": {"menuTags": menu_tags_of_c, "signalPrefixes": sorted(signal_prefixes),
+        "recalls": recalls,
+        "impossibleDates": impossible,
+        "_probe": {"menuTags": menu_tags_of_c, "certificateTags": sorted(t for t in coa_tags if TAG.match(t)),
+                   "signalPrefixes": sorted(signal_prefixes),
                    "multiBrandPrefixes": sorted(multi_brand_prefixes), "widePrefixes": sorted(wide),
                    "signalBrands": sorted(signal_brands), "signalLicenses": sorted(signal_licenses),
                    "needed": sorted(needed)},
@@ -1681,6 +1780,10 @@ def plan_probes(built, cards, retail, today, probed):
         c = cards.get(tag)
         if not (c and c.get("found")):
             add(tag, "menu")
+    # метки, напечатанные в сертификатах и на сохранённых страницах Retail ID
+    # (data/coa-dates.json): публичная страница на них указывает
+    for tag in hint.get("certificateTags") or []:
+        add(tag, "coa")
     # исходные пакеты найденных карточек семей с сигналом: у Harlem Blossoms
     # The Wrap Up исходный пакет — Candy Gelato того же префикса. batchTag не
     # спрашивается: это номер партии, а не пакета, и Retail ID его не отдаёт.
@@ -1854,13 +1957,17 @@ def write(out, previous, path=OUT):
                  "производства, упаковывающие цветок через 90+ дней после теста. cards — карточки "
                  "Retail ID с цифрами (свой кэш, 404 переспрашивается через 30 дней, старые "
                  "карточки вне случаев худеют; --import-cards ввозит скачанные сырые карточки), "
-                 "probing — что спрошено в этот прогон. "
+                 "probing — что спрошено в этот прогон. recalls — пакеты, отозванные по карточке; "
+                 "impossibleDates — карточки с датами, которых не бывает; verified у случая и review у "
+                 "партии — ручные вердикты из data/lot-twins-reviews.json. "
                  "Пишется scripts/lot-twins.py после ежедневного прогона.",
         "day": out["day"],
         "cases": out["cases"],
         "excluded": out["excluded"],
         "oldTests": out["oldTests"],
         "oldTestsSkippedNonFlower": out.get("oldTestsSkippedNonFlower", 0),
+        "recalls": out.get("recalls") or [],
+        "impossibleDates": out.get("impossibleDates") or [],
         "probing": out.get("probing") or {},
         "probed": dict(sorted((out.get("probed") or {}).items())),
         "cards": dict(sorted(cards.items())),
@@ -2008,6 +2115,11 @@ def case_line(c, full=True):
                     f"(…{b['batch'][-6:]}: {names})")
     if c.get("packagers"):
         bits.append("упаковщик " + "; ".join(c["packagers"][:2]))
+    if c.get("verified"):
+        n = len(c["verified"])
+        bits.append(f"проверено вручную: {n} {plural(n, 'партия', 'партии', 'партий')}")
+    if c.get("recalls"):
+        bits.append(f"**на отзыве {len(c['recalls'])}**")
     tail = f"; с {c['firstDetected']}" if full else ""
     return f"{head}" + (f" — {brands}" if brands else "") + ": " + "; ".join(bits) + tail
 
@@ -2077,6 +2189,25 @@ def report(doc):
                          f"с датами{harvest}. Худшие: {worst}")
         if len(old) > 8:
             lines.append(f"- …и ещё {len(old) - 8}")
+    rec = doc.get("recalls") or []
+    imp = doc.get("impossibleDates") or []
+    lines += ["", "### Отзывы и невозможные даты", ""]
+    if rec:
+        shelf = sum(1 for r in rec if r.get("onShelf"))
+        shown = "; ".join(f"{r['name']} ({r['facility'] or r['license'] or '?'}, …{r['tag'][-6:]})" for r in rec[:5])
+        lines.append(f"- **На отзыве по карточкам Retail ID: {len(rec)}**"
+                     + (f", из них на полках сегодня {shelf}" if shelf else "") + f": {shown}"
+                     + (f"; …и ещё {len(rec) - 5}" if len(rec) > 5 else "") + ".")
+    else:
+        lines.append("- Пакетов на отзыве среди карточек Retail ID нет.")
+    if imp:
+        shown = "; ".join(f"{i['name']} ({i['facility'] or i['license'] or '?'}, …{i['tag'][-6:]}: {', '.join(i['rules'])})"
+                          for i in imp[:5])
+        lines.append(f"- **Невозможные даты на {len(imp)} {plural(len(imp), 'карточке', 'карточках', 'карточках')}** "
+                     f"(сбор после теста или упаковки, дата из будущего): {shown}"
+                     + (f"; …и ещё {len(imp) - 5}" if len(imp) > 5 else "") + ".")
+    else:
+        lines.append("- Карточек с невозможными датами (сбор после теста или упаковки, дата из будущего) нет.")
     pr = doc.get("probing") or {}
     if pr.get("skipped"):
         lines.append(f"- Retail ID: без сети ({pr['skipped']}).")
@@ -2142,6 +2273,12 @@ def main(argv=None):
     history = read_json(HISTORY, {})
     lines = (read_json(LINES, {}).get("lines") or {})
     previous = load_previous()
+    reviews = (read_json(REVIEWS, {}).get("reviews") or {})
+    bad = {k: v.get("status") for k, v in reviews.items() if v.get("status") not in REVIEW_STATUSES}
+    if bad:
+        raise SystemExit(f"{REVIEWS.relative_to(ROOT)}: неизвестный статус {bad} — только {', '.join(REVIEW_STATUSES)}")
+    coa_tags = sorted({str(e.get("metrcTag") or "").upper()
+                       for e in (read_json(COA_DATES, {}).get("certificates") or {}).values() if e.get("metrcTag")})
     cards = dict(previous.get("cards") or {})
     probed = dict(previous.get("probed") or {})
     today = max((r["capturedAt"][:10] for r in rows if r.get("capturedAt")), default=date.today().isoformat())
@@ -2149,7 +2286,11 @@ def main(argv=None):
         done = import_cards(directory, cards, today)
         print(f"  ввоз карточек из {directory}: " + (", ".join(f"{k} {v}" for k, v in sorted(done.items())) or "пусто"))
 
-    built = build(rows, cards, retail, previous, producers, coverage, history, lines, today)
+    def rebuild():
+        return build(rows, cards, retail, previous, producers, coverage, history, lines, today,
+                     reviews=reviews, coa_tags=coa_tags)
+
+    built = rebuild()
     if args.no_network:
         stats = {"day": today, "skipped": "--no-network", "requests": 0}
     else:
@@ -2163,11 +2304,11 @@ def main(argv=None):
             stats = part if stats is None else merged_stats(stats, part)
             if not part["found"] or left <= 0:
                 break
-            built = build(rows, cards, retail, previous, producers, coverage, history, lines, today)
+            built = rebuild()
         stats["budget"] = args.budget
         if stats["requests"]:
             # новые карточки могли связать партии и семьи — разбор ещё раз
-            built = build(rows, cards, retail, previous, producers, coverage, history, lines, today)
+            built = rebuild()
     stats["pruned"] = prune_cards(cards, set(built["_probe"]["needed"]), today)
     stats["cardsWithFigures"] = sum(1 for c in cards.values() if c.get("found") and not c.get("trimmed"))
     built["probing"], built["probed"], built["cards"] = stats, probed, cards
@@ -2176,7 +2317,8 @@ def main(argv=None):
     print(f"{OUT.relative_to(ROOT)}: случаев {len(built['cases'])} "
           f"(подтверждено {counts['confirmed']}, вероятно {counts['probable']}, на заметку {counts['watch']}), "
           f"новых {sum(1 for c in built['cases'] if c['newSinceLastRun']['isNew'])}; "
-          f"старые тесты у {len(built['oldTests'])} производств; "
+          f"старые тесты у {len(built['oldTests'])} производств; на отзыве {len(built['recalls'])}, "
+          f"невозможных дат {len(built['impossibleDates'])}; "
           f"Retail ID: запросов {stats.get('requests', 0)}"
           + (f" ({stats['skipped']})" if stats.get("skipped") else
              f" из бюджета {stats['budget']} (найдено {stats['found']}, нет {stats['notFound']}, "
