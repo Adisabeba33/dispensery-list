@@ -15,7 +15,12 @@
 - написания бренда (REVERT, Revert, Revert Cannabis) — один паспорт;
 - пакет на отзыве — красный;
 - история: ярус пишется один раз, смена яруса — новая запись и строка в отчёте;
-- отчёт по пустому файлу печатается без ошибки.
+- отчёт по пустому файлу печатается без ошибки;
+- второй уровень: бренд без карточек, но с сертификатами — паспорт по
+  сертификатам; старая проба — оранжевый; без замечаний — нейтральный, не
+  зелёный; один сертификат под разными названиями — улика;
+- THC меню, больший в 1,14 раза (THCa), — не завышение;
+- «(Micro)» — тот же бренд.
 """
 import importlib.util
 import sys
@@ -37,10 +42,11 @@ def check(ok, what):
         print(f"FAIL: {what}")
 
 
-def row(brand, name, shop, thc=None, tags=None, packaged=None):
+def row(brand, name, shop, thc=None, tags=None, packaged=None, coa=None, panel=None):
     return {"licenseNumber": shop, "capturedAt": f"{TODAY}T10:00:00Z", "brand": brand,
             "brandKey": "".join(ch for ch in brand.lower() if ch.isalnum()), "strainNameCanonical": name,
-            "strainNameRaw": name, "thcPercent": thc, "packageIds": tags, "packagedOn": packaged, "inStock": True}
+            "strainNameRaw": name, "thcPercent": thc, "packageIds": tags, "packagedOn": packaged, "inStock": True,
+            "labPanelKey": panel, "terpenes": {"coaUrl": coa}}
 
 
 def card(strain, maker="Acme Farms LLC", lic="OCM-MICR-24-000900", batch="1A4120300000AAA000000001",
@@ -55,9 +61,9 @@ def tag(prefix, n):
     return f"1A4120300000{prefix}{n:09d}"
 
 
-def run(rows, cards, cases=(), previous=None, producers=()):
+def run(rows, cards, cases=(), previous=None, producers=(), certificates=None):
     return bt.build(rows, cards, {"links": {}, "packages": {}}, {"cases": list(cases)}, list(producers),
-                    previous or {}, TODAY)
+                    previous or {}, TODAY, certificates or {})
 
 
 def case(brands, status, licences=(), producer="Pierre McClain LLC", verified=()):
@@ -136,6 +142,38 @@ text = bt.report(doc)
 check("**Сменили ярус:** Hurley Grown оранжевый → красный" in text, f"переход в отчёте: {text}")
 check("**Красные (1):**" in text, "красные в отчёте")
 check("_Паспортов брендов нет._" in bt.report({}), "отчёт по пустому файлу")
+
+# --- второй уровень: сертификаты без карточек
+certs = {f"https://lab.example/{i}.pdf": {"sampled": "2025-12-01", "sha256": f"s{i}"} for i in range(6)}
+rows = [row("Leal", f"Strain {i}", SHOPS[i], 25.0, coa=f"https://lab.example/{i}.pdf", panel="THC:25|A:0.4") for i in range(6)]
+p = run(rows, {}, certificates=certs)["brands"]["leal"]
+check(p["basis"] == "certificates", f"сертификаты без карточек — второй уровень, а не {p['basis']}")
+check(p["tier"] == "orange" and any("проба для сертификата отобрана 304" in w for w in p["freshnessWhy"]),
+      f"старая проба — оранжевый: {p['tier']} {p['freshnessWhy']}")
+fresh = {u: {**c, "sampled": "2026-09-01"} for u, c in certs.items()}
+rows = [row("Leal", f"Strain {i}", s, 25.0, coa=f"https://lab.example/{i}.pdf", panel="THC:25|A:0.4") for i, s in enumerate(SHOPS[:22])]
+for i, r in enumerate(rows):
+    r["terpenes"]["coaUrl"] = f"https://lab.example/{i % 6}.pdf"
+    r["strainNameCanonical"] = f"Strain {i % 6}"
+p = run(rows, {}, certificates=fresh)["brands"]["leal"]
+check(p["trust"] >= 3 and p["tier"] == "neutral", f"свежо и широко без карточек — нейтральный, не зелёный: {p['tier']} {p['trustWhy']}")
+shared = {"https://lab.example/x.pdf": {"sampled": "2026-09-01", "sha256": "same"},
+          "https://lab.example/y.pdf": {"sampled": "2026-09-01", "sha256": "same"}}
+rows = [row("Copycat", "Gelato", SHOPS[0], 26.0, coa="https://lab.example/x.pdf", panel="P"),
+        row("Copycat", "Wedding Cake", SHOPS[1], 26.0, coa="https://lab.example/y.pdf", panel="P")] + \
+       [row("Copycat", "Gelato", s, 26.0, panel="P") for s in SHOPS[2:5]]
+p = run(rows, {}, certificates=shared)["brands"]["copycat"]
+check(any("один сертификат под разными названиями" in w for w in p["identityWhy"]), f"один сертификат — улика: {p['identityWhy']}")
+
+# --- THCa: меню больше карточки в 1,14 раза — не завышение
+thca = {tag("ACE", i): card(f"Kush {i}", thc=25.0, batch=tag("ACE", 100 + i)) for i in range(5)}
+rows = [row("Wizard", f"Kush {i}", SHOPS[i], 28.5, [tag("ACE", i)]) for i in range(5)]
+p = run(rows, thca)["brands"]["wizard"]
+check(p["thcPairs"] == 0 and not any("THC в меню выше" in w for w in p["identityWhy"]), f"THCa — не завышение: {p['identityWhy']}")
+
+# --- (Micro) — тот же бренд
+rows = [row("Milkweed", "A", SHOPS[0]), row("Milkweed (Micro)", "B", SHOPS[1])]
+check(list(run(rows, {})["brands"]) == ["milkweed"], "Milkweed и Milkweed (Micro) — один бренд")
 
 if failures:
     print(f"brand-trust-check: {len(failures)} провалено")
