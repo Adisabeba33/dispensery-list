@@ -98,6 +98,17 @@ GROWER_ALIASES = {
     "dankbydefinition": "dank",
     "zipsog": "zips",
     "toomoon": "tomoon", "tomoonttm": "tomoon",
+    # Партия 12 курации: те же производители под другими подписями. «Smoke» и
+    # «Smoke World» — Smoke WRLD (Lunulata), Rhythm — RYTHM.
+    "hepworthsungrown": "hepworth",
+    "leadfarmermicro": "leadfarmer", "leadfarmers": "leadfarmer", "leadfarmersmallbatch": "leadfarmer",
+    "majors": "major",
+    "mechanics": "mechanic",
+    "revertnewyork": "revert",
+    "rhythm": "rythm",
+    "roemermicro": "roemer", "roemersmallbatch": "roemer",
+    "smoke": "smokewrld", "smokeworld": "smokewrld",
+    "wizardtreez": "wizardtrees",
 }
 
 
