@@ -16,6 +16,14 @@ PLUTO 4», партия 1920 пакетов), поэтому день отбор
 Не прочитанное (сеть, нет pdftotext, незнакомый формат) пишется с пустыми
 датами и причиной — и будет перечитано при следующем запуске.
 
+Кроме дат у каждого сертификата записывается отпечаток и идентификаторы
+(scripts/coa-forensics.py): SHA-256 байтов, тип документа — сертификат
+лаборатории или сохранённая страница Retail ID, которую магазин выложил как
+сертификат, — номер образца, партия, лот и напечатанная метка Metrc. Метку
+берёт детектор двойников (scripts/lot-twins.py) как зацепку: страница
+публичная, карточка по ней почти всегда есть. Сертификаты, прочитанные до
+того, как это появилось, дочитываются по BACKFILL за прогон.
+
 Лаборатории и где у них дата пробы:
 - Kaycha:           «Sampled Date: 12/12/25» / «Sampled: 12/12/25»
 - Green Analytics:  «Sampling Date: 05/19/2026»
@@ -28,6 +36,8 @@ PLUTO 4», партия 1920 пакетов), поэтому день отбор
 - карточка Metrc:   «Packaged Date 02/18/2026», дата теста «On: 2026-02-03»
 - в крайнем случае: «Report Date» — день отчёта, на неделю-другую позже пробы
 """
+import hashlib
+import importlib.util
 import json
 import re
 import shutil
@@ -41,6 +51,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 LOTS = ROOT / "data/shelf-terpenes.json"
 OUT = ROOT / "data/coa-dates.json"
+BACKFILL = 40  # сертификатов без отпечатка перечитывается за прогон
+
+_spec = importlib.util.spec_from_file_location("coa_forensics", ROOT / "scripts/coa-forensics.py")
+cf = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(cf)
 
 D = r"(\d{1,2}/\d{1,2}/\d{2,4}|\d{4}-\d{2}-\d{2}|[A-Z][a-z]{2,8}\.? \d{1,2}, \d{4})"
 MONTHS = {m: i for i, m in enumerate(
@@ -127,11 +142,25 @@ def read(text):
     }
 
 
+def identifiers(text, blob):
+    """Отпечаток и идентификаторы сертификата: SHA-256 байтов и то, что
+    coa-forensics читает из текста. Разбор, который не удался, не отнимает дат."""
+    out = {"sha256": hashlib.sha256(blob).hexdigest(), "docType": None, "sampleId": None,
+           "batchTag": None, "lotNumber": None, "metrcTag": None}
+    try:
+        rec = cf.parse_text(text)
+    except Exception:  # незнакомый формат — отпечаток остаётся, полей нет
+        return out
+    out.update({k: rec.get(k) for k in ("docType", "sampleId", "batchTag", "lotNumber", "metrcTag")})
+    return out
+
+
 def fetch(url, workdir):
     path = Path(workdir) / (re.sub(r"[^A-Za-z0-9]+", "_", url)[-80:] + ".pdf")
     try:
         with urllib.request.urlopen(url, timeout=40) as r:
-            path.write_bytes(r.read())
+            blob = r.read()
+        path.write_bytes(blob)
         text = subprocess.run(["pdftotext", "-layout", str(path), "-"], capture_output=True,
                               text=True, timeout=60).stdout
     except Exception as e:  # сеть, битый PDF — перечитаем в следующий раз
@@ -140,6 +169,7 @@ def fetch(url, workdir):
     entry = read(text)
     if not entry["sampled"] and not entry["packaged"]:
         entry["unread"] = "no date found"
+    entry.update(identifiers(text, blob))
     return url, entry
 
 
@@ -152,8 +182,12 @@ def main():
     except FileNotFoundError:
         known = {}
     todo = [u for u in urls if u not in known or known[u].get("unread")]
+    # Прочитанные до отпечатков — дочитываются понемногу, не все разом.
+    backfill = [u for u in urls if u in known and not known[u].get("unread") and "sha256" not in known[u]][:BACKFILL]
     with tempfile.TemporaryDirectory() as workdir, ThreadPoolExecutor(12) as pool:
-        for url, entry in pool.map(lambda u: fetch(u, workdir), todo):
+        for url, entry in pool.map(lambda u: fetch(u, workdir), todo + backfill):
+            if entry.get("unread") and url in known and not known[url].get("unread"):
+                continue  # дочитывание не удалось — даты, что есть, остаются
             known[url] = entry
     OUT.write_text(json.dumps({
         "about": "Даты с сертификатов партий из shelf-terpenes.json: отбор пробы (sampled — пакет "
@@ -165,7 +199,9 @@ def main():
     print(f"{OUT.relative_to(ROOT)}: {len(known)} сертификатов, с датой {dated}, "
           f"с датой упаковки {sum(1 for e in known.values() if e['packaged'])}, "
           f"с датой сбора {sum(1 for e in known.values() if e['harvested'])}; "
-          f"прочитано сейчас {len(todo)}")
+          f"с отпечатком {sum(1 for e in known.values() if e.get('sha256'))}, "
+          f"с меткой Metrc {sum(1 for e in known.values() if e.get('metrcTag'))}; "
+          f"прочитано сейчас {len(todo)}, дочитано {len(backfill)}")
 
 
 if __name__ == "__main__":
