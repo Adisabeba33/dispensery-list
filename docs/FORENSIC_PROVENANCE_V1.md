@@ -90,9 +90,10 @@ identity. A card once found that answers 404 is marked `missing`.
 Generated data is not committed. The pilot restores both files from the
 Actions cache at the start and saves them at the end; a cache unused for
 seven days is evicted, and the run summary then says **started over**. The
-pilot runs on pushes and by hand only, so history accumulates only as often
-as it runs: mutation detection needs a schedule, or the index files committed
-by the daily menu run, before it can mean much. That is the owner's call.
+pilot runs every night from main (00:47 New York in summer, 23:47 in winter),
+which keeps the cache in use, and also on pushes to the forensic scripts on
+the working branch and by hand. A branch's runs keep their own cache: the
+nightly history on main is the one that grows.
 
 ## What the sources mean (learned, with the case that taught it)
 
