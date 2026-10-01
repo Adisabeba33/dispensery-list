@@ -37,6 +37,12 @@ const listing = (name: string, brand: string | null = null, brandKey: string | n
   }) as unknown as FlowerListing;
 
 /** One listing reviewed alone, or beside others when spelling is voted on. */
+/** A listing at a given shop, for the rules that count how many shops write a name. */
+const at = (shop: string, name: string, brand: string, brandKey: string): FlowerListing =>
+  ({ ...listing(name, brand, brandKey), licenseNumber: shop, listingId: `${shop}-${name}` }) as FlowerListing;
+/** What each listing of a small shelf is called once the whole of it is reviewed. */
+const shelfOf = (rows: FlowerListing[]) => reviewListings(rows, book).map((l) => l.strainNameCanonical);
+
 const one = (name: string, brand: string | null = null, brandKey: string | null = null, others: FlowerListing[] = []) =>
   reviewListings([listing(name, brand, brandKey), ...others], book)[0].strainNameCanonical;
 
@@ -116,6 +122,136 @@ keeps('a single-word line when it is the whole name', 'Black', 'Knack', 'knack')
 keeps("a knack cultivar opening with its line's word", 'Black Cherry Punch', 'Knack', 'knack');
 keeps('Garlic Lime Reserve', 'Garlic Lime Reserve', 'SP Farms', 'sp');
 
+/* ---- One grower's names, side by side ------------------------------------ */
+
+check(
+  "a pack name beside a cultivar the grower sells on its own",
+  shelfOf([
+    at('A', 'Crusty Crustacean', 'Find.', 'find'),
+    at('B', 'Crusty Crustacean', 'Find.', 'find'),
+    at('C', 'Crusty Crustacean - Big Flower Pack', 'Find.', 'find'),
+  ])[2],
+  'Crusty Crustacean',
+);
+check(
+  'its parents beside it',
+  shelfOf([
+    at('A', 'Twin', 'Preferred Gardens', 'pg'),
+    at('B', 'Twin', 'Preferred Gardens', 'pg'),
+    at('C', 'Twin - Zoap X Lazer Gun', 'Preferred Gardens', 'pg'),
+  ])[2],
+  'Twin',
+);
+check(
+  'not when the other piece is a cultivar it sells too',
+  shelfOf([
+    at('A', 'Grape Gas', 'Trap to Table', 'ttt'),
+    at('B', 'Grape Gas', 'Trap to Table', 'ttt'),
+    at('C', 'Purple Sunset', 'Trap to Table', 'ttt'),
+    at('D', 'Purple Sunset - Grape Gas', 'Trap to Table', 'ttt'),
+  ])[3],
+  'Purple Sunset - Grape Gas',
+);
+check(
+  'not when it is a pack of several',
+  shelfOf([
+    at('A', 'Alien Cookies', 'To The Moon', 'ttmx'),
+    at('B', 'Alien Cookies', 'To The Moon', 'ttmx'),
+    at('C', 'Alien Cookies - x Blue Moon - x Honeymoon - Flight Variety Pack', 'To The Moon', 'ttmx'),
+  ])[2],
+  'Alien Cookies - x Blue Moon - x Honeymoon - Flight Variety Pack',
+);
+check(
+  'not when the cultivar is on one shelf only',
+  shelfOf([at('A', 'Marker', 'mini MART', 'mm'), at('B', 'Colombia - Marker', 'mini MART', 'mm')])[1],
+  'Colombia - Marker',
+);
+check(
+  'the same words in the order more shops use',
+  shelfOf([
+    at('A', 'Paradise Pomelo', 'Claybourne Co.', 'cb'),
+    at('B', 'Paradise Pomelo', 'Claybourne Co.', 'cb'),
+    at('C', 'Pomelo Paradise', 'Claybourne Co.', 'cb'),
+  ])[2],
+  'Paradise Pomelo',
+);
+check(
+  '"&" for "and"',
+  shelfOf([
+    at('A', 'Apples and Bananas', 'Claybourne Co.', 'cb'),
+    at('B', 'Apples and Bananas', 'Claybourne Co.', 'cb'),
+    at('C', 'Apple & Bananas', 'Claybourne Co.', 'cb'),
+  ])[2],
+  'Apples and Bananas',
+);
+const lights = [
+  ...['A', 'B', 'C'].map((s) => at(s, 'Northern Lights', 'Doobie Labs', 'doobie')),
+  at('D', 'Nothern Lights', 'Doobie Labs', 'doobie'),
+];
+check('a misspelling, written right at more shops', shelfOf(lights)[3], 'Northern Lights');
+check(
+  'a plural, an apostrophe, a doubled letter',
+  shelfOf([
+    ...['A', 'B', 'C'].map((s) => at(s, 'Melted Strawberries', 'Golden Garden', 'gg')),
+    at('D', "Melted Strawberry's", 'Golden Garden', 'gg'),
+  ])[3],
+  'Melted Strawberries',
+);
+check(
+  'not a different first letter',
+  shelfOf([
+    ...['A', 'B', 'C'].map((s) => at(s, 'Millionaire', 'The Botanist', 'botanist')),
+    at('D', 'Billionaire', 'The Botanist', 'botanist'),
+  ])[3],
+  'Billionaire',
+);
+check(
+  'not a cultivar another grower sells',
+  shelfOf([
+    ...['A', 'B', 'C'].map((s) => at(s, 'ClemDawg', '1937', 'n1937')),
+    at('D', 'Chemdawg', '1937', 'n1937'),
+    at('E', 'Chemdawg', 'Stranman', 'stranman'),
+  ])[3],
+  'Chemdawg',
+);
+check(
+  'not a different number',
+  shelfOf([
+    ...['A', 'B', 'C'].map((s) => at(s, 'Gelato 33', 'Aeterna', 'aet')),
+    at('D', 'Gelato 41', 'Aeterna', 'aet'),
+  ])[3],
+  'Gelato 41',
+);
+
+check(
+  'packaging run onto a cultivar the shelves carry',
+  shelfOf([
+    at('A', 'Gelato 41', 'Connected', 'connected'),
+    at('B', 'Gelato 41', 'Connected', 'connected'),
+    at('C', 'Flower Gelato 41', 'Connected', 'connected'),
+  ])[2],
+  'Gelato 41',
+);
+check(
+  'not when what is left is no cultivar',
+  shelfOf([at('A', 'Flower Power', 'Seed', 'seed'), at('B', 'Power', 'Other', 'other'), at('C', 'Flower Power', 'Seed', 'seed')])[0],
+  'Flower Power',
+);
+check(
+  "not the grower's own name in a cultivar",
+  shelfOf([at('A', 'Gelato', 'Runtz', 'runtz'), at('B', 'Gelato', 'Runtz', 'runtz'), at('C', 'Runtz Gelato', 'Runtz', 'runtz')])[2],
+  'Runtz Gelato',
+);
+check(
+  'a shop that writes F(Whole Flower)-Grower-Strain',
+  shelfOf([
+    at('A', 'Banana Papaya', 'Find.', 'find'),
+    at('B', 'Banana Papaya', 'Find.', 'find'),
+    at('C', 'F(Whole Flower)-Find.-Banana Papaya', 'Find.', 'find'),
+  ])[2],
+  'Banana Papaya',
+);
+
 /* ---- Growers ------------------------------------------------------------- */
 
 const brands = reviewListings(
@@ -135,19 +271,29 @@ const words = (s: string) =>
   s.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().match(/[a-z0-9]+/g) ?? [];
 let added = 0;
 let emptied = 0;
-for (const r of reviewShelf(shelf, book)) {
+const reviewedShelf = reviewShelf(shelf, book);
+/* What each grower is sold under somewhere, in the listing's own words. */
+const ownNames = new Set<string>();
+for (const r of reviewedShelf) {
+  const had = new Set(words(r.before));
+  if (words(r.after).every((w) => had.has(w))) ownNames.add(`${r.listing.brandKey}|${r.after.toLowerCase()}`);
+}
+for (const r of reviewedShelf) {
   if (!r.after.trim()) {
     emptied += 1;
     if (emptied <= 3) console.log(`FAIL left with no name: ${JSON.stringify(r.before)}`);
   }
+  /* Either the listing's own words, or a name the same grower is sold under
+     at another shop — the misspelling "Nothern Lights" becomes the Northern
+     Lights the grower's other 45 shops print, and nothing else is allowed in. */
   const had = new Set(words(r.before));
   const extra = words(r.after).filter((w) => !had.has(w));
-  if (extra.length > 0) {
+  if (extra.length > 0 && !ownNames.has(`${r.listing.brandKey}|${r.after.toLowerCase()}`)) {
     added += 1;
     if (added <= 5) console.log(`FAIL added ${extra.join(', ')}: ${JSON.stringify(r.before)} → ${JSON.stringify(r.after)}`);
   }
 }
-check("no listing's name gains a word", added, 0);
+check('no name is made up: own words, or the same grower\'s name from another shop', added, 0);
 check('no listing is left without a name', emptied, 0);
 
 const lines = Object.values(book.lines).flat().length;

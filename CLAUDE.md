@@ -33,7 +33,12 @@ The collector cleans each name as it reads it (`scripts/strain-name.mjs`). The
 site then reviews the whole shelf at once (`src/lib/strain-review.ts`, applied
 in `src/lib/menu.ts`): shouted names calmed, a grower's product lines and its
 own name taken off, one spelling per grower, and `by <grower>` under the name.
-It only removes words and changes case; `strainNameRaw` keeps the shop's text.
+It also settles one grower's names against each other: a cultivar with a pack,
+edition or parents beside it, the same words in another order, a misspelling
+(`settleWithinGrower`). A name is only ever the listing's own words or a name
+the same grower is sold under at another shop; `strainNameRaw` keeps the
+shop's text. The strain index groups across growers by `looseKey`, so "Blue
+Nerds" and "Blue Nerdz" are one row.
 
 - Product lines are removed only when listed for that brand in
   `data/strain-lines.json`. `npx tsx scripts/strain-review.ts` prints new
