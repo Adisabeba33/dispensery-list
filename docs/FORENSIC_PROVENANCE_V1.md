@@ -37,8 +37,9 @@ python scripts/forensic-cases-check.py
 python scripts/forensic-harvest.py && python scripts/forensic-collisions.py && python scripts/forensic-cases.py
 ```
 
-Live, bounded (the pilot workflow does this on every push to the forensic
-scripts, and on demand):
+Live, bounded (the pilot workflow does this every night from main, and on
+demand from the Actions tab; since 1 October not on pushes, which spent the
+same budget on a typo fix as on a night's harvest):
 
 ```sh
 python scripts/coa-harvest.py --network --budget 50
@@ -91,9 +92,9 @@ Generated data is not committed. The pilot restores both files from the
 Actions cache at the start and saves them at the end; a cache unused for
 seven days is evicted, and the run summary then says **started over**. The
 pilot runs every night from main (00:47 New York in summer, 23:47 in winter),
-which keeps the cache in use, and also on pushes to the forensic scripts on
-the working branch and by hand. A branch's runs keep their own cache: the
-nightly history on main is the one that grows.
+which keeps the cache in use, and by hand from the Actions tab. Not on
+pushes any more: a branch's runs kept a cache of their own that nothing read,
+at the full request budget each time.
 
 ## What the sources mean (learned, with the case that taught it)
 
