@@ -49,6 +49,23 @@
 и доверие 3 и больше; neutral — данные есть, сигналов нет; nodata — меньше
 трёх карточек и нет семьи. «Нет данных» — не «чисто».
 
+Второй уровень — по сертификатам и меню. У 146 крупных брендов меню
+печатает номера пакетов, а Retail ID на все отвечает 404: публичную карточку
+производитель не включил. Для бренда, у которого карточек меньше трёх, паспорт
+строится по тому, что есть без регулятора (basis «certificates»): дата
+отбора пробы в сертификате по ссылке из меню (data/coa-dates.json), один
+сертификат под разными названиями при одном THC, лабораторные цифры в меню.
+Свежесть: проба отобрана полгода назад и раньше (медиана по позициям в
+наличии, от трёх датированных) — 1, год — 2. Доверие: лабораторные цифры у
+половины позиций — 1, проба свежая (до 120 дней) — 1, широкая полка — 1.
+Кто вырастил и из какой партии сделано, видно только на карточке, поэтому
+второй уровень не даёт зелёного: без замечаний — это neutral. Нужно от пяти
+позиций с цифрами или сертификатом.
+
+THC меню, который выше карточки в 1,10–1,17 раза, — не завышение: меню
+печатает THCa вместо итогового THC (итоговый = THCa × 0,877, то есть
+THCa больше в 1,14 раза). Такие пары в сравнение не идут.
+
 Бренд — это написания, сведённые grower_of (Revert, REVERT и Revert Cannabis
 — один бренд). Ярус каждого бренда хранится с историей: tierHistory, когда
 он сменился; отчёт называет новые красные, переходы и крупнейшие бренды без
@@ -75,12 +92,18 @@ RETAIL_ID = ROOT / "data/retail-id.json"
 TWINS = ROOT / "data/lot-twins.json"
 PRODUCERS = ROOT / "data/producers.json"
 OUT = ROOT / "data/brand-trust.json"
+COA_DATES = ROOT / "data/coa-dates.json"
 
 _spec = importlib.util.spec_from_file_location("lot_twins", ROOT / "scripts/lot-twins.py")
 lt = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(lt)
 
 MIN_CARDS = 3          # паспорт — от стольких карточек Retail ID (или семья двойников)
+MIN_SHELF_EVIDENCE = 5  # второй уровень — от стольких позиций с лабораторными цифрами или сертификатом
+OLD_SAMPLE_DAYS = 180   # проба отобрана полгода назад и раньше
+STALE_SAMPLE_DAYS = 365
+FRESH_SAMPLE_DAYS = 120
+THCA_RATIO = (1.10, 1.17)  # меню / карточка в этих пределах — THCa вместо итогового THC
 OLD_TEST_DAYS = 90
 OLD_HARVEST_DAYS = 365
 STALE_SHELF_DAYS = 180
@@ -108,6 +131,20 @@ def read_json(path, default):
         return default
 
 
+MICRO = re.compile(r"\(\s*micro\s*\)", re.I)
+
+
+def brand_key(brand):
+    """Ключ бренда: написания через grower_of, «(Micro)» — та же марка
+    (Milkweed и Milkweed (Micro), Hurley Grown и Hurley Grown (Micro))."""
+    return lt.grower_of(MICRO.sub("", brand or "").strip()) if brand else None
+
+
+def family_key(key):
+    """Ключ бренда из дела детектора — к тому же виду, что brand_key."""
+    return key[:-5] if key and key.endswith("micro") and len(key) > 5 else key
+
+
 def _words(text):
     return {w for w in re.findall(r"[a-z0-9]+", (text or "").lower()) if w not in NOT_OWN}
 
@@ -124,8 +161,9 @@ def _share(n, d):
     return round(n / d, 2) if d else None
 
 
-def build(rows, cards, retail, twins, producers, previous, today):
+def build(rows, cards, retail, twins, producers, previous, today, certificates=None):
     links = retail.get("links") or {}
+    certificates = certificates or {}
     known = lt.all_cards(cards, retail.get("packages"))
     entity_licence = {}
     registered = defaultdict(set)  # лицензия → бренды по реестру
@@ -135,7 +173,7 @@ def build(rows, cards, retail, twins, producers, previous, today):
             entity_licence.setdefault(lt._entity_key(p["entityName"]), lic)
         for b in p.get("brands") or []:
             if lic:
-                registered[lic].add(lt.grower_of(b.get("name")) or "")
+                registered[lic].add(brand_key(b.get("name")) or "")
 
     def licence(c):
         lic = lt.license_base(c.get("manufacturerLicense") or c.get("facilityLicense"))
@@ -155,7 +193,7 @@ def build(rows, cards, retail, twins, producers, previous, today):
         info = {"status": st, "producer": case["producer"],
                 "strong": any((case.get("signals") or {}).get(k) for k in ("A", "B", "G", "H")),
                 "verified": len(case.get("verified") or [])}
-        for b in case.get("brandKeys") or []:
+        for b in map(family_key, case.get("brandKeys") or []):
             if rank[st] > rank.get((family.get(b) or {}).get("status"), 0):
                 family[b] = info
         for lic in case.get("licenses") or []:
@@ -165,7 +203,7 @@ def build(rows, cards, retail, twins, producers, previous, today):
     # партия без имени на карточке под разными названиями меню
     tag_names, tag_brands = defaultdict(set), defaultdict(set)
     for r in rows:
-        b = lt.grower_of(r.get("brand"))
+        b = brand_key(r.get("brand"))
         for t in lt.tags_of(r, links):
             name = (r.get("strainNameCanonical") or r.get("strainNameRaw") or "").strip()
             if name:
@@ -184,16 +222,39 @@ def build(rows, cards, retail, twins, producers, previous, today):
                 for b in tag_brands[t]:
                     nameless.setdefault(b, {})[bt] = sorted(names)
 
-    B = defaultdict(lambda: {"spellings": Counter(), "listings": 0, "shops": set(), "tags": set(),
-                             "pairs": [], "shelfAge": []})
+    # один сертификат (по отпечатку, иначе по адресу) — какие названия и THC под ним
+    cert_names = defaultdict(set)
     for r in rows:
-        key = lt.grower_of(r.get("brand"))
+        url = (r.get("terpenes") or {}).get("coaUrl")
+        if url:
+            cert = (certificates.get(url) or {}).get("sha256") or url
+            cert_names[cert].add((brand_key(r.get("brand")), (r.get("strainNameCanonical") or "").strip(), r.get("thcPercent")))
+    shared_cert = defaultdict(list)
+    for cert, items in cert_names.items():
+        items = sorted(items, key=str)
+        thc = {round(x[2], 1) for x in items if isinstance(x[2], (int, float))}
+        if len(thc) <= 1 and len(lt.name_clusters([((i,), [lt.norm_name(x[1])]) for i, x in enumerate(items) if x[1]])) >= 2:
+            for bk in {x[0] for x in items if x[0]}:
+                shared_cert[bk].append(sorted({x[1] for x in items if x[1]}))
+
+    B = defaultdict(lambda: {"spellings": Counter(), "listings": 0, "shops": set(), "tags": set(),
+                             "pairs": [], "shelfAge": [], "panels": 0, "certs": 0, "sampleAge": []})
+    for r in rows:
+        key = brand_key(r.get("brand"))
         if not key or not r.get("licenseNumber"):
             continue
         b = B[key]
         b["spellings"][(r.get("brand") or "").strip()] += 1
         b["listings"] += 1
         b["shops"].add(r["licenseNumber"])
+        url = (r.get("terpenes") or {}).get("coaUrl")
+        b["panels"] += bool(r.get("labPanelKey"))
+        b["certs"] += bool(url)
+        sampled = (certificates.get(url) or {}).get("sampled") if url else None
+        if sampled and r.get("inStock"):
+            age = lt.days_between(today, sampled)
+            if age is not None and 0 <= age < 1500:
+                b["sampleAge"].append(age)
         tags = lt.tags_of(r, links)
         b["tags"].update(tags)
         for t in tags:
@@ -227,6 +288,8 @@ def build(rows, cards, retail, twins, producers, previous, today):
                 compared += 1
                 mismatch += not same
             if (same or _generic(c)) and lt.is_flower(c) and isinstance(thc, (int, float)) and isinstance(c.get("thc"), (int, float)) and c["thc"] > 0.5:
+                if THCA_RATIO[0] <= thc / c["thc"] <= THCA_RATIO[1]:
+                    continue  # меню печатает THCa, а не итоговый THC
                 diffs.append(round(thc - c["thc"], 2))
         no_figures = sum(1 for t, c in found if t in menu_thc and not c.get("batchTag") and (c.get("thc") or 0) <= 0.5)
         own = None
@@ -255,7 +318,8 @@ def build(rows, cards, retail, twins, producers, previous, today):
             "thcPairs": len(diffs), "thcMenuMinusCard": round(statistics.mean(diffs), 2) if diffs else None,
             "thcWorst": sorted(((p[0], p[1], known[p[2]].get("thc"), p[2]) for p in b["pairs"]
                                 if isinstance(p[1], (int, float)) and isinstance(known[p[2]].get("thc"), (int, float))
-                                and known[p[2]]["thc"] > 0.5 and p[1] - known[p[2]]["thc"] > 1),
+                                and known[p[2]]["thc"] > 0.5 and p[1] - known[p[2]]["thc"] > 1
+                                and not THCA_RATIO[0] <= p[1] / known[p[2]]["thc"] <= THCA_RATIO[1]),
                                key=lambda x: -(x[1] - x[2]))[:3],
             "nameMismatch": _share(mismatch, compared), "namesCompared": compared,
             "genericShare": _share(sum(1 for _, c in found if _generic(c)), len(found)),
@@ -264,6 +328,11 @@ def build(rows, cards, retail, twins, producers, previous, today):
             "testToPackageMedian": _median(gaps),
             "harvestShare": _share(len(harvest_ages), len(flower)), "harvestAgeMedian": _median(harvest_ages),
             "shelfAgeMedian": _median(b["shelfAge"]), "shelfAgeN": len(b["shelfAge"]),
+            "panelShare": _share(b["panels"], b["listings"]), "certListings": b["certs"],
+            "sampleAgeMedian": _median(b["sampleAge"]), "sampleAgeN": len(b["sampleAge"]),
+            "sharedCertificates": shared_cert.get(key, [])[:3],
+            "basis": "cards" if len(found) >= MIN_CARDS else (
+                "certificates" if b["panels"] + b["certs"] >= MIN_SHELF_EVIDENCE else None),
         }
     # семьи без сегодняшних позиций по ключу тоже не теряются: бренд в деле, но не на полке — не паспорт
 
@@ -330,6 +399,9 @@ def identity(p):
         if h["status"] in HUB_WEIGHT:
             s += HUB_WEIGHT[h["status"]]
             why.append(f"сделан производителем из семьи двойников {h['status']}: {h['producer']}")
+    if p.get("sharedCertificates"):
+        s += 2
+        why.append(f"один сертификат под разными названиями: {' / '.join(p['sharedCertificates'][0][:3])}")
     if p["recalls"]:
         s += 3
         why.append(f"на отзыве по карточке: {len(p['recalls'])} (…{p['recalls'][0][-6:]})")
@@ -373,6 +445,9 @@ def freshness(p):
     if p["shelfAgeN"] >= 5 and (p["shelfAgeMedian"] or 0) >= STALE_SHELF_DAYS:
         s += 1
         why.append(f"на полке {p['shelfAgeMedian']} дн. после упаковки")
+    if p.get("basis") == "certificates" and p.get("sampleAgeN", 0) >= MIN_CARDS and (p["sampleAgeMedian"] or 0) >= OLD_SAMPLE_DAYS:
+        s += 2 if p["sampleAgeMedian"] >= STALE_SAMPLE_DAYS else 1
+        why.append(f"проба для сертификата отобрана {p['sampleAgeMedian']} дн. назад (медиана)")
     return s, why
 
 
@@ -396,12 +471,19 @@ def trust(p):
     if p["shelfAgeN"] >= 5 and p["shelfAgeMedian"] is not None and p["shelfAgeMedian"] <= FRESH_SHELF_DAYS:
         s += 1
         why.append(f"на полке {p['shelfAgeMedian']} дн. после упаковки")
+    if p.get("basis") == "certificates":
+        if (p.get("panelShare") or 0) >= 0.5:
+            s += 1
+            why.append("лабораторные цифры в меню")
+        if p.get("sampleAgeN", 0) >= MIN_CARDS and p["sampleAgeMedian"] is not None and p["sampleAgeMedian"] <= FRESH_SAMPLE_DAYS:
+            s += 1
+            why.append(f"свежий тест: {p['sampleAgeMedian']} дн. назад")
     return s, why
 
 
 def tier_of(p):
     has_family = p["family"] and p["family"]["status"] in ("confirmed", "probable")
-    if p["cards"] < MIN_CARDS and not has_family and not p["recalls"]:
+    if not p.get("basis") and not has_family and not p["recalls"]:
         return "nodata"
     if p["identity"] >= 3 or (p["identity"] >= 2 and p["freshness"] >= 1):
         return "red"
@@ -409,8 +491,8 @@ def tier_of(p):
         return "yellow"
     if p["freshness"] >= 1:
         return "orange"
-    if p["trust"] >= 3:
-        return "green"
+    if p["trust"] >= 3 and p.get("basis") == "cards":
+        return "green"  # без карточки не видно, кто вырастил: зелёного по сертификатам нет
     return "neutral"
 
 
@@ -445,7 +527,9 @@ def report(doc):
         return "\n".join(lines + ["_Паспортов брендов нет._"]) + "\n"
     cov = doc.get("coverage") or {}
     tiers = Counter(p["tier"] for p in brands.values())
-    lines.append(f"Паспорт есть у {cov.get('withPassport', 0)} из {cov.get('brands', 0)} брендов "
+    by_certs = sum(1 for p in brands.values() if p["tier"] != "nodata" and p.get("basis") == "certificates")
+    lines.append(f"Паспорт есть у {cov.get('withPassport', 0)} из {cov.get('brands', 0)} брендов"
+                 + (f", из них {by_certs} — по сертификатам и меню, без карточки регулятора" if by_certs else "") + " "
                  f"({cov.get('listingsWithPassport', 0)} из {cov.get('listings', 0)} позиций): "
                  + ", ".join(f"{TIER_RU[t]} {tiers[t]}" for t in TIERS if tiers[t]) + ".")
     moved = [(p, p["tierHistory"][-2]["tier"]) for p in brands.values()
@@ -488,7 +572,8 @@ def main(argv=None):
     producers = read_json(PRODUCERS, [])
     producers = producers if isinstance(producers, list) else producers.get("producers") or []
     today = max((r["capturedAt"][:10] for r in rows if r.get("capturedAt")), default=date.today().isoformat())
-    out = build(rows, twins.get("cards") or {}, retail, twins, producers, read_json(OUT, {}), today)
+    certificates = read_json(COA_DATES, {}).get("certificates") or {}
+    out = build(rows, twins.get("cards") or {}, retail, twins, producers, read_json(OUT, {}), today, certificates)
     doc = write(out)
     t = Counter(p["tier"] for p in out["brands"].values())
     print(f"{OUT.relative_to(ROOT)}: брендов {len(out['brands'])}, с паспортом {out['coverage']['withPassport']} — "
