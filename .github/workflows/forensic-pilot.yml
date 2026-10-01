@@ -1,6 +1,13 @@
 name: Forensic bounded pilot
 
 on:
+  schedule:
+    # Every night, so card and certificate histories grow a day at a time and
+    # the cache holding them is never idle long enough to be evicted.
+    # GitHub cron is UTC and has no daylight saving: 04:47 UTC is 00:47 in New
+    # York from March to November and 23:47 the rest of the year. Schedules
+    # run from main only.
+    - cron: '47 4 * * *'
   push:
     branches:
       - claude/sync-varieties-repos-jdu0q7
