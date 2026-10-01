@@ -8,14 +8,12 @@ on:
     # York from March to November and 23:47 the rest of the year. Schedules
     # run from main only.
     - cron: '47 4 * * *'
-  push:
-    branches:
-      - claude/sync-varieties-repos-jdu0q7
-    paths:
-      - .github/workflows/forensic-pilot.yml
-      - scripts/forensic-*.py
-      - scripts/coa-forensics*.py
-      - scripts/coa-harvest*.py
+  # Not on push. Until 1 October every push to one branch that touched a
+  # forensic script started a run, and each run spends up to 100 Retail ID
+  # requests and 50 certificate downloads on the public sites the daily menu
+  # run also reads. A typo fix cost the same as a night's harvest, and the
+  # branch's runs kept a cache of their own that nothing else read. The
+  # schedule above and the Actions tab are the two ways a run starts.
   workflow_dispatch:
     inputs:
       retail_budget:
