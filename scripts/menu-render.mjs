@@ -1918,6 +1918,15 @@ export const flattenSearchHits = (payloads) => {
   return out;
 };
 
+/** What a product is called by the menu that holds it: its id, or failing that
+    the nearest thing to one. Empty when it has none of them. */
+export function productIdOf(p) {
+  return String(p?.id ?? p?._id ?? p?.sku ?? p?.slug ?? p?.name ?? p?.Name ?? '');
+}
+/* For counting, a real id or nothing: two sizes of one strain share a name,
+   and counted by name they would be one product. */
+const countingIdOf = (p) => String(p?.id ?? p?._id ?? p?.sku ?? p?.slug ?? '');
+
 /** Every shelf in a payload, each with the total its own container states. */
 const shelvesWithTotals = (value, container = null, depth = 0, out = []) => {
   if (depth > 7 || !value || typeof value !== 'object' || out.length > 40) return out;
@@ -1934,7 +1943,7 @@ const shelvesWithTotals = (value, container = null, depth = 0, out = []) => {
         ? stock.map(unwrapStock)
         : null;
     if (looksLikeShelf(value) || (opened && looksLikeShelf(opened))) {
-      out.push({ count: value.length, total: totalIn(container) });
+      out.push({ count: value.length, total: totalIn(container), ids: (opened ?? value).map(countingIdOf) });
     }
     for (const item of value.slice(0, 20)) shelvesWithTotals(item, container, depth + 1, out);
     return out;
@@ -1943,15 +1952,17 @@ const shelvesWithTotals = (value, container = null, depth = 0, out = []) => {
   return out;
 };
 
-/** What one response says about itself: how many it carried, of how many. */
+/** What one response says about itself: how many it carried, of how many,
+    and which — the ids, so a shelf read in pages can be counted without
+    counting a product twice. */
 const shelfOf = (payload) => {
   const shelves = shelvesWithTotals(payload);
-  if (!shelves.length) return { count: 0, total: null };
+  if (!shelves.length) return { count: 0, total: null, ids: [] };
   const carried = shelves.reduce((n, sh) => n + sh.count, 0);
   /* The biggest array in the answer is the shelf it is an answer about; the
      smaller ones beside it are carousels and "you might also like". */
   const main = [...shelves].sort((a, b) => b.count - a.count)[0];
-  return { count: carried, total: main.total };
+  return { count: carried, total: main.total, ids: shelves.flatMap((sh) => sh.ids) };
 };
 
 /** The total a response declares for its own shelf — for the parser check. */
@@ -2907,9 +2918,7 @@ const pagedRequest = (req, nth, fallbackSize) => {
    calling it the end — after one page asked, on every Gap Commerce shop and
    on Piffords' Carrot store. */
 export const signatureOf = (somePayloads) => {
-  const ids = productsIn(somePayloads)
-    .map((p) => String(p?.id ?? p?._id ?? p?.sku ?? p?.slug ?? p?.name ?? p?.Name ?? ''))
-    .filter(Boolean);
+  const ids = productsIn(somePayloads).map(productIdOf).filter(Boolean);
   return ids.length ? ids.slice(0, 40).join('|') : null;
 };
 
@@ -2953,6 +2962,14 @@ const RETRY_BUDGET_MS = process.env.MENU_RETRY_BUDGET_MS
 /* A shelf read from a menu that serves several licences: the strains are real,
    which branch stocks them is not established. */
 const SHELF_SHARED = 'SHELF_SHARED_WITH_OTHER_LICENCES';
+
+/* A promotional sample: "(Sample) Bouket - mylar - Sunkist", "Sample Grams -
+   Purple Soap", "Moby & Zeke Samples". Blue Forest Farms sells its "Sample
+   Black Cherry Gushers 3.5g" for one cent. It is on the menu and kept on the
+   shop's page, marked, but it is not a strain the shop stocks: counted as one,
+   seven of them opened the daily report's list of new strains on the market. */
+export const PROMOTIONAL_SAMPLE = 'PROMOTIONAL_SAMPLE';
+export const isPromotionalSample = (raw) => /(^|[^a-z])samples?([^a-z]|$)/i.test(String(raw ?? ''));
 
 /**
  * Two addresses that are the same page.
@@ -4288,7 +4305,7 @@ const main = async () => {
            carried products is the one the paging replays. Truncating it would
            make it unusable for that, so the recorded address is whole and the
            dump shortens it at printing time instead. */
-        const { count: carried, total: declaredHere } = shelfOf(body);
+        const { count: carried, total: declaredHere, ids: carriedIds } = shelfOf(body);
         if (carried > 0) {
           const req = res.request();
           /* Every header the request carried. The browser refuses the ones
@@ -4309,6 +4326,8 @@ const main = async () => {
                than summed across the page, because the page asks several
                questions and each answer counts only its own. */
             declared: declaredHere,
+            /* Which products, so the paging below counts each once. */
+            ids: carriedIds,
             method: req.method(),
             url: res.url(),
             headers,
@@ -4591,8 +4610,25 @@ const main = async () => {
              shops as truncated. */
           const key = queryKey(biggest);
           const declared = biggest.declared ?? 0;
-          const seenBefore = () =>
-            requests.filter((r) => queryKey(r) === key).reduce((n, r) => n + r.products, 0);
+          /* How much of the query is in hand: each product once. Summing what
+             every answer carried counted a product twice whenever two pages
+             overlapped, and a menu whose order shifts between requests
+             overlaps all the time — Nirvana Springs' 475 were "all read"
+             twice in one afternoon, with seven products repeated and seven
+             others never seen the second time, and the shelf lost seven
+             strains it still had. An answer whose products carry no ids is
+             counted as before. */
+          const seenBefore = () => {
+            const ids = new Set();
+            let unnamed = 0;
+            for (const r of requests) {
+              if (queryKey(r) !== key) continue;
+              const own = (r.ids ?? []).filter(Boolean);
+              if (own.length === r.products) own.forEach((id) => ids.add(id));
+              else unnamed += r.products;
+            }
+            return ids.size + unnamed;
+          };
           let cap = declared ? MAX_PAGES_DECLARED : MAX_PAGES_UNDECLARED;
           const pagingStarted = Date.now();
           let pageUntil = pagingStarted + (declared ? PAGING_BUDGET_DECLARED_MS : PAGING_BUDGET_MS);
@@ -4614,7 +4650,17 @@ const main = async () => {
            * parameter — are the two that got fixed. */
           let stopped = 'ran-out-of-pages';
 
-          for (let nth = 1; nth <= cap; nth += 1) {
+          /* Twice through, at most. When the pages have run out and fewer
+             products came back than the menu says it holds, the order moved
+             under the reading: the same pages asked again hand over most of
+             what was missed. The second time starts from the page the menu
+             asked for itself (nth 0) and ends at the last one that had
+             products. */
+          let lastWithProducts = 0;
+          for (let pass = 1; pass <= 2; pass += 1) {
+          const firstNth = pass === 1 ? 1 : 0;
+          const lastNth = pass === 1 ? cap : lastWithProducts;
+          for (let nth = firstNth; nth <= lastNth; nth += 1) {
             if (Date.now() > pageUntil) {
               entry.hitPagingBudget = true;
               stopped = 'out-of-time';
@@ -4625,7 +4671,7 @@ const main = async () => {
               break;
             }
 
-            const next = pagedRequest(biggest, nth, biggest.products);
+            const next = nth === 0 ? biggest : pagedRequest(biggest, nth, biggest.products);
             if (!next) {
               // No page knob anywhere in the request: nothing to advance.
               stopped = 'no-page-in-request';
@@ -4700,6 +4746,7 @@ const main = async () => {
               stopped = 'answer-had-no-products';
               break;
             }
+            if (pass === 1) lastWithProducts = nth;
             /* Products, but the same products. A menu that ignores the page
                parameter answers page two with page one, and without this the
                collector asks it forty times and calls the result a shelf. */
@@ -4730,6 +4777,17 @@ const main = async () => {
             }
             previousPageAt = before;
             await new Promise((r) => setTimeout(r, BETWEEN_PAGES_MS));
+          }
+          const shortOfDeclared =
+            declared && seenBefore() < declared &&
+            (stopped === 'answer-had-no-products' || stopped === 'ran-out-of-pages');
+          if (pass === 1 && shortOfDeclared && lastWithProducts > 0 && Date.now() < pageUntil) {
+            entry.pagedAgainFrom = seenBefore();
+            previousPageAt = payloads.length;
+            stopped = 'ran-out-of-pages';
+            continue;
+          }
+          break;
           }
 
           if (asked > 0) {
@@ -5324,6 +5382,8 @@ const main = async () => {
     const warnings = new Set(l.warnings ?? []);
     if (shared) warnings.add(SHELF_SHARED);
     else warnings.delete(SHELF_SHARED);
+    if (isPromotionalSample(l.strainNameRaw)) warnings.add(PROMOTIONAL_SAMPLE);
+    else warnings.delete(PROMOTIONAL_SAMPLE);
     l.warnings = [...warnings];
   }
 

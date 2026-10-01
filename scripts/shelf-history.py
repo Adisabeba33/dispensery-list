@@ -835,9 +835,21 @@ def collector_at(ref):
     return hashlib.sha1(" ".join(blobs).encode()).hexdigest()[:10]
 
 
+# Промо-пробник — «(Sample) Bouket - mylar - Sunkist», продаётся за цент. Он на
+# странице магазина с пометкой, но это не сорт, который магазин держит: в
+# историю, партии и новинки он не идёт. Сборщик ставит PROMOTIONAL_SAMPLE; по
+# названию — для полок, прочитанных до этой пометки.
+SAMPLE = re.compile(r"(^|[^a-z])samples?([^a-z]|$)", re.I)
+
+
+def is_sample(l):
+    return "PROMOTIONAL_SAMPLE" in (l.get("warnings") or []) or bool(SAMPLE.search(l.get("strainNameRaw") or ""))
+
+
 def listings_of(raw):
     rows = json.loads(raw)
-    return rows if isinstance(rows, list) else rows.get("listings", [])
+    rows = rows if isinstance(rows, list) else rows.get("listings", [])
+    return [l for l in rows if not is_sample(l)]
 
 
 def today():

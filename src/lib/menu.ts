@@ -1,5 +1,5 @@
 import listingsRaw from '../../data/flower-listings.json';
-import type { FlowerListing } from './menu-format';
+import { isPromotionalSample, type FlowerListing } from './menu-format';
 
 /**
  * Reading the shelves. Server-side only — importing this from a client
@@ -87,7 +87,9 @@ export const listingsFor = (licenseNumber: string): FlowerListing[] =>
  */
 export const menuCounts = (): Record<string, number> => {
   const counts: Record<string, number> = {};
-  for (const l of listings) if (l.inStock) counts[l.licenseNumber] = (counts[l.licenseNumber] ?? 0) + 1;
+  for (const l of listings) {
+    if (l.inStock && !isPromotionalSample(l)) counts[l.licenseNumber] = (counts[l.licenseNumber] ?? 0) + 1;
+  }
   return counts;
 };
 

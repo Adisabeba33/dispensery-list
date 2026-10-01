@@ -84,7 +84,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '25',
+    '--limit', '26',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -246,7 +246,7 @@ try {
   check('and says so where the report reads it', refused?.menuLink, 'robots-disallowed');
   check('the refusal is named by licence', refused?.licence, 'OCM-CAURD-24-000984');
   check('the run counts it', summary.robotsDisallowed, 1);
-  check('and does not count it as a shop it read', summary.shopsVisited, 24);
+  check('and does not count it as a shop it read', summary.shopsVisited, 25);
 
   /* The retry replaces the empty reading rather than being carried alongside
      it: the shelf published for this shop is today's, not yesterday's held
@@ -294,6 +294,16 @@ try {
   check('the total is the one beside the products', facets?.declaredTotal, 5);
   check('and it is compared against that query alone', facets?.pagedQueryProducts, 5);
   check('so the shop reads as complete', facets?.pagingStoppedBecause, 'read-everything-declared');
+
+  /* A menu whose order moves between requests. Read once, its pages carried
+     five products — one of them twice — which is the five it declares, and the
+     paging stopped satisfied with a strain missing. Counted by id it is four,
+     so the pages are asked once more and the missing one comes back. */
+  const shifting = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000974');
+  check('a menu whose order moves is counted by product, not by answer', shifting?.pagedAgainFrom, 4);
+  check('and read whole by asking its pages again', shifting?.pagedQueryProducts, 5);
+  check('ending where the menu says it ends', shifting?.pagingStoppedBecause, 'read-everything-declared');
+  check('with both its flower', shifting?.flower, 2);
 
   /* The biggest answer is not always the one that can be paged. This shop's
      carousels arrive in one answer carrying six products with no page number

@@ -15,6 +15,7 @@ import {
   sizeChips,
   sizeLabel,
   type FlowerListing,
+  isPromotionalSample,
 } from '@/lib/menu-format';
 
 const PROVENANCE_CLASS: Record<string, string> = {
@@ -83,6 +84,14 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
           {listing.thcPercent !== null && (
             <span className="tabular-nums text-sm text-chalk-100">
               THC {listing.thcPercent}%
+            </span>
+          )}
+          {isPromotionalSample(listing) && (
+            <span
+              className="pill border-amber-400/40 bg-amber-400/10 text-amber-400"
+              title="A promotional sample on the shop's menu, not a jar it stocks"
+            >
+              Promo sample
             </span>
           )}
           {!listing.inStock && (

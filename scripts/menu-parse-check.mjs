@@ -17,7 +17,8 @@ import {
   mergeBySize, pagedRequest, pickFlowerInside, pickMenuLink, pickStore,
   placeNamesOf, rankMenuLink, registerTextOf, sameEstate, signatureOf, sizeFromText,
   toListing, wallAction, fulfilmentAction, pageKnobOf, dropRepeatedPanels, sweedCategoryOf, decodeEntities,
-  linkNamesAnotherState, proteusCards, proteusBrandsOf, proteusShowAll, withoutCompanionSearches
+  linkNamesAnotherState, proteusCards, proteusBrandsOf, proteusShowAll,
+  isPromotionalSample, withoutCompanionSearches
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 import { labPanelKeyOf } from './lab-panel.mjs';
@@ -2052,6 +2053,15 @@ check('something that is not a stream is nothing', decodeTurboStream('<html>'), 
 /* Taken last, after every check. It used to sit halfway down, and every
    check below it — the turbo stream, the schema — could print FAIL and still
    let the run pass. */
+/* Promotional samples, read off the shelves of 30 September. */
+for (const raw of ['(Sample) Bouket - mylar - Sunkist', 'Sample Grams - Purple Soap',
+  'SAMPLE Bouket - Small Bud - Indoor Sky Fire OG', 'Moby & Zeke Samples']) {
+  check(`a promotional sample: ${raw}`, isPromotionalSample(raw), true);
+}
+for (const raw of ['Sampler Pack - Blue Dream', 'Blue Dream', 'Sam Pleasant Kush', 'Ample Haze']) {
+  check(`not a sample: ${raw}`, isPromotionalSample(raw), false);
+}
+
 if (failures) {
   console.log(`\n${failures} check(s) failed.`);
   process.exit(1);

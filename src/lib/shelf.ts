@@ -1,6 +1,6 @@
 import type { StrainEntry } from '@/components/ShelfIndex';
 import { dispensaries, displayName, regionOf } from './data';
-import { listings, sizeChips } from './menu';
+import { isPromotionalSample, listings, sizeChips } from './menu';
 import type { FlowerListing } from './menu-format';
 
 /**
@@ -31,6 +31,8 @@ export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
   const spellings = new Map<string, Map<string, number>>();
 
   for (const l of rows) {
+    // A promotional sample is on the shop's page, marked, and is not a strain it stocks.
+    if (isPromotionalSample(l)) continue;
     const written = l.strainNameCanonical ?? l.strainNameRaw;
     /* Case, spaces and punctuation folded away, as the register's own strain
        key does: "B.A.M" and "BAM", "Paw Paw" and "PawPaw" are one strain two
@@ -194,7 +196,7 @@ const listingsByBrand = (() => {
     cache = new Map();
     for (const l of listings) {
       const key = l.brandKey;
-      if (!key || !shopOf.has(l.licenseNumber)) continue;
+      if (!key || !shopOf.has(l.licenseNumber) || isPromotionalSample(l)) continue;
       const own = cache.get(key) ?? [];
       own.push(l);
       cache.set(key, own);

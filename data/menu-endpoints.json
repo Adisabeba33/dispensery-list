@@ -1148,5 +1148,15 @@
     "ageGate": "simple-button",
     "checkedAt": "2026-09-30",
     "notes": "Authentic 212, 474 Fashion Ave (7th Avenue): Indoor Treez's second Manhattan store. Until now the collector took the 8th Avenue shelf for this licence too."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000021",
+    "menuUrl": "https://carnegiehillcannabis.com/store/manhattan/category/flower/",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": null,
+    "checkedAt": "2026-10-01",
+    "notes": "Carnegie Hill Cannabis, 1720 2nd Ave. The site links flower two ways: /store/manhattan/category/flower/ holds the shelf (153 strains read there on 2026-09-30 at 13:02 UTC) and /store_category/flower/ is an empty page. The collector found the second on five of six runs since 2026-09-27 and read nothing. robots.txt is still checked for this address on every visit."
   }
 ]

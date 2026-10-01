@@ -32,6 +32,8 @@ const PRODUCTS = JSON.parse(readFileSync(resolve(HERE, 'api/products.json'), 'ut
    and the only way to tell it from a shop that has actually emptied its shelf
    is to ask a second time. */
 let flakyAsked = 0;
+/* How often each page of the shifting shop's menu has been asked for. */
+const shiftingAsked = new Map();
 
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -106,6 +108,21 @@ createServer((req, res) => {
     // The total travels with the products, which is what makes it comparable
     // to what we read: it counts this query, not the shop's whole catalogue.
     res.end(JSON.stringify({ data: { products: slice, total_count: PRODUCTS.length } }));
+    return;
+  }
+
+  /* A menu whose order moves between requests, the way Treez's does: each
+     page asked the first time comes from a different ordering than the same
+     page asked again. Read once, its three pages hand over six products, two
+     of them twice and the Leal never — the count passes the five it states,
+     and the shelf is a strain short. */
+  if (url.pathname === '/api/shifting.json') {
+    const page = Number(url.searchParams.get('page') ?? 0);
+    const times = (shiftingAsked.get(page) ?? 0) + 1;
+    shiftingAsked.set(page, times);
+    const order = times === 1 ? { 0: [0, 2], 1: [2, 3], 2: [3, 4] } : { 0: [0, 1], 1: [2, 3], 2: [3, 4] };
+    res.writeHead(200, { 'content-type': 'application/json' });
+    res.end(JSON.stringify({ data: { products: (order[page] ?? []).map((i) => PRODUCTS[i]), total_count: PRODUCTS.length } }));
     return;
   }
 
@@ -386,6 +403,9 @@ createServer((req, res) => {
          the flight is gone from self.__next_f by the time anyone reads it. */
       '/flight-home': 'flight-home.html',
       '/flight': 'flight.html',
+      /* A menu whose order moves between requests. */
+      '/shifting': 'shifting.html',
+      '/shifting-menu': 'shifting-menu.html',
     };
     const name = ROUTES[url.pathname] ?? url.pathname.slice(1);
     const [body, type] = file(name);
