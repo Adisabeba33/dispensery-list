@@ -32,9 +32,16 @@ after = json.loads(Path(args.current).read_text())
 shops = {d["licenseNumber"]: (d.get("dbaName") or d["legalName"])
          for d in json.loads((ROOT / "data/dispensaries.json").read_text())}
 
+# Промо-пробник («(Sample) Bouket - mylar - Sunkist») — не сорт на рынке: семь
+# таких открывали список новинок 30 сентября.
+SAMPLE = re.compile(r"(^|[^a-z])samples?([^a-z]|$)", re.I)
+
+
 def by_shop(rows):
     out = defaultdict(set)
     for l in rows:
+        if "PROMOTIONAL_SAMPLE" in (l.get("warnings") or []) or SAMPLE.search(l.get("strainNameRaw") or ""):
+            continue
         out[l["licenseNumber"]].add((l.get("strainNameRaw") or "").strip())
     return out
 

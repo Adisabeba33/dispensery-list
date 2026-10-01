@@ -207,6 +207,14 @@ export const rankedTerpenes = (profile: Terpene[]): Terpene[] => {
     : named;
 };
 
+/* A promotional sample: "(Sample) Bouket - mylar - Sunkist", which Blue Forest
+   Farms sells for one cent. The collector marks it PROMOTIONAL_SAMPLE; the name
+   catches shelves read before it did. The shop's page shows it, marked; it is
+   never counted as a strain the shop stocks. */
+const SAMPLE = /(^|[^a-z])samples?([^a-z]|$)/i;
+export const isPromotionalSample = (l: Pick<FlowerListing, 'strainNameRaw' | 'warnings'>): boolean =>
+  (l.warnings ?? []).includes('PROMOTIONAL_SAMPLE') || SAMPLE.test(l.strainNameRaw ?? '');
+
 /**
  * The strains on a shelf, one per line, and nothing else.
  *
@@ -222,6 +230,7 @@ export const strainsAsText = (rows: FlowerListing[]): string => {
   const seen = new Set<string>();
   const names: string[] = [];
   for (const l of rows) {
+    if (isPromotionalSample(l)) continue;
     /* The CANONICAL name, not the shop's own words.
      *
      * This is the list somebody copies out of the register and pastes into

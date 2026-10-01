@@ -48,7 +48,7 @@ const PACKAGING = new Set([
   'batch', 'mylar', 'tin', 'micro', 'limited', 'edition', 'collection', 'thc', 'cbd', 'tac',
   'eighth', 'quarter', 'half', 'oz', 'ounce', 'g', 'gram', 'grams', 'indica', 'sativa',
   'hybrid', 'dominant', 'dom', 'leaning', 'lean', 'ind', 'hyb', 'sat', 'indhyb', 'sathyb',
-  'ih', 'sh', 'idh', 'sdh', 'i', 's', 'h',
+  'ih', 'sh', 'idh', 'sdh', 'i', 's', 'h', 'sample', 'samples',
 ]);
 const isMeasure = (w: string) => /^\d+(\.\d+)?(g|gm|gr|th|oz|pk|ct|pc|pcs)?$/.test(w);
 /* Packaging written as a phrase whose words are not packaging alone. "Pre",
@@ -61,6 +61,7 @@ const PACKAGING_PHRASE =
 const NEVER_FIRST = new Set([
   'premium', 'exotic', 'indoor', 'outdoor', 'greenhouse', 'sungrown', 'packaged', 'craft',
   'collection', 'jar', 'bag', 'pouch', 'mylar', 'tin', 'batch', 'prepack', 'prepackaged',
+  'sample', 'samples',
 ]);
 
 export const isPackaging = (piece: string) => {
