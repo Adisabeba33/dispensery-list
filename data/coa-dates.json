@@ -547,21 +547,39 @@
    "sampled": "2025-12-19",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "3284d6157c81c8299c88706e39690da1a4c02d5f1c8a6b4787c0bdad5a2a4f65",
+   "docType": "lab-coa",
+   "sampleId": "SNYGTINY1218-PFCU-0022076",
+   "batchTag": "20251020TT-FRY28-1",
+   "lotNumber": null,
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/23620.pdf": {
    "lab": null,
    "sampled": "2026-03-13",
    "sampledFrom": "reported",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "42944170074ec6dc7fe6e28886f5ea7296b8ee3383dc14102e470b1ec2b4d0ac",
+   "docType": "lab-coa",
+   "sampleId": null,
+   "batchTag": null,
+   "lotNumber": null,
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/23630.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-02-26",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "1164eba28c849461b792ecac2c6492f05a8678c6601727645d3c14b70b76dfa9",
+   "docType": "lab-coa",
+   "sampleId": "AL60226001-003",
+   "batchTag": "SLS-0606-CC-0126-D-E",
+   "lotNumber": "BUF-06-012626-SLS",
+   "metrcTag": "1A412030000025D000000433"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/23737.pdf": {
    "lab": "Green Analytics",
@@ -582,35 +600,65 @@
    "sampled": "2026-01-24",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "db435acbbc52494cfec602ca06b439db2707420e370144bfebfdc8a1a42dd1f3",
+   "docType": "lab-coa",
+   "sampleId": "20260124-1OFF-005",
+   "batchTag": "1O-8F-SB26-APSC",
+   "lotNumber": "1O-8F-SB26-APSC",
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/23788.pdf": {
    "lab": null,
    "sampled": "2026-03-11",
    "sampledFrom": "received",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "c1b85445432cbf907f348e14f52f7e4b6f3f916c021d4934c3eb6d1a21350316",
+   "docType": "lab-coa",
+   "sampleId": "CTNY-260309-001",
+   "batchTag": "0001",
+   "lotNumber": null,
+   "metrcTag": "1A412030000193C000000017"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/23789.pdf": {
    "lab": null,
    "sampled": "2026-03-11",
    "sampledFrom": "received",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "e051cf5295246f273fbada859dee4cf045eddd6bf188d92ab97360f503f1861a",
+   "docType": "lab-coa",
+   "sampleId": "CTNY-260309-006",
+   "batchTag": "0001",
+   "lotNumber": null,
+   "metrcTag": "1A412030000193C000000020"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/23790.pdf": {
    "lab": null,
    "sampled": "2026-03-11",
    "sampledFrom": "received",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "124adb4f2b7b7fe3db90d5d9cd1421268468639989af6104fb5eea0b5670a960",
+   "docType": "lab-coa",
+   "sampleId": "CTNY-260309-003",
+   "batchTag": "0001",
+   "lotNumber": null,
+   "metrcTag": "1A412030000193C000000022"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/23795.pdf": {
    "lab": "Keystone",
    "sampled": null,
    "sampledFrom": null,
    "packaged": "2026-03-16",
-   "harvested": null
+   "harvested": null,
+   "sha256": "8f04f2379a31140789a0260bd76da3c7200d8fa716b95c4cdeb0756d14c70834",
+   "docType": "metrc-retail-id",
+   "sampleId": null,
+   "batchTag": null,
+   "lotNumber": null,
+   "metrcTag": "1A41203000004EF000000504"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/23987.pdf": {
    "lab": "DRS",
@@ -630,112 +678,208 @@
    "sampled": "2026-01-24",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "546b079d46e4ea284503de7216df7aa24fc9a016fc21a6d91bd960a6b62a7756",
+   "docType": "lab-coa",
+   "sampleId": "20260124-1OFF-037",
+   "batchTag": "1O-8F-DL26-BLUL10",
+   "lotNumber": "1O-8F-DL26-BLUL10",
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24145.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-01-20",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "13ff05cc832006b6745a52f9c42cece3bd03081a173e751966764f5c1e0fa828",
+   "docType": "lab-coa",
+   "sampleId": "20260120-AETE-010",
+   "batchTag": "2601-028",
+   "lotNumber": "2601-028",
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24146.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-01-20",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "16cd2fee1970cc362cdebf56a17a10fbc97b1e77ccf7761e2c440f4fabe26d96",
+   "docType": "lab-coa",
+   "sampleId": "20260120-AETE-013",
+   "batchTag": "2601-040",
+   "lotNumber": "2601-040",
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24467.pdf": {
    "lab": null,
    "sampled": "2026-03-18",
    "sampledFrom": "reported",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "7080af5f970db28c30349c6e4f037156c0ce142eec0715a89881bf6031e2b64f",
+   "docType": "lab-coa",
+   "sampleId": null,
+   "batchTag": null,
+   "lotNumber": null,
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24480.pdf": {
    "lab": "ACT",
    "sampled": "2026-03-11",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "bc1aac092d8fc49fff7824f92adca50f34fc5ec393d5f7f78a390901c8105b54",
+   "docType": "lab-coa",
+   "sampleId": "SNYGTINY0311-PFCU-0024725",
+   "batchTag": "20260202DT-FRY18-1",
+   "lotNumber": null,
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24494.pdf": {
    "lab": "ACT",
    "sampled": "2026-01-21",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "0de9e56a3795a630eb9c882706de15649a4cb29f22cf1bb8747daaa674cca859",
+   "docType": "lab-coa",
+   "sampleId": "SNYGTINY0121-PFCU-0023122",
+   "batchTag": "20251215SD-FRY18-1",
+   "lotNumber": null,
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24567.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-03-16",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "f92e8192a2e19e29128aaafce9abcfee22ae59a9530907b4990e2e0fb79775da",
+   "docType": "lab-coa",
+   "sampleId": "20260316-HMOF-012",
+   "batchTag": "GR0210",
+   "lotNumber": "GR0210",
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24645.pdf": {
    "lab": "Metrc",
    "sampled": null,
    "sampledFrom": null,
    "packaged": "2026-03-18",
-   "harvested": null
+   "harvested": null,
+   "sha256": "35f27d9cafbc41def391a38ed13068102c4eb2829e921f311a759899daff5256",
+   "docType": "metrc-retail-id",
+   "sampleId": null,
+   "batchTag": null,
+   "lotNumber": null,
+   "metrcTag": "1A4120300001911000000049"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24656.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-03-24",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "e2caf8433e74c8956ad4254b23d2b6ebc0f7b6848de469509b784363224d589d",
+   "docType": "lab-coa",
+   "sampleId": "20260324-1OFF-008",
+   "batchTag": "1O-8F-R26-LCR2",
+   "lotNumber": "1O-8F-R26-LCR2",
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24670.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-03-24",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "dfdc19d49d1c41aaf5f482d65d661235f1e17988e46c2bab9a027cac1396619e",
+   "docType": "lab-coa",
+   "sampleId": "20260324-1OFF-021",
+   "batchTag": "1O-8F-PG26-REDH",
+   "lotNumber": "1O-8F-PG26-REDH",
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24677.pdf": {
    "lab": null,
    "sampled": "2026-03-26",
    "sampledFrom": "reported",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "97d07234c397f865bfb16c3d33e6c3049ce6644abe0acd2ced453e7559a2afc2",
+   "docType": "lab-coa",
+   "sampleId": null,
+   "batchTag": null,
+   "lotNumber": null,
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24678.pdf": {
    "lab": null,
    "sampled": "2026-03-22",
    "sampledFrom": "reported",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "6df0c943f6e10c6cb8dc4a172f69a70aa61eb4305e60fbcf0ddd03a5dc99e33e",
+   "docType": "lab-coa",
+   "sampleId": null,
+   "batchTag": null,
+   "lotNumber": null,
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24686.pdf": {
    "lab": null,
    "sampled": "2026-03-19",
    "sampledFrom": "received",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "4927f220f1e78d0d6e760650b01868220e811c0f6bca786ae5b71a727933fdf0",
+   "docType": "lab-coa",
+   "sampleId": "CTNY-260318-003",
+   "batchTag": "G6-SPF",
+   "lotNumber": null,
+   "metrcTag": "1a412030000023f000000297"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24736.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-02-05",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "786f4937e75a6078e162f9b34fb5c2988f39234d92b146f7bdfde663a8a5d2ff",
+   "docType": "lab-coa",
+   "sampleId": "AL60205008-006",
+   "batchTag": "OR2426",
+   "lotNumber": "1A41203000003F5000000265",
+   "metrcTag": "1A41203000003F5000000272"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24756.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-02-26",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "10bfae6124220a910b654e0129420e1ca551f1805df4e5d403ff160ae5c06eac",
+   "docType": "lab-coa",
+   "sampleId": "AL60226003-004",
+   "batchTag": "Indy125C",
+   "lotNumber": "1A41203000005E1000000936",
+   "metrcTag": "1A41203000005E1000000937"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24758.pdf": {
    "lab": "Kaycha",
    "sampled": "2025-12-10",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "8042716249a9a52962797ffdca35e223307cab4599056038206d31adde654d71",
+   "docType": "lab-coa",
+   "sampleId": "AL51210013-002",
+   "batchTag": "HG256",
+   "lotNumber": null,
+   "metrcTag": "1A41203000005E1000000608"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/24921.pdf": {
    "lab": "Metrc",
@@ -784,98 +928,182 @@
    "sampled": "2026-02-04",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "12b34a2249da6bffdd8c070228dcdbc3a80e4e723ea446275991a3edbcce983e",
+   "docType": "lab-coa",
+   "sampleId": "AL60204005-003",
+   "batchTag": "GP128NZ",
+   "lotNumber": "1A4120300001A94000000151",
+   "metrcTag": "1A4120300001A94000000154"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/25141.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-03-20",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": "2025-12-01"
+   "harvested": "2025-12-01",
+   "sha256": "f0d95c4328b947c708a02b4ad077044d875baa67c571699654c4fce9601f2c35",
+   "docType": "lab-coa",
+   "sampleId": "AL60320016-004",
+   "batchTag": "NZDG03-26",
+   "lotNumber": null,
+   "metrcTag": "1A4120300001A94000000291"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/25142.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-03-14",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": "2025-12-01"
+   "harvested": "2025-12-01",
+   "sha256": "b877216105b8d851f28088c9df2c7e9e8cbb19d9b295f4da39b74ee80c9cd2ee",
+   "docType": "lab-coa",
+   "sampleId": "AL60314005-019",
+   "batchTag": "NZSG03-26",
+   "lotNumber": null,
+   "metrcTag": "1A4120300001A94000000265"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/25145.pdf": {
    "lab": null,
    "sampled": "2026-03-15",
    "sampledFrom": "reported",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "75ef888d24d15079b3d608cec64493f5cc64436a9935a4aa933085ca9110ce92",
+   "docType": "lab-coa",
+   "sampleId": null,
+   "batchTag": null,
+   "lotNumber": null,
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/25178.pdf": {
    "lab": "Green Analytics",
    "sampled": "2025-11-25",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "8319f717d72a1543bbc69784744323864703a8c0ce7822dedf5f7f4669592762",
+   "docType": "lab-coa",
+   "sampleId": "20251125-SHOG-011",
+   "batchTag": "SHO-52-JFG-1",
+   "lotNumber": "SHO-52-JFG-1",
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/25346.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-02-25",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "7609476db500f70d297f8154fad9accccc2132568c66f33cc8aab870bd8d6a74",
+   "docType": "lab-coa",
+   "sampleId": "AL60225005-002",
+   "batchTag": "2/26",
+   "lotNumber": "2/26",
+   "metrcTag": "1A41203000015F1000000145"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/25347.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-02-12",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "65cde342fe4d7ef9f981abd4f7d5738ea188a7cc9b2abfb1982e1a4e21c793b8",
+   "docType": "lab-coa",
+   "sampleId": "AL60212001-002",
+   "batchTag": "MB21126-3.5",
+   "lotNumber": null,
+   "metrcTag": "1A41203000015F1000000083"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/25348.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-02-12",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "5931b30c85a15db9addfa141ade1e07c5e38e416b202efc81f08bff3db6fc328",
+   "docType": "lab-coa",
+   "sampleId": "AL60212001-003",
+   "batchTag": "RG21126-3.5",
+   "lotNumber": null,
+   "metrcTag": "1A41203000015F1000000084"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/25349.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-02-25",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "6d908b964bb55ee140ee85edfb7834c3f6a155386a76ce582e29fc1b9c0eb0c4",
+   "docType": "lab-coa",
+   "sampleId": "AL60225005-003",
+   "batchTag": null,
+   "lotNumber": null,
+   "metrcTag": "1A41203000015F1000000144"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/25350.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-02-12",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "c087c457d9c4097f7d3f3c0aaf453d7766cbfddf979f009fc1d4d5a4f5e4832a",
+   "docType": "lab-coa",
+   "sampleId": "AL60212001-001",
+   "batchTag": "DB21126-3.5",
+   "lotNumber": null,
+   "metrcTag": "1A41203000015F1000000082"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/25351.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-02-25",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "d63f1b8b1d87fb8b91f4663a51a20f74831140f20405d99c895683017d35fdde",
+   "docType": "lab-coa",
+   "sampleId": "AL60225005-004",
+   "batchTag": null,
+   "lotNumber": null,
+   "metrcTag": "1A41203000015F1000000146"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/25352.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-02-25",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "c6b2d7867f32973a1c478fa345aa0ed9036a9b9adea40d92a34fc6640e194302",
+   "docType": "lab-coa",
+   "sampleId": "AL60225005-005",
+   "batchTag": null,
+   "lotNumber": null,
+   "metrcTag": "1A41203000015F1000000147"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/25392.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-03-28",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "5b98dc509bf40ebb797f073321215fd800a5f01bf1ce71532c685494b433e5ae",
+   "docType": "lab-coa",
+   "sampleId": "AL60328005-004",
+   "batchTag": "P-DHWF352026-616A",
+   "lotNumber": null,
+   "metrcTag": "1A412030000026D000006668"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/25566.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-03-23",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "dcec279f26019adc7a4407c00197dd5d9b17d2c0cdf6b287fc3bfe1c50478d18",
+   "docType": "lab-coa",
+   "sampleId": "AL60323002-003",
+   "batchTag": "FRO32326",
+   "lotNumber": "1A41203000003F5000000367",
+   "metrcTag": "1A41203000003F5000000372"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/25668.pdf": {
    "lab": "Kaycha",
@@ -895,14 +1123,26 @@
    "sampled": "2026-02-27",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "a955300ab5bd04d73aff175996b6a69344894340e168e3220e12b24c25a87325",
+   "docType": "lab-coa",
+   "sampleId": "AL60227001-002",
+   "batchTag": "F-LEMONORANGE-3.5g-20250225",
+   "lotNumber": null,
+   "metrcTag": "1A4120300001EE9000000049"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/25891.pdf": {
    "lab": "ACT",
    "sampled": "2026-03-19",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "harvested": null,
+   "sha256": "07f6157e84cce1ce624007ab1c7c39b591a408c2c55b5bd0eea62cd9b3d70b3e",
+   "docType": "lab-coa",
+   "sampleId": "SNYAPAY0319-PFCU-0024997",
+   "batchTag": "1A41203000023FF000000057",
+   "lotNumber": null,
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/26039.pdf": {
    "lab": "Kaycha",
@@ -6399,6 +6639,19 @@
    "packaged": null,
    "harvested": null
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38874.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null,
+   "sha256": "b0db48a898058e2f85c16eda220f403acb11e5e798a4a5f15600ff9b64233650",
+   "docType": "lab-coa",
+   "sampleId": "20260901-HMOF-004",
+   "batchTag": "MM0255",
+   "lotNumber": "MM0255",
+   "metrcTag": null
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/38875.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-09-01",
@@ -6507,6 +6760,19 @@
    "sampledFrom": "sampled",
    "packaged": null,
    "harvested": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38976.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-08",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null,
+   "sha256": "e26e0e0c3f55271aa3f84c2d4122ecf53a9bc7790a4c9cbaff109b7997452c49",
+   "docType": "lab-coa",
+   "sampleId": "20260818-1OFF-003",
+   "batchTag": "1O-8F-DL26-SS",
+   "lotNumber": "1O-8F-DL26-SS",
+   "metrcTag": null
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/38978.pdf": {
    "lab": "Green Analytics",
@@ -6651,6 +6917,84 @@
    "batchTag": "P-FDWF352026-1380A",
    "lotNumber": null,
    "metrcTag": "1A412030000026D000024847"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39094.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-09-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null,
+   "sha256": "9114f0bc9d0efdc4c6c928d842d3fc863673cc85178954994ecd66554968d0d4",
+   "docType": "lab-coa",
+   "sampleId": "SNY5180902-PFCU-0030391",
+   "batchTag": "G1-SBF",
+   "lotNumber": null,
+   "metrcTag": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39095.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-09-02",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null,
+   "sha256": "7a28cd0d87c856e675caf0bc4a22542893d0e8961f57f0e9251635c7f6d6241a",
+   "docType": "lab-coa",
+   "sampleId": "SNY5180902-PFCU-0030390",
+   "batchTag": "G10-ZZGF",
+   "lotNumber": null,
+   "metrcTag": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39096.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-06-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null,
+   "sha256": "b92cbcb1592c813fde57ee01d10c7533408b383b070911a14e3f906ed34d4cd3",
+   "docType": "lab-coa",
+   "sampleId": "SNY5180610-PFCU-0027778",
+   "batchTag": "1A412030000023F000000570",
+   "lotNumber": null,
+   "metrcTag": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39103.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null,
+   "sha256": "bf66c79fdb1c09bb9e5930927dcf7aa9c7d75ec83a0d06bbdff115176938fc7b",
+   "docType": "lab-coa",
+   "sampleId": "2608RLI0877-4353",
+   "batchTag": "WB01",
+   "lotNumber": null,
+   "metrcTag": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39104.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null,
+   "sha256": "a021a6d5b45dcf45ee8683d0941b4e50a29d24ebc7a1e110c71460e066edad1c",
+   "docType": "lab-coa",
+   "sampleId": "2608RLI0877-4352",
+   "batchTag": "IG01",
+   "lotNumber": null,
+   "metrcTag": null
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39106.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "harvested": null,
+   "sha256": "b805d5199932260f6305e38879fc9cf73ebce000d0e6ed502af362ed2397eab6",
+   "docType": "lab-coa",
+   "sampleId": "2608RLI0877-4374",
+   "batchTag": "OGK01",
+   "lotNumber": null,
+   "metrcTag": null
   }
  }
 }
