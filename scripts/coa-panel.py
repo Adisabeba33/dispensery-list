@@ -214,10 +214,21 @@ def name_of(text, lab):
     m = re.search(r"Strain:\s*([^,\n]+?)(?:,|\s{2,}|\n|$)", text)
     if m and m.group(1).strip():
         return m.group(1).strip()
-    m = re.search(r"Sample Name:\s*(.+?)(?:\s{2,}|\n|$)", text)
-    if m and m.group(1).strip():
-        return m.group(1).strip()
     lines = text.splitlines()
+    for i, line in enumerate(lines):
+        at = line.find("Sample Name:")
+        if at < 0:
+            continue
+        same_line = re.match(r"[ \t]*(\S.*?)(?:\s{2,}|$)", line[at + len("Sample Name:"):])
+        if same_line:
+            return same_line.group(1).strip()
+        # Green Analytics wraps a long name around its label: the line above
+        # and the line below carry it, in the label's column.
+        parts = [lines[j][at:].strip() for j in (i - 1, i + 1) if 0 <= j < len(lines) and len(lines[j]) > at]
+        parts = [p for p in parts if p and ":" not in p.split("  ")[0]]
+        if parts:
+            return " ".join(parts)
+        return None
     if lab == "Kaycha":
         # The product, printed under the laboratory's name at the top right.
         for i, line in enumerate(lines[:6]):

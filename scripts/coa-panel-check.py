@@ -89,6 +89,19 @@ check(p and p["name"] == "French Cookie" and p["thc"] == 21.47 and p["totalTerpe
 check(p and p["terpenes"] == {"MYRCENE": 0.21, "LIMONENE": 0.74, "LINALOOL": 0.0}, f"Green Analytics first column, < MRL as 0: {p}")
 check(p and p["licence"] == "OCM-PROC-24-000062", f"Green Analytics licence: {p}")
 
+GA_WRAPPED = """Green Analytics
+Date Reported:              3/20/2026                                          Sample ID:                  20260316-HMOF-012
+Client Name:                HM OPS dba HMOP-Flowerhouse                                                    Grocery | Mixed Light Flower | 28 Gram |
+                                                                               Sample Name:
+Sampling Location:          Rock Tavern, New York                                                          Atomic Breath | Hybrid
+Contact Name:               Sean Lovely                                        Sample Matrix:              Flower
+  Total THC [ Δ8-THC + Δ9-THC + Δ10-THC + (THCA * 0.877)) ]                  27.03                946.05
+   beta-Myrcene                                  0.21                             0.05
+"""
+p = cp.panel(GA_WRAPPED)
+check(p and p["name"] == "Grocery | Mixed Light Flower | 28 Gram | Atomic Breath | Hybrid",
+      f"Green Analytics name wrapped around its label, never the next label: {p}")
+
 KEYSTONE = """Keystone State Testing
     License #: OCM-PROC-24-000002
  Report #: 57280
