@@ -15,6 +15,10 @@ good.certificates['https://lab.test/report.pdf'].sampledFrom = 'expiry';
 if (validate(good)) throw Error('Expiry must not masquerade as a sampled event');
 const actual = JSON.parse(readFileSync(new URL('../data/coa-dates.json', import.meta.url)));
 if (!validate(actual)) throw Error(JSON.stringify(validate.errors));
+const httpSchema = JSON.parse(readFileSync(new URL('../data/schema/coa-http-state.schema.json', import.meta.url)));
+const httpState = JSON.parse(readFileSync(new URL('../data/coa-http-state.json', import.meta.url)));
+const validHttpState = ajv.compile(httpSchema);
+if (!validHttpState(httpState)) throw Error(JSON.stringify(validHttpState.errors));
 if (existsSync(new URL('../data/coa-sources.json', import.meta.url))) {
   const sourcesSchema = JSON.parse(readFileSync(new URL('../data/schema/coa-sources.schema.json', import.meta.url)));
   const sources = JSON.parse(readFileSync(new URL('../data/coa-sources.json', import.meta.url)));

@@ -29,6 +29,8 @@
                     приехала в лабораторию; на день-два позже отбора
 - Smithers:         «Sample Collected: 05/11/2026»
 - другие:           «Date Collected: May 28, 2026»
+- Talon layout:     «Collection Date: 6/30/2023», «Received Date: 6/30/2023»
+- MCR:              «Sample Collection\n10/9/2025 11:10\nDate and Time»
 - карточка Metrc:   «Packaged Date 02/18/2026», дата теста «On: 2026-02-03»
 - новая карточка:   «PACKAGED ON\n02/18/2026», «TESTED DATE\n12/17/2025»
 - в крайнем случае: «Report Date» — день отчёта, на неделю-другую позже пробы
@@ -68,18 +70,21 @@ SAMPLED = [
     re.compile(r"\bSampled:\s*" + D),
     re.compile(r"Sample Collected:\s*" + D),
     re.compile(r"Date Collected:\s*" + D),
+    re.compile(r"\bCollection Date:\s*" + D),
+    re.compile(r"Sample Collection[ \t]*\n[ \t]*" + D + r"[^\n]*\n[ \t]*Date and Time"),
 ]
 RECEIVED = [
     re.compile(r"Sample Received:\s*" + D),
     re.compile(r"Date Received:\s*" + D),
+    re.compile(r"Received Date:\s*" + D),
 ]
-REPORTED = [re.compile(r"Report Date:?\s*" + D), re.compile(r"Published:\s*" + D)]
+REPORTED = [re.compile(r"(?:Report Date|Reported Date|Date Reported|Report Created|Date Released|Completed)\s*:?\s*" + D), re.compile(r"Published:\s*" + D)]
 TESTED = [re.compile(r"Tested By:[^\n]*\n\s*On:\s*" + D), re.compile(r"\bOn:\s*" + D)]
 PACKAGED = re.compile(r"Packaged Date\s*:?\s*" + D)
 HARVEST = re.compile(r"Harvest/Lot ID:[^\n]*?\bH:\s*(\d{1,2})\.(\d{1,2})\.(\d{2,4})")
 LABS = [("Kaycha", "Kaycha"), ("Green Analytics", "Green Analytics"), ("DRS Testing", "DRS"),
         ("Keystone", "Keystone"), ("ACT Lab", "ACT"), ("Reliable Labs", "Reliable"), ("Metrc", "Metrc"),
-        ("metrc", "Metrc"), ("Smithers", "Smithers")]
+        ("metrc", "Metrc"), ("Smithers", "Smithers"), ("MCR Labs", "MCR")]
 
 
 def iso(text):

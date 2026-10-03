@@ -28,7 +28,13 @@ for lab, label, basis in [('Kaycha', 'Sampled Date', 'sampled'),
     assert ids['batchTag'] == 'LOT-1234' and ids['metrcTag'] == '1A4120300001DBC000000048', ids
 assert m.read('Smithers\nSample Collected: 05/11/2026')['lab'] == 'Smithers'
 assert m.read('Date Collected: May 28, 2026')['sampledFrom'] == 'sampled'
+assert m.read('Collection Date: 6/30/2023 12:40 PM')['sampled'] == '2023-06-30'
+assert m.read('MCR Labs\nSample Collection\n   10/9/2025 11:10\n Date and Time')['sampled'] == '2025-10-09'
 assert m.read('Report Date: 05/11/2026')['sampledFrom'] == 'reported'
+assert m.read('Date Released: 05/11/2026')['sampledFrom'] == 'reported'
+for label in ('Seed to Sale#:', 'Package ID:', 'Regulator Source Package ID:'):
+    ids = m.identifiers(label + ' 1A4120300001DBC000000048', b'fixture')
+    assert ids['metrcTag'] == '1A4120300001DBC000000048', (label, ids)
 assert m.read('Kaycha\nSampled: 05/11/2026')['packaged'] is None
 card = m.read('metrc\nretail ID\nPackage Details\nPACKAGE TAG\n1A4120300001DBC000000048\nPACKAGED ON\n02/18/2026\nTESTED DATE\n12/17/2025\nTESTED BY\nKaycha Labs NY\n')
 assert (card['sampled'], card['sampledFrom'], card['packaged'], card['packagedFrom']) == ('2025-12-17', 'tested', '2026-02-18', 'metrc-retail-id'), card
@@ -63,12 +69,15 @@ with tempfile.TemporaryDirectory() as tmp:
         assert str(e) == 'robots-disallowed'
     assert calls == ['https://x.test/robots.txt', 'https://x.test/start', 'https://other.test/robots.txt'], calls
     reader = h.Reader(Path(tmp) / 'state.json')
-    reader.request = lambda *a, **k: (403, {}, b'')
-    try:
-        reader.get('https://x.test/report.pdf')
-        raise AssertionError('unavailable robots must fail closed')
-    except h.SourceBlocked as e:
-        assert str(e) == 'robots-unavailable-403'
+    denied_calls = []
+    reader.request = lambda url, **k: (denied_calls.append(url), (403, {}, b''))[1]
+    for _ in range(2):
+        try:
+            reader.get('https://x.test/report.pdf')
+            raise AssertionError('unavailable robots must fail closed')
+        except h.SourceBlocked as e:
+            assert str(e) == 'robots-unavailable-403'
+    assert denied_calls == ['https://x.test/robots.txt']
     reader = h.Reader(Path(tmp) / 'state.json')
     class Response:
         code = 500

@@ -42,7 +42,7 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 class Reader:
     def __init__(self, state_path, delay=MIN_DELAY):
-        self.path=Path(state_path); self.delay=max(MIN_DELAY,delay); self.cache={}; self.last=0
+        self.path=Path(state_path); self.delay=max(MIN_DELAY,delay); self.cache={}; self.denied={}; self.last=0
         try: self.state=json.loads(self.path.read_text())
         except (FileNotFoundError,ValueError): self.state={}
         self.opener=urllib.request.build_opener(NoRedirect)
@@ -77,6 +77,15 @@ class Reader:
             if s.get('errors',0)>=5: s['blockedUntil']=(datetime.now(timezone.utc)+timedelta(days=1)).isoformat()
             self.save()
     def policy(self,url):
+        u=urlsplit(url); origin=u.scheme+'://'+u.netloc
+        if origin in self.denied:
+            raise SourceBlocked(self.denied[origin])
+        try:
+            return self._policy(url)
+        except SourceBlocked as e:
+            self.denied[origin]=str(e)
+            raise
+    def _policy(self,url):
         u=urlsplit(url); origin=u.scheme+'://'+u.netloc
         if origin not in self.cache:
             current=origin+'/robots.txt'
