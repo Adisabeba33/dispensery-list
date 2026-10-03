@@ -109,7 +109,8 @@
           "sourceKind": {
             "enum": [
               "menu",
-              "brand-page"
+              "brand-page",
+              "brand-page-unreviewed"
             ]
           },
           "sourcePage": {
@@ -130,6 +131,92 @@
               "string",
               "null"
             ]
+          },
+          "panel": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "What the certificate measured, read by scripts/coa-panel.py: the strain or product it names, total THC, total terpenes and the leading terpenes, keyed as data/shelf-terpenes.json keys them. 0 is a measured not-found (ND, <LOQ). Null when the laboratory's layout is not one the reader knows.",
+            "additionalProperties": false,
+            "required": [
+              "lab",
+              "name",
+              "matrix",
+              "licence",
+              "thc",
+              "totalTerpenes",
+              "terpenes"
+            ],
+            "properties": {
+              "lab": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "matrix": {
+                "enum": [
+                  "flower",
+                  "other",
+                  null
+                ],
+                "description": "What the document says it tested."
+              },
+              "licence": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^OCM-[A-Z]{3,6}-\\d{2}-\\d{6}$",
+                "description": "The client's New York licence the document prints (never the laboratory's own)."
+              },
+              "thc": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 50
+              },
+              "totalTerpenes": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 20
+              },
+              "terpenes": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 20
+                },
+                "propertyNames": {
+                  "enum": [
+                    "MYRCENE",
+                    "CARYOPHYLLENE",
+                    "LIMONENE",
+                    "LINALOOL",
+                    "HUMULENE",
+                    "PINENE_ALPHA",
+                    "PINENE_BETA",
+                    "TERPINOLENE",
+                    "OCIMENE",
+                    "BISABOLOL",
+                    "FARNESENE"
+                  ]
+                }
+              }
+            }
           }
         }
       }

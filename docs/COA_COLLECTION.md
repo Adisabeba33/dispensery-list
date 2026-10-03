@@ -38,3 +38,19 @@ Existing fixtures cover Alleaves `coa`, Dutchie
 
 No expiry-based packaging date is emitted without a stable shelf-life estimate
 from at least five real pairs with p10–p90 spread at most seven days.
+
+## Panels, 2026-10-03
+
+`scripts/coa-panel.py` reads what a certificate measured — the strain or
+product it names, total THC, total terpenes and the leading terpenes, keyed as
+`data/shelf-terpenes.json` keys them — and `coa-dates.py` stores it as
+`panel` on each certificate. The column a terpene result sits in is decided
+per laboratory (Kaycha, Kaycha 2023, DRS, Green Analytics, Keystone, ACT,
+MCR; `scripts/coa-panel-check.py` pins each layout); a laboratory not listed
+gives no panel rather than a guess. `panel.matrix` is what the document says
+it tested, `panel.licence` the client's New York licence (never the lab's).
+
+Certificates read before panels are re-read 60 a run, brand links first.
+Brand links published but still `pending-review` are read 60 a run as
+`sourceKind: "brand-page-unreviewed"`; links reviewed as another product are
+not read.
