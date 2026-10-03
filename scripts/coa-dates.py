@@ -50,11 +50,16 @@ ROOT = Path(__file__).resolve().parents[1]
 LOTS = ROOT / "data/shelf-terpenes.json"
 OUT = ROOT / "data/coa-dates.json"
 BACKFILL = 40  # сертификатов без отпечатка перечитывается за прогон
+PANEL_BACKFILL = 60  # прочитанных до панелей — дочитывается за прогон, ссылки брендов первыми
+PENDING_PER_RUN = 60  # опубликованных брендом, но не разобранных ссылок — за прогон
 SOURCES = ROOT / "data/coa-sources.json"
 
 _spec = importlib.util.spec_from_file_location("coa_forensics", ROOT / "scripts/coa-forensics.py")
 cf = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(cf)
+_panel_spec = importlib.util.spec_from_file_location("coa_panel", ROOT / "scripts/coa-panel.py")
+cp = importlib.util.module_from_spec(_panel_spec)
+_panel_spec.loader.exec_module(cp)
 _http_spec = importlib.util.spec_from_file_location("coa_source_http", ROOT / "scripts/coa-source-http.py")
 http = importlib.util.module_from_spec(_http_spec)
 _http_spec.loader.exec_module(http)
@@ -186,19 +191,32 @@ def fetch(url, workdir, reader):
     if not entry["sampled"] and not entry["packaged"]:
         entry["unread"] = "no date found"
     entry.update(identifiers(text, blob))
+    # What it measured: strain, THC, terpenes — what lets it be matched to a
+    # shelf. None when the laboratory's layout is not one coa-panel.py reads.
+    try:
+        entry["panel"] = cp.panel(text)
+    except Exception:  # a layout the reader trips on keeps its dates
+        entry["panel"] = None
     entry["documentUrl"] = final_url
     return url, entry
 
 
-def source_links(path=SOURCES):
-    """Only published, NY-flower links explicitly selected after document review."""
+def source_links(path=SOURCES, pending=False):
+    """Published brand links: those reviewed as NY flower, and — with pending —
+    those published but not reviewed yet. A pending link is read for what the
+    document says it is (panel.matrix, its licence); sourceKind keeps the two
+    apart, and nothing reviewed as another product is read."""
     if not path.exists():
         return {}
     links = {}
     for source in json.loads(path.read_text()).get("sources", []):
         for link in source.get("certificateLinks", []):
-            if link.get("scope") == "ny-flower" and link.get("publishedOn") and link.get("url"):
+            if not (link.get("publishedOn") and link.get("url")):
+                continue
+            if link.get("scope") == "ny-flower":
                 links[link["url"]] = {"sourceKind": "brand-page", "sourcePage": link["publishedOn"]}
+            elif pending and link.get("scope") == "pending-review":
+                links[link["url"]] = {"sourceKind": "brand-page-unreviewed", "sourcePage": link["publishedOn"]}
     return links
 
 
@@ -209,7 +227,7 @@ def main():
     args = parser.parse_args()
     if not shutil.which("pdftotext"):
         raise SystemExit("pdftotext не найден: поставьте poppler-utils")
-    provenance = source_links()
+    provenance = source_links(pending=True)
     if not args.brand_only:
         provenance.update({c: {"sourceKind": "menu"} for lot in json.loads(LOTS.read_text())["lots"] for c in lot["certificates"]})
     urls = sorted(provenance)
@@ -217,10 +235,19 @@ def main():
         known = json.loads(OUT.read_text())["certificates"]
     except FileNotFoundError:
         known = {}
-    todo = [u for u in urls if u not in known or known[u].get("unread")]
+    unreviewed = lambda u: provenance[u].get("sourceKind") == "brand-page-unreviewed"
+    todo = [u for u in urls if (u not in known or known[u].get("unread")) and not unreviewed(u)]
+    # Опубликованные, но не разобранные ссылки брендов — понемногу за прогон.
+    pending = [u for u in urls if (u not in known or known[u].get("unread")) and unreviewed(u)][:PENDING_PER_RUN]
     # Прочитанные до отпечатков — дочитываются понемногу, не все разом.
     backfill = [u for u in urls if u in known and not known[u].get("unread") and "sha256" not in known[u]][:BACKFILL]
-    selected = (todo + backfill)[:max(0, args.limit)] if args.limit is not None else todo + backfill
+    # Прочитанные до панелей: ссылки брендов первыми — у сертификатов из меню
+    # панель уже напечатана в самом меню.
+    no_panel = sorted((u for u in urls if u in known and not known[u].get("unread")
+                       and "panel" not in known[u] and u not in backfill),
+                      key=lambda u: provenance[u].get("sourceKind") == "menu")[:PANEL_BACKFILL]
+    queue = todo + pending + backfill + no_panel
+    selected = queue[:max(0, args.limit)] if args.limit is not None else queue
     reader = http.Reader(ROOT / "data/coa-http-state.json")
     with tempfile.TemporaryDirectory() as workdir:
         for url in selected:
@@ -241,7 +268,9 @@ def main():
           f"с датой сбора {sum(1 for e in known.values() if e['harvested'])}; "
           f"с отпечатком {sum(1 for e in known.values() if e.get('sha256'))}, "
           f"с меткой Metrc {sum(1 for e in known.values() if e.get('metrcTag'))}; "
-          f"запрошено сейчас {len(selected)} (очередь новых/повторных {len(todo)}, дочитывание {len(backfill)})")
+          f"с панелью {sum(1 for e in known.values() if e.get('panel'))}; "
+          f"запрошено сейчас {len(selected)} (новых/повторных {len(todo)}, неразобранных брендов {len(pending)}, "
+          f"дочитывание {len(backfill)}, до панели {len(no_panel)})")
 
 
 if __name__ == "__main__":
