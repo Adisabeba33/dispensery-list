@@ -223,6 +223,22 @@
       "format": "date",
       "description": "Freshness materially changes terpene content: volatile terpenes evaporate over months. An old package will not taste like its COA."
     },
+    "expiresOn": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date",
+      "description": "The expiry the menu states for the jar (Treez: expirationDate on each inventory lot). New York prints one on every package; many producers set it a fixed term after packing, so beside the packing dates Retail ID gives for the same brand it stands in for the packing date (scripts/shelf-life.py measures the term). Null when the menu states none."
+    },
+    "expiresWithinDays": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "description": "How soon the jar expires, where the menu says only that much (Dutchie: an 'Expiring in 90 Days' batch tag). The smallest term stated. Null when the menu states none."
+    },
     "inStock": {
       "type": "boolean"
     },

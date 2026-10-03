@@ -525,6 +525,23 @@ check('and the same epoch in milliseconds', dated({ packagedAt: 1786665600000 })
 check('an epoch arriving as a string is still an epoch', dated({ packagedOn: '1786665600' })?.packagedOn, '2026-08-14');
 check('a harvest date is read from its own names', dated({ harvestDate: '2026-06-02' })?.harvestedOn, '2026-06-02');
 
+/* The expiry. The one date about freshness menus do state: Treez puts it on
+   each inventory lot and in customExpirationDateNew, Dutchie says only how
+   soon in a batch tag. It lies in the future by nature, so the refusal that
+   keeps a harvest from being dated tomorrow must not refuse it. */
+check('an expiry is read', dated({ expirationDate: '2027-07-28' })?.expiresOn, '2027-07-28');
+check('a Treez expiry on the inventory lot is read', dated({ productData: { inventory: [{ expirationDate: '2027-06-02' }] } })?.expiresOn, '2027-06-02');
+check('the custom Treez field is read too', dated({ customExpirationDateNew: '2027-07-01' })?.expiresOn, '2027-07-01');
+check('an expiry already passed is still an expiry', dated({ expirationDate: '2026-01-15' })?.expiresOn, '2026-01-15');
+check('an expiry a decade out is not believed', dated({ expirationDate: '2040-01-01' })?.expiresOn, null);
+check('no expiry stated is null', dated({})?.expiresOn, null);
+check('and an expiry is not mistaken for a packing date', dated({ expirationDate: '2027-07-28' })?.packagedOn, null);
+check('Dutchie says how soon, not when',
+  dated({ POSMetaData: { activeBatchTags: [{ tagName: 'Expiring in 90 Days' }, { tagName: 'Expiring in 60 Days' }] } })?.expiresWithinDays, 60);
+check('a tag on a size counts too',
+  dated({ POSMetaData: { children: [{ activeBatchTags: [{ tagName: 'Expiring in 30 Days' }] }] } })?.expiresWithinDays, 30);
+check('no such tag is null', dated({ POSMetaData: { activeBatchTags: [{ tagName: 'Staff Pick' }] } })?.expiresWithinDays, null);
+
 /* The refusals. A wrong date here reads as freshness, which is worse than an
    empty field — so anything unreadable, anything from before adult-use flower
    could have been grown, and anything dated after today is refused. */

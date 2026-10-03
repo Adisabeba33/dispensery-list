@@ -3575,7 +3575,10 @@ const covaFigure = (p, compound) => {
 const CANNABINOID_PANEL = ['cannabinoids', 'potencies', 'cannabinoidProfile', 'cannabinoidInformation'];
 
 const EARLIEST_SANE_MENU_DATE = Date.UTC(2015, 0, 1);
-const menuDate = (value) => {
+/* `ahead` is how far past today a date may lie. A harvest or a packing is in
+   the past, so the default allows only tomorrow (a shop on a clock ahead of
+   ours); an expiry is in the future by nature and is allowed five years. */
+const menuDate = (value, ahead = 86_400_000) => {
   const raw = flatten(value);
   if (raw === null || raw === undefined) return null;
   let ms = null;
@@ -3600,8 +3603,49 @@ const menuDate = (value) => {
   if (ms < EARLIEST_SANE_MENU_DATE) return null;
   /* Tomorrow, to allow for a shop on a clock ahead of ours. Beyond that a
      harvest has not happened yet. */
-  if (ms > Date.now() + 86_400_000) return null;
+  if (ms > Date.now() + ahead) return null;
   return new Date(ms).toISOString().slice(0, 10);
+};
+const FIVE_YEARS_MS = 5 * 365 * 86_400_000;
+
+/* The jar's expiry, where the menu carries it. New York prints one on every
+   package, and a menu that holds it (Treez: expirationDate on each inventory
+   lot, customExpirationDateNew) is the only date about freshness most menus
+   state at all — no menu read so far states when the jar was packed. Many
+   producers set the expiry a fixed term after packing, so with the packing
+   dates Retail ID gives for the same brand's jars, the expiry stands in for
+   the packing date of the rest (scripts/shelf-life.py measures the term). */
+const expiresOnOf = (p) => {
+  const direct = menuDate(
+    pick(p, ['expiresOn', 'expirationDate', 'expiryDate', 'expiresAt', 'expiration_date', 'expiry', 'expires', 'customExpirationDateNew', 'customExpirationDate', 'customExpirationDateOld']),
+    FIVE_YEARS_MS,
+  );
+  if (direct) return direct;
+  const inventory = pick(pick(p, ['productData']), ['inventory']);
+  if (Array.isArray(inventory)) {
+    for (const lot of inventory) {
+      const d = menuDate(pick(lot, ['expirationDate', 'expiresOn', 'expiryDate']), FIVE_YEARS_MS);
+      if (d) return d;
+    }
+  }
+  return null;
+};
+
+/* Dutchie says how soon a jar expires without saying when: POSMetaData's
+   activeBatchTags carry "Expiring in 90 Days", "Expiring in 60 Days". The
+   smallest term is kept — the jar is at most that far from its expiry. */
+const expiresWithinDaysOf = (p) => {
+  const meta = pick(p, ['POSMetaData']);
+  const tags = [
+    ...(Array.isArray(meta?.activeBatchTags) ? meta.activeBatchTags : []),
+    ...(Array.isArray(meta?.children) ? meta.children.flatMap((c) => (Array.isArray(c?.activeBatchTags) ? c.activeBatchTags : [])) : []),
+  ];
+  let days = null;
+  for (const t of tags) {
+    const m = /expiring in (\d{1,4}) days?/i.exec(String(t?.tagName ?? t?.name ?? t ?? ''));
+    if (m) days = days === null ? Number(m[1]) : Math.min(days, Number(m[1]));
+  }
+  return days;
 };
 
 
@@ -4093,6 +4137,8 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     packageIds: packageIdsOf(p),
     harvestedOn: menuDate(pick(p, ['harvestedOn', 'harvestDate', 'harvestedAt', 'harvest_date', 'harvestedOnDate', 'dateHarvested'])),
     packagedOn: menuDate(pick(p, ['packagedOn', 'packagedDate', 'packageDate', 'packagedAt', 'packaged_date', 'packDate', 'datePackaged'])),
+    expiresOn: expiresOnOf(p),
+    expiresWithinDays: expiresWithinDaysOf(p),
     inStock: notYet
       ? false
       : stock === null || stock === undefined
