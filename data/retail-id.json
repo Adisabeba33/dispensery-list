@@ -16,6 +16,7 @@
   "HTTPS://1A4.COM/13U2YPUQ3S3TPFPDJZIRKB": "1A412030000014A000001153",
   "HTTPS://1A4.COM/13U2YPUQ3S3TPFPDJZLX51": "1A412030000014A000001155",
   "HTTPS://1A4.COM/13U2YPUQ3S6QEP3HSISYDT": "1A412030000019F000012787",
+  "HTTPS://1A4.COM/13U2YPUQ3S6QEP3JI13TWF": "1A412030000019F000020535",
   "HTTPS://1A4.COM/13U2YPUQ3S6QEP3JI17MLG": "1A412030000019F000020538",
   "HTTPS://1A4.COM/13U2YPUQ3S6QEP3JI1OSUG": "1A412030000019F000020544",
   "HTTPS://1A4.COM/13U2YPUQ3SA81T5X6T0CGI": "1A4120300000205000006300",
@@ -72,6 +73,11 @@
   "HTTPS://1A4.COM/13U2YPUQ3SD8G3QE5DZE2Q": "1A412030000025D000002833",
   "HTTPS://1A4.COM/13U2YPUQ3SD8G3QE5F9AFB": "1A412030000025D000002854",
   "HTTPS://1A4.COM/13U2YPUQ3SD8G3QE5FCJCY": "1A412030000025D000002856",
+  "HTTPS://1A4.COM/13U2YPUQ3SDFU638V147IJ": "1A4120300000263000003157",
+  "HTTPS://1A4.COM/13U2YPUQ3SDFU638V2DIBO": "1A4120300000263000003177",
+  "HTTPS://1A4.COM/13U2YPUQ3SDFU638V917GH": "1A4120300000263000003222",
+  "HTTPS://1A4.COM/13U2YPUQ3SDFU638VM8D1F": "1A4120300000263000003374",
+  "HTTPS://1A4.COM/13U2YPUQ3SDFU638XAY2H3": "1A4120300000263000003988",
   "HTTPS://1A4.COM/13U2YPUQ3SDS5M0OGM8UTM": "1A412030000026D000007617",
   "HTTPS://1A4.COM/13U2YPUQ3SDS5M0PRRL8N7": "1A412030000026D000012004",
   "HTTPS://1A4.COM/13U2YPUQ3SDS5M0PS7CAGZ": "1A412030000026D000012198",
@@ -145,6 +151,8 @@
   "HTTPS://1A4.COM/13U2YPUQ3SUDKKJGFXNIUE": "1A4120300000452000000111",
   "HTTPS://1A4.COM/13U2YPUQ3SUDKKJGFZODFV": "1A4120300000452000000145",
   "HTTPS://1A4.COM/13U2YPUQ3SUDKKJGG09KWI": "1A4120300000452000000154",
+  "HTTPS://1A4.COM/13U2YPUQ3SUDKKJGG0DM2Z": "1A4120300000452000000157",
+  "HTTPS://1A4.COM/13U2YPUQ3SUDKKJGG0EYIS": "1A4120300000452000000158",
   "HTTPS://1A4.COM/13U2YPUQ3SUH9LPVR9EOLO": "1A4120300000455000000040",
   "HTTPS://1A4.COM/13U2YPUQ3SUH9LPVRA8BUS": "1A4120300000455000000055",
   "HTTPS://1A4.COM/13U2YPUQ3TI6W5Y6X6GU8J": "1A412030000070A000000438",
@@ -166,16 +174,23 @@
   "HTTPS://1A4.COM/13U2YPUQ3UJTUU28LOXNUQ": "1A4120300000B56000000549",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZGIKT8N": "1A4120300000C1F000044136",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZGJ7FGV": "1A4120300000C1F000044146",
+  "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZHLV9JB": "1A4120300000C1F000044525",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZHLVAIS": "1A4120300000C1F000044525",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZHME5MR": "1A4120300000C1F000044532",
+  "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZHPMMMH": "1A4120300000C1F000044585",
+  "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZHUKJK1": "1A4120300000C1F000044604",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZHUQP6S": "1A4120300000C1F000044608",
+  "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZHVB6S5": "1A4120300000C1F000044617",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZHVCV7N": "1A4120300000C1F000044618",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZHWF08X": "1A4120300000C1F000044633",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZHWN37N": "1A4120300000C1F000044639",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZHYTMOI": "1A4120300000C1F000044671",
+  "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZHYU80L": "1A4120300000C1F000044671",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZHZKT1M": "1A4120300000C1F000044684",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZI034EA": "1A4120300000C1F000044691",
+  "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZI5C8WE": "1A4120300000C1F000044718",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZI5Z11N": "1A4120300000C1F000044728",
+  "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZIA0QH2": "1A4120300000C1F000044790",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZIA1BSY": "1A4120300000C1F000044790",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZIFY8ZS": "1A4120300000C1F000044828",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZII7UV7": "1A4120300000C1F000044862",
@@ -258,18 +273,35 @@
   "HTTPS://1A4.COM/5LO1I9DSNY0TPY7IXO57": "1A4120300000A35000007126",
   "HTTPS://1A4.COM/5LO1I9DSNZEVWCOU1TGM": "1A4120300000B56000000549",
   "HTTPS://1A4.COM/5LO1I9DSO0DPBE6YK3CW": "1A4120300000C1F000034228",
+  "HTTPS://1A4.COM/5LO1I9DSO0DPBE6YLXQ8": "1A4120300000C1F000034378",
+  "HTTPS://1A4.COM/5LO1I9DSO0DPBE6YPURK": "1A4120300000C1F000034642",
   "HTTPS://1A4.COM/5LO1I9DSO0DPBE78GYDC": "1A4120300000C1F000044036",
   "HTTPS://1A4.COM/5LO1I9DSO0DPBE78K0ZK": "1A4120300000C1F000044266",
   "HTTPS://1A4.COM/5LO1I9DSO0DPBE78NVQ6": "1A4120300000C1F000044524",
+  "HTTPS://1A4.COM/5LO1I9DSO0DPBE78SM4G": "1A4120300000C1F000044883",
   "HTTPS://1A4.COM/5LO1I9DSO0DPBE78THC0": "1A4120300000C1F000044921",
   "HTTPS://1A4.COM/5LO1I9DSO0DPBE78TIPS": "1A4120300000C1F000044928",
   "HTTPS://1A4.COM/5LO1I9DSO0DPBE78TKW0": "1A4120300000C1F000044933",
   "HTTPS://1A4.COM/5LO1I9DSO0DPBE78TL34": "1A4120300000C1F000044934",
+  "HTTPS://1A4.COM/5LO1I9DSO0DPBE78TLA8": "1A4120300000C1F000044935",
   "HTTPS://1A4.COM/5LO1I9DSO0DPBE78TP1C": "1A4120300000C1F000044948",
   "HTTPS://1A4.COM/5LO1I9DSO1FT7SOKRK08": "1A4120300000CFB000001612",
   "HTTPS://1A4.COM/5LO1I9DSO22BVUPO6TXN": "1A4120300000D7D000000699",
   "HTTPS://1A4.COM/5LO1I9DSO926WAS4W7CI": "1A412030000132B000000401",
   "HTTPS://1A4.COM/5LO1I9DSOCMW6EMVG4JK": "1A4120300001612000001072",
+  "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGIFIE": "1A4120300001613000000903",
+  "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGV6FT": "1A4120300001613000001216",
+  "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGV8EA": "1A4120300001613000001220",
+  "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGV8KQ": "1A4120300001613000001221",
+  "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGV8RE": "1A4120300001613000001222",
+  "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGV8XT": "1A4120300001613000001223",
+  "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGVA7T": "1A4120300001613000001229",
+  "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGVCRA": "1A4120300001613000001236",
+  "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGVFVR": "1A4120300001613000001246",
+  "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGVITY": "1A4120300001613000001255",
+  "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGVOCM": "1A4120300001613000001271",
+  "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGVORO": "1A4120300001613000001273",
+  "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGWV0W": "1A4120300001613000001349",
   "HTTPS://1A4.COM/5LO1I9DSODEYE8AYSUVE": "1A41203000016B4000001055",
   "HTTPS://1A4.COM/5LO1I9DSOEC7OU4U8AHN": "1A4120300001774000000235",
   "HTTPS://1A4.COM/5LO1I9DSOEC7OU4U8KEG": "1A4120300001774000000267",
@@ -290,6 +322,7 @@
   "HTTPS://1A4.COM/5LO1I9DSOX6VZECVD340": "1A41203000026C2000000020",
   "HTTPS://1A4.COM/5LO1I9DSQHVEZW8E87L5": "1A41203000054C6000000086",
   "HTTPS://1A4.COM/5LO1I9DSQHVEZW8E953L": "1A41203000054C6000000130",
+  "HTTPS://1A4.COM/5LO1I9DSQHVEZW8E99AL": "1A41203000054C6000000145",
   "HTTPS://1A4.COM/5LO1I9DSQHVEZW8E99HK": "1A41203000054C6000000146",
   "HTTPS://1A4.COM/5LO1I9DSR9RX1AY6G934": "1A4120300006B6D000000100",
   "HTTPS://1A4.COM/5LO1I9DSR9RX1AY6GA2O": "1A4120300006B6D000000105",
@@ -1210,6 +1243,18 @@
    "batchTag": "1A412030000019F000018571",
    "checked": "2026-09-29"
   },
+  "1A412030000019F000020535": {
+   "found": true,
+   "facility": "NYHO LABS LLC",
+   "product": "Florist Farms | Flower | 3.5g | La Bomba",
+   "strain": "La Bomba",
+   "packaged": "2026-06-23",
+   "tested": "2026-06-30",
+   "harvested": null,
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A412030000019F000018542",
+   "checked": "2026-10-03"
+  },
   "1A412030000019F000020538": {
    "found": true,
    "facility": "NYHO LABS LLC",
@@ -2074,6 +2119,34 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000216000097631": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000097636": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000097637": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000097639": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000097640": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000097641": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000097644": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
   "1A4120300000216000101126": {
    "found": false,
    "checked": "2026-09-29"
@@ -2794,6 +2867,54 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000216000166021": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000166208": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000166209": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000166210": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000166211": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000166212": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000166213": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000166214": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000166215": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000166217": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000166220": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000216000174002": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
   "1A4120300000220000007964": {
    "found": false,
    "checked": "2026-09-29"
@@ -2877,6 +2998,10 @@
   "1A412030000022B000000211": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A412030000022B000000425": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A412030000022B000000597": {
    "found": false,
@@ -3598,6 +3723,18 @@
    "batchTag": "1A412030000023F000000859",
    "checked": "2026-10-02"
   },
+  "1A412030000023F000001078": {
+   "found": true,
+   "facility": "518 Hollow LLC",
+   "product": "3.5 gram flower ZZ Grape(1)",
+   "strain": "ZZ Grape",
+   "packaged": "2026-09-29",
+   "tested": "2026-09-06",
+   "harvested": "2026-07-15",
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A412030000023F000000883",
+   "checked": "2026-10-03"
+  },
   "1A412030000023F000001079": {
    "found": true,
    "facility": "518 Hollow LLC",
@@ -4085,6 +4222,66 @@
    "lab": "Kaycha Labs NY",
    "batchTag": "1A412030000025D000002085",
    "checked": "2026-09-29"
+  },
+  "1A4120300000263000003157": {
+   "found": true,
+   "facility": "Etain, LLC",
+   "product": "FLU-DUAL-FLWR-KNACK-3.5g-MGL",
+   "strain": "Miracle Glue",
+   "packaged": "2026-04-20",
+   "tested": "2026-04-30",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000263000003006",
+   "checked": "2026-10-03"
+  },
+  "1A4120300000263000003177": {
+   "found": true,
+   "facility": "Etain, LLC",
+   "product": "FLU-DUAL-FLWR-KNACK-3.5g-GS",
+   "strain": "Gelato Sunset",
+   "packaged": "2026-04-27",
+   "tested": "2026-05-08",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000263000003011",
+   "checked": "2026-10-03"
+  },
+  "1A4120300000263000003222": {
+   "found": true,
+   "facility": "Etain, LLC",
+   "product": "FLU-DUAL-FLWR-KNACK-3.5g-TT",
+   "strain": "Tropical Treats",
+   "packaged": "2026-05-12",
+   "tested": "2026-05-21",
+   "harvested": "2026-04-10",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000263000003042",
+   "checked": "2026-10-03"
+  },
+  "1A4120300000263000003374": {
+   "found": true,
+   "facility": "Etain, LLC",
+   "product": "FLU-DUAL-FLWR-KNACK-3.5g-SM",
+   "strain": "Secret Meetings",
+   "packaged": "2026-07-07",
+   "tested": "2026-07-15",
+   "harvested": "2026-06-05",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000263000003360",
+   "checked": "2026-10-03"
+  },
+  "1A4120300000263000003988": {
+   "found": true,
+   "facility": "Etain, LLC",
+   "product": "FLU-DUAL-FLWR-KNACK-3.5g-RV",
+   "strain": "Ruby Violet",
+   "packaged": "2026-07-23",
+   "tested": "2026-08-04",
+   "harvested": "2026-06-12",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000263000003098",
+   "checked": "2026-10-03"
   },
   "1A4120300000268000005217": {
    "found": false,
@@ -4837,6 +5034,10 @@
   "1A4120300000268000066344": {
    "found": false,
    "checked": "2026-09-30"
+  },
+  "1A4120300000268000067679": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A4120300000268000068379": {
    "found": false,
@@ -5797,6 +5998,10 @@
   "1A4120300000283000059373": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000283000059374": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A4120300000283000059413": {
    "found": false,
@@ -6805,6 +7010,10 @@
   "1A41203000002C1000061331": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A41203000002C1000061332": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A41203000002C1000061333": {
    "found": false,
@@ -8830,6 +9039,70 @@
    "found": false,
    "checked": "2026-10-01"
   },
+  "1A4120300000451000011759": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000451000011760": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000451000011761": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000451000011762": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000451000011763": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000451000011764": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000451000011765": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000451000011766": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000451000011767": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000451000011772": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000451000011773": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000451000011775": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000451000011776": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000451000011777": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000451000011778": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000451000011828": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
   "1A4120300000452000000041": {
    "found": true,
    "facility": "BACK HOME FARM LLC",
@@ -8925,6 +9198,30 @@
    "lab": "Reliable Labs, Inc.",
    "batchTag": "1A4120300000452000000162",
    "checked": "2026-09-29"
+  },
+  "1A4120300000452000000157": {
+   "found": true,
+   "facility": "BACK HOME FARM LLC",
+   "product": "Northern Lights -14g -Flower(1)",
+   "strain": "Northern Lights",
+   "packaged": "2026-08-14",
+   "tested": "2026-08-24",
+   "harvested": "2026-05-26",
+   "lab": "Reliable Labs, Inc.",
+   "batchTag": "1A4120300000452000000163",
+   "checked": "2026-10-03"
+  },
+  "1A4120300000452000000158": {
+   "found": true,
+   "facility": "BACK HOME FARM LLC",
+   "product": "Northern Lights -3.5g -Flower",
+   "strain": "Northern Lights",
+   "packaged": "2026-08-14",
+   "tested": "2026-08-24",
+   "harvested": "2026-05-26",
+   "lab": "Reliable Labs, Inc.",
+   "batchTag": "1A4120300000452000000164",
+   "checked": "2026-10-03"
   },
   "1A4120300000454000000184": {
    "found": false,
@@ -9109,6 +9406,30 @@
   "1A4120300000454000002622": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000454000002787": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000454000002788": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000454000002790": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000454000002802": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000454000002803": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000454000002804": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A4120300000455000000040": {
    "found": true,
@@ -9797,6 +10118,10 @@
   "1A41203000004D2000001113": {
    "found": false,
    "checked": "2026-10-02"
+  },
+  "1A41203000004D2000001114": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A41203000004D2000001115": {
    "found": false,
@@ -11314,6 +11639,14 @@
    "found": false,
    "checked": "2026-10-02"
   },
+  "1A41203000004EB000030014": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000004EB000030016": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
   "1A41203000004EB000030031": {
    "found": false,
    "checked": "2026-10-01"
@@ -11834,6 +12167,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000529000067738": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
   "1A4120300000529000067893": {
    "found": false,
    "checked": "2026-09-29"
@@ -12069,6 +12406,10 @@
   "1A4120300000529000076410": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000529000076819": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A4120300000596000001287": {
    "found": true,
@@ -12810,6 +13151,14 @@
    "found": false,
    "checked": "2026-09-30"
   },
+  "1A4120300000641000223809": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000641000223810": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
   "1A4120300000641000227142": {
    "found": false,
    "checked": "2026-09-29"
@@ -12837,6 +13186,14 @@
   "1A4120300000641000230686": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000641000231687": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000641000231688": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A4120300000641000231814": {
    "found": false,
@@ -13197,6 +13554,26 @@
   "1A4120300000641000365817": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000641000369358": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000641000369359": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000641000369360": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000641000369361": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300000641000369362": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A4120300000641000370770": {
    "found": false,
@@ -14637,6 +15014,10 @@
   "1A4120300000C1E000013713": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000C1E000018456": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A4120300000C1E000025270": {
    "found": true,
@@ -16354,6 +16735,10 @@
    "found": false,
    "checked": "2026-09-30"
   },
+  "1A4120300000C1E000134159": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
   "1A4120300000C1E000135217": {
    "found": false,
    "checked": "2026-09-29"
@@ -16938,6 +17323,18 @@
    "batchTag": "1A4120300000C1F000004271",
    "checked": "2026-09-29"
   },
+  "1A4120300000C1F000005313": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "1937 - Mixed Bud - 3.5g Blueberry Headband",
+   "strain": "Blueberry Headband",
+   "packaged": "2026-05-13",
+   "tested": "2026-05-20",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000016508",
+   "checked": "2026-10-03"
+  },
   "1A4120300000C1F000005415": {
    "found": true,
    "facility": "Vireo Health of New York, LLC",
@@ -17226,6 +17623,18 @@
    "batchTag": "1A4120300000C1F000035630",
    "checked": "2026-09-29"
   },
+  "1A4120300000C1F000034642": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "Bouket - Large Bud - 3.5g - Indoor Dark Matter OG",
+   "strain": "Dark Matter OG",
+   "packaged": "2026-08-03",
+   "tested": "2026-07-17",
+   "harvested": "2026-06-15",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000034646",
+   "checked": "2026-10-03"
+  },
   "1A4120300000C1F000034662": {
    "found": true,
    "facility": "Vireo Health of New York, LLC",
@@ -17486,6 +17895,30 @@
    "batchTag": "1A4120300000C1F000020780",
    "checked": "2026-09-29"
   },
+  "1A4120300000C1F000044585": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "Claybourne Classic Cuts - Large Bud - 3.5g - Indoor Durban Poison",
+   "strain": "Durban Poison",
+   "packaged": "2026-09-09",
+   "tested": "2026-09-14",
+   "harvested": "2026-08-17",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000020669",
+   "checked": "2026-10-03"
+  },
+  "1A4120300000C1F000044604": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "Claybourne Classic Cuts - Large Bud - 3.5g - Indoor King Louis OG",
+   "strain": "King Louis OG",
+   "packaged": "2026-09-08",
+   "tested": "2026-09-14",
+   "harvested": "2026-08-17",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000020571",
+   "checked": "2026-10-03"
+  },
   "1A4120300000C1F000044608": {
    "found": true,
    "facility": "Vireo Health of New York, LLC",
@@ -17521,6 +17954,18 @@
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300000C1F000020495",
    "checked": "2026-10-02"
+  },
+  "1A4120300000C1F000044617": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "Claybourne Classic Cuts - Large Bud - 3.5g - Indoor Purple Chem",
+   "strain": "Purple Chem",
+   "packaged": "2026-09-08",
+   "tested": "2026-09-14",
+   "harvested": "2026-08-17",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000020494",
+   "checked": "2026-10-03"
   },
   "1A4120300000C1F000044618": {
    "found": true,
@@ -17653,6 +18098,18 @@
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300000C1F000020367",
    "checked": "2026-10-02"
+  },
+  "1A4120300000C1F000044718": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "Bouket - Large Bud - 3.5g - Indoor Sky Fire OG",
+   "strain": "Sky Fire OG",
+   "packaged": "2026-08-26",
+   "tested": "2026-09-02",
+   "harvested": "2026-07-28",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000020365",
+   "checked": "2026-10-03"
   },
   "1A4120300000C1F000044725": {
    "found": true,
@@ -17893,6 +18350,18 @@
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300000C1F000034603",
    "checked": "2026-09-29"
+  },
+  "1A4120300000C1F000044935": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "Edie Parker Happiest Hour - Large Bud - 3.5g - Indoor Sugar Breath",
+   "strain": "Sugar Breath",
+   "packaged": "2026-07-23",
+   "tested": "2026-07-30",
+   "harvested": "2026-06-30",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000034604",
+   "checked": "2026-10-03"
   },
   "1A4120300000C1F000044941": {
    "found": true,
@@ -18542,6 +19011,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000D7F000038782": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
   "1A4120300000D7F000038893": {
    "found": false,
    "checked": "2026-09-29"
@@ -18553,6 +19026,10 @@
   "1A4120300000D7F000043223": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000D7F000043227": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A4120300000D7F000043275": {
    "found": false,
@@ -18610,6 +19087,10 @@
    "found": false,
    "checked": "2026-10-02"
   },
+  "1A4120300000D7F000052661": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
   "1A4120300000D7F000052752": {
    "found": false,
    "checked": "2026-09-29"
@@ -18618,9 +19099,17 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000D7F000052961": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
   "1A4120300000D7F000053228": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000D7F000053251": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A4120300000D7F000053546": {
    "found": false,
@@ -18642,6 +19131,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000D7F000058777": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
   "1A4120300000D7F000058791": {
    "found": false,
    "checked": "2026-09-29"
@@ -18661,6 +19154,10 @@
   "1A4120300000D7F000058942": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000D7F000058974": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A4120300000D7F000059001": {
    "found": false,
@@ -19398,6 +19895,106 @@
    "batchTag": "1A412030000132B000000382",
    "checked": "2026-09-29"
   },
+  "1A412030000132B000000469": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A412030000132B000000532": {
+   "found": true,
+   "facility": "ROUTE 27 HOPYARD LLC",
+   "product": "Toke Folks: 3.5g Animal Tsunami",
+   "strain": "Animal Tsunami",
+   "packaged": "2026-07-17",
+   "tested": "2026-07-22",
+   "harvested": "2026-05-12",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A412030000132B000000534",
+   "checked": "2026-10-03"
+  },
+  "1A412030000132B000000541": {
+   "found": true,
+   "facility": "ROUTE 27 HOPYARD LLC",
+   "product": "Toke Folks: Darryl Strawberry 1.5g Dub Sack",
+   "strain": "Darryl Strawberry",
+   "packaged": "2026-07-31",
+   "tested": "2026-08-25",
+   "harvested": "2026-05-06",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A412030000132B000000559",
+   "checked": "2026-10-03"
+  },
+  "1A412030000132B000000543": {
+   "found": true,
+   "facility": "ROUTE 27 HOPYARD LLC",
+   "product": "Toke Folks: Durban Poison 1.5g Dub Sack",
+   "strain": "Durban Poison x Triangle Kush",
+   "packaged": "2026-07-31",
+   "tested": "2026-08-25",
+   "harvested": "2026-05-06",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A412030000132B000000560",
+   "checked": "2026-10-03"
+  },
+  "1A412030000132B000000547": {
+   "found": true,
+   "facility": "ROUTE 27 HOPYARD LLC",
+   "product": "Toke Folks: 1.5g Animal Tsunami Dub Sacks",
+   "strain": "Animal Tsunami",
+   "packaged": "2026-08-01",
+   "tested": "2026-08-25",
+   "harvested": "2026-05-12",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A412030000132B000000556",
+   "checked": "2026-10-03"
+  },
+  "1A412030000132B000000548": {
+   "found": true,
+   "facility": "ROUTE 27 HOPYARD LLC",
+   "product": "Toke Folks: 1.5g Zuper Zoda",
+   "strain": "Zoda",
+   "packaged": "2026-08-01",
+   "tested": "2026-08-25",
+   "harvested": "2026-05-12",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A412030000132B000000557",
+   "checked": "2026-10-03"
+  },
+  "1A412030000132B000000551": {
+   "found": true,
+   "facility": "ROUTE 27 HOPYARD LLC",
+   "product": "Toke Folks: Route 27 LCG 3.5g Jar (Platinum LCG)",
+   "strain": "Lemon Cherry Gelato",
+   "packaged": "2026-08-04",
+   "tested": "2026-08-25",
+   "harvested": "2026-05-12",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A412030000132B000000567",
+   "checked": "2026-10-03"
+  },
+  "1A412030000132B000000553": {
+   "found": true,
+   "facility": "ROUTE 27 HOPYARD LLC",
+   "product": "Toke Folks: 1.5g Route 27 LCG (Platinum LCG)",
+   "strain": "Lemon Cherry Gelato",
+   "packaged": "2026-08-04",
+   "tested": "2026-08-25",
+   "harvested": "2026-05-12",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A412030000132B000000565",
+   "checked": "2026-10-03"
+  },
+  "1A412030000132B000000568": {
+   "found": true,
+   "facility": "ROUTE 27 HOPYARD LLC",
+   "product": "Toke Folks: Zuper Zoda 3.5g Jar",
+   "strain": "Zoda",
+   "packaged": "2026-08-04",
+   "tested": "2026-08-25",
+   "harvested": "2026-05-12",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A412030000132B000000569",
+   "checked": "2026-10-03"
+  },
   "1A412030000151C000000223": {
    "found": true,
    "facility": "Mount Vision Pharms LLC",
@@ -19786,6 +20383,18 @@
    "batchTag": null,
    "checked": "2026-09-29"
   },
+  "1A4120300001613000000903": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Lime Street 2025 28g",
+   "strain": "Lime Street",
+   "packaged": "2026-04-06",
+   "tested": "2025-12-23",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000000135",
+   "checked": "2026-10-03"
+  },
   "1A4120300001613000001014": {
    "found": true,
    "facility": "PASSION FIELD FARM LLC",
@@ -19797,6 +20406,150 @@
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300001613000000141",
    "checked": "2026-10-02"
+  },
+  "1A4120300001613000001216": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Lime Street 2025 3.5g(1)",
+   "strain": "Lime Street",
+   "packaged": "2026-08-17",
+   "tested": "2025-12-23",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000000132",
+   "checked": "2026-10-03"
+  },
+  "1A4120300001613000001220": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Zookies 28g(1)",
+   "strain": "Zookies",
+   "packaged": "2026-08-18",
+   "tested": "2026-06-29",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000001054",
+   "checked": "2026-10-03"
+  },
+  "1A4120300001613000001221": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Black Runtz 2025 14g(2)",
+   "strain": "Black Runts 2025",
+   "packaged": "2026-08-18",
+   "tested": "2026-06-29",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000001052",
+   "checked": "2026-10-03"
+  },
+  "1A4120300001613000001222": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Jelloz 2025 14g(2)",
+   "strain": "Jelloz 2025",
+   "packaged": "2026-08-18",
+   "tested": "2026-06-29",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000001053",
+   "checked": "2026-10-03"
+  },
+  "1A4120300001613000001223": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Galactic Guava 3.5g(1)",
+   "strain": "Galactic Guava 2025",
+   "packaged": "2026-08-18",
+   "tested": "2025-12-23",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000000139",
+   "checked": "2026-10-03"
+  },
+  "1A4120300001613000001229": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Black Runtz 2025 3.5g",
+   "strain": "Black Runts 2025",
+   "packaged": "2026-08-20",
+   "tested": "2025-12-23",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000000134",
+   "checked": "2026-10-03"
+  },
+  "1A4120300001613000001236": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Grape Expectations 3.5g",
+   "strain": "Grape Expectations 2025",
+   "packaged": "2026-08-20",
+   "tested": "2025-12-23",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000000141",
+   "checked": "2026-10-03"
+  },
+  "1A4120300001613000001246": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Jelloz 3.5g(1)",
+   "strain": "Jelloz 2025",
+   "packaged": "2026-08-20",
+   "tested": "2025-12-23",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000000144",
+   "checked": "2026-10-03"
+  },
+  "1A4120300001613000001255": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Solar Citrus 2025 3.5g",
+   "strain": "Solar Citrus 2025",
+   "packaged": "2026-08-21",
+   "tested": "2026-06-29",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000001056",
+   "checked": "2026-10-03"
+  },
+  "1A4120300001613000001271": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Zookies 2025 3.5g(1)",
+   "strain": "Zookies",
+   "packaged": "2026-08-25",
+   "tested": "2025-12-23",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000000149",
+   "checked": "2026-10-03"
+  },
+  "1A4120300001613000001273": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Grape Expectations 2025 14g(1)",
+   "strain": "Grape Expectations 2025",
+   "packaged": "2026-08-26",
+   "tested": "2026-06-29",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000001055",
+   "checked": "2026-10-03"
+  },
+  "1A4120300001613000001349": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Solar Citrus 2025 28g",
+   "strain": "Solar Citrus 2025",
+   "packaged": "2026-09-28",
+   "tested": "2026-06-29",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000001048",
+   "checked": "2026-10-03"
   },
   "1A412030000164A000000240": {
    "found": false,
@@ -20350,6 +21103,14 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A41203000016B4000006490": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000016B4000006491": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
   "1A4120300001718000001680": {
    "found": false,
    "checked": "2026-09-29"
@@ -20857,6 +21618,10 @@
   "1A41203000018B1000038265": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A41203000018B1000038267": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A41203000018B1000038528": {
    "found": false,
@@ -22274,6 +23039,34 @@
    "found": false,
    "checked": "2026-10-01"
   },
+  "1A41203000018B1000095270": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000018B1000095271": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000018B1000095272": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000018B1000095273": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000018B1000095274": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000018B1000095275": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000018B1000095276": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
   "1A41203000018B1000095320": {
    "found": false,
    "checked": "2026-10-02"
@@ -22637,6 +23430,14 @@
   "1A412030000193C000000255": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A412030000193C000000276": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A412030000193C000000278": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A4120300001A30000000035": {
    "found": true,
@@ -24254,6 +25055,18 @@
    "found": false,
    "checked": "2026-10-02"
   },
+  "1A4120300001AFD000008204": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300001AFD000008205": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A4120300001AFD000008206": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
   "1A4120300001C41000001954": {
    "found": false,
    "checked": "2026-09-29"
@@ -24753,6 +25566,10 @@
   "1A4120300001D84000004673": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300001D84000004682": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A4120300001D84000004764": {
    "found": false,
@@ -26098,6 +26915,78 @@
    "batchTag": "1A41203000022C5000002908",
    "checked": "2026-10-01"
   },
+  "1A41203000022C5000003560": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Candy Blues - 3.5g",
+   "strain": "Candy Blues",
+   "packaged": "2026-09-29",
+   "tested": "2026-09-18",
+   "harvested": "2026-09-14",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000003087",
+   "checked": "2026-10-03"
+  },
+  "1A41203000022C5000003562": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Dumpster - 3.5g",
+   "strain": "Dumpster",
+   "packaged": "2026-09-29",
+   "tested": "2026-09-22",
+   "harvested": "2026-09-14",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000003088",
+   "checked": "2026-10-03"
+  },
+  "1A41203000022C5000003564": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Headband - 3.5g",
+   "strain": "Headband",
+   "packaged": "2026-09-29",
+   "tested": "2026-08-07",
+   "harvested": "2026-01-13",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000002281",
+   "checked": "2026-10-03"
+  },
+  "1A41203000022C5000003565": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Magic Marker - 3.5g",
+   "strain": "Magic Marker",
+   "packaged": "2026-09-29",
+   "tested": "2026-09-22",
+   "harvested": "2026-09-14",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000003091",
+   "checked": "2026-10-03"
+  },
+  "1A41203000022C5000003567": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Sherbadelic - 3.5g",
+   "strain": "Sherbadelic",
+   "packaged": "2026-09-29",
+   "tested": "2026-09-18",
+   "harvested": "2026-09-14",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000003092",
+   "checked": "2026-10-03"
+  },
+  "1A41203000022C5000003569": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth Jar - Uptown Haze - 3.5g",
+   "strain": "Uptown Haze",
+   "packaged": "2026-09-29",
+   "tested": "2026-09-09",
+   "harvested": "2026-08-18",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000002908",
+   "checked": "2026-10-03"
+  },
   "1A41203000022C5000003745": {
    "found": true,
    "facility": "AJ'S NATIVE WHOLESALE INC",
@@ -27310,6 +28199,18 @@
    "batchTag": "1A4120300004396000001763",
    "checked": "2026-09-29"
   },
+  "1A4120300004396000010082": {
+   "found": true,
+   "facility": "Lunulata LLC",
+   "product": "Smoke | WRLD | 3.5g | Chrome Runtz",
+   "strain": "Chrome Runtz",
+   "packaged": "2026-08-24",
+   "tested": "2026-05-24",
+   "harvested": null,
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300004396000001174",
+   "checked": "2026-10-03"
+  },
   "1A4120300004396000010083": {
    "found": true,
    "facility": "Lunulata LLC",
@@ -28110,6 +29011,34 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A41203000052D5000031441": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000031442": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000031459": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000031460": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000031461": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000031462": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000031463": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
   "1A41203000052D5000031843": {
    "found": false,
    "checked": "2026-10-01"
@@ -28157,6 +29086,54 @@
   "1A41203000052D5000032325": {
    "found": false,
    "checked": "2026-10-01"
+  },
+  "1A41203000052D5000032499": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000032500": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000032501": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000032502": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000032504": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000032509": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000032510": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000032511": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000032513": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000032515": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000032517": {
+   "found": false,
+   "checked": "2026-10-03"
+  },
+  "1A41203000052D5000032519": {
+   "found": false,
+   "checked": "2026-10-03"
   },
   "1A41203000052D5000032580": {
    "found": false,
@@ -28237,6 +29214,18 @@
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A41203000054C6000000153",
    "checked": "2026-09-29"
+  },
+  "1A41203000054C6000000145": {
+   "found": true,
+   "facility": "Wizard Trees NY LLC",
+   "product": "Black Magic Flower 3.5G Jar",
+   "strain": "Black Magic",
+   "packaged": "2026-07-16",
+   "tested": "2026-07-22",
+   "harvested": "2026-07-07",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000054C6000000154",
+   "checked": "2026-10-03"
   },
   "1A41203000054C6000000146": {
    "found": true,

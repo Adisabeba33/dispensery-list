@@ -25,5 +25,8 @@
   },
   "https://drive.google.com": {
     "errors": 0
+  },
+  "https://app.alleaves.com": {
+    "errors": 0
   }
 }
