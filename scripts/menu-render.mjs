@@ -4166,6 +4166,17 @@ const main = async () => {
       if (at > -1) report[at].retryBudgetSpent = true;
       continue;
     }
+    /* A second visit after a short first reading: that reading's listings are
+       set aside, so the visit starts from a clean shelf and the two are never
+       published side by side. Which of them is kept is decided when it ends. */
+    if (job.attempt > 1 && (job.first.flower ?? 0) > 0) {
+      job.firstListings = listings.filter((l) => l.licenseNumber === shop.licenseNumber);
+      for (let i = listings.length - 1; i >= 0; i -= 1) {
+        if (listings[i].licenseNumber === shop.licenseNumber) listings.splice(i, 1);
+      }
+    } else if (job.attempt > 1) {
+      job.firstListings = [];
+    }
     const site = shop.contact.website;
 
     if (PAUSE_MS && visitedOnce) await new Promise((r) => setTimeout(r, PAUSE_MS));
@@ -5235,17 +5246,30 @@ const main = async () => {
        genuinely emptied its shelf would otherwise be visited twice a day for
        the rest of time. Not the three whose robots.txt says no — those are not
        ours to ask twice, or once. */
+    /* A shelf that came back at less than half of yesterday's is asked again
+       on the same terms as an empty one. On 2 October two Travel Agency shops
+       read twenty products each where the day before had 170 and 208 — the
+       page before its loader fired — and the carry-forward held them at the
+       old reading for a day when a second visit would have read them. The
+       threshold is the one the hold uses, so what would be held is what gets
+       asked. */
+    const hadBefore = PREVIOUS_SHELF.get(shop.licenseNumber) ?? 0;
     if (
       job.attempt === 1 &&
-      !entry.flower &&
+      (!entry.flower || entry.flower * 2 < hadBefore) &&
       entry.menuLink !== 'robots-disallowed' &&
-      (PREVIOUS_SHELF.get(shop.licenseNumber) ?? 0) > 0
+      hadBefore > 0
     ) {
       entry.willAskAgain = true;
       queue.push({
         shop,
         attempt: 2,
-        first: { status: entry.status, productsSeen: entry.productsSeen ?? 0, menuLink: entry.menuLink ?? null },
+        first: {
+          status: entry.status,
+          productsSeen: entry.productsSeen ?? 0,
+          flower: entry.flower ?? 0,
+          menuLink: entry.menuLink ?? null,
+        },
       });
     }
 
@@ -5261,6 +5285,17 @@ const main = async () => {
       entry.firstAttempt = job.first;
       delete entry.willAskAgain;
       const at = report.findIndex((r) => r.licence === entry.licence);
+      /* A short first reading was set aside before this visit. Whichever
+         visit read more is the one published; the other's listings go, or
+         the shop would carry both readings of the same shelf. */
+      if ((entry.flower ?? 0) < (job.first.flower ?? 0)) {
+        for (let i = listings.length - 1; i >= 0; i -= 1) {
+          if (listings[i].licenseNumber === shop.licenseNumber) listings.splice(i, 1);
+        }
+        listings.push(...job.firstListings);
+        entry.secondReadLess = entry.flower ?? 0;
+        entry.flower = job.first.flower;
+      }
       if (at > -1) report[at] = entry;
       else report.push(entry);
       retrySpent += Date.now() - startedAt;

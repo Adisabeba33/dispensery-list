@@ -75,6 +75,15 @@ try {
           strainNameRaw: 'Yesterday Kush',
           capturedAt: new Date(Date.now() - 86400000).toISOString(),
         },
+        /* The short shop had four strains yesterday; today's first visit will
+           read one flower and a pre-roll, which is what makes the collector ask it again. */
+        ...[1, 2, 3, 4].map((n) => ({
+          ...shelves[0],
+          licenseNumber: 'OCM-CAURD-24-000973',
+          listingId: `OCM-CAURD-24-000973::fixture-yesterday-${n}`,
+          strainNameRaw: `Yesterday Kush ${n}`,
+          capturedAt: new Date(Date.now() - 86400000).toISOString(),
+        })),
       ],
       null,
       1,
@@ -84,7 +93,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '26',
+    '--limit', '27',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -130,8 +139,19 @@ try {
   check('and the first visit really did come back empty', flaky?.firstAttempt?.productsSeen, 0);
   check('the second visit found the shelf', flaky?.flower, 2);
   check('one row for the shop, not two', summary.perShop.filter((s) => s.licence === 'OCM-CAURD-24-000997').length, 1);
-  check('the run counted the second visits', summary.askedAgain, 1);
-  check('and says the asking worked', summary.askedAgainAndAnswered, 1);
+  check('the run counted the second visits', summary.askedAgain, 2);
+  check('and says the asking worked', summary.askedAgainAndAnswered, 2);
+
+  /* A shelf that came back much smaller than yesterday's is asked again the
+     same way. Two Travel Agency shops read twenty products on 2 October where
+     the day before had two hundred — the page before its loader fired — and
+     were held at the old reading for a day when a second visit would have
+     read them. */
+  const short = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000973');
+  check('a shelf that shrank by half is not believed either', short?.retried, true);
+  check('what the first visit read is kept', short?.firstAttempt?.flower, 1);
+  check('the second visit read the shelf', short?.flower, 2);
+  check('one row for the short shop too', summary.perShop.filter((s) => s.licence === 'OCM-CAURD-24-000973').length, 1);
 
   /* The bound on all of this. A shop we have never read a shelf from is read
      once and left alone however empty it is — otherwise a day on which nothing
@@ -246,7 +266,7 @@ try {
   check('and says so where the report reads it', refused?.menuLink, 'robots-disallowed');
   check('the refusal is named by licence', refused?.licence, 'OCM-CAURD-24-000984');
   check('the run counts it', summary.robotsDisallowed, 1);
-  check('and does not count it as a shop it read', summary.shopsVisited, 25);
+  check('and does not count it as a shop it read', summary.shopsVisited, 26);
 
   /* The retry replaces the empty reading rather than being carried alongside
      it: the shelf published for this shop is today's, not yesterday's held
@@ -258,6 +278,17 @@ try {
   check(
     'and the held shelf is gone',
     flakyShelf.some((l) => l.strainNameRaw === 'Yesterday Kush'),
+    false,
+  );
+  /* And the short shop publishes its second reading, not the one product of
+     the first beside it, and not yesterday's four. */
+  const shortShelf = JSON.parse(readFileSync(LISTINGS, 'utf8')).filter(
+    (l) => l.licenseNumber === 'OCM-CAURD-24-000973',
+  );
+  check('the second reading of a short shelf is what gets published', shortShelf.length, 2);
+  check(
+    'and neither the first reading nor the held shelf is beside it',
+    shortShelf.some((l) => l.strainNameRaw.startsWith('Yesterday Kush')),
     false,
   );
 
