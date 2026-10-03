@@ -19,11 +19,21 @@ Colorado Chem: урожай 17 января, тест в марте, банки 
 Спрашиваются только новые метки. Найденный пакет не перечитывается: его даты
 не меняются. Не найденный перепроверяется раз в RECHECK_DAYS — производитель
 может завести его позже. Сеть не ответила — перепроверяется в следующий раз.
+
+Retail ID — страница для покупателя с телефоном у банки, и спрашивается она
+так же: по одному запросу, с паузой PAUSE секунд, не больше MAX_PER_RUN за
+прогон (ссылки и карточки вместе). Сначала новые метки, потом перепроверки —
+самые давние первыми, и им не меньше RECHECK_MIN мест, если они ждут. Что не
+влезло, ждёт следующего прогона. До 3 октября 2026 всё спрашивалось разом в
+восемь потоков: 29 сентября — 5 028 запросов за минуты, и через две недели
+они все разом пришли бы на перепроверку. После STOP_AFTER_ERRORS ответов
+подряд не 200 и не 404 прогон перестаёт спрашивать.
 """
 import json
+import random
 import re
 import subprocess
-from concurrent.futures import ThreadPoolExecutor
+import time
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -34,7 +44,11 @@ API = "https://app.1a4.com/api/landingpage/data"
 TAG = re.compile(r"^1A4[0-9A-F]{21}$")
 LINK = re.compile(r"^https://1a4\.com/(\S+)$", re.I)
 LANDING = re.compile(r"landingpage/([0-9a-fA-F]{24})/")
-RECHECK_DAYS = 14
+RECHECK_DAYS = 30
+MAX_PER_RUN = 150
+RECHECK_MIN = 30
+PAUSE = (6, 14)
+STOP_AFTER_ERRORS = 5
 
 
 def curl(url, *extra):
@@ -59,7 +73,47 @@ def day(value):
     return value[:10] if isinstance(value, str) and re.match(r"\d{4}-\d{2}-\d{2}", value) else None
 
 
+class Budget:
+    """Сколько ещё можно спросить в этом прогоне, с паузой перед каждым
+    запросом, кроме первого, и остановкой после ошибок подряд."""
+
+    def __init__(self, limit, pause=PAUSE, sleep=time.sleep):
+        self.left, self.pause, self.sleep = limit, pause, sleep
+        self.asked = self.errors = 0
+
+    def take(self):
+        if self.left <= 0 or self.errors >= STOP_AFTER_ERRORS:
+            return False
+        if self.asked:
+            self.sleep(random.uniform(*self.pause))
+        self.left -= 1
+        self.asked += 1
+        return True
+
+    def answered(self, ok):
+        self.errors = 0 if ok else self.errors + 1
+
+
+def plan(tags, packages, stale, room):
+    """Какие метки спросить: новые и неотвеченные, потом перепроверки
+    ненайденных — самые давние первыми, не меньше RECHECK_MIN мест им."""
+    fresh = sorted(t for t in tags if (packages.get(t) or {}).get("found") is None)
+    recheck = sorted((t for t in tags if (packages.get(t) or {}).get("found") is False
+                      and packages[t].get("checked", "") <= stale),
+                     key=lambda t: (packages[t].get("checked", ""), t))
+    room = max(room, 0)
+    take_recheck = min(len(recheck), room, max(RECHECK_MIN, room - len(fresh)))
+    return fresh[:room - take_recheck] + recheck[:take_recheck], len(fresh), len(recheck)
+
+
 def card(tag):
+    try:
+        return read_card(tag)
+    except (ValueError, TypeError, AttributeError) as e:
+        return {"found": None, "error": f"unreadable: {e}"[:200]}
+
+
+def read_card(tag):
     body, code = curl(f"{API}?id={tag.lower()}&index=0")
     if code == "404":
         return {"found": False}
@@ -84,7 +138,7 @@ def card(tag):
     }
 
 
-def main():
+def main(budget=None):
     raw = json.loads(LISTINGS.read_text())
     rows = raw if isinstance(raw, list) else raw["listings"]
     seen = {str(t).strip() for r in rows for t in (r.get("packageIds") or [])}
@@ -97,33 +151,39 @@ def main():
     today = date.today()
     stale = (today - timedelta(days=RECHECK_DAYS)).isoformat()
 
+    budget = budget or Budget(MAX_PER_RUN)
+
     new_links = sorted(t for t in seen if LINK.match(t) and t not in links)
-    with ThreadPoolExecutor(8) as pool:
-        for link, tag in zip(new_links, pool.map(resolve, new_links)):
-            if tag:
-                links[link] = tag
+    for link in new_links:
+        if not budget.take():
+            break
+        tag = resolve(link)
+        if tag:
+            links[link] = tag
     tags = {t.upper() for t in seen if TAG.match(t.upper())} | set(links.values())
 
-    def due(tag):
-        entry = packages.get(tag)
-        if not entry or entry.get("found") is None:
-            return True
-        return entry.get("found") is False and entry.get("checked", "") <= stale
-
-    todo = sorted(t for t in tags if due(t))
-    with ThreadPoolExecutor(8) as pool:
-        for tag, entry in zip(todo, pool.map(card, todo)):
-            packages[tag] = {**entry, "checked": today.isoformat()}
+    todo, fresh, recheck = plan(tags, packages, stale, budget.left)
+    done = []
+    for tag in todo:
+        if not budget.take():
+            break
+        entry = card(tag)
+        budget.answered(entry.get("found") is not None)
+        packages[tag] = {**entry, "checked": today.isoformat()}
+        done.append(tag)
 
     OUT.write_text(json.dumps({
         "about": "Карточки пакетов из Metrc Retail ID (app.1a4.com) для меток, которые печатают "
                  "меню: даты упаковки, теста и сбора. found=false — пакета нет в Retail ID "
-                 "(перепроверяется раз в две недели). Пишется scripts/retail-id.py.",
+                 "(перепроверяется раз в месяц). Спрашивается по одному, с паузой, не больше 150 "
+                 "запросов за прогон. Пишется scripts/retail-id.py.",
         "links": dict(sorted(links.items())),
         "packages": dict(sorted(packages.items())),
     }, ensure_ascii=False, indent=1) + "\n")
     found = [p for p in packages.values() if p.get("found")]
-    print(f"{OUT.relative_to(ROOT)}: меток {len(tags)}, спрошено сейчас {len(todo)}; "
+    stopped = " — остановились после ошибок подряд" if budget.errors >= STOP_AFTER_ERRORS else ""
+    print(f"{OUT.relative_to(ROOT)}: меток {len(tags)}, запросов сейчас {budget.asked} из {MAX_PER_RUN} "
+          f"(карточек {len(done)}; новых ждало {fresh}, перепроверок ждало {recheck}){stopped}; "
           f"в Retail ID {len(found)}, с датой упаковки {sum(1 for p in found if p.get('packaged'))}, "
           f"с датой сбора {sum(1 for p in found if p.get('harvested'))}")
 
