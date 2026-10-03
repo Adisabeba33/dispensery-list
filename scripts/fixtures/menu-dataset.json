@@ -493,5 +493,23 @@
    "state": "NY",
    "zip": "11201"
   }
+ },
+ {
+  "id": "fixture-shop-short",
+  "licenseNumber": "OCM-CAURD-24-000973",
+  "legalName": "Short Fixture Dispensary LLC",
+  "dbaName": "Short Fixture Dispensary",
+  "operationalStatus": "OPEN",
+  "menu": {
+   "provider": "DUTCHIE"
+  },
+  "contact": {
+   "website": "http://localhost:4399/short"
+  },
+  "address": {
+   "line1": "27 Test St",
+   "city": "Brooklyn",
+   "zip": "11201"
+  }
  }
 ]

@@ -32,6 +32,11 @@ const PRODUCTS = JSON.parse(readFileSync(resolve(HERE, 'api/products.json'), 'ut
    and the only way to tell it from a shop that has actually emptied its shelf
    is to ask a second time. */
 let flakyAsked = 0;
+/* The short shop's menu hands its first caller one product of the shelf and
+   every caller after that the whole of it — a page whose loader never fired,
+   which is what Terrapin Greens and Tango Hotel Charlie looked like on the
+   second of October: twenty products where the day before had two hundred. */
+let shortAsked = 0;
 /* How often each page of the shifting shop's menu has been asked for. */
 const shiftingAsked = new Map();
 
@@ -123,6 +128,13 @@ createServer((req, res) => {
     const order = times === 1 ? { 0: [0, 2], 1: [2, 3], 2: [3, 4] } : { 0: [0, 1], 1: [2, 3], 2: [3, 4] };
     res.writeHead(200, { 'content-type': 'application/json' });
     res.end(JSON.stringify({ data: { products: (order[page] ?? []).map((i) => PRODUCTS[i]), total_count: PRODUCTS.length } }));
+    return;
+  }
+
+  if (url.pathname === '/api/short.json') {
+    shortAsked += 1;
+    res.writeHead(200, { 'content-type': 'application/json' });
+    res.end(JSON.stringify({ data: { products: shortAsked > 1 ? PRODUCTS.slice(0, 2) : [PRODUCTS[0], PRODUCTS[2]] } }));
     return;
   }
 
@@ -344,6 +356,8 @@ createServer((req, res) => {
       '/nolink': 'nolink.html',
       '/flaky': 'flaky.html',
       '/flaky-menu': 'flaky-menu.html',
+      '/short': 'short.html',
+      '/short-menu': 'short-menu.html',
       '/empty': 'empty.html',
       '/empty-menu': 'empty-menu.html',
       '/facets': 'facets.html',
