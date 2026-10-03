@@ -54,21 +54,20 @@
 | Housing Works Cannabis Co. | New York | https://hwcannabis.co | страница вернула ноль товаров |
 | The Hootch LLC | New York | https://www.sweetlife.nyc | ссылку на меню не нашли |
 | THE GOAT DISPENSARY | Rego Park | https://www.thegoatdispensary.com | ссылку на меню не нашли |
-| Green Land Retail LLC | Staten Island | https://greenlandny.com | страница вернула ноль товаров |
+| Green Land Retail LLC | Staten Island | https://greenlandny.com | ссылку на меню не нашли |
 | Fluent | White Plains | https://etainhealth.com/ | страница вернула ноль товаров |
 | Cannabis Group NY, LLC | Whitestone | https://ignyteny.com | robots.txt запрещает — **не трогать** |
 
 ✳️ — адрес в `menu-endpoints.json` уже есть, и всё равно пусто: значит записанный адрес больше не тот.
 
-## Полка читается не до конца — 3
+## Полка читается не до конца — 2
 
 Здесь адрес есть и меню отвечает, но отдаёт меньше, чем само объявляет. Листание таким не помогло — им нужен прямой адрес категории.
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| The Bridge A Cannabis Experience | 57 | 379 | https://thebridgecannabis.com |
-| KushKlub NY LLC | 58 | 96 | https://kushklub.com |
-| Smacked LLC | 14 | 21 | https://getsmacked.online/ |
+| The Bridge A Cannabis Experience | 4 | 374 | https://thebridgecannabis.com |
+| KushKlub NY LLC | 58 | 95 | https://kushklub.com |
 
 ## Сюда не ходим
 
