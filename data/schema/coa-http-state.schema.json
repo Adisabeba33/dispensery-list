@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "COA HTTP host cooldown state",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "errors"
+    ],
+    "properties": {
+      "errors": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "blockedUntil": {
+        "type": "string",
+        "format": "date-time",
+        "description": "UTC deadline after five consecutive request errors; persisted between daily runs."
+      }
+    }
+  }
+}

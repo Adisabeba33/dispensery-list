@@ -176,6 +176,7 @@ jobs:
           python scripts/retail-id.py
           python scripts/shelf-terpenes.py
           git add data/coa-dates.json data/retail-id.json data/shelf-terpenes.json
+          if [ -f data/coa-http-state.json ]; then git add data/coa-http-state.json; fi
           if [ -f data/shelf-terpenes-archive.json ]; then git add data/shelf-terpenes-archive.json; fi
           git diff --cached --quiet || git commit -q -m "menu: shelf lots"
 

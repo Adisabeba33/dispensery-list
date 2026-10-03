@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Dates and identifiers read from published documents",
+  "type": "object",
+  "required": [
+    "about",
+    "certificates"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "about": {
+      "type": "string"
+    },
+    "certificates": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "lab",
+          "sampled",
+          "sampledFrom",
+          "packaged",
+          "harvested"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "lab": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "unread": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sampleId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "batchTag": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "lotNumber": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "metrcTag": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sampled": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "packaged": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "harvested": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "sampledFrom": {
+            "enum": [
+              "sampled",
+              "received",
+              "tested",
+              "reported",
+              null
+            ],
+            "description": "The actual event label in the document; this is not a packaging date."
+          },
+          "packagedFrom": {
+            "enum": [
+              "document",
+              "metrc-retail-id",
+              null
+            ],
+            "description": "Explicit packaging date in the document or printed Metrc card; never inferred from expiry."
+          },
+          "harvestedFrom": {
+            "enum": [
+              "document-harvest-lot-id",
+              null
+            ],
+            "description": "Explicit H:MM.DD.YY harvest code; cultivation dates are not harvest dates."
+          },
+          "sourceKind": {
+            "enum": [
+              "menu",
+              "brand-page"
+            ]
+          },
+          "sourcePage": {
+            "type": "string",
+            "format": "uri",
+            "description": "Brand page on which this exact document URL was published."
+          },
+          "documentUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "docType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
