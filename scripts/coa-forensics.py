@@ -61,7 +61,7 @@ LOT_IDS = [
 ]
 # The package the lab sampled, when the certificate prints it.
 METRC_TAGS = [
-    re.compile(r"(?:Seed\s+to\s+sale|Metrc\s+Package\s*#?|TEST\s+PKG|Test\s+Package|Source\s+Package)\s*[:#]?\s*(1A4[0-9A-F]{21})\b", re.I),
+    re.compile(r"(?:Seed\s+to\s+sale|Metrc\s+Package\s*(?:ID)?|Regulator\s+(?:Source\s+)?Package\s+ID|Package\s+ID|TEST\s+PKG|Test\s+Package|Source\s+Package)\s*[:#]*\s*(1A4[0-9A-F]{21})\b", re.I),
 ]
 DATES = {
     "sampled": [r"Sampled Date", r"Sampling Date", r"Sample Collection Date(?:/Time)?", r"Date Sampled", r"Sample Collected", r"Sampled"],

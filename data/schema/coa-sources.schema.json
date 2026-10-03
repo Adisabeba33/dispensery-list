@@ -1,0 +1,144 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Published brand COA sources",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "checkedAt",
+    "scope",
+    "sources"
+  ],
+  "properties": {
+    "checkedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "brandKey",
+          "brand",
+          "url",
+          "method",
+          "status",
+          "pages",
+          "certificateLinks"
+        ],
+        "properties": {
+          "brandKey": {
+            "type": "string"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "checkedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri"
+          },
+          "method": {
+            "enum": [
+              "list",
+              "batch-search",
+              "QR",
+              null
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "pages": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "exampleUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri"
+          },
+          "error": {
+            "type": "string"
+          },
+          "listUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "note": {
+            "type": "string"
+          },
+          "certificateLinks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "url",
+                "publishedOn",
+                "scope"
+              ],
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "section": {
+                  "type": "string"
+                },
+                "publishedOn": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "scope": {
+                  "enum": [
+                    "pending-review",
+                    "ny-flower",
+                    "other-product",
+                    "state-unconfirmed"
+                  ]
+                },
+                "linkLocation": {
+                  "enum": [
+                    "anchor",
+                    "embedded-page-config"
+                  ]
+                },
+                "format": {
+                  "enum": [
+                    "document-view-page"
+                  ]
+                },
+                "reviewedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "accessStatus": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,16 +1,13 @@
 #!/usr/bin/env python3
 """Даты с сертификатов партий: когда отобрали пробу, когда упаковали, когда собрали.
 
-Сколько банка лежит — вопрос, на который меню не отвечает никогда. Отвечает
-сертификат: лаборатория отбирает пробу уже из расфасованной партии («R 3.5G
-PLUTO 4», партия 1920 пакетов), поэтому день отбора пробы — это день, раньше
-которого пакет не существовал, а упакован он в тот же день или за несколько
-дней до него. У части сертификатов есть и сама дата упаковки (Packaged Date в
-карточке Metrc), и дата сбора (Harvest/Lot ID вида «H:12.01.25»).
+Дата отбора, получения пробы или отчёта — отдельное событие, не дата упаковки.
+У части документов дата упаковки указана явно (Packaged Date / PACKAGED ON
+в карточке Metrc), как и дата сбора (Harvest/Lot ID вида «H:12.01.25»).
 
     python scripts/coa-dates.py            # data/coa-dates.json
 
-Берёт ссылки на сертификаты из data/shelf-terpenes.json, скачивает те, которых
+Берёт опубликованные ссылки из shelf-terpenes.json и coa-sources.json, скачивает те, которых
 ещё нет в data/coa-dates.json, и читает их через pdftotext (poppler-utils).
 Сами PDF не хранятся: сертификат не меняется, прочитанное пишется один раз.
 Не прочитанное (сеть, нет pdftotext, незнакомый формат) пишется с пустыми
@@ -32,7 +29,10 @@ PLUTO 4», партия 1920 пакетов), поэтому день отбор
                     приехала в лабораторию; на день-два позже отбора
 - Smithers:         «Sample Collected: 05/11/2026»
 - другие:           «Date Collected: May 28, 2026»
+- Talon layout:     «Collection Date: 6/30/2023», «Received Date: 6/30/2023»
+- MCR:              «Sample Collection\n10/9/2025 11:10\nDate and Time»
 - карточка Metrc:   «Packaged Date 02/18/2026», дата теста «On: 2026-02-03»
+- новая карточка:   «PACKAGED ON\n02/18/2026», «TESTED DATE\n12/17/2025»
 - в крайнем случае: «Report Date» — день отчёта, на неделю-другую позже пробы
 """
 import hashlib
@@ -42,8 +42,7 @@ import re
 import shutil
 import subprocess
 import tempfile
-import urllib.request
-from concurrent.futures import ThreadPoolExecutor
+import argparse
 from datetime import date
 from pathlib import Path
 
@@ -51,10 +50,14 @@ ROOT = Path(__file__).resolve().parents[1]
 LOTS = ROOT / "data/shelf-terpenes.json"
 OUT = ROOT / "data/coa-dates.json"
 BACKFILL = 40  # сертификатов без отпечатка перечитывается за прогон
+SOURCES = ROOT / "data/coa-sources.json"
 
 _spec = importlib.util.spec_from_file_location("coa_forensics", ROOT / "scripts/coa-forensics.py")
 cf = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(cf)
+_http_spec = importlib.util.spec_from_file_location("coa_source_http", ROOT / "scripts/coa-source-http.py")
+http = importlib.util.module_from_spec(_http_spec)
+_http_spec.loader.exec_module(http)
 
 D = r"(\d{1,2}/\d{1,2}/\d{2,4}|\d{4}-\d{2}-\d{2}|[A-Z][a-z]{2,8}\.? \d{1,2}, \d{4})"
 MONTHS = {m: i for i, m in enumerate(
@@ -66,19 +69,22 @@ SAMPLED = [
     re.compile(r"Date Sampled:\s*" + D),
     re.compile(r"\bSampled:\s*" + D),
     re.compile(r"Sample Collected:\s*" + D),
+    re.compile(r"Date Collected:\s*" + D),
+    re.compile(r"\bCollection Date:\s*" + D),
+    re.compile(r"Sample Collection[ \t]*\n[ \t]*" + D + r"[^\n]*\n[ \t]*Date and Time"),
 ]
 RECEIVED = [
     re.compile(r"Sample Received:\s*" + D),
     re.compile(r"Date Received:\s*" + D),
-    re.compile(r"Date Collected:\s*" + D),
+    re.compile(r"Received Date:\s*" + D),
 ]
-REPORTED = [re.compile(r"Report Date:?\s*" + D), re.compile(r"Published:\s*" + D)]
+REPORTED = [re.compile(r"(?:Report Date|Reported Date|Date Reported|Report Created|Date Released|Completed)\s*:?\s*" + D), re.compile(r"Published:\s*" + D)]
 TESTED = [re.compile(r"Tested By:[^\n]*\n\s*On:\s*" + D), re.compile(r"\bOn:\s*" + D)]
 PACKAGED = re.compile(r"Packaged Date\s*:?\s*" + D)
 HARVEST = re.compile(r"Harvest/Lot ID:[^\n]*?\bH:\s*(\d{1,2})\.(\d{1,2})\.(\d{2,4})")
 LABS = [("Kaycha", "Kaycha"), ("Green Analytics", "Green Analytics"), ("DRS Testing", "DRS"),
         ("Keystone", "Keystone"), ("ACT Lab", "ACT"), ("Reliable Labs", "Reliable"), ("Metrc", "Metrc"),
-        ("metrc", "Metrc")]
+        ("metrc", "Metrc"), ("Smithers", "Smithers"), ("MCR Labs", "MCR")]
 
 
 def iso(text):
@@ -109,6 +115,14 @@ def first(patterns, text):
 
 
 def read(text):
+    parsed = cf.parse_text(text)
+    if parsed["docType"] == "metrc-retail-id":
+        tested = parsed.get("tested")
+        packaged = parsed.get("packaged")
+        return {"lab": parsed.get("lab"), "sampled": tested,
+                "sampledFrom": "tested" if tested else None,
+                "packaged": packaged, "packagedFrom": "metrc-retail-id" if packaged else None,
+                "harvested": None, "harvestedFrom": None}
     lab = next((name for needle, name in LABS if needle in text), None)
     sampled = first(SAMPLED, text)
     how = "sampled"
@@ -137,7 +151,9 @@ def read(text):
         # (на день-два позже) или день теста (карточка Metrc без даты отбора).
         "sampledFrom": how if sampled else None,
         "packaged": iso(packaged.group(1)) if packaged else None,
+        "packagedFrom": "document" if packaged and iso(packaged.group(1)) else None,
         "harvested": harvested,
+        "harvestedFrom": "document-harvest-lot-id" if harvested else None,
     }
 
 
@@ -154,28 +170,49 @@ def identifiers(text, blob):
     return out
 
 
-def fetch(url, workdir):
+def fetch(url, workdir, reader):
     path = Path(workdir) / (re.sub(r"[^A-Za-z0-9]+", "_", url)[-80:] + ".pdf")
     try:
-        with urllib.request.urlopen(url, timeout=40) as r:
-            blob = r.read()
+        final_url, _, blob = reader.get(url)
+        if not blob.startswith(b"%PDF-"):
+            raise http.SourceBlocked("not-a-pdf")
         path.write_bytes(blob)
         text = subprocess.run(["pdftotext", "-layout", str(path), "-"], capture_output=True,
-                              text=True, timeout=60).stdout
+                              text=True, timeout=60, check=True).stdout
     except Exception as e:  # сеть, битый PDF — перечитаем в следующий раз
         return url, {"lab": None, "sampled": None, "sampledFrom": None, "packaged": None,
-                     "harvested": None, "unread": type(e).__name__}
+                     "harvested": None, "unread": str(e) if isinstance(e, http.SourceBlocked) else type(e).__name__}
     entry = read(text)
     if not entry["sampled"] and not entry["packaged"]:
         entry["unread"] = "no date found"
     entry.update(identifiers(text, blob))
+    entry["documentUrl"] = final_url
     return url, entry
 
 
+def source_links(path=SOURCES):
+    """Only published, NY-flower links explicitly selected after document review."""
+    if not path.exists():
+        return {}
+    links = {}
+    for source in json.loads(path.read_text()).get("sources", []):
+        for link in source.get("certificateLinks", []):
+            if link.get("scope") == "ny-flower" and link.get("publishedOn") and link.get("url"):
+                links[link["url"]] = {"sourceKind": "brand-page", "sourcePage": link["publishedOn"]}
+    return links
+
+
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--brand-only", action="store_true", help="Only reviewed links from coa-sources.json")
+    parser.add_argument("--limit", type=int, default=None)
+    args = parser.parse_args()
     if not shutil.which("pdftotext"):
         raise SystemExit("pdftotext не найден: поставьте poppler-utils")
-    urls = sorted({c for lot in json.loads(LOTS.read_text())["lots"] for c in lot["certificates"]})
+    provenance = source_links()
+    if not args.brand_only:
+        provenance.update({c: {"sourceKind": "menu"} for lot in json.loads(LOTS.read_text())["lots"] for c in lot["certificates"]})
+    urls = sorted(provenance)
     try:
         known = json.loads(OUT.read_text())["certificates"]
     except FileNotFoundError:
@@ -183,14 +220,18 @@ def main():
     todo = [u for u in urls if u not in known or known[u].get("unread")]
     # Прочитанные до отпечатков — дочитываются понемногу, не все разом.
     backfill = [u for u in urls if u in known and not known[u].get("unread") and "sha256" not in known[u]][:BACKFILL]
-    with tempfile.TemporaryDirectory() as workdir, ThreadPoolExecutor(12) as pool:
-        for url, entry in pool.map(lambda u: fetch(u, workdir), todo + backfill):
+    selected = (todo + backfill)[:max(0, args.limit)] if args.limit is not None else todo + backfill
+    reader = http.Reader(ROOT / "data/coa-http-state.json")
+    with tempfile.TemporaryDirectory() as workdir:
+        for url in selected:
+            url, entry = fetch(url, workdir, reader)
+            entry.update(provenance[url])
             if entry.get("unread") and url in known and not known[url].get("unread"):
                 continue  # дочитывание не удалось — даты, что есть, остаются
             known[url] = entry
     OUT.write_text(json.dumps({
-        "about": "Даты с сертификатов партий из shelf-terpenes.json: отбор пробы (sampled — пакет "
-                 "не старше этого дня), упаковка и сбор, где сертификат их пишет. "
+        "about": "Даты документов из меню и опубликованных ссылок брендов: sampledFrom различает "
+                 "отбор, получение, тест и отчёт. Упаковка и сбор — только явно указанные даты. "
                  "Пишется scripts/coa-dates.py.",
         "certificates": dict(sorted(known.items())),
     }, ensure_ascii=False, indent=1) + "\n")
@@ -200,7 +241,7 @@ def main():
           f"с датой сбора {sum(1 for e in known.values() if e['harvested'])}; "
           f"с отпечатком {sum(1 for e in known.values() if e.get('sha256'))}, "
           f"с меткой Metrc {sum(1 for e in known.values() if e.get('metrcTag'))}; "
-          f"прочитано сейчас {len(todo)}, дочитано {len(backfill)}")
+          f"запрошено сейчас {len(selected)} (очередь новых/повторных {len(todo)}, дочитывание {len(backfill)})")
 
 
 if __name__ == "__main__":

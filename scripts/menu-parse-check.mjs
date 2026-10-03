@@ -679,6 +679,10 @@ check('missing url stays null', toListing({ Name: 'X', type: 'Flower', Options: 
   }, shop, SRC, {});
   check('the stated terpene total is read', dutchie?.terpenes.totalPercent, 0.87);
   check('no certificate stays null', dutchie?.terpenes.coaUrl, null);
+  check('an empty COA slot does not hide a published fallback', toListing({
+    Name: 'X', type: 'Flower', Options: ['3.5g'], coa: '',
+    coaUrl: 'https://lab.example.test/report.pdf',
+  }, shop, SRC, {})?.terpenes.coaUrl, 'https://lab.example.test/report.pdf');
 }
 
 /* ------------------------------------------------------- one batch, two shelves --

@@ -3705,7 +3705,7 @@ const productPage = (p, sourceUrl) => {
    lab's document, and we point at it rather than copy it. */
 const coaUrlOf = (p) => {
   const candidates = [
-    pick(p, ['coa', 'coaUrl', 'coaLink', 'certificateOfAnalysisUrl', 'labResultUrl', 'labResultsUrl', 'canonicalLabResultUrl']),
+    ...pickAll(p, ['coa', 'coaUrl', 'coaLink', 'certificateOfAnalysisUrl', 'labResultUrl', 'labResultsUrl', 'canonicalLabResultUrl']),
     pick(pick(p, ['POSMetaData']), ['canonicalLabResultUrl']),
   ];
   for (const c of candidates) {
