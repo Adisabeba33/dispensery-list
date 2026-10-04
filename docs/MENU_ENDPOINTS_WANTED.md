@@ -52,9 +52,9 @@
 | Fluent | New York | https://www.etain.com | страница вернула ноль товаров |
 | Green Rise Inc. | New York | https://greenriseny.com | страница не открылась |
 | Housing Works Cannabis Co. | New York | https://hwcannabis.co | страница вернула ноль товаров |
-| The Hootch LLC | New York | https://www.sweetlife.nyc | ссылку на меню не нашли |
+| The Hootch LLC | New York | https://www.sweetlife.nyc | страница вернула ноль товаров |
 | THE GOAT DISPENSARY | Rego Park | https://www.thegoatdispensary.com | ссылку на меню не нашли |
-| Green Land Retail LLC | Staten Island | https://greenlandny.com | ссылку на меню не нашли |
+| Green Land Retail LLC | Staten Island | https://greenlandny.com | страница вернула ноль товаров |
 | Fluent | White Plains | https://etainhealth.com/ | страница вернула ноль товаров |
 | Cannabis Group NY, LLC | Whitestone | https://ignyteny.com | robots.txt запрещает — **не трогать** |
 
@@ -66,8 +66,8 @@
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| The Bridge A Cannabis Experience | 4 | 374 | https://thebridgecannabis.com |
-| KushKlub NY LLC | 58 | 95 | https://kushklub.com |
+| The Bridge A Cannabis Experience | 4 | 373 | https://thebridgecannabis.com |
+| KushKlub NY LLC | 57 | 95 | https://kushklub.com |
 
 ## Сюда не ходим
 
