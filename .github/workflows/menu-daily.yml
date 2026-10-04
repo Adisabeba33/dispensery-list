@@ -36,7 +36,10 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    # 4 October: reading every menu took 3 h 48 min (325 shops), and Shelf lots
+    # now asks Retail ID one card at a time (about 25 minutes). A job cut off by
+    # its timeout publishes nothing, so the limit leaves an hour to spare.
+    timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
         with:
