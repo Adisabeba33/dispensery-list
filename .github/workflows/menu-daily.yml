@@ -175,6 +175,11 @@ jobs:
       # история, поломка здесь не стоит дню его полок.
       - name: Shelf lots
         continue-on-error: true
+        # Retail ID one card at a time and new certificates take about 40
+        # minutes. If this step runs long it is stopped, and the day's menus
+        # still publish: until Publish, everything the run has read lives only
+        # on this runner, and a job cut off by its own timeout loses it all.
+        timeout-minutes: 75
         run: |
           sudo apt-get install -y -qq poppler-utils > /dev/null
           python scripts/shelf-terpenes.py
