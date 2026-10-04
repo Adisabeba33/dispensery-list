@@ -8,6 +8,7 @@ import { isPromotionalSample, type FlowerListing } from './menu-format';
  */
 import strainReferenceRaw from '../../data/strain-reference.json';
 import strainLinesRaw from '../../data/strain-lines.json';
+import menuPausedRaw from '../../data/menu-paused.json';
 import { reviewListings, type LineBook } from './strain-review';
 
 type StrainReference = {
@@ -72,6 +73,13 @@ export const listings = reviewListings(
   listingsRaw as unknown as FlowerListing[],
   strainLinesRaw as unknown as LineBook,
 ).map(withReference);
+
+/** Shops the daily run does not read (data/menu-paused.json): their menu is
+    not available to us, and no shelf is shown for them rather than an old one. */
+const pausedMenus = new Set(
+  (menuPausedRaw as { shops: { licenseNumber: string }[] }).shops.map((s) => s.licenseNumber),
+);
+export const menuPaused = (licenseNumber: string): boolean => pausedMenus.has(licenseNumber);
 
 export const listingsFor = (licenseNumber: string): FlowerListing[] =>
   listings

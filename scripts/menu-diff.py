@@ -62,7 +62,13 @@ gone_from_market = sorted(names_before - names_after)
 # магазин, распродавший половину товара за ночь.
 collapsed = [(lic, len(sb[lic]), len(sa.get(lic, ())))
              for lic in sb if lic in sa and len(sa[lic]) * 2 < len(sb[lic])]
-vanished = [lic for lic in sb if lic not in sa]
+# Магазин на паузе (data/menu-paused.json) не читается, и его полку не
+# публикуем — её исчезновение не поломка прогона, а решение владельца.
+try:
+    paused = {s["licenseNumber"] for s in json.loads((ROOT / "data/menu-paused.json").read_text())["shops"]}
+except (OSError, ValueError, KeyError):
+    paused = set()
+vanished = [lic for lic in sb if lic not in sa and lic not in paused]
 
 now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 grew = sum(1 for lic in sa if len(sa[lic]) > len(sb.get(lic, ())))
