@@ -1,5 +1,5 @@
 {
- "about": "Карточки пакетов из Metrc Retail ID (app.1a4.com) для меток, которые печатают меню: даты упаковки, теста и сбора. found=false — пакета нет в Retail ID (перепроверяется раз в две недели). Пишется scripts/retail-id.py.",
+ "about": "Карточки пакетов из Metrc Retail ID (app.1a4.com) для меток, которые печатают меню: даты упаковки, теста и сбора. found=false — пакета нет в Retail ID (перепроверяется раз в месяц). Спрашивается по одному, с паузой, не больше 150 запросов за прогон, новые на полке первыми; waiting — день, когда ещё не спрошенная метка впервые попала в меню. Пишется scripts/retail-id.py.",
  "links": {
   "HTTPS://1A4.COM/13U2YPUQ3S36AW8OKQRYTE": "1A4120300000137000001846",
   "HTTPS://1A4.COM/13U2YPUQ3S36AW8OKQTL35": "1A4120300000137000001847",
@@ -288,6 +288,7 @@
   "HTTPS://1A4.COM/5LO1I9DSO1FT7SOKRK08": "1A4120300000CFB000001612",
   "HTTPS://1A4.COM/5LO1I9DSO22BVUPO6TXN": "1A4120300000D7D000000699",
   "HTTPS://1A4.COM/5LO1I9DSO926WAS4W7CI": "1A412030000132B000000401",
+  "HTTPS://1A4.COM/5LO1I9DSO938B97OWWZZ": "1A4120300001331000000153",
   "HTTPS://1A4.COM/5LO1I9DSOCMW6EMVG4JK": "1A4120300001612000001072",
   "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGIFIE": "1A4120300001613000000903",
   "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGV6FT": "1A4120300001613000001216",
@@ -1451,6 +1452,18 @@
    "batchTag": "1A4120300000205000001971",
    "checked": "2026-09-29"
   },
+  "1A4120300000205000003159": {
+   "found": true,
+   "facility": "Fiorello Pharmaceuticals, Inc.",
+   "product": "Jet Fuel OG Pre-Pack (Buds) 3.5g - Rythm (Hybrid)",
+   "strain": "Jet Fuel OG",
+   "packaged": "2026-08-05",
+   "tested": "2026-08-09",
+   "harvested": "2026-06-29",
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A4120300000205000003160",
+   "checked": "2026-10-04"
+  },
   "1A4120300000205000003559": {
    "found": true,
    "facility": "Fiorello Pharmaceuticals, Inc.",
@@ -1486,6 +1499,18 @@
    "lab": "ACT Laboratories of New York, LLC",
    "batchTag": "1A4120300000205000006438",
    "checked": "2026-09-29"
+  },
+  "1A4120300000205000006580": {
+   "found": true,
+   "facility": "Fiorello Pharmaceuticals, Inc.",
+   "product": "Granny Candy Pre-Pack (Popcorn) 7g - Rythm (Sativa Dominant)",
+   "strain": "Granny Candy",
+   "packaged": "2026-04-22",
+   "tested": "2026-04-28",
+   "harvested": null,
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A4120300000205000006581",
+   "checked": "2026-10-04"
   },
   "1A4120300000205000006595": {
    "found": true,
@@ -1546,6 +1571,18 @@
    "lab": "ACT Laboratories of New York, LLC",
    "batchTag": "1A4120300000205000008723",
    "checked": "2026-09-29"
+  },
+  "1A4120300000208000000988": {
+   "found": true,
+   "facility": "NYCANNA, LLC",
+   "product": "The Botanist - 14g - Flower - Whole - Urban Legend - (I)",
+   "strain": "Urban Legend",
+   "packaged": "2026-01-22",
+   "tested": "2026-02-04",
+   "harvested": null,
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": null,
+   "checked": "2026-10-04"
   },
   "1A4120300000208000001080": {
    "found": true,
@@ -3723,6 +3760,18 @@
    "batchTag": "1A412030000023F000000859",
    "checked": "2026-10-02"
   },
+  "1A412030000023F000001077": {
+   "found": true,
+   "facility": "518 Hollow LLC",
+   "product": "3.5 gram flower Super Boof",
+   "strain": "Super Boof",
+   "packaged": "2026-09-29",
+   "tested": "2026-09-06",
+   "harvested": "2026-08-07",
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A412030000023F000000882",
+   "checked": "2026-10-04"
+  },
   "1A412030000023F000001078": {
    "found": true,
    "facility": "518 Hollow LLC",
@@ -5399,6 +5448,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000283000038516": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
   "1A4120300000283000038525": {
    "found": false,
    "checked": "2026-09-29"
@@ -5991,6 +6044,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000283000059355": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
   "1A4120300000283000059358": {
    "found": false,
    "checked": "2026-09-29"
@@ -6047,6 +6104,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000283000059639": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
   "1A4120300000283000059670": {
    "found": false,
    "checked": "2026-09-29"
@@ -6062,6 +6123,10 @@
   "1A4120300000283000059795": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000283000059851": {
+   "found": false,
+   "checked": "2026-10-04"
   },
   "1A4120300000283000059866": {
    "found": false,
@@ -11415,6 +11480,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A41203000004EB000027269": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
   "1A41203000004EB000027270": {
    "found": false,
    "checked": "2026-09-29"
@@ -13599,6 +13668,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000641000378011": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
   "1A4120300000641000378489": {
    "found": false,
    "checked": "2026-09-29"
@@ -14755,6 +14828,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000BBF000038020": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
   "1A4120300000BBF000038049": {
    "found": false,
    "checked": "2026-09-29"
@@ -15411,6 +15488,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000C1E000062738": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
   "1A4120300000C1E000063566": {
    "found": true,
    "facility": "Vireo Health of New York, LLC",
@@ -15755,6 +15836,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000C1E000079819": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
   "1A4120300000C1E000080524": {
    "found": false,
    "checked": "2026-09-29"
@@ -15894,6 +15979,14 @@
   "1A4120300000C1E000091457": {
    "found": false,
    "checked": "2026-09-30"
+  },
+  "1A4120300000C1E000092624": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
+  "1A4120300000C1E000092630": {
+   "found": false,
+   "checked": "2026-10-04"
   },
   "1A4120300000C1E000093494": {
    "found": false,
@@ -16298,6 +16391,14 @@
   "1A4120300000C1E000122137": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000C1E000122157": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
+  "1A4120300000C1E000122159": {
+   "found": false,
+   "checked": "2026-10-04"
   },
   "1A4120300000C1E000124078": {
    "found": false,
@@ -19995,6 +20096,18 @@
    "batchTag": "1A412030000132B000000569",
    "checked": "2026-10-03"
   },
+  "1A4120300001331000000153": {
+   "found": true,
+   "facility": "ProXtracts Processing Incorporated",
+   "product": "Funnel Cake 14g Whole Flower",
+   "strain": "Triple Stack",
+   "packaged": "2026-09-18",
+   "tested": "2026-09-18",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001331000000151",
+   "checked": "2026-10-04"
+  },
   "1A412030000151C000000223": {
    "found": true,
    "facility": "Mount Vision Pharms LLC",
@@ -21906,6 +22019,10 @@
   "1A41203000018B1000065146": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A41203000018B1000065586": {
+   "found": false,
+   "checked": "2026-10-04"
   },
   "1A41203000018B1000065596": {
    "found": false,
@@ -24235,6 +24352,30 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300001AA1000105514": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
+  "1A4120300001AA1000105516": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
+  "1A4120300001AA1000105518": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
+  "1A4120300001AA1000105519": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
+  "1A4120300001AA1000106224": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
+  "1A4120300001AA1000106225": {
+   "found": false,
+   "checked": "2026-10-04"
+  },
   "1A4120300001AB0000000212": {
    "found": false,
    "checked": "2026-09-29"
@@ -25918,6 +26059,10 @@
   "1A4120300001E20000012141": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300001E20000012148": {
+   "found": false,
+   "checked": "2026-10-04"
   },
   "1A4120300001E20000012699": {
    "found": false,
@@ -29315,5 +29460,6 @@
    "found": false,
    "checked": "2026-09-29"
   }
- }
+ },
+ "waiting": {}
 }
