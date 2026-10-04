@@ -295,7 +295,7 @@ const brandsKnownApartFrom = (licence) => {
    and why. Today that is the fifty-six whose Dutchie menu opens in a dutchie.com
    window, which has answered nothing but its bot check since 24 September —
    an hour and a half of every run, most of them visited twice, for nothing.
-   They keep the shelf last read from them. Visited only with --include-paused
+   Their last shelf is not kept (see carryPaused below). Visited only with --include-paused
    (the manual "Dutchie menus, slowly" workflow) or when named with --only. Until
    4 October 2026 they were also visited every Sunday (UTC), to notice the day
    Dutchie opened again; that cost each Sunday's run sixty empty shops and about
@@ -5414,12 +5414,26 @@ const main = async () => {
       + (held.has(r.licence) ? ' — held at the earlier reading' : ' — taken; the earlier reading has aged out'));
 
   const cutoff = Date.now() - CARRY_FORWARD_DAYS * 24 * 60 * 60 * 1000;
+  /* A paused shop (data/menu-paused.json) is not read, so its shelf is never
+     current: it is not carried forward, and the site and SŌMA show none for it
+     rather than one that is weeks old. Only a run that visits paused shops on
+     purpose (--include-paused, or --only naming them) carries theirs. Owner's
+     decision, 4 October 2026. */
+  const carryPaused = (lic) => includePaused || onlyLicences?.has(lic) || !PAUSED.has(lic);
   const carried = previous.filter(
     (l) =>
       (!refreshed.has(l.licenseNumber) || held.has(l.licenseNumber)) &&
-      Date.parse(l.capturedAt) >= cutoff,
+      Date.parse(l.capturedAt) >= cutoff &&
+      carryPaused(l.licenseNumber),
   );
-  const dropped = previous.length - carried.length - previous.filter((l) => refreshed.has(l.licenseNumber)).length;
+  const pausedDropped = previous.filter(
+    (l) =>
+      (!refreshed.has(l.licenseNumber) || held.has(l.licenseNumber)) &&
+      Date.parse(l.capturedAt) >= cutoff &&
+      !carryPaused(l.licenseNumber),
+  ).length;
+  const dropped = previous.length - carried.length - pausedDropped
+    - previous.filter((l) => refreshed.has(l.licenseNumber) && !held.has(l.licenseNumber)).length;
 
   /* One shop's suspect shelf used to stop the whole run publishing, and two
      days of everyone else's shelves sat on a branch because of it. The shelf
@@ -5520,6 +5534,7 @@ const main = async () => {
     shelvesCarriedForward: new Set(carried.map((l) => l.licenseNumber)).size,
     listingsCarriedForward: carried.length,
     listingsDroppedAsStale: dropped,
+    listingsDroppedAsPaused: pausedDropped,
     robotsDisallowed: report.filter((r) => r.status === 'robots-disallowed').length,
     shopsWithFlower: report.filter((r) => r.flower > 0).length,
     listingsBeforeMerge: listings.length,

@@ -44,6 +44,7 @@ export const DispensaryDetail = ({
   menu: given,
   hasMenu = true,
   partialShelf = false,
+  menuUnavailable = false,
 }: {
   d: Dispensary;
   menu?: FlowerListing[];
@@ -52,6 +53,9 @@ export const DispensaryDetail = ({
   hasMenu?: boolean;
   /** We read only a window onto this shop's menu (scripts/shelf-history.py). */
   partialShelf?: boolean;
+  /** The shop's online menu is not read (data/menu-paused.json): say so rather
+      than show nothing, or a shelf weeks old. */
+  menuUnavailable?: boolean;
 }) => {
   const [fetched, setFetched] = useState<FlowerListing[] | null>(null);
   const [menuState, setMenuState] = useState<'idle' | 'loading' | 'failed'>('idle');
@@ -126,6 +130,13 @@ export const DispensaryDetail = ({
             Open its page instead
           </a>
           .
+        </p>
+      )}
+
+      {menu.length === 0 && menuUnavailable && (
+        <p className="mt-8 text-sm text-chalk-500">
+          This shop&apos;s online menu can&apos;t be read automatically, so its shelf isn&apos;t
+          shown here. Check the shop&apos;s own site for what is in stock.
         </p>
       )}
 
