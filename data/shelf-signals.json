@@ -13657,6 +13657,25 @@
  ],
  "batches": [
   {
+   "brand": "Craft Cartel",
+   "strain": "Chemlato",
+   "thc": 29.14,
+   "before": [
+    28.28
+   ],
+   "first": "2026-10-01",
+   "shops": [
+    "OCM-CAURD-24-000102",
+    "OCM-CAURD-24-000154",
+    "OCM-CAURD-25-000281",
+    "OCM-CAURD-26-000330",
+    "OCM-CAURD-26-000334",
+    "OCM-RETL-24-000041",
+    "OCM-RETL-24-000175",
+    "OCM-RETL-25-000379"
+   ]
+  },
+  {
    "brand": "Doobie Labs",
    "strain": "Eye Candy",
    "thc": 28.59,
@@ -13714,10 +13733,10 @@
   },
   {
    "brand": "Craft Cartel",
-   "strain": "Chemlato",
-   "thc": 29.14,
+   "strain": "Brown Sugar",
+   "thc": 35.15,
    "before": [
-    28.28
+    31.95
    ],
    "first": "2026-10-01",
    "shops": [
@@ -13728,23 +13747,6 @@
     "OCM-CAURD-26-000334",
     "OCM-RETL-24-000175",
     "OCM-RETL-25-000379"
-   ]
-  },
-  {
-   "brand": "Craft Cartel",
-   "strain": "Brown Sugar",
-   "thc": 35.15,
-   "before": [
-    31.95
-   ],
-   "first": "2026-10-01",
-   "shops": [
-    "OCM-CAURD-24-000102",
-    "OCM-CAURD-24-000154",
-    "OCM-CAURD-26-000330",
-    "OCM-CAURD-26-000334",
-    "OCM-RETL-24-000041",
-    "OCM-RETL-24-000175"
    ]
   },
   {
@@ -13784,6 +13786,23 @@
     "OCM-RETL-24-000114",
     "OCM-RETL-24-000197",
     "OCM-RETL-24-000247"
+   ]
+  },
+  {
+   "brand": "Revert Cannabis",
+   "strain": "Lemon Drop",
+   "thc": 27.1,
+   "before": [
+    26.09,
+    26.9
+   ],
+   "first": "2026-09-29",
+   "shops": [
+    "OCM-CAURD-24-000104",
+    "OCM-CAURD-25-000281",
+    "OCM-CAURD-26-000334",
+    "OCM-RETL-24-000041",
+    "OCM-RETL-25-000379"
    ]
   },
   {
@@ -13841,22 +13860,6 @@
     "OCM-CAURD-24-000129",
     "OCM-RETL-24-000026",
     "OCM-RETL-24-000197"
-   ]
-  },
-  {
-   "brand": "Revert Cannabis",
-   "strain": "Lemon Drop",
-   "thc": 27.1,
-   "before": [
-    26.09,
-    26.9
-   ],
-   "first": "2026-09-29",
-   "shops": [
-    "OCM-CAURD-24-000104",
-    "OCM-CAURD-25-000281",
-    "OCM-CAURD-26-000334",
-    "OCM-RETL-25-000379"
    ]
   },
   {
@@ -13930,6 +13933,23 @@
     "OCM-CAURD-25-000245",
     "OCM-CAURD-25-000265",
     "OCM-RETL-24-000234"
+   ]
+  },
+  {
+   "brand": "Voice Of The Plant",
+   "strain": "VOP Kush",
+   "thc": 26.15,
+   "before": [
+    22.88,
+    25.87,
+    25.9
+   ],
+   "first": "2026-10-02",
+   "shops": [
+    "OCM-CAURD-25-000281",
+    "OCM-CAURD-26-000334",
+    "OCM-RETL-24-000041",
+    "OCM-RETL-25-000379"
    ]
   },
   {
@@ -14082,22 +14102,6 @@
    ]
   },
   {
-   "brand": "Voice Of The Plant",
-   "strain": "VOP Kush",
-   "thc": 26.15,
-   "before": [
-    22.88,
-    25.87,
-    25.9
-   ],
-   "first": "2026-10-02",
-   "shops": [
-    "OCM-CAURD-25-000281",
-    "OCM-RETL-24-000041",
-    "OCM-RETL-25-000379"
-   ]
-  },
-  {
    "brand": "Gypsy Weed",
    "strain": "Gelato",
    "thc": 26.32,
@@ -14121,6 +14125,19 @@
    "shops": [
     "OCM-CAURD-23-000030",
     "OCM-RETL-24-000234"
+   ]
+  },
+  {
+   "brand": "Edie Parker",
+   "strain": "Nightcap - Ice Cream Mintz",
+   "thc": 30.42,
+   "before": [
+    26.89
+   ],
+   "first": "2026-09-28",
+   "shops": [
+    "OCM-CAURD-24-000210",
+    "OCM-RETL-24-000104"
    ]
   },
   {
@@ -14319,23 +14336,6 @@
    ]
   },
   {
-   "brand": "CLAYBOURNE",
-   "strain": "DURBAN POISON",
-   "thc": 24.42,
-   "before": [
-    22.29,
-    22.3,
-    25.3,
-    26.2,
-    26.22
-   ],
-   "first": "2026-10-01",
-   "shops": [
-    "OCM-RETL-24-000133",
-    "OCM-RETL-26-000477"
-   ]
-  },
-  {
    "brand": "Bouket",
    "strain": "Dark Matter Og",
    "thc": 26.97,
@@ -14521,6 +14521,25 @@
    ]
   },
   {
+   "brand": "Rythm",
+   "strain": "Jacks Delight",
+   "thc": 25.04,
+   "before": [
+    25.7,
+    27.16,
+    27.36,
+    27.82,
+    27.86,
+    29.1,
+    30.17
+   ],
+   "first": "2026-10-02",
+   "shops": [
+    "OCM-CAURD-23-000003",
+    "OCM-CAURD-24-000091"
+   ]
+  },
+  {
    "brand": "Nanticoke",
    "strain": "Block Monster",
    "thc": 30.91,
@@ -14620,15 +14639,15 @@
    ]
   },
   {
-   "brand": "Edie Parker",
-   "strain": "Nightcap - Ice Cream Mintz",
-   "thc": 30.42,
+   "brand": "Puff",
+   "strain": "Tangie",
+   "thc": 22.69,
    "before": [
-    26.89
+    19.73
    ],
    "first": "2026-09-28",
    "shops": [
-    "OCM-RETL-24-000104"
+    "OCM-CAURD-25-000245"
    ]
   },
   {
@@ -14967,17 +14986,19 @@
    ]
   },
   {
-   "brand": "Herb",
-   "strain": "Cookie Dough",
-   "thc": 30.05,
+   "brand": "CLAYBOURNE",
+   "strain": "DURBAN POISON",
+   "thc": 24.42,
    "before": [
-    21.51,
-    27.32,
-    29.34
+    22.29,
+    22.3,
+    25.3,
+    26.2,
+    26.22
    ],
    "first": "2026-10-01",
    "shops": [
-    "OCM-CAURD-24-000063"
+    "OCM-RETL-24-000133"
    ]
   },
   {
@@ -15056,20 +15077,6 @@
    "first": "2026-10-01",
    "shops": [
     "OCM-CAURD-24-000203"
-   ]
-  },
-  {
-   "brand": "Herb",
-   "strain": "Gelato",
-   "thc": 30.05,
-   "before": [
-    21.06,
-    21.8,
-    27.07
-   ],
-   "first": "2026-10-01",
-   "shops": [
-    "OCM-CAURD-24-000063"
    ]
   },
   {
@@ -15240,20 +15247,6 @@
    "first": "2026-10-01",
    "shops": [
     "OCM-RETL-25-000294"
-   ]
-  },
-  {
-   "brand": "Herb",
-   "strain": "Pink Cookies",
-   "thc": 30.05,
-   "before": [
-    25.53,
-    30.88,
-    35.03
-   ],
-   "first": "2026-10-01",
-   "shops": [
-    "OCM-CAURD-24-000063"
    ]
   },
   {
@@ -15601,22 +15594,6 @@
    ]
   },
   {
-   "brand": "To The Moon",
-   "strain": "Gorilla Glue",
-   "thc": 29.04,
-   "before": [
-    26.16,
-    26.4,
-    27.21,
-    29.37,
-    29.6
-   ],
-   "first": "2026-10-02",
-   "shops": [
-    "OCM-CAURD-24-000063"
-   ]
-  },
-  {
    "brand": "ElectraLeaf",
    "strain": "Grape Gas",
    "thc": 24.78,
@@ -15674,39 +15651,6 @@
    "first": "2026-10-02",
    "shops": [
     "OCM-RETL-24-000244"
-   ]
-  },
-  {
-   "brand": "Rythm",
-   "strain": "Jacks Delight",
-   "thc": 25.04,
-   "before": [
-    25.7,
-    27.16,
-    27.36,
-    27.82,
-    27.86,
-    29.1,
-    30.17
-   ],
-   "first": "2026-10-02",
-   "shops": [
-    "OCM-CAURD-24-000091"
-   ]
-  },
-  {
-   "brand": "To The Moon",
-   "strain": "Jet Fuel Gelato",
-   "thc": 29.04,
-   "before": [
-    25.9,
-    25.91,
-    28.2,
-    29.39
-   ],
-   "first": "2026-10-02",
-   "shops": [
-    "OCM-CAURD-24-000063"
    ]
   },
   {
@@ -16183,22 +16127,6 @@
    ]
   },
   {
-   "brand": "Botanist",
-   "strain": "Millionaire",
-   "thc": 28.92,
-   "before": [
-    25.06,
-    26.5,
-    26.82,
-    26.83,
-    28.22
-   ],
-   "first": "2026-10-03",
-   "shops": [
-    "OCM-CAURD-24-000169"
-   ]
-  },
-  {
    "brand": "Papa's Herb",
    "strain": "Northern Lights",
    "thc": 31.78,
@@ -16309,16 +16237,6 @@
    "shops": []
   },
   {
-   "brand": "Puff",
-   "strain": "Tangie",
-   "thc": 22.69,
-   "before": [
-    19.73
-   ],
-   "first": "2026-09-28",
-   "shops": []
-  },
-  {
    "brand": null,
    "strain": "Blue Zushi",
    "thc": 24.39,
@@ -16383,6 +16301,83 @@
     34.1
    ],
    "first": "2026-10-01",
+   "shops": []
+  },
+  {
+   "brand": "Herb",
+   "strain": "Cookie Dough",
+   "thc": 30.05,
+   "before": [
+    21.51,
+    27.32,
+    29.34
+   ],
+   "first": "2026-10-01",
+   "shops": []
+  },
+  {
+   "brand": "Herb",
+   "strain": "Gelato",
+   "thc": 30.05,
+   "before": [
+    21.06,
+    21.8,
+    27.07
+   ],
+   "first": "2026-10-01",
+   "shops": []
+  },
+  {
+   "brand": "Herb",
+   "strain": "Pink Cookies",
+   "thc": 30.05,
+   "before": [
+    25.53,
+    30.88,
+    35.03
+   ],
+   "first": "2026-10-01",
+   "shops": []
+  },
+  {
+   "brand": "To The Moon",
+   "strain": "Gorilla Glue",
+   "thc": 29.04,
+   "before": [
+    26.16,
+    26.4,
+    27.21,
+    29.37,
+    29.6
+   ],
+   "first": "2026-10-02",
+   "shops": []
+  },
+  {
+   "brand": "To The Moon",
+   "strain": "Jet Fuel Gelato",
+   "thc": 29.04,
+   "before": [
+    25.9,
+    25.91,
+    28.2,
+    29.39
+   ],
+   "first": "2026-10-02",
+   "shops": []
+  },
+  {
+   "brand": "Botanist",
+   "strain": "Millionaire",
+   "thc": 28.92,
+   "before": [
+    25.06,
+    26.5,
+    26.82,
+    26.83,
+    28.22
+   ],
+   "first": "2026-10-03",
    "shops": []
   }
  ],
