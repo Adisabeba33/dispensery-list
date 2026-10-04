@@ -22,7 +22,9 @@ Colorado Chem: урожай 17 января, тест в марте, банки 
 
 Retail ID — страница для покупателя с телефоном у банки, и спрашивается она
 так же: по одному запросу, с паузой PAUSE секунд, не больше MAX_PER_RUN за
-прогон (ссылки и карточки вместе). Сначала новые метки, потом перепроверки —
+прогон (ссылки и карточки вместе). Сначала новые метки — самые свежие на
+полках первыми (день, когда метка впервые попала в меню, хранится в waiting,
+пока её не спросили), потом перепроверки —
 самые давние первыми, и им не меньше RECHECK_MIN мест, если они ждут. Что не
 влезло, ждёт следующего прогона. До 3 октября 2026 всё спрашивалось разом в
 восемь потоков: 29 сентября — 5 028 запросов за минуты, и через две недели
@@ -94,10 +96,13 @@ class Budget:
         self.errors = 0 if ok else self.errors + 1
 
 
-def plan(tags, packages, stale, room):
-    """Какие метки спросить: новые и неотвеченные, потом перепроверки
-    ненайденных — самые давние первыми, не меньше RECHECK_MIN мест им."""
-    fresh = sorted(t for t in tags if (packages.get(t) or {}).get("found") is None)
+def plan(tags, packages, stale, room, waiting=None):
+    """Какие метки спросить: новые и неотвеченные — самые свежие на полке
+    первыми, потом перепроверки ненайденных — самые давние первыми, не меньше
+    RECHECK_MIN мест им."""
+    waiting = waiting or {}
+    fresh = sorted((t for t in tags if (packages.get(t) or {}).get("found") is None),
+                   key=lambda t: (waiting.get(t, ""), t), reverse=True)
     recheck = sorted((t for t in tags if (packages.get(t) or {}).get("found") is False
                       and packages[t].get("checked", "") <= stale),
                      key=lambda t: (packages[t].get("checked", ""), t))
@@ -162,7 +167,13 @@ def main(budget=None):
             links[link] = tag
     tags = {t.upper() for t in seen if TAG.match(t.upper())} | set(links.values())
 
-    todo, fresh, recheck = plan(tags, packages, stale, budget.left)
+    # Когда метка впервые попала в меню — пока её не спросили: новые на полке
+    # спрашиваются первыми, если всех за прогон не успеть.
+    waiting = {t: d for t, d in known.get("waiting", {}).items() if t in tags}
+    for t in tags:
+        if (packages.get(t) or {}).get("found") is None:
+            waiting.setdefault(t, today.isoformat())
+    todo, fresh, recheck = plan(tags, packages, stale, budget.left, waiting)
     done = []
     for tag in todo:
         if not budget.take():
@@ -171,14 +182,18 @@ def main(budget=None):
         budget.answered(entry.get("found") is not None)
         packages[tag] = {**entry, "checked": today.isoformat()}
         done.append(tag)
+        if entry.get("found") is not None:
+            waiting.pop(tag, None)
 
     OUT.write_text(json.dumps({
         "about": "Карточки пакетов из Metrc Retail ID (app.1a4.com) для меток, которые печатают "
                  "меню: даты упаковки, теста и сбора. found=false — пакета нет в Retail ID "
                  "(перепроверяется раз в месяц). Спрашивается по одному, с паузой, не больше 150 "
-                 "запросов за прогон. Пишется scripts/retail-id.py.",
+                 "запросов за прогон, новые на полке первыми; waiting — день, когда ещё не спрошенная "
+                 "метка впервые попала в меню. Пишется scripts/retail-id.py.",
         "links": dict(sorted(links.items())),
         "packages": dict(sorted(packages.items())),
+        "waiting": dict(sorted(waiting.items())),
     }, ensure_ascii=False, indent=1) + "\n")
     found = [p for p in packages.values() if p.get("found")]
     stopped = " — остановились после ошибок подряд" if budget.errors >= STOP_AFTER_ERRORS else ""

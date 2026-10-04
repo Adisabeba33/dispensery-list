@@ -42,6 +42,11 @@ check(tag(5) not in rid.plan(set(packages), packages, "2026-09-01", 150)[0], "н
 todo, _, _ = rid.plan(fresh | set(packages), packages, "2026-09-01", 10)
 check(len(todo) == 10, f"места меньше RECHECK_MIN — не больше места: {len(todo)}")
 
+# --- новые на полке — первыми, если всех не успеть
+waiting = {tag(1000 + i): "2026-10-0%d" % (1 + i % 3) for i in range(400)}
+todo, _, _ = rid.plan(fresh, {}, "2026-09-01", 50, waiting)
+check(all(waiting[t] == "2026-10-03" for t in todo), "первыми — метки, попавшие в меню последними")
+
 # --- прогон: по одному, с паузой между запросами, не больше бюджета
 sleeps = []
 with tempfile.TemporaryDirectory() as d:
@@ -57,8 +62,13 @@ with tempfile.TemporaryDirectory() as d:
     check(len(asked) == 150 and len(out["packages"]) == 150, f"за прогон 150 из 500: {len(asked)}")
     check(len(sleeps) == 149 and all(rid.PAUSE[0] <= s <= rid.PAUSE[1] for s in sleeps),
           f"пауза перед каждым запросом, кроме первого: {len(sleeps)}")
+    check(len(out["waiting"]) == 350 and not set(asked) & set(out["waiting"]),
+          "спрошенные метки уходят из ожидания, остальные ждут")
+    rid.LISTINGS.write_text(json.dumps([{"packageIds": [tag(i) for i in range(600)]}]))
     rid.main(rid.Budget(150, sleep=lambda s: None))
     check(len(asked) == 300 and len(set(asked)) == 300, "следующий прогон спрашивает следующие метки")
+    out = json.loads(rid.OUT.read_text())
+    check(len(out["waiting"]) == 300, f"неспрошенные ждут с днём, когда их увидели: {len(out['waiting'])}")
 
     # --- ошибки подряд останавливают прогон
     rid.OUT.unlink()
