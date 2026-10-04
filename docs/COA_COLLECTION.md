@@ -51,6 +51,7 @@ gives no panel rather than a guess. `panel.matrix` is what the document says
 it tested, `panel.licence` the client's New York licence (never the lab's).
 
 Certificates read before panels are re-read 60 a run, brand links first.
-Brand links published but still `pending-review` are read 60 a run as
+Brand links published but still `pending-review` are read 200 a run (from
+4 October 2026; 60 before) as
 `sourceKind: "brand-page-unreviewed"`; links reviewed as another product are
 not read.

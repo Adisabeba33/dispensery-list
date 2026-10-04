@@ -167,8 +167,9 @@ jobs:
       # спрашиваются только новые, прочитанное хранится в coa-dates.json и
       # retail-id.json; партии ещё раз — чтобы новые получили даты. Retail ID —
       # не больше 150 запросов за прогон, по одному, с паузой 6–14 секунд (около
-      # 25 минут), остальное ждёт следующего дня. Как и история, поломка здесь не стоит
-      # дню его полок.
+      # 25 минут), остальное ждёт следующего дня, новые на полке — первыми. Отчёт
+      # получает раздел о свежести новых партий (scripts/freshness.py). Как и
+      # история, поломка здесь не стоит дню его полок.
       - name: Shelf lots
         continue-on-error: true
         run: |
@@ -177,6 +178,7 @@ jobs:
           python scripts/coa-dates.py
           python scripts/retail-id.py
           python scripts/shelf-terpenes.py
+          python scripts/freshness.py >> menu-report.md || true
           git add data/coa-dates.json data/retail-id.json data/shelf-terpenes.json
           if [ -f data/coa-http-state.json ]; then git add data/coa-http-state.json; fi
           if [ -f data/shelf-terpenes-archive.json ]; then git add data/shelf-terpenes-archive.json; fi
