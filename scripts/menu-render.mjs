@@ -295,9 +295,11 @@ const brandsKnownApartFrom = (licence) => {
    and why. Today that is the fifty-six whose Dutchie menu opens in a dutchie.com
    window, which has answered nothing but its bot check since 24 September —
    an hour and a half of every run, most of them visited twice, for nothing.
-   They keep the shelf last read from them. Visited anyway on Sundays (UTC), with
-   --include-paused, or when named with --only, so the day they open again is
-   seen. */
+   They keep the shelf last read from them. Visited only with --include-paused
+   (the manual "Dutchie menus, slowly" workflow) or when named with --only. Until
+   4 October 2026 they were also visited every Sunday (UTC), to notice the day
+   Dutchie opened again; that cost each Sunday's run sixty empty shops and about
+   forty minutes, and the owner decided the daily run spends nothing on them. */
 const PAUSED = new Set(
   (() => {
     try {
@@ -307,7 +309,7 @@ const PAUSED = new Set(
     }
   })(),
 );
-const includePaused = process.argv.includes('--include-paused') || new Date().getUTCDay() === 0;
+const includePaused = process.argv.includes('--include-paused');
 
 const candidates = dispensaries.filter(
   (d) =>
