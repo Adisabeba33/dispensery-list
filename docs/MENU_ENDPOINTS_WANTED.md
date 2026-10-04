@@ -33,7 +33,7 @@
 
 | Магазин | Город | Сайт | Почему пусто |
 |---|---|---|---|
-| Astoria Bud Boutique | Astoria | https://astoriabudboutique.com | ссылку на меню не нашли |
+| Astoria Bud Boutique | Astoria | https://astoriabudboutique.com | страница не открылась |
 | Weed Mart By New Metro | Bayside | https://newmetro.club | страница вернула ноль товаров |
 | Conbud | Bronx | https://www.conbudbx.com | страница не открылась |
 | Caffiend LLC | Brooklyn | https://thebushwicknyc.com | страница вернула ноль товаров |
@@ -42,7 +42,7 @@
 | MZDZ Corp | Brooklyn | http://www.coneyislandcannabisny.com | страница не открылась |
 | OTEC | Brooklyn | https://oftheearthcanna.com | страница вернула ноль товаров |
 | Tiki Leaves LLC | Brooklyn | http://www.tikileaves.com | ссылку на меню не нашли |
-| Twisted Vibration LLC | Brooklyn | https://twistedvibration.com | страница вернула ноль товаров |
+| Twisted Vibration LLC | Brooklyn | https://twistedvibration.com | ссылку на меню не нашли |
 | Upstate Edge, LLC | Brooklyn | https://ignyteny.com | robots.txt запрещает — **не трогать** |
 | Curaleaf NY, LLC | Forest Hills | https://curaleaf.com | товары есть (6), цветка нет |
 | Purple Buds, Inc. | Jackson Heights | https://pbuds.com | страница вернула ноль товаров |
