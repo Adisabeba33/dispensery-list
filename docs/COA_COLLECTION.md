@@ -55,3 +55,27 @@ Brand links published but still `pending-review` are read 200 a run (from
 4 October 2026; 60 before) as
 `sourceKind: "brand-page-unreviewed"`; links reviewed as another product are
 not read.
+
+## Brand pages read daily, from 5 October 2026
+
+`scripts/coa-sources.py` reads again, every day before `coa-dates.py`, the
+pages listed in `data/coa-sources.json` for sources whose certificates were
+published as links (`published-links`, `published-list-folder`): 13 brands,
+17 pages on 5 October. Brands add certificates there as batches are tested,
+often before the jars reach a shelf. Only listed pages are read; no link is
+followed, guessed or enumerated, and the reader is the one above (robots.txt,
+2.1 seconds apart, five host errors stop a host for a day).
+
+A link counts as a certificate when its path ends in `.pdf`, it points at a
+laboratory's report portal, or it is a single Google Drive or Docs document
+(never a folder). One document has one spelling: the path is percent-encoded
+once, and a yourcoa.com viewer link becomes the same sample's download link.
+A link not seen before is added as `pending-review` with `firstSeenAt`, the
+moment the scan first saw it; reviewed links are never changed.
+`coa-dates.py` reads pending links newest first, so what a brand published
+yesterday is read today. The run report names the new links per brand and
+the pages that could not be read. `scripts/coa-sources-check.py` (part of
+`npm test`) checks link detection and a scan offline.
+
+The first scan, on 5 October, added 45 links (Dank 44, Miss Grass 1). Platinum
+Reserve's robots.txt answers 202 without a policy, so its page is not read.

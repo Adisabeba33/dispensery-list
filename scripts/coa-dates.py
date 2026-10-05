@@ -220,6 +220,15 @@ def source_links(path=SOURCES, pending=False):
     return links
 
 
+def links_first_seen(path=SOURCES):
+    """url → when scripts/coa-sources.py first saw it on a brand page."""
+    if not path.exists():
+        return {}
+    return {link["url"]: link["firstSeenAt"]
+            for source in json.loads(path.read_text()).get("sources", [])
+            for link in source.get("certificateLinks", []) if link.get("firstSeenAt")}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--brand-only", action="store_true", help="Only reviewed links from coa-sources.json")
@@ -238,7 +247,11 @@ def main():
     unreviewed = lambda u: provenance[u].get("sourceKind") == "brand-page-unreviewed"
     todo = [u for u in urls if (u not in known or known[u].get("unread")) and not unreviewed(u)]
     # Опубликованные, но не разобранные ссылки брендов — понемногу за прогон.
-    pending = [u for u in urls if (u not in known or known[u].get("unread")) and unreviewed(u)][:PENDING_PER_RUN]
+    # Newest first: a link scripts/coa-sources.py found today is a batch a
+    # brand just published, and it should not wait behind the backlog.
+    first_seen = links_first_seen()
+    pending = sorted((u for u in urls if (u not in known or known[u].get("unread")) and unreviewed(u)),
+                     key=lambda u: (first_seen.get(u, ""), u), reverse=True)[:PENDING_PER_RUN]
     # Прочитанные до отпечатков — дочитываются понемногу, не все разом.
     backfill = [u for u in urls if u in known and not known[u].get("unread") and "sha256" not in known[u]][:BACKFILL]
     # Прочитанные до панелей: ссылки брендов первыми — у сертификатов из меню
