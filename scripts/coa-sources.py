@@ -19,9 +19,13 @@ least 2.1 seconds apart (more if robots asks), five host errors stop that host
 for a day.
 
 A link is a certificate when its path ends in .pdf or it points at a known
-certificate host (a lab's report portal or a document viewer). Links found in
-anchors keep their text as the label; links found only in the page's own
-configuration (WordPress and Wix galleries) are kept as embedded-page-config.
+certificate host (a lab's report portal). A Google Drive or Docs viewer is not
+taken: its page is not the document, and Drive's robots.txt disallows the
+download (/uc), so coa-dates.py could never read it. Links found in anchors
+keep their text as the label; links found only in the page's own
+configuration (WordPress and Wix galleries) are kept as embedded-page-config,
+and links in a feed the brand's page loads its list from (a JSON answer,
+listed as the page to read) as page-feed.
 """
 import html
 import importlib.util
@@ -42,7 +46,6 @@ COA_HOSTS = re.compile(
     r"actlab\w*\.com|smithers\w*\.com|keystonestatetesting\.com)$",
     re.I,
 )
-DOC_VIEWERS = re.compile(r"^(drive|docs)\.google\.com$", re.I)
 
 _spec = importlib.util.spec_from_file_location("coa_source_http", ROOT / "scripts/coa-source-http.py")
 http = importlib.util.module_from_spec(_spec)
@@ -76,14 +79,16 @@ def same_document(url):
 
 
 def is_certificate(url):
-    u = urlsplit(url)
+    try:
+        u = urlsplit(url)
+        u.port  # a malformed host ("https://[…") raises here
+    except ValueError:
+        return False
     if u.scheme not in ("http", "https"):
         return False
     if u.path.lower().endswith(".pdf"):
         return True
-    if COA_HOSTS.search(u.netloc):
-        return True
-    return bool(DOC_VIEWERS.search(u.netloc) and ("/file/d/" in u.path or "/document/d/" in u.path))
+    return bool(COA_HOSTS.search(u.netloc))
 
 
 ANCHOR = re.compile(r"<a\b[^>]*?\bhref\s*=\s*([\"'])(.*?)\1[^>]*>(.*?)</a\s*>", re.I | re.S)
@@ -95,9 +100,13 @@ def certificate_links(page_url, body):
     anchors first, with their text; then absolute URLs in the page's own
     configuration that no anchor carried."""
     text = body.decode("utf8", "replace") if isinstance(body, bytes) else body
+    elsewhere = "page-feed" if text.lstrip()[:1] in ("{", "[") else "embedded-page-config"
     out, seen = [], set()
     for _q, href, inner in ANCHOR.findall(text):
-        url = urljoin(page_url, html.unescape(href.strip()))
+        try:
+            url = urljoin(page_url, html.unescape(href.strip()))
+        except ValueError:
+            continue
         if not is_certificate(url):
             continue
         url = canonical(url)
@@ -114,7 +123,7 @@ def certificate_links(page_url, body):
         if same_document(url) in seen:
             continue
         seen.add(same_document(url))
-        out.append((url, "", "embedded-page-config"))
+        out.append((url, "", elsewhere))
     return out
 
 

@@ -7,7 +7,11 @@ and the exact `publishedOn` page. Identifiers and filenames are never expanded.
 
 The reader uses an explicit project User-Agent, one request at a time, at least
 2.1 seconds between requests, and a larger robots crawl delay when specified.
-Unavailable robots policies and access walls block document reading. Every
+A robots.txt that answers with a web page instead of rules, or with an empty
+success, states no rules, and no rules means no restriction, as with 404 (the
+owner's rule of 5 October 2026, as RFC 9309 reads it). A robots.txt that
+answers with an error (403, 5xx) or a bot wall, and an access wall on any
+page, block document reading. Every
 redirect target receives its own robots check. Five consecutive host errors
 stop that host for 24 hours; `data/coa-http-state.json` preserves that deadline.
 Request logs are temporary and are not published.
@@ -60,22 +64,34 @@ not read.
 
 `scripts/coa-sources.py` reads again, every day before `coa-dates.py`, the
 pages listed in `data/coa-sources.json` for sources whose certificates were
-published as links (`published-links`, `published-list-folder`): 13 brands,
-17 pages on 5 October. Brands add certificates there as batches are tested,
+published as links (`published-links`, `published-list-folder`): 16 brands,
+20 pages on 5 October. Brands add certificates there as batches are tested,
 often before the jars reach a shelf. Only listed pages are read; no link is
 followed, guessed or enumerated, and the reader is the one above (robots.txt,
 2.1 seconds apart, five host errors stop a host for a day).
 
-A link counts as a certificate when its path ends in `.pdf`, it points at a
-laboratory's report portal, or it is a single Google Drive or Docs document
-(never a folder). One document has one spelling: the path is percent-encoded
-once, and a yourcoa.com viewer link becomes the same sample's download link.
-A link not seen before is added as `pending-review` with `firstSeenAt`, the
-moment the scan first saw it; reviewed links are never changed.
-`coa-dates.py` reads pending links newest first, so what a brand published
-yesterday is read today. The run report names the new links per brand and
-the pages that could not be read. `scripts/coa-sources-check.py` (part of
-`npm test`) checks link detection and a scan offline.
+A listed page can be the feed a brand's own page loads its list from, when
+the page itself carries no links: Florist Farms' lab-results page calls the
+File Directory app, SP Farms' strains page calls its public API. The feed's
+host has its own robots check like any page.
 
-The first scan, on 5 October, added 45 links (Dank 44, Miss Grass 1). Platinum
-Reserve's robots.txt answers 202 without a policy, so its page is not read.
+A link counts as a certificate when its path ends in `.pdf` or it points at a
+laboratory's report portal. A Google Drive or Docs viewer does not: its page is
+not the document and Drive's robots.txt disallows the download, so Smoke
+(about 75 Drive files) and Royal Genetics (a Drive folder) are recorded but not
+read. One document has one spelling: the path is percent-encoded once, and a
+yourcoa.com viewer link becomes the same sample's download link. A link not
+seen before is added as `pending-review` with `firstSeenAt`, the moment the
+scan first saw it; reviewed links are never changed. `coa-dates.py` reads
+pending links newest first, brands taking turns among links found at the same
+moment, so one brand's long list does not hold back another's. The run report
+names the new links per brand and the pages that could not be read.
+`scripts/coa-sources-check.py` (part of `npm test`) checks link detection and a
+scan offline.
+
+On 5 October: Dank By Definition 44 and Miss Grass 1 in the first scan; then
+Florist Farms 1,683 (1,239 reviewed as other products by file name — pre-rolls,
+vapes, gummies, infused — 444 pending), Animal House 55 and SP Farms 13.
+Platinum Reserve's robots.txt answers with SiteGround's captcha, as does every
+Nautical Blaze page: a wall, not read. Connected Cannabis' list app answers
+"Subscription plan is inactive". Toke Folks' robots.txt did not answer.

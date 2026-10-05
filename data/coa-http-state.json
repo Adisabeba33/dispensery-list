@@ -49,5 +49,14 @@
   },
   "https://shop.missgrass.com": {
     "errors": 0
+  },
+  "https://app.filedirectory.app": {
+    "errors": 0
+  },
+  "https://api.spfarmsny.com": {
+    "errors": 0
+  },
+  "https://www.animalhouseny.com": {
+    "errors": 0
   }
 }

@@ -37,12 +37,17 @@ check(urls == [
     "https://brand.example/files/Blue%20Dream%203.5g.pdf",
     "https://ny.yourcoa.com/coa/coa-download/AL40619005-007",
     "https://ny-keystonestatetesting.grow.labware.cloud/COA?guid=ABC-1",
-    "https://drive.google.com/file/d/1abc/view?usp=sharing",
     "https://brand.example/wp-content/uploads/2026/05/Gas%20Leak.pdf",
 ], f"certificate links, one spelling each: {urls}")
 check(links[0][1] == "Blue Dream Lot #: BD01" and links[0][2] == "anchor", f"anchor text is the label: {links[0]}")
 check(links[-1][2] == "embedded-page-config" and links[-1][1] == "", "a link only in the page's configuration")
-check(not cs.is_certificate("https://drive.google.com/drive/folders/xyz"), "a Drive folder is not a document")
+check(not cs.is_certificate("https://drive.google.com/drive/folders/xyz")
+      and not cs.is_certificate("https://drive.google.com/file/d/1abc/view"), "a Drive folder or viewer is not a readable document")
+feed = cs.certificate_links("https://api.brand.example/strains",
+                            '{"strains":[{"current_coa":{"pdf_url":"https:\\/\\/api.brand.example\\/blobs\\/x\\/bbm.pdf"}}]}')
+check(feed == [("https://api.brand.example/blobs/x/bbm.pdf", "", "page-feed")], f"a link in a JSON feed: {feed}")
+check(not cs.is_certificate("https://[broken/a.pdf") and cs.certificate_links(PAGE, '<a href="https://[x/a.pdf">x</a> "https://[y/b.pdf"') == [],
+      "a malformed link is skipped, not fatal")
 check(cs.same_document("https://x.example/a%20b.pdf") == cs.same_document("https://x.example/a b.pdf"),
       "two spellings of one file are one document")
 check(cs.canonical("https://ny.yourcoa.com/coa/coa-view?sample=../x") == "https://ny.yourcoa.com/coa/coa-view?sample=../x",
@@ -75,7 +80,7 @@ reader = Reader({"https://brand.example/coa": HTML})
 added, failed, read = cs.scan(doc, reader, "2026-10-05T12:00:00+00:00")
 check(reader.asked == ["https://brand.example/coa", "https://walled.example/coa"],
       f"each listed page once, without its #fragment; nothing for a source with no published links: {reader.asked}")
-check(added == {"Brand": 4} and read == 2, f"four new links: {added}, {read}")
+check(added == {"Brand": 3} and read == 2, f"three new links: {added}, {read}")
 brand = doc["sources"][0]["certificateLinks"]
 check(brand[0]["scope"] == "ny-flower" and "firstSeenAt" not in brand[0], "a reviewed link stays as reviewed")
 check(all(l["scope"] == "pending-review" and l["firstSeenAt"] == "2026-10-05T12:00:00+00:00" for l in brand[1:]),
@@ -84,7 +89,7 @@ check(failed == [("Walled", "https://walled.example/coa", "robots-disallowed")],
 added2, _f, _r = cs.scan(doc, Reader({"https://brand.example/coa": HTML}), "2026-10-06T12:00:00+00:00")
 check(added2 == {}, f"read again, nothing new: {added2}")
 text = cs.report(added, failed, read)
-check("новых ссылок на сертификаты: **4** (Brand 4)" in text and "Walled: robots-disallowed" in text, f"report: {text}")
+check("новых ссылок на сертификаты: **3** (Brand 3)" in text and "Walled: robots-disallowed" in text, f"report: {text}")
 
 if failures:
     print(f"coa-sources-check: {len(failures)} ошибок")
