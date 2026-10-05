@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-10-03T16:06:55.767117+00:00",
+ "checkedAt": "2026-10-05T00:38:30+00:00",
  "scope": "Published brand/producer links; only document-reviewed ny-flower links are eligible for collection.",
  "sources": [
   {
@@ -18,7 +18,7 @@
   {
    "brandKey": "dank",
    "brand": "Dank By Definition",
-   "checkedAt": "2026-10-03T16:02:52.823827+00:00",
+   "checkedAt": "2026-10-05T00:38:30+00:00",
    "url": "https://www.dankbydefinition.com/coaold",
    "method": "list",
    "status": "published-links",
@@ -442,6 +442,358 @@
      "publishedOn": "https://www.dankbydefinition.com/coaold",
      "linkLocation": "anchor",
      "scope": "other-product"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40325001-006",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40619005-007",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40619005-007 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40705005-004",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40705005-004 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40325001-005",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40329001-001",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40329001-001 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40404006-002",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40404006-002 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40619005-008",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40619005-008 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40404006-004",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40404006-004 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40404006-007",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40404006-007 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40619005-004",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40619005-004 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40404006-003",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40404006-003 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40619005-006",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40619005-006 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40404006-006",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40404006-006 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40404006-005",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40404006-005 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40705005-001",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40705005-001 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40509001-006",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40509001-006 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40509001-011",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40509001-011 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40705005-003",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40705005-003 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40509001-003",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40509001-003 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40705005-006",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40705005-006 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40509001-008",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40509001-008 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40705005-002",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40705005-002 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40703005-002",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40703005-002 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40509001-007",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40509001-007 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40509001-004",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40509001-004 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40619005-003",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40619005-003 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40509001-013",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40509001-013 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40619005-005",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40619005-005 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40509001-012",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40509001-012 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40705005-007",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40705005-007 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40509001-010",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40509001-010 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40705005-005",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40705005-005 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40509001-005",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40509001-005 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40509001-009",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40509001-009 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40509001-014",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40509001-014 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40703005-001",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW AL40703005-001 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40723003-001",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW DK18624PR.5G-GC01 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40723003-011",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW DK18624INFPR.5G-PE01 REPOR"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40723003-007",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW DK18624INFPR1G-PE01 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40723003-013",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW DK18624INFPR.5G-PH01 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40723003-009",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW DK18624INFPR1G-PH01 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40723003-012",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW DK18624INFPR.5G-ST01 REPORT"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40207003-001",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW DK03024INF.5G-SSH01 REPOR"
+    },
+    {
+     "url": "https://ny.yourcoa.com/coa/coa-download/AL40723003-006",
+     "publishedOn": "https://www.dankbydefinition.com/coaold",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00",
+     "label": "VIEW DK18624INFPR1G-WW02 REPORT"
     }
    ],
    "exampleUrl": "https://ny.yourcoa.com/coa/coa-download/AL40131003-008"
@@ -449,7 +801,7 @@
   {
    "brandKey": "rollinggreen",
    "brand": "Rolling Green Cannabis",
-   "checkedAt": "2026-10-03T16:03:01.063790+00:00",
+   "checkedAt": "2026-10-05T00:38:30+00:00",
    "url": "https://www.rollinggreenny.com/certificates-of-analysis",
    "method": "list",
    "status": "published-links",
@@ -591,7 +943,7 @@
   {
    "brandKey": "doobie",
    "brand": "Doobie Labs",
-   "checkedAt": "2026-10-03T16:03:12.737271+00:00",
+   "checkedAt": "2026-10-05T00:38:30+00:00",
    "url": "https://doobielabs.com/pages/coas",
    "method": null,
    "status": "published-links",
@@ -990,7 +1342,7 @@
   {
    "brandKey": "nanticoke",
    "brand": "Nanticoke",
-   "checkedAt": "2026-10-03T16:03:21.951067+00:00",
+   "checkedAt": "2026-10-05T00:38:30+00:00",
    "url": "https://nanticoke.co/lab-results",
    "method": "list",
    "status": "published-links",
@@ -7195,7 +7547,7 @@
   {
    "brandKey": "electraleaf",
    "brand": "ElectraLeaf",
-   "checkedAt": "2026-10-03T16:03:38.945556+00:00",
+   "checkedAt": "2026-10-05T00:38:30+00:00",
    "url": "https://electraleaf.com/3-5-flower-and-5-pack-joints-lab-test/",
    "method": "list",
    "status": "published-links",
@@ -8908,7 +9260,7 @@
   {
    "brandKey": "backhome",
    "brand": "Back Home Cannabis Co",
-   "checkedAt": "2026-10-03T16:04:32.748379+00:00",
+   "checkedAt": "2026-10-05T00:38:30+00:00",
    "url": "https://nanticoke.co/lab-results",
    "method": "list",
    "status": "published-links",
@@ -9114,7 +9466,7 @@
   {
    "brandKey": "hashtaghoney",
    "brand": "Hashtag Honey",
-   "checkedAt": "2026-10-03T16:04:39.191870+00:00",
+   "checkedAt": "2026-10-05T00:38:30+00:00",
    "url": "https://hashtaghoneyofficial.com/",
    "method": "batch-search",
    "status": "published-links",
@@ -10404,7 +10756,7 @@
   {
    "brandKey": "milkweed",
    "brand": "Milkweed",
-   "checkedAt": "2026-10-03T16:04:53.363724+00:00",
+   "checkedAt": "2026-10-05T00:38:30+00:00",
    "url": "https://www.milkweed.life/certifications",
    "method": "list",
    "status": "published-list-folder",
@@ -10420,7 +10772,7 @@
   {
    "brandKey": "platinumreserve",
    "brand": "Platinum Reserve",
-   "checkedAt": "2026-10-03T16:05:02.923145+00:00",
+   "checkedAt": "2026-10-05T00:38:30+00:00",
    "url": "https://platinumreserveny.com/lab-reports/",
    "method": "list",
    "status": "published-links",
@@ -11029,7 +11381,7 @@
   {
    "brandKey": "5boro",
    "brand": "5 Boro",
-   "checkedAt": "2026-10-03T16:05:11.309126+00:00",
+   "checkedAt": "2026-10-05T00:38:30+00:00",
    "url": "https://nanticoke.co/lab-results",
    "method": "list",
    "status": "published-links",
@@ -11755,7 +12107,7 @@
   {
    "brandKey": "leftcoast",
    "brand": "Left Coast",
-   "checkedAt": "2026-10-03T16:05:31.926925+00:00",
+   "checkedAt": "2026-10-05T00:38:30+00:00",
    "url": "https://www.leftcoastextracts.info/pages/new-york-lab-results",
    "method": "list",
    "status": "published-links",
@@ -12115,7 +12467,7 @@
   {
    "brandKey": "hurleygrown",
    "brand": "Hurley Grown",
-   "checkedAt": "2026-10-03T16:06:22.842149+00:00",
+   "checkedAt": "2026-10-05T00:38:30+00:00",
    "url": "https://www.hurleygrown.com/coas",
    "method": "list",
    "status": "published-links",
@@ -12808,7 +13160,7 @@
   {
    "brandKey": "missgrass",
    "brand": "Miss Grass",
-   "checkedAt": "2026-10-03T16:06:35.475161+00:00",
+   "checkedAt": "2026-10-05T00:38:30+00:00",
    "url": "https://shop.missgrass.com/pages/certificates-of-analysis",
    "method": "list",
    "status": "published-links",
@@ -12865,6 +13217,13 @@
      "linkLocation": "anchor",
      "scope": "other-product",
      "accessStatus": "pdf-read"
+    },
+    {
+     "url": "https://drive.google.com/file/d/1YK1FLsW0qP43fPrexbhTH2Q0QMK87xmC/view?usp=sharing",
+     "publishedOn": "https://shop.missgrass.com/pages/certificates-of-analysis",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-05T00:38:30+00:00"
     }
    ],
    "exampleUrl": "https://cdn.shopify.com/s/files/1/2547/2056/files/COA_F503328_100845-5_Miss_Grass_Watermelon_Blood_Orange_Mimosa_Lift_Up_Gummies_1.pdf?v=1789417900"
@@ -12872,7 +13231,7 @@
   {
    "brandKey": "headytree",
    "brand": "Heady Tree",
-   "checkedAt": "2026-10-03T16:06:46.121336+00:00",
+   "checkedAt": "2026-10-05T00:38:30+00:00",
    "url": "https://headytree.com/coa/",
    "method": "list",
    "status": "published-links",
