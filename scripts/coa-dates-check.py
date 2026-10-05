@@ -78,6 +78,26 @@ with tempfile.TemporaryDirectory() as tmp:
         except h.SourceBlocked as e:
             assert str(e) == 'robots-unavailable-403'
     assert denied_calls == ['https://x.test/robots.txt']
+    # A robots.txt answered with a web page (or an empty 202) states no rules:
+    # no rules, no restriction. A bot wall in its place still stops the host.
+    for status, page in ((200, b'<!DOCTYPE html><html><body>Shop</body></html>'), (202, b'')):
+        reader = h.Reader(Path(tmp) / 'state.json')
+        seen = []
+        def request(url, _s=status, _p=page, **k):
+            seen.append(url)
+            return (_s, {}, _p) if url.endswith('/robots.txt') else (200, {}, b'%PDF-1.7')
+        reader.request = request
+        assert reader.get('https://x.test/report.pdf')[2] == b'%PDF-1.7', status
+        assert seen == ['https://x.test/robots.txt', 'https://x.test/report.pdf'], seen
+    reader = h.Reader(Path(tmp) / 'state.json')
+    walled = []
+    reader.request = lambda url, **k: (walled.append(url), (200, {}, b'<html><title>Just a moment...</title></html>'))[1]
+    try:
+        reader.get('https://x.test/report.pdf')
+        raise AssertionError('a bot wall at robots.txt must stop the host')
+    except h.SourceBlocked as e:
+        assert str(e) == 'robots-access-wall'
+    assert walled == ['https://x.test/robots.txt']
     reader = h.Reader(Path(tmp) / 'state.json')
     class Response:
         code = 500

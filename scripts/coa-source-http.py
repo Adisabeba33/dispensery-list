@@ -8,6 +8,11 @@ UA = 'the-flower-index/1.33.0 (+https://github.com/Adisabeba33/dispensery-list)'
 TOKEN = 'the-flower-index'
 MIN_DELAY = 2.1
 class SourceBlocked(Exception): pass
+WALL=re.compile(rb'cf-chl-|verify you are human|<title[^>]*>\s*(?:access denied|just a moment|attention required)',re.I)
+
+def is_html(body):
+    head=body[:2000].lstrip().lower()
+    return head.startswith((b'<!doctype html',b'<html')) or bool(re.search(rb'<(?:html|head|body)\b',head))
 
 def robot_rules(text, token=TOKEN):
     groups=[]; group=None; started=False
@@ -97,7 +102,15 @@ class Reader:
                     if urlsplit(current).path!='/robots.txt': raise SourceBlocked('robots-redirect-to-non-robots')
                     continue
                 if status in (404,410): policy=robot_rules('')
-                elif status==200 and not re.search(rb'<html\b',body[:1000],re.I): policy=robot_rules(body.decode('utf8','replace'))
+                elif 200<=status<300 and is_html(body):
+                    # The owner's rule (5 October 2026), as RFC 9309 reads it:
+                    # a robots.txt that answers with a web page instead of
+                    # rules states no rules, and no rules means no
+                    # restriction, as with 404. A bot wall served there is
+                    # a refusal, not an absence, and still stops the host.
+                    if WALL.search(body[:100000]): raise SourceBlocked('robots-access-wall')
+                    policy=robot_rules('')
+                elif 200<=status<300: policy=robot_rules(body.decode('utf8','replace'))
                 else: raise SourceBlocked('robots-unavailable-'+str(status))
                 self.cache[origin]=policy; break
             else: raise SourceBlocked('robots-redirect-limit')
@@ -110,6 +123,6 @@ class Reader:
             location=next((v for k,v in headers.items() if k.lower()=='location'),None)
             if 300<=status<400 and location: url=urljoin(url,location); continue
             if status!=200: raise SourceBlocked('http-'+str(status))
-            if re.search(rb'cf-chl-|verify you are human|<title[^>]*>\s*(?:access denied|just a moment)',body[:100000],re.I): raise SourceBlocked('access-wall')
+            if WALL.search(body[:100000]): raise SourceBlocked('access-wall')
             return url,headers,body
         raise SourceBlocked('redirect-limit')

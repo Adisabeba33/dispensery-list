@@ -46,3 +46,12 @@ Nerds" and "Blue Nerdz" are one row.
   if it is a cultivar, under `notLines`.
 - `scripts/strain-review-check.ts` (part of `npm test`) holds the cultivars the
   review must not shorten. Add to it when a new rule could touch a real name.
+
+## robots.txt: no rules means no restriction
+
+Every reader here honours robots.txt. The owner's rule (5 October 2026): a
+robots.txt that answers with a web page instead of rules, or with nothing,
+states no rules, and no rules means the site may be read, as with a 404.
+Rules that are there are obeyed. A robots.txt that answers with an error
+(403, 5xx) stops the reader, and a bot wall or captcha — at robots.txt or on
+any page — is never worked around (`scripts/coa-source-http.py`).

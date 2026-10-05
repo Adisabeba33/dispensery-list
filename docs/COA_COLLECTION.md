@@ -7,7 +7,11 @@ and the exact `publishedOn` page. Identifiers and filenames are never expanded.
 
 The reader uses an explicit project User-Agent, one request at a time, at least
 2.1 seconds between requests, and a larger robots crawl delay when specified.
-Unavailable robots policies and access walls block document reading. Every
+A robots.txt that answers with a web page instead of rules, or with an empty
+success, states no rules, and no rules means no restriction, as with 404 (the
+owner's rule of 5 October 2026, as RFC 9309 reads it). A robots.txt that
+answers with an error (403, 5xx) or a bot wall, and an access wall on any
+page, block document reading. Every
 redirect target receives its own robots check. Five consecutive host errors
 stop that host for 24 hours; `data/coa-http-state.json` preserves that deadline.
 Request logs are temporary and are not published.
@@ -78,4 +82,5 @@ the pages that could not be read. `scripts/coa-sources-check.py` (part of
 `npm test`) checks link detection and a scan offline.
 
 The first scan, on 5 October, added 45 links (Dank 44, Miss Grass 1). Platinum
-Reserve's robots.txt answers 202 without a policy, so its page is not read.
+Reserve's robots.txt answers 202 with no rules; under the rule above its page
+is read from the same day.
