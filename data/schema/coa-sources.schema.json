@@ -119,7 +119,8 @@
                 "linkLocation": {
                   "enum": [
                     "anchor",
-                    "embedded-page-config"
+                    "embedded-page-config",
+          "page-feed"
                   ]
                 },
                 "format": {

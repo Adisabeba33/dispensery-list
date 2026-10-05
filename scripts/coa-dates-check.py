@@ -98,6 +98,31 @@ with tempfile.TemporaryDirectory() as tmp:
     except h.SourceBlocked as e:
         assert str(e) == 'robots-access-wall'
     assert walled == ['https://x.test/robots.txt']
+    # SiteGround's captcha: a 202 that only refreshes to /.well-known/sgcaptcha/.
+    reader = h.Reader(Path(tmp) / 'state.json')
+    reader.request = lambda url, **k: (202, {}, b'<html><head><meta http-equiv="refresh" content="0;/.well-known/sgcaptcha/?r=%2F"></head></html>')
+    try:
+        reader.get('https://x.test/coa')
+        raise AssertionError('a SiteGround captcha is a wall')
+    except h.SourceBlocked as e:
+        assert str(e) == 'robots-access-wall'
+    # A body compressed without being asked for is read decompressed.
+    import gzip as _gzip
+    class Gz:
+        code = 200
+        headers = {'Content-Encoding': 'gzip'}
+        def read(self, limit): return _gzip.compress(b'User-agent: *\nDisallow: /private\n')
+        def __enter__(self): return self
+        def __exit__(self, *args): pass
+    reader = h.Reader(Path(tmp) / 'gz.json')
+    reader.opener.open = lambda *a, **k: Gz()
+    original_sleep = h.time.sleep
+    h.time.sleep = lambda _: None
+    try:
+        assert reader.request('https://x.test/robots.txt')[2].startswith(b'User-agent')
+        assert not h.allowed(reader.policy('https://x.test/private/a.pdf'), 'https://x.test/private/a.pdf')
+    finally:
+        h.time.sleep = original_sleep
     reader = h.Reader(Path(tmp) / 'state.json')
     class Response:
         code = 500
@@ -126,4 +151,13 @@ with tempfile.TemporaryDirectory() as tmp:
         {'url': 'https://x.test/other.pdf', 'publishedOn': 'https://brand.test/coas', 'scope': 'other-state'},
         {'url': 'https://x.test/unpublished.pdf', 'scope': 'ny-flower'}]}]}))
     assert list(m.source_links(sources)) == ['https://x.test/good.pdf']
+    sources.write_text(json.dumps({'sources': [
+        {'certificateLinks': [{'url': f'https://big.test/{i}.pdf', 'firstSeenAt': '2026-10-05T09:00:00+00:00'} for i in range(3)]},
+        {'certificateLinks': [{'url': 'https://small.test/a.pdf', 'firstSeenAt': '2026-10-05T09:00:00+00:00'},
+                              {'url': 'https://small.test/old.pdf', 'firstSeenAt': '2026-10-04T09:00:00+00:00'}]}]}))
+    order = m.pending_order(['https://never.test/x.pdf', 'https://small.test/old.pdf', 'https://big.test/0.pdf',
+                             'https://big.test/1.pdf', 'https://big.test/2.pdf', 'https://small.test/a.pdf'],
+                            m.links_first_seen(sources))
+    assert order == ['https://small.test/a.pdf', 'https://big.test/0.pdf', 'https://big.test/1.pdf', 'https://big.test/2.pdf',
+                     'https://small.test/old.pdf', 'https://never.test/x.pdf'], order
 print('coa-dates-check: OK (six labs, date provenance, robots, redirects, cooldown, source scope)')

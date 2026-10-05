@@ -1,5 +1,5 @@
 """Sequential, robots-aware HTTP reader for explicitly published document links."""
-import json, re, time, urllib.request, urllib.error
+import json, re, time, urllib.request, urllib.error, zlib
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from urllib.parse import urlsplit, urljoin
@@ -8,7 +8,7 @@ UA = 'the-flower-index/1.33.0 (+https://github.com/Adisabeba33/dispensery-list)'
 TOKEN = 'the-flower-index'
 MIN_DELAY = 2.1
 class SourceBlocked(Exception): pass
-WALL=re.compile(rb'cf-chl-|verify you are human|<title[^>]*>\s*(?:access denied|just a moment|attention required)',re.I)
+WALL=re.compile(rb'cf-chl-|/\.well-known/sgcaptcha|verify you are human|<title[^>]*>\s*(?:access denied|just a moment|attention required)',re.I)
 
 def is_html(body):
     head=body[:2000].lstrip().lower()
@@ -69,6 +69,12 @@ class Reader:
             except urllib.error.HTTPError as e: response=e
             with response: status=response.code; headers=dict(response.headers); body=response.read(32*1024*1024+1)
             if len(body)>32*1024*1024: raise SourceBlocked('document-exceeds-32MiB')
+            # Some hosts compress although nothing asked them to.
+            encoding=next((v for k,v in headers.items() if k.lower()=='content-encoding'),'').strip().lower()
+            if encoding in ('gzip','x-gzip','deflate'):
+                d=zlib.decompressobj(31 if 'gzip' in encoding else 15)
+                body=d.decompress(body,32*1024*1024+1)
+                if len(body)>32*1024*1024: raise SourceBlocked('document-exceeds-32MiB')
             # 404 is a documented absence, not a server error.
             failed=status>=400 and status not in (404,410)
             s['errors']=s.get('errors',0)+1 if failed else 0

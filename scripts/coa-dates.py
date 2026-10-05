@@ -221,12 +221,29 @@ def source_links(path=SOURCES, pending=False):
 
 
 def links_first_seen(path=SOURCES):
-    """url → when scripts/coa-sources.py first saw it on a brand page."""
+    """url → (when scripts/coa-sources.py first saw it on a brand page, its
+    turn among the links its brand published at that moment)."""
     if not path.exists():
         return {}
-    return {link["url"]: link["firstSeenAt"]
-            for source in json.loads(path.read_text()).get("sources", [])
-            for link in source.get("certificateLinks", []) if link.get("firstSeenAt")}
+    out = {}
+    for source in json.loads(path.read_text()).get("sources", []):
+        turns = {}
+        for link in source.get("certificateLinks", []):
+            if link.get("firstSeenAt"):
+                turn = turns[link["firstSeenAt"]] = turns.get(link["firstSeenAt"], -1) + 1
+                out[link["url"]] = (link["firstSeenAt"], turn)
+    return out
+
+
+def pending_order(urls, first_seen):
+    """Newest first: a link found today is a batch a brand just published and
+    should not wait behind the backlog. Links found at the same moment take
+    turns brand by brand, so one brand's long list (Florist's 444 on
+    5 October) does not hold back another's thirteen."""
+    def key(u):
+        seen, turn = first_seen.get(u, ("", 0))
+        return (seen, -turn, u)
+    return sorted(urls, key=key, reverse=True)
 
 
 def main():
@@ -247,11 +264,9 @@ def main():
     unreviewed = lambda u: provenance[u].get("sourceKind") == "brand-page-unreviewed"
     todo = [u for u in urls if (u not in known or known[u].get("unread")) and not unreviewed(u)]
     # Опубликованные, но не разобранные ссылки брендов — понемногу за прогон.
-    # Newest first: a link scripts/coa-sources.py found today is a batch a
-    # brand just published, and it should not wait behind the backlog.
-    first_seen = links_first_seen()
-    pending = sorted((u for u in urls if (u not in known or known[u].get("unread")) and unreviewed(u)),
-                     key=lambda u: (first_seen.get(u, ""), u), reverse=True)[:PENDING_PER_RUN]
+    # Newest first, brands taking turns (pending_order).
+    pending = pending_order([u for u in urls if (u not in known or known[u].get("unread")) and unreviewed(u)],
+                            links_first_seen())[:PENDING_PER_RUN]
     # Прочитанные до отпечатков — дочитываются понемногу, не все разом.
     backfill = [u for u in urls if u in known and not known[u].get("unread") and "sha256" not in known[u]][:BACKFILL]
     # Прочитанные до панелей: ссылки брендов первыми — у сертификатов из меню
