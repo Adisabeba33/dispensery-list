@@ -101,3 +101,8 @@ vapes, gummies, infused — 444 pending), Animal House 55 and SP Farms 13.
 Platinum Reserve's robots.txt answers with SiteGround's captcha, as does every
 Nautical Blaze page: a wall, not read. Connected Cannabis' list app answers
 "Subscription plan is inactive". Toke Folks' robots.txt did not answer.
+
+On 6 October Soma's curation batch 13 added urbanXtracts (its "authenticity
+chain" page, one certificate per lot; 15 flower lots pending, vapes and edibles
+reviewed as other products by lot code) and ProXtracts (its lab-results page;
+15 pending, joints and kief reviewed as other products by label).

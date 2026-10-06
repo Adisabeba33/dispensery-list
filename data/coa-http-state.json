@@ -39,7 +39,7 @@
     "errors": 0
   },
   "https://hashtaghoneyofficial.com": {
-    "errors": 0
+    "errors": 2
   },
   "https://www.milkweed.life": {
     "errors": 0
@@ -64,5 +64,11 @@
   },
   "https://spfarms.nyc3.digitaloceanspaces.com": {
     "errors": 1
+  },
+  "https://www.urbanxtracts.com": {
+    "errors": 0
+  },
+  "https://proxtracts.com": {
+    "errors": 0
   }
 }

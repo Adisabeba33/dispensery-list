@@ -109,6 +109,13 @@ GROWER_ALIASES = {
     "roemermicro": "roemer", "roemersmallbatch": "roemer",
     "smoke": "smokewrld", "smokeworld": "smokewrld",
     "wizardtreez": "wizardtrees",
+    # Партия 13 курации: STAYME7O и STAYMELO — STAYME7O™ (Grand National), BANZZY —
+    # Banzzy 1305 (одна панель была разбита на три партии), The Kaleidoscope
+    # Collective и TKC — Kaleidoscope, опечатка UrbanXtracs — urbanXtracts.
+    "stayme7o": "stayme7otm", "staymelo": "stayme7otm",
+    "banzzy": "banzzy1305",
+    "kaleidoscopecollective": "kaleidoscope", "tkc": "kaleidoscope",
+    "urbanxtracs": "urbanxtracts",
 }
 
 
