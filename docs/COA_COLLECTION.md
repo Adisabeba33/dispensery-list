@@ -11,7 +11,11 @@ A robots.txt that answers with a web page instead of rules, or with an empty
 success, states no rules, and no rules means no restriction, as with 404 (the
 owner's rule of 5 October 2026, as RFC 9309 reads it). A robots.txt that
 answers with an error (403, 5xx) or a bot wall, and an access wall on any
-page, block document reading. Every
+page, block document reading — except a file store's own refusal of a
+robots.txt it does not hold (an S3-style XML `AccessDenied`, or a bare
+"Forbidden" as Wix's usrfiles sends): that states no rules either (the owner's
+rule of 6 October 2026, as RFC 9309 reads any 4xx), and it is not counted as a
+host error. A 403 that is a page or a wall still stops the host. Every
 redirect target receives its own robots check. Five consecutive host errors
 stop that host for 24 hours; `data/coa-http-state.json` preserves that deadline.
 Request logs are temporary and are not published.
@@ -84,7 +88,9 @@ yourcoa.com viewer link becomes the same sample's download link. A link not
 seen before is added as `pending-review` with `firstSeenAt`, the moment the
 scan first saw it; reviewed links are never changed. `coa-dates.py` reads
 pending links newest first, brands taking turns among links found at the same
-moment, so one brand's long list does not hold back another's. The run report
+moment, so one brand's long list does not hold back another's; within a brand
+the file whose name says it is newest goes first (a date in the name, then its
+batch number), whatever order the page lists them in. The run report
 names the new links per brand and the pages that could not be read.
 `scripts/coa-sources-check.py` (part of `npm test`) checks link detection and a
 scan offline.

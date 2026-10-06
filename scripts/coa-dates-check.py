@@ -98,6 +98,22 @@ with tempfile.TemporaryDirectory() as tmp:
     except h.SourceBlocked as e:
         assert str(e) == 'robots-access-wall'
     assert walled == ['https://x.test/robots.txt']
+    # A file store refusing a robots.txt it does not hold (DigitalOcean Spaces'
+    # XML, Wix usrfiles' bare "Forbidden") states no rules; the file is read
+    # and the refusal is not a host error. A 403 page is still a stop.
+    for page in (b'<?xml version="1.0" encoding="UTF-8"?><Error><Code>AccessDenied</Code><BucketName>b</BucketName></Error>',
+                 b'Forbidden'):
+        reader = h.Reader(Path(tmp) / 'store.json')
+        reader.request = lambda url, _p=page, **k: (403, {}, _p) if url.endswith('/robots.txt') else (200, {}, b'%PDF-1.7')
+        assert reader.get('https://store.test/coa/a.pdf')[2] == b'%PDF-1.7', page
+    assert h.storage_absence(b'Forbidden') and not h.storage_absence(b'<html><title>Access Denied</title></html>')
+    reader = h.Reader(Path(tmp) / 'store.json')
+    reader.request = lambda url, **k: (403, {}, b'<html><body>Request blocked</body></html>')
+    try:
+        reader.get('https://store.test/coa/a.pdf')
+        raise AssertionError('a 403 page still stops the host')
+    except h.SourceBlocked as e:
+        assert str(e) == 'robots-unavailable-403'
     # SiteGround's captcha: a 202 that only refreshes to /.well-known/sgcaptcha/.
     reader = h.Reader(Path(tmp) / 'state.json')
     reader.request = lambda url, **k: (202, {}, b'<html><head><meta http-equiv="refresh" content="0;/.well-known/sgcaptcha/?r=%2F"></head></html>')
@@ -160,4 +176,16 @@ with tempfile.TemporaryDirectory() as tmp:
                             m.links_first_seen(sources))
     assert order == ['https://small.test/a.pdf', 'https://big.test/0.pdf', 'https://big.test/1.pdf', 'https://big.test/2.pdf',
                      'https://small.test/old.pdf', 'https://never.test/x.pdf'], order
+    # Within a brand, the newest file by its own name first: a date in it, then
+    # its batch number — not the page's order (Florist lists 2024 first).
+    sources.write_text(json.dumps({'sources': [{'certificateLinks': [
+        {'url': 'https://f.test/WF00354_-_Old_Flower_-_27.4_-_COA.pdf', 'firstSeenAt': '2026-10-05T09:00:00+00:00'},
+        {'url': 'https://f.test/WF01135_1A412030000019F000020552_Flower_ACT_06-30-2026.pdf', 'firstSeenAt': '2026-10-05T09:00:00+00:00'},
+        {'url': 'https://f.test/WF00900_-_Mid_Flower.pdf', 'firstSeenAt': '2026-10-05T09:00:00+00:00'}]}]}))
+    order = m.pending_order(['https://f.test/WF00354_-_Old_Flower_-_27.4_-_COA.pdf',
+                             'https://f.test/WF00900_-_Mid_Flower.pdf',
+                             'https://f.test/WF01135_1A412030000019F000020552_Flower_ACT_06-30-2026.pdf'],
+                            m.links_first_seen(sources))
+    assert [u.rsplit('/', 1)[-1][:7] for u in order] == ['WF01135', 'WF00900', 'WF00354'], order
+    assert m.recency('https://x/COA_2026-07-01_lot.pdf')[0] == '2026-07-01'
 print('coa-dates-check: OK (six labs, date provenance, robots, redirects, cooldown, source scope)')

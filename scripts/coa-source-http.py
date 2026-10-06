@@ -10,6 +10,14 @@ MIN_DELAY = 2.1
 class SourceBlocked(Exception): pass
 WALL=re.compile(rb'cf-chl-|/\.well-known/sgcaptcha|verify you are human|<title[^>]*>\s*(?:access denied|just a moment|attention required)',re.I)
 
+def storage_absence(body):
+    """A file store's own refusal of a key it does not serve: its XML error,
+    or a short plain-text "Forbidden" — never an HTML page or a wall."""
+    head=body[:2000].strip()
+    if WALL.search(head) or is_html(head): return False
+    if re.search(rb'<Error>\s*<Code>(?:AccessDenied|NoSuchKey|AllAccessDisabled)</Code>',head): return True
+    return len(head)<=64 and re.fullmatch(rb'[A-Za-z0-9 .,:\-]*(?:forbidden|access denied)[A-Za-z0-9 .,:\-]*',head,re.I) is not None
+
 def is_html(body):
     head=body[:2000].lstrip().lower()
     return head.startswith((b'<!doctype html',b'<html')) or bool(re.search(rb'<(?:html|head|body)\b',head))
@@ -75,8 +83,9 @@ class Reader:
                 d=zlib.decompressobj(31 if 'gzip' in encoding else 15)
                 body=d.decompress(body,32*1024*1024+1)
                 if len(body)>32*1024*1024: raise SourceBlocked('document-exceeds-32MiB')
-            # 404 is a documented absence, not a server error.
-            failed=status>=400 and status not in (404,410)
+            # 404 is a documented absence, not a server error; a robots.txt
+            # refused by a file store is an absence too (storage_absence).
+            failed=status>=400 and status not in (404,410) and not (robot and status<500 and storage_absence(body))
             s['errors']=s.get('errors',0)+1 if failed else 0
             self.log_path.parent.mkdir(parents=True,exist_ok=True)
             with self.log_path.open('a') as f: f.write(json.dumps({'at':stamp,'url':url,'status':status,'robots':robot})+'\n')
@@ -117,6 +126,13 @@ class Reader:
                     if WALL.search(body[:100000]): raise SourceBlocked('robots-access-wall')
                     policy=robot_rules('')
                 elif 200<=status<300: policy=robot_rules(body.decode('utf8','replace'))
+                # The owner's rule (6 October 2026): a file store (S3,
+                # DigitalOcean Spaces, Wix's usrfiles) answers a robots.txt it
+                # does not hold with 403 and its own "no such file" — an XML
+                # <Error><Code>AccessDenied</Code> or a bare "Forbidden" — not
+                # a page. That states no rules, as RFC 9309 reads any 4xx.
+                # A 403 that is a page (HTML) or a wall still stops the host.
+                elif status in (401,403) and storage_absence(body): policy=robot_rules('')
                 else: raise SourceBlocked('robots-unavailable-'+str(status))
                 self.cache[origin]=policy; break
             else: raise SourceBlocked('robots-redirect-limit')
