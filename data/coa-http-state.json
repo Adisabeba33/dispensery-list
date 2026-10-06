@@ -12,7 +12,7 @@
     "errors": 0
   },
   "https://headytree.com": {
-    "errors": 0
+    "errors": 1
   },
   "https://www.hurleygrown.com": {
     "errors": 0
@@ -39,7 +39,7 @@
     "errors": 0
   },
   "https://hashtaghoneyofficial.com": {
-    "errors": 2
+    "errors": 0
   },
   "https://www.milkweed.life": {
     "errors": 0
@@ -60,15 +60,18 @@
     "errors": 0
   },
   "https://cf6dd7cb-ee59-4745-b1eb-c33ee1f53f1d.usrfiles.com": {
-    "errors": 1
+    "errors": 0
   },
   "https://spfarms.nyc3.digitaloceanspaces.com": {
-    "errors": 1
+    "errors": 0
   },
   "https://www.urbanxtracts.com": {
     "errors": 0
   },
   "https://proxtracts.com": {
+    "errors": 0
+  },
+  "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com": {
     "errors": 0
   }
 }

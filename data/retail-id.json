@@ -52,7 +52,9 @@
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0PR4RH1J": "1A4120300000235000001905",
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QHWQKUB": "1A4120300000235000007987",
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QHWSHZ6": "1A4120300000235000007988",
+  "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QJQ7IMB": "1A4120300000235000008015",
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QJQ82YR": "1A4120300000235000008015",
+  "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QJQDFRA": "1A4120300000235000008019",
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QJQDI4R": "1A4120300000235000008019",
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QJQZYTP": "1A4120300000235000008029",
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QJT94B3": "1A4120300000235000008063",
@@ -239,6 +241,8 @@
   "HTTPS://1A4.COM/13U2YPUQ3Y9CA2VS1140LJ": "1A4120300001A94000000670",
   "HTTPS://1A4.COM/13U2YPUQ3Y9CA2VS115H54": "1A4120300001A94000000671",
   "HTTPS://1A4.COM/13U2YPUQ3Y9SAJZMFEVDW5": "1A4120300001AA1000000795",
+  "HTTPS://1A4.COM/13U2YPUQ3Z4DIB6G6X2IH0": "1A4120300001E1F000001838",
+  "HTTPS://1A4.COM/13U2YPUQ3Z4DIB6G9DLC0C": "1A4120300001E1F000002115",
   "HTTPS://1A4.COM/13U2YPUQ3Z4DIB6G9WQYHD": "1A4120300001E1F000002300",
   "HTTPS://1A4.COM/13U2YPUQ3Z5JE0J9N69R0Q": "1A4120300001E41000000023",
   "HTTPS://1A4.COM/13U2YPUQ3Z5JE0J9N6B11L": "1A4120300001E41000000024",
@@ -4586,6 +4590,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000268000034040": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300000268000035808": {
    "found": false,
    "checked": "2026-09-29"
@@ -4829,6 +4837,10 @@
   "1A4120300000268000049364": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000268000049371": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A4120300000268000049383": {
    "found": false,
@@ -6110,6 +6122,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000283000059225": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300000283000059241": {
    "found": false,
    "checked": "2026-09-29"
@@ -6378,6 +6394,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000283000060485": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300000283000060489": {
    "found": false,
    "checked": "2026-09-29"
@@ -6402,6 +6422,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000283000060637": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300000283000060695": {
    "found": false,
    "checked": "2026-09-29"
@@ -6409,6 +6433,10 @@
   "1A4120300000283000060700": {
    "found": false,
    "checked": "2026-10-02"
+  },
+  "1A4120300000283000060711": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A4120300000283000060717": {
    "found": false,
@@ -6509,6 +6537,10 @@
   "1A4120300000283000061227": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000283000061257": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A4120300000283000061258": {
    "found": false,
@@ -8410,6 +8442,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A412030000038D000025902": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A412030000038D000025903": {
    "found": false,
    "checked": "2026-09-29"
@@ -9177,6 +9213,10 @@
   "1A4120300000451000011262": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000451000011350": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A4120300000451000011352": {
    "found": false,
@@ -12018,6 +12058,10 @@
    "found": false,
    "checked": "2026-10-06"
   },
+  "1A41203000004EB000030863": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A41203000004EB000030896": {
    "found": false,
    "checked": "2026-10-02"
@@ -12041,6 +12085,22 @@
   "1A41203000004EB000030901": {
    "found": false,
    "checked": "2026-10-02"
+  },
+  "1A41203000004EB000031002": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000004EB000031003": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000004EB000031004": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000004EB000031005": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A41203000004EC000000877": {
    "found": false,
@@ -12745,6 +12805,10 @@
   "1A4120300000529000076936": {
    "found": false,
    "checked": "2026-10-04"
+  },
+  "1A4120300000529000078524": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A4120300000596000001287": {
    "found": true,
@@ -13710,6 +13774,10 @@
    "found": false,
    "checked": "2026-10-06"
   },
+  "1A4120300000641000289124": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300000641000290549": {
    "found": false,
    "checked": "2026-09-29"
@@ -13717,6 +13785,14 @@
   "1A4120300000641000290550": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000641000292711": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000641000292712": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A4120300000641000319327": {
    "found": false,
@@ -15097,6 +15173,10 @@
   "1A4120300000BBF000013576": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000BBF000013579": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A4120300000BBF000013605": {
    "found": false,
@@ -19606,6 +19686,10 @@
    "found": false,
    "checked": "2026-09-30"
   },
+  "1A4120300000D7F000050056": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300000D7F000050831": {
    "found": false,
    "checked": "2026-09-29"
@@ -19713,6 +19797,10 @@
   "1A4120300000D7F000060138": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000D7F000060154": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A4120300000D7F000060163": {
    "found": false,
@@ -21361,6 +21449,10 @@
   "1A412030000167F000000221": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A412030000167F000000222": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A412030000167F000000230": {
    "found": false,
@@ -26550,6 +26642,30 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300001E1F000001838": {
+   "found": true,
+   "facility": "Halton Hay Inc",
+   "product": "Mac Pharms - 3.5g Prepackaged - Miso High",
+   "strain": "Miso High",
+   "packaged": "2026-04-03",
+   "tested": "2026-04-11",
+   "harvested": null,
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A4120300001E1F000001849",
+   "checked": "2026-10-06"
+  },
+  "1A4120300001E1F000002115": {
+   "found": true,
+   "facility": "Halton Hay Inc",
+   "product": "Cheech & Chong - 3.5g Prepackaged - Low Rider",
+   "strain": "Lowrider",
+   "packaged": "2026-06-18",
+   "tested": "2026-06-12",
+   "harvested": null,
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A4120300001E1F000002065",
+   "checked": "2026-10-06"
+  },
   "1A4120300001E1F000002300": {
    "found": true,
    "facility": "Halton Hay Inc",
@@ -27846,6 +27962,18 @@
    "batchTag": "1A41203000022C5000003088",
    "checked": "2026-10-06"
   },
+  "1A41203000022C5000003766": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Headband - 3.5g",
+   "strain": "Headband",
+   "packaged": "2026-10-05",
+   "tested": "2026-08-07",
+   "harvested": "2026-01-13",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000002281",
+   "checked": "2026-10-06"
+  },
   "1A41203000022C5000003767": {
    "found": true,
    "facility": "AJ'S NATIVE WHOLESALE INC",
@@ -28349,6 +28477,10 @@
   "1A41203000023A2000011050": {
    "found": false,
    "checked": "2026-10-02"
+  },
+  "1A41203000023A2000011512": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A41203000023A4000000235": {
    "found": false,
