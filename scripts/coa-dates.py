@@ -220,18 +220,43 @@ def source_links(path=SOURCES, pending=False):
     return links
 
 
+def recency(url):
+    """How recent a certificate's own file name says it is: a date written in
+    it (06-30-2026, 2026-06-30), then the first batch number of three or more
+    digits (Florist's WF01135 after WF00354). Names that say neither keep the
+    page's order."""
+    from urllib.parse import unquote, urlsplit
+    name = unquote(urlsplit(url).path.rsplit("/", 1)[-1])
+    day = ""
+    m = re.search(r"(?<!\d)(\d{1,2})[-_.](\d{1,2})[-_.](20\d{2})(?!\d)", name)
+    if m:
+        day = f"{m.group(3)}-{int(m.group(1)):02d}-{int(m.group(2)):02d}"
+    else:
+        m = re.search(r"(?<!\d)(20\d{2})[-_.](\d{2})[-_.](\d{2})(?!\d)", name)
+        if m:
+            day = "-".join(m.groups())
+    n = re.search(r"(?<![\d.])(\d{3,})(?![\d.])", re.sub(r"1A4[0-9A-F]{21}", " ", name))
+    return (day, int(n.group(1)) if n else -1)
+
+
 def links_first_seen(path=SOURCES):
     """url → (when scripts/coa-sources.py first saw it on a brand page, its
-    turn among the links its brand published at that moment)."""
+    turn among the links its brand published at that moment). Within a brand
+    the turn goes to the file whose name says it is newest (recency), so a
+    page that lists its oldest certificates first is still read newest first."""
     if not path.exists():
         return {}
     out = {}
     for source in json.loads(path.read_text()).get("sources", []):
-        turns = {}
-        for link in source.get("certificateLinks", []):
+        groups = {}
+        for i, link in enumerate(source.get("certificateLinks", [])):
             if link.get("firstSeenAt"):
-                turn = turns[link["firstSeenAt"]] = turns.get(link["firstSeenAt"], -1) + 1
-                out[link["url"]] = (link["firstSeenAt"], turn)
+                groups.setdefault(link["firstSeenAt"], []).append((i, link["url"]))
+        for seen, links in groups.items():
+            ranked = sorted(links, key=lambda x: x[0])
+            ranked.sort(key=lambda x: recency(x[1]), reverse=True)
+            for turn, (_i, url) in enumerate(ranked):
+                out[url] = (seen, turn)
     return out
 
 
