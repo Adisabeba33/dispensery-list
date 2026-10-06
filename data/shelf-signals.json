@@ -10927,6 +10927,7 @@
    "shops": [
     "OCM-CAURD-24-000046",
     "OCM-CAURD-24-000104",
+    "OCM-CAURD-24-000119",
     "OCM-CAURD-24-000129",
     "OCM-CAURD-24-000138",
     "OCM-CAURD-24-000185",
@@ -10937,44 +10938,6 @@
     "OCM-RETL-24-000247",
     "OCM-RETL-25-000288",
     "OCM-RETL-26-000477"
-   ]
-  },
-  {
-   "brand": "Craft Cartel",
-   "strain": "Brown Sugar",
-   "thc": 35.15,
-   "before": [
-    31.95
-   ],
-   "first": "2026-10-01",
-   "shops": [
-    "OCM-CAURD-24-000102",
-    "OCM-CAURD-24-000154",
-    "OCM-CAURD-25-000281",
-    "OCM-CAURD-26-000330",
-    "OCM-CAURD-26-000334",
-    "OCM-RETL-24-000041",
-    "OCM-RETL-24-000175",
-    "OCM-RETL-25-000379"
-   ]
-  },
-  {
-   "brand": "Craft Cartel",
-   "strain": "Chemlato",
-   "thc": 29.14,
-   "before": [
-    28.28
-   ],
-   "first": "2026-10-01",
-   "shops": [
-    "OCM-CAURD-24-000102",
-    "OCM-CAURD-24-000154",
-    "OCM-CAURD-25-000281",
-    "OCM-CAURD-26-000330",
-    "OCM-CAURD-26-000334",
-    "OCM-RETL-24-000041",
-    "OCM-RETL-24-000175",
-    "OCM-RETL-25-000379"
    ]
   },
   {
@@ -10997,6 +10960,24 @@
    ]
   },
   {
+   "brand": "Craft Cartel",
+   "strain": "Brown Sugar",
+   "thc": 35.15,
+   "before": [
+    31.95
+   ],
+   "first": "2026-10-01",
+   "shops": [
+    "OCM-CAURD-24-000102",
+    "OCM-CAURD-24-000154",
+    "OCM-CAURD-25-000281",
+    "OCM-CAURD-26-000330",
+    "OCM-CAURD-26-000334",
+    "OCM-RETL-24-000175",
+    "OCM-RETL-25-000379"
+   ]
+  },
+  {
    "brand": "Runtz",
    "strain": "The Z",
    "thc": 27.94,
@@ -11012,6 +10993,23 @@
     "OCM-RETL-24-000114",
     "OCM-RETL-24-000197",
     "OCM-RETL-24-000247"
+   ]
+  },
+  {
+   "brand": "Craft Cartel",
+   "strain": "Chemlato",
+   "thc": 29.14,
+   "before": [
+    28.28
+   ],
+   "first": "2026-10-01",
+   "shops": [
+    "OCM-CAURD-24-000102",
+    "OCM-CAURD-24-000154",
+    "OCM-CAURD-25-000281",
+    "OCM-CAURD-26-000330",
+    "OCM-RETL-24-000041",
+    "OCM-RETL-24-000175"
    ]
   },
   {
@@ -11061,25 +11059,6 @@
    ]
   },
   {
-   "brand": "Nanticoke",
-   "strain": "Sour Diesel",
-   "thc": 25.86,
-   "before": [
-    23.57,
-    25.21,
-    25.31,
-    31.32
-   ],
-   "first": "2026-09-30",
-   "shops": [
-    "OCM-CAURD-23-000042",
-    "OCM-CAURD-24-000077",
-    "OCM-CAURD-24-000205",
-    "OCM-CAURD-25-000310",
-    "OCM-CAURD-26-000359"
-   ]
-  },
-  {
    "brand": "1937",
    "strain": "Blueberry Frosting",
    "thc": 25.1,
@@ -11119,6 +11098,24 @@
    ]
   },
   {
+   "brand": "Nanticoke",
+   "strain": "Sour Diesel",
+   "thc": 25.86,
+   "before": [
+    23.57,
+    25.21,
+    25.31,
+    31.32
+   ],
+   "first": "2026-09-30",
+   "shops": [
+    "OCM-CAURD-23-000042",
+    "OCM-CAURD-24-000077",
+    "OCM-CAURD-24-000205",
+    "OCM-CAURD-26-000359"
+   ]
+  },
+  {
    "brand": "Electraleaf NY",
    "strain": "Super Lemon Diesel",
    "thc": 23.39,
@@ -11154,6 +11151,41 @@
    ]
   },
   {
+   "brand": "Grocery",
+   "strain": "Illemonati",
+   "thc": 30.45,
+   "before": [
+    25.61,
+    25.62,
+    27.17,
+    27.34
+   ],
+   "first": "2026-10-01",
+   "shops": [
+    "OCM-CAURD-23-000021",
+    "OCM-CAURD-24-000126",
+    "OCM-CAURD-24-000144",
+    "OCM-CAURD-25-000234"
+   ]
+  },
+  {
+   "brand": "Voice Of The Plant",
+   "strain": "VOP Kush",
+   "thc": 26.15,
+   "before": [
+    22.88,
+    25.87,
+    25.9
+   ],
+   "first": "2026-10-02",
+   "shops": [
+    "OCM-CAURD-25-000281",
+    "OCM-CAURD-26-000334",
+    "OCM-RETL-24-000041",
+    "OCM-RETL-25-000379"
+   ]
+  },
+  {
    "brand": "Zips OG",
    "strain": "Jack Herer",
    "thc": 27.12,
@@ -11170,6 +11202,21 @@
    ]
   },
   {
+   "brand": "CLAYBOURNE CO.",
+   "strain": "Wedding Cake",
+   "thc": 27.91,
+   "before": [
+    27.56,
+    28.84
+   ],
+   "first": "2026-09-30",
+   "shops": [
+    "OCM-RETL-24-000078",
+    "OCM-RETL-24-000120",
+    "OCM-RETL-26-000477"
+   ]
+  },
+  {
    "brand": "Find",
    "strain": "Bubba Mints",
    "thc": 29.38,
@@ -11182,23 +11229,6 @@
     "OCM-CAURD-24-000046",
     "OCM-RETL-24-000244",
     "OCM-RETL-24-000247"
-   ]
-  },
-  {
-   "brand": "Grocery",
-   "strain": "Illemonati",
-   "thc": 30.45,
-   "before": [
-    25.61,
-    25.62,
-    27.17,
-    27.34
-   ],
-   "first": "2026-10-01",
-   "shops": [
-    "OCM-CAURD-23-000021",
-    "OCM-CAURD-24-000144",
-    "OCM-CAURD-25-000234"
    ]
   },
   {
@@ -11247,6 +11277,26 @@
    ]
   },
   {
+   "brand": "Grassroots",
+   "strain": "Golden Sands",
+   "thc": 31.06,
+   "before": [
+    27.9,
+    27.91,
+    28.42,
+    28.83,
+    29.48,
+    29.82,
+    33.11
+   ],
+   "first": "2026-10-02",
+   "shops": [
+    "OCM-CAURD-24-000104",
+    "OCM-RETL-24-000099",
+    "OCM-RETL-24-000247"
+   ]
+  },
+  {
    "brand": "Electraleaf NY",
    "strain": "Godzilla Glue",
    "thc": 24.71,
@@ -11291,20 +11341,6 @@
    ]
   },
   {
-   "brand": "CLAYBOURNE CO.",
-   "strain": "Wedding Cake",
-   "thc": 27.91,
-   "before": [
-    27.56,
-    28.84
-   ],
-   "first": "2026-09-30",
-   "shops": [
-    "OCM-RETL-24-000120",
-    "OCM-RETL-26-000477"
-   ]
-  },
-  {
    "brand": null,
    "strain": "Amnesia Haze",
    "thc": 24.66,
@@ -11332,19 +11368,6 @@
    ]
   },
   {
-   "brand": "SMOAKLAND X",
-   "strain": "GIRL SCOUT COOKIES",
-   "thc": 19.32,
-   "before": [
-    16.8
-   ],
-   "first": "2026-10-01",
-   "shops": [
-    "OCM-RETL-25-000294",
-    "OCM-RETL-25-000414"
-   ]
-  },
-  {
    "brand": "BOUKET",
    "strain": "Glitter Bomb",
    "thc": 29.36,
@@ -11362,6 +11385,19 @@
    "shops": [
     "OCM-CAURD-24-000208",
     "OCM-RETL-24-000120"
+   ]
+  },
+  {
+   "brand": "Ish",
+   "strain": "Northern Lights",
+   "thc": 29.16,
+   "before": [
+    28.74
+   ],
+   "first": "2026-10-01",
+   "shops": [
+    "OCM-CAURD-24-000205",
+    "OCM-RETL-25-000269"
    ]
   },
   {
@@ -11454,25 +11490,6 @@
    ]
   },
   {
-   "brand": "Grassroots",
-   "strain": "Golden Sands",
-   "thc": 31.06,
-   "before": [
-    27.9,
-    27.91,
-    28.42,
-    28.83,
-    29.48,
-    29.82,
-    33.11
-   ],
-   "first": "2026-10-02",
-   "shops": [
-    "OCM-CAURD-24-000104",
-    "OCM-RETL-24-000247"
-   ]
-  },
-  {
    "brand": "Rythm",
    "strain": "Jacks Delight",
    "thc": 25.04,
@@ -11489,21 +11506,6 @@
    "shops": [
     "OCM-CAURD-23-000003",
     "OCM-CAURD-24-000091"
-   ]
-  },
-  {
-   "brand": "Voice Of The Plant",
-   "strain": "VOP Kush",
-   "thc": 26.15,
-   "before": [
-    22.88,
-    25.87,
-    25.9
-   ],
-   "first": "2026-10-02",
-   "shops": [
-    "OCM-CAURD-25-000281",
-    "OCM-CAURD-26-000334"
    ]
   },
   {
@@ -11807,6 +11809,18 @@
    ]
   },
   {
+   "brand": "SMOAKLAND X",
+   "strain": "GIRL SCOUT COOKIES",
+   "thc": 19.32,
+   "before": [
+    16.8
+   ],
+   "first": "2026-10-01",
+   "shops": [
+    "OCM-RETL-25-000414"
+   ]
+  },
+  {
    "brand": "Herb",
    "strain": "GORILLA GLUE",
    "thc": 29.69,
@@ -11962,18 +11976,6 @@
    ]
   },
   {
-   "brand": "Ish",
-   "strain": "Northern Lights",
-   "thc": 29.16,
-   "before": [
-    28.74
-   ],
-   "first": "2026-10-01",
-   "shops": [
-    "OCM-CAURD-24-000205"
-   ]
-  },
-  {
    "brand": "Back Home Cannabis Company (Micro)",
    "strain": "Northern Lights",
    "thc": 24.88,
@@ -11996,18 +11998,6 @@
    "first": "2026-10-01",
    "shops": [
     "OCM-CAURD-25-000297"
-   ]
-  },
-  {
-   "brand": "Smoakland X",
-   "strain": "Pineapple Express",
-   "thc": 24.5,
-   "before": [
-    28.17
-   ],
-   "first": "2026-10-01",
-   "shops": [
-    "OCM-RETL-25-000294"
    ]
   },
   {
@@ -12807,19 +12797,6 @@
    ]
   },
   {
-   "brand": "7 SEAZ",
-   "strain": "Incredible Hulk",
-   "thc": 25.9,
-   "before": [
-    26.77,
-    30.78
-   ],
-   "first": "2026-10-03",
-   "shops": [
-    "OCM-RETL-24-000175"
-   ]
-  },
-  {
    "brand": "Stay Melo",
    "strain": "Madison Square Garlic",
    "thc": 33.16,
@@ -12841,22 +12818,6 @@
    "first": "2026-10-03",
    "shops": [
     "OCM-CAURD-24-000205"
-   ]
-  },
-  {
-   "brand": "Botanist",
-   "strain": "Millionaire",
-   "thc": 28.92,
-   "before": [
-    25.06,
-    26.5,
-    26.82,
-    26.83,
-    28.22
-   ],
-   "first": "2026-10-03",
-   "shops": [
-    "OCM-CAURD-24-000169"
    ]
   },
   {
@@ -13043,6 +13004,16 @@
    "shops": []
   },
   {
+   "brand": "Smoakland X",
+   "strain": "Pineapple Express",
+   "thc": 24.5,
+   "before": [
+    28.17
+   ],
+   "first": "2026-10-01",
+   "shops": []
+  },
+  {
    "brand": "Herb",
    "strain": "Pink Cookies",
    "thc": 30.05,
@@ -13135,6 +13106,31 @@
     25.46,
     28.62,
     33.33
+   ],
+   "first": "2026-10-03",
+   "shops": []
+  },
+  {
+   "brand": "7 SEAZ",
+   "strain": "Incredible Hulk",
+   "thc": 25.9,
+   "before": [
+    26.77,
+    30.78
+   ],
+   "first": "2026-10-03",
+   "shops": []
+  },
+  {
+   "brand": "Botanist",
+   "strain": "Millionaire",
+   "thc": 28.92,
+   "before": [
+    25.06,
+    26.5,
+    26.82,
+    26.83,
+    28.22
    ],
    "first": "2026-10-03",
    "shops": []
