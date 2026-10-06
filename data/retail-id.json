@@ -48,6 +48,7 @@
   "HTTPS://1A4.COM/13U2YPUQ3SBK38HFWZA8SH": "1A412030000022C000002944",
   "HTTPS://1A4.COM/13U2YPUQ3SBK38HFWZB1FL": "1A412030000022C000002945",
   "HTTPS://1A4.COM/13U2YPUQ3SBK38HFWZH1XE": "1A412030000022C000002949",
+  "HTTPS://1A4.COM/13U2YPUQ3SBK38HG1EXS05": "1A412030000022C000003940",
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0PR4RH1J": "1A4120300000235000001905",
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QHWQKUB": "1A4120300000235000007987",
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QHWSHZ6": "1A4120300000235000007988",
@@ -140,8 +141,10 @@
   "HTTPS://1A4.COM/13U2YPUQ3SR88WEEQX6SCL": "1A41203000003F6000001421",
   "HTTPS://1A4.COM/13U2YPUQ3SR88WEER13862": "1A41203000003F6000001485",
   "HTTPS://1A4.COM/13U2YPUQ3SR88WEER138D8": "1A41203000003F6000001485",
+  "HTTPS://1A4.COM/13U2YPUQ3SR88WEER13L0F": "1A41203000003F6000001485",
   "HTTPS://1A4.COM/13U2YPUQ3SR88WEER16A03": "1A41203000003F6000001487",
   "HTTPS://1A4.COM/13U2YPUQ3SR88WEER16GAQ": "1A41203000003F6000001487",
+  "HTTPS://1A4.COM/13U2YPUQ3SR88WEER16HHL": "1A41203000003F6000001487",
   "HTTPS://1A4.COM/13U2YPUQ3SR88WEER195WA": "1A41203000003F6000001489",
   "HTTPS://1A4.COM/13U2YPUQ3SUDKKJGFPJCCK": "1A4120300000452000000041",
   "HTTPS://1A4.COM/13U2YPUQ3SUDKKJGFPM4W5": "1A4120300000452000000043",
@@ -203,6 +206,9 @@
   "HTTPS://1A4.COM/13U2YPUQ3X85BVVKPZC9OP": "1A4120300001655000000335",
   "HTTPS://1A4.COM/13U2YPUQ3X85BVVKQ16K90": "1A4120300001655000000364",
   "HTTPS://1A4.COM/13U2YPUQ3X85BVVKQ17DAD": "1A4120300001655000000365",
+  "HTTPS://1A4.COM/13U2YPUQ3XB0SSVHQ2EAES": "1A41203000016A9000000557",
+  "HTTPS://1A4.COM/13U2YPUQ3XB0SSVHQ2FJ19": "1A41203000016A9000000558",
+  "HTTPS://1A4.COM/13U2YPUQ3XB0SSVHTMWTUN": "1A41203000016A9000001235",
   "HTTPS://1A4.COM/13U2YPUQ3XBD48SWX315IP": "1A41203000016B3000001595",
   "HTTPS://1A4.COM/13U2YPUQ3XBECL72035IJG": "1A41203000016B4000001287",
   "HTTPS://1A4.COM/13U2YPUQ3XBECL725URJUC": "1A41203000016B4000002750",
@@ -2544,6 +2550,70 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000216000130016": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000216000130018": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000216000130019": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000216000130023": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000216000130026": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000216000130028": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000216000130029": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000216000130030": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000216000130032": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000216000130034": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000216000130035": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000216000130036": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000216000130037": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000216000130038": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000216000130039": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000216000130045": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300000216000130528": {
    "found": false,
    "checked": "2026-09-29"
@@ -2908,6 +2978,10 @@
    "found": false,
    "checked": "2026-10-03"
   },
+  "1A4120300000216000166205": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300000216000166208": {
    "found": false,
    "checked": "2026-10-03"
@@ -3092,6 +3166,10 @@
    "found": false,
    "checked": "2026-09-30"
   },
+  "1A412030000022B000005505": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A412030000022B000005944": {
    "found": false,
    "checked": "2026-09-29"
@@ -3147,6 +3225,10 @@
   "1A412030000022C000001330": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A412030000022C000001344": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A412030000022C000001352": {
    "found": false,
@@ -5504,6 +5586,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000283000043942": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300000283000044493": {
    "found": false,
    "checked": "2026-09-29"
@@ -5988,6 +6074,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000283000059115": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300000283000059132": {
    "found": false,
    "checked": "2026-09-29"
@@ -6340,6 +6430,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000283000060800": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300000283000060834": {
    "found": false,
    "checked": "2026-09-29"
@@ -6499,6 +6593,10 @@
   "1A4120300000284000000301": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000284000000302": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A4120300000284000000326": {
    "found": false,
@@ -9728,6 +9826,18 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A41203000004B3000023559": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000004B3000023560": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000004B3000023561": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A41203000004B3000023675": {
    "found": false,
    "checked": "2026-09-29"
@@ -10087,6 +10197,18 @@
   "1A41203000004CC000026249": {
    "found": false,
    "checked": "2026-10-02"
+  },
+  "1A41203000004CC000026432": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000004CC000026433": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000004CC000026435": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A41203000004CD000001011": {
    "found": false,
@@ -11780,6 +11902,26 @@
    "found": false,
    "checked": "2026-09-30"
   },
+  "1A41203000004EB000030346": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000004EB000030347": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000004EB000030348": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000004EB000030349": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000004EB000030357": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A41203000004EB000030414": {
    "found": false,
    "checked": "2026-09-29"
@@ -11795,6 +11937,10 @@
   "1A41203000004EB000030422": {
    "found": false,
    "checked": "2026-09-30"
+  },
+  "1A41203000004EB000030471": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A41203000004EB000030523": {
    "found": false,
@@ -11859,6 +12005,18 @@
   "1A41203000004EB000030545": {
    "found": false,
    "checked": "2026-10-01"
+  },
+  "1A41203000004EB000030857": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000004EB000030861": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000004EB000030862": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A41203000004EB000030896": {
    "found": false,
@@ -12259,6 +12417,10 @@
   "1A4120300000529000067738": {
    "found": false,
    "checked": "2026-10-03"
+  },
+  "1A4120300000529000067892": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A4120300000529000067893": {
    "found": false,
@@ -13444,6 +13606,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000641000264658": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300000641000265227": {
    "found": false,
    "checked": "2026-09-29"
@@ -13527,6 +13693,22 @@
   "1A4120300000641000287218": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000641000288176": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000641000288177": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000641000288178": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000641000288179": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A4120300000641000290549": {
    "found": false,
@@ -14336,6 +14518,18 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A412030000070B000063944": {
+   "found": true,
+   "facility": "Kingston Reserve LLC",
+   "product": "Exotic Flower | Indica - Kosher Kush | 3.5G | 1/8th",
+   "strain": "Kosher Kush",
+   "packaged": "2026-10-01",
+   "tested": "2026-05-17",
+   "harvested": "2026-03-05",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A412030000070A000000340",
+   "checked": "2026-10-06"
+  },
   "1A41203000007D8000000149": {
    "found": false,
    "checked": "2026-09-29"
@@ -15119,6 +15313,10 @@
   "1A4120300000BBF000062290": {
    "found": false,
    "checked": "2026-10-02"
+  },
+  "1A4120300000BBF000062294": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A4120300000BBF000063572": {
    "found": false,
@@ -16304,6 +16502,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000C1E000113026": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300000C1E000113028": {
    "found": false,
    "checked": "2026-09-29"
@@ -16616,6 +16818,14 @@
    "found": false,
    "checked": "2026-10-04"
   },
+  "1A4120300000C1E000122161": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000C1E000122453": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300000C1E000124078": {
    "found": false,
    "checked": "2026-09-29"
@@ -16815,6 +17025,14 @@
   "1A4120300000C1E000125462": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000C1E000125942": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300000C1E000125944": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A4120300000C1E000126162": {
    "found": false,
@@ -18952,6 +19170,10 @@
    "batchTag": "1A4120300000CFB000000075",
    "checked": "2026-10-01"
   },
+  "1A4120300000CFB000001845": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300000D28000000779": {
    "found": false,
    "checked": "2026-09-29"
@@ -19475,6 +19697,10 @@
   "1A4120300000D7F000058974": {
    "found": false,
    "checked": "2026-10-03"
+  },
+  "1A4120300000D7F000058991": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A4120300000D7F000059001": {
    "found": false,
@@ -21144,6 +21370,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A412030000167F000000257": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A412030000167F000000283": {
    "found": false,
    "checked": "2026-09-30"
@@ -21155,6 +21385,42 @@
   "1A412030000167F000000291": {
    "found": false,
    "checked": "2026-10-02"
+  },
+  "1A41203000016A9000000557": {
+   "found": true,
+   "facility": "Gezoont Goodies NY LLC",
+   "product": "Devil-Ade",
+   "strain": "Devils Driver",
+   "packaged": "2026-03-26",
+   "tested": "2026-02-24",
+   "harvested": null,
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A41203000016A9000000381",
+   "checked": "2026-10-06"
+  },
+  "1A41203000016A9000000558": {
+   "found": true,
+   "facility": "Gezoont Goodies NY LLC",
+   "product": "Lemon Cherry Wafflez",
+   "strain": "Lemon Cherry Wafflez",
+   "packaged": "2026-03-26",
+   "tested": "2025-12-21",
+   "harvested": null,
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A412030000025A000007023",
+   "checked": "2026-10-06"
+  },
+  "1A41203000016A9000001235": {
+   "found": true,
+   "facility": "Gezoont Goodies NY LLC",
+   "product": "Super Girl",
+   "strain": "Bubbas Girl",
+   "packaged": "2026-06-12",
+   "tested": "2026-06-19",
+   "harvested": "2026-03-11",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000016A9000001236",
+   "checked": "2026-10-06"
   },
   "1A41203000016B3000001595": {
    "found": true,
@@ -22140,6 +22406,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A41203000018B1000057789": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A41203000018B1000057958": {
    "found": false,
    "checked": "2026-09-29"
@@ -22247,6 +22517,10 @@
   "1A41203000018B1000065598": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A41203000018B1000065599": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A41203000018B1000065720": {
    "found": false,
@@ -23040,6 +23314,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A41203000018B1000090941": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A41203000018B1000090942": {
    "found": false,
    "checked": "2026-10-01"
@@ -23147,6 +23425,10 @@
   "1A41203000018B1000092426": {
    "found": false,
    "checked": "2026-10-01"
+  },
+  "1A41203000018B1000092427": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A41203000018B1000092429": {
    "found": false,
@@ -23407,6 +23689,46 @@
   "1A41203000018B1000095321": {
    "found": false,
    "checked": "2026-10-02"
+  },
+  "1A41203000018B1000095658": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000018B1000095670": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000018B1000095671": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000018B1000095672": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000018B1000095673": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000018B1000095674": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000018B1000095675": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000018B1000095676": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000018B1000095678": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A41203000018B1000095680": {
+   "found": false,
+   "checked": "2026-10-06"
   },
   "1A41203000018B6000000011": {
    "found": true,
@@ -26788,6 +27110,14 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300001EE9000000215": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
+  "1A4120300001EE9000000216": {
+   "found": false,
+   "checked": "2026-10-06"
+  },
   "1A4120300001EFA000000027": {
    "found": true,
    "facility": "Cannaboss, LLC",
@@ -27491,6 +27821,78 @@
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A41203000022C5000002908",
    "checked": "2026-10-01"
+  },
+  "1A41203000022C5000003762": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Candy Blues - 3.5g",
+   "strain": "Candy Blues",
+   "packaged": "2026-10-05",
+   "tested": "2026-09-18",
+   "harvested": "2026-09-14",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000003087",
+   "checked": "2026-10-06"
+  },
+  "1A41203000022C5000003764": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Dumpster - 3.5g",
+   "strain": "Dumpster",
+   "packaged": "2026-10-05",
+   "tested": "2026-09-22",
+   "harvested": "2026-09-14",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000003088",
+   "checked": "2026-10-06"
+  },
+  "1A41203000022C5000003767": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Kerosene Cream - 3.5g",
+   "strain": "Kerosene Cream",
+   "packaged": "2026-10-05",
+   "tested": "2026-09-18",
+   "harvested": "2026-09-14",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000003089",
+   "checked": "2026-10-06"
+  },
+  "1A41203000022C5000003769": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Kevlar - 3.5g",
+   "strain": "Kevlar",
+   "packaged": "2026-10-05",
+   "tested": "2026-08-07",
+   "harvested": "2026-01-13",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000002283",
+   "checked": "2026-10-06"
+  },
+  "1A41203000022C5000003770": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Magic Marker - 3.5g",
+   "strain": "Magic Marker",
+   "packaged": "2026-10-05",
+   "tested": "2026-09-22",
+   "harvested": "2026-09-14",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000003091",
+   "checked": "2026-10-06"
+  },
+  "1A41203000022C5000003772": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth Jar - Uptown Haze - 3.5g",
+   "strain": "Uptown Haze",
+   "packaged": "2026-10-05",
+   "tested": "2026-09-09",
+   "harvested": "2026-08-18",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000002908",
+   "checked": "2026-10-06"
   },
   "1A41203000022E7000000171": {
    "found": false,

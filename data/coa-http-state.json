@@ -58,5 +58,11 @@
   },
   "https://www.animalhouseny.com": {
     "errors": 0
+  },
+  "https://cf6dd7cb-ee59-4745-b1eb-c33ee1f53f1d.usrfiles.com": {
+    "errors": 1
+  },
+  "https://spfarms.nyc3.digitaloceanspaces.com": {
+    "errors": 1
   }
 }
