@@ -33,7 +33,7 @@
 
 | Магазин | Город | Сайт | Почему пусто |
 |---|---|---|---|
-| Astoria Bud Boutique | Astoria | https://astoriabudboutique.com | страница не открылась |
+| Astoria Bud Boutique | Astoria | https://astoriabudboutique.com | ссылку на меню не нашли |
 | Weed Mart By New Metro | Bayside | https://newmetro.club | страница вернула ноль товаров |
 | Conbud | Bronx | https://www.conbudbx.com | страница не открылась |
 | Caffiend LLC | Brooklyn | https://thebushwicknyc.com | страница вернула ноль товаров |
@@ -42,7 +42,7 @@
 | MZDZ Corp | Brooklyn | http://www.coneyislandcannabisny.com | страница не открылась |
 | OTEC | Brooklyn | https://oftheearthcanna.com | страница вернула ноль товаров |
 | Tiki Leaves LLC | Brooklyn | http://www.tikileaves.com | ссылку на меню не нашли |
-| Twisted Vibration LLC | Brooklyn | https://twistedvibration.com | ссылку на меню не нашли |
+| Twisted Vibration LLC | Brooklyn | https://twistedvibration.com | страница вернула ноль товаров |
 | Upstate Edge, LLC | Brooklyn | https://ignyteny.com | robots.txt запрещает — **не трогать** |
 | Curaleaf NY, LLC | Forest Hills | https://curaleaf.com | товары есть (6), цветка нет |
 | Purple Buds, Inc. | Jackson Heights | https://pbuds.com | страница вернула ноль товаров |
@@ -52,22 +52,23 @@
 | Fluent | New York | https://www.etain.com | страница вернула ноль товаров |
 | Green Rise Inc. | New York | https://greenriseny.com | страница не открылась |
 | Housing Works Cannabis Co. | New York | https://hwcannabis.co | страница вернула ноль товаров |
-| The Hootch LLC | New York | https://www.sweetlife.nyc | страница вернула ноль товаров |
+| The Hootch LLC | New York | https://www.sweetlife.nyc | ссылку на меню не нашли |
 | THE GOAT DISPENSARY | Rego Park | https://www.thegoatdispensary.com | ссылку на меню не нашли |
-| Green Land Retail LLC | Staten Island | https://greenlandny.com | страница вернула ноль товаров |
+| Green Land Retail LLC | Staten Island | https://greenlandny.com | ссылку на меню не нашли |
 | Fluent | White Plains | https://etainhealth.com/ | страница вернула ноль товаров |
 | Cannabis Group NY, LLC | Whitestone | https://ignyteny.com | robots.txt запрещает — **не трогать** |
 
 ✳️ — адрес в `menu-endpoints.json` уже есть, и всё равно пусто: значит записанный адрес больше не тот.
 
-## Полка читается не до конца — 2
+## Полка читается не до конца — 3
 
 Здесь адрес есть и меню отвечает, но отдаёт меньше, чем само объявляет. Листание таким не помогло — им нужен прямой адрес категории.
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| The Bridge A Cannabis Experience | 4 | 373 | https://thebridgecannabis.com |
-| KushKlub NY LLC | 57 | 95 | https://kushklub.com |
+| The Bridge A Cannabis Experience | 10 | 370 | https://thebridgecannabis.com |
+| KushKlub NY LLC | 57 | 94 | https://kushklub.com |
+| Matawana | 14 | 25 | https://matawanany.com |
 
 ## Сюда не ходим
 
