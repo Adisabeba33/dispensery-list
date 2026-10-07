@@ -3175,6 +3175,18 @@ export const signatureOf = (somePayloads) => {
 };
 
 const MAX_PAGES_DECLARED = 40;
+/* Forty pages is a bound on effort, not on the shelf, and a menu that pages
+   ten at a time and says it holds more than four hundred is unfinished at
+   forty: Legacy Lifestyle declared 431 on 7 October and was stopped at 410,
+   the fortieth page, then spent its time asking the same forty again. A menu
+   that has said how many it holds is given the pages that number needs, up
+   to a hundred, and the time for them at the pace pages actually come. */
+const MAX_PAGES_CEILING = 100;
+const PAGE_PACE_MS = 2500;
+export const pagesForDeclared = (declared, pageSize) =>
+  declared > 0 && pageSize > 0
+    ? Math.min(MAX_PAGES_CEILING, Math.max(MAX_PAGES_DECLARED, Math.ceil(declared / pageSize) + 1))
+    : MAX_PAGES_DECLARED;
 const MAX_PAGES_UNDECLARED = 10;
 const PAGING_BUDGET_MS = 45000;
 /* When the menu has said how many it holds and the pages are still bringing
@@ -4543,7 +4555,6 @@ const main = async () => {
       try {
         if (
           knownMenu &&
-          !WC_STORE_API.test(knownMenu) &&
           new URL(knownMenu).origin !== new URL(site).origin &&
           (await robotsAllows(knownMenu))
         ) {
@@ -4731,6 +4742,9 @@ const main = async () => {
             declared: declaredHere,
             /* Which products, so the paging below counts each once. */
             ids: carriedIds,
+            /* Where its answer sits among the payloads, so the paging can look
+               at the answer to its own question and nothing else. */
+            payloadAt: payloads.length - 1,
             method: req.method(),
             url: res.url(),
             headers,
@@ -4787,8 +4801,11 @@ const main = async () => {
          asked the menu; a shop whose registered site has died (Conbud's
          conbudbx.com) can only be read from an address written down by hand.
          So when the home page does not open and the menu's address is known,
-         the menu is asked directly. The Store API is read from inside a page
-         of the shop's own site, so it still needs the home page. */
+         the menu is asked directly. A Store API is then read from inside its
+         own address, which is on the shop's host and allowed by its robots.txt:
+         Blue Forest Farms' blueforestfarmsdispensary.com did not answer the
+         runner on 7 October, while its shop on shop.blueforestfarmsdispensary.com
+         did. */
       let homeFailed = null;
       if (skipHome) {
         homeFailed = skipHome;
@@ -4797,7 +4814,7 @@ const main = async () => {
         try {
           await page.goto(site, { waitUntil: 'domcontentloaded', timeout: 30000 });
         } catch (e) {
-          if (!known || WC_STORE_API.test(known)) throw e;
+          if (!known) throw e;
           homeFailed = e.message.split('\n')[0].slice(0, 120);
           entry.homeFailed = homeFailed;
         }
@@ -4894,6 +4911,7 @@ const main = async () => {
       if (known && WC_STORE_API.test(known) && (await robotsAllows(known))) {
         readStoreApi = true;
         entry.wooStoreApi = { pages: 0, products: 0 };
+        if (homeFailed) await page.goto(known, { waitUntil: 'domcontentloaded', timeout: 30000 });
         for (let n = 1; n <= 20; n += 1) {
           const url = new URL(known);
           if (!url.searchParams.has('per_page')) url.searchParams.set('per_page', '100');
@@ -5062,15 +5080,17 @@ const main = async () => {
             }
             return ids.size + unnamed;
           };
-          let cap = declared ? MAX_PAGES_DECLARED : MAX_PAGES_UNDECLARED;
+          let cap = declared ? pagesForDeclared(declared, biggest.products) : MAX_PAGES_UNDECLARED;
           const pagingStarted = Date.now();
-          let pageUntil = pagingStarted + (declared ? PAGING_BUDGET_DECLARED_MS : PAGING_BUDGET_MS);
+          const declaredBudget = Math.max(PAGING_BUDGET_DECLARED_MS, cap * PAGE_PACE_MS);
+          let pageUntil = pagingStarted + (declared ? declaredBudget : PAGING_BUDGET_MS);
           let asked = 0;
           /* Compared against everything already in hand, not just the previous
              answer: a menu that ignores the parameter usually has handed over
              exactly one product payload, and this catches it on the first ask
              rather than the second. */
           let previousPageAt = 0;
+          let previousOwn = null;
           const pagedFrom = seenBefore();
 
           /* Why the asking stopped, named.
@@ -5123,7 +5143,8 @@ const main = async () => {
             }
 
             const before = payloads.length;
-            const seenIds = signatureOf(payloads.slice(previousPageAt));
+            const requestsBefore = requests.length;
+            const seenIds = previousOwn ?? signatureOf(payloads.slice(previousPageAt));
             /* Asked from inside the page, so the shop sees the request its own
                menu makes: same origin, same cookies, same headers. The response
                is captured by the listener above like any other, which is why
@@ -5183,7 +5204,17 @@ const main = async () => {
                the page parameter answers page two with page one, and without
                this the collector asks it forty times and calls the result a
                shelf. */
-            const arrived = signatureOf(payloads.slice(before));
+            /* The answer to the page asked for, when it can be told apart.
+               Everything that arrived meanwhile also holds what the menu asks
+               by itself — Forever 4 20's Gap Commerce page asks its flower
+               query from the top again as it re-renders — and two windows that
+               both open with that answer looked like a menu handing over the
+               same page twice: on 7 October it was stopped at 211 of 407, and
+               read the whole 410 the same evening. */
+            const own = requests
+              .slice(requestsBefore)
+              .find((r) => r.url === next.url && (r.body ?? null) === (next.body ?? null));
+            const arrived = own ? signatureOf([payloads[own.payloadAt]]) : signatureOf(payloads.slice(before));
             // No products in the answer: the menu has run out, which is the
             // ordinary way this ends.
             if (!arrived) {
@@ -5220,6 +5251,7 @@ const main = async () => {
               entry.pagingExtended = true;
             }
             previousPageAt = before;
+            previousOwn = own ? arrived : null;
             await new Promise((r) => setTimeout(r, BETWEEN_PAGES_MS));
           }
           const shortOfDeclared =
@@ -5228,6 +5260,7 @@ const main = async () => {
           if (pass === 1 && shortOfDeclared && lastWithProducts > 0 && Date.now() < pageUntil) {
             entry.pagedAgainFrom = seenBefore();
             previousPageAt = payloads.length;
+            previousOwn = null;
             stopped = 'ran-out-of-pages';
             continue;
           }

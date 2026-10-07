@@ -11,7 +11,7 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  robotsVerdict, robotsRules, robotsPermit, productIdOf, pageWallOf, betterRobotsVerdict, apiRequestAllowed,
+  robotsVerdict, robotsRules, robotsPermit, productIdOf, pageWallOf, betterRobotsVerdict, apiRequestAllowed, pagesForDeclared,
   brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, declaredTotalOf,
   decodeFlight, decodeTurboStream, destinationOf, flattenJsonApiProducts, flattenSearchHits, flattenStockRecords,
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
@@ -2196,6 +2196,12 @@ check('page wall: the shop page itself is none', pageWallOf({ status: 200, serve
 check('page wall: a 200 page with a wall\'s words is not one', pageWallOf({ status: 200, title: 'Access denied: you must be 21' }), null);
 check('page wall: a 404 is not a wall', pageWallOf({ status: 404, server: 'cloudflare', title: 'Page not found' }), null);
 check('page wall: nothing known', pageWallOf(undefined), null);
+
+/* A declared total gets the pages it needs: Legacy Lifestyle, 431 at ten a page. */
+check('pages: ten a page through 431', pagesForDeclared(431, 10), 45);
+check('pages: a short shelf keeps forty', pagesForDeclared(120, 20), 40);
+check('pages: never past a hundred', pagesForDeclared(5000, 10), 100);
+check('pages: no page size known', pagesForDeclared(431, 0), 40);
 
 if (failures) {
   console.log(`\n${failures} check(s) failed.`);
