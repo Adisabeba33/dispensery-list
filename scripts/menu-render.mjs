@@ -346,6 +346,23 @@ const candidates = dispensaries.filter(
  * whole site be read. */
 const robotsCache = new Map();
 const ROBOTS_WALL = /cf-chl-|\/\.well-known\/sgcaptcha|verify you are human|<title[^>]*>\s*(?:access denied|just a moment|attention required)/i;
+/* A wall standing where the menu should be, told by the page's own answer.
+   Weed Mart by New Metro (newmetro.club, behind Cloudflare) read 160 flower
+   rows from a Google Cloud address and nothing on any daily run: the runner
+   heard the home page's two answers and not one from the shop page, and all
+   the report could say was "no products, 2 payloads". Cloudflare marks every
+   challenge it serves with cf-mitigated: challenge; its block page and the
+   other walls are an error answer whose title says what it is. Named, so that
+   "no products" stops covering "not let in", and left alone like any wall. */
+const PAGE_WALL_TITLE = /^\s*(?:just a moment|attention required|access denied|verify you are human)\b/i;
+export const pageWallOf = ({ status = 0, mitigated = null, server = null, title = '' } = {}) => {
+  const named = String(title ?? '').trim().slice(0, 80);
+  if (/\bchallenge\b/i.test(mitigated ?? '')) return { wall: 'cloudflare-challenge', status, title: named };
+  if (status >= 400 && PAGE_WALL_TITLE.test(named)) {
+    return { wall: /cloudflare/i.test(server ?? '') ? 'cloudflare-block' : 'wall-page', status, title: named };
+  }
+  return null;
+};
 const looksHtml = (text) => /^\s*(<!doctype html|<html)/i.test(text) || /<(html|head|body)\b/i.test(text.slice(0, 2000));
 const storageAbsence = (text) => {
   const head = text.slice(0, 2000).trim();
@@ -4473,8 +4490,15 @@ const main = async () => {
     let proteusBrands = [];
     const proteusSeen = [];
     let proteusAskedAll = false;
+    /* How the page we stand on was answered: see pageWallOf. The last one is
+       the one that counts, so every arrival of the top frame overwrites it. */
+    let landedAnswer = null;
     page.on('response', async (res) => {
       try {
+        if (res.request().isNavigationRequest() && res.frame() === page.mainFrame()) {
+          const h = res.headers();
+          landedAnswer = { status: res.status(), mitigated: h['cf-mitigated'] ?? null, server: h.server ?? null };
+        }
         const ct = res.headers()['content-type'] ?? '';
         if (dumpShapes > 0) {
           const kind = res.request().resourceType();
@@ -5470,6 +5494,10 @@ const main = async () => {
         .map(([name, n]) => `${name} (${n})`);
       if (thirdPartyRefused) entry.thirdPartyMenuRefused = thirdPartyRefused;
       if (siteGroundWall) entry.siteGroundWall = siteGroundWall;
+      if (!seen.size) {
+        const wall = pageWallOf({ ...landedAnswer, title: await page.title().catch(() => '') });
+        if (wall) entry.pageWall = wall;
+      }
       entry.status = entry.foreignShelf
         ? 'foreign-shelf'
         : seen.size

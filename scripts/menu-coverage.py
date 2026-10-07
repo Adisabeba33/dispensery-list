@@ -63,6 +63,11 @@ KEEP = (
     # Запросы к проверке SiteGround (/.well-known/sgcaptcha/), которые мы не
     # пустили: стену хостинга не проходим (решение владельца 26.09).
     "siteGroundWall",
+    # Стена на месте страницы меню: Cloudflare (cf-mitigated: challenge, или
+    # его страница блокировки) либо другой ответ-ошибка с заголовком стены.
+    # Не проходим, как и любую стену; поле — чтобы «ноль товаров» не прятало
+    # «не пустили» (Weed Mart by New Metro, 07.10).
+    "pageWall",
     # Сколько позиций потеряли терпены, потому что один и тот же набор стоял
     # у пяти и больше разных сортов магазина: шаблон, а не анализ.
     "repeatedTerpenePanelDropped",
@@ -392,6 +397,7 @@ def report():
         [
             f"**{shop_name(r)}**: {(r.get('landedOn') or '—')[:90]}"
             + (f" · ответов {r['payloads']}" if r.get("payloads") else "")
+            + (f" · стена: {r['pageWall'].get('wall')} ({r['pageWall'].get('status')})" if r.get("pageWall") else "")
             for r in sorted(silent, key=lambda r: shop_name(r))
         ],
         limit=40,

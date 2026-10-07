@@ -11,7 +11,7 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  robotsVerdict, robotsRules, robotsPermit,
+  robotsVerdict, robotsRules, robotsPermit, pageWallOf,
   brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, declaredTotalOf,
   decodeFlight, decodeTurboStream, destinationOf, flattenJsonApiProducts, flattenSearchHits, flattenStockRecords,
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
@@ -2125,6 +2125,16 @@ check('robots only the * group', [robotsPermit(groups, 'https://x.example/menu')
 const delayed = robotsRules('User-agent: *\nCrawl-delay: 10\nUser-agent: foo\nDisallow: /\n\nUser-agent: *\nDisallow: /x');
 check('robots a crawl-delay ends the group', [robotsPermit(delayed, 'https://x.example/menu'), robotsPermit(delayed, 'https://x.example/x1')], [true, false]);
 check('robots everything closed', robotsPermit(robotsRules('User-agent: *\nDisallow: /'), 'https://x.example/menu'), false);
+
+/* A wall where the menu should be is named, not counted as an empty shelf. */
+check('page wall: Cloudflare challenge', pageWallOf({ status: 403, mitigated: 'challenge', server: 'cloudflare', title: 'Just a moment...' }),
+  { wall: 'cloudflare-challenge', status: 403, title: 'Just a moment...' });
+check('page wall: Cloudflare block page', pageWallOf({ status: 403, server: 'cloudflare', title: 'Attention Required! | Cloudflare' })?.wall, 'cloudflare-block');
+check('page wall: another host\'s block page', pageWallOf({ status: 403, server: 'nginx', title: 'Access Denied' })?.wall, 'wall-page');
+check('page wall: the shop page itself is none', pageWallOf({ status: 200, server: 'cloudflare', title: 'Flower | Shop Cannabis Online | New Metro' }), null);
+check('page wall: a 200 page with a wall\'s words is not one', pageWallOf({ status: 200, title: 'Access denied: you must be 21' }), null);
+check('page wall: a 404 is not a wall', pageWallOf({ status: 404, server: 'cloudflare', title: 'Page not found' }), null);
+check('page wall: nothing known', pageWallOf(undefined), null);
 
 if (failures) {
   console.log(`\n${failures} check(s) failed.`);

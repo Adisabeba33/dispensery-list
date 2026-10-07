@@ -245,6 +245,18 @@ createServer((req, res) => {
     res.end();
     return;
   }
+  /* Weed Mart by New Metro as the runner sees it: the home page opens, and the
+     menu address is answered by Cloudflare's challenge instead of the shop. */
+  if (url.pathname === '/cf-walled') {
+    res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
+    res.end('<!doctype html><title>Fixture Dispensary 28</title><a href="/cf-walled-menu">Shop Flower</a>');
+    return;
+  }
+  if (url.pathname === '/cf-walled-menu') {
+    res.writeHead(403, { 'content-type': 'text/html; charset=utf-8', 'cf-mitigated': 'challenge', server: 'cloudflare' });
+    res.end('<!doctype html><title>Just a moment...</title><h1>Just a moment...</h1>');
+    return;
+  }
   if (url.pathname === '/.well-known/sgcaptcha/') {
     res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
     res.end('<!doctype html><title>Checking your browser</title><h1>Checking your browser</h1>');
