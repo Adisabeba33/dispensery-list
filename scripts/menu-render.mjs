@@ -419,17 +419,60 @@ export const robotsVerdict = (status, text) => {
     return { rules: robotsRules(text) };
   }
   if ((status === 401 || status === 403) && storageAbsence(text)) return { rules: [] };
+  if (ROBOTS_WALL.test(text.slice(0, 100000))) return { stop: 'robots-access-wall' };
   return { stop: `robots-unavailable-${status}` };
+};
+/* robots.txt is asked twice over when the first answer is an error: by the
+   browser that reads the pages, and by Node's own fetch. Firewalls tell the
+   two apart, each in its own way: on 7 October menus.dispenseapp.com and
+   curaleaf.com (Vercel) answered Node's fetch "403 Forbidden" and the browser
+   200 with their rules, while flowerdaddy.nyc (Hostinger) did the opposite.
+   The rules that are there are what the owner's rule obeys, so either answer
+   that carries them is read. A wall is not an error, and it wins: when either
+   asker meets a challenge where the rules should be, we stop. Neither asker
+   gets past a first answer — the browser's page is closed as soon as it
+   arrives, before any script on it runs, and SiteGround's challenge is
+   blocked in its context as in every other. Without a browser (scripts that
+   import this file) only Node asks. */
+let robotsContext = null;
+const askRobotsByBrowser = async (url) => {
+  const page = await robotsContext.newPage();
+  try {
+    const res = await page.goto(url, { waitUntil: 'commit', timeout: 20000 });
+    if (!res) return { stop: 'robots-unreachable' };
+    return robotsVerdict(res.status(), await res.text().catch(() => ''));
+  } catch (e) {
+    // A robots.txt sent as a download is not an answer the browser can read.
+    return { stop: /download is starting/i.test(String(e?.message ?? '')) ? 'robots-download' : 'robots-unreachable' };
+  } finally {
+    await page.close().catch(() => {});
+  }
+};
+const askRobotsByFetch = async (url) => {
+  try {
+    const res = await fetch(url, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(20000) });
+    return robotsVerdict(res.status, await res.text());
+  } catch {
+    return { stop: 'robots-unreachable' };
+  }
+};
+export const betterRobotsVerdict = (first, second) => {
+  if (!first.stop || first.stop === 'robots-access-wall') return first;
+  if (!second || second.stop === 'robots-access-wall' || !second.stop) return second ?? first;
+  return first;
+};
+const askRobots = async (origin) => {
+  const url = `${origin}/robots.txt`;
+  if (!robotsContext) return askRobotsByFetch(url);
+  const byBrowser = await askRobotsByBrowser(url);
+  if (!byBrowser.stop || byBrowser.stop === 'robots-access-wall') return byBrowser;
+  return betterRobotsVerdict(byBrowser, await askRobotsByFetch(url));
 };
 const robotsOf = async (origin) => {
   if (!robotsCache.has(origin)) {
     let verdict;
     try {
-      const res = await fetch(`${origin}/robots.txt`, {
-        headers: { 'User-Agent': UA },
-        signal: AbortSignal.timeout(20000),
-      });
-      verdict = robotsVerdict(res.status, await res.text());
+      verdict = await askRobots(origin);
     } catch {
       verdict = { stop: 'robots-unreachable' };
     }
@@ -1933,12 +1976,14 @@ const isTypesenseHit = (v) =>
 /* Jane's menus answer from dmerch.iheartjane.com with placements whose
    products are { product_id, store_id, ad_token, search_attributes }, the
    whole product record under search_attributes. KushKlub's flower table:
-   89 entries, the first 60 with their record. */
+   89 entries, the first 60 with their record. The rest come when "View more"
+   is pressed, from /v2/smartpage, as { object_id, search_attributes } — no
+   product_id beside the record, which is inside it — and were walked past. */
 const isJaneHit = (v) =>
   Boolean(v) &&
   typeof v === 'object' &&
   !Array.isArray(v) &&
-  v.product_id !== undefined &&
+  (v.product_id !== undefined || v.object_id !== undefined) &&
   Boolean(v.search_attributes) &&
   typeof v.search_attributes === 'object' &&
   !Array.isArray(v.search_attributes);
@@ -2455,6 +2500,14 @@ const routerNames = (snapshot) =>
     .map((p) => `${flatten(pick(p, ['id', '_id', 'sku', 'slug'])) ?? ''}|${flatten(pick(p, NAME_KEYS)) ?? ''}`)
     .filter((key) => key !== '|');
 
+/* The words on a button that loads more of the same list. A count of what is
+   left may follow in brackets: The GARDEN CLUB's flower page shows 24 of its
+   49 and a button saying LOAD MORE (25 REMAINING), which the old words — load
+   more, and nothing after it — never matched, so the walk scrolled, heard
+   nothing new and stopped at 24 (7 October). */
+export const LOAD_MORE =
+  /^(load|show|view|see)\s+more(\s+(products|items|results|flower))?(\s*\(\s*\d+(\s+(remaining|more|left))?\s*\))?$|^more\s+products$/i;
+
 /**
  * One step further down a menu, the way a visitor takes it. Tried in order: a
  * button that loads more, the next page number in a row of page numbers, a
@@ -2464,7 +2517,7 @@ const routerNames = (snapshot) =>
  * Runs in the page. Returns what it did, as "kind: words", or null when there
  * is nothing left to try.
  */
-const stepThroughMenu = ([current, exhausted]) => {
+const stepThroughMenu = ([current, exhausted, moreWords]) => {
   const skip = new Set(exhausted);
   const visible = (el) => {
     const box = el.getBoundingClientRect();
@@ -2475,7 +2528,8 @@ const stepThroughMenu = ([current, exhausted]) => {
     (el) => visible(el) && !el.disabled && el.getAttribute('aria-disabled') !== 'true',
   );
   if (!skip.has('more')) {
-    const MORE = /^(load|show|view|see)\s+more(\s+(products|items|results|flower))?$|^more\s+products$/i;
+    // LOAD_MORE, handed in as its source: this runs in the page.
+    const MORE = new RegExp(moreWords, 'i');
     const more = controls.filter((el) => MORE.test(words(el))).pop();
     if (more) {
       more.scrollIntoView({ block: 'center' });
@@ -2968,6 +3022,52 @@ export const withoutCompanionSearches = (body) => {
     (s) => s && typeof s === 'object' && typeof s.filter_by === 'string' && s.filter_by.trim() !== '',
   );
   return filtered.length > 0 && filtered.length < body.searches.length ? { ...body, searches: filtered } : body;
+};
+
+/**
+ * The first page of the question the paging asks, when that is not the
+ * question the page asked: the captured request with its companion searches
+ * taken out, or null when it had none.
+ *
+ * Every page after the first goes without the companion, so it is a different
+ * question from the first answer — and the pages were counted under a name the
+ * first answer did not have, never reached the total, and every Carrot shop
+ * read its whole shelf and then read it all again. Lenox Hill Cannabis Co. on
+ * 6 October: 394 flower products at ten a page, forty pages read to the end,
+ * thirty more re-read, and the run out of time. Asking the first page once
+ * more on its own puts every page of the one question under one name.
+ */
+export const firstPageAlone = (req) => {
+  if (!req?.body) return null;
+  try {
+    const body = JSON.parse(req.body);
+    const alone = withoutCompanionSearches(body);
+    return alone === body ? null : { ...req, body: JSON.stringify(alone) };
+  } catch {
+    return null;
+  }
+};
+
+/**
+ * The page of `req`'s query that reached furthest, among the answers in hand:
+ * the one the paging goes on from.
+ *
+ * The query is chosen by the flower it brought, and that page is not the last
+ * one read. A menu that scrolls through its own pages before the paging begins
+ * has its best page somewhere in the middle, and going on from there asks
+ * again for pages already in hand. Smoking Scholars' flower menu (the FLOWERS
+ * category, 7 October) scrolled itself through fifteen pages of twenty; the
+ * ten pages asked after the one with the most flower were all among them, and
+ * the shelf stood at 300 products before the asking and 300 after.
+ */
+const knobValueOf = (req) => Number(/=(-?\d+(?:\.\d+)?)$/.exec(pageKnobOf(req) ?? '')?.[1] ?? NaN);
+export const furthestPageOf = (req, all) => {
+  const key = queryKey(req);
+  let best = req;
+  for (const r of all) {
+    if (r !== best && queryKey(r) === key && knobValueOf(r) > knobValueOf(best)) best = r;
+  }
+  return best;
 };
 
 const pagedRequest = (req, nth, fallbackSize) => {
@@ -4325,6 +4425,12 @@ const main = async () => {
   const browser = await chromium.launch(
     process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {},
   );
+  // robots.txt is asked in a context of its own, with SiteGround's challenge blocked.
+  robotsContext = await browser.newContext({ userAgent: UA });
+  await robotsContext.route(
+    (url) => url.pathname.startsWith('/.well-known/sgcaptcha'),
+    (route) => route.abort(),
+  );
   const listings = [];
   const report = [];
   const rawTerpNames = {};
@@ -4890,7 +4996,15 @@ const main = async () => {
              fetched, summed, is a different quantity from what one question
              was answered with — and comparing those two is what read complete
              shops as truncated. */
-          const key = queryKey(biggest);
+          /* And the query is the one the pages ask. Where that differs from
+             the request captured (Carrot's companion search, firstPageAlone),
+             its first page is asked again on its own and counted under its
+             name; any other query goes on from the furthest of its pages
+             already in hand (furthestPageOf). */
+          const alone = firstPageAlone(biggest);
+          const from = alone ? biggest : furthestPageOf(biggest, requests);
+          const first = alone ?? from;
+          const key = queryKey(first);
           const declared = biggest.declared ?? 0;
           /* How much of the query is in hand: each product once. Summing what
              every answer carried counted a product twice whenever two pages
@@ -4940,9 +5054,13 @@ const main = async () => {
              products. */
           let lastWithProducts = 0;
           for (let pass = 1; pass <= 2; pass += 1) {
-          const firstNth = pass === 1 ? 1 : 0;
-          const lastNth = pass === 1 ? cap : lastWithProducts;
-          for (let nth = firstNth; nth <= lastNth; nth += 1) {
+          const firstNth = pass === 1 && !alone ? 1 : 0;
+          /* Read on every turn, not once before the first: a menu still
+             answering with full pages raises the cap from inside the loop
+             (see below), and a bound taken before it began kept the old one —
+             Smoking Scholars' flower was asked ten pages, "extended", and
+             stopped at ten all the same. */
+          for (let nth = firstNth; nth <= (pass === 1 ? cap : lastWithProducts); nth += 1) {
             if (Date.now() > pageUntil) {
               entry.hitPagingBudget = true;
               stopped = 'out-of-time';
@@ -4953,7 +5071,7 @@ const main = async () => {
               break;
             }
 
-            const next = nth === 0 ? biggest : pagedRequest(biggest, nth, biggest.products);
+            const next = nth === 0 ? first : pagedRequest(from, nth, biggest.products);
             if (!next) {
               // No page knob anywhere in the request: nothing to advance.
               stopped = 'no-page-in-request';
@@ -5115,7 +5233,7 @@ const main = async () => {
         let pageNo = 1;
         for (let round = 0; round < EMBEDDED_PAGE_CAP; round += 1) {
           const heardBefore = payloads.length;
-          const did = await within(page.evaluate(stepThroughMenu, [pageNo, [...exhausted]]), null);
+          const did = await within(page.evaluate(stepThroughMenu, [pageNo, [...exhausted], LOAD_MORE.source]), null);
           if (!did) break;
           const kind = did.split(':')[0];
           await page.waitForTimeout(2500);
@@ -5158,6 +5276,30 @@ const main = async () => {
         }
         if (steps.length) entry.embeddedPaging = steps;
         entry.embeddedProducts = names.size;
+      } else if (href && entry.menuLink !== 'robots-disallowed') {
+        /* A "View more" that no scrolling presses, on a menu the walk above
+           never sees. Jane's embedded menu answers with the id of every
+           product on the shelf and describes only the first sixty; the rest
+           are fetched when a visitor presses "View more", a button inside the
+           embed's shadow root, where document.querySelectorAll does not look.
+           KushKlub's flower is ninety-two products and we read seventy-six of
+           them (7 October). Found by the words it shows — its label says
+           "Flower View more" — and pressed only as a button, since a link can
+           lead off the menu, and only while each press brings products. */
+        const menuAt = page.url();
+        for (let press = 0; press < EMBEDDED_PAGE_CAP; press += 1) {
+          const more = page.locator('button').filter({ hasText: LOAD_MORE }).last();
+          if (!(await within(more.isVisible(), false))) break;
+          const heardBefore = payloads.length;
+          if ((await within(more.click({ timeout: FRAME_PATIENCE_MS }).then(() => true), false)) !== true) break;
+          await settle(1500, 10000);
+          if (page.url() !== menuAt) {
+            await within(page.goBack({ waitUntil: 'domcontentloaded', timeout: 20000 }), null);
+            break;
+          }
+          if (!productsIn(payloads.slice(heardBefore)).length) break;
+          entry.pressedMore = press + 1;
+        }
       }
 
       /* The flight the page was rendered from. Read once the menu has settled,
@@ -5789,7 +5931,7 @@ const main = async () => {
 
 /** Exported for scripts/menu-parse-check.mjs, which tests them against fixtures. */
 export {
-  brandKeyOf, classify, categoryText, cleanStrainName, mergeBySize, pagedRequest, sizeFromText, toListing,
+  brandKeyOf, classify, categoryText, cleanStrainName, mergeBySize, pagedRequest, queryKey, sizeFromText, toListing,
 };
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

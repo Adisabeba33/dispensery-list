@@ -1243,5 +1243,15 @@
     "ageGate": "terms-checkboxes",
     "checkedAt": "2026-10-07",
     "notes": "Curaleaf NY, 107-18 70th Rd, Forest Hills: store curaleaf-ny-queens, whose menu page gives its address as '107-18 70th Road' and 'Forest Hills'; this is its Flower category. curaleaf.com robots.txt disallows only /admin/*. Every store address answers 307 to /age-gate, which asks for the state and two ticks, 'I am 21 years of age or older' and 'I agree to the Terms of Use and acknowledge… the Privacy Policy', before 'I'm over 21' is enabled; the owner decided on 2026-10-07 that agreeing to the terms there is acceptable, and the collector answers it (affirmAgeAndTerms). The store's public sitemap lists 209 flower product pages; 150 flower rows read on 2026-10-07."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000200",
+    "menuUrl": "https://menus.dispenseapp.com/f1c106dbfcf3b9bc/menu/categories/flowers",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "none",
+    "checkedAt": "2026-10-07",
+    "notes": "Smoking Scholars: Dispense venue f1c106dbfcf3b9bc. The home page links no flower category, only the '3.5G FLOWER SALE' promotion (/menu/categories/35-flower-sale, 20 products), which outranks the plain menu link, so every run read the sale. The menu's own FLOWERS category is /menu/categories/flowers (300 products, 248 flower rows on 2026-10-07); /menu/categories/grounded-flowers beside it is ground flower. menus.dispenseapp.com robots.txt disallows only /accounts."
   }
 ]
