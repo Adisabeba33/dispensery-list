@@ -93,7 +93,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '27',
+    '--limit', '28',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -160,6 +160,15 @@ try {
   const neverRead = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000996');
   check('an empty shop with nothing to compare against is read once', neverRead?.status, 'no-products');
   check('and is not asked again', neverRead?.retried, undefined);
+  check('an empty shelf is not a wall', neverRead?.pageWall, undefined);
+
+  /* Weed Mart by New Metro as the runner sees it: the home page opens, the
+     menu address answers with Cloudflare's challenge. The wall is named, not
+     counted as an empty shelf, and nothing on it is touched. */
+  const cfWalled = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000972');
+  check('a Cloudflare challenge is named', cfWalled?.pageWall?.wall, 'cloudflare-challenge');
+  check('with the answer it came with', cfWalled?.pageWall?.status, 403);
+  check('and the walled shop stays empty', cfWalled?.flower, 0);
   // Nor is a shop that answered the first time.
   check('a shop that answered is not asked twice', summary.perShop[0].retried, undefined);
 
@@ -266,7 +275,7 @@ try {
   check('and says so where the report reads it', refused?.menuLink, 'robots-disallowed');
   check('the refusal is named by licence', refused?.licence, 'OCM-CAURD-24-000984');
   check('the run counts it', summary.robotsDisallowed, 1);
-  check('and does not count it as a shop it read', summary.shopsVisited, 26);
+  check('and does not count it as a shop it read', summary.shopsVisited, 27);
 
   /* The retry replaces the empty reading rather than being carried alongside
      it: the shelf published for this shop is today's, not yesterday's held

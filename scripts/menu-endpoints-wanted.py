@@ -40,6 +40,8 @@ def why_empty(row):
         return "robots.txt запрещает — **не трогать**"
     if row.get("siteGroundWall") and not row.get("flower"):
         return "стена SiteGround — **не трогать**"
+    if row.get("pageWall") and not row.get("flower"):
+        return f"стена на странице меню ({row['pageWall'].get('wall', '?')}) — **не трогать**"
     if str(row.get("status", "")).startswith("error"):
         return "страница не открылась"
     if row.get("status") == "no-flower":

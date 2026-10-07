@@ -11,7 +11,7 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  robotsVerdict, robotsRules, robotsPermit,
+  robotsVerdict, robotsRules, robotsPermit, pageWallOf, betterRobotsVerdict,
   brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, declaredTotalOf,
   decodeFlight, decodeTurboStream, destinationOf, flattenJsonApiProducts, flattenSearchHits, flattenStockRecords,
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
@@ -19,7 +19,7 @@ import {
   placeNamesOf, rankMenuLink, registerTextOf, sameEstate, signatureOf, sizeFromText,
   toListing, wallAction, fulfilmentAction, pageKnobOf, dropRepeatedPanels, sweedCategoryOf, decodeEntities,
   linkNamesAnotherState, proteusCards, proteusBrandsOf, proteusShowAll,
-  isPromotionalSample, withoutCompanionSearches
+  isPromotionalSample, withoutCompanionSearches, firstPageAlone, furthestPageOf, queryKey, LOAD_MORE
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 import { labPanelKeyOf } from './lab-panel.mjs';
@@ -163,6 +163,13 @@ check('and so is a sentence about pick-up', fulfilmentAction('ORDER FOR PICKUP O
   check('a half gram is half a gram', sizeFromText('half gram'), 0.5);
   check('two gram is two', sizeFromText('two gram'), 2);
   check('half alone is still half an ounce', sizeFromText('1/2 oz'), 14);
+  /* The entries that came only as an id, as /v2/smartpage sends them once
+     "View more" is pressed (KushKlub, 7 October): no product_id beside the
+     record. */
+  const later = (product_id, name) => ({ object_id: String(product_id), search_attributes: { product_id, store_id: 6906,
+    kind: 'flower', name, brand: 'Lift', kind_subtype: 'Whole Flower', category: 'hybrid', available_weights: ['eighth ounce'] } });
+  const more = { products: [later(3, 'Pink Guava'), later(4, 'Turp Poison')] };
+  check('Jane records fetched by "View more" are read too', flattenSearchHits([more]).map((r) => r.name), ['Pink Guava', 'Turp Poison']);
 }
 
 /* ------------------------------------------------------------- form paging --
@@ -193,6 +200,28 @@ check('and so is a sentence about pick-up', fulfilmentAction('ORDER FOR PICKUP O
   check('a request with only the store is paged as before',
     JSON.parse(pagedRequest({ ...req, body: JSON.stringify({ searches: [store] }) }, 1, 10)?.body ?? '{}').searches?.[0]?.page, 2);
   check('and one where every search is filtered', withoutCompanionSearches({ searches: [flower, { ...flower, filter_by: 'brand:=x' }] }).searches.length, 2);
+  /* Lenox Hill Cannabis Co., 6 October: the pages went without the companion
+     and the first answer had it, so the pages were never counted against the
+     394 the menu declared, and the shelf was read twice and ran out of time.
+     The first page is asked again alone, under the name its pages carry. */
+  const first = firstPageAlone(req);
+  check('the first page alone is the category alone', JSON.parse(first?.body ?? '{}').searches, [flower]);
+  check('and is counted under the name its pages carry',
+    [queryKey(first) === queryKey(pagedRequest(req, 3, 10)), queryKey(req) === queryKey(pagedRequest(req, 3, 10))], [true, false]);
+  check('a request with no companion has no first page to ask again',
+    [firstPageAlone({ ...req, body: JSON.stringify({ searches: [store] }) }), firstPageAlone({ ...req, body: null })], [null, null]);
+}
+
+/* A Dispense flower menu that scrolled itself three pages in before the paging
+   began, the middle page having the most flower (Smoking Scholars, 7 October):
+   the paging goes on from the last page, not the middle one. */
+{
+  const at = (skip, category = '655fef6035474301') => ({ method: 'GET', body: null,
+    url: `https://api.dispenseapp.com/v1/venues/f1c106dbfcf3b9bc/product-categories/${category}/products?limit=20&quantityMin=1&skip=${skip}` });
+  const [first, middle, last, other] = [at(0), at(20), at(40), at(60, 'd5c91d4b8aaaed1d')];
+  check('the paging goes on from the furthest page of the query', furthestPageOf(middle, [first, middle, last, other]), last);
+  check('and its next page is the first one not in hand', new URL(pagedRequest(last, 1, 20).url).searchParams.get('skip'), '60');
+  check('a query with nothing further is its own furthest page', furthestPageOf(last, [first, middle, last]), last);
 }
 
 /* ------------------------------------------------- a query inside a query --
@@ -2092,6 +2121,28 @@ check('infused is not', classify({ name: 'Blue Dream 3.5g', category: 'Infused F
 check('meadow primaryCategory', classify({ name: 'Bushwick Burger 3.5g', primaryCategory: { id: 15970, name: 'Flower' } }), 'flower');
 check('meadow prerolls', classify({ name: 'Bushwick Burger 1g', primaryCategory: { id: 15971, name: 'Prerolls' } }), 'category-not-flower');
 
+/* Carrot (getcarrot.io): weight in cashOptions, or for a jar sold by the unit
+   in unitWeight; a weight-based item's unitWeight is only its step. */
+const carrotJar = toListing({ name: 'Bannermans Batch - Iced Sangria 3.5 - F201', brand: 'Bannermans Batch', categoryName: 'Flower',
+  cashOptions: [{ displayName: '3.5g', optionUnit: 'Grams', qty: 3.5 }], unitWeight: 3.5, isWeightBased: true, gramRange: '3.5g - 28.0g' }, shop, SRC, {});
+check('carrot cashOptions', carrotJar?.availableSizesGrams, [3.5]);
+const carrotDime = toListing({ name: '5 Boro Blue Hawaiian Dime Bag', brand: '5 BORO', categoryName: 'Flower',
+  cashOptions: [{ displayName: '1', optionUnit: 'Units', qty: 1 }], unitWeight: 0.7, isWeightBased: false, gramRange: '1 - 5' }, shop, SRC, {});
+check('carrot unit jar', carrotDime?.availableSizesGrams, [0.7]);
+const carrotDeli = toListing({ name: 'Deli / Tropical Cherry', brand: '710', categoryName: 'Flower',
+  unitWeight: 0.5, isWeightBased: true, gramRange: '1 - 28' }, shop, SRC, {});
+check('carrot deli step is not a jar', carrotDeli, null);
+
+/* The words on a button that loads more. The GARDEN CLUB's says how many are
+   left (7 October); Jane's says "View more"; a button about something else is
+   left alone. */
+check('load more, with what is left',
+  ['LOAD MORE (25 REMAINING)', 'Load More', 'View more', 'Show more products', 'See more (12)'].map((w) => LOAD_MORE.test(w)),
+  [true, true, true, true, true]);
+check('and not a button about something else',
+  ['Load more reviews', 'View more deals', 'Learn more', 'More info (2)'].map((w) => LOAD_MORE.test(w)),
+  [false, false, false, false]);
+
 /* robots.txt by the owner's rule (CLAUDE.md, "robots.txt: no rules means no
    restriction"): rules obeyed, a page or nothing is no rules, a file store's
    refusal is no rules, any other error or a wall stops us. */
@@ -2112,7 +2163,23 @@ const groups = robotsRules('User-agent: Googlebot\nDisallow: /\n\nUser-agent: bi
 check('robots only the * group', [robotsPermit(groups, 'https://x.example/menu'), robotsPermit(groups, 'https://x.example/private/a')], [true, false]);
 const delayed = robotsRules('User-agent: *\nCrawl-delay: 10\nUser-agent: foo\nDisallow: /\n\nUser-agent: *\nDisallow: /x');
 check('robots a crawl-delay ends the group', [robotsPermit(delayed, 'https://x.example/menu'), robotsPermit(delayed, 'https://x.example/x1')], [true, false]);
+check('robots challenge on an error answer is a wall', robotsVerdict(403, '<!DOCTYPE html><html><head><title>Just a moment...</title></head><body>cf-chl-</body></html>').stop, 'robots-access-wall');
+/* Two askers: rules from either are read; a wall from either stops us. */
+check('robots rules from the second asker', betterRobotsVerdict({ stop: 'robots-unavailable-403' }, { rules: [] }), { rules: [] });
+check('robots a wall from the second asker wins', betterRobotsVerdict({ stop: 'robots-unavailable-403' }, { stop: 'robots-access-wall' }), { stop: 'robots-access-wall' });
+check('robots a wall from the first asker is final', betterRobotsVerdict({ stop: 'robots-access-wall' }, { rules: [] }), { stop: 'robots-access-wall' });
+check('robots two errors stop us', betterRobotsVerdict({ stop: 'robots-unavailable-403' }, { stop: 'robots-unreachable' }), { stop: 'robots-unavailable-403' });
 check('robots everything closed', robotsPermit(robotsRules('User-agent: *\nDisallow: /'), 'https://x.example/menu'), false);
+
+/* A wall where the menu should be is named, not counted as an empty shelf. */
+check('page wall: Cloudflare challenge', pageWallOf({ status: 403, mitigated: 'challenge', server: 'cloudflare', title: 'Just a moment...' }),
+  { wall: 'cloudflare-challenge', status: 403, title: 'Just a moment...' });
+check('page wall: Cloudflare block page', pageWallOf({ status: 403, server: 'cloudflare', title: 'Attention Required! | Cloudflare' })?.wall, 'cloudflare-block');
+check('page wall: another host\'s block page', pageWallOf({ status: 403, server: 'nginx', title: 'Access Denied' })?.wall, 'wall-page');
+check('page wall: the shop page itself is none', pageWallOf({ status: 200, server: 'cloudflare', title: 'Flower | Shop Cannabis Online | New Metro' }), null);
+check('page wall: a 200 page with a wall\'s words is not one', pageWallOf({ status: 200, title: 'Access denied: you must be 21' }), null);
+check('page wall: a 404 is not a wall', pageWallOf({ status: 404, server: 'cloudflare', title: 'Page not found' }), null);
+check('page wall: nothing known', pageWallOf(undefined), null);
 
 if (failures) {
   console.log(`\n${failures} check(s) failed.`);
