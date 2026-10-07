@@ -112,6 +112,34 @@ jobs:
             fi
             echo "::endgroup::"
           done
+          # One more knock, after the whole list. The second visit comes at the
+          # end of the shop's own batch, half an hour on; on 6 October five
+          # shops with a shelf (CANNADREAMS, Flower Daddy, Legacy, Happy Alta,
+          # Superbness) did not open at either visit and read the next night at
+          # the first. Only shops that were owed a second visit and came back
+          # empty from it; robots.txt refusals never. A pass that fails costs
+          # its own shops and nothing else, so it does not hold the day back.
+          late=$(python scripts/menu-coverage.py retry-list)
+          if [ -n "$late" ]; then
+            n=$(echo "$late" | tr ',' '\n' | wc -l)
+            echo "::group::asked again after the run: $n shop(s)"
+            if node scripts/menu-render.mjs --only "$late" --limit "$n" --after-run; then
+              python scripts/menu-coverage.py collect || true
+              if npm run validate > /tmp/validate.txt 2>&1; then
+                git add data/flower-listings.json
+                git diff --cached --quiet || git commit -q -m "menu: daily refresh, shops asked again after the run"
+                python scripts/held-shelves.py collect || true
+              else
+                echo "::warning::The after-run pass did not validate; its listings were not kept."
+                tail -20 /tmp/validate.txt
+                git checkout -- data/flower-listings.json
+              fi
+            else
+              echo "::warning::The after-run pass failed to run."
+              git checkout -- data/flower-listings.json || true
+            fi
+            echo "::endgroup::"
+          fi
           # Put every batch's held shelves back where the report looks.
           python scripts/held-shelves.py merge || true
           # And keep the per-shop diagnostics, which the work list is built

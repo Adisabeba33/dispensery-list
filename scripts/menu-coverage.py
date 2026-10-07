@@ -30,6 +30,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SUMMARY = ROOT / "enrichment-output" / "menu-summary.json"
 ACCUMULATED = Path("/tmp/menu-coverage.json")
+# Кого спросили ещё раз после всего прогона, и что о них было известно до этого.
+AFTER_RUN = Path("/tmp/menu-after-run.json")
 SAVED = ROOT / "data/menu-coverage.json"
 
 # Только то, что отвечает на вопрос «прочитали ли мы магазин целиком». Всё
@@ -58,6 +60,9 @@ KEEP = (
     # Запросы к leafly.com и weedmaps.com, которым страница получила отказ:
     # меню магазина живёт у них, и мы его не читаем.
     "thirdPartyMenuRefused",
+    # Запросы к проверке SiteGround (/.well-known/sgcaptcha/), которые мы не
+    # пустили: стену хостинга не проходим (решение владельца 26.09).
+    "siteGroundWall",
     # Сколько позиций потеряли терпены, потому что один и тот же набор стоял
     # у пяти и больше разных сортов магазина: шаблон, а не анализ.
     "repeatedTerpenePanelDropped",
@@ -66,6 +71,8 @@ KEEP = (
     "foundMenuOnSecondLook",
     "parkedOn",
     "wentOnwardTo",
+    # Главная не открылась, и меню спросили по записанному адресу напрямую.
+    "homeFailed",
     "payloads",
     "settled",
     "jsonApiProducts",
@@ -113,13 +120,24 @@ def read_json(path, fallback):
 
 def collect():
     rows = read_json(ACCUMULATED, {})
+    before = read_json(AFTER_RUN, {})
     for entry in read_json(SUMMARY, {}).get("perShop") or []:
         licence = entry.get("licence")
         if not licence:
             continue
         # Последнее чтение побеждает: если магазин почему-то попал в две
         # партии, верна та, что прочитала его позже.
-        rows[licence] = {k: entry.get(k) for k in KEEP if entry.get(k) is not None}
+        row = {k: entry.get(k) for k in KEEP if entry.get(k) is not None}
+        # Третий заход, после всего прогона, заменяет строку магазина, но то,
+        # что было с первыми двумя, остаётся в ней: иначе раздел «спросили
+        # второй раз» потерял бы этот магазин, а новый не знал бы, с чего начали.
+        if licence in before:
+            earlier = rows.get(licence) or {}
+            for key in ("retried", "firstAttempt"):
+                if key in earlier:
+                    row[key] = earlier[key]
+            row["afterRun"] = {"before": before[licence]}
+        rows[licence] = row
     ACCUMULATED.write_text(json.dumps(rows))
     print(f"coverage: {len(rows)} shop(s) so far")
     return 0
@@ -298,7 +316,8 @@ def report():
     # от шестнадцатого рядом с соседом, у которого сегодняшнее. Поэтому у
     # такого спрашивают второй раз, в конце партии.
     retried = [r for r in rows if r.get("retried")]
-    helped = [r for r in retried if (r.get("flower") or 0) > 0]
+    # Кого спросили и в третий раз, тому второй не помог — что бы ни дал третий.
+    helped = [r for r in retried if (r.get("flower") or 0) > 0 and not r.get("afterRun")]
     section(
         lines,
         "Спросили второй раз",
@@ -307,9 +326,25 @@ def report():
         "магазин распродался, а потому что страница не догрузилась.",
         [
             f"**{shop_name(r)}**: с первого раза "
-            f"{(r.get('firstAttempt') or {}).get('status', '?')}, со второго "
-            + (f"{r['flower']} сортов" if (r.get("flower") or 0) > 0 else "снова пусто")
+            f"{(str((r.get('firstAttempt') or {}).get('status') or '?').splitlines() or ['?'])[0]}, со второго "
+            + (f"{r['flower']} сортов" if (r.get("flower") or 0) > 0 and not r.get("afterRun") else "снова пусто")
             for r in sorted(retried, key=lambda r: -(r.get("flower") or 0))
+        ],
+        limit=25,
+    )
+
+    late = [r for r in rows if r.get("afterRun")]
+    late_helped = [r for r in late if (r.get("flower") or 0) > 0]
+    section(
+        lines,
+        "Спросили ещё раз, после всего прогона",
+        f"Помогло в {len(late_helped)} из {len(late)}. Это магазины, у которых\n"
+        "полка была, а за два захода в своей партии не пришло ничего. Третий\n"
+        "заход — когда обход уже прошёл весь список, через час-три.",
+        [
+            f"**{shop_name(r)}**: "
+            + (f"{r['flower']} сортов" if (r.get("flower") or 0) > 0 else f"снова пусто ({str(r.get('status') or '?')[:60]})")
+            for r in sorted(late, key=lambda r: -(r.get("flower") or 0))
         ],
         limit=25,
     )
@@ -583,9 +618,38 @@ def save():
     return 0
 
 
+def retry_list():
+    """Кого спросить ещё раз, когда обход уже прошёл весь список.
+
+    Второй заход идёт в конце партии, через полчаса после первого. Его хватает
+    на страницу, которая не догрузилась, но не на сайт, который не отвечал
+    этому раннеру какое-то время: 6 октября CANNADREAMS, Flower Daddy, Legacy,
+    Happy Alta и Superbness не открылись ни с первого, ни со второго раза, а
+    следующей ночью прочитались все пять. Третий заход — через час-три, после
+    последней партии, и только у тех, кому второй уже полагался (полка у них
+    была) и не помог: ни одной позиции, страница не открылась или пришла пустой.
+    robots.txt, «цветка нет» и магазины без вчерашней полки сюда не попадают.
+    Печатает лицензии через запятую — для --only.
+    """
+    rows = read_json(ACCUMULATED, {})
+    due = {
+        licence: r.get("status")
+        for licence, r in rows.items()
+        if (r.get("retried") or r.get("willAskAgain") or r.get("retryBudgetSpent"))
+        and not (r.get("flower") or 0)
+        and r.get("menuLink") != "robots-disallowed"
+        and (r.get("status") == "no-products" or str(r.get("status") or "").startswith("error"))
+    }
+    AFTER_RUN.write_text(json.dumps(due))
+    print(",".join(sorted(due)))
+    return 0
+
+
 def main(action):
     if action == "collect":
         return collect()
+    if action == "retry-list":
+        return retry_list()
     if action == "report":
         return report()
     if action == "save":

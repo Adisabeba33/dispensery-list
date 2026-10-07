@@ -115,6 +115,7 @@ from datetime import date, datetime, timedelta, timezone
 from decimal import ROUND_DOWN, ROUND_HALF_UP, Decimal
 from difflib import SequenceMatcher
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 HISTORY = ROOT / "data/shelf-history.json"
@@ -215,7 +216,7 @@ def shelves_read(rows, day):
     старым capturedAt. Это не чтение, и сравнивать её не с чем."""
     shelves, potency = {}, {}
     for row in rows:
-        if (row.get("capturedAt") or "")[:10] != day:
+        if ny_day(row.get("capturedAt")) != day:
             continue
         key = key_of(row)
         if not key:
@@ -852,8 +853,33 @@ def listings_of(raw):
     return [l for l in rows if not is_sample(l)]
 
 
+# День чтения — нью-йоркский, а не по UTC. Полночь UTC — восемь вечера в
+# Нью-Йорке: 5 октября плановый прогон оборвался, ручной начался в 17:55 и
+# кончил после полуночи UTC, и его полки легли в историю под 6-м — а
+# настоящий прогон 6-го нашёл свой день «уже в истории» и сложить не смог.
+# Магазины живут по нью-йоркским часам, и владелец смотрит по ним же.
+NEW_YORK = ZoneInfo("America/New_York")
+
+
+def ny_day(stamp):
+    """Нью-йоркская дата момента: строки ISO (capturedAt) или секунд от эпохи."""
+    if isinstance(stamp, (int, float)):
+        moment = datetime.fromtimestamp(stamp, timezone.utc)
+    else:
+        text = str(stamp or "").strip()
+        if not text:
+            return ""
+        try:
+            moment = datetime.fromisoformat(text.replace("Z", "+00:00"))
+        except ValueError:
+            return text[:10]
+        if moment.tzinfo is None:
+            moment = moment.replace(tzinfo=timezone.utc)
+    return moment.astimezone(NEW_YORK).strftime("%Y-%m-%d")
+
+
 def today():
-    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    return datetime.now(NEW_YORK).strftime("%Y-%m-%d")
 
 
 def plural(n, one, few, many):
@@ -898,7 +924,7 @@ def backfill():
     for entry in log:
         if entry.strip():
             ref, stamp = entry.split()
-            day_ref.setdefault(datetime.fromtimestamp(int(stamp), timezone.utc).strftime("%Y-%m-%d"), ref)
+            day_ref.setdefault(ny_day(int(stamp)), ref)
     hist = empty()
     for day in sorted(day_ref):
         raw = subprocess.run(["git", "show", f"{day_ref[day]}:data/flower-listings.json"],
@@ -1236,6 +1262,10 @@ def check():
     expect("похожие", (similar("find|old 5", "find|old 5 flower"), similar("find|gelato", "jeeter|gelato"),
                        similar("|crusty crustacean", "find|crusty crustacean"),
                        similar("find|blue dream", "find|blueberry")), (True, False, True, False))
+    # Ручной прогон вечера 5 октября кончил в 01:01 UTC 6-го: это ещё 5-е.
+    expect("день по Нью-Йорку", (ny_day("2026-10-06T01:01:00.000Z"), ny_day("2026-10-06T15:36:00Z"),
+                                 ny_day("2026-01-15T04:30:00Z"), ny_day(1791248460)),
+           ("2026-10-05", "2026-10-06", "2026-01-14", "2026-10-05"))
     if fails:
         print("shelf history: правила не сходятся\n  " + "\n  ".join(fails))
         raise SystemExit(1)

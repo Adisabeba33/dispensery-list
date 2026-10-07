@@ -17,10 +17,24 @@
       "note": "added 2026-09-29: the site's menu page now embeds dutchie.com/embedded-menu"
     },
     {
+      "licenseNumber": "OCM-CAURD-25-000226",
+      "name": "Astoria Bud Boutique",
+      "menu": "https://www.astoriabudnyc.com/shop?dtche%5Bcategory%5D=flower",
+      "lastStatus": "no-products",
+      "pausedOn": "2026-10-07"
+    },
+    {
       "licenseNumber": "OCM-RETL-24-000242",
       "name": "Bellanova",
       "menu": "https://www.bellanovany.com/menu/",
       "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-25-000263",
+      "name": "Big City Flavors",
+      "menu": "https://dutchie.com/dispensary/big-city-flavors-dispensary",
+      "lastStatus": "no-products",
+      "pausedOn": "2026-10-07"
     },
     {
       "licenseNumber": "OCM-RETL-25-000360",
@@ -113,6 +127,20 @@
       "lastStatus": "no-products"
     },
     {
+      "licenseNumber": "MM0408D",
+      "name": "Fluent (White Plains)",
+      "menu": "https://getfluent.com/dispensary/new-york/white-plains-dispensary/recreational/",
+      "lastStatus": "no-products",
+      "pausedOn": "2026-10-07"
+    },
+    {
+      "licenseNumber": "OCM-RETL-24-000047",
+      "name": "FUMI Dispensary LLC",
+      "menu": "https://dutchie.com/dispensary/fumi-dispensary",
+      "lastStatus": "no-products",
+      "pausedOn": "2026-10-07"
+    },
+    {
       "licenseNumber": "OCM-RETL-24-000222",
       "name": "Garden Bliss LLC (The THC Shop, Bronx)",
       "menu": "https://ourthcshop.com/bronx/",
@@ -181,10 +209,24 @@
       "note": "added 2026-09-29: the shop page embeds dutchie.com/embedded-menu"
     },
     {
+      "licenseNumber": "OCM-CAURD-24-000177",
+      "name": "HERBOLOGY",
+      "menu": "https://herbologynyc.com/shop/category/flower/",
+      "lastStatus": "no-products",
+      "pausedOn": "2026-10-07"
+    },
+    {
       "licenseNumber": "OCM-RETL-24-000260",
       "name": "Herbwell",
       "menu": "https://dutchie.com/dispensary/herbwell-bronx/products/flower",
       "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-24-000154",
+      "name": "Herbwell",
+      "menu": "https://dutchie.com/dispensary/herbwell-madison-ave/products/flower",
+      "lastStatus": "no-products",
+      "pausedOn": "2026-10-07"
     },
     {
       "licenseNumber": "OCM-CAURD-24-000131",
@@ -249,6 +291,13 @@
       "lastStatus": "no-products"
     },
     {
+      "licenseNumber": "OCM-RETL-25-000460",
+      "name": "NATURAL LEAF INC.",
+      "menu": "https://naturalleafny.com/menu?path=%2Fproducts%2Fflower",
+      "lastStatus": "no-products",
+      "pausedOn": "2026-10-07"
+    },
+    {
       "licenseNumber": "OCM-RETL-24-000147",
       "name": "NY Cannabis Co",
       "menu": "https://nycannabisco.com/shop?dtche%5Bcategory%5D=flower",
@@ -277,6 +326,13 @@
       "name": "Poppin",
       "menu": "https://nycpoppin.com/shop/",
       "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-RETL-25-000449",
+      "name": "Purple Buds, Inc.",
+      "menu": "https://pbuds.com/shop/?dtche%5Bcategory%5D=Flower",
+      "lastStatus": "no-products",
+      "pausedOn": "2026-10-07"
     },
     {
       "licenseNumber": "OCM-CAURD-24-000127",
@@ -358,6 +414,13 @@
       "lastStatus": "no-products"
     },
     {
+      "licenseNumber": "OCM-RETL-24-000107",
+      "name": "The Hootch LLC",
+      "menu": "https://www.sweetlife.nyc/",
+      "lastStatus": "no-products",
+      "pausedOn": "2026-10-07"
+    },
+    {
       "licenseNumber": "OCM-MICR-25-000223",
       "name": "Three Cord Cannabis",
       "menu": "https://www.gramsbk.com/menu",
@@ -380,6 +443,13 @@
       "name": "Twinn Leaf LLC",
       "menu": "https://twinnleafnyc.com/",
       "lastStatus": "no-products"
+    },
+    {
+      "licenseNumber": "OCM-CAURD-24-000191",
+      "name": "Twisted Vibration LLC",
+      "menu": "https://dutchie.com/stores/twisted-vibrations-retail",
+      "lastStatus": "no-products",
+      "pausedOn": "2026-10-07"
     }
   ]
 }
