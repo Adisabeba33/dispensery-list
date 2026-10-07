@@ -486,6 +486,20 @@ const robotsAllows = async (url) => {
   const verdict = await robotsOf(new URL(url).origin);
   return !verdict.stop && robotsPermit(verdict.rules, url);
 };
+/* A request the collector makes itself to a menu platform's API — the next
+   page of a shelf, a cart's "show all" — goes by that API host's robots.txt
+   as the owner settled it on 7 October 2026. A rule that is there is obeyed:
+   web-ui-prime.sweedpos.com says Disallow: / and ESH's shelf had been paged
+   there twenty-two times a run. An API that answers /robots.txt as it answers
+   every path it does not know — api.dispenseapp.com's 401 "provide a valid
+   api-key", Treez's search host's 403 — has published no robots.txt, and that
+   is no restriction. A wall where the rules should be still stops us. */
+export const apiRequestAllowed = (verdict, url) => {
+  if (verdict.stop === 'robots-access-wall') return false;
+  if (verdict.stop) return true;
+  return robotsPermit(verdict.rules, url);
+};
+const robotsAllowsApi = async (url) => apiRequestAllowed(await robotsOf(new URL(url).origin), url);
 
 /**
  * Almost every dispensary site opens with "are you 21 or over?" and loads no
@@ -4655,7 +4669,7 @@ const main = async () => {
             lastPayloadAt = Date.now();
           }
           const all = proteusShowAll(res.url(), html);
-          if (all && !proteusAskedAll && (await robotsAllows(all))) {
+          if (all && !proteusAskedAll && (await robotsAllowsApi(all))) {
             proteusAskedAll = true;
             // Asked from the page, so it goes as the cart's own request would; the answer lands back here.
             await page.evaluate((u) => fetch(u, { credentials: 'include' }).then((r) => r.text()), all).catch(() => {});
@@ -5075,6 +5089,13 @@ const main = async () => {
             if (!next) {
               // No page knob anywhere in the request: nothing to advance.
               stopped = 'no-page-in-request';
+              break;
+            }
+            if (!(await robotsAllowsApi(next.url).catch(() => true))) {
+              // The API host's robots.txt forbids it (robotsAllowsApi): the pages
+              // the menu itself loaded are kept, and no further one is asked.
+              stopped = 'robots-disallowed';
+              entry.pagingRefusedByRobots = new URL(next.url).host;
               break;
             }
 

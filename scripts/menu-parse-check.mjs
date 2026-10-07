@@ -11,7 +11,7 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  robotsVerdict, robotsRules, robotsPermit, pageWallOf, betterRobotsVerdict,
+  robotsVerdict, robotsRules, robotsPermit, pageWallOf, betterRobotsVerdict, apiRequestAllowed,
   brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, declaredTotalOf,
   decodeFlight, decodeTurboStream, destinationOf, flattenJsonApiProducts, flattenSearchHits, flattenStockRecords,
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
@@ -2169,6 +2169,14 @@ check('robots rules from the second asker', betterRobotsVerdict({ stop: 'robots-
 check('robots a wall from the second asker wins', betterRobotsVerdict({ stop: 'robots-unavailable-403' }, { stop: 'robots-access-wall' }), { stop: 'robots-access-wall' });
 check('robots a wall from the first asker is final', betterRobotsVerdict({ stop: 'robots-access-wall' }, { rules: [] }), { stop: 'robots-access-wall' });
 check('robots two errors stop us', betterRobotsVerdict({ stop: 'robots-unavailable-403' }, { stop: 'robots-unreachable' }), { stop: 'robots-unavailable-403' });
+/* A request the collector makes to a menu platform's API (owner, 7 October):
+   an explicit Disallow is obeyed, an API's 401/403 is no robots.txt, a wall stops. */
+check('api: Sweed says Disallow: /', apiRequestAllowed({ rules: robotsRules('User-agent: *\nDisallow: /') }, 'https://web-ui-prime.sweedpos.com/_api/proxy/Products/GetProductCarouselList'), false);
+check('api: 401 is no robots.txt', apiRequestAllowed(robotsVerdict(401, '{"name":"UnauthenticatedError","message":"Unauthorized"}'), 'https://api.dispenseapp.com/v1/venues/x/products?skip=20'), true);
+check('api: 403 is no robots.txt', apiRequestAllowed(robotsVerdict(403, '<html><body>Forbidden</body></html>'), 'https://search.example-api.com/product/search'), true);
+check('api: no file', apiRequestAllowed(robotsVerdict(404, ''), 'https://api.nug.com/api/v1/public/stores/1/products'), true);
+check('api: a wall stops', apiRequestAllowed({ stop: 'robots-access-wall' }, 'https://api.example.com/x'), false);
+check('api: rules that allow', apiRequestAllowed({ rules: robotsRules('User-agent: *\nDisallow: /admin') }, 'https://dutchie.com/api-2/graphql'), true);
 check('robots everything closed', robotsPermit(robotsRules('User-agent: *\nDisallow: /'), 'https://x.example/menu'), false);
 
 /* A wall where the menu should be is named, not counted as an empty shelf. */

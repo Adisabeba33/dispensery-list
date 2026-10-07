@@ -81,6 +81,8 @@ KEEP = (
     # Главный хост отказал (robots.txt: правило, ошибка, стена), и меню
     # спросили на его собственном хосте по записанному адресу.
     "homeSkipped",
+    # Сервер API меню, чей robots.txt запретил листать дальше (явный Disallow).
+    "pagingRefusedByRobots",
     # Почему robots.txt остановил: robots-disallowed — правило магазина;
     # robots-unavailable-403/5xx, robots-unreachable, robots-access-wall — ошибка или стена.
     "robots",
@@ -269,6 +271,7 @@ def report():
             "nothing-arrived": "ответ не пришёл",
             "answer-had-no-products": "в ответе не было товаров",
             "same-products-again": "вернули ту же страницу",
+            "robots-disallowed": "robots.txt сервера меню запрещает листать дальше",
         }
         lines += ["", "### Чем кончилось листание", ""]
         lines += [
