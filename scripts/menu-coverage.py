@@ -73,6 +73,14 @@ KEEP = (
     "wentOnwardTo",
     # Главная не открылась, и меню спросили по записанному адресу напрямую.
     "homeFailed",
+    # Главный хост отказал (robots.txt: правило, ошибка, стена), и меню
+    # спросили на его собственном хосте по записанному адресу.
+    "homeSkipped",
+    # Почему robots.txt остановил: robots-disallowed — правило магазина;
+    # robots-unavailable-403/5xx, robots-unreachable, robots-access-wall — ошибка или стена.
+    "robots",
+    # Поставили галочки «мне 21» и «согласен с условиями» (решение владельца 07.10).
+    "termsAccepted",
     "payloads",
     "settled",
     "jsonApiProducts",
@@ -628,18 +636,28 @@ def retry_list():
     следующей ночью прочитались все пять. Третий заход — через час-три, после
     последней партии, и только у тех, кому второй уже полагался (полка у них
     была) и не помог: ни одной позиции, страница не открылась или пришла пустой.
-    robots.txt, «цветка нет» и магазины без вчерашней полки сюда не попадают.
+    robots.txt, «цветка нет» и магазины без вчерашней полки сюда не попадают —
+    кроме robots.txt, который не ответил вовсе или ответил 5xx: это сбой, и
+    его спрашивают ещё раз у всех.
     Печатает лицензии через запятую — для --only.
     """
     rows = read_json(ACCUMULATED, {})
-    due = {
-        licence: r.get("status")
-        for licence, r in rows.items()
-        if (r.get("retried") or r.get("willAskAgain") or r.get("retryBudgetSpent"))
-        and not (r.get("flower") or 0)
-        and r.get("menuLink") != "robots-disallowed"
-        and (r.get("status") == "no-products" or str(r.get("status") or "").startswith("error"))
-    }
+
+    def emptied(r):
+        return ((r.get("retried") or r.get("willAskAgain") or r.get("retryBudgetSpent"))
+                and not (r.get("flower") or 0)
+                and r.get("menuLink") != "robots-disallowed"
+                and (r.get("status") == "no-products" or str(r.get("status") or "").startswith("error")))
+
+    def robots_did_not_answer(r):
+        # robots.txt, который не ответил или ответил 5xx, останавливает обход на
+        # этот прогон — но это сбой, а не слово магазина: спросить ещё раз можно.
+        # Правило «нельзя», 403-страница и стена сюда не попадают.
+        why = str(r.get("robots") or "")
+        return r.get("status") == "robots-disallowed" and (
+            why == "robots-unreachable" or why.startswith("robots-unavailable-5"))
+
+    due = {licence: r.get("status") for licence, r in rows.items() if emptied(r) or robots_did_not_answer(r)}
     AFTER_RUN.write_text(json.dumps(due))
     print(",".join(sorted(due)))
     return 0
