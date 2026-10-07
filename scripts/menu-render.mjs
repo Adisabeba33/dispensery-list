@@ -328,33 +328,103 @@ const candidates = dispensaries.filter(
     (!skipProvider || String(d.menu?.provider ?? '').toUpperCase() !== skipProvider),
 );
 
-/** robots.txt still applies: a browser does not change who is welcome. */
+/** robots.txt still applies: a browser does not change who is welcome.
+ *
+ * Read by the owner's rule, the same one the certificate reader keeps
+ * (scripts/coa-source-http.py; CLAUDE.md, "robots.txt: no rules means no
+ * restriction"):
+ *   - rules that are there are obeyed — `*` and `$` in a rule, and the longest
+ *     matching rule wins, so an Allow can open what a shorter Disallow closed;
+ *   - a robots.txt that answers with a web page, or with nothing, or 404/410,
+ *     states no rules;
+ *   - a file store's own refusal of a file it does not hold (an XML
+ *     AccessDenied, a bare "Forbidden") states no rules;
+ *   - any other answer — a 403 page, a 5xx, no answer at all — stops us on that
+ *     host, and so does a wall or a captcha where the rules should be.
+ * Until 7 October this read every one of the last as "no rules": a robots.txt
+ * that answered 403 or 503, or SiteGround's captcha (RENAISSANT), let the
+ * whole site be read. */
 const robotsCache = new Map();
-const robotsAllows = async (url) => {
-  const { origin, pathname } = new URL(url);
-  if (!robotsCache.has(origin)) {
-    try {
-      const res = await fetch(`${origin}/robots.txt`, { headers: { 'User-Agent': UA } });
-      robotsCache.set(origin, res.ok ? await res.text() : '');
-    } catch {
-      robotsCache.set(origin, '');
+const ROBOTS_WALL = /cf-chl-|\/\.well-known\/sgcaptcha|verify you are human|<title[^>]*>\s*(?:access denied|just a moment|attention required)/i;
+const looksHtml = (text) => /^\s*(<!doctype html|<html)/i.test(text) || /<(html|head|body)\b/i.test(text.slice(0, 2000));
+const storageAbsence = (text) => {
+  const head = text.slice(0, 2000).trim();
+  if (ROBOTS_WALL.test(head) || looksHtml(head)) return false;
+  if (/<Error>\s*<Code>(?:AccessDenied|NoSuchKey|AllAccessDisabled)<\/Code>/.test(head)) return true;
+  return head.length <= 64 && /^[A-Za-z0-9 .,:-]*(?:forbidden|access denied)[A-Za-z0-9 .,:-]*$/i.test(head);
+};
+/* The rules of the record that applies to everyone; we claim no friendlier one. */
+export const robotsRules = (txt) => {
+  const rules = [];
+  let inStar = false;
+  let started = false;
+  for (const raw of String(txt ?? '').split('\n')) {
+    const line = raw.split('#')[0].trim();
+    const at = line.indexOf(':');
+    if (at < 0) continue;
+    const key = line.slice(0, at).trim().toLowerCase();
+    const value = line.slice(at + 1).trim();
+    if (key === 'user-agent') {
+      // A new group starts at a user-agent line that follows rules.
+      if (started) {
+        inStar = false;
+        started = false;
+      }
+      if (value === '*') inStar = true;
+    } else {
+      // Any other line (Crawl-delay, Sitemap…) ends the run of user-agent lines too.
+      started = true;
+      if ((key === 'allow' || key === 'disallow') && inStar && value) rules.push({ value, allow: key === 'allow' });
     }
   }
-  const txt = robotsCache.get(origin);
-  if (!txt) return true;
-
-  // Read the record that applies to everyone; we do not claim a friendlier one.
-  const lines = txt.split('\n').map((l) => l.split('#')[0].trim());
-  let inStar = false;
-  const disallows = [];
-  for (const line of lines) {
-    const [rawKey, ...rest] = line.split(':');
-    const key = (rawKey || '').toLowerCase().trim();
-    const value = rest.join(':').trim();
-    if (key === 'user-agent') inStar = value === '*';
-    else if (inStar && key === 'disallow' && value) disallows.push(value);
+  return rules;
+};
+export const robotsPermit = (rules, url) => {
+  const { pathname, search } = new URL(url);
+  const path = pathname + search;
+  let best = null;
+  for (const { value, allow } of rules) {
+    const anchored = value.endsWith('$');
+    const body = anchored ? value.slice(0, -1) : value;
+    const pattern = `^${body.split('*').map((s) => s.replace(/[.+?^${}()|[\]\\]/g, '\\$&')).join('.*')}${anchored ? '$' : ''}`;
+    if (!new RegExp(pattern).test(path)) continue;
+    const weight = body.replace(/\*/g, '').length;
+    if (!best || weight > best.weight || (weight === best.weight && allow)) best = { weight, allow };
   }
-  return !disallows.some((rule) => rule === '/' || pathname.startsWith(rule));
+  return !best || best.allow;
+};
+/* What a host's robots.txt says: { rules } to obey, or { stop } and why. */
+export const robotsVerdict = (status, text) => {
+  if (status === 404 || status === 410) return { rules: [] };
+  if (status >= 200 && status < 300) {
+    if (ROBOTS_WALL.test(text.slice(0, 100000))) return { stop: 'robots-access-wall' };
+    if (looksHtml(text)) return { rules: [] };
+    return { rules: robotsRules(text) };
+  }
+  if ((status === 401 || status === 403) && storageAbsence(text)) return { rules: [] };
+  return { stop: `robots-unavailable-${status}` };
+};
+const robotsOf = async (origin) => {
+  if (!robotsCache.has(origin)) {
+    let verdict;
+    try {
+      const res = await fetch(`${origin}/robots.txt`, {
+        headers: { 'User-Agent': UA },
+        signal: AbortSignal.timeout(20000),
+      });
+      verdict = robotsVerdict(res.status, await res.text());
+    } catch {
+      verdict = { stop: 'robots-unreachable' };
+    }
+    robotsCache.set(origin, verdict);
+  }
+  return robotsCache.get(origin);
+};
+/* Why a host stopped us, for the report; null when its rules were read. */
+const robotsStop = async (url) => (await robotsOf(new URL(url).origin)).stop ?? null;
+const robotsAllows = async (url) => {
+  const verdict = await robotsOf(new URL(url).origin);
+  return !verdict.stop && robotsPermit(verdict.rules, url);
 };
 
 /**
@@ -1228,7 +1298,39 @@ const choosePickup = async (page, entry) => {
  * because on some shops the offer is the thing on top and answering it reveals
  * the wall rather than the menu.
  */
+/* Curaleaf asks three things before its menu — the state, "I am 21 years of
+   age or older", and "I agree to the Terms of Use and acknowledge… the Privacy
+   Policy" — and keeps "I'm over 21" disabled until all three are given. The
+   owner decided on 7 October 2026 that agreeing to a shop's terms at its age
+   gate is acceptable. So on a page that carries exactly those two sentences,
+   the state is set to New York (where every shop in this register stands),
+   the two boxes are ticked by their own words — never the cookie switches
+   beside them — and the button is pressed. Recorded per shop. */
+const TERMS_AGE_BOX = /^\s*I am 21 years of age or older\s*$/i;
+const TERMS_BOX = /^\s*I agree to the Terms of Use/i;
+const OVER_21_BUTTON = /^\s*I(?:'|’)?m over 21\s*$|^\s*I am over 21\s*$/i;
+const affirmAgeAndTerms = async (page, entry) => {
+  try {
+    const age = page.getByText(TERMS_AGE_BOX).first();
+    const terms = page.getByText(TERMS_BOX).first();
+    if (!(await age.count()) || !(await terms.count())) return false;
+    const state = page.locator('select[name="state"]').first();
+    if (await state.count()) await state.selectOption({ label: 'New York' }).catch(() => {});
+    await age.click({ timeout: 3000 });
+    await terms.click({ timeout: 3000 });
+    const go = page.getByRole('button', { name: OVER_21_BUTTON }).first();
+    if (!(await go.count()) || !(await go.isEnabled())) return false;
+    await go.click({ timeout: 3000 });
+    await page.waitForLoadState('domcontentloaded', { timeout: 15000 }).catch(() => {});
+    entry.termsAccepted = true;
+    return true;
+  } catch {
+    return false;
+  }
+};
+
 const clearWalls = async (page, entry) => {
+  if (await affirmAgeAndTerms(page, entry)) entry.ageGate = true;
   if (await affirmAge(page, entry)) entry.ageGate = true;
   const pressed = await dismissOffers(page, entry);
   if (pressed.length) {
@@ -4248,6 +4350,29 @@ const main = async () => {
     } catch {
       allowed = true;
     }
+    /* The home host stopped us, but the menu's written-down address is on a
+       host of its own whose robots.txt lets it be read: RENAISSANT's shelf is
+       on cart.renaissant.nyc while renaissant.nyc answers its robots.txt with
+       SiteGround's captcha, and a dead registered site cannot be asked at all.
+       robots.txt speaks for its own host, so the host that stopped us is not
+       touched again and the menu is asked directly (owner, 7 October 2026). */
+    let skipHome = null;
+    if (!allowed) {
+      const knownMenu = ENDPOINTS[shop.licenseNumber] ?? null;
+      try {
+        if (
+          knownMenu &&
+          !WC_STORE_API.test(knownMenu) &&
+          new URL(knownMenu).origin !== new URL(site).origin &&
+          (await robotsAllows(knownMenu))
+        ) {
+          skipHome = (await robotsStop(site)) ?? 'robots-disallowed';
+          allowed = true;
+        }
+      } catch {
+        /* a malformed address: refused as before */
+      }
+    }
     /* The refusal costs the batch a slot, like any other first visit. The
        workflow walks fixed offsets, so a batch that does not count a shop it
        passed reads one index beyond its window — and the next batch, starting
@@ -4260,13 +4385,18 @@ const main = async () => {
          reads afterwards as "not visited in the last run" — and somebody goes
          hunting for a menu address for a shop that has asked not to be
          crawled. The refusal is the finding; it has to arrive. */
+      /* Why, too: a rule that says no and a robots.txt that answers with an
+         error or a wall are both "do not read", but only the first is the
+         shop's own word about its site. */
+      const why = await robotsStop(site).catch(() => null);
       report.push({
         licence: shop.licenseNumber,
         shop: shop.dbaName ?? shop.legalName,
         status: 'robots-disallowed',
         menuLink: 'robots-disallowed',
+        ...(why ? { robots: why } : {}),
       });
-      console.log(`${done}/${limit} ${shop.dbaName ?? shop.legalName}: robots-disallowed`);
+      console.log(`${done}/${limit} ${shop.dbaName ?? shop.legalName}: robots-disallowed${why ? ` (${why})` : ''}`);
       continue;
     }
     const startedAt = Date.now();
@@ -4472,12 +4602,17 @@ const main = async () => {
          the menu is asked directly. The Store API is read from inside a page
          of the shop's own site, so it still needs the home page. */
       let homeFailed = null;
-      try {
-        await page.goto(site, { waitUntil: 'domcontentloaded', timeout: 30000 });
-      } catch (e) {
-        if (!known || WC_STORE_API.test(known)) throw e;
-        homeFailed = e.message.split('\n')[0].slice(0, 120);
-        entry.homeFailed = homeFailed;
+      if (skipHome) {
+        homeFailed = skipHome;
+        entry.homeSkipped = skipHome;
+      } else {
+        try {
+          await page.goto(site, { waitUntil: 'domcontentloaded', timeout: 30000 });
+        } catch (e) {
+          if (!known || WC_STORE_API.test(known)) throw e;
+          homeFailed = e.message.split('\n')[0].slice(0, 120);
+          entry.homeFailed = homeFailed;
+        }
       }
       if (!homeFailed) {
         await settle(1500, 8000);

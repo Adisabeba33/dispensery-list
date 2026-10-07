@@ -23,7 +23,7 @@ ENDPOINTS = ROOT / "data/menu-endpoints.json"
 DISPENSARIES = ROOT / "data/dispensaries.json"
 
 PLATFORMS = {"DUTCHIE", "BLAZE", "TREEZ", "IHEARTJANE", "MEADOW", "PROPRIETARY", "OTHER"}
-GATES = {"none", "simple-button", "date-of-birth-form", "login"}
+GATES = {"none", "simple-button", "terms-checkboxes", "date-of-birth-form", "login"}
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 errors = []

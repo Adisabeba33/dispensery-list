@@ -11,6 +11,7 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
+  robotsVerdict, robotsRules, robotsPermit,
   brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, declaredTotalOf,
   decodeFlight, decodeTurboStream, destinationOf, flattenJsonApiProducts, flattenSearchHits, flattenStockRecords,
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
@@ -2090,6 +2091,28 @@ check('infused is not', classify({ name: 'Blue Dream 3.5g', category: 'Infused F
 /* Meadow names its category only in primaryCategory, an object. */
 check('meadow primaryCategory', classify({ name: 'Bushwick Burger 3.5g', primaryCategory: { id: 15970, name: 'Flower' } }), 'flower');
 check('meadow prerolls', classify({ name: 'Bushwick Burger 1g', primaryCategory: { id: 15971, name: 'Prerolls' } }), 'category-not-flower');
+
+/* robots.txt by the owner's rule (CLAUDE.md, "robots.txt: no rules means no
+   restriction"): rules obeyed, a page or nothing is no rules, a file store's
+   refusal is no rules, any other error or a wall stops us. */
+check('robots 404', robotsVerdict(404, 'Not found'), { rules: [] });
+check('robots page instead of rules', robotsVerdict(200, '<!DOCTYPE html><html><body>Home</body></html>'), { rules: [] });
+check('robots SiteGround wall', robotsVerdict(202, '<html><head><meta http-equiv="refresh" content="0;/.well-known/sgcaptcha/?r=%2Frobots.txt"></head></html>').stop, 'robots-access-wall');
+check('robots 403 page stops', robotsVerdict(403, '<html><body><h1>403 Forbidden</h1></body></html>').stop, 'robots-unavailable-403');
+check('robots 503 stops', robotsVerdict(503, '').stop, 'robots-unavailable-503');
+check('robots file store AccessDenied', robotsVerdict(403, '<?xml version="1.0"?><Error><Code>AccessDenied</Code><Message>Access Denied</Message></Error>'), { rules: [] });
+check('robots bare Forbidden', robotsVerdict(403, 'Forbidden'), { rules: [] });
+const wp = robotsRules('User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\nDisallow: /*?add-to-cart=\nDisallow: /*?*dtche');
+check('robots allow beats shorter disallow', robotsPermit(wp, 'https://x.example/wp-admin/admin-ajax.php'), true);
+check('robots disallow', robotsPermit(wp, 'https://x.example/wp-admin/options.php'), false);
+check('robots wildcard in query', robotsPermit(wp, 'https://x.example/shop?dtche%5Bcategory%5D=flower'), false);
+check('robots wildcard leaves the rest', robotsPermit(wp, 'https://x.example/shop/flower/'), true);
+check('robots end anchor', robotsPermit(robotsRules('User-agent: *\nDisallow: /*.pdf$'), 'https://x.example/coa.pdf?v=1'), true);
+const groups = robotsRules('User-agent: Googlebot\nDisallow: /\n\nUser-agent: bingbot\nUser-agent: *\nDisallow: /private');
+check('robots only the * group', [robotsPermit(groups, 'https://x.example/menu'), robotsPermit(groups, 'https://x.example/private/a')], [true, false]);
+const delayed = robotsRules('User-agent: *\nCrawl-delay: 10\nUser-agent: foo\nDisallow: /\n\nUser-agent: *\nDisallow: /x');
+check('robots a crawl-delay ends the group', [robotsPermit(delayed, 'https://x.example/menu'), robotsPermit(delayed, 'https://x.example/x1')], [true, false]);
+check('robots everything closed', robotsPermit(robotsRules('User-agent: *\nDisallow: /'), 'https://x.example/menu'), false);
 
 if (failures) {
   console.log(`\n${failures} check(s) failed.`);

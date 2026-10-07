@@ -32,6 +32,11 @@ def why_empty(row):
     if row.get("menuLink") == "none":
         return "ссылку на меню не нашли"
     if row.get("menuLink") == "robots-disallowed":
+        why = str(row.get("robots") or "")
+        if why == "robots-access-wall":
+            return "на месте robots.txt стена — **не трогать**"
+        if why.startswith("robots-unavailable") or why == "robots-unreachable":
+            return f"robots.txt отвечает ошибкой ({why.rsplit('-', 1)[-1]}) — **не трогать**"
         return "robots.txt запрещает — **не трогать**"
     if row.get("siteGroundWall") and not row.get("flower"):
         return "стена SiteGround — **не трогать**"
@@ -135,7 +140,7 @@ def main(to_stdout):
         "- `flowerVisibleWithoutLogin` — видно ли товары **без входа в аккаунт**. "
         "Если меню требует логин, ставьте `false` и `menuUrl: null`: за логин мы "
         "не ходим.",
-        "- `ageGate` — `none`, `simple-button`, `date-of-birth-form` или `login`.",
+        "- `ageGate` — `none`, `simple-button`, `terms-checkboxes` (галочки «мне 21» и «согласен с условиями», разрешены владельцем 07.10.2026), `date-of-birth-form` или `login`.",
         "- Пустое поле лучше правдоподобной догадки. Не уверены — `null` и "
         "напишите почему в `notes`.",
         "",

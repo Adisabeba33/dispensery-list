@@ -1086,8 +1086,8 @@
     "robotsAllows": null,
     "flowerVisibleWithoutLogin": true,
     "ageGate": null,
-    "checkedAt": "2026-09-29",
-    "notes": "Renaissant NYC, 40-07 Queens Blvd, Sunnyside: its shop is a cart on cart.renaissant.nyc; the home page links its Flower category here. Before 29 September the SiteGround check stood in front of the site; a browser now passes it. Not read yet: this cart (an older Proteus) answers ajax_getproducts.cfm with HTML product cards, not JSON, and the collector reads JSON. Saint Cannabis runs the same."
+    "checkedAt": "2026-10-07",
+    "notes": "Renaissant NYC, 40-07 Queens Blvd, Sunnyside: its shop is a cart on cart.renaissant.nyc; the home page links its Flower category here. renaissant.nyc answers its robots.txt with SiteGround's captcha (202, sg-captcha: challenge), so that host is not read; the owner decided on 2026-10-07 that the cart is read on its own host, whose robots.txt is a 404 (no rules), and the collector goes there directly without touching renaissant.nyc. 56 flower rows read from the cart on 2026-10-07."
   },
   {
     "licenseNumber": "OCM-RETL-24-000154",
@@ -1233,5 +1233,15 @@
     "ageGate": "simple-button",
     "checkedAt": "2026-10-07",
     "notes": "Caffiend LLC, trades as The Bushwick. Next.js app-router site fed by Flowhub; all 550 products, 138 in category 'flower', arrive in the inline flight data (self.__next_f), no JSON request. Age notice answered with \"I'M 21+\". Written down to pin the address: it read 124 flower rows on 2026-10-07, and on 2026-10-06 the run came back with nothing from it."
+  },
+  {
+    "licenseNumber": "MM1004D",
+    "menuUrl": "https://curaleaf.com/shop/new-york/curaleaf-ny-queens/recreational/menu/flower-1702",
+    "platform": "PROPRIETARY",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "terms-checkboxes",
+    "checkedAt": "2026-10-07",
+    "notes": "Curaleaf NY, 107-18 70th Rd, Forest Hills: store curaleaf-ny-queens, whose menu page gives its address as '107-18 70th Road' and 'Forest Hills'; this is its Flower category. curaleaf.com robots.txt disallows only /admin/*. Every store address answers 307 to /age-gate, which asks for the state and two ticks, 'I am 21 years of age or older' and 'I agree to the Terms of Use and acknowledge… the Privacy Policy', before 'I'm over 21' is enabled; the owner decided on 2026-10-07 that agreeing to the terms there is acceptable, and the collector answers it (affirmAgeAndTerms). The store's public sitemap lists 209 flower product pages; 150 flower rows read on 2026-10-07."
   }
 ]
