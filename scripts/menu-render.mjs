@@ -2105,12 +2105,24 @@ export const flattenSearchHits = (payloads) => {
 
 /** What a product is called by the menu that holds it: its id, or failing that
     the nearest thing to one. Empty when it has none of them. */
+/* Only a non-empty string or a number names a product. Flower Hill's 805
+   products carry sku: [] and no id; String([]) is "", so a page of fifty-five
+   of them read as an answer with no products, and the paging was reported
+   stopped for it (7 October). An object id would have named every product
+   "[object Object]" alike. The next field is tried instead. */
+const firstIdOf = (...values) => {
+  for (const v of values) {
+    if (typeof v === 'number' && Number.isFinite(v)) return String(v);
+    if (typeof v === 'string' && v.trim()) return v;
+  }
+  return '';
+};
 export function productIdOf(p) {
-  return String(p?.id ?? p?._id ?? p?.sku ?? p?.slug ?? p?.name ?? p?.Name ?? '');
+  return firstIdOf(p?.id, p?._id, p?.sku, p?.slug, p?.name, p?.Name);
 }
 /* For counting, a real id or nothing: two sizes of one strain share a name,
    and counted by name they would be one product. */
-const countingIdOf = (p) => String(p?.id ?? p?._id ?? p?.sku ?? p?.slug ?? '');
+const countingIdOf = (p) => firstIdOf(p?.id, p?._id, p?.sku, p?.slug);
 
 /** Every shelf in a payload, each with the total its own container states. */
 const shelvesWithTotals = (value, container = null, depth = 0, out = []) => {
@@ -3346,7 +3358,6 @@ const NOT_FLOWER_TITLE = new RegExp(
     'infus',                                   // Infused, Infusion
     /* The extract, not "Black Diamond" — nor "Queen of Diamonds", which The
        Bridge sells as FLOWER - 3.5 G: after "of" it is a card, not a resin. */
-    '(?<!\\bof\\s)\\bdiamonds\\b',
     '\\bdiamond\\s+(?:sauce|melt|infused)\\b',
     '\\bmoon\\s?rocks?\\b',
     '\\bpre[\\s-]?rolls?\\b',
@@ -3393,6 +3404,17 @@ const NOT_FLOWER_TITLE = new RegExp(
   ].join('|'),
   'i',
 );
+
+/* Diamonds is an extract, Diamond a strain — but a cultivar can carry the
+   plural too: Weedly lists "Major - Grape Diamonds - Flower (3.5g)" under
+   flower, and it was thrown away as an extract (7 October). The plural still
+   refuses a product, unless the name also states Flower as a part of its own
+   — between separators or in brackets — and nothing else in it does (an
+   infused jar is refused by 'infus' before this is asked). Not "Queen of
+   Diamonds", which The Bridge sells as FLOWER - 3.5 G: after "of" it is a card,
+   not a resin. */
+const DIAMONDS_TITLE = /(?<!\bof\s)\bdiamonds\b/i;
+const FLOWER_NAMED_PART = /(?:^|[-–—|(]\s*)flower\s*(?:$|[-–—|)(]|\d)/i;
 
 /** Strips the brand, the category word and the size, leaving the strain. */
 const cleanStrainName = (raw, brand) => {
@@ -3659,6 +3681,7 @@ const classify = (p) => {
   const title = String(flatten(pick(p, NAME_KEYS)) ?? '');
   if (!title.trim()) return 'no-title';
   if (NOT_FLOWER_TITLE.test(title)) return 'title-not-flower';
+  if (DIAMONDS_TITLE.test(title) && !FLOWER_NAMED_PART.test(title)) return 'title-not-flower';
   const text = categoryText(p);
   /* No category to go on, so the name decides — and only when it says so
      outright. A name that names no product type stays refused: guessing from

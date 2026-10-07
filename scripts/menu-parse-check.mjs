@@ -11,7 +11,7 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  robotsVerdict, robotsRules, robotsPermit, pageWallOf, betterRobotsVerdict, apiRequestAllowed,
+  robotsVerdict, robotsRules, robotsPermit, productIdOf, pageWallOf, betterRobotsVerdict, apiRequestAllowed,
   brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, declaredTotalOf,
   decodeFlight, decodeTurboStream, destinationOf, flattenJsonApiProducts, flattenSearchHits, flattenStockRecords,
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
@@ -2132,6 +2132,14 @@ check('carrot unit jar', carrotDime?.availableSizesGrams, [0.7]);
 const carrotDeli = toListing({ name: 'Deli / Tropical Cherry', brand: '710', categoryName: 'Flower',
   unitWeight: 0.5, isWeightBased: true, gramRange: '1 - 28' }, shop, SRC, {});
 check('carrot deli step is not a jar', carrotDeli, null);
+/* A cultivar named in the plural: Diamonds is refused unless Flower is a part of the name. */
+check('grape diamonds flower jar', classify({ name: 'Major - Grape Diamonds - Flower (3.5g)', category: 'flower' }), 'flower');
+check('thca diamonds stay refused', classify({ name: 'Grape Diamonds THCa 1g', category: 'flower' }), 'title-not-flower');
+check('queen of diamonds stays flower', classify({ name: 'Dragonfly - Queen of Diamonds', category: 'flower' }), 'flower');
+check('diamonds infused flower stays refused', classify({ name: 'Diamonds Infused Flower - 3.5g', category: 'flower' }), 'title-not-flower');
+/* An empty sku names no product; the next field does. */
+check('empty sku is no id', productIdOf({ sku: [], name: 'Blue Dream' }), 'Blue Dream');
+check('numeric id', productIdOf({ id: 0, name: 'x' }), '0');
 
 /* The words on a button that loads more. The GARDEN CLUB's says how many are
    left (7 October); Jane's says "View more"; a button about something else is
