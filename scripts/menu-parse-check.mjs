@@ -2092,6 +2092,18 @@ check('infused is not', classify({ name: 'Blue Dream 3.5g', category: 'Infused F
 check('meadow primaryCategory', classify({ name: 'Bushwick Burger 3.5g', primaryCategory: { id: 15970, name: 'Flower' } }), 'flower');
 check('meadow prerolls', classify({ name: 'Bushwick Burger 1g', primaryCategory: { id: 15971, name: 'Prerolls' } }), 'category-not-flower');
 
+/* Carrot (getcarrot.io): weight in cashOptions, or for a jar sold by the unit
+   in unitWeight; a weight-based item's unitWeight is only its step. */
+const carrotJar = toListing({ name: 'Bannermans Batch - Iced Sangria 3.5 - F201', brand: 'Bannermans Batch', categoryName: 'Flower',
+  cashOptions: [{ displayName: '3.5g', optionUnit: 'Grams', qty: 3.5 }], unitWeight: 3.5, isWeightBased: true, gramRange: '3.5g - 28.0g' }, shop, SRC, {});
+check('carrot cashOptions', carrotJar?.availableSizesGrams, [3.5]);
+const carrotDime = toListing({ name: '5 Boro Blue Hawaiian Dime Bag', brand: '5 BORO', categoryName: 'Flower',
+  cashOptions: [{ displayName: '1', optionUnit: 'Units', qty: 1 }], unitWeight: 0.7, isWeightBased: false, gramRange: '1 - 5' }, shop, SRC, {});
+check('carrot unit jar', carrotDime?.availableSizesGrams, [0.7]);
+const carrotDeli = toListing({ name: 'Deli / Tropical Cherry', brand: '710', categoryName: 'Flower',
+  unitWeight: 0.5, isWeightBased: true, gramRange: '1 - 28' }, shop, SRC, {});
+check('carrot deli step is not a jar', carrotDeli, null);
+
 /* robots.txt by the owner's rule (CLAUDE.md, "robots.txt: no rules means no
    restriction"): rules obeyed, a page or nothing is no rules, a file store's
    refusal is no rules, any other error or a wall stops us. */

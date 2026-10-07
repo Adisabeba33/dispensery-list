@@ -4136,12 +4136,33 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   };
 
   const sizes = [];
-  const variants = pick(p, ['variants', 'weights', 'weightPrices', 'options', 'sizes', 'priceOptions', 'unitPrices', 'measurements', 'availableWeights']);
+  /* cashOptions is Carrot's (getcarrot.io): [{ displayName: "3.5g", optionUnit:
+     "Grams", qty: 3.5 }]. Its names often leave the unit off ("Iced Sangria
+     3.5 - F201", "Deli / Tropical Cherry"), and without this 249 flower rows
+     at 26 shops — Paradise, Two Buds and Canna Buddha most — were dropped on
+     6 October for want of a weight. */
+  const variants = pick(p, ['variants', 'weights', 'weightPrices', 'options', 'sizes', 'priceOptions', 'unitPrices', 'measurements', 'availableWeights', 'cashOptions']);
   if (Array.isArray(variants)) {
     for (const v of variants) {
       const g = plausibleSize(sizeOf(v));
       if (g) sizes.push(g);
     }
+  }
+
+  /* Carrot also sells jars by the unit: cashOptions then says { displayName:
+     "1", optionUnit: "Units" }, and the jar's weight is unitWeight, in grams —
+     Paradise's dime bags 0.7, its "Glitter Bomb Flower Jar" 3.5 (58 rows there
+     on 6 October). Read only on Carrot's own documents (gramRange or
+     carrotSubcategory beside it) and only for an item not sold by weight: a
+     weight-based item's unitWeight is the step it is weighed out in, and its
+     grams are in cashOptions above. */
+  if (
+    !sizes.length &&
+    (pick(p, ['gramRange']) !== null || pick(p, ['carrotSubcategory']) !== null) &&
+    pick(p, ['isWeightBased']) !== true
+  ) {
+    const g = plausibleSize(num(pick(p, ['unitWeight'])));
+    if (g) sizes.push(g);
   }
 
   // Same rule at the top level: weightInGrams says grams in its name, `size`
