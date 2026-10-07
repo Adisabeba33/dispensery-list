@@ -701,13 +701,13 @@
   },
   {
     "licenseNumber": "OCM-CAURD-24-000176",
-    "menuUrl": "https://happymunkey.com/shop/dyckman/?category=flower",
+    "menuUrl": "https://happymunkey.com/shop/dyckman/categories/flower/",
     "platform": "BLAZE",
     "robotsAllows": null,
     "flowerVisibleWithoutLogin": true,
     "ageGate": "click-through",
-    "checkedAt": "2026-09-25",
-    "notes": "Happy Munkey Dyckman, 151 Dyckman St — the shop's own Tymber/Blaze menu ('Pickup at Happy Munkey - Dyckman'). /products/flower/ is an information page with no products. The Fulton St branch (Ramon Reyes LLC) has its own endpoint."
+    "checkedAt": "2026-10-07",
+    "notes": "Happy Munkey Dyckman, 151 Dyckman St — the shop's own Tymber/Blaze menu ('Pickup at Happy Munkey - Dyckman'). /products/flower/ is an information page with no products. The Fulton St branch (Ramon Reyes LLC) has its own endpoint. On 2026-10-07 moved from /shop/dyckman/?category=flower, which loads only the 'top picks' carousels (40 flower read), to the Flower category route, which lists the whole category from ecom-api.blaze.me sixteen at a time (total_count 157)."
   },
   {
     "licenseNumber": "OCM-RETL-24-000254",
@@ -801,13 +801,13 @@
   },
   {
     "licenseNumber": "OCM-CAURD-24-000079",
-    "menuUrl": "https://happymunkey.com/shop/fulton/?category=flower",
+    "menuUrl": "https://happymunkey.com/shop/fulton/categories/flower/",
     "platform": "OTHER",
     "robotsAllows": null,
     "flowerVisibleWithoutLogin": true,
     "ageGate": "click-through",
-    "checkedAt": "2026-09-26",
-    "notes": "Happy Munkey Fulton, 453 Fulton St — the shop's own Tymber/Blaze menu ('Pickup at Happy Munkey - Fulton'). Its 'Temporarily Closed' label is hidden on the live site (d-none); the location block shows daily hours and the menu takes pick-up orders."
+    "checkedAt": "2026-10-07",
+    "notes": "Happy Munkey Fulton, 453 Fulton St — the shop's own Tymber/Blaze menu ('Pickup at Happy Munkey - Fulton'). Its 'Temporarily Closed' label is hidden on the live site (d-none); the location block shows daily hours and the menu takes pick-up orders. On 2026-10-07 moved from /shop/fulton/?category=flower, which loads only the 'top picks' carousels, to the Flower category route, as for the Dyckman branch."
   },
   {
     "licenseNumber": "OCM-CAURD-24-000222",
@@ -1253,5 +1253,15 @@
     "ageGate": "none",
     "checkedAt": "2026-10-07",
     "notes": "Smoking Scholars: Dispense venue f1c106dbfcf3b9bc. The home page links no flower category, only the '3.5G FLOWER SALE' promotion (/menu/categories/35-flower-sale, 20 products), which outranks the plain menu link, so every run read the sale. The menu's own FLOWERS category is /menu/categories/flowers (300 products, 248 flower rows on 2026-10-07); /menu/categories/grounded-flowers beside it is ground flower. menus.dispenseapp.com robots.txt disallows only /accounts."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000225",
+    "menuUrl": "https://hwcannabis.co/menu/broadway/categories/flower/",
+    "platform": "BLAZE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "none",
+    "checkedAt": "2026-10-07",
+    "notes": "Housing Works Cannabis Co., 846 Avenue of the Americas ('Pickup at Housing Works | Broadway'): the shop's own Tymber/Blaze menu, its Flower category; the site's 'Order Online' link. /cannabis-products/flower/, which the run chose, is an information page with no products. The category lists its flower from ecom-api.blaze.me sixteen at a time, total_count 203 on 2026-10-07. hwcannabis.co robots.txt disallows only /wp-admin/."
   }
 ]
