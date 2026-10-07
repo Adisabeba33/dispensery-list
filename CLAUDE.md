@@ -57,3 +57,15 @@ does not hold — an S3-style XML `AccessDenied`, a bare "Forbidden" — states 
 rules too (6 October 2026). A robots.txt that answers with any other error
 (a 403 page, 5xx) stops the reader, and a bot wall or captcha — at robots.txt or on
 any page — is never worked around (`scripts/coa-source-http.py`).
+
+The menu collector keeps the same rule (`robotsVerdict` in
+`scripts/menu-render.mjs`). It asks robots.txt with the browser that reads the
+pages and, when that answer is an error, with Node's fetch too: firewalls tell
+the two apart, so rules from either are obeyed, and a wall from either stops it.
+
+A request the collector makes itself to a menu platform's API — the next page
+of a shelf — follows the owner's decision of 7 October 2026: an explicit rule is
+obeyed (web-ui-prime.sweedpos.com's `Disallow: /`), but an API that answers
+/robots.txt as it answers every unknown path, with 401 or 403
+(api.dispenseapp.com: "provide a valid api-key"), has published no robots.txt,
+and that is no restriction. A wall there still stops it (`apiRequestAllowed`).
