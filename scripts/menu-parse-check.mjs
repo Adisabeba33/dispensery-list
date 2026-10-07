@@ -11,7 +11,7 @@
  *   node scripts/menu-parse-check.mjs
  */
 import {
-  robotsVerdict, robotsRules, robotsPermit, pageWallOf, betterRobotsVerdict, apiRequestAllowed,
+  robotsVerdict, robotsRules, robotsPermit, productIdOf, pageWallOf, betterRobotsVerdict, apiRequestAllowed, pagesForDeclared,
   brandKeyOf, categoryFromProductUrl, classify, cleanStrainName, declaredTotalOf,
   decodeFlight, decodeTurboStream, destinationOf, flattenJsonApiProducts, flattenSearchHits, flattenStockRecords,
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
@@ -2132,6 +2132,14 @@ check('carrot unit jar', carrotDime?.availableSizesGrams, [0.7]);
 const carrotDeli = toListing({ name: 'Deli / Tropical Cherry', brand: '710', categoryName: 'Flower',
   unitWeight: 0.5, isWeightBased: true, gramRange: '1 - 28' }, shop, SRC, {});
 check('carrot deli step is not a jar', carrotDeli, null);
+/* A cultivar named in the plural: Diamonds is refused unless Flower is a part of the name. */
+check('grape diamonds flower jar', classify({ name: 'Major - Grape Diamonds - Flower (3.5g)', category: 'flower' }), 'flower');
+check('thca diamonds stay refused', classify({ name: 'Grape Diamonds THCa 1g', category: 'flower' }), 'title-not-flower');
+check('queen of diamonds stays flower', classify({ name: 'Dragonfly - Queen of Diamonds', category: 'flower' }), 'flower');
+check('diamonds infused flower stays refused', classify({ name: 'Diamonds Infused Flower - 3.5g', category: 'flower' }), 'title-not-flower');
+/* An empty sku names no product; the next field does. */
+check('empty sku is no id', productIdOf({ sku: [], name: 'Blue Dream' }), 'Blue Dream');
+check('numeric id', productIdOf({ id: 0, name: 'x' }), '0');
 
 /* The words on a button that loads more. The GARDEN CLUB's says how many are
    left (7 October); Jane's says "View more"; a button about something else is
@@ -2188,6 +2196,12 @@ check('page wall: the shop page itself is none', pageWallOf({ status: 200, serve
 check('page wall: a 200 page with a wall\'s words is not one', pageWallOf({ status: 200, title: 'Access denied: you must be 21' }), null);
 check('page wall: a 404 is not a wall', pageWallOf({ status: 404, server: 'cloudflare', title: 'Page not found' }), null);
 check('page wall: nothing known', pageWallOf(undefined), null);
+
+/* A declared total gets the pages it needs: Legacy Lifestyle, 431 at ten a page. */
+check('pages: ten a page through 431', pagesForDeclared(431, 10), 45);
+check('pages: a short shelf keeps forty', pagesForDeclared(120, 20), 40);
+check('pages: never past a hundred', pagesForDeclared(5000, 10), 100);
+check('pages: no page size known', pagesForDeclared(431, 0), 40);
 
 if (failures) {
   console.log(`\n${failures} check(s) failed.`);
