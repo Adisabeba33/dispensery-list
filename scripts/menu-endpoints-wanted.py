@@ -33,6 +33,8 @@ def why_empty(row):
         return "ссылку на меню не нашли"
     if row.get("menuLink") == "robots-disallowed":
         return "robots.txt запрещает — **не трогать**"
+    if row.get("siteGroundWall") and not row.get("flower"):
+        return "стена SiteGround — **не трогать**"
     if str(row.get("status", "")).startswith("error"):
         return "страница не открылась"
     if row.get("status") == "no-flower":

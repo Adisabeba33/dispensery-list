@@ -304,8 +304,8 @@ def lots(rows):
                 "shops": sorted({r["licenseNumber"] for r in rows_}),
                 "certificates": sorted({t["coaUrl"] for t in terps if t.get("coaUrl")}),
                 "lineageStated": sorted({r["lineage"] for r in rows_ if r.get("lineage") not in (None, "UNKNOWN")}),
-                "read": min(r["capturedAt"][:10] for r in rows_),
-                "lastSeen": max(r["capturedAt"][:10] for r in rows_),
+                "read": min(_history.ny_day(r["capturedAt"]) for r in rows_),
+                "lastSeen": max(_history.ny_day(r["capturedAt"]) for r in rows_),
                 "_history": sorted({_history.key_of(r) for r in rows_} - {None}),
             })
     out.sort(key=lambda lot: (lot["key"], -lot["thcPercent"]))
@@ -510,7 +510,7 @@ def dated(found, before, rows):
 def main():
     rows = listings_of(LISTINGS.read_text())
     found, stray, conflicts = lots(rows)
-    day = max((r["capturedAt"][:10] for r in rows if r.get("capturedAt")), default=None)
+    day = max((_history.ny_day(r["capturedAt"]) for r in rows if r.get("capturedAt")), default=None)
     today = len(found)
     before = load_lots(OUT)
     found, gone = carried(found, before, day)

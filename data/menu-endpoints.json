@@ -1158,5 +1158,80 @@
     "ageGate": null,
     "checkedAt": "2026-10-01",
     "notes": "Carnegie Hill Cannabis, 1720 2nd Ave. The site links flower two ways: /store/manhattan/category/flower/ holds the shelf (153 strains read there on 2026-09-30 at 13:02 UTC) and /store_category/flower/ is an empty page. The collector found the second on five of six runs since 2026-09-27 and read nothing. robots.txt is still checked for this address on every visit."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-24-000083",
+    "menuUrl": "https://conbud.com/stores/conbud-bronx/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "none",
+    "checkedAt": "2026-10-07",
+    "notes": "CONBUD Bronx, 2412 3rd Ave. The registered site conbudbx.com resets the connection; the chain's site conbud.com is live. Its page conbud.com/locations/bronx/ gives the address as 2412 Third Ave, Bronx, NY 10454 and the licence as 'Bronx: OCM-CAURD-23-000083', but its menu there is an embedded dutchie.com window. The same chain serves a first-party storefront on its own domain at conbud.com/stores/conbud-bronx (title 'CONBUD - Bronx Cannabis Menu | Mott Haven, NY', store address 2412 Third Avenue, Bronx, NY 10454), the same pattern as the LES row's /stores/conbud-les; /products/flower is its Flower category. shop.conbud.com is the Gerard Ave (Yankee Stadium) store, OCM-CAURD-24-000220, not this one. conbud.com robots.txt: User-agent: * Disallow: (empty). Test 2026-10-07: 42 flower rows read from /stores/conbud-bronx/products/flower; no age wall appeared."
+  },
+  {
+    "licenseNumber": "OCM-RETL-25-000456",
+    "menuUrl": "https://flynnstoned.com/categories/flower/",
+    "platform": "PROPRIETARY",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-10-07",
+    "notes": "Green Rise Inc., 599 10th Ave, trades as FlynnStoned Cannabis Company: NYC Hell's Kitchen. The registered site greenriseny.com does not answer. FlynnStoned's store page flynnstoned.com/stores/flynnstoned-cannabis-dispensary-nyc-hells-kitchen-ny/ gives the location as 599 10th Ave, New York, NY 10036 (store 6292, 'FlynnStoned Cannabis Company: Hell's Kitchen'), and the chain's footer licence list carries OCM-RETL-25-000456-D1 in the Hell's Kitchen position, between Chelsea (OCM-RETL-24-000041) and Midtown East (OCM-CAURD-25-000310). The shelf is the chain's Flower category with the branch chosen by the PREFERRED_STORE cookie the store page sets (6292): without it /categories/flower/ opens on NYC Chelsea. flynnstoned.com robots.txt disallows only /wp-admin/. Test 2026-10-07: 89 flower rows via the store page, 87 going straight to the Flower page with the cookie (74 names in common; 3 in common with Chelsea's shelf).",
+    "storeCookie": {
+      "name": "PREFERRED_STORE",
+      "value": "6292"
+    },
+    "branch": "FlynnStoned: NYC Hell's Kitchen, 599 10th Ave"
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000004",
+    "menuUrl": "https://sageseedsny.com/stores/sageseeds-ny/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-10-07",
+    "notes": "Down To Earth Canna Inc, 248-15 Union Tpke, trades as Sage Seeds. The registered site sageseed.com fails its TLS handshake; the shop now runs sageseedsny.com, whose home page states 248-15 Union Turnpike, Bellerose, NY 11426 and 'NY License OCM-RETL-24-000004'. Its menu is a Dutchie storefront served on the shop's own domain; the Flower category /stores/sageseeds-ny/products/flower carries the store address 248-15 Union Tpke and the licence OCM-RETL-24-000004 in its page data. robots.txt (User-agent: *) allows / and disallows /api/, /_next/, /checkout/, /cart/, /account/ and ?dtche addresses; the Flower page is allowed. Test 2026-10-07: 238 flower rows read; the age wall is a single 'Yes' button."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000220",
+    "menuUrl": "https://queens.libertybudsnyc.com/shop/c/flower/",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-10-07",
+    "notes": "Dispensary Near Me by Liberty Buds (JSE 26 Corp), 245-02 Horace Harding Expy. The registered site 420expressway.com fails at TLS. The Liberty Buds chain site's Queens page libertybudsnyc.com/queens-shop/ gives the address as 245-02 Horace Harding Expy, Douglaston, NY 11362 and 'License Number: OCM-RETL-24-000220', and links its Flower category to queens.libertybudsnyc.com/shop/c/flower/ (page title 'Dispensary near me by Liberty Buds'). The menu is a Proteus shop on the chain's own subdomain, the Queens twin of manhattan.libertybudsnyc.com, which the collector already reads for the Manhattan licence OCM-CAURD-24-000075. robots.txt on the queens subdomain redirects to an IIS 404 page (no rules); libertybudsnyc.com robots.txt is an empty Disallow for User-agent: *. Test 2026-10-07: 114 flower rows read (18 names in common with the Manhattan shelf of 179)."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-25-000256",
+    "menuUrl": "https://woodhavencannabis.com/store/category/flower?locId=1",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-10-07",
+    "notes": "THE GOAT DISPENSARY, 6308 Woodhaven Blvd, Rego Park, trades as Woodhaven Cannabis Co. on woodhavencannabis.com (same address in its footer; its Android app id is com.thegoatdispensary.catalog). thegoatdispensary.com no longer serves a site: https answers 521, http a Kinsta 'Domain configuration pending' page. Carrot store, one location (locId=1); the home page links Flower here, which lands on /store/woodhaven-cannabis-co/category/flower/ with about 216 flower products, all filed under the category 'Non-Infused Flower'. The age question is a 'Yes! Let's Go' button."
+  },
+  {
+    "licenseNumber": "OCM-CAURD-23-000008",
+    "menuUrl": "https://dazed.fun/menu/union-square-nyc-ny/?category=flower",
+    "platform": "OTHER",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "none",
+    "checkedAt": "2026-10-07",
+    "notes": "Dazed Union Square. Joint Commerce ecommerce on the shop's own WordPress (POST /wp-json/joint-ecommerce/v1/products/ecommerce-production/_search, category FLOWER, businessId 6223 = Union Square). The generic /categories/flower/ page picks the nearest store (Syracuse, 6222, no flower), which is why the collector saw only vapes; the per-store /menu/union-square-nyc-ny/ path sets PREFERRED_STORE=6223 and keeps it. 13 flower products read on 2026-10-07."
+  },
+  {
+    "licenseNumber": "OCM-RETL-24-000083",
+    "menuUrl": "https://thebushwicknyc.com/menu?category=flower",
+    "platform": "PROPRIETARY",
+    "robotsAllows": true,
+    "flowerVisibleWithoutLogin": true,
+    "ageGate": "simple-button",
+    "checkedAt": "2026-10-07",
+    "notes": "Caffiend LLC, trades as The Bushwick. Next.js app-router site fed by Flowhub; all 550 products, 138 in category 'flower', arrive in the inline flight data (self.__next_f), no JSON request. Age notice answered with \"I'M 21+\". Written down to pin the address: it read 124 flower rows on 2026-10-07, and on 2026-10-06 the run came back with nothing from it."
   }
 ]

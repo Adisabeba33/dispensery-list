@@ -310,6 +310,11 @@ const PAUSED = new Set(
   })(),
 );
 const includePaused = process.argv.includes('--include-paused');
+/* --after-run is the daily run's last pass: the shops that came back empty
+   twice, asked once more after every other shop has been read (menu-daily.yml,
+   menu-coverage.py retry-list). It is itself the late question, so it does not
+   queue a further one of its own. */
+const afterRun = process.argv.includes('--after-run');
 
 const candidates = dispensaries.filter(
   (d) =>
@@ -3376,6 +3381,10 @@ const CATEGORY_KEYS = [
   'classificationName', 'classificationPath', 'canonicalClassification',
   // Jane's kind is 'flower' for all of it; the subtype says 'Ground Flower'.
   'kindSubtype',
+  /* Meadow (PACHA) names no category at all except primaryCategory, an object
+     { id: 15970, name: "Flower", weedmapsCategoryId: 2 }: its jars counted only
+     when the name happened to say "Whole Flower". */
+  'primaryCategory',
 ];
 
 /* A category object says where it sits as well as what it is called:
@@ -3423,7 +3432,10 @@ const classify = (p) => {
      a bare strain name would sweep in every pre-roll a shop lists without a
      category, and an empty field beats a plausible guess. */
   if (!text) return FLOWER_TITLE.test(title) ? 'flower' : 'no-category';
-  if (/pre[\s-]?roll|infused|blunt|joint/.test(text)) return 'category-not-flower';
+  /* "Non-Infused Flower" is the plainest flower there is — Woodhaven
+     Cannabis Co.'s Carrot store files all 216 of its jars under it, and the
+     bare "infused" threw every one of them out. */
+  if (/pre[\s-]?roll|(?<!non[\s-]?)infused|blunt|joint/.test(text)) return 'category-not-flower';
   // Ground flower is shake, whether the name says so or only the shelf does.
   if (/\b(pre[\s-]?)?ground(ed)?\b/.test(text)) return 'category-not-flower';
   /* An eighth is an eighth of an ounce of flower: Herbarium Queens shelves all
@@ -4274,6 +4286,20 @@ const main = async () => {
         return route.abort();
       },
     );
+    /* SiteGround meets a visitor it doubts with /.well-known/sgcaptcha/, a
+       challenge the browser works out by itself if it is let load — which is
+       how CannaBees "let us in every other time". The owner's decision of 26
+       September is that SiteGround's wall is not read, like Dutchie's, so the
+       challenge is never fetched: the page stays on the wall, and the shop
+       comes back with the wall named instead of a shelf. */
+    let siteGroundWall = 0;
+    await context.route(
+      (url) => url.pathname.startsWith('/.well-known/sgcaptcha'),
+      (route) => {
+        siteGroundWall += 1;
+        return route.abort();
+      },
+    );
     const page = await context.newPage();
     const payloads = [];
     /* One entry per JSON response that carried products: where it came from,
@@ -4433,13 +4459,30 @@ const main = async () => {
         return false;
       };
 
-      await page.goto(site, { waitUntil: 'domcontentloaded', timeout: 30000 });
-      await settle(1500, 8000);
-      await clearWalls(page, entry);
-
       // A menu address written down by hand beats anything found by guessing.
       const known = ENDPOINTS[shop.licenseNumber] ?? null;
       entry.usedKnownEndpoint = Boolean(known);
+
+      /* The home page is only where the menu link is looked for. Flower Daddy's
+         shelf is on shop.flowerdaddy.nyc and its address is written down, yet on
+         6 October the run waited on flowerdaddy.nyc twice, gave up, and never
+         asked the menu; a shop whose registered site has died (Conbud's
+         conbudbx.com) can only be read from an address written down by hand.
+         So when the home page does not open and the menu's address is known,
+         the menu is asked directly. The Store API is read from inside a page
+         of the shop's own site, so it still needs the home page. */
+      let homeFailed = null;
+      try {
+        await page.goto(site, { waitUntil: 'domcontentloaded', timeout: 30000 });
+      } catch (e) {
+        if (!known || WC_STORE_API.test(known)) throw e;
+        homeFailed = e.message.split('\n')[0].slice(0, 120);
+        entry.homeFailed = homeFailed;
+      }
+      if (!homeFailed) {
+        await settle(1500, 8000);
+        await clearWalls(page, entry);
+      }
 
       /* The page hands back its links; the choosing happens here, where it can
          be tested against a real page's worth of them. */
@@ -4449,8 +4492,8 @@ const main = async () => {
             .slice(0, 400)
             .map((a) => ({ href: a.href, text: (a.textContent || '').trim().slice(0, 60) })),
         );
-      let links = await readLinks();
-      let found = pickMenuLink(links, site, shop.dbaName ?? shop.legalName);
+      let links = homeFailed ? [] : await readLinks();
+      let found = homeFailed ? null : pickMenuLink(links, site, shop.dbaName ?? shop.legalName);
 
       /* An age wall that is a page of its own carries no menu links, and the
          click that answers it waits a flat two and a half seconds — not long
@@ -4458,7 +4501,7 @@ const main = async () => {
          first read can be of the wall rather than of the shop.
          Reading again costs nothing when the first read worked, and it is the
          difference between a shelf and a silence when it did not. */
-      if (!found) {
+      if (!found && !homeFailed) {
         await settle(1500, 8000);
         const before = entry.ageGate;
         await clearWalls(page, entry);
@@ -4476,7 +4519,7 @@ const main = async () => {
       /* Still nothing said where the menu is, so try where it usually is.
          Asked from inside the page, which keeps it to one request per address
          and leaves the browser out of it until something answers. */
-      if (!found) {
+      if (!found && !homeFailed) {
         const origin = (() => {
           try {
             return new URL(site).origin;
@@ -5270,6 +5313,7 @@ const main = async () => {
         .slice(0, 8)
         .map(([name, n]) => `${name} (${n})`);
       if (thirdPartyRefused) entry.thirdPartyMenuRefused = thirdPartyRefused;
+      if (siteGroundWall) entry.siteGroundWall = siteGroundWall;
       entry.status = entry.foreignShelf
         ? 'foreign-shelf'
         : seen.size
@@ -5303,6 +5347,7 @@ const main = async () => {
        asked. */
     const hadBefore = PREVIOUS_SHELF.get(shop.licenseNumber) ?? 0;
     if (
+      !afterRun &&
       job.attempt === 1 &&
       (!entry.flower || entry.flower * 2 < hadBefore) &&
       entry.menuLink !== 'robots-disallowed' &&

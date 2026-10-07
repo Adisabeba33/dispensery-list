@@ -2083,6 +2083,14 @@ for (const raw of ['Sampler Pack - Blue Dream', 'Blue Dream', 'Sam Pleasant Kush
   check(`not a sample: ${raw}`, isPromotionalSample(raw), false);
 }
 
+/* Woodhaven Cannabis Co.'s Carrot store files every jar under "Non-Infused
+   Flower"; "infused" alone must still refuse infused flower. */
+check('non-infused is flower', classify({ name: 'Blue Dream 3.5g', category: 'Non-Infused Flower' }), 'flower');
+check('infused is not', classify({ name: 'Blue Dream 3.5g', category: 'Infused Flower' }), 'category-not-flower');
+/* Meadow names its category only in primaryCategory, an object. */
+check('meadow primaryCategory', classify({ name: 'Bushwick Burger 3.5g', primaryCategory: { id: 15970, name: 'Flower' } }), 'flower');
+check('meadow prerolls', classify({ name: 'Bushwick Burger 1g', primaryCategory: { id: 15971, name: 'Prerolls' } }), 'category-not-flower');
+
 if (failures) {
   console.log(`\n${failures} check(s) failed.`);
   process.exit(1);
