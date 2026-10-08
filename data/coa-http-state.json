@@ -162,7 +162,7 @@
     "errors": 0
   },
   "https://www.niagaracannabiscompany.com": {
-    "errors": 1
+    "errors": 0
   },
   "https://www.sauce.house": {
     "errors": 0
@@ -198,7 +198,7 @@
     "errors": 0
   },
   "http://-content": {
-    "errors": 2
+    "errors": 3
   },
   "https://www.awalkinthepines.com": {
     "errors": 0
@@ -213,6 +213,12 @@
     "errors": 0
   },
   "https://cdn.shopify.com:443": {
+    "errors": 0
+  },
+  "https://www.labware.cloud": {
+    "errors": 0
+  },
+  "https://www.labware.com": {
     "errors": 0
   }
 }
