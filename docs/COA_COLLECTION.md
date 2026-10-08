@@ -106,3 +106,19 @@ On 6 October Soma's curation batch 13 added urbanXtracts (its "authenticity
 chain" page, one certificate per lot; 15 flower lots pending, vapes and edibles
 reviewed as other products by lot code) and ProXtracts (its lab-results page;
 15 pending, joints and kief reviewed as other products by label).
+
+On 8 October the 150 brands with the most listings that no survey had looked
+at yet (82% of the listings of unsurveyed brands) were surveyed. Twenty
+publish certificate links the reader takes (a dry run of `coa-sources.py` on
+them found about 1,070 links: Dumbo Electric, Aeterna, Hudson Valley Jane for
+Boujee Ben, Ithaca Organics, ADK Hemp, Flamer, Felas, 6 Point, Roemer, Harney
+Brothers, A Walk in the Pines, Ravens View, Alter, Budcracker, FX, North Fork
+Collective, Stranman, Trap To Table, Cheevo; Akron Bloom reset the
+connection). Nine publish links the reader cannot take yet, recorded as
+`published-links-unreadable` with the reason: Confident LIMS / Confident
+Cannabis share pages (Honey King, Honest Pharm, Skyworld), the ACT customer
+portal (Aster), lot links that only redirect to a PDF (High Peaks), PDFs
+listed in an inline script (High Falls) or a JavaScript feed (Fyre), and a page
+that mixes three states' certificates (Ghost). Fifteen keys are brands already
+surveyed under another key, recorded as `same-brand-as-surveyed` with
+`sameAs`.

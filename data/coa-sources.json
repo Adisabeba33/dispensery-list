@@ -28996,6 +28996,1933 @@
    ],
    "note": "Lab-results page with one certificate per product and date (WordPress uploads); found by Soma's curation batch 13 (2026-10-06). On 6 October joints, temple balls and kief were reviewed as other-product by their label; the rest stay pending-review.",
    "checkedAt": "2026-10-07T17:37:16+00:00"
+  },
+  {
+   "brandKey": "tothemoon",
+   "brand": "To The Moon",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://uptothemoon.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Same brand as surveyed key tomoon. The only site found is uptothemoon.com, the website its Weedmaps brand page points to; it is a Shopify clothing store (title 'Official Clothing Store') with no cannabis, lab or COA text and no certificate page in its sitemap. Brand is the New York streetwear and flower label seen in NY shops."
+  },
+  {
+   "brandKey": "7seaz",
+   "brand": "7 SEAZ",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://www.7seazco.com/coas",
+   "method": null,
+   "status": "published-drive-files",
+   "pages": [
+    "https://www.7seazco.com/coas"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://drive.google.com/file/d/19xCKlQUpmesIl6Zb_CYBW_2aN9kE6Rf7/view?usp=sharing",
+   "note": "The brand's COA's page links 198 Google Drive files, roughly 140 of them flower sizes (7g, 14g and similar) and the rest pre-rolls, vape and tincture. Drive viewers are not read daily. New York brand: site says it is based in the Hudson Valley region, made and distributed by a NYS licensed operator, and calls itself New York's first legacy-to-legal launch; sold in NY shops."
+  },
+  {
+   "brandKey": "smoakland",
+   "brand": "Smoakland",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://smoakland.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "smoakland.com is a California same-day delivery shop (title names the Bay Area and Sacramento). No COA, lab or certificate page or link on the home page, and none among the pages in its sitemap (about 1,980 URLs, only news articles mention lab words). No New York mention on the home page, so any certificates there would not be the NY brand's."
+  },
+  {
+   "brandKey": "budd",
+   "brand": "budd",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://buddworldwide.com/lab-results",
+   "method": null,
+   "status": "source-page-no-direct-links",
+   "pages": [
+    "https://buddworldwide.com/lab-results"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Brand's own Lab Results page lists 12 strains (Lemon Cherry Gelato, Permanent Marker, Grape Ape, Northern Wreck, Watermelon Zkittlez and others), each with a 'View COA Here' label, but in the served HTML those labels carry no link target (Framer page; its script host framerusercontent.com answers robots.txt with 403, so it was not read). Home page says grown in New York; search results describe KMG Brands, a NY Type 2 processor, as the maker of Budd."
+  },
+  {
+   "brandKey": "strainkings",
+   "brand": "Strain Kings",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searches found only a Weedmaps product page and retailer listings; one directory entry places a company of this name in Ann Arbor, Michigan, so even the right company is unclear. Guessed home-page domains did not answer. No own site seen."
+  },
+  {
+   "brandKey": "drgreen",
+   "brand": "Dr. Green",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://www.drgreen.nyc/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Brand site calls itself NYC legacy cannabis (21+ gate citing New York State law; its where-to-buy page lists New York City shops; menu Haze, Zushi, Sour Diesel, Zoap, Cherry Bomb). Read home, haze, zushi, the-dna and where-to-buy: no COA, lab or test wording and no certificate links; its sitemaps (14 URLs) list no such page."
+  },
+  {
+   "brandKey": "a1ducksauce",
+   "brand": "A1 Ducksauce",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searches show only retailer menus (Cannabis Realm, Daily Green, Cannadreams) for Tokyo Drift and Ducksauce. The domain a1ducksauce.com answers with a script-bundled page (title 'Bundled Page', over 5 MB, no readable text or anchors), so it could not be confirmed as the NY brand's site and no certificate link was seen."
+  },
+  {
+   "brandKey": "mintz",
+   "brand": "Mintz",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://tastemintz.com/faq",
+   "method": null,
+   "status": "source-page-no-direct-links",
+   "pages": [
+    "https://tastemintz.com/faq"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Mintz NY (title 'New York Craft Cannabis'; search results name KMG Brands, a NY Type 2 processor, as its maker). The FAQ, a script-built page read through WebFetch, says every batch is third-party tested and that COAs are available on request through a dispensary or the team; no certificate links. Sitemap lists only home, wholesale, faq and story."
+  },
+  {
+   "brandKey": "synergy",
+   "brand": "Synergy",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Only retailer menus (Stoops, Torches, Cannabis Realm, Silk Road) and an unclaimed Weedmaps profile found for Synergy Piff Haze and other NY flower; no brand website seen. Guessed domains returned nothing usable."
+  },
+  {
+   "brandKey": "topcrop",
+   "brand": "TOP CROP",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://topcropny.com/faq",
+   "method": null,
+   "status": "source-page-no-direct-links",
+   "pages": [
+    "https://topcropny.com/faq"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "TopCrop NY, sun-grown in the Hudson Valley. The FAQ (read through WebFetch; the site is script-built) says each product page carries a Lab Results section with the COA, but no certificate links appear in what is served. Product pages (for example /products/solar-citrus-8th, listed in its sitemap) load their data from /api/products, which robots.txt disallows for this reader, so the links could not be seen."
+  },
+  {
+   "brandKey": "themechanic",
+   "brand": "The Mechanic Farm",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Only retailer listings (Sofa Club, Daily Green, Torches, Cannabis Realm) for Riddlez, Stank41 and Red Rose; no brand site seen. Guessed domains did not answer."
+  },
+  {
+   "brandKey": "aster",
+   "brand": "Aster",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://www.asterfarms.com/mpc-14s",
+   "method": "list",
+   "status": "published-links-unreadable",
+   "pages": [
+    "https://www.asterfarms.com/mpc-14s"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://actcustomerportal.slingrs.io/prod/runtime/api/files/public/coa/index.html?id=SNYSVR1209-PFCU-0011513",
+   "note": "Aster Farms (California sun-grown, its Products page says 8th and 14g jars are available in CA and NY; its Find Us page lists NY shops). The TESTS page links 10 ACT customer-portal COA links (9 distinct) plus 32 Google Drive files (Cheetah Piss, Moroccan Peaches and others matching the NY listings). A separate NY Tests page (/new-york-tests, NY licence OCM-AUCC-22-000257 in its footer) has 11 Drive-only files; it is not listed as a page to read. Not read daily: ACT customer-portal pages (actcustomerportal.slingrs.io) and Drive files; a California farm whose New York tests are Drive-only."
+  },
+  {
+   "brandKey": "felas",
+   "brand": "Felas",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://felas.farm/coa/",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://felas.farm/coa/",
+    "https://felas.farm/new-coa/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://felas.farm/wp-content/uploads/2026/03/COA_3.5g-El-Chivo-3.5g_0286_Compliance_AL60203003-005.pdf",
+   "note": "Fela's Farm (White Plains family, grown in Brewster NY per its home page). The COA page links 48 distinct PDF certificates (2025 batches: NYC Haze, Wedding Pie, Runtz, AJ Sour Diesel, pre-rolls); the newer Recent Uploads page (/new-coa/) links 9 PDFs for 3.5g flower and pre-rolls with 2026 expiry dates."
+  },
+  {
+   "brandKey": "redo",
+   "brand": "REDO",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://www.redo96.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "REDO96 site (Wix; pages Home, The Story, The Collection, Privacy). Story names founder Kareem Biggs Burke, born in Harlem; a Jane listing for 'REDO 96 D'Evils Sour Diesel' matches the NY menu strain. No COA, lab or certificate text or link; The Collection page is empty and the sitemap lists 4 pages."
+  },
+  {
+   "brandKey": "straingang",
+   "brand": "Strain Gang",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Only NY retailer menus (Silk Road, Green Apple, Cannabis Realm, Valley Greens, Terp Bros) found; no brand website seen. A guessed straingang.com disallows everything for this reader and was not read, and nothing ties it to the brand."
+  },
+  {
+   "brandKey": "talltrees",
+   "brand": "Tall Trees Farm",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://talltreesny.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Squarespace site of an owner-run indoor grower on Italy Hill, grown for New York (pages Home, About Us, Connect, Strains). No COA, lab or certificate wording or link anywhere; sitemap has 9 URLs, none for tests."
+  },
+  {
+   "brandKey": "dumboelectric",
+   "brand": "Dumbo Electric",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://www.dumboelectric.com/lab-results/",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://www.dumboelectric.com/lab-results/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://www.dumboelectric.com/wp-content/uploads/20260507-DUME-001-LONDON-POUND-CAKE.pdf",
+   "note": "Brand site shows NY licences OCM-PROC-24-000079 and OCM-DIST-25-000151. Lab Results page links 72 PDF certificates (14g ready-to-roll bags, pre-rolls, batch numbers, 2025-2026); the Presidential page links 191 PDFs, mostly infused blunts. The presidential-lab-results page (infused blunts, not flower) is left out of pages."
+  },
+  {
+   "brandKey": "pastime",
+   "brand": "Pastime",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://www.pastimebrands.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Pastime Brands site (age gate; flower, pre-roll and vape product pages with iHeartJane menus). Footer carries New York licence OCM-PT3B-25-000115 beside a Washington block. Read home, flower format page, a flower product page and about: no COA, lab or certificate wording or link; no sitemap (404)."
+  },
+  {
+   "brandKey": "greenlineapothecary",
+   "brand": "Greenline Apothecary",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://greenlineapothecarycannabis.com/",
+   "method": null,
+   "status": "source-page-no-direct-links",
+   "pages": [
+    "https://greenlineapothecarycannabis.com/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "NY brand site (flower sold at 39 licensed NY dispensaries per its home page). Its FAQ says every batch is third-party lab tested and that COA documents come through the licensed dispensary; no certificate links on the home page or a strain page, and none in the sitemap."
+  },
+  {
+   "brandKey": "litbythelake",
+   "brand": "Lit By The Lake",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Only retailer menus (a Jamestown NY menu, Elevate ADK) list its flower; no brand website seen. A guessed litbythelake.com answered with an empty page."
+  },
+  {
+   "brandKey": "honeyking",
+   "brand": "Honey King",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://honeyking.com/ny-lab-results/",
+   "method": "list",
+   "status": "published-links-unreadable",
+   "pages": [
+    "https://honeyking.com/ny-lab-results/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://share.confidentlims.com/samples/public/share/74b892f9-0445-49c0-b40f-12818e22da9c",
+   "note": "Honey King has separate CA and NY lab pages; the NY page links 24 lab reports on the ConfidentLIMS share portal (1.5g diamond-infused pre-rolls, Royal Minis pre-rolls, vape all-in-ones). The NY products page shows only pre-rolls and vapes, no loose flower; the page's own filter counts 41 reports but only 24 links are in the served HTML. Not read daily: the links are Confident LIMS share pages, built by script, not documents."
+  },
+  {
+   "brandKey": "younggong",
+   "brand": "Young Gong",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://younggong.com/pages/compliance",
+   "method": null,
+   "status": "source-page-no-direct-links",
+   "pages": [
+    "https://younggong.com/pages/compliance"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "YG Marley's brand with Glenmere Farms Enterprises (NY launch in press coverage; K-Lab, Harmon-E and Road of Flames pages on the shop site). The Compliance page, worded for hemp, says COAs are available but holds only a placeholder where the link should be; no certificate links anywhere seen. The QR code on the pack is described as unlocking music."
+  },
+  {
+   "brandKey": "doghouse",
+   "brand": "Doghouse Farm",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://doghouse420.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "doghouse420.com is Doghouse Farms of Detroit, Michigan (strain pages Candy Cartel, Pink Passion, Blue Runtz, Gratiot Gold match the NY listings). No COA or lab page or link, no sitemap hit, and no New York mention on the home page, so nothing here shows NY certificates."
+  },
+  {
+   "brandKey": "packs",
+   "brand": "Packs",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://www.packscannabis.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "packscannabis.com is the brand site of Packs (search listings call it Packs LA, formerly Packwoods); pages are products, collabs and find-stores. No COA or lab wording or link, none in its 30-URL sitemap, and no New York mention seen, so it is not shown to be the NY brand."
+  },
+  {
+   "brandKey": "californiahoney",
+   "brand": "California Honey",
+   "checkedAt": "2026-10-08T05:00:56Z",
+   "url": "https://calihoney.delivery/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "calihoney.delivery is a New Jersey delivery shop (Mt Holly NJ address; title says next-day delivery in New Jersey). Its 'COA's' page (/about-us/) carries no certificate links in the served HTML, and nothing mentions New York, so these would not be the NY brand's certificates."
+  },
+  {
+   "brandKey": "puff",
+   "brand": "Puff",
+   "url": "https://puffprerolls.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Puff Pre-Rolls site (Shopify store) says its products are lab tested and sold in licensed shops in California and New York, and calls itself New York's favourite pre-roll. Home, wholesale, flower collection and a product page (lemon-cherry-gelato-1) carry no COA or lab-result link. Search found Puff COAs only as Kaycha PDFs hosted by app.alleaves.com (a retailer/inventory platform, not the brand's page), so none is recorded.",
+   "checkedAt": "2026-10-08T04:49:13Z"
+  },
+  {
+   "brandKey": "boujeeben",
+   "brand": "Boujee Ben",
+   "url": "https://www.hudsonvalleyjane.com/labtests",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://www.hudsonvalleyjane.com/labtests"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://www.hudsonvalleyjane.com/s/BB-BOG-35.pdf",
+   "note": "boujeeben.com redirects to Hudson Valley Jane (Beacon NY; footer licence OCM-MICR-24-000050), whose nav has Lab Tests. That page links 79 PDFs: 10 titled Boujee Ben (Banana OG, Gorilla Glue #4, Good Night Moon at 3.5g, 14g and 28g; Nuggz 14g; a live resin) and many more with BB-/PBB- file names for the Hudson Valley Jane lines (Nuggz, Psyops, Pepe Silvia jars, pre-rolls), plus vapes and edibles. Menu strains of ours (Banana OG, GG4, Nuggz) match.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "roemer",
+   "brand": "Roemer Farms",
+   "url": "https://roemerfarms.com/",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://roemerfarms.com/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://ny.yourcoa.com/coa/coa-view?sample=AL60113003-003",
+   "note": "Home page of this upstate NY hydroponic microbusiness (licence OCM-MICR-24-000124) has a 'Click for COA' link beside each flower strain (13 flowers incl. Triangle Kush, M.O.B, Teflon Don, Jokerz #31) and ~21 pre-roll COA links, all to ny.yourcoa.com viewer pages. Strains match our menu list. Link targets read through WebFetch; page.py has the page text with the COA labels.",
+   "checkedAt": "2026-10-08T04:49:13Z"
+  },
+  {
+   "brandKey": "alpineagronomymicro",
+   "brand": "Alpine Agronomy (Micro)",
+   "url": "https://www.alpineagronomy.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Squarespace one-page site of Alpine Agronomy, Saranac Lake NY (licence OCM-MIRC-25-000272 in footer; shop opening 5 Oct). Only 8 links on the page (cart, Instagram, jobs, HOPEline): no COA or lab page.",
+   "checkedAt": "2026-10-08T04:49:13Z"
+  },
+  {
+   "brandKey": "operator",
+   "brand": "Operator",
+   "url": "https://operatorcanna.com/lab-tests/",
+   "method": null,
+   "status": "source-page-no-direct-links",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Operator Canna Co. (Liberty NY, licence OCM-Micr-24-000179 in footer; says distributed to licensed dispensaries across New York State). Its Lab Tests page (found in the sitemap) is a table of 12 products with strain, batch code, type, class and THC percentage, but no document or portal link.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "pothead",
+   "brand": "Pot & Head",
+   "url": "https://www.veteranschoicecreations.com/labresults",
+   "method": null,
+   "status": "source-page-no-direct-links",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Pot & Head is a Veterans Choice Creations brand (Veterans Holdings Inc, Gloversville NY, OCM-PROC-24-000069; page says 'born in New York'). Its Lab Results page (Wix) has tabs for flower, pre-roll, vape, edible COAs, but the served HTML holds no document or portal links (no .pdf, Drive or lab-portal URL): the lists are built by script. Not recorded as links.",
+   "checkedAt": "2026-10-08T04:49:13Z"
+  },
+  {
+   "brandKey": "bnoble",
+   "brand": "B Noble",
+   "url": "https://www.b-noble.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "B NOBLE (Fab 5 Freddy, Curaleaf partnership) home page talks of its New York launch and a Jungle Gurl line 'powered by B NOBLE' in New York dispensaries, but links only press, partners and a Curaleaf page (behind an age gate, no lab link). No COA page or link. bnoble.com is a parked, for-sale domain, not the brand.",
+   "checkedAt": "2026-10-08T04:49:13Z"
+  },
+  {
+   "brandKey": "ghost",
+   "brand": "Ghost",
+   "url": "https://ghostextracts.co/lab-results/",
+   "method": "list",
+   "status": "published-links-unreadable",
+   "pages": [
+    "https://ghostextracts.co/lab-results/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://ghostextracts.co/wp-content/uploads/2026/02/AL60116007-003-Revision-1.pdf",
+   "note": "Weedmaps brand page for ghost. links ghostextracts.co. Its lab-results page has California, New Mexico and New York tabs, 112 links in all; the New York tab (#ny-lab) holds 22 PDFs on the brand's own host: vape lots named by flavour (Apple Jacks, Guava, Ghost Train Haze, Blueberry Dream, RS11...) and about 12 more labelled only by test month (07-2025, 01-2026, 02-2025); flower lots are probably among those. NY section strains match ours (Gelato Z, PB Cookies, Glue, Mr. E have New York strain pages). Sample IDs are lab ones starting AL. Not read daily: the page mixes California, New Mexico and New York tabs and the links do not say which state; mostly vapes.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "traptotable",
+   "brand": "TRAP TO TABLE",
+   "url": "https://thetraptotable.com/product-line/",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://thetraptotable.com/candy-cartel/",
+    "https://thetraptotable.com/chem-berries/",
+    "https://thetraptotable.com/cherry-octane/",
+    "https://thetraptotable.com/grape-gas/",
+    "https://thetraptotable.com/lemon-diesel/",
+    "https://thetraptotable.com/sour-gelato/",
+    "https://thetraptotable.com/sour-haze/",
+    "https://thetraptotable.com/superboof/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://czz.8a7.mytemp.website/wp-content/uploads/2025/11/20251111-COA_Invite-Only_CCT-250723-A_Compliance_AL51031006-003.pdf",
+   "note": "Leafly feature links thetraptotable.com; footer shows New York Cultivation licence OCM-CULT-24-000196. Each of the 8 product pages (candy-cartel, chem-berries, cherry-octane, grape-gas, lemon-diesel, sour-gelato, sour-haze, superboof) carries one 'Current COA's' PDF link; all 8 listed: sour-gelato, sour-haze, superboof. The PDFs sit on a staging host (czz.8a7.mytemp.website, /wp-content/uploads/2025/..), whose robots check did not connect from here. Menu strains Grape Gas, Lemon Diesel, Candy Cartel are among them. traptotable.com itself is a parked domain, not the brand.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "tkssensei",
+   "brand": "TKS Sensei",
+   "url": "https://tksxsensei.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "TKSxSensei one-page site (Leafly feature links it as Sensei cultivation; 'Cultivated in New York', lists New York City shops, product entries Gelly Banger and Big Apple). 89 links, none to lab results or COAs; the words lab, tested and COA do not appear. Sitemap has 2 URLs.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "dragonfly",
+   "brand": "Dragonfly",
+   "url": "https://www.dragonflybrands.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Dragonfly Brands site says the pre-roll brand is now in NY (links to NY and MI retailer menus on LeafLink and Nabis); no COA or lab words, 5 URLs in sitemap, none about testing. The register's producers data lists Dragonfly Kitchen III Inc. (Broome Co., cultivator OCM-CULT-25-000210) with this brand name. dragonflyny.com only frames a Michigan site. Search found Dragonfly COAs only as app.alleaves.com PDFs.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "matter",
+   "brand": "matter.",
+   "url": "https://www.pharmacann.com/brands/matter",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "matter. is a PharmaCann house brand; its PharmaCann brand page lists New York among the states where it is sold and links only to LeafLink and Leaf Trade for wholesale. No COA or lab text. Guessed brand domains (mattercannabis.com and others) are parked or do not exist. A 2021 press release (via search) has Verilife selling matter. whole flower in Albany and the Bronx.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "highambitions",
+   "brand": "High Ambitions",
+   "url": "https://highambitionsnyc.com/",
+   "method": null,
+   "status": "access-wall",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "highambitionsnyc.com (WordPress; robots.txt readable, no brand-blocking rules) answers the home page with a bot challenge (403), so nothing was read there and nothing was worked around. Leafly's New York brand roundup links the Instagram account highambitionsnyc for High Ambitions, which fits the domain; amNY via search calls it a Bronx microlicensed grower. Not confirmed from the site itself.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "grams",
+   "brand": "Grams",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Three searches (brand plus strains Boss, Lobster Roll, Alien Probe, Orange Tiki Cream; restricted to menu sites too) found no brand site. gramsny.com is a Google Sites page that says only 'Coming Soon, Grams New York' with no cannabis wording, so it is not taken as the brand's. No licence record in the register's producers data matches the name.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "highscale",
+   "brand": "High Scale",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searches found only a retailer blurb (Midnight Moon listing for Paradiso #11) calling High Scale a premium brand sold at select New York shops; no brand site. Guessed domains: highscalenyc.com is a parked domain, others do not exist. No licence record in the register's producers data matches the name.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "noizey",
+   "brand": "Noizey",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searches (brand, strains Candy Zerberts and C.R.E.A.M, Blue Lobster) found no brand site; only a retailer menu in Astoria NY lists Candy Zerberts and a third-party Kaycha certificate for a 4g Noizey Blue Lobster hosted on app.alleaves.com. Guessed noizey domains do not exist. No licence record in the register's producers data matches the name.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "gypsyweed",
+   "brand": "Gypsy Weed",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searches found no brand site. The only trace is a Fishkill NY dispensary menu on Weedmaps listing 28g Amnesia and Azul under Gypsy Weed. Guessed gypsyweed domains do not exist. No licence record in the register's producers data matches the name.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "julia",
+   "brand": "Julia",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searches found no brand site; only Weedmaps delivery menus in Manhattan list 'Julia Cannoli' flower and pre-roll. juliabrand.com is a parked domain. No licence record in the register's producers data matches the name.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "ithacacultivated",
+   "brand": "ITHACA CULTIVATED",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Four searches found no site; the company appears only in a local news piece about a dispensary in Ithaca (family-owned, flower sold there). The register's producers data lists ITHACA CULTIVATED LLC, Tompkins County, cultivator OCM-CULT-24-000170. Guessed ithacacultivated domains do not exist.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "northfork",
+   "brand": "North Fork",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searches found no site for the brand. The register's producers data lists North Fork Cannabis Collective, Suffolk County microbusiness OCM-MICR-24-000046, with this brand name. northforkcannabis.com is a parked domain, not the brand.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "drjekyllandmrhigh",
+   "brand": "DR. JEKYLL AND MR. HIGH",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searches found only a New York dispensary menu (NY Cannabis Co, 5th Ave) listing a 3.5g flower under the name and a brand-ambassador sign-up form; no brand site. drjekyllandmrhigh.com, drjekyllmrhigh.com and jekyllhigh.com are parked domains. No licence record in the register's producers data matches the name.",
+   "checkedAt": "2026-10-08T04:58:15Z"
+  },
+  {
+   "brandKey": "priscillasgarden",
+   "brand": "Priscilla's Garden",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searched twice; only New York shop menus and directories came up. The one domain carrying the name, priscillasgarden.com, is an Oklahoma dispensary (Norman, OK), not the New York brand, so nothing was recorded from it."
+  },
+  {
+   "brandKey": "highpeaks",
+   "brand": "High Peaks",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": "https://highpeaks.com/cannabis-products/certificates-of-analysis/",
+   "method": "list",
+   "status": "published-links-unreadable",
+   "pages": [
+    "https://highpeaks.com/cannabis-products/certificates-of-analysis-flower/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://highpeaks.com/wp-content/uploads/2024/06/High-Peaks-Burnout-Driver-Whole-Flower-Lot-WF-BOD-0001.pdf",
+   "note": "COA hub links one index per product type; the flower index lists 72 lot entries (strains incl. Dragon Heart, Lake Effect Chem). Each entry link is an extensionless page (e.g. /wf-ajsd-0001/) that answers 301 to a PDF under /wp-content/uploads/, so the reader must follow one redirect. Sample PDF is a Green Analytics NY report for Central Processors NY, LLC, Syracuse NY, licence OCM-AUCP-22-000018; the site also links a Central Processors NY media kit. Pre-roll, gummy, beverage, concentrate and vape indexes exist but were not listed here. Not read daily: each lot link has no .pdf in its path and only redirects to the PDF; the reader takes a link by its own path."
+  },
+  {
+   "brandKey": "houseoftrees",
+   "brand": "House of Trees",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searches found only shop menus. houseoftrees.net is a Rochester NY store page (curated shelves, no brand lab or COA content) and could not be tied to this flower brand, so it is not recorded; houseoftrees.com is a parked domain-for-sale page; other House of Trees businesses are in California."
+  },
+  {
+   "brandKey": "skyworld",
+   "brand": "Skyworld",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": "https://skyworldcannabis.com/labs/",
+   "method": "list",
+   "status": "published-links-unreadable",
+   "pages": [
+    "https://skyworldcannabis.com/labs/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://share.confidentcannabis.com/samples/public/share/b8c93079-3a55-4181-a4c6-307a5d3a5689",
+   "note": "Brand's own COA/Labs page (linked from the nav and footer) lists lots by batch code: about 22 links to Confident Cannabis / Confident LIMS / 1A4 share pages (new lab portal hosts, e.g. batch SW3725J-41G, 3.5g flower), plus about 69 Google Drive file links (35 labelled as flower sizes) and a few Drive folders. New York brand: site states licensed NY cultivation (OCM-CULT-24-000150, OCM-PROC-24-000030, OCM-DIST-24-000132), operated by SJR Horticulture. The Drive links are not readable by the daily reader; the portal links are. Not read daily: Confident Cannabis / Confident LIMS / Retail ID share pages and Google Drive files, none a document link."
+  },
+  {
+   "brandKey": "dealer",
+   "brand": "Dealer",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": "https://www.dealercannabis.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [
+    "https://www.dealercannabis.com/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Dealer Cannabis Co. one-page site (Squarespace): no certificate, lab or test page or link; sitemap holds only the home page. New York brand: footer names All In One & Product Manufacturing LLC, licence OCM-AUCP-22-000001, plus the NY HOPELine notice."
+  },
+  {
+   "brandKey": "recroots",
+   "brand": "Rec Roots",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": "https://recrootsny.com/coas/",
+   "method": null,
+   "status": "published-drive-files",
+   "pages": [
+    "https://recrootsny.com/coas/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://drive.google.com/file/d/1by9vc1LxqLAl8PUQNHmso4XDMhp99C45/view?usp=drive_link",
+   "note": "Brand's COA's page (listed in the site's sitemap) has about 129 certificate links, all Google Drive file viewer links (about 69 labelled with flower sizes such as 3.5g/28g, batch codes like MOBR0001; the rest labelled otherwise). New York brand: Elmira NY, licences OCM-CULT-24-000173, OCM-PROC-25-000243, OCM-DIST-25-000165 shown in the footer. Not read daily: Drive viewer is not the document."
+  },
+  {
+   "brandKey": "alter",
+   "brand": "ALTER",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": "https://www.alterwisely.com/labs",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://www.alterwisely.com/labs"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://www.alterwisely.com/s/20260506-BMLI-002-Alter-Garlic-Cookies-35g.pdf",
+   "note": "Brand's Labs page (in the site nav) lists 20 PDF reports by lot code: 4 gummy, and flower / 5g 10-pack lots incl. Don Mega, Garlic Cookies, Rainbow Runtz, Galactic Warhead, Melted Strawberries. Links are /s/...pdf and answered 302 to static1.squarespace.com for the one tried. Sample report is a Green Analytics NY report for Basin Mixtures, Inc. (dba The Sauce), West Babylon NY, licence OCM-PROC-24-000034; page title says ALTER Premium Cannabis NYC."
+  },
+  {
+   "brandKey": "j",
+   "brand": "J Cannabis",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searched twice; results were only New York shop menus (Chelsea Cannabis Co., Housing Works, Stoops and others list the flower). No brand-owned site found, and jcannabis.com did not answer."
+  },
+  {
+   "brandKey": "terpselection",
+   "brand": "Terp Selection",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searched twice; only New York shop menus list the brand (Terp Bros, Silk Road NYC). terpselection.com is an empty placeholder page, so it was not recorded."
+  },
+  {
+   "brandKey": "leadfarmer",
+   "brand": "LeadFarmer",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searched twice; results were only shop menus and directories (veteran-owned indoor microbusiness in Bainbridge, Chenango County NY per shop and directory pages; micro licence in the register's producer data is LeadFarmer Inc., OCM-MICR-24-000011). leadfarmer.com is an unrelated clothing/merchandise store, not recorded."
+  },
+  {
+   "brandKey": "moodz",
+   "brand": "Moodz",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": "https://www.moodzco.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [
+    "https://www.moodzco.com/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Moodz site (menu: home, store locator, about, merch; sitemap lists 6 pages) has no certificate or lab page or link. New York brand: the About page calls it a New York-based legal cannabis and lifestyle brand, the contact address is on moodzny.com and the Instagram handle is goodmoodz.ny. Not to be confused with moodzcannabis.com, an Oklahoma dispensary."
+  },
+  {
+   "brandKey": "thebulkboys",
+   "brand": "The Bulk Boys",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searched twice; only New York shop menus and Headset's brand page (The Bulk Boys (NY)) came up. thebulkboys.com did not answer and bulkboyz.com is a junk-removal firm; no brand-owned site found."
+  },
+  {
+   "brandKey": "kickflys",
+   "brand": "KICKFLY'S",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": "https://www.kickflys.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [
+    "https://www.kickflys.com/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Weebly site (home, shop, our mission, news, contact, THC locations): no certificate or lab link; the shop page is about topical products. New York brand: homepage states a licensed New York State grower, licence AUCC-OCM-24-00025 (register: KickFly's LLC, OCM-CULT-24-000025)."
+  },
+  {
+   "brandKey": "thedrop",
+   "brand": "The Drop",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": "https://thedropny.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [
+    "https://thedropny.com/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Small WordPress site (home, contact, where-to-find popup, Instagram @the_drop_ny) announcing monthly limited craft-flower drops; no certificate or lab page or link and no sitemap. New York is shown only by the domain, the Instagram handle and the New York shops that sell it; no licence number on the site."
+  },
+  {
+   "brandKey": "1slice",
+   "brand": "1Slice",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searched twice; results were only shop brand pages (Sacred Bloom, NICKLZ) and an amNY column placing the micro near Cooperstown NY. 1slice.com is a parked page that redirects to a lander, so it was not recorded."
+  },
+  {
+   "brandKey": "staymelo",
+   "brand": "Stay Melo",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": "https://www.stayme7ocannabis.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [
+    "https://www.stayme7ocannabis.com/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "STAYME7O (Carmelo Anthony's brand) site: nav is products, strains, effects, genetics, locations, contact; the strains page names Sweatband and Heat Check with THC figures but there is no lab or COA link and no sitemap. States the products are sold in New York and Oregon. Skyworld's home page also linked a Stay Melo flower product (that product page now 404s) but Skyworld's labs page lists no Stay Melo lots."
+  },
+  {
+   "brandKey": "adkhemp",
+   "brand": "ADK HEMP CO.",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": "https://adkhempco.com/coas",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://adkhempco.com/coas"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://adkhempco.com/coas/black-maple-2026-08.pdf",
+   "note": "Brand's own COAs page (in the site nav) has 63 PDF links named by strain and month (e.g. Black Maple flower and pre-roll batches 2025-2026, several strains); no sitemap. Sample PDF is a Kaycha Labs report (Albany NY) for batch BM202608, 3.5g flower. New York brand: Saratoga NY craft microbusiness, licence OCM-MICR-25-000303 on the site."
+  },
+  {
+   "brandKey": "loudbuzz",
+   "brand": "Loud Buzz",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searched twice; the only hits were a New York shop promotion (Stoops NYC) for the 3.5g flower. No brand-owned site found; loudbuzz.com did not answer."
+  },
+  {
+   "brandKey": "theladies",
+   "brand": "The Ladies",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searched twice; only New York shop menus list the brand (LA Pop Rocks, Blueberry Kush Mints). theladiesny.com is a parked page, theladies.com and theladies.co are unrelated sites with no cannabis content, so none was recorded."
+  },
+  {
+   "brandKey": "leadfarmermicro",
+   "brand": "Lead Farmer (Micro)",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Same brand as leadfarmer (menus print the micro-licence line separately). Searched twice; results were only shop menus and directories (veteran-owned indoor microbusiness in Bainbridge, Chenango County NY per shop and directory pages; micro licence in the register's producer data is LeadFarmer Inc., OCM-MICR-24-000011). leadfarmer.com is an unrelated clothing/merchandise store, not recorded."
+  },
+  {
+   "brandKey": "northforkcollective",
+   "brand": "North Fork Cannabis Collective",
+   "checkedAt": "2026-10-08T04:58:07+00:00",
+   "url": "https://www.nfcny.com/products",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://www.nfcny.com/products"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://ny.yourcoa.com/coa/coa-view?sample=AL50123007-001",
+   "note": "Brand's Products page (Wix site 'North Fork Cannabis Co', nav: home, products, about) shows a View COA link under each product: 17 distinct ny.yourcoa.com report links (flower such as Strawberry Push Pop and Guava Push Pop 3.5g, plus a pre-roll and live rosin). Brand is on Long Island NY: About page calls it an adult-use microbusiness in New York (North Fork, Long Island)."
+  },
+  {
+   "brandKey": "bodegaboyz",
+   "brand": "Bodega Boyz",
+   "checkedAt": "2026-10-08T04:53:17Z",
+   "url": "https://bodegaboyz.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "bodegaboyz.com is a Shopify store for the brand's rolled cones (Deuces, Shorties); its About page says the brand began in Queens, New York and now sells in several states including New York. Nav is Shop / Our Story / Community / Contact / Wholesale; no lab-results or COA page, no certificate links on home or About. The flower strains seen on NY menus (Tiki Cookies, Creamsicle) are not on the site."
+  },
+  {
+   "brandKey": "aeterna",
+   "brand": "Aeterna",
+   "checkedAt": "2026-10-08T04:53:17Z",
+   "url": "https://aeternacannabis.com/lab-results/",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://aeternacannabis.com/lab-results/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://aeternacannabis.com/media/2605-001-Apple-Fritter.pdf",
+   "note": "Lab Results page (nav item 'COA') on the brand's own site lists about 155 'View Report' PDF links under /media/, newest lots 2605-xxx (May 2026) down to 2023 lots; strain names match the listings (Apple Fritter, Jelly Rancher, Garlic Runtz, Ego Checker). New York brand: site footer gives Route 9, Hudson NY 12534 and licence OCM-MICR-24-000139."
+  },
+  {
+   "brandKey": "sodope",
+   "brand": "So Dope",
+   "checkedAt": "2026-10-08T05:00:00Z",
+   "url": "https://sodopefarms.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Brand site sodopefarms.com (Story, Strain Library, Live Menu, Find SO DOPE, FAQ) has no lab-results/COA text and no certificate links on home, strains, FAQ or find pages; the Live Menu is a retailer sign-in. New York brand: footer gives NYS OCM licences OCM-MICR-25-000294 and OCM-PROC-25-000250 (also an Oregon licence); strain library lists Gorilla Glue and Sour Diesel as seen on NY menus. Not Super Dope (separate surveyed brand)."
+  },
+  {
+   "brandKey": "nextstop",
+   "brand": "Next Stop",
+   "checkedAt": "2026-10-08T05:00:00Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "No brand site found: nextstopny.com is a Manhattan real-estate site, nextstop.nyc's robots.txt disallows the whole site (host not read, and not shown to be the brand's), and searches for the brand with Island Bloom / Triple Stack / Problem Child returned no brand page."
+  },
+  {
+   "brandKey": "stayme7otm",
+   "brand": "STAYME7O™",
+   "checkedAt": "2026-10-08T05:00:00Z",
+   "url": "https://stayme7ocannabis.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "The cannabis site is stayme7ocannabis.com (Products, Strains, Effects, Genetics, Locations, Contact, Tap In); stayme7o.com is a separate apparel shop. The strains page lists Madison Square Garlic and others with THC percentages but no lab-results or COA page and no certificate links. Products stated to be sold in New York and Oregon."
+  },
+  {
+   "brandKey": "jetpacks",
+   "brand": "Jetpacks",
+   "checkedAt": "2026-10-08T04:53:48Z",
+   "url": "https://smokejetpacks.com/",
+   "method": null,
+   "status": "source-page-no-direct-links",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Brand site smokejetpacks.com is a one-page product site (FJ, Big Bang series, wholesale link to an empirestandardny.com address); it carries a 'Lab-Verified Potency' heading but no lab-results page and no certificate links. Page does not itself name New York; NY sale comes from NY retailer brand pages in search results today."
+  },
+  {
+   "brandKey": "ithacaorganics",
+   "brand": "Ithaca Organics",
+   "checkedAt": "2026-10-08T04:53:17Z",
+   "url": "https://www.ithacaorganicscanna.co/coas",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://www.ithacaorganicscanna.co/coas"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://www.ithacaorganicscanna.co/s/35-GG-003-110692.pdf",
+   "note": "The cannabis site (linked as 'Learn More' from ithacaorganics.com, the farm's CBD/CSA site) has a COAS page listing about 75 PDF links, one per batch number (e.g. 1/8-BC-002, 3.5-GG-003, 14-GG-001), under /s/. Page says products are tested under New York State regulations; site describes a Finger Lakes NY farm. Product-line names (Ithaca OG, Gorilla Glue) match NY menus."
+  },
+  {
+   "brandKey": "hudson",
+   "brand": "Hudson Cannabis",
+   "checkedAt": "2026-10-08T04:53:48Z",
+   "url": "https://www.hudsoncannabis.co/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "hudsoncannabis.co (hudsonhemp.com redirects there) is a one-page Next.js site; the served HTML has only the title and a store-locator widget script, no links, no lab-results or certificate page, and no sitemap content. hudsoncannabis.com is a parked domain. New York identity comes from search results today (Hudson NY, Old Mud Creek Farm; OCM licence numbers on Leafly/Weedmaps), not from the site itself."
+  },
+  {
+   "brandKey": "macpharms",
+   "brand": "Mac Pharms",
+   "checkedAt": "2026-10-08T05:00:11Z",
+   "url": "https://macpharms.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "macpharms.com lists /coa in its sitemap and links it, but that page is a fixed list of 25 PDFs for bulk distillate and bulk rosin (file names mention Nirvana center) plus two 'Arizona Corporate Management' vendor/distribution documents: no flower and nothing marked New York, so not counted. The served HTML never says New York; NY presence seen only on retailer listings (Staten Island)."
+  },
+  {
+   "brandKey": "cam",
+   "brand": "CAM",
+   "checkedAt": "2026-10-08T04:53:48Z",
+   "url": "https://camdispensary.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "camdispensary.com (California Artisanal Medicine; shows a California licence number) has Products, Strains, Store locator, FAQ, News pages; no lab-results or COA page and no certificate links, and no mention of New York. Its strain page lists Devil Driver, one of the NY-menu strains, so it is probably the same brand but New York certificates are not published there."
+  },
+  {
+   "brandKey": "celestial",
+   "brand": "Celestial",
+   "checkedAt": "2026-10-08T05:00:00Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "No brand site found: celestialny.com is an unrelated company, celestialflower.com and celestialbrand.com are parked pages, and search results showed only a Canadian Celestial pre-roll product and retail shops. Strains Aurora/Lunar/Orion (with Candy Krush, Grape Zkittlez) could not be tied to any first-party page."
+  },
+  {
+   "brandKey": "skyrose",
+   "brand": "Skyrose",
+   "checkedAt": "2026-10-08T04:53:48Z",
+   "url": "https://www.skyrosefarm.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "skyrosefarm.com (About, Strains, Contact, Terms) is a Squarespace site; its Strains page lists Iced Sangria, Kombucha Cream, Pineapple Muffin and Tangerine Punch, matching the listings. No COA/lab text and no certificate links. New York brand: About says the founder runs a farm in New York's Hudson Valley; skyrose.com is a parked domain."
+  },
+  {
+   "brandKey": "ravensviewgenetics",
+   "brand": "Ravens View Genetics",
+   "checkedAt": "2026-10-08T04:53:17Z",
+   "url": "https://ravensviewgenetics.com/our-products/",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://ravensviewgenetics.com/our-products/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://ravensviewgenetics.com/wp-content/uploads/2026/07/3.5G-Whole-Flower-Pine-Sap-OG.pdf",
+   "note": "Our Products page shows a 'View COA' link under each product, 21 distinct PDFs under /wp-content/uploads/ (3.5g whole flower Squirt, Ghost Train Haze, Pine Sap OG, Double OG Chem; 1g pre-rolls; variety packs; also gummies and concentrates, older ones from 2025). Strain names match the listings. New York brand: site says cultivator in Delhi, NY, products found in New York."
+  },
+  {
+   "brandKey": "sensei",
+   "brand": "Sensei",
+   "checkedAt": "2026-10-08T05:00:00Z",
+   "url": "https://tksxsensei.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Brand site tksxsensei.com (TKS x Sensei, one-page site with a New York dispensary finder of 25 shops; its product list includes Gelly Banger, Ninja Fruit, Big Apple) says 'Licensed New York cannabis'; no lab-results/COA text or certificate links on the page or contact page. Search results today give licence OCM-MICR-24-000149 (third-party directory) for the Peekskill microbusiness."
+  },
+  {
+   "brandKey": "honestpharmco",
+   "brand": "Honest Pharmco",
+   "checkedAt": "2026-10-08T04:53:17Z",
+   "url": "https://honestpharmco.com/lab-results/",
+   "method": "list",
+   "status": "published-links-unreadable",
+   "pages": [
+    "https://honestpharmco.com/lab-results/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://share.confidentlims.com/samples/public/share/992590c8-8d0e-4a18-bbbb-827157f2b714",
+   "note": "Product Lab Testing page (nav item) has four tabs (flower 9, pre-rolls 5, concentrate 2, blunts 3 = 19 links) of 'Lab Results' anchors that go to share.confidentlims.com/samples/public/share/<uuid> report pages (a lab-software share host, not a .pdf). New York brand: homepage says licensed New York State cannabis cultivator, OCM-CULT-24-000099. Not read daily: the links are Confident LIMS share pages, built by script, not documents."
+  },
+  {
+   "brandKey": "majormicro",
+   "brand": "Major (Micro)",
+   "checkedAt": "2026-10-08T05:00:00Z",
+   "url": "https://www.majordistrony.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Probably the brand 'Major' already surveyed as major: the only Major site is majordistrony.com (MajorNY, Major Distro NY), a distributor storefront whose HTML has Home / About / Login and a list of other brands it carries (The1, Noizey, BudJet, Super Dope, ...), no lab or certificate links. The four strains (Chimax, Deep Space, Pinyatti, Planet Sherb) are not on the page, so the tie is unproven."
+  },
+  {
+   "brandKey": "budjet",
+   "brand": "BudJet",
+   "checkedAt": "2026-10-08T05:00:00Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "No brand site found: budjet.co and thebudjet.com are parked pages. The only first-party-looking mention is the brand list of the New York distributor Major Distro NY (majordistrony.com), which names BudJet among its brands but links nothing. A Weedmaps delivery menu lists BudJet Lavender Jack 3.5g, state not shown."
+  },
+  {
+   "brandKey": "jeromebaker",
+   "brand": "JEROME BAKER",
+   "checkedAt": "2026-10-08T04:56:03Z",
+   "url": "https://jeromebakerny.com/",
+   "method": null,
+   "status": "source-page-no-direct-links",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Jerome Baker New York site (jeromebakerny.com; ny.jeromebaker.com redirects there; brand managed by dopestr.com) has a Cannabis Collection page of limited flower jars/box sets 'grown and blown exclusively for New York' with a New York OCM disclaimer, and gives a 'Tested ...% THC' figure per jar, but no COA/lab page, QR text or certificate links on home, collection or the Kaleidoscope page. Strains match the listings (Bolo Runtz etc.)."
+  },
+  {
+   "brandKey": "qualityhigh",
+   "brand": "Quality High",
+   "checkedAt": "2026-10-08T04:53:48Z",
+   "url": "https://qualityhigh.com/faq",
+   "method": null,
+   "status": "source-page-no-direct-links",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Quality High is a Sleepy Hollow, New York dispensary with its own Peekskill indoor farm and private-label flower. FAQ says test results for any product can be seen by scanning the QR code on its packaging; Our Products page has a Testing section describing third-party testing of flower and pre-rolls. No certificate documents are linked on faq, our-products or farm pages."
+  },
+  {
+   "brandKey": "pines",
+   "brand": "Pines",
+   "checkedAt": "2026-10-08T04:53:48Z",
+   "url": "https://www.awalkinthepines.com/projects-2",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://www.awalkinthepines.com/projects-2",
+    "https://www.awalkinthepines.com/copy-of-concentrates"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://www.awalkinthepines.com/_files/ugd/6029c6_159dc5569aff473f8cf3b1d14115de2d.pdf",
+   "note": "A Walk in the Pines (maker of Pines), a licensed New York cultivator in the Finger Lakes per its About page. Each product-category page shows a 'click here for COA' PDF link per product, under /_files/ugd/: flower 12 PDFs (Sour Diesel, Gelato, Iced Sangria, Blueberry Cherries, ...), pre-rolls 11; vapes 10, concentrates 8, gummies 2 on other category pages. Page slugs are mislabelled on the site: projects-2 is FLOWER, copy-of-concentrates is PRE-ROLL JOINTS."
+  },
+  {
+   "brandKey": "kaleidoscope",
+   "brand": "Kaleidoscope",
+   "checkedAt": "2026-10-08T04:56:03Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Brand is The Kaleidoscope Collective (NY craft cannabis; stocked at NY shops, partner of Jerome Baker NY drop). No brand-run site found: kaleidoscopecollective.co is titled 'Premium NY Cannabis' but its About and footer are an Atlantic City NJ dispensary's (Coastal Herb Co) text, so not taken as first party; kaleidoscopeny.com and thekaleidoscopecollective.com are parked pages; kaleidoscopecollective.store is an unrelated craft shop."
+  },
+  {
+   "brandKey": "suspect",
+   "brand": "Suspect",
+   "checkedAt": "2026-10-08T05:00:00Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "No brand site could be read: searches found no cannabis brand page; the only candidate domain, suspectny.com (not shown to be the brand's), publishes a robots.txt that disallows every page for this reader (Squarespace AI-bot block), so it was not read. Host not read: suspectny.com."
+  },
+  {
+   "brandKey": "bannermansbatch",
+   "brand": "Bannerman's Batch",
+   "checkedAt": "2026-10-08T04:54:01Z",
+   "url": "https://bannermansbatch.com/",
+   "method": null,
+   "status": "access-wall",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "The brand's own site is bannermansbatch.com (search results show its products, store-finder and wholesale pages and call it a New York / Hudson Valley brand), but its robots.txt answers with a bot wall, so the host is stopped and no page was read. Host refused: bannermansbatch.com."
+  },
+  {
+   "brandKey": "honestpharm",
+   "brand": "Honest Pharm Co",
+   "checkedAt": "2026-10-08T04:48:31Z",
+   "url": "https://honestpharmco.com/lab-results/",
+   "method": "list",
+   "status": "published-links-unreadable",
+   "pages": [
+    "https://honestpharmco.com/lab-results/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://share.confidentlims.com/samples/public/share/992590c8-8d0e-4a18-bbbb-827157f2b714",
+   "note": "Product Lab Testing page (nav item 'Product Lab Testing', read 8 Oct 2026) lists 19 'Lab Results' anchors to share.confidentlims.com sample-share links, in tabs: 9 flower (3.5g/7g/14g/28g, e.g. Blue Dream, Double Runtz, NYC Sour Diesel), 5 prerolls, 2 concentrate, 3 blunts. Site footer states a licensed New York State cultivator, OCM-CULT-24-000099; Newark NY grower. share.confidentlims.com is a new lab-portal host (robots.txt 404 = no rules); the share pages are script-built, so the documents themselves were not opened. Not read daily: the links are Confident LIMS share pages, built by script, not documents. Same page as honestpharmco."
+  },
+  {
+   "brandKey": "umamii",
+   "brand": "Umamii",
+   "checkedAt": "2026-10-08T04:48:31Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Two searches found only third-party pages (podcast, analytics) describing a New York brand. umamii.com answers with a script redirect to /lander (looks parked, no brand content); umamii.co has a robots.txt that disallows everything; umamiiofficial.com resolves but its robots.txt redirects to a page, which stops the reader. None was read or tied to the brand. No brand-owned certificate page found."
+  },
+  {
+   "brandKey": "banzzy1305",
+   "brand": "Banzzy 1305",
+   "checkedAt": "2026-10-08T04:48:31Z",
+   "url": "https://banzzy1305.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Brand site (Harlem-raised brand, nav: About, Cannabis Catalogue, Merch, Store Locator, Dispensary Portal, Blog & Education, Contact; read 8 Oct 2026) has no COA/lab page and no PDF links. The catalogue page only carries placeholder wording ('COA value to confirm') under each strain. NY brand: Brooklyn address and NY licence OCM-PT3B-25-000017 appear on Kaycha reports for Banzzy found in search, but those PDFs sit on app.alleaves.com (a shop's inventory host), not on the brand's site."
+  },
+  {
+   "brandKey": "woodstock",
+   "brand": "Woodstock",
+   "checkedAt": "2026-10-08T04:48:31Z",
+   "url": "https://woodstockproducts.com/woodstock-ny-final",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Woodstock Heritage Strains site (woodstockproducts.com, Showit; state pages NJ/NY/CA; read 8 Oct 2026). Its New York page shows pre-rolls and live-resin flower said to be grown by legacy NY farmers; products and about pages have no COA/lab page or document links. A Woodstock Sugar Breath flower COA exists on app.alleaves.com (a shop's host, found in search), not on the brand site. woodstockheritage.com (guessed domain) answers a bot wall at robots.txt and was not read."
+  },
+  {
+   "brandKey": "akronbloom",
+   "brand": "Akron Bloom",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": "https://akronbloom.com/product-lab-tests",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://akronbloom.com/product-lab-tests"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://img1.wsimg.com/blobby/go/3b308b64-dd6a-48e8-9df5-558f308830f1/downloads/1fddeeb6-b685-4e12-9e7c-bd47d17aac43/2502RLI0082-0327%20-%20Akron%20Bloom%20-%20Birthday%20Cake.pdf?ver=1784246564739",
+   "note": "Brand site (GoDaddy builder) has a 'Product Lab Tests' page in its menu, read 8 Oct 2026, with 18 'Download' anchors straight to .pdf lab reports on img1.wsimg.com; file names carry strain and pack (e.g. Cherry Kiss, Birthday Cake, Kosher Kush 1 g pre-roll, G.M.O. 3.5 g pre-roll, Mafia Hits), so pre-rolls and flower are mixed. The home page says the company is in Western New York; no licence number is shown on the pages read."
+  },
+  {
+   "brandKey": "budcracker",
+   "brand": "Budcracker",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": "https://budcracker.com/pages/coas",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://budcracker.com/pages/coas"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://cdn.shopify.com/s/files/1/0990/0480/9397/files/Jelly_Pie_3.5g_JP-1-35.pdf?v=1781829762",
+   "note": "Shopify site (The Budcracker LLC, 'Budcracker Blvd.') has a COAs page in its menu, read 8 Oct 2026, with 20 anchors to .pdf reports on cdn.shopify.com: 12 flower (3.5 g and 28 g of Eagle Scout, Jelly Pie, Slurricane, Valley Chem; four 3.5 g indoor lots) and 8 pre-rolls (1 g and 0.5 g multipacks). Jelly Pie and Slurricane match the strains on NY menus; the home page says it is sold at licensed dispensaries across New York."
+  },
+  {
+   "brandKey": "fx",
+   "brand": "FX",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": "https://feelthefxs.com/labtest/",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://feelthefxs.com/labtest/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://feelthefxs.com/wp-content/uploads/2026/06/20260612-GZGO-002-Super-Girl.pdf",
+   "note": "feelthefxs.com (brand 'FX': vapes, gummies, flower, pre-rolls) has a LAB TESTS page in its footer menu, read 8 Oct 2026, with 19 .pdf anchors on the same host: 10 flower 3.5 g (incl. Devil-Ade, Lemon Cherry Wafflez, Gas Mask, Supergirl, which match the NY menu strains), 4 pre-rolls, 3 vapes, 2 gummies. Footer lists New York OCM processor licence numbers (OCM-PROC-24-000050 and two others)."
+  },
+  {
+   "brandKey": "cheevo",
+   "brand": "Cheevo",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": "https://www.cheevo.co/items",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://www.cheevo.co/items"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://static1.squarespace.com/static/66d797e32bae803f6b247dd0/t/694189c65cdd1155cb91dd1c/1765902790531/COA+-+CHEEVO-CWF-14G+WHOLE+FLOWER-RS11.pdf",
+   "note": "cheevo.co (Wix) has a 'Product Test Results' page, read 8 Oct 2026, with a table (product, date, strain, batch, 'Download Here'); only one row at reading: 3.5 g whole-flower eighth, Trop Cherry, dated 12/04/2025, linked to a .pdf on static1.squarespace.com. Footer shows NY OCM cultivator, processor and distributor licences (OCM-CULT-24-000117 etc.) and 'born and bred in New York'. Check that the list grows over time; today it has one certificate."
+  },
+  {
+   "brandKey": "davesbudz",
+   "brand": "Dave's Budz",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": "https://davesbudz.com/",
+   "method": null,
+   "status": "source-page-no-direct-links",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "One-page brand site (read 8 Oct 2026) shows NY OCM micro-business licence OCM-MICR-25-000259, Hudson Valley indoor flower and NY shops; each strain card says lab results / COA are available on request, with no documents or lab-portal links."
+  },
+  {
+   "brandKey": "tksxsensei",
+   "brand": "TKS x Sensei",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": "https://tksxsensei.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "One-page site 'Cultivated in New York' (story, flower, drop, culture, kolektion, find us; NYC shop list; read 8 Oct 2026) has no lab-result or COA wording and no document links."
+  },
+  {
+   "brandKey": "dollatreez",
+   "brand": "Dolla Treez",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": "https://nydollatreez.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "NY Dolla Treez one-page GoDaddy site (our story, a low-price mission aimed at the NY cannabis market; read 8 Oct 2026) has no menu links, lab or COA page, or documents. dollatreez.com did not answer."
+  },
+  {
+   "brandKey": "binske",
+   "brand": "Binske",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": "https://binske.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Colorado-born multi-state brand site (read 8 Oct 2026; products, where to buy, genetics, compliance). The compliance page carries a New York warning panel and no certificates; no COA or lab page or document links anywhere in the navigation."
+  },
+  {
+   "brandKey": "livwell",
+   "brand": "LivWell",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": "https://livwell.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "livwell.com is the Colorado dispensary-chain site (Denver-area stores, shop pages; read 8 Oct 2026) with no New York page and no lab-result or COA page. NY shops list LivWell flower (menu data), but no brand-owned certificate source was found, and the site was not shown to be the New York licensee."
+  },
+  {
+   "brandKey": "40tons",
+   "brand": "40 Tons",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": "https://40tons.co/",
+   "method": null,
+   "status": "access-wall",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "40tons.co (found in search; its store locator lists New York among its states, and press covered a NY launch via HPI Canna) answers robots.txt with a bot wall; not read, not worked around. 40tons.com is a parked domain that redirects to a landing page."
+  },
+  {
+   "brandKey": "breakfastconnections",
+   "brand": "Breakfast Connections",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": "https://breakfastconnections.co/",
+   "method": null,
+   "status": "robots-unreadable",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Brand site found in search (its dispensary locator speaks of OCM-licensed New York shops); robots.txt could not be read: the connection through the research proxy failed on every try (apex and www), so the host was not read."
+  },
+  {
+   "brandKey": "saavi",
+   "brand": "Saavi",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": "https://cannacureny.com/testing-results",
+   "method": null,
+   "status": "robots-unreadable",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "saavinyc.com (Saavi NYC, small-batch soil-grown flower; read 8 Oct 2026) has a 'COA'S' menu item that links off-site to cannacureny.com/testing-results (the name suggests the surveyed Cannacure Farms, not verified). That host did not answer through the proxy on repeated tries (robots.txt unreachable), so the page was not read; it is a page link, not a .pdf or lab-portal link."
+  },
+  {
+   "brandKey": "purps",
+   "brand": "Purps",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searches found only dispensary menus and a Weedmaps brand page (no website field; it lists a NY processor licence, OCM-PROC-24-000062). purps.com has a robots.txt that disallows everything, so it was not read and cannot be tied to the NY brand; purpscannabis.com answers robots.txt with 403; purpsny.com is an unrelated template site. No brand-owned certificate page found."
+  },
+  {
+   "brandKey": "hi",
+   "brand": "Hi",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Three searches found only dispensary pages (e.g. Hii NYC, a shop, and Hi5 by Theory Wellness, a different brand); no Hi flower-brand site. hi-ny.com is an unrelated infusion-therapy company; gethi.com and hiflower.com are empty or parked."
+  },
+  {
+   "brandKey": "goodmoney",
+   "brand": "Good Money",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Two searches found only retailer menu listings (e.g. Bubble Gum OG 3.5 g at Treehouse Cannabis); goodmoney.com answers 404 at its root and is not the brand. No brand site found."
+  },
+  {
+   "brandKey": "mgp",
+   "brand": "MGP",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Two searches found only an iHeartJane menu listing (MGP Fire Belly Toad 3.5 g); mgpfarms.com is an Iowa farmland-investment firm, not the brand. No brand site found."
+  },
+  {
+   "brandKey": "thekaleidoscopecollective",
+   "brand": "The Kaleidoscope Collective",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Search found NY dispensary brand pages only. kaleidoscopecollective.co (read 8 Oct 2026) is an Atlantic City NJ dispensary site (Coastal Herb) with its own menu, not the NY brand; thekaleidoscopecollective.co does not resolve; thekaleidoscopecollective.com is a parked domain."
+  },
+  {
+   "brandKey": "calihoney",
+   "brand": "Cali Honey",
+   "checkedAt": "2026-10-08T04:57:21Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Searches found only NY retailer listings (ZenZest, a delivery site) for Cali Honey gummies and vapes; calihoney.com is a parked domain redirecting to a landing page. No brand site found."
+  },
+  {
+   "brandKey": "zipsog",
+   "brand": "ZIPS OG",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "No site of a New York brand called ZIPS OG found by web search or by guessing domains (zipsog.com does not load; zipscanna.com is a domain for sale). Not the same as surveyed key 'zips': zipscannabis.com describes itself as Washington's best value and does not mention New York or any of this key's strains."
+  },
+  {
+   "brandKey": "gotti",
+   "brand": "Gotti",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": "https://gottigardens.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [
+    "https://gottigardens.com/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Site found by domain guessing: gottigardens.com (Webflow; Home, About, Strains, Contact and strain pages). It says New York | California and shows Lemon Icee, which matches a top strain of this key. No COA or lab-results page or link; the contact page's FAQ only says every batch is lab tested. The strain pages and the About page link no documents; the site has no sitemap."
+  },
+  {
+   "brandKey": "highfallscanna",
+   "brand": "High Falls Canna",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": "https://www.highfallscanna.com/pages/lab-reports",
+   "method": "list",
+   "status": "published-links-unreadable",
+   "pages": [
+    "https://www.highfallscanna.com/pages/lab-reports"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://www.highfallscanna.com/cdn/shop/files/24-F0010-2.pdf?v=16365383735879723259",
+   "note": "The Lab Reports page (site menu) is a COA lookup by lot code. Its script holds a list of 50 lot/PDF pairs, each PDF a file on the site's own Shopify CDN (www.highfallscanna.com/cdn/shop/files/, lot codes like 24-F0010-2, 2G-F0039-3). The page also queries the shop's Storefront metaobjects for more lots; that call was not made. The links sit in an inline script array, not in anchors. New York: the site's address is High Falls, New York 12440. Not read daily: the lot-to-PDF pairs sit in an inline script array, not in anchors or page config the reader knows."
+  },
+  {
+   "brandKey": "heavyhitters",
+   "brand": "Heavy Hitters",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Web search shows Leafly pages for Heavy Hitters that list California licence numbers; its own site (heavyhitters.com) did not load from here (the proxy answered 502), and heavyhittersnyc.com is a parked page and heavyhittersny.com has no page. No first-party certificate page seen. Certificates for California-made product would not count for the New York brand anyway."
+  },
+  {
+   "brandKey": "ish",
+   "brand": "ISH",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "No site of a New York brand called ISH found by web search. Domains that exist: ishcannabis.com (its robots.txt redirects to /robots.txt/, which the register's reader treats as blocked, so not read), ish.co (robots.txt disallows everything), itsish.com and ishllc.com (parked pages). None could be tied to the brand, whose top strains (Orange Cookies, Moonbeam Gelato, Northern Lights, LA Pop Rocks) are not mentioned anywhere I could read."
+  },
+  {
+   "brandKey": "flamer",
+   "brand": "Flamer",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": "https://www.heyflamer.com/coas",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://www.heyflamer.com/coas"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://www.heyflamer.com/s/LB-fpr25001.pdf",
+   "note": "The COA's page (footer link of heyflamer.com) shows 68 PDF links on heyflamer.com/s/, labelled by lot number: Silly Goofy, Lobotomy and other pre-roll singles and 5-packs, plus sections titled whole flower for HE HE / HA HA, REVELATION and PILLOW PRINCESS (top strains of this key). One link goes to a Keystone State Testing report on ny-keystonestatetesting.grow.labware.cloud. New York: Brooklyn-based, the site lists NYC dispensaries; the register's producer data lists HEY FLAMER LLC (Kings county, OCM-PROC-24-000213)."
+  },
+  {
+   "brandKey": "flav",
+   "brand": "Flav",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": "https://flavinc.com/ny-regulatory/",
+   "method": null,
+   "status": "source-page-no-direct-links",
+   "pages": [
+    "https://flavinc.com/ny-regulatory/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "The New York Regulatory page (footer link) offers New York test results through an embedded Airtable shared view; the page's own CHECK RESULTS button links back to the same page and the HTML has no document anchors. The Airtable view is an app and was not read. The site also has an Arizona test-results page (not New York). New York: the site has an Ordering in New York page and a New York regulatory page, its Flower Duos pages exist, and the register lists Flav in New York shops.",
+   "listUrl": "https://airtable.com/embed/appQ9YRhCZVsB9yAL/shrH5UAfLpoqq9Uo3?viewControls=on"
+  },
+  {
+   "brandKey": "stranman",
+   "brand": "Stranman",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": "https://stranman.com/coas/",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://stranman.com/coas/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://stranman.com/wp-content/uploads/2026/06/STRANMAN-Chemdawg-3.5G.pdf",
+   "note": "The COA's page (linked from the site menu) lists 11 PDF links on stranman.com/wp-content/uploads for 3.5g, 2g, 7g and 1g pre-roll lots (Amnesia Haze, Chemdawg, Tricho Jordan, Bruce Banner, Wedding Cake, Double Runtz). New York: the site calls itself a New York cannabis company sourcing from New York farms; the register's producer data lists StranMan LLC (OCM-PT3B-25-000118)."
+  },
+  {
+   "brandKey": "studio",
+   "brand": "Studio Farms NY",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": "https://www.studiofarmsny.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [
+    "https://www.studiofarmsny.com/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Squarespace site with a home page and a Retailers/contact page; the sitemap lists two URLs and none is a COA or lab page. No certificate word or link on the home page. New York: it says premium New York cannabis and gives OCM-PROC-26-000331."
+  },
+  {
+   "brandKey": "dubbs",
+   "brand": "Dubbs",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "No site of a New York brand called Dubbs found by web search. dubbs.com exists but its robots.txt disallows everything for the register's reader (not read, and not tied to the New York brand); dubbsllc.com is a parked page."
+  },
+  {
+   "brandKey": "6point",
+   "brand": "6 Point Cannabis",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": "https://www.6pointcannabis.com/coas/",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://www.6pointcannabis.com/coas/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://www.6pointcannabis.com/wp-content/uploads/2026/02/2602RLI0121-0538-Finger-Lakes-Hydro-LLC-Flower-Krazy-Runtz-3.5g.pdf",
+   "note": "The site's own COAs page (linked in its menu) carries 34 'Download PDF' links on 6pointcannabis.com itself, with a Flowers section (3.5g jar lots such as Krazy Runtz, Midas Touch, Krazy Madness) and an Edibles section. New York: the site gives OCM micro licence OCM-MICR-24-000037 and a Rochester address; strain names match the listings."
+  },
+  {
+   "brandKey": "alpineagronomy",
+   "brand": "Alpine Agronomy",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": "https://www.alpineagronomy.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [
+    "https://www.alpineagronomy.com/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "One-page Squarespace site (the sitemap lists two URLs) that says its products are coming in fall 2026; no certificate or lab page or link. New York: it gives OCM micro licence OCM-MIRC-25-000272 and a Saranac Lake, NY address."
+  },
+  {
+   "brandKey": "mechanic",
+   "brand": "Mechanic Farm",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "No website found. A Leaf Magazine profile of the owner (27 March 2026) links only the Instagram account @the_mechanics_farm.ny; guessed domains (themechanicfarm.com, mechanicfarms.com and others) do not load. The register's producer data ties the brand names (The Mechanic Farm, Mechanic Farms) to Organic Mechanic LLC, micro licence OCM-MICR-24-000057, Ontario county."
+  },
+  {
+   "brandKey": "highervibrations",
+   "brand": "Higher Vibrations",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": "https://highervibrations.co/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [
+    "https://highervibrations.co/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "The brand's own site (highervibrations.co) describes it as a California-based brand and mentions Rosewater, one of this key's strains, in its news feed; it has no mention of New York and no certificate or lab page or link (menu: Products, Genetics, Collabs, Apparel, Blogs, Contact). Any certificate would be California's, which would not count for the New York listings."
+  },
+  {
+   "brandKey": "harneybrothers",
+   "brand": "Harney Brothers Cannabis",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": "https://www.harneybrotherscannabis.com/home-3",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://www.harneybrotherscannabis.com/home-3",
+    "https://www.harneybrotherscannabis.com/home-3-2"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://www.harneybrotherscannabis.com/s/35g-Jar-Sour-Diesel-25100.pdf",
+   "note": "The home page has a LAB RESULTS block with one page per product type. The Flower page (/home-3) has 15 'View Labs' PDF links on harneybrotherscannabis.com/s/ (3.5g jars and 7g bags: Hulkberry, Sour Diesel, Cap Junky, Hella Jelly, Jelly Donuts, Northern Nights, Pound Town); the Pre-Rolls page (/home-3-2) has 14 more. The other product pages (tinctures, gummies and so on) are not flower. New York: the footer gives a Millerton, NY address; the register's producer data lists Harney Brothers LLC (Dutchess)."
+  },
+  {
+   "brandKey": "reallifebotanicals",
+   "brand": "Real Life Botanicals",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": "https://reallifebotanicals.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [
+    "https://reallifebotanicals.com/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Website-builder site with Home, Brands (Real Life Botanicals, Cheech & Chong, MacPharms), What's Coming, Where To Find Us and Our Founder. The home page, which was read, has no certificate or lab word or link. The sub-pages could not be read: later requests to the host were reset, so it was left alone. New York is not stated on the home page and none of this key's strains appears there; the New York link is therefore unconfirmed."
+  },
+  {
+   "brandKey": "518hollow",
+   "brand": "518 Hollow",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "No site found by web search. 518hollow.com and 518hollowcannabis.com/.co are parked pages. The register's producer data lists 518 Hollow LLC, micro licence OCM-MICR-24-000214 (Washington county)."
+  },
+  {
+   "brandKey": "dayzed",
+   "brand": "Dayzed",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": "https://www.dayzedcanna.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [
+    "https://www.dayzedcanna.com/",
+    "https://dayzedcanna.com/shop"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Site found by domain guessing: dayzedcanna.com says it is a micro licensee based in Schoharie, New York, growing in indoor living soil. Home page, Shop and Flower category read: no certificate or lab word or link; the shop is script-built and shows no products in the HTML, and it points to a LeafLink brand page (not read). The sitemap lists only two pages, both named new-page."
+  },
+  {
+   "brandKey": "fyre",
+   "brand": "FYRE",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": "https://fyreny.com/products",
+   "method": "list",
+   "status": "published-links-unreadable",
+   "pages": [
+    "https://fyreny.com/js/data.js?v=13"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://fyreny.com/coa/bx-runtz-eighth.pdf",
+   "note": "The Products page and product pages draw from the site's own js/data.js, which holds 18 products (eighths, 5-packs, pre-rolls; BX Runtz, Purple Toast, Sour Joker, NY Sour Diesel and others), each with a relative certificate path of the form coa/<product-id>.pdf. The paths are relative, not anchors in the HTML, and the PDFs themselves were not fetched. New York: the site says Farm2Hand, New York raised, lab tested; Sour Joker and BX Runtz match the listings. Not read daily: the feed holds relative coa/<id>.pdf paths in a JavaScript file; the reader does not resolve them there."
+  },
+  {
+   "brandKey": "mvp",
+   "brand": "MVP",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "No site of a New York cannabis brand called MVP found by web search. Guessed domains are parked pages (mvpcannabis.com, mvpfarm.com, mvpnyc.com) or an unrelated portfolio site (mvpny.com). MVP is also a well-known strain name, which clouds the search."
+  },
+  {
+   "brandKey": "breyers",
+   "brand": "Breyer's Cannabis",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": "https://www.breyerscannabis.com/",
+   "method": null,
+   "status": "published-drive-files",
+   "pages": [
+    "https://www.breyerscannabis.com/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": "https://drive.google.com/file/d/1V_xzr3G3P0JeewDjon-BoEx4JeiLUU70/view?usp=drive_link",
+   "note": "Found by domain guessing: breyerscannabis.com calls itself a premium New York cannabis cultivator, processor and distributor, gives OCM-MICR-24-000080 and links the farm site mtivafarms.com. Its home page has 17 distinct Google Drive file links labelled COA (37 link instances; many marked COA - 8/2025); the Blue Dream and Sour Diesel premium indoor flower blocks, both top strains of this key, carry one each, the others sit by vape, pre-roll and other products. Drive file links, so recorded but not read daily."
+  },
+  {
+   "brandKey": "smoaklandx",
+   "brand": "Smoakland X",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": "https://smoakland.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [
+    "https://smoakland.com/"
+   ],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "smoakland.com is Smoakland, a Bay Area and Sacramento delivery service whose delivery areas are Californian; its home page has no certificate or lab word or link and does not mention New York. It could not be tied to the New York 'Smoakland X' listings, and certificates of a California service would not count."
+  },
+  {
+   "brandKey": "sugartreez",
+   "brand": "Sugar Treez",
+   "checkedAt": "2026-10-08T05:03:21.463005+00:00",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "No site found by web search. sugartreez.com resolves but its TLS certificate does not match the name (not read), sugartreez.nyc is a parked page; neither could be tied to the brand."
+  },
+  {
+   "brandKey": "dankbydefinition",
+   "brand": "Dank By Definition.",
+   "checkedAt": "2026-10-08T05:00:00+00:00",
+   "url": null,
+   "method": null,
+   "status": "same-brand-as-surveyed",
+   "sameAs": "dank",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Brand printed 'Dank By Definition.' with strains Orange Trainwreck, OG Kush, Animal Cookies: same Dank By Definition already surveyed as dank (dankbydefinition.com/coaold)."
+  },
+  {
+   "brandKey": "vop",
+   "brand": "VOP",
+   "checkedAt": "2026-10-08T05:00:00+00:00",
+   "url": null,
+   "method": null,
+   "status": "same-brand-as-surveyed",
+   "sameAs": "voiceplant",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "VOP is Voice of the Plant: a Weedmaps VOP listing presents the brand as Voice of the Plant, a New York brand (Lemon Cherry Sherbert, Gello/Gelato lines). Not surveyed again."
+  },
+  {
+   "brandKey": "royalgeneticsmicro",
+   "brand": "Royal Genetics (Micro)",
+   "checkedAt": "2026-10-08T05:00:00+00:00",
+   "url": null,
+   "method": null,
+   "status": "same-brand-as-surveyed",
+   "sameAs": "royalgenetics",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "royalgeneticsny.com (Royal Genetics, New York Micro Cannabis Flower) sells Arancio Loco, Bellini and Clementine OG, the strains listed for Royal Genetics (Micro); already surveyed (COA Drive folder)."
+  },
+  {
+   "brandKey": "milkweedmicro",
+   "brand": "Milkweed (Micro)",
+   "checkedAt": "2026-10-08T05:00:00+00:00",
+   "url": null,
+   "method": null,
+   "status": "same-brand-as-surveyed",
+   "sameAs": "milkweed",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "milkweed.life is a New York indoor microbusiness (OCM-MICR-24-000133, Back Home Farm LLC) with a certifications page linking a COA Google Drive folder; already surveyed as milkweed. The '(Micro)' menu name and '(Indoor Hydroponics)' strain tags fit it, but the home page does not list those strain names."
+  },
+  {
+   "brandKey": "thebotanist",
+   "brand": "The Botanist",
+   "checkedAt": "2026-10-08T05:00:00+00:00",
+   "url": null,
+   "method": null,
+   "status": "same-brand-as-surveyed",
+   "sameAs": "botanist",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Same brand as surveyed 'Botanist' (menus print The Botanist). Not re-surveyed."
+  },
+  {
+   "brandKey": "voiceoftheplant",
+   "brand": "Voice of the Plant",
+   "checkedAt": "2026-10-08T05:00:00+00:00",
+   "url": null,
+   "method": null,
+   "status": "same-brand-as-surveyed",
+   "sameAs": "voiceplant",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Voice of the Plant printed in full; surveyed key voiceplant. Not re-surveyed."
+  },
+  {
+   "brandKey": "kingsandqueens",
+   "brand": "Kings and Queens",
+   "checkedAt": "2026-10-08T05:00:00+00:00",
+   "url": null,
+   "method": null,
+   "status": "same-brand-as-surveyed",
+   "sameAs": "kingsqueens",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Kings and Queens vs Kings & Queens; same brand spelled with and without the ampersand."
+  },
+  {
+   "brandKey": "cannagenix",
+   "brand": "CANNAGENIX",
+   "checkedAt": "2026-10-08T05:00:00+00:00",
+   "url": null,
+   "method": null,
+   "status": "same-brand-as-surveyed",
+   "sameAs": "canagenix",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "CANNAGENIX in this batch vs surveyed 'Canagenix' (one n): almost certainly the same brand, spelling differs. Not re-surveyed."
+  },
+  {
+   "brandKey": "theplugpack",
+   "brand": "The Plug Pack",
+   "checkedAt": "2026-10-08T05:00:00+00:00",
+   "url": null,
+   "method": null,
+   "status": "same-brand-as-surveyed",
+   "sameAs": "plugpack",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Same brand 'The Plug Pack'; already surveyed under key plugpack (no-first-party-source-found-in-search)."
+  },
+  {
+   "brandKey": "smoke",
+   "brand": "Smoke",
+   "checkedAt": "2026-10-08T05:00:00+00:00",
+   "url": null,
+   "method": null,
+   "status": "same-brand-as-surveyed",
+   "sameAs": "smokewrld",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Same brand: smokewrld.com ('Smoke', Brooklyn NY; COA Reports page) is surveyed as smokewrld, and its flower strains page lists Candy Gas and Blue Nerdz, two of this brand's top strains."
+  },
+  {
+   "brandKey": "houseofsacci",
+   "brand": "House of Sacci",
+   "checkedAt": "2026-10-08T05:00:00+00:00",
+   "url": null,
+   "method": null,
+   "status": "same-brand-as-surveyed",
+   "sameAs": "housesacci",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Same brand, House of Sacci (houseofsacci.com, Buffalo NY licensed cultivator). Not redone. For the record: vape-faq page says to scan the QR on vape packaging; the wholesale page says lab results are on a password-protected partner page (/marketing), which was not opened; no COA links on the public site."
+  },
+  {
+   "brandKey": "wizardtree",
+   "brand": "Wizard Tree",
+   "checkedAt": "2026-10-08T05:00:00+00:00",
+   "url": null,
+   "method": null,
+   "status": "same-brand-as-surveyed",
+   "sameAs": "wizardtrees",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Menus print 'Wizard Tree'; the surveyed Wizard Trees (wizardtrees.com/states/new-york, 'portal opens in NYC') is the only cannabis brand of that name found. wizardtree.com (no 's') disallows all agents in robots.txt and was not read. Probable, not proven."
+  },
+  {
+   "brandKey": "backhomemicro",
+   "brand": "Back Home Cannabis Company (Micro)",
+   "checkedAt": "2026-10-08T05:00:00+00:00",
+   "url": null,
+   "method": null,
+   "status": "same-brand-as-surveyed",
+   "sameAs": "backhome",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Back Home Cannabis Company (Micro) is the micro-business licence of Back Home Cannabis Co; the surveyed source nanticoke.co/lab-results lists a 'Back Home Farm' group with Jack Herer lots. Probable, not proven; the micro licence may keep separate lots."
+  },
+  {
+   "brandKey": "dadaexotics",
+   "brand": "Dada Exotics",
+   "checkedAt": "2026-10-08T05:00:00+00:00",
+   "url": null,
+   "method": null,
+   "status": "same-brand-as-surveyed",
+   "sameAs": "dada",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "Same brand: dadaexotics.com (the site surveyed under 'dada') says it was born from New York's smoking culture and its strain list includes Moutai and Hash Burger, two of this key's top strains."
+  },
+  {
+   "brandKey": "preferred",
+   "brand": "PREFERRED",
+   "checkedAt": "2026-10-08T05:00:00+00:00",
+   "url": null,
+   "method": null,
+   "status": "same-brand-as-surveyed",
+   "sameAs": "preferredgardens",
+   "pages": [],
+   "certificateLinks": [],
+   "exampleUrl": null,
+   "note": "The register's producer data (data/producers.json, licence OCM-PROC-24-000146, Preferred Source Holdings LLC) lists 'PREFERRED' and 'Preferred' as spellings of the brand beside 'Preferred Gardens'. preferredgardens.com has a New York products page and a product-verification page (scan, verify, earn rewards) but no certificate link; same finding as the earlier survey."
   }
  ]
 }
