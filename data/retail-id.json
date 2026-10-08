@@ -399,13 +399,30 @@
    "found": true,
    "facility": "Veterans Holdings, Inc",
    "product": "Spacebuds Moon Matter 1g - Blueberry Muffin",
-   "strain": "Spacebuds Moon Matter 1g ",
+   "strain": null,
    "packaged": "2026-09-17",
    "tested": "2026-07-10",
    "harvested": null,
    "lab": "Analytical Testing Center of Central New York",
    "batchTag": "1A4120300000137000001727",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 52.3,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.2115,
+    "CARYOPHYLLENE_OXIDE": 0.0558,
+    "HUMULENE": 0.0731,
+    "LIMONENE": 0.1811,
+    "MYRCENE": 0.0598,
+    "PINENE_ALPHA": 0.5015,
+    "PINENE_BETA": 0.0896,
+    "TERPINOLENE": 0.3235,
+    "VALENCENE": 0.0531
+   },
+   "labLicense": "OCM-CPL-24-00008-L1",
+   "labDoc": 129105,
+   "coaFile": true
   },
   "1A4120300000140000000647": {
    "found": true,
@@ -3745,7 +3762,20 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300000235000008054",
-   "checked": "2026-10-01"
+   "checked": "2026-10-01",
+   "thc": 26.669,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.2,
+    "HUMULENE": 0.07,
+    "LIMONENE": 0.09,
+    "MYRCENE": 0.26,
+    "PINENE_ALPHA": 0.1
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 173038,
+   "coaFile": true
   },
   "1A4120300000235000008019": {
    "found": true,
@@ -3757,7 +3787,22 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300000235000008058",
-   "checked": "2026-10-01"
+   "checked": "2026-10-01",
+   "thc": 27.497,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.25,
+    "HUMULENE": 0.09,
+    "LIMONENE": 0.19,
+    "LINALOOL": 0.13,
+    "MYRCENE": 0.31,
+    "PINENE_ALPHA": 0.14,
+    "PINENE_BETA": 0.08
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 170074,
+   "coaFile": true
   },
   "1A4120300000235000008029": {
    "found": true,
@@ -3769,7 +3814,24 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300000235000008059",
-   "checked": "2026-10-01"
+   "checked": "2026-10-01",
+   "thc": 27.698,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.07,
+    "CARYOPHYLLENE": 0.2,
+    "GUAIOL": 0.07,
+    "HUMULENE": 0.09,
+    "LIMONENE": 0.13,
+    "LINALOOL": 0.08,
+    "MYRCENE": 0.53,
+    "PINENE_ALPHA": 0.24,
+    "PINENE_BETA": 0.12
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 173040,
+   "coaFile": true
   },
   "1A4120300000235000008063": {
    "found": true,
@@ -3781,7 +3843,21 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300000235000008085",
-   "checked": "2026-10-01"
+   "checked": "2026-10-01",
+   "thc": 27.478,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.19,
+    "HUMULENE": 0.09,
+    "LIMONENE": 0.14,
+    "MYRCENE": 0.63,
+    "PINENE_ALPHA": 0.26,
+    "PINENE_BETA": 0.12
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 170791,
+   "coaFile": true
   },
   "1A4120300000235000008748": {
    "found": true,
@@ -7751,7 +7827,24 @@
    "harvested": "2026-02-24",
    "lab": "Reliable Labs, Inc.",
    "batchTag": "1A4120300000321000001889",
-   "checked": "2026-10-01"
+   "checked": "2026-10-01",
+   "thc": 28.45,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.3299,
+    "HUMULENE": 0.1226,
+    "LIMONENE": 0.6512,
+    "LINALOOL": 0.1077,
+    "MYRCENE": 0.1187,
+    "PINENE_ALPHA": 0.1281,
+    "PINENE_BETA": 0.1213,
+    "TERPINEOL": 0.0469,
+    "VALENCENE": 0.0517
+   },
+   "labLicense": "OCM-CPL-24-00011-L1",
+   "labDoc": 124436,
+   "coaFile": true
   },
   "1A4120300000321000002309": {
    "found": true,
@@ -7787,7 +7880,22 @@
    "harvested": "2026-07-29",
    "lab": "Reliable Labs, Inc.",
    "batchTag": "1A4120300000321000002419",
-   "checked": "2026-10-01"
+   "checked": "2026-10-01",
+   "thc": 29.84,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.1297,
+    "CARYOPHYLLENE": 1.5515,
+    "HUMULENE": 0.5591,
+    "LIMONENE": 0.1558,
+    "LINALOOL": 0.0898,
+    "PINENE_ALPHA": 0.0159,
+    "TERPINEOL": 0.0125
+   },
+   "labLicense": "OCM-CPL-24-00011-L1",
+   "labDoc": 169450,
+   "coaFile": true
   },
   "1A4120300000321000002445": {
    "found": true,
@@ -7799,7 +7907,23 @@
    "harvested": "2026-07-02",
    "lab": "Reliable Labs, Inc.",
    "batchTag": "1A4120300000321000002418",
-   "checked": "2026-10-01"
+   "checked": "2026-10-01",
+   "thc": 22.53,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.2757,
+    "HUMULENE": 0.1045,
+    "LIMONENE": 0.4651,
+    "LINALOOL": 0.1074,
+    "MYRCENE": 0.0723,
+    "PINENE_ALPHA": 0.0752,
+    "PINENE_BETA": 0.0695,
+    "TERPINEOL": 0.049
+   },
+   "labLicense": "OCM-CPL-24-00011-L1",
+   "labDoc": 169449,
+   "coaFile": true
   },
   "1A4120300000321000002488": {
    "found": true,
@@ -13383,7 +13507,29 @@
    "harvested": null,
    "lab": "Kaycha Labs NY",
    "batchTag": "1A41203000005E1000002422",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 23.8678,
+   "cbd": 0.0265,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.05,
+    "CARYOPHYLLENE": 0.53,
+    "CARYOPHYLLENE_OXIDE": 0.01,
+    "FARNESENE": 0.07,
+    "FENCHOL": 0.01,
+    "HUMULENE": 0.21,
+    "LIMONENE": 0.18,
+    "LINALOOL": 0.08,
+    "MYRCENE": 0.11,
+    "OCIMENE": 0.04,
+    "PINENE_ALPHA": 0.01,
+    "PINENE_BETA": 0.02,
+    "TERPINEOL": 0.01,
+    "VALENCENE": 0.02
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 169766,
+   "coaFile": true
   },
   "1A41203000005E1000002476": {
    "found": true,
@@ -14731,7 +14877,25 @@
    "harvested": "2026-03-05",
    "lab": "Kaycha Labs NY",
    "batchTag": "1A412030000070A000000340",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 35.0282,
+   "cbd": 0.0,
+   "terpenesTotal": 1.99,
+   "terpenes": {
+    "BISABOLOL": 0.17,
+    "CARYOPHYLLENE": 0.67,
+    "FARNESENE": 0.04,
+    "FENCHOL": 0.07,
+    "HUMULENE": 0.27,
+    "LIMONENE": 0.46,
+    "MYRCENE": 0.1,
+    "PINENE_BETA": 0.1,
+    "TERPINEOL": 0.07,
+    "TERPINOLENE": 0.04
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 93932,
+   "coaFile": true
   },
   "1A412030000070B000062892": {
    "found": false,
@@ -16551,6 +16715,10 @@
    "found": false,
    "checked": "2026-09-30"
   },
+  "1A4120300000C1E000092299": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
   "1A4120300000C1E000092624": {
    "found": false,
    "checked": "2026-10-04"
@@ -16742,6 +16910,10 @@
   "1A4120300000C1E000099062": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000C1E000099281": {
+   "found": false,
+   "checked": "2026-10-08"
   },
   "1A4120300000C1E000113022": {
    "found": false,
@@ -17071,6 +17243,18 @@
    "found": false,
    "checked": "2026-10-06"
   },
+  "1A4120300000C1E000122612": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
+  "1A4120300000C1E000122613": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
+  "1A4120300000C1E000122615": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
   "1A4120300000C1E000124078": {
    "found": false,
    "checked": "2026-09-29"
@@ -17271,6 +17455,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000C1E000125700": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
   "1A4120300000C1E000125942": {
    "found": false,
    "checked": "2026-10-06"
@@ -17366,6 +17554,38 @@
   "1A4120300000C1E000128455": {
    "found": false,
    "checked": "2026-10-02"
+  },
+  "1A4120300000C1E000128538": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
+  "1A4120300000C1E000128540": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
+  "1A4120300000C1E000128550": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
+  "1A4120300000C1E000128552": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
+  "1A4120300000C1E000128554": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
+  "1A4120300000C1E000128556": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
+  "1A4120300000C1E000128558": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
+  "1A4120300000C1E000128560": {
+   "found": false,
+   "checked": "2026-10-08"
   },
   "1A4120300000C1E000129325": {
    "found": false,
@@ -17794,6 +18014,14 @@
   "1A4120300000C1E000141730": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000C1E000141938": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
+  "1A4120300000C1E000141981": {
+   "found": false,
+   "checked": "2026-10-08"
   },
   "1A4120300000C1E000142002": {
    "found": false,
@@ -18649,7 +18877,32 @@
    "harvested": "2026-07-28",
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300000C1F000020786",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 26.9094,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.03,
+    "CARYOPHYLLENE": 0.16,
+    "CARYOPHYLLENE_OXIDE": 0.01,
+    "FARNESENE": 0.04,
+    "FENCHOL": 0.01,
+    "GUAIOL": 0.08,
+    "HUMULENE": 0.07,
+    "LIMONENE": 0.11,
+    "LINALOOL": 0.01,
+    "MYRCENE": 0.45,
+    "OCIMENE": 0.02,
+    "PHELLANDRENE": 0.04,
+    "PINENE_ALPHA": 0.05,
+    "PINENE_BETA": 0.09,
+    "TERPINEOL": 0.04,
+    "TERPINOLENE": 1.14,
+    "VALENCENE": 0.01
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 174413,
+   "coaFile": true
   },
   "1A4120300000C1F000044525": {
    "found": true,
@@ -18661,7 +18914,29 @@
    "harvested": "2026-07-15",
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300000C1F000020787",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 24.024,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.05,
+    "CAMPHENE": 0.01,
+    "CARYOPHYLLENE": 0.43,
+    "CARYOPHYLLENE_OXIDE": 0.01,
+    "FARNESENE": 0.05,
+    "FENCHOL": 0.03,
+    "HUMULENE": 0.2,
+    "LIMONENE": 0.34,
+    "LINALOOL": 0.17,
+    "MYRCENE": 0.25,
+    "PINENE_ALPHA": 0.02,
+    "PINENE_BETA": 0.04,
+    "TERPINEOL": 0.04,
+    "VALENCENE": 0.01
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 172998,
+   "coaFile": true
   },
   "1A4120300000C1F000044532": {
    "found": true,
@@ -18673,7 +18948,20 @@
    "harvested": "2026-07-08",
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300000C1F000020780",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 24.0694,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.45,
+    "FARNESENE": 0.05,
+    "HUMULENE": 0.13,
+    "LIMONENE": 0.3,
+    "LINALOOL": 0.11
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 175440,
+   "coaFile": true
   },
   "1A4120300000C1F000044585": {
    "found": true,
@@ -18685,7 +18973,21 @@
    "harvested": "2026-08-17",
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300000C1F000020669",
-   "checked": "2026-10-03"
+   "checked": "2026-10-03",
+   "thc": 25.5862,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.249,
+    "FARNESENE": 0.057,
+    "HUMULENE": 0.097,
+    "MYRCENE": 0.11,
+    "OCIMENE": 0.185,
+    "TERPINOLENE": 0.953
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 167592,
+   "coaFile": true
   },
   "1A4120300000C1F000044604": {
    "found": true,
@@ -18697,7 +18999,21 @@
    "harvested": "2026-08-17",
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300000C1F000020571",
-   "checked": "2026-10-03"
+   "checked": "2026-10-03",
+   "thc": 27.6601,
+   "cbd": 0.057,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.333,
+    "GUAIOL": 0.09,
+    "HUMULENE": 0.119,
+    "LIMONENE": 0.408,
+    "LINALOOL": 0.153,
+    "MYRCENE": 0.725
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 168533,
+   "coaFile": true
   },
   "1A4120300000C1F000044608": {
    "found": true,
@@ -18709,7 +19025,20 @@
    "harvested": "2026-08-10",
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300000C1F000020498",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 22.2119,
+   "cbd": 0.0615,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.095,
+    "LINALOOL": 0.152,
+    "MYRCENE": 0.992,
+    "OCIMENE": 0.32,
+    "PINENE_ALPHA": 0.295
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 168543,
+   "coaFile": true
   },
   "1A4120300000C1F000044609": {
    "found": true,
@@ -18721,7 +19050,25 @@
    "harvested": "2026-08-03",
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300000C1F000020497",
-   "checked": "2026-10-02"
+   "checked": "2026-10-02",
+   "thc": 28.822,
+   "cbd": 0.0614,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.042,
+    "CARYOPHYLLENE": 0.117,
+    "FENCHOL": 0.083,
+    "GUAIOL": 0.063,
+    "HUMULENE": 0.04,
+    "LIMONENE": 0.648,
+    "LINALOOL": 0.272,
+    "MYRCENE": 0.357,
+    "PINENE_BETA": 0.109,
+    "TERPINEOL": 0.074
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 168545,
+   "coaFile": true
   },
   "1A4120300000C1F000044611": {
    "found": true,
@@ -18733,7 +19080,28 @@
    "harvested": "2026-08-17",
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300000C1F000020495",
-   "checked": "2026-10-02"
+   "checked": "2026-10-02",
+   "thc": 30.2129,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.03,
+    "CAMPHENE": 0.01,
+    "CARYOPHYLLENE": 0.42,
+    "FENCHOL": 0.06,
+    "HUMULENE": 0.19,
+    "LIMONENE": 0.7,
+    "LINALOOL": 0.14,
+    "MYRCENE": 0.25,
+    "OCIMENE": 0.02,
+    "PINENE_ALPHA": 0.07,
+    "PINENE_BETA": 0.1,
+    "TERPINEOL": 0.05,
+    "VALENCENE": 0.02
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 168546,
+   "coaFile": true
   },
   "1A4120300000C1F000044617": {
    "found": true,
@@ -18745,7 +19113,27 @@
    "harvested": "2026-08-17",
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300000C1F000020494",
-   "checked": "2026-10-03"
+   "checked": "2026-10-03",
+   "thc": 31.6336,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.11,
+    "CAMPHENE": 0.01,
+    "CARYOPHYLLENE": 0.43,
+    "FENCHOL": 0.05,
+    "HUMULENE": 0.14,
+    "LIMONENE": 0.51,
+    "LINALOOL": 0.11,
+    "MYRCENE": 0.78,
+    "PINENE_ALPHA": 0.04,
+    "PINENE_BETA": 0.08,
+    "TERPINEOL": 0.04,
+    "VALENCENE": 0.01
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 168548,
+   "coaFile": true
   },
   "1A4120300000C1F000044618": {
    "found": true,
@@ -18757,7 +19145,23 @@
    "harvested": "2026-08-17",
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300000C1F000020491",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 23.9843,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.04,
+    "GUAIOL": 0.03,
+    "HUMULENE": 0.02,
+    "LIMONENE": 0.01,
+    "MYRCENE": 0.6,
+    "OCIMENE": 0.16,
+    "PINENE_ALPHA": 0.05,
+    "PINENE_BETA": 0.02
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 167424,
+   "coaFile": true
   },
   "1A4120300000C1F000044622": {
    "found": true,
@@ -18769,7 +19173,23 @@
    "harvested": "2026-08-17",
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300000C1F000020488",
-   "checked": "2026-10-02"
+   "checked": "2026-10-02",
+   "thc": 25.8219,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.05,
+    "GUAIOL": 0.03,
+    "HUMULENE": 0.02,
+    "LIMONENE": 0.01,
+    "MYRCENE": 0.68,
+    "OCIMENE": 0.19,
+    "PINENE_ALPHA": 0.06,
+    "PINENE_BETA": 0.02
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 167522,
+   "coaFile": true
   },
   "1A4120300000C1F000044626": {
    "found": true,
@@ -19361,7 +19781,28 @@
    "harvested": null,
    "lab": "Analytical Testing Center of Central New York",
    "batchTag": "1A4120300000CFB000000077",
-   "checked": "2026-09-30"
+   "checked": "2026-09-30",
+   "thc": 26.4,
+   "cbd": 0.0635,
+   "terpenesTotal": 1.7837,
+   "terpenes": {
+    "BISABOLOL": 0.1074,
+    "CAMPHENE": 0.0136,
+    "CARYOPHYLLENE": 0.4903,
+    "CARYOPHYLLENE_OXIDE": 0.0289,
+    "FENCHOL": 0.0511,
+    "HUMULENE": 0.2071,
+    "LIMONENE": 0.378,
+    "LINALOOL": 0.0935,
+    "MYRCENE": 0.0633,
+    "PINENE_ALPHA": 0.0444,
+    "PINENE_BETA": 0.0621,
+    "TERPINEOL": 0.0513,
+    "VALENCENE": 0.1811
+   },
+   "labLicense": "OCM-CPL-24-00008-L1",
+   "labDoc": 119516,
+   "coaFile": true
   },
   "1A4120300000CFB000001776": {
    "found": true,
@@ -19598,6 +20039,10 @@
    "batchTag": "1A4120300000D7C000002761",
    "checked": "2026-09-29"
   },
+  "1A4120300000D7F000000552": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
   "1A4120300000D7F000010586": {
    "found": false,
    "checked": "2026-09-29"
@@ -19686,6 +20131,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000D7F000023108": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
   "1A4120300000D7F000023579": {
    "found": false,
    "checked": "2026-09-29"
@@ -19722,9 +20171,17 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000D7F000024767": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
   "1A4120300000D7F000024828": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000D7F000025071": {
+   "found": false,
+   "checked": "2026-10-08"
   },
   "1A4120300000D7F000025228": {
    "found": false,
@@ -19762,6 +20219,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000D7F000029405": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
   "1A4120300000D7F000029417": {
    "found": false,
    "checked": "2026-09-29"
@@ -19797,6 +20258,10 @@
   "1A4120300000D7F000032219": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000D7F000032246": {
+   "found": false,
+   "checked": "2026-10-08"
   },
   "1A4120300000D7F000034627": {
    "found": false,
@@ -19886,6 +20351,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000D7F000043494": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
   "1A4120300000D7F000043514": {
    "found": false,
    "checked": "2026-09-29"
@@ -19906,6 +20375,18 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000D7F000043876": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
+  "1A4120300000D7F000043878": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
+  "1A4120300000D7F000043880": {
+   "found": false,
+   "checked": "2026-10-08"
+  },
   "1A4120300000D7F000044936": {
    "found": false,
    "checked": "2026-09-30"
@@ -19913,6 +20394,10 @@
   "1A4120300000D7F000044937": {
    "found": false,
    "checked": "2026-09-30"
+  },
+  "1A4120300000D7F000045109": {
+   "found": false,
+   "checked": "2026-10-08"
   },
   "1A4120300000D7F000045110": {
    "found": false,
@@ -20280,7 +20765,19 @@
    "harvested": "2026-08-24",
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300001010000000359",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 32.9536,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.109,
+    "CARYOPHYLLENE": 0.292,
+    "HUMULENE": 0.095,
+    "LIMONENE": 0.226
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 170663,
+   "coaFile": true
   },
   "1A4120300001082000000332": {
    "found": false,
@@ -20916,7 +21413,20 @@
    "harvested": null,
    "lab": "Kaycha Labs NY",
    "batchTag": "1A4120300001331000000151",
-   "checked": "2026-10-04"
+   "checked": "2026-10-04",
+   "thc": 33.6465,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.04,
+    "CARYOPHYLLENE": 0.306,
+    "HUMULENE": 0.089,
+    "LIMONENE": 0.21,
+    "LINALOOL": 0.172
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 171704,
+   "coaFile": true
   },
   "1A412030000151C000000223": {
    "found": true,
@@ -21276,7 +21786,27 @@
    "harvested": "2026-06-29",
    "lab": "Kaycha Labs NY",
    "batchTag": "1A41203000015F1000000646",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 23.9889,
+   "cbd": 0.0345,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.02,
+    "CARYOPHYLLENE": 0.23,
+    "FENCHOL": 0.01,
+    "GERANIOL": 0.01,
+    "HUMULENE": 0.09,
+    "LIMONENE": 0.12,
+    "LINALOOL": 0.04,
+    "MYRCENE": 0.43,
+    "PINENE_ALPHA": 0.03,
+    "PINENE_BETA": 0.03,
+    "TERPINEOL": 0.02,
+    "VALENCENE": 0.01
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 151524,
+   "coaFile": true
   },
   "1A41203000015F1000000854": {
    "found": true,
@@ -21288,7 +21818,27 @@
    "harvested": "2026-06-29",
    "lab": "Kaycha Labs NY",
    "batchTag": "1A41203000015F1000000646",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 23.9889,
+   "cbd": 0.0345,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.02,
+    "CARYOPHYLLENE": 0.23,
+    "FENCHOL": 0.01,
+    "GERANIOL": 0.01,
+    "HUMULENE": 0.09,
+    "LIMONENE": 0.12,
+    "LINALOOL": 0.04,
+    "MYRCENE": 0.43,
+    "PINENE_ALPHA": 0.03,
+    "PINENE_BETA": 0.03,
+    "TERPINEOL": 0.02,
+    "VALENCENE": 0.01
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 151524,
+   "coaFile": true
   },
   "1A4120300001612000001057": {
    "found": false,
@@ -25460,7 +26010,14 @@
    "harvested": null,
    "lab": null,
    "batchTag": null,
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": null,
+   "cbd": null,
+   "terpenesTotal": null,
+   "terpenes": {},
+   "labLicense": null,
+   "labDoc": null,
+   "coaFile": false
   },
   "1A4120300001AA1000102398": {
    "found": false,
@@ -25548,7 +26105,14 @@
    "harvested": null,
    "lab": null,
    "batchTag": null,
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": null,
+   "cbd": null,
+   "terpenesTotal": null,
+   "terpenes": {},
+   "labLicense": null,
+   "labDoc": null,
+   "coaFile": false
   },
   "1A4120300001AA1000103039": {
    "found": false,
@@ -30793,7 +31357,18 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300004396000006482",
-   "checked": "2026-09-30"
+   "checked": "2026-09-30",
+   "thc": 25.412,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.12,
+    "CARYOPHYLLENE": 0.42,
+    "HUMULENE": 0.14
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 143051,
+   "coaFile": true
   },
   "1A4120300004396000010476": {
    "found": true,
@@ -30805,7 +31380,17 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300004396000006478",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 25.411,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.4,
+    "HUMULENE": 0.14
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 143052,
+   "coaFile": true
   },
   "1A4120300004396000010477": {
    "found": true,
@@ -30817,7 +31402,18 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300004396000006480",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 24.7,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.14,
+    "CARYOPHYLLENE": 0.42,
+    "HUMULENE": 0.14
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 143053,
+   "coaFile": true
   },
   "1A4120300004396000010669": {
    "found": true,
@@ -30829,7 +31425,17 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300004396000006481",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 26.48,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.41,
+    "HUMULENE": 0.14
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 141061,
+   "coaFile": true
   },
   "1A4120300004396000010670": {
    "found": true,
@@ -30841,7 +31447,18 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300004396000006482",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 25.412,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.12,
+    "CARYOPHYLLENE": 0.42,
+    "HUMULENE": 0.14
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 143051,
+   "coaFile": true
   },
   "1A4120300004396000010671": {
    "found": true,
@@ -30853,7 +31470,19 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300004396000001253",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 24.036,
+   "cbd": 0.0,
+   "terpenesTotal": 0.55,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.22,
+    "HUMULENE": 0.09,
+    "LIMONENE": 0.15,
+    "MYRCENE": 0.08
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 106224,
+   "coaFile": true
   },
   "1A4120300004396000010672": {
    "found": true,
@@ -30865,7 +31494,18 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300004396000006988",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 35.007,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.27,
+    "HUMULENE": 0.1,
+    "LIMONENE": 0.08
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 164584,
+   "coaFile": true
   },
   "1A4120300004396000010673": {
    "found": true,
@@ -30877,7 +31517,17 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300004396000007011",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 27.432,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.17,
+    "LIMONENE": 0.08
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 166219,
+   "coaFile": true
   },
   "1A4120300004396000010674": {
    "found": true,
@@ -30889,7 +31539,17 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300004396000006478",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 25.411,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.4,
+    "HUMULENE": 0.14
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 143052,
+   "coaFile": true
   },
   "1A4120300004396000010675": {
    "found": true,
@@ -30901,7 +31561,18 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300004396000006479",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 26.19,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.14,
+    "CARYOPHYLLENE": 0.41,
+    "HUMULENE": 0.15
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 143222,
+   "coaFile": true
   },
   "1A4120300004396000010676": {
    "found": true,
@@ -30913,7 +31584,18 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300004396000006480",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 24.7,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.14,
+    "CARYOPHYLLENE": 0.42,
+    "HUMULENE": 0.14
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 143053,
+   "coaFile": true
   },
   "1A4120300004396000010677": {
    "found": true,
@@ -30925,7 +31607,18 @@
    "harvested": null,
    "lab": "Green Analytics NY, LLC",
    "batchTag": "1A4120300004396000001766",
-   "checked": "2026-09-29"
+   "checked": "2026-09-29",
+   "thc": 21.604,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.14,
+    "LIMONENE": 0.1,
+    "MYRCENE": 0.08
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 127534,
+   "coaFile": true
   },
   "1A41203000052D5000002106": {
    "found": false,
@@ -32040,33 +32733,6 @@
   "1A4120300000C1E000091643": "2026-10-07",
   "1A4120300000C1E000092277": "2026-10-07",
   "1A4120300000C1E000092279": "2026-10-07",
-  "1A4120300000C1E000092295": "2026-10-07",
-  "1A4120300000C1E000092299": "2026-10-07",
-  "1A4120300000C1E000099281": "2026-10-07",
-  "1A4120300000C1E000122612": "2026-10-07",
-  "1A4120300000C1E000122613": "2026-10-07",
-  "1A4120300000C1E000122615": "2026-10-07",
-  "1A4120300000C1E000125700": "2026-10-07",
-  "1A4120300000C1E000128538": "2026-10-07",
-  "1A4120300000C1E000128540": "2026-10-07",
-  "1A4120300000C1E000128550": "2026-10-07",
-  "1A4120300000C1E000128552": "2026-10-07",
-  "1A4120300000C1E000128554": "2026-10-07",
-  "1A4120300000C1E000128556": "2026-10-07",
-  "1A4120300000C1E000128558": "2026-10-07",
-  "1A4120300000C1E000128560": "2026-10-07",
-  "1A4120300000C1E000141938": "2026-10-07",
-  "1A4120300000C1E000141981": "2026-10-07",
-  "1A4120300000D7F000000552": "2026-10-07",
-  "1A4120300000D7F000023108": "2026-10-07",
-  "1A4120300000D7F000024767": "2026-10-07",
-  "1A4120300000D7F000025071": "2026-10-07",
-  "1A4120300000D7F000029405": "2026-10-07",
-  "1A4120300000D7F000032246": "2026-10-07",
-  "1A4120300000D7F000043494": "2026-10-07",
-  "1A4120300000D7F000043876": "2026-10-07",
-  "1A4120300000D7F000043878": "2026-10-07",
-  "1A4120300000D7F000043880": "2026-10-07",
-  "1A4120300000D7F000045109": "2026-10-07"
+  "1A4120300000C1E000092295": "2026-10-07"
  }
 }
