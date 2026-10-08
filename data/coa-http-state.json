@@ -199,5 +199,11 @@
   },
   "http://-content": {
     "errors": 1
+  },
+  "https://www.awalkinthepines.com": {
+    "errors": 0
+  },
+  "https://57d2f0ea-9db5-4fee-9779-f478952f0009.filesusr.com": {
+    "errors": 0
   }
 }
