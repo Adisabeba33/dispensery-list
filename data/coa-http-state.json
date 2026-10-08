@@ -205,5 +205,14 @@
   },
   "https://57d2f0ea-9db5-4fee-9779-f478952f0009.filesusr.com": {
     "errors": 0
+  },
+  "https://f2104a72-016e-4dba-9c1a-0d48aeb78fee.filesusr.com": {
+    "errors": 0
+  },
+  "http://cdn.shopify.com": {
+    "errors": 0
+  },
+  "https://cdn.shopify.com:443": {
+    "errors": 0
   }
 }
