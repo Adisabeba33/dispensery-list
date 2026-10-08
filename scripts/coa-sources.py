@@ -40,7 +40,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / "data/coa-sources.json"
 STATE = ROOT / "data/coa-http-state.json"
 READ_STATUSES = {"published-links", "published-list-folder"}
-MAX_PAGES = 150  # pages read per run, at most (60 until 8 October 2026, when 38 brands were added)
+MAX_PAGES = 150  # pages read per run, at most (60 until 8 October 2026, when 39 brands were added)
 COA_HOSTS = re.compile(
     r"(^|\.)(yourcoa\.com|labware\.cloud|kaycha\w*\.com|greenanalytics\w*\.com|drsciences\.com|"
     r"actlab\w*\.com|smithers\w*\.com|keystonestatetesting\.com)$",

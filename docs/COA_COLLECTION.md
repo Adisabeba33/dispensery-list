@@ -106,3 +106,33 @@ On 6 October Soma's curation batch 13 added urbanXtracts (its "authenticity
 chain" page, one certificate per lot; 15 flower lots pending, vapes and edibles
 reviewed as other products by lot code) and ProXtracts (its lab-results page;
 15 pending, joints and kief reviewed as other products by label).
+
+## Every shelf brand looked at, 8 October 2026
+
+181 brands with at least 15 listings had no certificate source. Each was
+looked for (the brand's own site or its producer's, found by search or by the
+`business_website` its licence carries in the OCM register snapshot of
+4 September 2026), and the 295 producer, processor and microbusiness websites
+in that register were swept for a page of certificates: the home page, the
+sitemap the site publishes, and up to eight of its own pages whose address or
+link text names certificates or lab results, all through the reader above.
+39 brands were added to the daily reading (84 pages; 58 brands and 111 pages
+in all), and their first scan found 2,006 certificate links. Pages read per run went from 60 to 150, pending brand links
+read per run from 200 to 300. The other brands are recorded with what was
+found: no site, a site without certificates (most large brands — Boukét,
+FIND., RYTHM, Grocery, MAJOR, Runtz — point to the QR code on the pack, which
+is Retail ID), a Google Drive folder, a wall (RYTHM's Cloudflare, Voice of the
+Plant, Moodz's password page), or a lot-number lookup with no list (FLUENT,
+Preferred Gardens). Honest PharmCo publishes Confident LIMS share pages, which
+are not PDFs and are not read.
+
+Kaycha's yourcoa.com download link (`coa-download/<sample>`), the form brands
+publish, answers for some samples with the viewer page; until 8 October none
+of Dank By Definition's 44 certificates had been read. `coa-dates.py` now
+reads, for such a viewer, the Download link the viewer itself prints for the
+same sample (`…?wl_id=0&mrk=0&is_view=1`), which returns the PDF.
+
+`scripts/retail-id.py` also asks the Metrc tags printed on certificates
+(`metrcTag` in `data/coa-dates.json`) — often the package the sample came
+from — after the shelf's own tags and only on the room they leave; a test of
+twelve found three cards. Not found, they are not rechecked.
