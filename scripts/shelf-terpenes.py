@@ -27,6 +27,14 @@ Alley Oop от ElectraLeaf четыре магазина Gotham и BudBiz печ
   этой позиции он не берётся: пустое поле лучше правдоподобной догадки;
 - в выгрузку идут партии, у которых в панели хотя бы три терпена.
 
+Панель позиции — то, что напечатало меню, а если меню терпенов не печатает, —
+панель сертификата из Metrc Retail ID пакета, метку которого меню печатает
+(data/retail-id.json, scripts/retail-id.py): это цифры самого сертификата,
+и в споре они весят как меню с приложенным сертификатом. Берётся, только
+если все найденные метки позиции несут одну панель и THC меню, если он есть,
+не дальше RETAIL_ID_THC от THC сертификата; без THC в меню позиция получает
+THC сертификата. Метки, давшие панель, партия несёт в retailId.
+
 У партии две даты возраста: packagedOn — с сертификата (день пробы из уже
 расфасованной партии или сама дата упаковки; packagedFrom говорит, какая) и
 firstOnShelf — первый день, когда такой THC у сорта бренда появился на полке
@@ -63,6 +71,8 @@ TAG_WINDOW_DAYS = 14
 LIFETIME = timedelta(weeks=16)
 MIN_TERPENES = 3
 SAME = 0.005  # ближе — одна и та же цифра, записанная иначе
+RETAIL_ID_THC = 1.0  # THC меню и сертификата Retail ID дальше — метка не этой банки
+PANEL_SOURCES = ("MENU_LISTING", "RETAIL_ID")
 
 _spec = importlib.util.spec_from_file_location("shelf_history", ROOT / "scripts/shelf-history.py")
 _history = importlib.util.module_from_spec(_spec)
@@ -195,7 +205,7 @@ def fold_twins(groups):
 
     def weight(g):
         return (len({r["licenseNumber"] for r, _p in g[1]}),
-                any((r.get("terpenes") or {}).get("coaUrl") for r, _p in g[1]))
+                any(certified(r.get("terpenes") or {}) for r, _p in g[1]))
 
     out = []
     for g in sorted(groups, key=weight, reverse=True):
@@ -230,10 +240,49 @@ def lot_name(key, rows):
     return top
 
 
+def tags_of(row, links):
+    tags = {links.get(t, links.get(str(t).upper(), t)).upper() for t in (row.get("packageIds") or []) if t}
+    return sorted(t for t in tags if re.fullmatch(r"1A4[0-9A-F]{21}", t))
+
+
+def from_retail_id(rows, packages, links):
+    """Позициям без панели в меню — панель сертификата их пакета из Retail ID."""
+    added = 0
+    for row in rows:
+        if (row.get("terpenes") or {}).get("source") in PANEL_SOURCES:
+            continue
+        cards = [(t, packages[t]) for t in tags_of(row, links)
+                 if (packages.get(t) or {}).get("found") is True and (packages[t].get("terpenes") or {})]
+        if not cards or len({json.dumps(c["terpenes"], sort_keys=True) for _t, c in cards}) != 1:
+            continue
+        card = cards[0][1]
+        thc, menu_thc = card.get("thc"), row.get("thcPercent")
+        if isinstance(menu_thc, (int, float)):
+            if not isinstance(thc, (int, float)) or abs(menu_thc - thc) > RETAIL_ID_THC:
+                continue
+        elif isinstance(thc, (int, float)):
+            row["thcPercent"] = round(thc, 2)
+        row["terpenes"] = {
+            "source": "RETAIL_ID",
+            "profile": [{"name": n, "percent": v} for n, v in card["terpenes"].items()],
+            "totalPercent": card.get("terpenesTotal"),
+            "labName": card.get("lab"),
+            "testedOn": card.get("tested"),
+            "coaUrl": None,
+            "retailId": [t for t, _c in cards],
+        }
+        added += 1
+    return added
+
+
+def certified(terpenes):
+    return bool(terpenes.get("coaUrl")) or terpenes.get("source") == "RETAIL_ID"
+
+
 def lots(rows):
     by_strain = defaultdict(list)
     for row in rows:
-        if (row.get("terpenes") or {}).get("source") != "MENU_LISTING":
+        if (row.get("terpenes") or {}).get("source") not in PANEL_SOURCES:
             continue
         panel = panel_of(row)
         key = key_of(row)
@@ -288,7 +337,7 @@ def lots(rows):
         groups = fold_twins(groups)
         for thc, members in groups:
             panel, dropped = merged([p for _r, p in members],
-                                    {i for i, (r, _p) in enumerate(members) if (r.get("terpenes") or {}).get("coaUrl")})
+                                    {i for i, (r, _p) in enumerate(members) if certified(r.get("terpenes") or {})})
             conflicts += dropped
             if len(panel) < MIN_TERPENES:
                 continue
@@ -303,6 +352,7 @@ def lots(rows):
                 "totalPercent": max((t.get("totalPercent") for t in terps if t.get("totalPercent")), default=None),
                 "shops": sorted({r["licenseNumber"] for r in rows_}),
                 "certificates": sorted({t["coaUrl"] for t in terps if t.get("coaUrl")}),
+                **({"retailId": ids} if (ids := sorted({i for t in terps for i in t.get("retailId") or []})) else {}),
                 "lineageStated": sorted({r["lineage"] for r in rows_ if r.get("lineage") not in (None, "UNKNOWN")}),
                 "read": min(_history.ny_day(r["capturedAt"]) for r in rows_),
                 "lastSeen": max(_history.ny_day(r["capturedAt"]) for r in rows_),
@@ -509,6 +559,11 @@ def dated(found, before, rows):
 
 def main():
     rows = listings_of(LISTINGS.read_text())
+    try:
+        rid = json.loads(RETAIL_ID.read_text())
+    except FileNotFoundError:
+        rid = {}
+    from_rid = from_retail_id(rows, rid.get("packages", {}), rid.get("links", {}))
     found, stray, conflicts = lots(rows)
     day = max((_history.ny_day(r["capturedAt"]) for r in rows if r.get("capturedAt")), default=None)
     today = len(found)
@@ -534,6 +589,8 @@ def main():
           f"{len(found) - today} из прошлых выгрузок, ещё живы), в архив ушло {len(gone)}; "
           f"{len({l['key'] for l in found})} сортов брендов, "
           f"с сертификатом {sum(1 for l in found if l['certificates'])}, "
+          f"с панелью из Retail ID {sum(1 for l in found if l.get('retailId'))} "
+          f"(позиций, получивших её, {from_rid}), "
           f"с датой теста {sum(1 for l in found if l.get('testedOn'))}, "
           f"с датой упаковки {sum(1 for l in found if l.get('packagedOn'))} "
           f"({', '.join(f'{k} {v}' for k, v in Counter(l['packagedFrom'] for l in found if l.get('packagedOn')).items())}), "
