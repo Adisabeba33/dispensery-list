@@ -162,7 +162,7 @@
     "errors": 0
   },
   "https://www.niagaracannabiscompany.com": {
-    "errors": 0
+    "errors": 1
   },
   "https://www.sauce.house": {
     "errors": 0
@@ -198,7 +198,7 @@
     "errors": 0
   },
   "http://-content": {
-    "errors": 1
+    "errors": 2
   },
   "https://www.awalkinthepines.com": {
     "errors": 0
