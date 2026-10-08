@@ -766,6 +766,36 @@ check('missing url stays null', toListing({ Name: 'X', type: 'Flower', Options: 
   const eighth = toListing({ Name: 'Merge Me', type: 'Flower', Options: ['3.5g'], POSMetaData: { canonicalPackageId: 'A' } }, shop, SRC, {});
   const ounce = toListing({ Name: 'Merge Me', type: 'Flower', Options: ['28g'], POSMetaData: { canonicalPackageId: 'B' } }, shop, SRC, {});
   check('merged sizes keep every package', mergeBySize([eighth, ounce])[0]?.packageIds, ['A', 'B']);
+  /* Menus that are not Dutchie's, as --dump-products printed them (October
+     2026). A batch name or a barcode is kept only when it is a tag. */
+  const tag = '1A4120300000218000020005';
+  const flowerOf = (extra) => toListing({ name: 'Northern Lights', category: 'Flower', Options: ['3.5g'], ...extra }, shop, SRC, {});
+  check('Carrot: a batch named after its tag', flowerOf({ batchName: tag, product: { batchName: tag } })?.packageIds, [tag]);
+  check('Carrot: a uuid batch name is not a tag',
+    flowerOf({ batchName: '6890bd82-3b40-470d-b9ba-db98118c8ff4' })?.packageIds, null);
+  check('Gotham: the relayed Dutchie block',
+    flowerOf({ meta_data: { batch_name: '1A4120300000C1D000034369', lab_result_url: null, packaged_date: '2026-09-23T04:00:00.000Z' } })?.packageIds,
+    ['1A4120300000C1D000034369']);
+  check('Gotham: and its packaged date',
+    flowerOf({ meta_data: { batch_name: 'NY-123456-78', packaged_date: '2026-09-23T04:00:00.000Z' } })?.packagedOn, '2026-09-23');
+  check('Treez: the Retail ID scanned as a barcode, a UPC left alone',
+    flowerOf({ productData: { barcodes: ['HTTPS://1A4.COM/13U2YPUQ3SUDKKJGFPIXC7', '850012345678'] } })?.packageIds,
+    ['HTTPS://1A4.COM/13U2YPUQ3SUDKKJGFPIXC7']);
+  check('Treez: a certificate scanned as a barcode',
+    flowerOf({ productData: { barcodes: ['https://ny.yourcoa.com/coa/coa-view?sample=AL51107002-002'] } })?.terpenes.coaUrl,
+    'https://ny.yourcoa.com/coa/coa-view?sample=AL51107002-002');
+  check('Sweed: the Retail ID as a size\'s sku',
+    flowerOf({ variants: [
+      { id: 509499, name: '3.5g', sku: 'HTTPS://1A4.COM/13U2YPUQ3X4Q5GLE0LG3K1', availableQty: 40, unitSize: { value: 3.5, unitAbbr: 'G' }, price: 25 },
+      { id: 509500, name: '7g', sku: '28030770', availableQty: 3, unitSize: { value: 7, unitAbbr: 'G' }, price: 45 },
+    ] })?.packageIds,
+    ['HTTPS://1A4.COM/13U2YPUQ3X4Q5GLE0LG3K1']);
+  check('Jane: the first of its lab_result_urls',
+    flowerOf({ lab_result_urls: ['https://lab.example.test/a.pdf', 'https://lab.example.test/b.pdf'] })?.terpenes.coaUrl,
+    'https://lab.example.test/a.pdf');
+  const signed = `https://storage.googleapis.com/jfk.example/science/COA.pdf?GoogleAccessId=x&Expires=4070908800&Signature=${'s'.repeat(560)}`;
+  check('JFK: the lab report links its certificate, long or not',
+    flowerOf({ labReport: { reportUrl: signed, labName: 'ACT Laboratories (NY)', batchNumber: 'BATCH-1628' } })?.terpenes.coaUrl, signed);
   const bare = toListing({ Name: 'Panel Later', type: 'Flower', Options: ['3.5g'], thc: 22.5 }, shop, SRC, {});
   const panelled = toListing({ Name: 'Panel Later', type: 'Flower', Options: ['7g'], thc: 22.5, terpenes: [
     { name: 'Myrcene', value: 0.5 }, { name: 'Limonene', value: 0.3 }, { name: 'Linalool', value: 0.1 }, { name: 'Humulene', value: 0.05 },

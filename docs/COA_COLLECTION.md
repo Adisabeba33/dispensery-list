@@ -136,3 +136,18 @@ same sample (`…?wl_id=0&mrk=0&is_view=1`), which returns the PDF.
 (`metrcTag` in `data/coa-dates.json`) — often the package the sample came
 from — after the shelf's own tags and only on the room they leave; a test of
 twelve found three cards. Not found, they are not rechecked.
+
+## Menus that print tags outside Dutchie, 8 October 2026
+
+Raw products of one or two shops per platform (`--dump-products`) were read
+for Metrc tags and certificate links the collector did not take. Carrot keeps
+the tag as `batchName` when the till behind it is Forleaf or LeafLogix (15 of
+32 Carrot shelves, about 1,120 listings), Treez's e-commerce keeps the Retail
+ID link or the tag among `productData.barcodes` (6 of 15 shops, about 240),
+Gotham relays Dutchie's block as `meta_data` (`batch_name`, `packaged_date`),
+and Sweed sometimes uses the Retail ID link as a size's `sku`. A value is kept
+only when it is a tag or a 1a4.com link. JFK Cannabis links each batch's
+certificate as `labReport.reportUrl` (93 of 342 listings; signed storage links
+up to 695 characters, so the address limit is now 1000). Nothing was found on
+Dispense, Blaze, iHeartJane (`lab_result_urls` empty), Joint, Flowhub, Cova,
+LeafBridge or Meadow.
