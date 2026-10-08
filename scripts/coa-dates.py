@@ -53,7 +53,7 @@ LOTS = ROOT / "data/shelf-terpenes.json"
 OUT = ROOT / "data/coa-dates.json"
 BACKFILL = 40  # сертификатов без отпечатка перечитывается за прогон
 PANEL_BACKFILL = 60  # прочитанных до панелей — дочитывается за прогон, ссылки брендов первыми
-PENDING_PER_RUN = 200  # опубликованных брендом, но не разобранных ссылок — за прогон (около четырёх дней на все 817)
+PENDING_PER_RUN = 300  # опубликованных брендом, но не разобранных ссылок — за прогон (200 до 8 октября 2026, когда страниц брендов стало втрое больше)
 SOURCES = ROOT / "data/coa-sources.json"
 
 _spec = importlib.util.spec_from_file_location("coa_forensics", ROOT / "scripts/coa-forensics.py")
