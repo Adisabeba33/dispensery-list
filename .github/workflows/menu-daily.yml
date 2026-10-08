@@ -198,7 +198,9 @@ jobs:
       # спрашиваются только новые, прочитанное хранится в coa-dates.json и
       # retail-id.json; партии ещё раз — чтобы новые получили даты. Retail ID —
       # не больше 150 запросов за прогон, по одному, с паузой 6–14 секунд (около
-      # 25 минут), остальное ждёт следующего дня, новые на полке — первыми. Отчёт
+      # 25 минут), остальное ждёт следующего дня, новые на полке — первыми; и
+      # пока найденные раньше не перечитаны ради панели сертификата (с 8 октября
+      # 2026: терпены, THC, CBD) — ещё до 150 (около 25 минут; дней на шесть). Отчёт
       # получает раздел о свежести новых партий (scripts/freshness.py). Перед
       # сертификатами заново читаются страницы, где бренды публикуют свои
       # сертификаты (scripts/coa-sources.py, только уже записанные страницы,
@@ -207,10 +209,12 @@ jobs:
       - name: Shelf lots
         continue-on-error: true
         # Brand certificate pages (a minute or two), Retail ID one card at a
-        # time and new certificates take about 40 minutes. If this step runs long it is stopped, and the day's menus
+        # time and new certificates take about 40 minutes — about 65 while the
+        # Retail ID cards found before 8 October 2026 are read again for their
+        # certificate panel (up to 150 more a run, for about six days). If this step runs long it is stopped, and the day's menus
         # still publish: until Publish, everything the run has read lives only
         # on this runner, and a job cut off by its own timeout loses it all.
-        timeout-minutes: 75
+        timeout-minutes: 105
         run: |
           sudo apt-get install -y -qq poppler-utils > /dev/null
           python scripts/shelf-terpenes.py

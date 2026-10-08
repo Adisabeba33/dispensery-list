@@ -20,6 +20,15 @@ Colorado Chem: урожай 17 января, тест в марте, банки 
 не меняются. Не найденный перепроверяется раз в RECHECK_DAYS — производитель
 может завести его позже. Сеть не ответила — перепроверяется в следующий раз.
 
+Карточка пакета — это и его сертификат: лаборатория, день теста, THC и CBD,
+терпены в процентах (coaCard), и у большинства — сам PDF. До 8 октября 2026
+сохранялись только даты, панель выбрасывалась; теперь она хранится
+(terpenes, thc, cbd, terpenesTotal, labLicense, labDoc, coaFile), а пакеты,
+найденные раньше, перечитываются отдельно — не больше BACKFILL_PER_RUN за
+прогон, самые свежие упаковки первыми, — пока не перечитаны все. PDF по
+ссылке карточки живёт сутки, поэтому хранится не ссылка, а то, что он есть:
+открыть его можно со страницы пакета (QR-код на банке, app.1a4.com).
+
 Retail ID — страница для покупателя с телефоном у банки, и спрашивается она
 так же: по одному запросу, с паузой PAUSE секунд, не больше MAX_PER_RUN за
 прогон (ссылки и карточки вместе). Сначала новые метки — самые свежие на
@@ -51,6 +60,26 @@ MAX_PER_RUN = 150
 RECHECK_MIN = 30
 PAUSE = (6, 14)
 STOP_AFTER_ERRORS = 5
+BACKFILL_PER_RUN = 150  # найденные до панели перечитываются, пока не перечитаны все
+
+# Имена терпенов карточки (bMyrcene, aPinene, caryophylleneOxide) → имена
+# реестра, те же, что у меню (scripts/menu-render.mjs, TERPENES).
+TERPENES = {
+    "myrcene": "MYRCENE", "betamyrcene": "MYRCENE", "limonene": "LIMONENE",
+    "caryophyllene": "CARYOPHYLLENE", "betacaryophyllene": "CARYOPHYLLENE",
+    "caryophylleneoxide": "CARYOPHYLLENE_OXIDE", "alphapinene": "PINENE_ALPHA", "pinene": "PINENE_ALPHA",
+    "betapinene": "PINENE_BETA", "linalool": "LINALOOL", "terpinolene": "TERPINOLENE",
+    "humulene": "HUMULENE", "alphahumulene": "HUMULENE", "ocimene": "OCIMENE", "betaocimene": "OCIMENE",
+    "bisabolol": "BISABOLOL", "alphabisabolol": "BISABOLOL", "nerolidol": "NEROLIDOL",
+    "transnerolidol": "NEROLIDOL", "valencene": "VALENCENE", "camphene": "CAMPHENE",
+    "eucalyptol": "EUCALYPTOL", "guaiol": "GUAIOL", "farnesene": "FARNESENE", "geraniol": "GERANIOL",
+    "borneol": "BORNEOL", "terpineol": "TERPINEOL", "alphaterpineol": "TERPINEOL",
+    "phellandrene": "PHELLANDRENE", "alphaphellandrene": "PHELLANDRENE", "carene": "CARENE",
+    "sabinene": "SABINENE", "fenchol": "FENCHOL", "terpinene": "TERPINENE",
+    "alphaterpinene": "TERPINENE", "gammaterpinene": "TERPINENE", "isopulegol": "ISOPULEGOL",
+    "cymene": "CYMENE", "pcymene": "CYMENE", "paracymene": "CYMENE",
+}
+GREEK = {"a": "alpha", "b": "beta", "g": "gamma"}
 
 
 def curl(url, *extra):
@@ -69,6 +98,41 @@ def resolve(link):
                              f"https://1a4.com/{code}"], capture_output=True, text=True).stdout
     found = LANDING.search(target or "")
     return found.group(1).upper() if found else None
+
+
+def terpene_name(key):
+    """bMyrcene → MYRCENE; имя, которого реестр не знает, — None."""
+    k = re.sub(r"[^a-z]", "", str(key).lower())
+    return TERPENES.get(k) or (TERPENES.get(GREEK[k[0]] + k[1:]) if k[:1] in GREEK else None)
+
+
+def number(value):
+    return round(float(value), 4) if isinstance(value, (int, float)) and not isinstance(value, bool) else None
+
+
+def panel(data, coa):
+    """Сертификат из карточки: терпены выше нуля (ноль — «не найдено»), THC,
+    CBD, сумма терпенов, лаборатория. Два имени карточки, ставшие одним
+    именем реестра, оба с цифрой, — терпен не пишется: пустое поле лучше
+    догадки."""
+    terpenes, twice = {}, set()
+    for key, t in (coa.get("terpenes") or {}).items():
+        name, pct = terpene_name(key), number((t or {}).get("percent"))
+        if name and pct:
+            if name in terpenes:
+                twice.add(name)
+            terpenes[name] = pct
+    totals = coa.get("totals") or {}
+    lab = coa.get("lab") or {}
+    return {
+        "thc": number((totals.get("thc") or {}).get("percent")),
+        "cbd": number((totals.get("cbd") or {}).get("percent")),
+        "terpenesTotal": number((totals.get("terpenes") or {}).get("percent")),
+        "terpenes": {k: v for k, v in sorted(terpenes.items()) if k not in twice},
+        "labLicense": lab.get("licenseNumber"),
+        "labDoc": lab.get("docId"),
+        "coaFile": bool((data.get("coaCard") or {}).get("fileLink")),
+    }
 
 
 def day(value):
@@ -140,6 +204,7 @@ def read_card(tag):
         "harvested": day(coa.get("harvestDate")),
         "lab": (coa.get("lab") or {}).get("name"),
         "batchTag": coa.get("batchTag"),
+        **panel(data, coa),
     }
 
 
@@ -185,22 +250,46 @@ def main(budget=None):
         if entry.get("found") is not None:
             waiting.pop(tag, None)
 
+    # Найденные до панели — перечитываются, пока не перечитаны все: свежие
+    # упаковки первыми. Своё место, сверх MAX_PER_RUN, чтобы не отнимать его
+    # у новых меток; остановка после ошибок подряд — та же.
+    unread = sorted((t for t in tags if (packages.get(t) or {}).get("found") is True
+                     and "terpenes" not in packages[t] and "panelChecked" not in packages[t]),
+                    key=lambda t: (packages[t].get("packaged") or "", t), reverse=True)
+    budget.left += BACKFILL_PER_RUN
+    refilled = 0
+    for tag in unread:
+        if not budget.take():
+            break
+        entry = card(tag)
+        budget.answered(entry.get("found") is not None)
+        if entry.get("found") is True:
+            packages[tag] = {**packages[tag], **entry}
+            refilled += 1
+        elif entry.get("found") is False:
+            packages[tag]["panelChecked"] = today.isoformat()
+
     OUT.write_text(json.dumps({
         "about": "Карточки пакетов из Metrc Retail ID (app.1a4.com) для меток, которые печатают "
-                 "меню: даты упаковки, теста и сбора. found=false — пакета нет в Retail ID "
+                 "меню: даты упаковки, теста и сбора и панель сертификата — THC, CBD, терпены в % выше "
+                 "нуля (имена реестра), лаборатория, есть ли PDF (coaFile). found=false — пакета нет в Retail ID "
                  "(перепроверяется раз в месяц). Спрашивается по одному, с паузой, не больше 150 "
-                 "запросов за прогон, новые на полке первыми; waiting — день, когда ещё не спрошенная "
+                 "запросов за прогон, новые на полке первыми, и до 150 перечитываний найденных без панели; waiting — день, когда ещё не спрошенная "
                  "метка впервые попала в меню. Пишется scripts/retail-id.py.",
         "links": dict(sorted(links.items())),
         "packages": dict(sorted(packages.items())),
         "waiting": dict(sorted(waiting.items())),
     }, ensure_ascii=False, indent=1) + "\n")
     found = [p for p in packages.values() if p.get("found")]
+    with_panel = [p for p in found if p.get("terpenes")]
     stopped = " — остановились после ошибок подряд" if budget.errors >= STOP_AFTER_ERRORS else ""
-    print(f"{OUT.relative_to(ROOT)}: меток {len(tags)}, запросов сейчас {budget.asked} из {MAX_PER_RUN} "
+    print(f"{OUT.relative_to(ROOT)}: меток {len(tags)}, запросов сейчас {budget.asked} "
+          f"(до {MAX_PER_RUN} новых и перепроверок, до {BACKFILL_PER_RUN} перечитываний) "
           f"(карточек {len(done)}; новых ждало {fresh}, перепроверок ждало {recheck}){stopped}; "
           f"в Retail ID {len(found)}, с датой упаковки {sum(1 for p in found if p.get('packaged'))}, "
-          f"с датой сбора {sum(1 for p in found if p.get('harvested'))}")
+          f"с датой сбора {sum(1 for p in found if p.get('harvested'))}; с панелью терпенов {len(with_panel)} "
+          f"(перечитано сейчас {refilled}, ждут перечитывания {len(unread) - refilled}), "
+          f"с PDF сертификата {sum(1 for p in found if p.get('coaFile'))}")
 
 
 if __name__ == "__main__":
