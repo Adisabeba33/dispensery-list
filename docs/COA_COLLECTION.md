@@ -107,24 +107,60 @@ chain" page, one certificate per lot; 15 flower lots pending, vapes and edibles
 reviewed as other products by lot code) and ProXtracts (its lab-results page;
 15 pending, joints and kief reviewed as other products by label).
 
+On 8 October the 150 brands with the most listings that no survey had looked
+at yet (82% of the listings of unsurveyed brands) were surveyed. Twenty
+publish certificate links the reader takes (a dry run of `coa-sources.py` on
+them found about 1,070 links: Dumbo Electric, Aeterna, Hudson Valley Jane for
+Boujee Ben, Ithaca Organics, ADK Hemp, Flamer, Felas, 6 Point, Roemer, Harney
+Brothers, A Walk in the Pines, Ravens View, Alter, Budcracker, FX, North Fork
+Collective, Stranman, Trap To Table, Cheevo; Akron Bloom reset the
+connection). Nine publish links the reader cannot take yet, recorded as
+`published-links-unreadable` with the reason: Confident LIMS / Confident
+Cannabis share pages (Honey King, Honest Pharm, Skyworld), the ACT customer
+portal (Aster), lot links that only redirect to a PDF (High Peaks), PDFs
+listed in an inline script (High Falls) or a JavaScript feed (Fyre), and a page
+that mixes three states' certificates (Ghost). Fifteen keys are brands already
+surveyed under another key, recorded as `same-brand-as-surveyed` with
+`sameAs`.
+
+Later on 8 October the reader learned three more ways a brand publishes, and
+three of the nine are read daily: a configuration that writes the address
+without its scheme, slashes escaped (High Falls' Shopify page, 50 lots); a
+source's `documentLinks` pattern for its own lot pages that only redirect to
+the PDF (High Peaks, 72 lots; `coa-dates.py` follows the redirect with
+robots.txt checked at each hop and keeps only a PDF); and a source's
+`documentBase` for the relative `….pdf` paths a feed lists (Fyre's data.js,
+18). Both rules are written by a person who looked at the page; the reader
+guesses nothing. Confident LIMS / Confident Cannabis share pages and the ACT
+portal are pages built by script, not documents, and stay unread.
+
 ## Every shelf brand looked at, 8 October 2026
 
-181 brands with at least 15 listings had no certificate source. Each was
-looked for (the brand's own site or its producer's, found by search or by the
+A second survey the same day, in parallel with the one above, looked again at
+the 181 brands with at least 15 listings that had no certificate source (the
+brand's own site or its producer's, found by search or by the
 `business_website` its licence carries in the OCM register snapshot of
-4 September 2026), and the 295 producer, processor and microbusiness websites
-in that register were swept for a page of certificates: the home page, the
+4 September 2026), and swept the 295 producer, processor and microbusiness
+websites in that register for a page of certificates: the home page, the
 sitemap the site publishes, and up to eight of its own pages whose address or
 link text names certificates or lab results, all through the reader above.
-39 brands were added to the daily reading (84 pages; 58 brands and 111 pages
-in all), and their first scan found 2,006 certificate links. Pages read per run went from 60 to 150, pending brand links
-read per run from 200 to 300. The other brands are recorded with what was
-found: no site, a site without certificates (most large brands — Boukét,
-FIND., RYTHM, Grocery, MAJOR, Runtz — point to the QR code on the pack, which
-is Retail ID), a Google Drive folder, a wall (RYTHM's Cloudflare, Voice of the
-Plant, Moodz's password page), or a lot-number lookup with no list (FLUENT,
-Preferred Gardens). Honest PharmCo publishes Confident LIMS share pages, which
-are not PDFs and are not read.
+Merged with the first survey (one source per brand: a page read daily wins,
+then a page recorded as unreadable, then the more specific finding), 70
+brands are read daily on 132 pages; 28 of them came from the sweep and the
+second survey (Florette, Revert, Golden Garden, Central Processors, JIVE,
+OMO Labs, Grass Roots Wellness, Glenna's, Gage Farms, Skyrose and others),
+and the first scan of the new pages found about 2,000 certificate links. Of
+those, the files whose name or label says pre-roll, vape, gummy, chocolate,
+tincture, a concentrate, infused or a pack were reviewed as other-product by
+name, as Florist's were on 5 October (626); the rest stay pending-review.
+Pages read per run went from 60 to 150, pending brand links read per run from
+200 to 300. Most large brands (Boukét, FIND., RYTHM, Grocery, MAJOR, Runtz)
+publish no certificates and point to the QR code on the pack, which is
+Retail ID.
+
+A yourcoa.com client list (Skyrose's) also links the portal's login and its
+next page, and each sample twice (download, download?is_view=1): only its
+`/coa/` links count, one per sample.
 
 Kaycha's yourcoa.com download link (`coa-download/<sample>`), the form brands
 publish, answers for some samples with the viewer page; until 8 October none
@@ -136,6 +172,14 @@ same sample (`…?wl_id=0&mrk=0&is_view=1`), which returns the PDF.
 (`metrcTag` in `data/coa-dates.json`) — often the package the sample came
 from — after the shelf's own tags and only on the room they leave; a test of
 twelve found three cards. Not found, they are not rechecked.
+
+A robots.txt that redirects to a web page states no rules (the owner's rule of
+8 October 2026): Keystone's labware.cloud portal sends `/robots.txt` to the
+vendor's home page, and Hashtag Honey's 119 certificates there had stayed
+unread. The redirect is followed and its answer read like any robots.txt
+answer; a wall at the end of it still stops the host. A sampling date later
+than the day a document is read is a misprint (MCR printed 5/14/2027 on a
+sample received 5/14/2026); the next date the document states is used.
 
 ## Menus that print tags outside Dutchie, 8 October 2026
 

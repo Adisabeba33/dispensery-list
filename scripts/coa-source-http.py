@@ -113,8 +113,12 @@ class Reader:
                 status,headers,body=self.request(current,robot=True)
                 location=next((v for k,v in headers.items() if k.lower()=='location'),None)
                 if 300<=status<400 and location:
+                    # The owner's rule (8 October 2026): a robots.txt that
+                    # redirects to a web page (Keystone's labware.cloud portal
+                    # sends it to the vendor's home page) answers with a page
+                    # instead of rules, as below: no rules. The redirect is
+                    # followed and its answer read like any robots.txt answer.
                     current=urljoin(current,location)
-                    if urlsplit(current).path!='/robots.txt': raise SourceBlocked('robots-redirect-to-non-robots')
                     continue
                 if status in (404,410): policy=robot_rules('')
                 elif 200<=status<300 and is_html(body):

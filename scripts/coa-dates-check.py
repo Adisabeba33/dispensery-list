@@ -207,4 +207,28 @@ assert reader.asked == ['https://ny.yourcoa.com/coa/coa-download/AL1-001',
                         'https://ny.yourcoa.com/coa/coa-download/AL1-001?wl_id=0&mrk=0&is_view=1'], reader.asked
 assert m.viewer_document('https://other.test/coa/coa-view?sample=AL1-001', VIEWER) is None
 assert m.viewer_document('https://ny.yourcoa.com/coa/coa-view?sample=AL2-002', VIEWER) is None
+
+# The owner's rule (8 October 2026): a robots.txt that redirects to a web page
+# states no rules; one that redirects to a wall still stops the host.
+for landing, expect in [(b'<!doctype html><html><title>LIMS</title></html>', 'read'),
+                        (b'<html><title>Just a moment...</title>cf-chl</html>', 'robots-access-wall')]:
+    with tempfile.TemporaryDirectory() as tmp:
+        reader = h.Reader(Path(tmp) / 'state.json')
+        def request(url, robot=False, **kwargs):
+            if url == 'https://lims.test/robots.txt':
+                return 301, {'Location': 'https://www.vendor.test/'}, b''
+            if url == 'https://www.vendor.test/':
+                return 200, {'Content-Type': 'text/html'}, landing
+            if url == 'https://lims.test/COA?guid=1':
+                return 200, {}, b'%PDF-1.4'
+            raise AssertionError('unexpected request: ' + url)
+        reader.request = request
+        try:
+            reader.get('https://lims.test/COA?guid=1'); got = 'read'
+        except h.SourceBlocked as e:
+            got = str(e)
+        assert got == expect, (landing[:30], got)
+# A sampling date in the future is a misprint; the received date stands in.
+r = m.read('MCR\nSample Collection\n5/14/2099 14:15\nDate and Time\nDate Received\nS26-01148  Zoapinator 14g  Flower  Adult Use  5/14/2026\n')
+assert r['sampled'] != '2099-05-14', r
 print('coa-dates-check: OK (six labs, date provenance, robots, redirects, cooldown, source scope)')

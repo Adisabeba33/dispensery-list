@@ -25,7 +25,18 @@ download (/uc), so coa-dates.py could never read it. Links found in anchors
 keep their text as the label; links found only in the page's own
 configuration (WordPress and Wix galleries) are kept as embedded-page-config,
 and links in a feed the brand's page loads its list from (a JSON answer,
-listed as the page to read) as page-feed.
+listed as the page to read) as page-feed. A configuration that writes the
+address without its scheme, slashes escaped (Shopify's lab-report pages),
+is read too, with the page's scheme.
+
+Two rules a source can carry, each written by a person who looked at the
+page (8 October 2026), never guessed by the reader:
+- documentLinks: a pattern for the brand's own links that lead to a
+  certificate without saying .pdf (High Peaks: one page per lot that only
+  redirects to its PDF). coa-dates.py follows the redirect, robots.txt checked
+  at every hop, and keeps only what is a PDF.
+- documentBase: the page a feed's relative "….pdf" paths belong to (Fyre's
+  data.js lists coa/<lot>.pdf, which its products page resolves).
 """
 import html
 import importlib.util
@@ -102,13 +113,17 @@ def is_certificate(url):
 
 
 ANCHOR = re.compile(r"<a\b[^>]*?\bhref\s*=\s*([\"'])(.*?)\1[^>]*>(.*?)</a\s*>", re.I | re.S)
-EMBEDDED = re.compile(r"https?:(?:\\?/){2}[^\s\"'<>\\]+(?:\\?/[^\s\"'<>\\]*)*", re.I)
+EMBEDDED = re.compile(r"(?:https?:)?(?:\\?/){2}[^\s\"'<>\\/]+(?:\\?/[^\s\"'<>\\]*)*", re.I)
+RELATIVE_PDF = re.compile(r"[\"']((?![a-z]+:|/)[^\"'\s<>]+\.pdf)[\"']", re.I)
 
 
-def certificate_links(page_url, body):
+def certificate_links(page_url, body, rules=None):
     """(url, label, location) for every certificate link a page publishes:
     anchors first, with their text; then absolute URLs in the page's own
-    configuration that no anchor carried."""
+    configuration that no anchor carried; then, for a source with a
+    documentBase, the relative ….pdf paths its feed lists."""
+    rules = rules or {}
+    documents = re.compile(rules["documentLinks"]) if rules.get("documentLinks") else None
     text = body.decode("utf8", "replace") if isinstance(body, bytes) else body
     elsewhere = "page-feed" if text.lstrip()[:1] in ("{", "[") else "embedded-page-config"
     out, seen = [], set()
@@ -117,7 +132,7 @@ def certificate_links(page_url, body):
             url = urljoin(page_url, html.unescape(href.strip()))
         except ValueError:
             continue
-        if not is_certificate(url):
+        if not (is_certificate(url) or (documents and documents.fullmatch(url))):
             continue
         url = canonical(url)
         if same_document(url) in seen:
@@ -126,7 +141,10 @@ def certificate_links(page_url, body):
         label = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", inner))).strip()
         out.append((url, label[:200], "anchor"))
     for raw in EMBEDDED.findall(text):
-        url = html.unescape(raw.replace("\\/", "/"))
+        try:
+            url = urljoin(page_url, html.unescape(raw.replace("\\/", "/")))
+        except ValueError:
+            continue
         if not is_certificate(url):
             continue
         url = canonical(url)
@@ -134,6 +152,12 @@ def certificate_links(page_url, body):
             continue
         seen.add(same_document(url))
         out.append((url, "", elsewhere))
+    if rules.get("documentBase"):
+        for path in RELATIVE_PDF.findall(text):
+            url = canonical(urljoin(rules["documentBase"], html.unescape(path)))
+            if is_certificate(url) and same_document(url) not in seen:
+                seen.add(same_document(url))
+                out.append((url, "", elsewhere))
     return out
 
 
@@ -156,7 +180,7 @@ def scan(doc, reader, now, max_pages=MAX_PAGES):
             except Exception as e:  # robots, a wall, the network — named, not fatal
                 failed.append((source["brand"], page, str(e)[:80] or type(e).__name__))
                 continue
-            for url, label, where in certificate_links(final, body):
+            for url, label, where in certificate_links(final, body, source):
                 if same_document(url) in known:
                     continue
                 known.add(same_document(url))

@@ -133,6 +133,11 @@ def read(text):
     lab = next((name for needle, name in LABS if needle in text), None)
     sampled = first(SAMPLED, text)
     how = "sampled"
+    # A sampling date later than the day the document is read is a misprint
+    # (MCR's "Sample Collection 5/14/2027" on a sample received 5/14/2026):
+    # the next date the document states is used instead.
+    if sampled and sampled > date.today().isoformat():
+        sampled = None
     if not sampled:
         sampled, how = first(RECEIVED, text), "received"
     if not sampled and lab in ("Metrc", "Reliable"):

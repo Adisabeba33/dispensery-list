@@ -13965,8 +13965,8 @@
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/30061.pdf": {
    "lab": "MCR",
-   "sampled": "2027-05-14",
-   "sampledFrom": "sampled",
+   "sampled": "2026-05-19",
+   "sampledFrom": "reported",
    "packaged": null,
    "packagedFrom": null,
    "harvested": null,

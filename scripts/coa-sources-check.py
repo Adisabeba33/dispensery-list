@@ -91,6 +91,28 @@ check(added2 == {}, f"read again, nothing new: {added2}")
 text = cs.report(added, failed, read)
 check("новых ссылок на сертификаты: **3** (Brand 3)" in text and "Walled: robots-disallowed" in text, f"report: {text}")
 
+# --- a configuration that writes the address without its scheme, slashes escaped (Shopify)
+shop = cs.certificate_links("https://shop.example/pages/lab-reports",
+                            'var lots = [{"lot":"F0039","coa":"\\/\\/shop.example\\/cdn\\/shop\\/files\\/F0039.pdf?v=1"}];')
+check(shop == [("https://shop.example/cdn/shop/files/F0039.pdf?v=1", "", "embedded-page-config")],
+      f"scheme-less escaped address takes the page's scheme: {shop}")
+
+# --- documentLinks: the brand's own lot pages that only redirect to the PDF
+LOTS = ('<a href="https://peaks.example/wf-abc-0001/">Lot #: WF-ABC-0001</a>'
+        '<a href="https://peaks.example/where-to-buy/">Where to buy</a>'
+        '<a href="https://peaks.example/home/wf-abc-0002/">Lot #: WF-ABC-0002</a>')
+rule = {"documentLinks": r"https://peaks\.example/(?:[a-z0-9-]+/)*wf-[a-z0-9-]+/"}
+lots = cs.certificate_links("https://peaks.example/coas/", LOTS, rule)
+check([u for u, _l, _w in lots] == ["https://peaks.example/wf-abc-0001/", "https://peaks.example/home/wf-abc-0002/"]
+      and lots[0][1] == "Lot #: WF-ABC-0001", f"lot pages by the source's pattern, nothing else: {lots}")
+check(cs.certificate_links("https://peaks.example/coas/", LOTS) == [], "without the rule a lot page is not a certificate")
+
+# --- documentBase: relative ….pdf paths in a feed, resolved where the brand's page resolves them
+FEED = 'export const products = [{name: "Runtz", coa: "coa/runtz-eighth.pdf"}, {img: "img/a.png"}, {coa: "/abs.pdf"}];'
+rel = cs.certificate_links("https://fyre.example/js/data.js?v=13", FEED, {"documentBase": "https://fyre.example/products"})
+check([u for u, _l, _w in rel] == ["https://fyre.example/coa/runtz-eighth.pdf"], f"relative feed paths by documentBase: {rel}")
+check(cs.certificate_links("https://fyre.example/js/data.js?v=13", FEED) == [], "without the rule relative paths are not taken")
+
 # --- yourcoa.com: a client's list page links the portal's own pages and each
 # sample twice (download, download?is_view=1); one document per sample, no portal pages
 LIST = """<a href="https://ny.yourcoa.com/user/login">BACK TO Dashboard</a>
