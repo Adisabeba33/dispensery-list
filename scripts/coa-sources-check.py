@@ -113,6 +113,16 @@ rel = cs.certificate_links("https://fyre.example/js/data.js?v=13", FEED, {"docum
 check([u for u, _l, _w in rel] == ["https://fyre.example/coa/runtz-eighth.pdf"], f"relative feed paths by documentBase: {rel}")
 check(cs.certificate_links("https://fyre.example/js/data.js?v=13", FEED) == [], "without the rule relative paths are not taken")
 
+# --- yourcoa.com: a client's list page links the portal's own pages and each
+# sample twice (download, download?is_view=1); one document per sample, no portal pages
+LIST = """<a href="https://ny.yourcoa.com/user/login">BACK TO Dashboard</a>
+<a href="https://ny.yourcoa.com/company/company/360?t=Farm&page=2">2</a>
+<a href="https://ny.yourcoa.com/coa/coa-download/AL60210005-001"></a>
+<a href="https://ny.yourcoa.com/coa/coa-download/AL60210005-001?is_view=1">DOWNLOAD</a>"""
+links = cs.certificate_links("https://ny.yourcoa.com/company/company/360?t=Farm", LIST)
+check([u for u, _l, _w in links] == ["https://ny.yourcoa.com/coa/coa-download/AL60210005-001"],
+      f"yourcoa list page: {links}")
+
 if failures:
     print(f"coa-sources-check: {len(failures)} ошибок")
     for f in failures:

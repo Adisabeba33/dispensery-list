@@ -51,7 +51,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / "data/coa-sources.json"
 STATE = ROOT / "data/coa-http-state.json"
 READ_STATUSES = {"published-links", "published-list-folder"}
-MAX_PAGES = 60  # pages read per run, at most
+MAX_PAGES = 150  # pages read per run, at most (60 until 8 October 2026, when 39 brands were added)
 COA_HOSTS = re.compile(
     r"(^|\.)(yourcoa\.com|labware\.cloud|kaycha\w*\.com|greenanalytics\w*\.com|drsciences\.com|"
     r"actlab\w*\.com|smithers\w*\.com|keystonestatetesting\.com)$",
@@ -74,12 +74,18 @@ def canonical(url):
     write the same file as "All Gas .5g.pdf" and "All%20Gas%20.5g.pdf"), and a
     yourcoa.com viewer link (coa-view?sample=X) becomes that site's own
     download link for the same sample (coa-download/X), the form brands also
-    publish and the one that returns the PDF."""
+    publish; a download link keeps no query (?is_view=1 is the same sample).
+    coa-dates.py reads the PDF through the viewer when the bare link answers
+    with it."""
     u = urlsplit(url)
     if u.netloc.lower().endswith("yourcoa.com") and u.path.rstrip("/").endswith("/coa/coa-view"):
         sample = (parse_qs(u.query).get("sample") or [""])[0]
         if re.fullmatch(r"[A-Za-z0-9-]+", sample):
             return urlunsplit((u.scheme, u.netloc, "/coa/coa-download/" + sample, "", ""))
+    # coa-download/X?is_view=1 and coa-download/X are one document: a client's
+    # list page links both for every sample
+    if u.netloc.lower().endswith("yourcoa.com") and re.fullmatch(r"/coa/coa-download/[A-Za-z0-9-]+", u.path):
+        return urlunsplit((u.scheme, u.netloc, u.path, "", ""))
     path = quote(unquote(u.path), safe="/-_.~!$&'()*+,;=:@")
     return urlunsplit((u.scheme, u.netloc, path, u.query, ""))
 
@@ -99,6 +105,10 @@ def is_certificate(url):
         return False
     if u.path.lower().endswith(".pdf"):
         return True
+    if u.netloc.lower().endswith("yourcoa.com"):
+        # a client's list page there also links the portal's own pages
+        # (login, the list's next page): only its /coa/ links are documents
+        return u.path.lower().startswith("/coa/")
     return bool(COA_HOSTS.search(u.netloc))
 
 

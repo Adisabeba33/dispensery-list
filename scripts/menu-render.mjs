@@ -3981,6 +3981,15 @@ const productPage = (p, sourceUrl) => {
   return null;
 };
 
+/* A METRC package tag ("1A4120300000C1D000034369") or the Retail ID link the
+   jar's QR code carries ("HTTPS://1A4.COM/13U2YPUQ3SUDKKJGFPIXC7"), and
+   nothing else. The fields below hold a tag only on some menus — a batch name
+   is just as often "NY-123456-78" or the POS's own uuid — so the value has to
+   be one before it is kept. */
+const METRC_TAG = /^(1A4[0-9A-F]{21}|https?:\/\/1a4\.com\/[A-Z0-9]{8,64})$/i;
+const COA_PORTAL = /^https?:\/\/([a-z0-9-]+\.)*(yourcoa\.com|labware\.cloud)\//i;
+const arrayOf = (v) => (Array.isArray(v) ? v : v === null || v === undefined ? [] : [v]);
+
 /* The lab's certificate for this batch, where the menu links it: Cannabis
    Realm's "Download COA" is `coa`, a PDF per batch; Dutchie keeps a slot for it
    under POSMetaData. Only an absolute address is kept — the certificate is the
@@ -3988,11 +3997,25 @@ const productPage = (p, sourceUrl) => {
 const coaUrlOf = (p) => {
   const candidates = [
     ...pickAll(p, ['coa', 'coaUrl', 'coaLink', 'certificateOfAnalysisUrl', 'labResultUrl', 'labResultsUrl', 'canonicalLabResultUrl']),
-    pick(pick(p, ['POSMetaData']), ['canonicalLabResultUrl']),
+    pick(pick(p, ['POSMetaData']), ['canonicalLabResultUrl', 'labResultUrl']),
+    /* The same Dutchie slot, relayed in snake_case by Gotham's own site
+       (meta_data.lab_result_url). */
+    pick(pick(p, ['metaData']), ['labResultUrl']),
+    /* JFK Cannabis files each batch's certificate with its lab and test date:
+       labReport.reportUrl, a PDF — on 93 of its 342 flower listings. */
+    pick(pick(p, ['labReport']), ['reportUrl']),
+    /* iHeartJane's lab_result_urls, a list — empty on both Jane shops read. */
+    ...arrayOf(pick(p, ['labResultUrls'])),
+    /* A Treez shop that scans the certificate's QR code into the product's
+       barcodes: "https://ny.yourcoa.com/coa/coa-view?sample=…". Only a lab
+       portal's address counts — a barcode is otherwise the jar's own number. */
+    ...arrayOf(pick(pick(p, ['productData']), ['barcodes'])).filter((b) => COA_PORTAL.test(String(b))),
   ];
   for (const c of candidates) {
     const value = flatten(c);
-    if (typeof value !== 'string' || value.length > 500 || !/^https?:\/\//i.test(value.trim())) continue;
+    /* 1000, not 500: half of JFK's certificates are signed storage links
+       (…?GoogleAccessId=…&Expires=4070908800&Signature=…), up to 695 long. */
+    if (typeof value !== 'string' || value.length > 1000 || !/^https?:\/\//i.test(value.trim())) continue;
     try {
       return new URL(value.trim()).toString();
     } catch {
@@ -4000,6 +4023,38 @@ const coaUrlOf = (p) => {
     }
   }
   return null;
+};
+
+/* Where menus that are not Dutchie's keep the tag, each found by reading a
+   shop's raw products (--dump-products), October 2026:
+   - Carrot names the batch after it when the POS behind it does (Forleaf,
+     LeafLogix): batchName, and again under product — on fifteen of the 32
+     Carrot shelves read, 1,124 listings (Canna Buddha 219 of 261). Its Treez
+     and Cova shops send a uuid or nothing.
+   - Gotham's site relays Dutchie's POS block in snake_case:
+     meta_data.batch_name, a tag on 21 of 79.
+   - Treez's e-commerce keeps whatever the shop scanned as a barcode:
+     productData.barcodes[], the Retail ID link or the tag on 192 of Nirvana
+     Springs' 417 listings, and on five more of fifteen Treez shelves.
+   - Sweed's sizes sometimes carry the Retail ID link as their sku.
+   - JFK's lab reports name the batch by its tag now and then
+     (labReport.batchNumber). */
+const trackedPackagesOf = (p) => {
+  const found = new Set();
+  const candidates = [
+    pick(p, ['batchName']),
+    pick(pick(p, ['product']), ['batchName']),
+    pick(pick(p, ['metaData']), ['batchName']),
+    pick(pick(p, ['labReport']), ['batchNumber']),
+    ...arrayOf(pick(pick(p, ['productData']), ['barcodes'])),
+    ...arrayOf(pick(p, ['variants'])).map((v) => pick(v, ['sku'])),
+  ];
+  for (const value of candidates) {
+    if (typeof value !== 'string') continue;
+    const id = value.trim();
+    if (METRC_TAG.test(id)) found.add(id);
+  }
+  return found.size ? [...found].slice(0, 20) : null;
 };
 
 /* Dutchie's own label for the stock behind a listing: POSMetaData carries a
@@ -4014,7 +4069,8 @@ const packageIdsOf = (p) => {
        "1A4120300000149000023827" — the same kind of identifier, one jar's stock. */
     const flat = pick(p, ['packageId']);
     const id = typeof flat === 'string' ? flat.trim() : '';
-    return id && id.length <= 200 && !/^(null|undefined)$/i.test(id) ? [id] : null;
+    if (id && id.length <= 200 && !/^(null|undefined)$/i.test(id)) return [id];
+    return trackedPackagesOf(p);
   }
   const children = pick(meta, ['children']);
   const found = new Set();
@@ -4439,7 +4495,11 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
     labPanelKey: labPanelKeyOf(thcPercent, profile),
     packageIds: packageIdsOf(p),
     harvestedOn: menuDate(pick(p, ['harvestedOn', 'harvestDate', 'harvestedAt', 'harvest_date', 'harvestedOnDate', 'dateHarvested'])),
-    packagedOn: menuDate(pick(p, ['packagedOn', 'packagedDate', 'packageDate', 'packagedAt', 'packaged_date', 'packDate', 'datePackaged'])),
+    packagedOn: menuDate(
+      pick(p, ['packagedOn', 'packagedDate', 'packageDate', 'packagedAt', 'packaged_date', 'packDate', 'datePackaged']) ??
+        // Gotham's relayed Dutchie block: meta_data.packaged_date, on every flower product.
+        pick(pick(p, ['metaData']), ['packagedDate']),
+    ),
     expiresOn: expiresOnOf(p),
     expiresWithinDays: expiresWithinDaysOf(p),
     inStock: notYet

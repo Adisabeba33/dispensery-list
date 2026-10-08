@@ -56,7 +56,9 @@ Rules that are there are obeyed. A file store that refuses a robots.txt it
 does not hold — an S3-style XML `AccessDenied`, a bare "Forbidden" — states no
 rules too (6 October 2026). A robots.txt that answers with any other error
 (a 403 page, 5xx) stops the reader, and a bot wall or captcha — at robots.txt or on
-any page — is never worked around (`scripts/coa-source-http.py`).
+any page — is never worked around (`scripts/coa-source-http.py`). A robots.txt that
+redirects to a web page states no rules as well (8 October 2026: Keystone's
+labware.cloud portal sends it to the vendor's home page).
 
 The menu collector keeps the same rule (`robotsVerdict` in
 `scripts/menu-render.mjs`). It asks robots.txt with the browser that reads the

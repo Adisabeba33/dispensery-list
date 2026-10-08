@@ -24,7 +24,7 @@
     "errors": 0
   },
   "https://drive.google.com": {
-    "errors": 0
+    "errors": 1
   },
   "https://app.alleaves.com": {
     "errors": 0
@@ -72,6 +72,153 @@
     "errors": 0
   },
   "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com": {
+    "errors": 0
+  },
+  "https://ny.yourcoa.com": {
+    "errors": 0
+  },
+  "https://www.highfallscanna.com": {
+    "errors": 0
+  },
+  "https://www.heyflamer.com": {
+    "errors": 0
+  },
+  "https://www.6pointcannabis.com": {
+    "errors": 0
+  },
+  "https://www.dumboelectric.com": {
+    "errors": 0
+  },
+  "https://www.alterwisely.com": {
+    "errors": 0
+  },
+  "https://aeternacannabis.com": {
+    "errors": 0
+  },
+  "https://www.ithacaorganicscanna.co": {
+    "errors": 0
+  },
+  "https://ravensviewgenetics.com": {
+    "errors": 0
+  },
+  "https://www.harneybrotherscannabis.com": {
+    "errors": 0
+  },
+  "https://ichindustries.com": {
+    "errors": 0
+  },
+  "https://omolabs.com": {
+    "errors": 0
+  },
+  "https://grassrootswellnessny.com": {
+    "errors": 0
+  },
+  "https://glennas.com": {
+    "errors": 0
+  },
+  "https://www.gagefarmsny.com": {
+    "errors": 0
+  },
+  "https://www.e29labs.com": {
+    "errors": 0
+  },
+  "https://www.hellskitchencannabis.co": {
+    "errors": 0
+  },
+  "https://mbfarmcannabis.com": {
+    "errors": 0
+  },
+  "https://mcpikefarms.com": {
+    "errors": 0
+  },
+  "https://battenkillbuds.com": {
+    "errors": 0
+  },
+  "https://romanempirefarms.com": {
+    "errors": 0
+  },
+  "https://dearflor.com": {
+    "errors": 0
+  },
+  "https://budcracker.com": {
+    "errors": 0
+  },
+  "https://evlfarm.com": {
+    "errors": 0
+  },
+  "https://oldfriendscultivation.com": {
+    "errors": 0
+  },
+  "https://sugarhousefarms.org": {
+    "errors": 0
+  },
+  "https://www.bonecreekfarm.com": {
+    "errors": 0
+  },
+  "https://www.snowbeltcannabis.com": {
+    "errors": 0
+  },
+  "https://pynns.com": {
+    "errors": 0
+  },
+  "https://www.niagaracannabiscompany.com": {
+    "errors": 0
+  },
+  "https://www.sauce.house": {
+    "errors": 0
+  },
+  "https://www.zoocannabisny.com": {
+    "errors": 0
+  },
+  "https://www.growingheartgreens.com": {
+    "errors": 0
+  },
+  "https://www.centralprocessorsny.com": {
+    "errors": 0
+  },
+  "https://gnomewellness.com": {
+    "errors": 0
+  },
+  "https://www.revertnyc.com": {
+    "errors": 0
+  },
+  "https://goldengardenny.com": {
+    "errors": 0
+  },
+  "https://www.florettecannabis.com": {
+    "errors": 0
+  },
+  "https://img1.wsimg.com": {
+    "errors": 0
+  },
+  "https://cdn.prod.website-files.com": {
+    "errors": 0
+  },
+  "https://assets.zyrosite.com": {
+    "errors": 0
+  },
+  "http://-content": {
+    "errors": 3
+  },
+  "https://www.awalkinthepines.com": {
+    "errors": 0
+  },
+  "https://57d2f0ea-9db5-4fee-9779-f478952f0009.filesusr.com": {
+    "errors": 0
+  },
+  "https://f2104a72-016e-4dba-9c1a-0d48aeb78fee.filesusr.com": {
+    "errors": 0
+  },
+  "http://cdn.shopify.com": {
+    "errors": 0
+  },
+  "https://cdn.shopify.com:443": {
+    "errors": 0
+  },
+  "https://www.labware.cloud": {
+    "errors": 0
+  },
+  "https://www.labware.com": {
     "errors": 0
   }
 }

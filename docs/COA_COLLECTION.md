@@ -133,3 +133,65 @@ robots.txt checked at each hop and keeps only a PDF); and a source's
 18). Both rules are written by a person who looked at the page; the reader
 guesses nothing. Confident LIMS / Confident Cannabis share pages and the ACT
 portal are pages built by script, not documents, and stay unread.
+
+## Every shelf brand looked at, 8 October 2026
+
+A second survey the same day, in parallel with the one above, looked again at
+the 181 brands with at least 15 listings that had no certificate source (the
+brand's own site or its producer's, found by search or by the
+`business_website` its licence carries in the OCM register snapshot of
+4 September 2026), and swept the 295 producer, processor and microbusiness
+websites in that register for a page of certificates: the home page, the
+sitemap the site publishes, and up to eight of its own pages whose address or
+link text names certificates or lab results, all through the reader above.
+Merged with the first survey (one source per brand: a page read daily wins,
+then a page recorded as unreadable, then the more specific finding), 70
+brands are read daily on 132 pages; 28 of them came from the sweep and the
+second survey (Florette, Revert, Golden Garden, Central Processors, JIVE,
+OMO Labs, Grass Roots Wellness, Glenna's, Gage Farms, Skyrose and others),
+and the first scan of the new pages found about 2,000 certificate links. Of
+those, the files whose name or label says pre-roll, vape, gummy, chocolate,
+tincture, a concentrate, infused or a pack were reviewed as other-product by
+name, as Florist's were on 5 October (626); the rest stay pending-review.
+Pages read per run went from 60 to 150, pending brand links read per run from
+200 to 300. Most large brands (Boukét, FIND., RYTHM, Grocery, MAJOR, Runtz)
+publish no certificates and point to the QR code on the pack, which is
+Retail ID.
+
+A yourcoa.com client list (Skyrose's) also links the portal's login and its
+next page, and each sample twice (download, download?is_view=1): only its
+`/coa/` links count, one per sample.
+
+Kaycha's yourcoa.com download link (`coa-download/<sample>`), the form brands
+publish, answers for some samples with the viewer page; until 8 October none
+of Dank By Definition's 44 certificates had been read. `coa-dates.py` now
+reads, for such a viewer, the Download link the viewer itself prints for the
+same sample (`…?wl_id=0&mrk=0&is_view=1`), which returns the PDF.
+
+`scripts/retail-id.py` also asks the Metrc tags printed on certificates
+(`metrcTag` in `data/coa-dates.json`) — often the package the sample came
+from — after the shelf's own tags and only on the room they leave; a test of
+twelve found three cards. Not found, they are not rechecked.
+
+A robots.txt that redirects to a web page states no rules (the owner's rule of
+8 October 2026): Keystone's labware.cloud portal sends `/robots.txt` to the
+vendor's home page, and Hashtag Honey's 119 certificates there had stayed
+unread. The redirect is followed and its answer read like any robots.txt
+answer; a wall at the end of it still stops the host. A sampling date later
+than the day a document is read is a misprint (MCR printed 5/14/2027 on a
+sample received 5/14/2026); the next date the document states is used.
+
+## Menus that print tags outside Dutchie, 8 October 2026
+
+Raw products of one or two shops per platform (`--dump-products`) were read
+for Metrc tags and certificate links the collector did not take. Carrot keeps
+the tag as `batchName` when the till behind it is Forleaf or LeafLogix (15 of
+32 Carrot shelves, about 1,120 listings), Treez's e-commerce keeps the Retail
+ID link or the tag among `productData.barcodes` (6 of 15 shops, about 240),
+Gotham relays Dutchie's block as `meta_data` (`batch_name`, `packaged_date`),
+and Sweed sometimes uses the Retail ID link as a size's `sku`. A value is kept
+only when it is a tag or a 1a4.com link. JFK Cannabis links each batch's
+certificate as `labReport.reportUrl` (93 of 342 listings; signed storage links
+up to 695 characters, so the address limit is now 1000). Nothing was found on
+Dispense, Blaze, iHeartJane (`lab_result_urls` empty), Joint, Flowhub, Cova,
+LeafBridge or Meadow.

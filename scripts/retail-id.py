@@ -29,6 +29,14 @@ Colorado Chem: урожай 17 января, тест в марте, банки 
 ссылке карточки живёт сутки, поэтому хранится не ссылка, а то, что он есть:
 открыть его можно со страницы пакета (QR-код на банке, app.1a4.com).
 
+Кроме меток из меню спрашиваются метки, напечатанные на самих сертификатах
+(metrcTag в data/coa-dates.json, с 8 октября 2026): сертификат бренда часто
+называет пакет, из которого взята проба, и у части таких пакетов есть
+карточка Retail ID — с панелью и PDF. Метка берётся как напечатана, ничего не
+подбирается и не перебирается. Эти метки ждут после меток полок: им остаётся
+только то, что меткам полок за прогон не понадобилось, и ненайденные не
+перепроверяются — место перепроверок остаётся полкам.
+
 Retail ID — страница для покупателя с телефоном у банки, и спрашивается она
 так же: по одному запросу, с паузой PAUSE секунд, не больше MAX_PER_RUN за
 прогон (ссылки и карточки вместе). Сначала новые метки — самые свежие на
@@ -208,6 +216,16 @@ def read_card(tag):
     }
 
 
+def certificate_tags():
+    """Метки Metrc, напечатанные на прочитанных сертификатах (coa-dates.py)."""
+    try:
+        certificates = json.loads((ROOT / "data/coa-dates.json").read_text())["certificates"]
+    except (FileNotFoundError, KeyError, ValueError):
+        return set()
+    return {str(c["metrcTag"]).strip().upper() for c in certificates.values()
+            if c.get("metrcTag") and TAG.match(str(c["metrcTag"]).strip().upper())}
+
+
 def main(budget=None):
     raw = json.loads(LISTINGS.read_text())
     rows = raw if isinstance(raw, list) else raw["listings"]
@@ -231,6 +249,7 @@ def main(budget=None):
         if tag:
             links[link] = tag
     tags = {t.upper() for t in seen if TAG.match(t.upper())} | set(links.values())
+    printed = certificate_tags() - tags
 
     # Когда метка впервые попала в меню — пока её не спросили: новые на полке
     # спрашиваются первыми, если всех за прогон не успеть.
@@ -239,6 +258,8 @@ def main(budget=None):
         if (packages.get(t) or {}).get("found") is None:
             waiting.setdefault(t, today.isoformat())
     todo, fresh, recheck = plan(tags, packages, stale, budget.left, waiting)
+    # Метки с сертификатов — после меток полок, на оставшееся место.
+    todo += sorted(t for t in printed if (packages.get(t) or {}).get("found") is None)
     done = []
     for tag in todo:
         if not budget.take():
@@ -271,7 +292,7 @@ def main(budget=None):
 
     OUT.write_text(json.dumps({
         "about": "Карточки пакетов из Metrc Retail ID (app.1a4.com) для меток, которые печатают "
-                 "меню: даты упаковки, теста и сбора и панель сертификата — THC, CBD, терпены в % выше "
+                 "меню и сертификаты: даты упаковки, теста и сбора и панель сертификата — THC, CBD, терпены в % выше "
                  "нуля (имена реестра), лаборатория, есть ли PDF (coaFile). found=false — пакета нет в Retail ID "
                  "(перепроверяется раз в месяц). Спрашивается по одному, с паузой, не больше 150 "
                  "запросов за прогон, новые на полке первыми, и до 150 перечитываний найденных без панели; waiting — день, когда ещё не спрошенная "
@@ -285,7 +306,8 @@ def main(budget=None):
     stopped = " — остановились после ошибок подряд" if budget.errors >= STOP_AFTER_ERRORS else ""
     print(f"{OUT.relative_to(ROOT)}: меток {len(tags)}, запросов сейчас {budget.asked} "
           f"(до {MAX_PER_RUN} новых и перепроверок, до {BACKFILL_PER_RUN} перечитываний) "
-          f"(карточек {len(done)}; новых ждало {fresh}, перепроверок ждало {recheck}){stopped}; "
+          f"(карточек {len(done)}; новых ждало {fresh}, перепроверок ждало {recheck}, "
+          f"меток с сертификатов не спрошено {sum(1 for t in printed if (packages.get(t) or {}).get('found') is None)}){stopped}; "
           f"в Retail ID {len(found)}, с датой упаковки {sum(1 for p in found if p.get('packaged'))}, "
           f"с датой сбора {sum(1 for p in found if p.get('harvested'))}; с панелью терпенов {len(with_panel)} "
           f"(перечитано сейчас {refilled}, ждут перечитывания {len(unread) - refilled}), "
