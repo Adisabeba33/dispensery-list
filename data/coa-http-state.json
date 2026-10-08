@@ -190,5 +190,14 @@
   },
   "https://img1.wsimg.com": {
     "errors": 0
+  },
+  "https://cdn.prod.website-files.com": {
+    "errors": 0
+  },
+  "https://assets.zyrosite.com": {
+    "errors": 0
+  },
+  "http://-content": {
+    "errors": 1
   }
 }

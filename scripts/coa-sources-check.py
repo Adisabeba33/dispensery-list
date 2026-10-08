@@ -91,6 +91,16 @@ check(added2 == {}, f"read again, nothing new: {added2}")
 text = cs.report(added, failed, read)
 check("новых ссылок на сертификаты: **3** (Brand 3)" in text and "Walled: robots-disallowed" in text, f"report: {text}")
 
+# --- yourcoa.com: a client's list page links the portal's own pages and each
+# sample twice (download, download?is_view=1); one document per sample, no portal pages
+LIST = """<a href="https://ny.yourcoa.com/user/login">BACK TO Dashboard</a>
+<a href="https://ny.yourcoa.com/company/company/360?t=Farm&page=2">2</a>
+<a href="https://ny.yourcoa.com/coa/coa-download/AL60210005-001"></a>
+<a href="https://ny.yourcoa.com/coa/coa-download/AL60210005-001?is_view=1">DOWNLOAD</a>"""
+links = cs.certificate_links("https://ny.yourcoa.com/company/company/360?t=Farm", LIST)
+check([u for u, _l, _w in links] == ["https://ny.yourcoa.com/coa/coa-download/AL60210005-001"],
+      f"yourcoa list page: {links}")
+
 if failures:
     print(f"coa-sources-check: {len(failures)} ошибок")
     for f in failures:
