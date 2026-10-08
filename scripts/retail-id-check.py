@@ -79,6 +79,27 @@ with tempfile.TemporaryDirectory() as d:
     check(all(v["found"] is None for v in json.loads(rid.OUT.read_text())["packages"].values()),
           "неотвеченные остаются неотвеченными — спросятся снова")
 
+    # --- метки с сертификатов: после меток полок, на оставшееся место, без ожидания
+    rid.OUT.unlink()
+    asked.clear()
+    printed = [tag(5000 + i) for i in range(30)]
+    (d / "data").mkdir(exist_ok=True)
+    (d / "data/coa-dates.json").write_text(json.dumps({"certificates": {
+        f"https://lab.example/{i}.pdf": {"metrcTag": t.lower() if i % 2 else t} for i, t in enumerate(printed)}
+        | {"https://lab.example/none.pdf": {"metrcTag": None}, "https://lab.example/bad.pdf": {"metrcTag": "2/26"}}}))
+    rid.LISTINGS.write_text(json.dumps([{"packageIds": [tag(i) for i in range(130)]}]))
+    rid.card = lambda t: asked.append(t) or {"found": False}
+    rid.main(rid.Budget(150, sleep=lambda s: None))
+    out = json.loads(rid.OUT.read_text())
+    check(asked[:130] == sorted(asked[:130], reverse=True) and set(asked[:130]) == {tag(i) for i in range(130)},
+          "метки полок — первыми")
+    check(len(asked) == 150 and set(asked[130:]) <= set(printed), f"меткам с сертификатов — остаток места: {len(asked)}")
+    check(not set(printed) & set(out["waiting"]), "метки с сертификатов не ждут в waiting")
+    asked.clear()
+    rid.main(rid.Budget(150, sleep=lambda s: None))
+    check(sorted(asked) == sorted(set(printed) - set(out["packages"])), "следующий прогон спрашивает остальные, ненайденные — нет")
+    (d / "data/coa-dates.json").unlink()
+
 # --- панель сертификата из карточки
 CARD = {
     "facilityName": "Grower LLC",
