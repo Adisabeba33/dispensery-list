@@ -120,7 +120,7 @@
                   "enum": [
                     "anchor",
                     "embedded-page-config",
-          "page-feed"
+                    "page-feed"
                   ]
                 },
                 "format": {
@@ -141,6 +141,10 @@
                 }
               }
             }
+          },
+          "sameAs": {
+            "type": "string",
+            "description": "For status same-brand-as-surveyed: the brandKey this key's brand was already surveyed under."
           }
         }
       }
