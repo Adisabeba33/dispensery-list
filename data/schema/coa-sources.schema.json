@@ -145,6 +145,14 @@
           "sameAs": {
             "type": "string",
             "description": "For status same-brand-as-surveyed: the brandKey this key's brand was already surveyed under."
+          },
+          "documentLinks": {
+            "type": "string",
+            "description": "A pattern (full match) for the brand's own links that lead to a certificate without .pdf in their path; written by a person who looked at the page."
+          },
+          "documentBase": {
+            "type": "string",
+            "description": "The page a feed's relative ….pdf paths are resolved against."
           }
         }
       }

@@ -29603,13 +29603,14 @@
    "checkedAt": "2026-10-08T04:58:07+00:00",
    "url": "https://highpeaks.com/cannabis-products/certificates-of-analysis/",
    "method": "list",
-   "status": "published-links-unreadable",
+   "status": "published-links",
    "pages": [
     "https://highpeaks.com/cannabis-products/certificates-of-analysis-flower/"
    ],
    "certificateLinks": [],
    "exampleUrl": "https://highpeaks.com/wp-content/uploads/2024/06/High-Peaks-Burnout-Driver-Whole-Flower-Lot-WF-BOD-0001.pdf",
-   "note": "COA hub links one index per product type; the flower index lists 72 lot entries (strains incl. Dragon Heart, Lake Effect Chem). Each entry link is an extensionless page (e.g. /wf-ajsd-0001/) that answers 301 to a PDF under /wp-content/uploads/, so the reader must follow one redirect. Sample PDF is a Green Analytics NY report for Central Processors NY, LLC, Syracuse NY, licence OCM-AUCP-22-000018; the site also links a Central Processors NY media kit. Pre-roll, gummy, beverage, concentrate and vape indexes exist but were not listed here. Not read daily: each lot link has no .pdf in its path and only redirects to the PDF; the reader takes a link by its own path."
+   "note": "COA hub links one index per product type; the flower index lists 72 lot entries (strains incl. Dragon Heart, Lake Effect Chem). Each entry link is an extensionless page (e.g. /wf-ajsd-0001/) that answers 301 to a PDF under /wp-content/uploads/, so the reader must follow one redirect. Sample PDF is a Green Analytics NY report for Central Processors NY, LLC, Syracuse NY, licence OCM-AUCP-22-000018; the site also links a Central Processors NY media kit. Pre-roll, gummy, beverage, concentrate and vape indexes exist but were not listed here. Read daily from 8 October 2026 with documentLinks: the 72 lot links on the flower page, each a High Peaks page that redirects to the lot's PDF.",
+   "documentLinks": "https://highpeaks\\.com/(?:[a-z0-9-]+/)*(?:[a-z0-9_-]*-?lot-[a-z0-9_-]+|wfs?-[a-z0-9-]+)/"
   },
   {
    "brandKey": "houseoftrees",
@@ -30452,13 +30453,13 @@
    "checkedAt": "2026-10-08T05:03:21.463005+00:00",
    "url": "https://www.highfallscanna.com/pages/lab-reports",
    "method": "list",
-   "status": "published-links-unreadable",
+   "status": "published-links",
    "pages": [
     "https://www.highfallscanna.com/pages/lab-reports"
    ],
    "certificateLinks": [],
    "exampleUrl": "https://www.highfallscanna.com/cdn/shop/files/24-F0010-2.pdf?v=16365383735879723259",
-   "note": "The Lab Reports page (site menu) is a COA lookup by lot code. Its script holds a list of 50 lot/PDF pairs, each PDF a file on the site's own Shopify CDN (www.highfallscanna.com/cdn/shop/files/, lot codes like 24-F0010-2, 2G-F0039-3). The page also queries the shop's Storefront metaobjects for more lots; that call was not made. The links sit in an inline script array, not in anchors. New York: the site's address is High Falls, New York 12440. Not read daily: the lot-to-PDF pairs sit in an inline script array, not in anchors or page config the reader knows."
+   "note": "The Lab Reports page (site menu) is a COA lookup by lot code. Its script holds a list of 50 lot/PDF pairs, each PDF a file on the site's own Shopify CDN (www.highfallscanna.com/cdn/shop/files/, lot codes like 24-F0010-2, 2G-F0039-3). The page also queries the shop's Storefront metaobjects for more lots; that call was not made. The links sit in an inline script array, not in anchors. New York: the site's address is High Falls, New York 12440. Read daily from 8 October 2026: the reader takes the scheme-less PDF addresses in the page's script (50 lots)."
   },
   {
    "brandKey": "heavyhitters",
@@ -30669,13 +30670,14 @@
    "checkedAt": "2026-10-08T05:03:21.463005+00:00",
    "url": "https://fyreny.com/products",
    "method": "list",
-   "status": "published-links-unreadable",
+   "status": "published-links",
    "pages": [
     "https://fyreny.com/js/data.js?v=13"
    ],
    "certificateLinks": [],
    "exampleUrl": "https://fyreny.com/coa/bx-runtz-eighth.pdf",
-   "note": "The Products page and product pages draw from the site's own js/data.js, which holds 18 products (eighths, 5-packs, pre-rolls; BX Runtz, Purple Toast, Sour Joker, NY Sour Diesel and others), each with a relative certificate path of the form coa/<product-id>.pdf. The paths are relative, not anchors in the HTML, and the PDFs themselves were not fetched. New York: the site says Farm2Hand, New York raised, lab tested; Sour Joker and BX Runtz match the listings. Not read daily: the feed holds relative coa/<id>.pdf paths in a JavaScript file; the reader does not resolve them there."
+   "note": "The Products page and product pages draw from the site's own js/data.js, which holds 18 products (eighths, 5-packs, pre-rolls; BX Runtz, Purple Toast, Sour Joker, NY Sour Diesel and others), each with a relative certificate path of the form coa/<product-id>.pdf. The paths are relative, not anchors in the HTML, and the PDFs themselves were not fetched. New York: the site says Farm2Hand, New York raised, lab tested; Sour Joker and BX Runtz match the listings. Read daily from 8 October 2026 with documentBase: data.js lists 18 relative coa/<lot>.pdf paths, resolved as the products page resolves them (checked: https://fyreny.com/coa/bx-runtz-eighth.pdf answers a PDF).",
+   "documentBase": "https://fyreny.com/products"
   },
   {
    "brandKey": "mvp",

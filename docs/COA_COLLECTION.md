@@ -122,3 +122,14 @@ listed in an inline script (High Falls) or a JavaScript feed (Fyre), and a page
 that mixes three states' certificates (Ghost). Fifteen keys are brands already
 surveyed under another key, recorded as `same-brand-as-surveyed` with
 `sameAs`.
+
+Later on 8 October the reader learned three more ways a brand publishes, and
+three of the nine are read daily: a configuration that writes the address
+without its scheme, slashes escaped (High Falls' Shopify page, 50 lots); a
+source's `documentLinks` pattern for its own lot pages that only redirect to
+the PDF (High Peaks, 72 lots; `coa-dates.py` follows the redirect with
+robots.txt checked at each hop and keeps only a PDF); and a source's
+`documentBase` for the relative `….pdf` paths a feed lists (Fyre's data.js,
+18). Both rules are written by a person who looked at the page; the reader
+guesses nothing. Confident LIMS / Confident Cannabis share pages and the ACT
+portal are pages built by script, not documents, and stay unread.
