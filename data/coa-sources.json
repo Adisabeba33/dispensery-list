@@ -1276,6 +1276,644 @@
    "certificateLinks": []
   },
   {
+   "brandKey": "budd",
+   "brand": "BUDD",
+   "checkedAt": "2026-10-08T05:08:53Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Two searches (3.5 g bag flower sold as Budd NY) show only dispensary/Weedmaps menus; no brand site or producer named. Not in the OCM register or Retail ID cards.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "mintz",
+   "brand": "Mintz",
+   "checkedAt": "2026-10-08T05:09:33Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Two searches found no Mintz brand site or producer (results were strain names containing Mintz). Retail ID matches on the word are strain names of other brands, not this one.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "noizey",
+   "brand": "noizey",
+   "checkedAt": "2026-10-08T05:10:07Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Two searches show only a delivery menu; no brand site. Retail ID cards name Excelsior Legacy LLC (Kings microbusiness OCM-MICR-25-000243, dba Excelsior Cannabis, no website in the register) as packing facility.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "macpharms",
+   "brand": "MAC PHARMS",
+   "checkedAt": "2026-10-08T05:11:15Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Two searches found only Weedmaps/Leafly listings (mostly Michigan retailers), no brand site or COA page. Retail ID names Halton Hay Inc (dba Real Life Botanicals; no website in the register) as the New York packing facility.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "pothead",
+   "brand": "Pot & Head",
+   "checkedAt": "2026-10-08T05:12:54Z",
+   "url": "https://www.veteranschoicecreations.com/labresults",
+   "method": "list",
+   "status": "source-page-no-direct-links",
+   "pages": [],
+   "note": "potandhead.com points to Veterans Choice Creations (site footer: Veterans Holdings Inc, the packer on Retail ID cards). Its Lab Results page is a Wix FAQ with Flowers/Pre-Rolls/etc. COA sections whose answers load by script; the served HTML holds no certificate links, nor does a flower product page.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "operator",
+   "brand": "Operator",
+   "checkedAt": "2026-10-08T05:14:19Z",
+   "url": "https://operatorcanna.com/lab-tests/",
+   "method": "list",
+   "status": "source-page-no-direct-links",
+   "pages": [],
+   "note": "Operator Canna Co. (veteran-owned NY brand; site found by search). Its Lab Tests page (in the WordPress sitemap, last changed Oct 2025) names strains and batch codes as headings but links no certificates.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "straingang",
+   "brand": "Strain Gang",
+   "checkedAt": "2026-10-08T05:15:02Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Two searches found no brand site (the name matches only a Denver newspaper column); not in the OCM register or Retail ID cards.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "saavi",
+   "brand": "Saavi",
+   "checkedAt": "2026-10-08T05:15:35Z",
+   "url": "https://nycannacurefarms.com/",
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Packed by Cannacure NY Inc. (Retail ID cards); that producer site has no certificate links and says each jar ships with a certificate. Two searches found no Saavi site of its own.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "talltrees",
+   "brand": "Tall Trees Farm",
+   "checkedAt": "2026-10-08T05:16:12Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Two searches found no Tall Trees Farm site or producer (only name-alike California farms); not in the OCM register or Retail ID cards.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "livwell",
+   "brand": "LivWell",
+   "checkedAt": "2026-10-08T05:17:24Z",
+   "url": "https://www.verilife.com/ny",
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "LivWell is a PharmaCann brand; PharmaCann of New York sells through Verilife (register site), whose NY product pages carry no certificate links (checked for matter. in an earlier batch). livwell.com home page links no lab page; two searches found certificates only on dispensary platforms.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "ithacacultivated",
+   "brand": "ITHACA CULTIVATED",
+   "checkedAt": "2026-10-08T05:18:05Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Licensee Ithaca Cultivated LLC (Tompkins cultivator OCM-CULT-24-000170) lists no website in the register; two searches found no site (results were Ithaca Organics, a different producer).",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "pastime",
+   "brand": "Pastime",
+   "checkedAt": "2026-10-08T05:18:44Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Brand holder Pastime Holdings, LLC (OCM-PT3B-25-000115) lists no website in the register; two searches found no Pastime cannabis site.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "majormicro",
+   "brand": "Major (Micro)",
+   "checkedAt": "2026-10-08T05:19:07Z",
+   "url": "https://majorny.com/",
+   "method": null,
+   "status": "robots-disallowed",
+   "pages": [],
+   "note": "Brand site majorny.com disallows all crawlers (Disallow: /, first pass); distributor page majordistrony.com lists brands, no certificates. Retail ID names microbusinesses AJ's Native Wholesale Inc and Fela's Farm LLC as packers (no websites in the register); one more search found no other first-party page.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "greenlineapothecary",
+   "brand": "Greenline Apothecary",
+   "checkedAt": "2026-10-08T05:19:44Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Two searches found no Greenline Apothecary site or producer (only unrelated Greenline companies in Canada, California and Australia); not in the OCM register or Retail ID cards.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "staymelo",
+   "brand": "Stay Melo",
+   "checkedAt": "2026-10-08T05:20:23Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Stay Melo is STAYME7O, Carmelo Anthony's brand from the Grand National agency, launched in New York in April 2025 (press). Two searches named no brand website, producer or COA page.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "thekaleidoscopecollective",
+   "brand": "The Kaleidoscope Collective",
+   "checkedAt": "2026-10-08T05:21:06Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Two searches found only marketplace listings describing TKC as a New York indoor grower; no brand site or licensee named, and none in the OCM register.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "litbythelake",
+   "brand": "Lit By The Lake",
+   "checkedAt": "2026-10-08T05:21:34Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Producer Lit by the Lake, LLC (Niagara microbusiness OCM-MICR-24-000006) lists no website in the register; two searches found no site of its own.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "jeromebaker",
+   "brand": "Jerome Baker",
+   "checkedAt": "2026-10-08T05:22:07Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Jerome Baker is a Las Vegas glassware company with a cannabis line; two searches named no New York producer, brand site or COA page for its NY flower box sets.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "qualityhigh",
+   "brand": "Quality High",
+   "checkedAt": "2026-10-08T05:23:05Z",
+   "url": "https://qualityhigh.com/",
+   "method": null,
+   "status": "no-source-link-found",
+   "pages": [],
+   "note": "Quality High is the dba of microbusiness Art of Flower Farm & Dispensary LLC (Sleepy Hollow store, Peekskill farm; site from the register dispensary record). Home, products, farm, FAQ and the flower store page carry no certificate links; the FAQ only says products are lab tested.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "honeyking",
+   "brand": "HONEY KING",
+   "checkedAt": "2026-10-08T05:23:57Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Two searches found no Honey King cannabis brand site or producer; not in the OCM register or Retail ID cards.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "cannagenix",
+   "brand": "CANNAGENIX",
+   "checkedAt": "2026-10-08T05:06:44Z",
+   "url": "https://www.1off.nyc/",
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Retail ID cards name AP Cohen Licensing Inc. (processor OCM-PROC-24-000062, site 1off.nyc per the register) as packing facility; 1off.nyc menu has no certificate page. Two searches found no Cannagenix site.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "fyre",
+   "brand": "Fyre",
+   "checkedAt": "2026-10-08T05:24:49Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Search ties FYRE (micro-batch flower) to Realeaf Botanicals, an Illinois craft grower whose sources mention Illinois only; no New York producer, brand site or COA page was found, and no register or Retail ID match.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "loudbuzz",
+   "brand": "LOUD BUZZ",
+   "checkedAt": "2026-10-08T05:25:23Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Two searches found no Loud Buzz brand site or producer; not in the OCM register or Retail ID cards.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "doghouse",
+   "brand": "Doghouse Farm",
+   "checkedAt": "2026-10-08T05:26:29Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Doghouse Farms is a multi-state grower (Oregon, Michigan, Washington, Florida per press); two searches named no New York producer or NY COA page. Menus carry certificates only on a dispensary platform (alleaves), not first party.",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "theladies",
+   "brand": "The Ladies",
+   "checkedAt": "2026-10-08T05:08:01Z",
+   "url": null,
+   "method": null,
+   "status": "no-first-party-source-found-in-search",
+   "pages": [],
+   "note": "Two searches found no site of its own; a delivery menu calls the line Hamptons Grown (not first party). The register has no matching producer (Lucky Green Ladies is an Ulster dispensary, not this brand).",
+   "certificateLinks": []
+  },
+  {
+   "brandKey": "pines",
+   "brand": "PINES",
+   "checkedAt": "2026-10-08T05:27:06+00:00",
+   "url": "https://www.awalkinthepines.com/",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://www.awalkinthepines.com/projects-2",
+    "https://www.awalkinthepines.com/copy-of-vapes",
+    "https://www.awalkinthepines.com/copy-of-gummies",
+    "https://www.awalkinthepines.com/copy-of-flower",
+    "https://www.awalkinthepines.com/copy-of-concentrates"
+   ],
+   "exampleUrl": "https://www.awalkinthepines.com/_files/ugd/6029c6_159dc5569aff473f8cf3b1d14115de2d.pdf",
+   "note": "Microbusiness A Walk in the Pines LLC (Chautauqua; site from the OCM register). Its Wix product-category pages (named in the site menu and pages sitemap) put a click-here-for-COA PDF under each product: flower, pre-rolls, vapes, concentrates. The host rate-limits (HTTP 429) quick successive reads.",
+   "certificateLinks": [
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_159dc5569aff473f8cf3b1d14115de2d.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/projects-2",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Sour Diesel (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_d6822e5eeaba43d8ab67aba4d359bea6.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/projects-2",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Gelato (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_e68565bb90ab48d88a254ea58b1a5a81.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/projects-2",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Lemon Cherry Sherbet (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_5d9c386d6be14b61bef46fd961c56a9e.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/projects-2",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Candy Candy (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_5f9b603dfcad408bbac11bf9ae42748b.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/projects-2",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Blueberry Cherries (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_41205190765441a1b9e59f6b56e78ef6.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/projects-2",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Crazy Trains (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_a5ae1efd45a8411da1956cc7ddac055b.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/projects-2",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Iced Sangria (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_a73a2751e1f94c91822f2965ae3fc6bd.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/projects-2",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Lemon Cherry Mintz (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_7be86136ca5746a78f16770b4a3c391d.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/projects-2",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Papaya Bomb (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_37f7faa95854437e8c072a7fbee9d805.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/projects-2",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Sour Dubb (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_5802a6d698724b4b8f80e4bfc341af72.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/projects-2",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Glue (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_1b9ee925cf7b4b6c87ea10fd5dcd89ad.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/projects-2",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Gushers (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_5e0af7f4987e4a83ab7286fb04f556fa.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-vapes",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Funk Dumper (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_a8a6db2b27a54e9282bfe7db549ddf64.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-vapes",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Ritz Carlton (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_ed96cebe352f409e80b10733680c3ee7.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-vapes",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Tropicana Cookies (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_f93dd4523f6148a585f2179b0062d61c.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-vapes",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Grape Pines (3.5g) (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_d556343410004356a8b0ffed5d632f80.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-vapes",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Brazilian Butt Lift (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_475785d2ba194b4e8e14600f1f8505dd.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-vapes",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Peach Tea (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_aac4294f1b584517a3216808b29f954f.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-vapes",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Blueberry Cherries (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_d8d8f527242b491c879e9d2d913f31d1.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-vapes",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Grape Pines (1g) (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_826dfbd8895e4d2fa10c531f41fd07ce.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-gummies",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Blue Gas (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_bfed2468a7c94eb799057ba92061e14d.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-gummies",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Platinum Sherb (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_66ac2e00cff841a6b19e6592ba89be15.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-gummies",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Sour Diesel (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_55f2528266ba43498a14a084300c60f1.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-gummies",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "King Bling (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_81cc9191198346ff9c8c0916fa6e3d63.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-gummies",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Grape Pines (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_34be42dc15b84da4a229adbbf82d3199.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-gummies",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Lemon Pines (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_b91deb4f13ca41ff88026f2e358b594d.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-gummies",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Tropicana Cookies (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_d10080c9f58c46698220ff80ea76fea0.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-gummies",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Brazilian Butt Lift (click here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_c6211d24143f4464b71c093705e29914.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-gummies",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Soap (Click here for coa)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_00b9fe912c234b38ba00c857926d64c4.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-gummies",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Rainbow Belts (Click her for coa)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_021a7974c8ac46d380343c0622d85c4b.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-flower",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Peanut Butter & Jelly (Click Here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_e0461642269643eeadfa058577b679c7.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-flower",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Blueberry Tart (Click Here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_df12e4b35b55457f9ba8adea0ab5302d.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-concentrates",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Lemon Cherry Mintz (Click Here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_920838a73db847b590cdfbd815b20853.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-concentrates",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Jack Rabbit (Click Here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_bb5e10b2cf9243d8aa13441d6f09d0d1.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-concentrates",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Infused Jelly Pancakes LIVE RESIN INFUSED (Click Here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_ddcf7362c73b4ab99867f3e41c1c7e47.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-concentrates",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Infused King Sherb LIVE RESIN INFUSED (Click Here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_a39ca9a7c7fc4cfd9744655ae3fc1f41.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-concentrates",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Candy Carlton LIVE RESIN INFUSED (Click Here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_962c9c5face3457a84661e1bcc5f6bae.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-concentrates",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Sour Diesel (Click Here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_aa509fc2a0d74b56867dcebc9bfcd693.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-concentrates",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Bath Salts (Click Here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_2efadefba63c4067acf17d56ad8eaffd.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-concentrates",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Infused Garden of Eden LIVE RESIN INFUSED (Click Here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_e6c286cce5f549f096c6d4bf2ea1ed03.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-concentrates",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Infused Sherb Cake LIVE RESIN INFUSED (Click Here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_75100ce2032742fbb29ea7e4701b7d3a.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-concentrates",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "King Bling (Click Here for COA)"
+    },
+    {
+     "url": "https://www.awalkinthepines.com/_files/ugd/6029c6_1196921baa734cd2be5e0d5db92bcc01.pdf",
+     "publishedOn": "https://www.awalkinthepines.com/copy-of-concentrates",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-08T05:27:06+00:00",
+     "label": "Lemon Cherry Mintz (Click Here for COA)"
+    }
+   ]
+  },
+  {
    "brandKey": "7seaz",
    "brand": "7 Seaz",
    "checkedAt": "2026-10-08T04:58:26Z",
@@ -4853,12 +5491,12 @@
   {
    "brandKey": "honestpharm",
    "brand": "HONEST PHARM CO.",
-   "checkedAt": "2026-10-08T04:52:03Z",
-   "url": null,
-   "method": null,
-   "status": "no-first-party-source-found-in-search",
+   "checkedAt": "2026-10-08T05:04:50Z",
+   "url": "https://honestpharmco.com/lab-results/",
+   "method": "list",
+   "status": "source-page-no-direct-links",
    "pages": [],
-   "note": "Honest Pharm Co. is a licensed cultivator in Newark (Wayne County), NY per local news; two searches found no website of its own.",
+   "note": "Producer Honest Pharmco, Inc (Wayne County cultivator/processor; site from the OCM register) has a Product Lab Testing page with flower/pre-roll/concentrate tabs linking 19 Confident LIMS share pages (share.confidentlims.com/samples/public/share/...); probe takes 0 because that portal is not a recognised certificate host.",
    "certificateLinks": []
   },
   {
@@ -6867,12 +7505,12 @@
   {
    "brandKey": "themechanic",
    "brand": "The Mechanic Farm",
-   "checkedAt": "2026-10-08T04:53:15Z",
+   "checkedAt": "2026-10-08T05:10:29Z",
    "url": null,
    "method": null,
    "status": "no-first-party-source-found-in-search",
    "pages": [],
-   "note": "Mechanic Farms (founder Chris, legal New York market since 2024) appears only in a magazine profile and a Leafly roundup; no site of its own found in two searches.",
+   "note": "One search: a Leaf Magazine profile of Mechanic Farms links only an Instagram account, no website. Register names microbusiness Organic Mechanic LLC (Ontario) and Retail ID names Excelsior Legacy LLC as packer; neither lists a website.",
    "certificateLinks": []
   },
   {
