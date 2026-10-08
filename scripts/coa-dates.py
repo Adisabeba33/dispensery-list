@@ -36,6 +36,7 @@
 - в крайнем случае: «Report Date» — день отчёта, на неделю-другую позже пробы
 """
 import hashlib
+import html
 import importlib.util
 import json
 import re
@@ -45,6 +46,7 @@ import tempfile
 import argparse
 from datetime import date
 from pathlib import Path
+from urllib.parse import parse_qs, urljoin, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 LOTS = ROOT / "data/shelf-terpenes.json"
@@ -175,10 +177,33 @@ def identifiers(text, blob):
     return out
 
 
+# Kaycha's yourcoa.com: the download link brands publish (coa-download/<sample>)
+# answers for some samples with the viewer page instead of the PDF, and the
+# viewer's own Download button carries the link that returns it
+# (coa-download/<sample>?wl_id=0&mrk=0&is_view=1). Only that link, as the
+# viewer prints it and for the same sample, is read — nothing is built.
+VIEWER_DOWNLOAD = re.compile(r"""href=["'](/coa/coa-download/([A-Za-z0-9-]+)\?[^"'<>]*is_view=1[^"'<>]*)["']""", re.I)
+
+
+def viewer_document(final_url, blob):
+    """The PDF link a yourcoa.com viewer page publishes for its own sample, or None."""
+    u = urlsplit(final_url)
+    if not (u.netloc.lower().endswith("yourcoa.com") and u.path.rstrip("/").endswith("/coa/coa-view")):
+        return None
+    sample = (parse_qs(u.query).get("sample") or [""])[0]
+    for href, linked in VIEWER_DOWNLOAD.findall(blob.decode("utf8", "replace")):
+        if linked == sample:
+            return urljoin(final_url, html.unescape(href))
+    return None
+
+
 def fetch(url, workdir, reader):
     path = Path(workdir) / (re.sub(r"[^A-Za-z0-9]+", "_", url)[-80:] + ".pdf")
     try:
         final_url, _, blob = reader.get(url)
+        document = None if blob.startswith(b"%PDF-") else viewer_document(final_url, blob)
+        if document:
+            final_url, _, blob = reader.get(document)
         if not blob.startswith(b"%PDF-"):
             raise http.SourceBlocked("not-a-pdf")
         path.write_bytes(blob)

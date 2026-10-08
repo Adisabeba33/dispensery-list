@@ -188,4 +188,23 @@ with tempfile.TemporaryDirectory() as tmp:
                             m.links_first_seen(sources))
     assert [u.rsplit('/', 1)[-1][:7] for u in order] == ['WF01135', 'WF00900', 'WF00354'], order
     assert m.recency('https://x/COA_2026-07-01_lot.pdf')[0] == '2026-07-01'
+# yourcoa.com: a download link that answers with the viewer is read through
+# the viewer's own Download link for the same sample, and nothing else.
+VIEWER = ('<a href="/coa/coa-view?sample=AL1-001&mrk=1">Marketing</a>'
+          '<a href="/coa/coa-download/AL9-009?wl_id=0&amp;mrk=0&amp;is_view=1">other</a>'
+          '<a href="/coa/coa-download/AL1-001?wl_id=0&amp;mrk=0&amp;is_view=1">Download</a>').encode()
+class ViewerReader:
+    def __init__(self): self.asked = []
+    def get(self, url):
+        self.asked.append(url)
+        if 'is_view=1' in url:
+            return url, {}, b'%PDF-1.4 not a real pdf'
+        return 'https://ny.yourcoa.com/coa/coa-view?sample=AL1-001', {}, VIEWER
+reader = ViewerReader()
+with tempfile.TemporaryDirectory() as tmp:
+    m.fetch('https://ny.yourcoa.com/coa/coa-download/AL1-001', tmp, reader)
+assert reader.asked == ['https://ny.yourcoa.com/coa/coa-download/AL1-001',
+                        'https://ny.yourcoa.com/coa/coa-download/AL1-001?wl_id=0&mrk=0&is_view=1'], reader.asked
+assert m.viewer_document('https://other.test/coa/coa-view?sample=AL1-001', VIEWER) is None
+assert m.viewer_document('https://ny.yourcoa.com/coa/coa-view?sample=AL2-002', VIEWER) is None
 print('coa-dates-check: OK (six labs, date provenance, robots, redirects, cooldown, source scope)')
