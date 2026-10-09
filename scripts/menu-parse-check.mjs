@@ -683,6 +683,15 @@ check('root-relative url resolved', withUrl('/product/b')?.productUrl, 'https://
 check('bare slug refused', withUrl('blue-burst')?.productUrl, null);
 check('junk url refused', withUrl('javascript:void(0)')?.productUrl, null);
 check('missing url stays null', toListing({ Name: 'X', type: 'Flower', Options: ['3.5g'] }, shop, SRC, {})?.productUrl, null);
+// `new URL` keeps "|", "[", "]", "{", "}", "^" and a stray "%" as it found
+// them; the schema's `uri` refuses them, and on 8 October 2026 one such link
+// held back a batch of 35 shops and with it the day (runs 50 and 51).
+check('"|" in a product path encoded', withUrl('https://esh.us/shop/rosedale-ny/menu/flower-8861/dank-|-flower')?.productUrl,
+  'https://esh.us/shop/rosedale-ny/menu/flower-8861/dank-%7C-flower');
+check('brackets, braces and a caret in path, query and fragment encoded', withUrl('/p/[x]?a={b}&q=a|b#f^g')?.productUrl,
+  'https://example-dispensary.test/p/%5Bx%5D?a=%7Bb%7D&q=a%7Cb#f%5Eg');
+check('a "%" that begins no escape encoded, a real escape kept', withUrl('https://x.test/p/a%zz%20b%')?.productUrl,
+  'https://x.test/p/a%25zz%20b%25');
 
 /* Cannabis Realm's menu leaves `terpenes` empty and keeps the panel as flat
    numbers on `labs`, with its certificate under `coa`; Dutchie states only the
@@ -2106,6 +2115,11 @@ check('something that is not a stream is nothing', decodeTurboStream('<html>'), 
     {},
   );
   check('and one carrying dates and a whole panel', errorsOf(dated), []);
+
+  for (const url of ['https://esh.us/shop/x/menu/dank-|-flower-|-afghani', '/p/[x]?a={b}&q=a|b#f^g', '/p/a%zz%', '/p/é b`\\c']) {
+    const linked = toListing({ Name: 'Linky', type: 'Flower', Options: ['3.5g'], url }, shop, SRC, {});
+    check(`and one whose menu link was ${url}`, [Boolean(linked.productUrl), errorsOf(linked)], [true, []]);
+  }
 }
 
 /* ------------------------------------------------------------- RSC FLIGHT ---
