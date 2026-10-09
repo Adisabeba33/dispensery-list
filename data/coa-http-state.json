@@ -201,7 +201,7 @@
     "errors": 3
   },
   "https://www.awalkinthepines.com": {
-    "errors": 0
+    "errors": 4
   },
   "https://57d2f0ea-9db5-4fee-9779-f478952f0009.filesusr.com": {
     "errors": 0
@@ -220,5 +220,49 @@
   },
   "https://www.labware.com": {
     "errors": 0
+  },
+  "https://felas.farm": {
+    "errors": 0
+  },
+  "https://www.hudsonvalleyjane.com": {
+    "errors": 0
+  },
+  "https://roemerfarms.com": {
+    "errors": 0
+  },
+  "https://thetraptotable.com": {
+    "errors": 0
+  },
+  "https://highpeaks.com": {
+    "errors": 0
+  },
+  "https://adkhempco.com": {
+    "errors": 0
+  },
+  "https://www.nfcny.com": {
+    "errors": 0
+  },
+  "https://akronbloom.com": {
+    "errors": 0
+  },
+  "https://feelthefxs.com": {
+    "errors": 0
+  },
+  "https://www.cheevo.co": {
+    "errors": 0
+  },
+  "https://stranman.com": {
+    "errors": 0
+  },
+  "https://fyreny.com": {
+    "errors": 0
+  },
+  "https://v1": {
+    "errors": 5,
+    "blockedUntil": "2026-10-09T21:43:21.264520+00:00"
+  },
+  "https://czz.8a7.mytemp.website": {
+    "errors": 5,
+    "blockedUntil": "2026-10-09T21:44:10.795932+00:00"
   }
 }
