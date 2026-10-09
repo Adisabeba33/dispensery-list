@@ -49,14 +49,14 @@
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| ESH | 221 | 247 | https://esh.us/locations/rosedale-ny/ |
-| Curaleaf NY, LLC | 150 | 181 | https://curaleaf.com |
-| ESH | 133 | 149 | https://esh.us |
-| Buzzwick Uptown | 100 | 106 | https://buzzwicknyc.com |
-| Terminal 420 | 67 | 92 | https://terminal420.com |
-| Society House | 79 | 80 | https://www.societyhousebk.com/ |
-| Freshly Baked NYC | 41 | 49 | https://freshlybaked.nyc/ |
-| OZ Dispensary | 132 | 159 | https://ozdispensary.com/ |
+| ESH | 20 | 247 | https://esh.us/locations/rosedale-ny/ |
+| Curaleaf NY, LLC | 22 | 185 | https://curaleaf.com |
+| ESH | 17 | 154 | https://esh.us |
+| Buzzwick Uptown | 23 | 105 | https://buzzwicknyc.com |
+| Terminal 420 | 22 | 90 | https://terminal420.com |
+| Society House | 24 | 78 | https://www.societyhousebk.com/ |
+| Freshly Baked NYC | 20 | 49 | https://freshlybaked.nyc/ |
+| OZ Dispensary | 80 | 159 | https://ozdispensary.com/ |
 | MILLIGRAMS | 93 | 101 | https://milligrams.co/locations/brooklyn-ny/ |
 
 ## Сюда не ходим
@@ -67,8 +67,8 @@
 - **6** магазинов запретили обход в своём `robots.txt`. Мы спросили и получили отказ — это ответ, а не пробел, и искать им адрес меню не нужно. Отказ обычно приходит не от магазина, а от платформы, на которой стоит его витрина, и тогда уходит не один магазин, а все её. Список только растёт: сайт, который не отдал `robots.txt`, считается разрешившим, так что попасть сюда можно лишь по ясно объявленному запрету.
   - MZDZ Corp — Brooklyn, http://www.coneyislandcannabisny.com
   - Tiki Leaves LLC — Brooklyn, http://www.tikileaves.com
-  - Kushie — Forest Hills, https://kushieny.com
   - CannaBees — Maspeth, https://cannabeesdispensary.com
   - Good Company — New York, https://goodcompanyshop.com
+  - THE HERBAL CARE THC LLC — New York, https://thctheherbalcare.com/
   - Green Land Retail LLC — Staten Island, https://greenlandny.com
 
