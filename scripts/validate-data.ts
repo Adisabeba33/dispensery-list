@@ -50,9 +50,23 @@ const compile = (schemaPath: string) => {
   return fn;
 };
 
-const formatAjvErrors = (file: string, index: number, errs: ErrorObject[] | null | undefined) => {
+/** The value an ajv error points at, and whose record it is (a listing's shop),
+ *  so a failed check says what to look at: on 8 October 2026 "must match format
+ *  \"uri\"" at [24720]/productUrl named neither the link nor the shop. */
+const offending = (record: unknown, pointer: string): string => {
+  let value: unknown = record;
+  for (const key of pointer.split('/').slice(1)) {
+    if (value === null || typeof value !== 'object') break;
+    value = (value as Record<string, unknown>)[key.replace(/~1/g, '/').replace(/~0/g, '~')];
+  }
+  const shown = value === undefined || (pointer && typeof value === 'object') ? '' : ` — value ${JSON.stringify(value)?.slice(0, 200)}`;
+  const shop = (record as Record<string, unknown> | null)?.licenseNumber;
+  return shown + (typeof shop === 'string' && pointer ? ` (${shop})` : '');
+};
+
+const formatAjvErrors = (file: string, index: number, errs: ErrorObject[] | null | undefined, record?: unknown) => {
   for (const e of errs ?? []) {
-    fail(file, `[${index}]${e.instancePath}`, `${e.message}${e.params && Object.keys(e.params).length ? ` (${JSON.stringify(e.params)})` : ''}`);
+    fail(file, `[${index}]${e.instancePath}`, `${e.message}${e.params && Object.keys(e.params).length ? ` (${JSON.stringify(e.params)})` : ''}${record === undefined ? '' : offending(record, e.instancePath)}`);
   }
 };
 
@@ -144,7 +158,7 @@ const validateDispensaries = (FILE: string, requireRegistry: boolean) => {
   const seenLicences = new Map<string, number>();
 
   raw.forEach((record, i) => {
-    if (!validate(record)) formatAjvErrors(FILE, i, validate.errors);
+    if (!validate(record)) formatAjvErrors(FILE, i, validate.errors, record);
 
     // Anything below assumes the shape is roughly right; guard loosely so one
     // malformed record does not mask the rules for every other record.
@@ -286,7 +300,7 @@ const validateMunicipalities = (FILE = 'data/municipalities.json') => {
   const seen = new Map<string, number>();
 
   raw.forEach((record, i) => {
-    if (!validate(record)) formatAjvErrors(FILE, i, validate.errors);
+    if (!validate(record)) formatAjvErrors(FILE, i, validate.errors, record);
     const r = record as Record<string, any>;
 
     if (typeof r.id === 'string') {
@@ -347,7 +361,7 @@ const validateFlowerListings = (FILE: string) => {
   const now = Date.now();
 
   raw.forEach((record, i) => {
-    if (!validate(record)) formatAjvErrors(FILE, i, validate.errors);
+    if (!validate(record)) formatAjvErrors(FILE, i, validate.errors, record);
     const r = record as Record<string, any>;
     const at = (field: string) => `[${i}] ${r.listingId ?? 'unknown'} → ${field}`;
 
@@ -486,7 +500,7 @@ const validateStrainReference = (FILE: string) => {
   const seen = new Map<string, number>();
 
   raw.forEach((record, i) => {
-    if (!validate(record)) formatAjvErrors(FILE, i, validate.errors);
+    if (!validate(record)) formatAjvErrors(FILE, i, validate.errors, record);
     const r = record as Record<string, any>;
     const at = (field: string) => `[${i}] ${r.strainId ?? 'unknown'} → ${field}`;
 
@@ -543,7 +557,7 @@ const validateProducers = (FILE: string) => {
   );
 
   raw.forEach((record, i) => {
-    if (!validate(record)) formatAjvErrors(FILE, i, validate.errors);
+    if (!validate(record)) formatAjvErrors(FILE, i, validate.errors, record);
     const r = record as Record<string, any>;
     const at = (field: string) => `[${i}] ${r.licenseNumber ?? 'unknown'} → ${field}`;
 

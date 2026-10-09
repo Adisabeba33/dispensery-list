@@ -3973,12 +3973,32 @@ const productPage = (p, sourceUrl) => {
   const value = raw.trim();
   if (!value || value.length > 500) return null;
   try {
-    if (/^https?:\/\//i.test(value)) return new URL(value).toString();
-    if (value.startsWith('/')) return new URL(value, sourceUrl).toString();
+    if (/^https?:\/\//i.test(value)) return strictUri(new URL(value));
+    if (value.startsWith('/')) return strictUri(new URL(value, sourceUrl));
   } catch {
     return null;
   }
   return null;
+};
+
+/* A parsed URL as RFC 3986 writes it, which is what the listing schema's `uri`
+ * format checks. `new URL` leaves "|", "^", "[", "]", "{", "}", "`" and "\" in
+ * a path or query as it found them, and a "%" that begins no escape; on
+ * 8 October 2026 one such link failed validation and held back the batch of
+ * thirty-five shops it was read in, and so the day's shelves (runs 50 and 51,
+ * both at shops 210–245). Those characters are percent-encoded here; the
+ * scheme and host `new URL` has already normalised. */
+const strictUri = (url) => {
+  const encode = (part) =>
+    part.replace(/%(?![0-9A-Fa-f]{2})|[^A-Za-z0-9\-._~!$&'()*+,;=:@/?%]/g, (c) =>
+      c === '%' ? '%25' : encodeURIComponent(c),
+    );
+  return (
+    url.origin +
+    encode(url.pathname) +
+    (url.search ? `?${encode(url.search.slice(1))}` : '') +
+    (url.hash ? `#${encode(url.hash.slice(1))}` : '')
+  );
 };
 
 /* A METRC package tag ("1A4120300000C1D000034369") or the Retail ID link the

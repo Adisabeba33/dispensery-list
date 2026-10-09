@@ -26,7 +26,7 @@ from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import urljoin, urlparse
+from urllib.parse import quote, urljoin, urlparse, urlsplit
 
 import requests
 from bs4 import BeautifulSoup
@@ -298,10 +298,29 @@ def product_page(product, source_url):
     if not value or len(value) > 500:
         return None
     if re.match(r"https?://", value, re.I):
-        return value
+        return strict_uri(value)
     if value.startswith("/"):
-        return urljoin(source_url, value)
+        return strict_uri(urljoin(source_url, value))
     return None
+
+
+# Outside RFC 3986, which the listing schema's `uri` format checks: "|", "^",
+# "[", "]", "{", "}", spaces and anything not ASCII in a path or query, and a
+# "%" that begins no escape. As strictUri in menu-render.mjs: percent-encoded.
+_NOT_URI = re.compile(r"%(?![0-9A-Fa-f]{2})|[^A-Za-z0-9\-._~!$&'()*+,;=:@/?%]")
+
+
+def strict_uri(value):
+    try:
+        parts = urlsplit(value)
+    except ValueError:
+        return None
+    if not parts.netloc:
+        return None
+    encode = lambda part: _NOT_URI.sub(lambda m: "%25" if m.group() == "%" else quote(m.group(), safe=""), part)
+    return (f"{parts.scheme.lower()}://{parts.netloc}{encode(parts.path)}"
+            + (f"?{encode(parts.query)}" if parts.query else "")
+            + (f"#{encode(parts.fragment)}" if parts.fragment else ""))
 
 
 def build_listing(product, shop, source_url):
