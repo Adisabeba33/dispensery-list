@@ -18,7 +18,7 @@ import {
   mergeBySize, pagedRequest, pickFlowerInside, pickMenuLink, pickStore,
   placeNamesOf, rankMenuLink, registerTextOf, sameEstate, signatureOf, sizeFromText,
   toListing, wallAction, fulfilmentAction, pageKnobOf, dropRepeatedPanels, sweedCategoryOf, decodeEntities,
-  linkNamesAnotherState, proteusCards, proteusBrandsOf, proteusShowAll,
+  linkNamesAnotherState, proteusCards, proteusBrandsOf, proteusShowAll, sweedStorefrontPage, storefrontPagesOf,
   isPromotionalSample, withoutCompanionSearches, firstPageAlone, furthestPageOf, queryKey, LOAD_MORE
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
@@ -342,6 +342,34 @@ check('a spaced dash and number left by a weight still go', cleanStrainName('Afg
     proteusShowAll('https://cart.renaissant.nyc/cart/ajax_getproducts.cfm?cat=8', html),
     'https://cart.renaissant.nyc/cart/ajax_getproducts.cfm?cat=8&page=all');
   check('and only once', proteusShowAll('https://cart.renaissant.nyc/cart/ajax_getproducts.cfm?cat=8&page=all', html), null);
+}
+
+/* A Sweed shop's own page of its shelf (ESH, 10 October 2026): the products
+   are in the query cache the server writes into the page, beside a function,
+   so the script is not JSON as a whole. */
+{
+  const product = { id: 393172, name: 'Platinum GSC', brand: { name: 'Ruby Farms' }, category: { id: 8861, name: 'Flower' },
+    strain: { name: 'Hybrid', prevalence: { name: 'Hybrid' } },
+    variants: [{ id: 507697, name: '3.5g', unitSize: { value: 3.5, unitAbbr: 'G' }, labTests: { thc: { value: [33.2312], unitAbbr: '%' } } }] };
+  const cache = { mutations: [], queries: [
+    { queryHash: '["/Store/GetStore",{}]', state: { data: { name: 'ESH - Rosedale REC' } } },
+    { queryHash: '["/Products/GetProductList",{"filters":{"category":[8861]},"page":2,"pageSize":24}]',
+      state: { data: { filters: {}, promos: [{ name: 'Jeeter Blowout Sale' }], page: 2, pageSize: 24, total: 244, list: [product] } } },
+  ] };
+  const html = '<html><body><script id="_R_">Object.assign(window, {"__sw": {"assetPrefix":"x"}, '
+    + '"__sw_ap": (fn) => ("https://static-prime.sweedpos.com/web-ui-shop" ?? window.location.origin) + \'/\' + fn, '
+    + `"__sw_qc": ${JSON.stringify(cache)}, "__sw_hydrate": {"ready":false}});</script></body></html>`;
+  const page = sweedStorefrontPage(html);
+  check('a Sweed page states its place and total', page && [page.page, page.pageSize, page.total, page.list.length], [2, 24, 244, 1]);
+  const listing = toListing(page.list[0], shop, 'https://esh.us/shop/rosedale-ny/menu/flower-8861?page=2', {});
+  check('and its products read as any Sweed answer does', [listing?.brand, listing?.thcPercent, listing?.availableSizesGrams, listing?.lineage],
+    ['Ruby Farms', 33.23, [3.5], 'HYBRID']);
+  check('a page without the cache is not one', sweedStorefrontPage('<html><script>Object.assign(window, {"__sw": {}})</script></html>'), null);
+  const at = 'https://esh.us/shop/rosedale-ny/menu/flower-8861';
+  check('the page numbers it links on its own address', storefrontPagesOf([
+    '/shop/rosedale-ny/menu/flower-8861?page=3', `${at}?page=2`, '/shop/rosedale-ny/menu/flower-8861?page=1',
+    '/shop/rosedale-ny/menu/pre-roll-8862?page=2', 'https://web-ui-prime.sweedpos.com/s98/menu/flower-2936?page=4', '#',
+  ], at), [2, 3]);
 }
 
 /* The newer Proteus cart (Liberty Buds, 10 October 2026): the growers as a

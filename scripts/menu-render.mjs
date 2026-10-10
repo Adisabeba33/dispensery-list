@@ -4237,6 +4237,154 @@ export const proteusCards = (html, brands = []) => {
   }
   return cards;
 };
+/* A JSON object that starts at `open` in a page's text, read to its closing
+   brace with strings honoured: state a server writes into a script that is not
+   JSON as a whole (beside it sit functions). */
+const objectAt = (text, open) => {
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+  for (let i = open; i < text.length; i += 1) {
+    const c = text[i];
+    if (inString) {
+      if (escaped) escaped = false;
+      else if (c === '\\') escaped = true;
+      else if (c === '"') inString = false;
+    } else if (c === '"') inString = true;
+    else if (c === '{') depth += 1;
+    else if (c === '}') {
+      depth -= 1;
+      if (depth === 0) {
+        try {
+          return JSON.parse(text.slice(open, i + 1));
+        } catch {
+          return null;
+        }
+      }
+    }
+  }
+  return null;
+};
+
+/**
+ * One page of a Sweed shop's shelf, as the shop's own site rendered it.
+ *
+ * Sweed shops on their own domain — ESH, Society House, Terminal 420, Freshly
+ * Baked, Buzzwick — draw every page of a category there: /menu/flower-8861?page=2
+ * is a page of the shop's site, one of the page numbers it shows, and its
+ * products are in it, in the query cache the server hands the browser:
+ *
+ *   <script id="_R_">Object.assign(window, { … "__sw_qc": { "queries": [ {
+ *     "queryHash": "[\"/Products/GetProductList\",{… \"page\":2 …}]",
+ *     "state": { "data": { "page": 2, "pageSize": 24, "total": 244, "list": [ … ] } } } ] } })
+ *
+ * The products are Sweed's own, the shape the API answers with.
+ */
+export const sweedStorefrontPage = (html) => {
+  const text = String(html ?? '');
+  const at = text.indexOf('"__sw_qc":');
+  const open = at > -1 ? text.indexOf('{', at) : -1;
+  const cache = open > -1 ? objectAt(text, open) : null;
+  for (const query of Array.isArray(cache?.queries) ? cache.queries : []) {
+    const data = query?.state?.data;
+    if (String(query?.queryHash ?? '').includes('/Products/GetProductList') && Array.isArray(data?.list)) {
+      return { page: data.page ?? null, pageSize: data.pageSize ?? null, total: data.total ?? null, list: data.list };
+    }
+  }
+  return null;
+};
+
+/* The page numbers a page links to on its own address: /menu/flower-8861?page=3
+   beside /menu/flower-8861. Links elsewhere, and page 1, are not counted. */
+export const storefrontPagesOf = (hrefs, pageUrl) => {
+  const here = new URL(pageUrl);
+  const pages = new Set();
+  for (const href of hrefs ?? []) {
+    let url;
+    try {
+      url = new URL(href, here);
+    } catch {
+      continue;
+    }
+    if (url.origin !== here.origin || url.pathname !== here.pathname) continue;
+    const n = Number(url.searchParams.get('page'));
+    if (Number.isInteger(n) && n >= 2) pages.add(n);
+  }
+  return [...pages].sort((a, b) => a - b);
+};
+
+/**
+ * The rest of a Sweed shelf, read from the shop's own pages.
+ *
+ * Paging through Sweed's API asks web-ui-prime.sweedpos.com, and its
+ * robots.txt says Disallow: / — obeyed (owner's decision of 7 October 2026). So
+ * from 8 October six such shops showed their first twenty-four of 742 flower
+ * products. Their own sites allow the pages and link them, so they are read
+ * there instead: only when the page itself links ?page=2 on its own address,
+ * only as far as the total the shop's own page states, each page asked as the
+ * shop's site, with its robots.txt, and one at a time. Nothing is asked of
+ * Sweed's host.
+ */
+const readStorefrontPages = async (page, entry, payloads, seen) => {
+  let first = null;
+  let hrefs = [];
+  try {
+    first = sweedStorefrontPage(await page.content());
+    hrefs = await page.evaluate(() => [...document.querySelectorAll('a[href]')].map((a) => a.getAttribute('href')));
+  } catch {
+    return null;
+  }
+  if (!first?.total || !first?.pageSize || !storefrontPagesOf(hrefs, page.url()).includes(2)) return null;
+  for (const p of first.list) {
+    const id = countingIdOf(p);
+    if (id) seen.add(id);
+  }
+  const last = Math.min(Math.ceil(first.total / first.pageSize), MAX_PAGES_DECLARED);
+  const until = Date.now() + PAGING_BUDGET_DECLARED_MS;
+  let asked = 0;
+  let stopped = 'ran-out-of-pages';
+  for (let n = 2; n <= last; n += 1) {
+    if (seen.size >= first.total) break;
+    if (Date.now() > until) {
+      stopped = 'out-of-time';
+      break;
+    }
+    const url = new URL(page.url());
+    url.searchParams.set('page', String(n));
+    if (!(await robotsAllowsApi(url.href).catch(() => false))) {
+      stopped = 'robots-disallowed';
+      break;
+    }
+    const answer = await page
+      .evaluate(async (u) => {
+        try {
+          const res = await fetch(u, { credentials: 'same-origin' });
+          return { status: res.status, text: res.ok ? await res.text() : '' };
+        } catch {
+          return { status: 0, text: '' };
+        }
+      }, url.href)
+      .catch(() => ({ status: 0, text: '' }));
+    asked += 1;
+    const got = answer.text ? sweedStorefrontPage(answer.text) : null;
+    if (!got?.list.length) {
+      stopped = answer.status >= 200 && answer.status < 300 ? 'answer-had-no-products' : 'refused';
+      break;
+    }
+    const fresh = got.list.filter((p) => countingIdOf(p) && !seen.has(countingIdOf(p)));
+    if (!fresh.length) {
+      stopped = 'same-products-again';
+      break;
+    }
+    fresh.forEach((p) => seen.add(countingIdOf(p)));
+    payloads.push({ page: got.page, pageSize: got.pageSize, total: got.total, list: got.list });
+    await new Promise((r) => setTimeout(r, PAGE_PACE_MS));
+  }
+  if (seen.size >= first.total) stopped = 'read-everything-declared';
+  entry.storefrontPages = { asked, total: first.total, read: seen.size, stopped };
+  return entry.storefrontPages;
+};
+
 /* The cart pages its shelf ten or so at a time and offers "Show All" beside
    the page numbers; the same request with page=all is the whole shelf. */
 export const proteusShowAll = (url, html) => {
@@ -5377,6 +5525,15 @@ const main = async () => {
           break;
           }
 
+          /* The API's host refused the next page; the shop's own pages may not
+             (readStorefrontPages). */
+          const storefront =
+            stopped === 'robots-disallowed'
+              ? await readStorefrontPages(page, entry, payloads, new Set(
+                  requests.filter((r) => queryKey(r) === key).flatMap((r) => r.ids ?? []).filter(Boolean),
+                ))
+              : null;
+
           if (asked > 0) {
             entry.pagesAsked = asked;
             entry.pagedFrom = pagedFrom;
@@ -5385,10 +5542,10 @@ const main = async () => {
           /* Recorded whether anything was asked or not: "no page in this
              request" is the whole finding for a shop that was never paged, and
              it is invisible in pagesAsked. */
-          entry.pagingStoppedBecause = stopped;
+          entry.pagingStoppedBecause = storefront?.read > seenBefore() ? storefront.stopped : stopped;
           /* Both sides of the completeness check, taken from one query. */
           entry.declaredTotal = declared || null;
-          entry.pagedQueryProducts = seenBefore();
+          entry.pagedQueryProducts = Math.max(seenBefore(), storefront?.read ?? 0);
         }
       }
       /* The data a server-rendered page already holds. Remix and React Router
