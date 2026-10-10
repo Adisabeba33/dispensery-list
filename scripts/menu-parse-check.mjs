@@ -138,6 +138,10 @@ check('delivery is never chosen', fulfilmentAction('CLICK TO SEE THE EXPRESS DEL
 check('nor its mode button', fulfilmentAction('Delivery'), 'never');
 check('the mode toggle itself is left alone', fulfilmentAction('Pickup'), 'ignore');
 check('and so is a sentence about pick-up', fulfilmentAction('ORDER FOR PICKUP OR CLICK BELOW TO SWITCH TO DELIVERY!'), 'never');
+// Proteus, from 8 October 2026: "Please choose how you would like to shop:" over three buttons.
+check('a bare Pick-Up is pressed where the page asks how to shop', fulfilmentAction('Pick-Up', true), 'shop-pickup');
+check('but curbside is not pick-up at the counter', fulfilmentAction('Curbside Pick-Up', true), 'ignore');
+check('and delivery is still never chosen', fulfilmentAction('Scheduled Delivery', true), 'never');
 
 /* ------------------------------------------------------------------ Jane --
  * KushKlub's flower table as dmerch.iheartjane.com answered it on 28
@@ -338,6 +342,27 @@ check('a spaced dash and number left by a weight still go', cleanStrainName('Afg
     proteusShowAll('https://cart.renaissant.nyc/cart/ajax_getproducts.cfm?cat=8', html),
     'https://cart.renaissant.nyc/cart/ajax_getproducts.cfm?cat=8&page=all');
   check('and only once', proteusShowAll('https://cart.renaissant.nyc/cart/ajax_getproducts.cfm?cat=8&page=all', html), null);
+}
+
+/* The newer Proteus cart (Liberty Buds, 10 October 2026): the growers as a
+   drop-down in ajax_topfilters.cfm, the potency as its own line on the card. */
+{
+  const filters = '<select name="brandID" class="form-select input-sm"><option value="">Brands</option>'
+    + '<option  value="1194">1937</option><option  value="1232">Botanist</option><option  value="77">Munchkins</option></select>';
+  const brands = proteusBrandsOf(filters);
+  check('the growers come from the drop-down, not its label', [...brands].sort(), ['1937', 'Botanist', 'Munchkins']);
+  const card = (id, title, extra = '', brandname = '') => `<div data-id="${id}" class="col-12 products_view products_strain_2080  product-card-wrapper">`
+    + `<div class="product"><a data-id="${id}" href="/cart/ps/57859654945${id}/" data-brandname="${brandname}" data-prodname="x" title="${title}" class="desc-image item_view">`
+    + `</a><div class="product-content"><p class="color-grey product_short_description"></p><div class="specs color-black"><div>Sativa</div>${extra}</div></div></div></div>`;
+  const html = '<span class="category-breadcrumb" title="Flower">Flower</span>'
+    + card(1, ' Munchkins | Flower | 3.5G | Blueberry Headband | THC 24.86% | Sativa', '<span class="labinfo">THC: 24.86%</span><span class="labinfo">TERPS: 0.9512</span>')
+    + card(2, 'Botanist - Agent Orange', '', 'Botanist')
+    + card(3, '1937 - Headbanger');
+  const cards = proteusCards(html, brands);
+  check('each card has its grower, by name or by the card', cards.map((c) => [c.brand, c.thc ?? null]),
+    [['Munchkins', 24.86], ['Botanist', null], ['1937', null]]);
+  const listing = toListing(cards[0], shop, 'https://manhattan.libertybudsnyc.com/shop/c/Flower/', {});
+  check('and the card\'s THC is the listing\'s', [listing?.brand, listing?.thcPercent, listing?.availableSizesGrams], ['Munchkins', 24.86, [3.5]]);
 }
 
 /* Cova's range (Hush, Highlife Health); Kushmart's cannabinoid rows, mg/g

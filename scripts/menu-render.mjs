@@ -1327,17 +1327,29 @@ const chooseStore = async (page, entry) => {
  */
 const PICKUP_GO =
   /^(shop|order|start|begin|continue(\s+with)?)\s+(for\s+)?(store\s+|in[-\s]?store\s+)?pick[-\s]?up(\s+order)?$/i;
-export const fulfilmentAction = (text) => {
+/* Proteus asks it in so many words — "Please choose how you would like to
+   shop:" over Pick-Up, Curbside Pick-Up and Scheduled Delivery — and from
+   8 October 2026 drew Liberty Buds' shelf, for both of its licences, only
+   after one of them was pressed: until then the page held no products, and
+   the two shops kept their reading of the 7th. Its button names no verb, so a
+   bare "Pick-Up" is taken only on a page that asks the question; anywhere
+   else a bare "Pickup" is the mode toggle and is left alone. */
+const ASKS_HOW_TO_SHOP = /how\s+(?:(?:would|do)\s+you|you\s+would)\s+(?:like|want)\s+to\s+shop/i;
+const PICKUP_BARE = /^(store\s+|in[-\s]?store\s+)?pick[-\s]?up$/i;
+export const fulfilmentAction = (text, asked = false) => {
   const words = String(text ?? '').trim();
   if (/deliver/i.test(words)) return 'never';
-  return PICKUP_GO.test(words) ? 'shop-pickup' : 'ignore';
+  if (PICKUP_GO.test(words)) return 'shop-pickup';
+  return asked && PICKUP_BARE.test(words) ? 'shop-pickup' : 'ignore';
 };
 
 const choosePickup = async (page, entry) => {
   let answer = null;
   try {
-    answer = await page.evaluate((go) => {
+    answer = await page.evaluate(([go, bare, asks]) => {
       const isGo = new RegExp(go, 'i');
+      const isBare = new RegExp(bare, 'i');
+      const asked = new RegExp(asks, 'i').test(document.body?.innerText ?? '');
       const onScreen = (el) => {
         const box = el.getBoundingClientRect();
         if (box.width <= 0 || box.height <= 0) return false;
@@ -1349,11 +1361,14 @@ const choosePickup = async (page, entry) => {
       };
       const words = (el) => (el.innerText || el.value || el.getAttribute('aria-label') || '').trim().replace(/\s+/g, ' ');
       const found = [...document.querySelectorAll('button, a, [role="button"], input[type="button"]')]
-        .filter((el) => { const w = words(el); return w && w.length <= 40 && !/deliver/i.test(w) && isGo.test(w) && onScreen(el); });
+        .filter((el) => {
+          const w = words(el);
+          return w && w.length <= 40 && !/deliver/i.test(w) && (isGo.test(w) || (asked && isBare.test(w))) && onScreen(el);
+        });
       if (found.length !== 1) return found.length ? { several: found.length } : null;
       found[0].click();
       return { label: words(found[0]) };
-    }, PICKUP_GO.source);
+    }, [PICKUP_GO.source, PICKUP_BARE.source, ASKS_HOW_TO_SHOP.source]);
   } catch {
     return false;
   }
@@ -4176,11 +4191,21 @@ export const decodeEntities = (v) =>
  * matched against the Brands filter the cart sends beside it, longest name
  * first, and only at the start of the title, where the cart puts it.
  */
-export const proteusBrandsOf = (html) =>
-  [...String(html).matchAll(/filter-radio">\s*([^<\n]+?)\s*<input[^>]*data-type="brand"/g)]
-    .map((m) => decodeEntities(m[1].trim()))
-    .filter(Boolean)
+export const proteusBrandsOf = (html) => {
+  const text = String(html);
+  /* The newer cart (Liberty Buds, from 8 October 2026) answers
+     ajax_topfilters.cfm with the growers as a drop-down — <select
+     name="brandID"><option value="1232">Botanist</option>… — rather than as
+     radio buttons. The first option, value "", is the select's own label. */
+  const select = text.match(/<select[^>]*name="brandID"[^>]*>([\s\S]*?)<\/select>/i)?.[1] ?? '';
+  return [
+    ...[...text.matchAll(/filter-radio">\s*([^<\n]+?)\s*<input[^>]*data-type="brand"/g)].map((m) => m[1]),
+    ...[...select.matchAll(/<option[^>]*value="([^"]+)"[^>]*>\s*([^<]+?)\s*<\/option>/gi)].map((m) => m[2]),
+  ]
+    .map((name) => decodeEntities(name.trim()))
+    .filter((name, i, all) => name && all.indexOf(name) === i)
     .sort((a, b) => b.length - a.length);
+};
 // Kickfly's is written with a straight apostrophe in the filter and a curly one on some cards.
 const foldQuotes = (s) => String(s).toUpperCase().replace(/[‘’]/g, "'");
 const proteusBrandOf = (name, brands) => {
@@ -4195,11 +4220,16 @@ export const proteusCards = (html, brands = []) => {
     const id = chunk.match(/^<div data-id="(\d+)"/)?.[1];
     const name = decodeEntities(chunk.match(/<a [^>]*title="([^"]+)"/)?.[1] ?? '').trim();
     if (!id || !name) continue;
-    const brand = proteusBrandOf(name, brands);
+    /* The newer cart's card says it outright where it can: data-brandname on
+       the link (often empty) and the potency as its own line, <span
+       class="labinfo">THC: 24.86%</span>. */
+    const brand = decodeEntities(chunk.match(/<a [^>]*data-brandname="([^"]+)"/)?.[1] ?? '').trim() || proteusBrandOf(name, brands);
+    const thc = Number(chunk.match(/class="labinfo">\s*THC:\s*(\d+(?:\.\d+)?)\s*%/i)?.[1]);
     cards.push({
       id,
       name,
       brand,
+      ...(Number.isFinite(thc) ? { thc } : {}),
       category,
       size: decodeEntities(chunk.match(/product_short_description">\s*([^<]*?)\s*</)?.[1] ?? '') || null,
       url: chunk.match(/<a [^>]*href="(\/cart\/ps\/[^"]+)"/)?.[1] ?? null,
@@ -4769,7 +4799,7 @@ const main = async () => {
           return;
         }
         /* The older Proteus cart's shelf, drawn as HTML. See proteusCards. */
-        if (/\/ajax_getfilters\.cfm/i.test(res.url())) {
+        if (/\/ajax_(?:get|top)filters\.cfm/i.test(res.url())) {
           proteusBrands = proteusBrandsOf(await res.text());
           for (const card of proteusSeen) card.brand ??= proteusBrandOf(card.name, proteusBrands);
           return;
