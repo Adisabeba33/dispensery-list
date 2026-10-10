@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-10-09T18:38:35+00:00",
+ "checkedAt": "2026-10-10T17:40:01+00:00",
  "scope": "Published brand/producer links; only document-reviewed ny-flower links are eligible for collection.",
  "sources": [
   {
@@ -16,7 +16,7 @@
   {
    "brandKey": "dank",
    "brand": "Dank By Definition",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.dankbydefinition.com/coaold",
    "method": "list",
    "status": "published-links",
@@ -799,7 +799,7 @@
   {
    "brandKey": "rollinggreen",
    "brand": "Rolling Green Cannabis",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.rollinggreenny.com/certificates-of-analysis",
    "method": "list",
    "status": "published-links",
@@ -941,7 +941,7 @@
   {
    "brandKey": "doobie",
    "brand": "Doobie Labs",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://doobielabs.com/pages/coas",
    "method": null,
    "status": "published-links",
@@ -1289,7 +1289,7 @@
   {
    "brandKey": "skyrose",
    "brand": "Skyrose",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.skyrosefarm.com/products",
    "method": "list",
    "status": "published-links",
@@ -1508,7 +1508,7 @@
   {
    "brandKey": "jiveichindustries",
    "brand": "JIVE (ICH Industries)",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://ichindustries.com/jive-lab-testing%2Fcoas",
    "method": "list",
    "status": "published-links",
@@ -2323,7 +2323,7 @@
   {
    "brandKey": "omolabs",
    "brand": "OMO Labs",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://omolabs.com/coa/",
    "method": "list",
    "status": "published-links",
@@ -3075,7 +3075,7 @@
   {
    "brandKey": "grassrootswellness",
    "brand": "Grass Roots Wellness",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://grassrootswellnessny.com/grass-roots-wellness-lab-results/",
    "method": "list",
    "status": "published-links",
@@ -3859,7 +3859,7 @@
   {
    "brandKey": "glennas",
    "brand": "Glenna's",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://glennas.com/coa-finder/",
    "method": "list",
    "status": "published-links",
@@ -4522,7 +4522,7 @@
   {
    "brandKey": "gagefarms",
    "brand": "Gage Farms",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.gagefarmsny.com/s-projects-basic",
    "method": "list",
    "status": "published-links",
@@ -5175,7 +5175,7 @@
   {
    "brandKey": "e29labs",
    "brand": "E29 Labs",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.e29labs.com/coa",
    "method": "list",
    "status": "published-links",
@@ -5732,7 +5732,7 @@
   {
    "brandKey": "hellskitchencannabis",
    "brand": "Hell's Kitchen Cannabis",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.hellskitchencannabis.co/labs",
    "method": "list",
    "status": "published-links",
@@ -6240,7 +6240,7 @@
   {
    "brandKey": "mistybleufarm",
    "brand": "Misty Bleu Farm",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://mbfarmcannabis.com/lab-results",
    "method": "list",
    "status": "published-links",
@@ -6655,7 +6655,7 @@
   {
    "brandKey": "mcpikefarms",
    "brand": "McPike Farms",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://mcpikefarms.com/certificates-of-analysis/",
    "method": "list",
    "status": "published-links",
@@ -6957,7 +6957,7 @@
   {
    "brandKey": "battenkillbuds",
    "brand": "Battenkill Buds",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://battenkillbuds.com/test-results/",
    "method": "list",
    "status": "published-links",
@@ -7226,7 +7226,7 @@
   {
    "brandKey": "romanempirefarms",
    "brand": "Roman Empire Farms",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://romanempirefarms.com/lab-results/",
    "method": "list",
    "status": "published-links",
@@ -7446,7 +7446,7 @@
   {
    "brandKey": "dearflor",
    "brand": "Dear Flor",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://dearflor.com/pages/certificates-of-analysis",
    "method": "list",
    "status": "published-links",
@@ -7637,7 +7637,7 @@
   {
    "brandKey": "evlfarm",
    "brand": "EVL Farm",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://evlfarm.com/coas/",
    "method": "list",
    "status": "published-links",
@@ -7813,7 +7813,7 @@
   {
    "brandKey": "oldfriendscultivation",
    "brand": "Old Friends Cultivation",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://oldfriendscultivation.com/",
    "method": "list",
    "status": "published-links",
@@ -7978,13 +7978,37 @@
      "linkLocation": "anchor",
      "firstSeenAt": "2026-10-08T05:21:45+00:00",
      "label": "View Full COA (PDF)"
+    },
+    {
+     "url": "https://oldfriendscultivation.com/COALibrary/CTNY-260921-03-002.pdf",
+     "publishedOn": "https://oldfriendscultivation.com/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-10T17:40:01+00:00",
+     "label": "View Full COA (PDF)"
+    },
+    {
+     "url": "https://oldfriendscultivation.com/COALibrary/CTNY-260921-03-001.pdf",
+     "publishedOn": "https://oldfriendscultivation.com/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-10T17:40:01+00:00",
+     "label": "View Full COA (PDF)"
+    },
+    {
+     "url": "https://oldfriendscultivation.com/COALibrary/CTNY-260921-03-003.pdf",
+     "publishedOn": "https://oldfriendscultivation.com/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-10T17:40:01+00:00",
+     "label": "View Full COA (PDF)"
     }
    ]
   },
   {
    "brandKey": "sugarhousefarms",
    "brand": "Sugarhouse Farms",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://sugarhousefarms.org/lab-results",
    "method": "list",
    "status": "published-links",
@@ -8094,7 +8118,7 @@
   {
    "brandKey": "bonecreekfarm",
    "brand": "Bone Creek Farm",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.bonecreekfarm.com/lab-results",
    "method": "list",
    "status": "published-links",
@@ -8185,7 +8209,7 @@
   {
    "brandKey": "snowbeltcannabis",
    "brand": "Snowbelt Cannabis",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.snowbeltcannabis.com/coas/",
    "method": "list",
    "status": "published-links",
@@ -8279,7 +8303,7 @@
   {
    "brandKey": "pynns",
    "brand": "Pynn's",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://pynns.com/coa/",
    "method": "list",
    "status": "published-links",
@@ -8356,7 +8380,7 @@
   {
    "brandKey": "niagaracannabiscompany",
    "brand": "Niagara Cannabis Company",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.niagaracannabiscompany.com/coas",
    "method": "list",
    "status": "published-links",
@@ -8402,7 +8426,7 @@
   {
    "brandKey": "saucehouse",
    "brand": "Sauce House",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.sauce.house/lab-results",
    "method": "list",
    "status": "published-links",
@@ -8444,7 +8468,7 @@
   {
    "brandKey": "zoocannabis",
    "brand": "Zoo Cannabis",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.zoocannabisny.com/coas",
    "method": "list",
    "status": "published-links",
@@ -8480,7 +8504,7 @@
   {
    "brandKey": "growingheartgreens",
    "brand": "Growing Heart Greens",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.growingheartgreens.com/products",
    "method": "list",
    "status": "published-links",
@@ -8519,7 +8543,7 @@
   {
    "brandKey": "centralprocessorsny",
    "brand": "Central Processors NY",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.centralprocessorsny.com/coas",
    "method": "list",
    "status": "published-links",
@@ -9792,7 +9816,7 @@
   {
    "brandKey": "gnomenugs",
    "brand": "Gnome Nugs",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://gnomewellness.com/pages/lab-results-coa",
    "method": "list",
    "status": "published-links",
@@ -10399,7 +10423,7 @@
   {
    "brandKey": "nanticoke",
    "brand": "Nanticoke",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://nanticoke.co/lab-results",
    "method": "list",
    "status": "published-links",
@@ -16602,7 +16626,7 @@
   {
    "brandKey": "electraleaf",
    "brand": "ElectraLeaf",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://electraleaf.com/3-5-flower-and-5-pack-joints-lab-test/",
    "method": "list",
    "status": "published-links",
@@ -18185,7 +18209,7 @@
   {
    "brandKey": "revert",
    "brand": "Revert",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.revertnyc.com/flowercoas",
    "method": "list",
    "status": "published-links",
@@ -19181,7 +19205,7 @@
   {
    "brandKey": "florist",
    "brand": "Florist Farms",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://floristfarms.com/pages/lab-results",
    "method": "list",
    "status": "published-links",
@@ -32304,7 +32328,7 @@
   {
    "brandKey": "backhome",
    "brand": "Back Home Cannabis Co",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://nanticoke.co/lab-results",
    "method": "list",
    "status": "published-links",
@@ -32497,7 +32521,7 @@
   {
    "brandKey": "goldengarden",
    "brand": "Golden Garden",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://goldengardenny.com/coas",
    "method": "list",
    "status": "published-links",
@@ -33001,7 +33025,7 @@
   {
    "brandKey": "hashtaghoney",
    "brand": "Hashtag Honey",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://hashtaghoneyofficial.com/",
    "method": "batch-search",
    "status": "published-links",
@@ -34292,7 +34316,7 @@
   {
    "brandKey": "milkweed",
    "brand": "Milkweed",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.milkweed.life/certifications",
    "method": "list",
    "status": "published-list-folder",
@@ -34308,7 +34332,7 @@
   {
    "brandKey": "platinumreserve",
    "brand": "Platinum Reserve",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://platinumreserveny.com/lab-reports/",
    "method": "list",
    "status": "published-links",
@@ -34917,7 +34941,7 @@
   {
    "brandKey": "5boro",
    "brand": "5 Boro",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://nanticoke.co/lab-results",
    "method": "list",
    "status": "published-links",
@@ -35645,7 +35669,7 @@
   {
    "brandKey": "leftcoast",
    "brand": "Left Coast",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.leftcoastextracts.info/pages/new-york-lab-results",
    "method": "list",
    "status": "published-links",
@@ -35944,7 +35968,7 @@
   {
    "brandKey": "florette",
    "brand": "Florette",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.florettecannabis.com/test-results",
    "method": "list",
    "status": "published-links",
@@ -36844,7 +36868,7 @@
   {
    "brandKey": "hurleygrown",
    "brand": "Hurley Grown",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.hurleygrown.com/coas",
    "method": "list",
    "status": "published-links",
@@ -37536,7 +37560,7 @@
   {
    "brandKey": "missgrass",
    "brand": "Miss Grass",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://shop.missgrass.com/pages/certificates-of-analysis",
    "method": "list",
    "status": "published-links",
@@ -37607,7 +37631,7 @@
   {
    "brandKey": "headytree",
    "brand": "Heady Tree",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://headytree.com/coa/",
    "method": "list",
    "status": "published-links",
@@ -38434,7 +38458,7 @@
     }
    ],
    "note": "The strains page loads each strain's current certificate (current_coa.pdf_url) from the public API in pages, which the page itself calls; api.spfarmsny.com's robots.txt states no rules.",
-   "checkedAt": "2026-10-09T18:38:35+00:00"
+   "checkedAt": "2026-10-10T17:40:01+00:00"
   },
   {
    "brandKey": "animalhouse",
@@ -38888,7 +38912,7 @@
     }
    ],
    "note": "Certificate PDFs (Wix file storage) linked in the page's own HTML, named by product and batch code beside each link.",
-   "checkedAt": "2026-10-09T18:38:35+00:00"
+   "checkedAt": "2026-10-10T17:40:01+00:00"
   },
   {
    "brandKey": "smokewrld",
@@ -40644,7 +40668,7 @@
     }
    ],
    "note": "The 'authenticity chain' page links one certificate per lot (Wix file storage), labelled with the lot code; found by Soma's curation batch 13 (2026-10-06). urbanXtracts processes and packs its own flower. On 6 October the lots whose code is not FLW (flower) — MDS, AIO, MRP, PAX vapes and WNA edibles — were reviewed as other-product by their lot code; flower lots stay pending-review.",
-   "checkedAt": "2026-10-09T18:38:35+00:00"
+   "checkedAt": "2026-10-10T17:40:01+00:00"
   },
   {
    "brandKey": "proxtracts",
@@ -41039,7 +41063,7 @@
     }
    ],
    "note": "Lab-results page with one certificate per product and date (WordPress uploads); found by Soma's curation batch 13 (2026-10-06). On 6 October joints, temple balls and kief were reviewed as other-product by their label; the rest stay pending-review.",
-   "checkedAt": "2026-10-09T18:38:35+00:00"
+   "checkedAt": "2026-10-10T17:40:01+00:00"
   },
   {
    "brandKey": "tothemoon",
@@ -41198,7 +41222,7 @@
   {
    "brandKey": "felas",
    "brand": "Felas",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://felas.farm/coa/",
    "method": "list",
    "status": "published-links",
@@ -41706,7 +41730,7 @@
   {
    "brandKey": "dumboelectric",
    "brand": "Dumbo Electric",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.dumboelectric.com/lab-results/",
    "method": "list",
    "status": "published-links",
@@ -43072,7 +43096,7 @@
    ],
    "exampleUrl": "https://www.hudsonvalleyjane.com/s/BB-BOG-35.pdf",
    "note": "boujeeben.com redirects to Hudson Valley Jane (Beacon NY; footer licence OCM-MICR-24-000050), whose nav has Lab Tests. That page links 79 PDFs: 10 titled Boujee Ben (Banana OG, Gorilla Glue #4, Good Night Moon at 3.5g, 14g and 28g; Nuggz 14g; a live resin) and many more with BB-/PBB- file names for the Hudson Valley Jane lines (Nuggz, Psyops, Pepe Silvia jars, pre-rolls), plus vapes and edibles. Menu strains of ours (Banana OG, GG4, Nuggz) match.",
-   "checkedAt": "2026-10-09T18:38:35+00:00"
+   "checkedAt": "2026-10-10T17:40:01+00:00"
   },
   {
    "brandKey": "roemer",
@@ -43342,7 +43366,7 @@
    ],
    "exampleUrl": "https://ny.yourcoa.com/coa/coa-view?sample=AL60113003-003",
    "note": "Home page of this upstate NY hydroponic microbusiness (licence OCM-MICR-24-000124) has a 'Click for COA' link beside each flower strain (13 flowers incl. Triangle Kush, M.O.B, Teflon Don, Jokerz #31) and ~21 pre-roll COA links, all to ny.yourcoa.com viewer pages. Strains match our menu list. Link targets read through WebFetch; page.py has the page text with the COA labels.",
-   "checkedAt": "2026-10-09T18:38:35+00:00"
+   "checkedAt": "2026-10-10T17:40:01+00:00"
   },
   {
    "brandKey": "alpineagronomymicro",
@@ -43490,7 +43514,7 @@
    ],
    "exampleUrl": "https://czz.8a7.mytemp.website/wp-content/uploads/2025/11/20251111-COA_Invite-Only_CCT-250723-A_Compliance_AL51031006-003.pdf",
    "note": "Leafly feature links thetraptotable.com; footer shows New York Cultivation licence OCM-CULT-24-000196. Each of the 8 product pages (candy-cartel, chem-berries, cherry-octane, grape-gas, lemon-diesel, sour-gelato, sour-haze, superboof) carries one 'Current COA's' PDF link; all 8 listed: sour-gelato, sour-haze, superboof. The PDFs sit on a staging host (czz.8a7.mytemp.website, /wp-content/uploads/2025/..), whose robots check did not connect from here. Menu strains Grape Gas, Lemon Diesel, Candy Cartel are among them. traptotable.com itself is a parked domain, not the brand.",
-   "checkedAt": "2026-10-09T18:38:35+00:00"
+   "checkedAt": "2026-10-10T17:40:01+00:00"
   },
   {
    "brandKey": "tkssensei",
@@ -43651,7 +43675,7 @@
   {
    "brandKey": "highpeaks",
    "brand": "High Peaks",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://highpeaks.com/cannabis-products/certificates-of-analysis/",
    "method": "list",
    "status": "published-links",
@@ -44297,7 +44321,7 @@
   {
    "brandKey": "alter",
    "brand": "ALTER",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.alterwisely.com/labs",
    "method": "list",
    "status": "published-links",
@@ -44598,7 +44622,7 @@
   {
    "brandKey": "adkhemp",
    "brand": "ADK HEMP CO.",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://adkhempco.com/coas",
    "method": "list",
    "status": "published-links",
@@ -45153,7 +45177,7 @@
   {
    "brandKey": "northforkcollective",
    "brand": "North Fork Cannabis Collective",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.nfcny.com/products",
    "method": "list",
    "status": "published-links",
@@ -45315,7 +45339,7 @@
   {
    "brandKey": "aeterna",
    "brand": "Aeterna",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://aeternacannabis.com/lab-results/",
    "method": "list",
    "status": "published-links",
@@ -46648,7 +46672,7 @@
   {
    "brandKey": "ithacaorganics",
    "brand": "Ithaca Organics",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.ithacaorganicscanna.co/coas",
    "method": "list",
    "status": "published-links",
@@ -47335,7 +47359,7 @@
   {
    "brandKey": "ravensviewgenetics",
    "brand": "Ravens View Genetics",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://ravensviewgenetics.com/our-products/",
    "method": "list",
    "status": "published-links",
@@ -47602,7 +47626,7 @@
   {
    "brandKey": "pines",
    "brand": "Pines",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.awalkinthepines.com/projects-2",
    "method": "list",
    "status": "published-links",
@@ -48057,7 +48081,7 @@
   {
    "brandKey": "akronbloom",
    "brand": "Akron Bloom",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://akronbloom.com/product-lab-tests",
    "method": "list",
    "status": "published-links",
@@ -48216,7 +48240,7 @@
   {
    "brandKey": "budcracker",
    "brand": "Budcracker",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://budcracker.com/pages/coas",
    "method": "list",
    "status": "published-links",
@@ -48399,7 +48423,7 @@
   {
    "brandKey": "fx",
    "brand": "FX",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://feelthefxs.com/labtest/",
    "method": "list",
    "status": "published-links",
@@ -48566,7 +48590,7 @@
   {
    "brandKey": "cheevo",
    "brand": "Cheevo",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.cheevo.co/items",
    "method": "list",
    "status": "published-links",
@@ -48783,7 +48807,7 @@
   {
    "brandKey": "highfallscanna",
    "brand": "High Falls Canna",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.highfallscanna.com/pages/lab-reports",
    "method": "list",
    "status": "published-links",
@@ -50110,7 +50134,7 @@
   {
    "brandKey": "flamer",
    "brand": "Flamer",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.heyflamer.com/coas",
    "method": "list",
    "status": "published-links",
@@ -50694,7 +50718,7 @@
   {
    "brandKey": "stranman",
    "brand": "Stranman",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://stranman.com/coas/",
    "method": "list",
    "status": "published-links",
@@ -50823,7 +50847,7 @@
   {
    "brandKey": "6point",
    "brand": "6 Point Cannabis",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.6pointcannabis.com/coas/",
    "method": "list",
    "status": "published-links",
@@ -51153,7 +51177,7 @@
   {
    "brandKey": "harneybrothers",
    "brand": "Harney Brothers Cannabis",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://www.harneybrotherscannabis.com/home-3",
    "method": "list",
    "status": "published-links",
@@ -51450,7 +51474,7 @@
   {
    "brandKey": "fyre",
    "brand": "FYRE",
-   "checkedAt": "2026-10-09T18:38:35+00:00",
+   "checkedAt": "2026-10-10T17:40:01+00:00",
    "url": "https://fyreny.com/products",
    "method": "list",
    "status": "published-links",
