@@ -132,7 +132,7 @@
     "errors": 0
   },
   "https://battenkillbuds.com": {
-    "errors": 1
+    "errors": 0
   },
   "https://romanempirefarms.com": {
     "errors": 0
@@ -162,7 +162,7 @@
     "errors": 0
   },
   "https://www.niagaracannabiscompany.com": {
-    "errors": 3
+    "errors": 2
   },
   "https://www.sauce.house": {
     "errors": 0
@@ -198,7 +198,8 @@
     "errors": 0
   },
   "http://-content": {
-    "errors": 4
+    "errors": 5,
+    "blockedUntil": "2026-10-12T18:16:13.119076+00:00"
   },
   "https://www.awalkinthepines.com": {
     "errors": 0
@@ -258,11 +259,11 @@
     "errors": 0
   },
   "https://v1": {
-    "errors": 6,
-    "blockedUntil": "2026-10-11T17:48:28.463253+00:00"
+    "errors": 7,
+    "blockedUntil": "2026-10-12T18:14:42.825527+00:00"
   },
   "https://czz.8a7.mytemp.website": {
-    "errors": 6,
-    "blockedUntil": "2026-10-11T17:48:30.846913+00:00"
+    "errors": 7,
+    "blockedUntil": "2026-10-12T18:14:45.136753+00:00"
   }
 }
