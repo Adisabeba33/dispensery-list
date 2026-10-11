@@ -43,14 +43,16 @@
 
 ✳️ — адрес в `menu-endpoints.json` уже есть, и всё равно пусто: значит записанный адрес больше не тот.
 
-## Полка читается не до конца — 3
+## Полка читается не до конца — 5
 
 Здесь адрес есть и меню отвечает, но отдаёт меньше, чем само объявляет. Листание таким не помогло — им нужен прямой адрес категории.
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| Bad Maryjane | 113 | 1289 | https://maryjanecannabisco.com |
-| OZ Dispensary | 81 | 159 | https://ozdispensary.com/ |
+| Bad Maryjane | 113 | 1273 | https://maryjanecannabisco.com |
+| The Bridge A Cannabis Experience | 36 | 384 | https://thebridgecannabis.com |
+| OZ Dispensary | 81 | 158 | https://ozdispensary.com/ |
+| Society House | 69 | 73 | https://www.societyhousebk.com/ |
 | Freshly Baked NYC | 40 | 49 | https://freshlybaked.nyc/ |
 
 ## Сюда не ходим
