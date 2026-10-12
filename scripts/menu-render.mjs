@@ -1343,13 +1343,25 @@ export const fulfilmentAction = (text, asked = false) => {
   return asked && PICKUP_BARE.test(words) ? 'shop-pickup' : 'ignore';
 };
 
+/* Which of the buttons on screen to press, if any. A button that says what it
+   does ("SHOP PICKUP") is the answer wherever it stands; a bare "Pick-Up" only
+   where the page asks how to shop and no such button is there. On 10 October
+   2026 both kinds were taken alike, and Bad Maryjane's and Victory's pages —
+   "How do you want to shop?" over SHOP PICKUP, beside a bare "Pickup" mode
+   toggle — counted two and pressed neither: Victory read nothing for two days
+   and Bad Maryjane its whole store's first page. Exactly one, either way. */
+export const pickupToPress = (labels, asked = false) => {
+  const pick = (test) => labels.flatMap((w, i) => (test(w) ? [i] : []));
+  const said = pick((w) => fulfilmentAction(w) === 'shop-pickup');
+  const pool = said.length ? said : pick((w) => fulfilmentAction(w, asked) === 'shop-pickup');
+  if (!pool.length) return null;
+  return pool.length === 1 ? { index: pool[0] } : { several: pool.length };
+};
+
 const choosePickup = async (page, entry) => {
-  let answer = null;
+  let seen = null;
   try {
-    answer = await page.evaluate(([go, bare, asks]) => {
-      const isGo = new RegExp(go, 'i');
-      const isBare = new RegExp(bare, 'i');
-      const asked = new RegExp(asks, 'i').test(document.body?.innerText ?? '');
+    seen = await page.evaluate((asks) => {
       const onScreen = (el) => {
         const box = el.getBoundingClientRect();
         if (box.width <= 0 || box.height <= 0) return false;
@@ -1361,20 +1373,22 @@ const choosePickup = async (page, entry) => {
       };
       const words = (el) => (el.innerText || el.value || el.getAttribute('aria-label') || '').trim().replace(/\s+/g, ' ');
       const found = [...document.querySelectorAll('button, a, [role="button"], input[type="button"]')]
-        .filter((el) => {
-          const w = words(el);
-          return w && w.length <= 40 && !/deliver/i.test(w) && (isGo.test(w) || (asked && isBare.test(w))) && onScreen(el);
-        });
-      if (found.length !== 1) return found.length ? { several: found.length } : null;
-      found[0].click();
-      return { label: words(found[0]) };
-    }, [PICKUP_GO.source, PICKUP_BARE.source, ASKS_HOW_TO_SHOP.source]);
+        .filter((el) => { const w = words(el); return w && w.length <= 40 && !/deliver/i.test(w) && /pick[-\s]?up/i.test(w) && onScreen(el); });
+      window.__pickupCandidates = found;
+      return { labels: found.map(words), asked: new RegExp(asks, 'i').test(document.body?.innerText ?? '') };
+    }, ASKS_HOW_TO_SHOP.source);
   } catch {
     return false;
   }
-  if (answer?.several) entry.pickupRefused = `${answer.several} shops offered`;
-  if (!answer?.label) return false;
-  entry.choseFulfilment = answer.label;
+  const choice = seen ? pickupToPress(seen.labels, seen.asked) : null;
+  if (choice?.several) entry.pickupRefused = `${choice.several} shops offered`;
+  if (!choice || choice.index === undefined) return false;
+  try {
+    await page.evaluate((i) => window.__pickupCandidates?.[i]?.click(), choice.index);
+  } catch {
+    return false;
+  }
+  entry.choseFulfilment = seen.labels[choice.index];
   await page.waitForTimeout(2500);
   return true;
 };
