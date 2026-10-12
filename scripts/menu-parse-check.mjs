@@ -17,7 +17,7 @@ import {
   flowerIn, foreignShelfShare, isProductPage, lineageSegmentOf, looksLikeAgeWall, menuKey,
   mergeBySize, pagedRequest, pickFlowerInside, pickMenuLink, pickStore,
   placeNamesOf, rankMenuLink, registerTextOf, sameEstate, signatureOf, sizeFromText,
-  toListing, wallAction, fulfilmentAction, pageKnobOf, dropRepeatedPanels, sweedCategoryOf, decodeEntities,
+  toListing, wallAction, fulfilmentAction, pickupToPress, pageKnobOf, dropRepeatedPanels, sweedCategoryOf, decodeEntities,
   linkNamesAnotherState, proteusCards, proteusBrandsOf, proteusShowAll, sweedStorefrontPage, storefrontPagesOf,
   isPromotionalSample, withoutCompanionSearches, firstPageAlone, furthestPageOf, queryKey, LOAD_MORE
 } from './menu-render.mjs';
@@ -142,6 +142,11 @@ check('and so is a sentence about pick-up', fulfilmentAction('ORDER FOR PICKUP O
 check('a bare Pick-Up is pressed where the page asks how to shop', fulfilmentAction('Pick-Up', true), 'shop-pickup');
 check('but curbside is not pick-up at the counter', fulfilmentAction('Curbside Pick-Up', true), 'ignore');
 check('and delivery is still never chosen', fulfilmentAction('Scheduled Delivery', true), 'never');
+// Which one is pressed: a button that says what it does wins over a bare toggle beside it.
+check('Bad Maryjane: SHOP PICKUP, not the Pickup toggle beside it', pickupToPress(['Pickup', 'SHOP PICKUP'], true), { index: 1 });
+check('Liberty Buds: the bare Pick-Up, where nothing says more', pickupToPress(['Pick-Up', 'Curbside Pick-Up'], true), { index: 0 });
+check('a bare Pick-Up on a page that does not ask is left', pickupToPress(['Pick-Up'], false), null);
+check('two shops to pick up from is a fork, not an answer', pickupToPress(['SHOP PICKUP', 'ORDER PICKUP'], true), { several: 2 });
 
 /* ------------------------------------------------------------------ Jane --
  * KushKlub's flower table as dmerch.iheartjane.com answered it on 28
