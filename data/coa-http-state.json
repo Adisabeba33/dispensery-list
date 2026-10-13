@@ -162,7 +162,7 @@
     "errors": 0
   },
   "https://www.niagaracannabiscompany.com": {
-    "errors": 2
+    "errors": 3
   },
   "https://www.sauce.house": {
     "errors": 0
@@ -198,8 +198,8 @@
     "errors": 0
   },
   "http://-content": {
-    "errors": 5,
-    "blockedUntil": "2026-10-12T18:16:13.119076+00:00"
+    "errors": 6,
+    "blockedUntil": "2026-10-14T19:44:32.811241+00:00"
   },
   "https://www.awalkinthepines.com": {
     "errors": 0
@@ -259,11 +259,11 @@
     "errors": 0
   },
   "https://v1": {
-    "errors": 7,
-    "blockedUntil": "2026-10-12T18:14:42.825527+00:00"
+    "errors": 8,
+    "blockedUntil": "2026-10-14T19:43:04.613529+00:00"
   },
   "https://czz.8a7.mytemp.website": {
-    "errors": 7,
-    "blockedUntil": "2026-10-12T18:14:45.136753+00:00"
+    "errors": 8,
+    "blockedUntil": "2026-10-14T19:43:07.236930+00:00"
   }
 }
