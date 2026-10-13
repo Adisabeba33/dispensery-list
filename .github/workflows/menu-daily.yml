@@ -92,7 +92,7 @@ jobs:
               # пройти валидацию, но прочитана она была, и то, что она увидела,
               # ровно и объясняет почему.
               python scripts/menu-coverage.py collect || true
-              if npm run validate > /tmp/validate.txt 2>&1; then
+              if npm run validate > /tmp/publish-validate.txt 2>&1; then
                 git add data/flower-listings.json
                 git diff --cached --quiet || git commit -q -m "menu: daily refresh, shops $offset+"
                 # Each batch overwrites the summary, so the shelves it held
@@ -125,7 +125,7 @@ jobs:
             echo "::group::asked again after the run: $n shop(s)"
             if node scripts/menu-render.mjs --only "$late" --limit "$n" --after-run; then
               python scripts/menu-coverage.py collect || true
-              if npm run validate > /tmp/validate.txt 2>&1; then
+              if npm run validate > /tmp/publish-validate.txt 2>&1; then
                 git add data/flower-listings.json
                 git diff --cached --quiet || git commit -q -m "menu: daily refresh, shops asked again after the run"
                 python scripts/held-shelves.py collect || true
@@ -232,15 +232,54 @@ jobs:
       # publishes itself. A run that produced a collapsed shelf does not: that
       # is nearly always a page we failed to read, and republishing it would
       # tell visitors a shop stopped stocking what it still sells.
+      #
+      # Main can move in the four hours the reading takes. When what was merged
+      # meanwhile and the day's reading edit the same lines of a shelf file, the
+      # plain rebase stops: on 12 October 2026 the weekly registry refresh
+      # (#119) took out the eighteen listings of a licence the state had
+      # dropped, the run had read them again, and the day's shelves were lost —
+      # this step used to give up there, and nothing kept them. Now the
+      # reading's side of those lines is taken (it is the newer reading of the
+      # same shelves), the licences the register no longer lists are dropped
+      # from the shelves (scripts/drop-unlisted-shelves.mjs), and the result is
+      # published only if the validator passes. If that fails as well, the
+      # day's reading goes to a menu/held- branch, as a doubtful one does, to
+      # be published by hand rather than lost.
       - name: Publish
         if: steps.diff.outputs.sane == 'true' && env.batches_failed == '0'
         run: |
+          read_head=$(git rev-parse HEAD)
+          rm -f /tmp/publish-validate.txt
           for attempt in 1 2 3; do
             git push origin HEAD:${{ github.ref_name }} && exit 0
             git fetch origin ${{ github.ref_name }}
-            git rebase FETCH_HEAD || { git rebase --abort || true; exit 1; }
+            git rebase FETCH_HEAD && continue
+            git rebase --abort || true
+            echo "::warning::The day's shelves and a change merged meanwhile edit the same lines; laying the shelves over it."
+            if git rebase -X theirs FETCH_HEAD \
+               && node scripts/drop-unlisted-shelves.mjs \
+               && npm run validate > /tmp/publish-validate.txt 2>&1; then
+              git add data/flower-listings.json
+              git diff --cached --quiet || git commit -q -m "menu: shelves of licences the register no longer lists dropped"
+              continue
+            fi
+            git rebase --abort 2>/dev/null || true
+            tail -20 /tmp/publish-validate.txt 2>/dev/null || true
+            break
           done
-          echo "::error::Could not push the day's shelves."
+          git reset -q --hard "$read_head"
+          branch="menu/held-$(date -u +%Y-%m-%d)-${{ github.run_number }}"
+          git push origin "HEAD:$branch"
+          echo "publish_held=$branch" >> "$GITHUB_ENV"
+          {
+            echo "## Read, not published"
+            echo
+            echo "The day's shelves could not be laid over what main took meanwhile."
+            echo "They are on \`$branch\`:"
+            echo
+            echo "  https://github.com/${{ github.repository }}/compare/${{ github.ref_name }}...$branch?expand=1"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "::error::Could not publish the day's shelves; they are on $branch."
           exit 1
 
       - name: Hold back for review
@@ -273,6 +312,8 @@ jobs:
           [ -f menu-report.md ] || { echo "no report to deliver"; exit 0; }
           if [ "${{ steps.diff.outputs.sane }}" != "true" ] || [ "$batches_failed" != "0" ]; then
             printf '\n---\n\n⚠ **Не опубликовано.** Часть полок прочитана не полностью — данные ждут на отдельной ветке.\n' >> menu-report.md
+          elif [ -n "${publish_held:-}" ]; then
+            printf '\n---\n\n⚠ **Не опубликовано.** Полки дня не легли поверх того, что за время прогона вошло в main; они ждут на ветке `%s`.\n' "$publish_held" >> menu-report.md
           fi
           printf '\n[прогон](%s/actions/runs/%s)\n' \
             "${{ github.server_url }}/${{ github.repository }}" "${{ github.run_id }}" >> menu-report.md

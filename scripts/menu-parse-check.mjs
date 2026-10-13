@@ -22,6 +22,7 @@ import {
   isPromotionalSample, withoutCompanionSearches, firstPageAlone, furthestPageOf, queryKey, LOAD_MORE
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
+import { keepListed } from './drop-unlisted-shelves.mjs';
 import { labPanelKeyOf } from './lab-panel.mjs';
 import { readFileSync } from 'node:fs';
 import Ajv2020 from 'ajv/dist/2020.js';
@@ -375,6 +376,20 @@ check('a spaced dash and number left by a weight still go', cleanStrainName('Afg
     '/shop/rosedale-ny/menu/flower-8861?page=3', `${at}?page=2`, '/shop/rosedale-ny/menu/flower-8861?page=1',
     '/shop/rosedale-ny/menu/pre-roll-8862?page=2', 'https://web-ui-prime.sweedpos.com/s98/menu/flower-2936?page=4', '#',
   ], at), [2, 3]);
+}
+
+/* Publishing over a registry refresh merged during the run (12 October 2026):
+   the shelves of a licence the register dropped meanwhile are dropped too. */
+{
+  const register = [{ licenseNumber: 'OCM-RETL-24-000001' }, { licenseNumber: 'OCM-RETL-24-000002' }];
+  const shelves = [
+    { licenseNumber: 'OCM-RETL-24-000001', listingId: 'a' },
+    { licenseNumber: 'OCM-CAURD-25-000275', listingId: 'b' },
+    { licenseNumber: 'OCM-RETL-24-000002', listingId: 'c' },
+  ];
+  const { kept, dropped } = keepListed(shelves, register);
+  check('a licence the register no longer lists loses its shelf', [kept.map((l) => l.listingId), dropped.map((l) => l.listingId)], [['a', 'c'], ['b']]);
+  check('an empty register drops nothing', keepListed(shelves, []).dropped.length, 0);
 }
 
 /* The newer Proteus cart (Liberty Buds, 10 October 2026): the growers as a
