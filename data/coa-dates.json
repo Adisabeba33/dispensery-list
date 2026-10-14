@@ -7,7 +7,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "URLError",
+   "unread": "host-stopped-for-24h",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://mcpikefarms.com/certificates-of-analysis/"
   },
@@ -27,7 +27,7 @@
    "lotNumber": "22-038-08",
    "metrcTag": null,
    "panel": null,
-   "documentUrl": "https://cdn.shopify.com:443/s/files/1/0770/2983/5041/files/Complete_COA_for_G13_Genius_HV_Lot_23-F0009-2_28gram_in_Glass_Jars_2_1.pdf?v=1690493587",
+   "documentUrl": "https://cdn.shopify.com/s/files/1/0770/2983/5041/files/Complete_COA_for_G13_Genius_HV_Lot_23-F0009-2_28gram_in_Glass_Jars_2_1.pdf?v=1690493587",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.highfallscanna.com/pages/lab-reports-old"
   },
@@ -28783,6 +28783,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/36185.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36186.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "0613d18fcddbab5c5f72a66c5d4a6363b4fb1e171918b6dd8f8e32607b040b97",
+   "docType": "lab-coa",
+   "sampleId": "20260504-HMOF-010",
+   "batchTag": "MM0220",
+   "lotNumber": "MM0220",
+   "metrcTag": null,
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Mini MART | Flower | 3.5 Gram | Apple Fritter | Indica",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000119",
+    "thc": 29.14,
+    "totalTerpenes": 1.42,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.07,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.34,
+     "FARNESENE": 0.08,
+     "HUMULENE": 0.13,
+     "LIMONENE": 0.33,
+     "LINALOOL": 0.26,
+     "MYRCENE": 0.16,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/36186.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/36187.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-05-04",
@@ -36252,6 +36290,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/38879.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38880.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "0d5bc6e4c493e86096adfaba2539e836c1890ed5e9aca16884760d4bf1672a2f",
+   "docType": "lab-coa",
+   "sampleId": "20260901-HMOF-002",
+   "batchTag": "MM0253",
+   "lotNumber": "MM0253",
+   "metrcTag": null,
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Mini MART | Flower | 3.5 Gram | Vanilla Kush | Hybrid",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000119",
+    "thc": 27.91,
+    "totalTerpenes": 0.96,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.14,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.0,
+     "LIMONENE": 0.19,
+     "LINALOOL": 0.22,
+     "MYRCENE": 0.34,
+     "OCIMENE": 0.06,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/38880.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/38883.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-09-01",
@@ -36600,6 +36676,44 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/38893.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38894.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "e769693f6223429b776034275316891ffed882cfd8058602002804e74f57f192",
+   "docType": "lab-coa",
+   "sampleId": "20260901-HMOF-006",
+   "batchTag": "MM0257",
+   "lotNumber": "MM0257",
+   "metrcTag": null,
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Mini MART | Flower | 3.5 Gram | Lemon Skunk | Sativa",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000119",
+    "thc": 26.25,
+    "totalTerpenes": 0.79,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.12,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.0,
+     "LIMONENE": 0.18,
+     "LINALOOL": 0.21,
+     "MYRCENE": 0.27,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/38894.pdf",
    "sourceKind": "menu"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/38895.pdf": {
@@ -38686,6 +38800,82 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39306.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39517.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-09-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "077a55b85b6d1809438cda0b0c244ec782b4885cebc6878f28cb88faf8c77611",
+   "docType": "lab-coa",
+   "sampleId": "2609RLI1008-5133",
+   "batchTag": "PE01",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "DRS",
+    "name": "Pineapple Express",
+    "matrix": "flower",
+    "licence": "OCM-MICR-24-000133",
+    "thc": 24.44,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.03,
+     "PINENE_BETA": 0.02,
+     "BISABOLOL": 0.03,
+     "CARYOPHYLLENE": 0.47,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.19,
+     "LIMONENE": 0.16,
+     "LINALOOL": 0.07,
+     "MYRCENE": 0.02,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39517.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39586.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-06-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "9303aa3ce6720573c8c9ae8fdafb5ebc8e28fc70e28cd9324e5db4f91e075529",
+   "docType": "lab-coa",
+   "sampleId": "2606RLI0672-3300",
+   "batchTag": "TV01",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "DRS",
+    "name": "Toad Venom",
+    "matrix": "flower",
+    "licence": "OCM-MICR-24-000101",
+    "thc": 30.81,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.06,
+     "PINENE_BETA": 0.06,
+     "BISABOLOL": 0.07,
+     "CARYOPHYLLENE": 0.43,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.17,
+     "LIMONENE": 0.28,
+     "LINALOOL": 0.08,
+     "MYRCENE": 0.06,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.03
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39586.pdf",
    "sourceKind": "menu"
   },
   "https://assets.zyrosite.com/m2WBVj81MEF0Eb43/s26-00691-fruity-pebbles-og-2g-aio-vape-s26-00491-4iI2luCuWjmMKKOl.pdf": {
@@ -66436,7 +66626,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "URLError",
+   "unread": "host-stopped-for-24h",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://thetraptotable.com/grape-gas/"
   },
@@ -116116,7 +116306,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "URLError",
+   "unread": "host-stopped-for-24h",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
