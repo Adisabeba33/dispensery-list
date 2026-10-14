@@ -1,0 +1,28 @@
+<!doctype html><meta charset="utf-8"><title>Menu — Buried Gate Fixture Dispensary</title>
+<!-- 7 Leaf Clover on 13 October 2026: the age question is drawn underneath
+     the menu it guards. Its Yes is never on top — the page covers it — and
+     the shelf is fetched only once the question is answered, so a visitor
+     sees empty cards. -->
+<style>
+  #gate { position: fixed; inset: 0; display: grid; place-items: center; z-index: 1; }
+  #page { position: relative; z-index: 2; min-height: 100vh; background: #fafafa; }
+</style>
+<div id="gate">
+  <div>
+    <h2>Are you over 21?</h2>
+    <button id="no">No</button>
+    <button id="yes">Yes</button>
+  </div>
+</div>
+<div id="page">
+  <h1>Shop Flower products</h1>
+  <div id="menu"></div>
+</div>
+<script>
+  document.getElementById('yes').onclick = async () => {
+    document.getElementById('gate').remove();
+    const r = await fetch('/api/buried.json');
+    const j = await r.json();
+    document.getElementById('menu').textContent = j.data.products.length + ' products';
+  };
+</script>

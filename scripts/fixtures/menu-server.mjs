@@ -131,6 +131,14 @@ createServer((req, res) => {
     return;
   }
 
+  /* The buried gate's shelf: there to be fetched once its age question,
+     drawn underneath the page, has been answered. */
+  if (url.pathname === '/api/buried.json') {
+    res.writeHead(200, { 'content-type': 'application/json' });
+    res.end(JSON.stringify({ data: { products: PRODUCTS } }));
+    return;
+  }
+
   if (url.pathname === '/api/short.json') {
     shortAsked += 1;
     res.writeHead(200, { 'content-type': 'application/json' });
@@ -370,6 +378,8 @@ createServer((req, res) => {
       '/flaky-menu': 'flaky-menu.html',
       '/short': 'short.html',
       '/short-menu': 'short-menu.html',
+      '/buried-gate': 'buried-gate.html',
+      '/buried-gate-menu': 'buried-gate-menu.html',
       '/empty': 'empty.html',
       '/empty-menu': 'empty-menu.html',
       '/facets': 'facets.html',

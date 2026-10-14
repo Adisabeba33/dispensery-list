@@ -93,7 +93,7 @@ try {
   const { code, out } = await run('node', [
     'scripts/menu-render.mjs',
     '--dataset', 'scripts/fixtures/menu-dataset.json',
-    '--limit', '28',
+    '--limit', '29',
   ]);
   if (code !== 0) {
     console.log(out.slice(-1500));
@@ -270,12 +270,21 @@ try {
   check('a shelf inside a Next.js flight is read', flight?.flower, 3);
   check('from the scripts, after the page has emptied its own copy', flight?.readFlightProducts, 4);
 
+  /* 7 Leaf Clover's way (13 October 2026): the age question drawn under the
+     menu it guards, so its Yes is never on top, and the shelf fetched only
+     once it is answered. The question's own Yes is pressed — never a control
+     of a page lying under a wall. */
+  const buried = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000971');
+  check('an age question drawn under the page is answered', buried?.ageGate, true);
+  check('and says it was under the page', buried?.ageGateUnderPage, true);
+  check('the shelf behind it is read', buried?.flower, 2);
+
   const refused = summary.perShop.find((s) => s.licence === 'OCM-CAURD-24-000984');
   check('a refusal arrives in the diagnostic', refused?.status, 'robots-disallowed');
   check('and says so where the report reads it', refused?.menuLink, 'robots-disallowed');
   check('the refusal is named by licence', refused?.licence, 'OCM-CAURD-24-000984');
   check('the run counts it', summary.robotsDisallowed, 1);
-  check('and does not count it as a shop it read', summary.shopsVisited, 27);
+  check('and does not count it as a shop it read', summary.shopsVisited, 28);
 
   /* The retry replaces the empty reading rather than being carried alongside
      it: the shelf published for this shop is today's, not yesterday's held

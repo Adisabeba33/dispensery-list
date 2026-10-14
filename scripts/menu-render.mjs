@@ -1467,10 +1467,11 @@ const askedAgeIn = async (frame) => {
 const answerAgeIn = async (frame) => {
   try {
     return await frame.evaluate(
-      ({ clear, vague, decline }) => {
+      ({ clear, vague, decline, words }) => {
         const isClear = new RegExp(clear, 'i');
         const isVague = new RegExp(vague, 'i');
         const isDecline = new RegExp(decline, 'i');
+        const isAgeWords = new RegExp(words, 'i');
         const controls = [
           ...document.querySelectorAll('button, a, input[type="button"], input[type="submit"], [role="button"]'),
         ];
@@ -1495,14 +1496,41 @@ const answerAgeIn = async (frame) => {
           best = el;
           bestRank = rank;
         }
-        if (!best) return false;
-        best.click();
-        return true;
+        if (best) {
+          best.click();
+          return true;
+        }
+        /* Nothing on top says yes. 7 Leaf Clover's age question (13 October
+           2026) is drawn underneath the menu it guards: its Yes is covered by
+           the page, not by a wall, and the shelf is fetched only once it is
+           answered, so a visitor sees empty cards. The question's own plain
+           yes is pressed then — a clear yes inside a small box that asks the
+           age question itself, which is the honest answer we give every
+           shop. A control of the page beneath a wall never qualifies: the
+           box around it would not be asking about age. */
+        const asksAge = (node) => {
+          const t = (node.innerText || '').trim();
+          return t.length > 0 && t.length <= 300 && /\b21\b/.test(t) && isAgeWords.test(t);
+        };
+        for (const el of controls) {
+          const text = (el.innerText || el.value || el.getAttribute('aria-label') || '').trim();
+          if (!text || text.length > 40 || isDecline.test(text) || !isClear.test(text)) continue;
+          const box = el.getBoundingClientRect();
+          if (box.width <= 0 || box.height <= 0) continue;
+          let node = el.parentElement;
+          for (let depth = 0; node && depth < 6; depth += 1, node = node.parentElement) {
+            if (!asksAge(node)) continue;
+            el.click();
+            return 'under-page';
+          }
+        }
+        return false;
       },
       {
         clear: AGE_AFFIRM_ALL.source,
         vague: AGE_AFFIRM_VAGUE.source,
         decline: AGE_DECLINE_ALL.source,
+        words: AGE_WORDS.source,
       },
     );
   } catch {
@@ -1519,7 +1547,9 @@ const answerAgeIn = async (frame) => {
 const affirmAge = async (page, entry) => {
   for (const frame of await wallFrames(page)) {
     if (!(await within(askedAgeIn(frame), false))) continue;
-    if (!(await within(answerAgeIn(frame), false))) continue;
+    const answered = await within(answerAgeIn(frame), false);
+    if (!answered) continue;
+    if (answered === 'under-page') entry.ageGateUnderPage = true;
     noteFrame(page, frame, entry);
     await page.waitForTimeout(2500);
     return true;
