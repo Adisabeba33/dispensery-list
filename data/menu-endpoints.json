@@ -196,8 +196,8 @@
     "robotsAllows": true,
     "flowerVisibleWithoutLogin": true,
     "ageGate": "simple-button",
-    "checkedAt": "2026-09-08",
-    "notes": "JALH Briarwood (138-72 Queens Blvd) — locId=5."
+    "checkedAt": "2026-10-14",
+    "notes": "JALH Briarwood (138-72 Queens Blvd) — locId=5. С 14 октября 2026 locId=5 нет среди магазинов сайта сети (Troy 2, Murray Hill 4, Queens 1, Kew Gardens 7, Upper West Side 3, Fishkill 6), и сайт отдаёт полку другой точки — Fishkill или Troy; так было по крайней мере с 4 октября. Сборщик такую полку отклоняет (other-branch). Адрес оставлен, чтобы отказ был виден и чтобы полка вернулась, если точка снова появится на сайте."
   },
   {
     "licenseNumber": "OCM-CAURD-25-000272",

@@ -263,6 +263,49 @@ export const foreignShelfShare = (brandKeys, known, { minBrands = 10, minShare =
   return share < minShare ? share : null;
 };
 
+/**
+ * Whether a menu address that names one of a chain's stores was answered by
+ * another store.
+ *
+ * A Carrot storefront picks its store by `locId` in the address and asks its
+ * product API with the same `locId`. Just a Little Higher's Briarwood shop
+ * (locId=5, written down by hand on 8 September 2026) has since left the
+ * chain's site: locId=5 is no longer one of its stores, and the site quietly
+ * served another — Fishkill one day, Troy the next, both upstate — so the
+ * register filed their shelves under a Queens licence from 4 to 14 October.
+ *
+ * The store the address asks for is compared with the store the products came
+ * from: a parameter of that kind in the address, and the same parameter on
+ * the requests that carried products. Some request answering with it, none of
+ * them with the value asked for, is another branch's shelf. Returns what was
+ * asked and what answered, or null when the two agree or there is nothing to
+ * compare.
+ */
+const STORE_PARAM = /^(loc(ation)?[-_]?id|store[-_]?id|shop[-_]?id|retailer[-_]?id|dispensary[-_]?id|venue[-_]?id)$/i;
+export const otherBranchServed = (menuUrl, requestUrls) => {
+  let asked;
+  try {
+    asked = new URL(menuUrl);
+  } catch {
+    return null;
+  }
+  for (const [name, value] of asked.searchParams) {
+    if (!STORE_PARAM.test(name)) continue;
+    const served = new Set();
+    for (const u of requestUrls) {
+      let url;
+      try {
+        url = new URL(u);
+      } catch {
+        continue;
+      }
+      for (const [k, v] of url.searchParams) if (k.toLowerCase() === name.toLowerCase()) served.add(v);
+    }
+    if (served.size && !served.has(value)) return { param: name, asked: value, served: [...served].sort() };
+  }
+  return null;
+};
+
 /* Every brand this register has already seen on a New York shelf, across all
    three territories. A shop's own previous listings are excluded when it is
    judged, so a shelf that got in wrong once cannot vouch for itself. */
@@ -6012,6 +6055,19 @@ const main = async () => {
         seen.clear();
       }
 
+      /* And is it this shop's? A known address that names a store, answered
+         by another store's products, is another branch's shelf — refused
+         the same way (see otherBranchServed). */
+      const otherBranch = known ? otherBranchServed(known, requests.map((r) => r.url)) : null;
+      if (otherBranch && seen.size) {
+        for (let i = listings.length - 1; i >= 0; i -= 1) {
+          if (listings[i].licenseNumber === shop.licenseNumber) listings.splice(i, 1);
+        }
+        entry.otherBranch = { ...otherBranch, landedOn: entry.landedOn ?? null };
+        entry.flower = 0;
+        seen.clear();
+      }
+
       if (Object.keys(rejectedShape).length) entry.rejectedShape = rejectedShape;
       if (dumpProducts > 0) {
         entry.rejectedSample = Object.fromEntries(
@@ -6030,7 +6086,9 @@ const main = async () => {
       }
       entry.status = entry.foreignShelf
         ? 'foreign-shelf'
-        : seen.size
+        : entry.otherBranch
+          ? 'other-branch'
+          : seen.size
           ? 'ok'
           : thirdPartyRefused
             ? 'third-party-menu'
@@ -6179,19 +6237,31 @@ const main = async () => {
      purpose (--include-paused, or --only naming them) carries theirs. Owner's
      decision, 4 October 2026. */
   const carryPaused = (lic) => includePaused || onlyLicences?.has(lic) || !PAUSED.has(lic);
+  /* A shop whose own address now answers with another branch has no shelf
+     of its own to keep: what it showed before came from that address too,
+     and Briarwood's did come from Fishkill and Troy. */
+  const otherBranchShops = new Set(report.filter((r) => r.otherBranch).map((r) => r.licence));
   const carried = previous.filter(
     (l) =>
       (!refreshed.has(l.licenseNumber) || held.has(l.licenseNumber)) &&
       Date.parse(l.capturedAt) >= cutoff &&
-      carryPaused(l.licenseNumber),
+      carryPaused(l.licenseNumber) &&
+      !otherBranchShops.has(l.licenseNumber),
   );
+  const otherBranchDropped = previous.filter(
+    (l) =>
+      (!refreshed.has(l.licenseNumber) || held.has(l.licenseNumber)) &&
+      Date.parse(l.capturedAt) >= cutoff &&
+      carryPaused(l.licenseNumber) &&
+      otherBranchShops.has(l.licenseNumber),
+  ).length;
   const pausedDropped = previous.filter(
     (l) =>
       (!refreshed.has(l.licenseNumber) || held.has(l.licenseNumber)) &&
       Date.parse(l.capturedAt) >= cutoff &&
       !carryPaused(l.licenseNumber),
   ).length;
-  const dropped = previous.length - carried.length - pausedDropped
+  const dropped = previous.length - carried.length - pausedDropped - otherBranchDropped
     - previous.filter((l) => refreshed.has(l.licenseNumber) && !held.has(l.licenseNumber)).length;
 
   /* One shop's suspect shelf used to stop the whole run publishing, and two
@@ -6294,6 +6364,12 @@ const main = async () => {
     listingsCarriedForward: carried.length,
     listingsDroppedAsStale: dropped,
     listingsDroppedAsPaused: pausedDropped,
+    listingsDroppedAsOtherBranch: otherBranchDropped,
+    /* Shops whose own store address answered with another branch's shelf:
+       named, so the address can be looked at again by hand. */
+    shelvesFromAnotherBranch: report
+      .filter((r) => r.otherBranch)
+      .map((r) => ({ shop: r.shop, licence: r.licence, ...r.otherBranch })),
     robotsDisallowed: report.filter((r) => r.status === 'robots-disallowed').length,
     shopsWithFlower: report.filter((r) => r.flower > 0).length,
     listingsBeforeMerge: listings.length,

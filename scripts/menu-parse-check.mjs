@@ -19,7 +19,8 @@ import {
   placeNamesOf, rankMenuLink, registerTextOf, sameEstate, signatureOf, sizeFromText,
   toListing, wallAction, fulfilmentAction, pickupToPress, pageKnobOf, dropRepeatedPanels, sweedCategoryOf, decodeEntities,
   linkNamesAnotherState, proteusCards, proteusBrandsOf, proteusShowAll, sweedStorefrontPage, storefrontPagesOf,
-  isPromotionalSample, withoutCompanionSearches, firstPageAlone, furthestPageOf, queryKey, LOAD_MORE
+  isPromotionalSample, withoutCompanionSearches, firstPageAlone, furthestPageOf, queryKey, LOAD_MORE,
+  otherBranchServed
 } from './menu-render.mjs';
 import { canonicalStrain, strainKey } from './strain-name.mjs';
 import { keepListed } from './drop-unlisted-shelves.mjs';
@@ -1050,6 +1051,30 @@ check('an empty status says nothing either way',
   check('an Ohio shelf under a New York licence is refused',
     foreignShelfShare(ohio, ny) !== null, true);
   check('a New York shelf is not', foreignShelfShare([...ny], ny), null);
+
+  /* Just a Little Higher Briarwood, 4–14 October 2026: its written-down
+     address asks for locId=5, a store the chain's site no longer has, and
+     the site answered with Fishkill's or Troy's shelf instead. */
+  const briarwood = 'https://justalittlehigher.com/store/category/flower?locId=5';
+  check('another branch answering a store address is caught',
+    otherBranchServed(briarwood, [
+      'https://api.nevada.getcarrot.io/api/v1/store/search-products?locId=2',
+      'https://api.nevada.getcarrot.io/api/v1/store/category/slug/flower/product?locId=2&platform=web',
+    ]),
+    { param: 'locId', asked: '5', served: ['2'] });
+  check('the store asked for is believed',
+    otherBranchServed('https://justalittlehigher.com/store/category/flower?locId=4', [
+      'https://api.nevada.getcarrot.io/api/v1/store/search-products?locId=4',
+    ]), null);
+  check('beside a widget from another store, still believed',
+    otherBranchServed('https://justalittlehigher.com/store/category/flower?locId=4', [
+      'https://api.nevada.getcarrot.io/api/v1/store/search-products?locId=1',
+      'https://api.nevada.getcarrot.io/api/v1/store/search-products?locId=4',
+    ]), null);
+  check('nothing to compare when the requests do not name a store',
+    otherBranchServed(briarwood, ['https://api.example.com/v1/products?page=2']), null);
+  check('nor when the address does not',
+    otherBranchServed('https://shop.example.com/menu/flower', ['https://api.example.com/v1/products?locId=2']), null);
 
   /* One "www." was enough to hide a shared shelf. AMSM LLC and East Leaf
      Dispensary read the identical Cheektowaga menu — same 256 products, same
