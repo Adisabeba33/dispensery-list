@@ -400,6 +400,7 @@ def empty():
         "seen": {},
         "known": {},
         "debuts": {},
+        "began": None,
     }
 
 
@@ -504,6 +505,7 @@ def fold(hist, day, rows, collector=None):
         batches(hist, lic, shelf, was, thc_now, arrived, day, shelf_sig, count)
 
     keep_lineups(hist, deferred, day, count)
+    hist["began"] = hist["began"] or day
     for shelf in shelves.values():
         for key in shelf:
             hist["known"].setdefault(key, day)
@@ -1002,6 +1004,83 @@ def moves(hist, day, rows=None):
             "debuts": debut_list(hist, day)}
 
 
+class FirstOnShelf:
+    """Когда партия — сорт бренда при этом THC — впервые стояла на полке, что мы читаем.
+    Отвечает (день, точно ли) или None.
+
+    День — самый ранний, когда у сорта бренда было это THC (same_batch) где угодно, под
+    любой записью производителя и сорта: у другой записи — только при том же THC до
+    сотых, чтобы «Special Reserve Kosher Kush» 34,62 не стал «Kosher Kush» 34,61.
+
+    Точно — когда этот день и есть появление: в тот день подтвердился завоз этого сорта
+    или новая партия, или его впервые показал магазин, который мы читали и раньше,
+    прочитанный в тот день надёжно и не окно. Иначе день — только нижняя граница: партия
+    стояла уже тогда, а с какого дня, мы не видели. Так бывает с первым днём чтений,
+    с первым чтением магазина, с полкой, которую в тот день переписало наше чтение, и с
+    THC, которое меню начали показывать позже, чем сорт стоял (24 сентября 2026). Через
+    60 дней подтверждения забываются, и точный день тоже становится границей.
+
+    Без бренда и без THC — None: «|blue dream» при 28,41 — чей угодно, а сорт без
+    THC — не партия. Партию из нескольких пачек сайт и Сома сводят сами."""
+
+    def __init__(self, hist):
+        self.hist = hist
+        self.began = hist.get("began") or (hist["sweeps"] or [None])[0]
+        self.lineage = Lineage(hist)
+        self.variants = {}
+        self.arrived = defaultdict(set)
+        for a in hist["arrivals"]:
+            self.arrived[a["key"]].add(a["seen"])
+        self.batched = defaultdict(list)
+        for b in hist["batches"]:
+            self.batched[b["key"]].append((b["seen"], b["thc"]))
+        self.first_at = defaultdict(list)
+        for lic, seen in hist["seen"].items():
+            for key, entry in seen.items():
+                self.first_at[key].append((lic, parse(entry)[0]))
+        self.windows = {}
+
+    def family(self, key):
+        """Другие записи того же сорта у того же производителя, у которых есть THC."""
+        if key not in self.variants:
+            brand, strain = key.split("|", 1)
+            self.variants[key] = [o for o in self.lineage.pool(brand)
+                                  if o != key and o in self.hist["thc"] and same_strain(strain, strain_of(o))]
+        return self.variants[key]
+
+    def steady(self, lic, day):
+        """Читали ли магазин и до этого дня, надёжно ли прочитан он в этот день и не окно ли он."""
+        if day not in self.windows:
+            self.windows[day] = windowed(self.hist, day)
+        log = self.hist["activity"].get(lic, ())
+        return (lic not in self.windows[day] and any(e[0] < day for e in log)
+                and any(e[0] == day and (e[4] if len(e) > 4 else 1) for e in log))
+
+    def __call__(self, key, thc):
+        if not key or not key.split("|", 1)[0] or not thc:
+            return None
+        thc = float(thc)
+        found = {}
+        for value, first in self.hist["thc"].get(key, ()):
+            if same_batch(value, thc):
+                found[first] = found.get(first, set()) | {key}
+        if not thc.is_integer():
+            for other in self.family(key):
+                for value, first in self.hist["thc"][other]:
+                    if abs(value - thc) < 0.005:
+                        found[first] = found.get(first, set()) | {other}
+        if not found:
+            return None
+        since = min(found)
+        if not self.began or since <= self.began:
+            return since, False
+        keys = found[since]
+        exact = (any(since in self.arrived[k] for k in keys)
+                 or any(day == since and same_batch(value, thc) for k in keys for day, value in self.batched[k])
+                 or any(first == since and self.steady(lic, since) for k in keys for lic, first in self.first_at[k]))
+        return since, exact
+
+
 def debut_list(hist, day):
     """Дебюты, о которых сайту есть что сказать: стоящие сейчас хоть на одной полке и
     дебютировавшие за неделю. Дебют — со всеми записями сорта (keys): поздними
@@ -1161,7 +1240,14 @@ def load():
         hist.setdefault(part, blank)
     if "known" in missing or "debuts" in missing:
         seed_debuts(hist)
+    hist["began"] = load_began(hist)
     return hist
+
+
+def load_began(hist):
+    """День первого чтения не забывается, в отличие от sweeps, где помнятся последние
+    шестьдесят; история, писанная до began, ещё помнит его в sweeps."""
+    return hist.get("began") or (hist.get("sweeps") or [None])[0]
 
 
 def seed_debuts(hist):
@@ -1536,8 +1622,11 @@ def check():
         "LB": lambda i, d: shelf("LB", d, extra=["Late Bloomer"] if i >= 3 else []),
         # Впервые увиден в магазине, который в тот день прочитан впервые, — мог стоять
         # там давно: не дебют, хоть завозом и пришёл потом в другой.
-        "N2": lambda i, d: shelf("N2", d, extra=["Old Timer"]) if i >= 2 else [],
+        "N2": lambda i, d: shelf("N2", d) + [row("N2", "Old Timer", d, thc=21.21)] if i >= 2 else [],
         "OT": lambda i, d: shelf("OT", d, extra=["Old Timer"] if i >= 3 else []),
+        # Партия, которая у производителя с первого дня стоит под другой подписью.
+        "VA": lambda i, d: shelf("VA", d) + [row("VA", "Grape Ape", d, brand="FindOG", thc=23.45)],
+        "VB": lambda i, d: shelf("VB", d) + ([row("VB", "Grape Ape", d, thc=23.45)] if i >= 2 else []),
     }
     # Уходит: стоял в шести магазинах, с четвёртого дня — в двух.
     for n in range(1, 7):
@@ -1634,6 +1723,19 @@ def check():
         ("cap junkie", "cap junky"), ("b.a.m", "bam"), ("moon galeto", "moon gelato"), ("black scott", "black scotti"),
         ("blue cream", "blue dream"), ("gelato 33", "gelato 41"), ("billionaire", "millionaire"),
         ("lemon cherry gelato", "lemon cherry"))], [True] * 4 + [False] * 3 + [True])
+    first_on_shelf = FirstOnShelf(hist)
+    expect("первый день партии на полках: точно, или не раньше чем", [first_on_shelf(*q) for q in (
+        ("find|brand new", 24.44),     # завоз подтвердился
+        ("find|brand new", 24.4),      # та же партия, записанная короче
+        ("find|batch strain", 22.35),  # новая партия подтвердилась
+        ("find|batch strain", 20.11),  # стояла с первого чтения
+        ("find|old timer", 21.21),     # впервые — в магазине, прочитанном впервые
+        ("find|grape ape", 23.45),     # у производителя с первого дня под «Find OG»
+        ("find|brand new", None), ("|nameless", 20.5), ("find|never seen", 30.12))],
+        [(days[2], True), (days[2], True), (days[2], True), (days[0], False), (days[2], False),
+         (days[0], False), None, None, None])
+    expect("первый день чтений помнится", (hist["began"], load_began({"sweeps": ["2026-09-06"]})),
+           (days[0], "2026-09-06"))
     expect("через запись того же дня", (similar("find|find - old 9s", "find|old 9"),
                                         "find|find - old 9s" in arrived_keys), (False, True))
     expect("первый день помнится", hist["known"].get("find|crusty crustacean"), days[2])
