@@ -1,5 +1,5 @@
 import listingsRaw from '../../data/flower-listings.json';
-import { isPromotionalSample, type FlowerListing } from './menu-format';
+import { isPromotionalSample, type Debut, type FlowerListing } from './menu-format';
 
 /**
  * Reading the shelves. Server-side only — importing this from a client
@@ -65,19 +65,22 @@ const withReference = (l: FlowerListing): FlowerListing => {
   };
 };
 
-/* Debuts of the week (scripts/shelf-history.py), by the key the history keeps
-   a brand's strain under — the collector's brand key and its name as read,
-   before the review below renames it. */
-const debuts = new Map(
-  (shelfSignalsRaw as { arrivals: { key?: string; debut?: boolean; first: string }[] }).arrivals
-    .filter((a) => a.debut && a.key)
-    .map((a) => [a.key!, a.first]),
+/* Debuts still on a shelf (scripts/shelf-history.py), by every key the history
+   keeps the strain under — the collector's brand key and its name as read,
+   before the review below renames it. One debut can be written several ways
+   ("Orange Elixir", "*Orange Elixir", "X - Orange Elixir"); each is tagged. */
+type RawDebut = { key: string; keys?: string[]; first: string; days: number; seenAt: number };
+const debuts = new Map<string, Debut>(
+  ((shelfSignalsRaw as { debuts?: RawDebut[] }).debuts ?? []).flatMap((d) => {
+    const debut: Debut = { day: d.first, days: d.days, seenAt: d.seenAt };
+    return (d.keys ?? [d.key]).map((key) => [key, debut] as const);
+  }),
 );
 const historyKey = (l: FlowerListing): string =>
   `${l.brandKey ?? ''}|${(l.strainNameCanonical || l.strainNameRaw || '').trim().toLowerCase().replace(/\s+/g, ' ')}`;
 const withDebut = (l: FlowerListing): FlowerListing => {
-  const day = l.brandKey ? debuts.get(historyKey(l)) : undefined;
-  return day ? { ...l, debut: day } : l;
+  const debut = l.brandKey ? debuts.get(historyKey(l)) : undefined;
+  return debut ? { ...l, debut } : l;
 };
 
 /* Every page reads the shelves through here, so every page gets the second

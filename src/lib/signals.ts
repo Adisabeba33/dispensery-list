@@ -1,5 +1,6 @@
 import signalsRaw from '../../data/shelf-signals.json';
 import { dispensaries, displayName, regionOf } from './data';
+import { isFreshDebut, type Debut } from './menu-format';
 
 /**
  * What changed on the shelves: what came in this week, what is running low,
@@ -17,8 +18,7 @@ type Raw = {
   arrivals: {
     brand: string | null;
     strain: string;
-    /** The brand's strain new to every shelf we read: `first` is its first day anywhere. */
-    debut?: boolean;
+    key?: string;
     first: string;
     today: number;
     shelves: number;
@@ -28,6 +28,18 @@ type Raw = {
   batches: { brand: string | null; strain: string; thc: number; before: number[]; first: string; shops: string[] }[];
   runningLow: { brand: string | null; strain: string; now: string[]; peak: number; peakDay: string }[];
   gone: { brand: string | null; strain: string; lastSeen: string; peak: number; lastShops: string[] }[];
+  /** Brands' strains new to every shelf we read, still on one or new this week. */
+  debuts?: {
+    key: string;
+    /** Every way the history has the strain written. */
+    keys?: string[];
+    brand: string | null;
+    strain: string;
+    first: string;
+    days: number;
+    seenAt: number;
+    shops: string[];
+  }[];
   shops?: Record<
     string,
     {
@@ -54,15 +66,30 @@ const shopsOf = (licences: string[]): Shop[] =>
     return d ? [{ id: d.id, name: displayName(d), region: regionOf(d) }] : [];
   });
 
+const debutOf = (d: { first: string; days: number; seenAt: number }): Debut => ({
+  day: d.first,
+  days: d.days,
+  seenAt: d.seenAt,
+});
+const debutByKey = new Map(
+  (raw.debuts ?? []).flatMap((d) => (d.keys ?? [d.key]).map((key) => [key, debutOf(d)] as const)),
+);
+
 export const shelfSignals = () => {
-  const arrivals = raw.arrivals.map((a) => ({ ...a, shops: shopsOf(a.shops) }));
+  const arrivals = raw.arrivals.map((a) => ({
+    ...a,
+    shops: shopsOf(a.shops),
+    debut: (a.key && debutByKey.get(a.key)) || null,
+  }));
   return {
     day: raw.day,
     rules: raw.rules,
     waves: arrivals.filter((a) => a.shelves >= raw.rules.waveShelves),
     arrivals: arrivals.filter((a) => a.shelves < raw.rules.waveShelves),
-    /* Debuts: in the order the read wrote them, the widest first. */
-    debuts: arrivals.filter((a) => a.debut),
+    /* The week's debuts, the widest first, as the read wrote them. */
+    debuts: (raw.debuts ?? [])
+      .map((d) => ({ ...d, debut: debutOf(d), shops: shopsOf(d.shops) }))
+      .filter((d) => isFreshDebut(d.debut)),
     batches: raw.batches.map((b) => ({ ...b, shops: shopsOf(b.shops) })),
     runningLow: raw.runningLow.map((m) => ({ ...m, now: shopsOf(m.now) })),
     gone: raw.gone.map((m) => ({ ...m, lastShops: shopsOf(m.lastShops) })),

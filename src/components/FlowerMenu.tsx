@@ -17,7 +17,7 @@ import {
   type FlowerListing,
   isPromotionalSample,
 } from '@/lib/menu-format';
-import { DebutTag } from './DebutTag';
+import { DebutLine, DebutTag } from './DebutTag';
 
 const PROVENANCE_CLASS: Record<string, string> = {
   lab: 'border-moss-600/55 bg-moss-600/12 text-moss-400',
@@ -79,10 +79,11 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
             <span className="mx-1.5 text-ink-600">·</span>
             {LINEAGE_LABEL[listing.lineage] ?? 'Unstated'}
           </p>
+          {listing.debut && <DebutLine debut={listing.debut} className="mt-1" />}
         </div>
 
         <div className="flex items-center gap-3 text-right">
-          {listing.debut && <DebutTag day={listing.debut} />}
+          {listing.debut && <DebutTag debut={listing.debut} />}
           {listing.thcPercent !== null && (
             <span className="tabular-nums text-sm text-chalk-100">
               THC {listing.thcPercent}%
@@ -372,6 +373,28 @@ export const FlowerMenu = ({
             </li>
           ))}
         </ul>
+        {listings.some((l) => l.debut) && (
+          <>
+            <p className="label mt-4">New on New York shelves</p>
+            <ul className="mt-2 grid gap-2 sm:grid-cols-2">
+              <li className="flex items-start gap-2 text-[0.72rem] leading-relaxed text-chalk-400">
+                <DebutTag debut={{ day: '2026-10-08', days: 0, seenAt: 3 }} sample />
+                <span>
+                  A strain no shelf we read had carried before, in its first week. The number is how
+                  many shops it has reached so far.
+                </span>
+              </li>
+              <li className="flex items-start gap-2 text-[0.72rem] leading-relaxed text-chalk-400">
+                <DebutTag debut={{ day: '2026-10-08', days: 14, seenAt: 3 }} sample />
+                <span>After its first week: how long ago it first turned up.</span>
+              </li>
+            </ul>
+            <p className="mt-2 text-[0.72rem] leading-relaxed text-chalk-500">
+              New York City and Westchester shelves we read, since our reads began on Sep 6, 2026 —
+              a strain can be older on shelves we do not read.
+            </p>
+          </>
+        )}
       </div>
     </section>
   );

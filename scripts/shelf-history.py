@@ -45,6 +45,21 @@
 бренда дебютом не бывает: «|blue dream» — чей угодно. Дебют говорит о наших
 полках, а не о рынке: сорт мог стоять там, где мы не читаем.
 
+Имя дебюту проверяется так же, как уходу: сорт, который у того же бренда уже
+стоял под похожим именем («Flower Secret Stash» и «Secret Stash», «X - Chimax»
+и «Chimax», «*Apple Fritter»), — не новый сорт, а новая запись старого. Меню
+пишут названия вразнобой, и без этого правила две трети «дебютов» октября были
+такими. Поэтому дебют — только сорт, похожего на который у бренда раньше не
+было ни на одной полке; а его поздние записи — «Grape Maker» рядом с «Grape
+Marker» — дебют разделяют, и магазины считаются по всем записям вместе.
+
+Дебют записывается в debuts, когда его завоз подтвердился, и помнится, пока
+сорт помнит хоть одна полка. Сайт ведёт его дальше: первые семь дней —
+«Debut (3)», где число — в скольких магазинах сорт успел появиться с первого
+дня; потом — сколько недель назад его увидели впервые. Магазин считается по
+лицензии: у сети с общей витриной это несколько магазинов, и сорт стоит в
+каждом.
+
 Самый сильный сигнал — волна: один и тот же сорт бренда появился на трёх и
 более разных полках за неделю. Магазины сети с общей витриной считаются как
 одна полка.
@@ -213,7 +228,9 @@ def similar(a, b):
     wa, wb = words(strain_a), words(strain_b)
     if wa and wb and (wa <= wb or wb <= wa):
         return True
-    return SequenceMatcher(None, strain_a, strain_b).ratio() >= 0.85
+    # Быстрые верхние оценки отвечают «нет» за большинство пар; ответ тот же.
+    m = SequenceMatcher(None, strain_a, strain_b)
+    return m.real_quick_ratio() >= 0.85 and m.quick_ratio() >= 0.85 and m.ratio() >= 0.85
 
 
 def shelves_read(rows, day):
@@ -313,6 +330,7 @@ def empty():
         "activity": {},
         "seen": {},
         "known": {},
+        "debuts": {},
     }
 
 
@@ -420,11 +438,56 @@ def fold(hist, day, rows, collector=None):
     for shelf in shelves.values():
         for key in shelf:
             hist["known"].setdefault(key, day)
+    note_debuts(hist, [a for a in hist["arrivals"] if a["confirmed"] == day])
     remember_potency(hist, potency, day)
     remember_names(hist, shelves)
     hist["days"][day] = dict(sorted(count.items()))
     prune(hist, day)
     return count
+
+
+def by_brand(known):
+    out = defaultdict(list)
+    for key in known:
+        out[key.split("|", 1)[0]].append(key)
+    return out
+
+
+def renamed_on(hist, brands, cache, brand, day):
+    """Записи бренда, впервые увиденные в этот день и похожие на то, что у него стояло
+    раньше: «White Diamonds» 8 октября при «White Diamond» с сентября."""
+    if (brand, day) not in cache:
+        known = hist["known"]
+        older = [o for o in brands[brand] if known[o] < day]
+        cache[brand, day] = {k for k in brands[brand]
+                             if known[k] == day and any(similar(k, o) for o in older)}
+    return cache[brand, day]
+
+
+def known_before(hist, brands, cache, key, day):
+    """Стоял ли у бренда до этого дня сорт, похожий на этот, — то есть этот сорт сам.
+    Похожесть — через одну запись того же дня: «HOS - White Diamonds» похож не на
+    «White Diamond», а на «White Diamonds», который появился с ним в один день и
+    похож на него. Только то, что было известно к этому дню, — чтобы ответ не менялся
+    потом."""
+    known = hist["known"]
+    brand = key.split("|", 1)[0]
+    if any(known[o] < day and o != key and similar(key, o) for o in brands[brand]):
+        return True
+    return any(o != key and similar(key, o) for o in renamed_on(hist, brands, cache, brand, day))
+
+
+def note_debuts(hist, confirmed):
+    """Подтверждённые завозы, которые оказались первым появлением сорта бренда на
+    наших полках вообще. Правило — в описании модуля."""
+    brands, cache = None, {}
+    for a in confirmed:
+        key = a["key"]
+        if not key.split("|", 1)[0] or key in hist["debuts"] or hist["known"].get(key) != a["seen"]:
+            continue
+        brands = brands or by_brand(hist["known"])
+        if not known_before(hist, brands, cache, key, a["seen"]):
+            hist["debuts"][key] = a["seen"]
 
 
 def keep_lineups(hist, deferred, day, count):
@@ -582,6 +645,7 @@ def prune(hist, day):
     alive = {key for seen in hist["seen"].values() for key in seen}
     hist["thc"] = {key: values for key, values in hist["thc"].items() if key in alive}
     hist["names"] = {key: name for key, name in hist["names"].items() if key in alive}
+    hist["debuts"] = {key: first for key, first in hist["debuts"].items() if key in alive}
     hist["activity"] = {lic: [e for e in log if e[0] >= horizon] for lic, log in hist["activity"].items()}
     hist["activity"] = {lic: log for lic, log in hist["activity"].items() if log}
     hist["arrivals"] = [a for a in hist["arrivals"] if a["seen"] >= horizon]
@@ -668,11 +732,9 @@ def moves(hist, day, rows=None):
     arrivals_out = []
     for key, found in arrived.items():
         brand, strain = display(hist, key, [a["brand"] for a in found], [a["strain"] for a in found])
-        first = min(a["seen"] for a in found)
         arrivals_out.append({
             "brand": brand, "strain": strain, "key": key,
-            "first": first,
-            "debut": bool(key.split("|", 1)[0]) and hist["known"].get(key) == first,
+            "first": min(a["seen"] for a in found),
             "today": sum(1 for a in found if a["confirmed"] == day),
             "shelves": len({a["shelf"] for a in found}),
             "shops": sorted({a["licence"] for a in found}),
@@ -723,7 +785,47 @@ def moves(hist, day, rows=None):
                              "lastShops": sorted(lic for lic, (_f, last, _s) in trusted.items() if last >= since_old)})
     low.sort(key=lambda m: (len(m["now"]) - m["peak"], len(m["now"]), m["strain"] or ""))
     gone.sort(key=lambda m: (-m["peak"], m["lastSeen"], m["strain"] or ""))
-    return {"arrivals": arrivals_out, "batches": batches_out, "runningLow": low, "gone": gone}
+    return {"arrivals": arrivals_out, "batches": batches_out, "runningLow": low, "gone": gone,
+            "debuts": debut_list(hist, day)}
+
+
+def debut_list(hist, day):
+    """Дебюты, о которых сайту есть что сказать: стоящие сейчас хоть на одной полке и
+    дебютировавшие за неделю. Дебют — со всеми записями сорта (keys): поздними
+    записями его самого и дебютами того же дня под похожим именем. seenAt — в скольких
+    магазинах сорт появлялся с первого дня, shops — где он сейчас; days — сколько дней
+    от первого появления до чтения."""
+    known = hist["known"]
+    brands, cache = by_brand(known), {}
+    carried = defaultdict(dict)
+    for lic, seen in hist["seen"].items():
+        for key, entry in seen.items():
+            carried[key][lic] = parse(entry)[1] is None
+    taken = set()
+    out = []
+    # Раньше и шире — первым: дебют того же дня под похожим именем к нему и примкнёт.
+    for key, first in sorted(hist["debuts"].items(), key=lambda kv: (kv[1], -len(carried[kv[0]]), kv[0])):
+        if first > day or key in taken:
+            continue
+        family = [key] + [other for other in brands[key.split("|", 1)[0]]
+                          if other != key and other not in taken and known[other] >= first
+                          and similar(key, other) and not known_before(hist, brands, cache, other, first)]
+        taken.update(family)
+        shops = {}
+        for member in family:
+            for lic, standing in carried[member].items():
+                shops[lic] = shops.get(lic, False) or standing
+        now = sorted(lic for lic, standing in shops.items() if standing)
+        days = (date.fromisoformat(day) - date.fromisoformat(first)).days
+        if not now and days >= WAVE_DAYS:
+            continue
+        # Имя — той записи, что стоит в большем числе магазинов сейчас.
+        named = max(family, key=lambda k: (sum(carried[k].values()), len(carried[k]), k == key))
+        brand, strain = display(hist, named)
+        out.append({"key": key, "keys": sorted(k for k in family if k in carried), "brand": brand,
+                    "strain": strain, "first": first, "days": days, "seenAt": len(shops), "shops": now})
+    out.sort(key=lambda d: (d["days"] >= WAVE_DAYS, -d["seenAt"], d["first"], d["strain"] or ""))
+    return out
 
 
 STATES = ("active", "stale", "quiet", "asleep", "dead", "partial")
@@ -836,17 +938,27 @@ def load():
     """История с диска. Раздел, которого в ней ещё нет (файл писала прежняя версия
     скрипта), начинается пустым, а не роняет прогон."""
     hist = json.loads(HISTORY.read_text()) if HISTORY.exists() else {}
+    missing = [part for part in empty() if part not in hist]
     for part, blank in empty().items():
         hist.setdefault(part, blank)
-    # История, писанная до known: первый день сорта — самое раннее из того, что она
-    # помнит. Ничего из неё ещё не забылось — ей меньше 60 дней.
-    if not hist["known"]:
-        for seen in hist["seen"].values():
-            for key, entry in seen.items():
-                first = parse(entry)[0]
-                if first < hist["known"].get(key, "9999"):
-                    hist["known"][key] = first
+    if "known" in missing or "debuts" in missing:
+        seed_debuts(hist)
     return hist
+
+
+def seed_debuts(hist):
+    """known и debuts для истории, писанной до них: первый день сорта — самое раннее,
+    что помнят полки, дебюты — подтверждённые завозы в этот самый день. Верно, пока
+    из истории ничего не забылось: ей меньше 60 дней (чтения начались 6 сентября)."""
+    known = {}
+    for seen in hist["seen"].values():
+        for key, entry in seen.items():
+            first = parse(entry)[0]
+            if first < known.get(key, "9999"):
+                known[key] = first
+    hist["known"] = known
+    hist["debuts"] = {}
+    note_debuts(hist, sorted(hist["arrivals"], key=lambda a: a["seen"]))
 
 
 def collector_at(ref):
@@ -1187,6 +1299,14 @@ def check():
         "M": lambda i, d: shelf("M", d, extra=["Stock 3"] if i >= 2 else []),
         # Завоз сорта без бренда: дебютом не бывает.
         "O": lambda i, d: shelf("O", d) + ([row("O", "Nameless", d, brand=None)] if i >= 2 else []),
+        # Старый сорт бренда под новой записью: завоз, но не дебют.
+        "RW": lambda i, d: shelf("RW", d, extra=["Old 7 - Preground"] if i >= 2 else []),
+        # Дебют того же дня под другой записью и поздняя запись волны — тот же дебют.
+        "HS": lambda i, d: shelf("HS", d, extra=["Find - Crusty Crustacean"] if i >= 2 else []),
+        "GV": lambda i, d: shelf("GV", d, extra=["Garlic Patties Flower"] if i >= 3 else []),
+        # «Find - Old 9s» не похож на «Old 9» сам, но похож на «Old 9s» того же дня.
+        "HW": lambda i, d: shelf("HW", d, extra=["Old 9s"] if i >= 2 else []),
+        "HX": lambda i, d: shelf("HX", d, extra=["Find - Old 9s"] if i >= 2 else []),
     }
     # Уходит: стоял в шести магазинах, с четвёртого дня — в двух.
     for n in range(1, 7):
@@ -1259,10 +1379,41 @@ def check():
                                                     hist["seen"]["Z"]["find|z extra 0"].endswith(" " + SHAKY)), (11, True))
     expect("имя ушедшего помнится", hist["names"].get("find|vanishing strain"), ["Find", "Vanishing Strain"])
     expect("новые за неделю — волна первой", m["arrivals"][0]["strain"], "Garlic Patties")
-    debut = {a["key"]: a["debut"] for a in m["arrivals"]}
-    expect("дебют", (debut.get("find|crusty crustacean"), debut.get("find|garlic patties"),
-                     debut.get("find|stock 3"), debut.get("|nameless")), (True, True, False, False))
-    expect("первый день помнится дольше полки", hist["known"].get("find|crusty crustacean"), days[2])
+    arrived_keys = {a["key"] for a in m["arrivals"]}
+    expect("завозы, которые не дебюты, — тоже завозы",
+           ("find|stock 3" in arrived_keys, "|nameless" in arrived_keys, "find|old 7 - preground" in arrived_keys),
+           (True, True, True))
+    expect("дебют", (hist["debuts"].get("find|crusty crustacean"), hist["debuts"].get("find|garlic patties"),
+                     "find|stock 3" in hist["debuts"], "|nameless" in hist["debuts"],
+                     "find|old 7 - preground" in hist["debuts"], "find|old 9s" in hist["debuts"],
+                     "find|find - old 9s" in hist["debuts"]), (days[2], days[2], False, False, False, False, False))
+    expect("через запись того же дня", (similar("find|find - old 9s", "find|old 9"),
+                                        "find|find - old 9s" in arrived_keys), (False, True))
+    expect("первый день помнится", hist["known"].get("find|crusty crustacean"), days[2])
+    listed = {d["key"]: d for d in m["debuts"]}
+    expect("дебют на сайте: записи, где появлялся, где стоит, сколько дней",
+           [(d["keys"], d["seenAt"], d["shops"], d["days"])
+            for d in (listed["find|garlic patties"], listed["find|crusty crustacean"])],
+           [(["find|garlic patties", "find|garlic patties flower"], 6, ["F1", "F2", "G", "GV", "H", "K"], 2),
+            (["find|crusty crustacean", "find|find - crusty crustacean"], 2, ["A", "HS"], 2)])
+    expect("одна запись — один дебют", [d["key"] for d in m["debuts"]
+                                        if {"find|find - crusty crustacean", "find|garlic patties flower"} & set(d["keys"])],
+           ["find|garlic patties", "find|crusty crustacean"])
+    expect("самый широкий дебют первым", m["debuts"][0]["key"], "find|garlic patties")
+    reseeded = json.loads(json.dumps(hist))
+    del reseeded["known"], reseeded["debuts"]
+    seed_debuts(reseeded)
+    expect("дебюты восстанавливаются из истории", reseeded["debuts"], hist["debuts"])
+    later = (date.fromisoformat(days[4]) + timedelta(days=WAVE_DAYS)).isoformat()
+    expect("неделю спустя ушедший дебют сайту не нужен",
+           [d["key"] for d in debut_list({**hist, "seen": {"A": hist["seen"]["A"]}}, later)
+            if d["key"] == "find|garlic patties"], [])
+    forgotten = json.loads(json.dumps(hist))
+    for seen in forgotten["seen"].values():
+        seen.pop("find|crusty crustacean", None)
+    prune(forgotten, days[4])
+    expect("дебют забывается вместе с сортом", ("find|crusty crustacean" in forgotten["debuts"],
+                                               "find|crusty crustacean" in forgotten["known"]), (False, True))
     fake = empty()
     fake["sweeps"] = ["2026-02-01", "2026-02-10", "2026-02-15", "2026-02-16", "2026-02-17"]
     fake["arrivals"] = [{"licence": "busy", "seen": "2026-02-15"}, {"licence": "quietbig", "seen": "2026-02-08"},

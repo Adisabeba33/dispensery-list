@@ -3,8 +3,8 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
-import { LINEAGE_LABEL, SIZES, sizeChips, sizeLabel } from '@/lib/menu-format';
-import { DebutTag } from './DebutTag';
+import { LINEAGE_LABEL, SIZES, isFreshDebut, sizeChips, sizeLabel, type Debut } from '@/lib/menu-format';
+import { DebutLine, DebutTag } from './DebutTag';
 
 export type StrainEntry = {
   key: string;
@@ -16,9 +16,9 @@ export type StrainEntry = {
   /** Every way the shops wrote it: what a search for the jar's label matches. */
   labels: string[];
   hasTerpenes: boolean;
-  /** This week's first day on any shelf we read, for a brand's strain new to all
-   *  of them (lib/menu); null for the rest. */
-  debut: string | null;
+  /** For a strain new to every shelf we read — every grower's jar of it — when
+   *  it was first seen and how far it has spread (lib/menu); null for the rest. */
+  debut: Debut | null;
   /** The weights each shop sells it in, which are not the strain's sizes: one
    *  shop can have only halves of a strain another sells by the ounce. */
   shops: { id: string; name: string; region: string; sizes: number[] }[];
@@ -59,9 +59,10 @@ const StrainRow = ({
           {s.brands.length > 0 ? `by ${s.brands.slice(0, 2).join(' · ')}` : 'Brand not stated'}
         </p>
         {s.debut && (
-          <p className="mt-1.5">
-            <DebutTag day={s.debut} />
-          </p>
+          <div className="mt-1.5">
+            <DebutTag debut={s.debut} />
+            <DebutLine debut={s.debut} className="mt-1" />
+          </div>
         )}
       </div>
       <div className="shrink-0 text-right">
@@ -143,7 +144,7 @@ export const ShelfIndex = ({
   const [lineage, setLineage] = useState<string | null>(null);
   const [multiOnly, setMultiOnly] = useState(false);
   const [debutsOnly, setDebutsOnly] = useState(false);
-  const debutCount = useMemo(() => strains.filter((s) => s.debut).length, [strains]);
+  const debutCount = useMemo(() => strains.filter((s) => s.debut && isFreshDebut(s.debut)).length, [strains]);
   const [limit, setLimit] = useState(60);
   const [copied, setCopied] = useState(false);
 
@@ -167,7 +168,7 @@ export const ShelfIndex = ({
       if (shops.length === 0) continue;
       if (lineage && s.lineage !== lineage) continue;
       if (multiOnly && shops.length < 2) continue;
-      if (debutsOnly && !s.debut) continue;
+      if (debutsOnly && !(s.debut && isFreshDebut(s.debut))) continue;
       if (
         q &&
         !(
@@ -261,7 +262,7 @@ export const ShelfIndex = ({
             type="button"
             onClick={() => setDebutsOnly((v) => !v)}
             aria-pressed={debutsOnly}
-            title="Brands' strains no shelf we read had carried before this week"
+            title="Strains no shelf we read had carried before, in their first week"
             className={clsx('chip', debutsOnly && 'chip-on')}
           >
             Debuts this week <span className="tabular-nums text-chalk-500">{debutCount}</span>

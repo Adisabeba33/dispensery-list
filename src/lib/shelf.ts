@@ -85,7 +85,12 @@ export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
     /* A row gathers every grower's jar of the name, so it is a debut only while
        every jar in it is one: a new grower's Blue Dream is not a new strain. */
     if (!l.debut) settled.add(key);
-    else if (!entry.debut || l.debut < entry.debut) entry.debut = l.debut;
+    else if (!entry.debut) entry.debut = { ...l.debut };
+    else {
+      const d = entry.debut;
+      if (l.debut.day < d.day) Object.assign(d, { day: l.debut.day, days: l.debut.days });
+      d.seenAt = Math.max(d.seenAt, l.debut.seenAt);
+    }
     /* Each shop keeps the weights it sells this strain in. The strain's own
        sizes are every shop's together, and a filter to the ounce that reads
        only those lists a shop that has nothing but halves: Crusty Crustacean

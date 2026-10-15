@@ -39,9 +39,9 @@ export type FlowerListing = {
   packagedOn: string | null;
   inStock: boolean;
   availableSizesGrams: number[] | null;
-  /** The day this brand's strain was first seen on any shelf we read, when that
-      was this week and it came in as a delivery (scripts/shelf-history.py). */
-  debut?: string | null;
+  /** When this brand's strain was new to every shelf we read: its first day on
+      one, and how it has spread since (scripts/shelf-history.py). */
+  debut?: Debut | null;
   /* What the record itself knows is unsound about it. SHELF_SHARED_WITH_OTHER_LICENCES
      says this menu serves several licensed shops, so the shelf is the chain's
      rather than this branch's. */
@@ -64,13 +64,52 @@ export const SIZES: { grams: number; label: string; short: string }[] = [
  * A debut: a brand's strain no shelf we read in New York City or Westchester had
  * carried before. "Before" starts with our first read, on 6 September 2026, and
  * covers only the shops we read — a strain can be older than that elsewhere.
+ *
+ * `day` is the first day the read saw it on any shelf, `days` how long before
+ * the latest read that was, and `seenAt` how many shops have had it since.
  */
-export const DEBUT_NOTE =
-  'First time on any New York City or Westchester shelf we read (since Sep 6, 2026)';
+export type Debut = { day: string; days: number; seenAt: number };
 
-/** "Oct 13" — pinned to UTC, the calendar the daily read is kept in. */
-export const debutDay = (day: string): string =>
-  new Date(`${day}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+/** How long a debut is called one; after that, how long ago it was first seen. */
+export const DEBUT_DAYS = 7;
+
+export const DEBUT_NOTE =
+  'New to every New York City and Westchester shelf we read (our reads began Sep 6, 2026)';
+
+export const isFreshDebut = (d: Debut): boolean => d.days < DEBUT_DAYS;
+
+/** "Oct 13", and the year too once it is long enough ago to be ambiguous. Pinned
+    to UTC, the calendar the daily read is kept in. */
+export const debutDay = (d: Debut): string =>
+  new Date(`${d.day}T12:00:00Z`).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    ...(d.days > 180 ? { year: 'numeric' } : {}),
+    timeZone: 'UTC',
+  });
+
+const ago = (days: number): string => {
+  const weeks = Math.floor(days / 7);
+  if (weeks < 9) return weeks === 1 ? 'a week ago' : `${weeks} weeks ago`;
+  const months = Math.floor(days / 30);
+  return months < 12 ? `${months} months ago` : months < 24 ? 'a year ago' : `${Math.floor(months / 12)} years ago`;
+};
+
+/**
+ * The tag. In its first week a debut counts the shops it has reached —
+ * "Debut", "Debut (2)", "Debut (3)" — and after that says how long ago it was
+ * first seen: "First seen a week ago", "First seen 2 weeks ago".
+ */
+export const debutTag = (d: Debut): string =>
+  isFreshDebut(d) ? (d.seenAt > 1 ? `Debut (${d.seenAt})` : 'Debut') : `First seen ${ago(d.days)}`;
+
+const shops = (n: number) => `${n} ${n === 1 ? 'shop' : 'shops'}`;
+
+/** The same in words, for a tooltip or a screen reader. */
+export const debutDetail = (d: Debut): string =>
+  `First seen on a New York shelf ${debutDay(d)}; ${
+    isFreshDebut(d) ? 'in its first week' : 'since then'
+  } at ${shops(d.seenAt)}. ${DEBUT_NOTE}.`;
 
 export const sizeLabel = (grams: number): string =>
   SIZES.find((s) => s.grams === grams)?.label ?? `${grams}g`;
