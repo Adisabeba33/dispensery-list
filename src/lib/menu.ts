@@ -1,5 +1,5 @@
 import listingsRaw from '../../data/flower-listings.json';
-import { isPromotionalSample, type FlowerListing } from './menu-format';
+import { isPromotionalSample, type Debut, type FlowerListing } from './menu-format';
 
 /**
  * Reading the shelves. Server-side only — importing this from a client
@@ -10,6 +10,7 @@ import strainReferenceRaw from '../../data/strain-reference.json';
 import strainLinesRaw from '../../data/strain-lines.json';
 import menuPausedRaw from '../../data/menu-paused.json';
 import { reviewListings, type LineBook } from './strain-review';
+import shelfSignalsRaw from '../../data/shelf-signals.json';
 
 type StrainReference = {
   canonicalName: string;
@@ -64,13 +65,31 @@ const withReference = (l: FlowerListing): FlowerListing => {
   };
 };
 
+/* Debuts still on a shelf (scripts/shelf-history.py), by every key the history
+   keeps the strain under — the collector's brand key and its name as read,
+   before the review below renames it. One debut can be written several ways
+   ("Orange Elixir", "*Orange Elixir", "X - Orange Elixir"); each is tagged. */
+type RawDebut = { key: string; keys?: string[]; first: string; days: number; seenAt: number };
+const debuts = new Map<string, Debut>(
+  ((shelfSignalsRaw as { debuts?: RawDebut[] }).debuts ?? []).flatMap((d) => {
+    const debut: Debut = { day: d.first, days: d.days, seenAt: d.seenAt };
+    return (d.keys ?? [d.key]).map((key) => [key, debut] as const);
+  }),
+);
+const historyKey = (l: FlowerListing): string =>
+  `${l.brandKey ?? ''}|${(l.strainNameCanonical || l.strainNameRaw || '').trim().toLowerCase().replace(/\s+/g, ' ')}`;
+const withDebut = (l: FlowerListing): FlowerListing => {
+  const debut = l.brandKey ? debuts.get(historyKey(l)) : undefined;
+  return debut ? { ...l, debut } : l;
+};
+
 /* Every page reads the shelves through here, so every page gets the second
    look at their names (./strain-review): shouting calmed, product lines and
    the grower's own name taken off, one spelling per grower. It runs before the
    reference lookup, which then finds "Lemon Cherry Gelato" where the menu said
    "Classic Cuts Indoor Flower - Lemon Cherry Gelato". */
 export const listings = reviewListings(
-  listingsRaw as unknown as FlowerListing[],
+  (listingsRaw as unknown as FlowerListing[]).map(withDebut),
   strainLinesRaw as unknown as LineBook,
 ).map(withReference);
 

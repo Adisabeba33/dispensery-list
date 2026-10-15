@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { dayLabel, shelfSignals, type Shop } from '@/lib/signals';
+import { DebutTag } from '@/components/DebutTag';
+import { DEBUT_DAYS, debutDay } from '@/lib/menu-format';
 
 export const metadata: Metadata = {
   title: 'New & leaving',
@@ -113,6 +115,7 @@ export default function MovesPage() {
 
       <nav aria-label="Sections" className="mt-6 flex flex-wrap gap-2 text-sm">
         {[
+          ['#debuts', 'Debuts', s.debuts.length],
           ['#waves', 'Waves', s.waves.length],
           ['#batches', 'New batches', s.batches.length],
           ['#new', 'New this week', s.arrivals.length],
@@ -124,6 +127,32 @@ export default function MovesPage() {
           </a>
         ))}
       </nav>
+
+      <Section
+        id="debuts"
+        title="Debuts"
+        count={s.debuts.length}
+        empty="No grower's strain new to every shelf we read turned up this week."
+        lead={
+          <>
+            A grower&apos;s strain that no New York City or Westchester shelf we read had carried from
+            that grower before — under any spelling of its name — in its first {DEBUT_DAYS} days.{' '}
+            <span className="text-chalk-200">Debut (3)</span> is how many shops have had it since.
+            After its first week the tag says how long ago it was first seen instead. Our reads began
+            on Sep 6, 2026; a strain can be older on shelves we do not read.
+          </>
+        }
+      >
+        <DebutList debuts={s.debuts.slice(0, SHOWN_ARRIVALS)} />
+        {s.debuts.length > SHOWN_ARRIVALS && (
+          <details className="mt-3">
+            <summary className="cursor-pointer text-sm text-moss-400">
+              Show the other {s.debuts.length - SHOWN_ARRIVALS}
+            </summary>
+            <DebutList debuts={s.debuts.slice(SHOWN_ARRIVALS)} />
+          </details>
+        )}
+      </Section>
 
       <Section
         id="waves"
@@ -138,7 +167,14 @@ export default function MovesPage() {
               key={`${a.brand}|${a.strain}`}
               strain={a.strain}
               brand={a.brand}
-              tag={a.today > 0 ? <Tag>+{a.today} today</Tag> : undefined}
+              tag={
+                a.debut || a.today > 0 ? (
+                  <span className="flex shrink-0 flex-col items-end gap-1">
+                    {a.debut && <DebutTag debut={a.debut} />}
+                    {a.today > 0 && <Tag>+{a.today} today</Tag>}
+                  </span>
+                ) : undefined
+              }
             >
               <p className="mt-3 text-sm text-chalk-300">
                 New on {plural(a.shelves, 'shelf', 'shelves')} since {dayLabel(a.first)}
@@ -248,8 +284,37 @@ const ArrivalList = ({
         <p className="text-sm">
           <span className="font-medium text-chalk-50">{a.strain}</span>
           <span className="text-chalk-500"> · {a.brand ?? 'Brand not stated'} · since {dayLabel(a.first)}</span>
+          {a.debut && (
+            <span className="ml-2 align-middle">
+              <DebutTag debut={a.debut} />
+            </span>
+          )}
         </p>
         <Shops shops={a.shops} />
+      </li>
+    ))}
+  </ul>
+);
+
+const DebutList = ({ debuts }: { debuts: ReturnType<typeof shelfSignals>['debuts'] }) => (
+  <ul className="mt-5 divide-y divide-ink-700/60 border-y border-ink-700/60">
+    {debuts.map((d) => (
+      <li key={d.key} className="py-3">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+          <span className="font-medium text-chalk-50">{d.strain}</span>
+          <span className="text-chalk-500">· {d.brand ?? 'Brand not stated'}</span>
+          <DebutTag debut={d.debut} />
+        </div>
+        <p className="mt-1 text-xs text-chalk-500">
+          First seen on New York shelves{' '}
+          <time dateTime={d.first} className="text-chalk-400">
+            {debutDay(d.debut)}
+          </time>
+          {d.shops.length > 0
+            ? ` · at ${d.shops.length === 1 ? 'one shop' : `${d.shops.length} shops`} now`
+            : ' · on none of the shelves we read now'}
+        </p>
+        <Shops shops={d.shops} />
       </li>
     ))}
   </ul>

@@ -79,62 +79,9 @@ _history = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_history)
 same_batch, listings_of = _history.same_batch, _history.listings_of
 
-# Производитель партии. Ключ бренда реестра (brandKey) складывает регистр,
-# акценты и «Cannabis», «Co», «Farms»; для партий этого мало: «Kings and
-# Queens» и «Kings & Queens», «The Botanist» и «Botanist», «VOP» и «Voice of the
-# Plant» — один производитель, а ключей у них два, и сорт, который продаёт он
-# один, выглядел как сорт двух производителей и не измерялся вовсе. Поэтому
-# здесь выпадают ещё «and», «the», «of», а сокращения сводятся таблицей.
-# Сома складывает производителя так же (shelfGrowerKey в src/lib/terpenes.ts).
-# Ключ бренда в выгрузке меню не меняется: на нём стоит история полок.
-GROWER_NOISE = re.compile(r"\b(cannabis|co|company|farms?|labs?|brands?|nyc?|llc|inc|and|the|of)\b")
-GROWER_ALIASES = {
-    "vop": "voiceplant", "voiceplants": "voiceplant", "voiceplantvop": "voiceplant", "voiceplanet": "voiceplant",
-    "kingqueens": "kingsqueens",
-    "preferred": "preferredgardens",
-    "doobies": "doobie",
-    "grassrootsdarkheartcollection": "grassroots",
-    "bouketflower": "bouket", "boukets": "bouket",
-    "naticoke": "nanticoke",
-    "5borodimebag": "5boro",
-    # Партия 11 курации: подписи Sensei (микролицензия, коллаборации), Wizard
-    # Tree в единственном числе, линия 1937 High Values; «Major (Micro)» —
-    # та же партия Felas Farm, что и «Major»; Dank By Definition и Dank, Zips
-    # OG и Zips, «TOO THE MOON» и «To The Moon (TTM)». Сома складывает так же.
-    "senseimicro": "sensei", "tksxsensei": "sensei", "tkssensei": "sensei", "senseismallbatch": "sensei",
-    "wizardtree": "wizardtrees",
-    "1937highvalues": "1937",
-    "majormicro": "major",
-    "dankbydefinition": "dank",
-    "zipsog": "zips",
-    "toomoon": "tomoon", "tomoonttm": "tomoon",
-    # Партия 12 курации: те же производители под другими подписями. «Smoke» и
-    # «Smoke World» — Smoke WRLD (Lunulata), Rhythm — RYTHM.
-    "hepworthsungrown": "hepworth",
-    "leadfarmermicro": "leadfarmer", "leadfarmers": "leadfarmer", "leadfarmersmallbatch": "leadfarmer",
-    "majors": "major",
-    "mechanics": "mechanic",
-    "revertnewyork": "revert",
-    "rhythm": "rythm",
-    "roemermicro": "roemer", "roemersmallbatch": "roemer",
-    "smoke": "smokewrld", "smokeworld": "smokewrld",
-    "wizardtreez": "wizardtrees",
-    # Партия 13 курации: STAYME7O и STAYMELO — STAYME7O™ (Grand National), BANZZY —
-    # Banzzy 1305 (одна панель была разбита на три партии), The Kaleidoscope
-    # Collective и TKC — Kaleidoscope, опечатка UrbanXtracs — urbanXtracts.
-    "stayme7o": "stayme7otm", "staymelo": "stayme7otm",
-    "banzzy": "banzzy1305",
-    "kaleidoscopecollective": "kaleidoscope", "tkc": "kaleidoscope",
-    "urbanxtracs": "urbanxtracts",
-}
-
-
-def grower_of(brand):
-    if not brand:
-        return None
-    key = re.sub(r"[\u0300-\u036f]", "", unicodedata.normalize("NFKD", str(brand))).lower()
-    key = re.sub(r"[^a-z0-9]", "", GROWER_NOISE.sub(" ", re.sub(r"[^a-z0-9 ]", " ", key)))
-    return GROWER_ALIASES.get(key, key) or None
+# Производитель партии: правило и таблица сокращений — в shelf-history.py, им
+# же история полок узнаёт производителя дебюта.
+GROWER_NOISE, GROWER_ALIASES, grower_of = _history.GROWER_NOISE, _history.GROWER_ALIASES, _history.grower_of
 
 
 def key_of(row):
