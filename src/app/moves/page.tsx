@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { dayLabel, shelfSignals, type Shop } from '@/lib/signals';
+import { DebutTag } from '@/components/DebutTag';
+import { DEBUT_NOTE } from '@/lib/menu-format';
 
 export const metadata: Metadata = {
   title: 'New & leaving',
@@ -113,6 +115,7 @@ export default function MovesPage() {
 
       <nav aria-label="Sections" className="mt-6 flex flex-wrap gap-2 text-sm">
         {[
+          ['#debuts', 'Debuts', s.debuts.length],
           ['#waves', 'Waves', s.waves.length],
           ['#batches', 'New batches', s.batches.length],
           ['#new', 'New this week', s.arrivals.length],
@@ -124,6 +127,24 @@ export default function MovesPage() {
           </a>
         ))}
       </nav>
+
+      <Section
+        id="debuts"
+        title="Debuts"
+        count={s.debuts.length}
+        empty="No strain new to every shelf we read turned up this week."
+        lead={`${DEBUT_NOTE}: a brand's strain that came in as a delivery this week and that no shop we read had shown before, on any day. A strain can still be older than that on shelves we do not read.`}
+      >
+        <ArrivalList arrivals={s.debuts.slice(0, SHOWN_ARRIVALS)} />
+        {s.debuts.length > SHOWN_ARRIVALS && (
+          <details className="mt-3">
+            <summary className="cursor-pointer text-sm text-moss-400">
+              Show the other {s.debuts.length - SHOWN_ARRIVALS}
+            </summary>
+            <ArrivalList arrivals={s.debuts.slice(SHOWN_ARRIVALS)} />
+          </details>
+        )}
+      </Section>
 
       <Section
         id="waves"
@@ -138,7 +159,14 @@ export default function MovesPage() {
               key={`${a.brand}|${a.strain}`}
               strain={a.strain}
               brand={a.brand}
-              tag={a.today > 0 ? <Tag>+{a.today} today</Tag> : undefined}
+              tag={
+                a.debut || a.today > 0 ? (
+                  <span className="flex shrink-0 flex-col items-end gap-1">
+                    {a.debut && <DebutTag day={a.first} />}
+                    {a.today > 0 && <Tag>+{a.today} today</Tag>}
+                  </span>
+                ) : undefined
+              }
             >
               <p className="mt-3 text-sm text-chalk-300">
                 New on {plural(a.shelves, 'shelf', 'shelves')} since {dayLabel(a.first)}
@@ -248,6 +276,11 @@ const ArrivalList = ({
         <p className="text-sm">
           <span className="font-medium text-chalk-50">{a.strain}</span>
           <span className="text-chalk-500"> · {a.brand ?? 'Brand not stated'} · since {dayLabel(a.first)}</span>
+          {a.debut && (
+            <span className="ml-2 align-middle">
+              <DebutTag day={a.first} />
+            </span>
+          )}
         </p>
         <Shops shops={a.shops} />
       </li>

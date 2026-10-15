@@ -17,6 +17,7 @@ import {
   type FlowerListing,
   isPromotionalSample,
 } from '@/lib/menu-format';
+import { DebutTag } from './DebutTag';
 
 const PROVENANCE_CLASS: Record<string, string> = {
   lab: 'border-moss-600/55 bg-moss-600/12 text-moss-400',
@@ -81,6 +82,7 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
         </div>
 
         <div className="flex items-center gap-3 text-right">
+          {listing.debut && <DebutTag day={listing.debut} />}
           {listing.thcPercent !== null && (
             <span className="tabular-nums text-sm text-chalk-100">
               THC {listing.thcPercent}%

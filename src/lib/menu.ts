@@ -10,6 +10,7 @@ import strainReferenceRaw from '../../data/strain-reference.json';
 import strainLinesRaw from '../../data/strain-lines.json';
 import menuPausedRaw from '../../data/menu-paused.json';
 import { reviewListings, type LineBook } from './strain-review';
+import shelfSignalsRaw from '../../data/shelf-signals.json';
 
 type StrainReference = {
   canonicalName: string;
@@ -64,13 +65,28 @@ const withReference = (l: FlowerListing): FlowerListing => {
   };
 };
 
+/* Debuts of the week (scripts/shelf-history.py), by the key the history keeps
+   a brand's strain under — the collector's brand key and its name as read,
+   before the review below renames it. */
+const debuts = new Map(
+  (shelfSignalsRaw as { arrivals: { key?: string; debut?: boolean; first: string }[] }).arrivals
+    .filter((a) => a.debut && a.key)
+    .map((a) => [a.key!, a.first]),
+);
+const historyKey = (l: FlowerListing): string =>
+  `${l.brandKey ?? ''}|${(l.strainNameCanonical || l.strainNameRaw || '').trim().toLowerCase().replace(/\s+/g, ' ')}`;
+const withDebut = (l: FlowerListing): FlowerListing => {
+  const day = l.brandKey ? debuts.get(historyKey(l)) : undefined;
+  return day ? { ...l, debut: day } : l;
+};
+
 /* Every page reads the shelves through here, so every page gets the second
    look at their names (./strain-review): shouting calmed, product lines and
    the grower's own name taken off, one spelling per grower. It runs before the
    reference lookup, which then finds "Lemon Cherry Gelato" where the menu said
    "Classic Cuts Indoor Flower - Lemon Cherry Gelato". */
 export const listings = reviewListings(
-  listingsRaw as unknown as FlowerListing[],
+  (listingsRaw as unknown as FlowerListing[]).map(withDebut),
   strainLinesRaw as unknown as LineBook,
 ).map(withReference);
 

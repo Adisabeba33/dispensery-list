@@ -37,6 +37,14 @@
 - это не переименование: у того же бренда в эти дни не ушёл похожий сорт;
 - на следующем чтении сорт всё ещё на полке.
 
+Дебют — сорт бренда, которого до этого дня не было ни на одной полке, что мы
+читаем (Нью-Йорк и Вестчестер, с 6 сентября 2026): день его появления как
+завоза — первый день, когда мы видели его вообще где-либо. known помнит этот
+первый день для каждого сорта бренда и, в отличие от прочего, не забывается
+через 60 дней: сорт, ушедший на три месяца и вернувшийся, — не дебют. Сорт без
+бренда дебютом не бывает: «|blue dream» — чей угодно. Дебют говорит о наших
+полках, а не о рынке: сорт мог стоять там, где мы не читаем.
+
 Самый сильный сигнал — волна: один и тот же сорт бренда появился на трёх и
 более разных полках за неделю. Магазины сети с общей витриной считаются как
 одна полка.
@@ -304,6 +312,7 @@ def empty():
         "names": {},
         "activity": {},
         "seen": {},
+        "known": {},
     }
 
 
@@ -408,6 +417,9 @@ def fold(hist, day, rows, collector=None):
         batches(hist, lic, shelf, was, thc_now, arrived, day, shelf_sig, count)
 
     keep_lineups(hist, deferred, day, count)
+    for shelf in shelves.values():
+        for key in shelf:
+            hist["known"].setdefault(key, day)
     remember_potency(hist, potency, day)
     remember_names(hist, shelves)
     hist["days"][day] = dict(sorted(count.items()))
@@ -656,9 +668,11 @@ def moves(hist, day, rows=None):
     arrivals_out = []
     for key, found in arrived.items():
         brand, strain = display(hist, key, [a["brand"] for a in found], [a["strain"] for a in found])
+        first = min(a["seen"] for a in found)
         arrivals_out.append({
-            "brand": brand, "strain": strain,
-            "first": min(a["seen"] for a in found),
+            "brand": brand, "strain": strain, "key": key,
+            "first": first,
+            "debut": bool(key.split("|", 1)[0]) and hist["known"].get(key) == first,
             "today": sum(1 for a in found if a["confirmed"] == day),
             "shelves": len({a["shelf"] for a in found}),
             "shops": sorted({a["licence"] for a in found}),
@@ -824,6 +838,14 @@ def load():
     hist = json.loads(HISTORY.read_text()) if HISTORY.exists() else {}
     for part, blank in empty().items():
         hist.setdefault(part, blank)
+    # История, писанная до known: первый день сорта — самое раннее из того, что она
+    # помнит. Ничего из неё ещё не забылось — ей меньше 60 дней.
+    if not hist["known"]:
+        for seen in hist["seen"].values():
+            for key, entry in seen.items():
+                first = parse(entry)[0]
+                if first < hist["known"].get(key, "9999"):
+                    hist["known"][key] = first
     return hist
 
 
@@ -1161,6 +1183,10 @@ def check():
         "T5": lambda i, d: potent("T5", d, {"Shown Strain": None if i < 2 else 23.45}),
         # THC сменился у всех позиций сразу — поменялось чтение потенции.
         "T6": lambda i, d: potent("T6", d, {f"Burst {n}": 20.11 + n + (3 if i >= 2 else 0) for n in range(10)}),
+        # Завоз сорта, который с первого дня стоит у K, L, P, Q и U: не дебют.
+        "M": lambda i, d: shelf("M", d, extra=["Stock 3"] if i >= 2 else []),
+        # Завоз сорта без бренда: дебютом не бывает.
+        "O": lambda i, d: shelf("O", d) + ([row("O", "Nameless", d, brand=None)] if i >= 2 else []),
     }
     # Уходит: стоял в шести магазинах, с четвёртого дня — в двух.
     for n in range(1, 7):
@@ -1233,6 +1259,10 @@ def check():
                                                     hist["seen"]["Z"]["find|z extra 0"].endswith(" " + SHAKY)), (11, True))
     expect("имя ушедшего помнится", hist["names"].get("find|vanishing strain"), ["Find", "Vanishing Strain"])
     expect("новые за неделю — волна первой", m["arrivals"][0]["strain"], "Garlic Patties")
+    debut = {a["key"]: a["debut"] for a in m["arrivals"]}
+    expect("дебют", (debut.get("find|crusty crustacean"), debut.get("find|garlic patties"),
+                     debut.get("find|stock 3"), debut.get("|nameless")), (True, True, False, False))
+    expect("первый день помнится дольше полки", hist["known"].get("find|crusty crustacean"), days[2])
     fake = empty()
     fake["sweeps"] = ["2026-02-01", "2026-02-10", "2026-02-15", "2026-02-16", "2026-02-17"]
     fake["arrivals"] = [{"licence": "busy", "seen": "2026-02-15"}, {"licence": "quietbig", "seen": "2026-02-08"},

@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { LINEAGE_LABEL, SIZES, sizeChips, sizeLabel } from '@/lib/menu-format';
+import { DebutTag } from './DebutTag';
 
 export type StrainEntry = {
   key: string;
@@ -15,6 +16,9 @@ export type StrainEntry = {
   /** Every way the shops wrote it: what a search for the jar's label matches. */
   labels: string[];
   hasTerpenes: boolean;
+  /** This week's first day on any shelf we read, for a brand's strain new to all
+   *  of them (lib/menu); null for the rest. */
+  debut: string | null;
   /** The weights each shop sells it in, which are not the strain's sizes: one
    *  shop can have only halves of a strain another sells by the ounce. */
   shops: { id: string; name: string; region: string; sizes: number[] }[];
@@ -54,6 +58,11 @@ const StrainRow = ({
         <p className="mt-0.5 truncate text-xs text-chalk-500">
           {s.brands.length > 0 ? `by ${s.brands.slice(0, 2).join(' · ')}` : 'Brand not stated'}
         </p>
+        {s.debut && (
+          <p className="mt-1.5">
+            <DebutTag day={s.debut} />
+          </p>
+        )}
       </div>
       <div className="shrink-0 text-right">
         {s.thcPercent !== null ? (
@@ -133,6 +142,8 @@ export const ShelfIndex = ({
   const [size, setSize] = useState<number | null>(null);
   const [lineage, setLineage] = useState<string | null>(null);
   const [multiOnly, setMultiOnly] = useState(false);
+  const [debutsOnly, setDebutsOnly] = useState(false);
+  const debutCount = useMemo(() => strains.filter((s) => s.debut).length, [strains]);
   const [limit, setLimit] = useState(60);
   const [copied, setCopied] = useState(false);
 
@@ -156,6 +167,7 @@ export const ShelfIndex = ({
       if (shops.length === 0) continue;
       if (lineage && s.lineage !== lineage) continue;
       if (multiOnly && shops.length < 2) continue;
+      if (debutsOnly && !s.debut) continue;
       if (
         q &&
         !(
@@ -177,10 +189,10 @@ export const ShelfIndex = ({
       views.sort((a, b) => b.shops.length - a.shops.length || a.s.name.localeCompare(b.s.name));
     }
     return views;
-  }, [strains, query, size, lineage, multiOnly]);
+  }, [strains, query, size, lineage, multiOnly, debutsOnly]);
 
   const shown = results.slice(0, limit);
-  const active = Boolean(query.trim() || size !== null || lineage || multiOnly);
+  const active = Boolean(query.trim() || size !== null || lineage || multiOnly || debutsOnly);
 
   return (
     <section id="strains" className="scroll-mt-28 sm:scroll-mt-20">
@@ -244,6 +256,17 @@ export const ShelfIndex = ({
         >
           In more than one shop
         </button>
+        {debutCount > 0 && (
+          <button
+            type="button"
+            onClick={() => setDebutsOnly((v) => !v)}
+            aria-pressed={debutsOnly}
+            title="Brands' strains no shelf we read had carried before this week"
+            className={clsx('chip', debutsOnly && 'chip-on')}
+          >
+            Debuts this week <span className="tabular-nums text-chalk-500">{debutCount}</span>
+          </button>
+        )}
       </div>
 
       <p className="mt-4 text-sm text-chalk-400" aria-live="polite">
@@ -261,6 +284,7 @@ export const ShelfIndex = ({
                 setSize(null);
                 setLineage(null);
                 setMultiOnly(false);
+                setDebutsOnly(false);
               }}
             >
               clear filters

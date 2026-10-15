@@ -30,6 +30,7 @@ export const strainEntries = (): StrainEntry[] => strainEntriesOf(listings);
 export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
   const byStrain = new Map<string, StrainEntry>();
   const spellings = new Map<string, Map<string, number>>();
+  const settled = new Set<string>();
 
   for (const l of rows) {
     // A promotional sample is on the shop's page, marked, and is not a strain it stocks.
@@ -61,6 +62,7 @@ export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
         brands: [],
         labels: [],
         hasTerpenes: false,
+        debut: null,
         shops: [],
       };
       byStrain.set(key, entry);
@@ -80,6 +82,10 @@ export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
     // highest any of them states, and the shop's own page carries its own.
     if (l.thcPercent !== null) entry.thcPercent = Math.max(entry.thcPercent ?? 0, l.thcPercent);
     if (l.terpenes.profile.length > 0) entry.hasTerpenes = true;
+    /* A row gathers every grower's jar of the name, so it is a debut only while
+       every jar in it is one: a new grower's Blue Dream is not a new strain. */
+    if (!l.debut) settled.add(key);
+    else if (!entry.debut || l.debut < entry.debut) entry.debut = l.debut;
     /* Each shop keeps the weights it sells this strain in. The strain's own
        sizes are every shop's together, and a filter to the ounce that reads
        only those lists a shop that has nothing but halves: Crusty Crustacean
@@ -103,6 +109,7 @@ export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
      and 'BLUE DREAM' equally common, the first is the strain and the second is
      a menu's house style. */
   for (const entry of byStrain.values()) {
+    if (settled.has(entry.key)) entry.debut = null;
     const counted = [...(spellings.get(entry.key) ?? new Map<string, number>())];
     counted.sort((a, b) => {
       const shout = (w: string) => (w === w.toUpperCase() && /[A-Z]/.test(w) ? 1 : 0);

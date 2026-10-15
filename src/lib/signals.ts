@@ -14,7 +14,17 @@ export type Shop = { id: string; name: string; region: string };
 type Raw = {
   day: string;
   rules: { newDays: number; waveShelves: number; movesDays: number; lowBelow: number; lowPeak: number; gonePeak: number };
-  arrivals: { brand: string | null; strain: string; first: string; today: number; shelves: number; shops: string[]; now: number }[];
+  arrivals: {
+    brand: string | null;
+    strain: string;
+    /** The brand's strain new to every shelf we read: `first` is its first day anywhere. */
+    debut?: boolean;
+    first: string;
+    today: number;
+    shelves: number;
+    shops: string[];
+    now: number;
+  }[];
   batches: { brand: string | null; strain: string; thc: number; before: number[]; first: string; shops: string[] }[];
   runningLow: { brand: string | null; strain: string; now: string[]; peak: number; peakDay: string }[];
   gone: { brand: string | null; strain: string; lastSeen: string; peak: number; lastShops: string[] }[];
@@ -51,6 +61,8 @@ export const shelfSignals = () => {
     rules: raw.rules,
     waves: arrivals.filter((a) => a.shelves >= raw.rules.waveShelves),
     arrivals: arrivals.filter((a) => a.shelves < raw.rules.waveShelves),
+    /* Debuts: in the order the read wrote them, the widest first. */
+    debuts: arrivals.filter((a) => a.debut),
     batches: raw.batches.map((b) => ({ ...b, shops: shopsOf(b.shops) })),
     runningLow: raw.runningLow.map((m) => ({ ...m, now: shopsOf(m.now) })),
     gone: raw.gone.map((m) => ({ ...m, lastShops: shopsOf(m.lastShops) })),

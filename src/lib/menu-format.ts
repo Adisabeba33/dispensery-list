@@ -39,6 +39,9 @@ export type FlowerListing = {
   packagedOn: string | null;
   inStock: boolean;
   availableSizesGrams: number[] | null;
+  /** The day this brand's strain was first seen on any shelf we read, when that
+      was this week and it came in as a delivery (scripts/shelf-history.py). */
+  debut?: string | null;
   /* What the record itself knows is unsound about it. SHELF_SHARED_WITH_OTHER_LICENCES
      says this menu serves several licensed shops, so the shelf is the chain's
      rather than this branch's. */
@@ -56,6 +59,18 @@ export const SIZES: { grams: number; label: string; short: string }[] = [
   { grams: 14, label: 'Half', short: '14g' },
   { grams: 28, label: 'Ounce', short: '28g' },
 ];
+
+/**
+ * A debut: a brand's strain no shelf we read in New York City or Westchester had
+ * carried before. "Before" starts with our first read, on 6 September 2026, and
+ * covers only the shops we read — a strain can be older than that elsewhere.
+ */
+export const DEBUT_NOTE =
+  'First time on any New York City or Westchester shelf we read (since Sep 6, 2026)';
+
+/** "Oct 13" — pinned to UTC, the calendar the daily read is kept in. */
+export const debutDay = (day: string): string =>
+  new Date(`${day}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
 
 export const sizeLabel = (grams: number): string =>
   SIZES.find((s) => s.grams === grams)?.label ?? `${grams}g`;
