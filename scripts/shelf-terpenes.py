@@ -428,7 +428,9 @@ def dated(found, before, rows):
         hist = json.loads(HISTORY.read_text())
     except FileNotFoundError:
         hist = {"thc": {}, "sweeps": []}
-    start = (hist.get("sweeps") or [None])[0]
+    # Первый день чтений — из began: sweeps помнит лишь последние шестьдесят, и с
+    # шестьдесят первого чтения «стоял с начала» стал бы любой завоз старше двух месяцев.
+    start = _history.load_began(hist)
     was = {(l["key"], l["thcPercent"]): l for l in before}
 
     tagged = defaultdict(list)
