@@ -68,7 +68,21 @@ try:
     paused = {s["licenseNumber"] for s in json.loads((ROOT / "data/menu-paused.json").read_text())["shops"]}
 except (OSError, ValueError, KeyError):
     paused = set()
-vanished = [lic for lic in sb if lic not in sa and lic not in paused]
+# Полку, которую сборщик отказался брать сам, — чужую точку сети по
+# записанному адресу (other-branch) или полку другого штата (foreign-shelf), —
+# он убрал нарочно, вместе с прежним чтением с того же адреса. Это не
+# оборванная страница: публикацию она не останавливает, но в отчёте названа.
+# 15 октября 2026 ровно такая полка — Just a Little Higher Briarwood, которой
+# сайт сети отдавал Fishkill и Troy, — отправила весь день на ветку.
+REFUSED = ("other-branch", "foreign-shelf")
+try:
+    coverage = json.loads((ROOT / "data/menu-coverage.json").read_text())
+except (OSError, ValueError):
+    coverage = {}
+refused = {lic: c for lic, c in coverage.items()
+           if isinstance(c, dict) and c.get("status") in REFUSED}
+vanished = [lic for lic in sb if lic not in sa and lic not in paused and lic not in refused]
+refused_gone = [lic for lic in sb if lic not in sa and lic in refused]
 
 now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 grew = sum(1 for lic in sa if len(sa[lic]) > len(sb.get(lic, ())))
@@ -166,6 +180,22 @@ settled = [(lic, b, a) for lic, b, a in collapsed if lic in adjudicated]
 unsettled = [(lic, b, a) for lic, b, a in collapsed if lic not in adjudicated]
 
 broken = bool(unsettled or vanished)
+if refused_gone:
+    lines += ["", f"### Полки, отклонённые сборщиком: {len(refused_gone)}", "",
+              "Сборщик сам не взял эти полки и убрал прежнее чтение с того же адреса —",
+              "это не обрыв. Записанный адрес меню стоит посмотреть руками.", ""]
+    for lic in refused_gone[:20]:
+        c = refused[lic]
+        if c.get("status") == "other-branch":
+            ob = c.get("otherBranch") or {}
+            why = "записанный адрес отдал другую точку сети"
+            if ob.get("asked"):
+                why += f" ({ob.get('param')}={ob['asked']}, пришло {', '.join(ob.get('served') or [])})"
+            if c.get("landedOn"):
+                why += f": {c['landedOn']}"
+        else:
+            why = "полка другого штата"
+        lines.append(f"- **{shops.get(lic, lic)}**: {len(sb[lic])} → 0 — {why}")
 if settled:
     lines += ["", f"### Полки, принятые после выдержки: {len(settled)}", "",
               "Держали прежнее чтение, оно устарело за два дня — взяли новое.",
