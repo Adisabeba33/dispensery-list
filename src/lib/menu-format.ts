@@ -61,8 +61,9 @@ export const SIZES: { grams: number; label: string; short: string }[] = [
 ];
 
 /**
- * A debut: a brand's strain no shelf we read in New York City or Westchester had
- * carried before. "Before" starts with our first read, on 6 September 2026, and
+ * A debut: a grower's strain no shelf we read in New York City or Westchester had
+ * carried from that grower before — under any spelling of the grower or of the
+ * strain (scripts/shelf-history.py). "Before" starts with our first read, on 6 September 2026, and
  * covers only the shops we read — a strain can be older than that elsewhere.
  *
  * `day` is the first day the read saw it on any shelf, `days` how long before
@@ -74,7 +75,7 @@ export type Debut = { day: string; days: number; seenAt: number };
 export const DEBUT_DAYS = 7;
 
 export const DEBUT_NOTE =
-  'New to every New York City and Westchester shelf we read (our reads began Sep 6, 2026)';
+  "This grower's strain was new to every New York City and Westchester shelf we read (our reads began Sep 6, 2026)";
 
 export const isFreshDebut = (d: Debut): boolean => d.days < DEBUT_DAYS;
 
@@ -107,9 +108,7 @@ const shops = (n: number) => `${n} ${n === 1 ? 'shop' : 'shops'}`;
 
 /** The same in words, for a tooltip or a screen reader. */
 export const debutDetail = (d: Debut): string =>
-  `First seen on a New York shelf ${debutDay(d)}; ${
-    isFreshDebut(d) ? 'in its first week' : 'since then'
-  } at ${shops(d.seenAt)}. ${DEBUT_NOTE}.`;
+  `First seen on a New York shelf ${debutDay(d)}; at ${shops(d.seenAt)} so far. ${DEBUT_NOTE}.`;
 
 export const sizeLabel = (grams: number): string =>
   SIZES.find((s) => s.grams === grams)?.label ?? `${grams}g`;

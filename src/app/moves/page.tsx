@@ -3,7 +3,7 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { dayLabel, shelfSignals, type Shop } from '@/lib/signals';
 import { DebutTag } from '@/components/DebutTag';
-import { DEBUT_DAYS, DEBUT_NOTE, debutDay } from '@/lib/menu-format';
+import { DEBUT_DAYS, debutDay } from '@/lib/menu-format';
 
 export const metadata: Metadata = {
   title: 'New & leaving',
@@ -132,13 +132,14 @@ export default function MovesPage() {
         id="debuts"
         title="Debuts"
         count={s.debuts.length}
-        empty="No strain new to every shelf we read turned up this week."
+        empty="No grower's strain new to every shelf we read turned up this week."
         lead={
           <>
-            A brand&apos;s strain that no shelf we read had carried before, on any day, in its first{' '}
-            {DEBUT_DAYS} days. <span className="text-chalk-200">Debut (3)</span> is how many shops it
-            has reached since. After its first week the tag says how long ago it was first seen
-            instead. {DEBUT_NOTE} — a strain can be older on shelves we do not read.
+            A grower&apos;s strain that no New York City or Westchester shelf we read had carried from
+            that grower before — under any spelling of its name — in its first {DEBUT_DAYS} days.{' '}
+            <span className="text-chalk-200">Debut (3)</span> is how many shops have had it since.
+            After its first week the tag says how long ago it was first seen instead. Our reads began
+            on Sep 6, 2026; a strain can be older on shelves we do not read.
           </>
         }
       >

@@ -52,6 +52,17 @@
 такими. Поэтому дебют — только сорт, похожего на который у бренда раньше не
 было ни на одной полке; а его поздние записи — «Grape Maker» рядом с «Grape
 Marker» — дебют разделяют, и магазины считаются по всем записям вместе.
+Похожесть для дебюта строже к «новому», чем для переименований: ловит и
+опечатки («Cap Junkie» при «Cap Junky»), а бренд — это производитель под
+любой своей подписью («Major (Micro)» и «Major», «Zips OG» и «Zips», «The
+Botanist» и «Botanist»; same_grower).
+
+Первое появление не обязано быть завозом: сорт мог мелькнуть на полке, которую
+в тот день переписало наше чтение, или не устоять, а завозом прийти чтением-двумя
+позже. Тогда дебют — с того первого дня, но только если в тот день сорт
+показали магазины, которые мы читали и раньше, и не окна в меню побольше: в
+магазине, прочитанном впервые, и в окне он мог стоять давно. Завоз в окне
+дебютом не бывает вовсе.
 
 Дебют записывается в debuts, когда его завоз подтвердился, и помнится, пока
 сорт помнит хоть одна полка. Сайт ведёт его дальше: первые семь дней —
@@ -202,6 +213,64 @@ def brand_key_of(brand):
     key = re.sub(r"[\u0300-\u036f]", "", unicodedata.normalize("NFKD", str(brand))).lower()
     key = BRAND_NOISE.sub(" ", re.sub(r"[^a-z0-9 ]", " ", key))
     return re.sub(r"[^a-z0-9]", "", key) or None
+
+
+# Производитель партии. Ключ бренда реестра (brandKey) складывает регистр,
+# акценты и «Cannabis», «Co», «Farms»; для партий этого мало: «Kings and
+# Queens» и «Kings & Queens», «The Botanist» и «Botanist», «VOP» и «Voice of the
+# Plant» — один производитель, а ключей у них два, и сорт, который продаёт он
+# один, выглядел как сорт двух производителей и не измерялся вовсе. Поэтому
+# здесь выпадают ещё «and», «the», «of», а сокращения сводятся таблицей.
+# Сома складывает производителя так же (shelfGrowerKey в src/lib/terpenes.ts).
+# Ключ бренда в выгрузке меню не меняется: на нём стоит история полок.
+GROWER_NOISE = re.compile(r"\b(cannabis|co|company|farms?|labs?|brands?|nyc?|llc|inc|and|the|of)\b")
+GROWER_ALIASES = {
+    "vop": "voiceplant", "voiceplants": "voiceplant", "voiceplantvop": "voiceplant", "voiceplanet": "voiceplant",
+    "kingqueens": "kingsqueens",
+    "preferred": "preferredgardens",
+    "doobies": "doobie",
+    "grassrootsdarkheartcollection": "grassroots",
+    "bouketflower": "bouket", "boukets": "bouket",
+    "naticoke": "nanticoke",
+    "5borodimebag": "5boro",
+    # Партия 11 курации: подписи Sensei (микролицензия, коллаборации), Wizard
+    # Tree в единственном числе, линия 1937 High Values; «Major (Micro)» —
+    # та же партия Felas Farm, что и «Major»; Dank By Definition и Dank, Zips
+    # OG и Zips, «TOO THE MOON» и «To The Moon (TTM)». Сома складывает так же.
+    "senseimicro": "sensei", "tksxsensei": "sensei", "tkssensei": "sensei", "senseismallbatch": "sensei",
+    "wizardtree": "wizardtrees",
+    "1937highvalues": "1937",
+    "majormicro": "major",
+    "dankbydefinition": "dank",
+    "zipsog": "zips",
+    "toomoon": "tomoon", "tomoonttm": "tomoon",
+    # Партия 12 курации: те же производители под другими подписями. «Smoke» и
+    # «Smoke World» — Smoke WRLD (Lunulata), Rhythm — RYTHM.
+    "hepworthsungrown": "hepworth",
+    "leadfarmermicro": "leadfarmer", "leadfarmers": "leadfarmer", "leadfarmersmallbatch": "leadfarmer",
+    "majors": "major",
+    "mechanics": "mechanic",
+    "revertnewyork": "revert",
+    "rhythm": "rythm",
+    "roemermicro": "roemer", "roemersmallbatch": "roemer",
+    "smoke": "smokewrld", "smokeworld": "smokewrld",
+    "wizardtreez": "wizardtrees",
+    # Партия 13 курации: STAYME7O и STAYMELO — STAYME7O™ (Grand National), BANZZY —
+    # Banzzy 1305 (одна панель была разбита на три партии), The Kaleidoscope
+    # Collective и TKC — Kaleidoscope, опечатка UrbanXtracs — urbanXtracts.
+    "stayme7o": "stayme7otm", "staymelo": "stayme7otm",
+    "banzzy": "banzzy1305",
+    "kaleidoscopecollective": "kaleidoscope", "tkc": "kaleidoscope",
+    "urbanxtracs": "urbanxtracts",
+}
+
+
+def grower_of(brand):
+    if not brand:
+        return None
+    key = re.sub(r"[\u0300-\u036f]", "", unicodedata.normalize("NFKD", str(brand))).lower()
+    key = re.sub(r"[^a-z0-9]", "", GROWER_NOISE.sub(" ", re.sub(r"[^a-z0-9 ]", " ", key)))
+    return GROWER_ALIASES.get(key, key) or None
 
 
 def key_of(row):
@@ -446,48 +515,185 @@ def fold(hist, day, rows, collector=None):
     return count
 
 
-def by_brand(known):
-    out = defaultdict(list)
-    for key in known:
-        out[key.split("|", 1)[0]].append(key)
-    return out
+# Хвосты и начала, которыми один производитель подписан по-разному: «Major
+# (Micro)», «Zips OG», «Purps NY», «Leal Organics», «The Botanist», «New York
+# Ounce Club». Короткий ключ, который лишь начинает длинный, — ещё не тот же
+# производитель: Flor и Florette, Budd и Budding Bliss, Hash и Hashtag Honey.
+GROWER_TAILS = {
+    "micro", "smallbatch", "og", "ny", "newyork", "s", "z", "labs", "organics", "exotics", "extracts",
+    "preroll", "prerolls", "losangeles", "daily", "flower", "flowers", "growers", "worldclass",
+    "heritagestrains", "collective", "genetic", "genetics", "canna", "apothecary", "tm",
+}
+GROWER_HEADS = ("acreagethe", "the", "newyork")
+FIRST_GRACE = 2       # через сколько чтений после первого появления ещё признаётся завоз-дебют
 
 
-def renamed_on(hist, brands, cache, brand, day):
-    """Записи бренда, впервые увиденные в этот день и похожие на то, что у него стояло
-    раньше: «White Diamonds» 8 октября при «White Diamond» с сентября."""
-    if (brand, day) not in cache:
-        known = hist["known"]
-        older = [o for o in brands[brand] if known[o] < day]
-        cache[brand, day] = {k for k in brands[brand]
-                             if known[k] == day and any(similar(k, o) for o in older)}
-    return cache[brand, day]
+def grower_key(brand_key):
+    key = GROWER_ALIASES.get(brand_key, brand_key)
+    for head in GROWER_HEADS:
+        if key.startswith(head) and len(key) - len(head) >= 4:
+            key = key[len(head):]
+            break
+    return GROWER_ALIASES.get(key, key)
 
 
-def known_before(hist, brands, cache, key, day):
-    """Стоял ли у бренда до этого дня сорт, похожий на этот, — то есть этот сорт сам.
-    Похожесть — через одну запись того же дня: «HOS - White Diamonds» похож не на
-    «White Diamond», а на «White Diamonds», который появился с ним в один день и
-    похож на него. Только то, что было известно к этому дню, — чтобы ответ не менялся
-    потом."""
-    known = hist["known"]
-    brand = key.split("|", 1)[0]
-    if any(known[o] < day and o != key and similar(key, o) for o in brands[brand]):
+def same_grower(a, b):
+    """Один ли производитель за двумя ключами бренда. Правило — в описании модуля."""
+    if not a or not b:
+        return False
+    a, b = sorted((grower_key(a), grower_key(b)), key=len)
+    if a == b:
         return True
-    return any(o != key and similar(key, o) for o in renamed_on(hist, brands, cache, brand, day))
+    if len(a) < 4 or not b.startswith(a):
+        return False
+    rest = b[len(a):]
+    return len(a) >= 6 or rest in GROWER_TAILS or rest.isdigit()
+
+
+_LOOSE = {}
+
+
+def loose(strain):
+    """Имя сорта, сложенное как looseKey в src/lib/strain-review.ts: без упаковки и веса,
+    без двойных букв, с одним окончанием для Cookies/Cookie, Junkie/Junky, Mintz/Mints.
+    Возвращает (сложенное, первые буквы слов, числа)."""
+    if strain not in _LOOSE:
+        folded = []
+        for w in re.findall(r"[a-z0-9]+", WEIGHT.sub(" ", strain.replace("'", "").replace("’", ""))):
+            if w in PACKAGING:
+                continue
+            if len(w) > 4 and w.endswith("ies"):
+                w = w[:-3] + "i"
+            elif len(w) > 3 and w[-1] in "sz":
+                w = w[:-1]
+            if len(w) > 3 and w.endswith("ie"):
+                w = w[:-1]
+            elif len(w) > 3 and w.endswith("y"):
+                w = w[:-1] + "i"
+            folded.append(re.sub(r"(.)\1+", r"\1", w))
+        _LOOSE[strain] = ("".join(folded), "".join(w[0] for w in folded), re.findall(r"\d+", strain))
+    return _LOOSE[strain]
+
+
+def edits(a, b):
+    row = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        prev, row[0] = row[0], i
+        for j, cb in enumerate(b, 1):
+            prev, row[j] = row[j], min(row[j] + 1, row[j - 1] + 1, prev + (ca != cb))
+    return row[-1]
+
+
+def same_strain(a, b):
+    """Один ли это сорт — для дебюта, где ошибиться в «новом» хуже, чем в «переименовали».
+    Как similar(), без бренда: те же слова с лишними («Flower Secret Stash»), и опечатки,
+    которых он не ловит: «Cap Junkie» и «Cap Junky», «B.A.M» и «BAM», «Moon Galeto» и
+    «Moon Gelato». Опечатка — одна-две буквы, при тех же числах и тех же первых буквах
+    слов: «Blue Cream» — не «Blue Dream», «Billionaire» — не «Millionaire»."""
+    if a == b:
+        return True
+    wa, wb = words(a), words(b)
+    if wa and wb and (wa <= wb or wb <= wa):
+        return True
+    (la, ia, da), (lb, ib, db) = loose(a), loose(b)
+    if not la or not lb:
+        return False
+    if la == lb:
+        return True
+    if ia != ib or da != db:
+        return False
+    if SequenceMatcher(None, a, b).ratio() >= 0.85:
+        return True
+    shorter = min(len(la), len(lb))
+    allowed = 2 if shorter >= 9 else 1 if shorter >= 7 else 0
+    return allowed > 0 and abs(len(la) - len(lb)) <= allowed and edits(la, lb) <= allowed
+
+
+def strain_of(key):
+    return key.split("|", 1)[1]
+
+
+class Lineage:
+    """Записи сортов для дебютов: какие ключи — один производитель, что у него стояло
+    когда. Считает лениво и помнит посчитанное, пока живёт."""
+
+    def __init__(self, hist):
+        self.known = hist["known"]
+        self.brands = defaultdict(list)
+        for key in self.known:
+            self.brands[key.split("|", 1)[0]].append(key)
+        self.pools = {}
+        self.renamed = {}
+
+    def pool(self, brand):
+        """Все записи производителя этого бренда, под любым его ключом."""
+        if brand not in self.pools:
+            self.pools[brand] = [k for other, keys in self.brands.items()
+                                 if same_grower(brand, other) for k in keys]
+        return self.pools[brand]
+
+    def renamed_on(self, brand, day):
+        """Записи производителя, впервые увиденные в этот день и похожие на то, что у него
+        стояло раньше: «White Diamonds» 8 октября при «White Diamond» с сентября."""
+        if (brand, day) not in self.renamed:
+            pool = self.pool(brand)
+            older = [strain_of(o) for o in pool if self.known[o] < day]
+            self.renamed[brand, day] = [k for k in pool if self.known[k] == day
+                                        and any(same_strain(strain_of(k), o) for o in older)]
+        return self.renamed[brand, day]
+
+    def known_before(self, key, day):
+        """Стоял ли у производителя до этого дня сорт, похожий на этот, — то есть этот сорт
+        сам. Похожесть — и через одну запись того же дня: «HOS - White Diamonds» похож не
+        на «White Diamond», а на «White Diamonds», который появился с ним в один день и
+        похож на него. Только то, что было известно к этому дню, — чтобы ответ не менялся
+        потом."""
+        brand, strain = key.split("|", 1)
+        if any(self.known[o] < day and o != key and same_strain(strain, strain_of(o)) for o in self.pool(brand)):
+            return True
+        return any(o != key and same_strain(strain, strain_of(o)) for o in self.renamed_on(brand, day))
+
+    def family(self, key, first, taken=()):
+        """Записи дебюта: он сам, его поздние записи и дебюты того же дня под похожим
+        именем — у того же производителя, и только не похожие на то, что стояло раньше."""
+        strain = strain_of(key)
+        return [key] + sorted(o for o in self.pool(key.split("|", 1)[0])
+                              if o != key and o not in taken and self.known[o] >= first
+                              and same_strain(strain, strain_of(o)) and not self.known_before(o, first))
 
 
 def note_debuts(hist, confirmed):
     """Подтверждённые завозы, которые оказались первым появлением сорта бренда на
     наших полках вообще. Правило — в описании модуля."""
-    brands, cache = None, {}
+    lineage, windows = None, {}
+
+    def window(day):
+        if day not in windows:
+            windows[day] = windowed(hist, day)
+        return windows[day]
+
     for a in confirmed:
         key = a["key"]
-        if not key.split("|", 1)[0] or key in hist["debuts"] or hist["known"].get(key) != a["seen"]:
+        first = hist["known"].get(key)
+        if not key.split("|", 1)[0] or key in hist["debuts"] or not first or first > a["seen"]:
             continue
-        brands = brands or by_brand(hist["known"])
-        if not known_before(hist, brands, cache, key, a["seen"]):
-            hist["debuts"][key] = a["seen"]
+        # Окно в меню побольше показывает давний товар как новый — о завозах в нём не судим.
+        if a["licence"] in window(a["seen"]):
+            continue
+        # Впервые сорт мог мелькнуть там, где завоз не считается (полку в тот день
+        # переписало наше чтение, он не устоял до следующего), а завозом прийти чтением-двумя
+        # позже. Тогда дебют — с того первого дня, но только если в тот день сорт показали
+        # магазины, которые мы читали и раньше, и не окна: в магазине, прочитанном впервые,
+        # он мог стоять давно.
+        if sum(1 for s in hist["sweeps"] if first < s <= a["seen"]) > FIRST_GRACE:
+            continue
+        shown = [lic for lic, seen in hist["seen"].items() if key in seen and parse(seen[key])[0] == first]
+        if not shown or any(lic in window(first) or not any(e[0] < first for e in hist["activity"].get(lic, ()))
+                            for lic in shown):
+            continue
+        lineage = lineage or Lineage(hist)
+        if not lineage.known_before(key, first):
+            hist["debuts"][key] = first
 
 
 def keep_lineups(hist, deferred, day, count):
@@ -645,7 +851,14 @@ def prune(hist, day):
     alive = {key for seen in hist["seen"].values() for key in seen}
     hist["thc"] = {key: values for key, values in hist["thc"].items() if key in alive}
     hist["names"] = {key: name for key, name in hist["names"].items() if key in alive}
-    hist["debuts"] = {key: first for key, first in hist["debuts"].items() if key in alive}
+    # Дебют помнится, пока стоит хоть одна его запись: первая бывает однодневной —
+    # «*Orange Elixir», а сам сорт стоит под «Orange Elixir».
+    dead = [key for key in hist["debuts"] if key not in alive]
+    if dead:
+        lineage = Lineage(hist)
+        for key in dead:
+            if not any(member in alive for member in lineage.family(key, hist["debuts"][key])):
+                del hist["debuts"][key]
     hist["activity"] = {lic: [e for e in log if e[0] >= horizon] for lic, log in hist["activity"].items()}
     hist["activity"] = {lic: log for lic, log in hist["activity"].items() if log}
     hist["arrivals"] = [a for a in hist["arrivals"] if a["seen"] >= horizon]
@@ -792,24 +1005,25 @@ def moves(hist, day, rows=None):
 def debut_list(hist, day):
     """Дебюты, о которых сайту есть что сказать: стоящие сейчас хоть на одной полке и
     дебютировавшие за неделю. Дебют — со всеми записями сорта (keys): поздними
-    записями его самого и дебютами того же дня под похожим именем. seenAt — в скольких
-    магазинах сорт появлялся с первого дня, shops — где он сейчас; days — сколько дней
-    от первого появления до чтения."""
-    known = hist["known"]
-    brands, cache = by_brand(known), {}
+    записями его самого и дебютами того же дня под похожим именем, в том числе под
+    другой подписью того же производителя. seenAt — в скольких магазинах сорт
+    появлялся с первого дня, shops — где он сейчас; days — сколько дней от первого
+    появления до чтения."""
+    lineage = Lineage(hist)
     carried = defaultdict(dict)
     for lic, seen in hist["seen"].items():
         for key, entry in seen.items():
             carried[key][lic] = parse(entry)[1] is None
+    spellings = defaultdict(list)
+    for a in hist["arrivals"]:
+        spellings[a["key"]].append((a["brand"], a["strain"]))
     taken = set()
     out = []
     # Раньше и шире — первым: дебют того же дня под похожим именем к нему и примкнёт.
     for key, first in sorted(hist["debuts"].items(), key=lambda kv: (kv[1], -len(carried[kv[0]]), kv[0])):
         if first > day or key in taken:
             continue
-        family = [key] + [other for other in brands[key.split("|", 1)[0]]
-                          if other != key and other not in taken and known[other] >= first
-                          and similar(key, other) and not known_before(hist, brands, cache, other, first)]
+        family = lineage.family(key, first, taken)
         taken.update(family)
         shops = {}
         for member in family:
@@ -819,9 +1033,13 @@ def debut_list(hist, day):
         days = (date.fromisoformat(day) - date.fromisoformat(first)).days
         if not now and days >= WAVE_DAYS:
             continue
-        # Имя — той записи, что стоит в большем числе магазинов сейчас.
+        # Имя — той записи, что стоит в большем числе магазинов сейчас, и так, как его
+        # пишут меню: в names помнятся только сорта двух магазинов и больше.
         named = max(family, key=lambda k: (sum(carried[k].values()), len(carried[k]), k == key))
-        brand, strain = display(hist, named)
+        found = [sp for k in family for sp in spellings[k]]
+        brand, strain = display(hist, named, [b for b, _s in found],
+                                [st for st_key in (named,) for _b, st in spellings[st_key]]
+                                or [st for _b, st in found])
         out.append({"key": key, "keys": sorted(k for k in family if k in carried), "brand": brand,
                     "strain": strain, "first": first, "days": days, "seenAt": len(shops), "shops": now})
     out.sort(key=lambda d: (d["days"] >= WAVE_DAYS, -d["seenAt"], d["first"], d["strain"] or ""))
@@ -1307,6 +1525,19 @@ def check():
         # «Find - Old 9s» не похож на «Old 9» сам, но похож на «Old 9s» того же дня.
         "HW": lambda i, d: shelf("HW", d, extra=["Old 9s"] if i >= 2 else []),
         "HX": lambda i, d: shelf("HX", d, extra=["Find - Old 9s"] if i >= 2 else []),
+        # Старый сорт Find под подписью «Find OG» — тот же производитель, не дебют.
+        "BR": lambda i, d: shelf("BR", d) + ([row("BR", "Old 11", d, brand="FindOG")] if i >= 2 else []),
+        # Опечатка, которую similar() не ловит: «Cap Junkie» при «Cap Junky» с первого дня.
+        "SP": lambda i, d: shelf("SP", d, extra=["Cap Junky"]),
+        "SQ": lambda i, d: shelf("SQ", d, extra=["Cap Junkie"] if i >= 2 else []),
+        # Мелькнул на третьем чтении и не устоял, завозом пришёл в другой магазин на
+        # четвёртом: дебют — с третьего.
+        "E2": lambda i, d: shelf("E2", d, extra=["Late Bloomer"] if i == 2 else []),
+        "LB": lambda i, d: shelf("LB", d, extra=["Late Bloomer"] if i >= 3 else []),
+        # Впервые увиден в магазине, который в тот день прочитан впервые, — мог стоять
+        # там давно: не дебют, хоть завозом и пришёл потом в другой.
+        "N2": lambda i, d: shelf("N2", d, extra=["Old Timer"]) if i >= 2 else [],
+        "OT": lambda i, d: shelf("OT", d, extra=["Old Timer"] if i >= 3 else []),
     }
     # Уходит: стоял в шести магазинах, с четвёртого дня — в двух.
     for n in range(1, 7):
@@ -1344,8 +1575,8 @@ def check():
     expect("мигание не появление", any(a["licence"] == "B" for a in hist["arrivals"] + hist["pending"]), False)
     expect("переписанная полка", (third["rewritten"], third["rewrittenShops"]), (20, 1))
     expect("переименование", third["renamed"], 1)
-    expect("не устоял", fourth["flicker"], 1)
-    expect("новый магазин без прошлого", third["unsteady"], len(base) + 1)
+    expect("не устоял", fourth["flicker"], 2)  # E и E2
+    expect("новый магазин без прошлого", third["unsteady"], 2 * (len(base) + 1) + 1)  # N и N2 с Old Timer
     expect("сборщик сменился", (third.get("collectorChanged"), fourth.get("collectorChanged")), (1, None))
     expect("чтение стало глубже", (third["deeper"], third["deeperShops"], third.get("deeperKept")), (18, 3, 7))
     expect("линейка бренда — завоз", sum(1 for a in hist["arrivals"] if a["licence"] == "L"), 6)
@@ -1387,6 +1618,22 @@ def check():
                      "find|stock 3" in hist["debuts"], "|nameless" in hist["debuts"],
                      "find|old 7 - preground" in hist["debuts"], "find|old 9s" in hist["debuts"],
                      "find|find - old 9s" in hist["debuts"]), (days[2], days[2], False, False, False, False, False))
+    expect("тот же производитель под другой подписью, опечатка, первый день — магазин, читанный впервые",
+           ("findog|old 11" in arrived_keys, "findog|old 11" in hist["debuts"],
+            "find|cap junkie" in arrived_keys, "find|cap junkie" in hist["debuts"],
+            "find|old timer" in arrived_keys, "find|old timer" in hist["debuts"]),
+           (True, False, True, False, True, False))
+    expect("дебют с первого появления, если завоз пришёл чтением позже", hist["debuts"].get("find|late bloomer"),
+           days[2])
+    expect("один производитель", [same_grower(a, b) for a, b in (
+        ("zips", "zipsog"), ("majormicro", "major"), ("purps", "purpsny"), ("thebotanist", "botanist"),
+        ("acreagethebotanist", "botanist"), ("woodstock", "woodstockheritagestrains"), ("redo", "redo96"),
+        ("flor", "florette"), ("budd", "buddingbliss"), ("hash", "hashtaghoney"), ("smoke", "smokeland"),
+        ("find", ""))], [True] * 7 + [False] * 5)
+    expect("один сорт", [same_strain(a, b) for a, b in (
+        ("cap junkie", "cap junky"), ("b.a.m", "bam"), ("moon galeto", "moon gelato"), ("black scott", "black scotti"),
+        ("blue cream", "blue dream"), ("gelato 33", "gelato 41"), ("billionaire", "millionaire"),
+        ("lemon cherry gelato", "lemon cherry"))], [True] * 4 + [False] * 3 + [True])
     expect("через запись того же дня", (similar("find|find - old 9s", "find|old 9"),
                                         "find|find - old 9s" in arrived_keys), (False, True))
     expect("первый день помнится", hist["known"].get("find|crusty crustacean"), days[2])
@@ -1411,6 +1658,10 @@ def check():
     forgotten = json.loads(json.dumps(hist))
     for seen in forgotten["seen"].values():
         seen.pop("find|crusty crustacean", None)
+    prune(forgotten, days[4])
+    expect("дебют помнится, пока стоит хоть одна его запись", "find|crusty crustacean" in forgotten["debuts"], True)
+    for seen in forgotten["seen"].values():
+        seen.pop("find|find - crusty crustacean", None)
     prune(forgotten, days[4])
     expect("дебют забывается вместе с сортом", ("find|crusty crustacean" in forgotten["debuts"],
                                                "find|crusty crustacean" in forgotten["known"]), (False, True))

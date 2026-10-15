@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { LINEAGE_LABEL, SIZES, isFreshDebut, sizeChips, sizeLabel, type Debut } from '@/lib/menu-format';
-import { DebutLine, DebutTag } from './DebutTag';
+import { DebutBadge } from './DebutTag';
 
 export type StrainEntry = {
   key: string;
@@ -51,19 +51,14 @@ const StrainRow = ({
 }: StrainView & { size: number | null; openByDefault: boolean }) => {
   const [open, setOpen] = useState(openByDefault);
   return (
-  <li className="card p-4">
+  <li className="card min-w-0 p-4">
     <div className="flex items-start justify-between gap-3">
       <div className="min-w-0">
         <h3 className="truncate text-[0.95rem] font-semibold tracking-tight text-chalk-50">{s.name}</h3>
         <p className="mt-0.5 truncate text-xs text-chalk-500">
           {s.brands.length > 0 ? `by ${s.brands.slice(0, 2).join(' · ')}` : 'Brand not stated'}
         </p>
-        {s.debut && (
-          <div className="mt-1.5">
-            <DebutTag debut={s.debut} />
-            <DebutLine debut={s.debut} className="mt-1" />
-          </div>
-        )}
+        {s.debut && <DebutBadge debut={s.debut} className="mt-1.5" />}
       </div>
       <div className="shrink-0 text-right">
         {s.thcPercent !== null ? (
@@ -262,7 +257,7 @@ export const ShelfIndex = ({
             type="button"
             onClick={() => setDebutsOnly((v) => !v)}
             aria-pressed={debutsOnly}
-            title="Strains no shelf we read had carried before, in their first week"
+            title="Strains whose every grower here is new to the shelves we read, in their first week"
             className={clsx('chip', debutsOnly && 'chip-on')}
           >
             Debuts this week <span className="tabular-nums text-chalk-500">{debutCount}</span>

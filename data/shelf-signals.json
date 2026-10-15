@@ -17396,6 +17396,63 @@
    ]
   },
   {
+   "key": "thebotanist|blue nerds",
+   "keys": [
+    "botanist|blue nerds",
+    "thebotanist|blue nerds"
+   ],
+   "brand": "The Botanist",
+   "strain": "Blue Nerds",
+   "first": "2026-10-08",
+   "days": 6,
+   "seenAt": 6,
+   "shops": [
+    "OCM-CAURD-25-000243",
+    "OCM-CAURD-26-000332",
+    "OCM-RETL-24-000159",
+    "OCM-RETL-24-000175",
+    "OCM-RETL-25-000292",
+    "OCM-RETL-25-000295"
+   ]
+  },
+  {
+   "key": "goodgreen|bazooka breath",
+   "keys": [
+    "goodgreen|bazooka breath"
+   ],
+   "brand": "Good Green",
+   "strain": "Bazooka Breath",
+   "first": "2026-10-10",
+   "days": 4,
+   "seenAt": 6,
+   "shops": [
+    "OCM-CAURD-23-000003",
+    "OCM-CAURD-24-000091",
+    "OCM-CAURD-24-000125",
+    "OCM-CAURD-24-000138",
+    "OCM-RETL-24-000233",
+    "OCM-RETL-25-000355"
+   ]
+  },
+  {
+   "key": "thebotanist|rainbow runtz",
+   "keys": [
+    "botanist|rainbow runtz",
+    "thebotanist|rainbow runtz"
+   ],
+   "brand": "Botanist",
+   "strain": "Rainbow Runtz",
+   "first": "2026-10-08",
+   "days": 6,
+   "seenAt": 5,
+   "shops": [
+    "OCM-CAURD-25-000243",
+    "OCM-CAURD-26-000332",
+    "OCM-RETL-24-000175",
+    "OCM-RETL-25-000383"
+   ]
+  },
+  {
    "key": "zips|banana diesel",
    "keys": [
     "zips|banana diesel"
@@ -17413,20 +17470,20 @@
    ]
   },
   {
-   "key": "thebotanist|blue nerds",
+   "key": "zips|strawnana",
    "keys": [
-    "thebotanist|blue nerds"
+    "zipsog|strawnana",
+    "zips|strawnana"
    ],
-   "brand": "The Botanist",
-   "strain": "Blue Nerds",
+   "brand": "ZIPS",
+   "strain": "Strawnana",
    "first": "2026-10-08",
    "days": 6,
    "seenAt": 4,
    "shops": [
-    "OCM-CAURD-25-000243",
-    "OCM-CAURD-26-000332",
-    "OCM-RETL-24-000159",
-    "OCM-RETL-25-000292"
+    "OCM-CAURD-23-000020",
+    "OCM-CAURD-24-000169",
+    "OCM-CAURD-25-000294"
    ]
   },
   {
@@ -17463,34 +17520,20 @@
    ]
   },
   {
-   "key": "thebotanist|rainbow runtz",
+   "key": "greenline|sour diesel",
    "keys": [
-    "thebotanist|rainbow runtz"
+    "greenlineapothecary|sour diesel - flower w/ grinder",
+    "greenline|sour diesel"
    ],
-   "brand": "The Botanist",
-   "strain": "Rainbow Runtz",
+   "brand": "Greenline",
+   "strain": "Sour Diesel",
    "first": "2026-10-08",
    "days": 6,
    "seenAt": 3,
    "shops": [
-    "OCM-CAURD-25-000243",
-    "OCM-CAURD-26-000332",
-    "OCM-RETL-25-000383"
-   ]
-  },
-  {
-   "key": "zips|strawnana",
-   "keys": [
-    "zips|strawnana"
-   ],
-   "brand": "ZIPS",
-   "strain": "Strawnana",
-   "first": "2026-10-08",
-   "days": 6,
-   "seenAt": 3,
-   "shops": [
-    "OCM-CAURD-23-000020",
-    "OCM-CAURD-25-000294"
+    "OCM-CAURD-24-000136",
+    "OCM-RETL-24-000225",
+    "OCM-RETL-25-000430"
    ]
   },
   {
@@ -17507,6 +17550,40 @@
     "OCM-CAURD-23-000021",
     "OCM-CAURD-24-000129",
     "OCM-RETL-26-000507"
+   ]
+  },
+  {
+   "key": "zips|wedding cake",
+   "keys": [
+    "zipsog|wedding cake",
+    "zips|wedding cake"
+   ],
+   "brand": "Zips",
+   "strain": "Wedding Cake",
+   "first": "2026-10-09",
+   "days": 5,
+   "seenAt": 3,
+   "shops": [
+    "OCM-CAURD-24-000169",
+    "OCM-RETL-24-000026",
+    "OCM-RETL-24-000233"
+   ]
+  },
+  {
+   "key": "zipsog|mendo breath",
+   "keys": [
+    "zipsog|mendo breath",
+    "zips|mendo breath"
+   ],
+   "brand": "ZIPS",
+   "strain": "Mendo Breath",
+   "first": "2026-10-10",
+   "days": 4,
+   "seenAt": 3,
+   "shops": [
+    "OCM-CAURD-24-000166",
+    "OCM-CAURD-24-000169",
+    "OCM-RETL-26-000497"
    ]
   },
   {
@@ -17549,7 +17626,7 @@
     "cheevo|brain stain"
    ],
    "brand": "Cheevo",
-   "strain": "Brain Stain",
+   "strain": "Brain",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 3,
@@ -17557,22 +17634,6 @@
     "OCM-CAURD-23-000021",
     "OCM-CAURD-24-000182",
     "OCM-RETL-24-000104"
-   ]
-  },
-  {
-   "key": "thebotanist|cherry berry latte",
-   "keys": [
-    "thebotanist|cherry berry latte"
-   ],
-   "brand": "The Botanist",
-   "strain": "Cherry Berry Latte",
-   "first": "2026-10-13",
-   "days": 1,
-   "seenAt": 3,
-   "shops": [
-    "OCM-CAURD-26-000332",
-    "OCM-RETL-24-000159",
-    "OCM-RETL-25-000292"
    ]
   },
   {
@@ -17591,18 +17652,18 @@
    ]
   },
   {
-   "key": "botanist|blue nerds",
+   "key": "grams|orange tiki dream",
    "keys": [
-    "botanist|blue nerds"
+    "grams|orange tiki dream"
    ],
-   "brand": "Botanist",
-   "strain": "Blue Nerds",
+   "brand": "Grams",
+   "strain": "Orange Tiki Dream",
    "first": "2026-10-08",
    "days": 6,
    "seenAt": 2,
    "shops": [
-    "OCM-RETL-24-000175",
-    "OCM-RETL-25-000295"
+    "OCM-CAURD-24-000219",
+    "OCM-RETL-25-000322"
    ]
   },
   {
@@ -17621,32 +17682,19 @@
    ]
   },
   {
-   "key": "botanist|rainbow runtz",
+   "key": "dailybread|super boof",
    "keys": [
-    "botanist|rainbow runtz"
+    "dailybread|super boof",
+    "dailybread|superboof"
    ],
-   "brand": "Botanist",
-   "strain": "Rainbow Runtz",
+   "brand": "Daily Bread",
+   "strain": "Super Boof",
    "first": "2026-10-08",
    "days": 6,
    "seenAt": 2,
    "shops": [
-    "OCM-RETL-24-000175"
-   ]
-  },
-  {
-   "key": "greenline|sour diesel",
-   "keys": [
-    "greenline|sour diesel"
-   ],
-   "brand": "Greenline",
-   "strain": "Sour Diesel",
-   "first": "2026-10-08",
-   "days": 6,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-24-000136",
-    "OCM-RETL-25-000430"
+    "OCM-CAURD-23-000021",
+    "OCM-CAURD-23-000042"
    ]
   },
   {
@@ -17662,22 +17710,6 @@
    "shops": [
     "OCM-CAURD-23-000020",
     "OCM-CAURD-25-000265"
-   ]
-  },
-  {
-   "key": "dailybread|super boof",
-   "keys": [
-    "dailybread|super boof",
-    "dailybread|superboof"
-   ],
-   "brand": "dailybread",
-   "strain": "super boof",
-   "first": "2026-10-08",
-   "days": 6,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-23-000021",
-    "OCM-CAURD-23-000042"
    ]
   },
   {
@@ -17711,21 +17743,6 @@
    ]
   },
   {
-   "key": "zips|wedding cake",
-   "keys": [
-    "zips|wedding cake"
-   ],
-   "brand": "Zips",
-   "strain": "Wedding Cake",
-   "first": "2026-10-09",
-   "days": 5,
-   "seenAt": 2,
-   "shops": [
-    "OCM-RETL-24-000026",
-    "OCM-RETL-24-000233"
-   ]
-  },
-  {
    "key": "cannacure|blue dream",
    "keys": [
     "cannacure|blue dream"
@@ -17756,6 +17773,22 @@
    ]
   },
   {
+   "key": "cannacure|glitterbomb",
+   "keys": [
+    "cannacure|glitter bomb",
+    "cannacure|glitterbomb"
+   ],
+   "brand": "Canna Cure",
+   "strain": "Glitterbomb",
+   "first": "2026-10-10",
+   "days": 4,
+   "seenAt": 2,
+   "shops": [
+    "OCM-RETL-25-000283",
+    "OCM-RETL-26-000499"
+   ]
+  },
+  {
    "key": "bouket|high noon kush",
    "keys": [
     "bouket|high noon kush"
@@ -17777,52 +17810,6 @@
    ],
    "brand": "Canna Cure",
    "strain": "Hippie Crasher",
-   "first": "2026-10-10",
-   "days": 4,
-   "seenAt": 2,
-   "shops": [
-    "OCM-RETL-25-000283",
-    "OCM-RETL-26-000499"
-   ]
-  },
-  {
-   "key": "nickel|rs11 x permanent marker",
-   "keys": [
-    "nickel|rs11 x permanent marker"
-   ],
-   "brand": "Nickel",
-   "strain": "RS11 x Permanent Marker",
-   "first": "2026-10-10",
-   "days": 4,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-24-000208",
-    "OCM-RETL-24-000099"
-   ]
-  },
-  {
-   "key": "packs|sour apricot",
-   "keys": [
-    "packs|sour apricot"
-   ],
-   "brand": "Packs",
-   "strain": "Sour Apricot",
-   "first": "2026-10-10",
-   "days": 4,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-24-000219",
-    "OCM-RETL-25-000322"
-   ]
-  },
-  {
-   "key": "cannacure|glitterbomb",
-   "keys": [
-    "cannacure|glitter bomb",
-    "cannacure|glitterbomb"
-   ],
-   "brand": "cannacure",
-   "strain": "glitterbomb",
    "first": "2026-10-10",
    "days": 4,
    "seenAt": 2,
@@ -17877,6 +17864,21 @@
    ]
   },
   {
+   "key": "budd|raspberry froyo",
+   "keys": [
+    "budd|raspberry froyo"
+   ],
+   "brand": "Budd",
+   "strain": "Raspberry Froyo",
+   "first": "2026-10-11",
+   "days": 3,
+   "seenAt": 2,
+   "shops": [
+    "OCM-CAURD-24-000144",
+    "OCM-CAURD-24-000222"
+   ]
+  },
+  {
    "key": "flyweight|champagne runtz",
    "keys": [
     "flyweight|champagne runtz"
@@ -17892,18 +17894,19 @@
    ]
   },
   {
-   "key": "zips|mendo breath",
+   "key": "hashtaghoney|pixie stix",
    "keys": [
-    "zips|mendo breath"
+    "hashtaghoney|pixie stix",
+    "hashtaghoney|pixie stix whole grams"
    ],
-   "brand": "ZIPS",
-   "strain": "Mendo Breath",
+   "brand": "Hashtag Honey",
+   "strain": "Pixie Stix",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 2,
    "shops": [
-    "OCM-CAURD-24-000166",
-    "OCM-RETL-26-000497"
+    "OCM-MICR-24-000204",
+    "OCM-RETL-25-000294"
    ]
   },
   {
@@ -17922,28 +17925,12 @@
    ]
   },
   {
-   "key": "hashtaghoney|pixie stix",
-   "keys": [
-    "hashtaghoney|pixie stix",
-    "hashtaghoney|pixie stix whole grams"
-   ],
-   "brand": "hashtaghoney",
-   "strain": "pixie stix",
-   "first": "2026-10-13",
-   "days": 1,
-   "seenAt": 2,
-   "shops": [
-    "OCM-MICR-24-000204",
-    "OCM-RETL-25-000294"
-   ]
-  },
-  {
    "key": "cannaboss|blue mendo",
    "keys": [
     "cannaboss|blue mendo"
    ],
-   "brand": "cannaboss",
-   "strain": "blue mendo",
+   "brand": "Cannaboss",
+   "strain": "Blue Mendo",
    "first": "2026-10-08",
    "days": 6,
    "seenAt": 1,
@@ -17952,54 +17939,12 @@
    ]
   },
   {
-   "key": "botanist|cherry berry latte",
-   "keys": [
-    "botanist|cherry berry latte"
-   ],
-   "brand": "botanist",
-   "strain": "cherry berry latte",
-   "first": "2026-10-08",
-   "days": 6,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000175"
-   ]
-  },
-  {
-   "key": "cherryvalley|daywrecker i95 x strawnana",
-   "keys": [
-    "cherryvalley|daywrecker i95 x strawnana"
-   ],
-   "brand": "cherryvalley",
-   "strain": "daywrecker i95 x strawnana",
-   "first": "2026-10-08",
-   "days": 6,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000205"
-   ]
-  },
-  {
-   "key": "culturedworldclass|diamond breeze",
-   "keys": [
-    "culturedworldclass|diamond breeze"
-   ],
-   "brand": "culturedworldclass",
-   "strain": "diamond breeze",
-   "first": "2026-10-08",
-   "days": 6,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000120"
-   ]
-  },
-  {
    "key": "bakedchicken|gorilla glue #4",
    "keys": [
     "bakedchicken|gorilla glue #4"
    ],
-   "brand": "bakedchicken",
-   "strain": "gorilla glue #4",
+   "brand": "Baked Chicken",
+   "strain": "Gorilla Glue #4",
    "first": "2026-10-08",
    "days": 6,
    "seenAt": 1,
@@ -18008,17 +17953,17 @@
    ]
   },
   {
-   "key": "culturedworldclass|jungle juice",
+   "key": "167|lemon gas",
    "keys": [
-    "culturedworldclass|jungle juice"
+    "167|lemon gas"
    ],
-   "brand": "culturedworldclass",
-   "strain": "jungle juice",
+   "brand": "167",
+   "strain": "LEMON GAS",
    "first": "2026-10-08",
    "days": 6,
    "seenAt": 1,
    "shops": [
-    "OCM-RETL-24-000120"
+    "OCM-CAURD-25-000288"
    ]
   },
   {
@@ -18026,8 +17971,8 @@
    "keys": [
     "runtz|lemon cherry gelato"
    ],
-   "brand": "runtz",
-   "strain": "lemon cherry gelato",
+   "brand": "Runtz",
+   "strain": "Lemon Cherry Gelato",
    "first": "2026-10-08",
    "days": 6,
    "seenAt": 1,
@@ -18038,8 +17983,8 @@
    "keys": [
     "dailybread|lemon diesel"
    ],
-   "brand": "dailybread",
-   "strain": "lemon diesel",
+   "brand": "Daily Bread",
+   "strain": "Lemon Diesel",
    "first": "2026-10-08",
    "days": 6,
    "seenAt": 1,
@@ -18048,106 +17993,36 @@
    ]
   },
   {
-   "key": "167|lemon gas",
-   "keys": [
-    "167|lemon gas"
-   ],
-   "brand": "167",
-   "strain": "lemon gas",
-   "first": "2026-10-08",
-   "days": 6,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000288"
-   ]
-  },
-  {
    "key": "runtz|peach rings",
    "keys": [
     "runtz|peach rings"
    ],
-   "brand": "runtz",
-   "strain": "peach rings",
+   "brand": "Runtz",
+   "strain": "Peach Rings",
    "first": "2026-10-08",
    "days": 6,
    "seenAt": 1,
    "shops": []
-  },
-  {
-   "key": "culturedworldclass|purple banana cake",
-   "keys": [
-    "culturedworldclass|purple banana cake"
-   ],
-   "brand": "culturedworldclass",
-   "strain": "purple banana cake",
-   "first": "2026-10-08",
-   "days": 6,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000120"
-   ]
   },
   {
    "key": "runtz|purps lemonatti",
    "keys": [
     "runtz|purps lemonatti"
    ],
-   "brand": "runtz",
-   "strain": "purps lemonatti",
+   "brand": "Runtz",
+   "strain": "Purps Lemonatti",
    "first": "2026-10-08",
    "days": 6,
    "seenAt": 1,
    "shops": []
   },
   {
-   "key": "culturedworldclass|rainbow gelato",
-   "keys": [
-    "culturedworldclass|rainbow gelato"
-   ],
-   "brand": "culturedworldclass",
-   "strain": "rainbow gelato",
-   "first": "2026-10-08",
-   "days": 6,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000120"
-   ]
-  },
-  {
-   "key": "culturedworldclass|sour diesel",
-   "keys": [
-    "culturedworldclass|sour diesel"
-   ],
-   "brand": "culturedworldclass",
-   "strain": "sour diesel",
-   "first": "2026-10-08",
-   "days": 6,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000120"
-   ]
-  },
-  {
-   "key": "greenlineapothecary|sour diesel - flower w/ grinder",
-   "keys": [
-    "greenlineapothecary|sour diesel - flower w/ grinder"
-   ],
-   "brand": "greenlineapothecary",
-   "strain": "sour diesel - flower w/ grinder",
-   "first": "2026-10-08",
-   "days": 6,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000225"
-   ]
-  },
-  {
    "key": "dailybread|spanish moon",
    "keys": [
     "dailybread|spanish moon"
    ],
-   "brand": "dailybread",
-   "strain": "spanish moon",
+   "brand": "Daily Bread",
+   "strain": "Spanish Moon",
    "first": "2026-10-08",
    "days": 6,
    "seenAt": 1,
@@ -18160,8 +18035,8 @@
    "keys": [
     "traptotable|superboof"
    ],
-   "brand": "traptotable",
-   "strain": "superboof",
+   "brand": "Trap To Table",
+   "strain": "Superboof",
    "first": "2026-10-08",
    "days": 6,
    "seenAt": 1,
@@ -18170,26 +18045,12 @@
    ]
   },
   {
-   "key": "cherryvalley|tropicana cookies",
-   "keys": [
-    "cherryvalley|tropicana cookies"
-   ],
-   "brand": "cherryvalley",
-   "strain": "tropicana cookies",
-   "first": "2026-10-08",
-   "days": 6,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000205"
-   ]
-  },
-  {
    "key": "167|uptown papaya",
    "keys": [
     "167|uptown papaya"
    ],
    "brand": "167",
-   "strain": "uptown papaya",
+   "strain": "UPTOWN PAPAYA",
    "first": "2026-10-08",
    "days": 6,
    "seenAt": 1,
@@ -18202,8 +18063,8 @@
    "keys": [
     "jetpack|bigs flower 32cpk - blue dream"
    ],
-   "brand": "jetpack",
-   "strain": "bigs flower 32cpk - blue dream",
+   "brand": "Jetpack",
+   "strain": "Bigs Flower 32cpk - Blue Dream",
    "first": "2026-10-09",
    "days": 5,
    "seenAt": 1,
@@ -18214,8 +18075,8 @@
    "keys": [
     "jetpack|bigs flower 32cpk - sour diesel"
    ],
-   "brand": "jetpack",
-   "strain": "bigs flower 32cpk - sour diesel",
+   "brand": "Jetpack",
+   "strain": "Bigs Flower 32cpk - Sour Diesel",
    "first": "2026-10-09",
    "days": 5,
    "seenAt": 1,
@@ -18226,8 +18087,8 @@
    "keys": [
     "oasis|black patronous"
    ],
-   "brand": "oasis",
-   "strain": "black patronous",
+   "brand": "Oasis",
+   "strain": "Black Patronous",
    "first": "2026-10-09",
    "days": 5,
    "seenAt": 1,
@@ -18240,8 +18101,8 @@
    "keys": [
     "alchemypure|early bird"
    ],
-   "brand": "alchemypure",
-   "strain": "early bird",
+   "brand": "Alchemy Pure",
+   "strain": "Early Bird",
    "first": "2026-10-09",
    "days": 5,
    "seenAt": 1,
@@ -18254,8 +18115,8 @@
    "keys": [
     "cloudforest|empire haze"
    ],
-   "brand": "cloudforest",
-   "strain": "empire haze",
+   "brand": "Cloud Forest",
+   "strain": "Empire Haze",
    "first": "2026-10-09",
    "days": 5,
    "seenAt": 1,
@@ -18268,8 +18129,8 @@
    "keys": [
     "cloudforest|gel air"
    ],
-   "brand": "cloudforest",
-   "strain": "gel air",
+   "brand": "Cloud Forest",
+   "strain": "Gel Air",
    "first": "2026-10-09",
    "days": 5,
    "seenAt": 1,
@@ -18282,8 +18143,8 @@
    "keys": [
     "cloudforest|glitter bomb"
    ],
-   "brand": "cloudforest",
-   "strain": "glitter bomb",
+   "brand": "Cloud Forest",
+   "strain": "Glitter Bomb",
    "first": "2026-10-09",
    "days": 5,
    "seenAt": 1,
@@ -18296,8 +18157,8 @@
    "keys": [
     "pacha|grapefruit haze"
    ],
-   "brand": "pacha",
-   "strain": "grapefruit haze",
+   "brand": "Pacha",
+   "strain": "Grapefruit Haze",
    "first": "2026-10-09",
    "days": 5,
    "seenAt": 1,
@@ -18310,8 +18171,8 @@
    "keys": [
     "cloudforest|og kush"
    ],
-   "brand": "cloudforest",
-   "strain": "og kush",
+   "brand": "Cloud Forest",
+   "strain": "OG Kush",
    "first": "2026-10-09",
    "days": 5,
    "seenAt": 1,
@@ -18324,8 +18185,8 @@
    "keys": [
     "zips|purple urkle"
    ],
-   "brand": "zips",
-   "strain": "purple urkle",
+   "brand": "ZIPS",
+   "strain": "Purple Urkle",
    "first": "2026-10-09",
    "days": 5,
    "seenAt": 1,
@@ -18338,8 +18199,8 @@
    "keys": [
     "bouket|static bloom"
    ],
-   "brand": "bouket",
-   "strain": "static bloom",
+   "brand": "Bouket",
+   "strain": "Static Bloom",
    "first": "2026-10-09",
    "days": 5,
    "seenAt": 1,
@@ -18352,8 +18213,8 @@
    "keys": [
     "smoakland|x - gorilla glue"
    ],
-   "brand": "smoakland",
-   "strain": "x - gorilla glue",
+   "brand": "Smoakland",
+   "strain": "X - Gorilla Glue",
    "first": "2026-10-09",
    "days": 5,
    "seenAt": 1,
@@ -18366,8 +18227,8 @@
    "keys": [
     "smoakland|x - wedding cake"
    ],
-   "brand": "smoakland",
-   "strain": "x - wedding cake",
+   "brand": "Smoakland",
+   "strain": "X - Wedding Cake",
    "first": "2026-10-09",
    "days": 5,
    "seenAt": 1,
@@ -18376,26 +18237,12 @@
    ]
   },
   {
-   "key": "woodstockheritagestrains|apple pie",
-   "keys": [
-    "woodstockheritagestrains|apple pie"
-   ],
-   "brand": "woodstockheritagestrains",
-   "strain": "apple pie",
-   "first": "2026-10-10",
-   "days": 4,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-23-000042"
-   ]
-  },
-  {
    "key": "dada|blue lobster",
    "keys": [
     "dada|blue lobster"
    ],
-   "brand": "dada",
-   "strain": "blue lobster",
+   "brand": "DaDa",
+   "strain": "Blue Lobster",
    "first": "2026-10-10",
    "days": 4,
    "seenAt": 1,
@@ -18404,26 +18251,12 @@
    ]
   },
   {
-   "key": "claybourneclassiccuts|classic cuts - mule fuel",
-   "keys": [
-    "claybourneclassiccuts|classic cuts - mule fuel"
-   ],
-   "brand": "claybourneclassiccuts",
-   "strain": "classic cuts - mule fuel",
-   "first": "2026-10-10",
-   "days": 4,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000241"
-   ]
-  },
-  {
    "key": "qualityhigh|fanta sea",
    "keys": [
     "qualityhigh|fanta sea"
    ],
-   "brand": "qualityhigh",
-   "strain": "fanta sea",
+   "brand": "Quality High",
+   "strain": "Fanta Sea",
    "first": "2026-10-10",
    "days": 4,
    "seenAt": 1,
@@ -18436,8 +18269,8 @@
    "keys": [
     "reallifebotanicals|garlic cookies"
    ],
-   "brand": "reallifebotanicals",
-   "strain": "garlic cookies",
+   "brand": "Real Life Botanicals",
+   "strain": "Garlic Cookies",
    "first": "2026-10-10",
    "days": 4,
    "seenAt": 1,
@@ -18446,82 +18279,12 @@
    ]
   },
   {
-   "key": "majormicro|major blueberriez",
-   "keys": [
-    "majormicro|major blueberriez"
-   ],
-   "brand": "majormicro",
-   "strain": "major blueberriez",
-   "first": "2026-10-10",
-   "days": 4,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000004"
-   ]
-  },
-  {
    "key": "majormicro|major kerosene",
    "keys": [
     "majormicro|major kerosene"
    ],
-   "brand": "majormicro",
-   "strain": "major kerosene",
-   "first": "2026-10-10",
-   "days": 4,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000004"
-   ]
-  },
-  {
-   "key": "majormicro|major kevlar",
-   "keys": [
-    "majormicro|major kevlar"
-   ],
-   "brand": "majormicro",
-   "strain": "major kevlar",
-   "first": "2026-10-10",
-   "days": 4,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000004"
-   ]
-  },
-  {
-   "key": "zipsog|mendo breath",
-   "keys": [
-    "zipsog|mendo breath"
-   ],
-   "brand": "zipsog",
-   "strain": "mendo breath",
-   "first": "2026-10-10",
-   "days": 4,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000169"
-   ]
-  },
-  {
-   "key": "woodstockheritagestrains|pink mintz",
-   "keys": [
-    "woodstockheritagestrains|pink mintz"
-   ],
-   "brand": "woodstockheritagestrains",
-   "strain": "pink mintz",
-   "first": "2026-10-10",
-   "days": 4,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-23-000042"
-   ]
-  },
-  {
-   "key": "majormicro|purple thai",
-   "keys": [
-    "majormicro|purple thai"
-   ],
-   "brand": "majormicro",
-   "strain": "purple thai",
+   "brand": "Major (Micro)",
+   "strain": "Major Kerosene",
    "first": "2026-10-10",
    "days": 4,
    "seenAt": 1,
@@ -18534,27 +18297,13 @@
    "keys": [
     "breakfastconnections|strawberry mimosa"
    ],
-   "brand": "breakfastconnections",
-   "strain": "strawberry mimosa",
+   "brand": "Breakfast Connections",
+   "strain": "Strawberry Mimosa",
    "first": "2026-10-10",
    "days": 4,
    "seenAt": 1,
    "shops": [
     "OCM-RETL-25-000292"
-   ]
-  },
-  {
-   "key": "zipsog|strawnana",
-   "keys": [
-    "zipsog|strawnana"
-   ],
-   "brand": "zipsog",
-   "strain": "strawnana",
-   "first": "2026-10-10",
-   "days": 4,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000169"
    ]
   },
   {
@@ -18562,8 +18311,8 @@
    "keys": [
     "reallifebotanicals|tropicana punch"
    ],
-   "brand": "reallifebotanicals",
-   "strain": "tropicana punch",
+   "brand": "Real Life Botanicals",
+   "strain": "Tropicana Punch",
    "first": "2026-10-10",
    "days": 4,
    "seenAt": 1,
@@ -18572,26 +18321,12 @@
    ]
   },
   {
-   "key": "zipsog|wedding cake",
-   "keys": [
-    "zipsog|wedding cake"
-   ],
-   "brand": "zipsog",
-   "strain": "wedding cake",
-   "first": "2026-10-10",
-   "days": 4,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000169"
-   ]
-  },
-  {
    "key": "bago|bag-o",
    "keys": [
     "bago|bag-o"
    ],
-   "brand": "bago",
-   "strain": "bag-o",
+   "brand": "Bag-O",
+   "strain": "BAG-O",
    "first": "2026-10-11",
    "days": 3,
    "seenAt": 1,
@@ -18604,8 +18339,8 @@
    "keys": [
     "gemmestudded|black canna"
    ],
-   "brand": "gemmestudded",
-   "strain": "black canna",
+   "brand": "Gemme Studded",
+   "strain": "Black Canna",
    "first": "2026-10-11",
    "days": 3,
    "seenAt": 1,
@@ -18614,45 +18349,17 @@
    ]
   },
   {
-   "key": "breakfastconnection|candy fumez",
-   "keys": [
-    "breakfastconnection|candy fumez"
-   ],
-   "brand": "breakfastconnection",
-   "strain": "candy fumez",
-   "first": "2026-10-11",
-   "days": 3,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-26-000335"
-   ]
-  },
-  {
    "key": "ruby|doobies - 2 count - og #18 - net",
    "keys": [
     "ruby|doobies - 2 count - og #18 - net"
    ],
-   "brand": "ruby",
-   "strain": "doobies - 2 count - og #18 - net",
+   "brand": "Ruby Farms",
+   "strain": "Doobies - 2 Count - OG #18 - Net",
    "first": "2026-10-11",
    "days": 3,
    "seenAt": 1,
    "shops": [
     "OCM-CAURD-26-000335"
-   ]
-  },
-  {
-   "key": "thekolektorsmallbatch|haze 2.0",
-   "keys": [
-    "thekolektorsmallbatch|haze 2.0"
-   ],
-   "brand": "thekolektorsmallbatch",
-   "strain": "haze 2.0",
-   "first": "2026-10-11",
-   "days": 3,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000245"
    ]
   },
   {
@@ -18660,8 +18367,8 @@
    "keys": [
     "davesbudz|jhr - third eye kind"
    ],
-   "brand": "davesbudz",
-   "strain": "jhr - third eye kind",
+   "brand": "Dave's Budz",
+   "strain": "JHR - Third Eye Kind",
    "first": "2026-10-11",
    "days": 3,
    "seenAt": 1,
@@ -18674,8 +18381,8 @@
    "keys": [
     "gemmestudded|lay down larry"
    ],
-   "brand": "gemmestudded",
-   "strain": "lay down larry",
+   "brand": "Gemme Studded",
+   "strain": "Lay Down Larry",
    "first": "2026-10-11",
    "days": 3,
    "seenAt": 1,
@@ -18688,8 +18395,8 @@
    "keys": [
     "backpackboysdeli|lemon cherry zkittles"
    ],
-   "brand": "backpackboysdeli",
-   "strain": "lemon cherry zkittles",
+   "brand": "Backpack Boys/ Deli",
+   "strain": "Lemon Cherry Zkittles",
    "first": "2026-10-11",
    "days": 3,
    "seenAt": 1,
@@ -18702,8 +18409,8 @@
    "keys": [
     "headspace|permanent marker"
    ],
-   "brand": "headspace",
-   "strain": "permanent marker",
+   "brand": "Head Space",
+   "strain": "Permanent Marker",
    "first": "2026-10-11",
    "days": 3,
    "seenAt": 1,
@@ -18712,26 +18419,12 @@
    ]
   },
   {
-   "key": "highfallscanna|wedding cake x cherry pie",
-   "keys": [
-    "highfallscanna|wedding cake x cherry pie"
-   ],
-   "brand": "highfallscanna",
-   "strain": "wedding cake x cherry pie",
-   "first": "2026-10-11",
-   "days": 3,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000292"
-   ]
-  },
-  {
    "key": "villains|alien og",
    "keys": [
     "villains|alien og"
    ],
    "brand": "villains",
-   "strain": "alien og",
+   "strain": "Alien Og",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -18744,8 +18437,8 @@
    "keys": [
     "dazesupply|blue dream x purple punch"
    ],
-   "brand": "dazesupply",
-   "strain": "blue dream x purple punch",
+   "brand": "Daze Supply",
+   "strain": "Blue Dream x Purple Punch",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -18754,54 +18447,12 @@
    ]
   },
   {
-   "key": "villains|candy man",
-   "keys": [
-    "villains|candy man"
-   ],
-   "brand": "villains",
-   "strain": "candy man",
-   "first": "2026-10-13",
-   "days": 1,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000120"
-   ]
-  },
-  {
-   "key": "leftcoast|cap junkie",
-   "keys": [
-    "leftcoast|cap junkie"
-   ],
-   "brand": "leftcoast",
-   "strain": "cap junkie",
-   "first": "2026-10-13",
-   "days": 1,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000146"
-   ]
-  },
-  {
-   "key": "hurleygrown|chivo",
-   "keys": [
-    "hurleygrown|chivo"
-   ],
-   "brand": "hurleygrown",
-   "strain": "chivo",
-   "first": "2026-10-13",
-   "days": 1,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000254"
-   ]
-  },
-  {
    "key": "country|country cannabis-strawberry banana sherbert \\ flower \\hybrid \\ \\",
    "keys": [
     "country|country cannabis-strawberry banana sherbert \\ flower \\hybrid \\ \\"
    ],
-   "brand": "country",
-   "strain": "country cannabis-strawberry banana sherbert \\ flower \\hybrid \\ \\",
+   "brand": "COUNTRY CANNABIS",
+   "strain": "COUNTRY CANNABIS-STRAWBERRY BANANA SHERBERT \\ FLOWER \\HYBRID \\ \\",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -18810,12 +18461,40 @@
    ]
   },
   {
+   "key": "villains|candy man",
+   "keys": [
+    "villains|candy man"
+   ],
+   "brand": "villains",
+   "strain": "Candy Man",
+   "first": "2026-10-13",
+   "days": 1,
+   "seenAt": 1,
+   "shops": [
+    "OCM-CAURD-24-000120"
+   ]
+  },
+  {
+   "key": "hurleygrown|chivo",
+   "keys": [
+    "hurleygrown|chivo"
+   ],
+   "brand": "Hurley Grown",
+   "strain": "Chivo",
+   "first": "2026-10-13",
+   "days": 1,
+   "seenAt": 1,
+   "shops": [
+    "OCM-RETL-24-000254"
+   ]
+  },
+  {
    "key": "dazesupply|donny burger x canal st runtz",
    "keys": [
     "dazesupply|donny burger x canal st runtz"
    ],
-   "brand": "dazesupply",
-   "strain": "donny burger x canal st runtz",
+   "brand": "Daze Supply",
+   "strain": "Donny Burger x Canal St Runtz",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -18828,8 +18507,8 @@
    "keys": [
     "drounce|dr - rs-11"
    ],
-   "brand": "drounce",
-   "strain": "dr - rs-11",
+   "brand": "Dr. Ounce",
+   "strain": "Dr - RS-11",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -18842,8 +18521,8 @@
    "keys": [
     "drounce|dr - sunset sherbet"
    ],
-   "brand": "drounce",
-   "strain": "dr - sunset sherbet",
+   "brand": "Dr. Ounce",
+   "strain": "Dr - SUNSET SHERBET",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -18856,8 +18535,8 @@
    "keys": [
     "kingsqueens|gelato #55"
    ],
-   "brand": "kingsqueens",
-   "strain": "gelato #55",
+   "brand": "KINGS & QUEENS",
+   "strain": "GELATO #55",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -18870,8 +18549,8 @@
    "keys": [
     "jusbud|lemon cherry gelato"
    ],
-   "brand": "jusbud",
-   "strain": "lemon cherry gelato",
+   "brand": "JUSBUD",
+   "strain": "Lemon Cherry Gelato",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -18880,26 +18559,12 @@
    ]
   },
   {
-   "key": "purpsny|lemon cherry gelato",
-   "keys": [
-    "purpsny|lemon cherry gelato"
-   ],
-   "brand": "purpsny",
-   "strain": "lemon cherry gelato",
-   "first": "2026-10-13",
-   "days": 1,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000132"
-   ]
-  },
-  {
    "key": "sodope|maui waui",
    "keys": [
     "sodope|maui waui"
    ],
-   "brand": "sodope",
-   "strain": "maui waui",
+   "brand": "So Dope",
+   "strain": "Maui Waui",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -18908,26 +18573,12 @@
    ]
   },
   {
-   "key": "grocery|moon galeto",
-   "keys": [
-    "grocery|moon galeto"
-   ],
-   "brand": "grocery",
-   "strain": "moon galeto",
-   "first": "2026-10-13",
-   "days": 1,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000175"
-   ]
-  },
-  {
    "key": "dazesupply|papaya bomb x purple punch",
    "keys": [
     "dazesupply|papaya bomb x purple punch"
    ],
-   "brand": "dazesupply",
-   "strain": "papaya bomb x purple punch",
+   "brand": "Daze Supply",
+   "strain": "Papaya Bomb x Purple Punch",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -18940,8 +18591,8 @@
    "keys": [
     "6point|peach destiny"
    ],
-   "brand": "6point",
-   "strain": "peach destiny",
+   "brand": "6 Point Cannabis",
+   "strain": "Peach Destiny",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -18950,26 +18601,12 @@
    ]
   },
   {
-   "key": "purpsny|peach rings",
-   "keys": [
-    "purpsny|peach rings"
-   ],
-   "brand": "purpsny",
-   "strain": "peach rings",
-   "first": "2026-10-13",
-   "days": 1,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000132"
-   ]
-  },
-  {
    "key": "sodope|punch breath",
    "keys": [
     "sodope|punch breath"
    ],
-   "brand": "sodope",
-   "strain": "punch breath",
+   "brand": "So Dope",
+   "strain": "Punch Breath",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -18982,8 +18619,8 @@
    "keys": [
     "jusbud|purple diesel"
    ],
-   "brand": "jusbud",
-   "strain": "purple diesel",
+   "brand": "JUSBUD",
+   "strain": "Purple Diesel",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -18992,26 +18629,12 @@
    ]
   },
   {
-   "key": "purpsny|purps lemonatti",
-   "keys": [
-    "purpsny|purps lemonatti"
-   ],
-   "brand": "purpsny",
-   "strain": "purps lemonatti",
-   "first": "2026-10-13",
-   "days": 1,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000132"
-   ]
-  },
-  {
    "key": "jusbud|runtz",
    "keys": [
     "jusbud|runtz"
    ],
-   "brand": "jusbud",
-   "strain": "runtz",
+   "brand": "JUSBUD",
+   "strain": "Runtz",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -19024,8 +18647,8 @@
    "keys": [
     "zips|skywalker og"
    ],
-   "brand": "zips",
-   "strain": "skywalker og",
+   "brand": "Zips",
+   "strain": "Skywalker OG",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -19038,8 +18661,8 @@
    "keys": [
     "sodope|super oreo"
    ],
-   "brand": "sodope",
-   "strain": "super oreo",
+   "brand": "So Dope",
+   "strain": "Super Oreo",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -19053,7 +18676,7 @@
     "1937|tamarind blaze"
    ],
    "brand": "1937",
-   "strain": "tamarind blaze",
+   "strain": "Tamarind Blaze",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -19066,8 +18689,8 @@
    "keys": [
     "skyrose|tropicana lemon"
    ],
-   "brand": "skyrose",
-   "strain": "tropicana lemon",
+   "brand": "Skyrose",
+   "strain": "Tropicana Lemon",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -19080,8 +18703,8 @@
    "keys": [
     "pioneerplanttech|twiz-lerz"
    ],
-   "brand": "pioneerplanttech",
-   "strain": "twiz-lerz",
+   "brand": "Pioneer Plant-Tech",
+   "strain": "Twiz-Lerz",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -19094,8 +18717,8 @@
    "keys": [
     "cookies|white truffle"
    ],
-   "brand": "cookies",
-   "strain": "white truffle",
+   "brand": "Cookies",
+   "strain": "White Truffle",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -19108,8 +18731,8 @@
    "keys": [
     "sodope|zello"
    ],
-   "brand": "sodope",
-   "strain": "zello",
+   "brand": "So Dope",
+   "strain": "Zello",
    "first": "2026-10-13",
    "days": 1,
    "seenAt": 1,
@@ -19241,7 +18864,7 @@
     "minimart|black jack - mm",
     "minimart|x - black jack"
    ],
-   "brand": "Mini Mart",
+   "brand": "mini MART",
    "strain": "Black Jack",
    "first": "2026-09-22",
    "days": 22,
@@ -19284,8 +18907,9 @@
    ]
   },
   {
-   "key": "grocery|modified bananas",
+   "key": "groceryaisle14g|modified bananas",
    "keys": [
+    "groceryaisle14g|modified bananas",
     "grocery|aisle - modified bananas",
     "grocery|modified banana",
     "grocery|modified bananas",
@@ -19294,12 +18918,13 @@
    ],
    "brand": "Grocery",
    "strain": "Modified Bananas",
-   "first": "2026-09-25",
-   "days": 19,
-   "seenAt": 40,
+   "first": "2026-09-24",
+   "days": 20,
+   "seenAt": 41,
    "shops": [
     "OCM-CAURD-23-000021",
     "OCM-CAURD-23-000030",
+    "OCM-CAURD-23-000038",
     "OCM-CAURD-24-000046",
     "OCM-CAURD-24-000063",
     "OCM-CAURD-24-000082",
@@ -19331,6 +18956,44 @@
     "OCM-RETL-25-000403",
     "OCM-RETL-25-000460",
     "OCM-RETL-26-000504"
+   ]
+  },
+  {
+   "key": "minimart|alien dawg",
+   "keys": [
+    "minimart|alien dawg",
+    "minimart|alien dawg - bills nfl edition",
+    "minimart|alien dawg - indica dom",
+    "minimart|alien dawg - nfl collection - ny bills",
+    "minimart|alien dawg - nfl collection: ny bills",
+    "minimart|alien dawg - ny giants edition",
+    "minimart|f16 mini mart - alien dawg",
+    "minimart|flower alien dawg",
+    "minimart|x - alien dawg"
+   ],
+   "brand": "mini mart",
+   "strain": "Alien Dawg",
+   "first": "2026-09-10",
+   "days": 34,
+   "seenAt": 39,
+   "shops": [
+    "OCM-CAURD-24-000095",
+    "OCM-CAURD-24-000112",
+    "OCM-CAURD-24-000127",
+    "OCM-CAURD-24-000180",
+    "OCM-CAURD-24-000196",
+    "OCM-CAURD-25-000241",
+    "OCM-CAURD-25-000321",
+    "OCM-RETL-24-000003",
+    "OCM-RETL-24-000020",
+    "OCM-RETL-24-000133",
+    "OCM-RETL-24-000144",
+    "OCM-RETL-24-000175",
+    "OCM-RETL-24-000233",
+    "OCM-RETL-24-000234",
+    "OCM-RETL-25-000274",
+    "OCM-RETL-25-000416",
+    "OCM-RETL-25-000418"
    ]
   },
   {
@@ -19373,80 +19036,83 @@
    ]
   },
   {
-   "key": "smartbud|flower lemon heads",
+   "key": "herb|wifi og",
    "keys": [
-    "smartbud|flower lemon heads",
-    "smartbud|lemon heads",
-    "smartbud|x - lemon heads"
+    "herb|wifi og",
+    "herb|wifi og - flower [1-1]",
+    "herb|wifi og - wg"
    ],
-   "brand": "SmartBud",
-   "strain": "Lemon Heads",
-   "first": "2026-09-16",
-   "days": 28,
-   "seenAt": 33,
+   "brand": "Herb",
+   "strain": "Wifi OG",
+   "first": "2026-09-23",
+   "days": 21,
+   "seenAt": 36,
    "shops": [
-    "OCM-CAURD-24-000063",
-    "OCM-CAURD-24-000079",
-    "OCM-CAURD-24-000083",
-    "OCM-CAURD-24-000095",
+    "OCM-CAURD-23-000020",
+    "OCM-CAURD-24-000046",
+    "OCM-CAURD-24-000082",
     "OCM-CAURD-24-000104",
-    "OCM-CAURD-24-000105",
-    "OCM-CAURD-24-000116",
-    "OCM-CAURD-24-000121",
-    "OCM-CAURD-24-000132",
-    "OCM-CAURD-24-000173",
-    "OCM-CAURD-24-000219",
-    "OCM-CAURD-25-000230",
+    "OCM-CAURD-24-000119",
+    "OCM-CAURD-24-000176",
+    "OCM-CAURD-24-000183",
+    "OCM-CAURD-24-000200",
+    "OCM-CAURD-24-000203",
     "OCM-CAURD-25-000236",
-    "OCM-CAURD-25-000241",
-    "OCM-CAURD-25-000249",
-    "OCM-CAURD-25-000265",
-    "OCM-CAURD-25-000282",
-    "OCM-CAURD-25-000288",
+    "OCM-CAURD-25-000284",
+    "OCM-CAURD-25-000287",
+    "OCM-CAURD-25-000294",
+    "OCM-CAURD-25-000297",
     "OCM-CAURD-26-000329",
-    "OCM-RETL-24-000008",
-    "OCM-RETL-24-000061",
-    "OCM-RETL-24-000078",
-    "OCM-RETL-24-000175",
+    "OCM-RETL-24-000003",
+    "OCM-RETL-24-000014",
+    "OCM-RETL-24-000020",
+    "OCM-RETL-24-000026",
+    "OCM-RETL-24-000075",
+    "OCM-RETL-24-000133",
+    "OCM-RETL-24-000197",
+    "OCM-RETL-24-000244",
+    "OCM-RETL-24-000247",
+    "OCM-RETL-24-000261",
     "OCM-RETL-24-000266",
-    "OCM-RETL-25-000322",
-    "OCM-RETL-25-000383"
+    "OCM-RETL-25-000416",
+    "OCM-RETL-26-000477"
    ]
   },
   {
-   "key": "find|out of office",
+   "key": "minimart|tres dawg",
    "keys": [
-    "find|out of office"
+    "minimart|flower tres dawg",
+    "minimart|tres dawg",
+    "minimart|tres dawg - buffalo bills edition",
+    "minimart|tres dawg - giants nfl edition",
+    "minimart|tres dawg - nfl collection - ny giants",
+    "minimart|tres dawg - nfl collection: ny giants",
+    "minimart|x - tres dawg"
    ],
-   "brand": "Find",
-   "strain": "Out of Office",
-   "first": "2026-09-18",
-   "days": 26,
+   "brand": "mini mart",
+   "strain": "Tres Dawg",
+   "first": "2026-09-10",
+   "days": 34,
    "seenAt": 32,
    "shops": [
-    "OCM-CAURD-23-000026",
-    "OCM-CAURD-23-000038",
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000046",
-    "OCM-CAURD-24-000051",
-    "OCM-CAURD-24-000087",
-    "OCM-CAURD-24-000091",
-    "OCM-CAURD-24-000094",
-    "OCM-CAURD-24-000096",
     "OCM-CAURD-24-000104",
-    "OCM-CAURD-24-000131",
+    "OCM-CAURD-24-000112",
+    "OCM-CAURD-24-000142",
     "OCM-CAURD-24-000144",
-    "OCM-CAURD-24-000180",
-    "OCM-CAURD-24-000203",
-    "OCM-CAURD-25-000256",
-    "OCM-CAURD-25-000271",
-    "OCM-CAURD-26-000329",
+    "OCM-CAURD-24-000173",
+    "OCM-CAURD-24-000176",
+    "OCM-CAURD-24-000196",
+    "OCM-CAURD-24-000222",
+    "OCM-CAURD-25-000321",
+    "OCM-RETL-24-000020",
     "OCM-RETL-24-000048",
-    "OCM-RETL-24-000099",
-    "OCM-RETL-24-000154",
-    "OCM-RETL-24-000191",
-    "OCM-RETL-24-000220",
-    "OCM-RETL-24-000247",
+    "OCM-RETL-24-000104",
+    "OCM-RETL-24-000144",
+    "OCM-RETL-24-000147",
+    "OCM-RETL-24-000175",
+    "OCM-RETL-24-000178",
+    "OCM-RETL-24-000233",
+    "OCM-RETL-25-000339",
     "OCM-RETL-25-000416"
    ]
   },
@@ -19498,6 +19164,7 @@
   {
    "key": "grocery|sugarcane kush",
    "keys": [
+    "groceryaisle14g|sugarcane kush",
     "grocery|aisle - sugarcane kush",
     "grocery|aisle 14 - sugarcane kush",
     "grocery|flower sugarcane kush",
@@ -19509,10 +19176,11 @@
    "strain": "Sugarcane Kush",
    "first": "2026-09-22",
    "days": 22,
-   "seenAt": 30,
+   "seenAt": 31,
    "shops": [
     "OCM-CAURD-23-000021",
     "OCM-CAURD-23-000030",
+    "OCM-CAURD-23-000038",
     "OCM-CAURD-24-000046",
     "OCM-CAURD-24-000077",
     "OCM-CAURD-24-000083",
@@ -19540,52 +19208,11 @@
    ]
   },
   {
-   "key": "runtz|rainbow runtz",
-   "keys": [
-    "runtz|rainbow runtz",
-    "runtz|rainbow runtz by runtz",
-    "runtz|rainbow runtz hybrid 1/8"
-   ],
-   "brand": "Runtz",
-   "strain": "Rainbow Runtz",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 27,
-   "shops": [
-    "OCM-CAURD-23-000020",
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000046",
-    "OCM-CAURD-24-000119",
-    "OCM-CAURD-24-000121",
-    "OCM-CAURD-24-000173",
-    "OCM-CAURD-24-000183",
-    "OCM-CAURD-24-000185",
-    "OCM-CAURD-24-000219",
-    "OCM-CAURD-25-000256",
-    "OCM-CAURD-25-000268",
-    "OCM-CAURD-25-000308",
-    "OCM-CAURD-26-000332",
-    "OCM-MICR-24-000030",
-    "OCM-RETL-24-000026",
-    "OCM-RETL-24-000055",
-    "OCM-RETL-24-000061",
-    "OCM-RETL-24-000068",
-    "OCM-RETL-24-000099",
-    "OCM-RETL-24-000114",
-    "OCM-RETL-24-000197",
-    "OCM-RETL-24-000247",
-    "OCM-RETL-24-000254",
-    "OCM-RETL-25-000319",
-    "OCM-RETL-25-000322",
-    "OCM-RETL-25-000450"
-   ]
-  },
-  {
    "key": "find|purple starfruit",
    "keys": [
     "find|purple starfruit"
    ],
-   "brand": "FIND",
+   "brand": "Find.",
    "strain": "Purple Starfruit",
    "first": "2026-09-23",
    "days": 21,
@@ -19647,6 +19274,8 @@
   {
    "key": "doobie|sunset sherbert",
    "keys": [
+    "doobies|flower- sunset sherbert",
+    "doobies|sunset sherbert",
     "doobie|sunset sherbert",
     "doobie|sunset sherbet"
    ],
@@ -19654,7 +19283,7 @@
    "strain": "Sunset Sherbert",
    "first": "2026-09-08",
    "days": 36,
-   "seenAt": 23,
+   "seenAt": 24,
    "shops": [
     "OCM-CAURD-23-000041",
     "OCM-CAURD-24-000046",
@@ -19667,6 +19296,7 @@
     "OCM-CAURD-25-000288",
     "OCM-CAURD-25-000308",
     "OCM-CAURD-26-000329",
+    "OCM-RETL-24-000008",
     "OCM-RETL-24-000026",
     "OCM-RETL-24-000055",
     "OCM-RETL-24-000099",
@@ -19846,6 +19476,40 @@
    ]
   },
   {
+   "key": "thebotanist|modified muffins",
+   "keys": [
+    "acreagethebotanist|modified muffins",
+    "botanist|modified muffin",
+    "botanist|modified muffins",
+    "thebotanist|modified muffins"
+   ],
+   "brand": "The Botanist",
+   "strain": "Modified Muffins",
+   "first": "2026-09-23",
+   "days": 21,
+   "seenAt": 21,
+   "shops": [
+    "OCM-CAURD-23-000030",
+    "OCM-CAURD-23-000042",
+    "OCM-CAURD-23-000044",
+    "OCM-CAURD-24-000075",
+    "OCM-CAURD-24-000094",
+    "OCM-CAURD-24-000129",
+    "OCM-CAURD-24-000144",
+    "OCM-CAURD-24-000162",
+    "OCM-CAURD-24-000169",
+    "OCM-CAURD-24-000205",
+    "OCM-CAURD-24-000222",
+    "OCM-CAURD-25-000245",
+    "OCM-CAURD-25-000271",
+    "OCM-RETL-24-000026",
+    "OCM-RETL-24-000133",
+    "OCM-RETL-24-000225",
+    "OCM-RETL-25-000293",
+    "OCM-RETL-25-000295"
+   ]
+  },
+  {
    "key": "bodegaboyz|singapore sling",
    "keys": [
     "bodegaboyz|*singapore sling",
@@ -19876,29 +19540,6 @@
     "OCM-RETL-25-000288",
     "OCM-RETL-25-000322",
     "OCM-RETL-26-000507"
-   ]
-  },
-  {
-   "key": "find|bubba mints",
-   "keys": [
-    "find|bubba mints",
-    "find|bubba mints - xl flower pack"
-   ],
-   "brand": "Find",
-   "strain": "Bubba Mints",
-   "first": "2026-09-18",
-   "days": 26,
-   "seenAt": 20,
-   "shops": [
-    "OCM-CAURD-23-000026",
-    "OCM-CAURD-23-000038",
-    "OCM-CAURD-24-000046",
-    "OCM-CAURD-24-000104",
-    "OCM-CAURD-24-000169",
-    "OCM-CAURD-25-000241",
-    "OCM-RETL-24-000068",
-    "OCM-RETL-24-000244",
-    "OCM-RETL-24-000247"
    ]
   },
   {
@@ -20181,29 +19822,30 @@
    ]
   },
   {
-   "key": "smartbud|cherry cookie crumble",
+   "key": "milkweed|invisible gas",
    "keys": [
-    "smartbud|cherry cookie crumble",
-    "smartbud|whole flower cherry cookie crumble"
+    "milkweedmicro|invisible gas (indoor hydroponics)",
+    "milkweed|flower invisible gas",
+    "milkweed|invisible gas"
    ],
-   "brand": "SmartBud",
-   "strain": "Cherry Cookie Crumble",
-   "first": "2026-09-17",
-   "days": 27,
+   "brand": "Milkweed",
+   "strain": "INVISIBLE GAS",
+   "first": "2026-09-15",
+   "days": 29,
    "seenAt": 18,
    "shops": [
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000121",
-    "OCM-CAURD-24-000132",
-    "OCM-CAURD-24-000173",
-    "OCM-CAURD-25-000230",
-    "OCM-CAURD-25-000236",
-    "OCM-CAURD-25-000249",
-    "OCM-CAURD-25-000288",
-    "OCM-RETL-24-000008",
-    "OCM-RETL-24-000055",
-    "OCM-RETL-24-000061",
-    "OCM-RETL-24-000175"
+    "OCM-CAURD-22-000001",
+    "OCM-CAURD-23-000009",
+    "OCM-CAURD-24-000046",
+    "OCM-CAURD-24-000140",
+    "OCM-CAURD-24-000203",
+    "OCM-CAURD-24-000206",
+    "OCM-CAURD-24-000214",
+    "OCM-CAURD-24-000225",
+    "OCM-CAURD-25-000238",
+    "OCM-CAURD-25-000282",
+    "OCM-RETL-24-000170",
+    "OCM-RETL-24-000244"
    ]
   },
   {
@@ -20236,6 +19878,38 @@
    ]
   },
   {
+   "key": "herb|kush mintz",
+   "keys": [
+    "herb|1 flower kush mintz",
+    "herb|flower kush mintz",
+    "herb|kush mints",
+    "herb|kush mintz"
+   ],
+   "brand": "Herb",
+   "strain": "Kush Mintz",
+   "first": "2026-09-22",
+   "days": 22,
+   "seenAt": 18,
+   "shops": [
+    "OCM-CAURD-24-000063",
+    "OCM-CAURD-24-000082",
+    "OCM-CAURD-24-000119",
+    "OCM-CAURD-24-000183",
+    "OCM-CAURD-24-000219",
+    "OCM-CAURD-25-000236",
+    "OCM-CAURD-25-000288",
+    "OCM-CAURD-25-000297",
+    "OCM-RETL-24-000003",
+    "OCM-RETL-24-000014",
+    "OCM-RETL-24-000099",
+    "OCM-RETL-24-000247",
+    "OCM-RETL-24-000261",
+    "OCM-RETL-25-000322",
+    "OCM-RETL-25-000416",
+    "OCM-RETL-26-000507"
+   ]
+  },
+  {
    "key": "bodegaboyz|triple stack",
    "keys": [
     "bodegaboyz|*triple stack",
@@ -20261,6 +19935,32 @@
     "OCM-RETL-25-000288",
     "OCM-RETL-25-000322",
     "OCM-RETL-26-000507"
+   ]
+  },
+  {
+   "key": "minimart|animal cookies",
+   "keys": [
+    "minimart|animal cookies",
+    "minimart|animal cookies - giants nfl edition",
+    "minimart|animal cookies - indica dom",
+    "minimart|animal cookies - nfl collection - ny giants",
+    "minimart|animal cookies - nfl collection: ny giants",
+    "minimart|flower animal cookies"
+   ],
+   "brand": "mini mart",
+   "strain": "Animal Cookies",
+   "first": "2026-09-10",
+   "days": 34,
+   "seenAt": 17,
+   "shops": [
+    "OCM-CAURD-24-000104",
+    "OCM-CAURD-24-000112",
+    "OCM-CAURD-24-000127",
+    "OCM-CAURD-25-000241",
+    "OCM-RETL-24-000020",
+    "OCM-RETL-24-000104",
+    "OCM-RETL-24-000144",
+    "OCM-RETL-25-000339"
    ]
   },
   {
@@ -20345,27 +20045,30 @@
    ]
   },
   {
-   "key": "milkweed|invisible gas",
+   "key": "leal|gazzurple - littles",
    "keys": [
-    "milkweed|flower invisible gas",
-    "milkweed|invisible gas"
+    "leal|gazzurple",
+    "leal|gazzurple - littles",
+    "leal|gazzurple littles",
+    "leal|littles - gazzurple",
+    "leal|littles gazzurple"
    ],
-   "brand": "Milkweed",
-   "strain": "Invisible Gas",
-   "first": "2026-09-15",
-   "days": 29,
+   "brand": "LEAL",
+   "strain": "Gazzurple",
+   "first": "2026-09-17",
+   "days": 27,
    "seenAt": 16,
    "shops": [
-    "OCM-CAURD-22-000001",
-    "OCM-CAURD-23-000009",
-    "OCM-CAURD-24-000140",
-    "OCM-CAURD-24-000203",
-    "OCM-CAURD-24-000206",
-    "OCM-CAURD-24-000214",
-    "OCM-CAURD-24-000225",
-    "OCM-CAURD-25-000238",
-    "OCM-CAURD-25-000282",
-    "OCM-RETL-24-000170"
+    "OCM-CAURD-24-000063",
+    "OCM-CAURD-24-000080",
+    "OCM-CAURD-24-000094",
+    "OCM-CAURD-24-000144",
+    "OCM-CAURD-24-000185",
+    "OCM-CAURD-24-000222",
+    "OCM-CAURD-26-000329",
+    "OCM-CAURD-26-000339",
+    "OCM-RETL-24-000026",
+    "OCM-RETL-25-000438"
    ]
   },
   {
@@ -20428,32 +20131,52 @@
    ]
   },
   {
-   "key": "runtz|super runtz",
+   "key": "milkweedmicro|white buffalo (indoor hydroponics)",
    "keys": [
-    "runtz|r - super runtz",
-    "runtz|super runtz"
+    "milkweedmicro|white buffalo (indoor hydroponics)",
+    "milkweed|flower white buffalo",
+    "milkweed|white buffalo"
    ],
-   "brand": "Runtz",
-   "strain": "Super Runtz",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 16,
+   "brand": "Milkweed",
+   "strain": "WHITE BUFFALO",
+   "first": "2026-09-16",
+   "days": 28,
+   "seenAt": 15,
    "shops": [
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000082",
-    "OCM-CAURD-24-000121",
-    "OCM-CAURD-24-000132",
-    "OCM-CAURD-24-000167",
-    "OCM-CAURD-24-000219",
-    "OCM-CAURD-25-000288",
-    "OCM-CAURD-26-000332",
-    "OCM-RETL-24-000026",
-    "OCM-RETL-24-000114",
-    "OCM-RETL-24-000197",
-    "OCM-RETL-25-000319",
-    "OCM-RETL-25-000322",
-    "OCM-RETL-25-000346",
-    "OCM-RETL-25-000450"
+    "OCM-CAURD-22-000001",
+    "OCM-CAURD-23-000009",
+    "OCM-CAURD-24-000046",
+    "OCM-CAURD-24-000140",
+    "OCM-CAURD-24-000203",
+    "OCM-CAURD-24-000206",
+    "OCM-CAURD-24-000214",
+    "OCM-CAURD-24-000225",
+    "OCM-CAURD-25-000238",
+    "OCM-CAURD-25-000282",
+    "OCM-RETL-24-000244"
+   ]
+  },
+  {
+   "key": "milkweed|og kush",
+   "keys": [
+    "milkweedmicro|og kush (indoor hydroponics)",
+    "milkweed|og kush"
+   ],
+   "brand": "Milkweed",
+   "strain": "OG Kush",
+   "first": "2026-09-17",
+   "days": 27,
+   "seenAt": 15,
+   "shops": [
+    "OCM-CAURD-22-000001",
+    "OCM-CAURD-24-000046",
+    "OCM-CAURD-24-000129",
+    "OCM-CAURD-24-000214",
+    "OCM-CAURD-24-000225",
+    "OCM-CAURD-25-000282",
+    "OCM-CAURD-25-000297",
+    "OCM-RETL-24-000244",
+    "OCM-RETL-25-000368"
    ]
   },
   {
@@ -20509,6 +20232,64 @@
     "OCM-RETL-24-000075",
     "OCM-RETL-24-000133",
     "OCM-RETL-24-000261",
+    "OCM-RETL-25-000416",
+    "OCM-RETL-26-000507"
+   ]
+  },
+  {
+   "key": "thebotanist|animal cookies",
+   "keys": [
+    "acreagethebotanist|animal cookies",
+    "botanist|animal cookies",
+    "thebotanist|animal cookies"
+   ],
+   "brand": "The Botanist",
+   "strain": "Animal Cookies",
+   "first": "2026-09-23",
+   "days": 21,
+   "seenAt": 15,
+   "shops": [
+    "OCM-CAURD-23-000042",
+    "OCM-CAURD-23-000044",
+    "OCM-CAURD-24-000094",
+    "OCM-CAURD-24-000144",
+    "OCM-CAURD-24-000162",
+    "OCM-CAURD-25-000271",
+    "OCM-RETL-24-000003",
+    "OCM-RETL-24-000061",
+    "OCM-RETL-25-000293",
+    "OCM-RETL-25-000295",
+    "OCM-RETL-25-000416",
+    "OCM-RETL-26-000507"
+   ]
+  },
+  {
+   "key": "thebotanist|guava casquitos",
+   "keys": [
+    "botanist|guava casquitos",
+    "thebotanist|guava casquito",
+    "thebotanist|guava casquitos",
+    "thebotanist|guava casquitos #5"
+   ],
+   "brand": "The Botanist",
+   "strain": "Guava Casquitos",
+   "first": "2026-09-29",
+   "days": 15,
+   "seenAt": 15,
+   "shops": [
+    "OCM-CAURD-24-000129",
+    "OCM-CAURD-24-000169",
+    "OCM-CAURD-25-000243",
+    "OCM-CAURD-25-000288",
+    "OCM-CAURD-26-000332",
+    "OCM-RETL-24-000003",
+    "OCM-RETL-24-000075",
+    "OCM-RETL-24-000159",
+    "OCM-RETL-24-000175",
+    "OCM-RETL-24-000254",
+    "OCM-RETL-25-000292",
+    "OCM-RETL-25-000295",
+    "OCM-RETL-25-000383",
     "OCM-RETL-25-000416",
     "OCM-RETL-26-000507"
    ]
@@ -20599,7 +20380,7 @@
    "keys": [
     "bouket|bordeaux rose"
    ],
-   "brand": "BOUKET",
+   "brand": "Boukét",
    "strain": "Bordeaux Rose",
    "first": "2026-09-16",
    "days": 28,
@@ -20669,6 +20450,37 @@
     "OCM-RETL-24-000003",
     "OCM-RETL-25-000292",
     "OCM-RETL-25-000416"
+   ]
+  },
+  {
+   "key": "sensei|supervillain",
+   "keys": [
+    "sensei|super villain",
+    "sensei|supervillain",
+    "sensei|supervillian",
+    "tkssensei|supervillain",
+    "tksxsensei|supervillain",
+    "tksxsensei|supervillian"
+   ],
+   "brand": "Sensei",
+   "strain": "SuperVillain",
+   "first": "2026-09-17",
+   "days": 27,
+   "seenAt": 14,
+   "shops": [
+    "OCM-CAURD-23-000021",
+    "OCM-CAURD-24-000064",
+    "OCM-CAURD-24-000065",
+    "OCM-CAURD-24-000094",
+    "OCM-CAURD-24-000119",
+    "OCM-CAURD-24-000138",
+    "OCM-CAURD-24-000182",
+    "OCM-CAURD-24-000214",
+    "OCM-CAURD-25-000268",
+    "OCM-CAURD-25-000316",
+    "OCM-CAURD-26-000359",
+    "OCM-RETL-24-000247",
+    "OCM-RETL-24-000254"
    ]
   },
   {
@@ -20746,78 +20558,6 @@
    ]
   },
   {
-   "key": "runtz|mega wellness og",
-   "keys": [
-    "runtz|mega wellness",
-    "runtz|mega wellness og",
-    "runtz|megawellness og"
-   ],
-   "brand": "Runtz",
-   "strain": "Mega Wellness OG",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 14,
-   "shops": [
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000046",
-    "OCM-CAURD-24-000082",
-    "OCM-CAURD-24-000119",
-    "OCM-CAURD-24-000173",
-    "OCM-CAURD-25-000288",
-    "OCM-CAURD-25-000311",
-    "OCM-CAURD-26-000332",
-    "OCM-CAURD-26-000339",
-    "OCM-RETL-24-000099",
-    "OCM-RETL-24-000114",
-    "OCM-RETL-24-000175",
-    "OCM-RETL-24-000197",
-    "OCM-RETL-24-000247"
-   ]
-  },
-  {
-   "key": "milkweed|og kush",
-   "keys": [
-    "milkweed|og kush"
-   ],
-   "brand": "Milkweed",
-   "strain": "OG Kush",
-   "first": "2026-09-17",
-   "days": 27,
-   "seenAt": 13,
-   "shops": [
-    "OCM-CAURD-22-000001",
-    "OCM-CAURD-24-000129",
-    "OCM-CAURD-24-000214",
-    "OCM-CAURD-24-000225",
-    "OCM-CAURD-25-000282",
-    "OCM-CAURD-25-000297",
-    "OCM-RETL-25-000368"
-   ]
-  },
-  {
-   "key": "milkweed|flower white buffalo",
-   "keys": [
-    "milkweed|flower white buffalo",
-    "milkweed|white buffalo"
-   ],
-   "brand": "Milkweed",
-   "strain": "White Buffalo",
-   "first": "2026-09-17",
-   "days": 27,
-   "seenAt": 13,
-   "shops": [
-    "OCM-CAURD-22-000001",
-    "OCM-CAURD-23-000009",
-    "OCM-CAURD-24-000140",
-    "OCM-CAURD-24-000203",
-    "OCM-CAURD-24-000206",
-    "OCM-CAURD-24-000214",
-    "OCM-CAURD-24-000225",
-    "OCM-CAURD-25-000238",
-    "OCM-CAURD-25-000282"
-   ]
-  },
-  {
    "key": "1937|phantom og",
    "keys": [
     "1937|*phantom og",
@@ -20841,6 +20581,32 @@
     "OCM-RETL-24-000133",
     "OCM-RETL-25-000306",
     "OCM-RETL-26-000507"
+   ]
+  },
+  {
+   "key": "thebotanist|kashmir og",
+   "keys": [
+    "botanist|kashmir og",
+    "thebotanist|kashmir og"
+   ],
+   "brand": "The Botanist",
+   "strain": "Kashmir OG",
+   "first": "2026-09-23",
+   "days": 21,
+   "seenAt": 13,
+   "shops": [
+    "OCM-CAURD-23-000030",
+    "OCM-CAURD-24-000094",
+    "OCM-CAURD-24-000129",
+    "OCM-CAURD-24-000205",
+    "OCM-CAURD-25-000245",
+    "OCM-CAURD-25-000271",
+    "OCM-RETL-24-000026",
+    "OCM-RETL-24-000099",
+    "OCM-RETL-24-000133",
+    "OCM-RETL-24-000225",
+    "OCM-RETL-25-000293",
+    "OCM-RETL-25-000295"
    ]
   },
   {
@@ -20869,57 +20635,49 @@
    ]
   },
   {
-   "key": "doobie|cookies & cream",
+   "key": "highpeaks|dragon heart",
    "keys": [
-    "doobie|& cream",
-    "doobie|cookies & cream",
-    "doobie|x - cookies & cream"
+    "highpeaks|*dragon heart",
+    "highpeaks|dragon heart"
    ],
-   "brand": "Doobie Labs",
-   "strain": "& Cream",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 13,
+   "brand": "HIGH PEAKS",
+   "strain": "dragon heart",
+   "first": "2026-09-07",
+   "days": 37,
+   "seenAt": 12,
    "shops": [
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000121",
-    "OCM-CAURD-24-000185",
-    "OCM-CAURD-24-000219",
-    "OCM-CAURD-26-000332",
-    "OCM-RETL-24-000114",
-    "OCM-RETL-24-000175",
-    "OCM-RETL-24-000189",
-    "OCM-RETL-24-000197",
+    "OCM-CAURD-25-000236",
+    "OCM-RETL-24-000037",
+    "OCM-RETL-24-000064",
+    "OCM-RETL-24-000068",
+    "OCM-RETL-24-000099",
+    "OCM-RETL-24-000120",
+    "OCM-RETL-24-000233",
+    "OCM-RETL-24-000247",
     "OCM-RETL-25-000269",
-    "OCM-RETL-25-000288",
-    "OCM-RETL-25-000322"
+    "OCM-RETL-25-000416"
    ]
   },
   {
-   "key": "doobie|red rum",
+   "key": "bouket|candyland purple",
    "keys": [
-    "doobie|red rum",
-    "doobie|x - red rum"
+    "bouket|(indoor) - candyland purple",
+    "bouket|candyland purple",
+    "bouket|mylar - candyland purple"
    ],
-   "brand": "Doobie Labs",
-   "strain": "Red Rum",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 13,
+   "brand": "Bouket",
+   "strain": "Candyland Purple",
+   "first": "2026-09-10",
+   "days": 34,
+   "seenAt": 12,
    "shops": [
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000095",
-    "OCM-CAURD-24-000121",
-    "OCM-CAURD-24-000123",
-    "OCM-CAURD-24-000219",
-    "OCM-CAURD-24-000222",
-    "OCM-CAURD-25-000288",
-    "OCM-RETL-24-000114",
-    "OCM-RETL-24-000197",
-    "OCM-RETL-24-000254",
-    "OCM-RETL-25-000269",
-    "OCM-RETL-25-000288",
-    "OCM-RETL-25-000322"
+    "OCM-CAURD-24-000075",
+    "OCM-CAURD-24-000127",
+    "OCM-CAURD-24-000166",
+    "OCM-CAURD-24-000182",
+    "OCM-CAURD-24-000196",
+    "OCM-RETL-25-000295",
+    "OCM-RETL-26-000504"
    ]
   },
   {
@@ -20944,26 +20702,27 @@
    ]
   },
   {
-   "key": "honeyking|purple diesel",
+   "key": "botanist|rainbow belts",
    "keys": [
-    "honeyking|purple diesel",
-    "honeyking|purple diesel 1-3[10]"
+    "acreagethebotanist|rainbow belts",
+    "botanist|rainbow belts",
+    "botanist|rainbow belts 2.0",
+    "thebotanist|rainbow belts 2.0"
    ],
-   "brand": "Honey King",
-   "strain": "Purple Diesel",
+   "brand": "Botanist",
+   "strain": "Rainbow Belts",
    "first": "2026-09-14",
    "days": 30,
    "seenAt": 12,
    "shops": [
-    "OCM-CAURD-24-000046",
-    "OCM-CAURD-24-000105",
-    "OCM-CAURD-24-000180",
-    "OCM-CAURD-25-000263",
-    "OCM-RETL-24-000103",
-    "OCM-RETL-24-000170",
-    "OCM-RETL-24-000244",
-    "OCM-RETL-25-000269",
-    "OCM-RETL-26-000477"
+    "OCM-CAURD-24-000087",
+    "OCM-CAURD-24-000127",
+    "OCM-CAURD-24-000169",
+    "OCM-CAURD-24-000188",
+    "OCM-CAURD-25-000229",
+    "OCM-CAURD-25-000271",
+    "OCM-CAURD-25-000297",
+    "OCM-MICR-25-000223"
    ]
   },
   {
@@ -20991,49 +20750,48 @@
    ]
   },
   {
-   "key": "houseofsacci|momochi",
+   "key": "smartbud|z-cookie",
    "keys": [
-    "houseofsacci|momochi"
+    "smartbud|z - cookie",
+    "smartbud|z cookies",
+    "smartbud|z-cookie",
+    "smartbud|z-cookies"
    ],
-   "brand": "House of Sacci",
-   "strain": "Momochi",
+   "brand": "Smartbud",
+   "strain": "Z-Cookie",
    "first": "2026-09-17",
    "days": 27,
    "seenAt": 12,
    "shops": [
-    "OCM-CAURD-23-000008",
-    "OCM-CAURD-24-000112",
-    "OCM-CAURD-24-000138",
-    "OCM-CAURD-25-000237",
-    "OCM-CAURD-25-000263",
-    "OCM-RETL-24-000026",
-    "OCM-RETL-24-000159",
-    "OCM-RETL-24-000175",
-    "OCM-RETL-25-000269",
-    "OCM-RETL-25-000284",
-    "OCM-RETL-26-000507"
+    "OCM-CAURD-24-000121",
+    "OCM-CAURD-24-000132",
+    "OCM-CAURD-24-000173",
+    "OCM-CAURD-25-000230",
+    "OCM-RETL-24-000008"
    ]
   },
   {
-   "key": "botanist|fried ice cream",
+   "key": "munchkins|chemlato",
    "keys": [
-    "botanist|fried ice cream"
+    "munchkins|chemlato",
+    "munchkins|chemlato - #",
+    "munchkin|chemlato"
    ],
-   "brand": "Botanist",
-   "strain": "Fried Ice Cream",
-   "first": "2026-09-18",
-   "days": 26,
+   "brand": "Munchkins",
+   "strain": "Chemlato",
+   "first": "2026-09-23",
+   "days": 21,
    "seenAt": 12,
    "shops": [
-    "OCM-CAURD-24-000104",
-    "OCM-CAURD-24-000222",
-    "OCM-CAURD-25-000271",
-    "OCM-RETL-24-000004",
-    "OCM-RETL-24-000026",
-    "OCM-RETL-24-000061",
-    "OCM-RETL-24-000146",
-    "OCM-RETL-24-000233",
-    "OCM-RETL-25-000295"
+    "OCM-CAURD-24-000169",
+    "OCM-CAURD-24-000200",
+    "OCM-CAURD-24-000207",
+    "OCM-CAURD-24-000210",
+    "OCM-CAURD-25-000292",
+    "OCM-RETL-24-000032",
+    "OCM-RETL-24-000133",
+    "OCM-RETL-25-000293",
+    "OCM-RETL-25-000448"
    ]
   },
   {
@@ -21060,6 +20818,29 @@
     "OCM-RETL-24-000261",
     "OCM-RETL-25-000284",
     "OCM-RETL-25-000416"
+   ]
+  },
+  {
+   "key": "strainkings|cherry cane",
+   "keys": [
+    "strainkings|cherry cane",
+    "strainkings|strain king - cherry cane"
+   ],
+   "brand": "Strain Kings",
+   "strain": "Cherry Cane",
+   "first": "2026-09-30",
+   "days": 14,
+   "seenAt": 12,
+   "shops": [
+    "OCM-CAURD-24-000077",
+    "OCM-CAURD-24-000156",
+    "OCM-CAURD-24-000183",
+    "OCM-CAURD-25-000236",
+    "OCM-CAURD-25-000281",
+    "OCM-CAURD-26-000334",
+    "OCM-RETL-24-000041",
+    "OCM-RETL-24-000175",
+    "OCM-RETL-25-000379"
    ]
   },
   {
@@ -21112,25 +20893,6 @@
    ]
   },
   {
-   "key": "smartbud|z-cookie",
-   "keys": [
-    "smartbud|z - cookie",
-    "smartbud|z-cookie",
-    "smartbud|z-cookies"
-   ],
-   "brand": "SmartBud",
-   "strain": "Z-Cookie",
-   "first": "2026-09-17",
-   "days": 27,
-   "seenAt": 11,
-   "shops": [
-    "OCM-CAURD-24-000121",
-    "OCM-CAURD-24-000132",
-    "OCM-CAURD-24-000173",
-    "OCM-RETL-24-000008"
-   ]
-  },
-  {
    "key": "florette|cheddar cheeze",
    "keys": [
     "florette|cheddar cheeze",
@@ -21156,97 +20918,24 @@
    ]
   },
   {
-   "key": "thebotanist|modified muffins",
+   "key": "herb|gorilla glue",
    "keys": [
-    "thebotanist|modified muffins"
+    "herb|gorilla glue",
+    "herb|gorilla glue by herb"
    ],
-   "brand": "The Botanist",
-   "strain": "Modified Muffins",
+   "brand": "Herb",
+   "strain": "Gorilla Glue",
    "first": "2026-09-23",
    "days": 21,
    "seenAt": 11,
    "shops": [
-    "OCM-CAURD-23-000042",
-    "OCM-CAURD-24-000094",
-    "OCM-CAURD-24-000129",
-    "OCM-CAURD-24-000144",
-    "OCM-CAURD-24-000162",
-    "OCM-CAURD-24-000205",
-    "OCM-CAURD-25-000245",
-    "OCM-RETL-24-000133",
-    "OCM-RETL-24-000225",
-    "OCM-RETL-25-000293"
-   ]
-  },
-  {
-   "key": "doobie|blue andeze",
-   "keys": [
-    "doobie|blue andeze"
-   ],
-   "brand": "Doobie Labs",
-   "strain": "Blue Andeze",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 11,
-   "shops": [
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000046",
-    "OCM-CAURD-24-000129",
-    "OCM-CAURD-26-000332",
-    "OCM-RETL-24-000020",
-    "OCM-RETL-24-000099",
-    "OCM-RETL-24-000114",
-    "OCM-RETL-24-000175",
-    "OCM-RETL-24-000197",
-    "OCM-RETL-24-000247",
-    "OCM-RETL-25-000288"
-   ]
-  },
-  {
-   "key": "electraleaf|limesickle",
-   "keys": [
-    "electraleaf|limesickle"
-   ],
-   "brand": "ElectraLeaf",
-   "strain": "Limesickle",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 11,
-   "shops": [
-    "OCM-CAURD-23-000007",
-    "OCM-CAURD-23-000008",
-    "OCM-CAURD-23-000021",
-    "OCM-CAURD-24-000060",
-    "OCM-CAURD-24-000077",
-    "OCM-CAURD-24-000087",
-    "OCM-CAURD-24-000144",
-    "OCM-CAURD-24-000162",
-    "OCM-RETL-24-000075",
-    "OCM-RETL-24-000133",
-    "OCM-RETL-24-000175"
-   ]
-  },
-  {
-   "key": "doobie|marathon og",
-   "keys": [
-    "doobie|marathon og"
-   ],
-   "brand": "Doobie Labs",
-   "strain": "Marathon OG",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 11,
-   "shops": [
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000208",
-    "OCM-CAURD-26-000329",
-    "OCM-RETL-24-000020",
-    "OCM-RETL-24-000099",
-    "OCM-RETL-24-000114",
-    "OCM-RETL-24-000175",
-    "OCM-RETL-24-000197",
-    "OCM-RETL-24-000247",
-    "OCM-RETL-25-000288"
+    "OCM-CAURD-24-000104",
+    "OCM-CAURD-24-000119",
+    "OCM-CAURD-25-000297",
+    "OCM-RETL-24-000003",
+    "OCM-RETL-24-000014",
+    "OCM-RETL-24-000261",
+    "OCM-RETL-25-000416"
    ]
   },
   {
@@ -21292,85 +20981,65 @@
    ]
   },
   {
-   "key": "budd|blue dream",
+   "key": "rythm|brownie points",
    "keys": [
-    "budd|blue dream"
+    "rythm|brownie points",
+    "rythm|brownie points - xl"
    ],
-   "brand": "budd",
-   "strain": "Blue Dream",
-   "first": "2026-09-14",
-   "days": 30,
-   "seenAt": 10,
+   "brand": "Rythm",
+   "strain": "Brownie Points",
+   "first": "2026-10-07",
+   "days": 7,
+   "seenAt": 11,
    "shops": [
-    "OCM-CAURD-24-000188",
-    "OCM-RETL-24-000260"
+    "OCM-CAURD-23-000003",
+    "OCM-CAURD-24-000125",
+    "OCM-CAURD-24-000129",
+    "OCM-CAURD-24-000138",
+    "OCM-CAURD-24-000169",
+    "OCM-CAURD-25-000242",
+    "OCM-RETL-24-000020",
+    "OCM-RETL-24-000233",
+    "OCM-RETL-25-000355",
+    "OCM-RETL-26-000504"
    ]
   },
   {
-   "key": "themechanic|riddlez",
+   "key": "milkweed|galactic warheads",
    "keys": [
-    "themechanic|riddlez",
-    "themechanic|riddlez - indica dom",
-    "themechanic|the mechanic farm riddlez"
+    "milkweedmicro|galactic warheads (indoor hydroponics)",
+    "milkweed|galactic warheads"
    ],
-   "brand": "The Mechanic Farm",
-   "strain": "Riddlez",
-   "first": "2026-09-14",
-   "days": 30,
-   "seenAt": 10,
-   "shops": [
-    "OCM-CAURD-24-000102",
-    "OCM-CAURD-24-000119",
-    "OCM-CAURD-24-000127",
-    "OCM-CAURD-24-000212",
-    "OCM-CAURD-24-000222",
-    "OCM-CAURD-26-000330",
-    "OCM-RETL-24-000055",
-    "OCM-RETL-24-000114"
-   ]
-  },
-  {
-   "key": "dank|wedding cake",
-   "keys": [
-    "dank|wedding cake"
-   ],
-   "brand": "Dank",
-   "strain": "Wedding Cake",
+   "brand": "Milkweed",
+   "strain": "Galactic Warheads",
    "first": "2026-09-15",
    "days": 29,
    "seenAt": 10,
    "shops": [
-    "OCM-CAURD-22-000001",
-    "OCM-CAURD-23-000026",
-    "OCM-CAURD-23-000042",
-    "OCM-CAURD-24-000087",
-    "OCM-CAURD-24-000105",
-    "OCM-CAURD-24-000144",
-    "OCM-CAURD-24-000220",
-    "OCM-CAURD-24-000225",
-    "OCM-CAURD-25-000242",
-    "OCM-RETL-24-000051"
+    "OCM-CAURD-24-000046",
+    "OCM-CAURD-25-000282",
+    "OCM-RETL-24-000114",
+    "OCM-RETL-24-000244"
    ]
   },
   {
-   "key": "thebotanist|animal cookies",
+   "key": "ish|northern lights",
    "keys": [
-    "thebotanist|animal cookies"
+    "ish|northern lights"
    ],
-   "brand": "The Botanist",
-   "strain": "Animal Cookies",
-   "first": "2026-09-23",
-   "days": 21,
+   "brand": "ISH",
+   "strain": "Northern Lights",
+   "first": "2026-09-17",
+   "days": 27,
    "seenAt": 10,
    "shops": [
-    "OCM-CAURD-23-000042",
-    "OCM-CAURD-24-000094",
-    "OCM-CAURD-24-000144",
-    "OCM-CAURD-24-000162",
-    "OCM-RETL-24-000003",
-    "OCM-RETL-25-000293",
+    "OCM-CAURD-23-000008",
+    "OCM-CAURD-24-000142",
+    "OCM-CAURD-24-000205",
+    "OCM-CAURD-26-000336",
+    "OCM-RETL-25-000269",
     "OCM-RETL-25-000416",
-    "OCM-RETL-26-000507"
+    "OCM-RETL-26-000473"
    ]
   },
   {
@@ -21403,7 +21072,7 @@
     "dragonfly|queen of diamonds"
    ],
    "brand": "Dragonfly",
-   "strain": "Queen of Diamonds",
+   "strain": "QUEEN OF DIAMONDS",
    "first": "2026-09-28",
    "days": 16,
    "seenAt": 10,
@@ -21417,6 +21086,28 @@
     "OCM-RETL-24-000146",
     "OCM-RETL-24-000197",
     "OCM-RETL-25-000322"
+   ]
+  },
+  {
+   "key": "thebotanist|blueberry lobster #5",
+   "keys": [
+    "botanist|blueberry lobster #5",
+    "thebotanist|blueberry lobster",
+    "thebotanist|blueberry lobster #5",
+    "thebotanist|whole blueberry lobster #5"
+   ],
+   "brand": "The Botanist",
+   "strain": "Blueberry Lobster #5",
+   "first": "2026-09-29",
+   "days": 15,
+   "seenAt": 10,
+   "shops": [
+    "OCM-CAURD-26-000332",
+    "OCM-RETL-24-000003",
+    "OCM-RETL-24-000159",
+    "OCM-RETL-25-000292",
+    "OCM-RETL-25-000383",
+    "OCM-RETL-26-000507"
    ]
   },
   {
@@ -21442,68 +21133,25 @@
    ]
   },
   {
-   "key": "thebotanist|guava casquitos",
+   "key": "thebotanist|cheese and chong",
    "keys": [
-    "thebotanist|guava casquito",
-    "thebotanist|guava casquitos",
-    "thebotanist|guava casquitos #5"
-   ],
-   "brand": "The Botanist",
-   "strain": "Guava Casquitos",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 10,
-   "shops": [
-    "OCM-CAURD-24-000129",
-    "OCM-CAURD-25-000243",
-    "OCM-CAURD-26-000332",
-    "OCM-RETL-24-000003",
-    "OCM-RETL-24-000075",
-    "OCM-RETL-24-000159",
-    "OCM-RETL-25-000292",
-    "OCM-RETL-25-000383",
-    "OCM-RETL-25-000416",
-    "OCM-RETL-26-000507"
-   ]
-  },
-  {
-   "key": "botanist|rainbow belts",
-   "keys": [
-    "botanist|rainbow belts",
-    "botanist|rainbow belts 2.0"
+    "botanist|cheese & chong",
+    "botanist|cheese and chong",
+    "thebotanist|cheese and chong"
    ],
    "brand": "Botanist",
-   "strain": "Rainbow Belts",
-   "first": "2026-09-14",
-   "days": 30,
+   "strain": "Cheese and Chong",
+   "first": "2026-09-15",
+   "days": 29,
    "seenAt": 9,
    "shops": [
-    "OCM-CAURD-24-000127",
-    "OCM-CAURD-24-000169",
-    "OCM-CAURD-24-000188",
-    "OCM-CAURD-25-000229",
-    "OCM-CAURD-25-000271",
-    "OCM-MICR-25-000223"
-   ]
-  },
-  {
-   "key": "dada|sour starburst",
-   "keys": [
-    "dada|sour starburst"
-   ],
-   "brand": "Dada",
-   "strain": "Sour Starburst",
-   "first": "2026-09-14",
-   "days": 30,
-   "seenAt": 9,
-   "shops": [
-    "OCM-CAURD-25-000229",
-    "OCM-CAURD-25-000241",
-    "OCM-CAURD-26-000335",
-    "OCM-RETL-24-000105",
-    "OCM-RETL-24-000151",
-    "OCM-RETL-25-000295",
-    "OCM-RETL-25-000416"
+    "OCM-CAURD-23-000038",
+    "OCM-CAURD-24-000094",
+    "OCM-CAURD-25-000304",
+    "OCM-RETL-24-000021",
+    "OCM-RETL-24-000026",
+    "OCM-RETL-24-000146",
+    "OCM-RETL-25-000293"
    ]
   },
   {
@@ -21511,7 +21159,7 @@
    "keys": [
     "canagenix|gorilla glue"
    ],
-   "brand": "Canagenix",
+   "brand": "CANAGENIX",
    "strain": "Gorilla Glue",
    "first": "2026-09-16",
    "days": 28,
@@ -21526,51 +21174,6 @@
     "OCM-CAURD-25-000282",
     "OCM-CAURD-25-000287",
     "OCM-RETL-24-000144"
-   ]
-  },
-  {
-   "key": "sensei|supervillain",
-   "keys": [
-    "sensei|super villain",
-    "sensei|super villian",
-    "sensei|supervillain",
-    "sensei|supervillian"
-   ],
-   "brand": "Sensei",
-   "strain": "SuperVillain",
-   "first": "2026-09-17",
-   "days": 27,
-   "seenAt": 9,
-   "shops": [
-    "OCM-CAURD-23-000007",
-    "OCM-CAURD-24-000094",
-    "OCM-CAURD-24-000119",
-    "OCM-CAURD-24-000138",
-    "OCM-CAURD-25-000268",
-    "OCM-RETL-24-000247",
-    "OCM-RETL-24-000254",
-    "OCM-RETL-25-000292"
-   ]
-  },
-  {
-   "key": "botanist|modified muffins",
-   "keys": [
-    "botanist|modified muffin",
-    "botanist|modified muffins"
-   ],
-   "brand": "Botanist",
-   "strain": "Modified Muffins",
-   "first": "2026-09-24",
-   "days": 20,
-   "seenAt": 9,
-   "shops": [
-    "OCM-CAURD-23-000030",
-    "OCM-CAURD-24-000075",
-    "OCM-CAURD-24-000169",
-    "OCM-CAURD-24-000222",
-    "OCM-CAURD-25-000271",
-    "OCM-RETL-24-000026",
-    "OCM-RETL-25-000295"
    ]
   },
   {
@@ -21617,80 +21220,89 @@
    ]
   },
   {
-   "key": "milkweed|galactic warheads",
+   "key": "bulkboys|gmo",
    "keys": [
-    "milkweed|galactic warheads"
+    "bulkboys|gmo",
+    "thebulkboys|*gmo",
+    "thebulkboys|gmo"
    ],
-   "brand": "Milkweed",
-   "strain": "Galactic Warheads",
-   "first": "2026-09-15",
-   "days": 29,
+   "brand": "Bulk Boys",
+   "strain": "GMO",
+   "first": "2026-09-10",
+   "days": 34,
    "seenAt": 8,
    "shops": [
-    "OCM-CAURD-25-000282",
-    "OCM-RETL-24-000114"
+    "OCM-CAURD-23-000020",
+    "OCM-CAURD-24-000046",
+    "OCM-CAURD-24-000094",
+    "OCM-CAURD-25-000242",
+    "OCM-CAURD-25-000294",
+    "OCM-RETL-24-000037",
+    "OCM-RETL-24-000099",
+    "OCM-RETL-24-000247"
    ]
   },
   {
-   "key": "missgrass|orange crush queen",
+   "key": "hashtaghoney|new york jet fuel",
    "keys": [
-    "missgrass|fast times - orange crush queen",
-    "missgrass|fast times orange crush queen",
-    "missgrass|orange crush queen"
+    "hashtaghoney|new york jet fue",
+    "hashtaghoney|new york jet fuel"
    ],
-   "brand": "Miss Grass",
-   "strain": "Orange Crush Queen",
-   "first": "2026-09-15",
-   "days": 29,
+   "brand": "Hashtag Honey",
+   "strain": "New York Jet Fuel",
+   "first": "2026-09-10",
+   "days": 34,
    "seenAt": 8,
    "shops": [
-    "MM1004D",
-    "OCM-CAURD-23-000009",
-    "OCM-CAURD-23-000030",
-    "OCM-CAURD-24-000100",
-    "OCM-CAURD-24-000206",
-    "OCM-CAURD-25-000238",
-    "OCM-CAURD-25-000263"
+    "OCM-CAURD-23-000020",
+    "OCM-CAURD-24-000154",
+    "OCM-CAURD-24-000166",
+    "OCM-CAURD-24-000205",
+    "OCM-CAURD-25-000234",
+    "OCM-CAURD-25-000274"
    ]
   },
   {
-   "key": "thebulkboys|bulky's",
+   "key": "woodstock|zoap",
    "keys": [
-    "thebulkboys|*bulky's blend #1",
-    "thebulkboys|bulky's",
-    "thebulkboys|bulky's blend",
-    "thebulkboys|bulky's blend of bits",
-    "thebulkboys|bulky's blend of bits #1"
+    "woodstockheritagestrains|zoap",
+    "woodstock|zoap"
    ],
-   "brand": "The Bulk Boys",
-   "strain": "Bulky's Blend of Bits #1",
+   "brand": "Woodstock",
+   "strain": "Zoap",
+   "first": "2026-09-14",
+   "days": 30,
+   "seenAt": 8,
+   "shops": [
+    "OCM-CAURD-22-000001",
+    "OCM-CAURD-24-000074",
+    "OCM-CAURD-24-000146",
+    "OCM-CAURD-24-000163",
+    "OCM-CAURD-24-000225",
+    "OCM-RETL-24-000026",
+    "OCM-RETL-25-000306"
+   ]
+  },
+  {
+   "key": "leal|garlic cookies - littles",
+   "keys": [
+    "leal|garlic cookies",
+    "leal|garlic cookies - littles",
+    "leal|garlic cookies littles",
+    "leal|littles garlic cookies"
+   ],
+   "brand": "Leal",
+   "strain": "Garlic Cookies - Littles",
    "first": "2026-09-17",
    "days": 27,
    "seenAt": 8,
    "shops": [
-    "OCM-CAURD-23-000041",
-    "OCM-RETL-24-000244",
-    "OCM-RETL-26-000504"
-   ]
-  },
-  {
-   "key": "thebotanist|kashmir og",
-   "keys": [
-    "thebotanist|kashmir og"
-   ],
-   "brand": "The Botanist",
-   "strain": "Kashmir OG",
-   "first": "2026-09-23",
-   "days": 21,
-   "seenAt": 8,
-   "shops": [
+    "OCM-CAURD-24-000063",
     "OCM-CAURD-24-000094",
-    "OCM-CAURD-24-000129",
-    "OCM-CAURD-24-000205",
-    "OCM-CAURD-25-000245",
-    "OCM-RETL-24-000133",
-    "OCM-RETL-24-000225",
-    "OCM-RETL-25-000293"
+    "OCM-CAURD-24-000144",
+    "OCM-CAURD-26-000339",
+    "OCM-RETL-24-000004",
+    "OCM-RETL-25-000438"
    ]
   },
   {
@@ -21698,7 +21310,7 @@
    "keys": [
     "find|rind rewind"
    ],
-   "brand": "Find.",
+   "brand": "Find",
    "strain": "Rind Rewind",
    "first": "2026-09-23",
    "days": 21,
@@ -21710,27 +21322,6 @@
     "OCM-CAURD-25-000241",
     "OCM-CAURD-25-000297",
     "OCM-RETL-25-000324"
-   ]
-  },
-  {
-   "key": "herb|cherry pie",
-   "keys": [
-    "herb|cherry pie"
-   ],
-   "brand": "Herb",
-   "strain": "Cherry Pie",
-   "first": "2026-09-24",
-   "days": 20,
-   "seenAt": 8,
-   "shops": [
-    "OCM-CAURD-24-000119",
-    "OCM-CAURD-24-000203",
-    "OCM-CAURD-25-000288",
-    "OCM-CAURD-25-000297",
-    "OCM-RETL-24-000003",
-    "OCM-RETL-24-000099",
-    "OCM-RETL-25-000416",
-    "OCM-RETL-26-000507"
    ]
   },
   {
@@ -21794,27 +21385,6 @@
    ]
   },
   {
-   "key": "thebotanist|blueberry lobster #5",
-   "keys": [
-    "thebotanist|blueberry lobster",
-    "thebotanist|blueberry lobster #5",
-    "thebotanist|whole blueberry lobster #5"
-   ],
-   "brand": "The Botanist",
-   "strain": "Blueberry Lobster #5",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 8,
-   "shops": [
-    "OCM-CAURD-26-000332",
-    "OCM-RETL-24-000003",
-    "OCM-RETL-24-000159",
-    "OCM-RETL-25-000292",
-    "OCM-RETL-25-000383",
-    "OCM-RETL-26-000507"
-   ]
-  },
-  {
    "key": "alchemypure|cel ray",
    "keys": [
     "alchemypure|cel ray"
@@ -21836,24 +21406,25 @@
    ]
   },
   {
-   "key": "doobie|pop rocks",
+   "key": "botanist|grape glitz",
    "keys": [
-    "doobie|pop rocks"
+    "botanist|grape glitz",
+    "thebotanist|grape glitz"
    ],
-   "brand": "Doobie Labs",
-   "strain": "Pop Rocks",
+   "brand": "Botanist",
+   "strain": "Grape Glitz",
    "first": "2026-09-29",
    "days": 15,
    "seenAt": 8,
    "shops": [
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000046",
-    "OCM-CAURD-24-000121",
-    "OCM-CAURD-24-000138",
-    "OCM-RETL-24-000114",
+    "OCM-CAURD-24-000129",
+    "OCM-CAURD-24-000169",
+    "OCM-CAURD-25-000243",
+    "OCM-CAURD-25-000288",
+    "OCM-RETL-24-000003",
+    "OCM-RETL-24-000159",
     "OCM-RETL-24-000175",
-    "OCM-RETL-24-000197",
-    "OCM-RETL-25-000288"
+    "OCM-RETL-25-000295"
    ]
   },
   {
@@ -21863,7 +21434,7 @@
     "rollinggreen|twisted truffles",
     "rollinggreen|twisted trufflez"
    ],
-   "brand": "Rolling Green Cannabis",
+   "brand": "Rolling Green",
    "strain": "Twisted Truffles",
    "first": "2026-09-30",
    "days": 14,
@@ -22027,14 +21598,33 @@
     "bouket|(indoor) - moonbow",
     "bouket|moonbow"
    ],
-   "brand": "Bouket",
-   "strain": "Moonbow",
+   "brand": "Boukét",
+   "strain": "MOONBOW",
    "first": "2026-09-14",
    "days": 30,
    "seenAt": 7,
    "shops": [
     "OCM-RETL-24-000261",
     "OCM-RETL-26-000504"
+   ]
+  },
+  {
+   "key": "alpineagronomy|alien vortex",
+   "keys": [
+    "alpineagronomymicro|alien vortex",
+    "alpineagronomy|alien vortex",
+    "alpineagronomy|alien vortex #94",
+    "alpineagronomy|alien vortex 94"
+   ],
+   "brand": "Alpine Agronomy",
+   "strain": "Alien Vortex",
+   "first": "2026-09-15",
+   "days": 29,
+   "seenAt": 7,
+   "shops": [
+    "OCM-CAURD-24-000104",
+    "OCM-RETL-24-000004",
+    "OCM-RETL-25-000417"
    ]
   },
   {
@@ -22060,8 +21650,8 @@
     "houseoftrees|hot - sweet sorbet",
     "houseoftrees|sweet sorbet"
    ],
-   "brand": "House of Trees",
-   "strain": "Sweet Sorbet",
+   "brand": "HOUSE OF TREES",
+   "strain": "HOT - Sweet Sorbet",
    "first": "2026-09-19",
    "days": 25,
    "seenAt": 7,
@@ -22096,7 +21686,69 @@
    ]
   },
   {
-   "key": "electraleaf|blue nerdz",
+   "key": "zipsog|chem dawg",
+   "keys": [
+    "zipsog|chem dawg",
+    "zips|chem dawg",
+    "zips|chemdawg"
+   ],
+   "brand": "Zips",
+   "strain": "Chem Dawg",
+   "first": "2026-09-24",
+   "days": 20,
+   "seenAt": 7,
+   "shops": [
+    "OCM-CAURD-23-000021",
+    "OCM-CAURD-24-000104",
+    "OCM-CAURD-24-000144",
+    "OCM-CAURD-25-000265",
+    "OCM-RETL-24-000263",
+    "OCM-RETL-25-000319",
+    "OCM-RETL-25-000450"
+   ]
+  },
+  {
+   "key": "zips|khalifa kush",
+   "keys": [
+    "zipsog|khalifa kush",
+    "zips|khalifa kush"
+   ],
+   "brand": "ZIPS",
+   "strain": "Khalifa Kush",
+   "first": "2026-09-24",
+   "days": 20,
+   "seenAt": 7,
+   "shops": [
+    "OCM-CAURD-23-000030",
+    "OCM-CAURD-24-000166",
+    "OCM-RETL-24-000103",
+    "OCM-RETL-24-000233",
+    "OCM-RETL-25-000339"
+   ]
+  },
+  {
+   "key": "zips|train haze",
+   "keys": [
+    "zipsog|ghost train haze",
+    "zips|ghost train haze",
+    "zips|train haze"
+   ],
+   "brand": "Zips",
+   "strain": "Ghost Train Haze",
+   "first": "2026-09-25",
+   "days": 19,
+   "seenAt": 7,
+   "shops": [
+    "OCM-CAURD-23-000021",
+    "OCM-CAURD-23-000030",
+    "OCM-CAURD-24-000104",
+    "OCM-CAURD-24-000166",
+    "OCM-RETL-25-000319",
+    "OCM-RETL-25-000450"
+   ]
+  },
+  {
+   "key": "electraleaf|blue nerds",
    "keys": [
     "electraleaf|blue nerds",
     "electraleaf|blue nerdz"
@@ -22114,6 +21766,28 @@
     "OCM-RETL-24-000175",
     "OCM-RETL-25-000319",
     "OCM-RETL-25-000450"
+   ]
+  },
+  {
+   "key": "botanist|cherry dutch treat",
+   "keys": [
+    "botanist|cheery dutch treat",
+    "botanist|cherry dutch treat",
+    "thebotanist|cherry dutch treat",
+    "thebotanist|dutch cherry treat",
+    "thebotanist|dutch treat x cherry pie"
+   ],
+   "brand": "The Botanist",
+   "strain": "Cherry Dutch Treat",
+   "first": "2026-09-29",
+   "days": 15,
+   "seenAt": 7,
+   "shops": [
+    "OCM-CAURD-25-000243",
+    "OCM-RETL-24-000003",
+    "OCM-RETL-24-000075",
+    "OCM-RETL-24-000175",
+    "OCM-RETL-25-000295"
    ]
   },
   {
@@ -22137,21 +21811,21 @@
    ]
   },
   {
-   "key": "alpineagronomy|alien vortex",
+   "key": "voiceofplants|super runtz x sherbanger",
    "keys": [
-    "alpineagronomy|alien vortex",
-    "alpineagronomy|alien vortex #94",
-    "alpineagronomy|alien vortex 94"
+    "voiceofplants|super runtz x sherbanger",
+    "voiceofplant|super runtz x sherbanger",
+    "voiceofplant|super runtz x sherbango"
    ],
-   "brand": "Alpine Agronomy",
-   "strain": "Alien Vortex",
-   "first": "2026-09-15",
-   "days": 29,
+   "brand": "Voice Of Plants",
+   "strain": "Super Runtz X Sherbanger",
+   "first": "2026-09-14",
+   "days": 30,
    "seenAt": 6,
    "shops": [
-    "OCM-CAURD-24-000104",
-    "OCM-RETL-24-000004",
-    "OCM-RETL-25-000417"
+    "OCM-RETL-24-000068",
+    "OCM-RETL-24-000261",
+    "OCM-RETL-26-000504"
    ]
   },
   {
@@ -22169,44 +21843,6 @@
     "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000188",
     "OCM-CAURD-25-000304"
-   ]
-  },
-  {
-   "key": "tksxsensei|supervillian",
-   "keys": [
-    "tksxsensei|supervillain",
-    "tksxsensei|supervillian"
-   ],
-   "brand": "TKSxSensei",
-   "strain": "Supervillain",
-   "first": "2026-09-17",
-   "days": 27,
-   "seenAt": 6,
-   "shops": [
-    "OCM-CAURD-23-000021",
-    "OCM-CAURD-24-000064",
-    "OCM-CAURD-24-000065",
-    "OCM-CAURD-24-000182",
-    "OCM-CAURD-25-000316",
-    "OCM-CAURD-26-000359"
-   ]
-  },
-  {
-   "key": "botanist|cheese and chong",
-   "keys": [
-    "botanist|cheese & chong",
-    "botanist|cheese and chong"
-   ],
-   "brand": "Botanist",
-   "strain": "Cheese and Chong",
-   "first": "2026-09-18",
-   "days": 26,
-   "seenAt": 6,
-   "shops": [
-    "OCM-CAURD-25-000304",
-    "OCM-RETL-24-000021",
-    "OCM-RETL-24-000026",
-    "OCM-RETL-24-000146"
    ]
   },
   {
@@ -22246,27 +21882,13 @@
    ]
   },
   {
-   "key": "studio|g41 x grape gas",
-   "keys": [
-    "studio|g41 x grape gas"
-   ],
-   "brand": "Studio Farms NY",
-   "strain": "G41 x Grape Gas",
-   "first": "2026-09-23",
-   "days": 21,
-   "seenAt": 6,
-   "shops": [
-    "OCM-CAURD-25-000287"
-   ]
-  },
-  {
    "key": "bouket|low orbit",
    "keys": [
     "bouket|low orbit",
     "bouket|x - low orbit"
    ],
    "brand": "BOUKET",
-   "strain": "Low Orbit",
+   "strain": "LOW ORBIT",
    "first": "2026-09-23",
    "days": 21,
    "seenAt": 6,
@@ -22335,41 +21957,6 @@
    ]
   },
   {
-   "key": "zips|khalifa kush",
-   "keys": [
-    "zips|khalifa kush"
-   ],
-   "brand": "ZIPS",
-   "strain": "Khalifa Kush",
-   "first": "2026-09-24",
-   "days": 20,
-   "seenAt": 6,
-   "shops": [
-    "OCM-CAURD-23-000030",
-    "OCM-CAURD-24-000166",
-    "OCM-RETL-24-000233",
-    "OCM-RETL-25-000339"
-   ]
-  },
-  {
-   "key": "thebotanist|mcruntz",
-   "keys": [
-    "thebotanist|mcruntz"
-   ],
-   "brand": "The Botanist",
-   "strain": "McRuntz",
-   "first": "2026-09-24",
-   "days": 20,
-   "seenAt": 6,
-   "shops": [
-    "OCM-CAURD-23-000042",
-    "OCM-CAURD-24-000094",
-    "OCM-CAURD-24-000144",
-    "OCM-CAURD-24-000205",
-    "OCM-RETL-24-000225"
-   ]
-  },
-  {
    "key": "sp|pineapple ghost",
    "keys": [
     "sp|pineapple ghost"
@@ -22386,23 +21973,6 @@
     "OCM-RETL-25-000269",
     "OCM-RETL-25-000324",
     "OCM-RETL-26-000499"
-   ]
-  },
-  {
-   "key": "dumboelectric|problem child",
-   "keys": [
-    "dumboelectric|problem child"
-   ],
-   "brand": "Dumbo Electric",
-   "strain": "Problem Child",
-   "first": "2026-09-24",
-   "days": 20,
-   "seenAt": 6,
-   "shops": [
-    "OCM-CAURD-24-000132",
-    "OCM-CAURD-24-000207",
-    "OCM-CAURD-25-000321",
-    "OCM-RETL-25-000368"
    ]
   },
   {
@@ -22445,42 +22015,24 @@
    ]
   },
   {
-   "key": "zips|chem dawg",
+   "key": "zips|apple fritter",
    "keys": [
-    "zips|chem dawg",
-    "zips|chemdawg"
+    "zipsog|apple fritter",
+    "zips|apple fritter",
+    "zips|apples fritter"
    ],
-   "brand": "Zips",
-   "strain": "Chem Dawg",
+   "brand": "ZIPS",
+   "strain": "Apple Fritter",
    "first": "2026-09-25",
    "days": 19,
    "seenAt": 6,
    "shops": [
+    "OCM-CAURD-23-000020",
     "OCM-CAURD-23-000021",
+    "OCM-CAURD-24-000104",
     "OCM-CAURD-24-000144",
     "OCM-CAURD-25-000265",
-    "OCM-RETL-24-000263",
-    "OCM-RETL-25-000319",
-    "OCM-RETL-25-000450"
-   ]
-  },
-  {
-   "key": "zips|train haze",
-   "keys": [
-    "zips|ghost train haze",
-    "zips|train haze"
-   ],
-   "brand": "Zips",
-   "strain": "Ghost Train Haze",
-   "first": "2026-09-25",
-   "days": 19,
-   "seenAt": 6,
-   "shops": [
-    "OCM-CAURD-23-000021",
-    "OCM-CAURD-23-000030",
-    "OCM-CAURD-24-000166",
-    "OCM-RETL-25-000319",
-    "OCM-RETL-25-000450"
+    "OCM-CAURD-25-000297"
    ]
   },
   {
@@ -22499,25 +22051,6 @@
     "OCM-CAURD-24-000173",
     "OCM-CAURD-25-000241",
     "OCM-RETL-24-000014"
-   ]
-  },
-  {
-   "key": "doobie|cherry pie",
-   "keys": [
-    "doobie|cherry pie"
-   ],
-   "brand": "Doobie Labs",
-   "strain": "Cherry Pie",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 6,
-   "shops": [
-    "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000219",
-    "OCM-RETL-24-000114",
-    "OCM-RETL-24-000197",
-    "OCM-RETL-25-000288",
-    "OCM-RETL-25-000322"
    ]
   },
   {
@@ -22556,6 +22089,37 @@
     "OCM-CAURD-25-000294",
     "OCM-RETL-24-000104",
     "OCM-RETL-25-000383"
+   ]
+  },
+  {
+   "key": "1937|double trouble",
+   "keys": [
+    "1937|double trouble"
+   ],
+   "brand": "1937",
+   "strain": "Double Trouble",
+   "first": "2026-09-10",
+   "days": 34,
+   "seenAt": 5,
+   "shops": [
+    "OCM-CAURD-24-000205"
+   ]
+  },
+  {
+   "key": "vacation|lemon cherry x z animal",
+   "keys": [
+    "vacation|lemon cherry x z animal",
+    "vacation|vacation flower - lemon cherry x z animal"
+   ],
+   "brand": "Vacation",
+   "strain": "Lemon Cherry x Z Animal",
+   "first": "2026-09-10",
+   "days": 34,
+   "seenAt": 5,
+   "shops": [
+    "OCM-CAURD-24-000153",
+    "OCM-CAURD-25-000256",
+    "OCM-RETL-24-000011"
    ]
   },
   {
@@ -22614,8 +22178,8 @@
     "alchemypure|full send - pre-ground blend",
     "alchemypure|full send blend"
    ],
-   "brand": "Alchemy Pure",
-   "strain": "Full Send Blend",
+   "brand": "ALCHEMY PURE",
+   "strain": "*FULL SEND",
    "first": "2026-09-16",
    "days": 28,
    "seenAt": 5,
@@ -22624,20 +22188,21 @@
    ]
   },
   {
-   "key": "nolabel|cherry breeze",
+   "key": "skyworld|sour jedi og",
    "keys": [
-    "nolabel|cherry breeze"
+    "skyworld|sour jedi og"
    ],
-   "brand": "NO LABEL",
-   "strain": "CHERRY BREEZE",
+   "brand": "skyworld",
+   "strain": "Sour Jedi OG",
    "first": "2026-09-17",
    "days": 27,
    "seenAt": 5,
    "shops": [
-    "OCM-CAURD-24-000120",
-    "OCM-CAURD-25-000240",
-    "OCM-RETL-24-000093",
-    "OCM-RETL-26-000511"
+    "OCM-CAURD-24-000064",
+    "OCM-RETL-24-000047",
+    "OCM-RETL-24-000151",
+    "OCM-RETL-25-000292",
+    "OCM-RETL-25-000456"
    ]
   },
   {
@@ -22664,8 +22229,8 @@
     "houseoftrees|hot - sherb cake",
     "houseoftrees|sherb cake"
    ],
-   "brand": "House of Trees",
-   "strain": "Sherb Cake",
+   "brand": "HOUSE OF TREES",
+   "strain": "HOT - Sherb Cake",
    "first": "2026-09-19",
    "days": 25,
    "seenAt": 5,
@@ -22678,79 +22243,10 @@
    ]
   },
   {
-   "key": "nolabel|italian ice",
-   "keys": [
-    "nolabel|italian ice"
-   ],
-   "brand": "NO LABEL",
-   "strain": "ITALIAN ICE",
-   "first": "2026-09-20",
-   "days": 24,
-   "seenAt": 5,
-   "shops": [
-    "OCM-CAURD-24-000120",
-    "OCM-CAURD-25-000240",
-    "OCM-RETL-24-000093",
-    "OCM-RETL-26-000511"
-   ]
-  },
-  {
-   "key": "thebotanist|fried ice cream",
-   "keys": [
-    "thebotanist|fried ice cream"
-   ],
-   "brand": "The Botanist",
-   "strain": "Fried Ice Cream",
-   "first": "2026-09-23",
-   "days": 21,
-   "seenAt": 5,
-   "shops": [
-    "OCM-CAURD-24-000094",
-    "OCM-CAURD-24-000129",
-    "OCM-CAURD-24-000205",
-    "OCM-RETL-24-000133"
-   ]
-  },
-  {
-   "key": "botanist|kashmir og",
-   "keys": [
-    "botanist|kashmir og"
-   ],
-   "brand": "Botanist",
-   "strain": "Kashmir OG",
-   "first": "2026-09-24",
-   "days": 20,
-   "seenAt": 5,
-   "shops": [
-    "OCM-CAURD-23-000030",
-    "OCM-CAURD-25-000271",
-    "OCM-RETL-24-000026",
-    "OCM-RETL-24-000099",
-    "OCM-RETL-25-000295"
-   ]
-  },
-  {
-   "key": "botanist|mcruntz",
-   "keys": [
-    "botanist|mcruntz",
-    "botanist|the botanist mcruntz"
-   ],
-   "brand": "Botanist",
-   "strain": "McRuntz",
-   "first": "2026-09-25",
-   "days": 19,
-   "seenAt": 5,
-   "shops": [
-    "OCM-CAURD-23-000030",
-    "OCM-CAURD-24-000222",
-    "OCM-CAURD-25-000271",
-    "OCM-RETL-24-000061"
-   ]
-  },
-  {
    "key": "highfallscanna|sundrop",
    "keys": [
-    "highfallscanna|sundrop"
+    "highfallscanna|sundrop",
+    "highfalls|sundrop"
    ],
    "brand": "High Falls Canna",
    "strain": "Sundrop",
@@ -22784,24 +22280,6 @@
    ]
   },
   {
-   "key": "botanist|guava casquitos",
-   "keys": [
-    "botanist|guava casquitos"
-   ],
-   "brand": "Botanist",
-   "strain": "Guava Casquitos",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 5,
-   "shops": [
-    "OCM-CAURD-24-000169",
-    "OCM-CAURD-25-000288",
-    "OCM-RETL-24-000175",
-    "OCM-RETL-24-000254",
-    "OCM-RETL-25-000295"
-   ]
-  },
-  {
    "key": "major|candy blues",
    "keys": [
     "major|candy blues"
@@ -22825,7 +22303,7 @@
     "hashtaghoney|garlic popsicle",
     "hashtaghoney|hh garlic popsicle"
    ],
-   "brand": "Hashtag Honey",
+   "brand": "HASHTAG HONEY",
    "strain": "Garlic Popsicle",
    "first": "2026-10-01",
    "days": 13,
@@ -22871,6 +22349,28 @@
     "OCM-CAURD-24-000214",
     "OCM-RETL-25-000324",
     "OCM-RETL-25-000368"
+   ]
+  },
+  {
+   "key": "greenlineapothecary|jack herer",
+   "keys": [
+    "greenlineapothecary|jack herer",
+    "greenlineapothecary|jack herer - grinder included",
+    "greenlineapothecary|jack herer - includes grinder",
+    "greenlineapothecary|jack herer jar w/ grinder",
+    "greenline|jack herer greenline"
+   ],
+   "brand": "Greenline Apothecary",
+   "strain": "Jack Herer",
+   "first": "2026-10-02",
+   "days": 12,
+   "seenAt": 5,
+   "shops": [
+    "OCM-CAURD-23-000042",
+    "OCM-CAURD-24-000166",
+    "OCM-CAURD-26-000349",
+    "OCM-RETL-24-000088",
+    "OCM-RETL-25-000430"
    ]
   },
   {
@@ -22929,6 +22429,25 @@
    ]
   },
   {
+   "key": "dankbydefinition|dank - tropicana cookies sungrown flower",
+   "keys": [
+    "dankbydefinition|dank - tropicana cookies sungrown flower",
+    "dankbydefinition|tropicana cookies",
+    "dank|tropicana cookies"
+   ],
+   "brand": "Dank By Definition.",
+   "strain": "dank - tropicana cookies sungrown flower",
+   "first": "2026-09-08",
+   "days": 36,
+   "seenAt": 4,
+   "shops": [
+    "OCM-CAURD-23-000026",
+    "OCM-RETL-24-000004",
+    "OCM-RETL-24-000021",
+    "OCM-RETL-24-000026"
+   ]
+  },
+  {
    "key": "infinitystoned|infinity stoned flower - double runtz",
    "keys": [
     "infinitystoned|double runtz",
@@ -22955,7 +22474,7 @@
     "trichome|whole flower - super lemon cherry gelato"
    ],
    "brand": "Trichome",
-   "strain": "Super Lemon Cherry Gelato",
+   "strain": "Whole Flower - Super Lemon Cherry Gelato",
    "first": "2026-09-09",
    "days": 35,
    "seenAt": 4,
@@ -22967,19 +22486,53 @@
    ]
   },
   {
-   "key": "plantwerks|plantwerks flower - angie",
+   "key": "vacation|bolo runtz",
    "keys": [
-    "plantwerks|angie",
-    "plantwerks|plantwerks flower - angie"
+    "vacation|bolo runtz"
    ],
-   "brand": "Plantwerks",
-   "strain": "Angie",
+   "brand": "Vacation",
+   "strain": "Bolo Runtz",
+   "first": "2026-09-10",
+   "days": 34,
+   "seenAt": 4,
+   "shops": [
+    "OCM-CAURD-24-000153",
+    "OCM-CAURD-25-000256",
+    "OCM-RETL-24-000120",
+    "OCM-RETL-24-000266"
+   ]
+  },
+  {
+   "key": "vacation|bubba's girl",
+   "keys": [
+    "vacation|bubba's girl"
+   ],
+   "brand": "Vacation",
+   "strain": "Bubba's Girl",
+   "first": "2026-09-10",
+   "days": 34,
+   "seenAt": 4,
+   "shops": [
+    "OCM-CAURD-24-000153",
+    "OCM-CAURD-25-000256",
+    "OCM-RETL-24-000266"
+   ]
+  },
+  {
+   "key": "voiceofplants|gello gelato",
+   "keys": [
+    "voiceofplants|gello gelato",
+    "voiceofplant|gelato",
+    "voiceofplant|gello gelato"
+   ],
+   "brand": "Voice Of Plants",
+   "strain": "Gello Gelato",
    "first": "2026-09-14",
    "days": 30,
    "seenAt": 4,
    "shops": [
-    "OCM-CAURD-26-000329",
-    "OCM-RETL-24-000087"
+    "OCM-RETL-24-000261",
+    "OCM-RETL-26-000504"
    ]
   },
   {
@@ -22988,7 +22541,7 @@
     "kingsandqueens|neon flamingo",
     "kingsandqueens|neon flamingo hybrid 1/8"
    ],
-   "brand": "Kings And Queens",
+   "brand": "Kings and Queens",
    "strain": "Neon Flamingo",
    "first": "2026-09-14",
    "days": 30,
@@ -22997,6 +22550,22 @@
     "OCM-MICR-24-000030",
     "OCM-RETL-24-000247",
     "OCM-RETL-25-000403"
+   ]
+  },
+  {
+   "key": "plantwerks|plantwerks flower - angie",
+   "keys": [
+    "plantwerks|angie",
+    "plantwerks|plantwerks flower - angie"
+   ],
+   "brand": "Plantwerks",
+   "strain": "Plantwerks Flower - Angie",
+   "first": "2026-09-14",
+   "days": 30,
+   "seenAt": 4,
+   "shops": [
+    "OCM-CAURD-26-000329",
+    "OCM-RETL-24-000087"
    ]
   },
   {
@@ -23012,23 +22581,6 @@
    "shops": [
     "OCM-CAURD-25-000236",
     "OCM-CAURD-25-000297"
-   ]
-  },
-  {
-   "key": "plugpack|lychee dream",
-   "keys": [
-    "plugpack|lychee dream",
-    "plugpack|lychee dream flower 6-1"
-   ],
-   "brand": "plugpack",
-   "strain": "Lychee Dream",
-   "first": "2026-09-15",
-   "days": 29,
-   "seenAt": 4,
-   "shops": [
-    "OCM-CAURD-25-000230",
-    "OCM-RETL-24-000004",
-    "OCM-RETL-26-000477"
    ]
   },
   {
@@ -23070,8 +22622,8 @@
     "highpeaks|aj's sour diesel",
     "highpeaks|sour diesel"
    ],
-   "brand": "highpeaks",
-   "strain": "aj's sour diesel",
+   "brand": "High Peaks",
+   "strain": "AJ Sour Diesel",
    "first": "2026-09-23",
    "days": 21,
    "seenAt": 4,
@@ -23097,19 +22649,21 @@
    ]
   },
   {
-   "key": "botanist|garlic budder",
+   "key": "leftcoast|mochi melon #4 - 3.5li",
    "keys": [
-    "botanist|garlic budder"
+    "leftcoast|mochi melon",
+    "leftcoast|mochi melon #4",
+    "leftcoast|mochi melon #4 - 3.5li"
    ],
-   "brand": "Botanist",
-   "strain": "Garlic Budder",
+   "brand": "Left Coast",
+   "strain": "Mochi Melon #4",
    "first": "2026-09-24",
    "days": 20,
    "seenAt": 4,
    "shops": [
-    "OCM-CAURD-24-000075",
-    "OCM-RETL-24-000026",
-    "OCM-RETL-24-000146"
+    "OCM-CAURD-24-000063",
+    "OCM-RETL-24-000234",
+    "OCM-RETL-26-000489"
    ]
   },
   {
@@ -23126,42 +22680,6 @@
     "OCM-CAURD-23-000036",
     "OCM-CAURD-24-000062",
     "OCM-CAURD-24-000112"
-   ]
-  },
-  {
-   "key": "leftcoast|mochi melon #4 - 3.5li",
-   "keys": [
-    "leftcoast|mochi melon",
-    "leftcoast|mochi melon #4",
-    "leftcoast|mochi melon #4 - 3.5li"
-   ],
-   "brand": "leftcoast",
-   "strain": "mochi melon #4",
-   "first": "2026-09-24",
-   "days": 20,
-   "seenAt": 4,
-   "shops": [
-    "OCM-CAURD-24-000063",
-    "OCM-RETL-24-000234",
-    "OCM-RETL-26-000489"
-   ]
-  },
-  {
-   "key": "zips|apple fritter",
-   "keys": [
-    "zips|apple fritter",
-    "zips|apples fritter"
-   ],
-   "brand": "ZIPS",
-   "strain": "Apple Fritter",
-   "first": "2026-09-25",
-   "days": 19,
-   "seenAt": 4,
-   "shops": [
-    "OCM-CAURD-23-000020",
-    "OCM-CAURD-23-000021",
-    "OCM-CAURD-24-000144",
-    "OCM-CAURD-25-000265"
    ]
   },
   {
@@ -23248,21 +22766,21 @@
    ]
   },
   {
-   "key": "thebotanist|dutch cherry treat",
+   "key": "zipsog|blueberry muffin",
    "keys": [
-    "thebotanist|cherry dutch treat",
-    "thebotanist|dutch cherry treat",
-    "thebotanist|dutch treat x cherry pie"
+    "zipsog|blueberry muffin",
+    "zips|blueberry muffin"
    ],
-   "brand": "The Botanist",
-   "strain": "Cherry Dutch Treat",
+   "brand": "Zips",
+   "strain": "Blueberry Muffin",
    "first": "2026-09-29",
    "days": 15,
    "seenAt": 4,
    "shops": [
-    "OCM-CAURD-25-000243",
-    "OCM-RETL-24-000003",
-    "OCM-RETL-24-000075"
+    "OCM-CAURD-24-000104",
+    "OCM-RETL-24-000103",
+    "OCM-RETL-25-000319",
+    "OCM-RETL-25-000450"
    ]
   },
   {
@@ -23296,40 +22814,6 @@
     "OCM-CAURD-25-000241",
     "OCM-RETL-24-000014",
     "OCM-RETL-24-000051"
-   ]
-  },
-  {
-   "key": "botanist|grape glitz",
-   "keys": [
-    "botanist|grape glitz"
-   ],
-   "brand": "Botanist",
-   "strain": "Grape Glitz",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 4,
-   "shops": [
-    "OCM-CAURD-24-000169",
-    "OCM-CAURD-25-000288",
-    "OCM-RETL-24-000175",
-    "OCM-RETL-25-000295"
-   ]
-  },
-  {
-   "key": "thebotanist|grape glitz",
-   "keys": [
-    "thebotanist|grape glitz"
-   ],
-   "brand": "The Botanist",
-   "strain": "Grape Glitz",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 4,
-   "shops": [
-    "OCM-CAURD-24-000129",
-    "OCM-CAURD-25-000243",
-    "OCM-RETL-24-000003",
-    "OCM-RETL-24-000159"
    ]
   },
   {
@@ -23383,6 +22867,24 @@
    ]
   },
   {
+   "key": "major|blueberriez",
+   "keys": [
+    "majormicro|major blueberriez",
+    "major|blueberriez"
+   ],
+   "brand": "Major (Micro)",
+   "strain": "BLUEBERRIEZ",
+   "first": "2026-10-01",
+   "days": 13,
+   "seenAt": 4,
+   "shops": [
+    "OCM-CAURD-24-000047",
+    "OCM-CAURD-24-000060",
+    "OCM-CAURD-24-000203",
+    "OCM-RETL-24-000004"
+   ]
+  },
+  {
    "key": "knack|cheese ball",
    "keys": [
     "knack|cheese ball"
@@ -23396,22 +22898,6 @@
     "OCM-CAURD-24-000094",
     "OCM-CAURD-24-000173",
     "OCM-RETL-24-000014"
-   ]
-  },
-  {
-   "key": "umamii|gg",
-   "keys": [
-    "umamii|gg"
-   ],
-   "brand": "Umamii",
-   "strain": "GG",
-   "first": "2026-10-01",
-   "days": 13,
-   "seenAt": 4,
-   "shops": [
-    "OCM-CAURD-25-000281",
-    "OCM-CAURD-26-000334",
-    "OCM-RETL-25-000379"
    ]
   },
   {
@@ -23432,55 +22918,37 @@
    ]
   },
   {
-   "key": "bouket|gg#4",
+   "key": "518hollow|super boof",
    "keys": [
-    "bouket|gg#4"
+    "518hollowmicro|hollow - super boof",
+    "518hollow|super boof"
    ],
-   "brand": "Boukét",
-   "strain": "GG#4",
+   "brand": "518 Hollow",
+   "strain": "Super Boof",
    "first": "2026-10-02",
    "days": 12,
    "seenAt": 4,
    "shops": [
-    "OCM-CAURD-25-000281",
-    "OCM-RETL-24-000041",
-    "OCM-RETL-25-000379"
+    "OCM-CAURD-24-000101",
+    "OCM-CAURD-25-000309"
    ]
   },
   {
-   "key": "greenlineapothecary|jack herer",
+   "key": "518hollow|zz grape",
    "keys": [
-    "greenlineapothecary|jack herer",
-    "greenlineapothecary|jack herer - grinder included",
-    "greenlineapothecary|jack herer - includes grinder",
-    "greenlineapothecary|jack herer jar w/ grinder"
+    "518hollowmicro|hollow - zz grape",
+    "518hollow|zz grape"
    ],
-   "brand": "Greenline Apothecary",
-   "strain": "Jack Herer",
+   "brand": "518 Hollow",
+   "strain": "ZZ Grape",
    "first": "2026-10-02",
    "days": 12,
    "seenAt": 4,
    "shops": [
-    "OCM-CAURD-23-000042",
-    "OCM-CAURD-24-000166",
-    "OCM-CAURD-26-000349",
-    "OCM-RETL-24-000088"
-   ]
-  },
-  {
-   "key": "bouket|zkz",
-   "keys": [
-    "bouket|zkz"
-   ],
-   "brand": "Boukét",
-   "strain": "ZKZ",
-   "first": "2026-10-02",
-   "days": 12,
-   "seenAt": 4,
-   "shops": [
-    "OCM-CAURD-25-000281",
-    "OCM-CAURD-26-000334",
-    "OCM-RETL-25-000379"
+    "OCM-CAURD-24-000046",
+    "OCM-CAURD-24-000101",
+    "OCM-CAURD-24-000102",
+    "OCM-CAURD-25-000309"
    ]
   },
   {
@@ -23552,12 +23020,45 @@
    ]
   },
   {
+   "key": "a1ducksauce|wok",
+   "keys": [
+    "a1ducksauce|wok"
+   ],
+   "brand": "A1 Ducksauce",
+   "strain": "Wok",
+   "first": "2026-10-07",
+   "days": 7,
+   "seenAt": 4,
+   "shops": [
+    "OCM-CAURD-24-000064",
+    "OCM-CAURD-24-000162",
+    "OCM-CAURD-24-000203",
+    "OCM-RETL-24-000254"
+   ]
+  },
+  {
+   "key": "newyorkstatehigh|sour durbin",
+   "keys": [
+    "newyorkstatehigh|sour durbin",
+    "statehigh|sour durban"
+   ],
+   "brand": "NY State High",
+   "strain": "Sour Durban",
+   "first": "2026-09-08",
+   "days": 36,
+   "seenAt": 3,
+   "shops": [
+    "OCM-CAURD-24-000219",
+    "OCM-RETL-25-000322"
+   ]
+  },
+  {
    "key": "nobaddays|acapulco gold",
    "keys": [
     "nobaddays|acapulco gold"
    ],
    "brand": "No Bad Days",
-   "strain": "Acapulco Gold",
+   "strain": "acapulco gold",
    "first": "2026-09-08",
    "days": 36,
    "seenAt": 3,
@@ -23570,8 +23071,8 @@
    "keys": [
     "oasis|donny burger"
    ],
-   "brand": "Oasis",
-   "strain": "Donny Burger",
+   "brand": "Oasis Cannabis",
+   "strain": "donny burger",
    "first": "2026-09-08",
    "days": 36,
    "seenAt": 3,
@@ -23587,7 +23088,7 @@
     "trichome|whole flower - slushberry"
    ],
    "brand": "Trichome",
-   "strain": "Slushberry",
+   "strain": "SLUSHBERRY",
    "first": "2026-09-09",
    "days": 35,
    "seenAt": 3,
@@ -23603,7 +23104,7 @@
     "kingsandqueens|kali haze",
     "kingsandqueens|kali haze sativa 1/8"
    ],
-   "brand": "Kings And Queens",
+   "brand": "Kings and Queens",
    "strain": "Kali Haze",
    "first": "2026-09-14",
    "days": 30,
@@ -23621,7 +23122,7 @@
     "plantwerks|plantwerks bag - lemon cherry x z animal"
    ],
    "brand": "Plantwerks",
-   "strain": "Lemon Cherry X Z Animal",
+   "strain": "Plantwerks Bag - Lemon Cherry X Z Animal",
    "first": "2026-09-14",
    "days": 30,
    "seenAt": 3,
@@ -23636,7 +23137,7 @@
     "oldpal|punch runtz - pre"
    ],
    "brand": "Old Pal",
-   "strain": "Punch Runtz",
+   "strain": "Punch Runtz - Pre",
    "first": "2026-09-14",
    "days": 30,
    "seenAt": 3,
@@ -23652,8 +23153,8 @@
     "traptotable|super lemon haze",
     "traptotable|trap to table flower - day runner - super lemon haze"
    ],
-   "brand": "traptotable",
-   "strain": "super lemon haze",
+   "brand": "Trap to Table",
+   "strain": "Trap to Table Flower - Day Runner - Super Lemon Haze",
    "first": "2026-09-14",
    "days": 30,
    "seenAt": 3,
@@ -23664,29 +23165,13 @@
    ]
   },
   {
-   "key": "thebotanist|cheese and chong",
-   "keys": [
-    "thebotanist|cheese and chong"
-   ],
-   "brand": "The Botanist",
-   "strain": "Cheese and Chong",
-   "first": "2026-09-15",
-   "days": 29,
-   "seenAt": 3,
-   "shops": [
-    "OCM-CAURD-23-000038",
-    "OCM-CAURD-24-000094",
-    "OCM-RETL-25-000293"
-   ]
-  },
-  {
    "key": "oldpal|punch breath - pre-grounded",
    "keys": [
     "oldpal|punch breath",
     "oldpal|punch breath - pre-grounded"
    ],
-   "brand": "Old Pal",
-   "strain": "Punch Breath",
+   "brand": "OLD PAL",
+   "strain": "Punch Breath - Pre-Grounded",
    "first": "2026-09-15",
    "days": 29,
    "seenAt": 3,
@@ -23725,39 +23210,6 @@
    ]
   },
   {
-   "key": "leadfarmermicro|cap junky",
-   "keys": [
-    "leadfarmermicro|cap junky"
-   ],
-   "brand": "Lead Farmer (Micro)",
-   "strain": "Cap Junky",
-   "first": "2026-09-17",
-   "days": 27,
-   "seenAt": 3,
-   "shops": [
-    "OCM-CAURD-24-000046",
-    "OCM-RETL-24-000244",
-    "OCM-RETL-24-000266"
-   ]
-  },
-  {
-   "key": "leadfarmermicro|tricho jordan",
-   "keys": [
-    "leadfarmermicro|tricho jordan",
-    "leadfarmermicro|tricho jordan #3"
-   ],
-   "brand": "Lead Farmer (Micro)",
-   "strain": "Tricho Jordan #3",
-   "first": "2026-09-17",
-   "days": 27,
-   "seenAt": 3,
-   "shops": [
-    "OCM-CAURD-24-000046",
-    "OCM-RETL-24-000244",
-    "OCM-RETL-24-000266"
-   ]
-  },
-  {
    "key": "167|white hot guava",
    "keys": [
     "167|white hot guava"
@@ -23771,20 +23223,6 @@
     "OCM-CAURD-24-000057",
     "OCM-CAURD-24-000077",
     "OCM-CAURD-25-000288"
-   ]
-  },
-  {
-   "key": "botanist|cap junky",
-   "keys": [
-    "botanist|cap junky"
-   ],
-   "brand": "Botanist",
-   "strain": "Cap Junky",
-   "first": "2026-09-18",
-   "days": 26,
-   "seenAt": 3,
-   "shops": [
-    "OCM-RETL-24-000021"
    ]
   },
   {
@@ -23853,19 +23291,37 @@
    ]
   },
   {
-   "key": "honestpharmco|astro nug - orange cream pop",
+   "key": "botanist|lemon skunk",
    "keys": [
-    "honestpharmco|astro nug - orange cream pop",
-    "honestpharmco|astro nug orange cream pop",
-    "honestpharmco|astro nugz - orange cream pop"
+    "botanist|lemon skunk",
+    "thebotanist|lemon skunk"
    ],
-   "brand": "honestpharmco",
-   "strain": "astro nug orange cream pop",
+   "brand": "Botanist",
+   "strain": "Lemon Skunk",
    "first": "2026-09-24",
    "days": 20,
    "seenAt": 3,
    "shops": [
-    "OCM-CAURD-23-000042"
+    "OCM-CAURD-24-000094",
+    "OCM-RETL-24-000026",
+    "OCM-RETL-24-000133"
+   ]
+  },
+  {
+   "key": "ish|ish whole - cookiestash",
+   "keys": [
+    "ish|cookiestash",
+    "ish|ish whole - cookiestash"
+   ],
+   "brand": "Ish",
+   "strain": "CookieStash",
+   "first": "2026-09-25",
+   "days": 19,
+   "seenAt": 3,
+   "shops": [
+    "OCM-CAURD-24-000220",
+    "OCM-CAURD-25-000321",
+    "OCM-RETL-25-000269"
    ]
   },
   {
@@ -23899,19 +23355,21 @@
    ]
   },
   {
-   "key": "botanist|cherry dutch treat",
+   "key": "cultured|rainbow gelato",
    "keys": [
-    "botanist|cheery dutch treat",
-    "botanist|cherry dutch treat"
+    "culturedbyumamii|rainbow gelato flower (by umamii)",
+    "culturedworldclass|rainbow gelato",
+    "cultured|rainbow gelato"
    ],
-   "brand": "Botanist",
-   "strain": "Cherry Dutch Treat",
-   "first": "2026-09-29",
-   "days": 15,
+   "brand": "Cultured",
+   "strain": "Rainbow Gelato",
+   "first": "2026-09-30",
+   "days": 14,
    "seenAt": 3,
    "shops": [
-    "OCM-RETL-24-000175",
-    "OCM-RETL-25-000295"
+    "OCM-CAURD-24-000138",
+    "OCM-RETL-24-000004",
+    "OCM-RETL-24-000120"
    ]
   },
   {
@@ -23931,19 +23389,19 @@
    ]
   },
   {
-   "key": "major|blueberriez",
+   "key": "ithacaorganics|chem funk",
    "keys": [
-    "major|blueberriez"
+    "ithacaorganics|chem funk"
    ],
-   "brand": "Major",
-   "strain": "BlueberrieZ",
+   "brand": "Ithaca Organics",
+   "strain": "Chem Funk",
    "first": "2026-10-01",
    "days": 13,
    "seenAt": 3,
    "shops": [
-    "OCM-CAURD-24-000047",
-    "OCM-CAURD-24-000060",
-    "OCM-CAURD-24-000203"
+    "OCM-CAURD-24-000182",
+    "OCM-CAURD-26-000359",
+    "OCM-RETL-25-000339"
    ]
   },
   {
@@ -23975,6 +23433,22 @@
     "OCM-CAURD-23-000020",
     "OCM-CAURD-24-000214",
     "OCM-RETL-25-000368"
+   ]
+  },
+  {
+   "key": "papasherb|jack herer",
+   "keys": [
+    "papasherb|jack herer"
+   ],
+   "brand": "Papa's Herb",
+   "strain": "Jack Herer",
+   "first": "2026-10-01",
+   "days": 13,
+   "seenAt": 3,
+   "shops": [
+    "OCM-CAURD-24-000104",
+    "OCM-CAURD-24-000163",
+    "OCM-RETL-24-000175"
    ]
   },
   {
@@ -24017,7 +23491,7 @@
     "greenlineapothecary|sherbanger - includes grinder",
     "greenlineapothecary|sherbanger jar w/ grinder"
    ],
-   "brand": "GREENLINE APOTHECARY",
+   "brand": "Greenline Apothecary",
    "strain": "Sherbanger",
    "first": "2026-10-02",
    "days": 12,
@@ -24026,37 +23500,6 @@
     "OCM-CAURD-23-000042",
     "OCM-CAURD-24-000166",
     "OCM-CAURD-26-000332"
-   ]
-  },
-  {
-   "key": "518hollow|sour papaya",
-   "keys": [
-    "518hollow|sour papaya"
-   ],
-   "brand": "518 Hollow",
-   "strain": "Sour Papaya",
-   "first": "2026-10-02",
-   "days": 12,
-   "seenAt": 3,
-   "shops": [
-    "OCM-CAURD-24-000101",
-    "OCM-CAURD-24-000102",
-    "OCM-CAURD-25-000309"
-   ]
-  },
-  {
-   "key": "518hollow|super boof",
-   "keys": [
-    "518hollow|super boof"
-   ],
-   "brand": "518 Hollow",
-   "strain": "Super Boof",
-   "first": "2026-10-02",
-   "days": 12,
-   "seenAt": 3,
-   "shops": [
-    "OCM-CAURD-24-000101",
-    "OCM-CAURD-25-000309"
    ]
   },
   {
@@ -24073,22 +23516,6 @@
     "OCM-CAURD-23-000026",
     "OCM-RETL-24-000026",
     "OCM-RETL-24-000120"
-   ]
-  },
-  {
-   "key": "518hollow|zz grape",
-   "keys": [
-    "518hollow|zz grape"
-   ],
-   "brand": "518 Hollow",
-   "strain": "ZZ Grape",
-   "first": "2026-10-02",
-   "days": 12,
-   "seenAt": 3,
-   "shops": [
-    "OCM-CAURD-24-000101",
-    "OCM-CAURD-24-000102",
-    "OCM-CAURD-25-000309"
    ]
   },
   {
@@ -24120,6 +23547,23 @@
    "shops": [
     "OCM-CAURD-23-000038",
     "OCM-RETL-25-000284"
+   ]
+  },
+  {
+   "key": "packslosangeles|sour apricotz",
+   "keys": [
+    "packslosangeles|sour apricotz",
+    "packs|sour apricot"
+   ],
+   "brand": "Packs",
+   "strain": "Sour Apricot",
+   "first": "2026-10-06",
+   "days": 8,
+   "seenAt": 3,
+   "shops": [
+    "OCM-CAURD-24-000219",
+    "OCM-CAURD-25-000288",
+    "OCM-RETL-25-000322"
    ]
   },
   {
@@ -24171,51 +23615,50 @@
    ]
   },
   {
-   "key": "dankbydefinition|dank - strawberry cough sungrown flower",
-   "keys": [
-    "dankbydefinition|dank - strawberry cough sungrown flower",
-    "dankbydefinition|strawberry cough"
-   ],
-   "brand": "Dank By Definition.",
-   "strain": "Strawberry Cough",
-   "first": "2026-09-08",
-   "days": 36,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-25-000294",
-    "OCM-RETL-24-000026"
-   ]
-  },
-  {
-   "key": "dankbydefinition|dank - tropicana cookies sungrown flower",
-   "keys": [
-    "dankbydefinition|dank - tropicana cookies sungrown flower",
-    "dankbydefinition|tropicana cookies"
-   ],
-   "brand": "Dank By Definition.",
-   "strain": "Tropicana Cookies",
-   "first": "2026-09-08",
-   "days": 36,
-   "seenAt": 2,
-   "shops": [
-    "OCM-RETL-24-000004",
-    "OCM-RETL-24-000026"
-   ]
-  },
-  {
    "key": "infinitystoned|infinity stoned flower - chemdawg",
    "keys": [
     "infinitystoned|chemdawg",
     "infinitystoned|infinity stoned flower - chemdawg"
    ],
-   "brand": "Infinity Stoned",
-   "strain": "Chemdawg",
+   "brand": "INFINITY STONED",
+   "strain": "infinity stoned flower - chemdawg",
    "first": "2026-09-09",
    "days": 35,
    "seenAt": 2,
    "shops": [
     "OCM-RETL-24-000008",
     "OCM-RETL-24-000175"
+   ]
+  },
+  {
+   "key": "blotter|banana nut bread - cured resin budder - concentrate",
+   "keys": [
+    "blotter|banana nut bread - cured resin budder",
+    "blotter|banana nut bread - cured resin budder - concentrate"
+   ],
+   "brand": "Blotter",
+   "strain": "Banana Nut Bread - Cured Resin Budder - Concentrate",
+   "first": "2026-09-14",
+   "days": 30,
+   "seenAt": 2,
+   "shops": [
+    "OCM-CAURD-24-000127"
+   ]
+  },
+  {
+   "key": "kingsandqueens|creme brulee",
+   "keys": [
+    "kingsandqueens|creme brulee",
+    "kingsandqueens|creme brulee indica 1/8"
+   ],
+   "brand": "Kings and Queens",
+   "strain": "Creme Brulee",
+   "first": "2026-09-14",
+   "days": 30,
+   "seenAt": 2,
+   "shops": [
+    "OCM-MICR-24-000030",
+    "OCM-RETL-25-000403"
    ]
   },
   {
@@ -24248,53 +23691,6 @@
    ]
   },
   {
-   "key": "blotter|banana nut bread - cured resin budder - concentrate",
-   "keys": [
-    "blotter|banana nut bread - cured resin budder",
-    "blotter|banana nut bread - cured resin budder - concentrate"
-   ],
-   "brand": "blotter",
-   "strain": "banana nut bread - cured resin budder",
-   "first": "2026-09-14",
-   "days": 30,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-24-000127"
-   ]
-  },
-  {
-   "key": "kingsandqueens|creme brulee",
-   "keys": [
-    "kingsandqueens|creme brulee",
-    "kingsandqueens|creme brulee indica 1/8"
-   ],
-   "brand": "kingsandqueens",
-   "strain": "creme brulee",
-   "first": "2026-09-14",
-   "days": 30,
-   "seenAt": 2,
-   "shops": [
-    "OCM-MICR-24-000030",
-    "OCM-RETL-25-000403"
-   ]
-  },
-  {
-   "key": "voiceoftheplantvop|gello gelato",
-   "keys": [
-    "voiceoftheplantvop|gelato",
-    "voiceoftheplantvop|gello gelato"
-   ],
-   "brand": "voiceoftheplantvop",
-   "strain": "gello gelato",
-   "first": "2026-09-14",
-   "days": 30,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-25-000311",
-    "OCM-RETL-25-000295"
-   ]
-  },
-  {
    "key": "knack|mind melt",
    "keys": [
     "knack|mind melt"
@@ -24309,105 +23705,18 @@
    ]
   },
   {
-   "key": "dumbo|white hot guava pre-grounded",
+   "key": "sensei|super villian",
    "keys": [
-    "dumbo|white hot guava",
-    "dumbo|white hot guava pre-grounded"
+    "sensei|super villian"
    ],
-   "brand": "dumbo",
-   "strain": "white hot guava pre-grounded",
-   "first": "2026-09-15",
-   "days": 29,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-23-000023"
-   ]
-  },
-  {
-   "key": "milkweedmicro|animal face (indoor hydroponics)",
-   "keys": [
-    "milkweedmicro|animal face (indoor hydroponics)"
-   ],
-   "brand": "Milkweed (Micro)",
-   "strain": "Animal Face (Indoor Hydroponics)",
-   "first": "2026-09-16",
-   "days": 28,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-24-000046"
-   ]
-  },
-  {
-   "key": "strainkingsgmosherbet35g|gmo sherbet",
-   "keys": [
-    "strainkingsgmosherbet35g|gmo sherbet"
-   ],
-   "brand": "Strain Kings- GMO Sherbet- 3.5g",
-   "strain": "GMO Sherbet",
-   "first": "2026-09-16",
-   "days": 28,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-25-000275"
-   ]
-  },
-  {
-   "key": "milkweedmicro|invisible gas (indoor hydroponics)",
-   "keys": [
-    "milkweedmicro|invisible gas (indoor hydroponics)"
-   ],
-   "brand": "Milkweed (Micro)",
-   "strain": "Invisible Gas (Indoor Hydroponics)",
-   "first": "2026-09-16",
-   "days": 28,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-24-000046",
-    "OCM-RETL-24-000244"
-   ]
-  },
-  {
-   "key": "milkweedmicro|white buffalo (indoor hydroponics)",
-   "keys": [
-    "milkweedmicro|white buffalo (indoor hydroponics)"
-   ],
-   "brand": "Milkweed (Micro)",
-   "strain": "White Buffalo (Indoor Hydroponics)",
-   "first": "2026-09-16",
-   "days": 28,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-24-000046",
-    "OCM-RETL-24-000244"
-   ]
-  },
-  {
-   "key": "milkweedmicro|white zlushie (indoor hydroponics)",
-   "keys": [
-    "milkweedmicro|white zlushie (indoor hydroponics)"
-   ],
-   "brand": "Milkweed (Micro)",
-   "strain": "White Zlushie (Indoor Hydroponics)",
-   "first": "2026-09-16",
-   "days": 28,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-24-000046"
-   ]
-  },
-  {
-   "key": "mechanics|zours",
-   "keys": [
-    "mechanics|zours"
-   ],
-   "brand": "Mechanics Farm",
-   "strain": "Zours",
+   "brand": "Sensei",
+   "strain": "Super Villian",
    "first": "2026-09-17",
    "days": 27,
    "seenAt": 2,
    "shops": [
-    "OCM-CAURD-24-000064",
-    "OCM-CAURD-24-000138"
+    "OCM-CAURD-23-000007",
+    "OCM-RETL-25-000292"
    ]
   },
   {
@@ -24426,6 +23735,22 @@
    ]
   },
   {
+   "key": "traptotable|man down - chemdawg #4",
+   "keys": [
+    "traptotable|man down (chemdawg #4)",
+    "traptotable|man down - chemdawg #4"
+   ],
+   "brand": "Trap to Table",
+   "strain": "Man Down - Chemdawg #4",
+   "first": "2026-09-18",
+   "days": 26,
+   "seenAt": 2,
+   "shops": [
+    "OCM-RETL-24-000087",
+    "OCM-RETL-26-000507"
+   ]
+  },
+  {
    "key": "calihoney|ny kush",
    "keys": [
     "calihoney|ny kush"
@@ -24440,37 +23765,34 @@
    ]
   },
   {
-   "key": "davesbudz|peanut butter breath",
+   "key": "thekaleidoscopecollective|papaya",
    "keys": [
-    "davesbudz|dave's bud - peanut butter breath",
-    "davesbudz|dave's bud peanut butter breath",
-    "davesbudz|peanut butter breath",
-    "davesbudz|peanut butter breath #2"
+    "kaleidoscope|papaya",
+    "thekaleidoscopecollective|papaya"
    ],
-   "brand": "Dave's Budz",
-   "strain": "Peanut Butter Breath",
+   "brand": "The Kaleidoscope Collective",
+   "strain": "Papaya",
    "first": "2026-09-18",
    "days": 26,
    "seenAt": 2,
    "shops": [
-    "OCM-CAURD-24-000094",
-    "OCM-CAURD-25-000321"
+    "OCM-CAURD-26-000325",
+    "OCM-RETL-24-000087"
    ]
   },
   {
-   "key": "traptotable|man down - chemdawg #4",
+   "key": "oldpal|preground - golden tangie",
    "keys": [
-    "traptotable|man down (chemdawg #4)",
-    "traptotable|man down - chemdawg #4"
+    "oldpal|golden tangie",
+    "oldpal|preground - golden tangie"
    ],
-   "brand": "traptotable",
-   "strain": "man down - chemdawg #4",
-   "first": "2026-09-18",
-   "days": 26,
+   "brand": "Old Pal",
+   "strain": "Golden Tangie",
+   "first": "2026-09-19",
+   "days": 25,
    "seenAt": 2,
    "shops": [
-    "OCM-RETL-24-000087",
-    "OCM-RETL-26-000507"
+    "OCM-CAURD-25-000274"
    ]
   },
   {
@@ -24518,33 +23840,19 @@
    ]
   },
   {
-   "key": "thebotanist|lemon skunk",
+   "key": "herb|gelato2",
    "keys": [
-    "thebotanist|lemon skunk"
+    "herb|gelato2",
+    "herb|herb gelato2"
    ],
-   "brand": "The Botanist",
-   "strain": "Lemon Skunk",
-   "first": "2026-09-24",
-   "days": 20,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-24-000094",
-    "OCM-RETL-24-000133"
-   ]
-  },
-  {
-   "key": "zipsog|super boof",
-   "keys": [
-    "zipsog|super boof"
-   ],
-   "brand": "Zips OG",
-   "strain": "Super Boof",
+   "brand": "Herb",
+   "strain": "Gelato2",
    "first": "2026-09-24",
    "days": 20,
    "seenAt": 2,
    "shops": [
     "OCM-CAURD-24-000104",
-    "OCM-RETL-24-000103"
+    "OCM-RETL-24-000014"
    ]
   },
   {
@@ -24563,6 +23871,53 @@
    ]
   },
   {
+   "key": "stranman|ev paw paw og",
+   "keys": [
+    "stranman|ev paw paw og",
+    "stranman|paw paw og - ev"
+   ],
+   "brand": "StranMan",
+   "strain": "EV Paw Paw og",
+   "first": "2026-09-25",
+   "days": 19,
+   "seenAt": 2,
+   "shops": [
+    "OCM-RETL-24-000175",
+    "OCM-RETL-25-000416"
+   ]
+  },
+  {
+   "key": "zips|juicy fruit",
+   "keys": [
+    "zipsog|juicy fruit",
+    "zips|juicy fruit"
+   ],
+   "brand": "ZIPS",
+   "strain": "Juicy Fruit",
+   "first": "2026-09-25",
+   "days": 19,
+   "seenAt": 2,
+   "shops": [
+    "OCM-CAURD-24-000104",
+    "OCM-CAURD-24-000166"
+   ]
+  },
+  {
+   "key": "stranman|novarine diesel",
+   "keys": [
+    "stranman|novarine diesel",
+    "stranman|novarine diesel - diesel"
+   ],
+   "brand": "StranMan",
+   "strain": "Novarine Diesel - Diesel",
+   "first": "2026-09-25",
+   "days": 19,
+   "seenAt": 2,
+   "shops": [
+    "OCM-RETL-25-000416"
+   ]
+  },
+  {
    "key": "dollatreez|strawberry cough",
    "keys": [
     "dollatreez|strawberry cough"
@@ -24577,44 +23932,13 @@
    ]
   },
   {
-   "key": "stranman|ev paw paw og",
-   "keys": [
-    "stranman|ev paw paw og",
-    "stranman|paw paw og - ev"
-   ],
-   "brand": "stranman",
-   "strain": "ev paw paw og",
-   "first": "2026-09-25",
-   "days": 19,
-   "seenAt": 2,
-   "shops": [
-    "OCM-RETL-24-000175",
-    "OCM-RETL-25-000416"
-   ]
-  },
-  {
-   "key": "stranman|novarine diesel",
-   "keys": [
-    "stranman|novarine diesel",
-    "stranman|novarine diesel - diesel"
-   ],
-   "brand": "stranman",
-   "strain": "novarine diesel - diesel",
-   "first": "2026-09-25",
-   "days": 19,
-   "seenAt": 2,
-   "shops": [
-    "OCM-RETL-25-000416"
-   ]
-  },
-  {
    "key": "stranman|l strawberry banana moon gelato - hydrogen gas",
    "keys": [
     "stranman|l strawberry banana moon gelato - hydrogen gas",
     "stranman|strawberry gelato moon gelato - hydrogen gas"
    ],
-   "brand": "stranman",
-   "strain": "strawberry gelato moon gelato - hydrogen gas",
+   "brand": "StranMan",
+   "strain": "Strawberry Gelato Moon Gelato - Hydrogen Gas",
    "first": "2026-09-25",
    "days": 19,
    "seenAt": 2,
@@ -24628,8 +23952,8 @@
     "davesbudz|dave'z budz - jack herer",
     "davesbudz|jack herer"
    ],
-   "brand": "Dave's Budz",
-   "strain": "Jack Herer",
+   "brand": "DAVE'S BUDZ",
+   "strain": "DAVE'Z BUDZ - JACK HERER",
    "first": "2026-09-27",
    "days": 17,
    "seenAt": 2,
@@ -24653,33 +23977,19 @@
    ]
   },
   {
-   "key": "zipsog|blueberry muffin",
+   "key": "zipsog|cookies n cream",
    "keys": [
-    "zipsog|blueberry muffin"
+    "zipsog|cookies and cream",
+    "zipsog|cookies n cream",
+    "zipsog|n cream"
    ],
    "brand": "Zips OG",
-   "strain": "Blueberry Muffin",
+   "strain": "Cookies and Cream",
    "first": "2026-09-29",
    "days": 15,
    "seenAt": 2,
    "shops": [
-    "OCM-CAURD-24-000104",
     "OCM-RETL-24-000103"
-   ]
-  },
-  {
-   "key": "doobie|doobie labs daydream",
-   "keys": [
-    "doobie|doobie labs daydream"
-   ],
-   "brand": "Doobie Labs",
-   "strain": "Doobie Labs Daydream",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-23-000041",
-    "OCM-RETL-24-000114"
    ]
   },
   {
@@ -24713,19 +24023,18 @@
    ]
   },
   {
-   "key": "zipsog|cookies n cream",
+   "key": "gypsyweed|azul",
    "keys": [
-    "zipsog|cookies and cream",
-    "zipsog|cookies n cream",
-    "zipsog|n cream"
+    "gypsyweed|azul"
    ],
-   "brand": "zipsog",
-   "strain": "n cream",
-   "first": "2026-09-29",
-   "days": 15,
+   "brand": "Gypsy Weed",
+   "strain": "Azul",
+   "first": "2026-09-30",
+   "days": 14,
    "seenAt": 2,
    "shops": [
-    "OCM-RETL-24-000103"
+    "OCM-CAURD-24-000073",
+    "OCM-CAURD-25-000311"
    ]
   },
   {
@@ -24734,8 +24043,8 @@
     "vop|lip smacker",
     "vop|lip smackers"
    ],
-   "brand": "vop",
-   "strain": "lip smackers",
+   "brand": "VOP",
+   "strain": "LIP SMACKERS",
    "first": "2026-10-01",
    "days": 13,
    "seenAt": 2,
@@ -24745,18 +24054,19 @@
    ]
   },
   {
-   "key": "milkweedmicro|og kush (indoor hydroponics)",
+   "key": "proxtracts|funnel cake",
    "keys": [
-    "milkweedmicro|og kush (indoor hydroponics)"
+    "proxtracts|funnel cake",
+    "proxtracts|gardens - funnel cake"
    ],
-   "brand": "Milkweed (Micro)",
-   "strain": "OG Kush (Indoor Hydroponics)",
+   "brand": "ProXtracts",
+   "strain": "FUNNEL CAKE",
    "first": "2026-10-02",
    "days": 12,
    "seenAt": 2,
    "shops": [
-    "OCM-CAURD-24-000046",
-    "OCM-RETL-24-000244"
+    "OCM-CAURD-23-000030",
+    "OCM-CAURD-24-000105"
    ]
   },
   {
@@ -24775,68 +24085,6 @@
    ]
   },
   {
-   "key": "proxtracts|funnel cake",
-   "keys": [
-    "proxtracts|funnel cake",
-    "proxtracts|gardens - funnel cake"
-   ],
-   "brand": "proxtracts",
-   "strain": "funnel cake",
-   "first": "2026-10-02",
-   "days": 12,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-23-000030",
-    "OCM-CAURD-24-000105"
-   ]
-  },
-  {
-   "key": "zips|blueberry muffin",
-   "keys": [
-    "zips|blueberry muffin"
-   ],
-   "brand": "Zips",
-   "strain": "Blueberry Muffin",
-   "first": "2026-10-03",
-   "days": 11,
-   "seenAt": 2,
-   "shops": [
-    "OCM-RETL-25-000319",
-    "OCM-RETL-25-000450"
-   ]
-  },
-  {
-   "key": "staymelo|georgia pie",
-   "keys": [
-    "staymelo|georgia pie"
-   ],
-   "brand": "Stay Melo",
-   "strain": "Georgia Pie",
-   "first": "2026-10-03",
-   "days": 11,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-23-000003",
-    "OCM-RETL-25-000355"
-   ]
-  },
-  {
-   "key": "claybourneclassiccuts|purple chem",
-   "keys": [
-    "claybourneclassiccuts|classic cut - purple chem",
-    "claybourneclassiccuts|purple chem"
-   ],
-   "brand": "claybourneclassiccuts",
-   "strain": "purple chem",
-   "first": "2026-10-03",
-   "days": 11,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-25-000241",
-    "OCM-CAURD-25-000284"
-   ]
-  },
-  {
    "key": "nextstop|apple tartz",
    "keys": [
     "nextstop|apple tartz"
@@ -24849,52 +24097,6 @@
    "shops": [
     "OCM-CAURD-24-000123",
     "OCM-RETL-24-000103"
-   ]
-  },
-  {
-   "key": "sugartree|pineapple runtz",
-   "keys": [
-    "sugartree|pineapple runtz"
-   ],
-   "brand": "Sugar Tree",
-   "strain": "Pineapple Runtz",
-   "first": "2026-10-06",
-   "days": 8,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-24-000060",
-    "OCM-CAURD-25-000291"
-   ]
-  },
-  {
-   "key": "sugartree|purple hindu",
-   "keys": [
-    "sugartree|purple hindu"
-   ],
-   "brand": "Sugar Tree",
-   "strain": "Purple Hindu",
-   "first": "2026-10-06",
-   "days": 8,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-24-000060",
-    "OCM-CAURD-25-000291"
-   ]
-  },
-  {
-   "key": "claybourneclassiccuts|durban poison",
-   "keys": [
-    "claybourneclassiccuts|classic cuts - durban poison",
-    "claybourneclassiccuts|durban poison"
-   ],
-   "brand": "claybourneclassiccuts",
-   "strain": "durban poison",
-   "first": "2026-10-06",
-   "days": 8,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-25-000241",
-    "OCM-CAURD-25-000284"
    ]
   },
   {
@@ -24973,21 +24175,6 @@
    ]
   },
   {
-   "key": "statehigh|sour durban",
-   "keys": [
-    "statehigh|sour durban"
-   ],
-   "brand": "NY State High",
-   "strain": "Sour Durban",
-   "first": "2026-10-07",
-   "days": 7,
-   "seenAt": 2,
-   "shops": [
-    "OCM-CAURD-24-000219",
-    "OCM-RETL-25-000322"
-   ]
-  },
-  {
    "key": "statehigh|tropical sherb",
    "keys": [
     "statehigh|tropical sherb"
@@ -25003,28 +24190,13 @@
    ]
   },
   {
-   "key": "highscales|high scale - blue city diesel - dime",
-   "keys": [
-    "highscales|blue city diesel",
-    "highscales|high scale - blue city diesel - dime"
-   ],
-   "brand": "highscales",
-   "strain": "blue city diesel",
-   "first": "2026-09-08",
-   "days": 36,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-23-000034"
-   ]
-  },
-  {
    "key": "hashtaghoney|081 hashtag honey - grape nutz",
    "keys": [
     "hashtaghoney|081 hashtag honey - grape nutz",
     "hashtaghoney|grape nutz"
    ],
-   "brand": "hashtaghoney",
-   "strain": "grape nutz",
+   "brand": "Hashtag Honey",
+   "strain": "081 hashtag honey - grape nutz",
    "first": "2026-09-08",
    "days": 36,
    "seenAt": 1,
@@ -25033,28 +24205,13 @@
    ]
   },
   {
-   "key": "platniumreserve|platinum reserve - jar - memory loss",
-   "keys": [
-    "platniumreserve|memory loss",
-    "platniumreserve|platinum reserve - jar - memory loss"
-   ],
-   "brand": "platniumreserve",
-   "strain": "memory loss",
-   "first": "2026-09-08",
-   "days": 36,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-23-000034"
-   ]
-  },
-  {
    "key": "heritagecollection|back home cannabis co. - white widow",
    "keys": [
     "heritagecollection|back home cannabis co. - white widow",
     "heritagecollection|white widow"
    ],
-   "brand": "heritagecollection",
-   "strain": "white widow",
+   "brand": "HERITAGE COLLECTION",
+   "strain": "WHITE WIDOW",
    "first": "2026-09-08",
    "days": 36,
    "seenAt": 1,
@@ -25063,102 +24220,18 @@
    ]
   },
   {
-   "key": "voiceoftheplantvop|chem dog x rainbow beltz p4",
+   "key": "platniumreserve|platinum reserve - jar - memory loss",
    "keys": [
-    "voiceoftheplantvop|chem dog x rainbow beltz p4"
+    "platniumreserve|memory loss",
+    "platniumreserve|platinum reserve - jar - memory loss"
    ],
-   "brand": "voiceoftheplantvop",
-   "strain": "chem dog x rainbow beltz p4",
-   "first": "2026-09-14",
-   "days": 30,
+   "brand": "PLATNIUM RESERVE",
+   "strain": "platinum reserve - jar - memory loss",
+   "first": "2026-09-08",
+   "days": 36,
    "seenAt": 1,
    "shops": [
-    "OCM-RETL-25-000295"
-   ]
-  },
-  {
-   "key": "preferred|foam",
-   "keys": [
-    "preferred|foam"
-   ],
-   "brand": "preferred",
-   "strain": "foam",
-   "first": "2026-09-14",
-   "days": 30,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000305"
-   ]
-  },
-  {
-   "key": "voiceofplants|gello gelato",
-   "keys": [
-    "voiceofplants|gello gelato"
-   ],
-   "brand": "voiceofplants",
-   "strain": "gello gelato",
-   "first": "2026-09-14",
-   "days": 30,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-26-000504"
-   ]
-  },
-  {
-   "key": "ladies|ice cream sundae",
-   "keys": [
-    "ladies|ice cream sundae"
-   ],
-   "brand": "ladies",
-   "strain": "ice cream sundae",
-   "first": "2026-09-14",
-   "days": 30,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-25-000403"
-   ]
-  },
-  {
-   "key": "ladies|plantain chem",
-   "keys": [
-    "ladies|plantain chem"
-   ],
-   "brand": "ladies",
-   "strain": "plantain chem",
-   "first": "2026-09-14",
-   "days": 30,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-25-000403"
-   ]
-  },
-  {
-   "key": "voiceofplants|super runtz x sherbanger",
-   "keys": [
-    "voiceofplants|super runtz x sherbanger"
-   ],
-   "brand": "voiceofplants",
-   "strain": "super runtz x sherbanger",
-   "first": "2026-09-14",
-   "days": 30,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-26-000504"
-   ]
-  },
-  {
-   "key": "rootedandpure|rooted + pure - empire og",
-   "keys": [
-    "rootedandpure|empire og",
-    "rootedandpure|rooted + pure - empire og"
-   ],
-   "brand": "rootedandpure",
-   "strain": "empire og",
-   "first": "2026-09-15",
-   "days": 29,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000104"
+    "OCM-CAURD-23-000034"
    ]
   },
   {
@@ -25166,8 +24239,8 @@
    "keys": [
     "revert|cherry amnesia - grounded"
    ],
-   "brand": "revert",
-   "strain": "cherry amnesia - grounded",
+   "brand": "Revert Cannabis",
+   "strain": "Cherry Amnesia - Grounded",
    "first": "2026-09-16",
    "days": 28,
    "seenAt": 1,
@@ -25176,26 +24249,12 @@
    ]
   },
   {
-   "key": "strainkingsrayolaserflower35g|rayo laser",
-   "keys": [
-    "strainkingsrayolaserflower35g|rayo laser"
-   ],
-   "brand": "strainkingsrayolaserflower35g",
-   "strain": "rayo laser",
-   "first": "2026-09-16",
-   "days": 28,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000275"
-   ]
-  },
-  {
    "key": "papasherb|cheesecake by papa's herb",
    "keys": [
     "papasherb|cheesecake by papa's herb"
    ],
-   "brand": "papasherb",
-   "strain": "cheesecake by papa's herb",
+   "brand": "Papa's Herb",
+   "strain": "Cheesecake by Papa's Herb",
    "first": "2026-09-17",
    "days": 27,
    "seenAt": 1,
@@ -25208,8 +24267,8 @@
    "keys": [
     "nysoh|durbin poison"
    ],
-   "brand": "nysoh",
-   "strain": "durbin poison",
+   "brand": "NYSOH",
+   "strain": "Durbin Poison",
    "first": "2026-09-17",
    "days": 27,
    "seenAt": 1,
@@ -25222,8 +24281,8 @@
    "keys": [
     "nysoh|ny block berry"
    ],
-   "brand": "nysoh",
-   "strain": "ny block berry",
+   "brand": "NYSOH",
+   "strain": "NY Block Berry",
    "first": "2026-09-17",
    "days": 27,
    "seenAt": 1,
@@ -25232,26 +24291,12 @@
    ]
   },
   {
-   "key": "mechanic|red rose",
-   "keys": [
-    "mechanic|red rose"
-   ],
-   "brand": "mechanic",
-   "strain": "red rose",
-   "first": "2026-09-17",
-   "days": 27,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000144"
-   ]
-  },
-  {
    "key": "dank|carbon fiber",
    "keys": [
     "dank|carbon fiber"
    ],
-   "brand": "dank",
-   "strain": "carbon fiber",
+   "brand": "Dank",
+   "strain": "Carbon Fiber",
    "first": "2026-09-18",
    "days": 26,
    "seenAt": 1,
@@ -25260,26 +24305,12 @@
    ]
   },
   {
-   "key": "thekaleidoscopecollective|papaya",
-   "keys": [
-    "thekaleidoscopecollective|papaya"
-   ],
-   "brand": "thekaleidoscopecollective",
-   "strain": "papaya",
-   "first": "2026-09-18",
-   "days": 26,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000087"
-   ]
-  },
-  {
    "key": "torrwood|psy-ops",
    "keys": [
     "torrwood|psy-ops"
    ],
-   "brand": "torrwood",
-   "strain": "psy-ops",
+   "brand": "Torrwood Farm",
+   "strain": "Psy-Ops",
    "first": "2026-09-18",
    "days": 26,
    "seenAt": 1,
@@ -25292,8 +24323,8 @@
    "keys": [
     "houseoftrees|hot - sherb cream pie"
    ],
-   "brand": "houseoftrees",
-   "strain": "hot - sherb cream pie",
+   "brand": "HOUSE OF TREES",
+   "strain": "HOT - Sherb Cream Pie",
    "first": "2026-09-19",
    "days": 25,
    "seenAt": 1,
@@ -25306,8 +24337,8 @@
    "keys": [
     "triple7|made of honor"
    ],
-   "brand": "triple7",
-   "strain": "made of honor",
+   "brand": "Triple 7",
+   "strain": "Made of Honor",
    "first": "2026-09-20",
    "days": 24,
    "seenAt": 1,
@@ -25320,8 +24351,8 @@
    "keys": [
     "hashtaghoney|crypto cherry - flower-rtr"
    ],
-   "brand": "hashtaghoney",
-   "strain": "crypto cherry - flower-rtr",
+   "brand": "Hashtag Honey",
+   "strain": "Crypto Cherry - Flower-RTR",
    "first": "2026-09-21",
    "days": 23,
    "seenAt": 1,
@@ -25334,8 +24365,8 @@
    "keys": [
     "jekyllhyde|grape canyon"
    ],
-   "brand": "jekyllhyde",
-   "strain": "grape canyon",
+   "brand": "Jekyll & Hyde",
+   "strain": "Grape Canyon",
    "first": "2026-09-21",
    "days": 23,
    "seenAt": 1,
@@ -25344,40 +24375,12 @@
    ]
   },
   {
-   "key": "dank|machine gun kelly",
-   "keys": [
-    "dank|machine gun kelly"
-   ],
-   "brand": "dank",
-   "strain": "machine gun kelly",
-   "first": "2026-09-22",
-   "days": 22,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-25-000306"
-   ]
-  },
-  {
-   "key": "dragonflykitcheniv|snowblower",
-   "keys": [
-    "dragonflykitcheniv|snowblower"
-   ],
-   "brand": "dragonflykitcheniv",
-   "strain": "snowblower",
-   "first": "2026-09-22",
-   "days": 22,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000096"
-   ]
-  },
-  {
    "key": "dankbydefinition|sunshine jack",
    "keys": [
     "dankbydefinition|sunshine jack"
    ],
-   "brand": "dankbydefinition",
-   "strain": "sunshine jack",
+   "brand": "DANK by Definition",
+   "strain": "Sunshine Jack",
    "first": "2026-09-22",
    "days": 22,
    "seenAt": 1,
@@ -25386,59 +24389,17 @@
    ]
   },
   {
-   "key": "dragonflykitcheniv|the spice",
-   "keys": [
-    "dragonflykitcheniv|the spice"
-   ],
-   "brand": "dragonflykitcheniv",
-   "strain": "the spice",
-   "first": "2026-09-22",
-   "days": 22,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000096"
-   ]
-  },
-  {
    "key": "darkheart|triple mints",
    "keys": [
     "darkheart|triple mints"
    ],
-   "brand": "darkheart",
-   "strain": "triple mints",
+   "brand": "Dark Heart",
+   "strain": "Triple mints",
    "first": "2026-09-22",
    "days": 22,
    "seenAt": 1,
    "shops": [
     "OCM-CAURD-24-000129"
-   ]
-  },
-  {
-   "key": "dank|watermelon mojito",
-   "keys": [
-    "dank|watermelon mojito"
-   ],
-   "brand": "dank",
-   "strain": "watermelon mojito",
-   "first": "2026-09-22",
-   "days": 22,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-25-000306"
-   ]
-  },
-  {
-   "key": "find|bam",
-   "keys": [
-    "find|bam"
-   ],
-   "brand": "find",
-   "strain": "bam",
-   "first": "2026-09-23",
-   "days": 21,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000094"
    ]
   },
   {
@@ -25446,97 +24407,13 @@
    "keys": [
     "ripped|deadhead og"
    ],
-   "brand": "ripped",
-   "strain": "deadhead og",
+   "brand": "Ripped - NY",
+   "strain": "Deadhead OG",
    "first": "2026-09-23",
    "days": 21,
    "seenAt": 1,
    "shops": [
     "OCM-CAURD-25-000310"
-   ]
-  },
-  {
-   "key": "tothemoonttm|gorilla glue",
-   "keys": [
-    "tothemoonttm|gorilla glue"
-   ],
-   "brand": "tothemoonttm",
-   "strain": "gorilla glue",
-   "first": "2026-09-23",
-   "days": 21,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000075"
-   ]
-  },
-  {
-   "key": "thebotanist|londyn blue",
-   "keys": [
-    "thebotanist|londyn blue"
-   ],
-   "brand": "thebotanist",
-   "strain": "londyn blue",
-   "first": "2026-09-23",
-   "days": 21,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-25-000293"
-   ]
-  },
-  {
-   "key": "tothemoonttm|sour joker",
-   "keys": [
-    "tothemoonttm|sour joker"
-   ],
-   "brand": "tothemoonttm",
-   "strain": "sour joker",
-   "first": "2026-09-23",
-   "days": 21,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000075"
-   ]
-  },
-  {
-   "key": "tothemoonttm|sour og",
-   "keys": [
-    "tothemoonttm|sour og"
-   ],
-   "brand": "tothemoonttm",
-   "strain": "sour og",
-   "first": "2026-09-23",
-   "days": 21,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000075"
-   ]
-  },
-  {
-   "key": "puffprerolls|stank breath",
-   "keys": [
-    "puffprerolls|stank breath"
-   ],
-   "brand": "puffprerolls",
-   "strain": "stank breath",
-   "first": "2026-09-23",
-   "days": 21,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-23-000030"
-   ]
-  },
-  {
-   "key": "puffprerolls|tangie",
-   "keys": [
-    "puffprerolls|tangie"
-   ],
-   "brand": "puffprerolls",
-   "strain": "tangie",
-   "first": "2026-09-23",
-   "days": 21,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-23-000030"
    ]
   },
   {
@@ -25544,8 +24421,8 @@
    "keys": [
     "ripped|tropical storm"
    ],
-   "brand": "ripped",
-   "strain": "tropical storm",
+   "brand": "Ripped - NY",
+   "strain": "Tropical Storm",
    "first": "2026-09-23",
    "days": 21,
    "seenAt": 1,
@@ -25554,68 +24431,12 @@
    ]
   },
   {
-   "key": "tothemoonttm|tropicana cookies",
-   "keys": [
-    "tothemoonttm|tropicana cookies"
-   ],
-   "brand": "tothemoonttm",
-   "strain": "tropicana cookies",
-   "first": "2026-09-23",
-   "days": 21,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000075"
-   ]
-  },
-  {
-   "key": "tothemoonttm|white rhino",
-   "keys": [
-    "tothemoonttm|white rhino"
-   ],
-   "brand": "tothemoonttm",
-   "strain": "white rhino",
-   "first": "2026-09-23",
-   "days": 21,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000075"
-   ]
-  },
-  {
-   "key": "zipsog|chem dawg",
-   "keys": [
-    "zipsog|chem dawg"
-   ],
-   "brand": "zipsog",
-   "strain": "chem dawg",
-   "first": "2026-09-24",
-   "days": 20,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000104"
-   ]
-  },
-  {
-   "key": "botanist|lemon skunk",
-   "keys": [
-    "botanist|lemon skunk"
-   ],
-   "brand": "botanist",
-   "strain": "lemon skunk",
-   "first": "2026-09-24",
-   "days": 20,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000026"
-   ]
-  },
-  {
    "key": "thebotanist|mint sherbert",
    "keys": [
     "thebotanist|mint sherbert"
    ],
-   "brand": "thebotanist",
-   "strain": "mint sherbert",
+   "brand": "The Botanist",
+   "strain": "Mint Sherbert",
    "first": "2026-09-24",
    "days": 20,
    "seenAt": 1,
@@ -25624,54 +24445,12 @@
    ]
   },
   {
-   "key": "groceryaisle14g|modified bananas",
-   "keys": [
-    "groceryaisle14g|modified bananas"
-   ],
-   "brand": "groceryaisle14g",
-   "strain": "modified bananas",
-   "first": "2026-09-24",
-   "days": 20,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-23-000038"
-   ]
-  },
-  {
-   "key": "groceryaisle14g|sugarcane kush",
-   "keys": [
-    "groceryaisle14g|sugarcane kush"
-   ],
-   "brand": "groceryaisle14g",
-   "strain": "sugarcane kush",
-   "first": "2026-09-24",
-   "days": 20,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-23-000038"
-   ]
-  },
-  {
-   "key": "capicuexotics|tres leches",
-   "keys": [
-    "capicuexotics|tres leches"
-   ],
-   "brand": "capicuexotics",
-   "strain": "tres leches",
-   "first": "2026-09-24",
-   "days": 20,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000140"
-   ]
-  },
-  {
    "key": "grocery|alchemy",
    "keys": [
     "grocery|alchemy"
    ],
-   "brand": "grocery",
-   "strain": "alchemy",
+   "brand": "Grocery",
+   "strain": "Alchemy",
    "first": "2026-09-25",
    "days": 19,
    "seenAt": 1,
@@ -25684,8 +24463,8 @@
    "keys": [
     "grocery|black jack"
    ],
-   "brand": "grocery",
-   "strain": "black jack",
+   "brand": "Grocery",
+   "strain": "Black Jack",
    "first": "2026-09-25",
    "days": 19,
    "seenAt": 1,
@@ -25698,8 +24477,8 @@
    "keys": [
     "spacebuds|blueberry muffin - mr"
    ],
-   "brand": "spacebuds",
-   "strain": "blueberry muffin - mr",
+   "brand": "Spacebuds",
+   "strain": "Blueberry Muffin - MR",
    "first": "2026-09-25",
    "days": 19,
    "seenAt": 1,
@@ -25712,8 +24491,8 @@
    "keys": [
     "spacebuds|blueberry muffin i moon matter"
    ],
-   "brand": "spacebuds",
-   "strain": "blueberry muffin i moon matter",
+   "brand": "SpaceBuds",
+   "strain": "Blueberry Muffin I Moon Matter",
    "first": "2026-09-25",
    "days": 19,
    "seenAt": 1,
@@ -25726,8 +24505,8 @@
    "keys": [
     "twic3bak3d|everything bagel"
    ],
-   "brand": "twic3bak3d",
-   "strain": "everything bagel",
+   "brand": "Twic3 Bak3d",
+   "strain": "Everything Bagel",
    "first": "2026-09-25",
    "days": 19,
    "seenAt": 1,
@@ -25736,54 +24515,12 @@
    ]
   },
   {
-   "key": "dadaexotics|gmo cookies",
-   "keys": [
-    "dadaexotics|gmo cookies"
-   ],
-   "brand": "dadaexotics",
-   "strain": "gmo cookies",
-   "first": "2026-09-25",
-   "days": 19,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000241"
-   ]
-  },
-  {
-   "key": "zips|juicy fruit",
-   "keys": [
-    "zips|juicy fruit"
-   ],
-   "brand": "zips",
-   "strain": "juicy fruit",
-   "first": "2026-09-25",
-   "days": 19,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000166"
-   ]
-  },
-  {
-   "key": "major|permenant gas",
-   "keys": [
-    "major|permenant gas"
-   ],
-   "brand": "major",
-   "strain": "permenant gas",
-   "first": "2026-09-25",
-   "days": 19,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000151"
-   ]
-  },
-  {
    "key": "spacebuds|strawberry slushie i moon matter",
    "keys": [
     "spacebuds|strawberry slushie i moon matter"
    ],
-   "brand": "spacebuds",
-   "strain": "strawberry slushie i moon matter",
+   "brand": "SpaceBuds",
+   "strain": "Strawberry Slushie I Moon Matter",
    "first": "2026-09-25",
    "days": 19,
    "seenAt": 1,
@@ -25796,8 +24533,8 @@
    "keys": [
     "skyrose|blissful blend"
    ],
-   "brand": "skyrose",
-   "strain": "blissful blend",
+   "brand": "Skyrose",
+   "strain": "Blissful Blend",
    "first": "2026-09-26",
    "days": 18,
    "seenAt": 1,
@@ -25810,8 +24547,8 @@
    "keys": [
     "dollatreez|grandma purp"
    ],
-   "brand": "dollatreez",
-   "strain": "grandma purp",
+   "brand": "Dolla Treez",
+   "strain": "Grandma Purp",
    "first": "2026-09-26",
    "days": 18,
    "seenAt": 1,
@@ -25824,8 +24561,8 @@
    "keys": [
     "highscale|lemon cherry gelato"
    ],
-   "brand": "highscale",
-   "strain": "lemon cherry gelato",
+   "brand": "High Scale",
+   "strain": "Lemon Cherry Gelato",
    "first": "2026-09-26",
    "days": 18,
    "seenAt": 1,
@@ -25838,8 +24575,8 @@
    "keys": [
     "js|palermo"
    ],
-   "brand": "js",
-   "strain": "palermo",
+   "brand": "J'S CANNABIS",
+   "strain": "PALERMO",
    "first": "2026-09-26",
    "days": 18,
    "seenAt": 1,
@@ -25848,27 +24585,12 @@
    ]
   },
   {
-   "key": "buddingblisssmallbatch|budding bliss farms - mac stomper",
-   "keys": [
-    "buddingblisssmallbatch|budding bliss farms - mac stomper",
-    "buddingblisssmallbatch|budding bliss farms - magic marker"
-   ],
-   "brand": "buddingblisssmallbatch",
-   "strain": "budding bliss farms - mac stomper",
-   "first": "2026-09-27",
-   "days": 17,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000245"
-   ]
-  },
-  {
    "key": "kingsandqueens|nitro cookie hybrid 1/8",
    "keys": [
     "kingsandqueens|nitro cookie hybrid 1/8"
    ],
-   "brand": "kingsandqueens",
-   "strain": "nitro cookie hybrid 1/8",
+   "brand": "KINGS AND QUEENS",
+   "strain": "NITRO COOKIE HYBRID 1/8",
    "first": "2026-09-27",
    "days": 17,
    "seenAt": 1,
@@ -25881,8 +24603,8 @@
    "keys": [
     "jackherertm|third eye kind"
    ],
-   "brand": "jackherertm",
-   "strain": "third eye kind",
+   "brand": "Jack Herer™ Brands",
+   "strain": "Third Eye Kind",
    "first": "2026-09-27",
    "days": 17,
    "seenAt": 1,
@@ -25895,8 +24617,8 @@
    "keys": [
     "juniperjill|donut voodoo"
    ],
-   "brand": "juniperjill",
-   "strain": "donut voodoo",
+   "brand": "Juniper Jill",
+   "strain": "Donut Voodoo",
    "first": "2026-09-28",
    "days": 16,
    "seenAt": 1,
@@ -25909,8 +24631,8 @@
    "keys": [
     "juniperjill|halle berry"
    ],
-   "brand": "juniperjill",
-   "strain": "halle berry",
+   "brand": "Juniper Jill",
+   "strain": "Halle Berry",
    "first": "2026-09-28",
    "days": 16,
    "seenAt": 1,
@@ -25923,8 +24645,8 @@
    "keys": [
     "stranman|novarine - flower (dub"
    ],
-   "brand": "stranman",
-   "strain": "novarine - flower (dub",
+   "brand": "Stranman",
+   "strain": "Novarine - Flower (dub",
    "first": "2026-09-28",
    "days": 16,
    "seenAt": 1,
@@ -25937,8 +24659,8 @@
    "keys": [
     "pax|platinum purple og - flower puck"
    ],
-   "brand": "pax",
-   "strain": "platinum purple og - flower puck",
+   "brand": "Pax",
+   "strain": "Platinum Purple OG - Flower Puck",
    "first": "2026-09-28",
    "days": 16,
    "seenAt": 1,
@@ -25947,27 +24669,12 @@
    ]
   },
   {
-   "key": "breakfastconnection|flower purple haze",
-   "keys": [
-    "breakfastconnection|flower purple haze",
-    "breakfastconnection|purple haze"
-   ],
-   "brand": "breakfastconnection",
-   "strain": "purple haze",
-   "first": "2026-09-28",
-   "days": 16,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-26-000335"
-   ]
-  },
-  {
    "key": "suspect|fruity pepples",
    "keys": [
     "suspect|fruity pepples"
    ],
-   "brand": "suspect",
-   "strain": "fruity pepples",
+   "brand": "Suspect",
+   "strain": "Fruity Pepples",
    "first": "2026-09-29",
    "days": 15,
    "seenAt": 1,
@@ -25976,54 +24683,12 @@
    ]
   },
   {
-   "key": "preferred|fun dip",
-   "keys": [
-    "preferred|fun dip"
-   ],
-   "brand": "preferred",
-   "strain": "fun dip",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000100"
-   ]
-  },
-  {
-   "key": "zipsog|khalifa kush",
-   "keys": [
-    "zipsog|khalifa kush"
-   ],
-   "brand": "zipsog",
-   "strain": "khalifa kush",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000103"
-   ]
-  },
-  {
-   "key": "voiceoftheplanet|lip smackers",
-   "keys": [
-    "voiceoftheplanet|lip smackers"
-   ],
-   "brand": "voiceoftheplanet",
-   "strain": "lip smackers",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000133"
-   ]
-  },
-  {
    "key": "calihoney|sherblatto",
    "keys": [
     "calihoney|sherblatto"
    ],
-   "brand": "calihoney",
-   "strain": "sherblatto",
+   "brand": "Cali Honey",
+   "strain": "Sherblatto",
    "first": "2026-09-29",
    "days": 15,
    "seenAt": 1,
@@ -26032,26 +24697,12 @@
    ]
   },
   {
-   "key": "floristfarmergroup|strawberry cream",
-   "keys": [
-    "floristfarmergroup|strawberry cream"
-   ],
-   "brand": "floristfarmergroup",
-   "strain": "strawberry cream",
-   "first": "2026-09-29",
-   "days": 15,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000051"
-   ]
-  },
-  {
    "key": "milkweedmicro|alien space candy (indoor hydroponics)",
    "keys": [
     "milkweedmicro|alien space candy (indoor hydroponics)"
    ],
-   "brand": "milkweedmicro",
-   "strain": "alien space candy (indoor hydroponics)",
+   "brand": "Milkweed (Micro)",
+   "strain": "Alien Space Candy (Indoor Hydroponics)",
    "first": "2026-09-30",
    "days": 14,
    "seenAt": 1,
@@ -26064,8 +24715,8 @@
    "keys": [
     "florette|lst"
    ],
-   "brand": "florette",
-   "strain": "lst",
+   "brand": "Florette",
+   "strain": "LST",
    "first": "2026-09-30",
    "days": 14,
    "seenAt": 1,
@@ -26074,40 +24725,12 @@
    ]
   },
   {
-   "key": "greenroom|mac v2",
-   "keys": [
-    "greenroom|mac v2"
-   ],
-   "brand": "greenroom",
-   "strain": "mac v2",
-   "first": "2026-09-30",
-   "days": 14,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000268"
-   ]
-  },
-  {
-   "key": "cultured|rainbow gelato",
-   "keys": [
-    "cultured|rainbow gelato"
-   ],
-   "brand": "cultured",
-   "strain": "rainbow gelato",
-   "first": "2026-09-30",
-   "days": 14,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000138"
-   ]
-  },
-  {
    "key": "hashtaghoney|alter don mega",
    "keys": [
     "hashtaghoney|alter don mega"
    ],
-   "brand": "hashtaghoney",
-   "strain": "alter don mega",
+   "brand": "HASHTAG HONEY",
+   "strain": "ALTER DON MEGA",
    "first": "2026-10-01",
    "days": 13,
    "seenAt": 1,
@@ -26120,8 +24743,8 @@
    "keys": [
     "hashtaghoney|candy fumes - rtr"
    ],
-   "brand": "hashtaghoney",
-   "strain": "candy fumes - rtr",
+   "brand": "Hashtag Honey",
+   "strain": "Candy Fumes - RTR",
    "first": "2026-10-01",
    "days": 13,
    "seenAt": 1,
@@ -26134,8 +24757,8 @@
    "keys": [
     "hashtaghoney|garlic cookies"
    ],
-   "brand": "hashtaghoney",
-   "strain": "garlic cookies",
+   "brand": "HASHTAG HONEY",
+   "strain": "GARLIC COOKIES",
    "first": "2026-10-01",
    "days": 13,
    "seenAt": 1,
@@ -26144,26 +24767,12 @@
    ]
   },
   {
-   "key": "6pointmicro|krazy maddness",
-   "keys": [
-    "6pointmicro|krazy maddness"
-   ],
-   "brand": "6pointmicro",
-   "strain": "krazy maddness",
-   "first": "2026-10-01",
-   "days": 13,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000046"
-   ]
-  },
-  {
    "key": "assetpackagingmanagement|lc-premium indoor flower - sour diesel",
    "keys": [
     "assetpackagingmanagement|lc-premium indoor flower - sour diesel"
    ],
-   "brand": "assetpackagingmanagement",
-   "strain": "lc-premium indoor flower - sour diesel",
+   "brand": "Asset packaging management co llc",
+   "strain": "LC-Premium Indoor Flower - Sour Diesel",
    "first": "2026-10-01",
    "days": 13,
    "seenAt": 1,
@@ -26176,8 +24785,8 @@
    "keys": [
     "chubbybunny|mogu - nyc haze"
    ],
-   "brand": "chubbybunny",
-   "strain": "mogu - nyc haze",
+   "brand": "Chubby Bunny",
+   "strain": "MOGU - NYC Haze",
    "first": "2026-10-01",
    "days": 13,
    "seenAt": 1,
@@ -26190,8 +24799,8 @@
    "keys": [
     "hashtaghoney|rainbow runtz"
    ],
-   "brand": "hashtaghoney",
-   "strain": "rainbow runtz",
+   "brand": "HASHTAG HONEY",
+   "strain": "RAINBOW RUNTZ",
    "first": "2026-10-01",
    "days": 13,
    "seenAt": 1,
@@ -26204,8 +24813,8 @@
    "keys": [
     "runtz|wifi og"
    ],
-   "brand": "runtz",
-   "strain": "wifi og",
+   "brand": "Runtz",
+   "strain": "Wifi OG",
    "first": "2026-10-01",
    "days": 13,
    "seenAt": 1,
@@ -26218,8 +24827,8 @@
    "keys": [
     "hashtaghoney|zkittles - rtr"
    ],
-   "brand": "hashtaghoney",
-   "strain": "zkittles - rtr",
+   "brand": "Hashtag Honey",
+   "strain": "Zkittles - RTR",
    "first": "2026-10-01",
    "days": 13,
    "seenAt": 1,
@@ -26228,40 +24837,12 @@
    ]
   },
   {
-   "key": "tyson|exodus",
-   "keys": [
-    "tyson|exodus"
-   ],
-   "brand": "tyson",
-   "strain": "exodus",
-   "first": "2026-10-02",
-   "days": 12,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000292"
-   ]
-  },
-  {
-   "key": "518hollowmicro|hollow - zz grape",
-   "keys": [
-    "518hollowmicro|hollow - zz grape"
-   ],
-   "brand": "518hollowmicro",
-   "strain": "hollow - zz grape",
-   "first": "2026-10-02",
-   "days": 12,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000046"
-   ]
-  },
-  {
    "key": "animas|petrol rainbows",
    "keys": [
     "animas|petrol rainbows"
    ],
-   "brand": "animas",
-   "strain": "petrol rainbows",
+   "brand": "Animas Cannabis",
+   "strain": "Petrol Rainbows",
    "first": "2026-10-02",
    "days": 12,
    "seenAt": 1,
@@ -26274,8 +24855,8 @@
    "keys": [
     "topcrop|top crop black runtz14g"
    ],
-   "brand": "topcrop",
-   "strain": "top crop black runtz14g",
+   "brand": "TOP CROP",
+   "strain": "TOP CROP BLACK RUNTZ14G",
    "first": "2026-10-02",
    "days": 12,
    "seenAt": 1,
@@ -26288,8 +24869,8 @@
    "keys": [
     "hurleygrown|black scott - indhyb"
    ],
-   "brand": "hurleygrown",
-   "strain": "black scott - indhyb",
+   "brand": "Hurley Grown",
+   "strain": "Black Scott - IndHyb",
    "first": "2026-10-03",
    "days": 11,
    "seenAt": 1,
@@ -26302,8 +24883,8 @@
    "keys": [
     "markturk|blue dream"
    ],
-   "brand": "markturk",
-   "strain": "blue dream",
+   "brand": "Mark Turk Farms",
+   "strain": "Blue Dream",
    "first": "2026-10-03",
    "days": 11,
    "seenAt": 1,
@@ -26316,8 +24897,8 @@
    "keys": [
     "tokefolks|durban poison - dub sack"
    ],
-   "brand": "tokefolks",
-   "strain": "durban poison - dub sack",
+   "brand": "Toke Folks",
+   "strain": "Durban Poison - Dub Sack",
    "first": "2026-10-03",
    "days": 11,
    "seenAt": 1,
@@ -26326,40 +24907,12 @@
    ]
   },
   {
-   "key": "tyson|dynamite cookies",
-   "keys": [
-    "tyson|dynamite cookies"
-   ],
-   "brand": "tyson",
-   "strain": "dynamite cookies",
-   "first": "2026-10-03",
-   "days": 11,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000292"
-   ]
-  },
-  {
-   "key": "grassrootsdarkheart|grandma's house",
-   "keys": [
-    "grassrootsdarkheart|grandma's house"
-   ],
-   "brand": "grassrootsdarkheart",
-   "strain": "grandma's house",
-   "first": "2026-10-03",
-   "days": 11,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-23-000026"
-   ]
-  },
-  {
    "key": "ithacaorganics|lapis exillus",
    "keys": [
     "ithacaorganics|lapis exillus"
    ],
-   "brand": "ithacaorganics",
-   "strain": "lapis exillus",
+   "brand": "Ithaca Organics",
+   "strain": "Lapis Exillus",
    "first": "2026-10-03",
    "days": 11,
    "seenAt": 1,
@@ -26373,7 +24926,7 @@
     "vitabudz|platinum og kush"
    ],
    "brand": "vitabudz",
-   "strain": "platinum og kush",
+   "strain": "Platinum OG Kush",
    "first": "2026-10-03",
    "days": 11,
    "seenAt": 1,
@@ -26387,8 +24940,8 @@
     "tokefolks|route 27 lcg",
     "tokefolks|route 27 lcg - dub sack"
    ],
-   "brand": "tokefolks",
-   "strain": "route 27 lcg",
+   "brand": "Toke Folks",
+   "strain": "Route 27 LCG",
    "first": "2026-10-03",
    "days": 11,
    "seenAt": 1,
@@ -26401,8 +24954,8 @@
    "keys": [
     "markturk|superboof"
    ],
-   "brand": "markturk",
-   "strain": "superboof",
+   "brand": "Mark Turk Farms",
+   "strain": "Superboof",
    "first": "2026-10-03",
    "days": 11,
    "seenAt": 1,
@@ -26416,8 +24969,8 @@
     "tokefolks|zuper zoda",
     "tokefolks|zuper zoda - dub sack"
    ],
-   "brand": "tokefolks",
-   "strain": "zuper zoda",
+   "brand": "Toke Folks",
+   "strain": "Zuper Zoda",
    "first": "2026-10-03",
    "days": 11,
    "seenAt": 1,
@@ -26430,8 +24983,8 @@
    "keys": [
     "holiday|alchemy"
    ],
-   "brand": "holiday",
-   "strain": "alchemy",
+   "brand": "Holiday",
+   "strain": "Alchemy",
    "first": "2026-10-05",
    "days": 9,
    "seenAt": 1,
@@ -26440,54 +24993,12 @@
    ]
   },
   {
-   "key": "zips|birthday cookies",
-   "keys": [
-    "zips|birthday cookies"
-   ],
-   "brand": "zips",
-   "strain": "birthday cookies",
-   "first": "2026-10-05",
-   "days": 9,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-23-000021"
-   ]
-  },
-  {
-   "key": "northforkcollective|black maple",
-   "keys": [
-    "northforkcollective|black maple"
-   ],
-   "brand": "northforkcollective",
-   "strain": "black maple",
-   "first": "2026-10-05",
-   "days": 9,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000214"
-   ]
-  },
-  {
-   "key": "northforkmicro|black maple",
-   "keys": [
-    "northforkmicro|black maple"
-   ],
-   "brand": "northforkmicro",
-   "strain": "black maple",
-   "first": "2026-10-05",
-   "days": 9,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000266"
-   ]
-  },
-  {
    "key": "runtz|r - adl",
    "keys": [
     "runtz|r - adl"
    ],
-   "brand": "runtz",
-   "strain": "r - adl",
+   "brand": "Runtz",
+   "strain": "R - ADL",
    "first": "2026-10-05",
    "days": 9,
    "seenAt": 1,
@@ -26496,110 +25007,12 @@
    ]
   },
   {
-   "key": "edieparkerearlybird|sour jack",
-   "keys": [
-    "edieparkerearlybird|sour jack"
-   ],
-   "brand": "edieparkerearlybird",
-   "strain": "sour jack",
-   "first": "2026-10-05",
-   "days": 9,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000249"
-   ]
-  },
-  {
-   "key": "northforkmicro|strawberry push pop",
-   "keys": [
-    "northforkmicro|strawberry push pop"
-   ],
-   "brand": "northforkmicro",
-   "strain": "strawberry push pop",
-   "first": "2026-10-05",
-   "days": 9,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000266"
-   ]
-  },
-  {
-   "key": "edieparkerhappiesthour|sugar breath",
-   "keys": [
-    "edieparkerhappiesthour|sugar breath"
-   ],
-   "brand": "edieparkerhappiesthour",
-   "strain": "sugar breath",
-   "first": "2026-10-05",
-   "days": 9,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000249"
-   ]
-  },
-  {
-   "key": "puffextracts|x - stank breath",
-   "keys": [
-    "puffextracts|x - stank breath"
-   ],
-   "brand": "puffextracts",
-   "strain": "x - stank breath",
-   "first": "2026-10-05",
-   "days": 9,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000095"
-   ]
-  },
-  {
-   "key": "puffextracts|x - tangie",
-   "keys": [
-    "puffextracts|x - tangie"
-   ],
-   "brand": "puffextracts",
-   "strain": "x - tangie",
-   "first": "2026-10-05",
-   "days": 9,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-24-000095"
-   ]
-  },
-  {
-   "key": "northforkmicro|zom",
-   "keys": [
-    "northforkmicro|zom"
-   ],
-   "brand": "northforkmicro",
-   "strain": "zom",
-   "first": "2026-10-05",
-   "days": 9,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000266"
-   ]
-  },
-  {
-   "key": "claybourneclassiccuts|muel fuel",
-   "keys": [
-    "claybourneclassiccuts|muel fuel"
-   ],
-   "brand": "claybourneclassiccuts",
-   "strain": "muel fuel",
-   "first": "2026-10-06",
-   "days": 8,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000284"
-   ]
-  },
-  {
    "key": "otherwse|og",
    "keys": [
     "otherwse|og"
    ],
    "brand": "otherwse",
-   "strain": "og",
+   "strain": "OG",
    "first": "2026-10-06",
    "days": 8,
    "seenAt": 1,
@@ -26608,26 +25021,12 @@
    ]
   },
   {
-   "key": "packslosangeles|sour apricotz",
-   "keys": [
-    "packslosangeles|sour apricotz"
-   ],
-   "brand": "packslosangeles",
-   "strain": "sour apricotz",
-   "first": "2026-10-06",
-   "days": 8,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000288"
-   ]
-  },
-  {
    "key": "otherwse|sour diesel",
    "keys": [
     "otherwse|sour diesel"
    ],
    "brand": "otherwse",
-   "strain": "sour diesel",
+   "strain": "Sour Diesel",
    "first": "2026-10-06",
    "days": 8,
    "seenAt": 1,
@@ -26640,8 +25039,8 @@
    "keys": [
     "jetpacks|concrete shoes - powdered donuts"
    ],
-   "brand": "jetpacks",
-   "strain": "concrete shoes - powdered donuts",
+   "brand": "Jetpacks",
+   "strain": "Concrete Shoes - Powdered Donuts",
    "first": "2026-10-07",
    "days": 7,
    "seenAt": 1,
@@ -26650,26 +25049,26 @@
    ]
   },
   {
-   "key": "thekaleidoscopecollective|galactic war headz",
-   "keys": [
-    "thekaleidoscopecollective|galactic war headz"
-   ],
-   "brand": "thekaleidoscopecollective",
-   "strain": "galactic war headz",
-   "first": "2026-10-07",
-   "days": 7,
-   "seenAt": 1,
-   "shops": [
-    "OCM-RETL-24-000233"
-   ]
-  },
-  {
    "key": "hashtaghoney|jelly roll",
    "keys": [
     "hashtaghoney|jelly roll"
    ],
-   "brand": "hashtaghoney",
-   "strain": "jelly roll",
+   "brand": "Hashtag Honey",
+   "strain": "Jelly Roll",
+   "first": "2026-10-07",
+   "days": 7,
+   "seenAt": 1,
+   "shops": [
+    "OCM-CAURD-25-000268"
+   ]
+  },
+  {
+   "key": "moodz|mintz",
+   "keys": [
+    "moodz|mintz"
+   ],
+   "brand": "Moodz",
+   "strain": "MIntz",
    "first": "2026-10-07",
    "days": 7,
    "seenAt": 1,
@@ -26682,8 +25081,8 @@
    "keys": [
     "woodstock|mendo og"
    ],
-   "brand": "woodstock",
-   "strain": "mendo og",
+   "brand": "Woodstock",
+   "strain": "Mendo Og",
    "first": "2026-10-07",
    "days": 7,
    "seenAt": 1,
@@ -26692,26 +25091,12 @@
    ]
   },
   {
-   "key": "moodz|mintz",
-   "keys": [
-    "moodz|mintz"
-   ],
-   "brand": "moodz",
-   "strain": "mintz",
-   "first": "2026-10-07",
-   "days": 7,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000268"
-   ]
-  },
-  {
    "key": "chflwr|ny kush - (3.5",
    "keys": [
     "chflwr|ny kush - (3.5"
    ],
-   "brand": "chflwr",
-   "strain": "ny kush - (3.5",
+   "brand": "CHFLWR",
+   "strain": "NY Kush - (3.5",
    "first": "2026-10-07",
    "days": 7,
    "seenAt": 1,
@@ -26724,8 +25109,8 @@
    "keys": [
     "highscale|orange bellini"
    ],
-   "brand": "highscale",
-   "strain": "orange bellini",
+   "brand": "High Scale",
+   "strain": "Orange Bellini",
    "first": "2026-10-07",
    "days": 7,
    "seenAt": 1,
@@ -26738,8 +25123,8 @@
    "keys": [
     "hashtaghoney|oreoz"
    ],
-   "brand": "hashtaghoney",
-   "strain": "oreoz",
+   "brand": "Hashtag Honey",
+   "strain": "Oreoz",
    "first": "2026-10-07",
    "days": 7,
    "seenAt": 1,
@@ -26752,22 +25137,8 @@
    "keys": [
     "tothemoon|starberry"
    ],
-   "brand": "tothemoon",
-   "strain": "starberry",
-   "first": "2026-10-07",
-   "days": 7,
-   "seenAt": 1,
-   "shops": [
-    "OCM-CAURD-25-000268"
-   ]
-  },
-  {
-   "key": "hashtaghoney|sweet retreat",
-   "keys": [
-    "hashtaghoney|sweet retreat"
-   ],
-   "brand": "hashtaghoney",
-   "strain": "sweet retreat",
+   "brand": "To The Moon",
+   "strain": "Starberry",
    "first": "2026-10-07",
    "days": 7,
    "seenAt": 1,
@@ -26780,8 +25151,8 @@
    "keys": [
     "runtz|x - adl - miniz"
    ],
-   "brand": "runtz",
-   "strain": "x - adl - miniz",
+   "brand": "Runtz",
+   "strain": "X - ADL - Miniz",
    "first": "2026-10-07",
    "days": 7,
    "seenAt": 1,
@@ -26794,8 +25165,8 @@
    "keys": [
     "runtz|x - obama - miniz"
    ],
-   "brand": "runtz",
-   "strain": "x - obama - miniz",
+   "brand": "Runtz",
+   "strain": "X - Obama - Miniz",
    "first": "2026-10-07",
    "days": 7,
    "seenAt": 1,
@@ -26808,13 +25179,27 @@
    "keys": [
     "runtz|x - pink - miniz"
    ],
-   "brand": "runtz",
-   "strain": "x - pink - miniz",
+   "brand": "Runtz",
+   "strain": "X - Pink - Miniz",
    "first": "2026-10-07",
    "days": 7,
    "seenAt": 1,
    "shops": [
     "OCM-CAURD-24-000095"
+   ]
+  },
+  {
+   "key": "hashtaghoney|sweet retreat",
+   "keys": [
+    "hashtaghoney|sweet retreat"
+   ],
+   "brand": "Hashtag Honey",
+   "strain": "sweet retreat",
+   "first": "2026-10-07",
+   "days": 7,
+   "seenAt": 1,
+   "shops": [
+    "OCM-CAURD-25-000268"
    ]
   }
  ],

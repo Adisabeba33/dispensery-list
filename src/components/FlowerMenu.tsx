@@ -17,7 +17,7 @@ import {
   type FlowerListing,
   isPromotionalSample,
 } from '@/lib/menu-format';
-import { DebutLine, DebutTag } from './DebutTag';
+import { DebutBadge, DebutTag } from './DebutTag';
 
 const PROVENANCE_CLASS: Record<string, string> = {
   lab: 'border-moss-600/55 bg-moss-600/12 text-moss-400',
@@ -79,13 +79,11 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
             <span className="mx-1.5 text-ink-600">·</span>
             {LINEAGE_LABEL[listing.lineage] ?? 'Unstated'}
           </p>
-          {listing.debut && <DebutLine debut={listing.debut} className="mt-1" />}
         </div>
 
         <div className="flex items-center gap-3 text-right">
-          {listing.debut && <DebutTag debut={listing.debut} />}
           {listing.thcPercent !== null && (
-            <span className="tabular-nums text-sm text-chalk-100">
+            <span className="whitespace-nowrap tabular-nums text-sm text-chalk-100">
               THC {listing.thcPercent}%
             </span>
           )}
@@ -102,6 +100,10 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
           )}
         </div>
       </div>
+
+      {/* A row of its own under the name, so the date beside the tag never
+          pushes THC off the corner. */}
+      {listing.debut && <DebutBadge debut={listing.debut} className="mt-2" />}
 
       {/* Sizes: what a buyer actually asks for at the counter. */}
       {sizes.length > 0 && (
@@ -380,8 +382,8 @@ export const FlowerMenu = ({
               <li className="flex items-start gap-2 text-[0.72rem] leading-relaxed text-chalk-400">
                 <DebutTag debut={{ day: '2026-10-08', days: 0, seenAt: 3 }} sample />
                 <span>
-                  A strain no shelf we read had carried before, in its first week. The number is how
-                  many shops it has reached so far.
+                  A grower&apos;s strain no shelf we read had carried from that grower before, in its
+                  first week. The number is how many shops have had it so far.
                 </span>
               </li>
               <li className="flex items-start gap-2 text-[0.72rem] leading-relaxed text-chalk-400">

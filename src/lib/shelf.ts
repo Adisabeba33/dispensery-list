@@ -83,9 +83,11 @@ export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
     if (l.thcPercent !== null) entry.thcPercent = Math.max(entry.thcPercent ?? 0, l.thcPercent);
     if (l.terpenes.profile.length > 0) entry.hasTerpenes = true;
     /* A row gathers every grower's jar of the name, so it is a debut only while
-       every jar in it is one: a new grower's Blue Dream is not a new strain. */
-    if (!l.debut) settled.add(key);
-    else if (!entry.debut) entry.debut = { ...l.debut };
+       every jar in it is one: a new grower's Blue Dream is not a new strain. A
+       jar with no grower stated cannot be looked up, and does not settle it. */
+    if (!l.debut) {
+      if (l.brandKey) settled.add(key);
+    } else if (!entry.debut) entry.debut = { ...l.debut };
     else {
       const d = entry.debut;
       if (l.debut.day < d.day) Object.assign(d, { day: l.debut.day, days: l.debut.days });
@@ -115,6 +117,9 @@ export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
      a menu's house style. */
   for (const entry of byStrain.values()) {
     if (settled.has(entry.key)) entry.debut = null;
+    /* Two growers' debuts in one row: each counts its own shops, and the row's
+       shops are at least all of them that stock it now. */
+    if (entry.debut) entry.debut.seenAt = Math.max(entry.debut.seenAt, entry.shops.length);
     const counted = [...(spellings.get(entry.key) ?? new Map<string, number>())];
     counted.sort((a, b) => {
       const shout = (w: string) => (w === w.toUpperCase() && /[A-Z]/.test(w) ? 1 : 0);
