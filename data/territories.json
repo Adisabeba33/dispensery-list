@@ -1,9 +1,10 @@
 {
-  "$comment": "The three territories this register covers, kept deliberately APART. NYC+Westchester is the delivered dataset and keeps the original file paths at data/*.json — nothing about it moves, so nothing about it breaks. Each newer territory owns a directory beside it and is collected, validated and published on its own. They are never merged: coverage, opt-out rules and menu-platform mix all differ by region, and one blended figure would hide every difference. A territory names EITHER the counties it contains or the ones it excludes — upstate is defined by exclusion on purpose, so a county that issues its first licence tomorrow is covered instead of silently dropped by a list written today.",
+  "$comment": "The three territories this register covers, kept deliberately APART. NYC+Westchester is the delivered dataset and keeps the original file paths at data/*.json — nothing about it moves, so nothing about it breaks. Each newer territory owns a directory beside it and is collected, validated and published on its own. They are never merged: coverage, opt-out rules and menu-platform mix all differ by region, and one blended figure would hide every difference. A territory names EITHER the counties it contains or the ones it excludes — upstate is defined by exclusion on purpose, so a county that issues its first licence tomorrow is covered instead of silently dropped by a list written today. A county name is only unique inside a state — Suffolk, Essex and Franklin are counties of both New York and Massachusetts — so every territory names its state, and membership is the state AND the county.",
   "territories": [
     {
       "id": "nyc",
       "label": "New York City & Westchester",
+      "state": "NY",
       "dataDir": "data",
       "route": "/",
       "counties": [
@@ -24,6 +25,7 @@
     {
       "id": "upstate",
       "label": "Upstate New York",
+      "state": "NY",
       "dataDir": "data/upstate",
       "route": "/upstate",
       "excludeCounties": [
@@ -46,6 +48,7 @@
     {
       "id": "long-island",
       "label": "Long Island",
+      "state": "NY",
       "dataDir": "data/long-island",
       "route": "/long-island",
       "counties": [
@@ -57,6 +60,35 @@
         "status": "NOT_ESTABLISHED",
         "file": null,
         "note": "DELIBERATELY FROZEN, not forgotten. Same rule as upstate: unknown renders as unknown. docs/FROZEN-municipal-opt-out.md."
+      }
+    },
+    {
+      "id": "massachusetts",
+      "label": "Massachusetts",
+      "state": "MA",
+      "dataDir": "data/massachusetts",
+      "route": "/massachusetts",
+      "counties": [
+        "Barnstable",
+        "Berkshire",
+        "Bristol",
+        "Dukes",
+        "Essex",
+        "Franklin",
+        "Hampden",
+        "Hampshire",
+        "Middlesex",
+        "Nantucket",
+        "Norfolk",
+        "Plymouth",
+        "Suffolk",
+        "Worcester"
+      ],
+      "note": "The first territory outside New York, run to measure what a second state costs. Imported from the Cannabis Control Commission's open data (scripts/ingest/ma-run.ts), not from OCM. See docs/MASSACHUSETTS.md.",
+      "municipalOptOut": {
+        "status": "NOT_ESTABLISHED",
+        "file": null,
+        "note": "DELIBERATELY FROZEN, same rule as upstate. Under G.L. c.94G §3 a Massachusetts city or town may prohibit or limit Marijuana Retailers by bylaw or ordinance, and many have. The Commission publishes a Municipal Zoning Tracker for all 351 municipalities, and says itself that it is not an official legal determination. Not collected: unknown renders as unknown."
       }
     }
   ]

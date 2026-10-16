@@ -306,11 +306,18 @@ export const otherBranchServed = (menuUrl, requestUrls) => {
   return null;
 };
 
-/* Every brand this register has already seen on a New York shelf, across all
-   three territories. A shop's own previous listings are excluded when it is
-   judged, so a shelf that got in wrong once cannot vouch for itself. */
+/* Every brand this register has already seen on a shelf in THIS state, across
+   its territories. A shop's own previous listings are excluded when it is
+   judged, so a shelf that got in wrong once cannot vouch for itself.
+
+   The same state only: the test below exists because cannabis does not cross
+   state lines, so a Massachusetts shelf must not vouch for a New York one, nor
+   the other way round. A state with no shelf collected yet has nothing to
+   judge against, and its first run is a decision, not arithmetic — see
+   docs/MASSACHUSETTS.md. */
 const KNOWN_BRANDS = new Map();
 for (const t of ALL_TERRITORIES) {
+  if ((t.state ?? 'NY') !== (TERRITORY.state ?? 'NY')) continue;
   try {
     for (const l of JSON.parse(
       readFileSync(resolve(ROOT, `${t.dataDir}/flower-listings.json`), 'utf8'),

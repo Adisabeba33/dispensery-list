@@ -35,10 +35,10 @@ export const fullAddress = (d: Dispensary): string =>
  * pin dropped on a guessed one.
  */
 export const mapsUrl = (d: {
-  address: { line1: string; city: string; zip: string };
+  address: { line1: string; city: string; zip: string; state?: string };
 }): string =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    `${d.address.line1}, ${d.address.city}, NY ${d.address.zip}`,
+    `${d.address.line1}, ${d.address.city}, ${d.address.state ?? 'NY'} ${d.address.zip}`,
   )}`;
 
 export const prettyPhone = (phone: string | null): string | null =>

@@ -208,8 +208,9 @@ const validateDispensaries = (FILE: string, requireRegistry: boolean) => {
          check the schema's county enum used to perform for the original six;
          moving it here keeps the guarantee — a Brooklyn file cannot hold an
          Erie shop — while letting each territory define its own scope. */
-      if (territory && !inTerritory(territory, county)) {
-        fail(FILE, at('address.county'), `${county} is not part of ${territory.label}`);
+      const state = r.address?.state ?? 'NY';
+      if (territory && !inTerritory(territory, county, state)) {
+        fail(FILE, at('address.county'), `${county}, ${state} is not part of ${territory.label}`);
       }
       if (NYC_COUNTIES.has(county)) {
         const expected = COUNTY_TO_BOROUGH[county];

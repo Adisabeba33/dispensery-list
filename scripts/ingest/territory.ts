@@ -1,5 +1,5 @@
 /**
- * The three territories this register covers, read from data/territories.json.
+ * The territories this register covers, read from data/territories.json.
  *
  * They are kept apart on purpose. NYC + Westchester is the delivered dataset
  * and keeps the original paths at data/*.json, so nothing about it moves and
@@ -18,6 +18,12 @@ const ROOT = resolve(import.meta.dirname, '..', '..');
 export interface Territory {
   id: string;
   label: string;
+  /**
+   * The state, as a USPS code. A county name is only unique inside one:
+   * Suffolk, Essex and Franklin are counties of New York AND of Massachusetts,
+   * so membership by county alone would file a Boston shop under Long Island.
+   */
+  state: string;
   dataDir: string;
   route: string;
   /** The counties it contains. Mutually exclusive with excludeCounties. */
@@ -67,9 +73,15 @@ export function territoryFromArgv(argv: string[] = process.argv): Territory {
   return getTerritory(at === -1 ? DEFAULT_TERRITORY : argv[at + 1]);
 }
 
-/** Does this county belong to the territory? */
-export function inTerritory(t: Territory, county: string | null): boolean {
+/**
+ * Does this county belong to the territory?
+ *
+ * `state` defaults to New York because every caller written before the second
+ * state arrived was reading the New York registry, and still is.
+ */
+export function inTerritory(t: Territory, county: string | null, state: string = 'NY'): boolean {
   if (!county) return false;
+  if (state !== t.state) return false;
   if (t.counties) return t.counties.includes(county);
   if (t.excludeCounties) return !t.excludeCounties.includes(county);
   return false;

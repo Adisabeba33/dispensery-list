@@ -1,11 +1,12 @@
 import upstateRaw from '../../data/upstate/dispensaries.json';
 import longIslandRaw from '../../data/long-island/dispensaries.json';
+import massachusettsRaw from '../../data/massachusetts/dispensaries.json';
 import type { Dispensary } from './types';
 import { optOutIsKnown, territory, type SiteTerritory } from './territories';
 
 /**
- * Upstate and Long Island — the two territories collected after the original
- * six counties, and deliberately kept apart from them.
+ * Upstate, Long Island and Massachusetts — the territories collected after the
+ * original six counties, and deliberately kept apart from them.
  *
  * Separate on purpose, all the way down: separate files, separate pages, and
  * this separate module rather than a branch inside lib/data.ts. Coverage,
@@ -28,12 +29,15 @@ export type TerritoryShop = Omit<Dispensary, 'address'> & {
   address: Omit<Dispensary['address'], 'county' | 'borough'> & {
     county: string;
     borough: null;
+    /** NY or MA. The shared type says NY; Massachusetts is a second state. */
+    state: string;
   };
 };
 
 const DATA: Record<string, TerritoryShop[]> = {
   upstate: upstateRaw as unknown as TerritoryShop[],
   'long-island': longIslandRaw as unknown as TerritoryShop[],
+  massachusetts: massachusettsRaw as unknown as TerritoryShop[],
 };
 
 export const shopsIn = (id: string): TerritoryShop[] => DATA[id] ?? [];
@@ -76,6 +80,33 @@ export const statsFor = (shops: TerritoryShop[]): TerritoryStats => {
 export type Gap = { label: string; detail: string };
 
 /**
+ * The sentences that depend on which state's law and which state's registry a
+ * territory is built from. New York's are the ones these pages always carried;
+ * Massachusetts gets its own rather than a borrowed MRTA.
+ */
+const GAP_COPY: Record<string, { trading: string; contact: string; menus: string; optOut: string }> = {
+  NY: {
+    trading:
+      'A licence is not a shop. Confirming one is open means checking it against the state verification tool, which has not been done for this territory.',
+    contact: 'The registry publishes neither for these licences, and no enrichment pass has run.',
+    menus:
+      'The shelf-reading pass has only been run on New York City and Westchester. Nothing on these shops feeds the strain index yet.',
+    optOut:
+      'Under the MRTA every city, town and village could ban retail, and roughly a third of them did. We have not established which, so this page does not say. Not checked is not the same as no ban.',
+  },
+  MA: {
+    trading:
+      'A licence is not a shop. The Commission’s register records the day operations commenced, not whether the doors are open today, and nobody has checked that here.',
+    contact:
+      'The Commission’s register publishes neither. Its own store locator gives a phone or website for some shops, matched here by street address; the rest wait for a research pass.',
+    menus:
+      'The shelf-reading pass has not been run in Massachusetts yet. Nothing on these shops feeds the strain index.',
+    optOut:
+      'Massachusetts lets every city and town prohibit or limit retail by bylaw or ordinance, and many have. The Commission keeps a zoning tracker for all 351 of them; this register has not read it, so this page does not say. Not checked is not the same as no ban.',
+  },
+};
+
+/**
  * What this territory does NOT know, counted rather than described.
  *
  * Every line is derived from the records themselves, so the page cannot drift
@@ -86,14 +117,14 @@ export type Gap = { label: string; detail: string };
 export const gapsFor = (shops: TerritoryShop[], t: SiteTerritory): Gap[] => {
   const n = shops.length;
   const gaps: Gap[] = [];
+  const copy = GAP_COPY[t.state] ?? GAP_COPY.NY;
   const count = (pred: (d: TerritoryShop) => boolean) => shops.filter(pred).length;
 
   const trading = count((d) => d.operationalStatus !== 'UNKNOWN');
   if (trading < n) {
     gaps.push({
       label: `Whether a shop is trading today — ${n - trading} of ${n} unconfirmed`,
-      detail:
-        'A licence is not a shop. Confirming one is open means checking it against the state verification tool, which has not been done for this territory.',
+      detail: copy.trading,
     });
   }
 
@@ -117,21 +148,19 @@ export const gapsFor = (shops: TerritoryShop[], t: SiteTerritory): Gap[] => {
   if (contact < n) {
     gaps.push({
       label: `Phone or website — ${n - contact} of ${n} not collected`,
-      detail: 'The registry publishes neither for these licences, and no enrichment pass has run.',
+      detail: copy.contact,
     });
   }
 
   gaps.push({
     label: 'Flower menus — none collected',
-    detail:
-      'The shelf-reading pass has only been run on New York City and Westchester. Nothing on these shops feeds the strain index yet.',
+    detail: copy.menus,
   });
 
   if (!optOutIsKnown(t)) {
     gaps.push({
       label: 'Municipal opt-out — not checked',
-      detail:
-        'Under the MRTA every city, town and village could ban retail, and roughly a third of them did. We have not established which, so this page does not say. Not checked is not the same as no ban.',
+      detail: copy.optOut,
     });
   }
 

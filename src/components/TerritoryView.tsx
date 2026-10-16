@@ -4,7 +4,7 @@ import { territoryPage } from '@/lib/territory-data';
 import { prettyDate } from '@/lib/format';
 
 /**
- * The page body shared by /upstate/ and /long-island/.
+ * The page body shared by /upstate/, /long-island/ and /massachusetts/.
  *
  * Shared markup, never shared data: each route reads its own files, counts its
  * own records and states its own gaps. Nothing here can produce a blended
@@ -79,7 +79,12 @@ export const TerritoryView = ({ id, intro }: { id: string; intro: React.ReactNod
         </p>
 
         <div className="mt-6">
-          <TerritoryExplorer shops={shops} counties={counties} storageKey={t.id} />
+          <TerritoryExplorer
+            shops={shops}
+            counties={counties}
+            storageKey={t.id}
+            licenceExample={t.state === 'MA' ? 'MR28…' : undefined}
+          />
         </div>
       </section>
     </div>
