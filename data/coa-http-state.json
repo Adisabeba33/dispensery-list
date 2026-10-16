@@ -108,7 +108,7 @@
     "errors": 0
   },
   "https://omolabs.com": {
-    "errors": 0
+    "errors": 1
   },
   "https://grassrootswellnessny.com": {
     "errors": 0
@@ -159,10 +159,10 @@
     "errors": 0
   },
   "https://pynns.com": {
-    "errors": 0
+    "errors": 1
   },
   "https://www.niagaracannabiscompany.com": {
-    "errors": 1
+    "errors": 3
   },
   "https://www.sauce.house": {
     "errors": 0
@@ -232,7 +232,8 @@
     "errors": 0
   },
   "https://thetraptotable.com": {
-    "errors": 0
+    "errors": 5,
+    "blockedUntil": "2026-10-17T16:45:20.275005+00:00"
   },
   "https://highpeaks.com": {
     "errors": 0
