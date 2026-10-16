@@ -1263,5 +1263,335 @@
     "ageGate": "none",
     "checkedAt": "2026-10-07",
     "notes": "Housing Works Cannabis Co., 846 Avenue of the Americas ('Pickup at Housing Works | Broadway'): the shop's own Tymber/Blaze menu, its Flower category; the site's 'Order Online' link. /cannabis-products/flower/, which the run chose, is an information page with no products. The category lists its flower from ecom-api.blaze.me sixteen at a time, total_count 203 on 2026-10-07. hwcannabis.co robots.txt disallows only /wp-admin/."
+  },
+  {
+    "licenseNumber": "MR282052",
+    "menuUrl": "https://curaleaf.com/shop/massachusetts/curaleaf-dispensary-boston-milk-st/menu/flower-813",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Sweed). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR282752",
+    "menuUrl": "https://apexnoire.com/categories/flower/",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Joint). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284602",
+    "menuUrl": "https://primitivgroup.com/stores/primitiv-boston-ma/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284843",
+    "menuUrl": "https://firebrandboston.com/stores/firebrand-cannabis/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR282077",
+    "menuUrl": "https://letsascend.com/stores/boston-massachusetts/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284261",
+    "menuUrl": "https://rootedinroxbury.com/shop/menu/flower/",
+    "platform": "IHEARTJANE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Jane). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284256",
+    "menuUrl": "https://letsrebelle.com/menu/categories/flower/",
+    "platform": "BLAZE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Blaze). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR283074",
+    "menuUrl": "https://silver-therapeutics.com/stores/st-roslindale-ma/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR283963",
+    "menuUrl": "https://shop.617thc.com/rec/flower/c/3tir",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Flowhub). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284013",
+    "menuUrl": "https://highprofilecannabis.com/stores/ma-dorchester-hp/products/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (unknown). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR285057",
+    "menuUrl": "https://surfsupcannabis.com/shop/?dtche%5Bcategory%5D=flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284312",
+    "menuUrl": "https://bakedcannabis.boston/index.php/our-menu/",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284479",
+    "menuUrl": "https://xhalenewengland.dispensary.shop/rec/search?category=Flower&title=Flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Flowhub). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR282618",
+    "menuUrl": "https://ethoscannabis.com/stores/massachusetts/dorchester/adult-use-cannabis-menu/menu/flower-7474",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Sweed). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284009",
+    "menuUrl": "https://highprofilecannabis.com/stores/ma-roxbury-hp/products/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (unknown). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284914",
+    "menuUrl": "https://ulcannabis.com/categories/flower/",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Joint). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284733",
+    "menuUrl": "https://www.nativesuncannabis.com/menu/shop-online-native-sun-south-boston-ma-weed-dispensary/",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Joint). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR281845",
+    "menuUrl": "https://berkshireroots.com/stores/berkshire-roots-east-boston-rec/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR283011",
+    "menuUrl": "https://bostonboutiq.com/east-boston-cannabis-dispensary-menu/",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR283634",
+    "menuUrl": "https://www.cannabishealingllc.com/shop",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR283861",
+    "menuUrl": "https://www.happyvalley.org/stores/ma-east-boston/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284117",
+    "menuUrl": "https://shop.eastbostoncannabis.com/products?store=east-boston-cannabis-store&category=flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Mosaic). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR282762",
+    "menuUrl": "https://heritageclubthc.com/stores/heritage/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR281865",
+    "menuUrl": "https://seedyourhead.com/boston/recreational-marijuana-dispensary-boston-ma/flower/",
+    "platform": "PROPRIETARY",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (own). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR281755",
+    "menuUrl": "https://roslindaledispensary.com/categories/flower/",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Joint). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284097",
+    "menuUrl": "https://highprofilecannabis.com/stores/ma-roslindale-hp/products/flower",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (unknown). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284569",
+    "menuUrl": "https://dutchesscanna.com/stores/dutchess-west-roxbury-massachusetts/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284730",
+    "menuUrl": "https://lowkeydispensary.com/menu/categories/flower/?dtche%5Bcategory%5D=Flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR282682",
+    "menuUrl": "https://mayflowermass.com/stores/boston-allston-rec/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284038",
+    "menuUrl": "https://dutchesscanna.com/stores/dutchess-allston-massachusetts/products/flower",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284644",
+    "menuUrl": "https://www.prolificcannabis.com/menu?cat=Deli%20Flower",
+    "platform": "PROPRIETARY",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (own (Flowhub data)). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284521",
+    "menuUrl": "https://www.castleleaf.com/categories/flower/",
+    "platform": "OTHER",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Joint). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
+  },
+  {
+    "licenseNumber": "MR284535",
+    "menuUrl": "https://shopfirehouse.com/shop/",
+    "platform": "DUTCHIE",
+    "robotsAllows": null,
+    "flowerVisibleWithoutLogin": null,
+    "ageGate": null,
+    "checkedAt": "2026-10-16",
+    "notes": "Massachusetts, Boston stage 1 (Dutchie). Found with the shop's website; see data/massachusetts/website-research.json for how the site was tied to the licence. Not yet visited by the collector, so robots, login and age gate are unchecked."
   }
 ]

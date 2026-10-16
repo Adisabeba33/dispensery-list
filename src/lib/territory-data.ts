@@ -114,7 +114,12 @@ const GAP_COPY: Record<string, { trading: string; contact: string; menus: string
  * page without anybody editing the prose. Saying "some details are missing" is
  * not checkable; saying "0 of 517 have coordinates" is.
  */
-export const gapsFor = (shops: TerritoryShop[], t: SiteTerritory): Gap[] => {
+export const gapsFor = (
+  shops: TerritoryShop[],
+  t: SiteTerritory,
+  /** Shelves read for this territory, when its page has counted them. */
+  shelf: { shops: number; listings: number } | null = null,
+): Gap[] => {
   const n = shops.length;
   const gaps: Gap[] = [];
   const copy = GAP_COPY[t.state] ?? GAP_COPY.NY;
@@ -152,10 +157,20 @@ export const gapsFor = (shops: TerritoryShop[], t: SiteTerritory): Gap[] => {
     });
   }
 
-  gaps.push({
-    label: 'Flower menus — none collected',
-    detail: copy.menus,
-  });
+  /* Massachusetts says what it has read. New York's territories keep the
+     sentence they always carried, which this change does not touch. */
+  if (t.state === 'MA' && shelf && shelf.shops > 0) {
+    const opened = count((d) => d.dates?.openedOn != null);
+    gaps.push({
+      label: `Flower menus — read at ${shelf.shops} of ${opened} opened shops`,
+      detail: `${shelf.listings.toLocaleString('en-US')} flower listings, read in the city of Boston only — the first stage of this trial. They sit in this territory’s own file and are not shown here, nor in the strain index, nor passed to SŌMA, all of which read New York’s shelves alone.`,
+    });
+  } else {
+    gaps.push({
+      label: 'Flower menus — none collected',
+      detail: copy.menus,
+    });
+  }
 
   if (!optOutIsKnown(t)) {
     gaps.push({
@@ -167,8 +182,8 @@ export const gapsFor = (shops: TerritoryShop[], t: SiteTerritory): Gap[] => {
   return gaps;
 };
 
-export const territoryPage = (id: string) => {
+export const territoryPage = (id: string, shelf: { shops: number; listings: number } | null = null) => {
   const t = territory(id);
   const shops = shopsIn(id);
-  return { t, shops, stats: statsFor(shops), counties: countiesIn(shops), gaps: gapsFor(shops, t) };
+  return { t, shops, stats: statsFor(shops), counties: countiesIn(shops), gaps: gapsFor(shops, t, shelf) };
 };

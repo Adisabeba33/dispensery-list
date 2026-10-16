@@ -68,6 +68,8 @@ state is what found them.
 | 8 | The page copy is New York law | The territory pages said "Under the MRTA…". | The copy is chosen by state (`GAP_COPY`). The New York sentences are unchanged. |
 | 9 | Every address is in NY | The card, and the maps link, ended every address with ", NY". | Both use the record's state. |
 | 10 | Every shelf is checked against New York brands | The collector refuses a shelf whose brands are mostly unknown (the Ohio shelf filed under Farmingdale). Its known brands came from **every** territory, so New York and Massachusetts shelves would have vouched for each other. | Known brands are now counted within one state. **This leaves a gap: see §4.** |
+| 11 | The shelf schema describes New York | `flower-listing.schema.json` accepted only OCM and MM licence numbers, so the first Boston shelf would have failed validation. | It also accepts `MR` plus six digits. |
+| 12 | A shop's "no thanks" leaves you on its menu | High Profile asks for marketing consent after the age question, and its "NO THANK YOU" sends the visitor to google.com. The collector pressed it at three shops, filed 215 listings with `https://www.google.com/` as their source, and lost their paging when the page left. | A decline that changes the host is undone and never pressed again at that shop (`offerLeftSite` in the run summary). The three shelves were read again: 127, 125 and 100 listings, each sourced to its own store page. New York's 32,669 listings were checked for the same defect, and none has it. |
 
 Found along the way, not caused by Massachusetts: on a phone, territory cards
 were wider than the screen on all three territory pages (upstate scrolled to
@@ -120,7 +122,94 @@ and the page shows "not checked".
 
 ---
 
-## 4. Stage 1, Boston's menus: what is in the way
+## 4. Stage 1, Boston's menus: done 2026-10-16
+
+```
+37 opened → 34 websites found → 33 on the register → 33 menu endpoints → 29 shelves read, 2,016 listings
+```
+
+**Websites.** Four parallel research passes found 37 websites, each tied to its
+licence by the street address on the shop's own site, never by name. Every
+address was then fetched again here, by plain request or, where a script draws
+it, in a browser. The one exception is Curaleaf's, which sits behind its age
+gate; it was read there by the research pass, and the store's own URL names
+Milk St. The rows, with how each site was tied to its licence, are in
+`data/massachusetts/website-research.json`. Three websites were not established:
+
+- **Apothca, Jamaica Plain.** The operator's site no longer shows the address,
+  and the shop may be closed.
+- **New Dia.** Its site gives 71 Lansdowne St, but the licence is for 48–62
+  Brookline Ave. It is probably the same building, but that is inference.
+- **AYR, formerly Sira Naturals, on Boylston St.** The site is behind a
+  Cloudflare challenge, which is not worked around.
+
+A fourth website was found but is deliberately **not** on the register. Kush
+Groove's site shows the Boston address, but its online menu serves only its
+Cambridge and Brockton stores, so the collector would have read another
+branch's shelf.
+
+**What Boston has that New York did not.**
+
+- **Rebrands and ownership changes run through the register.** Union Twist and
+  Uptop are now Dutchess, Sira is now AYR, and Curaleaf opened in Cannabist's
+  old space. The licensee's legal name almost never names the shop.
+- **New menu platforms: Flowhub, Joint Commerce and Mosaic.** The collector
+  read Flowhub and Joint without changes. It read nothing from Mosaic (East
+  Boston Cannabis), WooCommerce (SEED) or a Dutchie embed on a PHP page (Baked).
+- **Rooted In's robots.txt answers 403.** By the register's rule that stops
+  the reader, and it did.
+
+**Partial shelves.** Seven shelves came back small:
+
+| Shop | Listings |
+|---|---:|
+| Cannabis Healing | 1 |
+| Boutiq | 3 |
+| Apex Noire | 6 |
+| Firehouse | 7 |
+| 617 THC | 9 |
+| Rebelle | 19 |
+| Xhale | 19 |
+
+Most of these are Dutchie embeds and Flowhub storefronts, where the collector
+reads the first payload only. They are kept, as partial New York shelves are,
+and are the next thing to fix.
+
+**The baseline review.** As decided, the first run was made with
+`--state-baseline`. That run skips the foreign-shelf test, marks every shelf
+`stateBaseline`, and is refused once a state has any shelf. Each of the 29
+shelves was then reviewed by hand, brand by brand:
+
+- Every shelf carries brands that only Massachusetts has: Bostica, Happy
+  Valley, Harbor House, Cape Cod Grow Lab, Coastal Healing, Nature's Heritage,
+  INSA, Theory, Berkshire Roots, Native Sun, Farmer's Cut, SeCHe, The Bank, and
+  others.
+- Dutchess also trades in Illinois, so its two shelves were checked further.
+  Farmer's Cut sells only in Massachusetts, and SeCHe and The Bank are Jushi's
+  Massachusetts flower lines. The two shelves are different (51 items shared),
+  and each was read from its own Massachusetts store page.
+
+No shelf was refused. From here on, the test applies to Massachusetts as it
+does to New York.
+
+**How far apart the two markets are.**
+
+- **Brands.** Of 165 Boston brands, only 12 are also on a New York shelf: Find,
+  Grassroots, Rythm, Old Pal, Botanist, Cheech & Chong, Dark Heart, Good Green,
+  ish, &Shine, Tical and Vacation. All are multi-state licences. Judged against
+  New York's brands, every Boston shelf would have been refused.
+- **Strain names.** 222 of Boston's 1,382 strain names are also sold in New
+  York, by different growers. SŌMA's rule that the strain name is not evidence
+  (`BRAND-TRUST.md`) is the right rule here too.
+- **Terpenes.** 138 listings (7%) carry menu-listed terpenes. None has a lab
+  panel.
+
+**Kept apart.** Boston's shelf is
+`data/massachusetts/flower-listings.json`. The site's strain index and SŌMA
+read only `data/flower-listings.json`, which is New York's, so nothing from
+Boston reaches either until someone decides it should.
+
+### What stood in the way, as found before the run
 
 1. **No websites.** Boston has 37 open shops and the state links none of them
    to a website. The locator matched no shop in the city. Before the collector
@@ -148,7 +237,7 @@ and the page shows "not checked".
 | Stage | Shops (opened) | Code changed | Research | Shelves read |
 |---|---:|---|---|---:|
 | 0: register + page, whole state | 405 | 19 files, +629 / −33 lines. The adapter is about 450 of them; changes to shared code about 180. One working session. | none: no municipal research, no website research | — |
-| 1: Boston menus | 37 | | 37 websites to find (§4) | |
+| 1: Boston menus | 37 | Two fixes: the shelf schema (11) and the decline that left the site (12). The baseline flag, about 30 lines. Same session. | 37 websites researched: four agents, about 10 minutes of wall time, each address verified again here (Curaleaf's behind its age gate excepted) | **29** (2,016 listings) |
 | 2: Greater Boston | 160 | | about 140 websites to find (20 from the locator) | |
 | 3: the state | 405 | | about 345 websites to find (59 from the locator) | |
 
