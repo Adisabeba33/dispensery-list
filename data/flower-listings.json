@@ -537541,7 +537541,7 @@
   {
     "listingId": "40-tons-40-tons-ghost-train-haze-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "40 Tons Ghost Train Haze Flower",
     "strainNameCanonical": "Ghost Train Haze",
     "brand": "40 Tons",
@@ -537578,7 +537578,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -537586,7 +537586,7 @@
   {
     "listingId": "5boro-5boro-amnesia-haze-dime-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "5Boro Amnesia Haze . Dime Flower",
     "strainNameCanonical": "Amnesia Haze",
     "brand": "5Boro",
@@ -537623,7 +537623,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -537631,7 +537631,7 @@
   {
     "listingId": "5boro-5boro-fuel-pump-dime-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "5Boro Fuel Pump . Dime Flower",
     "strainNameCanonical": "Fuel Pump",
     "brand": "5Boro",
@@ -537668,52 +537668,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "a1-ducksauce-a1-ducksauce-matcha-jelly-rolls-premium-flower",
-    "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
-    "strainNameRaw": "A1 Ducksauce Matcha Jelly Rolls Premium Flower",
-    "strainNameCanonical": "Matcha Jelly Rolls",
-    "brand": "A1 Ducksauce",
-    "brandKey": "a1ducksauce",
-    "lineage": "HYBRID",
-    "thcPercent": 34.09,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": 1.3,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": [
-      "1A4120300001AFD000006751"
-    ],
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": null,
-    "description": null,
-    "sources": [
-      {
-        "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -537721,7 +537676,7 @@
   {
     "listingId": "a1-ducksauce-a1-ducksauce-summer-breeze-premium-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "A1 Ducksauce Summer Breeze Premium Flower",
     "strainNameCanonical": "Summer Breeze",
     "brand": "A1 Ducksauce",
@@ -537758,7 +537713,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -537766,7 +537721,7 @@
   {
     "listingId": "a1-ducksauce-a1-ducksauce-tokyo-drift-premium-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "A1 Ducksauce Tokyo Drift Premium Flower",
     "strainNameCanonical": "Tokyo Drift",
     "brand": "A1 Ducksauce",
@@ -537803,7 +537758,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -537811,7 +537766,7 @@
   {
     "listingId": "a1-ducksauce-a1-ducksauce-yumyum-munchie-mania-premium-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "A1 Ducksauce YumYum Munchie Mania Premium Flower",
     "strainNameCanonical": "YumYum Munchie Mania",
     "brand": "A1 Ducksauce",
@@ -537848,7 +537803,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -537856,7 +537811,7 @@
   {
     "listingId": "alien-labs-alien-labs-atomic-apple-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Alien Labs Atomic Apple Indoor Flower",
     "strainNameCanonical": "Atomic Apple",
     "brand": "Alien Labs",
@@ -537893,7 +537848,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -537901,7 +537856,7 @@
   {
     "listingId": "grassroots-animal-mint-cake-whole-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Animal Mint Cake Whole Flower",
     "strainNameCanonical": "Animal Mint Cake",
     "brand": "Grassroots",
@@ -537938,7 +537893,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -537946,7 +537901,7 @@
   {
     "listingId": "cheech-chong-cheech-and-chong-drooler-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Cheech and Chong Drooler Flower",
     "strainNameCanonical": "Drooler",
     "brand": "Cheech & Chong",
@@ -537983,7 +537938,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -537991,7 +537946,7 @@
   {
     "listingId": "cheech-chong-cheech-and-chong-stadankohhh-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Cheech and Chong Stadankohhh Flower",
     "strainNameCanonical": "Stadankohhh",
     "brand": "Cheech & Chong",
@@ -538028,7 +537983,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538036,7 +537991,7 @@
   {
     "listingId": "dank-by-definition-dank-agent-orange-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Dank Agent Orange Flower",
     "strainNameCanonical": "Agent Orange",
     "brand": "Dank By Definition.",
@@ -538073,7 +538028,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538081,7 +538036,7 @@
   {
     "listingId": "dank-by-definition-dank-cherry-garcia-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Dank Cherry Garcia Indoor Flower",
     "strainNameCanonical": "Cherry Garcia",
     "brand": "Dank By Definition.",
@@ -538118,7 +538073,52 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "dank-by-definition-dank-orange-trainwreck-flower",
+    "licenseNumber": "OCM-CAURD-24-000212",
+    "capturedAt": "2026-10-16T16:34:30Z",
+    "strainNameRaw": "Dank Orange Trainwreck Flower",
+    "strainNameCanonical": "Orange Trainwreck",
+    "brand": "Dank By Definition.",
+    "brandKey": "dankbydefinition",
+    "lineage": "SATIVA",
+    "thcPercent": 32,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 1.13,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A41203000018B1000092476"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538126,7 +538126,7 @@
   {
     "listingId": "dank-by-definition-dank-strawberry-diesel-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Dank Strawberry Diesel Indoor Flower",
     "strainNameCanonical": "Strawberry Diesel",
     "brand": "Dank By Definition.",
@@ -538163,7 +538163,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538171,7 +538171,7 @@
   {
     "listingId": "dark-heart-dark-heart-delphi-diesel-premium-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Dark Heart Delphi Diesel Premium Flower",
     "strainNameCanonical": "Delphi Diesel",
     "brand": "Dark Heart",
@@ -538208,7 +538208,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538216,7 +538216,7 @@
   {
     "listingId": "dark-heart-dark-heart-moonbeam-gelato-premium-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Dark Heart Moonbeam Gelato Premium Flower",
     "strainNameCanonical": "Moonbeam Gelato",
     "brand": "Dark Heart",
@@ -538253,7 +538253,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538261,7 +538261,7 @@
   {
     "listingId": "dark-heart-dark-heart-triple-stack-premium-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Dark Heart Triple Stack Premium Flower",
     "strainNameCanonical": "Triple Stack",
     "brand": "Dark Heart",
@@ -538298,7 +538298,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538306,7 +538306,7 @@
   {
     "listingId": "dark-heart-dark-heart-zesty-garlic-cookies-premium-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Dark Heart Zesty Garlic Cookies Premium Flower",
     "strainNameCanonical": "Zesty Garlic Cookies",
     "brand": "Dark Heart",
@@ -538343,7 +538343,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538351,7 +538351,7 @@
   {
     "listingId": "doobie-labs-doobie-labs-blue-diesel-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Doobie Labs Blue Diesel Indoor Flower",
     "strainNameCanonical": "Blue Diesel",
     "brand": "Doobie Labs",
@@ -538388,7 +538388,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538396,7 +538396,7 @@
   {
     "listingId": "doobie-labs-doobie-labs-blue-dream-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Doobie Labs Blue Dream Indoor Flower",
     "strainNameCanonical": "Blue Dream",
     "brand": "Doobie Labs",
@@ -538433,7 +538433,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538441,7 +538441,7 @@
   {
     "listingId": "doobie-labs-doobie-labs-blue-lobster-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Doobie Labs Blue Lobster Indoor Flower",
     "strainNameCanonical": "Blue Lobster",
     "brand": "Doobie Labs",
@@ -538478,7 +538478,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538486,7 +538486,7 @@
   {
     "listingId": "doobie-labs-doobie-labs-blue-ribbon-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Doobie Labs Blue Ribbon Indoor Flower",
     "strainNameCanonical": "Blue Ribbon",
     "brand": "Doobie Labs",
@@ -538523,7 +538523,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538531,7 +538531,7 @@
   {
     "listingId": "doobie-labs-doobie-labs-brunson-og-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Doobie Labs Brunson OG Indoor Flower",
     "strainNameCanonical": "Brunson OG",
     "brand": "Doobie Labs",
@@ -538568,7 +538568,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538576,7 +538576,7 @@
   {
     "listingId": "doobie-labs-doobie-labs-candy-fumes-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Doobie Labs Candy Fumes Indoor Flower",
     "strainNameCanonical": "Candy Fumes",
     "brand": "Doobie Labs",
@@ -538613,7 +538613,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538621,7 +538621,7 @@
   {
     "listingId": "doobie-labs-doobie-labs-eye-candy-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Doobie Labs Eye Candy Indoor Flower",
     "strainNameCanonical": "Eye Candy",
     "brand": "Doobie Labs",
@@ -538658,7 +538658,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538666,7 +538666,7 @@
   {
     "listingId": "doobie-labs-doobie-labs-key-lime-cookies-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Doobie Labs Key Lime Cookies Indoor Flower",
     "strainNameCanonical": "Key Lime Cookies",
     "brand": "Doobie Labs",
@@ -538703,7 +538703,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538711,7 +538711,7 @@
   {
     "listingId": "doobie-labs-doobie-labs-lemonheadz-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Doobie Labs Lemonheadz Indoor Flower",
     "strainNameCanonical": "Lemonheadz",
     "brand": "Doobie Labs",
@@ -538748,7 +538748,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538756,7 +538756,7 @@
   {
     "listingId": "doobie-labs-doobie-labs-northern-lights-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Doobie Labs Northern Lights Indoor Flower",
     "strainNameCanonical": "Northern Lights",
     "brand": "Doobie Labs",
@@ -538793,7 +538793,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538801,7 +538801,7 @@
   {
     "listingId": "doobie-labs-doobie-labs-og-rainbow-cookies-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Doobie Labs OG Rainbow Cookies Indoor Flower",
     "strainNameCanonical": "OG Rainbow Cookies",
     "brand": "Doobie Labs",
@@ -538838,7 +538838,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538846,7 +538846,7 @@
   {
     "listingId": "doobie-labs-doobie-labs-opal-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Doobie Labs Opal Indoor Flower",
     "strainNameCanonical": "Opal",
     "brand": "Doobie Labs",
@@ -538883,7 +538883,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538891,7 +538891,7 @@
   {
     "listingId": "doobie-labs-doobie-labs-push-pop-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Doobie Labs Push Pop Indoor Flower",
     "strainNameCanonical": "Push Pop",
     "brand": "Doobie Labs",
@@ -538928,7 +538928,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538936,7 +538936,7 @@
   {
     "listingId": "doobie-labs-doobie-labs-white-widow-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Doobie Labs White Widow Indoor Flower",
     "strainNameCanonical": "White Widow",
     "brand": "Doobie Labs",
@@ -538973,7 +538973,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -538981,7 +538981,7 @@
   {
     "listingId": "doobie-labs-doobie-labs-z-gun-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Doobie Labs Z Gun Indoor Flower",
     "strainNameCanonical": "Z Gun",
     "brand": "Doobie Labs",
@@ -539018,7 +539018,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539026,7 +539026,7 @@
   {
     "listingId": "ghost-ghost-glue-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Ghost Glue Indoor Flower",
     "strainNameCanonical": "Glue",
     "brand": "ghost.",
@@ -539063,7 +539063,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539071,7 +539071,7 @@
   {
     "listingId": "leal-gorilla-glue-4-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Gorilla Glue #4│ Flower",
     "strainNameCanonical": "Gorilla Glue #4│",
     "brand": "LEAL",
@@ -539110,7 +539110,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539118,7 +539118,7 @@
   {
     "listingId": "leal-grape-cake",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Grape Cake",
     "strainNameCanonical": "Grape Cake",
     "brand": "LEAL",
@@ -539155,7 +539155,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539163,7 +539163,7 @@
   {
     "listingId": "grassroots-grassroots-blue-lobster-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Grassroots Blue Lobster Flower",
     "strainNameCanonical": "Blue Lobster",
     "brand": "Grassroots",
@@ -539200,7 +539200,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539208,7 +539208,7 @@
   {
     "listingId": "grassroots-grassroots-novarine-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Grassroots Novarine Flower",
     "strainNameCanonical": "Novarine",
     "brand": "Grassroots",
@@ -539245,7 +539245,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539253,7 +539253,7 @@
   {
     "listingId": "grassroots-grassroots-orange-z-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Grassroots Orange Z Flower",
     "strainNameCanonical": "Orange Z",
     "brand": "Grassroots",
@@ -539292,7 +539292,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539300,7 +539300,7 @@
   {
     "listingId": "grassroots-grassroots-orange-z-smalls-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Grassroots Orange Z Smalls Flower",
     "strainNameCanonical": "Orange Z",
     "brand": "Grassroots",
@@ -539337,7 +539337,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539345,7 +539345,7 @@
   {
     "listingId": "grassroots-grassroots-problem-child-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Grassroots Problem Child Flower",
     "strainNameCanonical": "Problem Child",
     "brand": "Grassroots",
@@ -539382,7 +539382,52 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "to-the-moon-italian-ice-premium-flower",
+    "licenseNumber": "OCM-CAURD-24-000212",
+    "capturedAt": "2026-10-16T16:34:30Z",
+    "strainNameRaw": "Italian Ice - Premium Flower",
+    "strainNameCanonical": "Italian Ice",
+    "brand": "To The Moon",
+    "brandKey": "tothemoon",
+    "lineage": "HYBRID",
+    "thcPercent": null,
+    "cbdPercent": 0,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 1.03,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A41203000052D5000029049"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539390,7 +539435,7 @@
   {
     "listingId": "dr-jekyll-and-mr-high-jekyll-and-high-chem-dog-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Jekyll and High Chem Dog Flower",
     "strainNameCanonical": "Jekyll and High Chem Dog",
     "brand": "Dr. Jekyll and Mr. High",
@@ -539427,7 +539472,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539435,7 +539480,7 @@
   {
     "listingId": "rythm-l-orange-premium-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "L'Orange - Premium Flower",
     "strainNameCanonical": "L'Orange",
     "brand": "RYTHM",
@@ -539472,7 +539517,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539480,7 +539525,7 @@
   {
     "listingId": "leal-leal-animal-face-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Leal Animal Face Flower",
     "strainNameCanonical": "Animal Face",
     "brand": "LEAL",
@@ -539519,7 +539564,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539527,7 +539572,7 @@
   {
     "listingId": "leal-leal-garlic-budder-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Leal Garlic Budder Flower",
     "strainNameCanonical": "Garlic Budder",
     "brand": "LEAL",
@@ -539564,7 +539609,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539572,7 +539617,7 @@
   {
     "listingId": "leal-leal-hella-jelly-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Leal Hella Jelly Flower",
     "strainNameCanonical": "Hella Jelly",
     "brand": "LEAL",
@@ -539609,7 +539654,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539617,7 +539662,7 @@
   {
     "listingId": "leal-lemon-venom",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Lemon Venom",
     "strainNameCanonical": "Lemon Venom",
     "brand": "LEAL",
@@ -539654,7 +539699,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539662,7 +539707,7 @@
   {
     "listingId": "leal-macaroon",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Macaroon",
     "strainNameCanonical": "Macaroon",
     "brand": "LEAL",
@@ -539699,7 +539744,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539707,7 +539752,7 @@
   {
     "listingId": "to-the-moon-pink-marshmallow-premium-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Pink Marshmallow - Premium Flower",
     "strainNameCanonical": "Pink Marshmallow",
     "brand": "To The Moon",
@@ -539744,7 +539789,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539752,7 +539797,7 @@
   {
     "listingId": "leal-platinum-lemon-cherry-gelato",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Platinum Lemon Cherry Gelato",
     "strainNameCanonical": "Platinum Lemon Cherry Gelato",
     "brand": "LEAL",
@@ -539789,52 +539834,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "ruby-farms-ruby-farms-maui-waui-flower",
-    "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
-    "strainNameRaw": "Ruby Farms Maui Waui Flower",
-    "strainNameCanonical": "Maui Waui",
-    "brand": "Ruby Farms",
-    "brandKey": "ruby",
-    "lineage": "SATIVA",
-    "thcPercent": 27,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": 1.03,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": [
-      "1A412030000070B000037160"
-    ],
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": null,
-    "description": null,
-    "sources": [
-      {
-        "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539842,7 +539842,7 @@
   {
     "listingId": "runtz-runtz-amaretto-di-lemon-indoor-flower-smalls",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Runtz Amaretto Di Lemon Indoor Flower Smalls",
     "strainNameCanonical": "Amaretto Di Lemon",
     "brand": "Runtz",
@@ -539879,7 +539879,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539887,7 +539887,7 @@
   {
     "listingId": "runtz-runtz-l-orange-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Runtz L'Orange Indoor Flower",
     "strainNameCanonical": "L'Orange",
     "brand": "Runtz",
@@ -539924,7 +539924,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539932,7 +539932,7 @@
   {
     "listingId": "runtz-runtz-lemon-cherry-z-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Runtz Lemon Cherry Z Indoor Flower",
     "strainNameCanonical": "Lemon Cherry Z",
     "brand": "Runtz",
@@ -539969,7 +539969,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -539977,7 +539977,7 @@
   {
     "listingId": "runtz-runtz-obama-runtz-indoor-flower-smalls",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Runtz Obama Runtz Indoor Flower Smalls",
     "strainNameCanonical": "Obama Runtz",
     "brand": "Runtz",
@@ -540014,7 +540014,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540022,7 +540022,7 @@
   {
     "listingId": "runtz-runtz-pink-runtz-indoor-flower-smalls",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Runtz Pink Runtz Indoor Flower Smalls",
     "strainNameCanonical": "Pink Runtz",
     "brand": "Runtz",
@@ -540059,7 +540059,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540067,7 +540067,7 @@
   {
     "listingId": "runtz-runtz-pluto-indoor-flower-smalls",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Runtz Pluto Indoor Flower Smalls",
     "strainNameCanonical": "Pluto",
     "brand": "Runtz",
@@ -540104,7 +540104,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540112,7 +540112,7 @@
   {
     "listingId": "runtz-runtz-trump-runtz-indoor-flower-smalls",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Runtz Trump Runtz Indoor Flower Smalls",
     "strainNameCanonical": "Trump Runtz",
     "brand": "Runtz",
@@ -540149,7 +540149,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540157,7 +540157,7 @@
   {
     "listingId": "leal-stank-breath",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Stank Breath",
     "strainNameCanonical": "Stank Breath",
     "brand": "LEAL",
@@ -540194,7 +540194,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540202,7 +540202,7 @@
   {
     "listingId": "super-dope-super-dope-cherry-popperz-premium-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Super Dope Cherry Popperz Premium Flower",
     "strainNameCanonical": "Cherry Popperz",
     "brand": "Super Dope",
@@ -540239,7 +540239,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540247,7 +540247,7 @@
   {
     "listingId": "super-dope-super-dope-mega-z-red-premium-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Super Dope Mega Z Red Premium Flower",
     "strainNameCanonical": "Mega Z Red",
     "brand": "Super Dope",
@@ -540267,7 +540267,7 @@
     },
     "labPanelKey": null,
     "packageIds": [
-      "1A4120300001AFD000004416"
+      "1A4120300001AFD000007530"
     ],
     "harvestedOn": null,
     "packagedOn": null,
@@ -540284,232 +540284,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "the-mechanic-farm-the-mechanic-farm-crunch-berries-premium-flower",
-    "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
-    "strainNameRaw": "The Mechanic Farm Crunch Berries Premium Flower",
-    "strainNameCanonical": "Crunch Berries",
-    "brand": "The Mechanic Farm",
-    "brandKey": "themechanic",
-    "lineage": "HYBRID",
-    "thcPercent": 30.55,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": 1.81,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": [
-      "1A4120300001AFD000006591"
-    ],
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": null,
-    "description": null,
-    "sources": [
-      {
-        "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "the-mechanic-farm-the-mechanic-farm-d-lish-premium-flower",
-    "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
-    "strainNameRaw": "The Mechanic Farm D-Lish Premium Flower",
-    "strainNameCanonical": "D-Lish",
-    "brand": "The Mechanic Farm",
-    "brandKey": "themechanic",
-    "lineage": "HYBRID",
-    "thcPercent": 29.84,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": 1.71,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": [
-      "1A4120300001AFD000006589"
-    ],
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": null,
-    "description": null,
-    "sources": [
-      {
-        "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "the-mechanic-farm-the-mechanic-farm-riddlez-premium-flower",
-    "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
-    "strainNameRaw": "The Mechanic Farm Riddlez Premium Flower",
-    "strainNameCanonical": "Riddlez",
-    "brand": "The Mechanic Farm",
-    "brandKey": "themechanic",
-    "lineage": "INDICA_DOMINANT",
-    "thcPercent": 29.96,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": 1.81,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": [
-      "1A4120300001AFD000006588"
-    ],
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": null,
-    "description": null,
-    "sources": [
-      {
-        "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "the-mechanic-farm-the-mechanic-farm-rs-11-premium-flower",
-    "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
-    "strainNameRaw": "The Mechanic Farm RS-11 Premium Flower",
-    "strainNameCanonical": "RS-11",
-    "brand": "The Mechanic Farm",
-    "brandKey": "themechanic",
-    "lineage": "INDICA_DOMINANT",
-    "thcPercent": 29.46,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": 1.84,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": [
-      "1A4120300001AFD000006590"
-    ],
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": null,
-    "description": null,
-    "sources": [
-      {
-        "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "the-mechanic-farm-the-mechanic-farm-stank41-premium-flower",
-    "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
-    "strainNameRaw": "The Mechanic Farm Stank41 Premium Flower",
-    "strainNameCanonical": "Stank41",
-    "brand": "The Mechanic Farm",
-    "brandKey": "themechanic",
-    "lineage": "HYBRID",
-    "thcPercent": 25.79,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": 0.73,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": [
-      "1A4120300001AFD000006587"
-    ],
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": null,
-    "description": null,
-    "sources": [
-      {
-        "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540517,7 +540292,7 @@
   {
     "listingId": "dark-heart-titan-express-whole-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Titan Express Whole Flower",
     "strainNameCanonical": "Titan Express",
     "brand": "Dark Heart",
@@ -540554,52 +540329,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "untitled-untitled-blue-dream-flower",
-    "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
-    "strainNameRaw": "Untitled Blue Dream Flower",
-    "strainNameCanonical": "Blue Dream",
-    "brand": "Untitled",
-    "brandKey": "untitled",
-    "lineage": "SATIVA",
-    "thcPercent": 29.8,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": 1.77,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": [
-      "1A4120300000529000073801"
-    ],
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": null,
-    "description": null,
-    "sources": [
-      {
-        "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540607,7 +540337,7 @@
   {
     "listingId": "untitled-untitled-durban-poison-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Untitled Durban Poison Flower",
     "strainNameCanonical": "Durban Poison",
     "brand": "Untitled",
@@ -540644,7 +540374,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540652,7 +540382,7 @@
   {
     "listingId": "untitled-untitled-granddaddy-purple-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Untitled Granddaddy Purple Flower",
     "strainNameCanonical": "Granddaddy Purple",
     "brand": "Untitled",
@@ -540689,7 +540419,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540697,7 +540427,7 @@
   {
     "listingId": "untitled-untitled-green-crack-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Untitled Green Crack Flower",
     "strainNameCanonical": "Green Crack",
     "brand": "Untitled",
@@ -540734,7 +540464,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540742,7 +540472,7 @@
   {
     "listingId": "untitled-untitled-jack-herer-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Untitled Jack Herer Flower",
     "strainNameCanonical": "Jack Herer",
     "brand": "Untitled",
@@ -540779,7 +540509,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540787,7 +540517,7 @@
   {
     "listingId": "wizard-trees-wizard-trees-black-magic-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Wizard Trees Black Magic Indoor Flower",
     "strainNameCanonical": "Black Magic",
     "brand": "Wizard Trees",
@@ -540824,7 +540554,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540832,7 +540562,7 @@
   {
     "listingId": "wizard-trees-wizard-trees-new-yorker-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Wizard Trees New Yorker Indoor Flower",
     "strainNameCanonical": "Yorker",
     "brand": "Wizard Trees",
@@ -540869,7 +540599,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540877,7 +540607,7 @@
   {
     "listingId": "wizard-trees-wizard-trees-smoothie-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Wizard Trees Smoothie Indoor Flower",
     "strainNameCanonical": "Smoothie",
     "brand": "Wizard Trees",
@@ -540914,7 +540644,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540922,7 +540652,7 @@
   {
     "listingId": "wizard-trees-wizard-trees-tide-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Wizard Trees Tide Indoor Flower",
     "strainNameCanonical": "Tide",
     "brand": "Wizard Trees",
@@ -540959,7 +540689,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -540967,7 +540697,7 @@
   {
     "listingId": "wizard-trees-wizard-trees-zoap-indoor-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Wizard Trees Zoap Indoor Flower",
     "strainNameCanonical": "Zoap",
     "brand": "Wizard Trees",
@@ -541004,7 +540734,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -541012,7 +540742,7 @@
   {
     "listingId": "zips-og-zips-og-chem-cookies-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Zips OG Chem Cookies Flower",
     "strainNameCanonical": "Chem Cookies",
     "brand": "Zips OG",
@@ -541049,7 +540779,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -541057,7 +540787,7 @@
   {
     "listingId": "zips-og-zips-og-grease-monkey-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Zips OG Grease Monkey Flower",
     "strainNameCanonical": "Grease Monkey",
     "brand": "Zips OG",
@@ -541094,7 +540824,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -541102,7 +540832,7 @@
   {
     "listingId": "zips-og-zips-og-green-crack-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Zips OG Green Crack Flower",
     "strainNameCanonical": "Green Crack",
     "brand": "Zips OG",
@@ -541139,7 +540869,54 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "zips-og-zips-og-jack-herer-flower",
+    "licenseNumber": "OCM-CAURD-24-000212",
+    "capturedAt": "2026-10-16T16:34:30Z",
+    "strainNameRaw": "Zips OG Jack Herer Flower",
+    "strainNameCanonical": "Jack Herer",
+    "brand": "Zips OG",
+    "brandKey": "zipsog",
+    "lineage": "SATIVA",
+    "thcPercent": 27.66,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 0.76,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "634240511066",
+      "634240482649"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      14,
+      28
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
@@ -541147,7 +540924,7 @@
   {
     "listingId": "zips-og-zips-og-northern-lights-flower",
     "licenseNumber": "OCM-CAURD-24-000212",
-    "capturedAt": "2026-10-15T16:08:06Z",
+    "capturedAt": "2026-10-16T16:34:30Z",
     "strainNameRaw": "Zips OG Northern Lights Flower",
     "strainNameCanonical": "Northern Lights",
     "brand": "Zips OG",
@@ -541184,7 +540961,7 @@
         "url": "https://dutchie.com/stores/dad-distributors-llc/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-15T16:08:06Z"
+        "retrievedAt": "2026-10-16T16:34:30Z"
       }
     ],
     "warnings": []
