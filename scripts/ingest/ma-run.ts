@@ -296,6 +296,9 @@ const main = async () => {
       if (!p) continue;
       carried += 1;
       r.id = p.id ?? r.id; // slugs are permanent once published
+      // A trading name found by research (website-research.json) fills the
+      // register's silence; one the register prints itself wins.
+      r.dbaName = r.dbaName ?? p.dbaName ?? null;
       for (const field of ['geo', 'hours', 'services', 'menu']) r[field] = p[field] ?? r[field];
       for (const [k, v] of Object.entries(p.contact ?? {})) if (v !== null && v !== undefined) r.contact[k] = v;
       if (p.operationalStatus && p.operationalStatus !== 'UNKNOWN') r.operationalStatus = p.operationalStatus;

@@ -27,6 +27,9 @@ export const TerritoryExplorer = ({
   counties,
   storageKey,
   licenceExample = 'OCM-RETL-…',
+  shelfCounts,
+  shelfRoute,
+  verify = { href: 'https://cannabis.ny.gov/dispensary-location-verification', label: 'the state verification tool' },
 }: {
   shops: TerritoryShop[];
   counties: { name: string; count: number }[];
@@ -34,10 +37,19 @@ export const TerritoryExplorer = ({
   storageKey: string;
   /** What a licence number looks like in this state, for the search hint. */
   licenceExample?: string;
+  /** Strains in stock per licence, for a territory whose shelves have pages.
+      Absent everywhere else, and then no card links anywhere. */
+  shelfCounts?: Record<string, number>;
+  /** The territory's route; a shop's shelf page sits beneath it. */
+  shelfRoute?: string;
+  /** Where a reader checks a licence this list does not show. */
+  verify?: { href: string; label: string };
 }) => {
   const [query, setQuery] = useState('');
   const [county, setCounty] = useState<string | null>(null);
   const [openedOnly, setOpenedOnly] = useState(false);
+  const [shelfOnly, setShelfOnly] = useState(false);
+  const shelfTotal = shelfCounts ? Object.keys(shelfCounts).length : 0;
   const [sort, setSort] = useState<SortKey>('opened');
   const [limit, setLimit] = useState(60);
 
@@ -46,6 +58,7 @@ export const TerritoryExplorer = ({
     const filtered = shops.filter((d) => {
       if (county && d.address.county !== county) return false;
       if (openedOnly && d.dates?.openedOn == null) return false;
+      if (shelfOnly && !(shelfCounts && d.licenseNumber in shelfCounts)) return false;
       if (!q) return true;
       // Licence number included on purpose: it is how a reader checks the shop
       // in front of them against this list.
@@ -82,9 +95,9 @@ export const TerritoryExplorer = ({
       }
       return displayName(a).localeCompare(displayName(b));
     });
-  }, [shops, query, county, openedOnly, sort]);
+  }, [shops, query, county, openedOnly, shelfOnly, shelfCounts, sort]);
 
-  const active = Boolean(county || openedOnly || query.trim());
+  const active = Boolean(county || openedOnly || shelfOnly || query.trim());
   const shown = list.slice(0, limit);
 
   return (
@@ -140,6 +153,20 @@ export const TerritoryExplorer = ({
           >
             Opening date on file
           </button>
+          {shelfTotal > 0 && (
+            <button
+              type="button"
+              onClick={() => {
+                setShelfOnly((v) => !v);
+                setLimit(60);
+              }}
+              aria-pressed={shelfOnly}
+              className={clsx('chip', shelfOnly && 'chip-on')}
+            >
+              Shelf read
+              <span className="ml-1.5 tabular-nums text-chalk-500">{shelfTotal}</span>
+            </button>
+          )}
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink-700/70 pb-4">
@@ -155,6 +182,7 @@ export const TerritoryExplorer = ({
                     setQuery('');
                     setCounty(null);
                     setOpenedOnly(false);
+                    setShelfOnly(false);
                   }}
                   className="link"
                 >
@@ -185,13 +213,8 @@ export const TerritoryExplorer = ({
           <p className="mt-2 text-sm text-chalk-400">
             A shop missing from this list is not automatically illegal — it may simply not hold a
             licence in this snapshot. Check it at{' '}
-            <a
-              className="link"
-              href="https://cannabis.ny.gov/dispensary-location-verification"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              the state verification tool
+            <a className="link" href={verify.href} target="_blank" rel="noreferrer noopener">
+              {verify.label}
             </a>
             .
           </p>
@@ -201,7 +224,13 @@ export const TerritoryExplorer = ({
           <ul className="mt-8 grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {shown.map((d) => (
               <li key={d.id}>
-                <TerritoryCard d={d} />
+                <TerritoryCard
+                  d={d}
+                  shelf={shelfCounts?.[d.licenseNumber]}
+                  shelfHref={
+                    shelfCounts && shelfRoute && d.licenseNumber in shelfCounts ? `${shelfRoute}/${d.id}/` : undefined
+                  }
+                />
               </li>
             ))}
           </ul>

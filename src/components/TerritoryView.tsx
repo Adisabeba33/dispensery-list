@@ -3,6 +3,7 @@ import { TerritoryExplorer } from './TerritoryExplorer';
 import { territoryPage } from '@/lib/territory-data';
 import { territory } from '@/lib/territories';
 import { shelfCountsFor } from '@/lib/territory-shelves';
+import { hasShelves, territoryShelfCounts } from '@/lib/territory-menu';
 import { prettyDate } from '@/lib/format';
 
 /**
@@ -88,6 +89,13 @@ export const TerritoryView = ({ id, intro }: { id: string; intro: React.ReactNod
             counties={counties}
             storageKey={t.id}
             licenceExample={t.state === 'MA' ? 'MR28…' : undefined}
+            shelfCounts={hasShelves(t.id) ? territoryShelfCounts(t.id) : undefined}
+            shelfRoute={t.route}
+            verify={
+              t.state === 'MA'
+                ? { href: 'https://masscannabiscontrol.com/open-data/data-catalog/', label: 'the Commission’s licence data' }
+                : undefined
+            }
           />
         </div>
       </section>
