@@ -1,17 +1,19 @@
 import Link from 'next/link';
 import { TerritoryExplorer } from './TerritoryExplorer';
 import { territoryPage } from '@/lib/territory-data';
+import { territory } from '@/lib/territories';
+import { shelfCountsFor } from '@/lib/territory-shelves';
 import { prettyDate } from '@/lib/format';
 
 /**
- * The page body shared by /upstate/ and /long-island/.
+ * The page body shared by /upstate/, /long-island/ and /massachusetts/.
  *
  * Shared markup, never shared data: each route reads its own files, counts its
  * own records and states its own gaps. Nothing here can produce a blended
  * figure, because nothing here ever sees two territories at once.
  */
 export const TerritoryView = ({ id, intro }: { id: string; intro: React.ReactNode }) => {
-  const { t, shops, stats, counties, gaps } = territoryPage(id);
+  const { t, shops, stats, counties, gaps } = territoryPage(id, shelfCountsFor(territory(id).dataDir));
 
   return (
     <div className="shell py-12">
@@ -53,10 +55,12 @@ export const TerritoryView = ({ id, intro }: { id: string; intro: React.ReactNod
             What this page does not know
           </h2>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-chalk-300">
-            This territory has a registry import and nothing more. New York City and Westchester
-            carry menus, coordinates, hours and hand-checked opt-outs; these records do not, and
-            pretending otherwise is the one thing this register cannot do. Every figure below is
-            counted from the records themselves.
+            {t.state === 'MA'
+              ? 'This territory has a registry import, the websites found so far and its first shelves, and nothing more.'
+              : 'This territory has a registry import and nothing more.'}{' '}
+            New York City and Westchester carry menus, coordinates, hours and hand-checked
+            opt-outs; these records do not, and pretending otherwise is the one thing this register
+            cannot do. Every figure below is counted from the records themselves.
           </p>
           <ul className="mt-5 space-y-3">
             {gaps.map((gap) => (
@@ -79,7 +83,12 @@ export const TerritoryView = ({ id, intro }: { id: string; intro: React.ReactNod
         </p>
 
         <div className="mt-6">
-          <TerritoryExplorer shops={shops} counties={counties} storageKey={t.id} />
+          <TerritoryExplorer
+            shops={shops}
+            counties={counties}
+            storageKey={t.id}
+            licenceExample={t.state === 'MA' ? 'MR28…' : undefined}
+          />
         </div>
       </section>
     </div>

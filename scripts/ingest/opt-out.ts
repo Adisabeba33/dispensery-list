@@ -71,6 +71,12 @@ const flag = (name: string) => {
 };
 const dryRun = argv.includes('--dry-run');
 const territory = territoryFromArgv();
+// This reads New York's LOCAL opt-out map. Pointed at another state's territory it would
+// match nothing — and run.ts would then write an empty register over it.
+if (territory.state !== 'NY') {
+  console.error(`${territory.label} is not a New York territory; its source is another adapter (data/territories.json → note).`);
+  process.exit(1);
+}
 const appItem = flag('app') ?? DEFAULT_APP_ITEM;
 /** A layer URL, when discovery has already been done once and can be skipped. */
 const layerOverride = flag('layer');

@@ -29,6 +29,12 @@ const ROOT = resolve(import.meta.dirname, '..', '..');
 // Which of the three territories this run is for. Absent means nyc, whose
 // dataDir is `data` — i.e. the exact path this script always wrote to.
 const territory = territoryFromArgv();
+// This reads the New York registry. Pointed at another state's territory it would
+// match nothing — and run.ts would then write an empty register over it.
+if (territory.state !== 'NY') {
+  console.error(`${territory.label} is not a New York territory; its source is another adapter (data/territories.json → note).`);
+  process.exit(1);
+}
 const OUT = dataPath(territory, 'dispensaries.json');
 const RAW_DIR = resolve(ROOT, 'data/raw');
 

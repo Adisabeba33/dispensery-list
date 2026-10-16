@@ -40,7 +40,7 @@ export const TerritoryCard = ({ d }: { d: TerritoryShop }) => {
       </div>
 
       <p className="mt-3 text-sm text-chalk-200">
-        {[d.address.line1, d.address.line2, `${d.address.city}, NY ${d.address.zip}`]
+        {[d.address.line1, d.address.line2, `${d.address.city}, ${d.address.state} ${d.address.zip}`]
           .filter(Boolean)
           .join(', ')}
       </p>

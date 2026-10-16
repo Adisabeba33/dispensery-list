@@ -1,7 +1,7 @@
 import territoriesRaw from '../../data/territories.json';
 
 /**
- * The three territories, as the site sees them.
+ * The territories, as the site sees them.
  *
  * This mirrors scripts/ingest/territory.ts, which is the ingest's copy. They
  * read the SAME data/territories.json, so the two cannot disagree about which
@@ -14,6 +14,8 @@ export type OptOutStatus = 'HAND_CHECKED' | 'MAP_INGESTED' | 'NOT_ESTABLISHED';
 export type SiteTerritory = {
   id: string;
   label: string;
+  /** USPS code. County names repeat across states (Suffolk NY, Suffolk MA). */
+  state: string;
   dataDir: string;
   route: string;
   counties?: string[];

@@ -159,6 +159,12 @@ Fine as a nullable NYC extra; it must not be the grouping key statewide.
 
 ## 5. What this trial teaches about a second state — the real point
 
+> **Measured 2026-10-16 on Massachusetts — [`MASSACHUSETTS.md`](MASSACHUSETTS.md).**
+> The ingest adapter did have to be rewritten, as predicted, and municipal
+> research was frozen as in New York. The cost nobody predicted is websites:
+> Massachusetts's register publishes none, so its menus start with a research
+> pass rather than a CI run.
+
 Be precise about what would carry over, because it decides whether state #2 is
 a week or a quarter.
 

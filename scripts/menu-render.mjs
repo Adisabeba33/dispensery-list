@@ -306,11 +306,18 @@ export const otherBranchServed = (menuUrl, requestUrls) => {
   return null;
 };
 
-/* Every brand this register has already seen on a New York shelf, across all
-   three territories. A shop's own previous listings are excluded when it is
-   judged, so a shelf that got in wrong once cannot vouch for itself. */
+/* Every brand this register has already seen on a shelf in THIS state, across
+   its territories. A shop's own previous listings are excluded when it is
+   judged, so a shelf that got in wrong once cannot vouch for itself.
+
+   The same state only: the test below exists because cannabis does not cross
+   state lines, so a Massachusetts shelf must not vouch for a New York one, nor
+   the other way round. A state with no shelf collected yet has nothing to
+   judge against, and its first run is a decision, not arithmetic — see
+   docs/MASSACHUSETTS.md. */
 const KNOWN_BRANDS = new Map();
 for (const t of ALL_TERRITORIES) {
+  if ((t.state ?? 'NY') !== (TERRITORY.state ?? 'NY')) continue;
   try {
     for (const l of JSON.parse(
       readFileSync(resolve(ROOT, `${t.dataDir}/flower-listings.json`), 'utf8'),
@@ -323,6 +330,23 @@ for (const t of ALL_TERRITORIES) {
     /* a territory not collected yet */
   }
 }
+/* --state-baseline: the first shelves a state ever gets.
+
+   The foreign-shelf test below needs brands already seen in the same state,
+   and a state with no shelf has none: every shelf of ten brands or more would
+   read as foreign and be refused, and the state could never start. So its
+   first run is told so, explicitly, and the test is set aside for that run
+   only. It is not silent: every shelf it keeps is marked stateBaseline in the
+   run summary, and the owner's decision (16 October 2026, Massachusetts) is
+   that each one is read by hand — its brands against the state's licensed
+   growers — before the shelf stays. Once a state has a shelf, the flag is
+   refused and the test applies as everywhere else. docs/MASSACHUSETTS.md §4. */
+const stateBaseline = process.argv.includes('--state-baseline');
+if (stateBaseline && KNOWN_BRANDS.size > 0) {
+  console.error(`--state-baseline is for a state with no shelf yet; ${TERRITORY.state ?? 'NY'} already has ${KNOWN_BRANDS.size} brands on file.`);
+  process.exit(1);
+}
+
 /** The brands vouched for by some shop OTHER than this one. */
 const brandsKnownApartFrom = (licence) => {
   const out = new Set();
@@ -790,10 +814,10 @@ const noteFrame = (page, frame, entry) => {
  * the caller stops there, because a decline pressed on an age wall is the
  * wrong answer to a question we do mean to answer.
  */
-const declineOneOffer = async (frame) => {
+const declineOneOffer = async (frame, skip = []) => {
   try {
     return await frame.evaluate(
-      ({ decline, mark, accept, clear, ageDecline }) => {
+      ({ decline, mark, accept, clear, ageDecline, skip }) => {
         const isDecline = new RegExp(decline, 'i');
         const isMark = new RegExp(mark);
         const isAccept = new RegExp(accept, 'i');
@@ -832,6 +856,7 @@ const declineOneOffer = async (frame) => {
         for (const el of controls) {
           const words = wordsOf(el);
           if (!words || words.length > 45) continue;
+          if (skip.includes(words.replace(/\s+/g, ' ').slice(0, 45).toLowerCase())) continue;
           if (isAccept.test(words)) continue;
           if (!isDecline.test(words) && !isMark.test(words)) continue;
           if (!onScreen(el)) continue;
@@ -846,6 +871,7 @@ const declineOneOffer = async (frame) => {
         accept: OFFER_ACCEPT.source,
         clear: AGE_AFFIRM_ALL.source,
         ageDecline: AGE_DECLINE_ALL.source,
+        skip,
       },
     );
   } catch {
@@ -862,8 +888,10 @@ const dismissOffers = async (page, entry) => {
   for (let round = 0; round < MAX_OFFERS_DISMISSED * 2; round += 1) {
     let label = null;
     let wallUp = false;
+    const before = page.url();
+    const skip = (entry.offerLeftSite ?? []).map((o) => o.label.toLowerCase());
     for (const frame of await wallFrames(page)) {
-      const answer = await within(declineOneOffer(frame), null);
+      const answer = await within(declineOneOffer(frame, skip), null);
       if (!answer) continue;
       if (answer.wall) {
         wallUp = true;
@@ -890,6 +918,26 @@ const dismissOffers = async (page, entry) => {
     waitedOnce = false;
     pressed.push(label);
     await page.waitForTimeout(1200);
+    /* A decline that leaves the shop. High Profile (Boston, 16 October 2026)
+       follows its age question with an offer of "special pricing updates",
+       and its "NO THANK YOU" sends the visitor to google.com. The collector
+       pressed it on three shops and filed 215 listings under
+       https://www.google.com/, and their paging died with the page. So a
+       decline that changes the host is undone — back to where we were — and
+       never pressed again at that shop; the offer stays up, and the shelf is
+       read from beneath it, as it is from beneath every other overlay. */
+    const hostOf = (u) => {
+      try {
+        return new URL(u).host;
+      } catch {
+        return '';
+      }
+    };
+    if (hostOf(page.url()) && hostOf(page.url()) !== hostOf(before)) {
+      entry.offerLeftSite = [...(entry.offerLeftSite ?? []), { label, to: page.url() }];
+      await page.goto(before, { waitUntil: 'domcontentloaded', timeout: 30000 }).catch(() => {});
+      await page.waitForTimeout(1500);
+    }
   }
   return pressed;
 };
@@ -6041,7 +6089,8 @@ const main = async () => {
          stock it is the fabricated record this register exists to refuse. */
       const mine = listings.filter((l) => l.licenseNumber === shop.licenseNumber);
       const myBrands = [...new Set(mine.map((l) => l.brandKey).filter(Boolean))];
-      const foreign = foreignShelfShare(myBrands, brandsKnownApartFrom(shop.licenseNumber));
+      const foreign = stateBaseline ? null : foreignShelfShare(myBrands, brandsKnownApartFrom(shop.licenseNumber));
+      if (stateBaseline && myBrands.length) entry.stateBaseline = { brands: myBrands.length, toReviewByHand: true };
       if (foreign !== null) {
         for (let i = listings.length - 1; i >= 0; i -= 1) {
           if (listings[i].licenseNumber === shop.licenseNumber) listings.splice(i, 1);

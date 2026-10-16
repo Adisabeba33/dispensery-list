@@ -26,11 +26,14 @@ export const TerritoryExplorer = ({
   shops,
   counties,
   storageKey,
+  licenceExample = 'OCM-RETL-…',
 }: {
   shops: TerritoryShop[];
   counties: { name: string; count: number }[];
   /** Per territory. A county chosen upstate must not follow the reader to Long Island. */
   storageKey: string;
+  /** What a licence number looks like in this state, for the search hint. */
+  licenceExample?: string;
 }) => {
   const [query, setQuery] = useState('');
   const [county, setCounty] = useState<string | null>(null);
@@ -96,7 +99,7 @@ export const TerritoryExplorer = ({
               setQuery(e.target.value);
               setLimit(60);
             }}
-            placeholder="Search name, town, county or licence number (OCM-RETL-…)"
+            placeholder={`Search name, town, county or licence number (${licenceExample})`}
             className="field"
           />
         </label>
@@ -195,7 +198,7 @@ export const TerritoryExplorer = ({
         </div>
       ) : (
         <>
-          <ul className="mt-8 grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-8 grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {shown.map((d) => (
               <li key={d.id}>
                 <TerritoryCard d={d} />

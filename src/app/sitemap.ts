@@ -26,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page('/westchester/', 'weekly', 0.6),
     page('/long-island/', 'weekly', 0.5),
     page('/upstate/', 'weekly', 0.5),
+    page('/massachusetts/', 'weekly', 0.5),
     page('/about/', 'monthly', 0.3),
     page('/legal/', 'monthly', 0.2),
     ...dispensaries.map((d) => page(`/dispensary/${d.id}/`, 'daily', 0.7)),

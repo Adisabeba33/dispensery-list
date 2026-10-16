@@ -59,6 +59,7 @@ const NAV = [
 const TERRITORY_NAV = [
   { href: '/upstate/', label: 'Upstate' },
   { href: '/long-island/', label: 'Long Island' },
+  { href: '/massachusetts/', label: 'Massachusetts' },
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
