@@ -2,6 +2,8 @@ import type { MetadataRoute } from 'next';
 import { dispensaries } from '@/lib/data';
 import { brandSummaries } from '@/lib/shelf';
 import { SITE_URL } from '@/lib/site';
+import { shopsIn } from '@/lib/territory-data';
+import { territoryShelfCounts } from '@/lib/territory-menu';
 
 export const dynamic = 'force-static';
 
@@ -30,6 +32,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page('/about/', 'monthly', 0.3),
     page('/legal/', 'monthly', 0.2),
     ...dispensaries.map((d) => page(`/dispensary/${d.id}/`, 'daily', 0.7)),
+    // Massachusetts shops whose shelf has a page (src/app/massachusetts/[slug]).
+    ...(() => {
+      const shelved = territoryShelfCounts('massachusetts');
+      return shopsIn('massachusetts')
+        .filter((d) => d.licenseNumber in shelved)
+        .map((d) => page(`/massachusetts/${d.id}/`, 'weekly', 0.5));
+    })(),
     ...brandSummaries().map((b) => page(`/menus/brands/${b.key}/`, 'daily', 0.6)),
   ];
 }

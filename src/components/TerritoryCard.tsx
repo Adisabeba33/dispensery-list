@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import Link from 'next/link';
 import type { TerritoryShop } from '@/lib/territory-data';
 import { displayName } from '@/lib/territory-data';
 import { LICENSE_TYPE_LABEL } from '@/lib/data';
@@ -13,7 +14,17 @@ import { mapsUrl, prettyDate } from '@/lib/format';
  * wrong (the borough is null, so it would read "Westchester") or empty. A card
  * of blanks tells a reader we did a bad job; this one tells them what we have.
  */
-export const TerritoryCard = ({ d }: { d: TerritoryShop }) => {
+export const TerritoryCard = ({
+  d,
+  shelf,
+  shelfHref,
+}: {
+  d: TerritoryShop;
+  /** Strains in stock on the shelf read for this shop, where one was. */
+  shelf?: number;
+  /** Its shelf page, when the territory has them. */
+  shelfHref?: string;
+}) => {
   const opened = prettyDate(d.dates?.openedOn ?? null);
   const expires = d.dates?.licenseExpiration ?? null;
   const expired = expires != null && expires < d.lastUpdated.slice(0, 10);
@@ -23,7 +34,13 @@ export const TerritoryCard = ({ d }: { d: TerritoryShop }) => {
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="truncate text-[1.05rem] font-semibold tracking-tight text-chalk-50">
-            {displayName(d)}
+            {shelfHref ? (
+              <Link href={shelfHref} className="transition-colors hover:text-moss-400">
+                {displayName(d)}
+              </Link>
+            ) : (
+              displayName(d)
+            )}
           </p>
           <p className="mt-1 text-sm text-chalk-400">{d.address.county} County</p>
         </div>
@@ -65,6 +82,18 @@ export const TerritoryCard = ({ d }: { d: TerritoryShop }) => {
           </div>
         )}
       </dl>
+
+      {shelfHref && (
+        <Link
+          href={shelfHref}
+          className="mt-4 flex items-center justify-between gap-2 rounded-lg border border-moss-600/50 bg-moss-600/10 px-3 py-2 text-sm font-medium text-moss-400 transition-colors hover:border-moss-400"
+        >
+          <span>
+            See the shelf — {shelf ?? 0} {shelf === 1 ? 'strain' : 'strains'} in stock
+          </span>
+          <span aria-hidden>→</span>
+        </Link>
+      )}
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-ink-700/70 pt-3">
         <a

@@ -163,7 +163,7 @@ export const gapsFor = (
     const opened = count((d) => d.dates?.openedOn != null);
     gaps.push({
       label: `Flower menus — read at ${shelf.shops} of ${opened} opened shops`,
-      detail: `${shelf.listings.toLocaleString('en-US')} flower listings, read in the city of Boston only — the first stage of this trial. They sit in this territory’s own file and are not shown here, nor in the strain index, nor passed to SŌMA, all of which read New York’s shelves alone.`,
+      detail: `${shelf.listings.toLocaleString('en-US')} flower listings, read once, in the city of Boston only — the first stage of this trial. Press “Shelf read” below to see those shops, and open one to see its shelf. They are kept out of the strain index and are not passed to SŌMA, both of which read New York’s shelves alone.`,
     });
   } else {
     gaps.push({

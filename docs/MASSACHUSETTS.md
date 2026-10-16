@@ -209,6 +209,16 @@ does to New York.
 read only `data/flower-listings.json`, which is New York's, so nothing from
 Boston reaches either until someone decides it should.
 
+**Shown, 2026-10-17.** The owner opened `/massachusetts/` and could not find the
+shelves: the cards led nowhere. Each shop with a shelf now has a page,
+`/massachusetts/<id>/`, and the list has a "Shelf read" filter. The page says
+the shelf was read once and is not refreshed daily. It shows only what the
+shop's menu said: New York's strain references are not borrowed, because a
+Boston jar under the same name is another grower's. The 34 shops whose
+trading names research established now carry them in `dbaName` ("Dutchess",
+not "Union Twist, Inc."). `ma-run.ts` keeps a researched name unless the
+register prints one of its own.
+
 ### What stood in the way, as found before the run
 
 1. **No websites.** Boston has 37 open shops and the state links none of them
