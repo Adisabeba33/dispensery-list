@@ -7,7 +7,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "host-stopped-for-24h",
+   "unread": "URLError",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://mcpikefarms.com/certificates-of-analysis/"
   },
@@ -25084,6 +25084,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/35209.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/35210.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-04",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "ded4ffe248f3af4df49a5d0116d62e073e5c6750352d1a6da8ffb878420d57be",
+   "docType": "lab-coa",
+   "sampleId": "20260504-HMOF-004",
+   "batchTag": "MM0214",
+   "lotNumber": "MM0214",
+   "metrcTag": null,
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Mini MART | Flower | 3.5 Gram | Marker | Hybrid",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000119",
+    "thc": 28.3,
+    "totalTerpenes": 1.35,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.07,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.37,
+     "FARNESENE": 0.07,
+     "HUMULENE": 0.13,
+     "LIMONENE": 0.32,
+     "LINALOOL": 0.25,
+     "MYRCENE": 0.14,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/35210.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/35278.pdf": {
    "lab": "ACT",
    "sampled": "2026-06-23",
@@ -29784,6 +29822,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/36368.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36369.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-07-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "db6495f5a1c70b85ac3aae98a737fecf20c79ab47530b66591314a3623a8090e",
+   "docType": "lab-coa",
+   "sampleId": "20260716-WIZD-003",
+   "batchTag": "F4-S-7726",
+   "lotNumber": "F4-S-7726",
+   "metrcTag": null,
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Smoothie Flower 3.5G Jar",
+    "matrix": "flower",
+    "licence": "OCM-MICR-24-000155",
+    "thc": 30.82,
+    "totalTerpenes": 2.13,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.11,
+     "CARYOPHYLLENE": 0.67,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.28,
+     "LIMONENE": 0.36,
+     "LINALOOL": 0.21,
+     "MYRCENE": 0.51,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/36369.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/36379.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-07-16",
@@ -31834,6 +31910,44 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/36806.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/36808.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-06",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": "2025-12-01",
+   "harvestedFrom": "document-harvest-lot-id",
+   "sha256": "63b77842e6d68c820c3acbaeeec1a24f22d47f61b3d5df9a2914d83f95c2f09d",
+   "docType": "lab-coa",
+   "sampleId": "AL60606009-024",
+   "batchTag": "A1-MJR-06",
+   "lotNumber": null,
+   "metrcTag": "1A4120300001A94000000555",
+   "panel": {
+    "lab": "Kaycha",
+    "name": "Hybrid",
+    "matrix": "flower",
+    "licence": "OCM-MICR-25-000243",
+    "thc": 29.46,
+    "totalTerpenes": 1.43,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.52,
+     "FARNESENE": 0.05,
+     "HUMULENE": 0.15,
+     "LIMONENE": 0.24,
+     "LINALOOL": 0.21,
+     "MYRCENE": 0.18,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/36808.pdf",
    "sourceKind": "menu"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/36809.pdf": {
@@ -38772,6 +38886,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39267.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39292.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-08-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "92b2c03fdea4d8394a8f9c98c3844d14fec52df9434eedad65e03e9bb8d4c665",
+   "docType": "lab-coa",
+   "sampleId": "AL60810002-008",
+   "batchTag": "1A4120300000C1F000044849",
+   "lotNumber": "H-20260713",
+   "metrcTag": "1A4120300000C1F000034728",
+   "panel": {
+    "lab": "Kaycha",
+    "name": "Sky Fire OG",
+    "matrix": "flower",
+    "licence": "OCM-ROND-24-000003",
+    "thc": 26.43,
+    "totalTerpenes": 2.35,
+    "terpenes": {
+     "PINENE_ALPHA": 0.04,
+     "PINENE_BETA": 0.07,
+     "BISABOLOL": 0.05,
+     "CARYOPHYLLENE": 0.75,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.34,
+     "LIMONENE": 0.51,
+     "LINALOOL": 0.17,
+     "MYRCENE": 0.26,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39292.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/39294.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-08-12",
@@ -38808,6 +38960,44 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39294.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39296.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-09-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "c268d64c65ef84c27774454db49c1e99dbbdeb339a531fb3526c34aa0ab6b9ed",
+   "docType": "lab-coa",
+   "sampleId": "AL60914002-001",
+   "batchTag": "1A4120300000C1F000044564",
+   "lotNumber": "H-20260824-4",
+   "metrcTag": "1A4120300000C1F000020709",
+   "panel": {
+    "lab": "Kaycha",
+    "name": "Bouket - Large Bud - 3.5g - Indoor Cherry Paloma",
+    "matrix": "flower",
+    "licence": "OCM-ROND-24-000003",
+    "thc": 29.81,
+    "totalTerpenes": 1.32,
+    "terpenes": {
+     "PINENE_ALPHA": 0.03,
+     "PINENE_BETA": 0.05,
+     "BISABOLOL": 0.03,
+     "CARYOPHYLLENE": 0.3,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.1,
+     "LIMONENE": 0.39,
+     "LINALOOL": 0.31,
+     "MYRCENE": 0.02,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39296.pdf",
    "sourceKind": "menu"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/39297.pdf": {
@@ -39076,6 +39266,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39440.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39441.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "06ac2596902f414eede6ff335ce588a37be5bc17032eaf0779e3bff2250d5a21",
+   "docType": "lab-coa",
+   "sampleId": "2608RLI0936-4755",
+   "batchTag": "CHGE-028-FL1",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "DRS",
+    "name": "Cherry Gelonade",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000031",
+    "thc": 25.98,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.02,
+     "PINENE_BETA": 0.04,
+     "BISABOLOL": 0.13,
+     "CARYOPHYLLENE": 0.86,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.32,
+     "LIMONENE": 0.24,
+     "LINALOOL": 0.11,
+     "MYRCENE": 0.04,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39441.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/39442.pdf": {
    "lab": "DRS",
    "sampled": "2026-08-28",
@@ -39130,6 +39358,24 @@
    "metrcTag": "1A4120300000294000001336",
    "panel": null,
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39449.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39460.pdf": {
+   "lab": null,
+   "sampled": "2026-05-21",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "0a0cd4225d1c6d16c04e376836d0e435476e405a9493eb73609ec9fb2e8a3f65",
+   "docType": "lab-coa",
+   "sampleId": "CTNY-260521-03-005",
+   "batchTag": "KUCA-003-FL4",
+   "lotNumber": null,
+   "metrcTag": "1A4120300000294000001634",
+   "panel": null,
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39460.pdf",
    "sourceKind": "menu"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/39467.pdf": {
@@ -39282,6 +39528,82 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39540.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39541.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "3ad9fde9f53df274bc5ae89c72af85d3bd8097fad5733b4db2e72b6ce3cd31b8",
+   "docType": "lab-coa",
+   "sampleId": "20260910-EMNY-015",
+   "batchTag": null,
+   "lotNumber": null,
+   "metrcTag": "1A4120300000235000008016",
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Untitled 28g Smalls Flower 8cpk - Sour Diesel",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000202",
+    "thc": 25.54,
+    "totalTerpenes": 0.77,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.28,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.1,
+     "LIMONENE": 0.06,
+     "LINALOOL": 0.06,
+     "MYRCENE": 0.18,
+     "OCIMENE": 0.07,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39541.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39542.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-07",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "bde82c46cf9a567251e88f076fb55cdde93785542c40e05225f6284e2204033c",
+   "docType": "lab-coa",
+   "sampleId": "20260507-EMNY-003",
+   "batchTag": null,
+   "lotNumber": null,
+   "metrcTag": "1A4120300000235000004072",
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Untitled 3.5g Bigs Flower 32cpk - Empire OG",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000202",
+    "thc": 27.33,
+    "totalTerpenes": 1.79,
+    "terpenes": {
+     "PINENE_ALPHA": 0.29,
+     "PINENE_BETA": 0.16,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.33,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.15,
+     "LIMONENE": 0.19,
+     "LINALOOL": 0.09,
+     "MYRCENE": 0.59,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39542.pdf",
    "sourceKind": "menu"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/39571.pdf": {
@@ -67564,7 +67886,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "host-stopped-for-24h",
+   "unread": "URLError",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://thetraptotable.com/grape-gas/"
   },
@@ -114522,6 +114844,45 @@
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://omolabs.com/coa/"
   },
+  "https://omolabs.com/wp-content/uploads/2026/02/PUV-01-003_CoA_FullPanel.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2025-08-27",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "291ff8c541e2f0f6ebb695e69e290206a2878c20621239306294b357aa459a57",
+   "docType": "lab-coa",
+   "sampleId": "20250827-OMOL-002",
+   "batchTag": "PUV-01-003",
+   "lotNumber": "PUV-01-003",
+   "metrcTag": null,
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Purple Urkel Vape",
+    "matrix": "other",
+    "licence": "OCM-PROC-24-000048",
+    "thc": null,
+    "totalTerpenes": 2.62,
+    "terpenes": {
+     "PINENE_ALPHA": 0.63,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.89,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.4,
+     "LIMONENE": 0.23,
+     "LINALOOL": 0.0,
+     "MYRCENE": 0.47,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://omolabs.com/wp-content/uploads/2026/02/PUV-01-003_CoA_FullPanel.pdf",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://omolabs.com/coa/"
+  },
   "https://platinumreserveny.com/wp-content/uploads/2025/04/AL40524005-025-Revision-1.pdf": {
    "lab": "Kaycha",
    "sampled": "2024-05-24",
@@ -116858,6 +117219,16 @@
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
+  "https://v1/ugd/494bf8_07703d105cc7432287ebc961f1395eb4.pdf/COA-SNYURB0925PFCU0031284-SatoriFlowerMeltedStrawberries1035g-SATFLW092526MST35G-003.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "host-stopped-for-24h",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
   "https://v1/ugd/494bf8_07cb97fc41aa4ee48cb2383436f9c47e.pdf/17818.2%20(2).pdf": {
    "lab": null,
    "sampled": null,
@@ -116899,6 +117270,16 @@
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
   "https://v1/ugd/494bf8_118072906e194513b001efc76b978bfb.pdf/17337.1.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "host-stopped-for-24h",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
+  "https://v1/ugd/494bf8_140dc9a5c2b948eaa37210c3a3b443eb.pdf/COA-SNYURB0925PFCU0031286-SatoriFlowerWatermelonZ35g-SATFLW092526WMZ35G-003.pdf": {
    "lab": null,
    "sampled": null,
    "sampledFrom": null,
@@ -117018,6 +117399,16 @@
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
+  "https://v1/ugd/494bf8_2b4b57ee259e49b9821d5157192bced4.pdf/COA-SNYURB0925PFCU0031288-SatoriFlowerFunkMountain35g-SATFLW092526FKM35G-003.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "host-stopped-for-24h",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
   "https://v1/ugd/494bf8_2d26d2afb4a04bd692db9b89f10c0c3b.pdf/17853.1.pdf": {
    "lab": null,
    "sampled": null,
@@ -117049,6 +117440,16 @@
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
   "https://v1/ugd/494bf8_346fc1ac69a14be78d1ceb3ec6b3f73b.pdf/COA-SNYURB0911PFCU0030703-UXTSkyFuelCannabisFlower28g-UXTFLW091126SKF28G-002.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "host-stopped-for-24h",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
+  "https://v1/ugd/494bf8_3574dddb23dd4265b8788fb53c9a1147.pdf/COA-SNYURB0925PFCU0031289-SatoriFlowerBlackMaple35g-SATFLW092526BKM35G-003.pdf": {
    "lab": null,
    "sampled": null,
    "sampledFrom": null,
@@ -117158,6 +117559,16 @@
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
+  "https://v1/ugd/494bf8_4ac258f711b247cbaa4a4362420f5bb5.pdf/COA-SNYURB0925PFCU0031287-SatoriFlowerPapayaJuice35g-SATFLW092526PJU35G-003.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "host-stopped-for-24h",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
   "https://v1/ugd/494bf8_4ae74a76c20149dba183a2b4cf567a65.pdf/17660.1.pdf": {
    "lab": null,
    "sampled": null,
@@ -117229,6 +117640,16 @@
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
   "https://v1/ugd/494bf8_53aed549fd374a50a97cc836988eec86.pdf/COA-SNYURB0911PEIP0030721-1GMOONROCKPREROLLREDWHITE&GLUE-MDSMRP091126RWG1G-002.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "host-stopped-for-24h",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
+  "https://v1/ugd/494bf8_5563ed4f09d64801944565490194281b.pdf/COA-SNYURB0925PFCU0031283-SatoriFlowerDulcedeUva35g-SATFLW092526DUV35G-003.pdf": {
    "lab": null,
    "sampled": null,
    "sampledFrom": null,
@@ -117338,6 +117759,16 @@
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
+  "https://v1/ugd/494bf8_649b8efc24bd41d0b7693f2f2bef101b.pdf/COA-SNYURB1009PPRE0031970-WatermelonZ1gPreRoll-SATPRE100926WMZ1G-002.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "host-stopped-for-24h",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
   "https://v1/ugd/494bf8_65bee8e0052e4e638dd604d95df3867a.pdf/COA-SNYURB0916PEIP0030868-1GMOONROCKPREROLLWATERMELONBUBBLEGUM-MDSMRP091626WMB1G-002.pdf": {
    "lab": null,
    "sampled": null,
@@ -117435,6 +117866,16 @@
    "packaged": null,
    "harvested": null,
    "unread": "host-stopped-for-24h",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
+  "https://v1/ugd/494bf8_86a043c7df38459aa23fcf01c622522a.pdf/COA-SNYURB1009PPRE0031971-PapayaJuice1gPreRoll-SATPRE100926PPJ1G-002.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "URLError",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
@@ -117689,6 +118130,16 @@
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
   "https://v1/ugd/494bf8_b7eda7f9b9f146fc86422bd184e1f8f5.pdf/17807.1%20(1).pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "host-stopped-for-24h",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
+  "https://v1/ugd/494bf8_b9a4f012a5f64016a88a51fa6255c7a0.pdf/COA-SNYURB1009PPRE0031969-MeltedStrawberries101gPreRoll-SATPRE100926MSB1G-002.pdf": {
    "lab": null,
    "sampled": null,
    "sampledFrom": null,
@@ -117968,6 +118419,16 @@
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
+  "https://v1/ugd/494bf8_ef5cad1d56ca4c4faa1c71865870b8f1.pdf/COA-SNYURB0925PFCU0031285-SatoriFlowerSpritzer35g-SATFLW092526SPR35G-003.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "host-stopped-for-24h",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
   "https://v1/ugd/494bf8_f0bc82868304455eb9a2b3894f4e59e0.pdf/18014.1.pdf": {
    "lab": null,
    "sampled": null,
@@ -117979,6 +118440,16 @@
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
   "https://v1/ugd/494bf8_f1c4b2baec494fe79a7f556b7ed0f78d.pdf/COA-SNYURB0805PEIP0029561-1GMOONROCKPREROLLREDWHITE&GLUE-MDSMRP080526RWG1G-003.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "harvested": null,
+   "unread": "host-stopped-for-24h",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
+  "https://v1/ugd/494bf8_f777617080e34a4882f4ddfbec742dc9.pdf/COA-SNYURB1009PPRE0031972-BlackMaple1gPreRoll-SATPRE100926BMP1G-002.pdf": {
    "lab": null,
    "sampled": null,
    "sampledFrom": null,
@@ -138859,6 +139330,45 @@
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
+  "https://www.urbanxtracts.com/_files/ugd/494bf8_07703d105cc7432287ebc961f1395eb4.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-09-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "475497f64004fbee706c33f593e3d598c0cfb6738860e251e51d642c8a13cc13",
+   "docType": "lab-coa",
+   "sampleId": "SNYURB0925-PFCU-0031284",
+   "batchTag": "SAT-FLW-092526-MST-3.5G",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "ACT",
+    "name": "Melted Strawberries 10",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000083",
+    "thc": null,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.02,
+     "PINENE_BETA": 0.039,
+     "BISABOLOL": 0.135,
+     "CARYOPHYLLENE": 0.767,
+     "FARNESENE": 0.035,
+     "HUMULENE": 0.232,
+     "LIMONENE": 0.245,
+     "LINALOOL": 0.033,
+     "MYRCENE": 0.653,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_07703d105cc7432287ebc961f1395eb4.pdf",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
   "https://www.urbanxtracts.com/_files/ugd/494bf8_07cb97fc41aa4ee48cb2383436f9c47e.pdf": {
    "lab": "Metrc",
    "sampled": "2026-09-21",
@@ -138894,6 +139404,45 @@
    "metrcTag": "1A41203000012C8000004019",
    "panel": null,
    "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_0cd424b5667b4626874053e3e4eac85e.pdf",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
+  "https://www.urbanxtracts.com/_files/ugd/494bf8_140dc9a5c2b948eaa37210c3a3b443eb.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-09-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "dafc9482ec35f860822cfd984f38b4a416008f0a8ea042c38a90e2452b5a457d",
+   "docType": "lab-coa",
+   "sampleId": "SNYURB0925-PFCU-0031286",
+   "batchTag": "SAT-FLW-092526-WMZ-3.5G",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "ACT",
+    "name": "Watermelon Z",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000083",
+    "thc": null,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.033,
+     "PINENE_BETA": 0.057,
+     "BISABOLOL": 0.035,
+     "CARYOPHYLLENE": 0.214,
+     "FARNESENE": 0.031,
+     "HUMULENE": 0.065,
+     "LIMONENE": 0.365,
+     "LINALOOL": 0.157,
+     "MYRCENE": 0.464,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_140dc9a5c2b948eaa37210c3a3b443eb.pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
@@ -139071,6 +139620,45 @@
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
+  "https://www.urbanxtracts.com/_files/ugd/494bf8_2b4b57ee259e49b9821d5157192bced4.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-09-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "d02b7538b8ae523ab3c30c78324bdc0984f0cb4a0bc6d197ddb329f53514242f",
+   "docType": "lab-coa",
+   "sampleId": "SNYURB0925-PFCU-0031288",
+   "batchTag": "SAT-FLW-092526-FKM-3.5G",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "ACT",
+    "name": "Funk Mountain",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000083",
+    "thc": null,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.042,
+     "PINENE_BETA": 0.073,
+     "BISABOLOL": 0.068,
+     "CARYOPHYLLENE": 0.375,
+     "FARNESENE": 0.026,
+     "HUMULENE": 0.092,
+     "LIMONENE": 0.557,
+     "LINALOOL": 0.168,
+     "MYRCENE": 0.574,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_2b4b57ee259e49b9821d5157192bced4.pdf",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
   "https://www.urbanxtracts.com/_files/ugd/494bf8_2d26d2afb4a04bd692db9b89f10c0c3b.pdf": {
    "lab": "Metrc",
    "sampled": "2026-09-24",
@@ -139145,6 +139733,45 @@
     }
    },
    "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_346fc1ac69a14be78d1ceb3ec6b3f73b.pdf",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
+  "https://www.urbanxtracts.com/_files/ugd/494bf8_3574dddb23dd4265b8788fb53c9a1147.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-09-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "4e7e06e0600c406f080e1f4bf78d0ab50aaa1bf4a3636d7c9ba8460506d6303f",
+   "docType": "lab-coa",
+   "sampleId": "SNYURB0925-PFCU-0031289",
+   "batchTag": "SAT-FLW-092526-BKM-3.5G",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "ACT",
+    "name": "Black Maple",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000083",
+    "thc": null,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.15,
+     "PINENE_BETA": 0.102,
+     "BISABOLOL": 0.045,
+     "CARYOPHYLLENE": 0.556,
+     "FARNESENE": 0.039,
+     "HUMULENE": 0.152,
+     "LIMONENE": 0.506,
+     "LINALOOL": 0.159,
+     "MYRCENE": 0.091,
+     "OCIMENE": 0.043,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_3574dddb23dd4265b8788fb53c9a1147.pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
@@ -139225,6 +139852,45 @@
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
+  "https://www.urbanxtracts.com/_files/ugd/494bf8_4ac258f711b247cbaa4a4362420f5bb5.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-09-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "4d09829b42bdbe572ba12ac58441822b60abcf5bca1d82fb2c6e071d7685a320",
+   "docType": "lab-coa",
+   "sampleId": "SNYURB0925-PFCU-0031287",
+   "batchTag": "SAT-FLW-092526-PJU-3.5G",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "ACT",
+    "name": "Papaya Juice",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000083",
+    "thc": null,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.046,
+     "PINENE_BETA": 0.081,
+     "BISABOLOL": 0.117,
+     "CARYOPHYLLENE": 0.393,
+     "FARNESENE": 0.034,
+     "HUMULENE": 0.144,
+     "LIMONENE": 0.645,
+     "LINALOOL": 0.152,
+     "MYRCENE": 0.544,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.008
+    }
+   },
+   "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_4ac258f711b247cbaa4a4362420f5bb5.pdf",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
   "https://www.urbanxtracts.com/_files/ugd/494bf8_4b14d573cf41401ca12def05b3fc1f45.pdf": {
    "lab": "Metrc",
    "sampled": "2026-10-05",
@@ -139283,6 +139949,45 @@
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
+  "https://www.urbanxtracts.com/_files/ugd/494bf8_5563ed4f09d64801944565490194281b.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-09-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "f0047f3dfef28ef5c986f23c7099059f67cc8ba3fa418c0f89445149a5cbe694",
+   "docType": "lab-coa",
+   "sampleId": "SNYURB0925-PFCU-0031283",
+   "batchTag": "SAT-FLW-092526-DUV-3.5G",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "ACT",
+    "name": "Dulce de Uva",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000083",
+    "thc": null,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.04,
+     "PINENE_BETA": 0.069,
+     "BISABOLOL": 0.094,
+     "CARYOPHYLLENE": 0.48,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.163,
+     "LIMONENE": 0.485,
+     "LINALOOL": 0.147,
+     "MYRCENE": 0.662,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_5563ed4f09d64801944565490194281b.pdf",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
   "https://www.urbanxtracts.com/_files/ugd/494bf8_56396e616124429db24717b68eccebfe.pdf": {
    "lab": "ACT",
    "sampled": "2026-07-17",
@@ -139338,6 +140043,45 @@
    "metrcTag": "1A41203000012C8000004041",
    "panel": null,
    "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_5956220a2be24ea4880d81d7abeeab1c.pdf",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
+  "https://www.urbanxtracts.com/_files/ugd/494bf8_649b8efc24bd41d0b7693f2f2bef101b.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-10-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "3c5259e9d4ea66492424ac9c5e42b109ec428c8f8f6c83e7d0caae9e6b6c8347",
+   "docType": "lab-coa",
+   "sampleId": "SNYURB1009-PPRE-0031970",
+   "batchTag": "SAT-PRE-100926-WMZ-1G",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "ACT",
+    "name": "Watermelon Z",
+    "matrix": "other",
+    "licence": "OCM-PROC-24-000083",
+    "thc": null,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.017,
+     "PINENE_BETA": 0.029,
+     "BISABOLOL": 0.032,
+     "CARYOPHYLLENE": 0.195,
+     "FARNESENE": 0.025,
+     "HUMULENE": 0.054,
+     "LIMONENE": 0.178,
+     "LINALOOL": 0.147,
+     "MYRCENE": 0.151,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_649b8efc24bd41d0b7693f2f2bef101b.pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
@@ -139416,6 +140160,45 @@
     }
    },
    "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_81037f83614a4b3abf8d92e43c484baf.pdf",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
+  "https://www.urbanxtracts.com/_files/ugd/494bf8_86a043c7df38459aa23fcf01c622522a.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-10-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "5f6dcdc6f9b84e0142f46f782292b73668168ce817cfef56461aab63feb59af1",
+   "docType": "lab-coa",
+   "sampleId": "SNYURB1009-PPRE-0031971",
+   "batchTag": "SAT-PRE-100926-PPJ-1G",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "ACT",
+    "name": "Papaya Juice",
+    "matrix": "other",
+    "licence": "OCM-PROC-24-000083",
+    "thc": null,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.018,
+     "PINENE_BETA": 0.033,
+     "BISABOLOL": 0.078,
+     "CARYOPHYLLENE": 0.327,
+     "FARNESENE": 0.027,
+     "HUMULENE": 0.112,
+     "LIMONENE": 0.326,
+     "LINALOOL": 0.116,
+     "MYRCENE": 0.168,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_86a043c7df38459aa23fcf01c622522a.pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
@@ -139612,6 +140395,45 @@
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
+  "https://www.urbanxtracts.com/_files/ugd/494bf8_b9a4f012a5f64016a88a51fa6255c7a0.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-10-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "945f7ceb74040e3cd56f678307833fe358317c037949c868aebadc4c295ab295",
+   "docType": "lab-coa",
+   "sampleId": "SNYURB1009-PPRE-0031969",
+   "batchTag": "SAT-PRE-100926-MSB-1G",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "ACT",
+    "name": "Melted Strawberries 10",
+    "matrix": "other",
+    "licence": "OCM-PROC-24-000083",
+    "thc": null,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.018,
+     "BISABOLOL": 0.142,
+     "CARYOPHYLLENE": 0.713,
+     "FARNESENE": 0.029,
+     "HUMULENE": 0.201,
+     "LIMONENE": 0.162,
+     "LINALOOL": 0.033,
+     "MYRCENE": 0.334,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_b9a4f012a5f64016a88a51fa6255c7a0.pdf",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
   "https://www.urbanxtracts.com/_files/ugd/494bf8_be12f1f84ccb4d0c92b92a9e4ba7f02b.pdf": {
    "lab": "ACT",
    "sampled": "2026-08-14",
@@ -139785,6 +140607,45 @@
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },
+  "https://www.urbanxtracts.com/_files/ugd/494bf8_ef5cad1d56ca4c4faa1c71865870b8f1.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-09-25",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "83aceb36a17cb8f2ac3a1291811b8693d51cd23d3fa2a2431c73d199ac33ea38",
+   "docType": "lab-coa",
+   "sampleId": "SNYURB0925-PFCU-0031285",
+   "batchTag": "SAT-FLW-092526-SPR-3.5G",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "ACT",
+    "name": "Spritzer",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000083",
+    "thc": null,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.032,
+     "PINENE_BETA": 0.057,
+     "BISABOLOL": 0.086,
+     "CARYOPHYLLENE": 0.431,
+     "FARNESENE": 0.228,
+     "HUMULENE": 0.113,
+     "LIMONENE": 0.416,
+     "LINALOOL": 0.287,
+     "MYRCENE": 0.457,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_ef5cad1d56ca4c4faa1c71865870b8f1.pdf",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
   "https://www.urbanxtracts.com/_files/ugd/494bf8_f0bc82868304455eb9a2b3894f4e59e0.pdf": {
    "lab": "Metrc",
    "sampled": "2026-10-07",
@@ -139801,6 +140662,45 @@
    "metrcTag": "1A41203000012C8000004044",
    "panel": null,
    "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_f0bc82868304455eb9a2b3894f4e59e0.pdf",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
+  },
+  "https://www.urbanxtracts.com/_files/ugd/494bf8_f777617080e34a4882f4ddfbec742dc9.pdf": {
+   "lab": "ACT",
+   "sampled": "2026-10-09",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "a03e0f3cf8ad8793e36ac38299bf389aa622d2c4c445b4ab19ec0ca2a53ea3ae",
+   "docType": "lab-coa",
+   "sampleId": "SNYURB1009-PPRE-0031972",
+   "batchTag": "SAT-PRE-100926-BMP-1G",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "ACT",
+    "name": "Black Maple",
+    "matrix": "other",
+    "licence": "OCM-PROC-24-000083",
+    "thc": null,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.088,
+     "PINENE_BETA": 0.061,
+     "BISABOLOL": 0.039,
+     "CARYOPHYLLENE": 0.522,
+     "FARNESENE": 0.036,
+     "HUMULENE": 0.127,
+     "LIMONENE": 0.353,
+     "LINALOOL": 0.152,
+     "MYRCENE": 0.033,
+     "OCIMENE": 0.028,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://684150d0-8f38-4e50-b511-2a2ace6a525f.filesusr.com/ugd/494bf8_f777617080e34a4882f4ddfbec742dc9.pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },

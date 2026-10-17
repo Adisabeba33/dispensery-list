@@ -108,7 +108,7 @@
     "errors": 0
   },
   "https://omolabs.com": {
-    "errors": 1
+    "errors": 0
   },
   "https://grassrootswellnessny.com": {
     "errors": 0
@@ -159,7 +159,7 @@
     "errors": 0
   },
   "https://pynns.com": {
-    "errors": 1
+    "errors": 0
   },
   "https://www.niagaracannabiscompany.com": {
     "errors": 3
@@ -198,8 +198,8 @@
     "errors": 0
   },
   "http://-content": {
-    "errors": 7,
-    "blockedUntil": "2026-10-16T16:52:17.966928+00:00"
+    "errors": 8,
+    "blockedUntil": "2026-10-18T15:31:29.713379+00:00"
   },
   "https://www.awalkinthepines.com": {
     "errors": 0
@@ -260,11 +260,11 @@
     "errors": 0
   },
   "https://v1": {
-    "errors": 9,
-    "blockedUntil": "2026-10-16T16:50:46.762322+00:00"
+    "errors": 10,
+    "blockedUntil": "2026-10-18T15:29:04.811816+00:00"
   },
   "https://czz.8a7.mytemp.website": {
-    "errors": 9,
-    "blockedUntil": "2026-10-16T16:50:49.130781+00:00"
+    "errors": 10,
+    "blockedUntil": "2026-10-18T15:30:01.671892+00:00"
   }
 }
