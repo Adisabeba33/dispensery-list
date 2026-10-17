@@ -58,7 +58,7 @@ REGISTER_KEY = {
 NOT_FOUND = re.compile(r"^(?:ND|<.*|NR|N/?A|BQL|BLQ|<\s*MRL|<\s*LOQ)$", re.I)
 NUMBER = re.compile(r"^-?\d{1,3}(?:,\d{3})*(?:\.\d+)?$|^-?\d+(?:\.\d+)?$")
 CAS = re.compile(r"^\d{2,7}-\d{2}-\d$")
-LICENCE = re.compile(r"\bOCM-(?!CPL)[A-Z]{3,6}-\d{2}-\d{6}\b")
+LICENCE = re.compile(r"\bOCM-(?!CPL)[A-Z]{3,6}-\d{2}-\d{6}\b|\bM[CPRB]\d{6}\b")
 
 
 def lab_of(text):
@@ -93,7 +93,7 @@ def row_value(lab, cells):
     rest = cells[1:]
     if lab == "Kaycha":
         for i, c in enumerate(rest):
-            if c.upper() in ("PASS", "FAIL") and i + 1 < len(rest):
+            if c.upper() in ("PASS", "FAIL", "TESTED") and i + 1 < len(rest):
                 return value(rest[i + 1])
         # The 2023 layout: NAME  LOQ  mg/unit  %, two columns a line.
         if len(rest) >= 3 and value(rest[0]) is not None:

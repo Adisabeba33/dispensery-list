@@ -126,6 +126,30 @@ p = cp.panel(ACT)
 check(p and p["name"] == "Rainbow Chipz" and p["thc"] == 28.2, f"ACT name and THC (the % column): {p}")
 check(p and p["terpenes"] == {"CARYOPHYLLENE": 1.312, "LIMONENE": 0.931, "LINALOOL": 0.07}, f"ACT two columns a line: {p}")
 
+# Kaycha's Massachusetts certificates (ma.yourcoa.com, 2026): LOD and LOQ
+# before the result, and "TESTED" where New York prints PASS or FAIL. The
+# client is a Massachusetts licensee, MP followed by six digits.
+KAYCHA_MA = """                                                          M00000000001: Ice Cream Kush Finished Flower
+                                                                Strain: Ice Cream Kush
+16 Tech Circle, Suite 201                                       Matrix: Plant Material
+Berkshire Roots, Inc. - Massachusetts
+License # : MP281427
+                        Total THC                                   Total CBD             Total Cannabinoids
+                        27.1579%                                    ND                    31.9490%
+                        Terpenes                                                                          TESTED
+TOTAL TERPENES                       0.020        0.020         TESTED        1.420         14.200
+BETA-CARYOPHYLLENE                   0.020        0.020         TESTED        0.429         4.290
+LIMONENE                             0.020        0.020         TESTED        0.254         2.540
+GAMMA-TERPINENE                      0.020        0.020         TESTED        ND            ND
+Accreditation # 97164               Laboratory License #:
+"""
+p = cp.panel("Kaycha Labs\n" + KAYCHA_MA)
+check(p and p["terpenes"] == {"CARYOPHYLLENE": 0.429, "LIMONENE": 0.254},
+      f"Kaycha MA result after TESTED, the mg/g column left alone: {p}")
+check(p and p["thc"] == 27.16 and p["totalTerpenes"] == 1.42, f"Kaycha MA THC, total terpenes: {p}")
+check(p and p["licence"] == "MP281427", f"Kaycha MA, the Massachusetts client licence: {p}")
+check(p and p["matrix"] == "flower", f"Kaycha MA, plant material is flower: {p}")
+
 MCR = """MCR Labs
    Sample ID #                 Sample Name                          Matrix                         Sample Type
     S25-02414               Banana Creme 6.5g                       Flower                            Adult Use
@@ -148,4 +172,4 @@ if failures:
     for f in failures:
         print("  -", f)
     raise SystemExit(1)
-print("coa-panel-check: OK (Kaycha, Kaycha 2023, DRS, Green Analytics, Keystone, ACT, MCR)")
+print("coa-panel-check: OK (Kaycha, Kaycha 2023, Kaycha MA, DRS, Green Analytics, Keystone, ACT, MCR)")
