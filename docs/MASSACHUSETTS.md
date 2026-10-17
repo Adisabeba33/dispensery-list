@@ -260,6 +260,107 @@ state the funnel is
 
 ---
 
+## 6. Lab certificates — the question that decides SŌMA, 2026-10-17
+
+SŌMA works in New York because it holds measured terpene panels, filed per
+grower (about 5,000 of them). Whether Boston can join it depends on one
+question: are Massachusetts certificates of analysis (COAs) published, and do
+they carry terpenes? The owner asked for that answer before anything else.
+
+**The short answer.** The certificates exist, and they carry terpenes.
+Brands do not publish them, though. They reach the public through other
+channels, and only one of those channels is open to this register today.
+
+### What was checked
+
+- **Brands.** The 30 brands with the most listings on Boston's shelves, which
+  account for 60% of all 2,016 listings, plus two more. Each brand is recorded
+  in `data/massachusetts/coa-research.json`.
+- **Labs.** All ten licensed testing labs.
+- **Rules.** The Commission's testing rules.
+- **Method.** Five research passes worked under the register's rules: only
+  what is published, robots.txt kept, walls not passed, no identifier guessed,
+  no form submitted.
+
+### What was found
+
+- **Brands publish nothing usable.** Of 32 brands, 25 have no certificate on
+  their own site and 6 are behind a wall or robots refusal. Happy Valley does
+  publish certificates, but they are for R&D phenotypes from its seed business,
+  not for retail batches.
+- **Terpene testing is optional in Massachusetts but common.** 935 CMR
+  500.160 and the Commission's testing protocol require cannabinoids and
+  contaminants only, and a label need not show terpenes. Even so, every
+  retailer-published flower certificate seen carried a full terpene panel:
+  30 of 30, across 9 of the 10 labs. That sample is biased toward retailers
+  who publish, so it says terpenes are common, not universal.
+- **Where the certificates actually are:**
+  1. **A menu's own link.** Berkshire Roots' Dutchie menu linked a Kaycha
+     certificate on `ma.yourcoa.com` for Ice Cream Kush, flower, with its
+     Metrc tag, licence MP281427 and 11 terpenes. This is the channel the
+     collector already reads, but in Boston it gave 1 link in 2,016 listings.
+     Dutchie marks Boston products `certificateOfAnalysisEnabled: true` and
+     still leaves `canonicalLabResultUrl` empty.
+  2. **Shops whose point-of-sale system hosts certificates.** Alleaves
+     (`app.alleaves.com/api/inventory/batch/<shop>/coa/<n>.pdf`) hosts them.
+     The collector already reads Alleaves' `coa` field in New York. None of
+     Boston's 29 shops is on Alleaves; at least two Massachusetts retailers
+     elsewhere are.
+  3. **Lab links, one per certificate.** These come from the producer or from
+     the QR code printed on the certificate.
+     - Public: Kaycha (`ma.yourcoa.com`), Smithers (QBench), Green Valley
+       (LabWare) and ProVerde.
+     - Public but blocked for this reader: Analytics Labs and Assured use
+       Confident LIMS, whose robots.txt answers 403, and that stops the
+       reader.
+     - None: G7 and SafeTiva offer no public link.
+     - Browsable: MCR, but only the reports its clients choose to make public.
+  4. **The state.** Since 16 June 2025 every lab must upload every
+     certificate to Metrc (Administrative Order No. 5). The Commission says
+     certificates are "immediately accessible through the Commission's
+     Product Catalog" (`catalog.metrc.com`), a search form. Its own release of
+     22 May 2026 says it is still "working with Metrc to make those COAs
+     available". This was not tested, because using it means submitting a
+     form.
+- **What the menus give.** 1,305 of Boston's 2,016 listings (65%) carry a
+  package ID, and most of those are Metrc tags (`1A40A…`). 1,088 listings
+  (54%) carry a total-terpene figure from the menu, against 33% in New York.
+  Only 138 listings (7%) carry a terpene profile.
+- **What the reader can read.** `scripts/coa-panel.py`'s coverage of
+  Massachusetts certificates, after a two-line change:
+  - **Kaycha:** read in full. All four Kaycha certificates seen were read:
+    terpenes, total terpenes, THC and the client's MA licence.
+  - **MCR:** THC is read, the terpene table is not.
+  - **G7, Analytics Labs, Green Valley, SafeTiva, Assured, ProVerde,
+    Smithers:** no layout yet, so nothing is read.
+  - In the sample of 30, G7 (10) and Analytics Labs (6) were the most common
+    labs.
+
+**Potency is contested here, and that bears on Boston's lower THC (§4).**
+- In 2024 and 2025 the Commission moved against THC inflation and lab
+  shopping: one lab per sample since April 2025, and a standard for how
+  potency is reported.
+- In January 2025 MCR sued eight rival labs, alleging inflated results.
+- Assured was the first lab ever suspended, in June 2025, for misreported
+  yeast and mold.
+- In August 2026 the state's own potency audit found 13 of 63 flower
+  products labelled higher than they tested.
+
+### What would open it, in order of value
+
+1. **The state catalogue, by Metrc tag.** The menus already hand over the
+   Metrc tag for most jars. The state's catalogue keyed on that tag would give
+   one certificate per jar, from the source of record. It is a search form,
+   though, and the register's rule is never to submit one. **The owner's
+   decision.**
+2. **Massachusetts shops on Alleaves.** Find them and read their menus; the
+   collector already takes the `coa` field there.
+3. **Reader layouts for G7, Analytics Labs, Green Valley and MCR's
+   Massachusetts table.** Add them as certificates arrive. Every layout is
+   pinned in `coa-panel-check.py`, as Kaycha MA now is.
+
+---
+
 ## Reproduce
 
 ```bash
