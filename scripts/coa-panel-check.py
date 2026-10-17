@@ -43,6 +43,10 @@ check(p and p["terpenes"] == {"CARYOPHYLLENE": 0.68, "MYRCENE": 0.26, "LIMONENE"
       f"Kaycha result after PASS, <LOQ as 0: {p}")
 check(p and p["licence"] == "OCM-CULT-24-000119", f"the client's licence, not the lab's: {p}")
 check(p and p["matrix"] == "flower", f"Kaycha matrix: {p}")
+# A grower's batch number shaped like a Massachusetts licence, printed above
+# the New York one, is not the licence: the New York licence is read first.
+p = cp.panel(KAYCHA.replace("License # :", "Batch# : MB240101\nLicense # :", 1))
+check(p and p["licence"] == "OCM-CULT-24-000119", f"a New York licence before an MB-shaped batch number: {p}")
 
 KAYCHA_2023 = """                                                       Kaycha Labs
                                                         Slapz 3.5
