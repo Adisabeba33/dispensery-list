@@ -55,8 +55,12 @@ product it names, total THC, total terpenes and the leading terpenes, keyed as
 `panel` on each certificate. The column a terpene result sits in is decided
 per laboratory (Kaycha, Kaycha 2023, DRS, Green Analytics, Keystone, ACT,
 MCR; `scripts/coa-panel-check.py` pins each layout); a laboratory not listed
-gives no panel rather than a guess. Kaycha's Massachusetts layout (`ma.yourcoa.com`, "TESTED" where New York prints PASS or FAIL) is read too, from 17 October 2026, and `panel.licence` may then be a Massachusetts licence (MC, MP, MR, MB + six digits); see `docs/MASSACHUSETTS.md` §6. `panel.matrix` is what the document says
-it tested, `panel.licence` the client's New York licence (never the lab's).
+gives no panel rather than a guess. Kaycha's Massachusetts layout
+(`ma.yourcoa.com`, "TESTED" where New York prints PASS or FAIL) is read too,
+from 17 October 2026; see `docs/MASSACHUSETTS.md` §6. `panel.matrix` is what
+the document says it tested, `panel.licence` the client's licence (never the
+lab's): the New York one, or a Massachusetts one (MC, MP, MR, MB + six digits)
+only when the document prints no New York licence, and the schema takes both.
 
 Certificates read before panels are re-read 60 a run, brand links first.
 Brand links published but still `pending-review` are read 200 a run (from

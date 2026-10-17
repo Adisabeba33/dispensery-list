@@ -58,7 +58,9 @@ REGISTER_KEY = {
 NOT_FOUND = re.compile(r"^(?:ND|<.*|NR|N/?A|BQL|BLQ|<\s*MRL|<\s*LOQ)$", re.I)
 NUMBER = re.compile(r"^-?\d{1,3}(?:,\d{3})*(?:\.\d+)?$|^-?\d+(?:\.\d+)?$")
 CAS = re.compile(r"^\d{2,7}-\d{2}-\d$")
-LICENCE = re.compile(r"\bOCM-(?!CPL)[A-Z]{3,6}-\d{2}-\d{6}\b|\bM[CPRB]\d{6}\b")
+LICENCE = re.compile(r"\bOCM-(?!CPL)[A-Z]{3,6}-\d{2}-\d{6}\b")
+# A Massachusetts client licence, read only when the document prints no New York one.
+LICENCE_MA = re.compile(r"\bM[CPRB]\d{6}\b")
 
 
 def lab_of(text):
@@ -279,7 +281,7 @@ def panel(text):
     if not terps and thc is None:
         return None
     total = total_terpenes_of(text, lab) if lab else None
-    lic = LICENCE.search(text)
+    lic = LICENCE.search(text) or LICENCE_MA.search(text)
     return {
         "lab": lab,
         "name": name_of(text, lab),

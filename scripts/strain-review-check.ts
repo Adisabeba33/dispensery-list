@@ -189,6 +189,9 @@ keeps('a longer cultivar with its number in a bracket left open', 'Super Silver 
 keeps('a cut number in a bracket left open', 'Hellcat (#15', 'Other Farm', 'otherfarm');
 keeps('a bare number in a bracket left open', 'Gelato (41', 'Other Farm', 'otherfarm');
 keeps('a phenotype number in a bracket', 'Gorilla Glue (#4)', 'Other Farm', 'otherfarm');
+keeps('a bare number in a bracket opening the name', '(41) Gelato', 'Other Farm', 'otherfarm');
+/* A bracket opening the name goes only when what follows it is packaging. */
+keeps('a cultivar in a bracket opening the name, the grower after it', '(Lemon Cherry Gelato) Runtz', 'Other Farm', 'otherfarm');
 
 /* A jar colour is a line only as the jar: "Purple Jar", not the Purple of a
    cultivar. These go through the shelf, where a name loses packaging run onto
@@ -210,6 +213,17 @@ check('keeps a jar colour ending a cultivar',
 check('keeps an experience run onto the grower',
   one('Cheech & Chong Lowrider Flower', 'Cheech & Chong', 'cheechchong', twice('Cheech & Chong', 'cheechchong', 'Cheech & Chong Lowrider')),
   'Cheech & Chong Lowrider');
+check('keeps an experience when the grower comes after it',
+  one('Lowrider Flower Cheech & Chong', 'Cheech & Chong', 'cheechchong') !== 'Cheech & Chong', true);
+/* A word of a line counts only as the line is written: Orange Jar is not the
+   Orange of a cultivar, and Strain Kings' line Strain King is not the King of
+   King Louis. */
+check('keeps a jar colour opening a cultivar, a lean before it',
+  one('Indoor Purple Punch Haze', 'Rolling Greens', 'rollinggreens'), 'Purple Punch Haze');
+check('keeps a jar colour opening a cultivar, packaging before it',
+  (one('Flower Orange Cookie Dough', 'Rolling Greens', 'rollinggreens') ?? '').endsWith('Orange Cookie Dough'), true);
+check("keeps a cultivar opening with the grower's word, packaging before it",
+  (one('Flower King Louis OG', 'Strain Kings', 'strainkings') ?? '').endsWith('King Louis OG'), true);
 
 /* ---- One grower's names, side by side ------------------------------------ */
 
