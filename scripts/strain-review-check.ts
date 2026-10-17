@@ -89,6 +89,15 @@ check('BX is written that way', one('Bx Runtz'), 'BX Runtz');
 check("a shop's X", one('X - Alien Dawg', 'mini MART', 'minimart'), 'Alien Dawg');
 check('a stray bar', one('Animal Face│', 'LEAL', 'leal'), 'Animal Face');
 check('a leading star', one('*AMHERST SOUR DIESEL', 'LEFT COAST', 'leftcoast'), 'Amherst Sour Diesel');
+check('a product name over its strain, the strain in brackets', one('PURPLE SUNSET (GRAPE GAS)', 'Trap To Table', 'traptotable'), 'Grape Gas');
+check('a product name fenced off', one('Invite Only - Candy Cartel', 'Trap To Table', 'traptotable'), 'Candy Cartel');
+check('an experience beside the cultivar', one('Don Mega - Drooler', 'Cheech & Chong', 'cheechchong'), 'Don Mega');
+check('a jar colour in an open bracket', one('Bananaconda - indica (Green', 'Rolling Greens', 'rollinggreens'), 'Bananaconda');
+check('a size run onto the name', one('Bronx Berry 1.5 Dub', 'Canna Bronx', 'cannabronx'), 'Bronx Berry');
+check('the grower run on after "by"', one('OMG Indoor Flower by Good Green', 'Good Green', 'goodgreen'), 'OMG');
+check('a release fenced off', one('Grape Gluttony - Flower *LIMITED RELEASE*', 'Animal House', 'animalhouse'), 'Grape Gluttony');
+check('the grower misspelt as a line', one('Alien OG - Villians', 'Villains', 'villains'), 'Alien OG');
+check('a collaboration opening the name', one('The Kollector x Sensei - Big Apple', 'Sensei', 'sensei'), 'Big Apple');
 
 /* ---- What it leaves alone ------------------------------------------------ */
 
@@ -121,6 +130,13 @@ keeps('a date nobody can read', 'Oreoz (May 2026)', 'Rolling Green Cannabis', 'r
 keeps('a single-word line when it is the whole name', 'Black', 'Knack', 'knack');
 keeps("a knack cultivar opening with its line's word", 'Black Cherry Punch', 'Knack', 'knack');
 keeps('Garlic Lime Reserve', 'Garlic Lime Reserve', 'SP Farms', 'sp');
+keeps('a product name when it is the whole name', 'Purple Sunset', 'Trap To Table', 'traptotable');
+keeps('an experience sold on its own', 'Lowrider', 'Cheech & Chong', 'cheechchong');
+keeps("a cultivar ending with a line's word", 'Sour Melo', 'Stay Melo', 'staymelo');
+keeps("a cultivar opening with a line's word", 'Melo Morning', 'Stay Melo', 'staymelo');
+keeps('a cultivar named for a colour the jars come in', 'Orange Bud', 'Rolling Greens', 'rollinggreens');
+keeps('Green Crack, beside a green jar line', 'Green Crack', 'Rolling Greens', 'rollinggreens');
+keeps('Purple Punch, beside a purple jar line', 'Purple Punch', 'Rolling Greens', 'rollinggreens');
 
 /* ---- One grower's names, side by side ------------------------------------ */
 

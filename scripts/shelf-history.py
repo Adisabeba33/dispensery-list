@@ -262,6 +262,38 @@ GROWER_ALIASES = {
     "banzzy": "banzzy1305",
     "kaleidoscopecollective": "kaleidoscope", "tkc": "kaleidoscope",
     "urbanxtracs": "urbanxtracts",
+    # Партии 14–24 курации: те же производители под другими подписями. North
+    # Fork — пять подписей одной лицензии (OCM-MICR-24-000046); Cali Honey и
+    # California Honey; TTM — To The Moon; High Falls — High Falls Canna;
+    # Budding Bliss (Micro) и (Small Batch) — одна лицензия; Hepworth Ag —
+    # Hepworth; Grassroot — Grassroots; Real Life и Real Life Botanical — Real
+    # Life Botanicals (делили одну партию Cinnamon Milk); Jenny's Baked at Home
+    # — Jenny's; PACKS LOS ANGELES — Packs (не LAX); опечатка A1 Duckksauce;
+    # LIFTED NY CORP и Electraleaf New York — ElectraLeaf (решение владельца);
+    # Felas, The Kaleidoscope Collective, Pacha, Aeterna и Left Coast с
+    # микролицензией или другой подписью; J'S CANNABIS — J Cannabis; REDO 96 —
+    # REDO. У Сомы такая же таблица (src/lib/strain-data.ts), пока не со всеми
+    # этими строками.
+    "northfork": "northforkcollective", "northforkmicro": "northforkcollective",
+    "northforksmallbatch": "northforkcollective", "northforkcollectivemicro": "northforkcollective",
+    "calihoney": "californiahoney",
+    "ttm": "tomoon",
+    "highfalls": "highfallscanna",
+    "buddingblissmicro": "buddingbliss", "buddingblisssmallbatch": "buddingbliss",
+    "hepworthag": "hepworth",
+    "grassroot": "grassroots",
+    "reallife": "reallifebotanicals", "reallifebotanical": "reallifebotanicals",
+    "jennysbakedathome": "jennys",
+    "packslosangeles": "packs",
+    "a1duckksauce": "a1ducksauce",
+    "liftedcorp": "electraleaf", "electraleafnewyork": "electraleaf",
+    "felasmicro": "felas",
+    "kaleidoscopecollectivemicro": "kaleidoscope",
+    "pachamicro": "pacha",
+    "aeternamicro": "aeterna",
+    "leftcoastmicro": "leftcoast", "leftcoastnewyork": "leftcoast", "leftcoastextracts": "leftcoast",
+    "js": "j",
+    "redo96": "redo",
 }
 
 

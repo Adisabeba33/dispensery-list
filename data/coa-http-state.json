@@ -266,5 +266,8 @@
   "https://czz.8a7.mytemp.website": {
     "errors": 10,
     "blockedUntil": "2026-10-18T15:30:01.671892+00:00"
+  },
+  "https://clearlyfaded.com": {
+    "errors": 0
   }
 }
