@@ -1,0 +1,239 @@
+{
+  "checkedAt": "2026-10-17",
+  "scope": "The 30 brands with the most listings on Boston's 29 shelves (60% of 2,016), plus Garcia Hand Picked and Strane; the ten Massachusetts testing laboratories. docs/MASSACHUSETTS.md §6.",
+  "rules": "Read only what is published; robots.txt kept; walls stop the reader; no identifier guessed or enumerated; no form submitted.",
+  "brands": [
+    {
+      "brand": "Simply Herb",
+      "status": "none-found",
+      "note": "Ascend's brand (IL, MA, MI); no lab, COA or batch page."
+    },
+    {
+      "brand": "High Supply",
+      "status": "none-found",
+      "note": "Cresco; app site with no lab route; CMS behind a token."
+    },
+    {
+      "brand": "Farmer's Cut",
+      "status": "none-found",
+      "note": "No brand website found; Massachusetts-only by sales data."
+    },
+    {
+      "brand": "Cresco",
+      "status": "none-found",
+      "note": "No lab, COA or batch route on the brand or corporate site."
+    },
+    {
+      "brand": "Find.",
+      "status": "walled",
+      "note": "Curaleaf; curaleaf.com/transparency and /transparency-search sit behind the state-choice age gate, not passed."
+    },
+    {
+      "brand": "Perpetual",
+      "status": "none-found",
+      "note": "Millbury; /produnit/ (per-package pages, probably the QR landing) is disallowed by robots.txt and was not read."
+    },
+    {
+      "brand": "Bostica",
+      "status": "none-found",
+      "note": "Strain pages name dominant terpenes without figures. Retailer-hosted Smithers COAs exist on app.alleaves.com, not published by the brand."
+    },
+    {
+      "brand": "Happy Valley",
+      "status": "published-links",
+      "note": "happyvalleygenetics.com links COAs per cultivar (Analytics Labs, Holyoke; full terpene panel) — but they are R&D phenotype samples for the seed business, not retail batches."
+    },
+    {
+      "brand": "SPARQ",
+      "status": "none-found",
+      "note": "Adams MA; Wix site with no lab content."
+    },
+    {
+      "brand": "Rythm",
+      "status": "walled",
+      "note": "rythm.com answers a Cloudflare block."
+    },
+    {
+      "brand": "Old Pal",
+      "status": "none-found",
+      "note": "Massachusetts licensee named as Cresco MC281478; no COA."
+    },
+    {
+      "brand": "Native Sun",
+      "status": "none-found",
+      "note": "Strain catalogue names top terpenes without figures."
+    },
+    {
+      "brand": "Berkshire Roots",
+      "status": "none-found",
+      "note": "Not on its own site — but its Dutchie menu linked a Kaycha MA COA with a full terpene panel (ma.yourcoa.com), read here."
+    },
+    {
+      "brand": "Ozone",
+      "status": "walled",
+      "note": "liveozone.com and awholdings.com answer a Cloudflare block."
+    },
+    {
+      "brand": "Khalifa Kush",
+      "status": "none-found",
+      "note": "Grown in MA by Cresco; a retailer-hosted Smithers COA exists on app.alleaves.com, not opened."
+    },
+    {
+      "brand": "Galactic",
+      "status": "walled",
+      "note": "C3 Industries; galacticcannabis.com answers a Cloudflare block."
+    },
+    {
+      "brand": "Nature's Heritage",
+      "status": "none-found",
+      "note": "MariMed; a retailer-hosted ATOZ Laboratories COA was a vape, not flower."
+    },
+    {
+      "brand": "Claravita",
+      "status": "none-found",
+      "note": "CNA Stores' house brand; its product pages hide an empty 'View COA' slot fed by Dutchie's labResultUrl."
+    },
+    {
+      "brand": "Your Highness",
+      "status": "none-found",
+      "note": "Los Angeles brand; Massachusetts grower not named."
+    },
+    {
+      "brand": "Harbor House Collective",
+      "status": "none-found",
+      "note": "Own shop pages print terpene figures without a certificate; a retailer-hosted Analytics Labs flower COA (full panel, total terpenes 2.94%) exists on app.alleaves.com."
+    },
+    {
+      "brand": "SeCHe",
+      "status": "none-found",
+      "note": "Jushi; no COA."
+    },
+    {
+      "brand": "M1",
+      "status": "none-found",
+      "note": "M1 Industries, Milford (MC281252, MP281613); sell sheets for retailers only."
+    },
+    {
+      "brand": "Northeast Alternatives",
+      "status": "none-found",
+      "note": "A retailer-hosted Assured Testing COA (trim, full panel) exists on app.alleaves.com."
+    },
+    {
+      "brand": "Coastal Healing",
+      "status": "walled",
+      "note": "robots.txt answers a 403 page, which stops the reader."
+    },
+    {
+      "brand": "Eleven",
+      "status": "none-found",
+      "note": "Ethos's value brand."
+    },
+    {
+      "brand": "Grassroots",
+      "status": "walled",
+      "note": "Curaleaf; same age gate as Find."
+    },
+    {
+      "brand": "Cloud Cover",
+      "status": "none-found",
+      "note": "C3 Industries; retailer-hosted Assured Testing COAs reported by search, not opened."
+    },
+    {
+      "brand": "Dutchess",
+      "status": "none-found",
+      "note": "Retail house brand; the grower is never named."
+    },
+    {
+      "brand": "Glorious Cannabis Co.",
+      "status": "none-found",
+      "note": "Michigan-based site; no Massachusetts licence shown."
+    },
+    {
+      "brand": "Root & Bloom",
+      "status": "none-found",
+      "note": "Wholesale menu prints TAC, THCA and total terpenes per SKU, with no lab, batch or date."
+    },
+    {
+      "brand": "Garcia Hand Picked",
+      "status": "none-found",
+      "note": "Holistic Industries; some cultivars grown in Monson MA."
+    },
+    {
+      "brand": "Strane",
+      "status": "none-found",
+      "note": "Holistic Industries; marketing pages only."
+    }
+  ],
+  "labs": [
+    {
+      "lab": "Kaycha MA",
+      "licence": "IL281349",
+      "publicAccess": "ma.yourcoa.com — one public link per certificate, from the producer or its QR",
+      "terpenesOnFlowerCertificates": "yes",
+      "reader": "Read by scripts/coa-panel.py since this change."
+    },
+    {
+      "lab": "MCR Labs",
+      "licence": "IL281278",
+      "publicAccess": "reports.mcrlabs.com — reports the client makes public can be browsed",
+      "terpenesOnFlowerCertificates": "sometimes",
+      "reader": "Reader takes THC; the Massachusetts terpene table is not read yet."
+    },
+    {
+      "lab": "Analytics Labs",
+      "licence": "IL281280",
+      "publicAccess": "Confident LIMS public link from the QR — its robots.txt answers 403, which stops the reader",
+      "terpenesOnFlowerCertificates": "yes",
+      "reader": "Not read yet."
+    },
+    {
+      "lab": "G7 Lab",
+      "licence": "IL281334",
+      "publicAccess": "none: client login only, a barcode and no QR",
+      "terpenesOnFlowerCertificates": "yes",
+      "reader": "Not read yet."
+    },
+    {
+      "lab": "Green Valley Analytics",
+      "licence": "IL281359",
+      "publicAccess": "LabWare public link from the QR",
+      "terpenesOnFlowerCertificates": "sometimes",
+      "reader": "Not read yet."
+    },
+    {
+      "lab": "Assured Testing (LUMINA)",
+      "licence": "IL281360",
+      "publicAccess": "Confident public link (robots 403 stops the reader); suspended Jun–Sep 2025",
+      "terpenesOnFlowerCertificates": "yes",
+      "reader": "Not read yet."
+    },
+    {
+      "lab": "SafeTiva",
+      "licence": "IL281354",
+      "publicAccess": "none: client login only",
+      "terpenesOnFlowerCertificates": "sometimes",
+      "reader": "Terpenes an optional add-on, 'not required by the Commonwealth'."
+    },
+    {
+      "lab": "Smithers AMS",
+      "licence": "IL281355",
+      "publicAccess": "QBench public link from the QR",
+      "terpenesOnFlowerCertificates": "yes",
+      "reader": "Reader recognises the lab; no Massachusetts panel layout yet."
+    },
+    {
+      "lab": "ProVerde",
+      "licence": "IL281279",
+      "publicAccess": "public link from the QR",
+      "terpenesOnFlowerCertificates": "yes",
+      "reader": "One 2023 certificate seen."
+    },
+    {
+      "lab": "Green Analytics MA",
+      "licence": "IL281277",
+      "publicAccess": "none found",
+      "terpenesOnFlowerCertificates": "unknown",
+      "reader": "No Massachusetts certificate seen."
+    }
+  ]
+}
