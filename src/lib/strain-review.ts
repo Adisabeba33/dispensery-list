@@ -84,6 +84,11 @@ export const isPackaging = (piece: string) => {
 /** A line compared as a line: its packaging words gone, a plural folded. */
 export const lineKey = (s: string) =>
   wordsOf(s).filter((w) => !PACKAGING.has(w)).join('').replace(/s$/, '');
+/* A line compared word for word, its packaging kept: "Green Jar" is
+   greenjar here, where lineKey makes it the bare colour. */
+const wholeKey = (s: string) => wordsOf(s).join('').replace(/s$/, '');
+/* How many words of a name are not packaging: "Lowrider Flower" has one. */
+const namingWords = (s: string) => wordsOf(s).filter((w) => !PACKAGING.has(w) && !isMeasure(w)).length;
 
 /* A lean or a way of growing trailing the cultivar inside one piece:
    "Ice Cream Cake Indica-Leaning", "Lemon Skunk Indoor". Narrower than
@@ -146,6 +151,11 @@ const afterGrower = (piece: string, brand: string | null) => {
 
 const linesFor = (book: LineBook, brandKey: string | null | undefined) =>
   new Set((brandKey ? book.lines[brandKey] ?? [] : []).map(lineKey).filter(Boolean));
+/* The same lines, each as written, packaging and all. With no fence round it,
+   one word is a line only when the line is that word: the colour of Rolling
+   Greens' "Purple Jar" also opens Purple Punch and Purple Haze. */
+const wholeLinesFor = (book: LineBook, brandKey: string | null | undefined) =>
+  new Set((brandKey ? book.lines[brandKey] ?? [] : []).map(wholeKey).filter(Boolean));
 
 /** The name one listing should carry, before capitals are settled across shops. */
 export const reviewName = (
@@ -156,6 +166,7 @@ export const reviewName = (
 ): Reviewed => {
   const why = new Set<Reason>();
   const lines = linesFor(book, brandKey);
+  const wholeLines = wholeLinesFor(book, brandKey);
   const isLine = (s: string) => lines.has(lineKey(s)) || lines.has(lineKey(afterGrower(s, brand)));
 
   /* One shop writes "F(Whole Flower)-Find.-Banana Papaya": its hyphens are
@@ -172,23 +183,42 @@ export const reviewName = (
       if (nameKey(piece) === 'x' || isPackaging(piece)) { why.add('packaging'); continue; }
       if (isLine(piece)) { why.add('product line'); continue; }
       // The grower, or the grower twice, or the grower and its initials:
-      // "Claybourne Claybourne - Purple Chem".
-      if (isGrower(piece, brand) || isGrower(afterGrower(piece, brand), brand)) {
+      // "Claybourne Claybourne - Purple Chem". Or the grower and packaging:
+      // "Cheech & Chong Flower - Love Machine".
+      const rest = afterGrower(piece, brand);
+      if (isGrower(piece, brand) || isGrower(rest, brand) || (rest !== piece && isPackaging(rest))) {
         why.add('grower in name');
         continue;
       }
     }
     kept.push(piece);
   }
-  // Nothing but lines, growers and packaging: the shop named no cultivar, so
-  // keep what it wrote rather than leave the jar without a name.
+  /* Nothing but lines, growers and packaging: the shop named no cultivar. A
+     line is then the jar's whole name — Trap To Table's "PURPLE SUNSET FLOWER
+     - 2-2", Cheech & Chong's "LOWRIDER - FLOWER [2-1]" — so the line stays and
+     the packaging and the codes still go. With no line either, keep what it
+     wrote rather than leave the jar without a name. */
   if (kept.length === 0) {
-    kept = pieces.length ? pieces : [written.trim()];
-    why.delete('packaging'); why.delete('product line'); why.delete('grower in name');
+    const named = pieces.filter((p) => nameKey(p) !== 'x' && !isPackaging(p) && isLine(p));
+    if (named.length > 0) {
+      kept = named;
+      why.delete('product line');
+    } else {
+      kept = pieces.length ? pieces : [written.trim()];
+      why.delete('packaging'); why.delete('product line'); why.delete('grower in name');
+    }
   }
 
   kept = kept.map((piece) => {
     let s = piece;
+    /* A bracket opened at the end and never closed, holding only packaging or
+       a line: Rolling Greens' "Hot Lanta Hybrid (Orange Jar)", which the
+       collector leaves as "Hot Lanta Hybrid (Orange". */
+    const unclosed = s.match(/^(.*\S)\s*\(([^()]*)$/);
+    if (unclosed && (isPackaging(unclosed[2]) || isLine(unclosed[2]))) {
+      why.add(isPackaging(unclosed[2]) ? 'packaging' : 'product line');
+      s = unclosed[1].trim();
+    }
     // A bracket holding only packaging or a line: "OG (Indoor)", "GMO (Quiet Times)".
     for (;;) {
       const m = s.match(/^(.*\S)\s*\(([^()]*)\)$/);
@@ -207,10 +237,14 @@ export const reviewName = (
     /* A line of two words or more run onto the cultivar, before it or after:
        "Space Essentials Sunset Sherbert", "Cobra Kush Gold Cuts". Not a line
        of one word: Knack's line is "Black", and Black Cherry Punch is a
-       cultivar. */
+       cultivar. Nor one word of a line with packaging beside it: "Lowrider
+       Flower" is not a line of two words, and "Cheech & Chong Lowrider
+       Flower" is not Cheech & Chong. */
     const isLongLine = (words: string[]) => {
-      const k = lineKey(words.join(' '));
-      return k.length >= 4 && lines.has(k);
+      const piece = words.join(' ');
+      if (wholeLines.has(wholeKey(piece))) return true;
+      const k = lineKey(piece);
+      return k.length >= 4 && lines.has(k) && namingWords(piece) >= 2;
     };
     const w = s.split(/\s+/);
     for (let n = Math.min(4, w.length - 2); n >= 2; n -= 1) {
@@ -552,19 +586,31 @@ const trimAgainstShelf = (rows: FlowerListing[], first: Reviewed[], book: LineBo
   const known = (name: string) => (shops.get(sameKey(name))?.size ?? 0) >= 2;
   rows.forEach((l, i) => {
     const brands = l.brand ? [l.brand] : [];
-    const lines = linesFor(book, l.brandKey);
-    // Packaging, the grower's name misspelt, or one of its confirmed lines: "Flower BSides Chrome".
-    const noiseWord = (w: string) =>
-      PACKAGING.has(fold(w).replace(/[^a-z]/g, '')) || (/[a-z]/i.test(w) && isNoise(w, brands)) || lines.has(lineKey(w));
+    const lines = wholeLinesFor(book, l.brandKey);
+    // Packaging, or the grower's name misspelt.
+    const plainNoise = (w: string) =>
+      PACKAGING.has(fold(w).replace(/[^a-z]/g, '')) || (/[a-z]/i.test(w) && isNoise(w, brands));
+    /* Or one of its confirmed lines, when the line is that one word: "Flower
+       BSides Chrome". Not one word of a longer line: "Purple Jar" is a line,
+       and the Purple of Purple Punch is not. */
+    const noiseWord = (w: string) => plainNoise(w) || lines.has(wholeKey(w));
     let changed = false;
     const pieces = first[i].name.split(/\s+-\s+/).map((piece) => {
       const w = piece.split(/\s+/);
       if (w.length < 2) return piece;
-      let a = 0;
-      while (a < w.length - 1 && noiseWord(w[a])) a += 1;
-      let b = w.length;
-      while (b > a + 1 && noiseWord(w[b - 1])) b -= 1;
-      for (const [x, y] of [[a, b], [a, w.length], [0, b]]) {
+      const ends = (noise: (w: string) => boolean) => {
+        let a = 0;
+        while (a < w.length - 1 && noise(w[a])) a += 1;
+        let b = w.length;
+        while (b > a + 1 && noise(w[b - 1])) b -= 1;
+        return [a, b];
+      };
+      /* With the lines taken as noise first, then with packaging and the
+         grower only: when the line is the jar's whole name, "Drooler Flower"
+         and "Sour Melo Flower" lose the Flower and keep the line. */
+      const [a, b] = ends(noiseWord);
+      const [c, d] = ends(plainNoise);
+      for (const [x, y] of [[a, b], [a, w.length], [0, b], [c, d], [c, w.length], [0, d]]) {
         if (x === 0 && y === w.length) continue;
         const rest = w.slice(x, y).join(' ');
         /* Packaging has to be among what goes. The grower's name alone is not
