@@ -107,6 +107,11 @@ chain" page, one certificate per lot; 15 flower lots pending, vapes and edibles
 reviewed as other products by lot code) and ProXtracts (its lab-results page;
 15 pending, joints and kief reviewed as other products by label).
 
+On 17 October the follow-ups of Soma's curation batches 14 to 24 added Clearly
+Faded (its Lab Test page: 22 certificates from Hudson Valley Canna,
+OCM-PROC-24-000077, in tabs for pre-roll packs and the 8th flower jar; 20
+pending, 2 whose file name says pre-roll reviewed as other products by name).
+
 On 8 October the 150 brands with the most listings that no survey had looked
 at yet (82% of the listings of unsurveyed brands) were surveyed. Twenty
 publish certificate links the reader takes (a dry run of `coa-sources.py` on

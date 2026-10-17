@@ -52395,6 +52395,199 @@
    "certificateLinks": [],
    "exampleUrl": null,
    "note": "The register's producer data (data/producers.json, licence OCM-PROC-24-000146, Preferred Source Holdings LLC) lists 'PREFERRED' and 'Preferred' as spellings of the brand beside 'Preferred Gardens'. preferredgardens.com has a New York products page and a product-verification page (scan, verify, earn rewards) but no certificate link; same finding as the earlier survey."
+  },
+  {
+   "brandKey": "clearlyfaded",
+   "brand": "Clearly Faded",
+   "checkedAt": "2026-10-17T18:54:41+00:00",
+   "url": "https://clearlyfaded.com/lab-test/",
+   "method": "list",
+   "status": "published-links",
+   "pages": [
+    "https://clearlyfaded.com/lab-test/"
+   ],
+   "certificateLinks": [
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/03/20250214-HVCN-002-Cherry-gogi.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/03/20250318-HVCN-006-Mule-Fuel-1.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/11/20250318-HVCN-005-Scotty-Pippen-1.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/11/20250318-HVCN-003-Cherry-Goji-1.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/11/20250318-HVCN-002-Mule-Fuel-1.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/11/20250318-HVCN-001-Scotty-Pippen-1.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/11/20251015-HVCN-006-Clearly-Faded-SR-5PK-0.5G-PreRolls.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "other-product",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download",
+     "reviewedAt": "2026-10-17T18:54:41+00:00"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/11/20250214-HVCN-001-Cadillac-Rainbow.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/11/20250214-HVCN-003-Mule-fuel.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/11/20250929-HVCN-006-Jack-H.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/11/20250929-HVCN-007-Sherlato.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/09/20250919-HVCN-004-Cadillac-Rainbow.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/09/X250731_0034_Cherry_Goji_17348.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/09/X250731_0034_Mule_Fuel_17347.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/11/20250919-HVCN-005-LCG.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/11/20251015-HVCN-005-Clearly-Faded-Super-Runtz-1G-PreRoll.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "other-product",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download",
+     "reviewedAt": "2026-10-17T18:54:41+00:00"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/09/20250318-HVCN-004-Cherry-Goji-.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/09/20250318-HVCN-005-Scotty-Pippen-.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/09/20250318-HVCN-006-Mule-Fuel-.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/09/20250318-HVCN-001-Scotty-Pippen-.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/09/20250318-HVCN-003-Cherry-Goji-.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    },
+    {
+     "url": "https://clearlyfaded.com/wp-content/uploads/2025/09/20250318-HVCN-002-Mule-Fuel-.pdf",
+     "publishedOn": "https://clearlyfaded.com/lab-test/",
+     "scope": "pending-review",
+     "linkLocation": "anchor",
+     "firstSeenAt": "2026-10-17T18:54:41+00:00",
+     "label": "Download"
+    }
+   ],
+   "exampleUrl": "https://clearlyfaded.com/wp-content/uploads/2025/11/20250214-HVCN-001-Cadillac-Rainbow.pdf",
+   "note": "Named by Soma's curation batch 18; added on 17 October 2026. The Lab Test page (site menu) lists 22 PDF links on clearlyfaded.com/wp-content/uploads/, each labelled 'Download' under a cultivar name, in tabs: 2 Pack Preroll Tube, 5 Pack Preroll Tin, Premium 8th Flower Jar (Cadillac Rainbow, Cherry Goji, Mule Fuel, Jack Herer, Sherblato), Single 1G Preroll, and two discontinued pre-roll packs. File names carry Hudson Valley Canna's batch codes (HVCN); the page names the processor Hudson Valley Canna LLC, OCM-PROC-24-000077, White Sulphur Springs NY. Two files whose name says pre-roll are reviewed as other products; the rest stay pending-review, for the certificate to say what it tested."
   }
  ]
 }

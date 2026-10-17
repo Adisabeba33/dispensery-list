@@ -45,6 +45,10 @@ const shelfOf = (rows: FlowerListing[]) => reviewListings(rows, book).map((l) =>
 
 const one = (name: string, brand: string | null = null, brandKey: string | null = null, others: FlowerListing[] = []) =>
   reviewListings([listing(name, brand, brandKey), ...others], book)[0].strainNameCanonical;
+/** Names at two shops each, so the shelf knows them: packaging run onto a name
+    goes only when what is left is a name the shelves carry at two shops. */
+const twice = (brand: string, brandKey: string, ...names: string[]) =>
+  names.flatMap((n) => [at('A', n, brand, brandKey), at('B', n, brand, brandKey)]);
 
 /* ---- What it cleans ------------------------------------------------------ */
 
@@ -89,6 +93,54 @@ check('BX is written that way', one('Bx Runtz'), 'BX Runtz');
 check("a shop's X", one('X - Alien Dawg', 'mini MART', 'minimart'), 'Alien Dawg');
 check('a stray bar', one('Animal Face│', 'LEAL', 'leal'), 'Animal Face');
 check('a leading star', one('*AMHERST SOUR DIESEL', 'LEFT COAST', 'leftcoast'), 'Amherst Sour Diesel');
+check('a product name over its strain, the strain in brackets', one('PURPLE SUNSET (GRAPE GAS)', 'Trap To Table', 'traptotable'), 'Grape Gas');
+check('a product name fenced off', one('Invite Only - Candy Cartel', 'Trap To Table', 'traptotable'), 'Candy Cartel');
+check('an experience beside the cultivar', one('Don Mega - Drooler', 'Cheech & Chong', 'cheechchong'), 'Don Mega');
+check('a jar colour in an open bracket', one('Bananaconda - indica (Green', 'Rolling Greens', 'rollinggreens'), 'Bananaconda');
+check('a size run onto the name', one('Bronx Berry 1.5 Dub', 'Canna Bronx', 'cannabronx'), 'Bronx Berry');
+check('the grower run on after "by"', one('OMG Indoor Flower by Good Green', 'Good Green', 'goodgreen'), 'OMG');
+check('a release fenced off', one('Grape Gluttony - Flower *LIMITED RELEASE*', 'Animal House', 'animalhouse'), 'Grape Gluttony');
+check('the grower misspelt as a line', one('Alien OG - Villians', 'Villains', 'villains'), 'Alien OG');
+check('a collaboration opening the name', one('The Kollector x Sensei - Big Apple', 'Sensei', 'sensei'), 'Big Apple');
+check('a jar colour in a bracket left open', one('Hot Lanta Hybrid (Orange', 'Rolling Greens', 'rollinggreens'), 'Hot Lanta');
+check('a weight in a bracket left open', one('Super Silver Runtz (3.5', 'Hashtag Honey', 'hashtaghoney'), 'Super Silver Runtz');
+check('the grower and packaging fenced off', one('Root and Bloom LIMITED - Cherry Pie OG x Hawaiian Rainbow Warrior', 'Root & Bloom', 'rootbloom'), 'Cherry Pie OG x Hawaiian Rainbow Warrior');
+check('a count in a bracket', one('Blue Dream (2 Pack)', 'Other Farm', 'otherfarm'), 'Blue Dream');
+check('the grower printed twice, packaging on one', one('Runtz Indoor - Runtz', 'Runtz', 'runtz'), 'Runtz');
+check('the grower printed twice, a cultivar of its name', one('Khalifa Kush Indoor - Khalifa Kush', 'Khalifa Kush', 'khalifakush'), 'Khalifa Kush');
+check('a product name over its strain, the bracket left open', one('PURPLE SUNSET (GRAPE GAS', 'Trap To Table', 'traptotable'), 'Grape Gas');
+check('a product name over its strain, packaging after the bracket',
+  one('PURPLE SUNSET (GRAPE GAS) FLOWER - 2-2', 'Trap To Table', 'traptotable'), 'Grape Gas');
+check('a jar colour and a lean beside a cultivar named for the colour', one('Orange Bud - Sativa (Orange', 'Rolling Greens', 'rollinggreens'), 'Orange Bud');
+
+/* A line of one word with packaging beside it comes off with the packaging,
+   as one: what is left must not lose the grower's name or a letter at the
+   other end, which the shelf would take for packaging run on. Obama, Lemon
+   Cherry and Lemon Candy are names other shops carry. */
+const carried = (...names: string[]) => twice('Other Farm', 'otherfarm', ...names);
+check('a one-word line and packaging before a cultivar ending in the grower',
+  one('FLOWER MINIZ OBAMA RUNTZ', 'Runtz', 'runtz', carried('Obama')), 'Obama Runtz');
+check('a one-word line and packaging after a cultivar ending in a letter',
+  one('LEMON CHERRY Z MINIZ FLOWER - 2-2', 'Runtz', 'runtz', carried('Lemon Cherry')), 'Lemon Cherry Z');
+check('a one-word line and a jar after a cultivar ending in the grower',
+  one('Lemon Candy Runtz Miniz Jar', 'Runtz', 'runtz', carried('Lemon Candy')), 'Lemon Candy Runtz');
+check('a line of packaging words and a word, packaging before it',
+  one('FLOWER LIMITED RELEASE APPLES & BANANAS', 'Animal House', 'animalhouse'), 'Apples & Bananas');
+
+/* A line that is the jar's whole name stays, and what is beside it still goes. */
+check('a product name, the packaging and a code beside it',
+  one('PURPLE SUNSET FLOWER - 2-2', 'Trap To Table', 'traptotable', twice('Trap To Table', 'traptotable', 'Purple Sunset')), 'Purple Sunset');
+check('an experience, the packaging and a code beside it',
+  one('DROOLER FLOWER - 2-2', 'Cheech and Chong', 'cheechandchong', twice('Cheech and Chong', 'cheechandchong', 'Drooler')), 'Drooler');
+check('an experience, a shelf code fenced off', one('LOWRIDER - FLOWER [2-1]', 'Cheech & Chong', 'cheechchong'), 'Lowrider');
+check('an experience, packaging fenced off', one('Prepackaged Flower - Yesca', 'Cheech & Chong', 'cheechchong'), 'Yesca');
+check('an experience, the grower and packaging fenced off', one('Cheech & Chong Flower - Love Machine', 'Cheech & Chong', 'cheechchong'), 'Love Machine');
+check('an experience, packaging run onto it',
+  one('Drooler Flower', 'Cheech & Chong', 'cheechchong', twice('Cheech & Chong', 'cheechchong', 'Drooler')), 'Drooler');
+check("a cultivar ending with a line's word, packaging run onto it",
+  one('SOUR MELO FLOWER - 2-2', 'Stay Melo', 'staymelo', twice('Stay Melo', 'staymelo', 'Sour Melo')), 'Sour Melo');
+check("a cultivar opening with a line's word, packaging before it",
+  one('Flower Melo Morning', 'Stay Melo', 'staymelo', twice('Stay Melo', 'staymelo', 'Melo Morning')), 'Melo Morning');
 
 /* ---- What it leaves alone ------------------------------------------------ */
 
@@ -121,6 +173,43 @@ keeps('a date nobody can read', 'Oreoz (May 2026)', 'Rolling Green Cannabis', 'r
 keeps('a single-word line when it is the whole name', 'Black', 'Knack', 'knack');
 keeps("a knack cultivar opening with its line's word", 'Black Cherry Punch', 'Knack', 'knack');
 keeps('Garlic Lime Reserve', 'Garlic Lime Reserve', 'SP Farms', 'sp');
+keeps('a product name when it is the whole name', 'Purple Sunset', 'Trap To Table', 'traptotable');
+keeps('an experience sold on its own', 'Lowrider', 'Cheech & Chong', 'cheechchong');
+keeps("a cultivar ending with a line's word", 'Sour Melo', 'Stay Melo', 'staymelo');
+keeps("a cultivar opening with a line's word", 'Melo Morning', 'Stay Melo', 'staymelo');
+keeps('a cultivar named for a colour the jars come in', 'Orange Bud', 'Rolling Greens', 'rollinggreens');
+keeps('Green Crack, beside a green jar line', 'Green Crack', 'Rolling Greens', 'rollinggreens');
+keeps('Purple Punch, beside a purple jar line', 'Purple Punch', 'Rolling Greens', 'rollinggreens');
+keeps('a bracket left open round words of the name', "Jah'spresso (Jack Herer", 'Good Green', 'goodgreen');
+/* A number in a bracket is a weight only with a unit or a decimal point. A "#"
+   or a bare number is the cut: "Gorilla Glue (#4 Indoor Flower)" and "Gelato
+   (41 Jar)" as the collector leaves them. */
+keeps('a phenotype number in a bracket left open', 'Gorilla Glue (#4', 'Other Farm', 'otherfarm');
+keeps('a longer cultivar with its number in a bracket left open', 'Super Silver Thai (#15', 'Other Farm', 'otherfarm');
+keeps('a cut number in a bracket left open', 'Hellcat (#15', 'Other Farm', 'otherfarm');
+keeps('a bare number in a bracket left open', 'Gelato (41', 'Other Farm', 'otherfarm');
+keeps('a phenotype number in a bracket', 'Gorilla Glue (#4)', 'Other Farm', 'otherfarm');
+
+/* A jar colour is a line only as the jar: "Purple Jar", not the Purple of a
+   cultivar. These go through the shelf, where a name loses packaging run onto
+   it, and the colour must not go with it — Punch, Creamsicle, Kush Cake and
+   Haze are names the shelves carry too. */
+const elsewhere = (...names: string[]) => twice('Other Farm', 'otherfarm', ...names);
+check('keeps a jar colour opening a cultivar, a code beside it',
+  one('PURPLE PUNCH FLOWER - 2-2', 'Rolling Greens', 'rollinggreens', elsewhere('Punch', 'Purple Punch')), 'Purple Punch');
+check('keeps Orange Creamsicle, a code beside it',
+  one('ORANGE CREAMSICLE FLOWER - 2-2', 'Rolling Greens', 'rollinggreens', elsewhere('Creamsicle', 'Orange Creamsicle')), 'Orange Creamsicle');
+check('keeps a jar colour opening a cultivar, the jar after it',
+  one('Orange Kush Cake Flower - Hybrid (Orange', 'Rolling Greens', 'rollinggreens', elsewhere('Kush Cake', 'Orange Kush Cake')), 'Orange Kush Cake');
+check("keeps Purple Haze in the shop's own form",
+  one('Purple Haze Flower - Sativa (Purple', 'Rolling Greens', 'rollinggreens', elsewhere('Haze', 'Purple Haze')), 'Purple Haze');
+check('keeps a jar colour ending a cultivar',
+  one('Granddaddy Purple Flower', 'Rolling Greens', 'rollinggreens', elsewhere('Granddaddy Purple')), 'Granddaddy Purple');
+/* One word of a line, packaging beside it, is not the line run on: Cheech &
+   Chong's Lowrider stays in the name. */
+check('keeps an experience run onto the grower',
+  one('Cheech & Chong Lowrider Flower', 'Cheech & Chong', 'cheechchong', twice('Cheech & Chong', 'cheechchong', 'Cheech & Chong Lowrider')),
+  'Cheech & Chong Lowrider');
 
 /* ---- One grower's names, side by side ------------------------------------ */
 
