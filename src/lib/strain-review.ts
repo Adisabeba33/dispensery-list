@@ -80,6 +80,14 @@ export const isPackaging = (piece: string) => {
   if (wordsOf(piece).length === 0) return false;
   return wordsOf(piece.replace(PACKAGING_PHRASE, ' ')).every((x) => PACKAGING.has(x) || isMeasure(x));
 };
+/* What a bracket holds is packaging only when each number in it reads as a
+   weight or a count: "(3.5", "(3.5g Indoor", "(2 PACK)". A "#" or a bare
+   number is the cultivar's own: "Gorilla Glue (#4 Indoor Flower)" and
+   "Gelato (41 Jar)", which the collector leaves as "Gorilla Glue (#4" and
+   "Gelato (41". */
+const WEIGHED = /\d+(\.\d+)?\s*(g|gm|gr|grams?|oz|ounces?|pk|packs?|ct|pcs?)\b|\d*\.\d+|\d\/\d{1,2}(th)?/gi;
+const bracketPackaging = (inside: string) =>
+  !inside.includes('#') && !/\d/.test(inside.replace(WEIGHED, ' ')) && isPackaging(inside);
 
 /** A line compared as a line: its packaging words gone, a plural folded. */
 export const lineKey = (s: string) =>
@@ -215,41 +223,68 @@ export const reviewName = (
        a line: Rolling Greens' "Hot Lanta Hybrid (Orange Jar)", which the
        collector leaves as "Hot Lanta Hybrid (Orange". */
     const unclosed = s.match(/^(.*\S)\s*\(([^()]*)$/);
-    if (unclosed && (isPackaging(unclosed[2]) || isLine(unclosed[2]))) {
-      why.add(isPackaging(unclosed[2]) ? 'packaging' : 'product line');
+    if (unclosed && (bracketPackaging(unclosed[2]) || isLine(unclosed[2]))) {
+      why.add(bracketPackaging(unclosed[2]) ? 'packaging' : 'product line');
       s = unclosed[1].trim();
     }
     // A bracket holding only packaging or a line: "OG (Indoor)", "GMO (Quiet Times)".
     for (;;) {
       const m = s.match(/^(.*\S)\s*\(([^()]*)\)$/);
       if (!m) break;
-      if (isPackaging(m[2])) why.add('packaging');
+      if (bracketPackaging(m[2])) why.add('packaging');
       else if (isLine(m[2])) why.add('product line');
       else break;
       s = m[1].trim();
     }
     // Or opening it: "(Fast Times) Kilimanjaro".
     const opening = s.match(/^\(([^()]*)\)\s*(\S.*)$/);
-    if (opening && (isPackaging(opening[1]) || isLine(opening[1]))) {
-      why.add(isPackaging(opening[1]) ? 'packaging' : 'product line');
+    if (opening && (bracketPackaging(opening[1]) || isLine(opening[1]))) {
+      why.add(bracketPackaging(opening[1]) ? 'packaging' : 'product line');
       s = opening[2].trim();
     }
     /* A line of two words or more run onto the cultivar, before it or after:
        "Space Essentials Sunset Sherbert", "Cobra Kush Gold Cuts". Not a line
-       of one word: Knack's line is "Black", and Black Cherry Punch is a
-       cultivar. Nor one word of a line with packaging beside it: "Lowrider
-       Flower" is not a line of two words, and "Cheech & Chong Lowrider
-       Flower" is not Cheech & Chong. */
+       of one word on its own: Knack's line is "Black", and Black Cherry Punch
+       is a cultivar. A line of one word, or one word and packaging, with
+       nothing but packaging beside it comes off with that packaging, as one:
+       "FLOWER MINIZ Obama Runtz", "Lemon Cherry Z MINIZ FLOWER", "FLOWER
+       LIMITED RELEASE Apples & Bananas". Left on, the shelf pass
+       (trimAgainstShelf) can take the line and the packaging, and the grower's
+       name or the letter at the other end with them. The cost is a cultivar
+       opening with the line's word behind packaging — "Flower Black Cherry
+       Punch" loses its Black, as it did before lines were matched as
+       written. Never when what is left is only the grower: "Cheech & Chong
+       Lowrider Flower" is not Cheech & Chong. */
     const isLongLine = (words: string[]) => {
       const piece = words.join(' ');
       if (wholeLines.has(wholeKey(piece))) return true;
       const k = lineKey(piece);
-      return k.length >= 4 && lines.has(k) && namingWords(piece) >= 2;
+      if (k.length < 4 || !lines.has(k)) return false;
+      if (namingWords(piece) >= 2) return true;
+      for (let x = 0; x < words.length; x += 1) {
+        for (let y = x + 1; y <= words.length; y += 1) {
+          const besides = [...words.slice(0, x), ...words.slice(y)];
+          if (wholeLines.has(wholeKey(words.slice(x, y).join(' '))) && besides.every((g) => isPackaging(g))) return true;
+        }
+      }
+      return false;
     };
     const w = s.split(/\s+/);
     for (let n = Math.min(4, w.length - 2); n >= 2; n -= 1) {
-      if (isLongLine(w.slice(0, n))) { s = w.slice(n).join(' '); why.add('product line'); break; }
-      if (isLongLine(w.slice(-n))) { s = w.slice(0, -n).join(' '); why.add('product line'); break; }
+      const after = w.slice(n).join(' ');
+      const before = w.slice(0, -n).join(' ');
+      if (isLongLine(w.slice(0, n)) && !isGrower(after, brand)) { s = after; why.add('product line'); break; }
+      if (isLongLine(w.slice(-n)) && !isGrower(before, brand)) { s = before; why.add('product line'); break; }
+    }
+    /* A bracket left at the front, as when a product name is taken off before
+       the cultivar it brackets: Trap To Table's "PURPLE SUNSET (GRAPE GAS
+       JAR)", which the collector leaves as "PURPLE SUNSET (GRAPE GAS", and
+       "PURPLE SUNSET (GRAPE GAS) FLOWER". The bracket goes, and packaging
+       after it. */
+    const bracketed = s.match(/^\(([^()]+)$/) ?? s.match(/^\(([^()]+)\)\s*(\S.*)$/);
+    if (bracketed && (bracketed[2] === undefined || isPackaging(bracketed[2]))) {
+      if (bracketed[2] !== undefined) why.add('packaging');
+      s = tidy(bracketed[1]);
     }
     // Packaging opening the name: "Mixed Light Flower Atomic Breath", "Indoor Kosher Kush".
     // Two words of it, or one no cultivar begins with. Words only, never a
@@ -290,14 +325,20 @@ export const reviewName = (
     if (wrapped) s = tidy(wrapped[1]);
     return s;
   }).filter(Boolean);
+  // One name twice, once the packaging is off: "Runtz Indoor - Runtz" is
+  // Runtz, and High Ambitions' "GORILLA GLUE - GORILLA GLUE" is Gorilla Glue.
+  kept = kept.filter((p, j) => kept.findIndex((q) => sameKey(q) === sameKey(p)) === j);
   if (kept.length === 0) kept = pieces.length ? pieces : [written.trim()];
 
   /* Taking a bracket or a grade off a piece can leave a grower, a line or a
      grade standing alone beside the cultivar: "Sour Tangie - (Flower)
      Electraleaf", "Limited Edition World Cup - Dark Rainbow". One more pass,
-     keeping at least one piece. */
+     keeping at least one piece. When every piece is a line or the grower —
+     the jar's own name — a lean left standing still goes: Rolling Greens'
+     "Orange Bud - Sativa (Orange" is Orange Bud. */
   if (kept.length > 1) {
-    const rest = kept.filter((p) => !(isPackaging(p) || isLine(p) || isGrower(p, brand)));
+    let rest = kept.filter((p) => !(isPackaging(p) || isLine(p) || isGrower(p, brand)));
+    if (rest.length === 0) rest = kept.filter((p) => !isPackaging(p));
     if (rest.length > 0 && rest.length < kept.length) {
       for (const p of kept) {
         if (rest.includes(p)) continue;
