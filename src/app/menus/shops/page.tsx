@@ -40,7 +40,7 @@ export default function MenuShopsPage() {
 
       <ShelfStamp />
 
-      <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {shelves.map(({ shop, count, sizes, readAt }) => (
           <li key={shop!.id}>
             <Link href={`/dispensary/${shop!.id}/#menu`} className="card card-hover block p-4">

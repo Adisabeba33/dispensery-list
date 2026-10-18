@@ -9,14 +9,13 @@ import { TerritoryCard } from './TerritoryCard';
 /**
  * Search and county filter for a territory that has only its registry import.
  *
- * Not DirectoryExplorer with flags. That component offers "near me", a ZIP
- * search, "open now listed" and "delivers" — controls that would return
- * nothing at all here, because no record in these territories has
- * coordinates, a confirmed trading status or a service flag. Dead controls
- * read as a broken page, and teaching one component to hide most of itself
- * makes NYC's page pay for upstate's gaps.
+ * Not DirectoryExplorer with flags. That component offers "open now listed"
+ * and a borough filter — controls that would return nothing at all here,
+ * because no record in these territories has a confirmed trading status or a
+ * borough. Dead controls read as a broken page, and teaching one component to
+ * hide most of itself makes NYC's page pay for upstate's gaps.
  *
- * So: controls that work, and a count that does not lie. "Flower in stock"
+ * So: controls that work, and a count that does not lie. "Shelf read"
  * appears only for a territory whose shelves have been read. When these
  * territories are enriched, this grows — or is replaced by the fuller one.
  */
@@ -38,7 +37,7 @@ export const TerritoryExplorer = ({
   storageKey: string;
   /** What a licence number looks like in this state, for the search hint. */
   licenceExample?: string;
-  /** Strains in stock per licence, for a territory whose shelves have pages.
+  /** Strains on the shelf per licence, for a territory whose shelves have pages.
       Absent everywhere else, and then no card links anywhere. */
   shelfCounts?: Record<string, number>;
   /** The territory's route; a shop's shelf page sits beneath it. */
@@ -50,9 +49,8 @@ export const TerritoryExplorer = ({
   const [county, setCounty] = useState<string | null>(null);
   const [openedOnly, setOpenedOnly] = useState(false);
   const [stockOnly, setStockOnly] = useState(false);
-  // Shops with at least one strain in stock: a shelf read with every jar sold
-  // out still has its page, but it is not a place to go for flower.
-  const stockTotal = shelfCounts ? Object.values(shelfCounts).filter((n) => n > 0).length : 0;
+  // Shops whose shelf we read: the green lamps.
+  const stockTotal = shelfCounts ? Object.keys(shelfCounts).length : 0;
   const [sort, setSort] = useState<SortKey>('opened');
   const [limit, setLimit] = useState(60);
 
@@ -61,7 +59,7 @@ export const TerritoryExplorer = ({
     const filtered = shops.filter((d) => {
       if (county && d.address.county !== county) return false;
       if (openedOnly && d.dates?.openedOn == null) return false;
-      if (stockOnly && !(shelfCounts && (shelfCounts[d.licenseNumber] ?? 0) > 0)) return false;
+      if (stockOnly && !(shelfCounts && d.licenseNumber in shelfCounts)) return false;
       if (!q) return true;
       // Licence number included on purpose: it is how a reader checks the shop
       // in front of them against this list.
@@ -166,7 +164,8 @@ export const TerritoryExplorer = ({
               aria-pressed={stockOnly}
               className={clsx('chip', stockOnly && 'chip-on')}
             >
-              Flower in stock
+              <span aria-hidden className="mr-1.5 inline-block h-2 w-2 rounded-full bg-moss-400" />
+              Shelf read
               <span className="ml-1.5 tabular-nums text-chalk-500">{stockTotal}</span>
             </button>
           )}

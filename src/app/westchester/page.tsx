@@ -46,7 +46,7 @@ export default function WestchesterPage() {
               </p>
             </div>
           ) : (
-            <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {local.map((d) => (
                 <li key={d.id}>
                   <DispensaryCard d={d} menuCount={counts[d.licenseNumber] ?? 0} />

@@ -32,15 +32,14 @@ export const territoryListingsFor = (territoryId: string, licenseNumber: string)
     .filter((l) => l.licenseNumber === licenseNumber)
     .sort((a, b) => a.strainNameRaw.localeCompare(b.strainNameRaw));
 
-/** Strains in stock per shop, counted the way New York's cards count them
-    (./menu menuCounts): sold-out listings and promotional samples left out. */
+/** Strains on each shop's shelf, counted the way New York's cards count them
+    (./menu menuCounts): every listing but a promotional sample. A shop with a
+    key has a shelf we read; one without has a red lamp. */
 export const territoryShelfCounts = (territoryId: string): Record<string, number> => {
   const counts: Record<string, number> = {};
   for (const l of SHELVES[territoryId] ?? []) {
-    // Every shop with a shelf has a key, even one whose every jar is sold out:
-    // its page exists, and its card must still lead there.
     counts[l.licenseNumber] ??= 0;
-    if (l.inStock && !isPromotionalSample(l)) counts[l.licenseNumber] += 1;
+    if (!isPromotionalSample(l)) counts[l.licenseNumber] += 1;
   }
   return counts;
 };

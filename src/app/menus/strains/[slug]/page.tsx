@@ -15,7 +15,7 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
   const { slug } = await params;
   const strain = strainPage(slug);
   if (!strain) return { title: 'Strain not found' };
-  const shops = strain.shops.length;
+  const shops = strain.places.length;
   const facts = [
     strain.thc && `THC ${strain.thc.low === strain.thc.high ? strain.thc.low : `${strain.thc.low}–${strain.thc.high}`}%`,
     strain.terpenes?.kind === 'MEASURED' &&
@@ -34,7 +34,7 @@ export default async function StrainPage({ params }: Params) {
   const strain = strainPage(slug);
   if (!strain) notFound();
 
-  const shops = strain.shops.length;
+  const shops = strain.places.length;
   const growers = strain.growers.length;
 
   return (
@@ -65,8 +65,9 @@ export default async function StrainPage({ params }: Params) {
 
       <p className="mt-12 max-w-2xl text-xs leading-relaxed text-chalk-500">
         {strain.readAt && <>Read from the shops&apos; own menus, most recently {prettyDateTime(strain.readAt)}. </>}
-        Shelves change hourly and this page does not: confirm with the shop before you travel. A shop
-        whose menu we have not read is not listed, so a shop missing here is not a shop without it.
+        Shelves change hourly and this page does not: it is what each shelf showed when it was read.
+        A shop whose shelf we do not read is not listed, so a shop missing here is not a shop without
+        it.
       </p>
     </article>
   );

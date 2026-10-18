@@ -46,19 +46,13 @@ const ProvenanceDot = ({ tone }: { tone: string }) => (
 
 const StrainRow = ({ listing }: { listing: FlowerListing }) => {
   const prov = PROVENANCE[provenanceOf(listing.terpenes)];
-  const certificate = certificateUrl(listing.terpenes);
   const sizes = listing.availableSizesGrams ?? [];
   const ranked = rankedTerpenes(listing.terpenes.profile);
   const top = ranked.slice(0, 3);
   const total = listing.terpenes.totalPercent;
 
   return (
-    <li
-      className={clsx(
-        'card p-4 transition-colors',
-        listing.inStock ? 'card-hover' : 'opacity-55',
-      )}
-    >
+    <li className="card card-hover p-4 transition-colors">
       <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
         <div className="min-w-0">
           {/* The cultivar, and under it whose. The shop's own wording is kept
@@ -94,9 +88,6 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
             >
               Promo sample
             </span>
-          )}
-          {!listing.inStock && (
-            <span className="pill border-ink-600 bg-ink-800 text-chalk-500">Sold out</span>
           )}
         </div>
       </div>
@@ -156,9 +147,8 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
           </p>
         )}
 
-        {/* The rest of the panel, and where to check it, for whoever wants
-            more than the three that lead. */}
-        {(ranked.length > top.length || total || certificate) && (
+        {/* The rest of the panel, for whoever wants more than the three that lead. */}
+        {(ranked.length > top.length || total) && (
           <details className="mt-2 text-[0.72rem] text-chalk-400">
             <summary className="cursor-pointer text-moss-400">
               {ranked.length > top.length ? `All ${ranked.length} terpenes` : 'Panel'}
@@ -175,14 +165,6 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
                   </li>
                 ))}
               </ul>
-            )}
-            {certificate && (
-              <p className="mt-2">
-                <a href={certificate} target="_blank" rel="noopener noreferrer" className="link">
-                  Batch certificate of analysis
-                </a>{' '}
-                <span className="text-chalk-500">— the lab’s own document, linked by the shop’s menu</span>
-              </p>
             )}
           </details>
         )}
@@ -206,7 +188,6 @@ export const FlowerMenu = ({
 }) => {
   const sharedShelf = listings.some((l) => l.warnings?.includes('SHELF_SHARED_WITH_OTHER_LICENCES'));
   const [size, setSize] = useState<number | null>(null);
-  const [inStockOnly, setInStockOnly] = useState(false);
   const [labOnly, setLabOnly] = useState(false);
   const [copied, setCopied] = useState<'idle' | 'done' | 'failed'>('idle');
 
@@ -220,11 +201,10 @@ export const FlowerMenu = ({
     () =>
       listings.filter((l) => {
         if (size !== null && !(l.availableSizesGrams ?? []).includes(size)) return false;
-        if (inStockOnly && !l.inStock) return false;
         if (labOnly && l.terpenes.source !== 'LAB_COA' && !certificateUrl(l.terpenes)) return false;
         return true;
       }),
-    [listings, size, inStockOnly, labOnly],
+    [listings, size, labOnly],
   );
 
   const capturedAt = listings[0]?.capturedAt;
@@ -282,8 +262,7 @@ export const FlowerMenu = ({
       </div>
 
       <p className="mt-2 text-xs leading-relaxed text-chalk-500">
-        Read from the shop&apos;s own menu. Shelves move through the day, so confirm before
-        travelling for a specific strain.
+        Read from the shop&apos;s own menu: what was on its shelf when we read it.
       </p>
 
       {/* A chain that publishes one menu for several licences gives us one
@@ -292,8 +271,8 @@ export const FlowerMenu = ({
       {sharedShelf && (
         <p className="mt-2 text-xs leading-relaxed text-amber-300/80">
           This chain publishes one menu across several licensed shops, so this shelf is the
-          chain&apos;s, not this branch&apos;s. The strains are on sale; which of its shops holds
-          them is not established. Call ahead.
+          chain&apos;s, not this branch&apos;s. Which of its shops holds each strain is not
+          established.
         </p>
       )}
 
@@ -331,13 +310,6 @@ export const FlowerMenu = ({
 
         <button
           type="button"
-          onClick={() => setInStockOnly((v) => !v)}
-          className={clsx('chip', inStockOnly && 'chip-on')}
-        >
-          In stock
-        </button>
-        <button
-          type="button"
           onClick={() => setLabOnly((v) => !v)}
           className={clsx('chip', labOnly && 'chip-on')}
         >
@@ -348,7 +320,7 @@ export const FlowerMenu = ({
       <p className="mt-4 text-sm text-chalk-400">
         <span className="font-semibold text-chalk-50">{results.length}</span>
         {results.length === 1 ? ' strain' : ' strains'}
-        {size !== null && ` available by the ${sizeLabel(size).toLowerCase()}`}
+        {size !== null && ` by the ${sizeLabel(size).toLowerCase()}`}
       </p>
 
       {results.length === 0 ? (

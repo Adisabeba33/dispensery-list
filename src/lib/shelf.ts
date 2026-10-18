@@ -1,7 +1,8 @@
 import type { StrainEntry } from '@/components/ShelfIndex';
 import { dispensaries, displayName, regionOf } from './data';
 import { isPromotionalSample, listings, sizeChips } from './menu';
-import { looseKey } from './strain-review';
+import strainSynonymsRaw from '../../data/strain-synonyms.json';
+import { looseKey, strainFamilies, type SynonymBook } from './strain-review';
 import type { FlowerListing } from './menu-format';
 
 /**
@@ -15,6 +16,10 @@ import type { FlowerListing } from './menu-format';
  * Server-side only: `listings` carries the whole menu.
  */
 const shopOf = new Map(dispensaries.map((d) => [d.licenseNumber, d]));
+
+/* "GG4", "Gorilla Glue #4" and "Original Glue" are Gorilla Glue: one row in
+   the index and one page, each grower shown with its own name inside. */
+const familyOf = strainFamilies(strainSynonymsRaw as SynonymBook);
 
 /**
  * One entry per strain, gathering every shop that has it.
@@ -31,7 +36,12 @@ export const strainEntries = (): StrainEntry[] => strainEntriesOf(listings);
    so its address is the one the whole register gave it, not one worked out
    from this brand's spelling. */
 export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] =>
-  gather(rows).map(({ group, entry }) => ({ ...entry, slug: slugIndex().get(group) ?? slugOf(entry.name) }));
+  gather(rows).map(({ group, entry }) => ({ ...entry, slug: slugIndex().get(group) ?? null }));
+
+/* A strain gets a page of its own once it is on this many shelves: the
+   strains people ask about, and a site a third the size of one with a page
+   for every jar on one shelf (the owner's call, 18 October 2026). */
+export const PAGE_MIN_SHELVES = 3;
 
 /** One strain as gathered: the key it was grouped on, its entry, and its listings. */
 type Gathered = { group: string; entry: StrainEntry; rows: FlowerListing[] };
@@ -40,6 +50,7 @@ const gather = (rows: FlowerListing[]): Gathered[] => {
   const byStrain = new Map<string, StrainEntry>();
   const rowsOf = new Map<string, FlowerListing[]>();
   const spellings = new Map<string, Map<string, number>>();
+  const families = new Map<string, string>();
   const settled = new Set<string>();
 
   for (const l of rows) {
@@ -51,9 +62,11 @@ const gather = (rows: FlowerListing[]): Gathered[] => {
        shops typed differently, and on a brand's page they were two rows. So
        are an ending spelt two ways and a doubled letter: "Blue Nerds" and
        "Blue Nerdz", "Kush Mints" and "Kush Mintz" (lib/strain-review). */
-    const key = looseKey(written) || written.toLowerCase();
+    const family = familyOf(written);
+    const key = looseKey(family ?? written) || written.toLowerCase();
     const shop = shopOf.get(l.licenseNumber);
     if (!shop) continue;
+    if (family) families.set(key, family);
 
     /* Which spelling to print, decided by counting rather than by taking
        whichever listing was read first. */
@@ -65,7 +78,7 @@ const gather = (rows: FlowerListing[]): Gathered[] => {
     if (!entry) {
       entry = {
         key,
-        slug: '',
+        slug: null,
         name: written,
         lineage: l.lineage,
         thcPercent: l.thcPercent,
@@ -141,6 +154,11 @@ const gather = (rows: FlowerListing[]): Gathered[] => {
       return b[1] - a[1] || shout(a[0]) - shout(b[0]) || a[0].localeCompare(b[0]);
     });
     if (counted.length > 0) entry.name = counted[0][0];
+    /* A strain sold under more than one of its names is shown under the
+       book's; one sold under a single name — "GG4" on that grower's brand
+       page — keeps it. */
+    const family = families.get(group);
+    if (family && new Set(counted.map(([w]) => looseKey(w))).size > 1) entry.name = family;
     // Searched as the name it is shown under; every other spelling is in labels.
     entry.key = entry.name.toLowerCase().replace(/[^a-z0-9]/g, '') || entry.key;
   }
@@ -173,15 +191,17 @@ const slugOf = (name: string): string =>
 let everyStrain: Gathered[] | null = null;
 const allGathered = (): Gathered[] => (everyStrain ??= gather(listings));
 
-/* Group key → address. Two strains whose names fold to one address ("Devil's
-   Drip" and a shop's "Devils Drip" that the review kept apart) are told apart
-   by a number, the strain on more shelves keeping the plain one. */
+/* Group key → address, for the strains with a page. Two strains whose names
+   fold to one address ("Devil's Drip" and a shop's "Devils Drip" that the
+   review kept apart) are told apart by a number, the strain on more shelves
+   keeping the plain one. */
 let slugs: Map<string, string> | null = null;
 const slugIndex = (): Map<string, string> => {
   if (slugs) return slugs;
   slugs = new Map();
   const taken = new Set<string>();
   for (const { group, entry } of allGathered()) {
+    if (entry.shops.length < PAGE_MIN_SHELVES) continue;
     const base = slugOf(entry.name);
     let slug = base;
     for (let n = 2; taken.has(slug); n += 1) slug = `${base}-${n}`;
@@ -193,9 +213,9 @@ const slugIndex = (): Map<string, string> => {
 
 /** Every strain with its own page: its entry and the listings behind it. */
 export const strainGroups = (): (Gathered & { slug: string })[] =>
-  allGathered().map((g) => {
-    const slug = slugIndex().get(g.group)!;
-    return { ...g, slug, entry: { ...g.entry, slug } };
+  allGathered().flatMap((g) => {
+    const slug = slugIndex().get(g.group);
+    return slug ? [{ ...g, slug, entry: { ...g.entry, slug } }] : [];
   });
 
 /** Every shop whose shelf has been read, biggest first. */

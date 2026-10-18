@@ -1,7 +1,7 @@
 import { dispensaries, displayName, regionOf } from './data';
 import { brandSummaries, strainGroups } from './shelf';
+import { looseKey } from './strain-review';
 import {
-  certificateUrl,
   provenanceOf,
   rankedTerpenes,
   type Debut,
@@ -16,25 +16,21 @@ import {
  * shop published; nothing is written about the strain that a shelf did not
  * say. That is why the page has no description and no parents: no shelf
  * gives either, and a sentence nobody can check has no place in a register.
+ *
+ * An index, not a guide to buying (the owner's rule, 18 October 2026): the
+ * strain, its growers, how many shelves, and the places — a shop's name and
+ * its district. No distance, no "in stock", no link out.
  */
-export type StrainShop = {
-  id: string;
-  name: string;
-  region: string;
-  zip: string;
-  geo: { lat: number; lng: number } | null;
-  sizes: number[];
-  growers: string[];
-  /** False when every jar of it on this shelf is marked sold out. */
-  inStock: boolean;
-};
+export type StrainPlace = { id: string; name: string; region: string };
 
-/** One grower's jars of the strain, everywhere: how strong the shops say they are. */
+/** One grower's jars of the strain: the names it sells it under, its shelves, its THC. */
 export type StrainGrower = {
   name: string;
   /** Its brand page, when it has one. */
   key: string | null;
-  shops: number;
+  /** What this grower calls the strain, most-printed first: "GG4", "Gorilla Glue #4". */
+  names: string[];
+  places: StrainPlace[];
   thcLow: number | null;
   thcHigh: number | null;
 };
@@ -46,7 +42,6 @@ export type StrainPanel = {
   terpenes: { name: string; rawName: string | null; percent: number | null }[];
   totalPercent: number | null;
   provenance: Provenance;
-  certificate: string | null;
   shops: number;
 };
 
@@ -65,8 +60,11 @@ export type StrainPageData = {
     | { kind: 'REFERENCE'; top: string[]; referenceStrain: string }
     | null;
   growers: StrainGrower[];
+  /** Listings no grower is printed for, by place. */
+  unattributed: StrainPlace[];
   panels: StrainPanel[];
-  shops: StrainShop[];
+  /** Every shelf it is on. */
+  places: StrainPlace[];
   sizes: number[];
   readAt: string | null;
 };
@@ -160,13 +158,30 @@ const build = (slug: string, entry: ReturnType<typeof strainGroups>[number]['ent
         terpenes: rankedTerpenes(l.terpenes.profile).slice(0, 6),
         totalPercent: l.terpenes.totalPercent,
         provenance: provenanceOf(l.terpenes),
-        certificate: batch.map((b) => certificateUrl(b.terpenes)).find(Boolean) ?? null,
         shops: new Set(batch.map((b) => b.licenseNumber)).size,
       };
     })
     .sort((a, b) => b.shops - a.shops || (a.grower ?? '').localeCompare(b.grower ?? ''));
 
-  /* Growers grouped on the brand key, named as most shops print them. */
+  /* Every shelf, in borough order: the places. */
+  const placeOf = (licence: string): StrainPlace => {
+    const d = shopOf.get(licence)!;
+    return { id: d.id, name: displayName(d), region: regionOf(d) };
+  };
+  const inOrder = (a: StrainPlace, b: StrainPlace) =>
+    regionRank(a.region) - regionRank(b.region) || a.name.localeCompare(b.name);
+  const placesOf = (own: FlowerListing[]) =>
+    [...new Set(own.map((l) => l.licenseNumber))].map(placeOf).sort(inOrder);
+
+  /* Most-printed first: the name a grower or a strain is known by. */
+  const ranked = (values: string[]) => {
+    const counted = new Map<string, number>();
+    for (const v of values) counted.set(v, (counted.get(v) ?? 0) + 1);
+    return [...counted].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([v]) => v);
+  };
+
+  /* Growers grouped on the brand key, named as most shops print them, each
+     with the names it sells the strain under. */
   const byGrower = new Map<string, FlowerListing[]>();
   for (const l of rows) {
     if (!l.brand) continue;
@@ -175,41 +190,23 @@ const build = (slug: string, entry: ReturnType<typeof strainGroups>[number]['ent
   }
   const growers: StrainGrower[] = [...byGrower]
     .map(([key, own]) => {
-      const names = new Map<string, number>();
-      for (const l of own) names.set(l.brand!, (names.get(l.brand!) ?? 0) + 1);
       const thcs = own.map((l) => l.thcPercent).filter((v): v is number => typeof v === 'number' && v > 0);
+      /* Its names folded as the index folds them, so "Gorilla Glue #4" and
+         "GORILLA GLUE 4" are one name, printed the way it is printed most. */
+      const names: string[] = [];
+      for (const n of ranked(own.map((l) => l.strainNameCanonical ?? l.strainNameRaw))) {
+        if (!names.some((m) => looseKey(m) === looseKey(n))) names.push(n);
+      }
       return {
-        name: [...names].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0][0],
+        name: ranked(own.map((l) => l.brand!))[0],
         key: brandPages.has(key) ? key : null,
-        shops: new Set(own.map((l) => l.licenseNumber)).size,
+        names,
+        places: placesOf(own),
         thcLow: thcs.length ? Math.min(...thcs) : null,
         thcHigh: thcs.length ? Math.max(...thcs) : null,
       };
     })
-    .sort((a, b) => b.shops - a.shops || a.name.localeCompare(b.name));
-
-  const byShop = new Map<string, FlowerListing[]>();
-  for (const l of rows) byShop.set(l.licenseNumber, [...(byShop.get(l.licenseNumber) ?? []), l]);
-  const shops: StrainShop[] = [...byShop]
-    .map(([licence, own]) => {
-      const d = shopOf.get(licence)!;
-      return {
-        id: d.id,
-        name: displayName(d),
-        region: regionOf(d),
-        zip: d.address.zip,
-        geo: d.geo ? { lat: d.geo.lat, lng: d.geo.lng } : null,
-        sizes: [...new Set(own.flatMap((l) => l.availableSizesGrams ?? []))].sort((a, b) => a - b),
-        growers: [...new Set(own.map((l) => l.brand).filter((b): b is string => Boolean(b)))],
-        inStock: own.some((l) => l.inStock),
-      };
-    })
-    .sort(
-      (a, b) =>
-        Number(b.inStock) - Number(a.inStock) ||
-        regionRank(a.region) - regionRank(b.region) ||
-        a.name.localeCompare(b.name),
-    );
+    .sort((a, b) => b.places.length - a.places.length || a.name.localeCompare(b.name));
 
   return {
     slug,
@@ -220,8 +217,9 @@ const build = (slug: string, entry: ReturnType<typeof strainGroups>[number]['ent
     thc,
     terpenes,
     growers,
+    unattributed: placesOf(rows.filter((l) => !l.brand)),
     panels,
-    shops,
+    places: placesOf(rows),
     sizes: entry.sizes,
     readAt: rows.map((l) => l.capturedAt).sort().at(-1) ?? null,
   };

@@ -46,7 +46,7 @@ const popupHtml = (p: MapPoint) => `
     <a class="map-popup-name" href="/dispensary/${esc(p.id)}/">${esc(p.name)}</a>
     <p class="map-popup-meta">${esc(p.address)}</p>
     <p class="map-popup-status" style="color:${STATUS_COLOR[p.status]}">${STATUS_LABEL[p.status]}${
-      p.menuCount > 0 ? ` · ${p.menuCount} strains listed` : ''
+      p.menuCount > 0 ? ` · ${p.menuCount} strains on the shelf` : ' · No data yet'
     }</p>
   </div>`;
 

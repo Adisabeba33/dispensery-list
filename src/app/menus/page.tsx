@@ -21,9 +21,8 @@ export default function MenusPage() {
         Find a strain
       </h1>
       <p className="mt-5 max-w-2xl text-lg leading-relaxed text-chalk-200">
-        Search {strains.length} strains across every collected shelf at once. A strain carried by
-        more than one shop lists them all, so you can see where it is before you travel — by strain,
-        by brand, or by shop.
+        Search {strains.length} strains across every collected shelf at once. A strain on more than
+        one shelf lists every one — by strain, by brand, or by shop.
       </p>
 
       <p className="mt-4 max-w-2xl text-sm text-chalk-400">
@@ -57,9 +56,8 @@ export default function MenusPage() {
       </p>
 
       <p className="mt-6 max-w-2xl text-xs leading-relaxed text-chalk-500">
-        Shelves change hourly and this page does not. Treat it as what a shop published when its
-        menu was read, not as what is in the jar today — and confirm anything that matters with the
-        shop before you travel.
+        Shelves change hourly and this page does not. It is what each shop published when its menu
+        was read, not what is in the jar today.
       </p>
     </div>
   );

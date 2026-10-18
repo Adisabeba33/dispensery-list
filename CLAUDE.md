@@ -46,6 +46,33 @@ Nerds" and "Blue Nerdz" are one row.
   if it is a cultivar, under `notLines`.
 - `scripts/strain-review-check.ts` (part of `npm test`) holds the cultivars the
   review must not shorten. Add to it when a new rule could touch a real name.
+- One strain sold under several names across growers is one row and one page
+  (owner's rule, 18 October 2026): `data/strain-synonyms.json` lists them —
+  "GG4", "Gorilla Glue #4" and "Original Glue" are Gorilla Glue. It groups; it
+  never renames: each grower is shown with the name it sells under. Numbered
+  cuts stay apart (Gelato 33 is not Gelato 41), and so does anything ambiguous
+  ("GG", "Glue"). The check file holds what must stay apart.
+- A strain gets its own page (`/menus/strains/<slug>/`) once it is on three
+  shelves or more (`PAGE_MIN_SHELVES` in `src/lib/shelf.ts`).
+
+## An index, not a guide to buying
+
+The owner's rule (18 October 2026), for the whole site: the register says what
+is on the shelves — this strain, from these growers, on so many shelves, at
+these places (a shop's name and its district) — and never where or how to buy.
+
+- No "near me", no ZIP search, no distances.
+- No "in stock" or "sold out": a listing on a shelf we read is on the shelf.
+- No links out to a shop's website, its online menu, a map, or a lab
+  certificate. Links inside the register stay, as do the sources a record rests
+  on (the state registry, the regulator) and the state's verification tool.
+- No services (delivery, pickup) and no filter on them. The address, the
+  phone number as plain text, and the hours stay.
+- Shop names are shown without the company form: "Garden Bliss LLC" is Garden
+  Bliss (`withoutEntityForm` in `src/lib/format.ts`); the legal name stays
+  beside the licence.
+- A shop's lamp is green when we read its shelf and red when we do not; a red
+  shop says "No data yet".
 
 ## robots.txt: no rules means no restriction
 

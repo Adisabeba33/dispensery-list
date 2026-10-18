@@ -43,14 +43,28 @@ const OPERATIONAL_STYLE: Record<OperationalStatus, string> = {
   UNKNOWN: 'border-ink-600 bg-ink-800 text-chalk-400',
 };
 
+/* The status says it in words alone. The lamp beside a shop's name is the
+   shelf's (ShelfLamp), and two lit dots on one card would read as one. */
 export const StatusBadge = ({ status }: { status: OperationalStatus }) => (
-  <span className={clsx('pill', OPERATIONAL_STYLE[status])}>
-    <span
-      aria-hidden
-      className={clsx('h-1.5 w-1.5 rounded-full bg-current', status === 'OPEN' && 'animate-pulse')}
-    />
-    {OPERATIONAL_LABEL[status]}
-  </span>
+  <span className={clsx('pill', OPERATIONAL_STYLE[status])}>{OPERATIONAL_LABEL[status]}</span>
+);
+
+/**
+ * Whether we read this shop's shelf: green when we do, red when we do not.
+ * A shop with a red lamp has no data here yet — it is licensed, and its
+ * shelf is simply not one we read.
+ */
+export const ShelfLamp = ({ read, className }: { read: boolean; className?: string }) => (
+  <span
+    role="img"
+    aria-label={read ? 'Shelf read' : 'No data yet'}
+    title={read ? 'Shelf read' : 'No data yet'}
+    className={clsx(
+      'inline-block h-2.5 w-2.5 shrink-0 rounded-full',
+      read ? 'bg-moss-400 shadow-[0_0_8px_rgba(99,221,151,0.55)]' : 'bg-rust-400',
+      className,
+    )}
+  />
 );
 
 export const LicenseTag = ({ d }: { d: Dispensary }) => (

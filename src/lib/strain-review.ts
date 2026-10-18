@@ -24,6 +24,23 @@ import type { FlowerListing } from './menu-format';
  * ones for that list (scripts/strain-review.ts prints them).
  */
 
+/** One strain under several names, across growers (data/strain-synonyms.json). */
+export type SynonymBook = { strains: Record<string, string[]> };
+
+/**
+ * The strain a name is one of, by the synonym book: "GG4" and "Original Glue"
+ * are Gorilla Glue. Returns that strain's name, or null for a name the book
+ * does not list. It groups listings; it never renames one — each grower's
+ * listing keeps the name it sells it under.
+ */
+export const strainFamilies = (book: SynonymBook) => {
+  const family = new Map<string, string>();
+  for (const [name, others] of Object.entries(book.strains)) {
+    for (const n of [name, ...others]) family.set(looseKey(n), name);
+  }
+  return (name: string): string | null => family.get(looseKey(name)) ?? null;
+};
+
 export type LineBook = {
   /** Per brandKey, product lines and grades confirmed as not being cultivars. */
   lines: Record<string, string[]>;
@@ -435,7 +452,8 @@ const wordsKey = (s: string) =>
    "Melted Strawberry's" and "Melted Strawberries", "Bottomless Mintz" and
    "Bottomless Mints", "Biscoti" and "Biscotti" read the same. A curly
    apostrophe is one too: "Grandma’s House" and "Grandma's House" were two
-   strains, each with half the shops. */
+   strains, each with half the shops. So is the frozen dessert's two
+   spellings: "Sunset Sherbet" and "Sunset Sherbert" are one plant. */
 export const looseKey = (s: string) =>
   fold(s)
     .replace(/&/g, ' and ')
@@ -444,6 +462,7 @@ export const looseKey = (s: string) =>
     .split(/[^a-z0-9]+/)
     .filter(Boolean)
     .map((w) => {
+      if (w === 'sherbert' || w === 'sherberts') w = 'sherbet';
       // Cookies, Cookie; Strawberries, Strawberry, Strawberry's; Candyz, Candy.
       if (w.length > 4 && w.endsWith('ies')) w = `${w.slice(0, -3)}i`;
       else if (w.length > 3 && /[sz]$/.test(w)) w = w.slice(0, -1);

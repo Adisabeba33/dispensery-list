@@ -3,7 +3,8 @@ import Link from 'next/link';
 import type { TerritoryShop } from '@/lib/territory-data';
 import { displayName } from '@/lib/territory-data';
 import { LICENSE_TYPE_LABEL } from '@/lib/data';
-import { mapsUrl, prettyDate } from '@/lib/format';
+import { prettyDate } from '@/lib/format';
+import { ShelfLamp } from './Badges';
 
 /**
  * A shop in a territory that has nothing but its registry record.
@@ -20,7 +21,7 @@ export const TerritoryCard = ({
   shelfHref,
 }: {
   d: TerritoryShop;
-  /** Strains in stock on the shelf read for this shop, where one was. */
+  /** Strains on the shelf read for this shop, where one was. */
   shelf?: number;
   /** Its shelf page, when the territory has them. */
   shelfHref?: string;
@@ -32,7 +33,9 @@ export const TerritoryCard = ({
   return (
     <div className="card h-full p-5">
       <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
+        <div className="flex min-w-0 items-start gap-2.5">
+          <ShelfLamp read={shelf !== undefined} className="mt-[0.45rem]" />
+          <div className="min-w-0">
           <p className="truncate text-[1.05rem] font-semibold tracking-tight text-chalk-50">
             {shelfHref ? (
               <Link href={shelfHref} className="transition-colors hover:text-moss-400">
@@ -43,6 +46,7 @@ export const TerritoryCard = ({
             )}
           </p>
           <p className="mt-1 text-sm text-chalk-400">{d.address.county} County</p>
+          </div>
         </div>
         <span
           className={clsx(
@@ -83,27 +87,23 @@ export const TerritoryCard = ({
         )}
       </dl>
 
-      {shelfHref && (
+      {shelfHref ? (
         <Link
           href={shelfHref}
           className="mt-4 flex items-center justify-between gap-2 rounded-lg border border-moss-600/50 bg-moss-600/10 px-3 py-2 text-sm font-medium text-moss-400 transition-colors hover:border-moss-400"
         >
           <span>
-            See the shelf — {shelf ?? 0} {shelf === 1 ? 'strain' : 'strains'} in stock
+            {shelf ?? 0} {shelf === 1 ? 'strain' : 'strains'} on the shelf
           </span>
           <span aria-hidden>→</span>
         </Link>
+      ) : (
+        <p className="mt-4 rounded-lg border border-rust-400/30 bg-rust-400/[0.06] px-3 py-2 text-sm text-rust-400">
+          No data yet
+        </p>
       )}
 
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-ink-700/70 pt-3">
-        <a
-          href={mapsUrl(d)}
-          target="_blank"
-          rel="noreferrer noopener"
-          className="link text-sm"
-        >
-          Find the address
-        </a>
+      <div className="mt-4 flex flex-wrap items-center justify-end gap-2 border-t border-ink-700/70 pt-3">
         <span className="font-mono text-[0.7rem] tracking-tight text-chalk-500">
           {d.licenseNumber}
         </span>

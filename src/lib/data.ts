@@ -2,6 +2,7 @@ import dispensariesRaw from '../../data/dispensaries.json';
 import demoRaw from '../../data/dispensaries.demo.json';
 import municipalitiesRaw from '../../data/municipalities.json';
 import type { Borough, County, Dispensary, Municipality } from './types';
+import { withoutEntityForm } from './format';
 
 /**
  * The delivered dataset is data/dispensaries.json. Until the research agent
@@ -51,7 +52,7 @@ export const OPERATIONAL_LABEL: Record<string, string> = {
   UNKNOWN: 'Status unconfirmed',
 };
 
-export const displayName = (d: Dispensary): string => d.dbaName ?? d.legalName;
+export const displayName = (d: Dispensary): string => withoutEntityForm(d.dbaName ?? d.legalName);
 
 /** Region a record belongs to in the navigation: a borough, or Westchester. */
 export const regionOf = (d: Dispensary): string =>
