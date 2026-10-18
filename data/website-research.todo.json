@@ -308,11 +308,11 @@
     "county": "Albany",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-06-02",
-    "website": "https://darkhorseny.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Dark Horse site identifies 15 Centre St, Albany and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Dark Horse site identifies 15 Centre St, Albany and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain redirects to a HugeDomains page offering it for sale, not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -713,11 +713,11 @@
     "county": "Chautauqua",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-01-02",
-    "website": "https://thenaturaldispensary.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Natural Dispensary site identifies Jamestown location at 1067 E 2nd St and exposes Shop/Menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Natural Dispensary site identifies Jamestown location at 1067 E 2nd St and exposes Shop/Menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain redirects to a HugeDomains page offering it for sale, not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -1208,11 +1208,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-02-28",
-    "website": "https://commandcannabis.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Command Cannabis site identifies 3871 S Park Ave, Blasdell and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Command Cannabis site identifies 3871 S Park Ave, Blasdell and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain redirects to a HugeDomains page offering it for sale, not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -1268,11 +1268,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-01",
-    "website": "https://eriecountycannabis.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Erie County Cannabis site identifies 1727 Genesee St, Buffalo and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Erie County Cannabis site identifies 1727 Genesee St, Buffalo and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -1283,11 +1283,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-09",
-    "website": "https://ethercannabis.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Ether Cannabis site identifies 5100 Genesee St, Buffalo/Cheektowaga and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Ether Cannabis site identifies 5100 Genesee St, Buffalo/Cheektowaga and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain redirects to a HugeDomains page offering it for sale, not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -1418,11 +1418,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-06-16",
-    "website": "https://kushmartny.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party KushMart NY site identifies Lancaster location at 5211 Broadway and exposes shop/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party KushMart NY site identifies Lancaster location at 5211 Broadway and exposes shop/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain redirects to a GoDaddy page offering it for sale, not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -1658,11 +1658,11 @@
     "county": "Erie",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-06-29",
-    "website": "https://weedkingny.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Weed King NY site identifies 2121 Niagara Falls Blvd, Amherst and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Weed King NY site identifies 2121 Niagara Falls Blvd, Amherst and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -1688,11 +1688,11 @@
     "county": "Essex",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-09-10",
-    "website": "https://chesterfieldcannabis.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Chesterfield attribution remains tied to 89 Kent St, Keeseville. QA removed homepage from menuUrl because a homepage is not a verified flower endpoint."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Chesterfield attribution remains tied to 89 Kent St, Keeseville. QA removed homepage from menuUrl because a homepage is not a verified flower endpoint. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -1763,11 +1763,11 @@
     "county": "Greene",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-04-24",
-    "website": "https://wintergreencannabis.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Wintergreen site identifies 6320 Main St, Tannersville and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Wintergreen site identifies 6320 Main St, Tannersville and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -1793,11 +1793,11 @@
     "county": "Jefferson",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-02-01",
-    "website": "https://blackriversupply.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Black River Supply Company site identifies 15 Bridge St, Carthage and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Black River Supply Company site identifies 15 Bridge St, Carthage and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain points at Cloudflare with no site behind it (Cloudflare error 1001, for it and its www. form), so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -1898,11 +1898,11 @@
     "county": "Livingston",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-04-17",
-    "website": "https://nyflowerdepot.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party NY Flower Depot site identifies 4245 Lakeville Rd, Geneseo and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party NY Flower Depot site identifies 4245 Lakeville Rd, Geneseo and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -1988,11 +1988,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-05-30",
-    "website": "https://cannabiscornerroc.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Cannabis Corner site identifies 2227 Clifford Ave, Rochester and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Cannabis Corner site identifies 2227 Clifford Ave, Rochester and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -2063,11 +2063,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-03-30",
-    "website": "https://goodlifecollective.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Good Life Collective identifies Rochester location at 155 Monroe Ave and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Good Life Collective identifies Rochester location at 155 Monroe Ave and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain redirects to a GoDaddy page offering it for sale, not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -2123,11 +2123,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-02-06",
-    "website": "https://mjdispensary.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party MJ Dispensary site identifies Honeoye Falls location at 201 W Main St; multi-location attribution matched to address and online menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party MJ Dispensary site identifies Honeoye Falls location at 201 W Main St; multi-location attribution matched to address and online menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -2138,11 +2138,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-27",
-    "website": "https://mjdispensary.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party MJ Dispensary site identifies Rochester/Park Ave location at 649 Park Ave; multi-location attribution matched to address and online menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party MJ Dispensary site identifies Rochester/Park Ave location at 649 Park Ave; multi-location attribution matched to address and online menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -2153,11 +2153,11 @@
     "county": "Monroe",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-11-19",
-    "website": "https://mjdispensary.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party MJ Dispensary site identifies Spencerport location at 377 S Union St; multi-location attribution matched to address and online menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party MJ Dispensary site identifies Spencerport location at 377 S Union St; multi-location attribution matched to address and online menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -2603,11 +2603,11 @@
     "county": "Onondaga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-06-03",
-    "website": "https://meadowflower.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Meadow Flower site identifies 7621 Oswego Rd, Liverpool and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Meadow Flower site identifies 7621 Oswego Rd, Liverpool and exposes dispensary/menu information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain redirects to a HugeDomains page offering it for sale, not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -2633,11 +2633,11 @@
     "county": "Ontario",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-01",
-    "website": "https://fingerlakescannabisco.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party FingerLakes Cannabis Co identifies 5 Railroad St, Victor and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party FingerLakes Cannabis Co identifies 5 Railroad St, Victor and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at Sedo, not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -2648,11 +2648,11 @@
     "county": "Ontario",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-25",
-    "website": "https://goodlifecollective.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Good Life Collective identifies Finger Lakes/Canandaigua operation at 230 S Main St and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Good Life Collective identifies Finger Lakes/Canandaigua operation at 230 S Main St and exposes online shopping/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain redirects to a GoDaddy page offering it for sale, not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -2738,11 +2738,11 @@
     "county": "Orange",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-04-28",
-    "website": "https://aclassyjoint.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party A Classy Joint site identifies 46 Ronald Reagan Blvd, Warwick and exposes shop/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party A Classy Joint site identifies 46 Ronald Reagan Blvd, Warwick and exposes shop/menu. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -2783,11 +2783,11 @@
     "county": "Orange",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-08-11",
-    "website": "https://cannablissrecreational.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Cannabliss Recreational site identifies 217 S Plank Rd, Newburgh and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Cannabliss Recreational site identifies 217 S Plank Rd, Newburgh and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain points at Cloudflare with no site behind it (Cloudflare error 1001, for it and its www. form), so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -2843,11 +2843,11 @@
     "county": "Orange",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-12-31",
-    "website": "https://happytreecannabis.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Happy Tree site identifies 99 Route 17K, Newburgh and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Happy Tree site identifies 99 Route 17K, Newburgh and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -2873,11 +2873,11 @@
     "county": "Orange",
     "licenseType": "MICROBUSINESS",
     "registrySaysOpened": "2026-04-20",
-    "website": "https://newburghkushfactory.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Newburgh Kush Factory site identifies 1255 NY-300, Newburgh and provides cannabis retail/product information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Newburgh Kush Factory site identifies 1255 NY-300, Newburgh and provides cannabis retail/product information. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -3008,11 +3008,11 @@
     "county": "Rensselaer",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-05-09",
-    "website": "https://hoosickdispensary.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Hoosick Dispensary site identifies 514 Congress St, Troy and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Hoosick Dispensary site identifies 514 Congress St, Troy and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -3023,11 +3023,11 @@
     "county": "Rensselaer",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-24",
-    "website": "https://highfrequencycannabis.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party High Frequency site identifies 96 Columbia St, Rensselaer and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party High Frequency site identifies 96 Columbia St, Rensselaer and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -3158,11 +3158,11 @@
     "county": "Rockland",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-07-27",
-    "website": "https://kushmartny.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party KushMart NY site identifies Haverstraw location at 147 Route 9W and exposes shop/menu; chain attribution matched to address. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party KushMart NY site identifies Haverstraw location at 147 Route 9W and exposes shop/menu; chain attribution matched to address. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain redirects to a GoDaddy page offering it for sale, not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -3248,11 +3248,11 @@
     "county": "Saratoga",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-07-05",
-    "website": "https://spacitycannabis.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Spa City Cannabis site identifies 75 Weibel Ave, Saratoga Springs and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Spa City Cannabis site identifies 75 Weibel Ave, Saratoga Springs and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -3308,11 +3308,11 @@
     "county": "Schenectady",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2026-03-16",
-    "website": "https://cloud9evolution.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Cloud 9 Evolution site identifies 1610 Eastern Pkwy, Schenectady and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Cloud 9 Evolution site identifies 1610 Eastern Pkwy, Schenectady and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -3323,11 +3323,11 @@
     "county": "Schenectady",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-11-20",
-    "website": "https://electriccitycannabis.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Electric City Cannabis Co site identifies 1354 Lower Broadway, Schenectady and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Electric City Cannabis Co site identifies 1354 Lower Broadway, Schenectady and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -3518,11 +3518,11 @@
     "county": "Tompkins",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-10-04",
-    "website": "https://ithacacannabis.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party retail site identifies 105 Dryden Rd, Ithaca; matched to ATNC Inc license row and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party retail site identifies 105 Dryden Rd, Ithaca; matched to ATNC Inc license row and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -3818,11 +3818,11 @@
     "county": "Washington",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2025-10-01",
-    "website": "https://greenwitchdispensary.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party Green Witch Dispensary site identifies 1156 Route 29, Greenwich and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party Green Witch Dispensary site identifies 1156 Route 29, Greenwich and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
@@ -3833,11 +3833,11 @@
     "county": "Washington",
     "licenseType": "ADULT_USE_RETAIL_DISPENSARY",
     "registrySaysOpened": "2024-09-27",
-    "website": "https://highsocietydispensary.com/",
+    "website": null,
     "menuUrl": null,
     "hasNoWebsite": false,
-    "checkedAt": "2026-09-20",
-    "notes": "First-party High Society Dispensary site identifies 345 Main St, Hudson Falls and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared."
+    "checkedAt": "2026-10-18",
+    "notes": "First-party High Society Dispensary site identifies 345 Main St, Hudson Falls and exposes online menu/order. QA: homepage is not a distinct verified category endpoint, so menuUrl was cleared. 2026-10-18: the domain is parked at GoDaddy (its page is a parking lander), not the shop's site, so the website was taken off the register."
   },
   {
     "territory": "upstate",
