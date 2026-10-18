@@ -24,8 +24,8 @@ export default function MapPage() {
       status: d.operationalStatus,
       lat: d.geo!.lat,
       lng: d.geo!.lng,
-      // In stock only, like the cards: the pin says what the shop can sell.
-      menuCount: listingsFor(d.licenseNumber).filter((l) => l.inStock).length,
+      // Every strain on the shelf, like the cards.
+      menuCount: listingsFor(d.licenseNumber).length,
     }));
 
   const unmapped = dispensaries.filter((d) => d.geo === null);
@@ -54,9 +54,7 @@ export default function MapPage() {
           <p className="mt-3 text-sm leading-relaxed text-chalk-200">
             Every coordinate here is derived from the postal address on the licence, not surveyed
             on the ground. That places a pin on the right block and usually the right building, but
-            it can land on a neighbour, and on a long address range it can drift further. For
-            directions, use the address itself — each record links out to a maps search built from
-            it rather than from the pin.
+            it can land on a neighbour, and on a long address range it can drift further.
           </p>
           <p className="mt-3 text-sm leading-relaxed text-chalk-200">
             A pin is not proof a shop is trading today. Licensed-but-not-open businesses are on the

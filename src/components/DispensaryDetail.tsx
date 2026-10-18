@@ -7,18 +7,10 @@ import {
   LICENSE_TYPE_LABEL,
   regionOf,
 } from '@/lib/data';
-import {
-  fullAddress,
-  mapsUrl,
-  prettyDate,
-  prettyDay,
-  prettyPhone,
-  SERVICE_LABELS,
-  WEEKDAYS,
-} from '@/lib/format';
+import { fullAddress, prettyDate, prettyDay, prettyPhone, WEEKDAYS } from '@/lib/format';
 import type { FlowerListing } from '@/lib/menu-format';
 import type { Dispensary } from '@/lib/types';
-import { LicenseTag } from './Badges';
+import { LicenseTag, ShelfLamp } from './Badges';
 import { FlowerMenu } from './FlowerMenu';
 
 const Row = ({ label, children }: { label: string; children: React.ReactNode }) => (
@@ -88,11 +80,6 @@ export const DispensaryDetail = ({
     };
   }, [d.licenseNumber, given, hasMenu]);
 
-  const services = SERVICE_LABELS.map(({ key, label }) => ({
-    label,
-    value: d.services?.[key] as boolean | null | undefined,
-  })).filter((s) => s.value !== undefined);
-
   const hasHours = d.hours !== null;
   const menu = given ?? fetched ?? [];
 
@@ -133,11 +120,20 @@ export const DispensaryDetail = ({
         </p>
       )}
 
-      {menu.length === 0 && menuUnavailable && (
-        <p className="mt-8 text-sm text-chalk-500">
-          This shop&apos;s online menu can&apos;t be read automatically, so its shelf isn&apos;t
-          shown here. Check the shop&apos;s own site for what is in stock.
-        </p>
+      {/* A shop whose shelf we do not read — never read, or no longer
+          (data/menu-paused.json) — has a red lamp, and here it says so. */}
+      {(given ? given.length === 0 : !hasMenu) && (
+        <div className="mt-8 flex items-start gap-3 rounded-xl border border-rust-400/30 bg-rust-400/[0.06] p-4">
+          <ShelfLamp read={false} className="mt-1.5" />
+          <div>
+            <p className="font-medium text-chalk-50">No data yet</p>
+            <p className="mt-1 text-sm text-chalk-400">
+              {menuUnavailable
+                ? 'We used to read this shop’s shelf and no longer can, so none is shown rather than an old one.'
+                : 'We do not read this shop’s shelf, so there is nothing on it to show.'}
+            </p>
+          </div>
+        </div>
       )}
 
       {menu.length > 0 && (
@@ -179,36 +175,14 @@ export const DispensaryDetail = ({
           <section className="card p-6">
             <h2 className="text-base font-semibold tracking-tight text-chalk-50">Location</h2>
             <dl className="mt-3">
-              <Row label="Address">
-                <a className="link" href={mapsUrl(d)} target="_blank" rel="noreferrer noopener">
-                  {fullAddress(d)}
-                </a>
-              </Row>
+              <Row label="Address">{fullAddress(d)}</Row>
               <Row label="Area">
                 {regionOf(d)} · {COUNTY_LABEL[d.address.county]} County
               </Row>
               {d.address.neighborhood && <Row label="Neighborhood">{d.address.neighborhood}</Row>}
-              {d.contact?.phone && (
-                <Row label="Phone">
-                  <a className="link" href={`tel:${d.contact.phone}`}>
-                    {prettyPhone(d.contact.phone)}
-                  </a>
-                </Row>
-              )}
-              {d.contact?.website && (
-                <Row label="Website">
-                  <a className="link break-all" href={d.contact.website} target="_blank" rel="noreferrer noopener">
-                    {d.contact.website.replace(/^https?:\/\//, '').replace(/\/$/, '')}
-                  </a>
-                </Row>
-              )}
-              {d.menu?.menuUrl && (
-                <Row label="Menu">
-                  <a className="link break-all" href={d.menu.menuUrl} target="_blank" rel="noreferrer noopener">
-                    {d.menu.provider ? `${d.menu.provider.toLowerCase()} listing` : 'online menu'}
-                  </a>
-                </Row>
-              )}
+              {/* An index, not a way in: no link to the shop's site, its menu or
+                  a map — the phone number is a fact about the shop, shown as one. */}
+              {d.contact?.phone && <Row label="Phone">{prettyPhone(d.contact.phone)}</Row>}
             </dl>
           </section>
 
@@ -235,39 +209,13 @@ export const DispensaryDetail = ({
             ) : (
               <p className="mt-3 text-sm text-chalk-400">
                 Not collected yet. We would rather say nothing than publish hours we have not
-                checked — call ahead or use the shop&apos;s own site.
+                checked.
               </p>
             )}
           </section>
         </div>
 
         <div className="space-y-8">
-          <section className="card p-6">
-            <h2 className="text-base font-semibold tracking-tight text-chalk-50">Services</h2>
-            {services.length === 0 ? (
-              <p className="mt-3 text-sm text-chalk-400">Not collected yet.</p>
-            ) : (
-              <ul className="mt-3 space-y-2 text-sm">
-                {services.map((s) => (
-                  <li key={s.label} className="flex items-center justify-between gap-3">
-                    <span className="text-chalk-200">{s.label}</span>
-                    <span
-                      className={
-                        s.value === true
-                          ? 'text-moss-400'
-                          : s.value === false
-                            ? 'text-chalk-500'
-                            : 'text-chalk-500'
-                      }
-                    >
-                      {s.value === true ? 'Yes' : s.value === false ? 'No' : 'Unknown'}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </section>
-
           <section className="card p-6">
             <h2 className="text-base font-semibold tracking-tight text-chalk-50">
               Where this came from

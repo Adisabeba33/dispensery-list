@@ -8,6 +8,8 @@ import { DebutBadge } from './DebutTag';
 
 export type StrainEntry = {
   key: string;
+  /** Its page, /menus/strains/<slug>/ — for a strain on three shelves or more. */
+  slug: string | null;
   name: string;
   lineage: string;
   thcPercent: number | null;
@@ -54,7 +56,15 @@ const StrainRow = ({
   <li className="card min-w-0 p-4">
     <div className="flex items-start justify-between gap-3">
       <div className="min-w-0">
-        <h3 className="truncate text-[0.95rem] font-semibold tracking-tight text-chalk-50">{s.name}</h3>
+        <h3 className="truncate text-[0.95rem] font-semibold tracking-tight text-chalk-50">
+          {s.slug ? (
+            <Link href={`/menus/strains/${s.slug}/`} className="transition-colors hover:text-moss-400">
+              {s.name}
+            </Link>
+          ) : (
+            s.name
+          )}
+        </h3>
         <p className="mt-0.5 truncate text-xs text-chalk-500">
           {s.brands.length > 0 ? `by ${s.brands.slice(0, 2).join(' · ')}` : 'Brand not stated'}
         </p>

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 /* Counted from the shelf file, so the sentence cannot drift from it. */
-const inStock = Object.values(territoryShelfCounts('upstate')).filter((n) => n > 0).length;
+const shelves = Object.keys(territoryShelfCounts('upstate')).length;
 
 export default function UpstatePage() {
   return (
@@ -23,12 +23,12 @@ export default function UpstatePage() {
             market, though. Erie County holds 75 of them; the twenty-five smallest counties hold
             68 between them, and five have exactly one.
           </p>
-          {inStock > 0 && (
+          {shelves > 0 && (
             <p className="text-base text-chalk-300">
-              {inStock} of these shops had flower in stock when their shelf was last read — by
-              hand, not every day. To see what is on one, press{' '}
+              {shelves} of these shops have had their shelf read — by hand, not every day. To see
+              what is on one, press{' '}
               <a href="#list" className="link">
-                “Flower in stock”
+                “Shelf read”
               </a>{' '}
               in the list below and open a shop.
             </p>

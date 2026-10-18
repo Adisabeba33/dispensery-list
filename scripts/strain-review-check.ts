@@ -13,7 +13,15 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import type { FlowerListing } from '../src/lib/menu-format';
-import { reviewListings, reviewShelf, titleCase, type LineBook } from '../src/lib/strain-review';
+import {
+  looseKey,
+  reviewListings,
+  reviewShelf,
+  strainFamilies,
+  titleCase,
+  type LineBook,
+  type SynonymBook,
+} from '../src/lib/strain-review';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const read = <T>(p: string): T => JSON.parse(readFileSync(resolve(ROOT, p), 'utf8')) as T;
@@ -404,6 +412,35 @@ const clash = Object.entries(book.notLines ?? {}).flatMap(([k, v]) =>
   v.filter((n) => (book.lines[k] ?? []).some((l) => l.toLowerCase() === n.toLowerCase())),
 );
 check('nothing is both a line and a cultivar', clash, []);
+
+/* The strain index and the strain pages group on looseKey, so two keys for one
+   name are two rows and two pages for one strain. */
+check('a curly apostrophe folds as a straight one', looseKey('Grandma’s House'), looseKey("Grandma's House"));
+check('sherbet and sherbert are one word', looseKey('Sunset Sherbert'), looseKey('Sunset Sherbet'));
+
+/* The synonym book (data/strain-synonyms.json) groups names across growers.
+   What it joins, and — more important — what it must leave apart. */
+const synonyms = read<SynonymBook>('data/strain-synonyms.json');
+const familyOf = strainFamilies(synonyms);
+for (const name of ['GG4', 'Gorilla Glue #4', 'Original Glue', 'Gorilla Glue (GG4)', 'Gorilla Glue']) {
+  check(`${name} is Gorilla Glue`, familyOf(name), 'Gorilla Glue');
+}
+check('Larry Bird is Gelato 33', familyOf('Larry Bird'), 'Gelato 33');
+check('Bacio Gelato is Gelato 41', familyOf('Bacio Gelato'), 'Gelato 41');
+for (const name of ['Gorilla Glue #6', 'Godzilla Glue', 'Sour Glue', 'GG', 'Glue', 'Gelato', 'Gelato Z', 'Skywalker', 'Zesty Garlic Cookies']) {
+  check(`${name} stays its own strain`, familyOf(name), null);
+}
+/* A name in two entries would join two strains through it. */
+const claimed = new Map<string, string>();
+const inTwo: string[] = [];
+for (const [strain, others] of Object.entries(synonyms.strains)) {
+  for (const n of [strain, ...others]) {
+    const was = claimed.get(looseKey(n));
+    if (was && was !== strain) inTwo.push(`${n}: ${was} and ${strain}`);
+    claimed.set(looseKey(n), strain);
+  }
+}
+check('no name is in two synonym entries', inTwo, []);
 
 if (failures) {
   console.log(`\n${failures} check(s) failed.`);

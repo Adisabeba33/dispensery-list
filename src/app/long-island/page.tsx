@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 /* Counted from the shelf file, so the sentence cannot drift from it. */
-const inStock = Object.values(territoryShelfCounts('long-island')).filter((n) => n > 0).length;
+const shelves = Object.keys(territoryShelfCounts('long-island')).length;
 
 export default function LongIslandPage() {
   return (
@@ -28,12 +28,12 @@ export default function LongIslandPage() {
             has not established which municipalities opted out, so it is offered here as the
             likely reason and not as a finding.
           </p>
-          {inStock > 0 && (
+          {shelves > 0 && (
             <p className="text-base text-chalk-300">
-              {inStock} {inStock === 1 ? 'shop' : 'shops'} had flower in stock when the shelf was
-              last read — by hand, not every day. To see what is on one, press{' '}
+              {shelves} {shelves === 1 ? 'shop has' : 'shops have'} had the shelf read — by hand,
+              not every day. To see what is on one, press{' '}
               <a href="#list" className="link">
-                “Flower in stock”
+                “Shelf read”
               </a>{' '}
               in the list below and open a shop.
             </p>

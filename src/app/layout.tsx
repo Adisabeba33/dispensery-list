@@ -41,10 +41,11 @@ export const viewport: Viewport = {
 };
 
 /* The first four are New York City and Westchester — the register proper, with
-   menus, coordinates and hand-checked opt-outs behind them. Upstate and Long
-   Island are registry imports and nothing more, so they sit after a divider
-   rather than among them: a reader who cannot tell which is which will assume
-   the weaker pages are as complete as the stronger ones. */
+   menus, coordinates and hand-checked opt-outs behind them. Upstate, Long
+   Island and Massachusetts are registry imports and little more, so they sit
+   after a divider under "Places" rather than among them: a reader who cannot
+   tell which is which will assume the weaker pages are as complete as the
+   stronger ones. */
 const NAV = [
   { href: '/', label: 'Directory' },
   { href: '/menus/', label: 'Strains' },

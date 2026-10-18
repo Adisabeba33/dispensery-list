@@ -22,7 +22,9 @@ type Item = { href: string; label: string };
 export const SiteNav = ({ nav, territories }: { nav: Item[]; territories: Item[] }) => {
   const pathname = usePathname() ?? '/';
   const strip = useRef<HTMLDivElement>(null);
+  const placesRef = useRef<HTMLDivElement>(null);
   const [more, setMore] = useState({ left: false, right: false });
+  const [placesOpen, setPlacesOpen] = useState(false);
 
   const measure = useCallback(() => {
     const el = strip.current;
@@ -57,6 +59,22 @@ export const SiteNav = ({ nav, territories }: { nav: Item[]; territories: Item[]
     measure();
   }, [pathname, measure]);
 
+  /* Places close on a choice, a click anywhere else, or Escape. */
+  useEffect(() => setPlacesOpen(false), [pathname]);
+  useEffect(() => {
+    if (!placesOpen) return;
+    const onDown = (e: PointerEvent) => {
+      if (!placesRef.current?.contains(e.target as Node)) setPlacesOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setPlacesOpen(false);
+    document.addEventListener('pointerdown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('pointerdown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [placesOpen]);
+
   const nudge = (direction: 1 | -1) => {
     const el = strip.current;
     if (el) el.scrollBy({ left: direction * el.clientWidth * 0.7, behavior: 'smooth' });
@@ -64,37 +82,80 @@ export const SiteNav = ({ nav, territories }: { nav: Item[]; territories: Item[]
 
   const isHere = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
 
-  const link = (item: Item, quiet: boolean) => (
+  const link = (item: Item) => (
     <Link
       key={item.href}
       href={item.href}
       aria-current={isHere(item.href) ? 'page' : undefined}
-      title={quiet ? 'Registry import only — no menus, hours or opt-out data' : undefined}
       className={clsx(
         'shrink-0 whitespace-nowrap rounded-lg px-3 py-2 transition-colors hover:bg-ink-800',
-        isHere(item.href)
-          ? 'bg-ink-800 text-chalk-50'
-          : quiet
-            ? 'text-chalk-400 hover:text-chalk-100'
-            : 'text-chalk-200 hover:text-chalk-50',
+        isHere(item.href) ? 'bg-ink-800 text-chalk-50' : 'text-chalk-200 hover:text-chalk-50',
       )}
     >
       {item.label}
     </Link>
   );
 
+  const inPlaces = territories.some((t) => isHere(t.href));
+
   return (
-    <nav aria-label="Pages" className="relative -mx-5 min-w-0 sm:mx-0 sm:flex-1">
+    <nav ref={placesRef} aria-label="Pages" className="relative -mx-5 min-w-0 sm:mx-0 sm:flex-1">
       <div ref={strip} className="no-scrollbar flex overflow-x-auto px-5 pb-2 text-sm sm:px-0 sm:pb-0">
         {/* ml-auto keeps the menu to the right when it fits, and resolves to
             nothing when it does not — justify-end would push the overflow off
             the left edge, where no scrolling can reach it. */}
         <div className="flex shrink-0 items-center gap-1 sm:ml-auto">
-          {nav.map((item) => link(item, false))}
+          {nav.map((item) => link(item))}
           <span aria-hidden className="mx-1 h-5 w-px shrink-0 bg-ink-700" />
-          {territories.map((item) => link(item, true))}
+          {/* The places beyond the register proper, under one name: the strip
+              had grown a link per territory and ran off the screen. */}
+          <button
+            type="button"
+            aria-haspopup="true"
+            aria-expanded={placesOpen}
+            aria-current={inPlaces ? 'page' : undefined}
+            onClick={() => setPlacesOpen((v) => !v)}
+            className={clsx(
+              'flex shrink-0 items-center gap-1 whitespace-nowrap rounded-lg px-3 py-2 transition-colors hover:bg-ink-800',
+              inPlaces || placesOpen ? 'bg-ink-800 text-chalk-50' : 'text-chalk-200 hover:text-chalk-50',
+            )}
+          >
+            Places
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden
+              className={clsx('h-3.5 w-3.5 transition-transform', placesOpen && 'rotate-180')}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+            >
+              <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
       </div>
+
+      {/* Outside the strip, which scrolls and would clip it. */}
+      {placesOpen && (
+        <div className="absolute right-5 top-full z-50 mt-2 w-60 rounded-xl border border-ink-700 bg-ink-900 p-1.5 shadow-xl shadow-black/40 sm:right-0">
+          <p className="px-3 pb-1 pt-2 text-[0.7rem] uppercase tracking-[0.14em] text-chalk-500">
+            Registry import only
+          </p>
+          {territories.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              aria-current={isHere(item.href) ? 'page' : undefined}
+              className={clsx(
+                'block rounded-lg px-3 py-2 text-sm transition-colors hover:bg-ink-800',
+                isHere(item.href) ? 'bg-ink-800 text-chalk-50' : 'text-chalk-200 hover:text-chalk-50',
+              )}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      )}
 
       {more.left && (
         <button

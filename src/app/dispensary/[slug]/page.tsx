@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { DemoBanner } from '@/components/DemoBanner';
-import { StatusBadge, VerificationBadge } from '@/components/Badges';
+import { ShelfLamp, StatusBadge, VerificationBadge } from '@/components/Badges';
 import { DispensaryDetail } from '@/components/DispensaryDetail';
 import { dispensaries, displayName, getDispensary, isDemoData, LICENSE_TYPE_LABEL, regionOf } from '@/lib/data';
 import { fullAddress } from '@/lib/format';
@@ -30,6 +30,7 @@ export default async function DispensaryPage({ params }: Params) {
   const { slug } = await params;
   const d = getDispensary(slug);
   if (!d) notFound();
+  const menu = listingsFor(d.licenseNumber);
 
   return (
     <>
@@ -42,10 +43,11 @@ export default async function DispensaryPage({ params }: Params) {
 
         <header className="mt-6 flex flex-wrap items-start justify-between gap-4">
           <div className="min-w-0">
-            <h1 className="text-3xl font-semibold tracking-tight text-chalk-50 sm:text-4xl">
+            <h1 className="flex items-center gap-3 text-3xl font-semibold tracking-tight text-chalk-50 sm:text-4xl">
+              <ShelfLamp read={menu.length > 0} />
               {displayName(d)}
             </h1>
-            {d.dbaName && d.dbaName !== d.legalName && (
+            {displayName(d) !== d.legalName && (
               <p className="mt-2 text-sm text-chalk-400">
                 Licensed to <span className="text-chalk-200">{d.legalName}</span>
               </p>
@@ -59,7 +61,7 @@ export default async function DispensaryPage({ params }: Params) {
 
         <DispensaryDetail
           d={d}
-          menu={listingsFor(d.licenseNumber)}
+          menu={menu}
           partialShelf={shelfNote(d.licenseNumber)?.state === 'partial'}
           menuUnavailable={menuPaused(d.licenseNumber)}
         />

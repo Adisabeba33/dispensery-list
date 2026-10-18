@@ -78,8 +78,7 @@ export default function AboutPage() {
         <Section title="Unknown is not the same as no">
           <p>
             When a field says <span className="text-chalk-50">Unknown</span>, it means nobody has
-            checked it — not that the answer is no. A shop shown without delivery may well deliver.
-            Recording an unchecked field as a definite &ldquo;no&rdquo; would make the register look
+            checked it — not that the answer is no. Recording an unchecked field as a definite &ldquo;no&rdquo; would make the register look
             more complete than it is, at your expense.
           </p>
           <p>

@@ -4,35 +4,35 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import type { Dispensary } from '@/lib/types';
 import { displayName, LICENSE_TYPE_LABEL, regionOf } from '@/lib/data';
-import { fullAddress, SERVICE_LABELS } from '@/lib/format';
-import { LicenseTag, StatusBadge, VerificationBadge } from './Badges';
+import { fullAddress } from '@/lib/format';
+import { LicenseTag, ShelfLamp, StatusBadge, VerificationBadge } from './Badges';
 import { DispensaryDetail } from './DispensaryDetail';
 
 
 type SummaryProps = {
   d: Dispensary;
   expanded: boolean;
-  confirmed: { key: string; label: string }[];
   menuCount: number;
-  distance?: string | null;
 };
 
-const CardSummary = ({ d, expanded, confirmed, menuCount, distance }: SummaryProps) => (
+const CardSummary = ({ d, expanded, menuCount }: SummaryProps) => (
   <>
         <span className="flex w-full items-start justify-between gap-3">
-          <span className="min-w-0">
-            <span
-              className={clsx(
-                'block truncate text-[1.05rem] font-semibold tracking-tight text-chalk-50',
-                !expanded && 'group-hover:text-moss-400',
-              )}
-            >
-              {displayName(d)}
-            </span>
-            <span className="mt-1 block text-sm text-chalk-400">
-              {distance && <span className="font-medium text-moss-400">{distance} · </span>}
-              {d.address.neighborhood ? `${d.address.neighborhood} · ` : ''}
-              {regionOf(d)}
+          <span className="flex min-w-0 items-start gap-2.5">
+            <ShelfLamp read={menuCount > 0} className="mt-[0.45rem]" />
+            <span className="min-w-0">
+              <span
+                className={clsx(
+                  'block truncate text-[1.05rem] font-semibold tracking-tight text-chalk-50',
+                  !expanded && 'group-hover:text-moss-400',
+                )}
+              >
+                {displayName(d)}
+              </span>
+              <span className="mt-1 block text-sm text-chalk-400">
+                {d.address.neighborhood ? `${d.address.neighborhood} · ` : ''}
+                {regionOf(d)}
+              </span>
             </span>
           </span>
           <StatusBadge status={d.operationalStatus} />
@@ -40,23 +40,15 @@ const CardSummary = ({ d, expanded, confirmed, menuCount, distance }: SummaryPro
 
         <span className="mt-3 block text-sm text-chalk-200">{fullAddress(d)}</span>
 
-        {confirmed.length > 0 && (
-          <span className="mt-3 flex flex-wrap gap-1.5">
-            {confirmed.map(({ key, label }) => (
-              <span key={key} className="rounded-md bg-ink-800 px-2 py-1 text-[0.7rem] text-chalk-200">
-                {label}
-              </span>
-            ))}
-          </span>
-        )}
-
         <span className="mt-4 flex w-full flex-wrap items-center justify-between gap-2 border-t border-ink-700/70 pt-3">
           <span className="flex flex-wrap items-center gap-2">
             <VerificationBadge status={d.verification.status} />
-            {menuCount > 0 && (
+            {menuCount > 0 ? (
               <span className="pill border-moss-600/45 bg-moss-600/10 text-moss-400">
                 {menuCount} strains
               </span>
+            ) : (
+              <span className="pill border-rust-400/40 bg-rust-400/10 text-rust-400">No data yet</span>
             )}
           </span>
           <span className="flex items-center gap-3">
@@ -73,8 +65,6 @@ type Props = {
   onToggle?: () => void;
   /** Counted on the server: the client never holds every shop's shelf. */
   menuCount?: number;
-  /** Formatted straight-line distance from wherever the reader said they are. */
-  distance?: string | null;
 };
 
 /**
@@ -82,13 +72,10 @@ type Props = {
  * it. Links and controls inside a <button> are invalid markup, and browsers
  * swallow their clicks, which would break every link in the expanded view.
  */
-export const DispensaryCard = ({ d, expanded = false, onToggle, menuCount = 0, distance = null }: Props) => {
+export const DispensaryCard = ({ d, expanded = false, onToggle, menuCount = 0 }: Props) => {
   // Used outside the directory (the Westchester page) there is nothing to
   // expand into, so the summary links to the standalone page instead.
   const asLink = !onToggle;
-  // Only services confirmed true are shown. An unchecked service is absent, not
-  // denied — claiming "no delivery" because nobody looked would be a lie.
-  const confirmed = SERVICE_LABELS.filter(({ key }) => d.services?.[key] === true).slice(0, 4);
 
   return (
     <div
@@ -99,7 +86,7 @@ export const DispensaryCard = ({ d, expanded = false, onToggle, menuCount = 0, d
     >
       {asLink ? (
         <Link href={`/dispensary/${d.id}/`} className="group flex w-full flex-1 flex-col text-left">
-          <CardSummary d={d} expanded={expanded} confirmed={confirmed} menuCount={menuCount} distance={distance} />
+          <CardSummary d={d} expanded={expanded} menuCount={menuCount} />
         </Link>
       ) : (
       <button
@@ -108,7 +95,7 @@ export const DispensaryCard = ({ d, expanded = false, onToggle, menuCount = 0, d
         aria-expanded={expanded}
         className="group flex w-full flex-1 flex-col text-left"
       >
-        <CardSummary d={d} expanded={expanded} confirmed={confirmed} menuCount={menuCount} distance={distance} />
+        <CardSummary d={d} expanded={expanded} menuCount={menuCount} />
       </button>
       )}
 

@@ -2,6 +2,7 @@ import upstateRaw from '../../data/upstate/dispensaries.json';
 import longIslandRaw from '../../data/long-island/dispensaries.json';
 import massachusettsRaw from '../../data/massachusetts/dispensaries.json';
 import type { Dispensary } from './types';
+import { withoutEntityForm } from './format';
 import { optOutIsKnown, territory, type SiteTerritory } from './territories';
 
 /**
@@ -42,7 +43,7 @@ const DATA: Record<string, TerritoryShop[]> = {
 
 export const shopsIn = (id: string): TerritoryShop[] => DATA[id] ?? [];
 
-export const displayName = (d: TerritoryShop): string => d.dbaName ?? d.legalName;
+export const displayName = (d: TerritoryShop): string => withoutEntityForm(d.dbaName ?? d.legalName);
 
 /** Outside NYC there are no boroughs, so the county IS the region. */
 export const regionOf = (d: TerritoryShop): string => d.address.county;
@@ -137,7 +138,7 @@ export const gapsFor = (
   if (geo < n) {
     gaps.push({
       label: `Coordinates — ${n - geo} of ${n} not geocoded`,
-      detail: 'So there is no map here and no “near me”. The addresses are the registry’s own; a maps search on one will find it.',
+      detail: 'So there is no map here. The addresses are the registry’s own.',
     });
   }
 
@@ -165,8 +166,8 @@ export const gapsFor = (
       label: `Flower menus — read at ${shelf.shops} of ${opened} opened shops`,
       detail:
         t.state === 'MA'
-          ? `${shelf.listings.toLocaleString('en-US')} flower listings, read once, in the city of Boston only — the first stage of this trial. Press “Flower in stock” below to see those shops, and open one to see its shelf. They are kept out of the strain index and are not passed to SŌMA, both of which read New York’s shelves alone.`
-          : `${shelf.listings.toLocaleString('en-US')} flower listings, read by hand rather than every day: each shop’s page says the day its shelf was read. Press “Flower in stock” below to see those shops, and open one to see its shelf. They are kept out of the strain index and are not passed to SŌMA, both of which read the daily shelves of New York City and Westchester alone.`,
+          ? `${shelf.listings.toLocaleString('en-US')} flower listings, read once, in the city of Boston only — the first stage of this trial. Press “Shelf read” below to see those shops, and open one to see its shelf. They are kept out of the strain index and are not passed to SŌMA, both of which read New York’s shelves alone.`
+          : `${shelf.listings.toLocaleString('en-US')} flower listings, read by hand rather than every day: each shop’s page says the day its shelf was read. Press “Shelf read” below to see those shops, and open one to see its shelf. They are kept out of the strain index and are not passed to SŌMA, both of which read the daily shelves of New York City and Westchester alone.`,
     });
   } else {
     gaps.push({

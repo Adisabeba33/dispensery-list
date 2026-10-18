@@ -81,7 +81,7 @@ const Section = ({
 );
 
 const Grid = ({ children }: { children: ReactNode }) => (
-  <ul className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">{children}</ul>
+  <ul className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">{children}</ul>
 );
 
 const Tag = ({ children }: { children: ReactNode }) => (

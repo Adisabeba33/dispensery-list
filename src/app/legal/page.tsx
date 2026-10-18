@@ -125,7 +125,7 @@ export default function LegalPage() {
           </p>
           <p>
             Even so, shelves change hourly, licences lapse, and shops close without telling anyone.
-            Confirm anything that matters before you travel.
+            The register is an index of what was published, not a guide to where to buy.
           </p>
         </Section>
       </div>

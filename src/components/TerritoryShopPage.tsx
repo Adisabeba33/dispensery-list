@@ -4,7 +4,7 @@ import { FlowerMenu } from '@/components/FlowerMenu';
 import { displayName, shopsIn, type TerritoryShop } from '@/lib/territory-data';
 import { territory } from '@/lib/territories';
 import { shelfReadAt, territoryListingsFor, territoryShelfCounts } from '@/lib/territory-menu';
-import { mapsUrl, prettyDate } from '@/lib/format';
+import { prettyDate } from '@/lib/format';
 
 /**
  * One shop outside New York City and Westchester, and the shelf read from its
@@ -23,14 +23,14 @@ const COPY: Record<string, { opened: string; read: string; once: string; apart: 
   MA: {
     opened: 'Commission records it opened',
     read: 'Read once,',
-    once: 'the first stage of the Massachusetts trial. Unlike New York’s shelves, this one is not refreshed every day, so what is in stock may have changed. Check with the shop before you go.',
+    once: 'the first stage of the Massachusetts trial. Unlike New York’s shelves, this one is not refreshed every day, so the shelf may have changed since.',
     apart:
       'Massachusetts shelves are kept apart: they are not in the strain index or the brand pages, and they are not passed to SŌMA. Terpenes appear only where the shop’s own menu lists them; no New York strain reference is borrowed.',
   },
   NY: {
     opened: 'Registry records it opened',
     read: 'Read',
-    once: 'by hand. Unlike the shelves of New York City and Westchester, which are read every day, this one is not refreshed daily, so what is in stock may have changed. Check with the shop before you go.',
+    once: 'by hand. Unlike the shelves of New York City and Westchester, which are read every day, this one is not refreshed daily, so the shelf may have changed since.',
     apart:
       'Shelves outside the city are kept apart: they are not in the strain index or the brand pages, and they are not passed to SŌMA. Terpenes appear only where the shop’s own menu lists them; no strain reference from the city’s shelves is borrowed.',
   },
@@ -57,8 +57,7 @@ export const TerritoryShopPage = ({ id, d }: { id: string; d: TerritoryShop }) =
   const copy = COPY[t.state] ?? COPY.NY;
   const listings = territoryListingsFor(id, d.licenseNumber);
   const readAt = shelfReadAt(id, d.licenseNumber);
-  const inStock = territoryShelfCounts(id)[d.licenseNumber] ?? 0;
-  const website = d.contact?.website ?? null;
+  const onShelf = territoryShelfCounts(id)[d.licenseNumber] ?? 0;
 
   return (
     <article className="shell py-12">
@@ -68,7 +67,7 @@ export const TerritoryShopPage = ({ id, d }: { id: string; d: TerritoryShop }) =
 
       <header className="mt-6">
         <h1 className="text-3xl font-semibold tracking-tight text-chalk-50 sm:text-4xl">{displayName(d)}</h1>
-        {d.dbaName && d.dbaName !== d.legalName && (
+        {displayName(d) !== d.legalName && (
           <p className="mt-2 text-sm text-chalk-400">
             Licensed to <span className="text-chalk-200">{d.legalName}</span>
           </p>
@@ -78,9 +77,7 @@ export const TerritoryShopPage = ({ id, d }: { id: string; d: TerritoryShop }) =
       <dl className="mt-6 grid max-w-2xl gap-x-6 gap-y-2 text-sm sm:grid-cols-[auto_1fr]">
         <dt className="text-chalk-500">Address</dt>
         <dd className="text-chalk-200">
-          <a href={mapsUrl(d)} target="_blank" rel="noreferrer noopener" className="link">
-            {[d.address.line1, d.address.line2, `${d.address.city}, ${t.state} ${d.address.zip}`].filter(Boolean).join(', ')}
-          </a>
+          {[d.address.line1, d.address.line2, `${d.address.city}, ${t.state} ${d.address.zip}`].filter(Boolean).join(', ')}
         </dd>
         <dt className="text-chalk-500">Licence</dt>
         <dd className="font-mono text-chalk-200">{d.licenseNumber}</dd>
@@ -88,16 +85,6 @@ export const TerritoryShopPage = ({ id, d }: { id: string; d: TerritoryShop }) =
           <>
             <dt className="text-chalk-500">{copy.opened}</dt>
             <dd className="text-chalk-200">{prettyDate(d.dates.openedOn)}</dd>
-          </>
-        )}
-        {website && (
-          <>
-            <dt className="text-chalk-500">Website</dt>
-            <dd className="min-w-0">
-              <a href={website} target="_blank" rel="noreferrer noopener" className="link break-all">
-                {website.replace(/^https?:\/\//, '').replace(/\/$/, '')}
-              </a>
-            </dd>
           </>
         )}
       </dl>
@@ -117,7 +104,7 @@ export const TerritoryShopPage = ({ id, d }: { id: string; d: TerritoryShop }) =
 
       <section id="menu" className="mt-10 scroll-mt-24">
         <h2 className="text-xl font-semibold tracking-tight text-chalk-50">
-          On the shelf — {inStock} {inStock === 1 ? 'strain' : 'strains'} in stock
+          On the shelf — {onShelf} {onShelf === 1 ? 'strain' : 'strains'}
         </h2>
         <div className="mt-6">
           <FlowerMenu listings={listings} />

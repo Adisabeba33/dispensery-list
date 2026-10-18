@@ -30,16 +30,22 @@ export const fullAddress = (d: Dispensary): string =>
     .join(', ');
 
 /**
- * Directions link built from the address rather than coordinates: most records
- * have no verified geocode, and a maps search on a correct address beats a
- * pin dropped on a guessed one.
+ * A shop's name as the register prints it: the sign over the door, or the
+ * licensee's name without the company form at its end. "Garden Bliss LLC" is
+ * Garden Bliss, "4081 Companies, LLC" is 4081 Companies, "Melyne, Inc" is
+ * Melyne. "Co." stays: in "Chelsea Cannabis Co." it is part of the name. The
+ * full legal name is kept on the record and shown beside the licence.
  */
-export const mapsUrl = (d: {
-  address: { line1: string; city: string; zip: string; state?: string };
-}): string =>
-  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    `${d.address.line1}, ${d.address.city}, ${d.address.state ?? 'NY'} ${d.address.zip}`,
-  )}`;
+const ENTITY_FORM = /[\s,]+(?:L\.?\s?L\.?\s?C\.?|P\.?\s?L\.?\s?L\.?\s?C\.?|L\.?\s?L\.?\s?P\.?|Inc\.?|Incorporated|Corp\.?|Corporation|Ltd\.?|Limited)\s*$/i;
+
+export const withoutEntityForm = (name: string): string => {
+  let short = name.trim();
+  for (let was = ''; was !== short; ) {
+    was = short;
+    short = short.replace(ENTITY_FORM, '').replace(/[\s,]+$/, '');
+  }
+  return short || name.trim();
+};
 
 export const prettyPhone = (phone: string | null): string | null =>
   phone ? phone.replace(/^\+1-/, '').replace(/-/g, ' ') : null;
@@ -72,17 +78,3 @@ export const prettyDateTime = (iso: string | null): string | null => {
   });
   return `${stamp} New York time`;
 };
-
-/** Service flags worth surfacing, in the order a shopper cares about them. */
-export const SERVICE_LABELS: { key: keyof NonNullable<Dispensary['services']>; label: string }[] = [
-  { key: 'inStorePurchase', label: 'In-store' },
-  { key: 'delivery', label: 'Delivery' },
-  { key: 'pickup', label: 'Pickup' },
-  { key: 'curbside', label: 'Curbside' },
-  { key: 'servesMedical', label: 'Medical' },
-  { key: 'onsiteConsumption', label: 'On-site use' },
-  { key: 'adaAccessible', label: 'Accessible' },
-  { key: 'acceptsDebit', label: 'Debit' },
-  { key: 'atmOnSite', label: 'ATM' },
-  { key: 'parking', label: 'Parking' },
-];

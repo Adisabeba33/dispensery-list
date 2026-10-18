@@ -49,7 +49,7 @@ export const BrandIndex = ({ brands }: { brands: BrandSummary[] }) => {
       {shown.length === 0 ? (
         <p className="mt-6 text-chalk-300">No brand on the collected shelves matches that.</p>
       ) : (
-        <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {shown.slice(0, limit).map((b) => (
             <li key={b.key}>
               <Link href={`/menus/brands/${b.key}/`} className="card block p-4 transition hover:border-moss-600">
