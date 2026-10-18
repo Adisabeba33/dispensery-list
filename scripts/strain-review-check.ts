@@ -13,7 +13,7 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import type { FlowerListing } from '../src/lib/menu-format';
-import { reviewListings, reviewShelf, titleCase, type LineBook } from '../src/lib/strain-review';
+import { looseKey, reviewListings, reviewShelf, titleCase, type LineBook } from '../src/lib/strain-review';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const read = <T>(p: string): T => JSON.parse(readFileSync(resolve(ROOT, p), 'utf8')) as T;
@@ -404,6 +404,10 @@ const clash = Object.entries(book.notLines ?? {}).flatMap(([k, v]) =>
   v.filter((n) => (book.lines[k] ?? []).some((l) => l.toLowerCase() === n.toLowerCase())),
 );
 check('nothing is both a line and a cultivar', clash, []);
+
+/* The strain index and the strain pages group on looseKey, so two keys for one
+   name are two rows and two pages for one strain. */
+check('a curly apostrophe folds as a straight one', looseKey('Grandma’s House'), looseKey("Grandma's House"));
 
 if (failures) {
   console.log(`\n${failures} check(s) failed.`);

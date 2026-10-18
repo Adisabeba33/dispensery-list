@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import type { Dispensary } from '@/lib/types';
 import { displayName, regionOf } from '@/lib/data';
 import { buildZipCentroids, distanceKm, prettyDistance, zipInScope } from '@/lib/geo';
+import { VIEW_KEY } from '@/lib/origin';
 import { DispensaryCard } from './DispensaryCard';
 import { DispensaryDetail } from './DispensaryDetail';
 
@@ -46,7 +47,7 @@ export const DirectoryExplorer = ({
   /* Following a shop's own website and coming back reloads the page. Without
      this the reader lands on an empty search, having lost their filters, their
      position and the card they were reading. */
-  const STORAGE_KEY = 'ny-dispensary-register:view';
+  const STORAGE_KEY = VIEW_KEY;
 
   useEffect(() => {
     try {

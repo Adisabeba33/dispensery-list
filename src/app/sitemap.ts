@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { dispensaries } from '@/lib/data';
 import { brandSummaries } from '@/lib/shelf';
+import { strainSlugs } from '@/lib/strain-page';
 import { SITE_URL } from '@/lib/site';
 import { shopsIn } from '@/lib/territory-data';
 import { territoryShelfCounts } from '@/lib/territory-menu';
@@ -8,7 +9,7 @@ import { territoryShelfCounts } from '@/lib/territory-menu';
 export const dynamic = 'force-static';
 
 /* Every page a search engine should know about: the fixed pages, every
-   licensed shop and every brand on a shelf. The site is rebuilt with each
+   licensed shop, and every brand and strain on a shelf. The site is rebuilt with each
    day's shelves, so the build time is when the pages last changed. */
 export default function sitemap(): MetadataRoute.Sitemap {
   const built = new Date();
@@ -40,5 +41,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         .map((d) => page(`/${id}/${d.id}/`, 'weekly', 0.5));
     }),
     ...brandSummaries().map((b) => page(`/menus/brands/${b.key}/`, 'daily', 0.6)),
+    ...strainSlugs().map((slug) => page(`/menus/strains/${slug}/`, 'daily', 0.6)),
   ];
 }

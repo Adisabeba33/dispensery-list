@@ -433,12 +433,14 @@ const wordsKey = (s: string) =>
   fold(s).replace(/&/g, ' and ').replace(/\bn\b/g, ' and ').split(/[^a-z0-9]+/).filter(Boolean).sort().join(' ');
 /* A name with its plural, its apostrophes and its doubled letters folded away:
    "Melted Strawberry's" and "Melted Strawberries", "Bottomless Mintz" and
-   "Bottomless Mints", "Biscoti" and "Biscotti" read the same. */
+   "Bottomless Mints", "Biscoti" and "Biscotti" read the same. A curly
+   apostrophe is one too: "Grandma’s House" and "Grandma's House" were two
+   strains, each with half the shops. */
 export const looseKey = (s: string) =>
   fold(s)
     .replace(/&/g, ' and ')
     .replace(/\bn\b/g, ' and ')
-    .replace(/'/g, '')
+    .replace(/['‘’]/g, '')
     .split(/[^a-z0-9]+/)
     .filter(Boolean)
     .map((w) => {

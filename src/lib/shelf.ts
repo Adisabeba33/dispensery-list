@@ -26,9 +26,19 @@ const shopOf = new Map(dispensaries.map((d) => [d.licenseNumber, d]));
  */
 export const strainEntries = (): StrainEntry[] => strainEntriesOf(listings);
 
-/* The same gathering over any set of listings — one brand's, for its page. */
-export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
+/* The same gathering over any set of listings — one brand's, for its page.
+   Each strain links to its own page, which is the strain across every shelf,
+   so its address is the one the whole register gave it, not one worked out
+   from this brand's spelling. */
+export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] =>
+  gather(rows).map(({ group, entry }) => ({ ...entry, slug: slugIndex().get(group) ?? slugOf(entry.name) }));
+
+/** One strain as gathered: the key it was grouped on, its entry, and its listings. */
+type Gathered = { group: string; entry: StrainEntry; rows: FlowerListing[] };
+
+const gather = (rows: FlowerListing[]): Gathered[] => {
   const byStrain = new Map<string, StrainEntry>();
+  const rowsOf = new Map<string, FlowerListing[]>();
   const spellings = new Map<string, Map<string, number>>();
   const settled = new Set<string>();
 
@@ -55,6 +65,7 @@ export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
     if (!entry) {
       entry = {
         key,
+        slug: '',
         name: written,
         lineage: l.lineage,
         thcPercent: l.thcPercent,
@@ -66,7 +77,9 @@ export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
         shops: [],
       };
       byStrain.set(key, entry);
+      rowsOf.set(key, []);
     }
+    rowsOf.get(key)!.push(l);
 
     entry.sizes = [...new Set([...entry.sizes, ...(l.availableSizesGrams ?? [])])].sort((a, b) => a - b);
     // Shops write the same brand differently — "mini mart" and "Mini MART" —
@@ -115,7 +128,9 @@ export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
   /* The most-used spelling wins, and SHOUTING loses a tie: with 'Blue Dream'
      and 'BLUE DREAM' equally common, the first is the strain and the second is
      a menu's house style. */
-  for (const entry of byStrain.values()) {
+  const gathered: Gathered[] = [];
+  for (const [group, entry] of byStrain) {
+    gathered.push({ group, entry, rows: rowsOf.get(group) ?? [] });
     if (settled.has(entry.key)) entry.debut = null;
     /* Two growers' debuts in one row: each counts its own shops, and the row's
        shops are at least all of them that stock it now. */
@@ -130,10 +145,58 @@ export const strainEntriesOf = (rows: FlowerListing[]): StrainEntry[] => {
     entry.key = entry.name.toLowerCase().replace(/[^a-z0-9]/g, '') || entry.key;
   }
 
-  return [...byStrain.values()].sort(
-    (a, b) => b.shops.length - a.shops.length || a.name.localeCompare(b.name),
+  return gathered.sort(
+    (a, b) => b.entry.shops.length - a.entry.shops.length || a.entry.name.localeCompare(b.entry.name),
   );
 };
+
+/**
+ * A strain's address: the name it is shown under, folded to what a URL can
+ * carry — "Permanent Marker" is /menus/strains/permanent-marker/. Apostrophes
+ * go without a gap, so "Grandma's House" is grandmas-house and not grandma-s.
+ *
+ * The name is the spelling most shops use, so the address moves only if the
+ * majority spelling does; case never moves it.
+ */
+const slugOf = (name: string): string =>
+  name
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/['‘’]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'strain';
+
+/* Every strain on every shelf, gathered once: the strain pages and every
+   index that links to them read it, and gathering the whole shelf costs a
+   pass over twenty-six thousand listings. */
+let everyStrain: Gathered[] | null = null;
+const allGathered = (): Gathered[] => (everyStrain ??= gather(listings));
+
+/* Group key → address. Two strains whose names fold to one address ("Devil's
+   Drip" and a shop's "Devils Drip" that the review kept apart) are told apart
+   by a number, the strain on more shelves keeping the plain one. */
+let slugs: Map<string, string> | null = null;
+const slugIndex = (): Map<string, string> => {
+  if (slugs) return slugs;
+  slugs = new Map();
+  const taken = new Set<string>();
+  for (const { group, entry } of allGathered()) {
+    const base = slugOf(entry.name);
+    let slug = base;
+    for (let n = 2; taken.has(slug); n += 1) slug = `${base}-${n}`;
+    taken.add(slug);
+    slugs.set(group, slug);
+  }
+  return slugs;
+};
+
+/** Every strain with its own page: its entry and the listings behind it. */
+export const strainGroups = (): (Gathered & { slug: string })[] =>
+  allGathered().map((g) => {
+    const slug = slugIndex().get(g.group)!;
+    return { ...g, slug, entry: { ...g.entry, slug } };
+  });
 
 /** Every shop whose shelf has been read, biggest first. */
 export const shelvesRead = () =>
