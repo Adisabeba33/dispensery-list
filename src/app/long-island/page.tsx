@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
 import { TerritoryView } from '@/components/TerritoryView';
+import { territoryShelfCounts } from '@/lib/territory-menu';
 
 export const metadata: Metadata = {
   title: 'Long Island',
   description:
     'State-licensed cannabis retail licences in Suffolk and Nassau counties, imported from the OCM registry with licence numbers you can check.',
 };
+
+/* Counted from the shelf file, so the sentence cannot drift from it. */
+const inStock = Object.values(territoryShelfCounts('long-island')).filter((n) => n > 0).length;
 
 export default function LongIslandPage() {
   return (
@@ -24,6 +28,16 @@ export default function LongIslandPage() {
             has not established which municipalities opted out, so it is offered here as the
             likely reason and not as a finding.
           </p>
+          {inStock > 0 && (
+            <p className="text-base text-chalk-300">
+              {inStock} {inStock === 1 ? 'shop' : 'shops'} had flower in stock when the shelf was
+              last read — by hand, not every day. To see what is on one, press{' '}
+              <a href="#list" className="link">
+                “Flower in stock”
+              </a>{' '}
+              in the list below and open a shop.
+            </p>
+          )}
         </>
       }
     />

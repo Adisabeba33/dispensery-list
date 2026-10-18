@@ -157,13 +157,16 @@ export const gapsFor = (
     });
   }
 
-  /* Massachusetts says what it has read. New York's territories keep the
-     sentence they always carried, which this change does not touch. */
-  if (t.state === 'MA' && shelf && shelf.shops > 0) {
+  /* A territory says what it has read. Only one with no shelf file at all
+     keeps the sentence that nothing has been. */
+  if (shelf && shelf.shops > 0) {
     const opened = count((d) => d.dates?.openedOn != null);
     gaps.push({
       label: `Flower menus — read at ${shelf.shops} of ${opened} opened shops`,
-      detail: `${shelf.listings.toLocaleString('en-US')} flower listings, read once, in the city of Boston only — the first stage of this trial. Press “Shelf read” below to see those shops, and open one to see its shelf. They are kept out of the strain index and are not passed to SŌMA, both of which read New York’s shelves alone.`,
+      detail:
+        t.state === 'MA'
+          ? `${shelf.listings.toLocaleString('en-US')} flower listings, read once, in the city of Boston only — the first stage of this trial. Press “Flower in stock” below to see those shops, and open one to see its shelf. They are kept out of the strain index and are not passed to SŌMA, both of which read New York’s shelves alone.`
+          : `${shelf.listings.toLocaleString('en-US')} flower listings, read by hand rather than every day: each shop’s page says the day its shelf was read. Press “Flower in stock” below to see those shops, and open one to see its shelf. They are kept out of the strain index and are not passed to SŌMA, both of which read the daily shelves of New York City and Westchester alone.`,
     });
   } else {
     gaps.push({

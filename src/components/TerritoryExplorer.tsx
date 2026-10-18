@@ -10,13 +10,14 @@ import { TerritoryCard } from './TerritoryCard';
  * Search and county filter for a territory that has only its registry import.
  *
  * Not DirectoryExplorer with flags. That component offers "near me", a ZIP
- * search, "open now listed", "delivers" and "flower menu collected" — five
- * controls that would return nothing at all here, because no record in these
- * territories has coordinates, a confirmed trading status, a service flag or a
- * collected shelf. Dead controls read as a broken page, and teaching one
- * component to hide most of itself makes NYC's page pay for upstate's gaps.
+ * search, "open now listed" and "delivers" — controls that would return
+ * nothing at all here, because no record in these territories has
+ * coordinates, a confirmed trading status or a service flag. Dead controls
+ * read as a broken page, and teaching one component to hide most of itself
+ * makes NYC's page pay for upstate's gaps.
  *
- * So: two controls that work, and a count that does not lie. When these
+ * So: controls that work, and a count that does not lie. "Flower in stock"
+ * appears only for a territory whose shelves have been read. When these
  * territories are enriched, this grows — or is replaced by the fuller one.
  */
 
@@ -48,8 +49,10 @@ export const TerritoryExplorer = ({
   const [query, setQuery] = useState('');
   const [county, setCounty] = useState<string | null>(null);
   const [openedOnly, setOpenedOnly] = useState(false);
-  const [shelfOnly, setShelfOnly] = useState(false);
-  const shelfTotal = shelfCounts ? Object.keys(shelfCounts).length : 0;
+  const [stockOnly, setStockOnly] = useState(false);
+  // Shops with at least one strain in stock: a shelf read with every jar sold
+  // out still has its page, but it is not a place to go for flower.
+  const stockTotal = shelfCounts ? Object.values(shelfCounts).filter((n) => n > 0).length : 0;
   const [sort, setSort] = useState<SortKey>('opened');
   const [limit, setLimit] = useState(60);
 
@@ -58,7 +61,7 @@ export const TerritoryExplorer = ({
     const filtered = shops.filter((d) => {
       if (county && d.address.county !== county) return false;
       if (openedOnly && d.dates?.openedOn == null) return false;
-      if (shelfOnly && !(shelfCounts && d.licenseNumber in shelfCounts)) return false;
+      if (stockOnly && !(shelfCounts && (shelfCounts[d.licenseNumber] ?? 0) > 0)) return false;
       if (!q) return true;
       // Licence number included on purpose: it is how a reader checks the shop
       // in front of them against this list.
@@ -95,9 +98,9 @@ export const TerritoryExplorer = ({
       }
       return displayName(a).localeCompare(displayName(b));
     });
-  }, [shops, query, county, openedOnly, shelfOnly, shelfCounts, sort]);
+  }, [shops, query, county, openedOnly, stockOnly, shelfCounts, sort]);
 
-  const active = Boolean(county || openedOnly || shelfOnly || query.trim());
+  const active = Boolean(county || openedOnly || stockOnly || query.trim());
   const shown = list.slice(0, limit);
 
   return (
@@ -153,18 +156,18 @@ export const TerritoryExplorer = ({
           >
             Opening date on file
           </button>
-          {shelfTotal > 0 && (
+          {stockTotal > 0 && (
             <button
               type="button"
               onClick={() => {
-                setShelfOnly((v) => !v);
+                setStockOnly((v) => !v);
                 setLimit(60);
               }}
-              aria-pressed={shelfOnly}
-              className={clsx('chip', shelfOnly && 'chip-on')}
+              aria-pressed={stockOnly}
+              className={clsx('chip', stockOnly && 'chip-on')}
             >
-              Shelf read
-              <span className="ml-1.5 tabular-nums text-chalk-500">{shelfTotal}</span>
+              Flower in stock
+              <span className="ml-1.5 tabular-nums text-chalk-500">{stockTotal}</span>
             </button>
           )}
         </div>
@@ -182,7 +185,7 @@ export const TerritoryExplorer = ({
                     setQuery('');
                     setCounty(null);
                     setOpenedOnly(false);
-                    setShelfOnly(false);
+                    setStockOnly(false);
                   }}
                   className="link"
                 >

@@ -56,8 +56,8 @@ export const TerritoryView = ({ id, intro }: { id: string; intro: React.ReactNod
             What this page does not know
           </h2>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-chalk-300">
-            {t.state === 'MA'
-              ? 'This territory has a registry import, the websites found so far and its first shelves, and nothing more.'
+            {hasShelves(t.id)
+              ? 'This territory has a registry import, the websites found so far and shelves read by hand, and nothing more.'
               : 'This territory has a registry import and nothing more.'}{' '}
             New York City and Westchester carry menus, coordinates, hours and hand-checked
             opt-outs; these records do not, and pretending otherwise is the one thing this register

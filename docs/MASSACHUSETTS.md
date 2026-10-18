@@ -211,7 +211,7 @@ Boston reaches either until someone decides it should.
 
 **Shown, 2026-10-17.** The owner opened `/massachusetts/` and could not find the
 shelves: the cards led nowhere. Each shop with a shelf now has a page,
-`/massachusetts/<id>/`, and the list has a "Shelf read" filter. The page says
+`/massachusetts/<id>/`, and the list has a "Flower in stock" filter (a shop with at least one strain in stock). The page says
 the shelf was read once and is not refreshed daily. It shows only what the
 shop's menu said: New York's strain references are not borrowed, because a
 Boston jar under the same name is another grower's. The 34 shops whose

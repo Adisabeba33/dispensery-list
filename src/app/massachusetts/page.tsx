@@ -33,7 +33,7 @@ export default function MassachusettsPage() {
             <p className="text-base text-chalk-300">
               {shelves} Boston shops have had their shelf read. To see what is on one, press{' '}
               <a href="#list" className="link">
-                “Shelf read”
+                “Flower in stock”
               </a>{' '}
               in the list below and open a shop.
             </p>

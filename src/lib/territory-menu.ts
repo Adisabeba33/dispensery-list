@@ -1,24 +1,28 @@
 import massachusettsListingsRaw from '../../data/massachusetts/flower-listings.json';
+import upstateListingsRaw from '../../data/upstate/flower-listings.json';
+import longIslandListingsRaw from '../../data/long-island/flower-listings.json';
 import strainLinesRaw from '../../data/strain-lines.json';
 import { reviewListings, type LineBook } from './strain-review';
 import { isPromotionalSample, type FlowerListing } from './menu-format';
 
 /**
- * The shelves read outside New York, for the territory pages. Server-side
- * only, like ./menu: a client component importing this ships the whole shelf.
+ * The shelves read outside New York City and Westchester, for the territory
+ * pages. Server-side only, like ./menu: a client component importing this
+ * ships the whole shelf.
  *
- * Read through the same name review as New York's shelf (./strain-review), so
- * a Boston menu is cleaned the way a Brooklyn one is — but never through New
- * York's strain references. A reference profile is New York's expectation of
- * a name, and a Massachusetts jar under the same name comes from another
- * grower in another state: the name is not evidence (SŌMA's BRAND-TRUST.md).
- * A Boston listing shows what its menu said, and nothing borrowed.
+ * Read through the same name review as the city's shelf (./strain-review), so
+ * a Boston or a Buffalo menu is cleaned the way a Brooklyn one is — but never
+ * through the city's strain references. A reference profile is the city's
+ * expectation of a name, and a jar under the same name elsewhere may come from
+ * another grower: the name is not evidence (SŌMA's BRAND-TRUST.md). A listing
+ * here shows what its menu said, and nothing borrowed. These shelves are read
+ * by hand, not every day, and stay out of the strain index and SŌMA.
  */
+const review = (rows: unknown) => reviewListings(rows as FlowerListing[], strainLinesRaw as unknown as LineBook);
 const SHELVES: Record<string, FlowerListing[]> = {
-  massachusetts: reviewListings(
-    massachusettsListingsRaw as unknown as FlowerListing[],
-    strainLinesRaw as unknown as LineBook,
-  ),
+  massachusetts: review(massachusettsListingsRaw),
+  upstate: review(upstateListingsRaw),
+  'long-island': review(longIslandListingsRaw),
 };
 
 export const hasShelves = (territoryId: string): boolean => (SHELVES[territoryId]?.length ?? 0) > 0;
