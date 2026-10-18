@@ -343,7 +343,7 @@ export const DirectoryExplorer = ({
             aria-pressed={menuOnly}
             className={clsx('chip', menuOnly && 'chip-on')}
           >
-            Flower menu collected
+            Flower in stock
           </button>
         </div>
 

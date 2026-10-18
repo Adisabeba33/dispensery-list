@@ -32,13 +32,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page('/about/', 'monthly', 0.3),
     page('/legal/', 'monthly', 0.2),
     ...dispensaries.map((d) => page(`/dispensary/${d.id}/`, 'daily', 0.7)),
-    // Massachusetts shops whose shelf has a page (src/app/massachusetts/[slug]).
-    ...(() => {
-      const shelved = territoryShelfCounts('massachusetts');
-      return shopsIn('massachusetts')
+    // Shops outside the city whose shelf has a page (src/app/<territory>/[slug]).
+    ...['massachusetts', 'upstate', 'long-island'].flatMap((id) => {
+      const shelved = territoryShelfCounts(id);
+      return shopsIn(id)
         .filter((d) => d.licenseNumber in shelved)
-        .map((d) => page(`/massachusetts/${d.id}/`, 'weekly', 0.5));
-    })(),
+        .map((d) => page(`/${id}/${d.id}/`, 'weekly', 0.5));
+    }),
     ...brandSummaries().map((b) => page(`/menus/brands/${b.key}/`, 'daily', 0.6)),
   ];
 }
