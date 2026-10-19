@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { dispensaries } from '@/lib/data';
 import { brandSummaries } from '@/lib/shelf';
 import { strainSlugs } from '@/lib/strain-page';
+import { MOVE_KINDS } from '@/lib/moves';
 import { SITE_URL } from '@/lib/site';
 import { shopsIn } from '@/lib/territory-data';
 import { territoryShelfCounts } from '@/lib/territory-menu';
@@ -25,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page('/menus/shops/', 'daily', 0.8),
     page('/menus/brands/', 'daily', 0.8),
     page('/moves/', 'daily', 0.8),
+    ...MOVE_KINDS.map((list) => page(`/moves/${list}/`, 'daily', 0.6)),
     page('/map/', 'weekly', 0.6),
     page('/westchester/', 'weekly', 0.6),
     page('/long-island/', 'weekly', 0.5),

@@ -83,13 +83,20 @@ const withDebut = (l: FlowerListing): FlowerListing => {
   return debut ? { ...l, debut } : l;
 };
 
+/** The shelves as the collector wrote them, before the review renames
+    anything: what the shelf history keys its records on (historyKey). */
+export const listingsAsRead = listingsRaw as unknown as FlowerListing[];
+
+/** The shelf history's key for a listing (scripts/shelf-history.py key_of). */
+export const historyKeyOf = historyKey;
+
 /* Every page reads the shelves through here, so every page gets the second
    look at their names (./strain-review): shouting calmed, product lines and
    the grower's own name taken off, one spelling per grower. It runs before the
    reference lookup, which then finds "Lemon Cherry Gelato" where the menu said
    "Classic Cuts Indoor Flower - Lemon Cherry Gelato". */
 export const listings = reviewListings(
-  (listingsRaw as unknown as FlowerListing[]).map(withDebut),
+  listingsAsRead.map(withDebut),
   strainLinesRaw as unknown as LineBook,
 ).map(withReference);
 

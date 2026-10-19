@@ -10,7 +10,13 @@ import { isFreshDebut, type Debut } from './menu-format';
  *
  * Server-side only.
  */
-export type Shop = { id: string; name: string; region: string };
+export type Shop = {
+  id: string;
+  name: string;
+  region: string;
+  /** The street, for telling apart two shops of one name in one district. */
+  street: string;
+};
 
 type Raw = {
   day: string;
@@ -63,7 +69,7 @@ const byLicence = new Map(dispensaries.map((d) => [d.licenseNumber, d]));
 const shopsOf = (licences: string[]): Shop[] =>
   licences.flatMap((licence) => {
     const d = byLicence.get(licence);
-    return d ? [{ id: d.id, name: displayName(d), region: regionOf(d) }] : [];
+    return d ? [{ id: d.id, name: displayName(d), region: regionOf(d), street: d.address.line1 }] : [];
   });
 
 const debutOf = (d: { first: string; days: number; seenAt: number }): Debut => ({
@@ -78,6 +84,8 @@ const debutByKey = new Map(
 export const shelfSignals = () => {
   const arrivals = raw.arrivals.map((a) => ({
     ...a,
+    /* The licences the read counted it at, including any outside the register. */
+    licences: a.shops,
     shops: shopsOf(a.shops),
     debut: (a.key && debutByKey.get(a.key)) || null,
   }));
