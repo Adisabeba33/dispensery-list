@@ -86,9 +86,6 @@ export const DispensaryMap = ({ points }: { points: MapPoint[] }) => {
 
     void (async () => {
       const L = await import('leaflet');
-      // The base map is drawn by MapLibre inside Leaflet; the bridge expects
-      // Leaflet to be loaded first.
-      const { maplibreGL } = await import('@maplibre/maplibre-gl-leaflet');
       if (cancelled || !containerRef.current || mapRef.current) return;
 
       leafletRef.current = L;
@@ -96,15 +93,8 @@ export const DispensaryMap = ({ points }: { points: MapPoint[] }) => {
         zoomControl: true,
         scrollWheelZoom: false, // a map inside a scrolling page must not hijack the wheel
         attributionControl: true,
+        maxZoom: 19, // street level; the base map below goes no further than 22
       }).setView([40.75, -73.93], 11);
-
-      /* OpenFreeMap: OpenStreetMap drawn from vector tiles, free with no key
-         and no limit on views. CARTO's dark tiles, used until October 2026,
-         began answering every request without a key with an "API key
-         required" picture. Where WebGL is missing, the base map stays blank
-         and the shops still show on the dark ground. The credit line comes
-         from the tiles themselves (OpenFreeMap, OpenMapTiles, OpenStreetMap). */
-      maplibreGL({ style: 'https://tiles.openfreemap.org/styles/dark' }).addTo(map);
 
       /* A map two thirds of a screen tall sits in the middle of a scrolling
          page, so it must not swallow the wheel on the way past. Clicking into
@@ -112,9 +102,37 @@ export const DispensaryMap = ({ points }: { points: MapPoint[] }) => {
       map.on('click', () => map.scrollWheelZoom.enable());
       containerRef.current.addEventListener('mouseleave', () => map.scrollWheelZoom.disable());
 
+      // The pins first: they need Leaflet alone, not the base map below.
       layerRef.current = L.layerGroup().addTo(map);
       mapRef.current = map;
       setReady(true);
+
+      /* The base map: OpenFreeMap, OpenStreetMap drawn from vector tiles, free
+         with no key and no limit on views. CARTO's dark tiles, used until
+         October 2026, began answering every request without a key with an
+         "API key required" picture. MapLibre draws it inside the Leaflet map
+         and needs WebGL2; without it the pins stand on the dark ground. */
+      const probe = document.createElement('canvas').getContext('webgl2');
+      if (!probe) return;
+      probe.getExtension('WEBGL_lose_context')?.loseContext();
+
+      const maplibre = await import('maplibre-gl');
+      const { maplibreGL } = await import('@maplibre/maplibre-gl-leaflet');
+      if (cancelled || mapRef.current !== map) return;
+      // MapLibre looks for its worker beside its own file, which the bundle
+      // moves; this hands it the copy the bundle emits.
+      maplibre.setWorkerUrl(new URL('maplibre-gl/dist/maplibre-gl-worker.mjs', import.meta.url).href);
+
+      const base = maplibreGL({
+        style: 'https://tiles.openfreemap.org/styles/dark',
+        // The credit is ours to write, not HTML taken from the tile server.
+        attributionControl: {
+          customAttribution:
+            '<a href="https://openfreemap.org">OpenFreeMap</a> <a href="https://www.openmaptiles.org/">&copy; OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        },
+      }).addTo(map);
+      // During a pinch, draw the base in the same frame as the pins.
+      map.on('zoom', () => base.getMaplibreMap()?.redraw());
     })();
 
     return () => {
