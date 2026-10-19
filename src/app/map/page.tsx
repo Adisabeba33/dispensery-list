@@ -84,9 +84,13 @@ export default function MapPage() {
       </section>
 
       <p className="mt-10 text-xs leading-relaxed text-chalk-500">
-        Base map tiles &copy;{' '}
-        <a className="link" href="https://carto.com/attributions" target="_blank" rel="noreferrer noopener">
-          CARTO
+        Base map by{' '}
+        <a className="link" href="https://openfreemap.org" target="_blank" rel="noreferrer noopener">
+          OpenFreeMap
+        </a>
+        , tiles &copy;{' '}
+        <a className="link" href="https://www.openmaptiles.org/" target="_blank" rel="noreferrer noopener">
+          OpenMapTiles
         </a>
         , map data &copy;{' '}
         <a className="link" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer noopener">
