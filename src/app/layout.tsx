@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
 import { AgeGate } from '@/components/AgeGate';
-import { SiteNav } from '@/components/SiteNav';
+import { SiteNav, TabBar } from '@/components/SiteNav';
 import { SITE_URL } from '@/lib/site';
 import './globals.css';
 
@@ -36,51 +36,30 @@ export const metadata: Metadata = {
   appleWebApp: { title: 'Flower Index', statusBarStyle: 'black-translucent' },
 };
 
+/* "cover" lets the page reach under a phone's rounded corners and home
+   indicator, so the bar pinned to the bottom can measure them
+   (env(safe-area-inset-*)) and stand clear of them. */
 export const viewport: Viewport = {
   themeColor: '#0B2419',
+  viewportFit: 'cover',
 };
-
-/* The first four are New York City and Westchester — the register proper, with
-   menus, coordinates and hand-checked opt-outs behind them. Upstate, Long
-   Island and Massachusetts are registry imports and little more, so they sit
-   after a divider under "Places" rather than among them: a reader who cannot
-   tell which is which will assume the weaker pages are as complete as the
-   stronger ones. */
-const NAV = [
-  { href: '/', label: 'Directory' },
-  { href: '/menus/', label: 'Strains' },
-  { href: '/moves/', label: 'New & leaving' },
-  { href: '/menus/brands/', label: 'Brands' },
-  { href: '/map/', label: 'Map' },
-  { href: '/westchester/', label: 'Westchester' },
-  { href: '/about/', label: 'Method' },
-  { href: '/legal/', label: 'Notices' },
-];
-
-const TERRITORY_NAV = [
-  { href: '/upstate/', label: 'Upstate' },
-  { href: '/long-island/', label: 'Long Island' },
-  { href: '/massachusetts/', label: 'Massachusetts' },
-];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen antialiased">
+      <body className="min-h-screen pb-[calc(4rem+env(safe-area-inset-bottom))] antialiased md:pb-0">
+        {/* On a phone the page ends above the bar pinned to the bottom. */}
         <AgeGate />
-        <header className="sticky top-0 z-40 border-b border-ink-700/80 bg-ink-950/80 backdrop-blur-md">
-          {/* On a phone the name keeps a line of its own and the menu gets the
-              screen's whole width below it; it was wrapping to three lines
-              beside a menu squeezed to nothing. */}
-          <div className="shell flex flex-col sm:h-16 sm:flex-row sm:items-center sm:gap-6">
-            <Link href="/" className="group flex h-12 shrink-0 items-center sm:h-auto">
+        <header className="sticky top-0 z-40 border-b border-ink-700/80 bg-ink-950/80 pt-[env(safe-area-inset-top)] backdrop-blur-md">
+          <div className="shell flex h-14 items-center gap-6 md:h-16">
+            <Link href="/" className="flex shrink-0 items-center">
               {/* The mark and the name as one drawing, so the name is set in
                   the logo's serif without the site loading a font for it. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/brand/lockup.svg" alt="The Flower Index" width={180} height={32} className="h-8 w-auto" />
             </Link>
 
-            <SiteNav nav={NAV} territories={TERRITORY_NAV} />
+            <SiteNav />
           </div>
         </header>
 
@@ -111,6 +90,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </p>
           </div>
         </footer>
+
+        <TabBar />
       </body>
     </html>
   );

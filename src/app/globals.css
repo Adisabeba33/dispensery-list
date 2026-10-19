@@ -18,6 +18,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* A link reached with the keyboard is scrolled clear of the phone's bar. */
+@media (max-width: 767.98px) {
+  html {
+    scroll-padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+  }
+}
+
 body {
   background:
     radial-gradient(60rem 40rem at 78% -12%, rgba(63, 201, 125, 0.09), transparent 62%),
@@ -29,8 +36,19 @@ body {
 }
 
 @layer components {
+  /* Never closer to the edge than a phone held sideways lets it be: the
+     notch and the rounded corners take their own inset. */
   .shell {
-    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+    @apply mx-auto w-full max-w-content;
+    padding-left: max(1.25rem, env(safe-area-inset-left));
+    padding-right: max(1.25rem, env(safe-area-inset-right));
+  }
+
+  @media (min-width: 640px) {
+    .shell {
+      padding-left: max(2rem, env(safe-area-inset-left));
+      padding-right: max(2rem, env(safe-area-inset-right));
+    }
   }
 
   .card {

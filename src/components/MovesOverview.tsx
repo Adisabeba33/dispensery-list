@@ -107,7 +107,7 @@ export const MovesOverview = ({
           const bars = card.bars?.[type];
           const dating = moveDating(card.kind);
           return (
-            <li key={card.kind} id={card.kind} className="scroll-mt-28 sm:scroll-mt-20">
+            <li key={card.kind} id={card.kind} className="scroll-mt-20">
               <Link
                 href={`/moves/${card.kind}/${query}`}
                 className="card card-hover flex h-full gap-4 p-5"
