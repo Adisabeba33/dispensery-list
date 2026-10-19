@@ -8,7 +8,8 @@ import clsx from 'clsx';
 type Item = { href: string; label: string; here?: (path: string) => boolean };
 
 /* The five sections a reader moves between. On a phone they are one bar
-   pinned to the bottom of the screen; from a tablet up, a row in the header.
+   pinned to the bottom of the screen; from a tablet up (the `nav` screen in
+   tailwind.config.ts), a row in the header.
    Strains and Brands share /menus/, so each says which of it is its own. */
 const SECTIONS: (Item & { icon: React.ReactNode })[] = [
   {
@@ -110,8 +111,9 @@ export const SiteNav = () => {
   const button = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
 
-  /* The menu closes on a choice, a click or a tab outside it, or Escape —
-     which hands the focus back to the button that opened it. */
+  /* The menu closes on a choice (the page being read included), a click or a
+     tab outside it, or Escape — which hands the focus back to the button that
+     opened it. */
   useEffect(() => setOpen(false), [path]);
   useEffect(() => {
     if (!open) return;
@@ -138,6 +140,7 @@ export const SiteNav = () => {
       key={item.href}
       href={item.href}
       aria-current={isHere(item, path) ? 'page' : undefined}
+      onClick={() => setOpen(false)}
       className={clsx(
         'block rounded-lg px-3 py-2.5 text-sm transition-colors hover:bg-ink-800',
         isHere(item, path) ? 'bg-ink-800 text-chalk-50' : 'text-chalk-200 hover:text-chalk-50',
@@ -148,9 +151,11 @@ export const SiteNav = () => {
   );
 
   return (
-    <div className="ml-auto flex items-center gap-2">
-      <nav aria-label="Sections" className="hidden md:block">
-        <ul className="flex items-center gap-1 text-sm">
+    <div className="ml-auto flex min-w-0 items-center gap-2">
+      {/* Scrolls inside itself rather than widen the page, should a system
+          font run wider than the room the `nav` screen leaves for it. */}
+      <nav aria-label="Sections" className="no-scrollbar hidden min-w-0 overflow-x-auto nav:block">
+        <ul className="flex items-center gap-1 p-1 text-sm">
           {SECTIONS.map((item) => (
             <li key={item.href}>
               <Link
@@ -170,9 +175,12 @@ export const SiteNav = () => {
 
       <div
         ref={box}
-        className="relative"
+        className="relative shrink-0"
         onBlur={(e) => {
-          if (!box.current?.contains(e.relatedTarget as Node | null)) setOpen(false);
+          /* Only when the focus went somewhere else: a tap on the panel's
+             heading or padding moves it nowhere, and the click outside is
+             the pointerdown listener's. */
+          if (e.relatedTarget && !box.current?.contains(e.relatedTarget as Node)) setOpen(false);
         }}
       >
         <button
@@ -181,9 +189,10 @@ export const SiteNav = () => {
           aria-label="Menu"
           aria-expanded={open}
           aria-controls="site-menu"
+          aria-current={inMenu ? 'page' : undefined}
           onClick={() => setOpen((v) => !v)}
           className={clsx(
-            '-mr-2 grid h-11 w-11 place-items-center rounded-lg transition-colors hover:bg-ink-800 hover:text-chalk-50 md:mr-0',
+            '-mr-2 grid h-11 w-11 place-items-center rounded-lg transition-colors hover:bg-ink-800 hover:text-chalk-50 nav:mr-0',
             open || inMenu ? 'bg-ink-800 text-chalk-50' : 'text-chalk-200',
           )}
         >
@@ -196,13 +205,18 @@ export const SiteNav = () => {
           id="site-menu"
           aria-label="More pages"
           hidden={!open}
-          className="absolute right-0 top-full z-50 mt-2 max-h-[calc(100dvh-5rem)] w-72 overflow-y-auto rounded-xl border border-ink-700 bg-ink-900 p-1.5 shadow-xl shadow-black/40"
+          className="absolute right-0 top-full z-50 mt-2 max-h-[calc(100dvh-9rem-env(safe-area-inset-top)-env(safe-area-inset-bottom))] w-72 overflow-y-auto rounded-xl border border-ink-700 bg-ink-900 p-1.5 shadow-xl shadow-black/40 nav:max-h-[calc(100dvh-5rem)]"
         >
           {menuLink(WESTCHESTER)}
-          <p className="mt-1.5 border-t border-ink-700 px-3 pb-1 pt-3 text-[0.7rem] uppercase tracking-[0.14em] text-chalk-500">
-            Places · registry import only
-          </p>
-          {PLACES.map(menuLink)}
+          <div role="group" aria-labelledby="site-menu-places" className="mt-1.5 border-t border-ink-700">
+            <p
+              id="site-menu-places"
+              className="px-3 pb-1 pt-3 text-[0.7rem] uppercase tracking-[0.14em] text-chalk-400"
+            >
+              Places · registry import only
+            </p>
+            {PLACES.map(menuLink)}
+          </div>
           <div className="mt-1.5 border-t border-ink-700 pt-1.5">{ABOUT.map(menuLink)}</div>
         </nav>
       </div>
@@ -212,13 +226,14 @@ export const SiteNav = () => {
 
 /* The phone's bar: the same five sections, pinned to the bottom of the screen
    where a thumb reaches them, above the home indicator on phones that have
-   one. Hidden from a tablet up, where the header carries them. */
+   one. Hidden from a tablet up, where the header carries them. A step below
+   the header (z-30), so the open menu draws over it on a short screen. */
 export const TabBar = () => {
   const path = usePath();
   return (
     <nav
       aria-label="Sections"
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-ink-700/80 bg-ink-950/90 pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] backdrop-blur-md md:hidden"
+      className="fixed inset-x-0 bottom-0 z-30 border-t border-ink-700/80 bg-ink-950/90 pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] backdrop-blur-md nav:hidden"
     >
       <ul className="mx-auto grid max-w-lg grid-cols-5">
         {SECTIONS.map((item) => {
@@ -229,7 +244,7 @@ export const TabBar = () => {
                 href={item.href}
                 aria-current={here ? 'page' : undefined}
                 className={clsx(
-                  'flex h-16 flex-col items-center justify-center gap-1 px-0.5 transition-colors',
+                  'flex h-16 flex-col items-center justify-start gap-1 px-0.5 pt-2 transition-colors',
                   here ? 'text-chalk-50' : 'text-chalk-400 hover:text-chalk-50',
                 )}
               >

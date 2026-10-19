@@ -32,6 +32,10 @@ const config: Config = {
         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       maxWidth: { content: '76rem' },
+      /* Where the header takes over the five sections from the phone's bar.
+         In em, so a reader who sets a larger text size gets the bar until the
+         row really fits: 768px at the default size, 960px at 20px. */
+      screens: { nav: '48em' },
     },
   },
   plugins: [],

@@ -214,9 +214,11 @@ export const DispensaryMap = ({ points }: { points: MapPoint[] }) => {
         {visible.length} of {points.length} mapped dispensaries shown.
       </p>
 
+      {/* isolate: Leaflet's panes stack in the hundreds; inside their own
+          context they stay under the header, its menu and the phone's bar. */}
       <div
         ref={containerRef}
-        className="mt-4 h-[68vh] min-h-[420px] w-full overflow-hidden rounded-xl border border-ink-700 bg-ink-900"
+        className="isolate mt-4 h-[68vh] min-h-[420px] w-full overflow-hidden rounded-xl border border-ink-700 bg-ink-900"
       />
 
       <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-chalk-400">

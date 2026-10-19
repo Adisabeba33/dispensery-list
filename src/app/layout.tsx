@@ -47,12 +47,12 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen pb-[calc(4rem+env(safe-area-inset-bottom))] antialiased md:pb-0">
+      <body className="min-h-screen pb-[calc(4rem+env(safe-area-inset-bottom))] antialiased nav:pb-0">
         {/* On a phone the page ends above the bar pinned to the bottom. */}
         <AgeGate />
-        <header className="sticky top-0 z-40 border-b border-ink-700/80 bg-ink-950/80 pt-[env(safe-area-inset-top)] backdrop-blur-md">
-          <div className="shell flex h-14 items-center gap-6 md:h-16">
-            <Link href="/" className="flex shrink-0 items-center">
+        <header className="site-header sticky top-0 z-40 border-b border-ink-700/80 bg-ink-950/80 pt-[env(safe-area-inset-top)] backdrop-blur-md">
+          <div className="shell flex h-14 items-center gap-6 nav:h-16">
+            <Link href="/" className="flex shrink-0 items-center self-stretch">
               {/* The mark and the name as one drawing, so the name is set in
                   the logo's serif without the site loading a font for it. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -62,6 +62,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <SiteNav />
           </div>
         </header>
+
+        {/* Fixed to the bottom of the screen, but early in the page, so the
+            keyboard reaches the five sections before the page's content. */}
+        <TabBar />
 
         <main>{children}</main>
 
@@ -90,8 +94,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </p>
           </div>
         </footer>
-
-        <TabBar />
       </body>
     </html>
   );

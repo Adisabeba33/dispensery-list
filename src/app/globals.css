@@ -14,14 +14,25 @@
   --border: #1f2b25;
 }
 
+/* The top inset is there only in an app installed to a phone's home screen,
+   where the header grows by the status bar; anchors land below it there too. */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: env(safe-area-inset-top);
 }
 
 /* A link reached with the keyboard is scrolled clear of the phone's bar. */
-@media (max-width: 767.98px) {
+@media (max-width: 47.99em) {
   html {
     scroll-padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* A phone held sideways has little height to spare: the header scrolls away
+   with the page there, and only the bar stays. */
+@media (max-width: 47.99em) and (max-height: 500px) {
+  .site-header {
+    position: relative;
   }
 }
 

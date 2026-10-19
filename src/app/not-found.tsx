@@ -15,7 +15,7 @@ export default function NotFound() {
         href="/"
         className="mt-8 inline-block rounded-lg border border-moss-600/60 bg-moss-600/12 px-5 py-2.5 text-sm font-medium text-moss-400 transition-colors hover:bg-moss-600/20"
       >
-        Back to the directory
+        Back to all dispensaries
       </Link>
     </div>
   );

@@ -138,7 +138,9 @@ export const DirectoryExplorer = ({
     // Bring the card's top into view so the detail is not half off-screen.
     requestAnimationFrame(() => {
       const el = document.getElementById(`shop-${licence}`);
-      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+      // Below the header, however tall it is (an installed app adds the status bar).
+      const head = document.querySelector('header')?.getBoundingClientRect().bottom ?? 56;
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - head - 24, behavior: 'smooth' });
     });
   };
 
