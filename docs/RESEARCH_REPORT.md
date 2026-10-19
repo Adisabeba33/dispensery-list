@@ -1,31 +1,31 @@
 # Research report — NYC + Westchester dispensaries
 
-Snapshot time: **2026-10-12T20:00:39.527Z**
+Snapshot time: **2026-10-19T17:12:27.227Z**
 
 ## Result
 
-Published current-license records: **471**.
-- OPEN: **332**
-- APPROVED_NOT_OPEN: **122**
+Published current-license records: **472**.
+- OPEN: **342**
+- APPROVED_NOT_OPEN: **113**
 - UNKNOWN: **17**
-- VERIFIED_OFFICIAL: **471 / 471 (100%)**
+- VERIFIED_OFFICIAL: **472 / 472 (100%)**
 
 ### By county
 
 | County | Total | Open | Approved not open | Unknown |
 |---|---:|---:|---:|---:|
-| New York | 122 | 99 | 20 | 3 |
-| Kings | 120 | 89 | 28 | 3 |
-| Queens | 118 | 79 | 35 | 4 |
-| Bronx | 35 | 23 | 11 | 1 |
-| Richmond | 24 | 14 | 7 | 3 |
-| Westchester | 52 | 28 | 21 | 3 |
+| New York | 122 | 100 | 19 | 3 |
+| Kings | 120 | 92 | 26 | 2 |
+| Queens | 118 | 83 | 30 | 5 |
+| Bronx | 36 | 23 | 12 | 1 |
+| Richmond | 24 | 16 | 6 | 2 |
+| Westchester | 52 | 28 | 20 | 4 |
 
 ## Source integrity findings
 
-The official OCM public-open page text advertises 717 adult-use dispensaries statewide, while the HTML table snapshot parsed into **728 data rows**. This mismatch is preserved as a source inconsistency; no synthetic 717th row was created.
+The official OCM public-open page text advertises 717 adult-use dispensaries statewide, while the HTML table snapshot parsed into **744 data rows**. This mismatch is preserved as a source inconsistency; no synthetic 717th row was created.
 
-The raw Current OCM Licenses snapshot contains **3029** rows. The first-pass six-county retail-ish filter produced **475** OCM-format licensed rows: **458 Active** and **8 Inactive/expired** before geography sanity filtering.
+The raw Current OCM Licenses snapshot contains **3033** rows. The first-pass six-county retail-ish filter produced **476** OCM-format licensed rows: **458 Active** and **8 Inactive/expired** before geography sanity filtering.
 
 Two rows are tagged `county=New York` / `region=Manhattan` in the official registry but have clearly upstate addresses and ZIPs; they are excluded from the NYC/Westchester deliverable and kept in the raw evidence:
 - `OCM-MICR-24-000199` — Copperhead Grow, LLC — 10242 State Route 12, Remsen NY 13438.
@@ -53,18 +53,18 @@ OCM publishes these with legacy IDs such as `MM0906D` rather than the `OCM-XXX-Y
 These licenses are `Active` and the registry operating-address status is `Active`, but no confident match was found on the current OCM public-open list. They remain `UNKNOWN` rather than being guessed open:
 - `OCM-CAURD-25-000276` — Weed Land Inc. — 1260 Castle Hill Ave, Bronx 10462
 - `OCM-CAURD-25-000315` — DIAMOND DISPENSARY LLC — 455 Graham Ave, Brooklyn 11222
-- `OCM-RETL-26-000484` — Green Room Dispensary LLC — 2257 Emmons Ave, Brooklyn 11235
 - `OCM-CAURD-25-000250` — Sunset Cannabis Club — 512 55th St, Brooklyn 11220
 - `OCM-RETL-25-000338` — Fire Escape — 103 Avenue A, New York 10009
 - `OCM-RETL-24-000262` — Free Thinkers LLC — 2 Coenties Slip, New York 10004
 - `OCM-RETL-26-000514` — NY Retail 4 Inc. — 435 5th Ave, New York 10016
 - `OCM-RETL-25-000369` — M & M Neighborhood Convenience Inc. — 246-01 Jamaica Ave, Bellerose 11426
 - `OCM-CAURD-25-000231` — Token Retail Inc — 9229 Queens Blvd, Rego Park 11374
+- `OCM-RETL-26-000526` — GANJA GARDEN — 11907 Jamaica Ave, Richmond Hill 11418
 - `OCM-CAURD-26-000326` — Gaia Operations LLC — 10412 Lefferts Blvd, South Richmond Hill 11419
 - `OCM-RETL-24-000046` — KiKi Buddz Corp. — 50-12 72nd Street, Woodside 11377
 - `OCM-CAURD-25-000273` — A Cannaful Life LLC — 1547 Arthur Kill Road, Staten Island 10312
 - `OCM-RETL-25-000443` — Quality Control Dispensary Staten Island — 1172 Victory Blvd # 4, Staten Island 10301
-- `OCM-CAURD-26-000362` — The ISH — 51 Richmond Hill Rd # C, Staten Island 10314
+- `OCM-RETL-25-000275` — Soulful Matter LLC — 365B North Ave, New Rochelle 10801
 - `OCM-RETL-24-000013` — Lucky Leaf — 50 N Highland Ave, Ossining 10562
 - `OCM-CAURD-26-000342` — Peek Buds — 1719 Main St, Peekskill 10566
 - `OCM-RETL-24-000152` — RSSQ Holding LLC — 1200 Mamaroneck Ave, White Plains 10605
