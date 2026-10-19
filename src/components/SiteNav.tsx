@@ -107,9 +107,20 @@ const Icon = ({ children, className }: { children: React.ReactNode; className?: 
    menu button on every screen. */
 export const SiteNav = () => {
   const path = usePath();
+  const row = useRef<HTMLElement>(null);
   const box = useRef<HTMLDivElement>(null);
   const button = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
+
+  /* Should the row have to scroll, the section being read is brought into it.
+     Set on the row itself rather than with scrollIntoView, which would also
+     scroll the page under a reader who has already moved down it. */
+  useEffect(() => {
+    const el = row.current;
+    const here = el?.querySelector<HTMLElement>('[aria-current="page"]');
+    if (!el || !here || el.scrollWidth <= el.clientWidth) return;
+    el.scrollLeft = here.offsetLeft - (el.clientWidth - here.offsetWidth) / 2;
+  }, [path]);
 
   /* The menu closes on a choice (the page being read included), a click or a
      tab outside it, or Escape — which hands the focus back to the button that
@@ -154,13 +165,16 @@ export const SiteNav = () => {
     <div className="ml-auto flex min-w-0 items-center gap-2">
       {/* Scrolls inside itself rather than widen the page, should a system
           font run wider than the room the `nav` screen leaves for it. */}
-      <nav aria-label="Sections" className="no-scrollbar hidden min-w-0 overflow-x-auto nav:block">
-        <ul className="flex items-center gap-1 p-1 text-sm">
+      <nav ref={row} aria-label="Sections" className="no-scrollbar relative hidden min-w-0 scroll-px-1 overflow-x-auto nav:block">
+        {/* w-max: the list's own padding scrolls with it, so a focus ring at
+            either end is never cut off. */}
+        <ul className="flex w-max items-center gap-1 p-1 text-sm">
           {SECTIONS.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
                 aria-current={isHere(item, path) ? 'page' : undefined}
+                onFocus={(e) => e.currentTarget.scrollIntoView({ inline: 'nearest', block: 'nearest' })}
                 className={clsx(
                   'block whitespace-nowrap rounded-lg px-3 py-2 transition-colors hover:bg-ink-800',
                   isHere(item, path) ? 'bg-ink-800 text-chalk-50' : 'text-chalk-200 hover:text-chalk-50',
@@ -189,7 +203,8 @@ export const SiteNav = () => {
           aria-label="Menu"
           aria-expanded={open}
           aria-controls="site-menu"
-          aria-current={inMenu ? 'page' : undefined}
+          // "true", not "page": the button holds the page being read, it is not it.
+          aria-current={inMenu ? 'true' : undefined}
           onClick={() => setOpen((v) => !v)}
           className={clsx(
             '-mr-2 grid h-11 w-11 place-items-center rounded-lg transition-colors hover:bg-ink-800 hover:text-chalk-50 nav:mr-0',
