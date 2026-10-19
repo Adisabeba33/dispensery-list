@@ -1443,6 +1443,10 @@
    "found": false,
    "checked": "2026-10-18"
   },
+  "1A4120300000149000027040": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A412030000014A000001153": {
    "found": true,
    "facility": "Lifted NY Corp.",
@@ -2747,6 +2751,10 @@
    "labDoc": 129910,
    "coaFile": true
   },
+  "1A4120300000205000014869": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A4120300000205000014893": {
    "found": false,
    "checked": "2026-10-11"
@@ -2873,6 +2881,42 @@
    "labLicense": "OCM-CPL-24-00013-L1",
    "labDoc": 35081,
    "coaFile": true
+  },
+  "1A4120300000208000001632": {
+   "found": true,
+   "facility": "NYCANNA, LLC",
+   "product": "The Botanist - 14g - Flower - Smalls - Rainbow Belts 2.0 - (I)",
+   "strain": "Rainbow Belts 2.0",
+   "packaged": "2026-04-07",
+   "tested": "2026-04-17",
+   "harvested": null,
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A4120300000208000001634",
+   "thc": 25.07,
+   "cbd": 0.0,
+   "terpenesTotal": 2.1628,
+   "terpenes": {
+    "BISABOLOL": 0.0576,
+    "BORNEOL": 0.0101,
+    "CAMPHENE": 0.0095,
+    "CARYOPHYLLENE": 0.6723,
+    "CARYOPHYLLENE_OXIDE": 0.0104,
+    "FARNESENE": 0.1764,
+    "FENCHOL": 0.0342,
+    "HUMULENE": 0.2187,
+    "LIMONENE": 0.3445,
+    "LINALOOL": 0.3561,
+    "MYRCENE": 0.0202,
+    "NEROLIDOL": 0.04,
+    "PINENE_ALPHA": 0.0283,
+    "PINENE_BETA": 0.0521,
+    "TERPINEOL": 0.043,
+    "TERPINOLENE": 0.0086
+   },
+   "labLicense": "OCM-CPL-24-00001-L1",
+   "labDoc": 75407,
+   "coaFile": true,
+   "checked": "2026-10-19"
   },
   "1A4120300000208000002179": {
    "found": true,
@@ -4661,6 +4705,10 @@
    "found": false,
    "checked": "2026-10-06"
   },
+  "1A4120300000216000166207": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A4120300000216000166208": {
    "found": false,
    "checked": "2026-10-03"
@@ -4732,6 +4780,10 @@
   "1A4120300000216000171170": {
    "found": false,
    "checked": "2026-10-10"
+  },
+  "1A4120300000216000173321": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A4120300000216000174002": {
    "found": false,
@@ -5836,6 +5888,14 @@
    "labDoc": 178354,
    "coaFile": true,
    "checked": "2026-10-08"
+  },
+  "1A412030000022C000007689": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A412030000022C000008032": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A4120300000231000004700": {
    "found": false,
@@ -8247,6 +8307,10 @@
    "found": false,
    "checked": "2026-10-18"
   },
+  "1A4120300000268000048682": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A4120300000268000048697": {
    "found": false,
    "checked": "2026-10-18"
@@ -8418,6 +8482,10 @@
   "1A4120300000268000054432": {
    "found": false,
    "checked": "2026-10-11"
+  },
+  "1A4120300000268000054567": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A4120300000268000056366": {
    "found": false,
@@ -10583,6 +10651,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000283000059813": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A4120300000283000059833": {
    "found": false,
    "checked": "2026-10-09"
@@ -11143,6 +11215,10 @@
    "found": false,
    "checked": "2026-10-02"
   },
+  "1A4120300000283000062339": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A4120300000283000062370": {
    "found": false,
    "checked": "2026-10-13"
@@ -11343,6 +11419,10 @@
    "found": false,
    "checked": "2026-10-13"
   },
+  "1A4120300000283000063479": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A4120300000283000063495": {
    "found": false,
    "checked": "2026-10-13"
@@ -11362,6 +11442,22 @@
   "1A4120300000283000063548": {
    "found": false,
    "checked": "2026-10-16"
+  },
+  "1A4120300000283000063600": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300000283000063792": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300000283000063821": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300000283000064102": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A4120300000283000064336": {
    "found": false,
@@ -11690,6 +11786,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A41203000002C1000034327": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A41203000002C1000034808": {
    "found": false,
    "checked": "2026-09-29"
@@ -11826,6 +11926,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A41203000002C1000051468": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A41203000002C1000051481": {
    "found": false,
    "checked": "2026-09-29"
@@ -11921,6 +12025,10 @@
   "1A41203000002C1000054417": {
    "found": false,
    "checked": "2026-10-16"
+  },
+  "1A41203000002C1000054795": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A41203000002C1000054806": {
    "found": false,
@@ -12497,6 +12605,10 @@
   "1A41203000002C1000067394": {
    "found": false,
    "checked": "2026-10-01"
+  },
+  "1A41203000002C1000067395": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A41203000002C1000067396": {
    "found": false,
@@ -13573,6 +13685,10 @@
   "1A412030000038D000024162": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A412030000038D000024633": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A412030000038D000024673": {
    "found": false,
@@ -15910,6 +16026,10 @@
   "1A4120300000454000002804": {
    "found": false,
    "checked": "2026-10-03"
+  },
+  "1A4120300000454000002834": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A4120300000455000000040": {
    "found": true,
@@ -18583,6 +18703,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A41203000004EB000026735": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A41203000004EB000026736": {
    "found": false,
    "checked": "2026-09-29"
@@ -19259,6 +19383,18 @@
    "found": false,
    "checked": "2026-10-16"
   },
+  "1A41203000004EB000032587": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A41203000004EB000032589": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A41203000004EB000032591": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A41203000004EB000032659": {
    "found": false,
    "checked": "2026-10-17"
@@ -19278,6 +19414,10 @@
   "1A41203000004EB000032663": {
    "found": false,
    "checked": "2026-10-17"
+  },
+  "1A41203000004EB000032824": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A41203000004EB000032825": {
    "found": false,
@@ -19326,6 +19466,46 @@
   "1A41203000004EB000033474": {
    "found": false,
    "checked": "2026-10-18"
+  },
+  "1A41203000004EB000033479": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A41203000004EB000033480": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A41203000004EB000033481": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A41203000004EB000033482": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A41203000004EB000033483": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A41203000004EB000033484": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A41203000004EB000033485": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A41203000004EB000033506": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A41203000004EB000033507": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A41203000004EB000033508": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A41203000004EC000000877": {
    "found": false,
@@ -20323,6 +20503,10 @@
   "1A4120300000529000079688": {
    "found": false,
    "checked": "2026-10-16"
+  },
+  "1A4120300000529000079689": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A4120300000529000079690": {
    "found": false,
@@ -25065,6 +25249,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000BBF000059783": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A4120300000BBF000059797": {
    "found": false,
    "checked": "2026-09-29"
@@ -27373,9 +27561,17 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300000C1E000124206": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A4120300000C1E000124207": {
    "found": false,
    "checked": "2026-10-11"
+  },
+  "1A4120300000C1E000124208": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A4120300000C1E000124210": {
    "found": false,
@@ -27412,6 +27608,10 @@
   "1A4120300000C1E000124234": {
    "found": false,
    "checked": "2026-10-09"
+  },
+  "1A4120300000C1E000124247": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A4120300000C1E000124524": {
    "found": false,
@@ -27557,6 +27757,10 @@
    "found": false,
    "checked": "2026-10-08"
   },
+  "1A4120300000C1E000125702": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A4120300000C1E000125942": {
    "found": false,
    "checked": "2026-10-06"
@@ -27684,6 +27888,46 @@
   "1A4120300000C1E000128560": {
    "found": false,
    "checked": "2026-10-08"
+  },
+  "1A4120300000C1E000128861": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300000C1E000128862": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300000C1E000128864": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300000C1E000128865": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300000C1E000128866": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300000C1E000128867": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300000C1E000128868": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300000C1E000128869": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300000C1E000128870": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300000C1E000128871": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A4120300000C1E000129325": {
    "found": false,
@@ -28340,6 +28584,10 @@
   "1A4120300000C1E000147336": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300000C1E000147338": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A4120300000C1E000147350": {
    "found": false,
@@ -29276,6 +29524,41 @@
    "labDoc": 134394,
    "coaFile": true
   },
+  "1A4120300000C1F000017101": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "VOP - Large Bud - 3.5g - Indoor Super Runtz X Sherbanger",
+   "strain": "Super Runtz X Sherbanger",
+   "packaged": "2026-07-09",
+   "tested": "2026-07-16",
+   "harvested": "2026-06-15",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000034415",
+   "thc": 25.9475,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CAMPHENE": 0.01,
+    "CARYOPHYLLENE": 0.34,
+    "CARYOPHYLLENE_OXIDE": 0.01,
+    "FARNESENE": 0.06,
+    "FENCHOL": 0.04,
+    "HUMULENE": 0.15,
+    "LIMONENE": 0.44,
+    "LINALOOL": 0.1,
+    "MYRCENE": 0.17,
+    "OCIMENE": 0.18,
+    "PINENE_ALPHA": 0.04,
+    "PINENE_BETA": 0.05,
+    "TERPINEOL": 0.05,
+    "TERPINOLENE": 0.01,
+    "VALENCENE": 0.02
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 131769,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
   "1A4120300000C1F000034002": {
    "found": true,
    "facility": "Vireo Health of New York, LLC",
@@ -29325,6 +29608,25 @@
    "labLicense": "OCM-CPL-24-00006-L1",
    "labDoc": null,
    "coaFile": true
+  },
+  "1A4120300000C1F000034229": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "Kings & Queens - Large Bud - 3.5g - Indoor Power Cookies",
+   "strain": "Power Cookies",
+   "packaged": "2026-06-29",
+   "tested": "2026-06-22",
+   "harvested": "2026-05-05",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000034255",
+   "thc": 0.0,
+   "cbd": 0.0,
+   "terpenesTotal": 0.0,
+   "terpenes": {},
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": null,
+   "coaFile": true,
+   "checked": "2026-10-19"
   },
   "1A4120300000C1F000034377": {
    "found": true,
@@ -29885,6 +30187,40 @@
    "labDoc": 120653,
    "coaFile": true
   },
+  "1A4120300000C1F000044213": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "1937 - Mixed Bud - 3.5g Buttercream",
+   "strain": "Buttercream",
+   "packaged": "2026-06-23",
+   "tested": "2026-07-01",
+   "harvested": "2026-05-26",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000034176",
+   "thc": 25.9606,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.05,
+    "CAMPHENE": 0.01,
+    "CARYOPHYLLENE": 0.54,
+    "CARYOPHYLLENE_OXIDE": 0.01,
+    "FENCHOL": 0.04,
+    "HUMULENE": 0.18,
+    "LIMONENE": 0.38,
+    "LINALOOL": 0.25,
+    "MYRCENE": 0.37,
+    "OCIMENE": 0.01,
+    "PINENE_ALPHA": 0.03,
+    "PINENE_BETA": 0.05,
+    "TERPINEOL": 0.03,
+    "VALENCENE": 0.01
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 123937,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
   "1A4120300000C1F000044219": {
    "found": true,
    "facility": "Vireo Health of New York, LLC",
@@ -29953,6 +30289,37 @@
    "labDoc": 127306,
    "coaFile": true
   },
+  "1A4120300000C1F000044262": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "1937 - Mixed Bud - 3.5g Black Cherry Gelato",
+   "strain": "Black Cherry Gelato",
+   "packaged": "2026-06-18",
+   "tested": "2026-06-30",
+   "harvested": "2026-05-26",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000034120",
+   "thc": 17.6855,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.01,
+    "CARYOPHYLLENE": 0.23,
+    "FENCHOL": 0.01,
+    "HUMULENE": 0.07,
+    "LIMONENE": 0.19,
+    "LINALOOL": 0.18,
+    "MYRCENE": 0.01,
+    "PINENE_ALPHA": 0.01,
+    "PINENE_BETA": 0.02,
+    "TERPINEOL": 0.01,
+    "VALENCENE": 0.02
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 123724,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
   "1A4120300000C1F000044266": {
    "found": true,
    "facility": "Vireo Health of New York, LLC",
@@ -30017,6 +30384,39 @@
    "labDoc": 116838,
    "coaFile": true
   },
+  "1A4120300000C1F000044282": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "Bouket - Large Bud - 3.5g - Indoor Ethanol #33",
+   "strain": "Ethanol #33",
+   "packaged": "2026-06-16",
+   "tested": "2026-06-25",
+   "harvested": "2026-05-18",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000034017",
+   "thc": 35.607,
+   "cbd": 0.0833,
+   "terpenesTotal": 3.468,
+   "terpenes": {
+    "BISABOLOL": 0.076,
+    "CARYOPHYLLENE": 0.336,
+    "FARNESENE": 0.086,
+    "FENCHOL": 0.139,
+    "HUMULENE": 0.151,
+    "LIMONENE": 1.204,
+    "LINALOOL": 0.258,
+    "MYRCENE": 0.334,
+    "OCIMENE": 0.154,
+    "PINENE_ALPHA": 0.292,
+    "PINENE_BETA": 0.269,
+    "TERPINEOL": 0.125,
+    "TERPINOLENE": 0.044
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 120651,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
   "1A4120300000C1F000044301": {
    "found": true,
    "facility": "Vireo Health of New York, LLC",
@@ -30045,6 +30445,41 @@
    "labLicense": "OCM-CPL-24-00006-L1",
    "labDoc": 120648,
    "coaFile": true
+  },
+  "1A4120300000C1F000044507": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "Bouket - Small Bud - 7g - Indoor High Noon Kush",
+   "strain": "High Noon Kush",
+   "packaged": "2026-09-17",
+   "tested": "2026-09-22",
+   "harvested": "2026-08-24",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000020815",
+   "thc": 26.5951,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.03,
+    "CAMPHENE": 0.02,
+    "CARYOPHYLLENE": 0.14,
+    "CARYOPHYLLENE_OXIDE": 0.01,
+    "FENCHOL": 0.09,
+    "HUMULENE": 0.05,
+    "LIMONENE": 0.62,
+    "LINALOOL": 0.29,
+    "MYRCENE": 0.46,
+    "OCIMENE": 0.02,
+    "PINENE_ALPHA": 0.06,
+    "PINENE_BETA": 0.11,
+    "TERPINEOL": 0.09,
+    "TERPINOLENE": 0.01,
+    "VALENCENE": 0.02
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 175432,
+   "coaFile": true,
+   "checked": "2026-10-19"
   },
   "1A4120300000C1F000044524": {
    "found": true,
@@ -30308,6 +30743,38 @@
    "labLicense": "OCM-CPL-24-00006-L1",
    "labDoc": 168546,
    "coaFile": true
+  },
+  "1A4120300000C1F000044616": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "Claybourne Premium - Small Bud - 14g - Indoor Purple Chem",
+   "strain": "Purple Chem",
+   "packaged": "2026-09-08",
+   "tested": "2026-09-14",
+   "harvested": "2026-08-17",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000020492",
+   "thc": 31.3884,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.1,
+    "CAMPHENE": 0.01,
+    "CARYOPHYLLENE": 0.39,
+    "FENCHOL": 0.05,
+    "HUMULENE": 0.13,
+    "LIMONENE": 0.49,
+    "LINALOOL": 0.11,
+    "MYRCENE": 0.66,
+    "PINENE_ALPHA": 0.04,
+    "PINENE_BETA": 0.08,
+    "TERPINEOL": 0.04,
+    "VALENCENE": 0.01
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 168550,
+   "coaFile": true,
+   "checked": "2026-10-19"
   },
   "1A4120300000C1F000044617": {
    "found": true,
@@ -30586,6 +31053,39 @@
    "labDoc": 164015,
    "coaFile": true
   },
+  "1A4120300000C1F000044685": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "1937 - Mixed Bud - 14g Mixed Hybrid",
+   "strain": "Mixed Hybrid",
+   "packaged": "2026-08-28",
+   "tested": "2026-09-04",
+   "harvested": "2025-12-17",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000020390",
+   "thc": 22.1762,
+   "cbd": 0.059,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.03,
+    "CARYOPHYLLENE": 0.15,
+    "FARNESENE": 0.05,
+    "FENCHOL": 0.02,
+    "HUMULENE": 0.05,
+    "LIMONENE": 0.23,
+    "LINALOOL": 0.04,
+    "MYRCENE": 1.63,
+    "OCIMENE": 0.03,
+    "PINENE_ALPHA": 0.08,
+    "PINENE_BETA": 0.07,
+    "TERPINEOL": 0.02,
+    "VALENCENE": 0.01
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 162417,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
   "1A4120300000C1F000044691": {
    "found": true,
    "facility": "Vireo Health of New York, LLC",
@@ -30678,6 +31178,38 @@
    "labLicense": "OCM-CPL-24-00006-L1",
    "labDoc": 159060,
    "coaFile": true
+  },
+  "1A4120300000C1F000044715": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "1937 - Mixed Bud - 14g ClemDawg",
+   "strain": "ClemDawg",
+   "packaged": "2026-09-02",
+   "tested": "2026-09-08",
+   "harvested": "2026-08-10",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000020438",
+   "thc": 29.7456,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.06,
+    "CAMPHENE": 0.01,
+    "CARYOPHYLLENE": 0.47,
+    "FENCHOL": 0.06,
+    "HUMULENE": 0.21,
+    "LIMONENE": 0.68,
+    "LINALOOL": 0.06,
+    "MYRCENE": 0.7,
+    "PINENE_ALPHA": 0.05,
+    "PINENE_BETA": 0.1,
+    "TERPINEOL": 0.06,
+    "VALENCENE": 0.02
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 163956,
+   "coaFile": true,
+   "checked": "2026-10-19"
   },
   "1A4120300000C1F000044718": {
    "found": true,
@@ -30923,6 +31455,70 @@
    "batchTag": "1A4120300000C1F000038044",
    "checked": "2026-09-29"
   },
+  "1A4120300000C1F000044802": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "VOP - Large Bud - 3.5g - Indoor Lemon Cherry Sherbert",
+   "strain": "Lemon Cherry Sherbert",
+   "packaged": "2026-08-17",
+   "tested": "2026-08-22",
+   "harvested": "2026-07-21",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000038017",
+   "thc": 28.2244,
+   "cbd": 0.0525,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.33,
+    "FARNESENE": 0.13,
+    "FENCHOL": 0.04,
+    "HUMULENE": 0.11,
+    "LIMONENE": 0.35,
+    "LINALOOL": 0.29,
+    "MYRCENE": 0.26,
+    "PINENE_ALPHA": 0.03,
+    "PINENE_BETA": 0.06,
+    "TERPINEOL": 0.04,
+    "VALENCENE": 0.02
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 155423,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
+  "1A4120300000C1F000044805": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "VOP - Large Bud - 3.5g - Indoor Chem dog X Rainbow Beltz P4",
+   "strain": "Chem dog X Rainbow Beltz P4",
+   "packaged": "2026-08-14",
+   "tested": "2026-08-21",
+   "harvested": "2026-07-21",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000038012",
+   "thc": 25.94,
+   "cbd": 0.0427,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.04,
+    "CAMPHENE": 0.01,
+    "CARYOPHYLLENE": 0.34,
+    "FARNESENE": 0.08,
+    "FENCHOL": 0.04,
+    "HUMULENE": 0.14,
+    "LIMONENE": 0.44,
+    "LINALOOL": 0.16,
+    "MYRCENE": 0.3,
+    "OCIMENE": 0.09,
+    "PINENE_ALPHA": 0.03,
+    "PINENE_BETA": 0.06,
+    "TERPINEOL": 0.03
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 154951,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
   "1A4120300000C1F000044828": {
    "found": true,
    "facility": "Vireo Health of New York, LLC",
@@ -31072,6 +31668,31 @@
    "labLicense": "OCM-CPL-24-00006-L1",
    "labDoc": 151109,
    "coaFile": true
+  },
+  "1A4120300000C1F000044882": {
+   "found": true,
+   "facility": "Vireo Health of New York, LLC",
+   "product": "Claybourne Classic Cuts - Large Bud - 3.5g - Indoor Super Silver Haze",
+   "strain": "Super Silver Haze",
+   "packaged": "2026-07-31",
+   "tested": "2026-08-07",
+   "harvested": "2026-06-30",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300000C1F000034652",
+   "thc": 30.8258,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.27,
+    "FARNESENE": 0.07,
+    "HUMULENE": 0.08,
+    "LIMONENE": 0.22,
+    "MYRCENE": 0.93
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 147720,
+   "coaFile": true,
+   "checked": "2026-10-19"
   },
   "1A4120300000C1F000044883": {
    "found": true,
@@ -32531,6 +33152,81 @@
    "labDoc": 112206,
    "coaFile": true
   },
+  "1A4120300000D7D000002517": {
+   "found": true,
+   "facility": "Flo Extracts, LLC",
+   "product": "Divine Lime 3.5g",
+   "strain": "Divine Lime",
+   "packaged": "2026-10-07",
+   "tested": "2026-09-03",
+   "harvested": "2026-07-21",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300000D7C000002811",
+   "thc": 20.262,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.26,
+    "HUMULENE": 0.08,
+    "LIMONENE": 0.24,
+    "LINALOOL": 0.14
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 161855,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
+  "1A4120300000D7D000002518": {
+   "found": true,
+   "facility": "Flo Extracts, LLC",
+   "product": "Chem Funk 3.5g",
+   "strain": "Chem Funk",
+   "packaged": "2026-10-07",
+   "tested": "2026-09-08",
+   "harvested": "2026-04-21",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300000D7C000002816",
+   "thc": 22.486,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.3,
+    "HUMULENE": 0.13,
+    "LIMONENE": 0.22,
+    "MYRCENE": 0.08,
+    "OCIMENE": 0.05,
+    "TERPINOLENE": 0.1
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 163903,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
+  "1A4120300000D7D000002519": {
+   "found": true,
+   "facility": "Flo Extracts, LLC",
+   "product": "Lapis Exillus 3.5g",
+   "strain": "Lapis Exillus",
+   "packaged": "2026-10-07",
+   "tested": "2026-09-08",
+   "harvested": "2026-06-17",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300000D7C000002813",
+   "thc": 23.591,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.43,
+    "FARNESENE": 0.12,
+    "HUMULENE": 0.13,
+    "LIMONENE": 0.31,
+    "LINALOOL": 0.23
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 164002,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
   "1A4120300000D7F000000552": {
    "found": false,
    "checked": "2026-10-08"
@@ -33190,6 +33886,36 @@
   "1A4120300000D7F000065392": {
    "found": false,
    "checked": "2026-09-30"
+  },
+  "1A4120300000DB4000000178": {
+   "found": true,
+   "facility": "Dragonfly Kitchen IV Inc.",
+   "product": "Dragonfly | Flower | 3.5g | HDG",
+   "strain": "HDG",
+   "packaged": "2025-11-18",
+   "tested": "2026-01-23",
+   "harvested": null,
+   "lab": "Reliable Labs, Inc.",
+   "batchTag": "1A4120300000DB4000000180",
+   "thc": 27.66,
+   "cbd": 0.0,
+   "terpenesTotal": 2.8661,
+   "terpenes": {
+    "CAMPHENE": 0.0219,
+    "CARYOPHYLLENE": 0.962,
+    "FENCHOL": 0.1076,
+    "GERANIOL": 0.0889,
+    "HUMULENE": 0.2869,
+    "LIMONENE": 0.9756,
+    "MYRCENE": 0.1277,
+    "PINENE_ALPHA": 0.1334,
+    "PINENE_BETA": 0.1176,
+    "TERPINEOL": 0.0444
+   },
+   "labLicense": "OCM-CPL-24-00011-L1",
+   "labDoc": null,
+   "coaFile": false,
+   "checked": "2026-10-19"
   },
   "1A4120300000EDA000002929": {
    "found": false,
@@ -35339,6 +36065,109 @@
    "labDoc": 151524,
    "coaFile": true
   },
+  "1A41203000015F1000000973": {
+   "found": true,
+   "facility": "Catskill Mountain Cannabis LLC",
+   "product": "Diamond Breeze - 3.5g pre pack",
+   "strain": "Diamond Breeze",
+   "packaged": "2026-09-30",
+   "tested": "2026-08-14",
+   "harvested": "2026-07-03",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A41203000015F1000000645",
+   "thc": 23.6302,
+   "cbd": 0.0422,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.05,
+    "CARYOPHYLLENE": 0.21,
+    "FENCHOL": 0.06,
+    "HUMULENE": 0.07,
+    "LIMONENE": 0.37,
+    "LINALOOL": 0.18,
+    "MYRCENE": 0.08,
+    "OCIMENE": 0.02,
+    "PINENE_ALPHA": 0.05,
+    "PINENE_BETA": 0.06,
+    "TERPINEOL": 0.08,
+    "VALENCENE": 0.01
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 151520,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
+  "1A41203000015F8000000394": {
+   "found": true,
+   "facility": "Asset packaging management co llc",
+   "product": "LC-Premium Indoor Flower- Cap Junky 3.5g",
+   "strain": "Cap Junk",
+   "packaged": "2026-05-27",
+   "tested": "2026-06-03",
+   "harvested": "2026-05-08",
+   "lab": "Certified Testing and Data NY, LLC",
+   "batchTag": "1A41203000015F8000000404",
+   "thc": 25.5,
+   "cbd": 0.0,
+   "terpenesTotal": 1.749,
+   "terpenes": {
+    "BISABOLOL": 0.1372,
+    "CARYOPHYLLENE": 0.3899,
+    "FENCHOL": 0.0678,
+    "GUAIOL": 0.1361,
+    "HUMULENE": 0.1174,
+    "LIMONENE": 0.2893,
+    "LINALOOL": 0.3673,
+    "MYRCENE": 0.0734,
+    "PINENE_ALPHA": 0.0366,
+    "PINENE_BETA": 0.068,
+    "TERPINEOL": 0.066
+   },
+   "labLicense": "OCM-CPL-24-00009-L1",
+   "labDoc": 105405,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001612000000798": {
+   "found": true,
+   "facility": "MAGNA CANNA NY, LLC",
+   "product": "HIGH AMBITIONS - Cherry Bomb 14g - Cherry Bomb - 14g",
+   "strain": "Cherry Bomb",
+   "packaged": "2026-05-12",
+   "tested": "2026-03-14",
+   "harvested": "2026-02-18",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001612000000491",
+   "thc": 23.1681,
+   "cbd": 0.0,
+   "terpenesTotal": 1.06,
+   "terpenes": {
+    "BISABOLOL": 0.01,
+    "CAMPHENE": 0.01,
+    "CARYOPHYLLENE": 0.19,
+    "CARYOPHYLLENE_OXIDE": 0.01,
+    "FARNESENE": 0.04,
+    "FENCHOL": 0.04,
+    "GERANIOL": 0.02,
+    "HUMULENE": 0.09,
+    "LIMONENE": 0.2,
+    "LINALOOL": 0.13,
+    "MYRCENE": 0.21,
+    "PINENE_ALPHA": 0.03,
+    "PINENE_BETA": 0.01,
+    "TERPINEOL": 0.03,
+    "TERPINOLENE": 0.01,
+    "VALENCENE": 0.02
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": null,
+   "coaFile": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001612000000800": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A4120300001612000001057": {
    "found": false,
    "checked": "2026-09-29"
@@ -35377,6 +36206,22 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300001612000001272": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001612000001273": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001612000001274": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001612000001275": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A4120300001612000001325": {
    "found": false,
    "checked": "2026-09-29"
@@ -35408,6 +36253,14 @@
   "1A4120300001612000001492": {
    "found": false,
    "checked": "2026-10-17"
+  },
+  "1A4120300001612000001493": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001612000001494": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A4120300001612000001495": {
    "found": false,
@@ -35505,6 +36358,142 @@
    "batchTag": null,
    "checked": "2026-09-29"
   },
+  "1A4120300001613000000657": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Black Runtz 2025 14g",
+   "strain": "Black Runts 2025",
+   "packaged": "2026-02-26",
+   "tested": "2025-12-23",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000000131",
+   "thc": 31.5601,
+   "cbd": 0.0,
+   "terpenesTotal": 2.23,
+   "terpenes": {
+    "BISABOLOL": 0.04,
+    "CAMPHENE": 0.01,
+    "CARYOPHYLLENE": 0.64,
+    "CARYOPHYLLENE_OXIDE": 0.02,
+    "FENCHOL": 0.04,
+    "HUMULENE": 0.2,
+    "LIMONENE": 0.66,
+    "LINALOOL": 0.24,
+    "MYRCENE": 0.16,
+    "OCIMENE": 0.01,
+    "PINENE_ALPHA": 0.05,
+    "PINENE_BETA": 0.09,
+    "TERPINEOL": 0.04,
+    "VALENCENE": 0.03
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 9114,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001613000000678": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Grape Expectations 2025 14g",
+   "strain": "Grape Expectations 2025",
+   "packaged": "2026-02-26",
+   "tested": "2025-12-23",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000000140",
+   "thc": 33.8767,
+   "cbd": 0.0,
+   "terpenesTotal": 2.52,
+   "terpenes": {
+    "BISABOLOL": 0.09,
+    "CAMPHENE": 0.01,
+    "CARYOPHYLLENE": 0.57,
+    "CARYOPHYLLENE_OXIDE": 0.02,
+    "FENCHOL": 0.06,
+    "GUAIOL": 0.09,
+    "HUMULENE": 0.19,
+    "LIMONENE": 0.87,
+    "LINALOOL": 0.13,
+    "MYRCENE": 0.17,
+    "OCIMENE": 0.06,
+    "PINENE_ALPHA": 0.08,
+    "PINENE_BETA": 0.12,
+    "TERPINEOL": 0.06
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 9117,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001613000000768": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Grape Expectations 3.5g",
+   "strain": "Grape Expectations 2025",
+   "packaged": "2026-02-26",
+   "tested": "2025-12-23",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000000141",
+   "thc": 34.4539,
+   "cbd": 0.0,
+   "terpenesTotal": 2.73,
+   "terpenes": {
+    "BISABOLOL": 0.07,
+    "CAMPHENE": 0.02,
+    "CARYOPHYLLENE": 0.56,
+    "CARYOPHYLLENE_OXIDE": 0.02,
+    "FENCHOL": 0.08,
+    "GUAIOL": 0.08,
+    "HUMULENE": 0.19,
+    "LIMONENE": 1.02,
+    "LINALOOL": 0.12,
+    "MYRCENE": 0.15,
+    "OCIMENE": 0.08,
+    "PINENE_ALPHA": 0.12,
+    "PINENE_BETA": 0.15,
+    "TERPINEOL": 0.07
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 9115,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001613000000791": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Zookies 2025 3.5g",
+   "strain": "Zookies",
+   "packaged": "2026-03-04",
+   "tested": "2025-12-23",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000000149",
+   "thc": 28.3543,
+   "cbd": 0.0,
+   "terpenesTotal": 2.1,
+   "terpenes": {
+    "BISABOLOL": 0.08,
+    "CAMPHENE": 0.01,
+    "CARYOPHYLLENE": 0.82,
+    "CARYOPHYLLENE_OXIDE": 0.01,
+    "FENCHOL": 0.03,
+    "HUMULENE": 0.32,
+    "LIMONENE": 0.45,
+    "LINALOOL": 0.09,
+    "MYRCENE": 0.15,
+    "OCIMENE": 0.04,
+    "PINENE_ALPHA": 0.02,
+    "PINENE_BETA": 0.05,
+    "TERPINEOL": 0.02,
+    "VALENCENE": 0.01
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 9226,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
   "1A4120300001613000000903": {
    "found": true,
    "facility": "PASSION FIELD FARM LLC",
@@ -35572,6 +36561,75 @@
    "labLicense": "OCM-CPL-24-00006-L1",
    "labDoc": 9115,
    "coaFile": true
+  },
+  "1A4120300001613000001089": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Jelloz 3.5g",
+   "strain": "Jelloz 2025",
+   "packaged": "2026-07-01",
+   "tested": "2025-12-23",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000000144",
+   "thc": 31.7865,
+   "cbd": 0.0,
+   "terpenesTotal": 1.94,
+   "terpenes": {
+    "BISABOLOL": 0.06,
+    "CAMPHENE": 0.01,
+    "CARYOPHYLLENE": 0.64,
+    "CARYOPHYLLENE_OXIDE": 0.01,
+    "FENCHOL": 0.04,
+    "HUMULENE": 0.25,
+    "LIMONENE": 0.52,
+    "LINALOOL": 0.1,
+    "MYRCENE": 0.11,
+    "OCIMENE": 0.05,
+    "PINENE_ALPHA": 0.04,
+    "PINENE_BETA": 0.06,
+    "TERPINEOL": 0.03,
+    "TERPINOLENE": 0.01,
+    "VALENCENE": 0.01
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 9224,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001613000001095": {
+   "found": true,
+   "facility": "PASSION FIELD FARM LLC",
+   "product": "Lime Street 2025 3.5g",
+   "strain": "Lime Street",
+   "packaged": "2026-07-01",
+   "tested": "2025-12-23",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A4120300001613000000132",
+   "thc": 31.1091,
+   "cbd": 0.0,
+   "terpenesTotal": 1.87,
+   "terpenes": {
+    "BISABOLOL": 0.02,
+    "CAMPHENE": 0.01,
+    "CARYOPHYLLENE": 0.71,
+    "CARYOPHYLLENE_OXIDE": 0.02,
+    "FENCHOL": 0.03,
+    "HUMULENE": 0.28,
+    "LIMONENE": 0.46,
+    "LINALOOL": 0.11,
+    "MYRCENE": 0.08,
+    "OCIMENE": 0.03,
+    "PINENE_ALPHA": 0.03,
+    "PINENE_BETA": 0.05,
+    "TERPINEOL": 0.03,
+    "VALENCENE": 0.01
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 9225,
+   "coaFile": true,
+   "checked": "2026-10-19"
   },
   "1A4120300001613000001216": {
    "found": true,
@@ -35996,6 +37054,14 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A412030000164A000002337": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A412030000164A000002338": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A412030000164A000002515": {
    "found": false,
    "checked": "2026-10-18"
@@ -36004,6 +37070,73 @@
    "found": false,
    "checked": "2026-10-18"
   },
+  "1A412030000164C000002063": {
+   "found": true,
+   "facility": "Three Cord Ranch LLC",
+   "product": "Grams | Purple Soap | Indica Hybrid | 3.5g",
+   "strain": "Purple Soap",
+   "packaged": "2026-07-21",
+   "tested": "2026-07-20",
+   "harvested": "2025-12-11",
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A412030000164C000002013",
+   "thc": 22.3463,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CAMPHENE": 0.01,
+    "CARYOPHYLLENE": 0.22,
+    "CARYOPHYLLENE_OXIDE": 0.01,
+    "FARNESENE": 0.08,
+    "FENCHOL": 0.09,
+    "HUMULENE": 0.08,
+    "LIMONENE": 0.42,
+    "LINALOOL": 0.58,
+    "MYRCENE": 0.14,
+    "OCIMENE": 0.01,
+    "PINENE_ALPHA": 0.03,
+    "PINENE_BETA": 0.05,
+    "TERPINEOL": 0.1,
+    "VALENCENE": 0.02
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 133984,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
+  "1A412030000164F000000118": {
+   "found": true,
+   "facility": "The High Priestess Wellness Co Incorporated",
+   "product": "Lemon Diesel 1g Pre-roll",
+   "strain": "Lemon Diesel",
+   "packaged": "2026-04-01",
+   "tested": "2026-03-24",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A41203000015E7000000075",
+   "thc": 28.3663,
+   "cbd": 0.106,
+   "terpenesTotal": 0.63,
+   "terpenes": {
+    "BISABOLOL": 0.05,
+    "CARYOPHYLLENE": 0.09,
+    "CARYOPHYLLENE_OXIDE": 0.01,
+    "FENCHOL": 0.02,
+    "GUAIOL": 0.09,
+    "HUMULENE": 0.03,
+    "LIMONENE": 0.09,
+    "LINALOOL": 0.01,
+    "MYRCENE": 0.19,
+    "PINENE_ALPHA": 0.01,
+    "PINENE_BETA": 0.02,
+    "TERPINEOL": 0.01,
+    "VALENCENE": 0.01
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 59940,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
   "1A4120300001654000000081": {
    "found": false,
    "checked": "2026-09-29"
@@ -36011,6 +37144,26 @@
   "1A4120300001654000000082": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300001654000000506": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001654000000507": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001654000000508": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001654000000509": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001654000000511": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A4120300001654000000541": {
    "found": false,
@@ -36175,6 +37328,26 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A412030000165B000006334": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A412030000165B000006335": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A412030000165B000006336": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A412030000165B000006337": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A412030000165B000006338": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A412030000165B000006461": {
    "found": false,
    "checked": "2026-09-29"
@@ -36182,6 +37355,14 @@
   "1A412030000165B000006462": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A412030000165B000007192": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A412030000165B000007193": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A412030000165B000007501": {
    "found": false,
@@ -36323,6 +37504,34 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A412030000165B000016338": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A412030000165B000016741": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A412030000165B000016964": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A412030000165B000016965": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A412030000165B000016966": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A412030000165B000016968": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A412030000165B000016969": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A412030000165B000018139": {
    "found": false,
    "checked": "2026-10-13"
@@ -36342,6 +37551,36 @@
   "1A412030000165B000018143": {
    "found": false,
    "checked": "2026-10-13"
+  },
+  "1A412030000166B000000049": {
+   "found": true,
+   "facility": "Farm 2 Hand Llc",
+   "product": "Grapefruit chem 3.5",
+   "strain": "Grapefruit Chem",
+   "packaged": "2026-04-23",
+   "tested": "2026-05-06",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A412030000166B000000061",
+   "thc": 23.8189,
+   "cbd": 0.0,
+   "terpenesTotal": 0.58,
+   "terpenes": {
+    "BISABOLOL": 0.02,
+    "CARYOPHYLLENE": 0.26,
+    "GERANIOL": 0.01,
+    "HUMULENE": 0.08,
+    "LIMONENE": 0.02,
+    "LINALOOL": 0.06,
+    "MYRCENE": 0.1,
+    "OCIMENE": 0.01,
+    "PINENE_BETA": 0.01,
+    "VALENCENE": 0.01
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 85803,
+   "coaFile": true,
+   "checked": "2026-10-19"
   },
   "1A412030000166B000000075": {
    "found": true,
@@ -36430,6 +37669,36 @@
    "labDoc": 85809,
    "coaFile": true,
    "checked": "2026-10-09"
+  },
+  "1A412030000166B000000081": {
+   "found": true,
+   "facility": "Farm 2 Hand Llc",
+   "product": "purple haze",
+   "strain": "Purple Haze",
+   "packaged": "2026-05-14",
+   "tested": "2026-05-06",
+   "harvested": null,
+   "lab": "Kaycha Labs NY",
+   "batchTag": "1A412030000166B000000063",
+   "thc": 17.7679,
+   "cbd": 0.0,
+   "terpenesTotal": 0.32,
+   "terpenes": {
+    "BISABOLOL": 0.01,
+    "CARYOPHYLLENE": 0.11,
+    "FENCHOL": 0.01,
+    "HUMULENE": 0.04,
+    "LIMONENE": 0.03,
+    "LINALOOL": 0.04,
+    "MYRCENE": 0.05,
+    "PINENE_ALPHA": 0.01,
+    "PINENE_BETA": 0.01,
+    "TERPINEOL": 0.01
+   },
+   "labLicense": "OCM-CPL-24-00006-L1",
+   "labDoc": 85675,
+   "coaFile": true,
+   "checked": "2026-10-19"
   },
   "1A412030000167F000000081": {
    "found": false,
@@ -36725,6 +37994,32 @@
    "labDoc": 34023,
    "coaFile": true
   },
+  "1A41203000016B4000001201": {
+   "found": true,
+   "facility": "Canna Cure Farms, LLC",
+   "product": "GG4- 3.5g Jar",
+   "strain": "gg4",
+   "packaged": "2026-03-09",
+   "tested": "2026-02-10",
+   "harvested": null,
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000016B3000000216",
+   "thc": 23.516,
+   "cbd": 0.0,
+   "terpenesTotal": 1.25,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.32,
+    "GUAIOL": 0.12,
+    "HUMULENE": 0.11,
+    "LIMONENE": 0.29,
+    "LINALOOL": 0.24,
+    "MYRCENE": 0.1
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 33918,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
   "1A41203000016B4000001287": {
    "found": true,
    "facility": "Canna Cure Farms, LLC",
@@ -36999,6 +38294,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A41203000016B4000005566": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A41203000016B4000005877": {
    "found": false,
    "checked": "2026-09-29"
@@ -37054,6 +38353,10 @@
   "1A41203000016B4000006785": {
    "found": false,
    "checked": "2026-10-15"
+  },
+  "1A4120300001718000000086": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A4120300001718000000087": {
    "found": false,
@@ -39578,6 +40881,10 @@
   "1A41203000018B1000093082": {
    "found": false,
    "checked": "2026-09-30"
+  },
+  "1A41203000018B1000093084": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A41203000018B1000093085": {
    "found": false,
@@ -42808,6 +44115,22 @@
   "1A4120300001AA1000106225": {
    "found": false,
    "checked": "2026-10-04"
+  },
+  "1A4120300001AA1000106794": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001AA1000106795": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001AA1000106798": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001AA1000106799": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A4120300001AA1000108664": {
    "found": false,
@@ -46713,6 +48036,109 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A4120300001E1F000001766": {
+   "found": true,
+   "facility": "Halton Hay Inc",
+   "product": "Cheech & Chong - 3.5g Prepackaged - Yesca",
+   "strain": "Yesca",
+   "packaged": "2026-03-24",
+   "tested": "2026-02-27",
+   "harvested": null,
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A4120300001E1F000002286",
+   "thc": 22.06,
+   "cbd": 0.0,
+   "terpenesTotal": 2.0106,
+   "terpenes": {
+    "BISABOLOL": 0.0815,
+    "BORNEOL": 0.0119,
+    "CAMPHENE": 0.014,
+    "CARYOPHYLLENE": 0.4269,
+    "FARNESENE": 0.0195,
+    "FENCHOL": 0.0643,
+    "HUMULENE": 0.1233,
+    "LIMONENE": 0.5548,
+    "LINALOOL": 0.2037,
+    "MYRCENE": 0.0407,
+    "NEROLIDOL": 0.0486,
+    "OCIMENE": 0.0707,
+    "PINENE_ALPHA": 0.1396,
+    "PINENE_BETA": 0.1122,
+    "TERPINEOL": 0.0598,
+    "TERPINOLENE": 0.0095
+   },
+   "labLicense": "OCM-CPL-24-00001-L1",
+   "labDoc": 45059,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001E1F000001767": {
+   "found": true,
+   "facility": "Halton Hay Inc",
+   "product": "Cheech & Chong - 3.5g Prepackaged - Stadankohhh",
+   "strain": "Stadankohhh",
+   "packaged": "2026-03-24",
+   "tested": "2025-12-29",
+   "harvested": null,
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A4120300001E1F000000138",
+   "thc": 29.63,
+   "cbd": 0.0,
+   "terpenesTotal": 3.1095,
+   "terpenes": {
+    "BISABOLOL": 0.0595,
+    "CAMPHENE": 0.0147,
+    "CARYOPHYLLENE": 0.6347,
+    "CARYOPHYLLENE_OXIDE": 0.0098,
+    "FARNESENE": 0.2524,
+    "FENCHOL": 0.0845,
+    "HUMULENE": 0.1648,
+    "LIMONENE": 0.702,
+    "LINALOOL": 0.5456,
+    "MYRCENE": 0.1994,
+    "PINENE_ALPHA": 0.0488,
+    "PINENE_BETA": 0.095,
+    "TERPINOLENE": 0.0087
+   },
+   "labLicense": "OCM-CPL-24-00001-L1",
+   "labDoc": 11547,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001E1F000001833": {
+   "found": true,
+   "facility": "Halton Hay Inc",
+   "product": "Mac Pharms - 3.5g Prepackaged - Bento Blaze",
+   "strain": "Bento Blaze",
+   "packaged": "2026-04-03",
+   "tested": "2026-04-11",
+   "harvested": null,
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A4120300001E1F000001844",
+   "thc": 27.11,
+   "cbd": 0.0,
+   "terpenesTotal": 2.5498,
+   "terpenes": {
+    "BORNEOL": 0.0121,
+    "CAMPHENE": 0.0098,
+    "CARYOPHYLLENE": 0.573,
+    "CARYOPHYLLENE_OXIDE": 0.0124,
+    "FARNESENE": 0.2981,
+    "FENCHOL": 0.0396,
+    "HUMULENE": 0.1441,
+    "LIMONENE": 0.4589,
+    "LINALOOL": 0.3324,
+    "MYRCENE": 0.392,
+    "NEROLIDOL": 0.0847,
+    "PINENE_ALPHA": 0.0318,
+    "PINENE_BETA": 0.0617,
+    "TERPINEOL": 0.0516
+   },
+   "labLicense": "OCM-CPL-24-00001-L1",
+   "labDoc": 71525,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
   "1A4120300001E1F000001838": {
    "found": true,
    "facility": "Halton Hay Inc",
@@ -46785,6 +48211,40 @@
    "labDoc": 84356,
    "coaFile": true,
    "checked": "2026-10-08"
+  },
+  "1A4120300001E1F000001890": {
+   "found": true,
+   "facility": "Halton Hay Inc",
+   "product": "Mac Pharms - 3.5g Prepackaged - Blue Nightmare",
+   "strain": "Blue Nightmare",
+   "packaged": "2026-04-23",
+   "tested": "2026-05-01",
+   "harvested": null,
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A4120300001E1F000001936",
+   "thc": 27.56,
+   "cbd": 0.0,
+   "terpenesTotal": 1.8196,
+   "terpenes": {
+    "BISABOLOL": 0.1443,
+    "BORNEOL": 0.0085,
+    "CAMPHENE": 0.0084,
+    "CARYOPHYLLENE": 0.5754,
+    "CARYOPHYLLENE_OXIDE": 0.0197,
+    "FARNESENE": 0.0297,
+    "FENCHOL": 0.0219,
+    "HUMULENE": 0.1817,
+    "LIMONENE": 0.3557,
+    "LINALOOL": 0.116,
+    "MYRCENE": 0.2348,
+    "PINENE_ALPHA": 0.0297,
+    "PINENE_BETA": 0.0518,
+    "TERPINEOL": 0.0254
+   },
+   "labLicense": "OCM-CPL-24-00001-L1",
+   "labDoc": 84352,
+   "coaFile": true,
+   "checked": "2026-10-19"
   },
   "1A4120300001E1F000001895": {
    "found": true,
@@ -46994,6 +48454,74 @@
    "labDoc": 84351,
    "coaFile": true,
    "checked": "2026-10-09"
+  },
+  "1A4120300001E1F000002192": {
+   "found": true,
+   "facility": "Halton Hay Inc",
+   "product": "Mac Pharms - 3.5g Prepackaged - Cero Miedo",
+   "strain": "Cero Miedo",
+   "packaged": "2026-07-09",
+   "tested": "2026-06-13",
+   "harvested": null,
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A4120300001E1F000002066",
+   "thc": 33.43,
+   "cbd": 0.0,
+   "terpenesTotal": 2.7066,
+   "terpenes": {
+    "BISABOLOL": 0.0609,
+    "CAMPHENE": 0.018,
+    "CARYOPHYLLENE": 0.5503,
+    "CARYOPHYLLENE_OXIDE": 0.0107,
+    "FARNESENE": 0.2889,
+    "FENCHOL": 0.0899,
+    "HUMULENE": 0.2053,
+    "LIMONENE": 0.5129,
+    "LINALOOL": 0.1848,
+    "MYRCENE": 0.4729,
+    "PINENE_ALPHA": 0.0576,
+    "PINENE_BETA": 0.1158
+   },
+   "labLicense": "OCM-CPL-24-00001-L1",
+   "labDoc": 111655,
+   "coaFile": true,
+   "checked": "2026-10-19"
+  },
+  "1A4120300001E1F000002294": {
+   "found": true,
+   "facility": "Halton Hay Inc",
+   "product": "Cheech & Chong - 3.5g Prepackaged - Drooler",
+   "strain": "Drooler",
+   "packaged": "2026-02-23",
+   "tested": "2026-02-27",
+   "harvested": null,
+   "lab": "ACT Laboratories of New York, LLC",
+   "batchTag": "1A4120300001E1F000002287",
+   "thc": 20.16,
+   "cbd": 0.0,
+   "terpenesTotal": 2.0512,
+   "terpenes": {
+    "BISABOLOL": 0.078,
+    "BORNEOL": 0.012,
+    "CAMPHENE": 0.0146,
+    "CARYOPHYLLENE": 0.4186,
+    "FARNESENE": 0.0168,
+    "FENCHOL": 0.0564,
+    "HUMULENE": 0.1127,
+    "LIMONENE": 0.6071,
+    "LINALOOL": 0.1952,
+    "MYRCENE": 0.0454,
+    "NEROLIDOL": 0.0505,
+    "OCIMENE": 0.0698,
+    "PINENE_ALPHA": 0.1537,
+    "PINENE_BETA": 0.1204,
+    "TERPINEOL": 0.0596,
+    "TERPINOLENE": 0.0092
+   },
+   "labLicense": "OCM-CPL-24-00001-L1",
+   "labDoc": 45058,
+   "coaFile": true,
+   "checked": "2026-10-19"
   },
   "1A4120300001E1F000002300": {
    "found": true,
@@ -52062,6 +53590,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A41203000037DF000000167": {
+   "found": false,
+   "checked": "2026-10-19"
+  },
   "1A41203000037DF000000169": {
    "found": false,
    "checked": "2026-10-07"
@@ -52217,6 +53749,10 @@
   "1A41203000037DF000000473": {
    "found": false,
    "checked": "2026-10-08"
+  },
+  "1A41203000037DF000000518": {
+   "found": false,
+   "checked": "2026-10-19"
   },
   "1A4120300003B62000000495": {
    "found": false,
@@ -55537,7 +57073,6 @@
   "1A4120300000216000111249": "2026-10-08",
   "1A4120300000216000111251": "2026-10-08",
   "1A4120300000216000111920": "2026-10-08",
-  "1A4120300000216000111924": "2026-10-08",
   "1A4120300000216000111933": "2026-10-08",
   "1A4120300000216000111935": "2026-10-08",
   "1A4120300000216000111938": "2026-10-08",
@@ -55598,7 +57133,6 @@
   "1A4120300000216000133669": "2026-10-08",
   "1A4120300000216000133670": "2026-10-08",
   "1A4120300000216000133671": "2026-10-08",
-  "1A4120300000216000138778": "2026-10-08",
   "1A4120300000216000138781": "2026-10-08",
   "1A4120300000216000138782": "2026-10-08",
   "1A4120300000216000138783": "2026-10-08",
@@ -55611,7 +57145,6 @@
   "1A4120300000216000171158": "2026-10-08",
   "1A4120300000216000171172": "2026-10-08",
   "1A4120300000216000171173": "2026-10-08",
-  "1A4120300000216000174205": "2026-10-08",
   "1A4120300000216000174206": "2026-10-08",
   "1A4120300000216000174209": "2026-10-08",
   "1A4120300000216000174214": "2026-10-08",
@@ -55662,7 +57195,6 @@
   "1A412030000025A000040607": "2026-10-08",
   "1A412030000025A000040610": "2026-10-08",
   "1A412030000025A000040613": "2026-10-08",
-  "1A412030000025A000040620": "2026-10-08",
   "1A412030000025A000040623": "2026-10-08",
   "1A412030000025A000040629": "2026-10-08",
   "1A412030000025A000040634": "2026-10-08",
@@ -55687,7 +57219,6 @@
   "1A4120300000268000030972": "2026-10-08",
   "1A4120300000268000030979": "2026-10-08",
   "1A4120300000268000037915": "2026-10-08",
-  "1A4120300000268000051961": "2026-10-08",
   "1A4120300000268000051962": "2026-10-08",
   "1A4120300000268000055367": "2026-10-08",
   "1A4120300000268000055370": "2026-10-08",
@@ -56033,7 +57564,6 @@
   "1A4120300000641000131677": "2026-10-08",
   "1A4120300000641000136355": "2026-10-08",
   "1A4120300000641000178847": "2026-10-08",
-  "1A4120300000641000179094": "2026-10-08",
   "1A4120300000641000190572": "2026-10-08",
   "1A4120300000641000199844": "2026-10-08",
   "1A4120300000641000214133": "2026-10-08",
@@ -56086,7 +57616,6 @@
   "1A4120300000641000370006": "2026-10-08",
   "1A4120300000641000373738": "2026-10-08",
   "1A4120300000641000385396": "2026-10-08",
-  "1A4120300000641000385398": "2026-10-08",
   "1A4120300000641000385459": "2026-10-08",
   "1A4120300000641000394780": "2026-10-08",
   "1A4120300000641000399608": "2026-10-08",
@@ -56173,7 +57702,6 @@
   "1A4120300000C1E000044240": "2026-10-08",
   "1A4120300000C1E000044789": "2026-10-08",
   "1A4120300000C1E000049054": "2026-10-08",
-  "1A4120300000C1E000049110": "2026-10-08",
   "1A4120300000C1E000049312": "2026-10-08",
   "1A4120300000C1E000058064": "2026-10-08",
   "1A4120300000C1E000058361": "2026-10-08",
@@ -56375,46 +57903,6 @@
   "1A41203000015F1000000969": "2026-10-08",
   "1A41203000015F1000000970": "2026-10-08",
   "1A41203000015F1000000971": "2026-10-08",
-  "1A41203000015F1000000972": "2026-10-08",
-  "1A41203000015F1000000973": "2026-10-08",
-  "1A41203000015F8000000394": "2026-10-08",
-  "1A4120300001612000000798": "2026-10-08",
-  "1A4120300001612000000800": "2026-10-08",
-  "1A4120300001612000001272": "2026-10-08",
-  "1A4120300001612000001273": "2026-10-08",
-  "1A4120300001612000001274": "2026-10-08",
-  "1A4120300001612000001275": "2026-10-08",
-  "1A4120300001612000001493": "2026-10-08",
-  "1A4120300001612000001494": "2026-10-08",
-  "1A4120300001613000000657": "2026-10-08",
-  "1A4120300001613000000678": "2026-10-08",
-  "1A4120300001613000000768": "2026-10-08",
-  "1A4120300001613000000791": "2026-10-08",
-  "1A4120300001613000001089": "2026-10-08",
-  "1A4120300001613000001095": "2026-10-08",
-  "1A412030000164A000002337": "2026-10-08",
-  "1A412030000164A000002338": "2026-10-08",
-  "1A412030000164C000002063": "2026-10-08",
-  "1A412030000164F000000118": "2026-10-08",
-  "1A412030000165B000006334": "2026-10-08",
-  "1A412030000165B000006335": "2026-10-08",
-  "1A412030000165B000006336": "2026-10-08",
-  "1A412030000165B000006337": "2026-10-08",
-  "1A412030000165B000006338": "2026-10-08",
-  "1A412030000165B000007192": "2026-10-08",
-  "1A412030000165B000007193": "2026-10-08",
-  "1A412030000165B000016338": "2026-10-08",
-  "1A412030000165B000016339": "2026-10-08",
-  "1A412030000165B000016741": "2026-10-08",
-  "1A412030000165B000016964": "2026-10-08",
-  "1A412030000165B000016965": "2026-10-08",
-  "1A412030000165B000016966": "2026-10-08",
-  "1A412030000165B000016968": "2026-10-08",
-  "1A412030000165B000016969": "2026-10-08",
-  "1A412030000166B000000049": "2026-10-08",
-  "1A412030000166B000000081": "2026-10-08",
-  "1A41203000016B4000001201": "2026-10-08",
-  "1A41203000016B4000005566": "2026-10-08",
-  "1A4120300001718000000086": "2026-10-08"
+  "1A41203000015F1000000972": "2026-10-08"
  }
 }
