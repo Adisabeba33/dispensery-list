@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Map as LeafletMap, CircleMarker, LayerGroup } from 'leaflet';
 import clsx from 'clsx';
 import 'leaflet/dist/leaflet.css';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import './map-theme.css';
 
 export type MapPoint = {
@@ -85,6 +86,9 @@ export const DispensaryMap = ({ points }: { points: MapPoint[] }) => {
 
     void (async () => {
       const L = await import('leaflet');
+      // The base map is drawn by MapLibre inside Leaflet; the bridge expects
+      // Leaflet to be loaded first.
+      const { maplibreGL } = await import('@maplibre/maplibre-gl-leaflet');
       if (cancelled || !containerRef.current || mapRef.current) return;
 
       leafletRef.current = L;
@@ -94,12 +98,13 @@ export const DispensaryMap = ({ points }: { points: MapPoint[] }) => {
         attributionControl: true,
       }).setView([40.75, -73.93], 11);
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        subdomains: 'abcd',
-        maxZoom: 19,
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      }).addTo(map);
+      /* OpenFreeMap: OpenStreetMap drawn from vector tiles, free with no key
+         and no limit on views. CARTO's dark tiles, used until October 2026,
+         began answering every request without a key with an "API key
+         required" picture. Where WebGL is missing, the base map stays blank
+         and the shops still show on the dark ground. The credit line comes
+         from the tiles themselves (OpenFreeMap, OpenMapTiles, OpenStreetMap). */
+      maplibreGL({ style: 'https://tiles.openfreemap.org/styles/dark' }).addTo(map);
 
       /* A map two thirds of a screen tall sits in the middle of a scrolling
          page, so it must not swallow the wheel on the way past. Clicking into

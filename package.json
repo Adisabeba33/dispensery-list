@@ -1,6 +1,6 @@
 {
   "name": "the-flower-index",
-  "version": "1.58.0",
+  "version": "1.58.1",
   "private": true,
   "description": "Verified directory of state-licensed cannabis dispensaries — New York (NYC + Westchester)",
   "scripts": {
@@ -16,8 +16,10 @@
     "preview": "tsx scripts/build-preview.ts"
   },
   "dependencies": {
+    "@maplibre/maplibre-gl-leaflet": "^0.1.4",
     "clsx": "^2.1.1",
     "leaflet": "^1.9.4",
+    "maplibre-gl": "^4.7.1",
     "next": "^15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

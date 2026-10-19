@@ -57,10 +57,14 @@ export default function LegalPage() {
           </p>
           <p>
             The map draws its base layer from{' '}
-            <a className="link" href="https://carto.com/attributions" target="_blank" rel="noreferrer noopener">
-              CARTO
+            <a className="link" href="https://openfreemap.org" target="_blank" rel="noreferrer noopener">
+              OpenFreeMap
+            </a>{' '}
+            (tiles &copy;{' '}
+            <a className="link" href="https://www.openmaptiles.org/" target="_blank" rel="noreferrer noopener">
+              OpenMapTiles
             </a>
-            , built on{' '}
+            ), built on{' '}
             <a
               className="link"
               href="https://www.openstreetmap.org/copyright"
