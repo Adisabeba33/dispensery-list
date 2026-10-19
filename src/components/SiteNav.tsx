@@ -1,195 +1,281 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 
-type Item = { href: string; label: string };
+type Item = { href: string; label: string; here?: (path: string) => boolean };
 
-/* The top menu, as a strip that scrolls sideways inside itself.
- *
- * Eight pages do not fit across a phone, and a row of links that cannot
- * shrink made the header wider than the screen: the whole page grew with it,
- * Safari zoomed out to fit, and every page read as a narrow column with a
- * blank right half. The strip scrolls on its own now and the page keeps the
- * screen's width.
- *
- * A strip that scrolls has to say so. Whichever end has more beyond it fades
- * out and carries an arrow, and the page being read is scrolled into view, so
- * someone on Long Island sees "Long Island" lit rather than a menu that seems
- * to stop at Notices. */
-export const SiteNav = ({ nav, territories }: { nav: Item[]; territories: Item[] }) => {
-  const pathname = usePathname() ?? '/';
-  const strip = useRef<HTMLDivElement>(null);
-  const placesRef = useRef<HTMLDivElement>(null);
-  const [more, setMore] = useState({ left: false, right: false });
-  const [placesOpen, setPlacesOpen] = useState(false);
+/* The five sections a reader moves between. On a phone they are one bar
+   pinned to the bottom of the screen; from a tablet up (the `nav` screen in
+   tailwind.config.ts), a row in the header.
+   Strains and Brands share /menus/, so each says which of it is its own. */
+const SECTIONS: (Item & { icon: React.ReactNode })[] = [
+  {
+    href: '/',
+    label: 'Dispensaries',
+    here: (p) => p === '/' || p.startsWith('/dispensary/'),
+    icon: (
+      <>
+        <path d="M4.5 10.5V20h15v-9.5" />
+        <path d="M3 10.5 4.8 4.5h14.4l1.8 6a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0Z" />
+        <path d="M10 20v-4.5h4V20" />
+      </>
+    ),
+  },
+  {
+    href: '/menus/',
+    label: 'Strains',
+    here: (p) => p.startsWith('/menus/') && !p.startsWith('/menus/brands/'),
+    icon: (
+      <>
+        <path d="M5 19c0-8.5 5-14 14-14 0 9-5.5 14-14 14Z" />
+        <path d="m5 19 8.5-8.5" />
+      </>
+    ),
+  },
+  {
+    href: '/moves/',
+    label: 'New & leaving',
+    icon: <path d="M8 19.5V4.5M4 8.5l4-4 4 4M16 4.5v15M12 15.5l4 4 4-4" />,
+  },
+  {
+    href: '/menus/brands/',
+    label: 'Brands',
+    icon: (
+      <>
+        <path d="M3.5 3.5h8.3l8.7 8.7a1.5 1.5 0 0 1 0 2.1l-6.2 6.2a1.5 1.5 0 0 1-2.1 0l-8.7-8.7V3.5Z" />
+        <circle cx="8" cy="8" r="1.5" />
+      </>
+    ),
+  },
+  {
+    href: '/map/',
+    label: 'Map',
+    icon: (
+      <>
+        <path d="m9 4.5-5.5 2v13l5.5-2 6 2 5.5-2v-13l-5.5 2-6-2Z" />
+        <path d="M9 4.5v13M15 6.5v13" />
+      </>
+    ),
+  },
+];
 
-  const measure = useCallback(() => {
-    const el = strip.current;
-    if (!el) return;
-    // A pixel of slack: fractional widths leave scrollLeft a hair short of the end.
-    const left = el.scrollLeft > 1;
-    const right = el.scrollLeft + el.clientWidth < el.scrollWidth - 1;
-    setMore((was) => (was.left === left && was.right === right ? was : { left, right }));
-  }, []);
+/* Everything else, behind the menu button. Westchester is the register proper,
+   with menus and coordinates behind it. Upstate, Long Island and Massachusetts
+   are registry imports and little more, so they sit apart under their own
+   heading: a reader who cannot tell which is which will assume the weaker
+   pages are as complete as the stronger ones. */
+const WESTCHESTER: Item = { href: '/westchester/', label: 'Westchester' };
+const PLACES: Item[] = [
+  { href: '/upstate/', label: 'Upstate' },
+  { href: '/long-island/', label: 'Long Island' },
+  { href: '/massachusetts/', label: 'Massachusetts' },
+];
+const ABOUT: Item[] = [
+  { href: '/about/', label: 'Method' },
+  { href: '/legal/', label: 'Notices' },
+];
+const IN_MENU = [WESTCHESTER, ...PLACES, ...ABOUT];
 
+/* The address with its trailing slash, as the site's links are written, so a
+   path read without one still matches. */
+const usePath = () => {
+  const path = usePathname() ?? '/';
+  return path.endsWith('/') ? path : `${path}/`;
+};
+
+const isHere = (item: Item, path: string) => (item.here ? item.here(path) : path.startsWith(item.href));
+
+const Icon = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    aria-hidden
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={clsx('h-6 w-6 shrink-0', className)}
+  >
+    {children}
+  </svg>
+);
+
+/* The header's side: the five sections in a row from a tablet up, and the
+   menu button on every screen. */
+export const SiteNav = () => {
+  const path = usePath();
+  const row = useRef<HTMLElement>(null);
+  const box = useRef<HTMLDivElement>(null);
+  const button = useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = useState(false);
+
+  /* Should the row have to scroll, the section being read is brought into it.
+     Set on the row itself rather than with scrollIntoView, which would also
+     scroll the page under a reader who has already moved down it. */
   useEffect(() => {
-    const el = strip.current;
-    if (!el) return;
-    measure();
-    el.addEventListener('scroll', measure, { passive: true });
-    const resized = new ResizeObserver(measure);
-    resized.observe(el);
-    return () => {
-      el.removeEventListener('scroll', measure);
-      resized.disconnect();
-    };
-  }, [measure]);
-
-  /* The page being read, brought into the strip's view. Set on the strip
-     itself rather than with scrollIntoView, which would also scroll the page
-     under a reader who has already moved down it. */
-  useEffect(() => {
-    const el = strip.current;
+    const el = row.current;
     const here = el?.querySelector<HTMLElement>('[aria-current="page"]');
-    if (!el || !here) return;
+    if (!el || !here || el.scrollWidth <= el.clientWidth) return;
     el.scrollLeft = here.offsetLeft - (el.clientWidth - here.offsetWidth) / 2;
-    measure();
-  }, [pathname, measure]);
+  }, [path]);
 
-  /* Places close on a choice, a click anywhere else, or Escape. */
-  useEffect(() => setPlacesOpen(false), [pathname]);
+  /* The menu closes on a choice (the page being read included), a click or a
+     tab outside it, or Escape — which hands the focus back to the button that
+     opened it. */
+  useEffect(() => setOpen(false), [path]);
   useEffect(() => {
-    if (!placesOpen) return;
+    if (!open) return;
     const onDown = (e: PointerEvent) => {
-      if (!placesRef.current?.contains(e.target as Node)) setPlacesOpen(false);
+      if (!box.current?.contains(e.target as Node)) setOpen(false);
     };
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setPlacesOpen(false);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      setOpen(false);
+      button.current?.focus();
+    };
     document.addEventListener('pointerdown', onDown);
     document.addEventListener('keydown', onKey);
     return () => {
       document.removeEventListener('pointerdown', onDown);
       document.removeEventListener('keydown', onKey);
     };
-  }, [placesOpen]);
+  }, [open]);
 
-  const nudge = (direction: 1 | -1) => {
-    const el = strip.current;
-    if (el) el.scrollBy({ left: direction * el.clientWidth * 0.7, behavior: 'smooth' });
-  };
+  const inMenu = IN_MENU.some((item) => isHere(item, path));
 
-  const isHere = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
-
-  const link = (item: Item) => (
+  const menuLink = (item: Item) => (
     <Link
       key={item.href}
       href={item.href}
-      aria-current={isHere(item.href) ? 'page' : undefined}
+      aria-current={isHere(item, path) ? 'page' : undefined}
+      onClick={() => setOpen(false)}
       className={clsx(
-        'shrink-0 whitespace-nowrap rounded-lg px-3 py-2 transition-colors hover:bg-ink-800',
-        isHere(item.href) ? 'bg-ink-800 text-chalk-50' : 'text-chalk-200 hover:text-chalk-50',
+        'block rounded-lg px-3 py-2.5 text-sm transition-colors hover:bg-ink-800',
+        isHere(item, path) ? 'bg-ink-800 text-chalk-50' : 'text-chalk-200 hover:text-chalk-50',
       )}
     >
       {item.label}
     </Link>
   );
 
-  const inPlaces = territories.some((t) => isHere(t.href));
-
   return (
-    <nav ref={placesRef} aria-label="Pages" className="relative -mx-5 min-w-0 sm:mx-0 sm:flex-1">
-      <div ref={strip} className="no-scrollbar flex overflow-x-auto px-5 pb-2 text-sm sm:px-0 sm:pb-0">
-        {/* ml-auto keeps the menu to the right when it fits, and resolves to
-            nothing when it does not — justify-end would push the overflow off
-            the left edge, where no scrolling can reach it. */}
-        <div className="flex shrink-0 items-center gap-1 sm:ml-auto">
-          {nav.map((item) => link(item))}
-          <span aria-hidden className="mx-1 h-5 w-px shrink-0 bg-ink-700" />
-          {/* The places beyond the register proper, under one name: the strip
-              had grown a link per territory and ran off the screen. */}
-          <button
-            type="button"
-            aria-haspopup="true"
-            aria-expanded={placesOpen}
-            aria-current={inPlaces ? 'page' : undefined}
-            onClick={() => setPlacesOpen((v) => !v)}
-            className={clsx(
-              'flex shrink-0 items-center gap-1 whitespace-nowrap rounded-lg px-3 py-2 transition-colors hover:bg-ink-800',
-              inPlaces || placesOpen ? 'bg-ink-800 text-chalk-50' : 'text-chalk-200 hover:text-chalk-50',
-            )}
-          >
-            Places
-            <svg
-              viewBox="0 0 24 24"
-              aria-hidden
-              className={clsx('h-3.5 w-3.5 transition-transform', placesOpen && 'rotate-180')}
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-            >
-              <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Outside the strip, which scrolls and would clip it. */}
-      {placesOpen && (
-        <div className="absolute right-5 top-full z-50 mt-2 w-60 rounded-xl border border-ink-700 bg-ink-900 p-1.5 shadow-xl shadow-black/40 sm:right-0">
-          <p className="px-3 pb-1 pt-2 text-[0.7rem] uppercase tracking-[0.14em] text-chalk-500">
-            Registry import only
-          </p>
-          {territories.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={isHere(item.href) ? 'page' : undefined}
-              className={clsx(
-                'block rounded-lg px-3 py-2 text-sm transition-colors hover:bg-ink-800',
-                isHere(item.href) ? 'bg-ink-800 text-chalk-50' : 'text-chalk-200 hover:text-chalk-50',
-              )}
-            >
-              {item.label}
-            </Link>
+    <div className="ml-auto flex min-w-0 items-center gap-2">
+      {/* Scrolls inside itself rather than widen the page, should a system
+          font run wider than the room the `nav` screen leaves for it. */}
+      <nav ref={row} aria-label="Sections" className="no-scrollbar relative hidden min-w-0 scroll-px-1 overflow-x-auto nav:block">
+        {/* w-max: the list's own padding scrolls with it, so a focus ring at
+            either end is never cut off. */}
+        <ul className="flex w-max items-center gap-1 p-1 text-sm">
+          {SECTIONS.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                aria-current={isHere(item, path) ? 'page' : undefined}
+                onFocus={(e) => e.currentTarget.scrollIntoView({ inline: 'nearest', block: 'nearest' })}
+                className={clsx(
+                  'block whitespace-nowrap rounded-lg px-3 py-2 transition-colors hover:bg-ink-800',
+                  isHere(item, path) ? 'bg-ink-800 text-chalk-50' : 'text-chalk-200 hover:text-chalk-50',
+                )}
+              >
+                {item.label}
+              </Link>
+            </li>
           ))}
-        </div>
-      )}
+        </ul>
+      </nav>
 
-      {more.left && (
+      <div
+        ref={box}
+        className="relative shrink-0"
+        onBlur={(e) => {
+          /* Only when the focus went somewhere else: a tap on the panel's
+             heading or padding moves it nowhere, and the click outside is
+             the pointerdown listener's. */
+          if (e.relatedTarget && !box.current?.contains(e.relatedTarget as Node)) setOpen(false);
+        }}
+      >
         <button
+          ref={button}
           type="button"
-          aria-label="Earlier pages"
-          onClick={() => nudge(-1)}
-          className="absolute inset-y-0 left-0 flex w-12 items-center justify-start bg-gradient-to-r from-ink-950 via-ink-950/90 to-transparent pb-2 pl-1.5 text-chalk-200 sm:-left-1 sm:pb-0"
+          aria-label="Menu"
+          aria-expanded={open}
+          aria-controls="site-menu"
+          // "true", not "page": the button holds the page being read, it is not it.
+          aria-current={inMenu ? 'true' : undefined}
+          onClick={() => setOpen((v) => !v)}
+          className={clsx(
+            '-mr-2 grid h-11 w-11 place-items-center rounded-lg transition-colors hover:bg-ink-800 hover:text-chalk-50 nav:mr-0',
+            open || inMenu ? 'bg-ink-800 text-chalk-50' : 'text-chalk-200',
+          )}
         >
-          <Chevron flip />
+          <Icon className="h-5 w-5">
+            {open ? <path d="M6 6l12 12M18 6 6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+          </Icon>
         </button>
-      )}
-      {more.right && (
-        <button
-          type="button"
+
+        <nav
+          id="site-menu"
           aria-label="More pages"
-          onClick={() => nudge(1)}
-          className="absolute inset-y-0 right-0 flex w-12 items-center justify-end bg-gradient-to-l from-ink-950 via-ink-950/90 to-transparent pb-2 pr-1.5 text-chalk-200 sm:-right-1 sm:pb-0"
+          hidden={!open}
+          className="absolute right-0 top-full z-50 mt-2 max-h-[calc(100dvh-9rem-env(safe-area-inset-top)-env(safe-area-inset-bottom))] w-72 overflow-y-auto rounded-xl border border-ink-700 bg-ink-900 p-1.5 shadow-xl shadow-black/40 nav:max-h-[calc(100dvh-5rem)]"
         >
-          <Chevron />
-        </button>
-      )}
-    </nav>
+          {menuLink(WESTCHESTER)}
+          <div role="group" aria-labelledby="site-menu-places" className="mt-1.5 border-t border-ink-700">
+            <p
+              id="site-menu-places"
+              className="px-3 pb-1 pt-3 text-[0.7rem] uppercase tracking-[0.14em] text-chalk-400"
+            >
+              Places · registry import only
+            </p>
+            {PLACES.map(menuLink)}
+          </div>
+          <div className="mt-1.5 border-t border-ink-700 pt-1.5">{ABOUT.map(menuLink)}</div>
+        </nav>
+      </div>
+    </div>
   );
 };
 
-const Chevron = ({ flip = false }: { flip?: boolean }) => (
-  <svg
-    viewBox="0 0 24 24"
-    aria-hidden
-    className={clsx('h-4 w-4', flip && 'rotate-180')}
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.2"
-  >
-    <path d="m9 6 6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+/* The phone's bar: the same five sections, pinned to the bottom of the screen
+   where a thumb reaches them, above the home indicator on phones that have
+   one. Hidden from a tablet up, where the header carries them. A step below
+   the header (z-30), so the open menu draws over it on a short screen. */
+export const TabBar = () => {
+  const path = usePath();
+  return (
+    <nav
+      aria-label="Sections"
+      className="fixed inset-x-0 bottom-0 z-30 border-t border-ink-700/80 bg-ink-950/90 pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] backdrop-blur-md nav:hidden"
+    >
+      <ul className="mx-auto grid max-w-lg grid-cols-5">
+        {SECTIONS.map((item) => {
+          const here = isHere(item, path);
+          return (
+            <li key={item.href} className="min-w-0">
+              <Link
+                href={item.href}
+                aria-current={here ? 'page' : undefined}
+                className={clsx(
+                  'flex h-16 flex-col items-center justify-start gap-1 px-0.5 pt-2 transition-colors',
+                  here ? 'text-chalk-50' : 'text-chalk-400 hover:text-chalk-50',
+                )}
+              >
+                <span className={clsx('grid h-7 w-12 place-items-center rounded-full', here && 'bg-ink-800')}>
+                  <Icon className="h-5 w-5">{item.icon}</Icon>
+                </span>
+                {/* Two lines at most, on the narrowest phones, rather than a
+                    name cut short. */}
+                <span className="max-w-full text-center text-[clamp(0.6rem,2.8vw,0.6875rem)] leading-[1.15]">
+                  {item.label}
+                </span>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  );
+};

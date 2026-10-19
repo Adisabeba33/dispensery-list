@@ -138,12 +138,15 @@ export const DirectoryExplorer = ({
     // Bring the card's top into view so the detail is not half off-screen.
     requestAnimationFrame(() => {
       const el = document.getElementById(`shop-${licence}`);
-      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+      // Below the header, however tall it is (an installed app adds the status
+      // bar) — or nothing, where it scrolls away (a phone held sideways).
+      const head = Math.max(0, document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 56);
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - head - 24, behavior: 'smooth' });
     });
   };
 
   return (
-    <section id="directory" className="shell scroll-mt-28 sm:scroll-mt-20 py-12">
+    <section id="directory" className="shell scroll-mt-20 py-12">
       <div className="flex flex-col gap-4">
         <label className="relative block">
           <span className="sr-only">Search by name, address, ZIP or licence number</span>

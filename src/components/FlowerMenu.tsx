@@ -237,7 +237,7 @@ export const FlowerMenu = ({
   };
 
   return (
-    <section id="menu" className="card scroll-mt-28 sm:scroll-mt-20 p-6">
+    <section id="menu" className="card scroll-mt-20 p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <h2 className="text-base font-semibold tracking-tight text-chalk-50">Flower on the shelf</h2>
         <div className="flex items-center gap-3">

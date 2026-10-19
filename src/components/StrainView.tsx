@@ -102,7 +102,10 @@ export const StrainView = ({ strain }: { strain: StrainPageData }) => {
             wide screen the shelves take the right-hand column beside the rest. */}
         <div className="mt-6 grid gap-4 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:items-start">
           <div className="space-y-4 lg:col-start-1 lg:row-start-1">
-            <div className="card grid grid-cols-[auto_1fr] divide-x divide-ink-700">
+            {/* Stacked on the narrowest phones, where a terpene name would push the
+                card wider than the screen. (A plain media variant: Tailwind's
+                min-[…] goes away once the em-based `nav` screen is defined.) */}
+            <div className="card grid grid-cols-1 divide-y divide-ink-700 [@media(min-width:360px)]:grid-cols-[auto_1fr] [@media(min-width:360px)]:divide-x [@media(min-width:360px)]:divide-y-0">
               <div className="px-5 py-5">
                 <p className="text-xs uppercase tracking-[0.12em] text-chalk-400">THC</p>
                 {strain.thc ? (
