@@ -95,11 +95,13 @@ export const shelfSignals = () => {
     waves: arrivals.filter((a) => a.shelves >= raw.rules.waveShelves),
     arrivals: arrivals.filter((a) => a.shelves < raw.rules.waveShelves),
     /* The week's debuts, the widest first, as the read wrote them. */
+    /* `count` is the read's own figure: a shop outside this register has no
+       page to name, but it still has the strain on its shelf. */
     debuts: (raw.debuts ?? [])
-      .map((d) => ({ ...d, debut: debutOf(d), shops: shopsOf(d.shops) }))
+      .map((d) => ({ ...d, debut: debutOf(d), count: d.shops.length, shops: shopsOf(d.shops) }))
       .filter((d) => isFreshDebut(d.debut)),
-    batches: raw.batches.map((b) => ({ ...b, shops: shopsOf(b.shops) })),
-    runningLow: raw.runningLow.map((m) => ({ ...m, now: shopsOf(m.now) })),
+    batches: raw.batches.map((b) => ({ ...b, count: b.shops.length, shops: shopsOf(b.shops) })),
+    runningLow: raw.runningLow.map((m) => ({ ...m, count: m.now.length, now: shopsOf(m.now) })),
     gone: raw.gone.map((m) => ({ ...m, lastShops: shopsOf(m.lastShops) })),
   };
 };

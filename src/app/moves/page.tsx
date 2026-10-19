@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { MovesOverview } from '@/components/MovesOverview';
 import { moveCards, windows } from '@/lib/moves';
 import { shortDay } from '@/lib/moves-copy';
@@ -41,17 +42,23 @@ export default function MovesPage() {
         </summary>
         <div className="mt-4 max-w-3xl space-y-3 text-sm leading-relaxed text-chalk-400">
           <p>
-            Each list dates something different. Debuts, waves and the week&apos;s new arrivals: the
-            first day our read saw them on a shelf. New batches: the day the new THC figure first
-            appeared. Running low: compared with the most shops it was on in the last{' '}
-            {w.rules.movesDays} days. Gone: the last day it was seen. The small bars on each card count
-            the list by that day — when things turned up, not a trend.
+            Each list dates something different. Debuts: the first day our read saw the grower&apos;s
+            strain on any shelf. Waves and the week&apos;s new arrivals: the first day since{' '}
+            {shortDay(w.newFrom)} it turned up on a shelf it was not on — many were on other shelves
+            before. New batches: the day the new THC figure first appeared. Running low: compared with
+            the most shops it was on in the last {w.rules.movesDays} days. Gone: the last day it was
+            seen. The small bars on each card count the list by that date — a count, not a trend.
           </p>
           <p>
             A date is the day our read saw it, not the day it was packed. What looked new because we
             learned to read a menu better, rather than because the shop restocked, is left out, and so
-            is a shop whose menu we read only in part. A strain we no longer see may still be on
-            shelves we do not read. Our reads began on Sep 6, 2026.
+            is a shop whose menu we read only in part — except for new batches, where a new THC figure
+            on such a menu still counts. A strain we no longer see may still be on shelves we do not
+            read. Our reads began on Sep 6, 2026; more on how shelves are read under{' '}
+            <Link href="/about/" className="link">
+              Method
+            </Link>
+            .
           </p>
         </div>
       </details>

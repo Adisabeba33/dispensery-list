@@ -11,12 +11,22 @@ import { TypeChips, typeFromUrl } from './MovesOverview';
 
 type Type = (typeof LINEAGE_CHIP)[number]['id'];
 
+/* What "most shops call it" means for each type: a leaning counts. */
+const TYPE_WORDS: Record<Exclude<Type, 'all'>, string> = {
+  indica: 'indica or indica-leaning',
+  sativa: 'sativa or sativa-leaning',
+  hybrid: 'hybrid',
+};
+
 /* How many stand in the open before "Show more". */
 const PAGE = 60;
 /* How many places a row names before "+N more". */
 const NAMED = 2;
 
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
+
+/* The shops it is on now, as the read counted them. */
+const nowAt = (i: MoveItem) => i.count ?? i.shops.length;
 
 const byName = (a: MoveItem, b: MoveItem) => a.strain.localeCompare(b.strain) || (a.brand ?? '').localeCompare(b.brand ?? '');
 
@@ -25,10 +35,11 @@ const byName = (a: MoveItem, b: MoveItem) => a.strain.localeCompare(b.strain) ||
 const ORDER: Record<string, (a: MoveItem, b: MoveItem) => number> = {
   strongest: () => 0,
   drop: () => 0,
-  shops: (a, b) => (b.seenAt ?? b.shops.length) - (a.seenAt ?? a.shops.length) || b.shops.length - a.shops.length,
+  shops: (a, b) => (b.seenAt ?? nowAt(b)) - (a.seenAt ?? nowAt(a)) || nowAt(b) - nowAt(a),
+  now: (a, b) => (b.now ?? 0) - (a.now ?? 0) || (b.shelves ?? 0) - (a.shelves ?? 0) || byName(a, b),
   newest: (a, b) => b.day.localeCompare(a.day) || (b.shelves ?? b.shops.length) - (a.shelves ?? a.shops.length),
   today: (a, b) => (b.today ?? 0) - (a.today ?? 0) || (b.shelves ?? 0) - (a.shelves ?? 0),
-  fewest: (a, b) => a.shops.length - b.shops.length || (b.peak ?? 0) - (a.peak ?? 0),
+  fewest: (a, b) => nowAt(a) - nowAt(b) || (b.peak ?? 0) - (a.peak ?? 0),
   recent: (a, b) => b.day.localeCompare(a.day) || (b.peak ?? 0) - (a.peak ?? 0),
   widest: (a, b) => (b.peak ?? 0) - (a.peak ?? 0) || b.day.localeCompare(a.day),
   name: byName,
@@ -59,10 +70,12 @@ const Places = ({ shops, lead }: { shops: Shop[]; lead?: string }) => {
           <span className="text-chalk-500"> · </span>
           <button
             type="button"
+            aria-expanded={all}
             onClick={() => setAll((v) => !v)}
             className="whitespace-nowrap text-chalk-500 hover:text-chalk-200"
           >
             {all ? 'fewer' : `+${shops.length - NAMED} more`}
+            <span className="sr-only"> shops</span>
           </button>
         </>
       )}
@@ -119,7 +132,7 @@ const Pill = ({ children }: { children: React.ReactNode }) => (
 
 /* What each list says about an item, in a line. */
 const Facts = ({ kind, item }: { kind: MoveKind; item: MoveItem }) => {
-  const now = item.shops.length;
+  const now = nowAt(item);
   switch (kind) {
     case 'debuts':
       return (
@@ -176,7 +189,10 @@ const Row = ({ kind, item }: { kind: MoveKind; item: MoveItem }) => (
           Earlier figures: {item.before.slice(0, 5).join('%, ')}%{item.before.length > 5 ? ' …' : ''}
         </p>
       )}
-      <Places shops={item.shops} lead={kind === 'gone' ? 'Last seen at' : undefined} />
+      <Places
+        shops={item.shops}
+        lead={kind === 'gone' ? 'Last seen at' : kind === 'new' ? 'Turned up at' : undefined}
+      />
     </div>
     <Chevron item={item} />
   </li>
@@ -203,11 +219,11 @@ const WaveCard = ({ item }: { item: MoveItem }) => (
         <div className="mt-2">
           <ShelfLine
             values={item.series}
-            label={`Shelves reached by each day we read: ${item.series.join(', ')}`}
+            label={`Shelves we had found it on by each day we read: ${item.series.join(', ')}`}
           />
         </div>
       )}
-      <Places shops={item.shops} />
+      <Places shops={item.shops} lead="Turned up at" />
     </div>
     <Chevron item={item} />
   </li>
@@ -220,15 +236,30 @@ export const MovesList = ({ kind, items }: { kind: MoveKind; items: MoveItem[] }
   const [limit, setLimit] = useState(PAGE);
   const typed = kind !== 'gone';
 
+  /* The type and the order in the address, so a reader who opens a strain and
+     comes back finds the list as they left it. */
   useEffect(() => {
     if (typed) setType(typeFromUrl());
-  }, [typed]);
+    const asked = new URLSearchParams(window.location.search).get('sort');
+    if (asked && sorts.some((s) => s.id === asked)) setSort(asked);
+  }, [typed, sorts]);
+
+  const remember = (next: { type?: Type; sort?: string }) => {
+    const params = new URLSearchParams(window.location.search);
+    const t = next.type ?? type;
+    const o = next.sort ?? sort;
+    if (t === 'all') params.delete('type');
+    else params.set('type', t);
+    if (o === sorts[0].id) params.delete('sort');
+    else params.set('sort', o);
+    const query = params.toString();
+    window.history.replaceState(null, '', `${window.location.pathname}${query ? `?${query}` : ''}`);
+  };
 
   const chooseType = (t: Type) => {
     setType(t);
     setLimit(PAGE);
-    const url = t === 'all' ? window.location.pathname : `${window.location.pathname}?type=${t}`;
-    window.history.replaceState(null, '', url);
+    remember({ type: t });
   };
 
   const shown = useMemo(() => {
@@ -246,13 +277,14 @@ export const MovesList = ({ kind, items }: { kind: MoveKind; items: MoveItem[] }
             Not by type: a strain gone from every shelf has no type on any of them.
           </p>
         )}
-        <label className="card relative flex items-center gap-2 px-4 py-3 text-sm text-chalk-400">
+        <label className="card relative flex items-center gap-2 px-4 py-3 text-sm text-chalk-400 focus-within:border-moss-600 focus-within:ring-2 focus-within:ring-moss-600/25">
           <span>Sort:</span>
           <select
             value={sort}
             onChange={(e) => {
               setSort(e.target.value);
               setLimit(PAGE);
+              remember({ sort: e.target.value });
             }}
             className="w-full cursor-pointer appearance-none bg-transparent pr-8 text-chalk-50 focus:outline-none"
           >
@@ -266,10 +298,12 @@ export const MovesList = ({ kind, items }: { kind: MoveKind; items: MoveItem[] }
             <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </label>
-        {type !== 'all' && (
-          <p className="text-sm text-chalk-400" aria-live="polite">
-            {shown.length} of {items.length}, where most shops call it{' '}
-            {LINEAGE_CHIP.find((c) => c.id === type)?.label.toLowerCase()}
+        {/* Mounted for as long as the filter is, so a change is announced. */}
+        {typed && (
+          <p className="text-sm text-chalk-400 empty:hidden" aria-live="polite">
+            {type === 'all'
+              ? ''
+              : `${shown.length} of ${items.length}, where most shops call it ${TYPE_WORDS[type]}`}
           </p>
         )}
       </div>

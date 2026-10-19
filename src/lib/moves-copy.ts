@@ -31,7 +31,7 @@ export const moveSubtitle = (kind: MoveKind, r: Rules): string =>
   ({
     debuts: `A grower's strain new to every shelf we read, in its first ${r.newDays} days.`,
     waves: `One grower's strain on ${r.waveShelves}+ shelves within ${r.newDays} days — a delivery going round.`,
-    batches: "A THC figure this grower's strain had not shown before.",
+    batches: `A THC figure this grower's strain had not shown before, in the last ${r.newDays} days.`,
     new: `A grower's strain new on one or two shelves in the last ${r.newDays} days.`,
     low: `On ${r.lowPeak}+ shops in the last ${r.movesDays} days, on fewer than ${r.lowBelow} now.`,
     gone: `On ${r.gonePeak}+ shops in the last ${r.movesDays} days, on none we read now.`,
@@ -41,10 +41,9 @@ export const moveSubtitle = (kind: MoveKind, r: Rules): string =>
 export const moveDescription = (kind: MoveKind, r: Rules): string =>
   ({
     debuts: `A grower's strain that no New York City or Westchester shelf we read had carried from that grower before — under any spelling of its name — in its first ${r.newDays} days. Debut (3) is how many shops have had it since its first day. Our reads began on Sep 6, 2026; a strain can be older on shelves we do not read.`,
-    waves: `One grower's strain turning up on ${r.waveShelves} or more shelves within ${r.newDays} days — a delivery going round. Shops that share one menu count as one shelf. The line is how many shelves it had reached by each day we read.`,
-    batches:
-      "A THC figure this grower's strain had not shown at any shop before. Menus copy the figure off the batch's lab certificate, so a new one is a new batch — even of a strain that never left the shelf.",
-    new: `A grower's strain that turned up on one or two shelves in the last ${r.newDays} days and was still there at the next read. On ${r.waveShelves} or more it is a wave.`,
+    waves: `One grower's strain turning up on ${r.waveShelves} or more shelves within ${r.newDays} days — a delivery going round; many were on other shelves before. Shops that share one menu count as one shelf. The line is how many of those shelves we had found it on by each day we read; a new shelf counts once a second read still finds it there. The shops named are where it turned up this week.`,
+    batches: `A THC figure this grower's strain had not shown at any shop before, first seen in the last ${r.newDays} days. Menus copy the figure off the batch's lab certificate, so a new one is a new batch — even of a strain that never left the shelf.`,
+    new: `A grower's strain that turned up on one or two shelves in the last ${r.newDays} days and was still there at the next read; on ${r.waveShelves} or more it is a wave. The shops named are where it turned up this week.`,
     low: `On ${r.lowPeak} or more shops at some point in the last ${r.movesDays} days, and on fewer than ${r.lowBelow} now. The shops named are the ones it is on now.`,
     gone: `On ${r.gonePeak} or more shops at some point in the last ${r.movesDays} days, and on none of the shelves we read now. It may still be on shelves we do not read.`,
   })[kind];
@@ -53,9 +52,9 @@ export const moveDescription = (kind: MoveKind, r: Rules): string =>
 export const moveDating = (kind: MoveKind): string | null =>
   ({
     debuts: 'by the day first seen',
-    waves: 'by the day it started turning up',
+    waves: 'by the first day it turned up this week',
     batches: 'by the day the new figure appeared',
-    new: 'by the day first seen',
+    new: 'by the first day it turned up this week',
     low: null,
     gone: 'by the day last seen',
   })[kind];
@@ -79,7 +78,7 @@ export const MOVE_SORTS: Record<MoveKind, { id: string; label: string }[]> = {
   ],
   new: [
     { id: 'newest', label: 'Newest first' },
-    { id: 'shops', label: 'Most shops now' },
+    { id: 'now', label: 'Most shops now' },
     { id: 'name', label: 'Name' },
   ],
   low: [

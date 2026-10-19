@@ -45,6 +45,9 @@ export type MoveItem = {
   series?: number[];
   /** Debuts: shops that have had it since its first day. */
   seenAt?: number;
+  /** Debuts, new batches, running low: the shops it is on now, as the read
+      counted them — the named shops leave out any outside the register. */
+  count?: number;
   /** New batches: the new figure and the ones before it. */
   thc?: number;
   before?: number[];
@@ -79,7 +82,7 @@ export const windows = () => ({
    arrivals: seven megabytes the browser never sees. */
 type History = {
   sweeps: string[];
-  arrivals: { key: string; licence: string; seen: string; shelf: string }[];
+  arrivals: { key: string; licence: string; seen: string; confirmed: string; shelf: string }[];
 };
 let history: History | null = null;
 const historyFile = (): History =>
@@ -101,6 +104,21 @@ const mostOf = <T extends string>(values: T[]): T | null => {
 };
 
 const fold = (s: string | null | undefined) => (s ?? '').trim().toLowerCase().replace(/\s+/g, ' ');
+
+/* The type most shops give it, each shop counted once — a shop listing it
+   twice is still one shop's word. Indica-leaning counts as indica and
+   sativa-leaning as sativa. When the top two are level, it has no type: the
+   shops do not agree, and the alphabet should not decide for them. */
+const lineageOf = (own: FlowerListing[]): Lineage | null => {
+  const shops = new Map<Lineage, Set<string>>();
+  for (const l of own) {
+    const b = bucket(l.lineage);
+    if (b) shops.set(b, (shops.get(b) ?? new Set()).add(l.licenseNumber));
+  }
+  const ranked = [...shops].map(([b, s]) => [b, s.size] as const).sort((a, b) => b[1] - a[1]);
+  if (ranked.length === 0 || (ranked.length > 1 && ranked[0][1] === ranked[1][1])) return null;
+  return ranked[0][0];
+};
 
 /* Today's shelves, by the history's key: the type the shops give, the name the
    review settled on, the strain's page. Built once. */
@@ -133,7 +151,7 @@ const shelvesByKey = () => {
   const byKey = new Map<string, Known>();
   for (const [key, own] of rows) {
     byKey.set(key, {
-      lineage: mostOf(own.map((l) => bucket(l.lineage)).filter((b): b is Lineage => b !== null)),
+      lineage: lineageOf(own),
       name: mostOf(
         own
           .map((l) => reviewed.get(l.listingId))
@@ -202,7 +220,9 @@ const enrich = (r: { brand: string | null; strain: string; key?: string; keys?: 
 
 /* A wave's shelves by each day we read this week: the same arrivals the read
    counted (its key, at the shops the signals name), each shelf counted from
-   the day it turned up. It ends where the card's figure does. */
+   the read that confirmed it — an arrival is only certain once a second read
+   still finds it, so the last step is the card's "+N today". It ends where
+   the card's figure does. */
 const seriesOf = (key: string | undefined, licences: string[], from: string, to: string) => {
   if (!key) return undefined;
   const h = historyFile();
@@ -211,7 +231,7 @@ const seriesOf = (key: string | undefined, licences: string[], from: string, to:
   for (const a of h.arrivals) {
     if (a.key !== key || !at.has(a.licence) || a.seen < from || a.seen > to) continue;
     const was = firstDay.get(a.shelf);
-    if (!was || a.seen < was) firstDay.set(a.shelf, a.seen);
+    if (!was || a.confirmed < was) firstDay.set(a.shelf, a.confirmed);
   }
   const days = h.sweeps.filter((d) => d >= from && d <= to);
   return days.map((d) => [...firstDay.values()].filter((f) => f <= d).length);
@@ -243,6 +263,7 @@ export const moveLists = (): Record<MoveKind, MoveItem[]> => {
       shops: d.shops,
       debut: d.debut,
       seenAt: d.seenAt,
+      count: d.count,
     })),
     waves: raw.waves.map((a) => ({
       ...arrival(a),
@@ -256,6 +277,7 @@ export const moveLists = (): Record<MoveKind, MoveItem[]> => {
       debut: null,
       thc: b.thc,
       before: b.before,
+      count: b.count,
     })),
     new: raw.arrivals.map(arrival),
     low: raw.runningLow.map((m) => ({
@@ -265,6 +287,7 @@ export const moveLists = (): Record<MoveKind, MoveItem[]> => {
       shops: m.now,
       debut: null,
       peak: m.peak,
+      count: m.count,
     })),
     gone: raw.gone.map((m) => ({
       id: `${m.brand}|${m.strain}`,
