@@ -5,9 +5,10 @@ import clsx from 'clsx';
 import type { Dispensary } from '@/lib/types';
 import { displayName, LICENSE_TYPE_LABEL, regionOf } from '@/lib/data';
 import { fullAddress } from '@/lib/format';
-import { LicenseTag, ShelfPill, StatusLine, VerificationBadge } from './Badges';
+import { LicenseTag, ShelfPill, VerificationBadge } from './Badges';
 import { Barcode } from './Barcode';
 import { DispensaryDetail } from './DispensaryDetail';
+import { ShopStatus } from './LiveHours';
 import { StorefrontArt } from './StorefrontArt';
 
 /* The pills on a card are set a size smaller than on a shop's own page, and
@@ -31,7 +32,7 @@ const CardSummary = ({ d, expanded, menuCount }: SummaryProps) => (
     {/* A container, so the bottom line can drop its barcode when the card is
         too narrow for it — the card's width is the grid's, not the screen's. */}
     <span className="min-w-0 flex-1 pb-1.5 pl-2.5 pr-2.5 pt-1.5 [container-type:inline-size]">
-      <StatusLine status={d.operationalStatus} className="pr-7 text-[0.72rem] leading-4" />
+      <ShopStatus d={d} className="pr-7 text-[0.72rem] leading-4" />
       <span
         className={clsx(
           'mt-[3px] block truncate pr-7 text-[1.06rem] font-bold leading-[1.375rem] tracking-tight text-chalk-50 transition-colors',

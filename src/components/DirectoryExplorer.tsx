@@ -1,10 +1,12 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import clsx from 'clsx';
 import type { Dispensary, LicenseType } from '@/lib/types';
 import { displayName, LICENSE_TYPE_LABEL, regionOf } from '@/lib/data';
+import { shopHoursState } from '@/lib/hours';
 import { DispensaryCard } from './DispensaryCard';
+import { useNyMoment } from './LiveHours';
 import { AllAreasIcon, AreaIcon, ShelfBarsIcon } from './AreaIcons';
 
 const REGION_ORDER = ['Manhattan', 'Brooklyn', 'Queens', 'The Bronx', 'Staten Island', 'Westchester'];
@@ -201,12 +203,26 @@ export const DirectoryExplorer = ({
       .map((t) => ({ type: t, count: counts.get(t) ?? 0 }));
   }, [dispensaries]);
 
+  // "Open now" and "Open first" follow the shops' hours, as the cards do: open
+  // now, then hours unknown, then closed for the night, then the shops the
+  // registry does not list as trading. Until the browser has the time, the
+  // registry's word stands in.
+  const now = useNyMoment();
+  const openRank = useCallback(
+    (d: Dispensary): number => {
+      if (!now) return d.operationalStatus === 'OPEN' ? 0 : 3;
+      const state = shopHoursState(d, now);
+      return state === 'open' ? 0 : state === 'unknown' ? 1 : state === 'closed' ? 2 : 3;
+    },
+    [now],
+  );
+
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
 
     const filtered = dispensaries.filter((d) => {
       if (region && regionOf(d) !== region) return false;
-      if (openOnly && d.operationalStatus !== 'OPEN') return false;
+      if (openOnly && openRank(d) !== 0) return false;
       if (menuOnly && !menuCounts[d.licenseNumber]) return false;
       if (licenseType && d.licenseType !== licenseType) return false;
       if (!q) return true;
@@ -227,14 +243,12 @@ export const DirectoryExplorer = ({
         .includes(q);
     });
 
-    const openFirst = (d: Dispensary) => (d.operationalStatus === 'OPEN' ? 0 : 1);
-
     return [...filtered].sort((a, b) => {
-      if (sort === 'status') return openFirst(a) - openFirst(b) || displayName(a).localeCompare(displayName(b));
+      if (sort === 'status') return openRank(a) - openRank(b) || displayName(a).localeCompare(displayName(b));
       if (sort === 'region') return regionOf(a).localeCompare(regionOf(b)) || displayName(a).localeCompare(displayName(b));
       return displayName(a).localeCompare(displayName(b));
     });
-  }, [dispensaries, menuCounts, query, region, openOnly, menuOnly, licenseType, sort]);
+  }, [dispensaries, menuCounts, query, region, openOnly, menuOnly, licenseType, sort, openRank]);
 
   const list = results;
   const shelvesRead = useMemo(
@@ -376,8 +390,7 @@ export const DirectoryExplorer = ({
         </div>
 
         <div className="flex flex-wrap gap-x-[0.4375rem] gap-y-[0.5625rem] sm:gap-2">
-          {/* The registry's operational status, not opening hours: a shop it
-              lists as open, whatever the time of day. */}
+          {/* Open now by the shop's own hours, as its card's line says. */}
           <button
             type="button"
             onClick={() => setOpenOnly((v) => !v)}

@@ -3,6 +3,7 @@ import { DirectoryExplorer } from '@/components/DirectoryExplorer';
 import { BuildStamp } from '@/components/BuildStamp';
 import { DemoBanner } from '@/components/DemoBanner';
 import { HeroLeaf, HudBox } from '@/components/HeroArt';
+import { OpenNowCount } from '@/components/LiveHours';
 import { StatBoxes } from '@/components/PageParts';
 import { dispensaries, isDemoData, stats } from '@/lib/data';
 import { menuCounts } from '@/lib/menu';
@@ -26,7 +27,16 @@ export default function HomePage() {
   const updated = shortDate(s.lastUpdated);
   const figures = [
     { label: 'Listed', value: s.total },
-    { label: 'Open now', value: s.open },
+    // Open by each shop's own hours, counted in the reader's browser: the
+    // page is built once and read at every hour.
+    {
+      label: 'Open now',
+      value: (
+        <OpenNowCount
+          hours={dispensaries.filter((d) => d.operationalStatus === 'OPEN').map((d) => d.hours)}
+        />
+      ),
+    },
     { label: 'Registry-verified', value: s.verifiedOfficial },
     { label: 'Areas', value: s.regions.length },
   ];
