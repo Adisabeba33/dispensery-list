@@ -5,13 +5,16 @@
 /*
  * A directory whose whole claim is "these are the verified ones" should read as
  * a public record, not as a shopfront: dense type, restrained colour, and the
- * accent reserved for one meaning only — verification.
+ * accent reserved for one meaning only — verification. The record is kept at
+ * night: green-black ground, a fine grid like a ledger's, and the one neon
+ * green for what the register vouches for.
  */
 :root {
   color-scheme: dark;
-  --bg: #080b0a;
-  --surface: #111815;
-  --border: #1f2b25;
+  --bg: #040a07;
+  --surface: #0a1611;
+  --border: #1a2d23;
+  --glow: 65, 229, 145;
 }
 
 /* The top inset is there only in an app installed to a phone's home screen,
@@ -38,12 +41,30 @@ html {
 
 body {
   background:
-    radial-gradient(60rem 40rem at 78% -12%, rgba(63, 201, 125, 0.09), transparent 62%),
-    radial-gradient(48rem 34rem at 4% 4%, rgba(63, 201, 125, 0.045), transparent 58%),
+    radial-gradient(56rem 36rem at 88% -10%, rgba(var(--glow), 0.11), transparent 62%),
+    radial-gradient(40rem 30rem at -6% 18%, rgba(var(--glow), 0.05), transparent 60%),
+    radial-gradient(70rem 50rem at 50% 120%, rgba(var(--glow), 0.05), transparent 60%),
     var(--bg);
   background-attachment: fixed;
-  color: #f2f6f3;
+  color: #eef5f0;
   -webkit-font-smoothing: antialiased;
+}
+
+/* The ledger's grid, faint, and fading out towards the foot of the screen so
+   it never sits under a paragraph at full strength. Behind everything, and
+   never in the way of a tap. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(var(--glow), 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--glow), 0.035) 1px, transparent 1px);
+  background-size: 2rem 2rem;
+  -webkit-mask-image: radial-gradient(120% 80% at 70% 0%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(120% 80% at 70% 0%, #000 0%, transparent 75%);
 }
 
 @layer components {
@@ -63,11 +84,21 @@ body {
   }
 
   .card {
-    @apply rounded-xl border border-ink-700 bg-ink-850/70 backdrop-blur-sm transition-colors;
+    @apply rounded-xl border border-ink-700 bg-ink-900/75 backdrop-blur-sm transition-colors;
   }
 
   .card-hover {
-    @apply hover:border-moss-600/70 hover:bg-ink-800/80;
+    @apply hover:border-moss-600/70 hover:bg-ink-850/90;
+  }
+
+  /* The lit frame: a card the register vouches for, drawn in the accent with
+     a glow round it. */
+  .card-lit {
+    @apply rounded-xl border border-moss-500/70 bg-ink-900/80;
+    box-shadow:
+      0 0 0 1px rgba(var(--glow), 0.06),
+      0 0 18px -4px rgba(var(--glow), 0.35),
+      inset 0 0 24px -12px rgba(var(--glow), 0.35);
   }
 
   .pill {
@@ -75,23 +106,55 @@ body {
   }
 
   .label {
-    @apply text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-chalk-500;
+    @apply font-mono text-[0.68rem] font-medium uppercase tracking-[0.2em] text-chalk-500;
   }
 
   .link {
     @apply text-moss-400 underline decoration-moss-600/40 underline-offset-4 transition-colors hover:decoration-moss-400;
   }
 
+  /* 16px text, or a phone zooms the page in when the field is tapped. */
   .field {
-    @apply w-full rounded-lg border border-ink-700 bg-ink-900/80 px-4 py-3 text-chalk-50 placeholder:text-chalk-500 focus:border-moss-600 focus:outline-none focus:ring-2 focus:ring-moss-600/25;
+    @apply w-full rounded-lg border border-moss-700/70 bg-ink-900/80 px-4 py-3 text-base text-chalk-50 placeholder:text-chalk-400 focus:border-moss-500 focus:outline-none focus:ring-2 focus:ring-moss-500/25;
   }
 
   .chip {
-    @apply rounded-full border border-ink-700 px-3 py-1.5 text-sm text-chalk-200 transition-colors hover:border-moss-600/60 hover:text-chalk-50;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-ink-600 bg-ink-900/60 px-3 py-1.5 text-sm text-chalk-100 transition-colors hover:border-moss-600/60 hover:text-chalk-50;
   }
 
   .chip-on {
-    @apply border-moss-600 bg-moss-600/15 text-moss-400;
+    @apply border-moss-500 bg-moss-600/10 text-chalk-50;
+    box-shadow: 0 0 14px -3px rgba(var(--glow), 0.45), inset 0 0 10px -4px rgba(var(--glow), 0.4);
+  }
+
+  .chip-on svg {
+    @apply text-moss-400;
+  }
+
+  /* A frame drawn only at two corners, as on an instrument's display. */
+  .hud-corners {
+    position: relative;
+  }
+  .hud-corners::before,
+  .hud-corners::after {
+    content: '';
+    position: absolute;
+    width: 0.625rem;
+    height: 0.625rem;
+    pointer-events: none;
+    border-color: rgba(var(--glow), 0.85);
+  }
+  .hud-corners::before {
+    top: 0;
+    left: 0;
+    border-top-width: 1.5px;
+    border-left-width: 1.5px;
+  }
+  .hud-corners::after {
+    right: 0;
+    bottom: 0;
+    border-right-width: 1.5px;
+    border-bottom-width: 1.5px;
   }
 }
 

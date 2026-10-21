@@ -4,27 +4,33 @@ const config: Config = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {
+      /* A register read at night: black with green in it, and one neon green
+         kept for what the register vouches for — a licence, a shelf read. */
       colors: {
         ink: {
-          950: '#080b0a',
-          900: '#0c110f',
-          850: '#111815',
-          800: '#161f1b',
-          700: '#1f2b25',
-          600: '#2b3a32',
+          950: '#040a07',
+          900: '#07110c',
+          850: '#0a1611',
+          800: '#0e1d16',
+          700: '#1a2d23',
+          600: '#284032',
         },
         moss: {
-          400: '#63dd97',
-          500: '#3fc97d',
-          600: '#2ba766',
+          300: '#86f5b8',
+          400: '#41e591',
+          500: '#25d17b',
+          600: '#18b467',
+          700: '#0f7c47',
         },
         chalk: {
-          50: '#f2f6f3',
-          200: '#c3cec8',
-          400: '#8b9a93',
-          500: '#6d7d76',
+          50: '#eef5f0',
+          100: '#dde7e1',
+          200: '#c0cdc5',
+          300: '#a4b3aa',
+          400: '#879990',
+          500: '#687a71',
         },
-        amber: { 400: '#f2b544' },
+        amber: { 300: '#f7cb6e', 400: '#f2b544' },
         rust: { 400: '#ef6f62' },
       },
       fontFamily: {
