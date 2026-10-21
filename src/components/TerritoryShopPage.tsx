@@ -1,6 +1,7 @@
-import Link from 'next/link';
 import type { Metadata } from 'next';
+import { ShelfLamp, ShelfPill } from '@/components/Badges';
 import { FlowerMenu } from '@/components/FlowerMenu';
+import { PageHead } from '@/components/PageParts';
 import { displayName, shopsIn, type TerritoryShop } from '@/lib/territory-data';
 import { territory } from '@/lib/territories';
 import { shelfReadAt, territoryListingsFor, territoryShelfCounts } from '@/lib/territory-menu';
@@ -36,6 +37,18 @@ const COPY: Record<string, { opened: string; read: string; once: string; apart: 
   },
 };
 
+/* A label and its value, as one line of the record — drawn as the city shop
+   page draws its own (DispensaryDetail's Row): the label in mono beside its
+   value, and above it only on a phone too narrow for the two. The label
+   column is a little wider than the city's, for "Commission records it
+   opened" to take two lines rather than three. */
+const Row = ({ label, children }: { label: string; children: React.ReactNode }) => (
+  <div className="grid gap-x-3 gap-y-1 border-b border-ink-700/70 py-3 last:border-b-0 [@media(min-width:400px)_and_(max-width:639px)]:grid-cols-[10rem_minmax(0,1fr)] sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-x-4">
+    <dt className="label pt-0.5">{label}</dt>
+    <dd className="min-w-0 text-sm text-chalk-100">{children}</dd>
+  </div>
+);
+
 const withShelf = (id: string) => shopsIn(id).filter((d) => territoryListingsFor(id, d.licenseNumber).length > 0);
 export const territoryShopBySlug = (id: string, slug: string): TerritoryShop | undefined =>
   withShelf(id).find((d) => d.id === slug);
@@ -60,56 +73,70 @@ export const TerritoryShopPage = ({ id, d }: { id: string; d: TerritoryShop }) =
   const onShelf = territoryShelfCounts(id)[d.licenseNumber] ?? 0;
 
   return (
-    <article className="shell py-12">
-      <Link href={`${t.route}/#list`} className="text-sm text-chalk-400 transition-colors hover:text-moss-400">
-        ← {t.label}
-      </Link>
-
-      <header className="mt-6">
-        <h1 className="text-3xl font-semibold tracking-tight text-chalk-50 sm:text-4xl">{displayName(d)}</h1>
-        {displayName(d) !== d.legalName && (
-          <p className="mt-2 text-sm text-chalk-400">
-            Licensed to <span className="text-chalk-200">{d.legalName}</span>
-          </p>
-        )}
-      </header>
-
-      <dl className="mt-6 grid max-w-2xl gap-x-6 gap-y-2 text-sm sm:grid-cols-[auto_1fr]">
-        <dt className="text-chalk-500">Address</dt>
-        <dd className="text-chalk-200">
-          {[d.address.line1, d.address.line2, `${d.address.city}, ${t.state} ${d.address.zip}`].filter(Boolean).join(', ')}
-        </dd>
-        <dt className="text-chalk-500">Licence</dt>
-        <dd className="font-mono text-chalk-200">{d.licenseNumber}</dd>
-        {d.dates?.openedOn && (
+    <article className="shell pb-16">
+      <PageHead
+        back={{ href: `${t.route}/#list`, label: t.label }}
+        kicker={`${d.address.county} County`}
+        title={
           <>
-            <dt className="text-chalk-500">{copy.opened}</dt>
-            <dd className="text-chalk-200">{prettyDate(d.dates.openedOn)}</dd>
+            {/* The shelf's lamp, as on the city's shop pages: lit, since a
+                page here exists only for a shelf we read. */}
+            <ShelfLamp read={listings.length > 0} className="mr-3 align-middle sm:mr-4" />
+            {displayName(d)}
           </>
-        )}
-      </dl>
+        }
+        meta={
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2.5">
+            {onShelf > 0 ? (
+              <ShelfPill count={onShelf} />
+            ) : (
+              // A shelf read with nothing on it but samples: read, so not red.
+              <span className="pill border-moss-600/60 bg-moss-600/10 text-moss-400">0 strains</span>
+            )}
+            {displayName(d) !== d.legalName && (
+              <p className="text-sm text-chalk-400">
+                Licensed to <span className="text-chalk-200">{d.legalName}</span>
+              </p>
+            )}
+          </div>
+        }
+      />
 
-      {/* Said before the shelf, not after it: the city's shelves are read every
-          day, and a reader arriving from there would assume this one is too. */}
-      <div className="card mt-8 max-w-3xl border-amber-400/30 bg-amber-400/[0.04] p-5 text-sm leading-relaxed text-chalk-300">
-        <p>
-          <span className="font-medium text-chalk-100">
-            {copy.read}
-            {readAt ? ` on ${prettyDate(readAt.slice(0, 10))}` : ''}
-          </span>{' '}
-          — {copy.once}
-        </p>
-        <p className="mt-2 text-chalk-400">{copy.apart}</p>
+      <div className="mt-6 grid gap-4 sm:mt-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-start lg:gap-6">
+        <dl className="card px-4 sm:px-5">
+          <Row label="Address">
+            {[d.address.line1, d.address.line2, `${d.address.city}, ${t.state} ${d.address.zip}`]
+              .filter(Boolean)
+              .join(', ')}
+          </Row>
+          <Row label="Licence">
+            <span className="font-mono text-[0.8125rem] tracking-tight">{d.licenseNumber}</span>
+          </Row>
+          {d.dates?.openedOn && <Row label={copy.opened}>{prettyDate(d.dates.openedOn)}</Row>}
+        </dl>
+
+        {/* Said before the shelf, not after it: the city's shelves are read every
+            day, and a reader arriving from there would assume this one is too. */}
+        <div className="note note-caution">
+          <p>
+            <span className="font-medium text-chalk-50">
+              {copy.read}
+              {readAt ? ` on ${prettyDate(readAt.slice(0, 10))}` : ''}
+            </span>{' '}
+            — {copy.once}
+          </p>
+          <p className="mt-2 text-chalk-300">{copy.apart}</p>
+        </div>
       </div>
 
-      <section id="menu" className="mt-10 scroll-mt-24">
-        <h2 className="text-xl font-semibold tracking-tight text-chalk-50">
-          On the shelf — {onShelf} {onShelf === 1 ? 'strain' : 'strains'}
-        </h2>
-        <div className="mt-6">
-          <FlowerMenu listings={listings} />
-        </div>
-      </section>
+      {/* The shelf brings its own #menu anchor, under the heading this page
+          has always given it. */}
+      <div className="mt-10 sm:mt-12">
+        <FlowerMenu
+          listings={listings}
+          title={`On the shelf — ${onShelf} ${onShelf === 1 ? 'strain' : 'strains'}`}
+        />
+      </div>
     </article>
   );
 };

@@ -18,6 +18,7 @@ import {
   isPromotionalSample,
 } from '@/lib/menu-format';
 import { DebutBadge, DebutTag } from './DebutTag';
+import { Chevron, EmptyState, chipClass } from './PageParts';
 
 const PROVENANCE_CLASS: Record<string, string> = {
   lab: 'border-moss-600/55 bg-moss-600/12 text-moss-400',
@@ -52,14 +53,14 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
   const total = listing.terpenes.totalPercent;
 
   return (
-    <li className="card card-hover p-4 transition-colors">
-      <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+    <li className="card p-4">
+      <div className="flex items-start justify-between gap-x-4 gap-y-2">
         <div className="min-w-0">
           {/* The cultivar, and under it whose. The shop's own wording is kept
               on the listing and shown on hover: the name is the one the
               register settled on (lib/strain-review), the label is evidence. */}
-          <h4
-            className="text-[1.02rem] font-semibold leading-tight tracking-tight text-chalk-50"
+          <h3
+            className="break-words text-[1.02rem] font-bold leading-tight tracking-tight text-chalk-50"
             title={
               listing.strainNameRaw !== (listing.strainNameCanonical ?? listing.strainNameRaw)
                 ? `On the menu as “${listing.strainNameRaw}”`
@@ -67,7 +68,7 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
             }
           >
             {listing.strainNameCanonical ?? listing.strainNameRaw}
-          </h4>
+          </h3>
           <p className="mt-1 text-xs text-chalk-400">
             {listing.brand ? `by ${listing.brand}` : 'Grower not stated'}
             <span className="mx-1.5 text-ink-600">·</span>
@@ -75,10 +76,10 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3 text-right">
+        <div className="flex shrink-0 flex-col items-end gap-1.5 text-right">
           {listing.thcPercent !== null && (
-            <span className="whitespace-nowrap tabular-nums text-sm text-chalk-100">
-              THC {listing.thcPercent}%
+            <span className="whitespace-nowrap font-mono text-[0.8125rem] tabular-nums text-moss-400">
+              <span className="text-chalk-400">THC</span> {listing.thcPercent}%
             </span>
           )}
           {isPromotionalSample(listing) && (
@@ -100,46 +101,35 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
       {sizes.length > 0 && (
         <ul className="mt-3 flex flex-wrap gap-1.5">
           {sizeChips(sizes).map((s) => (
-            <li
-              key={s.grams}
-              className="rounded-md border border-ink-700 bg-ink-900/70 px-2 py-1 text-[0.72rem] text-chalk-200"
-            >
-              <span className="font-medium">{s.label}</span>
-              {s.label !== s.short && (
-                <span className="ml-1.5 tabular-nums text-chalk-500">{s.short}</span>
-              )}
+            <li key={s.grams} className="tag">
+              <span className="font-medium text-chalk-100">{s.label}</span>
+              {s.label !== s.short && <span className="tabular-nums text-chalk-400">{s.short}</span>}
             </li>
           ))}
         </ul>
       )}
 
-      <div className="mt-3 border-t border-ink-700/60 pt-3">
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+      <div className="mt-3 border-t border-ink-700/70 pt-3">
+        <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1.5">
           <span className={clsx('pill', PROVENANCE_CLASS[prov.tone])} title={prov.detail}>
             <ProvenanceDot tone={prov.tone} />
             {prov.label}
           </span>
 
           {top.map((t) => (
-            <span
-              key={t.name}
-              title={TERPENE_NOTE[t.name] || undefined}
-              className="rounded-md bg-ink-800 px-2 py-1 text-[0.72rem] text-chalk-200"
-            >
+            <span key={t.name} title={TERPENE_NOTE[t.name] || undefined} className="tag">
               {TERPENE_LABEL[t.name] ?? t.rawName ?? t.name}
-              {Boolean(t.percent) && (
-                <span className="ml-1.5 tabular-nums text-chalk-500">{t.percent}%</span>
-              )}
+              {Boolean(t.percent) && <span className="tabular-nums text-chalk-400">{t.percent}%</span>}
             </span>
           ))}
 
           {listing.terpenes.source === 'NONE' && (
-            <span className="text-[0.72rem] text-chalk-500">No terpene data published</span>
+            <span className="ml-0.5 text-[0.72rem] text-chalk-400">No terpene data published</span>
           )}
         </div>
 
         {top.length > 0 && (
-          <p className="mt-2 text-[0.72rem] leading-relaxed text-chalk-500">
+          <p className="mt-2 text-[0.72rem] leading-relaxed text-chalk-400">
             {top
               .map((t) => TERPENE_NOTE[t.name])
               .filter(Boolean)
@@ -147,32 +137,35 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
           </p>
         )}
 
+        {listing.terpenes.source === 'STRAIN_REFERENCE' && (
+          <p className="note note-caution mt-2.5 px-3 py-2 text-[0.72rem] text-chalk-300">
+            Typical profile for {listing.terpenes.referenceStrain} — not measured from this batch.
+          </p>
+        )}
+
         {/* The rest of the panel, for whoever wants more than the three that lead. */}
         {(ranked.length > top.length || total) && (
-          <details className="mt-2 text-[0.72rem] text-chalk-400">
-            <summary className="cursor-pointer text-moss-400">
-              {ranked.length > top.length ? `All ${ranked.length} terpenes` : 'Panel'}
-              {total ? ` · ${total}% in all` : ''}
+          <details className="mt-2.5">
+            <summary className="expander py-1.5">
+              <span>
+                {ranked.length > top.length ? `All ${ranked.length} terpenes` : 'Panel'}
+                {total ? ` · ${total}% in all` : ''}
+              </span>
+              <Chevron className="h-3.5 w-3.5" />
             </summary>
             {ranked.length > top.length && (
-              <ul className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 sm:grid-cols-3">
+              <ul className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 px-1 text-[0.72rem] sm:grid-cols-3">
                 {ranked.map((t) => (
                   <li key={t.name} className="flex justify-between gap-2">
                     <span className="text-chalk-300">{TERPENE_LABEL[t.name] ?? t.rawName ?? t.name}</span>
                     {typeof t.percent === 'number' && (
-                      <span className="tabular-nums text-chalk-500">{t.percent}%</span>
+                      <span className="tabular-nums text-chalk-400">{t.percent}%</span>
                     )}
                   </li>
                 ))}
               </ul>
             )}
           </details>
-        )}
-
-        {listing.terpenes.source === 'STRAIN_REFERENCE' && (
-          <p className="mt-2 text-[0.72rem] leading-relaxed text-amber-400/85">
-            Typical profile for {listing.terpenes.referenceStrain} — not measured from this batch.
-          </p>
         )}
       </div>
     </li>
@@ -182,9 +175,12 @@ const StrainRow = ({ listing }: { listing: FlowerListing }) => {
 export const FlowerMenu = ({
   listings,
   partialShelf = false,
+  title = 'Flower on the shelf',
 }: {
   listings: FlowerListing[];
   partialShelf?: boolean;
+  /** The shelf's heading: a page that has always named it its own way keeps that. */
+  title?: string;
 }) => {
   const sharedShelf = listings.some((l) => l.warnings?.includes('SHELF_SHARED_WITH_OTHER_LICENCES'));
   const [size, setSize] = useState<number | null>(null);
@@ -237,31 +233,45 @@ export const FlowerMenu = ({
   };
 
   return (
-    <section id="menu" className="card scroll-mt-20 p-6">
-      <div className="flex flex-wrap items-baseline justify-between gap-3">
-        <h2 className="text-base font-semibold tracking-tight text-chalk-50">Flower on the shelf</h2>
-        <div className="flex items-center gap-3">
-          {capturedAt && (
-            <span className="text-xs text-chalk-500">
-              as read {prettyDateTime(capturedAt)}
-            </span>
-          )}
-          <button
-            type="button"
-            onClick={copyStrains}
-            className={clsx('chip', copied === 'done' && 'chip-on')}
-            aria-live="polite"
+    <section id="menu" className="scroll-mt-20">
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+        <h2 className="section-title">{title}</h2>
+        <button
+          type="button"
+          onClick={copyStrains}
+          className={clsx('btn', copied === 'done' && 'btn-lit')}
+          aria-live="polite"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-4 w-4 shrink-0"
           >
-            {copied === 'done'
-              ? `Copied ${results.length}`
-              : copied === 'failed'
-                ? 'Copy blocked'
-                : 'Copy strains'}
-          </button>
-        </div>
+            {copied === 'done' ? (
+              <path d="M20 6 9 17l-5-5" />
+            ) : (
+              <>
+                <rect x="9" y="9" width="11" height="11" rx="2" />
+                <path d="M5 15V6a2 2 0 0 1 2-2h8" />
+              </>
+            )}
+          </svg>
+          {copied === 'done'
+            ? `Copied ${results.length}`
+            : copied === 'failed'
+              ? 'Copy blocked'
+              : 'Copy strains'}
+        </button>
       </div>
 
-      <p className="mt-2 text-xs leading-relaxed text-chalk-500">
+      {capturedAt && <p className="stamp mt-1">as read {prettyDateTime(capturedAt)}</p>}
+
+      <p className="mt-3 text-sm leading-relaxed text-chalk-400">
         Read from the shop&apos;s own menu: what was on its shelf when we read it.
       </p>
 
@@ -269,7 +279,7 @@ export const FlowerMenu = ({
           shelf and no way to tell which branch stocks it. Saying so is the
           difference between an uncertain answer and a wrong one. */}
       {sharedShelf && (
-        <p className="mt-2 text-xs leading-relaxed text-amber-300/80">
+        <p className="note note-caution mt-3">
           This chain publishes one menu across several licensed shops, so this shelf is the
           chain&apos;s, not this branch&apos;s. Which of its shops holds each strain is not
           established.
@@ -280,51 +290,64 @@ export const FlowerMenu = ({
           while the strains in it keep changing, which is a window onto a
           bigger menu. */}
       {partialShelf && (
-        <p className="mt-2 text-xs leading-relaxed text-amber-300/80">
+        <p className="note note-caution mt-3">
           We read only part of this shop&apos;s menu. The strains below are on it, but it carries
           more than we list, and a strain missing here may still be on the shelf.
         </p>
       )}
 
+      {/* The sizes keep a group of their own, so a row that wraps breaks
+          before the certificate's chip and never leaves the rule between
+          them hanging at a row's end. */}
       <div className="mt-5 flex flex-wrap items-center gap-2">
-        <button
-          type="button"
-          onClick={() => setSize(null)}
-          className={clsx('chip', size === null && 'chip-on')}
-        >
-          Any size
-        </button>
-        {sizesPresent.map((s) => (
+        <div role="group" aria-label="Size" className="flex flex-wrap gap-2">
           <button
-            key={s.grams}
             type="button"
-            onClick={() => setSize(size === s.grams ? null : s.grams)}
-            className={clsx('chip', size === s.grams && 'chip-on')}
+            onClick={() => setSize(null)}
+            aria-pressed={size === null}
+            className={chipClass(size === null)}
           >
-            {s.label}
-            {s.label !== s.short && <span className="tabular-nums text-chalk-500">{s.short}</span>}
+            Any size
           </button>
-        ))}
+          {sizesPresent.map((s) => (
+            <button
+              key={s.grams}
+              type="button"
+              onClick={() => setSize(size === s.grams ? null : s.grams)}
+              aria-pressed={size === s.grams}
+              className={chipClass(size === s.grams)}
+            >
+              {s.label}
+              {s.label !== s.short && (
+                <span className={clsx('tabular-nums', size === s.grams ? 'text-moss-400/75' : 'text-chalk-400')}>
+                  {s.short}
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
 
-        <span aria-hidden className="mx-1 hidden h-5 w-px bg-ink-700 sm:block" />
+        <span aria-hidden className="mx-1 hidden h-5 w-px bg-ink-700 lg:block" />
 
         <button
           type="button"
           onClick={() => setLabOnly((v) => !v)}
-          className={clsx('chip', labOnly && 'chip-on')}
+          aria-pressed={labOnly}
+          className={chipClass(labOnly)}
         >
           Lab certificate
         </button>
       </div>
 
-      <p className="mt-4 text-sm text-chalk-400">
-        <span className="font-semibold text-chalk-50">{results.length}</span>
+      {/* The count over the list, on a rule, as the directory's is. */}
+      <p className="mt-5 border-b border-ink-700 pb-[0.1875rem] text-[0.8125rem] text-chalk-400 sm:pb-2 sm:text-sm">
+        <span className="text-[0.9375rem] font-bold tabular-nums text-chalk-50 sm:text-base">{results.length}</span>
         {results.length === 1 ? ' strain' : ' strains'}
         {size !== null && ` by the ${sizeLabel(size).toLowerCase()}`}
       </p>
 
       {results.length === 0 ? (
-        <p className="mt-6 text-sm text-chalk-400">Nothing on the shelf matches those filters.</p>
+        <EmptyState title="Nothing on the shelf matches those filters." className="mt-4" />
       ) : (
         <ul className="mt-4 grid gap-3 lg:grid-cols-2">
           {results.map((l) => (
@@ -333,12 +356,12 @@ export const FlowerMenu = ({
         </ul>
       )}
 
-      <div className="mt-6 border-t border-ink-700/60 pt-4">
+      <div className="card mt-6 p-4 sm:p-5">
         <p className="label">Where a terpene reading comes from</p>
-        <ul className="mt-2 grid gap-2 sm:grid-cols-2">
+        <ul className="mt-3 grid gap-2 sm:grid-cols-2 sm:gap-x-6">
           {(['LAB_COA', 'MENU_WITH_CERTIFICATE', 'MENU_LISTING', 'STRAIN_REFERENCE'] as const).map((key) => (
             <li key={key} className="flex items-start gap-2 text-[0.72rem] leading-relaxed text-chalk-400">
-              <span className="mt-1">
+              <span className="mt-1 flex">
                 <ProvenanceDot tone={PROVENANCE[key].tone} />
               </span>
               <span>
@@ -348,9 +371,9 @@ export const FlowerMenu = ({
           ))}
         </ul>
         {listings.some((l) => l.debut) && (
-          <>
-            <p className="label mt-4">New on New York shelves</p>
-            <ul className="mt-2 grid gap-2 sm:grid-cols-2">
+          <div className="mt-4 border-t border-ink-700/70 pt-4">
+            <p className="label">New on New York shelves</p>
+            <ul className="mt-3 grid gap-2 sm:grid-cols-2 sm:gap-x-6">
               <li className="flex items-start gap-2 text-[0.72rem] leading-relaxed text-chalk-400">
                 <DebutTag debut={{ day: '2026-10-08', days: 0, seenAt: 3 }} sample />
                 <span>
@@ -363,11 +386,11 @@ export const FlowerMenu = ({
                 <span>After its first week: how long ago it first turned up.</span>
               </li>
             </ul>
-            <p className="mt-2 text-[0.72rem] leading-relaxed text-chalk-500">
+            <p className="mt-3 text-[0.72rem] leading-relaxed text-chalk-400">
               New York City and Westchester shelves we read, since our reads began on Sep 6, 2026 —
               a strain can be older on shelves we do not read.
             </p>
-          </>
+          </div>
         )}
       </div>
     </section>

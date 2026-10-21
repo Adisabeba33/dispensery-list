@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { SIZES, sizeChips } from '@/lib/menu-format';
 import type { BrandSummary } from '@/lib/shelf';
+import { Chevron, EmptyState, FOCUS_RING, SEARCH_FIELD, SEARCH_ICON, SearchIcon } from './PageParts';
 
 /**
  * Every brand on the collected shelves, searchable by name.
@@ -26,8 +27,9 @@ export const BrandIndex = ({ brands }: { brands: BrandSummary[] }) => {
 
   return (
     <div>
-      <label className="block">
+      <label className="relative block">
         <span className="sr-only">Search brands</span>
+        <SearchIcon className={SEARCH_ICON} />
         <input
           type="search"
           value={query}
@@ -36,42 +38,59 @@ export const BrandIndex = ({ brands }: { brands: BrandSummary[] }) => {
             setLimit(80);
           }}
           placeholder="Find, Alien Labs, Grassroots…"
-          className="field"
+          className={SEARCH_FIELD}
         />
       </label>
 
-      <p className="mt-3 text-sm text-chalk-400">
-        {shown.length === brands.length
-          ? `${brands.length} brands on the collected shelves`
-          : `${shown.length} of ${brands.length} brands`}
+      {/* The count over a rule, as the directory's is on the home page. */}
+      <p
+        className="mt-5 border-b border-ink-700 pb-[0.1875rem] text-[0.8125rem] text-chalk-400 sm:pb-2 sm:text-sm"
+        aria-live="polite"
+      >
+        {shown.length === brands.length ? (
+          <>
+            <span className="text-[0.9375rem] font-bold tabular-nums text-chalk-50 sm:text-base">{brands.length}</span> brands on the
+            collected shelves
+          </>
+        ) : (
+          <>
+            <span className="text-[0.9375rem] font-bold tabular-nums text-chalk-50 sm:text-base">{shown.length}</span> of{' '}
+            {brands.length} brands
+          </>
+        )}
       </p>
 
       {shown.length === 0 ? (
-        <p className="mt-6 text-chalk-300">No brand on the collected shelves matches that.</p>
+        <EmptyState title="No brand on the collected shelves matches that." />
       ) : (
         <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {shown.slice(0, limit).map((b) => (
             <li key={b.key}>
-              <Link href={`/menus/brands/${b.key}/`} className="card block p-4 transition hover:border-moss-600">
-                <span className="block truncate text-[0.95rem] font-semibold tracking-tight text-chalk-50">
-                  {b.name}
+              <Link
+                href={`/menus/brands/${b.key}/`}
+                className={`card card-hover group flex h-full items-start gap-3 p-4 ${FOCUS_RING}`}
+              >
+                {/* Drawn as the home page's card and the shops' are: the name in
+                    bold, the chevron at its right. */}
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-[1.06rem] font-bold leading-snug tracking-tight text-chalk-50 transition-colors group-hover:text-moss-300">
+                    {b.name}
+                  </span>
+                  <span className="mt-1 block text-sm text-chalk-300">
+                    {b.strains} {b.strains === 1 ? 'strain' : 'strains'} · {b.shops}{' '}
+                    {b.shops === 1 ? 'shop' : 'shops'}
+                  </span>
+                  <span className="mt-2.5 flex flex-wrap gap-1.5">
+                    {sizeChips(b.sizes)
+                      .filter((c) => SIZES.some((s) => s.grams === c.grams))
+                      .map((c) => (
+                        <span key={c.grams} className="tag tabular-nums">
+                          {c.short}
+                        </span>
+                      ))}
+                  </span>
                 </span>
-                <span className="mt-1 block text-sm text-chalk-300">
-                  {b.strains} {b.strains === 1 ? 'strain' : 'strains'} · {b.shops}{' '}
-                  {b.shops === 1 ? 'shop' : 'shops'}
-                </span>
-                <span className="mt-2 flex flex-wrap gap-1.5">
-                  {sizeChips(b.sizes)
-                    .filter((c) => SIZES.some((s) => s.grams === c.grams))
-                    .map((c) => (
-                      <span
-                        key={c.grams}
-                        className="rounded-md border border-ink-700 bg-ink-900/70 px-2 py-0.5 text-[0.7rem] text-chalk-200"
-                      >
-                        {c.short}
-                      </span>
-                    ))}
-                </span>
+                <Chevron className="mt-0.5 h-5 w-5 text-chalk-300 transition-colors group-hover:text-moss-300" />
               </Link>
             </li>
           ))}
@@ -79,13 +98,11 @@ export const BrandIndex = ({ brands }: { brands: BrandSummary[] }) => {
       )}
 
       {shown.length > limit && (
-        <button
-          type="button"
-          onClick={() => setLimit((n) => n + 120)}
-          className="mt-6 rounded-lg border border-ink-700 px-4 py-2 text-sm text-chalk-200 hover:border-moss-600"
-        >
-          Show more ({shown.length - limit} left)
-        </button>
+        <div className="mt-6 flex justify-center">
+          <button type="button" onClick={() => setLimit((n) => n + 120)} className="btn">
+            Show more ({shown.length - limit} left)
+          </button>
+        </div>
       )}
     </div>
   );

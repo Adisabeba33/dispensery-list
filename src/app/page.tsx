@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import clsx from 'clsx';
 import { DirectoryExplorer } from '@/components/DirectoryExplorer';
 import { BuildStamp } from '@/components/BuildStamp';
 import { DemoBanner } from '@/components/DemoBanner';
 import { HeroLeaf, HudBox } from '@/components/HeroArt';
+import { StatBoxes } from '@/components/PageParts';
 import { dispensaries, isDemoData, stats } from '@/lib/data';
 import { menuCounts } from '@/lib/menu';
 
@@ -79,39 +79,7 @@ export default function HomePage() {
             sources for every entry.
           </p>
 
-          <div className="mt-5 sm:mt-8 sm:w-max">
-            <dl className="flex flex-wrap gap-1.5 sm:gap-2">
-              {figures.map((figure, i) => (
-                <div
-                  key={figure.label}
-                  className={clsx(
-                    'relative flex flex-auto flex-col-reverse rounded-[5px] px-2.5 py-2 [@media(max-width:374px)]:px-2 [@media(min-width:400px)]:px-3.5 sm:min-w-[8rem] sm:flex-none sm:px-4 sm:py-3.5 lg:min-w-[9.5rem] lg:px-5',
-                    // Its stretch of the rule beneath the row, lit under the first.
-                    'after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-[0.6875rem] after:h-px',
-                    // The lit box is the second widest, as drawn, where the row
-                    // has the room; on a narrower phone it would push the row
-                    // onto two lines. (Plain media variants: Tailwind's min-[…]
-                    // goes away beside the em-based `nav` screen.)
-                    i === 0
-                      ? 'card-lit [@media(min-width:420px)_and_(max-width:639px)]:min-w-[5.875rem] after:bg-moss-400 after:shadow-[0_0_6px_rgba(var(--glow),0.8)]'
-                      : 'border border-ink-600 bg-ink-900/70 after:bg-moss-700/45',
-                  )}
-                >
-                  <dt className="mt-0.5 whitespace-nowrap text-[0.72rem] leading-tight text-chalk-200 sm:text-sm">
-                    {figure.label}
-                  </dt>
-                  <dd className="bg-gradient-to-b from-moss-300 to-moss-400 bg-clip-text text-[1.3rem] font-semibold leading-tight tabular-nums text-transparent sm:text-[1.75rem]">
-                    {figure.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-            {/* A rule under the row, with a gauge's ticks standing on its start. */}
-            <div aria-hidden className="mt-[0.9375rem]">
-              <div className="h-[3px] w-7 bg-[repeating-linear-gradient(90deg,rgba(var(--glow),0.45)_0_1px,transparent_1px_3px)] opacity-70" />
-              <div className="h-px bg-gradient-to-r from-moss-700/50 via-moss-700/35 to-moss-700/10" />
-            </div>
-          </div>
+          <StatBoxes figures={figures} className="mt-5 sm:mt-8" />
         </div>
       </section>
 

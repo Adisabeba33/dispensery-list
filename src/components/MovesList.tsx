@@ -2,12 +2,14 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
+import clsx from 'clsx';
 import type { MoveItem, MoveKind } from '@/lib/moves';
 import { LINEAGE_CHIP, MOVE_SORTS, shortDay } from '@/lib/moves-copy';
 import type { Shop } from '@/lib/signals';
 import { DebutTag } from './DebutTag';
 import { ShelfLine } from './MovesIcons';
 import { TypeChips, typeFromUrl } from './MovesOverview';
+import { Chevron, EmptyState, SortSelect } from './PageParts';
 
 type Type = (typeof LINEAGE_CHIP)[number]['id'];
 
@@ -54,28 +56,34 @@ const Places = ({ shops, lead }: { shops: Shop[]; lead?: string }) => {
   const label = (s: Shop) => (twice.has(s.name) ? `${s.name}, ${s.street}` : s.name);
   const shown = all ? shops : shops.slice(0, NAMED);
   return (
-    <p className="mt-1.5 text-sm text-chalk-400">
-      {lead && <span className="text-chalk-500">{lead} </span>}
+    <p className="mt-1.5 text-sm leading-relaxed text-chalk-400">
+      {lead && <span>{lead} </span>}
       {shown.map((s, i) => (
         <span key={s.id}>
-          {i > 0 && <span className="text-chalk-500"> · </span>}
-          <Link href={`/dispensary/${s.id}/`} className="link">
+          {i > 0 && <span className="text-chalk-400"> · </span>}
+          <Link
+            href={`/dispensary/${s.id}/`}
+            className="link rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-moss-400"
+          >
             {label(s)}
           </Link>
-          {all && <span className="text-chalk-500"> ({s.region})</span>}
+          {all && <span className="text-chalk-400"> ({s.region})</span>}
         </span>
       ))}
       {shops.length > NAMED && (
         <>
-          <span className="text-chalk-500"> · </span>
+          <span className="text-chalk-400"> · </span>
+          {/* It opens the rest of the list, so it carries the chevron every
+              disclosure on the site does. */}
           <button
             type="button"
             aria-expanded={all}
             onClick={() => setAll((v) => !v)}
-            className="whitespace-nowrap text-chalk-500 hover:text-chalk-200"
+            className="-my-1 inline-flex items-center gap-0.5 whitespace-nowrap rounded-sm py-1 align-baseline text-chalk-300 transition-colors hover:text-moss-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-moss-400"
           >
             {all ? 'fewer' : `+${shops.length - NAMED} more`}
             <span className="sr-only"> shops</span>
+            <Chevron className="h-3.5 w-3.5 self-center" />
           </button>
         </>
       )}
@@ -84,16 +92,19 @@ const Places = ({ shops, lead }: { shops: Shop[]; lead?: string }) => {
 };
 
 const Grower = ({ item }: { item: MoveItem }) => (
-  <p className="mt-0.5 text-sm text-chalk-500">
+  <p className="mt-0.5 text-sm text-chalk-400">
     {item.brand ? (
       <>
         by{' '}
         {item.brandKey ? (
-          <Link href={`/menus/brands/${item.brandKey}/`} className="text-chalk-300 hover:text-moss-400">
+          <Link
+            href={`/menus/brands/${item.brandKey}/`}
+            className="rounded-sm text-chalk-200 transition-colors hover:text-moss-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-moss-400"
+          >
             {item.brand}
           </Link>
         ) : (
-          <span className="text-chalk-300">{item.brand}</span>
+          <span className="text-chalk-200">{item.brand}</span>
         )}
       </>
     ) : (
@@ -104,28 +115,32 @@ const Grower = ({ item }: { item: MoveItem }) => (
 
 const Name = ({ item }: { item: MoveItem }) =>
   item.slug ? (
-    <Link href={`/menus/strains/${item.slug}/`} className="font-medium text-chalk-50 hover:text-moss-400">
+    <Link
+      href={`/menus/strains/${item.slug}/`}
+      className="rounded-sm font-semibold tracking-tight text-chalk-50 transition-colors hover:text-moss-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-moss-400"
+    >
       {item.strain}
     </Link>
   ) : (
-    <span className="font-medium text-chalk-50">{item.strain}</span>
+    <span className="font-semibold tracking-tight text-chalk-50">{item.strain}</span>
   );
 
-const Chevron = ({ item }: { item: MoveItem }) =>
+/* The way to the strain's page, at the row's end: the chevron every row that
+   leads somewhere ends in, with a finger's room round it. */
+const StrainLink = ({ item }: { item: MoveItem }) =>
   item.slug ? (
     <Link
       href={`/menus/strains/${item.slug}/`}
       aria-label={`${item.strain}: every shelf it is on`}
-      className="-mr-1 shrink-0 self-center p-1 text-chalk-500 hover:text-chalk-50"
+      className="-mr-2 grid h-10 w-9 shrink-0 place-items-center self-center rounded-md text-chalk-400 transition-colors hover:text-moss-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-moss-400"
     >
-      <svg viewBox="0 0 24 24" aria-hidden className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="m9 6 6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
+      <Chevron className="h-5 w-5" />
     </Link>
   ) : null;
 
-const Pill = ({ children }: { children: React.ReactNode }) => (
-  <span className="shrink-0 whitespace-nowrap rounded-md border border-moss-600 bg-moss-600/15 px-2 py-0.5 text-[0.7rem] text-moss-400">
+/* A figure beside the name — a THC reading, today's shelves — in a tag. */
+const Figure = ({ children }: { children: React.ReactNode }) => (
+  <span className="tag shrink-0 whitespace-nowrap border-moss-600/60 bg-moss-600/10 tabular-nums text-moss-300">
     {children}
   </span>
 );
@@ -172,20 +187,27 @@ const Facts = ({ kind, item }: { kind: MoveKind; item: MoveItem }) => {
   }
 };
 
+/* A row that leads to its strain's page is a .row-link, chevron and all; one
+   without a page keeps the rule between rows and nothing more. */
 const Row = ({ kind, item }: { kind: MoveKind; item: MoveItem }) => (
-  <li className="flex gap-3 py-4">
+  <li
+    className={clsx(
+      'px-4 sm:px-5',
+      item.slug ? 'row-link items-start gap-2 sm:gap-3' : 'flex border-b border-ink-700/70 py-3.5 last:border-b-0',
+    )}
+  >
     <div className="min-w-0 flex-1">
       <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
         <Name item={item} />
         {item.debut && <DebutTag debut={item.debut} />}
-        {kind === 'batches' && item.thc !== undefined && <Pill>THC {item.thc}%</Pill>}
+        {kind === 'batches' && item.thc !== undefined && <Figure>THC {item.thc}%</Figure>}
       </div>
       <Grower item={item} />
-      <p className="mt-1.5 text-sm text-chalk-300">
+      <p className="mt-1.5 text-pretty text-sm text-chalk-200">
         <Facts kind={kind} item={item} />
       </p>
       {kind === 'batches' && item.before && item.before.length > 0 && (
-        <p className="mt-0.5 text-xs text-chalk-500">
+        <p className="stamp mt-0.5">
           Earlier figures: {item.before.slice(0, 5).join('%, ')}%{item.before.length > 5 ? ' …' : ''}
         </p>
       )}
@@ -194,12 +216,12 @@ const Row = ({ kind, item }: { kind: MoveKind; item: MoveItem }) => (
         lead={kind === 'gone' ? 'Last seen at' : kind === 'new' ? 'Turned up at' : undefined}
       />
     </div>
-    <Chevron item={item} />
+    <StrainLink item={item} />
   </li>
 );
 
 const WaveCard = ({ item }: { item: MoveItem }) => (
-  <li className="card flex gap-3 p-4">
+  <li className="card flex gap-3 p-4 sm:p-5">
     <div className="min-w-0 flex-1">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
@@ -207,16 +229,16 @@ const WaveCard = ({ item }: { item: MoveItem }) => (
           <Grower item={item} />
         </div>
         <div className="flex shrink-0 flex-col items-end gap-1">
-          {(item.today ?? 0) > 0 && <Pill>+{item.today} today</Pill>}
+          {(item.today ?? 0) > 0 && <Figure>+{item.today} today</Figure>}
           {item.debut && <DebutTag debut={item.debut} />}
         </div>
       </div>
-      <p className="mt-2 text-sm text-chalk-300">
+      <p className="mt-2 text-pretty text-sm text-chalk-200">
         {plural(item.shelves ?? 0, 'shelf', 'shelves')} since {shortDay(item.day)} · on{' '}
         {plural(item.now ?? 0, 'shop', 'shops')} now
       </p>
       {item.series && (
-        <div className="mt-2">
+        <div className="mt-3 border-t border-ink-700/70 pt-3">
           <ShelfLine
             values={item.series}
             label={`Shelves we had found it on by each day we read: ${item.series.join(', ')}`}
@@ -225,7 +247,7 @@ const WaveCard = ({ item }: { item: MoveItem }) => (
       )}
       <Places shops={item.shops} lead="Turned up at" />
     </div>
-    <Chevron item={item} />
+    <StrainLink item={item} />
   </li>
 );
 
@@ -269,38 +291,30 @@ export const MovesList = ({ kind, items }: { kind: MoveKind; items: MoveItem[] }
 
   return (
     <>
-      <div className="mt-6 flex flex-col gap-4">
+      {/* The type at the left, the order at the right, over a rule — as the
+          home page's list is headed; a filtered list's count beneath them. */}
+      <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3 border-b border-ink-700/70 pb-3 sm:mt-8">
         {typed ? (
           <TypeChips type={type} onChange={chooseType} />
         ) : (
-          <p className="text-sm text-chalk-500">
+          <p className="text-sm text-chalk-400">
             Not by type: a strain gone from every shelf has no type on any of them.
           </p>
         )}
-        <label className="card relative flex items-center gap-2 px-4 py-3 text-sm text-chalk-400 focus-within:border-moss-600 focus-within:ring-2 focus-within:ring-moss-600/25">
-          <span>Sort:</span>
-          <select
-            value={sort}
-            onChange={(e) => {
-              setSort(e.target.value);
-              setLimit(PAGE);
-              remember({ sort: e.target.value });
-            }}
-            className="w-full cursor-pointer appearance-none bg-transparent pr-8 text-chalk-50 focus:outline-none"
-          >
-            {sorts.map((s) => (
-              <option key={s.id} value={s.id} className="bg-ink-900">
-                {s.label}
-              </option>
-            ))}
-          </select>
-          <svg viewBox="0 0 24 24" aria-hidden className="pointer-events-none absolute right-4 h-4 w-4 text-chalk-400" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </label>
+        {/* The home page's Sort, held at the right. */}
+        <SortSelect
+          value={sort}
+          options={sorts}
+          onChange={(next) => {
+            setSort(next);
+            setLimit(PAGE);
+            remember({ sort: next });
+          }}
+          className="ml-auto"
+        />
         {/* Mounted for as long as the filter is, so a change is announced. */}
         {typed && (
-          <p className="text-sm text-chalk-400 empty:hidden" aria-live="polite">
+          <p className="stamp basis-full empty:hidden" aria-live="polite">
             {type === 'all'
               ? ''
               : `${shown.length} of ${items.length}, where most shops call it ${TYPE_WORDS[type]}`}
@@ -309,15 +323,15 @@ export const MovesList = ({ kind, items }: { kind: MoveKind; items: MoveItem[] }
       </div>
 
       {shown.length === 0 ? (
-        <p className="mt-8 text-sm text-chalk-500">Nothing on this list is of that type today.</p>
+        <EmptyState title="Nothing on this list is of that type today." className="mt-4" />
       ) : kind === 'waves' ? (
-        <ul className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
+        <ul className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
           {shown.slice(0, limit).map((item) => (
             <WaveCard key={item.id} item={item} />
           ))}
         </ul>
       ) : (
-        <ul className="mt-3 divide-y divide-ink-700/60 border-b border-ink-700/60">
+        <ul className="card mt-4 overflow-hidden">
           {shown.slice(0, limit).map((item) => (
             <Row key={item.id} kind={kind} item={item} />
           ))}
@@ -326,7 +340,7 @@ export const MovesList = ({ kind, items }: { kind: MoveKind; items: MoveItem[] }
 
       {shown.length > limit && (
         <div className="mt-6 flex justify-center">
-          <button type="button" onClick={() => setLimit((n) => n + PAGE * 2)} className="chip">
+          <button type="button" onClick={() => setLimit((n) => n + PAGE * 2)} className="btn">
             Show more ({shown.length - limit} left)
           </button>
         </div>

@@ -79,9 +79,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <main>{children}</main>
 
-        <footer className="mt-24 border-t border-ink-700/80 py-10">
-          <div className="shell space-y-4 text-sm text-chalk-400">
-            <p className="max-w-3xl">
+        {/* The record's foot: the mark, small, at the start of a rule with the
+            lit tick the home page's figures stand on, and the notice under it
+            in the quiet grey; nothing in it brighter than its links. */}
+        <footer className="shell mt-24 pb-10">
+          <div aria-hidden className="flex items-center gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/mark.svg" alt="" width={24} height={24} className="h-6 w-6 shrink-0 opacity-80" />
+            <div className="relative h-px flex-1 bg-gradient-to-r from-ink-600 via-ink-700/80 to-ink-700/20">
+              <span className="absolute left-0 top-0 h-px w-7 bg-moss-400 shadow-[0_0_6px_rgba(var(--glow),0.8)]" />
+            </div>
+          </div>
+          <div className="mt-6 max-w-3xl space-y-4 text-sm leading-relaxed text-chalk-400">
+            <p>
               This directory lists businesses licensed by the New York State Office of Cannabis
               Management. It is informational only: it does not sell cannabis, and it is not
               affiliated with or endorsed by any state agency. Cannabis is for adults 21 and over —
@@ -94,7 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <p>
               Always confirm a shop yourself before you buy —{' '}
               <a
-                className="link"
+                className="link break-words"
                 href="https://cannabis.ny.gov/dispensary-location-verification"
                 target="_blank"
                 rel="noreferrer noopener"

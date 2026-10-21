@@ -4,6 +4,8 @@ import { useMemo, useState } from 'react';
 import clsx from 'clsx';
 import type { TerritoryShop } from '@/lib/territory-data';
 import { displayName } from '@/lib/territory-data';
+import { ShelfBarsIcon } from './AreaIcons';
+import { EmptyState, FOCUS_RING, SEARCH_ICON, SearchIcon, SortSelect, chipClass } from './PageParts';
 import { TerritoryCard } from './TerritoryCard';
 
 /**
@@ -21,6 +23,12 @@ import { TerritoryCard } from './TerritoryCard';
  */
 
 type SortKey = 'name' | 'county' | 'opened';
+
+const SORTS: { id: SortKey; label: string }[] = [
+  { id: 'opened', label: 'Opened most recently' },
+  { id: 'name', label: 'Name' },
+  { id: 'county', label: 'County' },
+];
 
 export const TerritoryExplorer = ({
   shops,
@@ -103,9 +111,13 @@ export const TerritoryExplorer = ({
 
   return (
     <section id="list" className="scroll-mt-20" data-territory={storageKey}>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-3 sm:gap-4">
         <label className="relative block">
           <span className="sr-only">Search by name, town, county or licence number</span>
+          <SearchIcon className={SEARCH_ICON} />
+          {/* The home page's field (the kit's SEARCH_FIELD), its placeholder
+              a step smaller on a phone, for this longer one to fit more of
+              itself; typed text stays 16px. */}
           <input
             type="search"
             value={query}
@@ -114,15 +126,16 @@ export const TerritoryExplorer = ({
               setLimit(60);
             }}
             placeholder={`Search name, town, county or licence number (${licenceExample})`}
-            className="field"
+            className="field h-[2.5625rem] text-ellipsis rounded-[7px] border-moss-600/55 py-0 pl-10 pr-3 placeholder:text-[clamp(0.6875rem,4.6vw-0.6rem,0.8125rem)] placeholder:text-chalk-300 sm:h-11 sm:placeholder:text-sm [&:placeholder-shown::-webkit-search-cancel-button]:hidden"
           />
         </label>
 
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap gap-x-[0.4375rem] gap-y-[0.5625rem] sm:gap-2">
           <button
             type="button"
             onClick={() => setCounty(null)}
-            className={clsx('chip', county === null && 'chip-on')}
+            aria-pressed={county === null}
+            className={chipClass(county === null)}
           >
             All counties
           </button>
@@ -134,15 +147,16 @@ export const TerritoryExplorer = ({
                 setCounty(county === c.name ? null : c.name);
                 setLimit(60);
               }}
-              className={clsx('chip', county === c.name && 'chip-on')}
+              aria-pressed={county === c.name}
+              className={chipClass(county === c.name)}
             >
               {c.name}
-              <span className="tabular-nums text-chalk-500">{c.count}</span>
+              <span className="tabular-nums text-chalk-400">{c.count}</span>
             </button>
           ))}
         </div>
 
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-x-[0.4375rem] gap-y-[0.5625rem] sm:gap-2">
           <button
             type="button"
             onClick={() => {
@@ -150,7 +164,7 @@ export const TerritoryExplorer = ({
               setLimit(60);
             }}
             aria-pressed={openedOnly}
-            className={clsx('chip', openedOnly && 'chip-on')}
+            className={chipClass(openedOnly)}
           >
             Opening date on file
           </button>
@@ -162,18 +176,18 @@ export const TerritoryExplorer = ({
                 setLimit(60);
               }}
               aria-pressed={stockOnly}
-              className={clsx('chip', stockOnly && 'chip-on')}
+              className={clsx(chipClass(stockOnly), 'pl-[0.5625rem] sm:pl-3')}
             >
-              <span aria-hidden className="inline-block h-2 w-2 rounded-full bg-moss-400" />
+              <ShelfBarsIcon />
               Shelf read
-              <span className="tabular-nums text-chalk-500">{stockTotal}</span>
+              <span className="tabular-nums text-chalk-400">{stockTotal}</span>
             </button>
           )}
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink-700/70 pb-4">
-          <p className="text-sm text-chalk-400">
-            <span className="font-semibold text-chalk-50">{list.length}</span>
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-ink-700 pb-[0.1875rem] sm:pb-2">
+          <p className="text-[0.8125rem] text-chalk-400 sm:text-sm">
+            <span className="text-[0.9375rem] font-bold tabular-nums text-chalk-50 sm:text-base">{list.length}</span>
             {list.length === 1 ? ' licence' : ' licences'}
             {active && (
               <>
@@ -186,7 +200,7 @@ export const TerritoryExplorer = ({
                     setOpenedOnly(false);
                     setStockOnly(false);
                   }}
-                  className="link"
+                  className={clsx('link rounded-sm', FOCUS_RING)}
                 >
                   clear filters
                 </button>
@@ -194,36 +208,28 @@ export const TerritoryExplorer = ({
             )}
           </p>
 
-          <label className="flex items-center gap-2 text-sm text-chalk-400">
-            Sort
-            <select
-              value={sort}
-              onChange={(e) => setSort(e.target.value as SortKey)}
-              className="rounded-lg border border-ink-700 bg-ink-900 px-2.5 py-1.5 text-chalk-200 focus:border-moss-600 focus:outline-none"
-            >
-              <option value="opened">Opened most recently</option>
-              <option value="name">Name</option>
-              <option value="county">County</option>
-            </select>
-          </label>
+          {/* As on the home page. */}
+          <SortSelect value={sort} options={SORTS} onChange={setSort} />
         </div>
       </div>
 
       {list.length === 0 ? (
-        <div className="card mt-8 p-10 text-center">
-          <p className="text-chalk-200">Nothing matches those filters.</p>
-          <p className="mt-2 text-sm text-chalk-400">
-            A shop missing from this list is not automatically illegal — it may simply not hold a
-            licence in this snapshot. Check it at{' '}
-            <a className="link" href={verify.href} target="_blank" rel="noreferrer noopener">
-              {verify.label}
-            </a>
-            .
-          </p>
-        </div>
+        <EmptyState title="Nothing matches those filters.">
+          A shop missing from this list is not automatically illegal — it may simply not hold a
+          licence in this snapshot. Check it at{' '}
+          <a
+            className={clsx('link rounded-sm', FOCUS_RING)}
+            href={verify.href}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            {verify.label}
+          </a>
+          .
+        </EmptyState>
       ) : (
         <>
-          <ul className="mt-8 grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-3.5 grid grid-cols-1 gap-[0.6875rem] sm:mt-5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
             {shown.map((d) => (
               <li key={d.id}>
                 <TerritoryCard
@@ -238,14 +244,10 @@ export const TerritoryExplorer = ({
           </ul>
 
           {shown.length < list.length && (
-            <div className="mt-8 text-center">
+            <div className="mt-6 text-center sm:mt-8">
               {/* Five hundred cards at once is a slow page on a phone, and
                   nobody reads past the first sixty without narrowing first. */}
-              <button
-                type="button"
-                onClick={() => setLimit((n) => n + 120)}
-                className="rounded-lg border border-ink-700 bg-ink-800 px-5 py-2.5 text-sm text-chalk-200 transition-colors hover:border-chalk-500 hover:text-chalk-50"
-              >
+              <button type="button" onClick={() => setLimit((n) => n + 120)} className="btn px-5">
                 Show more — {list.length - shown.length} left
               </button>
             </div>

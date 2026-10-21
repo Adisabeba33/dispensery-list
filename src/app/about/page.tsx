@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { PageHead } from '@/components/PageParts';
 import { debts, stats } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -7,30 +8,38 @@ export const metadata: Metadata = {
     'The sources, verification rules and known limits behind The Flower Index.',
 };
 
+/* A section of the record: its heading with the lit bar, the prose a step
+   larger than a card's, for reading down a page. */
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <section className="border-t border-ink-700/70 py-8 first:border-0">
-    <h2 className="text-xl font-semibold tracking-tight text-chalk-50">{title}</h2>
-    <div className="mt-3 space-y-3 text-sm leading-relaxed text-chalk-200">{children}</div>
+  <section className="mt-10 first:mt-0 sm:mt-12">
+    <h2 className="section-title">{title}</h2>
+    <div className="mt-3 space-y-3 text-[0.9375rem] leading-[1.7] text-chalk-200 sm:mt-4 sm:text-[1rem]">
+      {children}
+    </div>
   </section>
 );
+
+/* A list inside a section, read as entries of the record: one frame, a rule
+   between the entries. */
+const RULED_LIST = 'card divide-y divide-ink-700/70 px-4 sm:px-5 [&>li]:py-3';
 
 export default function AboutPage() {
   const s = stats();
   const d = debts();
 
   return (
-    <div className="shell max-w-3xl py-12">
-      <p className="label">Method</p>
-      <h1 className="mt-4 text-3xl font-semibold tracking-tight text-chalk-50 sm:text-4xl">
-        How this register is built
-      </h1>
-      <p className="mt-5 text-lg leading-relaxed text-chalk-200">
-        A directory of legal dispensaries is only worth something if you can check it. So every
-        record here carries its licence number, its sources, and an honest label for how well it has
-        been verified.
-      </p>
+    // At the left edge, under the logo, as every page's head is; the text
+    // kept to a reading measure.
+    <div className="shell pb-16">
+      <PageHead kicker="Method" title="How this register is built" className="max-w-3xl">
+        <p>
+          A directory of legal dispensaries is only worth something if you can check it. So every
+          record here carries its licence number, its sources, and an honest label for how well it
+          has been verified.
+        </p>
+      </PageHead>
 
-      <div className="mt-10">
+      <div className="mt-10 max-w-3xl sm:mt-14">
         <Section title="Where the data comes from">
           <p>
             The spine of this register is the New York State Office of Cannabis Management licence
@@ -58,7 +67,7 @@ export default function AboutPage() {
         </Section>
 
         <Section title="What the verification labels mean">
-          <ul className="space-y-3">
+          <ul className={RULED_LIST}>
             <li>
               <span className="font-medium text-moss-400">Registry-verified</span> — the licence
               number and the address both matched a record in the state registry.
@@ -113,7 +122,7 @@ export default function AboutPage() {
             directory that only shows what it is sure of, without saying what it is unsure of,
             invites you to mistake its silence for completeness.
           </p>
-          <ul className="mt-4 space-y-3">
+          <ul className={`${RULED_LIST} !mt-5`}>
             <li>
               <span className="font-semibold text-chalk-50">{d.unknownStatus} records with an
               unconfirmed status.</span>{' '}

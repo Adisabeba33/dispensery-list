@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { PageHead } from '@/components/PageParts';
 import { ShelfIndex } from '@/components/ShelfIndex';
 import { ShelfStamp } from '@/components/ShelfStamp';
 import { shelvesRead, strainEntries } from '@/lib/shelf';
@@ -15,23 +16,20 @@ export default function MenusPage() {
   const shelves = shelvesRead();
 
   return (
-    <div className="shell py-12">
-      <p className="label">Shelves</p>
-      <h1 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-chalk-50 sm:text-4xl">
-        Find a strain
-      </h1>
-      <p className="mt-5 max-w-2xl text-lg leading-relaxed text-chalk-200">
-        Search {strains.length} strains across every collected shelf at once. A strain on more than
-        one shelf lists every one — by strain, by brand, or by shop.
-      </p>
-
-      <p className="mt-4 max-w-2xl text-sm text-chalk-400">
-        What turned up this week, and what is running low?{' '}
-        <Link href="/moves/" className="link">
-          New &amp; leaving
-        </Link>
-        .
-      </p>
+    <div className="shell pb-16">
+      <PageHead kicker="Shelves" title="Find a strain">
+        <p>
+          Search {strains.length} strains across every collected shelf at once. A strain on more than
+          one shelf lists every one — by strain, by brand, or by shop.
+        </p>
+        <p className="text-sm text-chalk-300 sm:text-[0.9375rem]">
+          What turned up this week, and what is running low?{' '}
+          <Link href="/moves/" className="link">
+            New &amp; leaving
+          </Link>
+          .
+        </p>
+      </PageHead>
 
       <ShelfStamp linkToShops />
 
@@ -42,7 +40,7 @@ export default function MenusPage() {
         <ShelfIndex strains={strains} shopsRead={shelves.length} />
       </div>
 
-      <p className="mt-12 max-w-2xl text-sm text-chalk-400">
+      <p className="note mt-12 max-w-2xl">
         Read from {shelves.length} shops&apos; own menus —{' '}
         <Link href="/menus/shops/" className="link">
           see which shops
@@ -55,7 +53,7 @@ export default function MenusPage() {
         not a strain nobody stocks.
       </p>
 
-      <p className="mt-6 max-w-2xl text-xs leading-relaxed text-chalk-500">
+      <p className="stamp mt-4 max-w-2xl">
         Shelves change hourly and this page does not. It is what each shop published when its menu
         was read, not what is in the jar today.
       </p>

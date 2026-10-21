@@ -3,83 +3,163 @@
  * Cascade order is the whole point: these rules must come last, so they live
  * beside the map component rather than in the global sheet the layout imports
  * before anything else.
+ *
+ * The colours are the site's tokens written out (tailwind.config.ts), since
+ * Leaflet's controls and popups are drawn outside Tailwind's reach: ink for
+ * the ground and the frames, chalk for the words, moss for the accent.
  */
 
 .leaflet-container {
-  background: #0c110f;
+  background: #07110c; /* ink-900 */
   font: inherit;
   outline: none;
 }
 
 .leaflet-container a {
-  color: #63dd97;
+  color: #41e591; /* moss-400 */
 }
 
-.leaflet-bar a,
-.leaflet-bar a:hover {
-  background: #111815;
-  border-bottom-color: #1f2b25;
-  color: #c3cec8;
+/* The zoom buttons: the site's plain button, stacked. Two classes, as
+   Leaflet's touch rule has, or its grey border wins. */
+.leaflet-container .leaflet-bar {
+  border: 1px solid rgba(15, 124, 71, 0.7); /* moss-700/70, as .btn */
+  border-radius: 0.5rem;
+  background-clip: padding-box;
+  box-shadow: none;
+  overflow: hidden;
 }
 
-.leaflet-bar a:hover {
-  background: #161f1b;
-  color: #f2f6f3;
+.leaflet-container .leaflet-bar a,
+.leaflet-container .leaflet-bar a:hover,
+.leaflet-container .leaflet-bar a:focus {
+  background: rgba(7, 17, 12, 0.9); /* ink-900 */
+  border-bottom-color: #1a2d23; /* ink-700 */
+  border-radius: 0;
+  color: #dde7e1; /* chalk-100 */
+  transition: color 150ms, background-color 150ms;
 }
 
-/* Two classes, as Leaflet's own rule has, or its white background wins. */
+.leaflet-container .leaflet-bar a:hover {
+  background: #0e1d16; /* ink-800 */
+  color: #41e591;
+}
+
+.leaflet-container .leaflet-bar a:focus-visible {
+  outline: 2px solid #41e591;
+  outline-offset: -2px;
+}
+
+.leaflet-container .leaflet-bar a.leaflet-disabled {
+  background: rgba(7, 17, 12, 0.9);
+  color: #284032; /* ink-600 */
+}
+
+/* The credit, small and dim. Two classes, as Leaflet's own rule has, or its
+   white background wins. Not in the stamp's mono: wider, it would wrap onto
+   a second line across a phone's map. */
 .leaflet-container .leaflet-control-attribution {
-  background: rgba(8, 11, 10, 0.82);
-  color: #6d7d76;
+  background: rgba(4, 10, 7, 0.85); /* ink-950 */
+  color: #879990; /* chalk-400 */
   font-size: 0.68rem;
+  border-top-left-radius: 0.375rem;
 }
 
+/* An open popup is the one thing selected on the map, so it takes the lit
+   frame (.card-lit): the accent's border and its glow. */
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
-  background: #111815;
-  border: 1px solid #1f2b25;
-  color: #c3cec8;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  background: #07110c; /* ink-900 */
+  border: 1px solid rgba(65, 229, 145, 0.85); /* moss-400/85 */
+  color: #c0cdc5; /* chalk-200 */
 }
 
 .leaflet-popup-content-wrapper {
   border-radius: 0.75rem;
+  box-shadow:
+    0 0 0 1px rgba(65, 229, 145, 0.06),
+    0 0 10px -3px rgba(65, 229, 145, 0.4),
+    inset 0 0 24px -12px rgba(65, 229, 145, 0.35),
+    0 12px 30px rgba(0, 0, 0, 0.55);
+}
+
+.leaflet-popup-tip {
+  box-shadow: none;
+}
+
+/* The tip laid over the frame's lower edge, so the two read as one outline. */
+.leaflet-popup-tip-container {
+  margin-top: -1px;
 }
 
 .leaflet-popup-content {
-  margin: 0.85rem 1rem;
+  margin: 0.85rem 2rem 0.9rem 1rem;
+  line-height: 1.4;
 }
 
-.leaflet-popup-close-button {
-  color: #6d7d76 !important;
+.leaflet-container a.leaflet-popup-close-button {
+  top: 0.35rem;
+  right: 0.35rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.375rem;
+  font: 1.25rem/1.75rem ui-sans-serif, system-ui, sans-serif;
+  color: #879990; /* chalk-400 */
 }
 
+.leaflet-container a.leaflet-popup-close-button:hover,
+.leaflet-container a.leaflet-popup-close-button:focus-visible {
+  color: #eef5f0; /* chalk-50 */
+}
+
+.leaflet-container a.leaflet-popup-close-button:focus-visible {
+  outline: 2px solid #41e591;
+  outline-offset: 0;
+}
+
+/* The shop's name in the cards' weight; the rest in their voices. */
 .map-popup-name {
   display: block;
   font-size: 0.95rem;
-  font-weight: 600;
-  color: #f2f6f3 !important;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #eef5f0 !important; /* chalk-50 */
   text-decoration: none;
 }
 
 .map-popup-name:hover {
-  color: #63dd97 !important;
+  color: #41e591 !important;
+}
+
+.map-popup-name:focus-visible {
+  outline: 2px solid #41e591;
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .map-popup-meta {
   margin: 0.35rem 0 0;
   font-size: 0.8rem;
-  color: #8b9a93;
+  color: #a4b3aa; /* chalk-300 */
 }
 
 .map-popup-status {
-  margin: 0.4rem 0 0;
+  margin: 0.5rem 0 0;
   font-size: 0.75rem;
   font-weight: 500;
+  color: #879990; /* chalk-400: the separator */
+}
+
+.map-popup-shelf {
+  color: #41e591; /* moss-400: a shelf we read, as on the shelf pill */
+}
+
+/* The lamp's red: a shelf we have not read. */
+.map-popup-unread {
+  color: #ef6f62; /* rust-400 */
 }
 
 /* Pins are focusable, so focus must be visible on them. */
 .leaflet-interactive:focus-visible {
-  outline: 2px solid #63dd97;
+  outline: 2px solid #41e591;
   outline-offset: 2px;
 }

@@ -88,8 +88,11 @@ body::before {
     }
   }
 
+  /* The frame everything on the site sits in. One radius for every frame,
+     field and button (rounded-lg); pills and chips are round, tags and the
+     shop cards a step tighter. */
   .card {
-    @apply rounded-xl border border-ink-700 bg-ink-900/75 backdrop-blur-sm transition-colors;
+    @apply rounded-lg border border-ink-700 bg-ink-900/75 backdrop-blur-sm transition-colors;
   }
 
   .card-hover {
@@ -146,6 +149,113 @@ body::before {
     mask-image: linear-gradient(to bottom, #000 20%, transparent 90%);
   }
 
+  /* ---- The register's page parts, shared by every page ---------------- */
+
+  /* Over a page's title: what part of the register this is, in the mono of
+     the build stamp, with a short lit tick before it. */
+  .kicker {
+    @apply flex items-center gap-2 font-mono text-[0.68rem] font-medium uppercase tracking-[0.2em] text-chalk-400;
+  }
+  .kicker::before {
+    content: '';
+    @apply h-px w-4 shrink-0 bg-moss-400;
+    box-shadow: 0 0 6px rgba(var(--glow), 0.8);
+  }
+
+  /* A page's title: the home page's weight, a size down. */
+  .page-title {
+    @apply text-[clamp(1.75rem,5.2vw+0.5rem,3rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-chalk-50;
+  }
+
+  .lede {
+    @apply text-[0.9375rem] leading-[1.65] text-chalk-200 sm:text-[1.0625rem];
+  }
+
+  /* A section's heading inside a page, with a lit bar before it. */
+  .section-title {
+    @apply flex items-center gap-2.5 text-lg font-bold tracking-tight text-chalk-50 sm:text-xl;
+  }
+  .section-title::before {
+    content: '';
+    @apply h-[0.95em] w-[3px] shrink-0 rounded-full bg-moss-400;
+    box-shadow: 0 0 8px rgba(var(--glow), 0.6);
+  }
+
+  /* Dates, counts and provenance under a heading: the build stamp's voice. */
+  .stamp {
+    @apply font-mono text-[0.6875rem] leading-relaxed tracking-[0.03em] text-chalk-400;
+  }
+
+  /* A side note in a frame: green for what the register states, amber for a
+     caution (read by hand, a typical profile, not measured). */
+  .note {
+    @apply rounded-lg border border-ink-700 border-l-2 border-l-moss-500/70 bg-ink-900/70 px-4 py-3 text-sm leading-relaxed text-chalk-200;
+  }
+  .note-caution {
+    @apply border-l-amber-400/70;
+  }
+
+  /* A weight, a size, a count: small, square-cornered, never a control. */
+  .tag {
+    @apply inline-flex items-center gap-1.5 rounded-md border border-ink-700 bg-ink-900/70 px-2 py-1 text-xs leading-none text-chalk-200;
+  }
+
+  /* Buttons. The lit one is the page's main action; most are plain. */
+  .btn {
+    @apply inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-moss-700/70 bg-ink-900/80 px-4 py-2 text-sm font-medium text-chalk-100 transition-colors hover:border-moss-500 hover:text-chalk-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moss-400;
+  }
+  .btn-lit {
+    @apply border-moss-500 bg-moss-600/10 text-moss-300 hover:bg-moss-600/20 hover:text-moss-300;
+    box-shadow: 0 0 14px -3px rgba(var(--glow), 0.45), inset 0 0 10px -4px rgba(var(--glow), 0.4);
+  }
+
+  /* Every disclosure on the site opens the same way: a chevron pointing
+     right that turns down. On a <details> or a button with aria-expanded. */
+  .chev {
+    @apply shrink-0 transition-transform duration-200;
+  }
+  details[open] > summary .chev,
+  [aria-expanded='true'] .chev {
+    transform: rotate(90deg);
+  }
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* The bar that opens a list inside a card ("On the shelf at 40 shops"). */
+  .expander {
+    @apply flex w-full cursor-pointer items-center justify-between gap-3 rounded-md border border-ink-700 bg-ink-900/70 px-3 py-2 text-left font-mono text-[0.68rem] uppercase tracking-[0.14em] text-chalk-300 transition-colors hover:border-moss-600/70 hover:text-moss-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-moss-400;
+  }
+  .expander[aria-expanded='true'],
+  details[open] > summary.expander {
+    @apply border-moss-500/80 bg-moss-600/10 text-moss-400;
+  }
+
+  /* A row in a list that leads somewhere: a rule between rows, a tint and
+     the chevron lit on hover — the row's own, at its end (on the row, or on
+     the link that fills it), not a small one opening something inside it. */
+  .row-link {
+    @apply flex items-center gap-3 border-b border-ink-700/70 py-3.5 transition-colors last:border-b-0 hover:bg-moss-600/[0.04];
+  }
+  .row-link:hover > .chev,
+  .row-link:hover > a > .chev {
+    @apply text-moss-400;
+  }
+
+  /* Tabs inside a page: a segmented strip, the current one lit. */
+  .tabs {
+    @apply inline-flex gap-1 rounded-lg border border-ink-700 bg-ink-900/70 p-1;
+  }
+  .tab {
+    @apply rounded-md px-3 py-1.5 text-sm text-chalk-300 transition-colors hover:text-chalk-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-moss-400;
+  }
+  .tab-on {
+    @apply bg-moss-600/15 text-moss-300 ring-1 ring-inset ring-moss-500/50;
+  }
+
   /* A frame drawn only at two corners, as on an instrument's display. */
   .hud-corners {
     position: relative;
@@ -170,6 +280,26 @@ body::before {
     bottom: 0;
     border-right-width: 1.5px;
     border-bottom-width: 1.5px;
+  }
+  /* The same two corners laid on a rounded frame's own border, turning with
+     its radius (rounded-lg): for a frame in the kit's .card — the map, the
+     age gate — where square brackets inside the border would cut the curve.
+     Over what the frame holds, so a map's tiles never cover them. */
+  .hud-corners-round::before,
+  .hud-corners-round::after {
+    z-index: 1;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .hud-corners-round::before {
+    top: -1px;
+    left: -1px;
+    border-top-left-radius: 0.5rem;
+  }
+  .hud-corners-round::after {
+    right: -1px;
+    bottom: -1px;
+    border-bottom-right-radius: 0.5rem;
   }
 }
 
