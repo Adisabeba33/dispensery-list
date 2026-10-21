@@ -73,6 +73,13 @@ these places (a shop's name and its district) — and never where or how to buy.
   beside the licence.
 - A shop's lamp is green when we read its shelf and red when we do not; a red
   shop says "No data yet".
+- The line above a shop's name on its card follows the shop's own hours
+  (owner's rule, 21 October 2026): green "Open" inside them, red "Closed"
+  outside them, amber "Hours unknown" when we hold none for that day — worked
+  out in the reader's browser by New York's clock (`src/lib/hours.ts`,
+  `src/components/LiveHours.tsx`), never at build. "Open now" and "Open
+  first" on the home page follow the same hours. A shop the registry does not
+  list as trading keeps the registry's word ("Licensed, not open yet").
 
 ## robots.txt: no rules means no restriction
 
