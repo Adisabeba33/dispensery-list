@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import type { Dispensary, OperationalStatus, VerificationStatus } from '@/lib/types';
 import { OPERATIONAL_LABEL } from '@/lib/data';
+import { leafPath } from './StorefrontArt';
 
 /**
  * The verification badge is the product. It must never overstate: only a record
@@ -8,7 +9,7 @@ import { OPERATIONAL_LABEL } from '@/lib/data';
  */
 const VERIFICATION_STYLE: Record<VerificationStatus, { className: string; label: string }> = {
   VERIFIED_OFFICIAL: {
-    className: 'border-moss-600/60 bg-moss-600/12 text-moss-400',
+    className: 'border-moss-600/60 bg-moss-600/10 text-moss-400',
     label: 'Registry-verified',
   },
   VERIFIED_SECONDARY: {
@@ -21,10 +22,17 @@ const VERIFICATION_STYLE: Record<VerificationStatus, { className: string; label:
   },
 };
 
-export const VerificationBadge = ({ status }: { status: VerificationStatus }) => {
+export const VerificationBadge = ({
+  status,
+  className,
+}: {
+  status: VerificationStatus;
+  /** Size only: the card sets its pills a little smaller than a page does. */
+  className?: string;
+}) => {
   const style = VERIFICATION_STYLE[status];
   return (
-    <span className={clsx('pill', style.className)}>
+    <span className={clsx('pill', style.className, className)}>
       {status === 'VERIFIED_OFFICIAL' && (
         <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2.6" aria-hidden>
           <path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
@@ -49,6 +57,57 @@ export const StatusBadge = ({ status }: { status: OperationalStatus }) => (
   <span className={clsx('pill', OPERATIONAL_STYLE[status])}>{OPERATIONAL_LABEL[status]}</span>
 );
 
+/* The colour of the status in a line of text. Grey for "not open yet" is
+   chalk-400, not 500: the word must stay readable on the card at this size. */
+const STATUS_TONE: Record<OperationalStatus, { dot: string; text: string }> = {
+  OPEN: { dot: 'bg-moss-400', text: 'text-moss-400' },
+  APPROVED_NOT_OPEN: { dot: 'bg-chalk-400', text: 'text-chalk-400' },
+  TEMPORARILY_CLOSED: { dot: 'bg-amber-400', text: 'text-amber-400' },
+  PERMANENTLY_CLOSED: { dot: 'bg-rust-400', text: 'text-rust-400' },
+  UNKNOWN: { dot: 'bg-amber-400', text: 'text-amber-400' },
+};
+
+/**
+ * The status as a line above a shop's name: a plain dot and the word, in the
+ * status's colour. The dot never glows — the lit lamp on a card is the
+ * shelf's (ShelfPill), and two lamps would read as one.
+ */
+export const StatusLine = ({ status, className }: { status: OperationalStatus; className?: string }) => (
+  <span className={clsx('flex items-center gap-2', STATUS_TONE[status].text, className)}>
+    <span className={clsx('h-[7px] w-[7px] shrink-0 rounded-full', STATUS_TONE[status].dot)} aria-hidden />
+    <span className="truncate">{OPERATIONAL_LABEL[status]}</span>
+  </span>
+);
+
+const LEAF = leafPath(12, 15.6, 12);
+
+/**
+ * The shelf's lamp, made a pill: green with a lit leaf and the count when we
+ * read the shop's shelf, red with a red lamp and "No data yet" when we do not.
+ */
+export const ShelfPill = ({ count, className }: { count: number; className?: string }) =>
+  count > 0 ? (
+    <span className={clsx('pill border-moss-600/60 bg-moss-600/10 text-moss-400', className)}>
+      <svg
+        viewBox="0 0 24 24"
+        role="img"
+        aria-label="Shelf read"
+        className="h-3.5 w-3.5 shrink-0 fill-current drop-shadow-[0_0_3px_rgba(var(--glow),0.7)]"
+      >
+        <path d={LEAF} />
+      </svg>
+      {count} {count === 1 ? 'strain' : 'strains'}
+    </span>
+  ) : (
+    <span className={clsx('pill border-rust-400/45 bg-rust-400/10 text-rust-400', className)}>
+      {/* The words say it; the lamp beside them is for the eye. */}
+      <span aria-hidden className="flex">
+        <ShelfLamp read={false} className="!h-2 !w-2" />
+      </span>
+      No data yet
+    </span>
+  );
+
 /**
  * Whether we read this shop's shelf: green when we do, red when we do not.
  * A shop with a red lamp has no data here yet — it is licensed, and its
@@ -61,12 +120,14 @@ export const ShelfLamp = ({ read, className }: { read: boolean; className?: stri
     title={read ? 'Shelf read' : 'No data yet'}
     className={clsx(
       'inline-block h-2.5 w-2.5 shrink-0 rounded-full',
-      read ? 'bg-moss-400 shadow-[0_0_8px_rgba(99,221,151,0.55)]' : 'bg-rust-400',
+      read ? 'bg-moss-400 shadow-[0_0_8px_rgba(var(--glow),0.6)]' : 'bg-rust-400',
       className,
     )}
   />
 );
 
+/* chalk-400, not 500: a licence number is read, and at this size the dimmer
+   grey falls short of a readable contrast on the dark cards. */
 export const LicenseTag = ({ d }: { d: Dispensary }) => (
-  <span className="font-mono text-[0.7rem] tracking-tight text-chalk-500">{d.licenseNumber}</span>
+  <span className="font-mono text-[0.7rem] tracking-tight text-chalk-400">{d.licenseNumber}</span>
 );

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
 import { AgeGate } from '@/components/AgeGate';
+import { HeaderMap } from '@/components/HeaderMap';
 import { SiteNav, TabBar } from '@/components/SiteNav';
 import { SITE_URL } from '@/lib/site';
 import './globals.css';
@@ -50,15 +51,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen pb-[calc(4rem+env(safe-area-inset-bottom))] antialiased nav:pb-0">
         {/* On a phone the page ends above the bar pinned to the bottom. */}
         <AgeGate />
-        <header className="site-header sticky top-0 z-40 border-b border-ink-700/80 bg-ink-950/80 pt-[env(safe-area-inset-top)] backdrop-blur-md">
-          <div className="shell flex h-14 items-center gap-6 nav:h-16">
-            <Link href="/" className="flex shrink-0 items-center self-stretch">
+        <header className="site-header sticky top-0 z-40 rounded-b-xl border-b border-ink-600/80 bg-ink-950/90 pt-[env(safe-area-inset-top)] backdrop-blur-md">
+          <div className="shell flex h-[4.2rem] items-center nav:h-[4.5rem]">
+            <Link
+              href="/"
+              className="mr-4 flex shrink-0 flex-col justify-center self-stretch rounded-md pt-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moss-400"
+            >
               {/* The mark and the name as one drawing, so the name is set in
                   the logo's serif without the site loading a font for it. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/brand/lockup.svg" alt="The Flower Index" width={180} height={32} className="h-8 w-auto" />
+              {/* Under the words, not the mark: the words start 77.5 of the
+                  lockup's 359.6 units in, which at its 2rem height is 2.42rem. */}
+              <span className="-mt-px block pl-[2.45rem] font-mono text-[0.5625rem] uppercase leading-none tracking-[0.16em] text-chalk-400">
+                NY Dispensary Register
+              </span>
             </Link>
 
+            <HeaderMap />
             <SiteNav />
           </div>
         </header>
