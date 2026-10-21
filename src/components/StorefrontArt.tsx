@@ -4,9 +4,9 @@ import clsx from 'clsx';
 /*
  * We hold no photograph of any shop, and a picture that looked like one
  * would claim we had been there. So each card carries a drawing that is
- * plainly a drawing: a shopfront at night in the register's two greens,
- * with the street number from the shop's own address on its sign, or a leaf
- * in neon. Never a word on it — no "open", no name, nothing it could be
+ * plainly a drawing: a shopfront at night in graphite, with the street
+ * number from the shop's own address on its sign, or a leaf, in blue neon —
+ * the only colour in it, so the card's own green stays the register's. Never a word on it — no "open", no name, nothing it could be
  * taken to say about the shop.
  *
  * Which of the few drawings a shop gets is fixed by its licence number, so
@@ -91,15 +91,26 @@ const goods = (rnd: () => number, x0: number, x1: number, shelves: [number, numb
   return d;
 };
 
+/* Every colour of the drawing, in one place: the street in graphite, the
+   sign — the number or the leaf — in blue. */
 const C = {
-  wallTop: '#123a27',
-  wallFoot: '#06170f',
-  frame: '#2d7350',
-  line: '#1a4a33',
-  dark: '#03100a',
-  shadow: '#05180e',
-  neon: '#c8ffe2',
-  glow: '#41e591',
+  wallTop: '#25292b',
+  wallFoot: '#0b0d0e',
+  frame: '#5d6569',
+  line: '#30363a',
+  dark: '#060708',
+  shadow: '#0d0f10',
+  neon: '#f4f6f7',
+  glow: '#c9d1d5',
+  // How brightly the window is lit varies a little from shop to shop.
+  lit: ['#7d878c', '#6f787d', '#8a959a'],
+  winMid: '#2f3538',
+  winFoot: '#141719',
+  glare: '#ffffff',
+  awning: '#3a4044',
+  pavement: '#121516',
+  signNeon: '#dcefff',
+  signGlow: '#5fb4ff',
 };
 
 const signSize = (num: string) => {
@@ -114,14 +125,14 @@ const BladeSign = ({ x, y, num, halo }: { x: number; y: number; num: string; hal
   return (
     <>
       <ellipse cx={x + 8} cy={y + height / 2} rx="24" ry={height / 2 + 16} fill={`url(#${halo})`} />
-      <rect x={x} y={y} width="16" height={height} rx="2" fill={C.dark} fillOpacity="0.6" stroke={C.glow} strokeOpacity="0.22" />
+      <rect x={x} y={y} width="16" height={height} rx="2" fill={C.dark} fillOpacity="0.6" stroke={C.signGlow} strokeOpacity="0.22" />
       <text
         textAnchor="middle"
         fontFamily="ui-sans-serif, system-ui, -apple-system, sans-serif"
         fontWeight="700"
         fontSize={font}
-        fill={C.neon}
-        stroke={C.glow}
+        fill={C.signNeon}
+        stroke={C.signGlow}
         strokeOpacity="0.45"
         strokeWidth="2.6"
         paintOrder="stroke"
@@ -149,13 +160,13 @@ export const StorefrontArt = ({ licenseNumber, line1, className }: Props) => {
   const num = streetNumber(line1);
   // Three drawings; a shop without a number we can read gets the leaf.
   const variant = num ? (['blade', 'leaf', 'awning'] as const)[h % 3] : 'leaf';
-  // How brightly the window is lit varies a little from shop to shop.
-  const lit = ['#348a60', '#2c7a54', '#3c976b'][(h >>> 3) % 3];
+  const lit = C.lit[(h >>> 3) % C.lit.length];
 
   const wall = `${id}w`;
   const win = `${id}g`;
   const halo = `${id}h`;
   const fade = `${id}f`;
+  const signHalo = `${id}s`;
 
   return (
     <svg
@@ -172,12 +183,16 @@ export const StorefrontArt = ({ licenseNumber, line1, className }: Props) => {
         </linearGradient>
         <linearGradient id={win} x1="0" y1="0" x2="0.4" y2="1">
           <stop offset="0" stopColor={lit} />
-          <stop offset="0.55" stopColor="#15462f" />
-          <stop offset="1" stopColor="#0a2217" />
+          <stop offset="0.55" stopColor={C.winMid} />
+          <stop offset="1" stopColor={C.winFoot} />
         </linearGradient>
         <radialGradient id={halo}>
           <stop offset="0" stopColor={C.glow} stopOpacity="0.4" />
           <stop offset="1" stopColor={C.glow} stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id={signHalo}>
+          <stop offset="0" stopColor={C.signGlow} stopOpacity="0.4" />
+          <stop offset="1" stopColor={C.signGlow} stopOpacity="0" />
         </radialGradient>
         {/* Into the card on the right, so the picture has no hard edge there. */}
         <linearGradient id={fade} x1="0" y1="0" x2="1" y2="0">
@@ -207,7 +222,7 @@ export const StorefrontArt = ({ licenseNumber, line1, className }: Props) => {
           {/* A window on the side wall, receding: the shop is on a corner. */}
           <path d="M2 12L48 26V116L2 128Z" fill={`url(#${win})`} stroke={C.frame} strokeWidth="1.5" />
           <ellipse cx="22" cy="58" rx="22" ry="34" fill={`url(#${halo})`} opacity="0.7" />
-          <path d="M2 12L22 18V60L2 62Z" fill="#e6fff1" opacity="0.07" />
+          <path d="M2 12L22 18V60L2 62Z" fill={C.glare} opacity="0.07" />
           <path d="M25 19V122M2 34L48 44" stroke={C.shadow} strokeWidth="1.6" />
           <path d="M3 64L47 69M3 87L47 90M3 109L47 110" stroke={C.shadow} strokeWidth="1.2" />
           <path d={goods(rnd, 4, 46, [[63.5, 68.5], [86.5, 89.5], [108.5, 109.5]])} fill={C.shadow} opacity="0.85" />
@@ -215,7 +230,7 @@ export const StorefrontArt = ({ licenseNumber, line1, className }: Props) => {
           <rect x="60" y="80" width="30" height="52" fill={C.dark} stroke={C.line} />
           <rect x="64" y="85" width="22" height="26" fill={lit} opacity="0.3" />
           <path d="M80 20h8M80 52h8" stroke={C.frame} strokeWidth="1.4" />
-          <BladeSign x={64} y={12} num={num} halo={halo} />
+          <BladeSign x={64} y={12} num={num} halo={signHalo} />
           <path
             d="M0 112h96M0 119h96M10 112v26M26 112v26M42 112v26M58 112v26M74 112v26M90 112v26"
             stroke={C.dark}
@@ -228,14 +243,14 @@ export const StorefrontArt = ({ licenseNumber, line1, className }: Props) => {
       {variant === 'leaf' && (
         <>
           <rect x="0" y="2" width="96" height="48" fill={C.dark} fillOpacity="0.55" />
-          <ellipse cx="48" cy="26" rx="38" ry="30" fill={`url(#${halo})`} />
-          <path d={leafPath(48, 35, 26)} fill="none" stroke={C.glow} strokeOpacity="0.45" strokeWidth="3.2" strokeLinejoin="round" />
-          <path d={leafPath(48, 35, 26)} fill={C.glow} fillOpacity="0.2" stroke={C.neon} strokeWidth="1.1" strokeLinejoin="round" />
-          <path d="M22 44h52" stroke={C.glow} strokeOpacity="0.6" strokeWidth="1.2" strokeDasharray="3 2" />
+          <ellipse cx="48" cy="26" rx="38" ry="30" fill={`url(#${signHalo})`} />
+          <path d={leafPath(48, 35, 26)} fill="none" stroke={C.signGlow} strokeOpacity="0.45" strokeWidth="3.2" strokeLinejoin="round" />
+          <path d={leafPath(48, 35, 26)} fill={C.signGlow} fillOpacity="0.2" stroke={C.signNeon} strokeWidth="1.1" strokeLinejoin="round" />
+          <path d="M22 44h52" stroke={C.signGlow} strokeOpacity="0.6" strokeWidth="1.2" strokeDasharray="3 2" />
           <path d="M0 52h96" stroke={C.frame} strokeWidth="1.6" />
           <rect x="4" y="58" width="56" height="62" fill={`url(#${win})`} stroke={C.frame} strokeWidth="1.5" />
           <ellipse cx="30" cy="80" rx="26" ry="22" fill={`url(#${halo})`} opacity="0.6" />
-          <path d="M4 58h18L4 84Z" fill="#e6fff1" opacity="0.07" />
+          <path d="M4 58h18L4 84Z" fill={C.glare} opacity="0.07" />
           <path d="M32 58v62M4 70h56" stroke={C.shadow} strokeWidth="1.6" />
           <path d="M5 90h54M5 108h54" stroke={C.shadow} strokeWidth="1.2" />
           <path d={goods(rnd, 6, 58, [[89.5, 89.5], [107.5, 107.5]])} fill={C.shadow} opacity="0.85" />
@@ -249,12 +264,12 @@ export const StorefrontArt = ({ licenseNumber, line1, className }: Props) => {
 
       {variant === 'awning' && num && (
         <>
-          <BladeSign x={6} y={12} num={num} halo={halo} />
-          <path d="M26 40h66l4 13H22z" fill="#14503a" stroke={C.frame} />
+          <BladeSign x={6} y={12} num={num} halo={signHalo} />
+          <path d="M26 40h66l4 13H22z" fill={C.awning} stroke={C.frame} />
           <path d="M33 40l-1.5 13M44 40l-1 13M55 40l-.5 13M66 40v13M77 40l.5 13M88 40l1 13" stroke={C.dark} strokeWidth="2.4" />
           <rect x="28" y="56" width="64" height="60" fill={`url(#${win})`} stroke={C.frame} strokeWidth="1.5" />
           <ellipse cx="58" cy="78" rx="30" ry="22" fill={`url(#${halo})`} opacity="0.6" />
-          <path d="M28 56h20L28 86Z" fill="#e6fff1" opacity="0.07" />
+          <path d="M28 56h20L28 86Z" fill={C.glare} opacity="0.07" />
           <path d="M49.5 56v60M71 56v60" stroke={C.shadow} strokeWidth="1.6" />
           <path d="M29 78h62M29 98h62" stroke={C.shadow} strokeWidth="1.2" />
           <path d={goods(rnd, 30, 90, [[77.5, 77.5], [97.5, 97.5]])} fill={C.shadow} opacity="0.85" />
@@ -265,7 +280,7 @@ export const StorefrontArt = ({ licenseNumber, line1, className }: Props) => {
       )}
 
       {/* The pavement, catching the light from the window. */}
-      <rect x="0" y="128" width="96" height="10" fill="#0b2218" />
+      <rect x="0" y="128" width="96" height="10" fill={C.pavement} />
       <path d="M0 128.5h96" stroke={C.glow} strokeOpacity="0.35" strokeWidth="0.6" />
       <rect x="0" y="-300" width="96" height="438" fill={`url(#${fade})`} />
     </svg>
