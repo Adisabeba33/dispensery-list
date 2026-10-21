@@ -9,7 +9,7 @@ import { TerritoryCard } from './TerritoryCard';
 /**
  * Search and county filter for a territory that has only its registry import.
  *
- * Not DirectoryExplorer with flags. That component offers "open now listed"
+ * Not DirectoryExplorer with flags. That component offers "open now"
  * and a borough filter — controls that would return nothing at all here,
  * because no record in these territories has a confirmed trading status or a
  * borough. Dead controls read as a broken page, and teaching one component to
@@ -137,7 +137,7 @@ export const TerritoryExplorer = ({
               className={clsx('chip', county === c.name && 'chip-on')}
             >
               {c.name}
-              <span className="ml-1.5 tabular-nums text-chalk-500">{c.count}</span>
+              <span className="tabular-nums text-chalk-500">{c.count}</span>
             </button>
           ))}
         </div>
@@ -164,9 +164,9 @@ export const TerritoryExplorer = ({
               aria-pressed={stockOnly}
               className={clsx('chip', stockOnly && 'chip-on')}
             >
-              <span aria-hidden className="mr-1.5 inline-block h-2 w-2 rounded-full bg-moss-400" />
+              <span aria-hidden className="inline-block h-2 w-2 rounded-full bg-moss-400" />
               Shelf read
-              <span className="ml-1.5 tabular-nums text-chalk-500">{stockTotal}</span>
+              <span className="tabular-nums text-chalk-500">{stockTotal}</span>
             </button>
           )}
         </div>

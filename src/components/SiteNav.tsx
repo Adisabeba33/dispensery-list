@@ -88,13 +88,26 @@ const usePath = () => {
 
 const isHere = (item: Item, path: string) => (item.here ? item.here(path) : path.startsWith(item.href));
 
-const Icon = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+/* The register's one accent marks where the reader is: a moss tint, a moss
+   edge and a little of its glow. The same ring shows the keyboard's place. */
+const LIT = 'border-moss-500/40 bg-moss-600/10 shadow-[0_0_14px_-4px_rgba(var(--glow),0.5)]';
+const RING = 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-moss-400';
+
+const Icon = ({
+  children,
+  className,
+  weight = 1.6,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  weight?: number;
+}) => (
   <svg
     viewBox="0 0 24 24"
     aria-hidden
     fill="none"
     stroke="currentColor"
-    strokeWidth="1.6"
+    strokeWidth={weight}
     strokeLinecap="round"
     strokeLinejoin="round"
     className={clsx('h-6 w-6 shrink-0', className)}
@@ -153,8 +166,11 @@ export const SiteNav = () => {
       aria-current={isHere(item, path) ? 'page' : undefined}
       onClick={() => setOpen(false)}
       className={clsx(
-        'block rounded-lg px-3 py-2.5 text-sm transition-colors hover:bg-ink-800',
-        isHere(item, path) ? 'bg-ink-800 text-chalk-50' : 'text-chalk-200 hover:text-chalk-50',
+        'block rounded-lg border px-3 py-2.5 text-sm transition-colors',
+        RING,
+        isHere(item, path)
+          ? 'border-moss-500/35 bg-moss-600/10 text-chalk-50'
+          : 'border-transparent text-chalk-200 hover:bg-ink-800 hover:text-chalk-50',
       )}
     >
       {item.label}
@@ -176,10 +192,18 @@ export const SiteNav = () => {
                 aria-current={isHere(item, path) ? 'page' : undefined}
                 onFocus={(e) => e.currentTarget.scrollIntoView({ inline: 'nearest', block: 'nearest' })}
                 className={clsx(
-                  'block whitespace-nowrap rounded-lg px-3 py-2 transition-colors hover:bg-ink-800',
-                  isHere(item, path) ? 'bg-ink-800 text-chalk-50' : 'text-chalk-200 hover:text-chalk-50',
+                  'flex items-center gap-2 whitespace-nowrap rounded-lg border px-3 py-2 transition-colors',
+                  RING,
+                  'focus-visible:outline-offset-1',
+                  isHere(item, path)
+                    ? clsx(LIT, 'text-chalk-50')
+                    : 'border-transparent text-chalk-200 hover:bg-ink-800/80 hover:text-chalk-50',
                 )}
               >
+                {/* The phone bar's icons, once the header has the room. */}
+                <Icon className={clsx('hidden h-4 w-4 xl:block', isHere(item, path) && 'text-moss-400')}>
+                  {item.icon}
+                </Icon>
                 {item.label}
               </Link>
             </li>
@@ -207,32 +231,40 @@ export const SiteNav = () => {
           aria-current={inMenu ? 'true' : undefined}
           onClick={() => setOpen((v) => !v)}
           className={clsx(
-            '-mr-2 grid h-11 w-11 place-items-center rounded-lg transition-colors hover:bg-ink-800 hover:text-chalk-50 nav:mr-0',
-            open || inMenu ? 'bg-ink-800 text-chalk-50' : 'text-chalk-200',
+            '-mr-2 grid h-11 w-11 place-items-center rounded-lg border transition-colors nav:mr-0',
+            RING,
+            'focus-visible:outline-offset-1',
+            open
+              ? clsx(LIT, 'text-moss-300')
+              : inMenu
+                ? 'border-moss-500/30 text-moss-300 hover:bg-moss-600/10'
+                : 'border-transparent text-chalk-50 hover:bg-ink-800/80',
           )}
         >
-          <Icon className="h-5 w-5">
-            {open ? <path d="M6 6l12 12M18 6 6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+          <Icon className="h-6 w-6" weight={open ? 1.6 : 1.9}>
+            {open ? <path d="M5.5 5.5l13 13M18.5 5.5l-13 13" /> : <path d="M3 6h18M3 12h18M3 18h18" />}
           </Icon>
         </button>
 
+        {/* Opaque, with no blur of its own: inside the header's blur, Chrome
+            lets the page show through a second one. */}
         <nav
           id="site-menu"
           aria-label="More pages"
           hidden={!open}
-          className="absolute right-0 top-full z-50 mt-2 max-h-[calc(100dvh-9rem-env(safe-area-inset-top)-env(safe-area-inset-bottom))] w-72 overflow-y-auto rounded-xl border border-ink-700 bg-ink-900 p-1.5 shadow-xl shadow-black/40 nav:max-h-[calc(100dvh-5rem)]"
+          className="absolute right-0 top-full z-50 mt-2 max-h-[calc(100dvh-9.75rem-env(safe-area-inset-top)-env(safe-area-inset-bottom))] w-72 overflow-y-auto rounded-xl border border-moss-700/50 bg-ink-900 p-1.5 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.75),0_0_28px_-12px_rgba(var(--glow),0.4)] nav:max-h-[calc(100dvh-6rem)]"
         >
           {menuLink(WESTCHESTER)}
-          <div role="group" aria-labelledby="site-menu-places" className="mt-1.5 border-t border-ink-700">
+          <div role="group" aria-labelledby="site-menu-places" className="mt-1.5 border-t border-ink-600/70">
             <p
               id="site-menu-places"
-              className="px-3 pb-1 pt-3 text-[0.7rem] uppercase tracking-[0.14em] text-chalk-400"
+              className="px-3 pb-1 pt-3 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-chalk-400"
             >
               Places · registry import only
             </p>
             {PLACES.map(menuLink)}
           </div>
-          <div className="mt-1.5 border-t border-ink-700 pt-1.5">{ABOUT.map(menuLink)}</div>
+          <div className="mt-1.5 border-t border-ink-600/70 pt-1.5">{ABOUT.map(menuLink)}</div>
         </nav>
       </div>
     </div>
@@ -242,13 +274,15 @@ export const SiteNav = () => {
 /* The phone's bar: the same five sections, pinned to the bottom of the screen
    where a thumb reaches them, above the home indicator on phones that have
    one. Hidden from a tablet up, where the header carries them. A step below
-   the header (z-30), so the open menu draws over it on a short screen. */
+   the header (z-30), so the open menu draws over it on a short screen.
+   The section being read is lit: its icon in a moss pill, and a line of the
+   accent on the bar's top edge above it. */
 export const TabBar = () => {
   const path = usePath();
   return (
     <nav
       aria-label="Sections"
-      className="fixed inset-x-0 bottom-0 z-30 border-t border-ink-700/80 bg-ink-950/90 pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] backdrop-blur-md nav:hidden"
+      className="fixed inset-x-0 bottom-0 z-30 rounded-t-xl border-t border-ink-600/80 bg-ink-950/90 pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] backdrop-blur-md nav:hidden"
     >
       <ul className="mx-auto grid max-w-lg grid-cols-5">
         {SECTIONS.map((item) => {
@@ -259,16 +293,38 @@ export const TabBar = () => {
                 href={item.href}
                 aria-current={here ? 'page' : undefined}
                 className={clsx(
-                  'flex h-16 flex-col items-center justify-start gap-1 px-0.5 pt-2 transition-colors',
-                  here ? 'text-chalk-50' : 'text-chalk-400 hover:text-chalk-50',
+                  'relative flex h-16 flex-col items-center justify-start gap-0.5 rounded-lg px-0.5 pt-2 transition-colors',
+                  RING,
+                  'focus-visible:-outline-offset-2',
+                  here ? 'text-chalk-50' : 'text-chalk-200 hover:text-chalk-50',
                 )}
               >
-                <span className={clsx('grid h-7 w-12 place-items-center rounded-full', here && 'bg-ink-800')}>
-                  <Icon className="h-5 w-5">{item.icon}</Icon>
+                {here && (
+                  <span
+                    aria-hidden
+                    className="absolute -top-px left-1/2 h-0.5 w-12 -translate-x-1/2 rounded-full bg-moss-400 shadow-[0_0_8px_1px_rgba(var(--glow),0.65)]"
+                  />
+                )}
+                <span
+                  className={clsx(
+                    'grid h-[1.625rem] w-12 place-items-center rounded-full border transition-colors',
+                    here
+                      ? 'border-moss-500/30 bg-moss-600/15 text-moss-400 shadow-[0_0_14px_-3px_rgba(var(--glow),0.5),inset_0_0_10px_-4px_rgba(var(--glow),0.45)]'
+                      : 'border-transparent',
+                  )}
+                >
+                  <Icon className="h-[1.375rem] w-[1.375rem]" weight={1.75}>
+                    {item.icon}
+                  </Icon>
                 </span>
                 {/* Two lines at most, on the narrowest phones, rather than a
                     name cut short. */}
-                <span className="max-w-full text-center text-[clamp(0.6rem,2.8vw,0.6875rem)] leading-[1.15]">
+                <span
+                  className={clsx(
+                    'max-w-full text-center text-[clamp(0.6rem,2.8vw,0.6875rem)] leading-[1.15]',
+                    here && '[text-shadow:0_0_10px_rgba(var(--glow),0.45)]',
+                  )}
+                >
                   {item.label}
                 </span>
               </Link>

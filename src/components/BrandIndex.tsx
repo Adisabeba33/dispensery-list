@@ -36,7 +36,7 @@ export const BrandIndex = ({ brands }: { brands: BrandSummary[] }) => {
             setLimit(80);
           }}
           placeholder="Find, Alien Labs, Grassroots…"
-          className="w-full rounded-lg border border-ink-700 bg-ink-900/70 px-4 py-3 text-base text-chalk-50 placeholder:text-chalk-500 focus:border-moss-600 focus:outline-none"
+          className="field"
         />
       </label>
 

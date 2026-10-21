@@ -302,7 +302,7 @@ export const FlowerMenu = ({
             className={clsx('chip', size === s.grams && 'chip-on')}
           >
             {s.label}
-            <span className="ml-1.5 tabular-nums text-chalk-500">{s.short}</span>
+            {s.label !== s.short && <span className="tabular-nums text-chalk-500">{s.short}</span>}
           </button>
         ))}
 
