@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { PageHead } from '@/components/PageParts';
 
 export const metadata: Metadata = {
   title: 'Legal and data notices',
@@ -6,27 +7,31 @@ export const metadata: Metadata = {
     'Where this register gets its data, what it is not, and how a licensed business can have its entry corrected or removed.',
 };
 
+/* A section of the notices: its heading with the lit bar, the prose a step
+   larger than a card's, for reading down a page. */
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <section className="border-t border-ink-700/70 py-8 first:border-0">
-    <h2 className="text-xl font-semibold tracking-tight text-chalk-50">{title}</h2>
-    <div className="mt-3 space-y-3 text-sm leading-relaxed text-chalk-200">{children}</div>
+  <section className="mt-10 first:mt-0 sm:mt-12">
+    <h2 className="section-title">{title}</h2>
+    <div className="mt-3 space-y-3 text-[0.9375rem] leading-[1.7] text-chalk-200 sm:mt-4 sm:text-[1rem]">
+      {children}
+    </div>
   </section>
 );
 
 export default function LegalPage() {
   return (
-    <div className="shell max-w-3xl py-12">
-      <p className="label">Notices</p>
-      <h1 className="mt-4 text-3xl font-semibold tracking-tight text-chalk-50 sm:text-4xl">
-        Legal and data notices
-      </h1>
-      <p className="mt-5 text-lg leading-relaxed text-chalk-200">
-        This page exists so that anyone — a reader, a licensed business, or a regulator — can see
-        exactly what this register is, where its contents come from, and how to get something
-        changed.
-      </p>
+    // At the left edge, under the logo, as every page's head is; the text
+    // kept to a reading measure.
+    <div className="shell pb-16">
+      <PageHead kicker="Notices" title="Legal and data notices" className="max-w-3xl">
+        <p>
+          This page exists so that anyone — a reader, a licensed business, or a regulator — can see
+          exactly what this register is, where its contents come from, and how to get something
+          changed.
+        </p>
+      </PageHead>
 
-      <div className="mt-10">
+      <div className="mt-10 max-w-3xl sm:mt-14">
         <Section title="For adults 21 and over">
           <p>
             New York law restricts cannabis to adults aged 21 and over, and this register carries

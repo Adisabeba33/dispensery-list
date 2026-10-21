@@ -37,20 +37,29 @@ export const AgeGate = () => {
 
   if (state === 'checking' || state === 'passed') return null;
 
+  /* A panel in the kit's dim frame, bracketed at two corners, over the page
+     dimmed behind it: the one question, the yes lit as the main action. */
   return (
     <div
       role="dialog"
       aria-modal="true"
       aria-labelledby="age-gate-heading"
-      className="fixed inset-0 z-50 grid place-items-center bg-ink-950/95 p-5 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex overflow-y-auto bg-ink-950/95 p-5 backdrop-blur-sm"
     >
-      <div className="card w-full max-w-md p-7 text-center">
+      {/* Centred by its auto margins, which, unlike centring the grid, leave
+          the top reachable when a phone held sideways is shorter than the
+          panel. The brackets lie on the frame's border and turn with its
+          radius, as on the map's frame. */}
+      <div className="card hud-corners hud-corners-round m-auto w-full max-w-md bg-ink-900/95 px-6 py-7 text-center sm:px-8 sm:py-8">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/brand/mark.svg" alt="" aria-hidden width={56} height={56} className="mx-auto h-14 w-14" />
 
         {state === 'asking' ? (
           <>
-            <h1 id="age-gate-heading" className="mt-5 text-xl font-semibold tracking-tight text-chalk-50">
+            <h1
+              id="age-gate-heading"
+              className="mt-5 text-[1.625rem] font-extrabold leading-tight tracking-[-0.025em] text-chalk-50"
+            >
               Are you 21 or older?
             </h1>
             <p className="mt-3 text-sm leading-relaxed text-chalk-200">
@@ -59,31 +68,25 @@ export const AgeGate = () => {
             </p>
 
             <div className="mt-6 flex flex-col gap-2.5">
-              <button
-                type="button"
-                onClick={affirm}
-                autoFocus
-                className="rounded-lg border border-moss-600/60 bg-moss-600/15 px-5 py-3 text-sm font-medium text-moss-400 transition-colors hover:bg-moss-600/25"
-              >
+              <button type="button" onClick={affirm} autoFocus className="btn btn-lit min-h-12 px-5">
                 Yes, I am 21 or older
               </button>
-              <button
-                type="button"
-                onClick={() => setState('declined')}
-                className="rounded-lg border border-ink-700 px-5 py-3 text-sm text-chalk-400 transition-colors hover:border-ink-600 hover:text-chalk-200"
-              >
+              <button type="button" onClick={() => setState('declined')} className="btn min-h-12 px-5">
                 No, I am under 21
               </button>
             </div>
 
-            <p className="mt-5 text-xs leading-relaxed text-chalk-500">
+            <p className="mt-5 text-xs leading-relaxed text-chalk-400">
               We do not verify your age and we do not sell cannabis. This is an informational
               register, not affiliated with or endorsed by any state agency.
             </p>
           </>
         ) : (
           <>
-            <h1 id="age-gate-heading" className="mt-5 text-xl font-semibold tracking-tight text-chalk-50">
+            <h1
+              id="age-gate-heading"
+              className="mt-5 text-[1.625rem] font-extrabold leading-tight tracking-[-0.025em] text-chalk-50"
+            >
               Come back when you are 21
             </h1>
             <p className="mt-3 text-sm leading-relaxed text-chalk-200">

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { MoveIcon } from '@/components/MovesIcons';
 import { MovesList } from '@/components/MovesList';
+import { IconBox, PageHead } from '@/components/PageParts';
 import { MOVE_KINDS, moveLists, windows, type MoveKind } from '@/lib/moves';
 import { MOVE_TITLE, moveDescription, shortDay } from '@/lib/moves-copy';
 
@@ -30,20 +30,28 @@ export default async function MoveListPage({ params }: Params) {
   const items = moveLists()[kind];
 
   return (
-    <div className="shell py-12">
-      <Link href="/moves/" className="text-sm text-chalk-400 transition-colors hover:text-moss-400">
-        ← New &amp; leaving
-      </Link>
-
-      <div className="mt-6 flex items-center gap-3">
-        <MoveIcon kind={kind} className="h-8 w-8" />
-        <h1 className="text-3xl font-semibold tracking-tight text-chalk-50 sm:text-4xl">{MOVE_TITLE[kind]}</h1>
-        <span className="ml-auto text-3xl font-semibold tabular-nums tracking-tight text-chalk-400">
-          {items.length}
-        </span>
-      </div>
-      <p className="mt-4 max-w-2xl text-sm leading-relaxed text-chalk-400">{moveDescription(kind, w.rules)}</p>
-      <p className="mt-2 text-xs text-chalk-500">As of the daily read on {shortDay(w.day)}.</p>
+    <div className="shell pb-16">
+      <PageHead
+        back={{ href: '/moves/', label: 'New & leaving' }}
+        kicker="Shelves"
+        title={
+          <span className="flex items-center gap-3 sm:gap-4">
+            {/* The list's icon in its frame, as on its card. */}
+            <IconBox className="h-10 w-10 sm:h-12 sm:w-12">
+              <MoveIcon kind={kind} className="h-6 w-6 text-chalk-300 sm:h-7 sm:w-7" />
+            </IconBox>
+            <span className="min-w-0">{MOVE_TITLE[kind]}</span>
+          </span>
+        }
+        aside={
+          <span className="block bg-gradient-to-b from-moss-300 to-moss-400 bg-clip-text text-[clamp(1.75rem,5.2vw+0.5rem,3rem)] font-bold leading-[1.08] tabular-nums tracking-tight text-transparent">
+            {items.length}
+          </span>
+        }
+        meta={<p className="stamp">As of the daily read on {shortDay(w.day)}.</p>}
+      >
+        <p className="text-[0.9375rem] sm:text-base">{moveDescription(kind, w.rules)}</p>
+      </PageHead>
 
       <MovesList kind={kind} items={items} />
     </div>

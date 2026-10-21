@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { DebutBadge } from '@/components/DebutTag';
+import { PageHead } from '@/components/PageParts';
 import { StrainView } from '@/components/StrainView';
 import { prettyDateTime } from '@/lib/format';
 import { LINEAGE_LABEL, TERPENE_LABEL } from '@/lib/menu-format';
@@ -36,34 +36,38 @@ export default async function StrainPage({ params }: Params) {
 
   const shops = strain.places.length;
   const growers = strain.growers.length;
+  const lineage = strain.lineage !== 'UNKNOWN';
 
   return (
-    <article className="shell py-12">
-      <Link href="/menus/" className="text-sm text-chalk-400 transition-colors hover:text-moss-400">
-        ← Back to strains
-      </Link>
-
-      <h1 className="mt-6 break-words text-4xl font-semibold tracking-tight text-chalk-50 sm:text-5xl">{strain.name}</h1>
-
-      <div className="mt-4 flex flex-wrap items-center gap-2">
-        {strain.lineage !== 'UNKNOWN' && (
-          <span className="rounded-md border border-moss-600 px-2.5 py-1 text-sm text-moss-400">
-            {LINEAGE_LABEL[strain.lineage] ?? strain.lineage}
-          </span>
-        )}
-        {strain.debut && <DebutBadge debut={strain.debut} />}
-      </div>
-
-      {/* What the shelves say about it, in a line: no description, because no
-          shelf gives one that could be checked. */}
-      <p className="mt-4 max-w-2xl text-lg leading-relaxed text-chalk-200">
-        On the shelf at {shops} licensed {shops === 1 ? 'shop' : 'shops'} in New York City and Westchester
-        {growers > 0 && `, from ${growers} ${growers === 1 ? 'grower' : 'growers'}`}.
-      </p>
+    <article className="shell pb-16">
+      <PageHead
+        back={{ href: '/menus/', label: 'Back to strains' }}
+        kicker="Strains"
+        title={strain.name}
+        meta={
+          (lineage || strain.debut) && (
+            <div className="flex flex-wrap items-center gap-2">
+              {lineage && (
+                <span className="tag border-moss-600/60 bg-moss-600/10 text-[0.8125rem] text-moss-300">
+                  {LINEAGE_LABEL[strain.lineage] ?? strain.lineage}
+                </span>
+              )}
+              {strain.debut && <DebutBadge debut={strain.debut} />}
+            </div>
+          )
+        }
+      >
+        {/* What the shelves say about it, in a line: no description, because no
+            shelf gives one that could be checked. */}
+        <p>
+          On the shelf at {shops} licensed {shops === 1 ? 'shop' : 'shops'} in New York City and Westchester
+          {growers > 0 && `, from ${growers} ${growers === 1 ? 'grower' : 'growers'}`}.
+        </p>
+      </PageHead>
 
       <StrainView strain={strain} />
 
-      <p className="mt-12 max-w-2xl text-xs leading-relaxed text-chalk-500">
+      <p className="stamp mt-12 max-w-2xl">
         {strain.readAt && <>Read from the shops&apos; own menus, most recently {prettyDateTime(strain.readAt)}. </>}
         Shelves change hourly and this page does not: it is what each shelf showed when it was read.
         A shop whose shelf we do not read is not listed, so a shop missing here is not a shop without

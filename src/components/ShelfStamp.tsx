@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import clsx from 'clsx';
 import { prettyDate, prettyDateTime } from '@/lib/format';
 import { shelfFreshness } from '@/lib/shelf';
 
@@ -14,36 +15,57 @@ import { shelfFreshness } from '@/lib/shelf';
  * reached on the last sweep. A shelf we could not re-read is kept rather than
  * emptied, which is right, but it means the newest date describes most of the
  * page and not all of it.
+ *
+ * Drawn in the build stamp's mono, in a dim frame, with the lamp lit before
+ * it: the same small record of provenance on every page of shelves.
  */
-export const ShelfStamp = ({ linkToShops = false }: { linkToShops?: boolean }) => {
+export const ShelfStamp = ({
+  linkToShops = false,
+  className = 'mt-6',
+}: {
+  linkToShops?: boolean;
+  /** Its margin, where it sits: mt-6 under a paragraph, as it always has. */
+  className?: string;
+}) => {
   const { latest, oldest, shops, fresh, stale } = shelfFreshness();
   if (!latest) return null;
 
   return (
-    <p className="mt-6 inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg border border-ink-700 bg-ink-900/70 px-3 py-2 text-sm text-chalk-300">
+    <div
+      className={clsx(
+        'stamp flex max-w-2xl gap-2.5 rounded-lg border border-ink-700 bg-ink-900/70 px-3.5 py-2.5 sm:w-fit sm:max-w-4xl',
+        className,
+      )}
+    >
       <span
         aria-hidden
-        className="inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-moss-400"
+        className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full bg-moss-400 shadow-[0_0_6px_rgba(var(--glow),0.8)]"
       />
-      <span>
-        Shelves last read <strong className="font-medium text-chalk-50">{prettyDateTime(latest)}</strong>
-      </span>
-      {stale > 0 && (
-        <span className="text-chalk-500">
-          · {fresh} of {shops} shops read in the 24 hours before; {stale} still carry an older reading
-          {oldest ? `, the oldest from ${prettyDate(oldest)}` : ''}
-          {linkToShops ? (
-            <>
-              {' '}
-              (
-              <Link href="/menus/shops/" className="link">
-                per shop
-              </Link>
-              )
-            </>
-          ) : null}
+      <p className="min-w-0">
+        <span className="block text-chalk-300">
+          Shelves last read{' '}
+          <strong className="font-medium text-moss-400 [@media(min-width:360px)]:whitespace-nowrap">{prettyDateTime(latest)}</strong>
         </span>
-      )}
-    </p>
+        {stale > 0 && (
+          <span className="mt-0.5 block">
+            {fresh} of {shops} shops read in the 24 hours before; {stale} still carry an older reading
+            {oldest ? `, the oldest from ${prettyDate(oldest)}` : ''}
+            {linkToShops ? (
+              <>
+                {' '}
+                (
+                <Link
+                  href="/menus/shops/"
+                  className="link rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-moss-400"
+                >
+                  per shop
+                </Link>
+                )
+              </>
+            ) : null}
+          </span>
+        )}
+      </p>
+    </div>
   );
 };

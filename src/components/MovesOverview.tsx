@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import clsx from 'clsx';
 import type { MoveCard } from '@/lib/moves';
 import {
   LINEAGE_CHIP,
@@ -14,6 +13,7 @@ import {
   type Rules,
 } from '@/lib/moves-copy';
 import { DayBars, MoveIcon } from './MovesIcons';
+import { Chevron, IconBox, chipClass } from './PageParts';
 
 type Type = (typeof LINEAGE_CHIP)[number]['id'];
 
@@ -32,18 +32,12 @@ export const TypeChips = ({ type, onChange }: { type: Type; onChange: (t: Type) 
         type="button"
         aria-pressed={type === c.id}
         onClick={() => onChange(c.id)}
-        className={clsx('chip', type === c.id && 'chip-on')}
+        className={chipClass(type === c.id)}
       >
         {c.label}
       </button>
     ))}
   </div>
-);
-
-const Chevron = () => (
-  <svg viewBox="0 0 24 24" aria-hidden className="h-5 w-5 shrink-0 text-chalk-500" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="m9 6 6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
 );
 
 export const MovesOverview = ({
@@ -82,15 +76,19 @@ export const MovesOverview = ({
       {/* The day of the read and the two windows the lists are drawn from —
           not a comparison with one earlier day: what is new is counted over
           a week, what is leaving over a fortnight. */}
-      <div className="card mt-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-3">
-        <p className="flex items-center gap-3 text-chalk-50">
-          <svg viewBox="0 0 24 24" aria-hidden className="h-5 w-5 text-chalk-400" fill="none" stroke="currentColor" strokeWidth="1.6">
-            <rect x="3.5" y="5" width="17" height="15" rx="2" />
-            <path d="M3.5 9.5h17M8 3v4M16 3v4" strokeLinecap="round" />
-          </svg>
-          <time dateTime={day}>{year}</time>
+      <div className="card mt-6 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-3 sm:mt-8 sm:px-5">
+        <p className="flex items-center gap-3">
+          <IconBox className="h-9 w-9 text-chalk-300">
+            <svg viewBox="0 0 24 24" className="h-[1.125rem] w-[1.125rem]" fill="none" stroke="currentColor" strokeWidth="1.6">
+              <rect x="3.5" y="5" width="17" height="15" rx="2" />
+              <path d="M3.5 9.5h17M8 3v4M16 3v4" strokeLinecap="round" />
+            </svg>
+          </IconBox>
+          <time dateTime={day} className="font-mono text-[0.9375rem] tracking-[0.02em] text-chalk-50">
+            {year}
+          </time>
         </p>
-        <p className="text-xs leading-relaxed text-chalk-400 sm:text-right">
+        <p className="stamp sm:text-right">
           New: {dayRange(newFrom, day)} ({rules.newDays} days)
           <br />
           Leaving: {dayRange(leavingFrom, day)} ({rules.movesDays} days)
@@ -110,20 +108,26 @@ export const MovesOverview = ({
             <li key={card.kind} id={card.kind} className="scroll-mt-20">
               <Link
                 href={`/moves/${card.kind}/${query}`}
-                className="card card-hover flex h-full gap-4 p-5"
+                className="card card-hover group flex h-full gap-4 p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moss-400 sm:p-5"
               >
-                <MoveIcon kind={card.kind} className="mt-0.5" />
+                {/* The list's icon in a small frame of its own, as the home
+                    page's figures sit in theirs; chalk, not green. */}
+                <IconBox className="h-10 w-10 transition-colors group-hover:border-moss-700/70">
+                  <MoveIcon kind={card.kind} className="h-[1.375rem] w-[1.375rem] text-chalk-300" />
+                </IconBox>
                 <span className="flex min-w-0 flex-1 flex-col">
-                  <span className="flex items-start justify-between gap-3">
-                    <span className="font-medium text-chalk-50">{MOVE_TITLE[card.kind]}</span>
-                    <Chevron />
+                  <span className="flex min-h-10 items-center justify-between gap-3">
+                    <span className="font-semibold tracking-tight text-chalk-50">{MOVE_TITLE[card.kind]}</span>
+                    <Chevron className="text-chalk-400 transition-colors group-hover:text-moss-400" />
                   </span>
-                  <span className="mt-1 flex items-end justify-between gap-4">
-                    <span className="min-w-0">
-                      <span className="block text-3xl font-semibold tabular-nums tracking-tight text-chalk-50">
+                  {/* The bars drop under the words when a narrow phone has
+                      no room for both side by side. */}
+                  <span className="mt-1 flex flex-wrap items-end justify-between gap-x-4 gap-y-2">
+                    <span className="min-w-[8.5rem] flex-1">
+                      <span className="block bg-gradient-to-b from-moss-300 to-moss-400 bg-clip-text text-[2rem] font-semibold leading-tight tabular-nums tracking-tight text-transparent">
                         {count ?? '—'}
                       </span>
-                      <span className="mt-1.5 block text-sm leading-snug text-chalk-400">
+                      <span className="mt-1.5 block text-sm leading-snug text-chalk-300">
                         {count === null
                           ? 'A strain gone from every shelf has no type on any of them.'
                           : moveSubtitle(card.kind, rules)}

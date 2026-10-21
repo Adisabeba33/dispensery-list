@@ -8,6 +8,8 @@ import { debutDay, debutDetail, debutTag, isFreshDebut, type Debut } from '@/lib
  *
  * Chalk, not moss: on these cards green is the colour of a lab measurement
  * (the provenance pill beside it), and a debut is news, not verification.
+ * Filled with a wash of chalk rather than solid white: a solid pill was the
+ * brightest thing on a card, and a page of debuts was a page of them.
  */
 export const DebutTag = ({
   debut,
@@ -23,7 +25,7 @@ export const DebutTag = ({
     className={clsx(
       'pill shrink-0 whitespace-nowrap',
       isFreshDebut(debut)
-        ? 'border-chalk-50 bg-chalk-50 font-medium text-ink-950'
+        ? 'border-chalk-200/70 bg-chalk-50/15 font-medium text-chalk-50'
         : 'border-ink-600 bg-transparent text-chalk-200',
       className,
     )}

@@ -10,12 +10,17 @@ import {
 import { fullAddress, prettyDate, prettyDay, prettyPhone, WEEKDAYS } from '@/lib/format';
 import type { FlowerListing } from '@/lib/menu-format';
 import type { Dispensary } from '@/lib/types';
-import { LicenseTag, ShelfLamp } from './Badges';
+import { LicenseTag, ShelfPill } from './Badges';
 import { FlowerMenu } from './FlowerMenu';
+import { Chevron } from './PageParts';
 
+/* A label and its value, as one line of the record: the label in the mono of
+   the card's licence line, beside its value, and above it only on a phone too
+   narrow for the two. (Plain media variants, bounded: Tailwind's min-[…]
+   goes away beside the em-based `nav` screen.) */
 const Row = ({ label, children }: { label: string; children: React.ReactNode }) => (
-  <div className="flex flex-col gap-1 border-b border-ink-700/60 py-3 last:border-0 sm:flex-row sm:gap-6">
-    <dt className="label shrink-0 pt-0.5 sm:w-44">{label}</dt>
+  <div className="grid gap-x-3 gap-y-1 border-b border-ink-700/70 py-3 last:border-b-0 [@media(min-width:400px)_and_(max-width:639px)]:grid-cols-[8.5rem_minmax(0,1fr)] sm:grid-cols-[10.5rem_minmax(0,1fr)] sm:gap-x-4">
+    <dt className="label pt-0.5">{label}</dt>
     <dd className="min-w-0 text-sm text-chalk-100">{children}</dd>
   </div>
 );
@@ -94,11 +99,11 @@ export const DispensaryDetail = ({
     d.dates?.licenseExpiration != null && d.dates.licenseExpiration < d.lastUpdated.slice(0, 10);
 
   return (
-    <>
+    <div className="mt-6 space-y-8 sm:mt-8">
       {d.warnings.length > 0 && (
-        <div className="mt-6 rounded-xl border border-amber-400/30 bg-amber-400/[0.07] p-4">
+        <div className="note note-caution">
           <p className="label text-amber-400">Caveats</p>
-          <ul className="mt-2 space-y-1.5 text-sm text-chalk-200">
+          <ul className="mt-2 space-y-1.5">
             {d.warnings.map((w) => (
               <li key={w}>· {w}</li>
             ))}
@@ -107,11 +112,14 @@ export const DispensaryDetail = ({
       )}
 
       {menuState === 'loading' && (
-        <p className="mt-8 text-sm text-chalk-500">Reading this shop&apos;s shelf…</p>
+        <p className="stamp flex items-center gap-2">
+          <span aria-hidden className="h-1.5 w-1.5 shrink-0 animate-pulse rounded-full bg-moss-400 motion-reduce:animate-none" />
+          Reading this shop&apos;s shelf…
+        </p>
       )}
 
       {menuState === 'failed' && (
-        <p className="mt-8 text-sm text-amber-400">
+        <p className="note note-caution">
           This shop&apos;s shelf could not be loaded here.{' '}
           <a href={`/dispensary/${d.id}/#menu`} className="link">
             Open its page instead
@@ -121,32 +129,29 @@ export const DispensaryDetail = ({
       )}
 
       {/* A shop whose shelf we do not read — never read, or no longer
-          (data/menu-paused.json) — has a red lamp, and here it says so. */}
+          (data/menu-paused.json) — has a red lamp, and here it says so, in
+          the place its shelf would be and with the card's own red pill. */}
       {(given ? given.length === 0 : !hasMenu) && (
-        <div className="mt-8 flex items-start gap-3 rounded-xl border border-rust-400/30 bg-rust-400/[0.06] p-4">
-          <ShelfLamp read={false} className="mt-1.5" />
-          <div>
-            <p className="font-medium text-chalk-50">No data yet</p>
-            <p className="mt-1 text-sm text-chalk-400">
+        <section>
+          <h2 className="section-title">Flower on the shelf</h2>
+          <div className="card mt-3 flex flex-col items-start gap-2.5 p-4 sm:p-5">
+            <ShelfPill count={0} />
+            <p className="text-sm leading-relaxed text-chalk-300">
               {menuUnavailable
                 ? 'We used to read this shop’s shelf and no longer can, so none is shown rather than an old one.'
                 : 'We do not read this shop’s shelf, so there is nothing on it to show.'}
             </p>
           </div>
-        </div>
+        </section>
       )}
 
-      {menu.length > 0 && (
-        <div className="mt-8">
-          <FlowerMenu listings={menu} partialShelf={partialShelf} />
-        </div>
-      )}
+      {menu.length > 0 && <FlowerMenu listings={menu} partialShelf={partialShelf} />}
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:gap-6">
         <div className="space-y-8">
-          <section className="card p-6">
-            <h2 className="text-base font-semibold tracking-tight text-chalk-50">Licence</h2>
-            <dl className="mt-3">
+          <section>
+            <h2 className="section-title">Licence</h2>
+            <dl className="card mt-3 px-4 sm:px-5">
               <Row label="Licence number">
                 <LicenseTag d={d} />
               </Row>
@@ -172,9 +177,9 @@ export const DispensaryDetail = ({
             </dl>
           </section>
 
-          <section className="card p-6">
-            <h2 className="text-base font-semibold tracking-tight text-chalk-50">Location</h2>
-            <dl className="mt-3">
+          <section>
+            <h2 className="section-title">Location</h2>
+            <dl className="card mt-3 px-4 sm:px-5">
               <Row label="Address">{fullAddress(d)}</Row>
               <Row label="Area">
                 {regionOf(d)} · {COUNTY_LABEL[d.address.county]} County
@@ -186,28 +191,30 @@ export const DispensaryDetail = ({
             </dl>
           </section>
 
-          <section className="card p-6">
-            <h2 className="text-base font-semibold tracking-tight text-chalk-50">Opening hours</h2>
+          <section>
+            <h2 className="section-title">Opening hours</h2>
             {hasHours ? (
-              <>
-                <table className="mt-3 w-full text-sm">
+              <div className="card mt-3 px-4 sm:px-5">
+                <table className="w-full text-sm">
                   <tbody>
                     {WEEKDAYS.map(({ key, label }) => (
-                      <tr key={key} className="border-b border-ink-700/60 last:border-0">
-                        <th scope="row" className="py-2 text-left font-medium text-chalk-400">
+                      <tr key={key} className="border-b border-ink-700/70 last:border-b-0">
+                        <th scope="row" className="label py-2.5 text-left">
                           {label}
                         </th>
-                        <td className="py-2 text-right tabular-nums text-chalk-100">
+                        <td className="py-2.5 text-right tabular-nums text-chalk-100">
                           {prettyDay(d.hours!.week[key])}
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
-                {d.hours?.notes && <p className="mt-3 text-xs text-chalk-500">{d.hours.notes}</p>}
-              </>
+                {d.hours?.notes && (
+                  <p className="stamp border-t border-ink-700/70 py-3">{d.hours.notes}</p>
+                )}
+              </div>
             ) : (
-              <p className="mt-3 text-sm text-chalk-400">
+              <p className="card mt-3 px-4 py-3.5 text-sm leading-relaxed text-chalk-400 sm:px-5">
                 Not collected yet. We would rather say nothing than publish hours we have not
                 checked.
               </p>
@@ -216,47 +223,61 @@ export const DispensaryDetail = ({
         </div>
 
         <div className="space-y-8">
-          <section className="card p-6">
-            <h2 className="text-base font-semibold tracking-tight text-chalk-50">
-              Where this came from
-            </h2>
-            <ol className="mt-3 space-y-3 text-sm">
-              {d.sources.map((source) => (
-                <li key={source.url}>
-                  <a className="link break-all" href={source.url} target="_blank" rel="noreferrer noopener">
-                    {source.label ?? source.url}
-                  </a>
-                  <p className="mt-0.5 text-xs text-chalk-500">
-                    {source.type.replaceAll('_', ' ').toLowerCase()} · retrieved{' '}
-                    {prettyDate(source.retrievedAt)}
-                  </p>
-                </li>
-              ))}
-            </ol>
-            {d.verification.notes && (
-              <p className="mt-4 border-t border-ink-700/60 pt-3 text-xs leading-relaxed text-chalk-400">
-                {d.verification.notes}
-              </p>
-            )}
+          <section>
+            <h2 className="section-title">Where this came from</h2>
+            <div className="card mt-3 overflow-hidden">
+              {/* What the record rests on: the state's registry and the
+                  regulator's pages, the links out the register keeps. */}
+              <ol className="divide-y divide-ink-700/70">
+                {d.sources.map((source) => (
+                  <li key={source.url}>
+                    <a
+                      className="row-link group px-4 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-moss-400 sm:px-5"
+                      href={source.url}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      <span className="min-w-0 flex-1">
+                        <span className="block text-sm text-chalk-50 transition-colors [overflow-wrap:anywhere] group-hover:text-moss-400">
+                          {source.label ?? source.url}
+                        </span>
+                        <span className="stamp mt-0.5 block">
+                          {source.type.replaceAll('_', ' ').toLowerCase()} · retrieved{' '}
+                          {prettyDate(source.retrievedAt)}
+                        </span>
+                      </span>
+                      <Chevron className="text-chalk-400" />
+                    </a>
+                  </li>
+                ))}
+              </ol>
+              {d.verification.notes && (
+                <p className="border-t border-ink-700/70 px-4 py-3 text-xs leading-relaxed text-chalk-400 sm:px-5">
+                  {d.verification.notes}
+                </p>
+              )}
+            </div>
           </section>
 
-          <section className="card border-moss-600/30 bg-moss-600/[0.06] p-6">
-            <h2 className="text-base font-semibold tracking-tight text-chalk-50">Check it yourself</h2>
-            <p className="mt-2 text-sm leading-relaxed text-chalk-200">
-              Look for the QR-coded verification decal at the entrance, or search this address on
-              the state tool.
-            </p>
-            <a
-              href="https://cannabis.ny.gov/dispensary-location-verification"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="mt-4 inline-block rounded-lg border border-moss-600/60 bg-moss-600/12 px-4 py-2.5 text-sm font-medium text-moss-400 transition-colors hover:bg-moss-600/20"
-            >
-              Open the state verification tool
-            </a>
+          <section>
+            <h2 className="section-title">Check it yourself</h2>
+            <div className="card mt-3 p-4 sm:p-5">
+              <p className="text-sm leading-relaxed text-chalk-200">
+                Look for the QR-coded verification decal at the entrance, or search this address on
+                the state tool.
+              </p>
+              <a
+                href="https://cannabis.ny.gov/dispensary-location-verification"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="btn btn-lit mt-4"
+              >
+                Open the state verification tool
+              </a>
+            </div>
           </section>
         </div>
       </div>
-    </>
+    </div>
   );
 };

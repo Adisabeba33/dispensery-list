@@ -4,12 +4,170 @@ import clsx from 'clsx';
 /*
  * The parts every page of the register is built from, so a page reads as
  * part of the same record as the home page: the same head, the same frames
- * for figures, the same chevron on everything that opens. The classes behind
- * them (.kicker, .page-title, .lede, .section-title, .stamp, .note, .tag,
- * .btn, .expander, .row-link, .tabs) live in globals.css.
+ * for figures, the same chevron on everything that opens, and the home
+ * page's own search field, chips, Sort and empty list for every page that
+ * filters. The classes behind them (.kicker, .page-title, .lede,
+ * .section-title, .stamp, .note, .tag, .chip, .btn, .expander, .row-link,
+ * .tabs, .hud-corners) live in globals.css.
  */
 
-/** Points right; turns down inside an open <details> or an aria-expanded="true" button. */
+/** A ring the keyboard can always see, in the accent — as on the home page. */
+export const FOCUS_RING =
+  'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moss-400';
+
+/**
+ * The home page's filter chip, for every other page's filters: 30px tall on a
+ * phone with 11px words, 32px and 13px wider; lit when pressed. (The home page
+ * draws its own, the same, in DirectoryExplorer.) `icon` is for a row of chips
+ * that each start with a drawing — the six areas — which sit tighter on a
+ * phone, so that two rows hold them at 428px; `greyIcon` keeps that drawing
+ * grey until the chip is pressed. (Plain media variants: Tailwind's max-[…]
+ * goes away beside the em-based `nav` screen.)
+ */
+export const chipClass = (on: boolean, { icon = false, greyIcon = false } = {}) =>
+  clsx(
+    'chip h-[1.875rem] gap-2 py-0 text-[0.6875rem] sm:h-8 sm:text-[0.8125rem]',
+    icon
+      ? 'pl-[0.5625rem] pr-2.5 [@media(max-width:427px)]:gap-1 [@media(max-width:427px)]:pl-[0.3125rem] [@media(max-width:427px)]:pr-1.5 sm:pl-3 sm:pr-3.5'
+      : 'px-3 sm:px-3.5',
+    FOCUS_RING,
+    on ? 'chip-on' : clsx('text-chalk-50', greyIcon && '[&_svg]:text-chalk-200'),
+  );
+
+/** A small drawing in a frame of its own, beside a title or a card's heading:
+    chalk, not green, as the home page's figures sit in theirs. Its size and
+    the drawing's colour are the caller's (40px, chalk-300 unless told). */
+export const IconBox = ({
+  children,
+  className = 'h-10 w-10 text-chalk-300',
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <span
+    aria-hidden
+    className={clsx('grid shrink-0 place-items-center rounded-md border border-ink-600 bg-ink-850/80', className)}
+  >
+    {children}
+  </span>
+);
+
+/** The magnifier of the home page's search field and its empty list. */
+export const SearchIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    aria-hidden
+    focusable="false"
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+  >
+    <circle cx="10.5" cy="10.5" r="7" />
+    <path d="m20.5 20.5-4.75-4.75" />
+  </svg>
+);
+
+/** The home page's search field, its magnifier inside at the left; the
+    placeholder set smaller on a phone narrower than 428px so it fits whole,
+    while typed text stays 16px, and the clear button gone until there is
+    text to clear. */
+export const SEARCH_FIELD =
+  'field h-[2.5625rem] text-ellipsis rounded-[7px] border-moss-600/55 py-0 pl-10 pr-3 placeholder:text-[clamp(0.6875rem,4.6vw-0.42rem,0.8125rem)] placeholder:text-chalk-300 sm:h-11 sm:placeholder:text-sm [&:placeholder-shown::-webkit-search-cancel-button]:hidden';
+export const SEARCH_ICON =
+  'pointer-events-none absolute left-2.5 top-1/2 h-[1.375rem] w-[1.375rem] -translate-y-1/2 text-chalk-100';
+
+/**
+ * What a list shows when its filters leave nothing: the home page's empty
+ * list, calmer — the dim frame, the magnifier in chalk, the sentence the page
+ * has always said, and what follows it.
+ */
+export const EmptyState = ({
+  title,
+  children,
+  className = 'mt-4 sm:mt-6',
+}: {
+  title: React.ReactNode;
+  children?: React.ReactNode;
+  className?: string;
+}) => (
+  <div className={clsx('card px-6 py-10 text-center sm:py-12', className)}>
+    <IconBox className="mx-auto h-10 w-10 text-chalk-200">
+      <SearchIcon className="h-5 w-5" />
+    </IconBox>
+    <p className="mt-4 font-semibold text-chalk-50">{title}</p>
+    {children && <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-chalk-300">{children}</p>}
+  </div>
+);
+
+const ChevronsIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 16 16"
+    aria-hidden
+    focusable="false"
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="m3.75 6 4.25-4 4.25 4M3.75 10 8 14l4.25-4" />
+  </svg>
+);
+
+/**
+ * The home page's Sort: the word, and a box showing the order chosen with
+ * the up-and-down chevrons at its right. The select itself is invisible and
+ * covers the box, at 16px so a phone does not zoom in when it is tapped, and
+ * reaches a little above and below it, for a finger.
+ */
+export const SortSelect = <K extends string>({
+  value,
+  options,
+  onChange,
+  className,
+}: {
+  value: K;
+  options: { id: K; label: string }[];
+  onChange: (next: K) => void;
+  /** The label's place in its row: ml-auto to hold it at the right. */
+  className?: string;
+}) => (
+  <label className={clsx('flex shrink-0 items-center gap-2.5 text-[0.8125rem] text-chalk-400 sm:text-sm', className)}>
+    Sort
+    <span
+      className={clsx(
+        'relative inline-flex h-7 min-w-[5.875rem] items-center rounded-[5px] border border-moss-700/60 bg-ink-900/80 transition-colors hover:border-moss-600 sm:h-8',
+        'has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-moss-400',
+      )}
+    >
+      <span
+        aria-hidden
+        className="whitespace-nowrap pl-[0.6875rem] pr-7 text-[0.78125rem] text-chalk-50 sm:pl-3 sm:pr-8 sm:text-[0.8125rem]"
+      >
+        {(options.find((o) => o.id === value) ?? options[0])?.label}
+      </span>
+      <ChevronsIcon className="pointer-events-none absolute right-1.5 top-1/2 h-4 w-4 -translate-y-1/2 text-chalk-200" />
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value as K)}
+        className="absolute inset-x-0 -inset-y-1 w-full cursor-pointer appearance-none bg-ink-900 text-base text-chalk-50 opacity-0 outline-none"
+      >
+        {options.map((o) => (
+          <option key={o.id} value={o.id} className="bg-ink-900">
+            {o.label}
+          </option>
+        ))}
+      </select>
+    </span>
+  </label>
+);
+
+/** Points right; turns down inside an open <details> or an aria-expanded="true" button.
+    16px unless the caller gives it a size: the default is left off then, since
+    a smaller size (h-3.5) comes before h-4 in the stylesheet and would lose. */
 export const Chevron = ({ className }: { className?: string }) => (
   <svg
     viewBox="0 0 24 24"
@@ -19,7 +177,7 @@ export const Chevron = ({ className }: { className?: string }) => (
     strokeWidth="1.8"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className={clsx('chev h-4 w-4', className)}
+    className={clsx('chev', !/(^|\s)h-/.test(className ?? '') && 'h-4 w-4', className)}
   >
     <path d="m9 6 6 6-6 6" />
   </svg>
@@ -91,17 +249,28 @@ export const PageHead = ({
 /**
  * Figures in a row of separate boxes, the first one lit, over a rule with a
  * gauge's ticks at its start — as on the home page. Four fit one row on a
- * phone; more, or longer labels, wrap.
+ * phone; more, or longer labels, wrap — unless `breakLabels`, for a row of
+ * four whose labels are too long for one line on a phone: the row holds, the
+ * labels break, and the figures stay level along the top. (A row that wrapped
+ * would run the first box's lit stretch of the rule through the second row.)
  */
 export const StatBoxes = ({
   figures,
+  breakLabels = false,
   className,
 }: {
   figures: { label: string; value: React.ReactNode }[];
+  breakLabels?: boolean;
   className?: string;
 }) => (
   <div className={clsx('sm:w-max', className)}>
-    <dl className="flex flex-wrap gap-1.5 sm:gap-2">
+    <dl
+      className={clsx(
+        'flex flex-wrap gap-1.5 sm:gap-2',
+        breakLabels &&
+          '[@media(max-width:639px)]:flex-nowrap [@media(max-width:639px)]:[&>div]:justify-end [@media(max-width:639px)]:[&_dt]:whitespace-normal',
+      )}
+    >
       {figures.map((figure, i) => (
         <div
           key={figure.label}

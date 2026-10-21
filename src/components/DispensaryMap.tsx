@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Map as LeafletMap, CircleMarker, LayerGroup } from 'leaflet';
-import clsx from 'clsx';
+import { AllAreasIcon, AreaIcon, ShelfBarsIcon } from './AreaIcons';
+import { chipClass } from './PageParts';
 import 'leaflet/dist/leaflet.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './map-theme.css';
@@ -21,13 +22,14 @@ export type MapPoint = {
 const REGION_ORDER = ['Manhattan', 'Brooklyn', 'Queens', 'The Bronx', 'Staten Island', 'Westchester'];
 
 /* One colour per meaning, taken from the palette the badges already use, so a
-   pin and a badge for the same shop never disagree. */
+   pin and a badge for the same shop never disagree: moss-400, chalk-400,
+   amber-400, rust-400, and chalk-500 for a status nobody has confirmed. */
 const STATUS_COLOR: Record<MapPoint['status'], string> = {
-  OPEN: '#3fc97d',
-  APPROVED_NOT_OPEN: '#8b9a93',
+  OPEN: '#41e591',
+  APPROVED_NOT_OPEN: '#879990',
   TEMPORARILY_CLOSED: '#f2b544',
   PERMANENTLY_CLOSED: '#ef6f62',
-  UNKNOWN: '#6d7d76',
+  UNKNOWN: '#75877d',
 };
 
 const STATUS_LABEL: Record<MapPoint['status'], string> = {
@@ -42,14 +44,23 @@ const STATUS_LABEL: Record<MapPoint['status'], string> = {
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+/* The status in its own colour, as on the cards; the shelf after it in the
+   lamp's: green when we read it, red with "No data yet" when we do not. */
 const popupHtml = (p: MapPoint) => `
   <div class="map-popup">
     <a class="map-popup-name" href="/dispensary/${esc(p.id)}/">${esc(p.name)}</a>
     <p class="map-popup-meta">${esc(p.address)}</p>
-    <p class="map-popup-status" style="color:${STATUS_COLOR[p.status]}">${STATUS_LABEL[p.status]}${
-      p.menuCount > 0 ? ` · ${p.menuCount} strains on the shelf` : ' · No data yet'
+    <p class="map-popup-status"><span style="color:${STATUS_COLOR[p.status]}">${STATUS_LABEL[p.status]}</span>${
+      p.menuCount > 0
+        ? ` · <span class="map-popup-shelf">${p.menuCount} strains on the shelf</span>`
+        : ' · <span class="map-popup-shelf map-popup-unread">No data yet</span>'
     }</p>
   </div>`;
+
+/* The directory's chips, drawn by the kit's own helper so the two pages
+   filter alike: the six areas in two rows of four and three at a phone's
+   428px, and the two toggles on a row of their own under them. */
+const mapChip = (on: boolean, { greyIcon = false } = {}) => chipClass(on, { icon: true, greyIcon });
 
 export const DispensaryMap = ({ points }: { points: MapPoint[] }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -66,6 +77,9 @@ export const DispensaryMap = ({ points }: { points: MapPoint[] }) => {
     const present = new Set(points.map((p) => p.region));
     return REGION_ORDER.filter((r) => present.has(r));
   }, [points]);
+
+  // The pins whose shelf we read, for the toggle's count.
+  const shelvesRead = useMemo(() => points.filter((p) => p.menuCount > 0).length, [points]);
 
   const visible = useMemo(
     () =>
@@ -193,76 +207,111 @@ export const DispensaryMap = ({ points }: { points: MapPoint[] }) => {
 
   return (
     <div>
-      <div className="flex flex-wrap items-center gap-2">
-        <button
-          type="button"
-          onClick={() => setRegion(null)}
-          className={clsx('chip', region === null && 'chip-on')}
+      {/* As on the home page: on a phone the two toggles take a row of their
+          own under the areas; wider, they follow on the same line. */}
+      <div className="flex flex-col gap-[0.5625rem] sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-2.5">
+        <div
+          role="group"
+          aria-label="Area"
+          className="flex flex-wrap gap-x-[0.4375rem] gap-y-[0.5625rem] [@media(max-width:427px)]:gap-x-1.5 sm:gap-2"
         >
-          All areas
-        </button>
-        {regions.map((r) => (
           <button
-            key={r}
             type="button"
-            onClick={() => setRegion(region === r ? null : r)}
-            className={clsx('chip', region === r && 'chip-on')}
+            onClick={() => setRegion(null)}
+            aria-pressed={region === null}
+            className={mapChip(region === null, { greyIcon: true })}
           >
-            {r}
+            <AllAreasIcon />
+            All areas
           </button>
-        ))}
-        <span aria-hidden className="mx-1 h-5 w-px bg-ink-700" />
-        <button
-          type="button"
-          onClick={() => setOpenOnly((v) => !v)}
-          aria-pressed={openOnly}
-          className={clsx('chip', openOnly && 'chip-on')}
-        >
-          Open now trading
-        </button>
-        <button
-          type="button"
-          onClick={() => setMenuOnly((v) => !v)}
-          aria-pressed={menuOnly}
-          className={clsx('chip', menuOnly && 'chip-on')}
-        >
-          Has a collected menu
-        </button>
-        <button type="button" onClick={fitToResults} className="chip">
+          {regions.map((r) => (
+            <button
+              key={r}
+              type="button"
+              onClick={() => setRegion(region === r ? null : r)}
+              aria-pressed={region === r}
+              className={mapChip(region === r, { greyIcon: true })}
+            >
+              <AreaIcon area={r} />
+              {r}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap gap-x-[0.4375rem] gap-y-[0.5625rem] sm:gap-2">
+          {/* The registry's operational status, not opening hours. */}
+          <button
+            type="button"
+            onClick={() => setOpenOnly((v) => !v)}
+            aria-pressed={openOnly}
+            className={mapChip(openOnly)}
+          >
+            <span aria-hidden className="grid w-[0.9375rem] place-items-center">
+              <span className="h-2 w-2 rounded-full bg-moss-400 shadow-[0_0_6px_rgba(var(--glow),0.6)]" />
+            </span>
+            Open now
+          </button>
+          <button
+            type="button"
+            onClick={() => setMenuOnly((v) => !v)}
+            aria-pressed={menuOnly}
+            className={mapChip(menuOnly)}
+          >
+            <ShelfBarsIcon />
+            Shelf read <span className="tabular-nums text-chalk-400">{shelvesRead}</span>
+          </button>
+        </div>
+      </div>
+
+      {/* The count, and the one action on the map, over a rule — as the
+          directory's count sits over its list. */}
+      <div className="mt-3.5 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-ink-700 pb-2 sm:mt-6">
+        <p className="text-[0.8125rem] text-chalk-400 sm:text-sm" aria-live="polite">
+          <span className="text-[0.9375rem] font-bold tabular-nums text-chalk-50 sm:text-base">
+            {visible.length}
+          </span>{' '}
+          of {points.length} mapped dispensaries shown.
+        </p>
+        {/* At the right, as the directory's sort is, even when a narrow
+            phone puts it on a line of its own. */}
+        <button type="button" onClick={fitToResults} className="btn ml-auto">
           Fit to results
         </button>
       </div>
 
-      <p className="mt-3 text-sm text-chalk-400" aria-live="polite">
-        {visible.length} of {points.length} mapped dispensaries shown.
-      </p>
-
-      {/* isolate: Leaflet's panes stack in the hundreds; inside their own
-          context they stay under the header, its menu and the phone's bar. */}
+      {/* The map in the dim frame, its border lit at two corners like an
+          instrument's display; the key on a strip along its foot. The
+          brackets lie on the frame's border and turn with its radius. */}
       <div
-        ref={containerRef}
-        className="isolate mt-4 h-[68vh] min-h-[420px] w-full overflow-hidden rounded-xl border border-ink-700 bg-ink-900"
-      />
+        className="card hud-corners hud-corners-round mt-4 sm:mt-5"
+      >
+        {/* isolate: Leaflet's panes stack in the hundreds; inside their own
+            context they stay under the header, its menu and the phone's bar. */}
+        <div
+          ref={containerRef}
+          className="isolate h-[68vh] min-h-[420px] w-full overflow-hidden rounded-t-[calc(0.5rem-1px)] bg-ink-900"
+        />
 
-      <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-chalk-400">
-        {(['OPEN', 'APPROVED_NOT_OPEN', 'UNKNOWN'] as const).map((s) => (
-          <span key={s} className="inline-flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-ink-700 px-4 py-3 text-[0.8125rem] text-chalk-300 sm:text-sm">
+          {(['OPEN', 'APPROVED_NOT_OPEN', 'UNKNOWN'] as const).map((s) => (
+            <span key={s} className="inline-flex items-center gap-2">
+              <span
+                aria-hidden
+                className="h-2.5 w-2.5 rounded-full"
+                style={{ backgroundColor: STATUS_COLOR[s], opacity: s === 'OPEN' ? 1 : 0.55 }}
+              />
+              {STATUS_LABEL[s]}
+            </span>
+          ))}
+          <span className="inline-flex items-center gap-2">
             <span
               aria-hidden
-              className="h-2.5 w-2.5 rounded-full"
-              style={{ backgroundColor: STATUS_COLOR[s], opacity: s === 'OPEN' ? 1 : 0.55 }}
+              className="h-3.5 w-3.5 rounded-full border-2"
+              style={{ borderColor: STATUS_COLOR.OPEN }}
             />
-            {STATUS_LABEL[s]}
+            Larger ring: a menu has been collected
           </span>
-        ))}
-        <span className="inline-flex items-center gap-2">
-          <span
-            aria-hidden
-            className="h-3.5 w-3.5 rounded-full border-2"
-            style={{ borderColor: STATUS_COLOR.OPEN }}
-          />
-          Larger ring: a menu has been collected
-        </span>
+        </div>
       </div>
     </div>
   );

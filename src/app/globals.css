@@ -235,11 +235,13 @@ body::before {
   }
 
   /* A row in a list that leads somewhere: a rule between rows, a tint and
-     the chevron lit on hover. */
+     the chevron lit on hover — the row's own, at its end (on the row, or on
+     the link that fills it), not a small one opening something inside it. */
   .row-link {
     @apply flex items-center gap-3 border-b border-ink-700/70 py-3.5 transition-colors last:border-b-0 hover:bg-moss-600/[0.04];
   }
-  .row-link:hover .chev {
+  .row-link:hover > .chev,
+  .row-link:hover > a > .chev {
     @apply text-moss-400;
   }
 
@@ -278,6 +280,26 @@ body::before {
     bottom: 0;
     border-right-width: 1.5px;
     border-bottom-width: 1.5px;
+  }
+  /* The same two corners laid on a rounded frame's own border, turning with
+     its radius (rounded-lg): for a frame in the kit's .card — the map, the
+     age gate — where square brackets inside the border would cut the curve.
+     Over what the frame holds, so a map's tiles never cover them. */
+  .hud-corners-round::before,
+  .hud-corners-round::after {
+    z-index: 1;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .hud-corners-round::before {
+    top: -1px;
+    left: -1px;
+    border-top-left-radius: 0.5rem;
+  }
+  .hud-corners-round::after {
+    right: -1px;
+    bottom: -1px;
+    border-bottom-right-radius: 0.5rem;
   }
 }
 

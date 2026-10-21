@@ -30,7 +30,7 @@ export default function MassachusettsPage() {
             {' '}{boston} of them in the city of Boston, {bostonOpened} opened.
           </p>
           {shelves > 0 && (
-            <p className="text-base text-chalk-300">
+            <p className="text-sm text-chalk-300 sm:text-[0.9375rem]">
               {shelves} Boston shops have had their shelf read. To see what is on one, press{' '}
               <a href="#list" className="link">
                 “Shelf read”
@@ -38,7 +38,7 @@ export default function MassachusettsPage() {
               in the list below and open a shop.
             </p>
           )}
-          <p className="text-base text-chalk-300">
+          <p className="text-sm text-chalk-300 sm:text-[0.9375rem]">
             It is here as an experiment: to learn what it costs to carry this register into a
             second state, and what breaks on the way. The records come from the Commission’s own
             open data, not from New York’s Office of Cannabis Management, and are kept in a separate

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { DispensaryMap, type MapPoint } from '@/components/DispensaryMap';
+import { Chevron, PageHead } from '@/components/PageParts';
 import { dispensaries, displayName, regionOf } from '@/lib/data';
 import { fullAddress } from '@/lib/format';
 import { listingsFor } from '@/lib/menu';
@@ -31,59 +32,68 @@ export default function MapPage() {
   const unmapped = dispensaries.filter((d) => d.geo === null);
 
   return (
-    <div className="shell py-12">
-      <p className="label">Map</p>
-      <h1 className="mt-4 text-3xl font-semibold tracking-tight text-chalk-50 sm:text-4xl">
-        Where the licensed shops are
-      </h1>
-      <p className="mt-5 max-w-2xl text-lg leading-relaxed text-chalk-200">
-        {points.length} of the {dispensaries.length} dispensaries in the register have coordinates.
-        Each pin is a business licensed by the New York State Office of Cannabis Management — open
-        one to read its record.
-      </p>
+    <div className="shell pb-16">
+      <PageHead kicker="Map" title="Where the licensed shops are">
+        <p>
+          {points.length} of the {dispensaries.length} dispensaries in the register have
+          coordinates. Each pin is a business licensed by the New York State Office of Cannabis
+          Management — open one to read its record.
+        </p>
+      </PageHead>
 
-      <div className="mt-10">
+      <div className="mt-8 sm:mt-10">
         <DispensaryMap points={points} />
       </div>
 
-      <section className="mt-12 grid gap-6 border-t border-ink-700/70 pt-8 lg:grid-cols-2">
-        <div>
-          <h2 className="text-lg font-semibold tracking-tight text-chalk-50">
-            How precise these pins are
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed text-chalk-200">
-            Every coordinate here is derived from the postal address on the licence, not surveyed
-            on the ground. That places a pin on the right block and usually the right building, but
-            it can land on a neighbour, and on a long address range it can drift further.
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-chalk-200">
-            A pin is not proof a shop is trading today. Licensed-but-not-open businesses are on the
-            map too, in grey, because knowing a licence exists at an address is part of the record.
-          </p>
-        </div>
+      <div className="mt-12 grid gap-x-10 gap-y-12 sm:mt-14 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+        <section>
+          <h2 className="section-title">How precise these pins are</h2>
+          <div className="mt-3 max-w-3xl space-y-3 text-sm leading-relaxed text-chalk-200">
+            <p>
+              Every coordinate here is derived from the postal address on the licence, not
+              surveyed on the ground. That places a pin on the right block and usually the right
+              building, but it can land on a neighbour, and on a long address range it can drift
+              further.
+            </p>
+            <p>
+              A pin is not proof a shop is trading today. Licensed-but-not-open businesses are on
+              the map too, in grey, because knowing a licence exists at an address is part of the
+              record.
+            </p>
+          </div>
+        </section>
 
-        <div>
-          <h2 className="text-lg font-semibold tracking-tight text-chalk-50">
-            Not on the map ({unmapped.length})
+        <section>
+          <h2 className="section-title">
+            Not on the map <span className="font-medium tabular-nums text-chalk-400">({unmapped.length})</span>
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-chalk-200">
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-chalk-200">
             These records are in the register but could not be placed: the address on the licence
             did not resolve to a single point. They are listed in full in the directory.
           </p>
-          <ul className="mt-4 space-y-2 text-sm">
+          {/* One frame, a ruled list of records inside it, each row leading
+              to its page. Every row keeps its rule, the last ones' lying over
+              the frame's own, so the columns end level. */}
+          <ul className="card mt-5 grid px-4 sm:grid-cols-2 sm:gap-x-8 sm:px-5">
             {unmapped.map((d) => (
-              <li key={d.id}>
-                <Link href={`/dispensary/${d.id}/`} className="link">
-                  {displayName(d)}
+              <li key={d.id} className="row-link -mb-px py-0 last:border-b">
+                <Link
+                  href={`/dispensary/${d.id}/`}
+                  className="flex min-h-[2.75rem] min-w-0 flex-1 items-center gap-3 rounded-sm py-2 text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moss-400"
+                >
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate font-medium text-chalk-50">{displayName(d)}</span>
+                    <span className="block truncate text-xs text-chalk-400">{d.address.city}</span>
+                  </span>
+                  <Chevron className="text-chalk-400" />
                 </Link>
-                <span className="text-chalk-400"> — {d.address.city}</span>
               </li>
             ))}
           </ul>
-        </div>
-      </section>
+        </section>
+      </div>
 
-      <p className="mt-10 text-xs leading-relaxed text-chalk-500">
+      <p className="stamp mt-12 max-w-3xl">
         Base map by{' '}
         <a className="link" href="https://openfreemap.org" target="_blank" rel="noreferrer noopener">
           OpenFreeMap
