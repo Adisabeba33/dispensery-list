@@ -8,8 +8,10 @@ import { leafPath } from './StorefrontArt';
  * matched against the state registry gets the confident treatment.
  */
 const VERIFICATION_STYLE: Record<VerificationStatus, { className: string; label: string }> = {
+  // Grey, as the address beside it is, with only the tick in green: one
+  // green mark a card, not a green block (owner, 22 October 2026).
   VERIFIED_OFFICIAL: {
-    className: 'border-moss-600/60 bg-moss-600/10 text-moss-400',
+    className: 'border-ink-600 bg-ink-800/70 text-chalk-200',
     label: 'Registry-verified',
   },
   VERIFIED_SECONDARY: {
@@ -34,7 +36,7 @@ export const VerificationBadge = ({
   return (
     <span className={clsx('pill', style.className, className)}>
       {status === 'VERIFIED_OFFICIAL' && (
-        <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2.6" aria-hidden>
+        <svg viewBox="0 0 24 24" className="h-3 w-3 text-moss-400" fill="none" stroke="currentColor" strokeWidth="2.6" aria-hidden>
           <path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )}
@@ -82,18 +84,15 @@ export const StatusLine = ({ status, className }: { status: OperationalStatus; c
 const LEAF = leafPath(12, 15.6, 12);
 
 /**
- * The shelf's lamp, made a pill: green with a lit leaf and the count when we
- * read the shop's shelf, red with a red lamp and "No data yet" when we do not.
+ * The shelf's lamp, made a pill: green with a leaf and the count when we read
+ * the shop's shelf, red with a red lamp and "No data yet" when we do not. The
+ * green is a dull sage, not the accent: green enough to read as the lamp, quiet
+ * enough beside the grey of the card (owner, 22 October 2026).
  */
 export const ShelfPill = ({ count, className }: { count: number; className?: string }) =>
   count > 0 ? (
-    <span className={clsx('pill border-moss-600/60 bg-moss-600/10 text-moss-400', className)}>
-      <svg
-        viewBox="0 0 24 24"
-        role="img"
-        aria-label="Shelf read"
-        className="h-3.5 w-3.5 shrink-0 fill-current drop-shadow-[0_0_3px_rgba(var(--glow),0.7)]"
-      >
+    <span className={clsx('pill border-moss-700/40 bg-moss-700/10 text-[#8cc4a6]', className)}>
+      <svg viewBox="0 0 24 24" role="img" aria-label="Shelf read" className="h-3.5 w-3.5 shrink-0 fill-current">
         <path d={LEAF} />
       </svg>
       {count} {count === 1 ? 'strain' : 'strains'}

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { DirectoryExplorer } from '@/components/DirectoryExplorer';
 import { BuildStamp } from '@/components/BuildStamp';
 import { DemoBanner } from '@/components/DemoBanner';
-import { HeroLeaf, HudBox } from '@/components/HeroArt';
+import { HeroCode, HudBox } from '@/components/HeroArt';
 import { OpenNowCount } from '@/components/LiveHours';
 import { StatBoxes } from '@/components/PageParts';
 import { dispensaries, isDemoData, stats } from '@/lib/data';
@@ -45,15 +45,15 @@ export default function HomePage() {
     <>
       {isDemoData && <DemoBanner />}
 
-      {/* Full width, so the leaf behind the headline is cut by the edge of
+      {/* Full width, so the code drawn behind the headline is cut by the edge of
           the screen rather than by the edge of the column. */}
       <section className="relative isolate overflow-hidden">
         <div className="shell relative pb-4 pt-2.5 sm:pt-8 lg:pt-12">
           <div
             aria-hidden
-            className="pointer-events-none absolute -right-[4.5rem] top-[3.75rem] -z-10 w-[15rem] opacity-50 blur-[0.4px] [mask-image:linear-gradient(to_bottom,#000_60%,transparent)] sm:right-0 sm:top-6 sm:w-[18rem] lg:right-0 lg:top-10 lg:w-[30rem] lg:opacity-[0.35]"
+            className="pointer-events-none absolute -right-[4.5rem] top-[3.75rem] -z-10 w-[15rem] opacity-50 blur-[0.4px] [mask-image:linear-gradient(to_bottom,#000_60%,transparent)] sm:-right-[4rem] sm:top-[11rem] sm:w-[15rem] lg:right-0 lg:top-[12.5rem] lg:w-[19rem] lg:opacity-[0.35]"
           >
-            <HeroLeaf className="h-auto w-full" />
+            <HeroCode className="h-auto w-full" />
           </div>
 
           <BuildStamp>
