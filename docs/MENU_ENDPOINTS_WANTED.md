@@ -1,6 +1,6 @@
 # Магазины, которым нужен адрес меню
 
-Работающих магазинов в реестре: **342**. Обход заходит в **250**, полку отдают **240**.
+Работающих магазинов в реестре: **342**. Обход заходит в **255**, полку отдают **245**.
 
 Этот файл собирается скриптом `scripts/menu-endpoints-wanted.py` по последнему прогону — правит его не рука, а следующий запуск.
 
@@ -34,7 +34,7 @@
 | Магазин | Город | Сайт | Почему пусто |
 |---|---|---|---|
 | Weed Mart By New Metro | Bayside | https://newmetro.club | стена на странице меню (cloudflare-challenge) — **не трогать** |
-| Just a Little Higher Briarwood ✳️ | Briarwood | https://justalittlehigher.com/ | прочитано 132 товаров, ни один не цветок |
+| Just a Little Higher Briarwood ✳️ | Briarwood | https://justalittlehigher.com/ | прочитано 60 товаров, ни один не цветок |
 | Caffiend LLC ✳️ | Brooklyn | https://thebushwicknyc.com | стена на странице меню (cloudflare-challenge) — **не трогать** |
 | Cannabis Kingdom Inc. | Brooklyn | https://www.bkgrass.com | страница вернула ноль товаров |
 | Green Room Dispensary LLC | Brooklyn | https://greenroomny.com | страница вернула ноль товаров |
@@ -46,32 +46,29 @@
 
 ✳️ — адрес в `menu-endpoints.json` уже есть, и всё равно пусто: значит записанный адрес больше не тот.
 
-## Полка читается не до конца — 3
+## Полка читается не до конца — 5
 
 Здесь адрес есть и меню отвечает, но отдаёт меньше, чем само объявляет. Листание таким не помогло — им нужен прямой адрес категории.
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| JUST A LITTLE HIGHER MURRAY HILL | 8 | 115 | https://justalittlehigher.com |
-| OZ Dispensary | 82 | 144 | https://ozdispensary.com/ |
-| MILLIGRAMS | 91 | 101 | https://milligrams.co/locations/brooklyn-ny/ |
+| Cannabis Group NY, LLC | 7 | 648 | https://ignyteny.com |
+| Upstate Edge, LLC | 6 | 647 | https://ignyteny.com |
+| JUST A LITTLE HIGHER MURRAY HILL | 6 | 109 | https://justalittlehigher.com |
+| OZ Dispensary | 81 | 143 | https://ozdispensary.com/ |
+| DAGGA LLC | 7 | 70 | https://justalittlehigher.com/ |
 
 ## Сюда не ходим
 
 - **72** магазинов на паузе (`data/menu-paused.json`): их меню Dutchie открывается в окне dutchie.com, которое с 24.09 отвечает автоматическим браузерам только проверкой «вы не бот?». Плановый прогон к ним не ходит, на сайте остаётся их последняя прочитанная полка. Проверить, не открылся ли Dutchie, можно ручным прогоном «Dutchie menus, slowly».
 - **0** магазинов держат меню на Leafly или Weedmaps. Это чужая витрина, а не витрина магазина, и читать её мы не будем — адрес такого меню в файл добавлять не нужно.
 - **8** магазинов не имеют сайта в реестре; см. `docs/MISSING_WEBSITES.md`. Найдётся сайт — магазин сам попадёт в обход.
-- **12** магазинов запретили обход в своём `robots.txt`. Мы спросили и получили отказ — это ответ, а не пробел, и искать им адрес меню не нужно. Отказ обычно приходит не от магазина, а от платформы, на которой стоит его витрина, и тогда уходит не один магазин, а все её. Список только растёт: сайт, который не отдал `robots.txt`, считается разрешившим, так что попасть сюда можно лишь по ясно объявленному запрету.
+- **7** магазинов запретили обход в своём `robots.txt`. Мы спросили и получили отказ — это ответ, а не пробел, и искать им адрес меню не нужно. Отказ обычно приходит не от магазина, а от платформы, на которой стоит его витрина, и тогда уходит не один магазин, а все её. Список только растёт: сайт, который не отдал `robots.txt`, считается разрешившим, так что попасть сюда можно лишь по ясно объявленному запрету.
   - MZDZ Corp — Brooklyn, http://www.coneyislandcannabisny.com
   - Tiki Leaves LLC — Brooklyn, http://www.tikileaves.com
   - Kushie — Forest Hills, https://kushieny.com
   - CannaBees — Maspeth, https://cannabeesdispensary.com
-  - Elevate Soho Cannabis — New York, https://elevatesohocannabis.com
   - Good Company — New York, https://goodcompanyshop.com
-  - THE FLOWERY — New York, https://www.thefloweryny.com
   - THE HERBAL CARE THC LLC — New York, https://thctheherbalcare.com/
-  - The Flowery — New York, https://www.thefloweryny.com
-  - The Flowery — New York, https://www.thefloweryny.com
-  - The Flowery — New York, https://www.thefloweryny.com
   - Green Land Retail LLC — Staten Island, https://greenlandny.com
 
