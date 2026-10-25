@@ -159,7 +159,7 @@
     "errors": 0
   },
   "https://pynns.com": {
-    "errors": 1
+    "errors": 0
   },
   "https://www.niagaracannabiscompany.com": {
     "errors": 0
@@ -198,8 +198,8 @@
     "errors": 0
   },
   "http://-content": {
-    "errors": 13,
-    "blockedUntil": "2026-10-25T16:18:25.938507+00:00"
+    "errors": 14,
+    "blockedUntil": "2026-10-26T16:41:04.080917+00:00"
   },
   "https://www.awalkinthepines.com": {
     "errors": 0
@@ -232,7 +232,7 @@
     "errors": 0
   },
   "https://thetraptotable.com": {
-    "errors": 5,
+    "errors": 0,
     "blockedUntil": "2026-10-25T16:13:16.492269+00:00"
   },
   "https://highpeaks.com": {
@@ -260,17 +260,17 @@
     "errors": 0
   },
   "https://v1": {
-    "errors": 15,
-    "blockedUntil": "2026-10-25T16:16:20.466657+00:00"
+    "errors": 16,
+    "blockedUntil": "2026-10-26T16:39:31.680784+00:00"
   },
   "https://czz.8a7.mytemp.website": {
-    "errors": 15,
-    "blockedUntil": "2026-10-25T16:17:01.932620+00:00"
+    "errors": 16,
+    "blockedUntil": "2026-10-26T16:39:38.196460+00:00"
   },
   "https://clearlyfaded.com": {
     "errors": 0
   },
   "https://www.growingheartfarm.com": {
-    "errors": 1
+    "errors": 0
   }
 }
