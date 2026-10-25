@@ -34,7 +34,7 @@
 | Магазин | Город | Сайт | Почему пусто |
 |---|---|---|---|
 | Weed Mart By New Metro | Bayside | https://newmetro.club | стена на странице меню (cloudflare-challenge) — **не трогать** |
-| Just a Little Higher Briarwood ✳️ | Briarwood | https://justalittlehigher.com/ | прочитано 60 товаров, ни один не цветок |
+| Just a Little Higher Briarwood ✳️ | Briarwood | https://justalittlehigher.com/ | прочитано 48 товаров, ни один не цветок |
 | Caffiend LLC ✳️ | Brooklyn | https://thebushwicknyc.com | стена на странице меню (cloudflare-challenge) — **не трогать** |
 | Cannabis Kingdom Inc. | Brooklyn | https://www.bkgrass.com | страница вернула ноль товаров |
 | Green Room Dispensary LLC | Brooklyn | https://greenroomny.com | страница вернула ноль товаров |
@@ -52,11 +52,11 @@
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| Cannabis Group NY, LLC | 7 | 648 | https://ignyteny.com |
-| Upstate Edge, LLC | 6 | 647 | https://ignyteny.com |
-| JUST A LITTLE HIGHER MURRAY HILL | 6 | 109 | https://justalittlehigher.com |
-| OZ Dispensary | 81 | 143 | https://ozdispensary.com/ |
-| DAGGA LLC | 7 | 70 | https://justalittlehigher.com/ |
+| Upstate Edge, LLC | 6 | 642 | https://ignyteny.com |
+| Cannabis Group NY, LLC | 7 | 642 | https://ignyteny.com |
+| JUST A LITTLE HIGHER MURRAY HILL | 4 | 102 | https://justalittlehigher.com |
+| OZ Dispensary | 82 | 142 | https://ozdispensary.com/ |
+| DAGGA LLC | 7 | 65 | https://justalittlehigher.com/ |
 
 ## Сюда не ходим
 
@@ -64,9 +64,9 @@
 - **0** магазинов держат меню на Leafly или Weedmaps. Это чужая витрина, а не витрина магазина, и читать её мы не будем — адрес такого меню в файл добавлять не нужно.
 - **8** магазинов не имеют сайта в реестре; см. `docs/MISSING_WEBSITES.md`. Найдётся сайт — магазин сам попадёт в обход.
 - **7** магазинов запретили обход в своём `robots.txt`. Мы спросили и получили отказ — это ответ, а не пробел, и искать им адрес меню не нужно. Отказ обычно приходит не от магазина, а от платформы, на которой стоит его витрина, и тогда уходит не один магазин, а все её. Список только растёт: сайт, который не отдал `robots.txt`, считается разрешившим, так что попасть сюда можно лишь по ясно объявленному запрету.
+  - High Tidez CI — Brooklyn, https://hightidezci.com
   - MZDZ Corp — Brooklyn, http://www.coneyislandcannabisny.com
   - Tiki Leaves LLC — Brooklyn, http://www.tikileaves.com
-  - Kushie — Forest Hills, https://kushieny.com
   - CannaBees — Maspeth, https://cannabeesdispensary.com
   - Good Company — New York, https://goodcompanyshop.com
   - THE HERBAL CARE THC LLC — New York, https://thctheherbalcare.com/
