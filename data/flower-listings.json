@@ -1169549,7 +1169549,7 @@
   {
     "listingId": "nanticoke-5-boro-forbidden-fruit-dime",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "5 Boro - Forbidden Fruit Dime",
     "strainNameCanonical": "Forbidden Fruit",
     "brand": "Nanticoke",
@@ -1169586,7 +1169586,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1169594,7 +1169594,7 @@
   {
     "listingId": "ny-boom-5th-ave-candy-gas",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "5TH Ave Candy Gas",
     "strainNameCanonical": "5TH Ave Candy Gas",
     "brand": "NY Boom",
@@ -1169631,7 +1169631,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1169639,7 +1169639,7 @@
   {
     "listingId": "cheech-chong-ahhberry",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Ahhberry",
     "strainNameCanonical": "Ahhberry",
     "brand": "Cheech & Chong",
@@ -1169676,7 +1169676,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1169684,7 +1169684,7 @@
   {
     "listingId": "left-coast-albany-1996-sour-diesel-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Albany 1996 Sour Diesel (Craft Indoor)",
     "strainNameCanonical": "Albany 1996 Sour Diesel",
     "brand": "Left Coast",
@@ -1169721,7 +1169721,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1169729,7 +1169729,7 @@
   {
     "listingId": "alchemy-pure-alchemy-pur-island-mountain-headband",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Alchemy Pur - Island Mountain Headband",
     "strainNameCanonical": "Alchemy Pur - Island Mountain Headband",
     "brand": "Alchemy Pure",
@@ -1169766,7 +1169766,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1169774,7 +1169774,7 @@
   {
     "listingId": "hudson-cannabis-alchemy-pure-blue-dream",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Alchemy Pure - Blue Dream",
     "strainNameCanonical": "Blue Dream",
     "brand": "Hudson Cannabis",
@@ -1169811,7 +1169811,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1169819,19 +1169819,19 @@
   {
     "listingId": "grams-alien-probe",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Alien Probe",
     "strainNameCanonical": "Alien Probe",
     "brand": "Grams",
     "brandKey": "grams",
     "lineage": "HYBRID",
-    "thcPercent": 31.58,
-    "cbdPercent": null,
+    "thcPercent": 26.92,
+    "cbdPercent": 0,
     "totalCannabinoidsPercent": null,
     "terpenes": {
       "source": "NONE",
       "profile": [],
-      "totalPercent": 1.96,
+      "totalPercent": 1.46,
       "labName": null,
       "testedOn": null,
       "coaUrl": null,
@@ -1169839,7 +1169839,8 @@
     },
     "labPanelKey": null,
     "packageIds": [
-      "1A412030000164A000002518"
+      "1A412030000164A000002518",
+      "1A412030000164A000002513"
     ],
     "harvestedOn": null,
     "packagedOn": null,
@@ -1169847,6 +1169848,7 @@
     "expiresWithinDays": null,
     "inStock": true,
     "availableSizesGrams": [
+      1,
       3.5
     ],
     "productUrl": null,
@@ -1169856,7 +1169858,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1169864,7 +1169866,7 @@
   {
     "listingId": "nanticoke-all-gas",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "All Gas",
     "strainNameCanonical": "All Gas",
     "brand": "Nanticoke",
@@ -1169901,7 +1169903,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1169909,7 +1169911,7 @@
   {
     "listingId": "5-boro-amnesia-haze",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Amnesia Haze",
     "strainNameCanonical": "Amnesia Haze",
     "brand": "5 boro",
@@ -1169946,7 +1169948,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1169954,7 +1169956,7 @@
   {
     "listingId": "rythm-animal-face",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Animal Face",
     "strainNameCanonical": "Animal Face",
     "brand": "RYTHM",
@@ -1169991,7 +1169993,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1169999,7 +1170001,7 @@
   {
     "listingId": "puff-animal-mints",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Animal Mints",
     "strainNameCanonical": "Animal Mints",
     "brand": "Puff",
@@ -1170036,7 +1170038,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170044,7 +1170046,7 @@
   {
     "listingId": "budd-apple-fritter",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Apple Fritter",
     "strainNameCanonical": "Apple Fritter",
     "brand": "budd",
@@ -1170081,7 +1170083,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170089,7 +1170091,7 @@
   {
     "listingId": "back-home-cannabis-co-back-home-cannabis-co-acapulco-gold-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Back Home Cannabis Co - Acapulco Gold (Craft Indoor)",
     "strainNameCanonical": "Acapulco Gold",
     "brand": "Back Home Cannabis Co.",
@@ -1170128,7 +1170130,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170136,7 +1170138,7 @@
   {
     "listingId": "back-home-cannabis-co-back-home-cannabis-co-bonfire-ice-cream-cake",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Back Home Cannabis Co - Bonfire - Ice Cream Cake",
     "strainNameCanonical": "Bonfire - Ice Cream Cake",
     "brand": "Back Home Cannabis Co.",
@@ -1170173,52 +1170175,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "back-home-cannabis-co-back-home-cannabis-co-gorilla-glue-craft-indoor-micro-grow",
-    "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
-    "strainNameRaw": "Back Home Cannabis Co - Gorilla Glue (Craft Indoor) - Micro Grower",
-    "strainNameCanonical": "Gorilla Glue",
-    "brand": "Back Home Cannabis Co.",
-    "brandKey": "backhome",
-    "lineage": "INDICA_DOMINANT",
-    "thcPercent": 26.59,
-    "cbdPercent": 0,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": 1.25,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": [
-      "1A4120300000451000011956"
-    ],
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": null,
-    "description": null,
-    "sources": [
-      {
-        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170226,7 +1170183,7 @@
   {
     "listingId": "back-home-cannabis-co-back-home-cannabis-co-jack-herer",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Back Home Cannabis Co - Jack Herer",
     "strainNameCanonical": "Jack Herer",
     "brand": "Back Home Cannabis Co.",
@@ -1170263,7 +1170220,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170271,7 +1170228,7 @@
   {
     "listingId": "back-home-cannabis-co-back-home-cannabis-co-northern-lights-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Back Home Cannabis Co - Northern Lights (Craft Indoor)",
     "strainNameCanonical": "Northern Lights",
     "brand": "Back Home Cannabis Co.",
@@ -1170308,7 +1170265,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170316,7 +1170273,7 @@
   {
     "listingId": "back-home-cannabis-co-back-home-cannabis-co-panama-red-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Back Home Cannabis Co - Panama Red (Craft Indoor)",
     "strainNameCanonical": "Panama Red",
     "brand": "Back Home Cannabis Co.",
@@ -1170353,7 +1170310,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170361,7 +1170318,7 @@
   {
     "listingId": "back-home-cannabis-co-back-home-cannabis-co-pool-party-pineapple-express",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Back Home Cannabis Co - Pool Party - Pineapple Express",
     "strainNameCanonical": "Pool Party - Pineapple Express",
     "brand": "Back Home Cannabis Co.",
@@ -1170398,7 +1170355,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170406,7 +1170363,7 @@
   {
     "listingId": "back-home-cannabis-co-back-home-cannabis-co-super-lemon-haze-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Back Home Cannabis Co - Super Lemon Haze (Craft Indoor)",
     "strainNameCanonical": "Super Lemon Haze",
     "brand": "Back Home Cannabis Co.",
@@ -1170445,7 +1170402,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170453,7 +1170410,7 @@
   {
     "listingId": "back-home-cannabis-co-back-home-cannabis-co-white-widow-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Back Home Cannabis Co - White Widow (Craft Indoor)",
     "strainNameCanonical": "White Widow",
     "brand": "Back Home Cannabis Co.",
@@ -1170490,7 +1170447,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170498,7 +1170455,7 @@
   {
     "listingId": "major-banana-mac",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Banana Mac",
     "strainNameCanonical": "Banana Mac",
     "brand": "Major",
@@ -1170535,7 +1170492,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170543,7 +1170500,7 @@
   {
     "listingId": "rythm-beaver-cookies-premium-flower",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Beaver Cookies - Premium Flower",
     "strainNameCanonical": "Beaver Cookies",
     "brand": "RYTHM",
@@ -1170580,7 +1170537,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170588,7 +1170545,7 @@
   {
     "listingId": "mac-pharms-bento-blaze",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Bento Blaze",
     "strainNameCanonical": "Bento Blaze",
     "brand": "Mac Pharms",
@@ -1170625,7 +1170582,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170633,7 +1170590,7 @@
   {
     "listingId": "oasis-berry-blender-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Berry Blender (Craft Indoor)",
     "strainNameCanonical": "Berry Blender",
     "brand": "Oasis",
@@ -1170670,7 +1170627,52 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "rolling-green-cannabis-biscotti-value",
+    "licenseNumber": "OCM-RETL-24-000170",
+    "capturedAt": "2026-10-26T18:32:33Z",
+    "strainNameRaw": "Biscotti - Value",
+    "strainNameCanonical": "Biscotti",
+    "brand": "Rolling Green Cannabis",
+    "brandKey": "rollinggreen",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 26.37,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 2.63,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A412030000038D000027866"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170678,7 +1170680,7 @@
   {
     "listingId": "grams-black-cherry-gushers",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Black Cherry Gushers",
     "strainNameCanonical": "Black Cherry Gushers",
     "brand": "Grams",
@@ -1170715,7 +1170717,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170723,7 +1170725,7 @@
   {
     "listingId": "grocery-black-diesel",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Black Diesel",
     "strainNameCanonical": "Black Diesel",
     "brand": "Grocery",
@@ -1170760,7 +1170762,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170768,7 +1170770,7 @@
   {
     "listingId": "nanticoke-block-monster",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Block Monster",
     "strainNameCanonical": "Block Monster",
     "brand": "Nanticoke",
@@ -1170805,7 +1170807,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170813,7 +1170815,7 @@
   {
     "listingId": "revert-blue-dream",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Blue Dream",
     "strainNameCanonical": "Blue Dream",
     "brand": "Revert",
@@ -1170850,7 +1170852,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170858,7 +1170860,7 @@
   {
     "listingId": "oasis-blue-dream-craft-indoor-micro-grower",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Blue Dream (Craft Indoor) - Micro Grower",
     "strainNameCanonical": "Blue Dream",
     "brand": "Oasis",
@@ -1170895,7 +1170897,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170903,7 +1170905,7 @@
   {
     "listingId": "mac-pharms-blue-nightmare",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Blue Nightmare",
     "strainNameCanonical": "Blue Nightmare",
     "brand": "Mac Pharms",
@@ -1170940,7 +1170942,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170948,7 +1170950,7 @@
   {
     "listingId": "bouk-t-bouket-banana-kush",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Bouket - Banana Kush",
     "strainNameCanonical": "Banana Kush",
     "brand": "Boukét",
@@ -1170985,7 +1170987,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1170993,7 +1170995,7 @@
   {
     "listingId": "bouk-t-bouket-cap-junky",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Bouket - Cap Junky",
     "strainNameCanonical": "Cap Junky",
     "brand": "Boukét",
@@ -1171030,7 +1171032,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171038,19 +1171040,19 @@
   {
     "listingId": "grams-boussera-lemons",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Boussera Lemons",
     "strainNameCanonical": "Boussera Lemons",
     "brand": "Grams",
     "brandKey": "grams",
     "lineage": "SATIVA",
-    "thcPercent": 27.92,
+    "thcPercent": 27.73,
     "cbdPercent": null,
     "totalCannabinoidsPercent": null,
     "terpenes": {
       "source": "NONE",
       "profile": [],
-      "totalPercent": 2.39,
+      "totalPercent": 1.39,
       "labName": null,
       "testedOn": null,
       "coaUrl": null,
@@ -1171058,7 +1171060,7 @@
     },
     "labPanelKey": null,
     "packageIds": [
-      "1A412030000164A000001458"
+      "1A412030000164A000002514"
     ],
     "harvestedOn": null,
     "packagedOn": null,
@@ -1171066,7 +1171068,7 @@
     "expiresWithinDays": null,
     "inStock": true,
     "availableSizesGrams": [
-      3.5
+      1
     ],
     "productUrl": null,
     "description": null,
@@ -1171075,7 +1171077,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171083,7 +1171085,7 @@
   {
     "listingId": "alien-labs-brain-wash",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Brain Wash",
     "strainNameCanonical": "Brain Wash",
     "brand": "Alien Labs",
@@ -1171120,7 +1171122,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171128,7 +1171130,7 @@
   {
     "listingId": "rolling-green-cannabis-breakfast-of-champions-standard",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Breakfast of Champions - Standard",
     "strainNameCanonical": "Breakfast of Champions - Standard",
     "brand": "Rolling Green Cannabis",
@@ -1171165,7 +1171167,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171173,7 +1171175,7 @@
   {
     "listingId": "left-coast-buffalo-cheese-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Buffalo Cheese (Craft Indoor)",
     "strainNameCanonical": "Buffalo Cheese",
     "brand": "Left Coast",
@@ -1171210,7 +1171212,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171218,7 +1171220,7 @@
   {
     "listingId": "major-cali-orange",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Cali Orange",
     "strainNameCanonical": "Cali Orange",
     "brand": "Major",
@@ -1171255,7 +1171257,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171263,7 +1171265,7 @@
   {
     "listingId": "cannacure-farms-canna-cure-farms-pineapple-express-dime",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Canna Cure Farms - Pineapple Express Dime",
     "strainNameCanonical": "Pineapple Express",
     "brand": "Cannacure Farms",
@@ -1171300,7 +1171302,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171308,7 +1171310,7 @@
   {
     "listingId": "cannacure-farms-canna-cure-farms-purple-zkittlez-dime",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Canna Cure Farms - Purple Zkittlez Dime",
     "strainNameCanonical": "Purple Zkittlez",
     "brand": "Cannacure Farms",
@@ -1171345,7 +1171347,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171353,7 +1171355,7 @@
   {
     "listingId": "cannacure-farms-canna-cure-farms-strawberry-diesel-dime",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Canna Cure Farms - Strawberry Diesel Dime",
     "strainNameCanonical": "Strawberry Diesel",
     "brand": "Cannacure Farms",
@@ -1171390,7 +1171392,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171398,7 +1171400,7 @@
   {
     "listingId": "oasis-carbon-fiber-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Carbon Fiber (Craft Indoor)",
     "strainNameCanonical": "Carbon Fiber",
     "brand": "Oasis",
@@ -1171435,7 +1171437,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171443,7 +1171445,7 @@
   {
     "listingId": "5-boro-cereal-milk-dime",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Cereal Milk Dime",
     "strainNameCanonical": "Cereal Milk",
     "brand": "5 Boro",
@@ -1171480,7 +1171482,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171488,7 +1171490,7 @@
   {
     "listingId": "mac-pharms-cero-miedo",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Cero Miedo",
     "strainNameCanonical": "Cero Miedo",
     "brand": "Mac Pharms",
@@ -1171525,7 +1171527,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171533,7 +1171535,7 @@
   {
     "listingId": "untitled-cheetah-piss",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Cheetah Piss",
     "strainNameCanonical": "Cheetah Piss",
     "brand": "Untitled",
@@ -1171570,7 +1171572,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171578,7 +1171580,7 @@
   {
     "listingId": "oasis-chimera-junky-craft-indoor-micro-grower",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Chimera Junky (Craft Indoor) - Micro Grower",
     "strainNameCanonical": "Chimera Junky",
     "brand": "Oasis",
@@ -1171615,7 +1171617,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171623,7 +1171625,7 @@
   {
     "listingId": "royal-genetics-clementine-og",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Clementine OG",
     "strainNameCanonical": "Clementine OG",
     "brand": "Royal Genetics",
@@ -1171660,7 +1171662,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171668,7 +1171670,7 @@
   {
     "listingId": "electraleaf-coco-pina",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Coco Pina",
     "strainNameCanonical": "Coco Pina",
     "brand": "ElectraLeaf",
@@ -1171705,7 +1171707,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171713,7 +1171715,7 @@
   {
     "listingId": "nanticoke-coconut-cream",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Coconut Cream",
     "strainNameCanonical": "Coconut Cream",
     "brand": "Nanticoke",
@@ -1171750,7 +1171752,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171758,7 +1171760,7 @@
   {
     "listingId": "connected-cannabis-connected-ambrozia",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Connected - Ambrozia",
     "strainNameCanonical": "Ambrozia",
     "brand": "Connected Cannabis",
@@ -1171795,7 +1171797,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171803,7 +1171805,7 @@
   {
     "listingId": "connected-cannabis-connected-nightshade",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Connected - Nightshade",
     "strainNameCanonical": "Nightshade",
     "brand": "Connected Cannabis",
@@ -1171840,7 +1171842,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171848,7 +1171850,7 @@
   {
     "listingId": "bodega-boyz-cookie-crumble",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Cookie Crumble",
     "strainNameCanonical": "Cookie Crumble",
     "brand": "BODEGA BOYZ",
@@ -1171885,7 +1171887,97 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "dank-by-definition-dank-blueberry-cheesecake-indoor",
+    "licenseNumber": "OCM-RETL-24-000170",
+    "capturedAt": "2026-10-26T18:32:33Z",
+    "strainNameRaw": "Dank - Blueberry Cheesecake Indoor",
+    "strainNameCanonical": "Blueberry Cheesecake",
+    "brand": "Dank By Definition.",
+    "brandKey": "dankbydefinition",
+    "lineage": "SATIVA_DOMINANT",
+    "thcPercent": 32.25,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 2.36,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A41203000018B1000101925"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-26T18:32:33Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "dank-by-definition-dank-cali-citrus-indoor",
+    "licenseNumber": "OCM-RETL-24-000170",
+    "capturedAt": "2026-10-26T18:32:33Z",
+    "strainNameRaw": "Dank - Cali Citrus Indoor",
+    "strainNameCanonical": "Cali Citrus",
+    "brand": "Dank By Definition.",
+    "brandKey": "dankbydefinition",
+    "lineage": "SATIVA",
+    "thcPercent": 30.3,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 2.44,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A41203000018B1000101926"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171893,7 +1171985,7 @@
   {
     "listingId": "dank-by-definition-dank-girl-scout-cookies",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Dank - Girl Scout Cookies",
     "strainNameCanonical": "Girl Scout Cookies",
     "brand": "Dank By Definition.",
@@ -1171930,7 +1172022,52 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "dank-by-definition-dank-master-widow-indoor",
+    "licenseNumber": "OCM-RETL-24-000170",
+    "capturedAt": "2026-10-26T18:32:33Z",
+    "strainNameRaw": "Dank - Master Widow Indoor",
+    "strainNameCanonical": "Master Widow",
+    "brand": "Dank By Definition.",
+    "brandKey": "dankbydefinition",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 31.55,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 3.14,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A41203000018B1000101927"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171938,7 +1172075,7 @@
   {
     "listingId": "dank-by-definition-dank-orange-trainwreck-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Dank - Orange Trainwreck (Indoor)",
     "strainNameCanonical": "Orange Trainwreck",
     "brand": "Dank By Definition.",
@@ -1171975,7 +1172112,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1171983,7 +1172120,7 @@
   {
     "listingId": "dank-by-definition-dank-sour-og",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Dank - Sour OG",
     "strainNameCanonical": "Sour OG",
     "brand": "Dank By Definition.",
@@ -1172020,7 +1172157,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172028,7 +1172165,7 @@
   {
     "listingId": "rolling-green-cannabis-dante-s-rainbow-premium",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Dante's Rainbow - Premium",
     "strainNameCanonical": "Dante's Rainbow",
     "brand": "Rolling Green Cannabis",
@@ -1172065,7 +1172202,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172073,7 +1172210,7 @@
   {
     "listingId": "major-deep-space",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Deep Space",
     "strainNameCanonical": "Deep Space",
     "brand": "Major",
@@ -1172110,7 +1172247,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172118,7 +1172255,7 @@
   {
     "listingId": "grams-divorcee-cake",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Divorcee Cake",
     "strainNameCanonical": "Divorcee Cake",
     "brand": "Grams",
@@ -1172155,7 +1172292,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172163,7 +1172300,7 @@
   {
     "listingId": "alter-don-mega",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Don Mega",
     "strainNameCanonical": "Don Mega",
     "brand": "ALTER",
@@ -1172200,7 +1172337,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172208,7 +1172345,7 @@
   {
     "listingId": "alchemy-pure-double-og-chem",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Double OG Chem",
     "strainNameCanonical": "Double OG Chem",
     "brand": "Alchemy Pure",
@@ -1172245,7 +1172382,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172253,7 +1172390,7 @@
   {
     "listingId": "roemer-farms-e-85-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "E-85 (Craft Indoor)",
     "strainNameCanonical": "E-85",
     "brand": "Roemer Farms",
@@ -1172290,7 +1172427,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172298,14 +1172435,14 @@
   {
     "listingId": "alchemy-pure-early-bird",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Early Bird",
     "strainNameCanonical": "Early Bird",
     "brand": "Alchemy Pure",
     "brandKey": "alchemypure",
-    "lineage": "UNKNOWN",
+    "lineage": "INDICA",
     "thcPercent": 29.21,
-    "cbdPercent": 0,
+    "cbdPercent": null,
     "totalCannabinoidsPercent": null,
     "terpenes": {
       "source": "NONE",
@@ -1172335,7 +1172472,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172343,7 +1172480,7 @@
   {
     "listingId": "5-boro-fuel-pump",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Fuel Pump",
     "strainNameCanonical": "Fuel Pump",
     "brand": "5 Boro",
@@ -1172380,7 +1172517,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172388,7 +1172525,7 @@
   {
     "listingId": "5-boro-fuel-pump-dime",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Fuel Pump Dime",
     "strainNameCanonical": "Fuel Pump",
     "brand": "5 Boro",
@@ -1172425,7 +1172562,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172433,7 +1172570,7 @@
   {
     "listingId": "6-point-cannabis-furloughed",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Furloughed",
     "strainNameCanonical": "Furloughed",
     "brand": "6 Point Cannabis",
@@ -1172470,7 +1172607,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172478,7 +1172615,7 @@
   {
     "listingId": "kings-queens-garlic-breath-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Garlic Breath (Craft Indoor)",
     "strainNameCanonical": "Garlic Breath",
     "brand": "Kings & Queens",
@@ -1172515,7 +1172652,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172523,7 +1172660,7 @@
   {
     "listingId": "hashtag-honey-garlic-popsicle",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Garlic Popsicle",
     "strainNameCanonical": "Garlic Popsicle",
     "brand": "Hashtag Honey",
@@ -1172560,7 +1172697,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172568,7 +1172705,7 @@
   {
     "listingId": "nanticoke-garlicane",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Garlicane",
     "strainNameCanonical": "Garlicane",
     "brand": "Nanticoke",
@@ -1172605,52 +1172742,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "dank-by-definition-girl-scout-cookies",
-    "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
-    "strainNameRaw": "GIRL SCOUT COOKIES",
-    "strainNameCanonical": "GIRL SCOUT COOKIES",
-    "brand": "Dank By Definition.",
-    "brandKey": "dankbydefinition",
-    "lineage": "INDICA_DOMINANT",
-    "thcPercent": 31.41,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": 1.49,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": [
-      "1A41203000018B1000092216"
-    ],
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      14
-    ],
-    "productUrl": null,
-    "description": null,
-    "sources": [
-      {
-        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172658,7 +1172750,7 @@
   {
     "listingId": "left-coast-gmo-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "GMO (Craft Indoor)",
     "strainNameCanonical": "GMO",
     "brand": "Left Coast",
@@ -1172695,7 +1172787,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172703,7 +1172795,7 @@
   {
     "listingId": "tyson-2-0-golden-glove",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Golden Glove",
     "strainNameCanonical": "Golden Glove",
     "brand": "Tyson 2.0",
@@ -1172740,7 +1172832,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172748,7 +1172840,7 @@
   {
     "listingId": "oasis-gorilla-glue-craft-indoor-micro-grower",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Gorilla Glue (Craft Indoor) - Micro Grower",
     "strainNameCanonical": "Gorilla Glue",
     "brand": "Oasis",
@@ -1172785,7 +1172877,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172793,7 +1172885,7 @@
   {
     "listingId": "ny-boom-gorilla-piss",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Gorilla Piss",
     "strainNameCanonical": "Gorilla Piss",
     "brand": "NY Boom",
@@ -1172830,52 +1172922,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "budd-grape-ape",
-    "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
-    "strainNameRaw": "Grape Ape",
-    "strainNameCanonical": "Grape Ape",
-    "brand": "budd",
-    "brandKey": "budd",
-    "lineage": "INDICA_DOMINANT",
-    "thcPercent": 36.8,
-    "cbdPercent": 0,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": 1.63,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": [
-      "1A41203000023A2000009869"
-    ],
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": null,
-    "description": null,
-    "sources": [
-      {
-        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172883,7 +1172930,7 @@
   {
     "listingId": "revert-grapelato",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Grapelato",
     "strainNameCanonical": "Grapelato",
     "brand": "Revert",
@@ -1172920,7 +1172967,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172928,7 +1172975,7 @@
   {
     "listingId": "puff-gumbo",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Gumbo",
     "strainNameCanonical": "Gumbo",
     "brand": "Puff",
@@ -1172965,7 +1173012,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1172973,7 +1173020,7 @@
   {
     "listingId": "oasis-gush-mintz-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Gush Mintz (Craft Indoor)",
     "strainNameCanonical": "Gush Mintz",
     "brand": "Oasis",
@@ -1173010,7 +1173057,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173018,7 +1173065,7 @@
   {
     "listingId": "alchemy-pure-island-mountain-headband",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Island Mountain Headband",
     "strainNameCanonical": "Island Mountain Headband",
     "brand": "Alchemy Pure",
@@ -1173055,7 +1173102,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173063,7 +1173110,7 @@
   {
     "listingId": "roemer-farms-jokerz-31-craft-indoor-hydro",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Jokerz #31 (Craft Indoor Hydro)",
     "strainNameCanonical": "Jokerz #31 (Craft Indoor Hydro)",
     "brand": "Roemer Farms",
@@ -1173100,7 +1173147,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173108,7 +1173155,7 @@
   {
     "listingId": "6-point-cannabis-krazy-runtz",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Krazy Runtz",
     "strainNameCanonical": "Krazy Runtz",
     "brand": "6 Point Cannabis",
@@ -1173145,7 +1173192,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173153,7 +1173200,7 @@
   {
     "listingId": "alien-labs-kryptochronic",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Kryptochronic",
     "strainNameCanonical": "Kryptochronic",
     "brand": "Alien Labs",
@@ -1173190,7 +1173237,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173198,7 +1173245,7 @@
   {
     "listingId": "flav-lato-pop-cherry-ak47-duo-flower",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Lato Pop & Cherry AK47 - Duo Flower",
     "strainNameCanonical": "Lato Pop & Cherry AK47 - Duo",
     "brand": "Flav",
@@ -1173235,7 +1173282,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173243,7 +1173290,7 @@
   {
     "listingId": "lead-farmer-leadfarmer-zoapinator-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "LeadFarmer - Zoapinator (Craft Indoor)",
     "strainNameCanonical": "Zoapinator",
     "brand": "Lead Farmer",
@@ -1173282,7 +1173329,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173290,7 +1173337,7 @@
   {
     "listingId": "honey-king-lemon-cherry-gelato",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Lemon Cherry Gelato",
     "strainNameCanonical": "Lemon Cherry Gelato",
     "brand": "Honey King",
@@ -1173327,7 +1173374,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173335,7 +1173382,7 @@
   {
     "listingId": "puff-lemon-cherry-gelato",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Lemon Cherry Gelato",
     "strainNameCanonical": "Lemon Cherry Gelato",
     "brand": "Puff",
@@ -1173372,7 +1173419,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173380,7 +1173427,7 @@
   {
     "listingId": "stayme7o-lemon-pepper-haze-rev",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Lemon Pepper Haze - Rev",
     "strainNameCanonical": "Lemon Pepper Haze - Rev",
     "brand": "STAYME7O™",
@@ -1173417,7 +1173464,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173425,14 +1173472,14 @@
   {
     "listingId": "grams-lobster-roll",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Lobster Roll",
     "strainNameCanonical": "Lobster Roll",
     "brand": "Grams",
     "brandKey": "grams",
     "lineage": "HYBRID",
     "thcPercent": 26.09,
-    "cbdPercent": null,
+    "cbdPercent": 0,
     "totalCannabinoidsPercent": null,
     "terpenes": {
       "source": "NONE",
@@ -1173445,7 +1173492,8 @@
     },
     "labPanelKey": null,
     "packageIds": [
-      "1A412030000164A000001455"
+      "1A412030000164A000001455",
+      "1A412030000164A000002510"
     ],
     "harvestedOn": null,
     "packagedOn": null,
@@ -1173453,6 +1173501,7 @@
     "expiresWithinDays": null,
     "inStock": true,
     "availableSizesGrams": [
+      1,
       3.5
     ],
     "productUrl": null,
@@ -1173462,7 +1173511,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173470,7 +1173519,7 @@
   {
     "listingId": "cheech-chong-low-rider",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Low Rider",
     "strainNameCanonical": "Low Rider",
     "brand": "Cheech & Chong",
@@ -1173507,7 +1173556,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173515,7 +1173564,7 @@
   {
     "listingId": "roemer-farms-m-o-b-craft-indoor-hydro-micro-grower",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "M.O.B (Craft Indoor Hydro) - Micro Grower",
     "strainNameCanonical": "M.O.B (Craft Indoor Hydro)",
     "brand": "Roemer Farms",
@@ -1173552,7 +1173601,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173560,14 +1173609,14 @@
   {
     "listingId": "rolling-green-cannabis-mac-stomper-premium",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "MAC Stomper - Premium",
     "strainNameCanonical": "MAC Stomper",
     "brand": "Rolling Green Cannabis",
     "brandKey": "rollinggreen",
-    "lineage": "UNKNOWN",
+    "lineage": "INDICA_DOMINANT",
     "thcPercent": 30.66,
-    "cbdPercent": 0,
+    "cbdPercent": null,
     "totalCannabinoidsPercent": null,
     "terpenes": {
       "source": "NONE",
@@ -1173597,7 +1173646,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173605,7 +1173654,7 @@
   {
     "listingId": "saavi-mac-1",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Mac#1",
     "strainNameCanonical": "Mac#1",
     "brand": "Saavi",
@@ -1173642,7 +1173691,52 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "papa-s-herb-mango-haze",
+    "licenseNumber": "OCM-RETL-24-000170",
+    "capturedAt": "2026-10-26T18:32:33Z",
+    "strainNameRaw": "Mango Haze",
+    "strainNameCanonical": "Mango Haze",
+    "brand": "Papa's Herb",
+    "brandKey": "papasherb",
+    "lineage": "SATIVA",
+    "thcPercent": 30.21,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 1.72,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A41203000018B1000101935"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173650,7 +1173744,7 @@
   {
     "listingId": "tyson-2-0-mike-s-meringue",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Mike's Meringue",
     "strainNameCanonical": "Mike's Meringue",
     "brand": "Tyson 2.0",
@@ -1173687,7 +1173781,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173695,7 +1173789,7 @@
   {
     "listingId": "milkweed-milk-weed-invisible-gas-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Milk Weed - Invisible Gas (Craft Indoor)",
     "strainNameCanonical": "Invisible Gas",
     "brand": "Milkweed",
@@ -1173732,7 +1173826,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173740,7 +1173834,7 @@
   {
     "listingId": "milkweed-milk-weed-magic-pop-rock-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Milk Weed - Magic Pop Rock (Craft Indoor)",
     "strainNameCanonical": "Magic Pop Rock",
     "brand": "Milkweed",
@@ -1173777,7 +1173871,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173785,7 +1173879,7 @@
   {
     "listingId": "milkweed-milk-weed-permanent-chimera-craft-indoor-micro-grower",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Milk Weed - Permanent Chimera (Craft Indoor) - Micro Grower",
     "strainNameCanonical": "Permanent Chimera",
     "brand": "Milkweed",
@@ -1173822,7 +1173916,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173830,7 +1173924,7 @@
   {
     "listingId": "grocery-moon-gelato",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Moon Gelato",
     "strainNameCanonical": "Moon Gelato",
     "brand": "Grocery",
@@ -1173867,7 +1173961,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173875,7 +1173969,7 @@
   {
     "listingId": "kings-queens-neon-flamingo-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Neon Flamingo (Craft Indoor)",
     "strainNameCanonical": "Neon Flamingo",
     "brand": "Kings & Queens",
@@ -1173912,7 +1174006,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173920,7 +1174014,7 @@
   {
     "listingId": "budd-northern-wreck",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Northern Wreck",
     "strainNameCanonical": "Northern Wreck",
     "brand": "budd",
@@ -1173957,7 +1174051,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1173965,7 +1174059,7 @@
   {
     "listingId": "oasis-oasis-gush-mintz-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Oasis Gush Mintz (Craft Indoor)",
     "strainNameCanonical": "Gush Mintz",
     "brand": "Oasis",
@@ -1174002,7 +1174096,52 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "papa-s-herb-og-kush",
+    "licenseNumber": "OCM-RETL-24-000170",
+    "capturedAt": "2026-10-26T18:32:33Z",
+    "strainNameRaw": "OG Kush",
+    "strainNameCanonical": "OG Kush",
+    "brand": "Papa's Herb",
+    "brandKey": "papasherb",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 30.37,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 1.39,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A41203000018B1000101934"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174010,7 +1174149,7 @@
   {
     "listingId": "rolling-green-cannabis-orange-jam-standard",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Orange Jam - Standard",
     "strainNameCanonical": "Orange Jam - Standard",
     "brand": "Rolling Green Cannabis",
@@ -1174047,7 +1174186,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174055,7 +1174194,7 @@
   {
     "listingId": "grams-orange-tiki-cream",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Orange Tiki Cream",
     "strainNameCanonical": "Orange Tiki Cream",
     "brand": "Grams",
@@ -1174075,7 +1174214,8 @@
     },
     "labPanelKey": null,
     "packageIds": [
-      "1A412030000164A000002516"
+      "1A412030000164A000002516",
+      "1A412030000164A000002511"
     ],
     "harvestedOn": null,
     "packagedOn": null,
@@ -1174083,6 +1174223,7 @@
     "expiresWithinDays": null,
     "inStock": true,
     "availableSizesGrams": [
+      1,
       28
     ],
     "productUrl": null,
@@ -1174092,7 +1174233,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174100,7 +1174241,7 @@
   {
     "listingId": "j-cannabis-palermo",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Palermo",
     "strainNameCanonical": "Palermo",
     "brand": "J Cannabis",
@@ -1174137,7 +1174278,187 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "papa-s-herb-papa-berry-runtz",
+    "licenseNumber": "OCM-RETL-24-000170",
+    "capturedAt": "2026-10-26T18:32:33Z",
+    "strainNameRaw": "Papa Berry Runtz",
+    "strainNameCanonical": "Papa Berry Runtz",
+    "brand": "Papa's Herb",
+    "brandKey": "papasherb",
+    "lineage": "HYBRID",
+    "thcPercent": 27.79,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 1.69,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A41203000018B1000101937"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      14
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-26T18:32:33Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "papa-s-herb-papa-s-mimosa",
+    "licenseNumber": "OCM-RETL-24-000170",
+    "capturedAt": "2026-10-26T18:32:33Z",
+    "strainNameRaw": "Papa's - Mimosa",
+    "strainNameCanonical": "Papa's - Mimosa",
+    "brand": "Papa's Herb",
+    "brandKey": "papasherb",
+    "lineage": "SATIVA_DOMINANT",
+    "thcPercent": 27.91,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 1.18,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A41203000018B1000101936"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-26T18:32:33Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "papa-s-herb-papa-s-herb-biggie-smalls-og",
+    "licenseNumber": "OCM-RETL-24-000170",
+    "capturedAt": "2026-10-26T18:32:33Z",
+    "strainNameRaw": "Papa*s Herb - Biggie Smalls OG",
+    "strainNameCanonical": "Biggie Smalls OG",
+    "brand": "Papa's Herb",
+    "brandKey": "papasherb",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 30.36,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 1.44,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A41203000018B1000101939"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      28
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-26T18:32:33Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "papa-s-herb-papa-s-herb-godfather-og",
+    "licenseNumber": "OCM-RETL-24-000170",
+    "capturedAt": "2026-10-26T18:32:33Z",
+    "strainNameRaw": "Papa*s Herb - Godfather OG",
+    "strainNameCanonical": "Godfather OG",
+    "brand": "Papa's Herb",
+    "brandKey": "papasherb",
+    "lineage": "INDICA",
+    "thcPercent": 30.19,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 1.34,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A41203000018B1000101941"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      28
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174145,7 +1174466,7 @@
   {
     "listingId": "6-point-cannabis-peach-destiny",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Peach Destiny",
     "strainNameCanonical": "Peach Destiny",
     "brand": "6 Point Cannabis",
@@ -1174182,7 +1174503,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174190,7 +1174511,7 @@
   {
     "listingId": "mini-mart-peanut-butter-gelato",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Peanut Butter Gelato",
     "strainNameCanonical": "Peanut Butter Gelato",
     "brand": "mini MART",
@@ -1174227,7 +1174548,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174235,7 +1174556,7 @@
   {
     "listingId": "nanticoke-permafrost",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Permafrost",
     "strainNameCanonical": "Permafrost",
     "brand": "Nanticoke",
@@ -1174274,7 +1174595,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174282,7 +1174603,7 @@
   {
     "listingId": "budd-permanent-marker",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Permanent Marker",
     "strainNameCanonical": "Permanent Marker",
     "brand": "budd",
@@ -1174319,7 +1174640,52 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "rolling-green-cannabis-permanent-marker-value",
+    "licenseNumber": "OCM-RETL-24-000170",
+    "capturedAt": "2026-10-26T18:32:33Z",
+    "strainNameRaw": "Permanent Marker - Value",
+    "strainNameCanonical": "Permanent Marker",
+    "brand": "Rolling Green Cannabis",
+    "brandKey": "rollinggreen",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 26.78,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 2.13,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A412030000038D000027872"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174327,7 +1174693,7 @@
   {
     "listingId": "revert-pineapple-haze",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Pineapple Haze",
     "strainNameCanonical": "Pineapple Haze",
     "brand": "Revert",
@@ -1174364,7 +1174730,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174372,7 +1174738,7 @@
   {
     "listingId": "florette-pinyatti",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Pinyatti",
     "strainNameCanonical": "Pinyatti",
     "brand": "Florette",
@@ -1174409,7 +1174775,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174417,7 +1174783,7 @@
   {
     "listingId": "priscilla-s-garden-priscillas-garden-biscotti-glaze-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Priscillas Garden - Biscotti Glaze (Craft Indoor)",
     "strainNameCanonical": "Biscotti Glaze",
     "brand": "Priscilla's Garden",
@@ -1174454,7 +1174820,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174462,7 +1174828,7 @@
   {
     "listingId": "priscilla-s-garden-priscillas-garden-hotti-fuel-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Priscillas Garden - Hotti Fuel (Craft Indoor)",
     "strainNameCanonical": "Hotti Fuel",
     "brand": "Priscilla's Garden",
@@ -1174499,7 +1174865,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174507,7 +1174873,7 @@
   {
     "listingId": "priscilla-s-garden-priscillas-garden-purple-sour-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Priscillas Garden - Purple Sour (Craft Indoor)",
     "strainNameCanonical": "Purple Sour",
     "brand": "Priscilla's Garden",
@@ -1174544,7 +1174910,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174552,7 +1174918,7 @@
   {
     "listingId": "honey-king-purple-diesel",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Purple Diesel",
     "strainNameCanonical": "Purple Diesel",
     "brand": "Honey King",
@@ -1174589,7 +1174955,52 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "papa-s-herb-rocket-fuel",
+    "licenseNumber": "OCM-RETL-24-000170",
+    "capturedAt": "2026-10-26T18:32:33Z",
+    "strainNameRaw": "Rocket Fuel",
+    "strainNameCanonical": "Rocket Fuel",
+    "brand": "Papa's Herb",
+    "brandKey": "papasherb",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 32.6,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 1.83,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A41203000018B1000101938"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      14
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174597,7 +1175008,7 @@
   {
     "listingId": "roemer-farms-roemer-oreoz-craft-indoor-hydro",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Roemer - Oreoz (Craft Indoor Hydro)",
     "strainNameCanonical": "Oreoz (Craft Indoor Hydro)",
     "brand": "Roemer Farms",
@@ -1174634,7 +1175045,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174642,7 +1175053,7 @@
   {
     "listingId": "roemer-farms-roemer-permanent-marker-craft-indoor-hydro",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Roemer - Permanent Marker (Craft Indoor Hydro)",
     "strainNameCanonical": "Permanent Marker (Craft Indoor Hydro)",
     "brand": "Roemer Farms",
@@ -1174679,7 +1175090,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174687,14 +1175098,14 @@
   {
     "listingId": "roemer-farms-roemer-shrimp-scampi",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Roemer - Shrimp Scampi",
     "strainNameCanonical": "Shrimp Scampi",
     "brand": "Roemer Farms",
     "brandKey": "roemer",
-    "lineage": "UNKNOWN",
+    "lineage": "INDICA_DOMINANT",
     "thcPercent": 31.18,
-    "cbdPercent": 0,
+    "cbdPercent": null,
     "totalCannabinoidsPercent": null,
     "terpenes": {
       "source": "NONE",
@@ -1174724,52 +1175135,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "rolling-green-cannabis-rolling-green-biscotti-value",
-    "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
-    "strainNameRaw": "Rolling Green - Biscotti Value",
-    "strainNameCanonical": "Biscotti",
-    "brand": "Rolling Green Cannabis",
-    "brandKey": "rollinggreen",
-    "lineage": "UNKNOWN",
-    "thcPercent": 26.37,
-    "cbdPercent": 0,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": 2.63,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": [
-      "1A412030000038D000027866"
-    ],
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": null,
-    "description": null,
-    "sources": [
-      {
-        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174777,14 +1175143,14 @@
   {
     "listingId": "rolling-green-cannabis-rolling-green-black-garlic",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Rolling Green - Black Garlic",
     "strainNameCanonical": "Black Garlic",
     "brand": "Rolling Green Cannabis",
     "brandKey": "rollinggreen",
-    "lineage": "UNKNOWN",
+    "lineage": "INDICA_DOMINANT",
     "thcPercent": 29.25,
-    "cbdPercent": 0,
+    "cbdPercent": null,
     "totalCannabinoidsPercent": null,
     "terpenes": {
       "source": "NONE",
@@ -1174814,7 +1175180,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174822,7 +1175188,7 @@
   {
     "listingId": "rolling-green-cannabis-rolling-green-cap-junky-premium-line",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Rolling Green - Cap Junky (Premium Line)",
     "strainNameCanonical": "Cap Junky (Premium Line)",
     "brand": "Rolling Green Cannabis",
@@ -1174859,7 +1175225,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174867,14 +1175233,14 @@
   {
     "listingId": "rolling-green-cannabis-rolling-green-mint-gas",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Rolling Green - Mint Gas",
     "strainNameCanonical": "Mint Gas",
     "brand": "Rolling Green Cannabis",
     "brandKey": "rollinggreen",
-    "lineage": "UNKNOWN",
+    "lineage": "HYBRID",
     "thcPercent": 27.35,
-    "cbdPercent": 0,
+    "cbdPercent": null,
     "totalCannabinoidsPercent": null,
     "terpenes": {
       "source": "NONE",
@@ -1174904,52 +1175270,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "rolling-green-cannabis-rolling-green-permanent-marker",
-    "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
-    "strainNameRaw": "Rolling Green - Permanent Marker",
-    "strainNameCanonical": "Permanent Marker",
-    "brand": "Rolling Green Cannabis",
-    "brandKey": "rollinggreen",
-    "lineage": "UNKNOWN",
-    "thcPercent": 26.78,
-    "cbdPercent": 0,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": 2.13,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": [
-      "1A412030000038D000027872"
-    ],
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": null,
-    "description": null,
-    "sources": [
-      {
-        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1174957,7 +1175278,7 @@
   {
     "listingId": "royal-genetics-royal-genetics-rg-fruit-plate",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Royal Genetics RG Fruit Plate",
     "strainNameCanonical": "RG Fruit Plate",
     "brand": "Royal Genetics",
@@ -1174994,7 +1175315,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175002,7 +1175323,7 @@
   {
     "listingId": "lion-order-runna-gyal",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Runna Gyal",
     "strainNameCanonical": "Runna Gyal",
     "brand": "Lion Order",
@@ -1175039,7 +1175360,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175047,7 +1175368,7 @@
   {
     "listingId": "honey-king-runtz",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Runtz",
     "strainNameCanonical": "Runtz",
     "brand": "Honey King",
@@ -1175084,7 +1175405,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175092,7 +1175413,7 @@
   {
     "listingId": "rythm-scotch-soda-premium-flower",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Scotch & Soda - Premium Flower",
     "strainNameCanonical": "Scotch & Soda",
     "brand": "RYTHM",
@@ -1175129,52 +1175450,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "mini-mart-secret-stash",
-    "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
-    "strainNameRaw": "Secret Stash",
-    "strainNameCanonical": "Secret Stash",
-    "brand": "mini MART",
-    "brandKey": "minimart",
-    "lineage": "INDICA",
-    "thcPercent": 28.24,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": 1.27,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": [
-      "1A4120300000283000061978"
-    ],
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": null,
-    "description": null,
-    "sources": [
-      {
-        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175182,7 +1175458,7 @@
   {
     "listingId": "nanticoke-shot-caller",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Shot Caller",
     "strainNameCanonical": "Shot Caller",
     "brand": "Nanticoke",
@@ -1175219,7 +1175495,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175227,19 +1175503,19 @@
   {
     "listingId": "untitled-sour-diesel",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Sour Diesel",
     "strainNameCanonical": "Sour Diesel",
     "brand": "Untitled",
     "brandKey": "untitled",
     "lineage": "SATIVA",
-    "thcPercent": 29.97,
+    "thcPercent": 25.54,
     "cbdPercent": null,
     "totalCannabinoidsPercent": null,
     "terpenes": {
       "source": "NONE",
       "profile": [],
-      "totalPercent": 1.05,
+      "totalPercent": 0.77,
       "labName": null,
       "testedOn": null,
       "coaUrl": null,
@@ -1175247,7 +1175523,6 @@
     },
     "labPanelKey": null,
     "packageIds": [
-      "1A4120300000529000080492",
       "1A4120300000529000080496"
     ],
     "harvestedOn": null,
@@ -1175256,7 +1175531,6 @@
     "expiresWithinDays": null,
     "inStock": true,
     "availableSizesGrams": [
-      7,
       28
     ],
     "productUrl": null,
@@ -1175266,7 +1175540,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175274,7 +1175548,7 @@
   {
     "listingId": "oasis-sour-diesel-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Sour Diesel (Craft Indoor)",
     "strainNameCanonical": "Sour Diesel",
     "brand": "Oasis",
@@ -1175311,7 +1175585,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175319,7 +1175593,7 @@
   {
     "listingId": "cheech-chong-stadankohhh",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Stadankohhh",
     "strainNameCanonical": "Stadankohhh",
     "brand": "Cheech & Chong",
@@ -1175356,7 +1175630,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175364,7 +1175638,7 @@
   {
     "listingId": "rolling-green-cannabis-sub-zero-premium",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Sub Zero - Premium",
     "strainNameCanonical": "Sub Zero",
     "brand": "Rolling Green Cannabis",
@@ -1175401,7 +1175675,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175409,7 +1175683,7 @@
   {
     "listingId": "papa-s-herb-super-boof",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Super Boof",
     "strainNameCanonical": "Super Boof",
     "brand": "Papa's Herb",
@@ -1175446,7 +1175720,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175454,7 +1175728,7 @@
   {
     "listingId": "6-point-cannabis-super-boof-cherry",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Super Boof Cherry",
     "strainNameCanonical": "Super Boof Cherry",
     "brand": "6 Point Cannabis",
@@ -1175491,7 +1175765,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175499,7 +1175773,7 @@
   {
     "listingId": "hashtag-honey-super-silver-runtz",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Super Silver Runtz",
     "strainNameCanonical": "Super Silver Runtz",
     "brand": "Hashtag Honey",
@@ -1175536,7 +1175810,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175544,7 +1175818,7 @@
   {
     "listingId": "rythm-swamp-water-fumez-premium-flower",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Swamp Water Fumez - Premium Flower",
     "strainNameCanonical": "Swamp Water Fumez",
     "brand": "RYTHM",
@@ -1175581,7 +1175855,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175589,7 +1175863,7 @@
   {
     "listingId": "stayme7o-sweat-band-limited-collection",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Sweat Band - Limited Collection",
     "strainNameCanonical": "Sweat Band",
     "brand": "STAYME7O™",
@@ -1175626,7 +1175900,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175634,7 +1175908,7 @@
   {
     "listingId": "rythm-taffy-twist-premium-flower",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Taffy Twist - Premium Flower",
     "strainNameCanonical": "Taffy Twist",
     "brand": "RYTHM",
@@ -1175671,7 +1175945,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175679,7 +1175953,7 @@
   {
     "listingId": "puff-tangie",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Tangie",
     "strainNameCanonical": "Tangie",
     "brand": "Puff",
@@ -1175716,7 +1175990,52 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "papa-s-herb-trainwreck",
+    "licenseNumber": "OCM-RETL-24-000170",
+    "capturedAt": "2026-10-26T18:32:33Z",
+    "strainNameRaw": "Trainwreck",
+    "strainNameCanonical": "Trainwreck",
+    "brand": "Papa's Herb",
+    "brandKey": "papasherb",
+    "lineage": "SATIVA",
+    "thcPercent": 31.01,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 1.8,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A41203000018B1000101940"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      28
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175724,7 +1176043,7 @@
   {
     "listingId": "to-the-moon-turbo-toad-premium-flower",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Turbo Toad - Premium Flower",
     "strainNameCanonical": "Turbo Toad",
     "brand": "To The Moon",
@@ -1175761,7 +1176080,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175769,7 +1176088,7 @@
   {
     "listingId": "grams-vanilla-coke",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Vanilla Coke",
     "strainNameCanonical": "Vanilla Coke",
     "brand": "Grams",
@@ -1175806,7 +1176125,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175814,7 +1176133,7 @@
   {
     "listingId": "6-point-cannabis-wedding-mintz",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "Wedding Mintz",
     "strainNameCanonical": "Wedding Mintz",
     "brand": "6 Point Cannabis",
@@ -1175851,7 +1176170,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
@@ -1175859,7 +1176178,7 @@
   {
     "listingId": "lead-farmer-white-runtz-craft-indoor",
     "licenseNumber": "OCM-RETL-24-000170",
-    "capturedAt": "2026-10-24T13:31:53Z",
+    "capturedAt": "2026-10-26T18:32:33Z",
     "strainNameRaw": "White Runtz (Craft Indoor)",
     "strainNameCanonical": "White Runtz",
     "brand": "Lead Farmer",
@@ -1175896,7 +1176215,7 @@
         "url": "https://hightidezci.com/stores/cbj-retail/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-10-24T13:31:53Z"
+        "retrievedAt": "2026-10-26T18:32:33Z"
       }
     ],
     "warnings": []
