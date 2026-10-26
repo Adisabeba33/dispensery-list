@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { BrandIndex } from '@/components/BrandIndex';
 import { PageHead } from '@/components/PageParts';
 import { ShelfStamp } from '@/components/ShelfStamp';
-import { ShelvesArt } from '@/components/ShelvesArt';
 import { brandSummaries, PAGE_MIN_SHELVES } from '@/lib/shelf';
 
 export const metadata: Metadata = {
@@ -17,17 +16,30 @@ export default function BrandsPage() {
 
   return (
     <div className="pb-16">
-      {/* Clipped across, so the drawing at the screen's edge never scrolls
+      {/* Clipped across, so the picture at the screen's edge never scrolls
           the page sideways; never down, where the stamp's glow would be cut.
-          Where the screen is wider than the page, the drawing fades out at
+          Where the screen is wider than the page, the picture fades out at
           its right instead of being cut there. */}
       <section className="relative isolate overflow-x-clip">
         <div className="shell relative">
+          {/* The picture from the owner's mockup (26 October 2026): shelves of
+              jars at night and the licensed market's sign, cut from it with
+              the lede that lay over it taken out, and faded into the page at
+              its left and foot (public/art/brands-shelves.webp). Ornament
+              only, and of no shop in particular. */}
           <div
             aria-hidden
-            className="pointer-events-none absolute right-0 top-0 -z-10 w-[48%] max-w-[17rem] sm:w-[20rem] sm:max-w-none lg:w-[27rem] lg:[mask-image:linear-gradient(to_left,transparent,#000_14%)]"
+            className="pointer-events-none absolute right-0 top-0 -z-10 w-1/2 max-w-[17rem] sm:w-[20rem] sm:max-w-none lg:w-[26rem] lg:[mask-image:linear-gradient(to_left,transparent,#000_14%)]"
           >
-            <ShelvesArt className="h-auto w-full" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/art/brands-shelves.webp"
+              alt=""
+              width={846}
+              height={590}
+              decoding="async"
+              className="h-auto w-full select-none"
+            />
           </div>
 
           <PageHead
@@ -45,7 +57,7 @@ export default function BrandsPage() {
             className="pt-5 sm:pt-10 lg:pt-12"
           />
           {/* The home page's lede on a phone: a size under the other pages',
-              so the two lines leave the drawing its room. */}
+              so the two lines leave the picture its room. */}
           <p className="lede mt-3 max-w-2xl text-[0.84rem] leading-[1.6] sm:mt-4 sm:text-[1.0625rem] sm:leading-[1.65]">
             Pick a brand to see which of its strains are on a New York shelf now, in which weights, and at
             which shops.
