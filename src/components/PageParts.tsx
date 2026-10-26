@@ -69,6 +69,25 @@ export const SearchIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+/** The sliders on the button beside a search field that opens more filters. */
+export const SlidersIcon = ({ className = 'h-5 w-5' }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    aria-hidden
+    focusable="false"
+    className={clsx('shrink-0', className)}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+  >
+    <path d="M3.5 6h10M18.5 6h2M3.5 12h3M11.5 12h9M3.5 18h11M19.5 18h1" />
+    <circle cx="16" cy="6" r="2.25" />
+    <circle cx="9" cy="12" r="2.25" />
+    <circle cx="17" cy="18" r="2.25" />
+  </svg>
+);
+
 /** The home page's search field, its magnifier inside at the left; the
     placeholder set smaller on a phone narrower than 428px so it fits whole,
     while typed text stays 16px, and the clear button gone until there is

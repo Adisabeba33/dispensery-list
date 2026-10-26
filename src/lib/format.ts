@@ -57,6 +57,20 @@ export const prettyDate = (iso: string | null): string | null => {
   return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 };
 
+/* "Oct 4, 2026": the day it was in New York, not on the machine that built
+   the page — short enough for a line of the stamp's mono. */
+export const shortDate = (iso: string | null): string | null => {
+  if (!iso) return null;
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  return d.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'America/New_York',
+  });
+};
+
 /**
  * A moment, to the minute, in New York time.
  *
