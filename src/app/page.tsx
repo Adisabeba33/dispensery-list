@@ -6,21 +6,8 @@ import { HeroCode, HudBox } from '@/components/HeroArt';
 import { OpenNowCount } from '@/components/LiveHours';
 import { StatBoxes } from '@/components/PageParts';
 import { dispensaries, isDemoData, stats } from '@/lib/data';
+import { shortDate } from '@/lib/format';
 import { menuCounts } from '@/lib/menu';
-
-/* "Oct 19, 2026": short enough to share the build stamp's line, and the day
-   it was in New York, not on the machine that built the page. */
-const shortDate = (iso: string | null): string | null => {
-  if (!iso) return null;
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return null;
-  return d.toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-    timeZone: 'America/New_York',
-  });
-};
 
 export default function HomePage() {
   const s = stats();

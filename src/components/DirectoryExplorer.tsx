@@ -8,6 +8,7 @@ import { shopHoursState } from '@/lib/hours';
 import { DispensaryCard } from './DispensaryCard';
 import { useNyMoment } from './LiveHours';
 import { AllAreasIcon, AreaIcon, ShelfBarsIcon } from './AreaIcons';
+import { SlidersIcon } from './PageParts';
 
 const REGION_ORDER = ['Manhattan', 'Brooklyn', 'Queens', 'The Bronx', 'Staten Island', 'Westchester'];
 
@@ -57,24 +58,6 @@ const SearchIcon = ({ className }: { className?: string }) => (
   >
     <circle cx="10.5" cy="10.5" r="7" />
     <path d="m20.5 20.5-4.75-4.75" />
-  </svg>
-);
-
-const SlidersIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    aria-hidden
-    focusable="false"
-    className="h-5 w-5"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-  >
-    <path d="M3.5 6h10M18.5 6h2M3.5 12h3M11.5 12h9M3.5 18h11M19.5 18h1" />
-    <circle cx="16" cy="6" r="2.25" />
-    <circle cx="9" cy="12" r="2.25" />
-    <circle cx="17" cy="18" r="2.25" />
   </svg>
 );
 
