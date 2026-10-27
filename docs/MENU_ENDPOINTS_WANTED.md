@@ -1,6 +1,6 @@
 # Магазины, которым нужен адрес меню
 
-Работающих магазинов в реестре: **342**. Обход заходит в **259**, полку отдают **248**.
+Работающих магазинов в реестре: **342**. Обход заходит в **259**, полку отдают **249**.
 
 Этот файл собирается скриптом `scripts/menu-endpoints-wanted.py` по последнему прогону — правит его не рука, а следующий запуск.
 
@@ -29,7 +29,7 @@
 
 Проверить перед коммитом: `python scripts/validate-menu-endpoints.py`.
 
-## Пусто — 11
+## Пусто — 10
 
 | Магазин | Город | Сайт | Почему пусто |
 |---|---|---|---|
@@ -43,21 +43,19 @@
 | LYFE | Long Island City | https://lyfeastoria.com/ | ссылку на меню не нашли |
 | 581 Realty CRD LLC | Springfield Gardens | https://cannabisonconduit.com | ссылку на меню не нашли |
 | Gaz Station | Staten Island | https://www.gazstationny.com | страница вернула ноль товаров |
-| Green Land Retail LLC | Staten Island | https://greenlandny.com | страница вернула ноль товаров |
 
 ✳️ — адрес в `menu-endpoints.json` уже есть, и всё равно пусто: значит записанный адрес больше не тот.
 
-## Полка читается не до конца — 5
+## Полка читается не до конца — 4
 
 Здесь адрес есть и меню отвечает, но отдаёт меньше, чем само объявляет. Листание таким не помогло — им нужен прямой адрес категории.
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| Upstate Edge, LLC | 6 | 638 | https://ignyteny.com |
-| Cannabis Group NY, LLC | 7 | 638 | https://ignyteny.com |
-| JUST A LITTLE HIGHER MURRAY HILL | 2 | 98 | https://justalittlehigher.com |
-| OZ Dispensary | 82 | 142 | https://ozdispensary.com/ |
-| DAGGA LLC | 6 | 57 | https://justalittlehigher.com/ |
+| Upstate Edge, LLC | 6 | 634 | https://ignyteny.com |
+| Cannabis Group NY, LLC | 7 | 634 | https://ignyteny.com |
+| OZ Dispensary | 83 | 139 | https://ozdispensary.com/ |
+| DAGGA LLC | 6 | 54 | https://justalittlehigher.com/ |
 
 ## Сюда не ходим
 
@@ -67,5 +65,5 @@
 - **3** магазинов запретили обход в своём `robots.txt`. Мы спросили и получили отказ — это ответ, а не пробел, и искать им адрес меню не нужно. Отказ обычно приходит не от магазина, а от платформы, на которой стоит его витрина, и тогда уходит не один магазин, а все её. Список только растёт: сайт, который не отдал `robots.txt`, считается разрешившим, так что попасть сюда можно лишь по ясно объявленному запрету.
   - MZDZ Corp — Brooklyn, http://www.coneyislandcannabisny.com
   - Tiki Leaves LLC — Brooklyn, http://www.tikileaves.com
-  - Good Company — New York, https://goodcompanyshop.com
+  - Green Land Retail LLC — Staten Island, https://greenlandny.com
 
