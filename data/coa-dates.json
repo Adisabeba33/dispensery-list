@@ -40598,6 +40598,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39530.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39531.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "6ebdd36f98bd1a914dc80283149b685af1d0ba8b4ae0505f5b3265a813ac2d97",
+   "docType": "lab-coa",
+   "sampleId": "2608RLI0878-4391",
+   "batchTag": "NL15",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "DRS",
+    "name": "Northern Lights",
+    "matrix": "flower",
+    "licence": "OCM-MICR-24-000133",
+    "thc": 26.12,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.02,
+     "PINENE_BETA": 0.03,
+     "BISABOLOL": 0.02,
+     "CARYOPHYLLENE": 0.18,
+     "FARNESENE": 0.14,
+     "HUMULENE": 0.05,
+     "LIMONENE": 0.18,
+     "LINALOOL": 0.26,
+     "MYRCENE": 0.03,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39531.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/39540.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-09-04",
@@ -42648,6 +42686,44 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/40164.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/40234.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-30",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "a8432f6175a4a792fb018e1eb3b1b8d152e618a623cf065c106b5f24b4735f59",
+   "docType": "lab-coa",
+   "sampleId": "2604RLI0509-2621",
+   "batchTag": "042626DGPR",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "DRS",
+    "name": "Dye Hard Garlic",
+    "matrix": "other",
+    "licence": "OCM-MICR-24-000162",
+    "thc": 29.66,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.1,
+     "PINENE_BETA": 0.02,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.0,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.49,
+     "LIMONENE": 0.48,
+     "LINALOOL": 0.0,
+     "MYRCENE": 0.04,
+     "OCIMENE": 0.44,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/40234.pdf",
    "sourceKind": "menu"
   },
   "https://assets.zyrosite.com/m2WBVj81MEF0Eb43/s26-00691-fruity-pebbles-og-2g-aio-vape-s26-00491-4iI2luCuWjmMKKOl.pdf": {
@@ -117171,7 +117247,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://mcpikefarms.com/certificates-of-analysis/"
   },
@@ -117231,7 +117307,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117251,7 +117327,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117281,7 +117357,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117291,7 +117367,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117331,7 +117407,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117391,7 +117467,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117431,7 +117507,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117441,7 +117517,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://mcpikefarms.com/certificates-of-analysis/"
   },
@@ -117461,7 +117537,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117471,7 +117547,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117561,7 +117637,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117661,7 +117737,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117681,7 +117757,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117701,7 +117777,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117711,7 +117787,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117761,7 +117837,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117851,7 +117927,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117901,7 +117977,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://mcpikefarms.com/certificates-of-analysis/"
   },
@@ -117931,7 +118007,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117951,7 +118027,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117971,7 +118047,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -117981,7 +118057,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.heyflamer.com/coas"
   },
@@ -118001,7 +118077,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -118041,7 +118117,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -118051,7 +118127,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -118061,7 +118137,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -118111,7 +118187,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -118121,7 +118197,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -118141,7 +118217,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -118161,7 +118237,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -118191,7 +118267,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -118221,7 +118297,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -118271,7 +118347,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -118281,7 +118357,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "not-a-pdf",
+   "unread": "http-404",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
