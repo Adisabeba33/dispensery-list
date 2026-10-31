@@ -1,47 +1,51 @@
 # Research report — NYC + Westchester dispensaries
 
-Snapshot time: **2026-10-19T17:12:27.227Z**
+Snapshot time: **2026-10-31T02:59:38.647Z**
 
 ## Result
 
-Published current-license records: **472**.
-- OPEN: **342**
-- APPROVED_NOT_OPEN: **113**
-- UNKNOWN: **17**
-- VERIFIED_OFFICIAL: **472 / 472 (100%)**
+Published current-license records: **470**.
+- OPEN: **343**
+- APPROVED_NOT_OPEN: **111**
+- UNKNOWN: **16**
+- VERIFIED_OFFICIAL: **470 / 470 (100%)**
 
 ### By county
 
 | County | Total | Open | Approved not open | Unknown |
 |---|---:|---:|---:|---:|
-| New York | 122 | 100 | 19 | 3 |
-| Kings | 120 | 92 | 26 | 2 |
-| Queens | 118 | 83 | 30 | 5 |
+| New York | 123 | 101 | 19 | 3 |
+| Kings | 118 | 91 | 25 | 2 |
+| Queens | 118 | 84 | 30 | 4 |
 | Bronx | 36 | 23 | 12 | 1 |
-| Richmond | 24 | 16 | 6 | 2 |
-| Westchester | 52 | 28 | 20 | 4 |
+| Richmond | 24 | 17 | 5 | 2 |
+| Westchester | 51 | 27 | 20 | 4 |
 
 ## Source integrity findings
 
-The official OCM public-open page text advertises 717 adult-use dispensaries statewide, while the HTML table snapshot parsed into **744 data rows**. This mismatch is preserved as a source inconsistency; no synthetic 717th row was created.
+The official OCM public-open page text advertises 717 adult-use dispensaries statewide, while the HTML table snapshot parsed into **755 data rows**. This mismatch is preserved as a source inconsistency; no synthetic 717th row was created.
 
-The raw Current OCM Licenses snapshot contains **3033** rows. The first-pass six-county retail-ish filter produced **476** OCM-format licensed rows: **458 Active** and **8 Inactive/expired** before geography sanity filtering.
+The raw Current OCM Licenses snapshot contains **3040** rows. The first-pass six-county retail-ish filter produced **478** OCM-format licensed rows: **458 Active** and **8 Inactive/expired** before geography sanity filtering.
 
 Two rows are tagged `county=New York` / `region=Manhattan` in the official registry but have clearly upstate addresses and ZIPs; they are excluded from the NYC/Westchester deliverable and kept in the raw evidence:
 - `OCM-MICR-24-000199` — Copperhead Grow, LLC — 10242 State Route 12, Remsen NY 13438.
 - `OCM-RETL-26-000482` — Forage Dispensaries, LLC — 734 NY-32A, Palenville NY 12414.
 
-Expired/inactive OCM-format retail licenses excluded from the current directory: **11**.
+Expired/inactive OCM-format retail licenses excluded from the current directory: **15**.
 - `OCM-RETL-24-000121` — Altitude NY LLC — expired 2026-07-10.
 - `OCM-MICR-24-000043` — BKL Flowers LLC — expired 2026-04-08.
 - `OCM-RETL-24-000167` — Cannabis Creations INC — expired 2026-08-22.
+- `OCM-CAURD-24-000208` — Budr Cannabis — expired 2026-09-27.
 - `OCM-CAURD-24-000158` — DISCO HERBATORY LLC — expired 2026-06-28.
 - `OCM-CAURD-24-000049` — Culture House — expired 2026-01-12.
 - `OCM-RETL-24-000006` — HUDSON ECONOMICS LLC — expired 2026-02-28.
+- `OCM-CAURD-24-000206` — Gotham Williamsburg — expired 2026-09-20.
 - `OCM-CAURD-24-000186` — LAR MEMORABILIA LLC — expired 2026-08-09.
 - `OCM-RETL-24-000067` — MamitaJoy LLC — expired 2026-04-18.
 - `OCM-CAURD-24-000193` — Northern Lights Dispensary LLC — expired 2026-08-23.
 - `OCM-CAURD-23-000015` — Statis Cannabis Co — expired 2025-06-27.
+- `OCM-CAURD-24-000207` — R & R Remedies — expired 2026-09-27.
+- `OCM-RETL-24-000185` — Satura Development Group LLC — expired 2026-09-19.
 - `MM0802D` — Sunnyside — expired date unavailable.
 
 ## Registered Organizations
@@ -59,7 +63,6 @@ These licenses are `Active` and the registry operating-address status is `Active
 - `OCM-RETL-26-000514` — NY Retail 4 Inc. — 435 5th Ave, New York 10016
 - `OCM-RETL-25-000369` — M & M Neighborhood Convenience Inc. — 246-01 Jamaica Ave, Bellerose 11426
 - `OCM-CAURD-25-000231` — Token Retail Inc — 9229 Queens Blvd, Rego Park 11374
-- `OCM-RETL-26-000526` — GANJA GARDEN — 11907 Jamaica Ave, Richmond Hill 11418
 - `OCM-CAURD-26-000326` — Gaia Operations LLC — 10412 Lefferts Blvd, South Richmond Hill 11419
 - `OCM-RETL-24-000046` — KiKi Buddz Corp. — 50-12 72nd Street, Woodside 11377
 - `OCM-CAURD-25-000273` — A Cannaful Life LLC — 1547 Arthur Kill Road, Staten Island 10312
