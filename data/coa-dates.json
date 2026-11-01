@@ -34639,6 +34639,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/37735.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/37736.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "070315d2d77b0045cb881ea8a05bc882a996c06aef8dc2014b7a1bb4fd39cfa0",
+   "docType": "lab-coa",
+   "sampleId": "20260811-HMOF-006",
+   "batchTag": "MM0242",
+   "lotNumber": "MM0242",
+   "metrcTag": null,
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Mini MART | Flower | 3.5 Gram | Ortega | Indica",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000119",
+    "thc": 27.19,
+    "totalTerpenes": 1.01,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.14,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.0,
+     "LIMONENE": 0.16,
+     "LINALOOL": 0.21,
+     "MYRCENE": 0.36,
+     "OCIMENE": 0.06,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/37736.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/37745.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-08-11",
@@ -36833,6 +36871,44 @@
     }
    }
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38856.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-03-31",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "055c8de1e002a7a0327c15d329eae45777adfb3872d6b54f3ec4468f595cc0ee",
+   "docType": "lab-coa",
+   "sampleId": "2603RLI0368-1890",
+   "batchTag": "INSOS07",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "DRS",
+    "name": "Sour Sherbanger",
+    "matrix": "flower",
+    "licence": "OCM-MICR-24-000101",
+    "thc": 28.68,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.04,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.47,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.43,
+     "LIMONENE": 0.0,
+     "LINALOOL": 0.0,
+     "MYRCENE": 0.0,
+     "OCIMENE": 0.28,
+     "TERPINOLENE": 0.13
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/38856.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/38858.pdf": {
    "lab": "DRS",
    "sampled": "2026-03-31",
@@ -37944,6 +38020,44 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/38901.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/38902.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "4fe9617c737da6d4d4b03a7ed57b7145ce357c621eacb0a5108f8b895f0cda20",
+   "docType": "lab-coa",
+   "sampleId": "20260901-HMOF-005",
+   "batchTag": "MM0256",
+   "lotNumber": "MM0256",
+   "metrcTag": null,
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Mini MART | Flower | 3.5 Gram | Galactic Cookies | Indica",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000119",
+    "thc": 28.15,
+    "totalTerpenes": 1.78,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.19,
+     "CARYOPHYLLENE": 0.44,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.14,
+     "LIMONENE": 0.3,
+     "LINALOOL": 0.42,
+     "MYRCENE": 0.23,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/38902.pdf",
    "sourceKind": "menu"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/38906.pdf": {
@@ -39726,6 +39840,44 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39249.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39250.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "dd8cb43d1e776dbb7b8b61d4b7ae4b3524baed78d595c74a0ac1d82cf91c60ae",
+   "docType": "lab-coa",
+   "sampleId": "20260916-HMOF-004",
+   "batchTag": "MM0263",
+   "lotNumber": "MM0263",
+   "metrcTag": "1A412030000022C000003994",
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Mini MART | Flower | 3.5 Gram | Peanut Butter Gelato | Hybrid",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000119",
+    "thc": 29.15,
+    "totalTerpenes": 1.4,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.14,
+     "CARYOPHYLLENE": 0.37,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.1,
+     "LIMONENE": 0.24,
+     "LINALOOL": 0.38,
+     "MYRCENE": 0.17,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39250.pdf",
    "sourceKind": "menu"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/39252.pdf": {
@@ -41550,6 +41702,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39644.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39645.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "fd8e794a847c330f7840b1969c1185edb70f92a0fe4607e0a81f2ae2c783c76a",
+   "docType": "lab-coa",
+   "sampleId": "20260917-HMOF-002",
+   "batchTag": "MM0260",
+   "lotNumber": "MM0260",
+   "metrcTag": "1A412030000022C000006088",
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Mini MART | Flower | 3.5 Gram | Orange Elixir | Sativa",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000119",
+    "thc": 31.55,
+    "totalTerpenes": 1.29,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.4,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.12,
+     "LIMONENE": 0.32,
+     "LINALOOL": 0.22,
+     "MYRCENE": 0.11,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39645.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/39646.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-09-25",
@@ -42992,6 +43182,44 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/40234.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/40274.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "b4980eb27bab37f741daca6ac7f3edd6015df5a7dce0cbf8ed69f20a4c6ad925",
+   "docType": "lab-coa",
+   "sampleId": "AL60514001-001",
+   "batchTag": "P-FDWF352026-794A",
+   "lotNumber": null,
+   "metrcTag": "1A412030000026D000010041",
+   "panel": {
+    "lab": "Kaycha",
+    "name": null,
+    "matrix": "flower",
+    "licence": null,
+    "thc": 26.74,
+    "totalTerpenes": 2.36,
+    "terpenes": {
+     "PINENE_ALPHA": 0.06,
+     "PINENE_BETA": 0.1,
+     "BISABOLOL": 0.02,
+     "CARYOPHYLLENE": 0.65,
+     "FARNESENE": 0.12,
+     "HUMULENE": 0.2,
+     "LIMONENE": 0.7,
+     "LINALOOL": 0.12,
+     "MYRCENE": 0.21,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.01
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/40274.pdf",
    "sourceKind": "menu"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/40277.pdf": {
