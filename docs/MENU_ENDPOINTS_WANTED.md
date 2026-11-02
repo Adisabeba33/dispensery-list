@@ -47,6 +47,16 @@
 
 ✳️ — адрес в `menu-endpoints.json` уже есть, и всё равно пусто: значит записанный адрес больше не тот.
 
+## Полка читается не до конца — 3
+
+Здесь адрес есть и меню отвечает, но отдаёт меньше, чем само объявляет. Листание таким не помогло — им нужен прямой адрес категории.
+
+| Магазин | Держим | Меню объявляет | Сайт |
+|---|---:|---:|---|
+| Upstate Edge, LLC | 6 | 628 | https://ignyteny.com |
+| Cannabis Group NY, LLC | 7 | 628 | https://ignyteny.com |
+| OZ Dispensary | 83 | 136 | https://ozdispensary.com/ |
+
 ## Сюда не ходим
 
 - **72** магазинов на паузе (`data/menu-paused.json`): их меню Dutchie открывается в окне dutchie.com, которое с 24.09 отвечает автоматическим браузерам только проверкой «вы не бот?». Плановый прогон к ним не ходит, на сайте остаётся их последняя прочитанная полка. Проверить, не открылся ли Dutchie, можно ручным прогоном «Dutchie menus, slowly».
@@ -57,6 +67,6 @@
   - Tiki Leaves LLC — Brooklyn, http://www.tikileaves.com
   - Kushie — Forest Hills, https://kushieny.com
   - CannaBees — Maspeth, https://cannabeesdispensary.com
+  - Good Company — New York, https://goodcompanyshop.com
   - 581 Realty CRD LLC — Springfield Gardens, https://cannabisonconduit.com
-  - Cannabis Group NY, LLC — Whitestone, https://ignyteny.com
 
