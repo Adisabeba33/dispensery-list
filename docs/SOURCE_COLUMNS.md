@@ -1,6 +1,6 @@
 # Current OCM Licenses — source columns
 
-Snapshot: `2026-10-31T02:59:38.647Z`
+Snapshot: `2026-11-02T20:31:16.317Z`
 Dataset: `https://data.ny.gov/Economic-Development/Current-OCM-Licenses/jskf-tt3q`
 Raw rows: **3040**
 

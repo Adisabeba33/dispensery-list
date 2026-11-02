@@ -1,20 +1,20 @@
 # Research report — NYC + Westchester dispensaries
 
-Snapshot time: **2026-10-31T02:59:38.647Z**
+Snapshot time: **2026-11-02T20:31:16.317Z**
 
 ## Result
 
-Published current-license records: **470**.
+Published current-license records: **471**.
 - OPEN: **343**
-- APPROVED_NOT_OPEN: **111**
+- APPROVED_NOT_OPEN: **112**
 - UNKNOWN: **16**
-- VERIFIED_OFFICIAL: **470 / 470 (100%)**
+- VERIFIED_OFFICIAL: **471 / 471 (100%)**
 
 ### By county
 
 | County | Total | Open | Approved not open | Unknown |
 |---|---:|---:|---:|---:|
-| New York | 123 | 101 | 19 | 3 |
+| New York | 124 | 101 | 20 | 3 |
 | Kings | 118 | 91 | 25 | 2 |
 | Queens | 118 | 84 | 30 | 4 |
 | Bronx | 36 | 23 | 12 | 1 |
@@ -25,7 +25,7 @@ Published current-license records: **470**.
 
 The official OCM public-open page text advertises 717 adult-use dispensaries statewide, while the HTML table snapshot parsed into **755 data rows**. This mismatch is preserved as a source inconsistency; no synthetic 717th row was created.
 
-The raw Current OCM Licenses snapshot contains **3040** rows. The first-pass six-county retail-ish filter produced **478** OCM-format licensed rows: **458 Active** and **8 Inactive/expired** before geography sanity filtering.
+The raw Current OCM Licenses snapshot contains **3040** rows. The first-pass six-county retail-ish filter produced **479** OCM-format licensed rows: **458 Active** and **8 Inactive/expired** before geography sanity filtering.
 
 Two rows are tagged `county=New York` / `region=Manhattan` in the official registry but have clearly upstate addresses and ZIPs; they are excluded from the NYC/Westchester deliverable and kept in the raw evidence:
 - `OCM-MICR-24-000199` — Copperhead Grow, LLC — 10242 State Route 12, Remsen NY 13438.
