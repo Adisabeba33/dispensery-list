@@ -1,6 +1,6 @@
 # Магазины, которым нужен адрес меню
 
-Работающих магазинов в реестре: **343**. Обход заходит в **257**, полку отдают **246**.
+Работающих магазинов в реестре: **343**. Обход заходит в **257**, полку отдают **245**.
 
 Этот файл собирается скриптом `scripts/menu-endpoints-wanted.py` по последнему прогону — правит его не рука, а следующий запуск.
 
@@ -29,12 +29,12 @@
 
 Проверить перед коммитом: `python scripts/validate-menu-endpoints.py`.
 
-## Пусто — 11
+## Пусто — 12
 
 | Магазин | Город | Сайт | Почему пусто |
 |---|---|---|---|
 | Weed Mart By New Metro | Bayside | https://newmetro.club | стена на странице меню (cloudflare-challenge) — **не трогать** |
-| Just a Little Higher Briarwood ✳️ | Briarwood | https://justalittlehigher.com/ | прочитано 112 товаров, ни один не цветок |
+| Just a Little Higher Briarwood ✳️ | Briarwood | https://justalittlehigher.com/ | прочитано 60 товаров, ни один не цветок |
 | Caffiend LLC ✳️ | Brooklyn | https://thebushwicknyc.com | стена на странице меню (cloudflare-challenge) — **не трогать** |
 | Cannabis Kingdom Inc. | Brooklyn | https://www.bkgrass.com | страница вернула ноль товаров |
 | Green Room Dispensary LLC | Brooklyn | https://greenroomny.com | страница вернула ноль товаров |
@@ -42,6 +42,7 @@
 | Empire Plant Services Holdings LLC | Farmingdale | https://www.theartisttree.com/farmingdale-dispensary/ | страница вернула ноль товаров |
 | Mirae Corp | Flushing | https://pureleafflower.nyc | страница вернула ноль товаров |
 | LYFE | Long Island City | https://lyfeastoria.com/ | ссылку на меню не нашли |
+| Up the River Cannabis Dispensary | Ossining | https://www.uptheriver914.com | robots.txt запрещает — **не трогать** |
 | Gaz Station | Staten Island | https://www.gazstationny.com | страница вернула ноль товаров |
 | Green Land Retail LLC | Staten Island | https://greenlandny.com | ссылку на меню не нашли |
 
@@ -53,9 +54,9 @@
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| Upstate Edge, LLC | 6 | 628 | https://ignyteny.com |
-| Cannabis Group NY, LLC | 7 | 628 | https://ignyteny.com |
-| OZ Dispensary | 83 | 136 | https://ozdispensary.com/ |
+| Upstate Edge, LLC | 6 | 625 | https://ignyteny.com |
+| Cannabis Group NY, LLC | 7 | 625 | https://ignyteny.com |
+| JUST A LITTLE HIGHER MURRAY HILL | 2 | 110 | https://justalittlehigher.com |
 
 ## Сюда не ходим
 
