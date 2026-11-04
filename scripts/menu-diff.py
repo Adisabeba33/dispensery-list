@@ -162,6 +162,30 @@ def aged_out(lic):
     return at is not None and at < cutoff
 
 adjudicated = {lic for lic, _b, _a in collapsed if aged_out(lic)}
+
+# Полку, чьё последнее чтение старше месяца, сборщик снимает сам
+# (CARRY_FORWARD_DAYS в scripts/menu-render.mjs): магазин, который мы больше
+# не читаем — сайт закрыл меню в robots.txt, сменил платформу, лёг, — тридцать
+# дней держит прежнюю полку, а потом теряет её, потому что полка месячной
+# давности хуже, чем никакой. Это не недолистанная страница. И если такое
+# снятие запрещает публикацию, оно не кончается никогда: неопубликованный день
+# оставляет в main ту же старую полку, и назавтра она «пропадает» снова.
+# Ровно так 3 и 4 ноября 2026 года два дня подряд ушли на ветки из-за одной
+# полки — Up the River (Ossining), прочитанной 4 октября: с тех пор её сайт
+# закрыл меню в robots.txt.
+#
+# Сборщик снимает по своим часам, а мы смотрим позже, так что всё, что он снял
+# за давностью, здесь тоже старше тридцати дней.
+CARRY_FORWARD_DAYS = 30
+stale_cutoff = datetime.now(timezone.utc).timestamp() - CARRY_FORWARD_DAYS * 86400
+
+def carried_out(lic):
+    at = newest_reading(before, lic)
+    return at is not None and at < stale_cutoff
+
+aged_away = [lic for lic in vanished if carried_out(lic)]
+vanished = [lic for lic in vanished if lic not in aged_away]
+
 if held:
     lines += ["", f"### Полки, оставленные от прошлого чтения: {len(held)}", "",
               "Прочитано заметно меньше прежнего — не публикуем, держим прежнее.",
@@ -196,6 +220,17 @@ if refused_gone:
         else:
             why = "полка другого штата"
         lines.append(f"- **{shops.get(lic, lic)}**: {len(sb[lic])} → 0 — {why}")
+if aged_away:
+    lines += ["", f"### Полки, снятые за давностью: {len(aged_away)}", "",
+              f"Магазин не читался больше {CARRY_FORWARD_DAYS} дней, и сборщик снял его",
+              "прежнюю полку сам — это не обрыв. Почему магазин не читается,",
+              "стоит посмотреть руками.", ""]
+    for lic in aged_away[:20]:
+        day = datetime.fromtimestamp(newest_reading(before, lic), timezone.utc).strftime("%Y-%m-%d")
+        c = coverage.get(lic) if isinstance(coverage.get(lic), dict) else {}
+        now_why = c.get("menuLink") if c.get("menuLink") == "robots-disallowed" else c.get("status")
+        lines.append(f"- **{shops.get(lic, lic)}**: {len(sb[lic])} → 0 — прочитана {day}"
+                     + (f", сегодня: {now_why}" if now_why else ""))
 if settled:
     lines += ["", f"### Полки, принятые после выдержки: {len(settled)}", "",
               "Держали прежнее чтение, оно устарело за два дня — взяли новое.",
