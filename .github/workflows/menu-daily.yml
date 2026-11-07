@@ -41,6 +41,10 @@ jobs:
     # its timeout publishes nothing, so the limit leaves an hour to spare.
     timeout-minutes: 360
     steps:
+      # When the job began, so that Shelf lots can tell how much of the
+      # job's six hours is left (see there).
+      - name: Note the start
+        run: echo "job_started=$(date +%s)" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
         with:
           # The branch as it stands when this run starts, not the commit it was
@@ -214,19 +218,52 @@ jobs:
         # certificate panel (up to 150 more a run, for about six days). If this step runs long it is stopped, and the day's menus
         # still publish: until Publish, everything the run has read lives only
         # on this runner, and a job cut off by its own timeout loses it all.
+        #
+        # The step's own limit is not enough on its own. On 6 November 2026
+        # reading the menus took 5 h 15 min (3 h the day before), Shelf lots
+        # began at minute 327 of the job, and after 33 minutes the job's own
+        # six hours ran out: the whole job was cancelled, Publish never ran,
+        # and the site stayed on 5 November. So the step now gets what is left
+        # of the job less the minutes Publish and the report need, and when
+        # that runs out it stops itself, puts its files back as they were, and
+        # lets the menus publish. Tomorrow's run asks the lots again.
         timeout-minutes: 105
         run: |
+          lots_files="data/coa-sources.json data/coa-dates.json data/retail-id.json data/shelf-terpenes.json data/coa-http-state.json data/shelf-terpenes-archive.json"
+          elapsed=$(( ($(date +%s) - job_started) / 60 ))
+          # 360 is the job's timeout-minutes; 15 are kept for Publish and the report.
+          budget=$(( 360 - 15 - elapsed ))
+          [ "$budget" -gt 100 ] && budget=100
+          if [ "$budget" -lt 10 ]; then
+            echo "::warning::Shelf lots skipped: the menus took ${elapsed} min and only ${budget} min of the job are left."
+            printf '\n### Партии\n\n_Сегодня не обновлены: чтение меню заняло %s мин, на партии времени не осталось. Меню опубликованы._\n' "$elapsed" >> menu-report.md
+            exit 0
+          fi
+          echo "Shelf lots: ${budget} min (menus took ${elapsed} min)"
           sudo apt-get install -y -qq poppler-utils > /dev/null
-          python scripts/shelf-terpenes.py
-          python scripts/coa-sources.py >> menu-report.md || true
-          python scripts/coa-dates.py
-          python scripts/retail-id.py
-          python scripts/shelf-terpenes.py
-          python scripts/freshness.py >> menu-report.md || true
-          git add data/coa-sources.json data/coa-dates.json data/retail-id.json data/shelf-terpenes.json
-          if [ -f data/coa-http-state.json ]; then git add data/coa-http-state.json; fi
-          if [ -f data/shelf-terpenes-archive.json ]; then git add data/shelf-terpenes-archive.json; fi
-          git diff --cached --quiet || git commit -q -m "menu: shelf lots"
+          if timeout --kill-after=60 "${budget}m" bash -e -c '
+            python scripts/shelf-terpenes.py
+            python scripts/coa-sources.py >> menu-report.md || true
+            python scripts/coa-dates.py
+            python scripts/retail-id.py
+            python scripts/shelf-terpenes.py
+            python scripts/freshness.py >> menu-report.md || true
+          '; then
+            for f in $lots_files; do if [ -f "$f" ]; then git add "$f"; fi; done
+            git diff --cached --quiet || git commit -q -m "menu: shelf lots"
+          else
+            code=$?
+            # A script stopped half-way may have left a file half-written:
+            # nothing of today's lots is kept, yesterday's stay.
+            for f in $lots_files; do
+              if git ls-files --error-unmatch "$f" > /dev/null 2>&1; then git checkout -- "$f"; else rm -f "$f"; fi
+            done
+            if [ "$code" -eq 124 ] || [ "$code" -eq 137 ]; then
+              echo "::warning::Shelf lots stopped after ${budget} min so the menus can still publish; today's lots are not kept."
+              printf '\n### Партии\n\n_Сегодня не обновлены: остановлены через %s мин, чтобы меню успели опубликоваться (чтение меню заняло %s мин)._\n' "$budget" "$elapsed" >> menu-report.md
+            fi
+            exit "$code"
+          fi
 
       # Menus are the point of the site and they change daily, so a clean run
       # publishes itself. A run that produced a collapsed shelf does not: that
