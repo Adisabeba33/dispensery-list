@@ -66,7 +66,12 @@ jobs:
           node scripts/menu-parse-check.mjs
           python scripts/coa-forensics-check.py
       - run: |
-          npm install --no-save playwright
+          # Pinned (7 November 2026). Unpinned, every run took the newest
+          # Playwright: 1.65.0 came out at 18:28 UTC on 5 November, and the next
+          # day's run, same code and same shops, read a batch of 35 shops in
+          # 36–52 minutes instead of 22, ran past the job's six hours and
+          # published nothing. Raise it on purpose, and watch the batch times.
+          npm install --no-save playwright@1.64.1
           npx playwright install --with-deps chromium
       - name: Check the collector against a fixture storefront
         run: node scripts/menu-e2e-check.mjs
