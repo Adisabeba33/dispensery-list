@@ -136,6 +136,23 @@ const skipProviderArg = process.argv.indexOf('--skip-provider');
 const skipProvider = skipProviderArg > -1 ? String(process.argv[skipProviderArg + 1] ?? '').toUpperCase() || null : null;
 const pauseArg = process.argv.indexOf('--pause');
 const PAUSE_MS = pauseArg > -1 ? Math.max(0, Number(process.argv[pauseArg + 1]) || 0) * 1000 : 0;
+/* --parallel N reads N shops at once (default one). Added 8 November 2026:
+   one at a time, 265 shops took three hours of the daily job's six, and when
+   a new browser made forty-six of them three minutes slower each the job ran
+   out of time and published nothing for three days. Each shop is still one
+   visitor: two shops on the same site — a chain's branches — are never read
+   at the same moment (siteKeysOf), so no site sees more of us than before. */
+const parallelArg = process.argv.indexOf('--parallel');
+const PARALLEL = Math.min(
+  6,
+  Math.max(1, Number(parallelArg > -1 ? process.argv[parallelArg + 1] : process.env.MENU_PARALLEL) || 1),
+);
+/* No shop gets more than this. On a good day the slowest shop takes two and a
+   half minutes (scrolling, 150 s, and paging, 45 s, have budgets of their
+   own); on 6 November 2026 Nube NYC took sixteen. A shop that runs past it is
+   stopped, keeps the shelf it had (the carry-forward rule), and is not asked a
+   second time that run. */
+const SHOP_CAP_MS = Number(process.env.MENU_SHOP_CAP_MS) || 6 * 60 * 1000;
 /* --dump-links reports the menu links a shop publishes, scored. A chain hands
    every licence the same shelf until someone writes down which address belongs
    to which branch, and that cannot be guessed from here — it has to be read
@@ -535,15 +552,23 @@ const askRobots = async (origin) => {
   if (!byBrowser.stop || byBrowser.stop === 'robots-access-wall') return byBrowser;
   return betterRobotsVerdict(byBrowser, await askRobotsByFetch(url));
 };
+/* With shops read side by side, two of them can want the same API host's
+   robots.txt at once; it is asked once and both wait for that answer. */
+const robotsAsking = new Map();
 const robotsOf = async (origin) => {
   if (!robotsCache.has(origin)) {
-    let verdict;
-    try {
-      verdict = await askRobots(origin);
-    } catch {
-      verdict = { stop: 'robots-unreachable' };
+    if (!robotsAsking.has(origin)) {
+      robotsAsking.set(origin, (async () => {
+        let verdict;
+        try {
+          verdict = await askRobots(origin);
+        } catch {
+          verdict = { stop: 'robots-unreachable' };
+        }
+        robotsCache.set(origin, verdict);
+      })());
     }
-    robotsCache.set(origin, verdict);
+    await robotsAsking.get(origin);
   }
   return robotsCache.get(origin);
 };
@@ -4854,6 +4879,21 @@ const toListing = (p, shop, sourceUrl, rawTerpNames) => {
   };
 };
 
+/* Which site a shop's visit lands on, for keeping two visits off one site at
+   once: the registered website's host without www, and the host of the menu
+   address on file when there is one (a chain's branches often share it). */
+const siteKeysOf = (shop) => {
+  const hosts = [];
+  for (const u of [shop.contact?.website, ENDPOINTS[shop.licenseNumber]]) {
+    try {
+      if (u) hosts.push(new URL(u).hostname.replace(/^www\./, ''));
+    } catch {
+      /* not an address */
+    }
+  }
+  return hosts.length ? [...new Set(hosts)] : [shop.licenseNumber];
+};
+
 const main = async () => {
   if (countOnly) {
     console.log(candidates.length);
@@ -4878,7 +4918,6 @@ const main = async () => {
   const rawTerpNames = {};
   const capturedShapes = {};
   let done = 0;
-  let skipped = 0;
   let visitedOnce = false;
 
   /* Time already spent on second visits, against RETRY_BUDGET_MS. */
@@ -4892,27 +4931,22 @@ const main = async () => {
    * value of the second visit. Knocking again five seconds later asks the same
    * unfinished page the same question; asking after the rest of the batch gives
    * a site that was deploying, throttling or simply slow the time to come back. */
-  const queue = candidates.map((shop) => ({ shop, attempt: 1 }));
+  /* Only first visits count against the batch: the batch is the shops from
+     --offset, --limit of them, and a retry queued behind them never pushes one
+     off the end. (Until 8 November this was counted shop by shop as the list
+     was walked; with shops read side by side the window is taken up front, and
+     it is the same window.) */
+  const queue = candidates.slice(offset, offset + limit).map((shop) => ({ shop, attempt: 1 }));
 
-  for (const job of queue) {
+  const visit = async (job) => {
     const { shop } = job;
-    /* Only first visits count against the batch. A retry that consumed one of
-       the thirty-five would push a shop off the end of the batch and out of the
-       day's run entirely — the offsets the workflow walks are fixed. And the
-       list cannot be broken out of once the limit is reached, because the
-       retries are queued behind it. */
-    if (job.attempt === 1 && done >= limit) continue;
-    if (job.attempt === 1 && skipped < offset) {
-      skipped += 1;
-      continue;
-    }
     if (job.attempt > 1 && retrySpent >= RETRY_BUDGET_MS) {
       /* Said, not swallowed. A shop that was owed a second visit and did not
          get one looks exactly like a shop that got one and stayed empty, and
          those want opposite things done about them. */
       const at = report.findIndex((r) => r.licence === shop.licenseNumber);
       if (at > -1) report[at].retryBudgetSpent = true;
-      continue;
+      return;
     }
     /* A second visit after a short first reading: that reading's listings are
        set aside, so the visit starts from a clean shelf and the two are never
@@ -4982,7 +5016,7 @@ const main = async () => {
         ...(why ? { robots: why } : {}),
       });
       console.log(`${done}/${limit} ${shop.dbaName ?? shop.legalName}: robots-disallowed${why ? ` (${why})` : ''}`);
-      continue;
+      return;
     }
     const startedAt = Date.now();
 
@@ -5168,6 +5202,13 @@ const main = async () => {
     /* The street it is on and what it trades as — read the other way round,
        when none of the register's words for the place picks out a branch. */
     entry.placeText = registerTextOf(shop);
+    /* SHOP_CAP_MS: closing the context makes every wait on its page give up,
+       and the visit ends through its own catch below. */
+    let timeCapped = false;
+    const capTimer = setTimeout(() => {
+      timeCapped = true;
+      context.close().catch(() => {});
+    }, SHOP_CAP_MS);
     try {
       /* Wait for the fetching to stop rather than for a fixed number of
          seconds. The same shop returned forty products one day and none the
@@ -6147,6 +6188,17 @@ const main = async () => {
     } catch (e) {
       entry.status = `error: ${e.message.slice(0, 120)}`;
     }
+    clearTimeout(capTimer);
+    if (timeCapped) {
+      /* Nothing half-read is kept: whatever this visit put on the shelf goes,
+         and the shop keeps the reading it had. */
+      for (let i = listings.length - 1; i >= 0; i -= 1) {
+        if (listings[i].licenseNumber === shop.licenseNumber) listings.splice(i, 1);
+      }
+      entry.status = `error: stopped after ${Math.round(SHOP_CAP_MS / 60000)} min (time cap per shop)`;
+      entry.timeCapped = true;
+      entry.flower = 0;
+    }
 
     /* Nothing today from a shop that had a shelf yesterday. That is rarely a
        shop that sold out and never restocked — it is a page that had not
@@ -6169,6 +6221,7 @@ const main = async () => {
     const hadBefore = PREVIOUS_SHELF.get(shop.licenseNumber) ?? 0;
     if (
       !afterRun &&
+      !timeCapped &&
       job.attempt === 1 &&
       (!entry.flower || entry.flower * 2 < hadBefore) &&
       entry.menuLink !== 'robots-disallowed' &&
@@ -6217,9 +6270,55 @@ const main = async () => {
     console.log(
       `${done}/${limit} ${entry.shop}: ${entry.status}${job.attempt > 1 ? ' (asked again)' : ''}`,
     );
-    await context.close();
+    await context.close().catch(() => {});
     await new Promise((r) => setTimeout(r, 1500)); // be a considerate visitor
-  }
+  };
+
+  /* PARALLEL workers take shops off the queue in order, each skipping a shop
+     whose site another worker is reading at that moment. A retry is put on the
+     end of the queue by the visit that asks for it, so a worker that finds
+     nothing left waits while any visit is still running. */
+  const busySites = new Set();
+  let running = 0;
+  const worker = async () => {
+    for (;;) {
+      const at = queue.findIndex((j) => !j.taken && !siteKeysOf(j.shop).some((h) => busySites.has(h)));
+      if (at === -1) {
+        if (!queue.some((j) => !j.taken) && running === 0) return;
+        await new Promise((r) => setTimeout(r, 500));
+        continue;
+      }
+      const job = queue[at];
+      job.taken = true;
+      const sites = siteKeysOf(job.shop);
+      for (const h of sites) busySites.add(h);
+      running += 1;
+      try {
+        /* The cap closes the shop's browser context, which ends every wait on
+           its pages; this is the backstop for a wait that is not on a page. */
+        let hardStop;
+        await Promise.race([
+          visit(job),
+          new Promise((resolve) => {
+            hardStop = setTimeout(() => {
+              console.log(`${job.shop.dbaName ?? job.shop.legalName}: still running after the cap, left behind`);
+              resolve();
+            }, SHOP_CAP_MS + 2 * 60 * 1000);
+          }),
+        ]).finally(() => clearTimeout(hardStop));
+      } catch (e) {
+        console.log(`${job.shop.dbaName ?? job.shop.legalName}: visit failed: ${String(e?.message ?? e).slice(0, 120)}`);
+      } finally {
+        running -= 1;
+        for (const h of sites) busySites.delete(h);
+      }
+    }
+  };
+  await Promise.all(Array.from({ length: PARALLEL }, () => worker()));
+  /* Rows in the order of the list, as when shops were read one by one, so the
+     summary does not depend on which visit happened to finish first. */
+  const placeInList = new Map(candidates.map((c, i) => [c.licenseNumber, i]));
+  report.sort((a, b) => (placeInList.get(a.licence) ?? 1e9) - (placeInList.get(b.licence) ?? 1e9));
 
   await browser.close();
 

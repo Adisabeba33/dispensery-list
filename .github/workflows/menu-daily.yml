@@ -21,6 +21,9 @@ on:
       batch:
         description: Shops per batch
         default: '35'
+      parallel:
+        description: Shops read at the same time (never two on one site)
+        default: '3'
 
 permissions:
   contents: write
@@ -36,15 +39,16 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    # 4 October: reading every menu took 3 h 48 min (325 shops), and Shelf lots
-    # now asks Retail ID one card at a time (about 25 minutes). A job cut off by
-    # its timeout publishes nothing, so the limit leaves an hour to spare.
+    # Six hours is GitHub's ceiling for a job, and a job cut off by it publishes
+    # nothing. From 6 to 8 November 2026 three runs in a row were: the menus
+    # took nearly five hours with a new browser, and Shelf lots, in the same
+    # job then, ran into the ceiling. Since 8 November shops are read three at
+    # a time and Shelf lots is a job of its own (lots, below), started once
+    # the menus are published, so this job only reads and publishes.
     timeout-minutes: 360
+    outputs:
+      published: ${{ steps.publish.outputs.published }}
     steps:
-      # When the job began, so that Shelf lots can tell how much of the
-      # job's six hours is left (see there).
-      - name: Note the start
-        run: echo "job_started=$(date +%s)" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
         with:
           # The branch as it stands when this run starts, not the commit it was
@@ -85,6 +89,7 @@ jobs:
       - name: Read every menu, a batch at a time
         env:
           BATCH: ${{ inputs.batch || '35' }}
+          PARALLEL: ${{ inputs.parallel || '3' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -96,7 +101,7 @@ jobs:
           failed=0
           for offset in $(seq 0 "$BATCH" $((total - 1))); do
             echo "::group::shops $offset – $((offset + BATCH))"
-            if node scripts/menu-render.mjs --limit "$BATCH" --offset "$offset"; then
+            if node scripts/menu-render.mjs --limit "$BATCH" --offset "$offset" --parallel "$PARALLEL"; then
               # Диагностика собирается до решения о публикации: партия могла не
               # пройти валидацию, но прочитана она была, и то, что она увидела,
               # ровно и объясняет почему.
@@ -132,7 +137,7 @@ jobs:
           if [ -n "$late" ]; then
             n=$(echo "$late" | tr ',' '\n' | wc -l)
             echo "::group::asked again after the run: $n shop(s)"
-            if node scripts/menu-render.mjs --only "$late" --limit "$n" --after-run; then
+            if node scripts/menu-render.mjs --only "$late" --limit "$n" --after-run --parallel "$PARALLEL"; then
               python scripts/menu-coverage.py collect || true
               if npm run validate > /tmp/publish-validate.txt 2>&1; then
                 git add data/flower-listings.json
@@ -199,77 +204,6 @@ jobs:
             exit 1
           fi
 
-      # Партии с панелями для Сомы: сегодняшние полки, сложенные в партии, с
-      # датами — теста по сертификатам, упаковки и сбора по Metrc Retail ID
-      # (метки пакетов из меню) — и из истории (когда впервые на полке). Сома
-      # забирает их своим ежедневным импортом. Порядок: партии — чтобы стали
-      # известны ссылки на сертификаты новых партий; сертификаты и Retail ID —
-      # спрашиваются только новые, прочитанное хранится в coa-dates.json и
-      # retail-id.json; партии ещё раз — чтобы новые получили даты. Retail ID —
-      # не больше 150 запросов за прогон, по одному, с паузой 6–14 секунд (около
-      # 25 минут), остальное ждёт следующего дня, новые на полке — первыми; и
-      # пока найденные раньше не перечитаны ради панели сертификата (с 8 октября
-      # 2026: терпены, THC, CBD) — ещё до 150 (около 25 минут; дней на шесть). Отчёт
-      # получает раздел о свежести новых партий (scripts/freshness.py). Перед
-      # сертификатами заново читаются страницы, где бренды публикуют свои
-      # сертификаты (scripts/coa-sources.py, только уже записанные страницы,
-      # с robots.txt и паузой): ссылки, которых вчера не было, встают в очередь
-      # coa-dates.py первыми. Как и история, поломка здесь не стоит дню его полок.
-      - name: Shelf lots
-        continue-on-error: true
-        # Brand certificate pages (a minute or two), Retail ID one card at a
-        # time and new certificates take about 40 minutes — about 65 while the
-        # Retail ID cards found before 8 October 2026 are read again for their
-        # certificate panel (up to 150 more a run, for about six days). If this step runs long it is stopped, and the day's menus
-        # still publish: until Publish, everything the run has read lives only
-        # on this runner, and a job cut off by its own timeout loses it all.
-        #
-        # The step's own limit is not enough on its own. On 6 November 2026
-        # reading the menus took 5 h 15 min (3 h the day before), Shelf lots
-        # began at minute 327 of the job, and after 33 minutes the job's own
-        # six hours ran out: the whole job was cancelled, Publish never ran,
-        # and the site stayed on 5 November. So the step now gets what is left
-        # of the job less the minutes Publish and the report need, and when
-        # that runs out it stops itself, puts its files back as they were, and
-        # lets the menus publish. Tomorrow's run asks the lots again.
-        timeout-minutes: 105
-        run: |
-          lots_files="data/coa-sources.json data/coa-dates.json data/retail-id.json data/shelf-terpenes.json data/coa-http-state.json data/shelf-terpenes-archive.json"
-          elapsed=$(( ($(date +%s) - job_started) / 60 ))
-          # 360 is the job's timeout-minutes; 15 are kept for Publish and the report.
-          budget=$(( 360 - 15 - elapsed ))
-          [ "$budget" -gt 100 ] && budget=100
-          if [ "$budget" -lt 10 ]; then
-            echo "::warning::Shelf lots skipped: the menus took ${elapsed} min and only ${budget} min of the job are left."
-            printf '\n### Партии\n\n_Сегодня не обновлены: чтение меню заняло %s мин, на партии времени не осталось. Меню опубликованы._\n' "$elapsed" >> menu-report.md
-            exit 0
-          fi
-          echo "Shelf lots: ${budget} min (menus took ${elapsed} min)"
-          sudo apt-get install -y -qq poppler-utils > /dev/null
-          if timeout --kill-after=60 "${budget}m" bash -e -c '
-            python scripts/shelf-terpenes.py
-            python scripts/coa-sources.py >> menu-report.md || true
-            python scripts/coa-dates.py
-            python scripts/retail-id.py
-            python scripts/shelf-terpenes.py
-            python scripts/freshness.py >> menu-report.md || true
-          '; then
-            for f in $lots_files; do if [ -f "$f" ]; then git add "$f"; fi; done
-            git diff --cached --quiet || git commit -q -m "menu: shelf lots"
-          else
-            code=$?
-            # A script stopped half-way may have left a file half-written:
-            # nothing of today's lots is kept, yesterday's stay.
-            for f in $lots_files; do
-              if git ls-files --error-unmatch "$f" > /dev/null 2>&1; then git checkout -- "$f"; else rm -f "$f"; fi
-            done
-            if [ "$code" -eq 124 ] || [ "$code" -eq 137 ]; then
-              echo "::warning::Shelf lots stopped after ${budget} min so the menus can still publish; today's lots are not kept."
-              printf '\n### Партии\n\n_Сегодня не обновлены: остановлены через %s мин, чтобы меню успели опубликоваться (чтение меню заняло %s мин)._\n' "$budget" "$elapsed" >> menu-report.md
-            fi
-            exit "$code"
-          fi
-
       # Menus are the point of the site and they change daily, so a clean run
       # publishes itself. A run that produced a collapsed shelf does not: that
       # is nearly always a page we failed to read, and republishing it would
@@ -288,12 +222,13 @@ jobs:
       # day's reading goes to a menu/held- branch, as a doubtful one does, to
       # be published by hand rather than lost.
       - name: Publish
+        id: publish
         if: steps.diff.outputs.sane == 'true' && env.batches_failed == '0'
         run: |
           read_head=$(git rev-parse HEAD)
           rm -f /tmp/publish-validate.txt
           for attempt in 1 2 3; do
-            git push origin HEAD:${{ github.ref_name }} && exit 0
+            git push origin HEAD:${{ github.ref_name }} && echo "published=true" >> "$GITHUB_OUTPUT" && exit 0
             git fetch origin ${{ github.ref_name }}
             git rebase FETCH_HEAD && continue
             git rebase --abort || true
@@ -371,3 +306,87 @@ jobs:
           fi
           # Delivery failing must not fail a run that read every menu correctly.
           echo "::warning::Could not post the report. It is in the job summary."
+
+  # Партии для Сомы — отдельной задачей, после того как меню опубликованы, со
+  # своими шестью часами. Что делает шаг — ниже, в его комментарии. Поломка
+  # или долгий день здесь больше не стоят дню его полок: полки уже на сайте.
+  lots:
+    needs: refresh
+    if: needs.refresh.outputs.published == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The published shelves: main as refresh left it.
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # Партии с панелями для Сомы: сегодняшние полки, сложенные в партии, с
+      # датами — теста по сертификатам, упаковки и сбора по Metrc Retail ID
+      # (метки пакетов из меню) — и из истории (когда впервые на полке). Сома
+      # забирает их своим ежедневным импортом. Порядок: партии — чтобы стали
+      # известны ссылки на сертификаты новых партий; сертификаты и Retail ID —
+      # спрашиваются только новые, прочитанное хранится в coa-dates.json и
+      # retail-id.json; партии ещё раз — чтобы новые получили даты. Retail ID —
+      # не больше 150 запросов за прогон, по одному, с паузой 6–14 секунд (около
+      # 25 минут), остальное ждёт следующего дня, новые на полке — первыми; и
+      # пока найденные раньше не перечитаны ради панели сертификата (с 8 октября
+      # 2026: терпены, THC, CBD) — ещё до 150 (около 25 минут; дней на шесть). Отчёт
+      # получает раздел о свежести новых партий (scripts/freshness.py). Перед
+      # сертификатами заново читаются страницы, где бренды публикуют свои
+      # сертификаты (scripts/coa-sources.py, только уже записанные страницы,
+      # с robots.txt и паузой): ссылки, которых вчера не было, встают в очередь
+      # coa-dates.py первыми. Как и история, поломка здесь не стоит дню его полок.
+      - name: Shelf lots
+        # Brand certificate pages (a minute or two), Retail ID one card at a
+        # time and new certificates take about 40 minutes — about 75 on 5
+        # November 2026. If it runs past the limit it is stopped and nothing of
+        # the day's lots is kept; the next run asks again.
+        timeout-minutes: 120
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          sudo apt-get install -y -qq poppler-utils > /dev/null
+          : > lots-report.md
+          python scripts/shelf-terpenes.py
+          python scripts/coa-sources.py >> lots-report.md || true
+          python scripts/coa-dates.py
+          python scripts/retail-id.py
+          python scripts/shelf-terpenes.py
+          python scripts/freshness.py >> lots-report.md || true
+          for f in data/coa-sources.json data/coa-dates.json data/retail-id.json data/shelf-terpenes.json data/coa-http-state.json data/shelf-terpenes-archive.json; do
+            if [ -f "$f" ]; then git add "$f"; fi
+          done
+          git diff --cached --quiet && exit 0
+          git commit -q -m "menu: shelf lots"
+          # Main may have moved while the lots were read; these files are this
+          # job's own, so a plain rebase is enough.
+          for attempt in 1 2 3; do
+            git push origin HEAD:${{ github.ref_name }} && exit 0
+            git fetch origin ${{ github.ref_name }}
+            git rebase FETCH_HEAD || { git rebase --abort; break; }
+          done
+          echo "::error::Could not push the day's lots."
+          exit 1
+
+      - name: Deliver the report
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TITLE: Ежедневный отчёт по витринам
+          OUTCOME: ${{ job.status }}
+        run: |
+          {
+            echo "### Партии"
+            echo
+            if [ -s lots-report.md ]; then cat lots-report.md; else echo "_Отчёта о партиях нет._"; fi
+            echo
+            printf '[прогон](%s/actions/runs/%s)\n' "${{ github.server_url }}/${{ github.repository }}" "${{ github.run_id }}"
+          } > lots-comment.md
+          number=$(gh issue list --state open --search "$TITLE in:title" \
+                     --json number,title \
+                     --jq "[.[] | select(.title == \"$TITLE\")] | .[0].number // empty")
+          if [ -n "$number" ]; then gh issue comment "$number" --body-file lots-comment.md && exit 0; fi
+          echo "::warning::Could not post the lots report."
