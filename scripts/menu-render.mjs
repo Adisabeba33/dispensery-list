@@ -6195,7 +6195,7 @@ const main = async () => {
       for (let i = listings.length - 1; i >= 0; i -= 1) {
         if (listings[i].licenseNumber === shop.licenseNumber) listings.splice(i, 1);
       }
-      entry.status = `error: stopped after ${Math.round(SHOP_CAP_MS / 60000)} min (time cap per shop)`;
+      entry.status = `error: stopped after ${Math.round(SHOP_CAP_MS / 1000)} s (time cap per shop)`;
       entry.timeCapped = true;
       entry.flower = 0;
     }
