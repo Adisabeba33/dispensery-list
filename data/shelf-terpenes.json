@@ -28,7 +28,7 @@
     "INDICA_DOMINANT"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-15"
   },
   {
@@ -377,7 +377,7 @@
     "HYBRID"
    ],
    "read": "2026-10-30",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "packagedAfter": "2026-06-10",
    "firstOnShelf": "2026-10-15"
   },
@@ -729,6 +729,9 @@
     "OCM-CAURD-25-000297"
    ],
    "certificates": [],
+   "retailId": [
+    "1A4120300000C1F000044213"
+   ],
    "lineageStated": [
     "HYBRID"
    ],
@@ -1728,7 +1731,7 @@
     "HYBRID"
    ],
    "read": "2026-10-30",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-30"
   },
   {
@@ -2696,7 +2699,7 @@
     "HYBRID"
    ],
    "read": "2026-10-24",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "packagedAfter": "2026-06-10",
    "firstOnShelf": "2026-10-17"
   },
@@ -9301,7 +9304,7 @@
     "INDICA"
    ],
    "read": "2026-10-19",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-19"
   },
   {
@@ -9364,7 +9367,7 @@
     "HYBRID"
    ],
    "read": "2026-10-19",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-19"
   },
   {
@@ -11272,12 +11275,13 @@
     "OCIMENE": 0.06,
     "BISABOLOL": 0.04,
     "CARYOPHYLLENE_OXIDE": 0.03,
-    "CAMPHENE": 0.02,
     "TERPINOLENE": 0.02,
+    "CAMPHENE": 0.02,
     "VALENCENE": 0.02
    },
    "totalPercent": null,
    "shops": [
+    "OCM-CAURD-24-000114",
     "OCM-CAURD-24-000129",
     "OCM-CAURD-25-000237"
    ],
@@ -11404,6 +11408,7 @@
    "totalPercent": 2.36,
    "shops": [
     "OCM-CAURD-23-000009",
+    "OCM-CAURD-24-000114",
     "OCM-CAURD-24-000129",
     "OCM-CAURD-25-000238"
    ],
@@ -11509,12 +11514,10 @@
    },
    "totalPercent": 1.82,
    "shops": [
-    "OCM-CAURD-24-000046",
     "OCM-CAURD-24-000169",
     "OCM-RETL-24-000244"
    ],
    "certificates": [
-    "https://app.alleaves.com/api/inventory/batch/buddega/coa/35735.pdf",
     "https://app.alleaves.com/api/inventory/batch/buddega/coa/35831.pdf"
    ],
    "lineageStated": [
@@ -11599,10 +11602,8 @@
    },
    "totalPercent": null,
    "shops": [
-    "OCM-CAURD-23-000041",
     "OCM-CAURD-24-000046",
     "OCM-CAURD-24-000129",
-    "OCM-CAURD-24-000222",
     "OCM-RETL-24-000114"
    ],
    "certificates": [
@@ -11632,11 +11633,14 @@
     "HUMULENE": 0.37,
     "MYRCENE": 0.21,
     "LINALOOL": 0.18,
-    "BISABOLOL": 0.06
+    "BISABOLOL": 0.06,
+    "FENCHOL": 0.04,
+    "TERPINEOL": 0.04
    },
    "totalPercent": null,
    "shops": [
     "OCM-CAURD-24-000046",
+    "OCM-CAURD-24-000222",
     "OCM-RETL-24-000244"
    ],
    "certificates": [
@@ -11657,22 +11661,24 @@
    "firstOnShelf": "2026-09-17"
   },
   {
-   "brand": "ALIEN LABS",
-   "strain": "BRAIN WASH",
+   "brand": "Alien Labs",
+   "strain": "Brain Wash",
    "key": "alien|brain wash",
    "thcPercent": 27.03,
    "terpenes": {
     "HUMULENE": 0.4,
+    "LIMONENE": 0.39,
     "LINALOOL": 0.22,
     "MYRCENE": 0.19,
-    "BISABOLOL": 0.06,
     "PINENE_BETA": 0.05,
+    "FENCHOL": 0.04,
     "PINENE_ALPHA": 0.03,
     "CARYOPHYLLENE": 0.01,
     "CARYOPHYLLENE_OXIDE": 0.01
    },
    "totalPercent": null,
    "shops": [
+    "OCM-CAURD-23-000041",
     "OCM-CAURD-24-000114",
     "OCM-CAURD-24-000200",
     "OCM-RETL-24-000055"
@@ -11955,6 +11961,7 @@
    "shops": [
     "OCM-CAURD-23-000041",
     "OCM-CAURD-24-000046",
+    "OCM-CAURD-24-000114",
     "OCM-RETL-24-000244"
    ],
    "certificates": [
@@ -11962,6 +11969,7 @@
     "https://app.alleaves.com/api/inventory/batch/buddega/coa/35792.pdf"
    ],
    "lineageStated": [
+    "INDICA",
     "INDICA_DOMINANT"
    ],
    "read": "2026-09-27",
@@ -12158,6 +12166,155 @@
   },
   {
    "brand": "Alien Labs",
+   "strain": "Misfits Biskante",
+   "key": "alien|misfits biskante",
+   "thcPercent": 27.0,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.72,
+    "LIMONENE": 0.66,
+    "LINALOOL": 0.24,
+    "MYRCENE": 0.13,
+    "PINENE_BETA": 0.09,
+    "PINENE_ALPHA": 0.06,
+    "OCIMENE": 0.02,
+    "TERPINOLENE": 0.01
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000114"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "SATIVA"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-11-08"
+  },
+  {
+   "brand": "Alien Labs",
+   "strain": "Misfits Brain Wash",
+   "key": "alien|misfits brain wash",
+   "thcPercent": 28.22,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.71,
+    "LIMONENE": 0.41,
+    "MYRCENE": 0.21,
+    "LINALOOL": 0.18
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000114"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "HYBRID"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-11-08"
+  },
+  {
+   "brand": "Alien Labs",
+   "strain": "Misfits Gemini",
+   "key": "alien|misfits gemini",
+   "thcPercent": 23.98,
+   "terpenes": {
+    "LIMONENE": 0.5,
+    "CARYOPHYLLENE": 0.41,
+    "LINALOOL": 0.31,
+    "MYRCENE": 0.25,
+    "GUAIOL": 0.11
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000114"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "INDICA"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-11-08"
+  },
+  {
+   "brand": "Alien Labs",
+   "strain": "Misfits Krypto Chronic",
+   "key": "alien|misfits krypto chronic",
+   "thcPercent": 26.44,
+   "terpenes": {
+    "LIMONENE": 0.45,
+    "LINALOOL": 0.27,
+    "CARYOPHYLLENE": 0.24,
+    "MYRCENE": 0.08,
+    "PINENE_BETA": 0.06,
+    "PINENE_ALPHA": 0.04
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000114"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "INDICA"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-11-08"
+  },
+  {
+   "brand": "Alien Labs",
+   "strain": "Misfits Permanent Shade",
+   "key": "alien|misfits permanent shade",
+   "thcPercent": 29.01,
+   "terpenes": {
+    "LIMONENE": 0.88,
+    "CARYOPHYLLENE": 0.57,
+    "LINALOOL": 0.24,
+    "PINENE_BETA": 0.12,
+    "PINENE_ALPHA": 0.1
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000114"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "INDICA"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-11-08"
+  },
+  {
+   "brand": "Alien Labs",
+   "strain": "Misfits Planetary OG",
+   "key": "alien|misfits planetary og",
+   "thcPercent": 25.36,
+   "terpenes": {
+    "LIMONENE": 0.58,
+    "MYRCENE": 0.41,
+    "CARYOPHYLLENE": 0.37,
+    "LINALOOL": 0.2,
+    "PINENE_BETA": 0.08,
+    "OCIMENE": 0.07,
+    "PINENE_ALPHA": 0.04
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000114"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "SATIVA"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-11-08"
+  },
+  {
+   "brand": "Alien Labs",
    "strain": "Permanent Shade",
    "key": "alien|permanent shade",
    "thcPercent": 31.88,
@@ -12322,8 +12479,6 @@
     "GUAIOL": 0.08,
     "PINENE_BETA": 0.06,
     "BISABOLOL": 0.04,
-    "FENCHOL": 0.04,
-    "TERPINEOL": 0.04,
     "PINENE_ALPHA": 0.03,
     "GERANIOL": 0.01,
     "CARYOPHYLLENE_OXIDE": 0.01,
@@ -12335,6 +12490,8 @@
    "totalPercent": 1.56,
    "shops": [
     "OCM-CAURD-23-000008",
+    "OCM-CAURD-23-000041",
+    "OCM-CAURD-24-000114",
     "OCM-CAURD-24-000154",
     "OCM-CAURD-24-000203",
     "OCM-CAURD-25-000237",
@@ -12344,7 +12501,8 @@
    "certificates": [],
    "lineageStated": [
     "HYBRID",
-    "INDICA"
+    "INDICA",
+    "SATIVA_DOMINANT"
    ],
    "read": "2026-10-24",
    "lastSeen": "2026-11-08",
@@ -12365,14 +12523,11 @@
     "MYRCENE": 0.18,
     "GUAIOL": 0.12,
     "BISABOLOL": 0.08,
-    "PINENE_ALPHA": 0.04,
-    "CARYOPHYLLENE_OXIDE": 0.02,
-    "CAMPHENE": 0.01,
-    "VALENCENE": 0.01
+    "FENCHOL": 0.05,
+    "TERPINEOL": 0.05
    },
    "totalPercent": 1.94,
    "shops": [
-    "OCM-CAURD-23-000041",
     "OCM-CAURD-24-000169",
     "OCM-CAURD-25-000242"
    ],
@@ -13038,6 +13193,7 @@
    "shops": [
     "OCM-CAURD-24-000185",
     "OCM-CAURD-26-000349",
+    "OCM-RETL-24-000068",
     "OCM-RETL-24-000088",
     "OCM-RETL-24-000133",
     "OCM-RETL-26-000501"
@@ -18882,7 +19038,7 @@
     "SATIVA"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -19011,7 +19167,7 @@
     "SATIVA_DOMINANT"
    ],
    "read": "2026-09-27",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -19119,7 +19275,7 @@
     "HYBRID"
    ],
    "read": "2026-09-27",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -19238,7 +19394,7 @@
     "SATIVA"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -19293,7 +19449,7 @@
     "HYBRID"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -20116,7 +20272,6 @@
    "totalPercent": 1.92,
    "shops": [
     "OCM-CAURD-24-000060",
-    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000154",
     "OCM-CAURD-25-000236",
     "OCM-CAURD-25-000291"
@@ -22509,7 +22664,6 @@
    "totalPercent": 2.04,
    "shops": [
     "OCM-CAURD-24-000087",
-    "OCM-CAURD-24-000169",
     "OCM-CAURD-25-000242",
     "OCM-CAURD-25-000287",
     "OCM-RETL-24-000133",
@@ -25804,7 +25958,7 @@
     "HYBRID"
    ],
    "read": "2026-10-30",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-30"
   },
   {
@@ -26014,9 +26168,9 @@
    ],
    "read": "2026-10-30",
    "lastSeen": "2026-11-05",
+   "firstOnShelf": "2026-09-29",
    "packagedOn": "2026-08-26",
-   "packagedFrom": "tag",
-   "firstOnShelf": "2026-09-29"
+   "packagedFrom": "tag"
   },
   {
    "brand": "Bouket",
@@ -26038,6 +26192,7 @@
    },
    "totalPercent": 1.9,
    "shops": [
+    "OCM-CAURD-24-000114",
     "OCM-CAURD-25-000242",
     "OCM-CAURD-25-000297",
     "OCM-CAURD-25-000312"
@@ -27140,7 +27295,7 @@
    "firstOnShelf": "2026-09-10"
   },
   {
-   "brand": "Boukét",
+   "brand": "Bouket",
    "strain": "Creme Bouket",
    "key": "bouket|creme bouket",
    "thcPercent": 28.63,
@@ -27165,6 +27320,7 @@
    "shops": [
     "OCM-CAURD-24-000082",
     "OCM-CAURD-24-000087",
+    "OCM-CAURD-24-000114",
     "OCM-CAURD-24-000203",
     "OCM-CAURD-25-000284",
     "OCM-CAURD-25-000297",
@@ -28089,11 +28245,13 @@
    "totalPercent": 1.96,
    "shops": [
     "OCM-CAURD-24-000087",
+    "OCM-CAURD-24-000114",
     "OCM-RETL-24-000133"
    ],
    "certificates": [],
    "lineageStated": [
-    "HYBRID"
+    "HYBRID",
+    "INDICA"
    ],
    "read": "2026-10-30",
    "lastSeen": "2026-11-08",
@@ -28251,7 +28409,7 @@
     "INDICA"
    ],
    "read": "2026-09-28",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "testedOn": "2026-10-05",
    "testedFrom": "retail-id",
    "packagedOn": "2026-09-29",
@@ -28381,7 +28539,7 @@
     "HYBRID"
    ],
    "read": "2026-11-04",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-11-04"
   },
   {
@@ -30115,8 +30273,8 @@
    "lineageStated": [
     "INDICA"
    ],
-   "read": "2026-11-05",
-   "lastSeen": "2026-11-05",
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-17"
   },
   {
@@ -30573,7 +30731,7 @@
     "SATIVA"
    ],
    "read": "2026-10-24",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-17"
   },
   {
@@ -31270,7 +31428,7 @@
     "HYBRID"
    ],
    "read": "2026-10-30",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-30"
   },
   {
@@ -31325,6 +31483,7 @@
    },
    "totalPercent": null,
    "shops": [
+    "OCM-CAURD-24-000114",
     "OCM-CAURD-24-000173"
    ],
    "certificates": [],
@@ -31504,7 +31663,7 @@
    "lineageStated": [
     "HYBRID"
    ],
-   "read": "2026-11-05",
+   "read": "2026-11-08",
    "lastSeen": "2026-11-08",
    "testedOn": "2026-05-12",
    "testedFrom": "retail-id",
@@ -31539,7 +31698,7 @@
    "lineageStated": [
     "SATIVA"
    ],
-   "read": "2026-11-05",
+   "read": "2026-11-08",
    "lastSeen": "2026-11-08",
    "testedOn": "2026-05-12",
    "testedFrom": "retail-id",
@@ -31593,6 +31752,7 @@
    },
    "totalPercent": null,
    "shops": [
+    "OCM-CAURD-24-000114",
     "OCM-CAURD-24-000154"
    ],
    "certificates": [],
@@ -32232,11 +32392,12 @@
     "MYRCENE": 0.18,
     "HUMULENE": 0.12,
     "LINALOOL": 0.12,
-    "FENCHOL": 0.052,
-    "TERPINEOL": 0.046
+    "FENCHOL": 0.05,
+    "TERPINEOL": 0.05
    },
    "totalPercent": 1.65,
    "shops": [
+    "OCM-CAURD-24-000203",
     "OCM-CAURD-25-000297",
     "OCM-CAURD-25-000312",
     "OCM-RETL-24-000055",
@@ -34302,7 +34463,7 @@
     "INDICA_DOMINANT"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-10"
   },
   {
@@ -34748,7 +34909,7 @@
     "HYBRID"
    ],
    "read": "2026-09-27",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-16"
   },
   {
@@ -34849,7 +35010,7 @@
     "SATIVA"
    ],
    "read": "2026-11-04",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-11-04"
   },
   {
@@ -36102,7 +36263,7 @@
     "HYBRID"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -36905,8 +37066,8 @@
    "firstOnShelf": "2026-09-24"
   },
   {
-   "brand": "CANAGENIX",
-   "strain": "GELONADE #9",
+   "brand": "Canagenix",
+   "strain": "Gelonade #9",
    "key": "canagenix|gelonade #9",
    "thcPercent": 31.23,
    "terpenes": {
@@ -36917,6 +37078,7 @@
    "totalPercent": 0.86,
    "shops": [
     "OCM-CAURD-23-000041",
+    "OCM-CAURD-24-000116",
     "OCM-RETL-24-000055",
     "OCM-RETL-24-000133"
    ],
@@ -37022,8 +37184,8 @@
     "CARYOPHYLLENE": 0.27,
     "MYRCENE": 0.18,
     "FARNESENE": 0.1,
-    "FENCHOL": 0.09,
     "TERPINEOL": 0.09,
+    "FENCHOL": 0.09,
     "PINENE_BETA": 0.07,
     "HUMULENE": 0.07
    },
@@ -37096,6 +37258,7 @@
    "shops": [
     "OCM-CAURD-24-000046",
     "OCM-CAURD-24-000102",
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-25-000282",
     "OCM-CAURD-25-000287",
     "OCM-RETL-24-000055",
@@ -37184,8 +37347,8 @@
     "MYRCENE": 0.24,
     "FARNESENE": 0.11,
     "FENCHOL": 0.1,
-    "PINENE_BETA": 0.09,
     "TERPINEOL": 0.09,
+    "PINENE_BETA": 0.09,
     "HUMULENE": 0.08
    },
    "totalPercent": 2.06,
@@ -38088,7 +38251,7 @@
     "SATIVA"
    ],
    "read": "2026-09-29",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-29"
   },
   {
@@ -38620,8 +38783,37 @@
     "HYBRID"
    ],
    "read": "2026-09-28",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
+  },
+  {
+   "brand": "Cheech & Chong",
+   "strain": "Ahhhberry",
+   "key": "cheechchong|ahhhberry",
+   "thcPercent": 22.45,
+   "terpenes": {
+    "LIMONENE": 0.38,
+    "CARYOPHYLLENE": 0.25,
+    "OCIMENE": 0.13,
+    "MYRCENE": 0.11,
+    "PINENE_ALPHA": 0.09,
+    "PINENE_BETA": 0.09,
+    "HUMULENE": 0.07,
+    "LINALOOL": 0.02,
+    "BISABOLOL": 0.01,
+    "CARYOPHYLLENE_OXIDE": 0.01
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000116"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "SATIVA_DOMINANT"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-09-07"
   },
   {
    "brand": "CHEECH &CHONG",
@@ -38655,7 +38847,7 @@
     "HYBRID"
    ],
    "read": "2026-09-28",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -38692,6 +38884,31 @@
    "read": "2026-09-27",
    "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-17"
+  },
+  {
+   "brand": "Cheech & Chong",
+   "strain": "Drooler",
+   "key": "cheechchong|drooler",
+   "thcPercent": 22.41,
+   "terpenes": {
+    "LIMONENE": 0.47,
+    "MYRCENE": 0.39,
+    "CARYOPHYLLENE": 0.31,
+    "LINALOOL": 0.2,
+    "HUMULENE": 0.13,
+    "PINENE_BETA": 0.09
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000116"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "INDICA"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-11-08"
   },
   {
    "brand": "Cheech & Chong",
@@ -38776,6 +38993,31 @@
    "packagedFrom": "retail-id",
    "testedOn": "2026-02-27",
    "testedFrom": "retail-id"
+  },
+  {
+   "brand": "Cheech & Chong",
+   "strain": "Love Machine",
+   "key": "cheechchong|love machine",
+   "thcPercent": 24.96,
+   "terpenes": {
+    "MYRCENE": 1.01,
+    "CARYOPHYLLENE": 0.59,
+    "HUMULENE": 0.18,
+    "LINALOOL": 0.17,
+    "LIMONENE": 0.11,
+    "OCIMENE": 0.11
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000116"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "SATIVA"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-11-08"
   },
   {
    "brand": "Cheech & Chong",
@@ -39023,6 +39265,31 @@
   },
   {
    "brand": "Cheech & Chong",
+   "strain": "Lowrider",
+   "key": "cheechchong|lowrider",
+   "thcPercent": 28.54,
+   "terpenes": {
+    "MYRCENE": 0.84,
+    "LIMONENE": 0.63,
+    "LINALOOL": 0.51,
+    "CARYOPHYLLENE": 0.39,
+    "HUMULENE": 0.12,
+    "PINENE_BETA": 0.11
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000116"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "INDICA_DOMINANT"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-10-10"
+  },
+  {
+   "brand": "Cheech & Chong",
    "strain": "LOWRIDER",
    "key": "cheechchong|lowrider",
    "thcPercent": 19.36,
@@ -39122,8 +39389,8 @@
    "firstOnShelf": "2026-09-24"
   },
   {
-   "brand": "CHEECH & CHONG",
-   "strain": "STADANKOHHH",
+   "brand": "Cheech & Chong",
+   "strain": "StadankOHHH",
    "key": "cheechchong|stadankohhh",
    "thcPercent": 31.92,
    "terpenes": {
@@ -39131,26 +39398,27 @@
     "CARYOPHYLLENE": 0.36,
     "LINALOOL": 0.23,
     "FARNESENE": 0.16,
-    "HUMULENE": 0.11,
     "PINENE_BETA": 0.11,
+    "HUMULENE": 0.11,
     "PINENE_ALPHA": 0.09,
     "FENCHOL": 0.07,
     "TERPINEOL": 0.07,
     "OCIMENE": 0.06,
     "MYRCENE": 0.05,
     "BISABOLOL": 0.04,
-    "NEROLIDOL": 0.04,
     "CAMPHENE": 0.02,
-    "BORNEOL": 0.01,
-    "CARYOPHYLLENE_OXIDE": 0.01
+    "CARYOPHYLLENE_OXIDE": 0.01,
+    "BORNEOL": 0.01
    },
    "totalPercent": 2.04,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-RETL-25-000270"
    ],
    "certificates": [],
    "lineageStated": [
-    "HYBRID"
+    "HYBRID",
+    "SATIVA_DOMINANT"
    ],
    "read": "2026-09-27",
    "lastSeen": "2026-11-08",
@@ -39296,7 +39564,7 @@
   },
   {
    "brand": "Cheech & Chong",
-   "strain": "Yesca",
+   "strain": "YesCA",
    "key": "cheechchong|yesca",
    "thcPercent": 22.06,
    "terpenes": {
@@ -39314,6 +39582,7 @@
    },
    "totalPercent": null,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000154"
    ],
    "certificates": [],
@@ -42909,7 +43178,7 @@
   },
   {
    "brand": "Claybourne Co.",
-   "strain": "Lemon Drop Top",
+   "strain": "LEMON DROP TOP",
    "key": "claybourne|lemon drop top",
    "thcPercent": 33.89,
    "terpenes": {
@@ -42929,7 +43198,8 @@
    "totalPercent": 2.14,
    "shops": [
     "OCM-CAURD-24-000046",
-    "OCM-RETL-24-000133"
+    "OCM-RETL-24-000133",
+    "OCM-RETL-26-000477"
    ],
    "certificates": [
     "https://app.alleaves.com/api/inventory/batch/buddega/coa/40515.pdf"
@@ -44452,6 +44722,129 @@
   },
   {
    "brand": "Connected Cannabis Co.",
+   "strain": "B-Sides Ambrozia",
+   "key": "connected|b-sides ambrozia",
+   "thcPercent": 24.36,
+   "terpenes": {
+    "LIMONENE": 0.82,
+    "CARYOPHYLLENE": 0.36,
+    "LINALOOL": 0.33,
+    "PINENE_BETA": 0.13,
+    "PINENE_ALPHA": 0.09,
+    "OCIMENE": 0.09,
+    "MYRCENE": 0.05,
+    "TERPINOLENE": 0.01
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000114"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "HYBRID"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-11-08"
+  },
+  {
+   "brand": "Connected Cannabis Co.",
+   "strain": "B-Sides Bad Apple",
+   "key": "connected|b-sides bad apple",
+   "thcPercent": 26.8,
+   "terpenes": {
+    "LIMONENE": 0.7,
+    "CARYOPHYLLENE": 0.29,
+    "MYRCENE": 0.21,
+    "LINALOOL": 0.18,
+    "PINENE_BETA": 0.11,
+    "GUAIOL": 0.09
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000114"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "HYBRID"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-11-08"
+  },
+  {
+   "brand": "Connected Cannabis Co.",
+   "strain": "B-Sides Chrome",
+   "key": "connected|b-sides chrome",
+   "thcPercent": 26.87,
+   "terpenes": {
+    "LIMONENE": 0.65,
+    "CARYOPHYLLENE": 0.31,
+    "LINALOOL": 0.31,
+    "MYRCENE": 0.3,
+    "OCIMENE": 0.13,
+    "GUAIOL": 0.11
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000114"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "INDICA"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-11-08"
+  },
+  {
+   "brand": "Connected Cannabis Co.",
+   "strain": "B-Sides Gascotti",
+   "key": "connected|b-sides gascotti",
+   "thcPercent": 24.68,
+   "terpenes": {
+    "LIMONENE": 0.62,
+    "CARYOPHYLLENE": 0.41,
+    "MYRCENE": 0.28,
+    "LINALOOL": 0.19
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000114"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "INDICA"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-11-08"
+  },
+  {
+   "brand": "Connected Cannabis Co.",
+   "strain": "B-Sides Tropical Z",
+   "key": "connected|b-sides tropical z",
+   "thcPercent": 23.01,
+   "terpenes": {
+    "LIMONENE": 0.57,
+    "CARYOPHYLLENE": 0.36,
+    "MYRCENE": 0.26,
+    "LINALOOL": 0.14
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000114"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "SATIVA"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-11-08"
+  },
+  {
+   "brand": "Connected Cannabis Co.",
    "strain": "Bad Apple",
    "key": "connected|bad apple",
    "thcPercent": 30.27,
@@ -45291,11 +45684,11 @@
     "SATIVA"
    ],
    "read": "2026-10-30",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
-   "brand": "Connected",
+   "brand": "Connected Cannabis Co.",
    "strain": "Ghost OG",
    "key": "connected|ghost og",
    "thcPercent": 33.61,
@@ -45316,6 +45709,7 @@
    },
    "totalPercent": 2.4,
    "shops": [
+    "OCM-CAURD-24-000114",
     "OCM-CAURD-24-000129",
     "OCM-CAURD-24-000154",
     "OCM-CAURD-24-000203",
@@ -46853,6 +47247,31 @@
   },
   {
    "brand": "Dada Exotics",
+   "strain": "Burger #3",
+   "key": "dadaexotics|burger #3",
+   "thcPercent": 27.02,
+   "terpenes": {
+    "MYRCENE": 0.74,
+    "LIMONENE": 0.58,
+    "CARYOPHYLLENE": 0.4,
+    "HUMULENE": 0.21,
+    "PINENE_BETA": 0.08,
+    "BISABOLOL": 0.07
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000116"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "HYBRID"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-09-24"
+  },
+  {
+   "brand": "Dada Exotics",
    "strain": "Govt Oasis",
    "key": "dadaexotics|govt oasis",
    "thcPercent": 27.54,
@@ -46877,7 +47296,7 @@
     "HYBRID"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -46931,7 +47350,7 @@
     "INDICA_DOMINANT"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -46959,7 +47378,7 @@
     "INDICA_DOMINANT"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -46982,7 +47401,7 @@
     "SATIVA_DOMINANT"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -47005,7 +47424,7 @@
     "INDICA_DOMINANT"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -51427,7 +51846,7 @@
     "INDICA_DOMINANT"
    ],
    "read": "2026-09-27",
-   "lastSeen": "2026-10-07",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -53167,8 +53586,8 @@
     "CARYOPHYLLENE_OXIDE": 0.01,
     "OCIMENE": 0.01,
     "TERPINOLENE": 0.01,
-    "CAMPHENE": 0.01,
-    "VALENCENE": 0.01
+    "VALENCENE": 0.01,
+    "CAMPHENE": 0.01
    },
    "totalPercent": null,
    "shops": [
@@ -53651,9 +54070,9 @@
    ],
    "read": "2026-09-28",
    "lastSeen": "2026-11-08",
-   "packagedAfter": "2026-03-16",
    "firstOnShelf": "2026-09-06",
-   "onShelfSinceStart": true
+   "onShelfSinceStart": true,
+   "packagedAfter": "2026-03-16"
   },
   {
    "brand": "Dark Heart",
@@ -53679,6 +54098,7 @@
    "totalPercent": 1.78,
    "shops": [
     "OCM-CAURD-23-000041",
+    "OCM-RETL-24-000114",
     "OCM-RETL-26-000507"
    ],
    "certificates": [],
@@ -56670,7 +57090,7 @@
     "HYBRID"
    ],
    "read": "2026-09-27",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-07"
   },
   {
@@ -56759,6 +57179,34 @@
    "brand": "Doobie Labs",
    "strain": "Northern Lights",
    "key": "doobie|northern lights",
+   "thcPercent": 29.0,
+   "terpenes": {
+    "LINALOOL": 0.34,
+    "LIMONENE": 0.31,
+    "CARYOPHYLLENE": 0.2,
+    "MYRCENE": 0.12
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000116"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "SATIVA"
+   ],
+   "read": "2026-09-27",
+   "lastSeen": "2026-11-08",
+   "testedOn": "2026-06-21",
+   "testedFrom": "retail-id",
+   "packagedOn": "2026-06-13",
+   "packagedFrom": "retail-id",
+   "firstOnShelf": "2026-09-06",
+   "onShelfSinceStart": true
+  },
+  {
+   "brand": "Doobie Labs",
+   "strain": "Northern Lights",
+   "key": "doobie|northern lights",
    "thcPercent": 28.74,
    "terpenes": {
     "LINALOOL": 0.52,
@@ -56787,7 +57235,7 @@
     "INDICA",
     "SATIVA"
    ],
-   "read": "2026-09-27",
+   "read": "2026-11-08",
    "lastSeen": "2026-11-08",
    "testedOn": "2026-06-13",
    "testedFrom": "sampled",
@@ -56953,6 +57401,7 @@
     "OCM-CAURD-24-000138",
     "OCM-CAURD-24-000222",
     "OCM-CAURD-25-000236",
+    "OCM-CAURD-25-000282",
     "OCM-RETL-24-000055",
     "OCM-RETL-24-000114"
    ],
@@ -57154,6 +57603,7 @@
    "totalPercent": null,
    "shops": [
     "OCM-CAURD-24-000046",
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-25-000282",
     "OCM-RETL-24-000186"
    ],
@@ -57454,23 +57904,20 @@
     "MYRCENE": 0.21,
     "FARNESENE": 0.1,
     "HUMULENE": 0.09,
-    "PINENE_BETA": 0.08,
-    "PINENE_ALPHA": 0.08
+    "PINENE_BETA": 0.08
    },
-   "totalPercent": 1.58,
+   "totalPercent": null,
    "shops": [
     "OCM-CAURD-23-000041",
     "OCM-CAURD-24-000212",
     "OCM-CAURD-25-000287",
-    "OCM-CAURD-25-000316",
-    "OCM-RETL-25-000325"
+    "OCM-CAURD-25-000316"
    ],
    "certificates": [],
    "retailId": [
     "1A41203000003F6000001475"
    ],
    "lineageStated": [
-    "HYBRID",
     "SATIVA"
    ],
    "read": "2026-09-27",
@@ -57482,8 +57929,8 @@
    "firstOnShelf": "2026-09-10"
   },
   {
-   "brand": "DOOBIE LABS",
-   "strain": "WHITE WIDOW",
+   "brand": "Doobie Labs",
+   "strain": "White Widow",
    "key": "doobie|white widow",
    "thcPercent": 28.99,
    "terpenes": {
@@ -57499,6 +57946,7 @@
    },
    "totalPercent": 2.47,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-RETL-24-000133",
     "OCM-RETL-24-000244"
    ],
@@ -57563,6 +58011,7 @@
    "totalPercent": null,
    "shops": [
     "OCM-CAURD-23-000041",
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000119",
     "OCM-CAURD-24-000154",
     "OCM-CAURD-24-000173",
@@ -60765,18 +61214,14 @@
     "TERPINEOL": 0.03,
     "PINENE_BETA": 0.02,
     "BISABOLOL": 0.01,
-    "PINENE_ALPHA": 0.01,
-    "CARYOPHYLLENE_OXIDE": 0.01
+    "PINENE_ALPHA": 0.01
    },
-   "totalPercent": 0.95,
+   "totalPercent": null,
    "shops": [
-    "OCM-CAURD-25-000291",
-    "OCM-RETL-24-000133"
+    "OCM-CAURD-25-000291"
    ],
    "certificates": [],
-   "lineageStated": [
-    "HYBRID"
-   ],
+   "lineageStated": [],
    "read": "2026-09-29",
    "lastSeen": "2026-11-08",
    "packagedAfter": "2026-08-03",
@@ -61884,8 +62329,8 @@
    ],
    "read": "2026-09-26",
    "lastSeen": "2026-11-08",
-   "packagedAfter": "2026-08-03",
-   "firstOnShelf": "2026-09-24"
+   "firstOnShelf": "2026-09-24",
+   "packagedAfter": "2026-08-03"
   },
   {
    "brand": "ElectraLeaf",
@@ -63605,8 +64050,8 @@
    "firstOnShelf": "2026-10-25"
   },
   {
-   "brand": "FIND.",
-   "strain": "BANANA BURST",
+   "brand": "Find",
+   "strain": "Banana Burst",
    "key": "find|banana burst",
    "thcPercent": 27.38,
    "terpenes": {
@@ -63623,6 +64068,7 @@
    },
    "totalPercent": 2.45,
    "shops": [
+    "OCM-CAURD-24-000114",
     "OCM-RETL-26-000507"
    ],
    "certificates": [],
@@ -64784,8 +65230,7 @@
    },
    "totalPercent": null,
    "shops": [
-    "OCM-CAURD-24-000046",
-    "OCM-CAURD-24-000114"
+    "OCM-CAURD-24-000046"
    ],
    "certificates": [
     "https://app.alleaves.com/api/inventory/batch/buddega/coa/36312.pdf"
@@ -64963,12 +65408,13 @@
    ],
    "read": "2026-10-26",
    "lastSeen": "2026-11-08",
-   "testedOn": "2026-09-14",
-   "testedFrom": "retail-id",
+   "firstOnShelf": "2026-10-23",
+   "packagedAfter": "2026-03-16",
    "packagedOn": "2026-10-09",
    "packagedFrom": "retail-id",
    "harvestedOn": "2026-07-28",
-   "firstOnShelf": "2026-10-23"
+   "testedOn": "2026-09-14",
+   "testedFrom": "retail-id"
   },
   {
    "brand": "Find.",
@@ -65534,15 +65980,13 @@
    },
    "totalPercent": 1.84,
    "shops": [
-    "OCM-CAURD-23-000030",
-    "OCM-CAURD-24-000169"
+    "OCM-CAURD-23-000030"
    ],
    "certificates": [],
    "retailId": [
     "1A412030000026D000014218"
    ],
    "lineageStated": [
-    "INDICA",
     "INDICA_DOMINANT"
    ],
    "read": "2026-10-17",
@@ -65568,17 +66012,23 @@
     "GUAIOL": 0.1,
     "BISABOLOL": 0.08,
     "PINENE_BETA": 0.06,
+    "TERPINEOL": 0.04,
     "PINENE_ALPHA": 0.03,
+    "FENCHOL": 0.03,
+    "VALENCENE": 0.02,
     "CARYOPHYLLENE_OXIDE": 0.01,
-    "TERPINOLENE": 0.01
+    "TERPINOLENE": 0.01,
+    "CAMPHENE": 0.01
    },
-   "totalPercent": null,
+   "totalPercent": 1.79,
    "shops": [
-    "OCM-CAURD-24-000116"
+    "OCM-CAURD-24-000116",
+    "OCM-CAURD-25-000297"
    ],
    "certificates": [],
    "lineageStated": [
-    "INDICA"
+    "INDICA",
+    "INDICA_DOMINANT"
    ],
    "read": "2026-09-27",
    "lastSeen": "2026-11-08",
@@ -65640,7 +66090,7 @@
     "INDICA"
    ],
    "read": "2026-10-17",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-17"
   },
   {
@@ -65767,14 +66217,14 @@
   },
   {
    "brand": "Find.",
-   "strain": "MODIFIED GOAT",
+   "strain": "Modified Goat",
    "key": "find|modified goat",
    "thcPercent": 32.53,
    "terpenes": {
     "MYRCENE": 0.69,
     "CARYOPHYLLENE": 0.35,
-    "PINENE_BETA": 0.14,
     "HUMULENE": 0.14,
+    "PINENE_BETA": 0.14,
     "LINALOOL": 0.12,
     "FENCHOL": 0.08,
     "TERPINEOL": 0.08,
@@ -65785,8 +66235,8 @@
    },
    "totalPercent": 1.73,
    "shops": [
+    "OCM-CAURD-24-000121",
     "OCM-CAURD-24-000132",
-    "OCM-CAURD-24-000203",
     "OCM-RETL-24-000055"
    ],
    "certificates": [],
@@ -65831,31 +66281,6 @@
    "read": "2026-10-01",
    "lastSeen": "2026-11-08",
    "packagedAfter": "2026-03-16",
-   "firstOnShelf": "2026-09-29"
-  },
-  {
-   "brand": "Find.",
-   "strain": "Modified Goat",
-   "key": "find|modified goat",
-   "thcPercent": 32.21,
-   "terpenes": {
-    "LIMONENE": 0.64,
-    "MYRCENE": 0.45,
-    "CARYOPHYLLENE": 0.26,
-    "HUMULENE": 0.1,
-    "FENCHOL": 0.06,
-    "TERPINEOL": 0.05
-   },
-   "totalPercent": 1.89,
-   "shops": [
-    "OCM-CAURD-24-000121"
-   ],
-   "certificates": [],
-   "lineageStated": [
-    "INDICA"
-   ],
-   "read": "2026-11-08",
-   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-29"
   },
   {
@@ -67754,16 +68179,12 @@
     "LINALOOL": 0.09,
     "BISABOLOL": 0.05,
     "PINENE_BETA": 0.02,
-    "VALENCENE": 0.02,
     "PINENE_ALPHA": 0.01,
-    "CARYOPHYLLENE_OXIDE": 0.01,
-    "FENCHOL": 0.01,
-    "TERPINEOL": 0.01
+    "CARYOPHYLLENE_OXIDE": 0.01
    },
-   "totalPercent": 1.65,
+   "totalPercent": null,
    "shops": [
     "OCM-RETL-24-000244",
-    "OCM-RETL-25-000270",
     "OCM-RETL-25-000295"
    ],
    "certificates": [],
@@ -69158,6 +69579,31 @@
    "read": "2026-10-03",
    "lastSeen": "2026-10-27",
    "firstOnShelf": "2026-10-03"
+  },
+  {
+   "brand": "Flav",
+   "strain": "FLAV DUO - Cherry AK47 x Lato Pop",
+   "key": "flav|flav duo - cherry ak47 x lato pop",
+   "thcPercent": 26.18,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.31,
+    "LINALOOL": 0.29,
+    "LIMONENE": 0.2,
+    "MYRCENE": 0.04,
+    "PINENE_BETA": 0.03,
+    "PINENE_ALPHA": 0.02
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000114"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "HYBRID"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-09-27"
   },
   {
    "brand": "Flav",
@@ -71482,7 +71928,7 @@
    "lineageStated": [
     "SATIVA"
    ],
-   "read": "2026-11-05",
+   "read": "2026-11-08",
    "lastSeen": "2026-11-08",
    "packagedAfter": "2026-08-19",
    "firstOnShelf": "2026-09-08"
@@ -72882,15 +73328,14 @@
     "FENCHOL": 0.05,
     "TERPINEOL": 0.05,
     "PINENE_BETA": 0.04,
-    "CARYOPHYLLENE_OXIDE": 0.03,
     "PINENE_ALPHA": 0.03,
+    "CARYOPHYLLENE_OXIDE": 0.03,
     "NEROLIDOL": 0.02,
     "BORNEOL": 0.01,
     "OCIMENE": 0.01
    },
    "totalPercent": 1.48,
    "shops": [
-    "OCM-CAURD-25-000292",
     "OCM-RETL-24-000133",
     "OCM-RETL-25-000403",
     "OCM-RETL-26-000477",
@@ -72996,7 +73441,7 @@
    "brand": "FX",
    "strain": "Devil-Ade",
    "key": "fx|devil-ade",
-   "thcPercent": 27.63,
+   "thcPercent": 31.26,
    "terpenes": {
     "LIMONENE": 0.3,
     "CARYOPHYLLENE": 0.24,
@@ -73009,12 +73454,14 @@
     "TERPINEOL": 0.04,
     "PINENE_ALPHA": 0.03,
     "NEROLIDOL": 0.02,
-    "BORNEOL": 0.01,
     "CARYOPHYLLENE_OXIDE": 0.01,
+    "TERPINOLENE": 0.01,
+    "BORNEOL": 0.01,
     "CAMPHENE": 0.01
    },
    "totalPercent": 1.07,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000169"
    ],
    "certificates": [],
@@ -73023,11 +73470,7 @@
    ],
    "read": "2026-09-27",
    "lastSeen": "2026-11-08",
-   "packagedOn": "2026-03-26",
-   "packagedFrom": "retail-id",
-   "testedOn": "2026-02-24",
-   "testedFrom": "retail-id",
-   "firstOnShelf": "2026-09-17"
+   "firstOnShelf": "2026-09-24"
   },
   {
    "brand": "FX",
@@ -73116,13 +73559,13 @@
     "HYBRID"
    ],
    "read": "2026-10-08",
-   "lastSeen": "2026-11-05",
-   "firstOnShelf": "2026-09-06",
-   "onShelfSinceStart": true,
+   "lastSeen": "2026-11-08",
    "packagedOn": "2026-03-26",
    "packagedFrom": "retail-id",
    "testedOn": "2025-12-21",
-   "testedFrom": "retail-id"
+   "testedFrom": "retail-id",
+   "firstOnShelf": "2026-09-06",
+   "onShelfSinceStart": true
   },
   {
    "brand": "FX",
@@ -74416,7 +74859,7 @@
     "HYBRID"
    ],
    "read": "2026-09-27",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -77416,8 +77859,7 @@
    },
    "totalPercent": 2.1,
    "shops": [
-    "OCM-CAURD-24-000082",
-    "OCM-CAURD-24-000114"
+    "OCM-CAURD-24-000082"
    ],
    "certificates": [],
    "lineageStated": [
@@ -77597,6 +78039,38 @@
     "HYBRID"
    ],
    "read": "2026-09-27",
+   "lastSeen": "2026-11-08",
+   "packagedAfter": "2026-03-16",
+   "firstOnShelf": "2026-09-06",
+   "onShelfSinceStart": true
+  },
+  {
+   "brand": "Grassroots",
+   "strain": "Blue Lobster",
+   "key": "grassroots|blue lobster",
+   "thcPercent": 27.64,
+   "terpenes": {
+    "LIMONENE": 0.6,
+    "LINALOOL": 0.27,
+    "OCIMENE": 0.15,
+    "CARYOPHYLLENE": 0.14,
+    "MYRCENE": 0.12,
+    "PINENE_BETA": 0.09,
+    "PINENE_ALPHA": 0.05,
+    "HUMULENE": 0.05,
+    "TERPINOLENE": 0.02,
+    "BISABOLOL": 0.01,
+    "CARYOPHYLLENE_OXIDE": 0.01
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000116"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "INDICA_DOMINANT"
+   ],
+   "read": "2026-11-08",
    "lastSeen": "2026-11-08",
    "packagedAfter": "2026-03-16",
    "firstOnShelf": "2026-09-06",
@@ -82795,7 +83269,7 @@
     "INDICA"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-06",
    "onShelfSinceStart": true
   },
@@ -82819,6 +83293,7 @@
    },
    "totalPercent": 2.58,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000154",
     "OCM-CAURD-25-000236",
     "OCM-RETL-24-000133",
@@ -87554,7 +88029,7 @@
    "certificates": [],
    "lineageStated": [],
    "read": "2026-10-01",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-01"
   },
   {
@@ -89399,8 +89874,7 @@
     "OCM-CAURD-23-000030",
     "OCM-CAURD-24-000129",
     "OCM-CAURD-24-000169",
-    "OCM-CAURD-24-000173",
-    "OCM-RETL-25-000325"
+    "OCM-CAURD-24-000173"
    ],
    "certificates": [],
    "retailId": [
@@ -90130,8 +90604,7 @@
    "totalPercent": 2.13,
    "shops": [
     "OCM-CAURD-24-000082",
-    "OCM-CAURD-25-000236",
-    "OCM-CAURD-25-000297"
+    "OCM-CAURD-25-000236"
    ],
    "certificates": [],
    "lineageStated": [
@@ -90433,6 +90906,7 @@
     "OCM-CAURD-24-000129",
     "OCM-CAURD-25-000236",
     "OCM-CAURD-25-000287",
+    "OCM-CAURD-25-000297",
     "OCM-RETL-24-000133",
     "OCM-RETL-24-000244"
    ],
@@ -90440,13 +90914,37 @@
     "https://app.alleaves.com/api/inventory/batch/buddega/coa/38906.pdf"
    ],
    "lineageStated": [
-    "HYBRID"
+    "HYBRID",
+    "INDICA"
    ],
    "read": "2026-09-27",
    "lastSeen": "2026-11-08",
    "testedOn": "2026-08-26",
    "testedFrom": "sampled",
    "firstOnShelf": "2026-09-23"
+  },
+  {
+   "brand": "HERB",
+   "strain": "PINK COOKIES - [1-1] [6]",
+   "key": "herb|pink cookies - [1-1] [6]",
+   "thcPercent": 25.53,
+   "terpenes": {
+    "LINALOOL": 0.35,
+    "CARYOPHYLLENE": 0.23,
+    "LIMONENE": 0.15,
+    "MYRCENE": 0.11,
+    "FARNESENE": 0.09,
+    "HUMULENE": 0.08
+   },
+   "totalPercent": 1,
+   "shops": [
+    "OCM-RETL-26-000477"
+   ],
+   "certificates": [],
+   "lineageStated": [],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "firstOnShelf": "2026-11-08"
   },
   {
    "brand": "HERB",
@@ -90649,7 +91147,7 @@
   },
   {
    "brand": "HERB",
-   "strain": "Tropicana Cookies",
+   "strain": "TROPICANA COOKIES",
    "key": "herb|tropicana cookies",
    "thcPercent": 28.99,
    "terpenes": {
@@ -90663,25 +91161,20 @@
    "totalPercent": 2.28,
    "shops": [
     "OCM-CAURD-24-000200",
-    "OCM-RETL-24-000020",
     "OCM-RETL-24-000055",
     "OCM-RETL-24-000133"
    ],
    "certificates": [],
-   "retailId": [
-    "1A41203000003F6000001771"
-   ],
    "lineageStated": [
-    "HYBRID",
     "SATIVA"
    ],
    "read": "2026-10-21",
    "lastSeen": "2026-11-08",
-   "testedOn": "2026-10-01",
-   "testedFrom": "retail-id",
    "packagedOn": "2026-09-24",
    "packagedFrom": "retail-id",
    "harvestedOn": "2026-08-27",
+   "testedOn": "2026-10-01",
+   "testedFrom": "retail-id",
    "firstOnShelf": "2026-10-16"
   },
   {
@@ -90821,7 +91314,7 @@
    "certificates": [],
    "lineageStated": [],
    "read": "2026-09-28",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-25"
   },
   {
@@ -91842,10 +92335,11 @@
    ],
    "certificates": [],
    "lineageStated": [
-    "HYBRID"
+    "HYBRID",
+    "SATIVA"
    ],
    "read": "2026-10-30",
-   "lastSeen": "2026-11-02",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-30"
   },
   {
@@ -91871,7 +92365,7 @@
     "INDICA"
    ],
    "read": "2026-09-27",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -91950,7 +92444,7 @@
     "INDICA_DOMINANT"
    ],
    "read": "2026-10-14",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-14"
   },
   {
@@ -91974,7 +92468,7 @@
     "INDICA"
    ],
    "read": "2026-10-30",
-   "lastSeen": "2026-11-01",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-30"
   },
   {
@@ -92003,7 +92497,7 @@
     "INDICA"
    ],
    "read": "2026-10-31",
-   "lastSeen": "2026-10-31",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-15"
   },
   {
@@ -92239,7 +92733,7 @@
    "firstOnShelf": "2026-09-26"
   },
   {
-   "brand": "High Falls Canna",
+   "brand": "HIGH FALLS CANNA",
    "strain": "Wedding Cake X Cherry Pie",
    "key": "highfallscanna|wedding cake x cherry pie",
    "thcPercent": 23.46,
@@ -92253,10 +92747,13 @@
    },
    "totalPercent": 1.53,
    "shops": [
+    "OCM-CAURD-24-000114",
     "OCM-CAURD-25-000292"
    ],
    "certificates": [],
-   "lineageStated": [],
+   "lineageStated": [
+    "INDICA"
+   ],
    "read": "2026-10-10",
    "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-10"
@@ -92306,7 +92803,7 @@
     "HYBRID"
    ],
    "read": "2026-10-30",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-09"
   },
   {
@@ -92999,7 +93496,8 @@
    },
    "totalPercent": 1.77,
    "shops": [
-    "OCM-RETL-24-000133"
+    "OCM-RETL-24-000133",
+    "OCM-RETL-26-000477"
    ],
    "certificates": [],
    "lineageStated": [
@@ -93031,7 +93529,7 @@
     "HYBRID"
    ],
    "read": "2026-09-28",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-22"
   },
   {
@@ -94430,7 +94928,7 @@
   },
   {
    "brand": "Honest Pharm",
-   "strain": "Tri-Berry",
+   "strain": "TRI-BERRY",
    "key": "honestpharm|tri-berry",
    "thcPercent": 28.19,
    "terpenes": {
@@ -94440,13 +94938,12 @@
     "LINALOOL": 0.07,
     "TERPINEOL": 0.044,
     "MYRCENE": 0.04,
-    "PINENE_BETA": 0.04,
-    "PINENE_ALPHA": 0.02,
+    "PINENE_BETA": 0.0388,
+    "PINENE_ALPHA": 0.0214,
     "CARYOPHYLLENE_OXIDE": 0.02
    },
    "totalPercent": 0.93,
    "shops": [
-    "OCM-CAURD-25-000242",
     "OCM-RETL-24-000068",
     "OCM-RETL-24-000197",
     "OCM-RETL-26-000504",
@@ -97541,6 +98038,7 @@
    "totalPercent": 2.27,
    "shops": [
     "OCM-CAURD-23-000020",
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000209",
     "OCM-CAURD-25-000294"
    ],
@@ -97731,7 +98229,7 @@
     "HYBRID"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -98713,7 +99211,8 @@
    },
    "totalPercent": 1.6,
    "shops": [
-    "OCM-CAURD-23-000020"
+    "OCM-CAURD-23-000020",
+    "OCM-CAURD-24-000116"
    ],
    "certificates": [],
    "retailId": [
@@ -100118,7 +100617,8 @@
    "totalPercent": 4.54,
    "shops": [
     "OCM-CAURD-25-000236",
-    "OCM-RETL-24-000114"
+    "OCM-RETL-24-000114",
+    "OCM-RETL-26-000507"
    ],
    "certificates": [],
    "lineageStated": [
@@ -100948,6 +101448,38 @@
    "packagedFrom": "retail-id",
    "harvestedOn": "2026-06-17",
    "firstOnShelf": "2026-10-19"
+  },
+  {
+   "brand": "Ithaca Organics Cannabis Co.",
+   "strain": "Lapis Exillis",
+   "key": "ithacaorganics|lapis exillis",
+   "thcPercent": 23.59,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.43,
+    "LIMONENE": 0.31,
+    "LINALOOL": 0.23,
+    "HUMULENE": 0.13,
+    "FARNESENE": 0.12
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-RETL-25-000403"
+   ],
+   "certificates": [],
+   "retailId": [
+    "1A4120300000D7D000002536"
+   ],
+   "lineageStated": [
+    "HYBRID"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "testedOn": "2026-09-08",
+   "testedFrom": "retail-id",
+   "packagedOn": "2026-10-07",
+   "packagedFrom": "retail-id",
+   "harvestedOn": "2026-06-17",
+   "firstOnShelf": "2026-10-16"
   },
   {
    "brand": "Ithaca Organics Cannabis Co.",
@@ -102678,7 +103210,7 @@
   },
   {
    "brand": "J Cannabis",
-   "strain": "Super Runtz",
+   "strain": "SUPER RUNTZ",
    "key": "j|super runtz",
    "thcPercent": 30.97,
    "terpenes": {
@@ -102705,7 +103237,6 @@
     "OCM-CAURD-24-000154",
     "OCM-CAURD-24-000185",
     "OCM-RETL-24-000133",
-    "OCM-RETL-25-000313",
     "OCM-RETL-26-000507"
    ],
    "certificates": [],
@@ -103556,7 +104087,7 @@
     "SATIVA"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -105141,8 +105672,8 @@
    ],
    "read": "2026-10-08",
    "lastSeen": "2026-11-08",
-   "packagedAfter": "2026-06-10",
-   "firstOnShelf": "2026-10-02"
+   "firstOnShelf": "2026-10-02",
+   "packagedAfter": "2026-06-10"
   },
   {
    "brand": "KINGS & QUEENS",
@@ -106132,21 +106663,32 @@
     "CARYOPHYLLENE": 0.26,
     "HUMULENE": 0.08,
     "PINENE_ALPHA": 0.07,
+    "FARNESENE": 0.06,
     "LIMONENE": 0.04,
-    "PINENE_BETA": 0.03,
     "BISABOLOL": 0.03,
-    "LINALOOL": 0.02
+    "PINENE_BETA": 0.03,
+    "LINALOOL": 0.02,
+    "VALENCENE": 0.01
    },
    "totalPercent": null,
    "shops": [
+    "OCM-RETL-24-000020",
     "OCM-RETL-24-000159"
    ],
    "certificates": [],
+   "retailId": [
+    "1A4120300000C1F000033217"
+   ],
    "lineageStated": [
     "HYBRID"
    ],
    "read": "2026-11-08",
    "lastSeen": "2026-11-08",
+   "testedOn": "2026-10-09",
+   "testedFrom": "retail-id",
+   "packagedOn": "2026-10-05",
+   "packagedFrom": "retail-id",
+   "harvestedOn": "2026-08-14",
    "firstOnShelf": "2026-11-02"
   },
   {
@@ -106299,6 +106841,45 @@
    "brand": "Knack",
    "strain": "Gelato Sunset",
    "key": "knack|gelato sunset",
+   "thcPercent": 31.27,
+   "terpenes": {
+    "MYRCENE": 1.326,
+    "OCIMENE": 0.524,
+    "CARYOPHYLLENE": 0.167,
+    "LINALOOL": 0.145,
+    "LIMONENE": 0.095,
+    "PINENE_ALPHA": 0.053,
+    "HUMULENE": 0.047,
+    "FARNESENE": 0.04,
+    "PINENE_BETA": 0.032,
+    "VALENCENE": 0.015,
+    "CARYOPHYLLENE_OXIDE": 0.013,
+    "BISABOLOL": 0.011,
+    "TERPINEOL": 0.011,
+    "FENCHOL": 0.007
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-RETL-24-000020"
+   ],
+   "certificates": [],
+   "retailId": [
+    "1A4120300000C1F000033078"
+   ],
+   "lineageStated": [],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "testedOn": "2026-10-30",
+   "testedFrom": "retail-id",
+   "packagedOn": "2026-10-22",
+   "packagedFrom": "retail-id",
+   "harvestedOn": "2026-09-17",
+   "firstOnShelf": "2026-11-08"
+  },
+  {
+   "brand": "Knack",
+   "strain": "Gelato Sunset",
+   "key": "knack|gelato sunset",
    "thcPercent": 23.99,
    "terpenes": {
     "MYRCENE": 1.13,
@@ -106354,6 +106935,44 @@
    "read": "2026-10-30",
    "lastSeen": "2026-11-02",
    "firstOnShelf": "2026-10-30"
+  },
+  {
+   "brand": "Knack",
+   "strain": "Golden Ring",
+   "key": "knack|golden ring",
+   "thcPercent": 27.6,
+   "terpenes": {
+    "MYRCENE": 0.54,
+    "LIMONENE": 0.46,
+    "LINALOOL": 0.16,
+    "CARYOPHYLLENE": 0.09,
+    "PINENE_BETA": 0.06,
+    "FENCHOL": 0.03,
+    "PINENE_ALPHA": 0.03,
+    "TERPINEOL": 0.03,
+    "HUMULENE": 0.02,
+    "BISABOLOL": 0.01,
+    "GUAIOL": 0.01,
+    "OCIMENE": 0.01,
+    "VALENCENE": 0.01
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-RETL-24-000020"
+   ],
+   "certificates": [],
+   "retailId": [
+    "1A4120300000C1F000033061"
+   ],
+   "lineageStated": [],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
+   "testedOn": "2026-10-26",
+   "testedFrom": "retail-id",
+   "packagedOn": "2026-10-20",
+   "packagedFrom": "retail-id",
+   "harvestedOn": "2026-09-15",
+   "firstOnShelf": "2026-11-08"
   },
   {
    "brand": "Knack",
@@ -106637,10 +107256,10 @@
    "firstOnShelf": "2026-09-24"
   },
   {
-   "brand": "Knack",
-   "strain": "Kush Cake",
+   "brand": "KNACK",
+   "strain": "KUSH CAKE",
    "key": "knack|kush cake",
-   "thcPercent": 35.27,
+   "thcPercent": 35.33,
    "terpenes": {
     "LIMONENE": 0.53,
     "MYRCENE": 0.35,
@@ -106654,13 +107273,10 @@
    },
    "totalPercent": 1.91,
    "shops": [
-    "OCM-CAURD-24-000138",
     "OCM-RETL-24-000133"
    ],
    "certificates": [],
-   "lineageStated": [
-    "INDICA"
-   ],
+   "lineageStated": [],
    "read": "2026-10-24",
    "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
@@ -108902,14 +109518,17 @@
     "LIMONENE": 0.18,
     "LINALOOL": 0.17,
     "MYRCENE": 0.11,
+    "CARYOPHYLLENE_OXIDE": 0.08,
     "PINENE_BETA": 0.03
    },
    "totalPercent": null,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000173"
    ],
    "certificates": [],
    "lineageStated": [
+    "HYBRID",
     "SATIVA_DOMINANT"
    ],
    "read": "2026-10-07",
@@ -109157,7 +109776,8 @@
    },
    "totalPercent": null,
    "shops": [
-    "OCM-CAURD-24-000046"
+    "OCM-CAURD-24-000046",
+    "OCM-CAURD-24-000116"
    ],
    "certificates": [
     "https://app.alleaves.com/api/inventory/batch/buddega/coa/39442.pdf"
@@ -110420,16 +111040,20 @@
     "CARYOPHYLLENE": 0.38,
     "CAMPHENE": 0.12,
     "TERPINOLENE": 0.04,
+    "TERPINENE": 0.04,
     "PINENE_ALPHA": 0.03
    },
-   "totalPercent": null,
+   "totalPercent": 0.98,
    "shops": [
     "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000222"
+    "OCM-CAURD-24-000116",
+    "OCM-CAURD-24-000222",
+    "OCM-RETL-24-000068"
    ],
    "certificates": [],
    "lineageStated": [
-    "INDICA"
+    "INDICA",
+    "INDICA_DOMINANT"
    ],
    "read": "2026-11-08",
    "lastSeen": "2026-11-08",
@@ -110539,7 +111163,7 @@
    "firstOnShelf": "2026-09-14"
   },
   {
-   "brand": "LEAL",
+   "brand": "Leal",
    "strain": "Lemon Venom",
    "key": "leal|lemon venom",
    "thcPercent": 27.65,
@@ -110554,6 +111178,7 @@
    "totalPercent": 1.58,
    "shops": [
     "OCM-CAURD-24-000077",
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000173"
    ],
    "certificates": [],
@@ -110689,6 +111314,7 @@
    "totalPercent": null,
    "shops": [
     "OCM-CAURD-24-000046",
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-25-000249",
     "OCM-RETL-24-000159",
     "OCM-RETL-24-000244",
@@ -110853,20 +111479,20 @@
    "firstOnShelf": "2026-09-07"
   },
   {
-   "brand": "LEAL",
-   "strain": "Nic the Bruiser",
+   "brand": "Leal",
+   "strain": "Nic The Bruiser",
    "key": "leal|nic the bruiser",
    "thcPercent": 28.0,
    "terpenes": {
     "HUMULENE": 1.27,
     "LINALOOL": 0.73,
     "LIMONENE": 0.61,
-    "PINENE_BETA": 0.14,
     "BISABOLOL": 0.11,
     "CARYOPHYLLENE_OXIDE": 0.04
    },
    "totalPercent": 2.05,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000173",
     "OCM-RETL-24-000068",
     "OCM-RETL-26-000504"
@@ -110925,6 +111551,7 @@
    },
    "totalPercent": null,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000173",
     "OCM-RETL-24-000159"
    ],
@@ -111058,9 +111685,9 @@
     "HUMULENE": 0.35,
     "LINALOOL": 0.17,
     "BISABOLOL": 0.09,
+    "VALENCENE": 0.06,
     "MYRCENE": 0.06,
     "PINENE_BETA": 0.06,
-    "VALENCENE": 0.06,
     "PINENE_ALPHA": 0.03
    },
    "totalPercent": 2.21,
@@ -111218,6 +111845,7 @@
     "OCM-CAURD-23-000041",
     "OCM-CAURD-24-000046",
     "OCM-CAURD-24-000063",
+    "OCM-CAURD-24-000116",
     "OCM-RETL-24-000068",
     "OCM-RETL-26-000504"
    ],
@@ -111372,14 +112000,18 @@
    "key": "leal|super boof",
    "thcPercent": 29.97,
    "terpenes": {
+    "CARYOPHYLLENE": 0.99,
+    "HUMULENE": 0.27,
+    "LIMONENE": 0.2,
     "BISABOLOL": 0.13,
     "LINALOOL": 0.09,
     "PINENE_ALPHA": 0.02,
-    "PINENE_BETA": 0.02,
-    "CARYOPHYLLENE_OXIDE": 0.02
+    "MYRCENE": 0.02,
+    "PINENE_BETA": 0.02
    },
    "totalPercent": 1.59,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000173",
     "OCM-RETL-24-000068"
    ],
@@ -111641,6 +112273,7 @@
    "totalPercent": 2.02,
    "shops": [
     "OCM-CAURD-23-000041",
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000165",
     "OCM-CAURD-24-000169",
     "OCM-CAURD-24-000173",
@@ -112549,7 +113182,7 @@
    "certificates": [],
    "lineageStated": [],
    "read": "2026-09-29",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-29"
   },
   {
@@ -114191,7 +114824,8 @@
    },
    "totalPercent": 1.69,
    "shops": [
-    "OCM-RETL-24-000133"
+    "OCM-RETL-24-000133",
+    "OCM-RETL-26-000477"
    ],
    "certificates": [],
    "lineageStated": [
@@ -114426,7 +115060,7 @@
     "INDICA_DOMINANT"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -115828,10 +116462,9 @@
     "HUMULENE": 0.09,
     "OCIMENE": 0.08
    },
-   "totalPercent": 2,
+   "totalPercent": null,
    "shops": [
     "OCM-CAURD-24-000154",
-    "OCM-CAURD-24-000169",
     "OCM-CAURD-24-000214",
     "OCM-RETL-24-000151",
     "OCM-RETL-25-000368"
@@ -116972,9 +117605,9 @@
     "MYRCENE": 0.11,
     "PINENE_ALPHA": 0.06,
     "PINENE_BETA": 0.06,
-    "LINALOOL": 0.05,
-    "HUMULENE": 0.05,
     "BISABOLOL": 0.05,
+    "HUMULENE": 0.05,
+    "LINALOOL": 0.05,
     "FENCHOL": 0.04,
     "TERPINEOL": 0.04,
     "CARYOPHYLLENE_OXIDE": 0.01,
@@ -116985,7 +117618,6 @@
    "shops": [
     "OCM-CAURD-24-000046",
     "OCM-CAURD-24-000101",
-    "OCM-CAURD-24-000169",
     "OCM-CAURD-25-000265",
     "OCM-CAURD-25-000294",
     "OCM-CAURD-25-000309",
@@ -117808,8 +118440,8 @@
    ],
    "read": "2026-09-27",
    "lastSeen": "2026-11-08",
-   "packagedAfter": "2026-05-28",
-   "firstOnShelf": "2026-09-23"
+   "firstOnShelf": "2026-09-23",
+   "packagedAfter": "2026-05-28"
   },
   {
    "brand": "matter.",
@@ -120434,7 +121066,7 @@
    "onShelfSinceStart": true
   },
   {
-   "brand": "MINI MART",
+   "brand": "mini MART",
    "strain": "Cheetah Piss",
    "key": "minimart|cheetah piss",
    "thcPercent": 28.16,
@@ -120457,7 +121089,6 @@
     "OCM-CAURD-24-000222",
     "OCM-CAURD-25-000239",
     "OCM-RETL-24-000055",
-    "OCM-RETL-25-000270",
     "OCM-RETL-25-000295"
    ],
    "certificates": [
@@ -122080,7 +122711,7 @@
    "firstOnShelf": "2026-10-21"
   },
   {
-   "brand": "mini MART",
+   "brand": "MINI MART",
    "strain": "STAR DAWG",
    "key": "minimart|star dawg",
    "thcPercent": 27.67,
@@ -122093,8 +122724,7 @@
    "totalPercent": 0.65,
    "shops": [
     "OCM-CAURD-24-000087",
-    "OCM-CAURD-24-000138",
-    "OCM-CAURD-24-000185"
+    "OCM-CAURD-24-000138"
    ],
    "certificates": [],
    "lineageStated": [
@@ -123512,8 +124142,8 @@
     "MYRCENE": 0.23,
     "HUMULENE": 0.2,
     "LINALOOL": 0.16,
-    "BISABOLOL": 0.06,
     "FENCHOL": 0.06,
+    "BISABOLOL": 0.06,
     "TERPINEOL": 0.06
    },
    "totalPercent": 1.9,
@@ -124892,7 +125522,6 @@
    "totalPercent": 1.27,
    "shops": [
     "OCM-CAURD-24-000116",
-    "OCM-CAURD-24-000169",
     "OCM-CAURD-25-000287"
    ],
    "certificates": [],
@@ -125582,10 +126211,9 @@
     "PINENE_ALPHA": 0.03,
     "BISABOLOL": 0.03
    },
-   "totalPercent": 1.51,
+   "totalPercent": null,
    "shops": [
-    "OCM-CAURD-24-000116",
-    "OCM-CAURD-24-000169"
+    "OCM-CAURD-24-000116"
    ],
    "certificates": [],
    "lineageStated": [
@@ -125754,10 +126382,9 @@
     "PINENE_ALPHA": 0.03,
     "BISABOLOL": 0.03
    },
-   "totalPercent": 1.45,
+   "totalPercent": null,
    "shops": [
-    "OCM-CAURD-24-000116",
-    "OCM-CAURD-24-000169"
+    "OCM-CAURD-24-000116"
    ],
    "certificates": [],
    "lineageStated": [
@@ -125800,19 +126427,20 @@
    "key": "munchkins|trop cherry",
    "thcPercent": 28.38,
    "terpenes": {
-    "CARYOPHYLLENE": 0.2513,
-    "LINALOOL": 0.2106,
-    "LIMONENE": 0.1537,
+    "CARYOPHYLLENE": 0.25,
+    "LINALOOL": 0.21,
+    "LIMONENE": 0.15,
     "FARNESENE": 0.1423,
-    "HUMULENE": 0.0635,
+    "HUMULENE": 0.06,
     "TERPINEOL": 0.0379,
-    "MYRCENE": 0.0282,
-    "PINENE_BETA": 0.0276,
-    "PINENE_ALPHA": 0.0139
+    "MYRCENE": 0.03,
+    "PINENE_BETA": 0.03,
+    "PINENE_ALPHA": 0.01
    },
    "totalPercent": null,
    "shops": [
     "OCM-CAURD-23-000030",
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-25-000287"
    ],
    "certificates": [],
@@ -127095,12 +127723,10 @@
    },
    "totalPercent": 3.1,
    "shops": [
-    "OCM-CAURD-24-000165",
-    "OCM-CAURD-24-000203"
+    "OCM-CAURD-24-000165"
    ],
    "certificates": [],
    "lineageStated": [
-    "INDICA",
     "INDICA_DOMINANT"
    ],
    "read": "2026-09-27",
@@ -127190,6 +127816,7 @@
    "shops": [
     "OCM-CAURD-24-000087",
     "OCM-CAURD-24-000173",
+    "OCM-CAURD-24-000203",
     "OCM-CAURD-25-000249",
     "OCM-RETL-24-000133"
    ],
@@ -129170,12 +129797,10 @@
    },
    "totalPercent": 1.9,
    "shops": [
-    "OCM-CAURD-24-000077",
-    "OCM-CAURD-24-000203"
+    "OCM-CAURD-24-000077"
    ],
    "certificates": [],
    "lineageStated": [
-    "INDICA",
     "SATIVA"
    ],
    "read": "2026-10-17",
@@ -131296,7 +131921,7 @@
     "INDICA"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -132514,7 +133139,8 @@
    },
    "totalPercent": 1.72,
    "shops": [
-    "OCM-MICR-24-000030"
+    "OCM-MICR-24-000030",
+    "OCM-RETL-25-000325"
    ],
    "certificates": [],
    "lineageStated": [
@@ -134226,7 +134852,7 @@
     "SATIVA"
    ],
    "read": "2026-09-27",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -135499,7 +136125,7 @@
    "brand": "Preferred Gardens",
    "strain": "Crunch Berries",
    "key": "preferredgardens|crunch berries",
-   "thcPercent": 31.0,
+   "thcPercent": 31.01,
    "terpenes": {
     "LINALOOL": 0.56,
     "LIMONENE": 0.39,
@@ -135510,6 +136136,7 @@
    },
    "totalPercent": null,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-RETL-24-000244"
    ],
    "certificates": [
@@ -135597,7 +136224,7 @@
     "HYBRID"
    ],
    "read": "2026-09-28",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-08"
   },
   {
@@ -135898,12 +136525,14 @@
    },
    "totalPercent": null,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-RETL-24-000244"
    ],
    "certificates": [
     "https://app.alleaves.com/api/inventory/batch/buddega/coa/31176.pdf"
    ],
    "lineageStated": [
+    "HYBRID",
     "INDICA"
    ],
    "read": "2026-09-27",
@@ -136345,10 +136974,12 @@
    },
    "totalPercent": null,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-RETL-24-000186"
    ],
    "certificates": [],
    "lineageStated": [
+    "INDICA",
     "INDICA_DOMINANT"
    ],
    "read": "2026-09-27",
@@ -136709,7 +137340,7 @@
     "INDICA"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-17"
   },
   {
@@ -136724,17 +137355,19 @@
     "MYRCENE": 0.13,
     "FARNESENE": 0.09,
     "TERPINEOL": 0.08,
+    "PINENE_BETA": 0.07,
     "HUMULENE": 0.07,
-    "FENCHOL": 0.07,
-    "PINENE_BETA": 0.07
+    "FENCHOL": 0.07
    },
    "totalPercent": 1.42,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000169",
     "OCM-CAURD-24-000173"
    ],
    "certificates": [],
    "lineageStated": [
+    "HYBRID",
     "INDICA"
    ],
    "read": "2026-09-27",
@@ -136981,6 +137614,8 @@
    },
    "totalPercent": 1.84,
    "shops": [
+    "OCM-CAURD-23-000041",
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000169",
     "OCM-RETL-24-000244"
    ],
@@ -137235,7 +137870,7 @@
     "INDICA"
    ],
    "read": "2026-09-27",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-06",
    "onShelfSinceStart": true
   },
@@ -137391,11 +138026,13 @@
    },
    "totalPercent": 1.59,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000169"
    ],
    "certificates": [],
    "lineageStated": [
-    "HYBRID"
+    "HYBRID",
+    "INDICA_DOMINANT"
    ],
    "read": "2026-09-27",
    "lastSeen": "2026-11-08",
@@ -137917,7 +138554,7 @@
     "HYBRID"
    ],
    "read": "2026-10-30",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-30"
   },
   {
@@ -138419,12 +139056,17 @@
     "BISABOLOL": 0.08,
     "LINALOOL": 0.07,
     "OCIMENE": 0.06,
+    "FARNESENE": 0.04,
     "CARYOPHYLLENE_OXIDE": 0.02,
-    "GUAIOL": 0.01
+    "TERPINEOL": 0.02,
+    "GUAIOL": 0.01,
+    "FENCHOL": 0.01,
+    "VALENCENE": 0.01
    },
-   "totalPercent": null,
+   "totalPercent": 1.96,
    "shops": [
-    "OCM-CAURD-24-000046"
+    "OCM-CAURD-24-000046",
+    "OCM-RETL-26-000477"
    ],
    "certificates": [
     "https://app.alleaves.com/api/inventory/batch/buddega/coa/33104.pdf"
@@ -140735,6 +141377,7 @@
    },
    "totalPercent": 1.22,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-25-000271",
     "OCM-CAURD-26-000349",
     "OCM-RETL-24-000088",
@@ -140766,7 +141409,6 @@
    },
    "totalPercent": 1.57,
    "shops": [
-    "OCM-CAURD-24-000114",
     "OCM-CAURD-24-000124",
     "OCM-CAURD-24-000165",
     "OCM-CAURD-24-000166",
@@ -140927,7 +141569,7 @@
    "firstOnShelf": "2026-10-28"
   },
   {
-   "brand": "Revert",
+   "brand": "Revert Cannabis",
    "strain": "Ice Cream Cake",
    "key": "revert|ice cream cake",
    "thcPercent": 26.51,
@@ -140941,6 +141583,7 @@
    },
    "totalPercent": 1.47,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000169",
     "OCM-CAURD-25-000282",
     "OCM-RETL-24-000133",
@@ -140971,6 +141614,7 @@
    },
    "totalPercent": 1.55,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000165",
     "OCM-CAURD-24-000169",
     "OCM-CAURD-25-000236",
@@ -140996,6 +141640,7 @@
     "MYRCENE": 0.37,
     "OCIMENE": 0.13,
     "PINENE_BETA": 0.11,
+    "BISABOLOL": 0.09,
     "PINENE_ALPHA": 0.08,
     "LINALOOL": 0.06,
     "CARYOPHYLLENE_OXIDE": 0.03,
@@ -141024,17 +141669,23 @@
    "thcPercent": 24.67,
    "terpenes": {
     "CARYOPHYLLENE": 0.39,
+    "MYRCENE": 0.37,
     "LIMONENE": 0.22,
     "HUMULENE": 0.19,
+    "OCIMENE": 0.13,
+    "PINENE_BETA": 0.11,
     "BISABOLOL": 0.09,
+    "PINENE_ALPHA": 0.08,
     "LINALOOL": 0.06,
+    "CARYOPHYLLENE_OXIDE": 0.03,
     "BORNEOL": 0.01,
+    "TERPINOLENE": 0.01,
     "NEROLIDOL": 0.01
    },
    "totalPercent": 0.94,
    "shops": [
     "OCM-CAURD-23-000029",
-    "OCM-CAURD-24-000114",
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000138",
     "OCM-CAURD-25-000296",
     "OCM-CAURD-26-000349",
@@ -141101,6 +141752,7 @@
    "shops": [
     "OCM-CAURD-23-000029",
     "OCM-CAURD-24-000114",
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000222",
     "OCM-CAURD-25-000282",
     "OCM-CAURD-25-000296",
@@ -141116,7 +141768,8 @@
     "1A4120300001AA1000109274"
    ],
    "lineageStated": [
-    "SATIVA"
+    "SATIVA",
+    "SATIVA_DOMINANT"
    ],
    "read": "2026-09-26",
    "lastSeen": "2026-11-08",
@@ -141264,6 +141917,7 @@
    "shops": [
     "OCM-CAURD-23-000029",
     "OCM-CAURD-24-000114",
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000185",
     "OCM-CAURD-25-000296",
     "OCM-RETL-26-000477",
@@ -141271,7 +141925,8 @@
    ],
    "certificates": [],
    "lineageStated": [
-    "SATIVA"
+    "SATIVA",
+    "SATIVA_DOMINANT"
    ],
    "read": "2026-09-27",
    "lastSeen": "2026-11-08",
@@ -141303,15 +141958,15 @@
     "CAMPHENE": 0.02,
     "GUAIOL": 0.02,
     "BORNEOL": 0.01,
-    "NEROLIDOL": 0.01,
     "TERPINOLENE": 0.01,
+    "NEROLIDOL": 0.01,
     "TERPINENE": 0.01
    },
    "totalPercent": 5.64,
    "shops": [
     "OCM-CAURD-23-000029",
     "OCM-CAURD-24-000077",
-    "OCM-CAURD-24-000114",
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000203",
     "OCM-CAURD-24-000222",
     "OCM-CAURD-25-000296",
@@ -145935,7 +146590,7 @@
     "INDICA"
    ],
    "read": "2026-09-29",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-29"
   },
   {
@@ -147199,7 +147854,7 @@
     "HYBRID"
    ],
    "read": "2026-09-28",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-24"
   },
   {
@@ -148838,14 +149493,14 @@
     "BISABOLOL": 0.08,
     "MYRCENE": 0.08,
     "LINALOOL": 0.05,
-    "PINENE_BETA": 0.03,
     "VALENCENE": 0.03,
+    "PINENE_BETA": 0.03,
     "PINENE_ALPHA": 0.02,
     "CARYOPHYLLENE_OXIDE": 0.02,
+    "TERPINEOL": 0.01,
     "CAMPHENE": 0.01,
     "FENCHOL": 0.01,
-    "GERANIOL": 0.01,
-    "TERPINEOL": 0.01
+    "GERANIOL": 0.01
    },
    "totalPercent": null,
    "shops": [
@@ -149233,7 +149888,7 @@
     "HYBRID"
    ],
    "read": "2026-10-17",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-29"
   },
   {
@@ -149256,7 +149911,7 @@
     "HYBRID"
    ],
    "read": "2026-10-17",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-17"
   },
   {
@@ -149274,6 +149929,7 @@
    },
    "totalPercent": null,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000154"
    ],
    "certificates": [],
@@ -149900,7 +150556,7 @@
     "SATIVA_DOMINANT"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-06",
    "onShelfSinceStart": true
   },
@@ -149988,7 +150644,7 @@
     "HYBRID",
     "SATIVA_DOMINANT"
    ],
-   "read": "2026-11-05",
+   "read": "2026-11-08",
    "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-06",
    "onShelfSinceStart": true
@@ -150290,7 +150946,7 @@
     "HYBRID"
    ],
    "read": "2026-10-17",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-30"
   },
   {
@@ -150661,6 +151317,7 @@
    },
    "totalPercent": 1.68,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000154",
     "OCM-CAURD-24-000169",
     "OCM-CAURD-24-000173",
@@ -151004,6 +151661,7 @@
    "totalPercent": 1.34,
    "shops": [
     "OCM-CAURD-23-000041",
+    "OCM-CAURD-24-000114",
     "OCM-CAURD-24-000121",
     "OCM-CAURD-24-000173",
     "OCM-CAURD-24-000219",
@@ -151450,6 +152108,7 @@
    "totalPercent": null,
    "shops": [
     "OCM-CAURD-24-000046",
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000154"
    ],
    "certificates": [
@@ -151678,6 +152337,7 @@
     "OCM-CAURD-24-000082",
     "OCM-CAURD-24-000114",
     "OCM-CAURD-24-000129",
+    "OCM-RETL-24-000068",
     "OCM-RETL-24-000114"
    ],
    "certificates": [],
@@ -151780,6 +152440,7 @@
    },
    "totalPercent": 1.84,
    "shops": [
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000173",
     "OCM-RETL-24-000133",
     "OCM-RETL-24-000244"
@@ -153774,7 +154435,7 @@
     "HYBRID"
    ],
    "read": "2026-09-27",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "packagedAfter": "2026-03-02",
    "firstOnShelf": "2026-09-17"
   },
@@ -154147,10 +154808,10 @@
     "HYBRID"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
+   "packagedAfter": "2026-03-02",
    "firstOnShelf": "2026-09-06",
-   "onShelfSinceStart": true,
-   "packagedAfter": "2026-03-02"
+   "onShelfSinceStart": true
   },
   {
    "brand": "Rythm",
@@ -154394,8 +155055,8 @@
    "firstOnShelf": "2026-10-13"
   },
   {
-   "brand": "RYTHM",
-   "strain": "FANTASY MELONZ",
+   "brand": "Rythm",
+   "strain": "Fantasy Melonz",
    "key": "rythm|fantasy melonz",
    "thcPercent": 29.37,
    "terpenes": {
@@ -154406,19 +155067,13 @@
     "OCIMENE": 0.17,
     "PINENE_ALPHA": 0.16,
     "HUMULENE": 0.09,
-    "FENCHOL": 0.07,
     "LINALOOL": 0.06,
-    "TERPINEOL": 0.06,
     "BISABOLOL": 0.05,
-    "BORNEOL": 0.02,
-    "CAMPHENE": 0.02,
-    "FARNESENE": 0.02,
     "TERPINOLENE": 0.01,
     "NEROLIDOL": 0.01
    },
-   "totalPercent": 2.52,
+   "totalPercent": null,
    "shops": [
-    "OCM-CAURD-24-000087",
     "OCM-RETL-24-000159"
    ],
    "certificates": [],
@@ -155252,7 +155907,7 @@
     "SATIVA",
     "SATIVA_DOMINANT"
    ],
-   "read": "2026-11-05",
+   "read": "2026-11-08",
    "lastSeen": "2026-11-08",
    "packagedAfter": "2026-07-08",
    "firstOnShelf": "2026-09-19"
@@ -155966,13 +156621,13 @@
     "MYRCENE": 0.26,
     "HUMULENE": 0.12,
     "PINENE_BETA": 0.09,
-    "FENCHOL": 0.06,
     "TERPINEOL": 0.06,
+    "FENCHOL": 0.06,
     "PINENE_ALPHA": 0.05,
     "BISABOLOL": 0.03,
+    "TERPINOLENE": 0.01,
     "BORNEOL": 0.01,
-    "CAMPHENE": 0.01,
-    "TERPINOLENE": 0.01
+    "CAMPHENE": 0.01
    },
    "totalPercent": 2.11,
    "shops": [
@@ -156027,7 +156682,7 @@
    "firstOnShelf": "2026-09-10"
   },
   {
-   "brand": "RYTHM",
+   "brand": "Rythm",
    "strain": "L'Orange",
    "key": "rythm|l'orange",
    "thcPercent": 27.67,
@@ -156045,6 +156700,7 @@
    "totalPercent": null,
    "shops": [
     "OCM-CAURD-24-000046",
+    "OCM-CAURD-24-000116",
     "OCM-RETL-24-000055",
     "OCM-RETL-25-000295"
    ],
@@ -156492,7 +157148,7 @@
     "SATIVA"
    ],
    "read": "2026-09-27",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-10"
   },
   {
@@ -159702,7 +160358,7 @@
    "firstOnShelf": "2026-09-17"
   },
   {
-   "brand": "Smart Bud",
+   "brand": "SmartBud",
    "strain": "Motorhead",
    "key": "smartbud|motorhead",
    "thcPercent": 27.87,
@@ -159716,6 +160372,7 @@
    "totalPercent": 1.55,
    "shops": [
     "OCM-CAURD-24-000046",
+    "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000169",
     "OCM-CAURD-24-000173",
     "OCM-RETL-24-000055"
@@ -164580,6 +165237,7 @@
    "totalPercent": 0.76,
    "shops": [
     "OCM-CAURD-23-000041",
+    "OCM-CAURD-24-000116",
     "OCM-RETL-24-000133",
     "OCM-RETL-24-000244"
    ],
@@ -166221,10 +166879,9 @@
     "TERPINEOL": 0.01,
     "TERPINOLENE": 0.01
    },
-   "totalPercent": 2,
+   "totalPercent": 2.0,
    "shops": [
     "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000169",
     "OCM-CAURD-24-000222",
     "OCM-RETL-24-000103",
     "OCM-RETL-24-000114",
@@ -167787,7 +168444,7 @@
     "SATIVA"
    ],
    "read": "2026-11-02",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-11-02"
   },
   {
@@ -169330,21 +169987,22 @@
    "key": "tomoon|blue mochi",
    "thcPercent": 31.78,
    "terpenes": {
-    "CARYOPHYLLENE": 0.3311,
+    "CARYOPHYLLENE": 0.33,
     "PINENE_ALPHA": 0.1789,
-    "LIMONENE": 0.1336,
-    "MYRCENE": 0.111,
+    "LIMONENE": 0.13,
+    "MYRCENE": 0.11,
     "PINENE_BETA": 0.0992,
     "LINALOOL": 0.0849,
-    "HUMULENE": 0.075,
+    "HUMULENE": 0.08,
     "TERPINEOL": 0.0499,
     "VALENCENE": 0.0168,
     "BISABOLOL": 0.0145,
-    "CAMPHENE": 0.0131
+    "CAMPHENE": 0.01
    },
    "totalPercent": 1.11,
    "shops": [
     "OCM-CAURD-23-000030",
+    "OCM-RETL-25-000325",
     "OCM-RETL-26-000507"
    ],
    "certificates": [],
@@ -169837,6 +170495,7 @@
     "OCM-CAURD-24-000077",
     "OCM-CAURD-24-000121",
     "OCM-CAURD-24-000154",
+    "OCM-CAURD-24-000169",
     "OCM-CAURD-25-000282"
    ],
    "certificates": [],
@@ -170707,8 +171366,8 @@
     "MYRCENE": 0.05,
     "PINENE_BETA": 0.05,
     "FARNESENE": 0.05,
-    "PINENE_ALPHA": 0.03,
-    "TERPINEOL": 0.03
+    "TERPINEOL": 0.03,
+    "PINENE_ALPHA": 0.03
    },
    "totalPercent": 1.51,
    "shops": [
@@ -170988,7 +171647,6 @@
     "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000132",
     "OCM-CAURD-24-000154",
-    "OCM-CAURD-24-000169",
     "OCM-CAURD-25-000287"
    ],
    "certificates": [],
@@ -171097,6 +171755,7 @@
    },
    "totalPercent": 1.41,
    "shops": [
+    "OCM-CAURD-23-000008",
     "OCM-CAURD-25-000287",
     "OCM-RETL-24-000114",
     "OCM-RETL-24-000133"
@@ -171378,6 +172037,7 @@
    },
    "totalPercent": 1.29,
    "shops": [
+    "OCM-CAURD-24-000060",
     "OCM-CAURD-24-000114",
     "OCM-CAURD-24-000132",
     "OCM-CAURD-25-000282",
@@ -171726,7 +172386,6 @@
    "totalPercent": 1.42,
    "shops": [
     "OCM-CAURD-23-000041",
-    "OCM-CAURD-24-000114",
     "OCM-CAURD-24-000116",
     "OCM-CAURD-24-000121",
     "OCM-CAURD-24-000154",
@@ -172880,7 +173539,7 @@
     "HYBRID"
    ],
    "read": "2026-10-21",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-17"
   },
   {
@@ -173397,7 +174056,6 @@
    ],
    "read": "2026-10-02",
    "lastSeen": "2026-11-08",
-   "packagedAfter": "2026-07-29",
    "packagedOn": "2026-08-18",
    "packagedFrom": "retail-id",
    "packagedUntil": "2026-08-20",
@@ -174034,6 +174692,7 @@
     "OCM-RETL-24-000133",
     "OCM-RETL-25-000403",
     "OCM-RETL-26-000477",
+    "OCM-RETL-26-000507",
     "OCM-RETL-26-000526"
    ],
    "certificates": [],
@@ -174048,8 +174707,9 @@
    "lastSeen": "2026-11-08",
    "testedOn": "2025-12-23",
    "testedFrom": "retail-id",
-   "packagedOn": "2026-08-25",
+   "packagedOn": "2026-03-04",
    "packagedFrom": "retail-id",
+   "packagedUntil": "2026-08-25",
    "firstOnShelf": "2026-09-06",
    "onShelfSinceStart": true
   },
@@ -174084,11 +174744,11 @@
    ],
    "read": "2026-09-28",
    "lastSeen": "2026-11-08",
-   "testedOn": "2025-12-23",
-   "testedFrom": "retail-id",
+   "firstOnShelf": "2026-09-24",
    "packagedOn": "2026-03-04",
    "packagedFrom": "retail-id",
-   "firstOnShelf": "2026-09-24"
+   "testedOn": "2025-12-23",
+   "testedFrom": "retail-id"
   },
   {
    "brand": "TORRWOOD",
@@ -175699,11 +176359,13 @@
    },
    "totalPercent": null,
    "shops": [
-    "OCM-CAURD-24-000063"
+    "OCM-CAURD-24-000063",
+    "OCM-CAURD-24-000116"
    ],
    "certificates": [],
    "lineageStated": [
-    "INDICA"
+    "INDICA",
+    "INDICA_DOMINANT"
    ],
    "read": "2026-10-20",
    "lastSeen": "2026-11-08",
@@ -175817,36 +176479,6 @@
    "firstOnShelf": "2026-09-24"
   },
   {
-   "brand": "Untitled",
-   "strain": "Blue Dream",
-   "key": "untitled|blue dream",
-   "thcPercent": 30.56,
-   "terpenes": {
-    "MYRCENE": 0.33,
-    "CARYOPHYLLENE": 0.24,
-    "PINENE_ALPHA": 0.12,
-    "LIMONENE": 0.12,
-    "HUMULENE": 0.08
-   },
-   "totalPercent": null,
-   "shops": [
-    "OCM-CAURD-24-000046",
-    "OCM-CAURD-24-000063"
-   ],
-   "certificates": [
-    "https://app.alleaves.com/api/inventory/batch/buddega/coa/39571.pdf"
-   ],
-   "lineageStated": [
-    "SATIVA",
-    "SATIVA_DOMINANT"
-   ],
-   "read": "2026-10-14",
-   "lastSeen": "2026-11-08",
-   "testedOn": "2026-09-17",
-   "testedFrom": "sampled",
-   "firstOnShelf": "2026-10-14"
-  },
-  {
    "brand": "untitled",
    "strain": "Blue Dream",
    "key": "untitled|blue dream",
@@ -175902,6 +176534,37 @@
   },
   {
    "brand": "Untitled",
+   "strain": "Blue Dream",
+   "key": "untitled|blue dream",
+   "thcPercent": 28.56,
+   "terpenes": {
+    "MYRCENE": 0.33,
+    "CARYOPHYLLENE": 0.24,
+    "PINENE_ALPHA": 0.12,
+    "LIMONENE": 0.12,
+    "HUMULENE": 0.08
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000046",
+    "OCM-CAURD-24-000063",
+    "OCM-CAURD-24-000116"
+   ],
+   "certificates": [
+    "https://app.alleaves.com/api/inventory/batch/buddega/coa/39571.pdf"
+   ],
+   "lineageStated": [
+    "SATIVA",
+    "SATIVA_DOMINANT"
+   ],
+   "read": "2026-10-14",
+   "lastSeen": "2026-11-08",
+   "testedOn": "2026-09-17",
+   "testedFrom": "sampled",
+   "firstOnShelf": "2026-10-14"
+  },
+  {
+   "brand": "Untitled",
    "strain": "BLUE DREAM",
    "key": "untitled|blue dream",
    "thcPercent": 27.83,
@@ -175946,7 +176609,7 @@
     "SATIVA"
    ],
    "read": "2026-10-31",
-   "lastSeen": "2026-11-05",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-10-31"
   },
   {
@@ -177291,6 +177954,34 @@
    "packagedFrom": "retail-id",
    "testedOn": "2026-10-13",
    "testedFrom": "retail-id",
+   "firstOnShelf": "2026-09-06",
+   "onShelfSinceStart": true
+  },
+  {
+   "brand": "untitled",
+   "strain": "Green Crack",
+   "key": "untitled|green crack",
+   "thcPercent": 25.7,
+   "terpenes": {
+    "MYRCENE": 0.45,
+    "PINENE_ALPHA": 0.26,
+    "CARYOPHYLLENE": 0.17,
+    "PINENE_BETA": 0.14,
+    "LIMONENE": 0.12,
+    "HUMULENE": 0.1,
+    "GUAIOL": 0.07,
+    "LINALOOL": 0.07
+   },
+   "totalPercent": null,
+   "shops": [
+    "OCM-CAURD-24-000116"
+   ],
+   "certificates": [],
+   "lineageStated": [
+    "SATIVA"
+   ],
+   "read": "2026-11-08",
+   "lastSeen": "2026-11-08",
    "firstOnShelf": "2026-09-06",
    "onShelfSinceStart": true
   },
