@@ -11070,6 +11070,23 @@
    ]
   },
   {
+   "brand": "RYTHM",
+   "strain": "Yellow Mermaid",
+   "thc": 30.28,
+   "before": [
+    25.66,
+    25.67,
+    28.54
+   ],
+   "first": "2026-11-02",
+   "shops": [
+    "OCM-CAURD-23-000003",
+    "OCM-CAURD-24-000091",
+    "OCM-CAURD-24-000125",
+    "OCM-RETL-25-000416"
+   ]
+  },
+  {
    "brand": "Back Home Cannabis",
    "strain": "Gorilla Glue",
    "thc": 25.93,
@@ -11138,22 +11155,6 @@
     "OCM-CAURD-24-000104",
     "OCM-CAURD-24-000144",
     "OCM-RETL-24-000014"
-   ]
-  },
-  {
-   "brand": "RYTHM",
-   "strain": "Yellow Mermaid",
-   "thc": 30.28,
-   "before": [
-    25.66,
-    25.67,
-    28.54
-   ],
-   "first": "2026-11-02",
-   "shops": [
-    "OCM-CAURD-23-000003",
-    "OCM-CAURD-24-000091",
-    "OCM-RETL-25-000416"
    ]
   },
   {
@@ -11438,7 +11439,7 @@
   {
    "brand": "Rythm",
    "strain": "Brownie Points",
-   "thc": 28.24,
+   "thc": 31.31,
    "before": [
     22.22,
     35.32,
@@ -11447,7 +11448,7 @@
    "first": "2026-11-04",
    "shops": [
     "OCM-CAURD-23-000003",
-    "OCM-CAURD-24-000125"
+    "OCM-CAURD-24-000091"
    ]
   },
   {
@@ -11954,7 +11955,7 @@
   {
    "brand": "Rythm",
    "strain": "Brownie Points",
-   "thc": 31.31,
+   "thc": 28.24,
    "before": [
     22.22,
     35.32,
@@ -11962,7 +11963,7 @@
    ],
    "first": "2026-11-04",
    "shops": [
-    "OCM-CAURD-24-000091"
+    "OCM-CAURD-24-000125"
    ]
   },
   {
@@ -12591,21 +12592,6 @@
    ]
   },
   {
-   "brand": "Rythm",
-   "strain": "Yellow Mermaid",
-   "thc": 27.7,
-   "before": [
-    25.66,
-    25.67,
-    28.54,
-    30.28
-   ],
-   "first": "2026-11-05",
-   "shops": [
-    "OCM-CAURD-24-000125"
-   ]
-  },
-  {
    "brand": "RYTHM",
    "strain": "LOrange",
    "thc": 30.68,
@@ -12641,6 +12627,19 @@
     33.01
    ],
    "first": "2026-11-04",
+   "shops": []
+  },
+  {
+   "brand": "Rythm",
+   "strain": "Yellow Mermaid",
+   "thc": 27.7,
+   "before": [
+    25.66,
+    25.67,
+    28.54,
+    30.28
+   ],
+   "first": "2026-11-05",
    "shops": []
   }
  ],
