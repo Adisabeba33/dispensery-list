@@ -34,7 +34,7 @@
 | Магазин | Город | Сайт | Почему пусто |
 |---|---|---|---|
 | Weed Mart By New Metro | Bayside | https://newmetro.club | стена на странице меню (cloudflare-challenge) — **не трогать** |
-| Just a Little Higher Briarwood ✳️ | Briarwood | https://justalittlehigher.com/ | прочитано 112 товаров, ни один не цветок |
+| Just a Little Higher Briarwood ✳️ | Briarwood | https://justalittlehigher.com/ | прочитано 51 товаров, ни один не цветок |
 | Caffiend LLC ✳️ | Brooklyn | https://thebushwicknyc.com | стена на странице меню (cloudflare-challenge) — **не трогать** |
 | Cannabis Kingdom Inc. | Brooklyn | https://www.bkgrass.com | страница вернула ноль товаров |
 | Green Room Dispensary LLC | Brooklyn | https://greenroomny.com | страница вернула ноль товаров |
@@ -48,16 +48,15 @@
 
 ✳️ — адрес в `menu-endpoints.json` уже есть, и всё равно пусто: значит записанный адрес больше не тот.
 
-## Полка читается не до конца — 4
+## Полка читается не до конца — 3
 
 Здесь адрес есть и меню отвечает, но отдаёт меньше, чем само объявляет. Листание таким не помогло — им нужен прямой адрес категории.
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| Upstate Edge, LLC | 2 | 649 | https://ignyteny.com |
-| Cannabis Group NY, LLC | 2 | 649 | https://ignyteny.com |
-| OZ Dispensary | 86 | 142 | https://ozdispensary.com/ |
-| Smacked LLC | 19 | 21 | https://getsmacked.online/ |
+| Upstate Edge, LLC | 2 | 646 | https://ignyteny.com |
+| Cannabis Group NY, LLC | 2 | 645 | https://ignyteny.com |
+| Freshly Baked NYC | 21 | 25 | https://freshlybaked.nyc/ |
 
 ## Сюда не ходим
 
