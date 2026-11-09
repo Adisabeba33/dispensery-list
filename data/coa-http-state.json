@@ -159,7 +159,7 @@
     "errors": 0
   },
   "https://pynns.com": {
-    "errors": 0
+    "errors": 1
   },
   "https://www.niagaracannabiscompany.com": {
     "errors": 0
@@ -232,8 +232,8 @@
     "errors": 0
   },
   "https://thetraptotable.com": {
-    "errors": 0,
-    "blockedUntil": "2026-10-25T16:13:16.492269+00:00"
+    "errors": 5,
+    "blockedUntil": "2026-11-10T20:35:46.159991+00:00"
   },
   "https://highpeaks.com": {
     "errors": 0
