@@ -159,7 +159,7 @@
     "errors": 0
   },
   "https://pynns.com": {
-    "errors": 1
+    "errors": 0
   },
   "https://www.niagaracannabiscompany.com": {
     "errors": 0
@@ -260,12 +260,12 @@
     "errors": 0
   },
   "https://v1": {
-    "errors": 23,
-    "blockedUntil": "2026-11-05T19:58:01.868147+00:00"
+    "errors": 24,
+    "blockedUntil": "2026-11-11T18:30:39.546656+00:00"
   },
   "https://czz.8a7.mytemp.website": {
-    "errors": 23,
-    "blockedUntil": "2026-11-05T19:58:37.708722+00:00"
+    "errors": 24,
+    "blockedUntil": "2026-11-11T18:30:46.109206+00:00"
   },
   "https://clearlyfaded.com": {
     "errors": 0
