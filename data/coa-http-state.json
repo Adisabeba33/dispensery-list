@@ -114,7 +114,7 @@
     "errors": 0
   },
   "https://glennas.com": {
-    "errors": 1
+    "errors": 0
   },
   "https://www.gagefarmsny.com": {
     "errors": 0
@@ -159,7 +159,7 @@
     "errors": 0
   },
   "https://pynns.com": {
-    "errors": 0
+    "errors": 1
   },
   "https://www.niagaracannabiscompany.com": {
     "errors": 0
@@ -198,8 +198,8 @@
     "errors": 0
   },
   "http://-content": {
-    "errors": 21,
-    "blockedUntil": "2026-11-05T20:00:03.666613+00:00"
+    "errors": 22,
+    "blockedUntil": "2026-11-13T00:55:29.378687+00:00"
   },
   "https://www.awalkinthepines.com": {
     "errors": 0
@@ -232,8 +232,8 @@
     "errors": 0
   },
   "https://thetraptotable.com": {
-    "errors": 5,
-    "blockedUntil": "2026-11-10T20:35:46.159991+00:00"
+    "errors": 6,
+    "blockedUntil": "2026-11-13T00:49:41.158414+00:00"
   },
   "https://highpeaks.com": {
     "errors": 0
@@ -260,12 +260,12 @@
     "errors": 0
   },
   "https://v1": {
-    "errors": 24,
-    "blockedUntil": "2026-11-11T18:30:39.546656+00:00"
+    "errors": 25,
+    "blockedUntil": "2026-11-13T00:53:22.491844+00:00"
   },
   "https://czz.8a7.mytemp.website": {
-    "errors": 24,
-    "blockedUntil": "2026-11-11T18:30:46.109206+00:00"
+    "errors": 25,
+    "blockedUntil": "2026-11-13T00:54:03.937725+00:00"
   },
   "https://clearlyfaded.com": {
     "errors": 0
