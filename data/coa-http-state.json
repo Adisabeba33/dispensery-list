@@ -114,7 +114,7 @@
     "errors": 0
   },
   "https://glennas.com": {
-    "errors": 0
+    "errors": 1
   },
   "https://www.gagefarmsny.com": {
     "errors": 0
@@ -232,7 +232,7 @@
     "errors": 0
   },
   "https://thetraptotable.com": {
-    "errors": 6,
+    "errors": 0,
     "blockedUntil": "2026-11-13T00:49:41.158414+00:00"
   },
   "https://highpeaks.com": {
@@ -260,8 +260,8 @@
     "errors": 0
   },
   "https://v1": {
-    "errors": 25,
-    "blockedUntil": "2026-11-13T00:53:22.491844+00:00"
+    "errors": 26,
+    "blockedUntil": "2026-11-14T18:32:23.246756+00:00"
   },
   "https://czz.8a7.mytemp.website": {
     "errors": 25,
@@ -271,6 +271,9 @@
     "errors": 0
   },
   "https://www.growingheartfarm.com": {
+    "errors": 0
+  },
+  "https://pub-be27100a89ad4a33bfa5dec289c9c57f.r2.dev": {
     "errors": 0
   }
 }
