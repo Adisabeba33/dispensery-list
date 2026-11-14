@@ -35,7 +35,7 @@
 |---|---|---|---|
 | Proud New York Cannabis LLC | ASTORIA | https://proudnewyork.com | страница вернула ноль товаров |
 | Weed Mart By New Metro | Bayside | https://newmetro.club | стена на странице меню (cloudflare-challenge) — **не трогать** |
-| Just a Little Higher Briarwood ✳️ | Briarwood | https://justalittlehigher.com/ | прочитано 132 товаров, ни один не цветок |
+| Just a Little Higher Briarwood ✳️ | Briarwood | https://justalittlehigher.com/ | прочитано 112 товаров, ни один не цветок |
 | Caffiend LLC ✳️ | Brooklyn | https://thebushwicknyc.com | стена на странице меню (cloudflare-challenge) — **не трогать** |
 | Cannabis Kingdom Inc. | Brooklyn | https://www.bkgrass.com | страница вернула ноль товаров |
 | Green Room Dispensary LLC | Brooklyn | https://greenroomny.com | страница вернула ноль товаров |
@@ -55,9 +55,9 @@
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| JUST A LITTLE HIGHER MURRAY HILL | 6 | 106 | https://justalittlehigher.com |
-| DAGGA LLC | 4 | 75 | https://justalittlehigher.com/ |
-| Smacked LLC | 20 | 21 | https://getsmacked.online/ |
+| DAGGA LLC | 5 | 118 | https://justalittlehigher.com/ |
+| JUST A LITTLE HIGHER MURRAY HILL | 5 | 101 | https://justalittlehigher.com |
+| Terminal 420 | 113 | 125 | https://terminal420.com |
 
 ## Сюда не ходим
 
@@ -67,9 +67,9 @@
 - **7** магазинов запретили обход в своём `robots.txt`. Мы спросили и получили отказ — это ответ, а не пробел, и искать им адрес меню не нужно. Отказ обычно приходит не от магазина, а от платформы, на которой стоит его витрина, и тогда уходит не один магазин, а все её. Список только растёт: сайт, который не отдал `robots.txt`, считается разрешившим, так что попасть сюда можно лишь по ясно объявленному запрету.
   - MZDZ Corp — Brooklyn, http://www.coneyislandcannabisny.com
   - Tiki Leaves LLC — Brooklyn, http://www.tikileaves.com
+  - Kushie — Forest Hills, https://kushieny.com
   - CannaBees — Maspeth, https://cannabeesdispensary.com
-  - Nicklz — New York, https://nicklzny.com
-  - Valley Greens Ltd. — Peekskill, https://valleygreensny.com
+  - Good Company — New York, https://goodcompanyshop.com
+  - THE HERBAL CARE THC LLC — New York, https://thctheherbalcare.com/
   - 581 Realty CRD LLC — Springfield Gardens, https://cannabisonconduit.com
-  - Highstone — Staten Island, https://www.highstone.nyc
 
