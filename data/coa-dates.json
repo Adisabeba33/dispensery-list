@@ -7,7 +7,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "host-stopped-for-24h",
+   "unread": "URLError",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://mcpikefarms.com/certificates-of-analysis/"
   },
@@ -16517,6 +16517,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/29235.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/29305.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-03-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "2b1773fb2c117207fbc270f533110e8115862dd48aa67244c3a214fadebbf701",
+   "docType": "lab-coa",
+   "sampleId": "20260311-KLEV-003",
+   "batchTag": "KB.SMK.GR28.030626",
+   "lotNumber": "KB.SMK.GR28.030626",
+   "metrcTag": null,
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Smoke | Galactic Runtz | 28g",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000179",
+    "thc": 22.59,
+    "totalTerpenes": 1.03,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.16,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.0,
+     "LIMONENE": 0.2,
+     "LINALOOL": 0.36,
+     "MYRCENE": 0.18,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/29305.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/29428.pdf": {
    "lab": "ACT",
    "sampled": "2026-04-16",
@@ -19443,6 +19481,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/31052.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31076.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "d4a352e7c98633ba0047263c2ccc6cfa98745ccc7cb940e84c950254602a5937",
+   "docType": "lab-coa",
+   "sampleId": "AL60310004-001",
+   "batchTag": "zangria105",
+   "lotNumber": "2026-01-01-Dry",
+   "metrcTag": "1A412030000166E000000004",
+   "panel": {
+    "lab": "Kaycha",
+    "name": "Zangria",
+    "matrix": "flower",
+    "licence": "OCM-MICR-25-000232",
+    "thc": 25.47,
+    "totalTerpenes": 1.86,
+    "terpenes": {
+     "PINENE_ALPHA": 0.03,
+     "PINENE_BETA": 0.05,
+     "BISABOLOL": 0.07,
+     "CARYOPHYLLENE": 0.65,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.28,
+     "LIMONENE": 0.45,
+     "LINALOOL": 0.19,
+     "MYRCENE": 0.02,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/31076.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/31154.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-05-19",
@@ -22092,6 +22168,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/32368.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32459.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-06-17",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "b3df3139d1ddcfc9e8e2398dd806154d4662259f9d4fd08ff2923c2f438b30c9",
+   "docType": "lab-coa",
+   "sampleId": "AL60618004-001",
+   "batchTag": "GO0418",
+   "lotNumber": null,
+   "metrcTag": "1A412030000166E000000054",
+   "panel": {
+    "lab": "Kaycha",
+    "name": "Gluttony",
+    "matrix": "flower",
+    "licence": "OCM-MICR-25-000232",
+    "thc": 18.12,
+    "totalTerpenes": 1.15,
+    "terpenes": {
+     "PINENE_ALPHA": 0.05,
+     "PINENE_BETA": 0.04,
+     "BISABOLOL": 0.03,
+     "CARYOPHYLLENE": 0.28,
+     "FARNESENE": 0.05,
+     "HUMULENE": 0.1,
+     "LIMONENE": 0.36,
+     "LINALOOL": 0.09,
+     "MYRCENE": 0.05,
+     "OCIMENE": 0.03,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/32459.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/32483.pdf": {
    "lab": "DRS",
    "sampled": "2026-04-28",
@@ -23322,6 +23436,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/32966.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/32967.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-15",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "354de2b6797cefdea6f993cac80bb54cb492138a50b824675b2201931d77e441",
+   "docType": "lab-coa",
+   "sampleId": "AL60515008-006",
+   "batchTag": "1A41203000049D9000000063",
+   "lotNumber": "1A41203000049D9000000063",
+   "metrcTag": "1A41203000049D9000000075",
+   "panel": {
+    "lab": "Kaycha",
+    "name": "Lemon Cherry Gelato",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000015",
+    "thc": 21.76,
+    "totalTerpenes": 1.7,
+    "terpenes": {
+     "PINENE_ALPHA": 0.03,
+     "PINENE_BETA": 0.04,
+     "BISABOLOL": 0.02,
+     "CARYOPHYLLENE": 0.65,
+     "FARNESENE": 0.08,
+     "HUMULENE": 0.21,
+     "LIMONENE": 0.23,
+     "LINALOOL": 0.1,
+     "MYRCENE": 0.25,
+     "OCIMENE": 0.01,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/32967.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/32968.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-05-15",
@@ -23890,6 +24042,44 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/33107.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33123.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "60f10191fde881a586715c8c27521e0ac0ea473f97372d6e3027b8cd5bdcac1b",
+   "docType": "lab-coa",
+   "sampleId": "20260529-ADON-001",
+   "batchTag": "WS-5-POM2",
+   "lotNumber": "WS-5-POM2",
+   "metrcTag": null,
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Woodstock - Picasso Moon - Flower - 5g",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000063",
+    "thc": 30.92,
+    "totalTerpenes": 2.41,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.08,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.85,
+     "FARNESENE": 0.16,
+     "HUMULENE": 0.33,
+     "LIMONENE": 0.52,
+     "LINALOOL": 0.13,
+     "MYRCENE": 0.27,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/33123.pdf",
    "sourceKind": "menu"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/33127.pdf": {
@@ -24479,6 +24669,44 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/33279.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33280.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-05-05",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "c95907b022e3d2fe4175fbb0dfb3a3cabf6ce4e272da1ab1b1ce3fd741bfcff8",
+   "docType": "lab-coa",
+   "sampleId": "AL60505004-001",
+   "batchTag": null,
+   "lotNumber": null,
+   "metrcTag": "1A4120300001D6B000000032",
+   "panel": {
+    "lab": "Kaycha",
+    "name": "Grapes n cream",
+    "matrix": "flower",
+    "licence": "OCM-MICR-24-000066",
+    "thc": 26.94,
+    "totalTerpenes": 1.1,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.04,
+     "CARYOPHYLLENE": 0.36,
+     "FARNESENE": 0.06,
+     "HUMULENE": 0.15,
+     "LIMONENE": 0.41,
+     "LINALOOL": 0.0,
+     "MYRCENE": 0.0,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/33280.pdf",
    "sourceKind": "menu"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/33282.pdf": {
@@ -42365,6 +42593,24 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39442.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39445.pdf": {
+   "lab": null,
+   "sampled": "2026-05-01",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "89d21148c9c8406f190c5f2a791be2d7f42af5c2ffbbcd091dec06273c992f5c",
+   "docType": "lab-coa",
+   "sampleId": "CTNY-260430-00-012",
+   "batchTag": "STBR-003-FL11",
+   "lotNumber": null,
+   "metrcTag": "1A4120300000294000001453",
+   "panel": null,
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39445.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/39449.pdf": {
    "lab": null,
    "sampled": "2026-04-24",
@@ -43121,6 +43367,44 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39623.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39628.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "dd8cb43d1e776dbb7b8b61d4b7ae4b3524baed78d595c74a0ac1d82cf91c60ae",
+   "docType": "lab-coa",
+   "sampleId": "20260916-HMOF-004",
+   "batchTag": "MM0263",
+   "lotNumber": "MM0263",
+   "metrcTag": "1A412030000022C000003994",
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Mini MART | Flower | 3.5 Gram | Peanut Butter Gelato | Hybrid",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000119",
+    "thc": 29.15,
+    "totalTerpenes": 1.4,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.14,
+     "CARYOPHYLLENE": 0.37,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.1,
+     "LIMONENE": 0.24,
+     "LINALOOL": 0.38,
+     "MYRCENE": 0.17,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39628.pdf",
    "sourceKind": "menu"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/39634.pdf": {
@@ -45543,6 +45827,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/40436.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/40438.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-08-10",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "1c68669e493cdb973c83e417407735db5ad4b8db6cdd50f13c5e9f2b0f24948c",
+   "docType": "lab-coa",
+   "sampleId": "AL60810001-006",
+   "batchTag": "P-FDWF142026-1266A",
+   "lotNumber": null,
+   "metrcTag": "1A412030000026D000024550",
+   "panel": {
+    "lab": "Kaycha",
+    "name": "Crusty Crustacean",
+    "matrix": "flower",
+    "licence": null,
+    "thc": 32.34,
+    "totalTerpenes": 2.15,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.11,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.21,
+     "FARNESENE": 0.05,
+     "HUMULENE": 0.06,
+     "LIMONENE": 0.75,
+     "LINALOOL": 0.35,
+     "MYRCENE": 0.19,
+     "OCIMENE": 0.18,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/40438.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/40486.pdf": {
    "lab": "DRS",
    "sampled": "2026-10-16",
@@ -47367,6 +47689,25 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/40828.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/40829.pdf": {
+   "lab": null,
+   "sampled": null,
+   "sampledFrom": null,
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "unread": "no date found",
+   "sha256": "0609a67e02381617d309d206f21ab14bc7e166a702c954e729288f58cd418f32",
+   "docType": "metrc-retail-id",
+   "sampleId": null,
+   "batchTag": null,
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": null,
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/40829.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/40831.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-06-13",
@@ -48961,6 +49302,82 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/41285.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/41317.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-21",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "611b07afa3eed3adb4dd3eb740e7b19b01de2cd61c4f33ecc155509de704390e",
+   "docType": "lab-coa",
+   "sampleId": "20260521-ADON-002",
+   "batchTag": "WS-5-BKT",
+   "lotNumber": "WS-5-BKT",
+   "metrcTag": null,
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Woodstock - Black Truffle - Flower - 5g",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000063",
+    "thc": 26.13,
+    "totalTerpenes": 1.92,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.07,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.51,
+     "FARNESENE": 0.11,
+     "HUMULENE": 0.24,
+     "LIMONENE": 0.54,
+     "LINALOOL": 0.26,
+     "MYRCENE": 0.15,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/41317.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/41319.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-05-21",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "b1a6e4bfcd4aab54d8f0d2a5d31cb502f7fdd6419aa03f438aa51067252a9197",
+   "docType": "lab-coa",
+   "sampleId": "20260521-ADON-003",
+   "batchTag": "WS-5-SRB",
+   "lotNumber": "WS-5-SRB",
+   "metrcTag": null,
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Woodstock - Sugar Breath - Flower - 5g",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000063",
+    "thc": 28.16,
+    "totalTerpenes": 1.64,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.68,
+     "FARNESENE": 0.1,
+     "HUMULENE": 0.27,
+     "LIMONENE": 0.24,
+     "LINALOOL": 0.12,
+     "MYRCENE": 0.23,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/41319.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/41341.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-09-17",
@@ -49035,6 +49452,42 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/41509.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/41544.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-08-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "9892a35f5533892626d95a89d599e3d3d7a23ea8c5d053349202617fe2d3ec41",
+   "docType": "lab-coa",
+   "sampleId": "2608SMNY0891.3544",
+   "batchTag": null,
+   "lotNumber": "KT6/23HARVEST",
+   "metrcTag": "1A4120300001902000000001",
+   "panel": null,
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/41544.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/41550.pdf": {
+   "lab": "Metrc",
+   "sampled": "2026-08-28",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "d19f6714db7203562c62a3ac37374c5f9bcc381a16b98e99321cbf90369df58a",
+   "docType": "lab-coa",
+   "sampleId": "2608SMNY0891.3543",
+   "batchTag": null,
+   "lotNumber": null,
+   "metrcTag": "1A4120300001902000000003",
+   "panel": null,
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/41550.pdf",
    "sourceKind": "menu"
   },
   "https://assets.zyrosite.com/m2WBVj81MEF0Eb43/s26-00691-fruity-pebbles-og-2g-aio-vape-s26-00491-4iI2luCuWjmMKKOl.pdf": {
@@ -78111,7 +78564,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "host-stopped-for-24h",
+   "unread": "URLError",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://thetraptotable.com/grape-gas/"
   },
@@ -123870,7 +124323,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://mcpikefarms.com/certificates-of-analysis/"
   },
@@ -123930,7 +124383,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -123950,7 +124403,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -123980,7 +124433,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -123990,7 +124443,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124030,7 +124483,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124090,7 +124543,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124140,7 +124593,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://mcpikefarms.com/certificates-of-analysis/"
   },
@@ -124170,7 +124623,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124260,7 +124713,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124360,7 +124813,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124410,7 +124863,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124460,7 +124913,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124550,7 +125003,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124600,7 +125053,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://mcpikefarms.com/certificates-of-analysis/"
   },
@@ -124630,7 +125083,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124680,7 +125133,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.heyflamer.com/coas"
   },
@@ -124700,7 +125153,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124740,7 +125193,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124750,7 +125203,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124760,7 +125213,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124810,7 +125263,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124820,7 +125273,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124860,7 +125313,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124920,7 +125373,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124970,7 +125423,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -124980,7 +125433,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "http-404",
+   "unread": "not-a-pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.gagefarmsny.com/s-projects-basic"
   },
@@ -188714,7 +189167,7 @@
    "sampledFrom": null,
    "packaged": null,
    "harvested": null,
-   "unread": "URLError",
+   "unread": "host-stopped-for-24h",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.urbanxtracts.com/authenticity-chain"
   },

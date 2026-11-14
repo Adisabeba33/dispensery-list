@@ -114,7 +114,7 @@
     "errors": 0
   },
   "https://glennas.com": {
-    "errors": 1
+    "errors": 0
   },
   "https://www.gagefarmsny.com": {
     "errors": 0
@@ -198,8 +198,8 @@
     "errors": 0
   },
   "http://-content": {
-    "errors": 22,
-    "blockedUntil": "2026-11-13T00:55:29.378687+00:00"
+    "errors": 23,
+    "blockedUntil": "2026-11-15T16:51:27.219271+00:00"
   },
   "https://www.awalkinthepines.com": {
     "errors": 0
@@ -264,8 +264,8 @@
     "blockedUntil": "2026-11-14T18:32:23.246756+00:00"
   },
   "https://czz.8a7.mytemp.website": {
-    "errors": 25,
-    "blockedUntil": "2026-11-13T00:54:03.937725+00:00"
+    "errors": 26,
+    "blockedUntil": "2026-11-15T16:50:01.288789+00:00"
   },
   "https://clearlyfaded.com": {
     "errors": 0
@@ -274,6 +274,9 @@
     "errors": 0
   },
   "https://pub-be27100a89ad4a33bfa5dec289c9c57f.r2.dev": {
+    "errors": 0
+  },
+  "http://www.labware.com": {
     "errors": 0
   }
 }
