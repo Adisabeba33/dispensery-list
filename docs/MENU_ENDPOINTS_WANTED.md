@@ -1,6 +1,6 @@
 # Магазины, которым нужен адрес меню
 
-Работающих магазинов в реестре: **346**. Обход заходит в **258**, полку отдают **245**.
+Работающих магазинов в реестре: **346**. Обход заходит в **259**, полку отдают **245**.
 
 Этот файл собирается скриптом `scripts/menu-endpoints-wanted.py` по последнему прогону — правит его не рука, а следующий запуск.
 
@@ -29,7 +29,7 @@
 
 Проверить перед коммитом: `python scripts/validate-menu-endpoints.py`.
 
-## Пусто — 13
+## Пусто — 14
 
 | Магазин | Город | Сайт | Почему пусто |
 |---|---|---|---|
@@ -41,35 +41,37 @@
 | Green Room Dispensary LLC | Brooklyn | https://greenroomny.com | страница вернула ноль товаров |
 | HAPPY BUDS BROOKLYN | Brooklyn | https://www.happybudsbk.com | страница вернула ноль товаров |
 | Empire Plant Services Holdings LLC | Farmingdale | https://www.theartisttree.com/farmingdale-dispensary/ | страница вернула ноль товаров |
+| FLUSHING CANNABIS CO | Flushing | https://flushingcannabis.com | ссылку на меню не нашли |
 | Mirae Corp | Flushing | https://pureleafflower.nyc | страница вернула ноль товаров |
-| LYFE | Long Island City | https://lyfeastoria.com/ | ссылку на меню не нашли |
+| LYFE | Long Island City | https://lyfeastoria.com/ | robots.txt запрещает — **не трогать** |
 | Up the River Cannabis Dispensary | Ossining | https://www.uptheriver914.com | robots.txt запрещает — **не трогать** |
 | Gaz Station | Staten Island | https://www.gazstationny.com | страница вернула ноль товаров |
 | Green Land Retail LLC | Staten Island | https://greenlandny.com | ссылку на меню не нашли |
 
 ✳️ — адрес в `menu-endpoints.json` уже есть, и всё равно пусто: значит записанный адрес больше не тот.
 
-## Полка читается не до конца — 3
+## Полка читается не до конца — 5
 
 Здесь адрес есть и меню отвечает, но отдаёт меньше, чем само объявляет. Листание таким не помогло — им нужен прямой адрес категории.
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| DAGGA LLC | 5 | 118 | https://justalittlehigher.com/ |
-| JUST A LITTLE HIGHER MURRAY HILL | 5 | 101 | https://justalittlehigher.com |
-| Terminal 420 | 113 | 125 | https://terminal420.com |
+| Upstate Edge, LLC | 2 | 578 | https://ignyteny.com |
+| Cannabis Group NY, LLC | 2 | 578 | https://ignyteny.com |
+| DAGGA LLC | 5 | 114 | https://justalittlehigher.com/ |
+| JUST A LITTLE HIGHER MURRAY HILL | 5 | 97 | https://justalittlehigher.com |
+| Puro vita enterprises inc. | 90 | 101 | https://purovita.com |
 
 ## Сюда не ходим
 
 - **72** магазинов на паузе (`data/menu-paused.json`): их меню Dutchie открывается в окне dutchie.com, которое с 24.09 отвечает автоматическим браузерам только проверкой «вы не бот?». Плановый прогон к ним не ходит, на сайте остаётся их последняя прочитанная полка. Проверить, не открылся ли Dutchie, можно ручным прогоном «Dutchie menus, slowly».
 - **0** магазинов держат меню на Leafly или Weedmaps. Это чужая витрина, а не витрина магазина, и читать её мы не будем — адрес такого меню в файл добавлять не нужно.
 - **9** магазинов не имеют сайта в реестре; см. `docs/MISSING_WEBSITES.md`. Найдётся сайт — магазин сам попадёт в обход.
-- **7** магазинов запретили обход в своём `robots.txt`. Мы спросили и получили отказ — это ответ, а не пробел, и искать им адрес меню не нужно. Отказ обычно приходит не от магазина, а от платформы, на которой стоит его витрина, и тогда уходит не один магазин, а все её. Список только растёт: сайт, который не отдал `robots.txt`, считается разрешившим, так что попасть сюда можно лишь по ясно объявленному запрету.
+- **6** магазинов запретили обход в своём `robots.txt`. Мы спросили и получили отказ — это ответ, а не пробел, и искать им адрес меню не нужно. Отказ обычно приходит не от магазина, а от платформы, на которой стоит его витрина, и тогда уходит не один магазин, а все её. Список только растёт: сайт, который не отдал `robots.txt`, считается разрешившим, так что попасть сюда можно лишь по ясно объявленному запрету.
   - MZDZ Corp — Brooklyn, http://www.coneyislandcannabisny.com
   - Tiki Leaves LLC — Brooklyn, http://www.tikileaves.com
   - Kushie — Forest Hills, https://kushieny.com
   - CannaBees — Maspeth, https://cannabeesdispensary.com
   - Good Company — New York, https://goodcompanyshop.com
-  - THE HERBAL CARE THC LLC — New York, https://thctheherbalcare.com/
   - 581 Realty CRD LLC — Springfield Gardens, https://cannabisonconduit.com
 
