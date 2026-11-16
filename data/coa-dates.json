@@ -14076,7 +14076,38 @@
    "sampled": "2026-03-09",
    "sampledFrom": "sampled",
    "packaged": null,
-   "harvested": null
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "9e39f9613966b629754a23864a37dbe305ac18ce1c70f49d769b480210502d61",
+   "docType": "lab-coa",
+   "sampleId": "2603RLI0269-1381",
+   "batchTag": "JH11",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "DRS",
+    "name": "Jack Herer",
+    "matrix": "flower",
+    "licence": "OCM-MICR-24-000133",
+    "thc": 22.63,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.08,
+     "PINENE_BETA": 0.16,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.36,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.4,
+     "LIMONENE": 0.0,
+     "LINALOOL": 0.0,
+     "MYRCENE": 0.0,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.1
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/27673.pdf",
+   "sourceKind": "menu"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/27674.pdf": {
    "lab": "DRS",
@@ -40921,6 +40952,44 @@
     }
    }
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39110.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-08-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "6ebdd36f98bd1a914dc80283149b685af1d0ba8b4ae0505f5b3265a813ac2d97",
+   "docType": "lab-coa",
+   "sampleId": "2608RLI0878-4391",
+   "batchTag": "NL15",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "DRS",
+    "name": "Northern Lights",
+    "matrix": "flower",
+    "licence": "OCM-MICR-24-000133",
+    "thc": 26.12,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.02,
+     "PINENE_BETA": 0.03,
+     "BISABOLOL": 0.02,
+     "CARYOPHYLLENE": 0.18,
+     "FARNESENE": 0.14,
+     "HUMULENE": 0.05,
+     "LIMONENE": 0.18,
+     "LINALOOL": 0.26,
+     "MYRCENE": 0.03,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39110.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/39126.pdf": {
    "lab": "DRS",
    "sampled": "2026-08-14",
@@ -48654,6 +48723,44 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/41116.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/41117.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-10-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "ee8d9a70b85463c8e451af6f57aa28af1361115f236be998b8bd86048aa57fd3",
+   "docType": "lab-coa",
+   "sampleId": "20261014-HMOF-001",
+   "batchTag": "MM0272",
+   "lotNumber": "MM0272",
+   "metrcTag": null,
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Mini MART | Flower | 3.5 Gram | Blue Dream | Sativa",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000119",
+    "thc": 24.54,
+    "totalTerpenes": 1.41,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.25,
+     "CARYOPHYLLENE": 0.68,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.2,
+     "LIMONENE": 0.18,
+     "LINALOOL": 0.1,
+     "MYRCENE": 0.0,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/41117.pdf",
    "sourceKind": "menu"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/41122.pdf": {
@@ -194665,6 +194772,45 @@
     }
    },
    "documentUrl": "https://pub-be27100a89ad4a33bfa5dec289c9c57f.r2.dev/coa/DR-LEM-0011.pdf",
+   "sourceKind": "brand-page-unreviewed",
+   "sourcePage": "https://www.centralprocessorsny.com/coas"
+  },
+  "https://www.centralprocessorsny.com/coa/DR-LET-0001.pdf": {
+   "lab": "DRS",
+   "sampled": "2025-07-29",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "da802984e43e806034c98169e4ec3b991fdc5274648ddbe72c005b2db1faabea",
+   "docType": "lab-coa",
+   "sampleId": "2507RLI0653-2424",
+   "batchTag": "DR-LET-0001",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "DRS",
+    "name": "Lemon Tea",
+    "matrix": null,
+    "licence": "OCM-PROC-24-000061",
+    "thc": null,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.0,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.0,
+     "LIMONENE": 0.0,
+     "LINALOOL": 0.0,
+     "MYRCENE": 0.0,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://pub-be27100a89ad4a33bfa5dec289c9c57f.r2.dev/coa/DR-LET-0001.pdf",
    "sourceKind": "brand-page-unreviewed",
    "sourcePage": "https://www.centralprocessorsny.com/coas"
   },
