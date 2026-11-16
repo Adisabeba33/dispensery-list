@@ -1,6 +1,6 @@
 # Research report — NYC + Westchester dispensaries
 
-Snapshot time: **2026-11-09T21:07:45.444Z**
+Snapshot time: **2026-11-16T20:42:02.985Z**
 
 ## Result
 
@@ -25,15 +25,16 @@ Published current-license records: **472**.
 
 The official OCM public-open page text advertises 717 adult-use dispensaries statewide, while the HTML table snapshot parsed into **761 data rows**. This mismatch is preserved as a source inconsistency; no synthetic 717th row was created.
 
-The raw Current OCM Licenses snapshot contains **3053** rows. The first-pass six-county retail-ish filter produced **480** OCM-format licensed rows: **458 Active** and **8 Inactive/expired** before geography sanity filtering.
+The raw Current OCM Licenses snapshot contains **3059** rows. The first-pass six-county retail-ish filter produced **481** OCM-format licensed rows: **458 Active** and **8 Inactive/expired** before geography sanity filtering.
 
 Two rows are tagged `county=New York` / `region=Manhattan` in the official registry but have clearly upstate addresses and ZIPs; they are excluded from the NYC/Westchester deliverable and kept in the raw evidence:
 - `OCM-MICR-24-000199` — Copperhead Grow, LLC — 10242 State Route 12, Remsen NY 13438.
 - `OCM-RETL-26-000482` — Forage Dispensaries, LLC — 734 NY-32A, Palenville NY 12414.
 
-Expired/inactive OCM-format retail licenses excluded from the current directory: **15**.
+Expired/inactive OCM-format retail licenses excluded from the current directory: **16**.
 - `OCM-RETL-24-000121` — Altitude NY LLC — expired 2026-07-10.
 - `OCM-MICR-24-000043` — BKL Flowers LLC — expired 2026-04-08.
+- `OCM-RETL-24-000195` — Buds R Us LLC — expired 2026-10-09.
 - `OCM-RETL-24-000167` — Cannabis Creations INC — expired 2026-08-22.
 - `OCM-CAURD-24-000208` — Budr Cannabis — expired 2026-09-27.
 - `OCM-CAURD-24-000158` — DISCO HERBATORY LLC — expired 2026-06-28.
