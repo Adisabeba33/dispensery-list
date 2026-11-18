@@ -1059209,7 +1059209,7 @@
   {
     "listingId": "nanticoke-all-gas",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "All Gas",
     "strainNameCanonical": "All Gas",
     "brand": "Nanticoke",
@@ -1059248,7 +1059248,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059256,7 +1059256,7 @@
   {
     "listingId": "5-boro-amnesia-haze",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Amnesia Haze",
     "strainNameCanonical": "Amnesia Haze",
     "brand": "5 boro",
@@ -1059293,7 +1059293,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059301,7 +1059301,7 @@
   {
     "listingId": "grocery-animal-mint-cake",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Animal Mint Cake",
     "strainNameCanonical": "Animal Mint Cake",
     "brand": "Grocery",
@@ -1059338,7 +1059338,52 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "dr-jekyll-and-mr-high-backyard-boys-club",
+    "licenseNumber": "OCM-RETL-24-000070",
+    "capturedAt": "2026-11-18T18:49:27Z",
+    "strainNameRaw": "Backyard Boys Club",
+    "strainNameCanonical": "Backyard Boys Club",
+    "brand": "Dr. Jekyll and Mr. High",
+    "brandKey": "drjekyllandmrhigh",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 32.82,
+    "cbdPercent": 0,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": 2.07,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": [
+      "1A41203000006AC000004373"
+    ],
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": null,
+    "description": null,
+    "sources": [
+      {
+        "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059346,7 +1059391,7 @@
   {
     "listingId": "grassroots-banana-belts",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Banana Belts",
     "strainNameCanonical": "Banana Belts",
     "brand": "Grassroots",
@@ -1059383,7 +1059428,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059391,7 +1059436,7 @@
   {
     "listingId": "grocery-banana-punch-x-gmo",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Banana Punch x GMO",
     "strainNameCanonical": "Banana Punch x GMO",
     "brand": "Grocery",
@@ -1059428,7 +1059473,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059436,7 +1059481,7 @@
   {
     "listingId": "grocery-black-diesel",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Black Diesel",
     "strainNameCanonical": "Black Diesel",
     "brand": "Grocery",
@@ -1059473,7 +1059518,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059481,7 +1059526,7 @@
   {
     "listingId": "nanticoke-black-panther",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Black Panther",
     "strainNameCanonical": "Black Panther",
     "brand": "Nanticoke",
@@ -1059518,7 +1059563,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059526,7 +1059571,7 @@
   {
     "listingId": "nanticoke-block-monster",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Block Monster",
     "strainNameCanonical": "Block Monster",
     "brand": "Nanticoke",
@@ -1059563,7 +1059608,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059571,7 +1059616,7 @@
   {
     "listingId": "nanticoke-blue-dream",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Blue Dream",
     "strainNameCanonical": "Blue Dream",
     "brand": "Nanticoke",
@@ -1059612,7 +1059657,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059620,7 +1059665,7 @@
   {
     "listingId": "5-boro-blue-hawaiian",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Blue Hawaiian",
     "strainNameCanonical": "Blue Hawaiian",
     "brand": "5 boro",
@@ -1059657,7 +1059702,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059665,7 +1059710,7 @@
   {
     "listingId": "grassroots-blue-lobster-popcorn-small-buds-flower",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Blue Lobster - Popcorn - Small Buds Flower",
     "strainNameCanonical": "Blue Lobster",
     "brand": "Grassroots",
@@ -1059702,7 +1059747,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059710,7 +1059755,7 @@
   {
     "listingId": "golden-garden-blue-zushi",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Blue Zushi",
     "strainNameCanonical": "Blue Zushi",
     "brand": "Golden Garden",
@@ -1059747,7 +1059792,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059755,7 +1059800,7 @@
   {
     "listingId": "bouk-t-bouket-blue-nerdz-premium-indoor-flower",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Bouket - Blue Nerdz - Premium Indoor Flower",
     "strainNameCanonical": "Blue Nerdz",
     "brand": "Boukét",
@@ -1059792,7 +1059837,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059800,7 +1059845,7 @@
   {
     "listingId": "bouk-t-bouket-crunch-berrys-premium-indoor-flower",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Bouket - Crunch Berrys - Premium Indoor Flower",
     "strainNameCanonical": "Crunch Berrys",
     "brand": "Boukét",
@@ -1059837,7 +1059882,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059845,7 +1059890,7 @@
   {
     "listingId": "bouk-t-bouket-dark-matter-og-premium-indoor-flower",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Bouket - Dark Matter OG - Premium Indoor Flower",
     "strainNameCanonical": "Dark Matter OG",
     "brand": "Boukét",
@@ -1059882,7 +1059927,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059890,7 +1059935,7 @@
   {
     "listingId": "bouk-t-bouket-sunkist-premium-indoor-flower",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Bouket - Sunkist - Premium Indoor Flower",
     "strainNameCanonical": "Sunkist",
     "brand": "Boukét",
@@ -1059927,7 +1059972,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059935,7 +1059980,7 @@
   {
     "listingId": "bouk-t-bouket-walkabout-premium-indoor-flower",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Bouket - Walkabout - Premium Indoor Flower",
     "strainNameCanonical": "Walkabout",
     "brand": "Boukét",
@@ -1059972,7 +1060017,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1059980,7 +1060025,7 @@
   {
     "listingId": "alien-labs-brain-wash",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Brain Wash",
     "strainNameCanonical": "Brain Wash",
     "brand": "Alien Labs",
@@ -1060019,7 +1060064,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060027,7 +1060072,7 @@
   {
     "listingId": "rolling-green-cannabis-bubba-kush-standard",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Bubba Kush - Standard",
     "strainNameCanonical": "Bubba Kush - Standard",
     "brand": "Rolling Green Cannabis",
@@ -1060064,7 +1060109,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060072,7 +1060117,7 @@
   {
     "listingId": "animal-house-canal-st-runtz-mixed-light-flower",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Canal St. Runtz - Mixed Light Flower",
     "strainNameCanonical": "Canal St. Runtz",
     "brand": "Animal House",
@@ -1060109,7 +1060154,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060117,7 +1060162,7 @@
   {
     "listingId": "cannacure-farms-canna-cure-farms-blockberry",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Canna Cure Farms - Blockberry",
     "strainNameCanonical": "Blockberry",
     "brand": "Cannacure Farms",
@@ -1060154,7 +1060199,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060162,7 +1060207,7 @@
   {
     "listingId": "cannacure-farms-canna-cure-farms-colorado-chem",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Canna Cure Farms - Colorado Chem",
     "strainNameCanonical": "Colorado Chem",
     "brand": "Cannacure Farms",
@@ -1060199,7 +1060244,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060207,7 +1060252,7 @@
   {
     "listingId": "5-boro-cereal-milk",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Cereal Milk",
     "strainNameCanonical": "Cereal Milk",
     "brand": "5 boro",
@@ -1060244,7 +1060289,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060252,7 +1060297,7 @@
   {
     "listingId": "nanticoke-coconut-cream",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Coconut Cream",
     "strainNameCanonical": "Coconut Cream",
     "brand": "Nanticoke",
@@ -1060295,7 +1060340,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060303,7 +1060348,7 @@
   {
     "listingId": "dank-by-definition-dank-chocolate-diesel",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Dank - Chocolate Diesel",
     "strainNameCanonical": "Chocolate Diesel",
     "brand": "Dank By Definition.",
@@ -1060340,7 +1060385,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060348,7 +1060393,7 @@
   {
     "listingId": "rolling-green-cannabis-east-coast-sour-diesel-premium",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "East Coast Sour Diesel - Premium",
     "strainNameCanonical": "East Coast Sour Diesel",
     "brand": "Rolling Green Cannabis",
@@ -1060385,7 +1060430,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060393,7 +1060438,7 @@
   {
     "listingId": "dr-jekyll-and-mr-high-egg-roll",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Egg Roll",
     "strainNameCanonical": "Egg Roll",
     "brand": "Dr. Jekyll and Mr. High",
@@ -1060430,52 +1060475,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "ruby-farms-exotic-flower-indoor-maui-waui",
-    "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
-    "strainNameRaw": "Exotic Flower - Indoor - Maui Waui",
-    "strainNameCanonical": "Maui Waui",
-    "brand": "Ruby Farms",
-    "brandKey": "ruby",
-    "lineage": "SATIVA",
-    "thcPercent": 30.78,
-    "cbdPercent": 0,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": 1.86,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": [
-      "1A412030000070B000025935"
-    ],
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": null,
-    "description": null,
-    "sources": [
-      {
-        "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060483,7 +1060483,7 @@
   {
     "listingId": "ruby-farms-exotic-flower-indoor-pink-guava",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Exotic Flower - Indoor - Pink Guava",
     "strainNameCanonical": "Pink Guava",
     "brand": "Ruby Farms",
@@ -1060520,7 +1060520,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060528,7 +1060528,7 @@
   {
     "listingId": "ruby-farms-exotic-flower-indoor-tangie-biscotti",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Exotic Flower - Indoor - Tangie Biscotti",
     "strainNameCanonical": "Tangie Biscotti",
     "brand": "Ruby Farms",
@@ -1060565,7 +1060565,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060573,7 +1060573,7 @@
   {
     "listingId": "find-find-banana-burst",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Find - Banana Burst",
     "strainNameCanonical": "Banana Burst",
     "brand": "Find.",
@@ -1060612,7 +1060612,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060620,7 +1060620,7 @@
   {
     "listingId": "find-find-bottomless-mints",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Find - Bottomless Mints",
     "strainNameCanonical": "Bottomless Mints",
     "brand": "Find.",
@@ -1060659,7 +1060659,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060667,7 +1060667,7 @@
   {
     "listingId": "find-find-gas-lit",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Find - Gas Lit",
     "strainNameCanonical": "Gas Lit",
     "brand": "Find.",
@@ -1060706,7 +1060706,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060714,7 +1060714,7 @@
   {
     "listingId": "find-find-tourist-trap",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Find - Tourist Trap",
     "strainNameCanonical": "Tourist Trap",
     "brand": "Find.",
@@ -1060751,7 +1060751,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060759,7 +1060759,7 @@
   {
     "listingId": "find-find-tri-berry",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Find - Tri Berry",
     "strainNameCanonical": "Tri Berry",
     "brand": "Find.",
@@ -1060796,7 +1060796,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060804,7 +1060804,7 @@
   {
     "listingId": "find-find-zangria",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Find - Zangria",
     "strainNameCanonical": "Zangria",
     "brand": "Find.",
@@ -1060841,7 +1060841,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060849,7 +1060849,7 @@
   {
     "listingId": "5-boro-forbidden-fruit",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Forbidden Fruit",
     "strainNameCanonical": "Forbidden Fruit",
     "brand": "5 boro",
@@ -1060886,7 +1060886,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060894,7 +1060894,7 @@
   {
     "listingId": "leal-fortune-cookie",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Fortune Cookie",
     "strainNameCanonical": "Fortune Cookie",
     "brand": "LEAL",
@@ -1060933,7 +1060933,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060941,7 +1060941,7 @@
   {
     "listingId": "5-boro-fuel-pump",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Fuel Pump",
     "strainNameCanonical": "Fuel Pump",
     "brand": "5 boro",
@@ -1060978,7 +1060978,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1060986,7 +1060986,7 @@
   {
     "listingId": "nanticoke-garlicane",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Garlicane",
     "strainNameCanonical": "Garlicane",
     "brand": "Nanticoke",
@@ -1061023,7 +1061023,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061031,7 +1061031,7 @@
   {
     "listingId": "grassroots-giggin-grapes-7-small-buds",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Giggin Grapes #7 - Small Buds",
     "strainNameCanonical": "Giggin Grapes #7",
     "brand": "Grassroots",
@@ -1061068,7 +1061068,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061076,7 +1061076,7 @@
   {
     "listingId": "to-the-moon-gorilla-glue",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Gorilla Glue",
     "strainNameCanonical": "Gorilla Glue",
     "brand": "To The Moon",
@@ -1061113,7 +1061113,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061121,7 +1061121,7 @@
   {
     "listingId": "dr-jekyll-and-mr-high-grape-canyon",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Grape Canyon",
     "strainNameCanonical": "Grape Canyon",
     "brand": "Dr. Jekyll and Mr. High",
@@ -1061158,7 +1061158,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061166,7 +1061166,7 @@
   {
     "listingId": "5-boro-hood-candyz",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Hood Candyz",
     "strainNameCanonical": "Hood Candyz",
     "brand": "5 boro",
@@ -1061203,7 +1061203,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061211,7 +1061211,7 @@
   {
     "listingId": "dark-heart-icy-grapes",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Icy Grapes",
     "strainNameCanonical": "Icy Grapes",
     "brand": "Dark Heart",
@@ -1061248,7 +1061248,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061256,7 +1061256,7 @@
   {
     "listingId": "grocery-illemonati",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Illemonati",
     "strainNameCanonical": "Illemonati",
     "brand": "Grocery",
@@ -1061293,7 +1061293,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061301,7 +1061301,7 @@
   {
     "listingId": "hepworth-jack-grape",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Jack Grape",
     "strainNameCanonical": "Jack Grape",
     "brand": "Hepworth",
@@ -1061338,7 +1061338,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061346,7 +1061346,7 @@
   {
     "listingId": "to-the-moon-jet-fuel-gelato-premium-flower",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Jet Fuel Gelato - Premium Flower",
     "strainNameCanonical": "Jet Fuel Gelato",
     "brand": "To The Moon",
@@ -1061383,7 +1061383,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061391,7 +1061391,7 @@
   {
     "listingId": "knack-knack-black-gush-mints",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Knack Black - Gush Mints",
     "strainNameCanonical": "Gush Mints",
     "brand": "Knack",
@@ -1061428,7 +1061428,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061436,7 +1061436,7 @@
   {
     "listingId": "grocery-kush-mints",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Kush Mints",
     "strainNameCanonical": "Kush Mints",
     "brand": "Grocery",
@@ -1061473,7 +1061473,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061481,7 +1061481,7 @@
   {
     "listingId": "nanticoke-lemon-cherry-gelato",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Lemon Cherry Gelato",
     "strainNameCanonical": "Lemon Cherry Gelato",
     "brand": "Nanticoke",
@@ -1061518,7 +1061518,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061526,7 +1061526,7 @@
   {
     "listingId": "grocery-lemon-thai",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Lemon Thai",
     "strainNameCanonical": "Lemon Thai",
     "brand": "Grocery",
@@ -1061563,7 +1061563,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061571,7 +1061571,7 @@
   {
     "listingId": "mini-mart-lemon-tree",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Lemon Tree",
     "strainNameCanonical": "Lemon Tree",
     "brand": "mini MART",
@@ -1061608,7 +1061608,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061616,7 +1061616,7 @@
   {
     "listingId": "rolling-green-cannabis-mac-stomper-premium",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "MAC Stomper - Premium",
     "strainNameCanonical": "MAC Stomper",
     "brand": "Rolling Green Cannabis",
@@ -1061653,7 +1061653,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061661,7 +1061661,7 @@
   {
     "listingId": "nanticoke-memory-loss-og",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Memory Loss OG",
     "strainNameCanonical": "Memory Loss OG",
     "brand": "Nanticoke",
@@ -1061698,7 +1061698,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061706,7 +1061706,7 @@
   {
     "listingId": "grocery-modified-bananas",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Modified Bananas",
     "strainNameCanonical": "Modified Bananas",
     "brand": "Grocery",
@@ -1061743,7 +1061743,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061751,7 +1061751,7 @@
   {
     "listingId": "dark-heart-moonbeam-gelato",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Moonbeam Gelato",
     "strainNameCanonical": "Moonbeam Gelato",
     "brand": "Dark Heart",
@@ -1061788,7 +1061788,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061796,7 +1061796,7 @@
   {
     "listingId": "animal-house-notorious-cherry-mixed-light-flower",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Notorious Cherry - Mixed Light Flower",
     "strainNameCanonical": "Notorious Cherry",
     "brand": "Animal House",
@@ -1061833,7 +1061833,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061841,7 +1061841,7 @@
   {
     "listingId": "electraleaf-ny-cheesecake",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "NY Cheesecake",
     "strainNameCanonical": "NY Cheesecake",
     "brand": "ElectraLeaf",
@@ -1061878,7 +1061878,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061886,7 +1061886,7 @@
   {
     "listingId": "grassroots-orange-z",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Orange Z",
     "strainNameCanonical": "Orange Z",
     "brand": "Grassroots",
@@ -1061923,7 +1061923,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061931,7 +1061931,7 @@
   {
     "listingId": "grassroots-orange-z-popcorn-small-buds-flower",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Orange Z - Popcorn - Small Buds Flower",
     "strainNameCanonical": "Orange Z",
     "brand": "Grassroots",
@@ -1061968,7 +1061968,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1061976,7 +1061976,7 @@
   {
     "listingId": "rolling-green-cannabis-oreoz-may-2026-premium",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Oreoz (May 2026) - Premium",
     "strainNameCanonical": "Oreoz (May 2026)",
     "brand": "Rolling Green Cannabis",
@@ -1062013,7 +1062013,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062021,7 +1062021,7 @@
   {
     "listingId": "5-boro-permanent-marker",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Permanent Marker",
     "strainNameCanonical": "Permanent Marker",
     "brand": "5 boro",
@@ -1062058,7 +1062058,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062066,7 +1062066,7 @@
   {
     "listingId": "nanticoke-pineapple-runtz",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Pineapple Runtz",
     "strainNameCanonical": "Pineapple Runtz",
     "brand": "Nanticoke",
@@ -1062103,7 +1062103,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062111,7 +1062111,7 @@
   {
     "listingId": "to-the-moon-pink-marshmallow-premium-flower",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Pink Marshmallow - Premium Flower",
     "strainNameCanonical": "Pink Marshmallow",
     "brand": "To The Moon",
@@ -1062148,7 +1062148,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062156,7 +1062156,7 @@
   {
     "listingId": "grassroots-problem-child",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Problem Child",
     "strainNameCanonical": "Problem Child",
     "brand": "Grassroots",
@@ -1062193,7 +1062193,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062201,7 +1062201,7 @@
   {
     "listingId": "rolling-green-cannabis-satan-s-cookies-premium",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Satan's Cookies - Premium",
     "strainNameCanonical": "Satan's Cookies",
     "brand": "Rolling Green Cannabis",
@@ -1062238,7 +1062238,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062246,7 +1062246,7 @@
   {
     "listingId": "nanticoke-sour-diesel",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Sour Diesel",
     "strainNameCanonical": "Sour Diesel",
     "brand": "Nanticoke",
@@ -1062283,7 +1062283,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062291,7 +1062291,7 @@
   {
     "listingId": "rythm-sour-diesel-premium-flower",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Sour Diesel - Premium Flower",
     "strainNameCanonical": "Sour Diesel",
     "brand": "RYTHM",
@@ -1062328,7 +1062328,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062336,7 +1062336,7 @@
   {
     "listingId": "edie-parker-sour-jack",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Sour Jack",
     "strainNameCanonical": "Sour Jack",
     "brand": "Edie Parker",
@@ -1062373,7 +1062373,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062381,7 +1062381,7 @@
   {
     "listingId": "leal-stank-breath",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Stank Breath",
     "strainNameCanonical": "Stank Breath",
     "brand": "LEAL",
@@ -1062418,7 +1062418,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062426,7 +1062426,7 @@
   {
     "listingId": "electraleaf-super-lemon-diesel",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Super Lemon Diesel",
     "strainNameCanonical": "Super Lemon Diesel",
     "brand": "ElectraLeaf",
@@ -1062463,7 +1062463,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062471,7 +1062471,7 @@
   {
     "listingId": "golden-garden-superboof",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "SuperBoof",
     "strainNameCanonical": "SuperBoof",
     "brand": "Golden Garden",
@@ -1062508,7 +1062508,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062516,7 +1062516,7 @@
   {
     "listingId": "hepworth-terp-poison",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Terp Poison",
     "strainNameCanonical": "Terp Poison",
     "brand": "Hepworth",
@@ -1062553,7 +1062553,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062561,7 +1062561,7 @@
   {
     "listingId": "dark-heart-titan-express",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Titan Express",
     "strainNameCanonical": "Titan Express",
     "brand": "Dark Heart",
@@ -1062598,7 +1062598,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062606,7 +1062606,7 @@
   {
     "listingId": "knack-tropical-treats",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Tropical Treats",
     "strainNameCanonical": "Tropical Treats",
     "brand": "Knack",
@@ -1062645,7 +1062645,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062653,7 +1062653,7 @@
   {
     "listingId": "animal-house-vanilla-cream-mixed-light-flower",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Vanilla Cream - Mixed Light Flower",
     "strainNameCanonical": "Vanilla Cream",
     "brand": "Animal House",
@@ -1062690,7 +1062690,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062698,7 +1062698,7 @@
   {
     "listingId": "grassroots-wild-garlic",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Wild Garlic",
     "strainNameCanonical": "Wild Garlic",
     "brand": "Grassroots",
@@ -1062735,7 +1062735,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062743,7 +1062743,7 @@
   {
     "listingId": "alien-labs-xeno",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Xeno",
     "strainNameCanonical": "Xeno",
     "brand": "Alien Labs",
@@ -1062780,7 +1062780,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1062788,7 +1062788,7 @@
   {
     "listingId": "electraleaf-zerbert",
     "licenseNumber": "OCM-RETL-24-000070",
-    "capturedAt": "2026-11-17T18:30:22Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Zerbert",
     "strainNameCanonical": "Zerbert",
     "brand": "ElectraLeaf",
@@ -1062825,7 +1062825,7 @@
         "url": "https://www.goodcompanyshop.com/stores/good-company/products/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T18:30:22Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1192551,7 +1192551,7 @@
   {
     "listingId": "connected-ambrozia-b-sides",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Ambrozia - B-Sides",
     "strainNameCanonical": "Ambrozia - B-Sides",
     "brand": "Connected",
@@ -1192622,7 +1192622,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1192630,7 +1192630,7 @@
   {
     "listingId": "revert-animal-face",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Animal Face",
     "strainNameCanonical": "Animal Face",
     "brand": "Revert",
@@ -1192686,7 +1192686,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1192694,7 +1192694,7 @@
   {
     "listingId": "aeterna-apple-fritter",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Apple Fritter",
     "strainNameCanonical": "Apple Fritter",
     "brand": "Aeterna",
@@ -1192760,7 +1192760,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1192768,7 +1192768,7 @@
   {
     "listingId": "budd-apple-fritter-premium-flower",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Apple Fritter - Premium Flower",
     "strainNameCanonical": "Apple Fritter",
     "brand": "Budd",
@@ -1192849,7 +1192849,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1192857,7 +1192857,7 @@
   {
     "listingId": "woodstock-apple-pie",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Apple Pie",
     "strainNameCanonical": "Apple Pie",
     "brand": "Woodstock",
@@ -1192928,7 +1192928,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1192936,7 +1192936,7 @@
   {
     "listingId": "mintz-apple-tartz",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Apple Tartz",
     "strainNameCanonical": "Apple Tartz",
     "brand": "Mintz",
@@ -1193027,7 +1193027,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1193035,7 +1193035,7 @@
   {
     "listingId": "alien-labs-atomic-apple",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Atomic Apple",
     "strainNameCanonical": "Atomic Apple",
     "brand": "Alien Labs",
@@ -1193106,7 +1193106,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1193114,7 +1193114,7 @@
   {
     "listingId": "alien-labs-atomic-apple-misfits",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Atomic Apple - Misfits",
     "strainNameCanonical": "Atomic Apple - Misfits",
     "brand": "Alien Labs",
@@ -1193180,7 +1193180,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1193188,7 +1193188,7 @@
   {
     "listingId": "sugar-treez-baby-yoda",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Baby Yoda",
     "strainNameCanonical": "Baby Yoda",
     "brand": "Sugar Treez",
@@ -1193249,7 +1193249,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1193257,7 +1193257,7 @@
   {
     "listingId": "connected-bad-apple",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Bad Apple",
     "strainNameCanonical": "Bad Apple",
     "brand": "Connected",
@@ -1193353,7 +1193353,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1193361,7 +1193361,7 @@
   {
     "listingId": "1937-banana-power",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Banana Power",
     "strainNameCanonical": "Banana Power",
     "brand": "1937",
@@ -1193437,7 +1193437,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1193445,7 +1193445,7 @@
   {
     "listingId": "willie-s-reserve-berry-og",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Berry OG",
     "strainNameCanonical": "Berry OG",
     "brand": "Willie's Reserve",
@@ -1193506,7 +1193506,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1193514,7 +1193514,7 @@
   {
     "listingId": "mintz-berry-white",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Berry White",
     "strainNameCanonical": "Berry White",
     "brand": "Mintz",
@@ -1193605,7 +1193605,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1193613,7 +1193613,7 @@
   {
     "listingId": "the-botanist-billionaire",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Billionaire",
     "strainNameCanonical": "Billionaire",
     "brand": "The Botanist",
@@ -1193704,7 +1193704,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1193712,7 +1193712,7 @@
   {
     "listingId": "connected-biscotti",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Biscotti",
     "strainNameCanonical": "Biscotti",
     "brand": "Connected",
@@ -1193798,7 +1193798,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1193806,7 +1193806,7 @@
   {
     "listingId": "connected-biscotti-b-sides",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Biscotti - B-Sides",
     "strainNameCanonical": "Biscotti - B-Sides",
     "brand": "Connected",
@@ -1193872,7 +1193872,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1193880,7 +1193880,7 @@
   {
     "listingId": "house-of-sacci-biscotti-pancakes",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Biscotti Pancakes",
     "strainNameCanonical": "Biscotti Pancakes",
     "brand": "House of Sacci",
@@ -1193967,7 +1193967,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1193975,7 +1193975,7 @@
   {
     "listingId": "alien-labs-biskante",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Biskante",
     "strainNameCanonical": "Biskante",
     "brand": "Alien Labs",
@@ -1194046,7 +1194046,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1194054,7 +1194054,7 @@
   {
     "listingId": "mintz-blackberry-kush",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Blackberry Kush",
     "strainNameCanonical": "Blackberry Kush",
     "brand": "Mintz",
@@ -1194125,7 +1194125,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1194133,7 +1194133,7 @@
   {
     "listingId": "revert-blue-dream",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Blue Dream",
     "strainNameCanonical": "Blue Dream",
     "brand": "Revert",
@@ -1194199,7 +1194199,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1194207,7 +1194207,7 @@
   {
     "listingId": "noizey-blue-dream",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Blue Dream",
     "strainNameCanonical": "Blue Dream",
     "brand": "NoiZey",
@@ -1194263,7 +1194263,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1194271,7 +1194271,7 @@
   {
     "listingId": "alchemy-pure-blue-dream-flower",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Blue Dream Flower",
     "strainNameCanonical": "Blue Dream",
     "brand": "Alchemy Pure",
@@ -1194362,7 +1194362,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1194370,7 +1194370,7 @@
   {
     "listingId": "the-botanist-blue-nerds",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Blue Nerds",
     "strainNameCanonical": "Blue Nerds",
     "brand": "The Botanist",
@@ -1194446,7 +1194446,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1194454,7 +1194454,7 @@
   {
     "listingId": "golden-garden-blue-zushi",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Blue Zushi",
     "strainNameCanonical": "Blue Zushi",
     "brand": "Golden Garden",
@@ -1194515,7 +1194515,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1194523,7 +1194523,7 @@
   {
     "listingId": "budd-blueberry-gumbo-premium-flower",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Blueberry Gumbo - Premium Flower",
     "strainNameCanonical": "Blueberry Gumbo",
     "brand": "Budd",
@@ -1194614,7 +1194614,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1194622,7 +1194622,7 @@
   {
     "listingId": "untitled-blueberry-kush-small-buds",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Blueberry Kush - Small Buds",
     "strainNameCanonical": "Blueberry Kush",
     "brand": "Untitled",
@@ -1194688,7 +1194688,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1194696,7 +1194696,7 @@
   {
     "listingId": "sp-farms-blueberry-muffin",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Blueberry Muffin",
     "strainNameCanonical": "Blueberry Muffin",
     "brand": "SP Farms",
@@ -1194782,7 +1194782,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1194790,7 +1194790,7 @@
   {
     "listingId": "alien-labs-brain-wash",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Brain Wash",
     "strainNameCanonical": "Brain Wash",
     "brand": "Alien Labs",
@@ -1194856,7 +1194856,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1194864,7 +1194864,7 @@
   {
     "listingId": "mintz-bruce-banner",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Bruce Banner",
     "strainNameCanonical": "Bruce Banner",
     "brand": "Mintz",
@@ -1194925,7 +1194925,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1194933,7 +1194933,7 @@
   {
     "listingId": "the-botanist-candy-margy",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Candy Margy",
     "strainNameCanonical": "Candy Margy",
     "brand": "The Botanist",
@@ -1195029,7 +1195029,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1195037,7 +1195037,7 @@
   {
     "listingId": "high-peaks-candyland-kush",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Candyland Kush",
     "strainNameCanonical": "Candyland Kush",
     "brand": "High Peaks",
@@ -1195123,7 +1195123,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1195131,7 +1195131,7 @@
   {
     "listingId": "heady-tree-category-five",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Category Five",
     "strainNameCanonical": "Category Five",
     "brand": "Heady Tree",
@@ -1195197,7 +1195197,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1195205,7 +1195205,7 @@
   {
     "listingId": "alchemy-pure-cel-ray",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Cel Ray",
     "strainNameCanonical": "Cel Ray",
     "brand": "Alchemy Pure",
@@ -1195291,7 +1195291,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1195299,7 +1195299,7 @@
   {
     "listingId": "aeterna-cereal-milk",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Cereal Milk",
     "strainNameCanonical": "Cereal Milk",
     "brand": "Aeterna",
@@ -1195365,7 +1195365,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1195373,7 +1195373,7 @@
   {
     "listingId": "rythm-cheddar-cheeze",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Cheddar Cheeze",
     "strainNameCanonical": "Cheddar Cheeze",
     "brand": "Rythm",
@@ -1195454,7 +1195454,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1195462,7 +1195462,7 @@
   {
     "listingId": "synergy-cherries",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Cherries",
     "strainNameCanonical": "Cherries",
     "brand": "Synergy",
@@ -1195543,91 +1195543,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "rec-roots-cherry-apples",
-    "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
-    "strainNameRaw": "Cherry Apples",
-    "strainNameCanonical": "Cherry Apples",
-    "brand": "Rec Roots",
-    "brandKey": "recroots",
-    "lineage": "HYBRID",
-    "thcPercent": 31,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "MENU_LISTING",
-      "profile": [
-        {
-          "name": "PINENE_ALPHA",
-          "rawName": null,
-          "percent": 0.04
-        },
-        {
-          "name": "CARYOPHYLLENE",
-          "rawName": null,
-          "percent": 0.35
-        },
-        {
-          "name": "MYRCENE",
-          "rawName": null,
-          "percent": 0.08
-        },
-        {
-          "name": "PINENE_BETA",
-          "rawName": null,
-          "percent": 0.07
-        },
-        {
-          "name": "BISABOLOL",
-          "rawName": null,
-          "percent": 0.05
-        },
-        {
-          "name": "HUMULENE",
-          "rawName": null,
-          "percent": 0.05
-        },
-        {
-          "name": "LIMONENE",
-          "rawName": null,
-          "percent": 0.39
-        },
-        {
-          "name": "LINALOOL",
-          "rawName": null,
-          "percent": 0.05
-        }
-      ],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": "THC:31|BISABOLOL:0.05|CARYOPHYLLENE:0.35|HUMULENE:0.05|LIMONENE:0.39|LINALOOL:0.05|MYRCENE:0.08|PINENE_ALPHA:0.04|PINENE_BETA:0.07",
-    "packageIds": null,
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": "https://starlifedispensary.com/shop/rec-roots/rec-roots-cherry-apples-flower-35g",
-    "description": null,
-    "sources": [
-      {
-        "url": "https://starlifedispensary.com/shop/categories/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1195635,7 +1195551,7 @@
   {
     "listingId": "leal-cherry-gelonade",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Cherry Gelonade",
     "strainNameCanonical": "Cherry Gelonade",
     "brand": "Leal",
@@ -1195711,7 +1195627,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1195719,7 +1195635,7 @@
   {
     "listingId": "bouket-cherry-paloma",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Cherry Paloma",
     "strainNameCanonical": "Cherry Paloma",
     "brand": "Bouket",
@@ -1195810,7 +1195726,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1195818,7 +1195734,7 @@
   {
     "listingId": "woodstock-cherry-tart",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Cherry Tart",
     "strainNameCanonical": "Cherry Tart",
     "brand": "Woodstock",
@@ -1195884,7 +1195800,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1195892,7 +1195808,7 @@
   {
     "listingId": "connected-chrome-b-sides",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Chrome - B-Sides",
     "strainNameCanonical": "Chrome - B-Sides",
     "brand": "Connected",
@@ -1195968,7 +1195884,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1195976,7 +1195892,7 @@
   {
     "listingId": "budd-cinnamon-milk",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Cinnamon Milk",
     "strainNameCanonical": "Cinnamon Milk",
     "brand": "Budd",
@@ -1196047,7 +1195963,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1196055,7 +1195971,7 @@
   {
     "listingId": "battenkill-buds-cobra-cabana-premium-flower",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Cobra Cabana - Premium Flower",
     "strainNameCanonical": "Cobra Cabana",
     "brand": "Battenkill Buds",
@@ -1196111,7 +1196027,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1196119,7 +1196035,7 @@
   {
     "listingId": "claybourne-co-cobra-kush-gold-cuts",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Cobra Kush Gold Cuts",
     "strainNameCanonical": "Cobra Kush Gold Cuts",
     "brand": "Claybourne Co",
@@ -1196200,7 +1196116,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1196208,7 +1196124,7 @@
   {
     "listingId": "alien-labs-cosmic-cereal-misfits",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Cosmic Cereal - Misfits",
     "strainNameCanonical": "Cosmic Cereal - Misfits",
     "brand": "Alien Labs",
@@ -1196289,7 +1196205,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1196297,7 +1196213,7 @@
   {
     "listingId": "electraleaf-cotton-candy",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Cotton Candy",
     "strainNameCanonical": "Cotton Candy",
     "brand": "Electraleaf",
@@ -1196363,71 +1196279,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "revert-crumble-cake",
-    "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
-    "strainNameRaw": "Crumble Cake",
-    "strainNameCanonical": "Crumble Cake",
-    "brand": "Revert",
-    "brandKey": "revert",
-    "lineage": "INDICA_DOMINANT",
-    "thcPercent": 24.3,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "MENU_LISTING",
-      "profile": [
-        {
-          "name": "CARYOPHYLLENE",
-          "rawName": null,
-          "percent": 0.56
-        },
-        {
-          "name": "HUMULENE",
-          "rawName": null,
-          "percent": 0.2
-        },
-        {
-          "name": "LIMONENE",
-          "rawName": null,
-          "percent": 0.12
-        },
-        {
-          "name": "LINALOOL",
-          "rawName": null,
-          "percent": 0.11
-        }
-      ],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": "THC:24.3|CARYOPHYLLENE:0.56|HUMULENE:0.2|LIMONENE:0.12|LINALOOL:0.11",
-    "packageIds": null,
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": "https://starlifedispensary.com/shop/revert/revert-crumble-cake-flower-35g",
-    "description": null,
-    "sources": [
-      {
-        "url": "https://starlifedispensary.com/shop/categories/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1196435,7 +1196287,7 @@
   {
     "listingId": "dada-dada-exotics-drip-n-dots",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Dada Exotics - Drip N Dots",
     "strainNameCanonical": "Drip N Dots",
     "brand": "Dada",
@@ -1196491,7 +1196343,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1196499,7 +1196351,7 @@
   {
     "listingId": "dada-dada-exotics-peach-ringz",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Dada Exotics - Peach Ringz",
     "strainNameCanonical": "Peach Ringz",
     "brand": "Dada",
@@ -1196555,7 +1196407,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1196563,7 +1196415,7 @@
   {
     "listingId": "dada-dada-exotics-warheadz",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Dada Exotics - Warheadz",
     "strainNameCanonical": "Warheadz",
     "brand": "Dada",
@@ -1196619,7 +1196471,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1196627,7 +1196479,7 @@
   {
     "listingId": "bouket-dark-matter-og",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Dark Matter OG",
     "strainNameCanonical": "Dark Matter OG",
     "brand": "Bouket",
@@ -1196713,7 +1196565,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1196721,7 +1196573,7 @@
   {
     "listingId": "electraleaf-dead-head-og",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Dead Head OG",
     "strainNameCanonical": "Dead Head OG",
     "brand": "Electraleaf",
@@ -1196807,7 +1196659,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1196815,7 +1196667,7 @@
   {
     "listingId": "house-of-sacci-devil-s-drip",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Devil's Drip",
     "strainNameCanonical": "Devil's Drip",
     "brand": "House of Sacci",
@@ -1196882,7 +1196734,8 @@
     "expiresWithinDays": null,
     "inStock": true,
     "availableSizesGrams": [
-      0.7
+      0.7,
+      14
     ],
     "productUrl": "https://starlifedispensary.com/shop/house-of-sacci/house-of-sacci-devils-drip-flower-07g",
     "description": null,
@@ -1196891,7 +1196744,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1196899,7 +1196752,7 @@
   {
     "listingId": "alchemy-pure-double-og-chem",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Double OG Chem",
     "strainNameCanonical": "Double OG Chem",
     "brand": "Alchemy Pure",
@@ -1196990,7 +1196843,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1196998,7 +1196851,7 @@
   {
     "listingId": "honest-pharm-co-double-runtz",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Double Runtz",
     "strainNameCanonical": "Double Runtz",
     "brand": "Honest Pharm Co",
@@ -1197049,7 +1196902,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1197057,7 +1196910,7 @@
   {
     "listingId": "akron-bloom-dragons-breath",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Dragons Breath",
     "strainNameCanonical": "Dragons Breath",
     "brand": "Akron Bloom",
@@ -1197128,7 +1196981,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1197136,7 +1196989,7 @@
   {
     "listingId": "claybourne-co-durban-poison-classic-cuts",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Durban Poison Classic Cuts",
     "strainNameCanonical": "Durban Poison Classic Cuts",
     "brand": "Claybourne Co",
@@ -1197227,7 +1197080,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1197235,7 +1197088,7 @@
   {
     "listingId": "sp-farms-durbana",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Durbana",
     "strainNameCanonical": "Durbana",
     "brand": "SP Farms",
@@ -1197311,7 +1197164,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1197319,7 +1197172,7 @@
   {
     "listingId": "rythm-fantasy-melonz",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Fantasy Melonz",
     "strainNameCanonical": "Fantasy Melonz",
     "brand": "Rythm",
@@ -1197410,7 +1197263,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1197418,7 +1197271,7 @@
   {
     "listingId": "1937-fever-dream",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Fever Dream",
     "strainNameCanonical": "Fever Dream",
     "brand": "1937",
@@ -1197509,7 +1197362,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1197517,7 +1197370,7 @@
   {
     "listingId": "revert-forbidden-kush",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Forbidden Kush",
     "strainNameCanonical": "Forbidden Kush",
     "brand": "Revert",
@@ -1197527,24 +1197380,8 @@
     "cbdPercent": null,
     "totalCannabinoidsPercent": null,
     "terpenes": {
-      "source": "MENU_LISTING",
-      "profile": [
-        {
-          "name": "CARYOPHYLLENE",
-          "rawName": null,
-          "percent": 0.53
-        },
-        {
-          "name": "HUMULENE",
-          "rawName": null,
-          "percent": 0.2
-        },
-        {
-          "name": "LINALOOL",
-          "rawName": null,
-          "percent": 0.13
-        }
-      ],
+      "source": "NONE",
+      "profile": [],
       "totalPercent": null,
       "labName": null,
       "testedOn": null,
@@ -1197568,7 +1197405,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1197576,7 +1197413,7 @@
   {
     "listingId": "leal-fortune-cookie",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Fortune Cookie",
     "strainNameCanonical": "Fortune Cookie",
     "brand": "Leal",
@@ -1197643,7 +1197480,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1197651,7 +1197488,7 @@
   {
     "listingId": "knack-fruit-stripez",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Fruit Stripez",
     "strainNameCanonical": "Fruit Stripez",
     "brand": "Knack",
@@ -1197732,7 +1197569,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1197740,7 +1197577,7 @@
   {
     "listingId": "rolling-green-fruity-pebbles",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Fruity Pebbles",
     "strainNameCanonical": "Fruity Pebbles",
     "brand": "Rolling Green",
@@ -1197806,7 +1197643,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1197814,7 +1197651,7 @@
   {
     "listingId": "the-botanist-gary-payton",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Gary Payton",
     "strainNameCanonical": "Gary Payton",
     "brand": "The Botanist",
@@ -1197890,7 +1197727,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1197898,7 +1197735,7 @@
   {
     "listingId": "the-botanist-gasoline-lollipop",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Gasoline Lollipop",
     "strainNameCanonical": "Gasoline Lollipop",
     "brand": "The Botanist",
@@ -1197989,7 +1197826,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1197997,7 +1197834,7 @@
   {
     "listingId": "knack-gelato-sunset",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Gelato Sunset",
     "strainNameCanonical": "Gelato Sunset",
     "brand": "Knack",
@@ -1198058,7 +1197895,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1198066,7 +1197903,7 @@
   {
     "listingId": "alien-labs-gemini-misfits",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Gemini - Misfits",
     "strainNameCanonical": "Gemini - Misfits",
     "brand": "Alien Labs",
@@ -1198132,7 +1197969,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1198140,7 +1197977,7 @@
   {
     "listingId": "suspect-georgia-pie",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Georgia Pie",
     "strainNameCanonical": "Georgia Pie",
     "brand": "Suspect",
@@ -1198197,7 +1198034,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1198205,7 +1198042,7 @@
   {
     "listingId": "connected-ghost-og",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Ghost OG",
     "strainNameCanonical": "Ghost OG",
     "brand": "Connected",
@@ -1198291,7 +1198128,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1198299,7 +1198136,7 @@
   {
     "listingId": "lion-order-giraffe-head",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Giraffe Head",
     "strainNameCanonical": "Giraffe Head",
     "brand": "Lion Order",
@@ -1198355,7 +1198192,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1198363,7 +1198200,7 @@
   {
     "listingId": "mintz-glitter-bomb",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Glitter Bomb",
     "strainNameCanonical": "Glitter Bomb",
     "brand": "Mintz",
@@ -1198434,7 +1198271,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1198442,7 +1198279,7 @@
   {
     "listingId": "bouket-glitter-bomb",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Glitter Bomb",
     "strainNameCanonical": "Glitter Bomb",
     "brand": "Bouket",
@@ -1198528,81 +1198365,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "revert-godfather-og",
-    "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
-    "strainNameRaw": "Godfather OG",
-    "strainNameCanonical": "Godfather OG",
-    "brand": "Revert",
-    "brandKey": "revert",
-    "lineage": "INDICA",
-    "thcPercent": 27.03,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "MENU_LISTING",
-      "profile": [
-        {
-          "name": "CARYOPHYLLENE",
-          "rawName": null,
-          "percent": 0.48
-        },
-        {
-          "name": "BISABOLOL",
-          "rawName": null,
-          "percent": 0.1
-        },
-        {
-          "name": "GUAIOL",
-          "rawName": null,
-          "percent": 0.08
-        },
-        {
-          "name": "HUMULENE",
-          "rawName": null,
-          "percent": 0.17
-        },
-        {
-          "name": "LIMONENE",
-          "rawName": null,
-          "percent": 0.21
-        },
-        {
-          "name": "LINALOOL",
-          "rawName": null,
-          "percent": 0.17
-        }
-      ],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": "THC:27.03|BISABOLOL:0.1|CARYOPHYLLENE:0.48|GUAIOL:0.08|HUMULENE:0.17|LIMONENE:0.21|LINALOOL:0.17",
-    "packageIds": null,
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": "https://starlifedispensary.com/shop/revert/revert-godfather-og-flower-35g",
-    "description": null,
-    "sources": [
-      {
-        "url": "https://starlifedispensary.com/shop/categories/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1198610,7 +1198373,7 @@
   {
     "listingId": "electraleaf-godzilla-glue",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Godzilla Glue",
     "strainNameCanonical": "Godzilla Glue",
     "brand": "Electraleaf",
@@ -1198676,7 +1198439,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1198684,7 +1198447,7 @@
   {
     "listingId": "rythm-gogurtz",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Gogurtz",
     "strainNameCanonical": "Gogurtz",
     "brand": "Rythm",
@@ -1198775,7 +1198538,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1198783,7 +1198546,7 @@
   {
     "listingId": "revert-golden-pineapple",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Golden Pineapple",
     "strainNameCanonical": "Golden Pineapple",
     "brand": "Revert",
@@ -1198849,7 +1198612,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1198857,7 +1198620,7 @@
   {
     "listingId": "knack-golden-ring",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Golden Ring",
     "strainNameCanonical": "Golden Ring",
     "brand": "Knack",
@@ -1198933,7 +1198696,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1198941,7 +1198704,7 @@
   {
     "listingId": "rythm-granny-candy",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Granny Candy",
     "strainNameCanonical": "Granny Candy",
     "brand": "Rythm",
@@ -1199022,7 +1198785,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1199030,7 +1198793,7 @@
   {
     "listingId": "alchemy-pure-grape-bubblegum",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Grape Bubblegum",
     "strainNameCanonical": "Grape Bubblegum",
     "brand": "Alchemy Pure",
@@ -1199116,101 +1198879,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "leal-grape-cake",
-    "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
-    "strainNameRaw": "Grape Cake",
-    "strainNameCanonical": "Grape Cake",
-    "brand": "Leal",
-    "brandKey": "leal",
-    "lineage": "INDICA_DOMINANT",
-    "thcPercent": 32.79,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "MENU_LISTING",
-      "profile": [
-        {
-          "name": "PINENE_ALPHA",
-          "rawName": null,
-          "percent": 0.04
-        },
-        {
-          "name": "CARYOPHYLLENE",
-          "rawName": null,
-          "percent": 0.31
-        },
-        {
-          "name": "PINENE_BETA",
-          "rawName": null,
-          "percent": 0.07
-        },
-        {
-          "name": "BISABOLOL",
-          "rawName": null,
-          "percent": 0.16
-        },
-        {
-          "name": "CARYOPHYLLENE_OXIDE",
-          "rawName": null,
-          "percent": 0.09
-        },
-        {
-          "name": "GUAIOL",
-          "rawName": null,
-          "percent": 0.1
-        },
-        {
-          "name": "HUMULENE",
-          "rawName": null,
-          "percent": 0.13
-        },
-        {
-          "name": "LIMONENE",
-          "rawName": null,
-          "percent": 0.38
-        },
-        {
-          "name": "TERPINENE",
-          "rawName": null,
-          "percent": 0.02
-        },
-        {
-          "name": "TERPINOLENE",
-          "rawName": null,
-          "percent": 0.02
-        }
-      ],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": "THC:32.79|BISABOLOL:0.16|CARYOPHYLLENE:0.31|CARYOPHYLLENE_OXIDE:0.09|GUAIOL:0.1|HUMULENE:0.13|LIMONENE:0.38|PINENE_ALPHA:0.04|PINENE_BETA:0.07|TERPINENE:0.02|TERPINOLENE:0.02",
-    "packageIds": null,
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": "https://starlifedispensary.com/shop/leal/leal-grape-cake-flower-35g",
-    "description": null,
-    "sources": [
-      {
-        "url": "https://starlifedispensary.com/shop/categories/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1199218,7 +1198887,7 @@
   {
     "listingId": "electraleaf-grape-gas",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Grape Gas",
     "strainNameCanonical": "Grape Gas",
     "brand": "Electraleaf",
@@ -1199284,7 +1198953,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1199292,7 +1198961,7 @@
   {
     "listingId": "the-botanist-grape-glitz",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Grape Glitz",
     "strainNameCanonical": "Grape Glitz",
     "brand": "The Botanist",
@@ -1199383,7 +1199052,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1199391,7 +1199060,7 @@
   {
     "listingId": "revert-green-crack",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Green Crack",
     "strainNameCanonical": "Green Crack",
     "brand": "Revert",
@@ -1199447,7 +1199116,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1199455,7 +1199124,7 @@
   {
     "listingId": "untitled-green-crack-small-buds",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Green Crack - Small Buds",
     "strainNameCanonical": "Green Crack",
     "brand": "Untitled",
@@ -1199516,7 +1199185,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1199524,7 +1199193,7 @@
   {
     "listingId": "the-botanist-guava-casquitos",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Guava Casquitos",
     "strainNameCanonical": "Guava Casquitos",
     "brand": "The Botanist",
@@ -1199615,7 +1199284,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1199623,7 +1199292,7 @@
   {
     "listingId": "electraleaf-han-solo-burger",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Han Solo Burger",
     "strainNameCanonical": "Han Solo Burger",
     "brand": "Electraleaf",
@@ -1199684,7 +1199353,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1199692,7 +1199361,7 @@
   {
     "listingId": "leal-hella-jelly",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Hella Jelly",
     "strainNameCanonical": "Hella Jelly",
     "brand": "Leal",
@@ -1199753,7 +1199422,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1199761,7 +1199430,7 @@
   {
     "listingId": "major-hippie-crasher",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Hippie Crasher",
     "strainNameCanonical": "Hippie Crasher",
     "brand": "Major",
@@ -1199832,7 +1199501,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1199840,7 +1199509,7 @@
   {
     "listingId": "honest-pharm-co-honest-pharm-chemdawg",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Honest Pharm - Chemdawg",
     "strainNameCanonical": "Chemdawg",
     "brand": "Honest Pharm Co",
@@ -1199891,7 +1199560,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1199899,7 +1199568,7 @@
   {
     "listingId": "honest-pharm-co-honest-pharm-peaches-cream-punch",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Honest Pharm - Peaches & Cream Punch",
     "strainNameCanonical": "Peaches & Cream Punch",
     "brand": "Honest Pharm Co",
@@ -1199970,7 +1199639,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1199978,7 +1199647,7 @@
   {
     "listingId": "honest-pharm-co-honest-pharm-peanut-butter-muffin",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Honest Pharm - Peanut Butter Muffin",
     "strainNameCanonical": "Peanut Butter Muffin",
     "brand": "Honest Pharm Co",
@@ -1200049,7 +1199718,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1200057,7 +1199726,7 @@
   {
     "listingId": "honest-pharm-co-honest-pharm-tri-berry",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Honest Pharm - Tri-Berry",
     "strainNameCanonical": "Tri-Berry",
     "brand": "Honest Pharm Co",
@@ -1200133,7 +1199802,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1200141,7 +1199810,7 @@
   {
     "listingId": "high-peaks-horchata",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Horchata",
     "strainNameCanonical": "Horchata",
     "brand": "High Peaks",
@@ -1200217,7 +1199886,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1200225,7 +1199894,7 @@
   {
     "listingId": "bouket-hot-sauce",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Hot Sauce",
     "strainNameCanonical": "Hot Sauce",
     "brand": "Bouket",
@@ -1200316,7 +1199985,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1200324,7 +1199993,7 @@
   {
     "listingId": "revert-ice-cream-cake",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Ice Cream Cake",
     "strainNameCanonical": "Ice Cream Cake",
     "brand": "Revert",
@@ -1200385,7 +1200054,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1200393,7 +1200062,7 @@
   {
     "listingId": "alchemy-pure-island-time-headband",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Island Time Headband",
     "strainNameCanonical": "Island Time Headband",
     "brand": "Alchemy Pure",
@@ -1200474,7 +1200143,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1200482,7 +1200151,7 @@
   {
     "listingId": "the-botanist-jack-herer",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Jack Herer",
     "strainNameCanonical": "Jack Herer",
     "brand": "The Botanist",
@@ -1200568,7 +1200237,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1200576,7 +1200245,7 @@
   {
     "listingId": "bouket-jackknife",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Jackknife",
     "strainNameCanonical": "Jackknife",
     "brand": "Bouket",
@@ -1200642,7 +1200311,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1200650,7 +1200319,7 @@
   {
     "listingId": "rec-roots-jelly-factory",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Jelly Factory",
     "strainNameCanonical": "Jelly Factory",
     "brand": "Rec Roots",
@@ -1200721,7 +1200390,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1200729,7 +1200398,7 @@
   {
     "listingId": "aeterna-jelly-rancher",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Jelly Rancher",
     "strainNameCanonical": "Jelly Rancher",
     "brand": "Aeterna",
@@ -1200800,7 +1200469,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1200808,7 +1200477,7 @@
   {
     "listingId": "rec-roots-jezus-juice-glitter-bomb-split",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Jezus Juice + Glitter Bomb - Split",
     "strainNameCanonical": "Jezus Juice + Glitter Bomb - Split",
     "brand": "Rec Roots",
@@ -1200884,7 +1200553,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1200892,7 +1200561,7 @@
   {
     "listingId": "breakfast-connections-juicy-fruit",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Juicy Fruit",
     "strainNameCanonical": "Juicy Fruit",
     "brand": "Breakfast Connections",
@@ -1200988,7 +1200657,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1200996,7 +1200665,7 @@
   {
     "listingId": "alien-labs-kryptic-chronic",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Kryptic Chronic",
     "strainNameCanonical": "Kryptic Chronic",
     "brand": "Alien Labs",
@@ -1201062,7 +1200731,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1201070,7 +1200739,7 @@
   {
     "listingId": "revert-kush-mints",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Kush Mints",
     "strainNameCanonical": "Kush Mints",
     "brand": "Revert",
@@ -1201131,111 +1200800,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "budjet-lavender-jack",
-    "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
-    "strainNameRaw": "Lavender Jack",
-    "strainNameCanonical": "Lavender Jack",
-    "brand": "BudJet",
-    "brandKey": "budjet",
-    "lineage": "HYBRID",
-    "thcPercent": 32.5,
-    "cbdPercent": null,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "MENU_LISTING",
-      "profile": [
-        {
-          "name": "PINENE_ALPHA",
-          "rawName": null,
-          "percent": 0.02
-        },
-        {
-          "name": "CARYOPHYLLENE",
-          "rawName": null,
-          "percent": 0.66
-        },
-        {
-          "name": "MYRCENE",
-          "rawName": null,
-          "percent": 0.12
-        },
-        {
-          "name": "PINENE_BETA",
-          "rawName": null,
-          "percent": 0.04
-        },
-        {
-          "name": "BISABOLOL",
-          "rawName": null,
-          "percent": 0.05
-        },
-        {
-          "name": "CARYOPHYLLENE_OXIDE",
-          "rawName": null,
-          "percent": 0.01
-        },
-        {
-          "name": "HUMULENE",
-          "rawName": null,
-          "percent": 0.22
-        },
-        {
-          "name": "LIMONENE",
-          "rawName": null,
-          "percent": 0.26
-        },
-        {
-          "name": "LINALOOL",
-          "rawName": null,
-          "percent": 0.09
-        },
-        {
-          "name": "OCIMENE",
-          "rawName": null,
-          "percent": 0.08
-        },
-        {
-          "name": "TERPINENE",
-          "rawName": null,
-          "percent": 0.02
-        },
-        {
-          "name": "TERPINOLENE",
-          "rawName": null,
-          "percent": 0.43
-        }
-      ],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": "THC:32.5|BISABOLOL:0.05|CARYOPHYLLENE:0.66|CARYOPHYLLENE_OXIDE:0.01|HUMULENE:0.22|LIMONENE:0.26|LINALOOL:0.09|MYRCENE:0.12|OCIMENE:0.08|PINENE_ALPHA:0.02|PINENE_BETA:0.04|TERPINENE:0.02|TERPINOLENE:0.43",
-    "packageIds": null,
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": "https://starlifedispensary.com/shop/budjet/budjet-lavender-jack-flower-35g",
-    "description": null,
-    "sources": [
-      {
-        "url": "https://starlifedispensary.com/shop/categories/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1201243,7 +1200808,7 @@
   {
     "listingId": "budjet-lemon-cherry-gelato",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Lemon Cherry Gelato",
     "strainNameCanonical": "Lemon Cherry Gelato",
     "brand": "BudJet",
@@ -1201329,7 +1200894,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1201337,7 +1200902,7 @@
   {
     "listingId": "sugar-treez-lemon-cherry-popper",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Lemon Cherry Popper",
     "strainNameCanonical": "Lemon Cherry Popper",
     "brand": "Sugar Treez",
@@ -1201393,7 +1200958,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1201401,7 +1200966,7 @@
   {
     "listingId": "revert-lemon-drop",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Lemon Drop",
     "strainNameCanonical": "Lemon Drop",
     "brand": "Revert",
@@ -1201436,7 +1201001,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1201444,7 +1201009,7 @@
   {
     "listingId": "claybourne-co-lemon-drop-top-gold-cuts",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Lemon Drop Top Gold Cuts",
     "strainNameCanonical": "Lemon Drop Top Gold Cuts",
     "brand": "Claybourne Co",
@@ -1201525,7 +1201090,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1201533,7 +1201098,7 @@
   {
     "listingId": "electraleaf-limesickle",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Limesickle",
     "strainNameCanonical": "Limesickle",
     "brand": "Electraleaf",
@@ -1201589,7 +1201154,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1201597,7 +1201162,7 @@
   {
     "listingId": "leal-macaroon",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Macaroon",
     "strainNameCanonical": "Macaroon",
     "brand": "Leal",
@@ -1201678,7 +1201243,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1201686,7 +1201251,7 @@
   {
     "listingId": "breakfast-connections-maple-pancakes",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Maple Pancakes",
     "strainNameCanonical": "Maple Pancakes",
     "brand": "Breakfast Connections",
@@ -1201752,7 +1201317,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1201760,7 +1201325,7 @@
   {
     "listingId": "ruby-farms-maui-waui",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Maui Waui",
     "strainNameCanonical": "Maui Waui",
     "brand": "Ruby Farms",
@@ -1201821,7 +1201386,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1201829,7 +1201394,7 @@
   {
     "listingId": "noizey-maui-wowie",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Maui Wowie",
     "strainNameCanonical": "Maui Wowie",
     "brand": "NoiZey",
@@ -1201885,7 +1201450,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1201893,7 +1201458,7 @@
   {
     "listingId": "golden-garden-melted-strawberries",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Melted Strawberries",
     "strainNameCanonical": "Melted Strawberries",
     "brand": "Golden Garden",
@@ -1201954,7 +1201519,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1201962,7 +1201527,7 @@
   {
     "listingId": "synergy-mochi",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Mochi",
     "strainNameCanonical": "Mochi",
     "brand": "Synergy",
@@ -1202043,7 +1201608,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1202051,7 +1201616,7 @@
   {
     "listingId": "house-of-sacci-momochi",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Momochi",
     "strainNameCanonical": "Momochi",
     "brand": "House of Sacci",
@@ -1202117,7 +1201682,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1202125,7 +1201690,7 @@
   {
     "listingId": "ruby-farms-moroccan-cherry",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Moroccan Cherry",
     "strainNameCanonical": "Moroccan Cherry",
     "brand": "Ruby Farms",
@@ -1202176,7 +1201741,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1202184,7 +1201749,7 @@
   {
     "listingId": "bouket-motor-cake",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Motor Cake",
     "strainNameCanonical": "Motor Cake",
     "brand": "Bouket",
@@ -1202230,7 +1201795,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1202238,7 +1201803,7 @@
   {
     "listingId": "rythm-mystic-mint",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Mystic Mint",
     "strainNameCanonical": "Mystic Mint",
     "brand": "Rythm",
@@ -1202329,7 +1201894,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1202337,7 +1201902,7 @@
   {
     "listingId": "leal-nic-the-bruiser",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Nic The Bruiser",
     "strainNameCanonical": "Nic The Bruiser",
     "brand": "Leal",
@@ -1202418,7 +1201983,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1202426,7 +1201991,7 @@
   {
     "listingId": "revert-northern-lights",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Northern Lights",
     "strainNameCanonical": "Northern Lights",
     "brand": "Revert",
@@ -1202522,7 +1202087,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1202530,7 +1202095,7 @@
   {
     "listingId": "revert-nyc-confidential",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "NYC Confidential",
     "strainNameCanonical": "NYC Confidential",
     "brand": "Revert",
@@ -1202586,7 +1202151,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1202594,7 +1202159,7 @@
   {
     "listingId": "sugar-treez-og-kush",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "OG Kush",
     "strainNameCanonical": "OG Kush",
     "brand": "Sugar Treez",
@@ -1202655,7 +1202220,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1202663,7 +1202228,7 @@
   {
     "listingId": "lion-order-orangutan",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Orangutan",
     "strainNameCanonical": "Orangutan",
     "brand": "Lion Order",
@@ -1202754,7 +1202319,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1202762,7 +1202327,7 @@
   {
     "listingId": "mintz-papaya-cake",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Papaya Cake",
     "strainNameCanonical": "Papaya Cake",
     "brand": "Mintz",
@@ -1202833,7 +1202398,101 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "house-of-sacci-permanent-marker",
+    "licenseNumber": "OCM-RETL-24-000159",
+    "capturedAt": "2026-11-18T18:49:27Z",
+    "strainNameRaw": "Permanent Marker",
+    "strainNameCanonical": "Permanent Marker",
+    "brand": "House of Sacci",
+    "brandKey": "houseofsacci",
+    "lineage": "INDICA",
+    "thcPercent": 24.23,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.39
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.43
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.06
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.24
+        },
+        {
+          "name": "BISABOLOL",
+          "rawName": null,
+          "percent": 0.02
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.11
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 1.11
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.23
+        },
+        {
+          "name": "TERPINENE",
+          "rawName": null,
+          "percent": 0.01
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.01
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": "THC:24.23|BISABOLOL:0.02|CARYOPHYLLENE:0.43|HUMULENE:0.11|LIMONENE:1.11|LINALOOL:0.23|MYRCENE:0.06|PINENE_ALPHA:0.39|PINENE_BETA:0.24|TERPINENE:0.01|TERPINOLENE:0.01",
+    "packageIds": null,
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      14
+    ],
+    "productUrl": "https://starlifedispensary.com/shop/house-of-sacci/house-of-sacci-permanent-marker-flower-14g",
+    "description": null,
+    "sources": [
+      {
+        "url": "https://starlifedispensary.com/shop/categories/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1202841,7 +1202500,7 @@
   {
     "listingId": "budd-pineapple-express",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Pineapple Express",
     "strainNameCanonical": "Pineapple Express",
     "brand": "Budd",
@@ -1202922,7 +1202581,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1202930,7 +1202589,7 @@
   {
     "listingId": "suspect-pineapple-express",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Pineapple Express",
     "strainNameCanonical": "Pineapple Express",
     "brand": "Suspect",
@@ -1202986,7 +1202645,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1202994,7 +1202653,7 @@
   {
     "listingId": "leal-platinum-lemon-cherry-gelato",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Platinum Lemon Cherry Gelato",
     "strainNameCanonical": "Platinum Lemon Cherry Gelato",
     "brand": "Leal",
@@ -1203075,7 +1202734,91 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "house-of-sacci-puffin-z",
+    "licenseNumber": "OCM-RETL-24-000159",
+    "capturedAt": "2026-11-18T18:49:27Z",
+    "strainNameRaw": "Puffin Z",
+    "strainNameCanonical": "Puffin Z",
+    "brand": "House of Sacci",
+    "brandKey": "houseofsacci",
+    "lineage": "SATIVA",
+    "thcPercent": 28.25,
+    "cbdPercent": null,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "PINENE_ALPHA",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.08
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.04
+        },
+        {
+          "name": "PINENE_BETA",
+          "rawName": null,
+          "percent": 0.04
+        },
+        {
+          "name": "BISABOLOL",
+          "rawName": null,
+          "percent": 0.02
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.03
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.2
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.15
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": "THC:28.25|BISABOLOL:0.02|CARYOPHYLLENE:0.08|HUMULENE:0.03|LIMONENE:0.2|LINALOOL:0.15|MYRCENE:0.04|PINENE_ALPHA:0.03|PINENE_BETA:0.04",
+    "packageIds": null,
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      0.7
+    ],
+    "productUrl": "https://starlifedispensary.com/shop/house-of-sacci/house-of-sacci-puffin-z-flower-07g",
+    "description": null,
+    "sources": [
+      {
+        "url": "https://starlifedispensary.com/shop/categories/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1203083,7 +1202826,7 @@
   {
     "listingId": "knack-purple-brulee",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Purple Brulee",
     "strainNameCanonical": "Purple Brulee",
     "brand": "Knack",
@@ -1203139,7 +1202882,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1203147,7 +1202890,7 @@
   {
     "listingId": "rec-roots-purple-push-pop",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Purple Push Pop",
     "strainNameCanonical": "Purple Push Pop",
     "brand": "Rec Roots",
@@ -1203218,7 +1202961,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1203226,7 +1202969,7 @@
   {
     "listingId": "bouket-rainbow-gelatti",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Rainbow Gelatti",
     "strainNameCanonical": "Rainbow Gelatti",
     "brand": "Bouket",
@@ -1203317,7 +1203060,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1203325,7 +1203068,7 @@
   {
     "listingId": "budd-raspberry-froyo",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Raspberry Froyo",
     "strainNameCanonical": "Raspberry Froyo",
     "brand": "Budd",
@@ -1203401,7 +1203144,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1203409,7 +1203152,7 @@
   {
     "listingId": "house-of-sacci-rs11",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "RS11",
     "strainNameCanonical": "RS11",
     "brand": "House of Sacci",
@@ -1203510,7 +1203253,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1203518,7 +1203261,7 @@
   {
     "listingId": "knack-ruby-violet",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Ruby Violet",
     "strainNameCanonical": "Ruby Violet",
     "brand": "Knack",
@@ -1203574,7 +1203317,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1203582,7 +1203325,7 @@
   {
     "listingId": "alchemy-pure-saffron",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Saffron",
     "strainNameCanonical": "Saffron",
     "brand": "Alchemy Pure",
@@ -1203673,7 +1203416,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1203681,7 +1203424,7 @@
   {
     "listingId": "knack-secret-meetings",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Secret Meetings",
     "strainNameCanonical": "Secret Meetings",
     "brand": "Knack",
@@ -1203742,7 +1203485,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1203750,7 +1203493,7 @@
   {
     "listingId": "ruby-farms-sfv-og",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "SFV OG",
     "strainNameCanonical": "SFV OG",
     "brand": "Ruby Farms",
@@ -1203841,7 +1203584,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1203849,7 +1203592,7 @@
   {
     "listingId": "house-of-sacci-sherbadelic",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Sherbadelic",
     "strainNameCanonical": "Sherbadelic",
     "brand": "House of Sacci",
@@ -1203920,7 +1203663,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1203928,7 +1203671,7 @@
   {
     "listingId": "revert-sour-glue",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Sour Glue",
     "strainNameCanonical": "Sour Glue",
     "brand": "Revert",
@@ -1203963,7 +1203706,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1203971,7 +1203714,7 @@
   {
     "listingId": "leal-sour-kush",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Sour Kush",
     "strainNameCanonical": "Sour Kush",
     "brand": "Leal",
@@ -1204047,7 +1203790,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1204055,7 +1203798,7 @@
   {
     "listingId": "alchemy-pure-space-panda",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Space Panda",
     "strainNameCanonical": "Space Panda",
     "brand": "Alchemy Pure",
@@ -1204151,7 +1203894,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1204159,7 +1203902,7 @@
   {
     "listingId": "revert-strawberry-amnesia",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Strawberry Amnesia",
     "strainNameCanonical": "Strawberry Amnesia",
     "brand": "Revert",
@@ -1204225,7 +1203968,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1204233,7 +1203976,7 @@
   {
     "listingId": "akron-bloom-strawberry-blonde-og",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Strawberry Blonde OG",
     "strainNameCanonical": "Strawberry Blonde OG",
     "brand": "Akron Bloom",
@@ -1204309,7 +1204052,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1204317,7 +1204060,7 @@
   {
     "listingId": "breakfast-connections-strawberry-diesel",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Strawberry Diesel",
     "strainNameCanonical": "Strawberry Diesel",
     "brand": "Breakfast Connections",
@@ -1204373,7 +1204116,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1204381,7 +1204124,7 @@
   {
     "listingId": "rolling-green-strawberry-fizz",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Strawberry Fizz",
     "strainNameCanonical": "Strawberry Fizz",
     "brand": "Rolling Green",
@@ -1204467,7 +1204210,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1204475,7 +1204218,7 @@
   {
     "listingId": "mintz-strawberry-squeeze",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Strawberry Squeeze",
     "strainNameCanonical": "Strawberry Squeeze",
     "brand": "Mintz",
@@ -1204561,7 +1204304,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1204569,7 +1204312,7 @@
   {
     "listingId": "battenkill-buds-super-buff-chapstick-premium-flower",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Super Buff Chapstick - Premium Flower",
     "strainNameCanonical": "Super Buff Chapstick",
     "brand": "Battenkill Buds",
@@ -1204620,7 +1204363,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1204628,7 +1204371,7 @@
   {
     "listingId": "revert-super-diesel",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Super Diesel",
     "strainNameCanonical": "Super Diesel",
     "brand": "Revert",
@@ -1204724,7 +1204467,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1204732,7 +1204475,7 @@
   {
     "listingId": "noizey-super-glue",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Super Glue",
     "strainNameCanonical": "Super Glue",
     "brand": "NoiZey",
@@ -1204788,7 +1204531,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1204796,7 +1204539,7 @@
   {
     "listingId": "electraleaf-super-lemon-diesel",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Super Lemon Diesel",
     "strainNameCanonical": "Super Lemon Diesel",
     "brand": "Electraleaf",
@@ -1204847,7 +1204590,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1204855,7 +1204598,7 @@
   {
     "listingId": "synergy-super-lemon-haze",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Super Lemon Haze",
     "strainNameCanonical": "Super Lemon Haze",
     "brand": "Synergy",
@@ -1204921,7 +1204664,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1204929,7 +1204672,7 @@
   {
     "listingId": "budd-super-lemon-haze-tops-premium-flower",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Super Lemon Haze (Tops) - Premium Flower",
     "strainNameCanonical": "Super Lemon Haze (Tops)",
     "brand": "Budd",
@@ -1204990,7 +1204733,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1204998,7 +1204741,7 @@
   {
     "listingId": "claybourne-co-super-silver-haze-classic-cuts",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Super Silver Haze Classic Cuts",
     "strainNameCanonical": "Super Silver Haze Classic Cuts",
     "brand": "Claybourne Co",
@@ -1205069,7 +1204812,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1205077,7 +1204820,7 @@
   {
     "listingId": "budd-superboof",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Superboof",
     "strainNameCanonical": "Superboof",
     "brand": "Budd",
@@ -1205168,7 +1204911,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1205176,7 +1204919,7 @@
   {
     "listingId": "rythm-taffy-twist-popcorn-flower",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Taffy Twist - Popcorn Flower",
     "strainNameCanonical": "Taffy Twist",
     "brand": "Rythm",
@@ -1205252,7 +1204995,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1205260,7 +1205003,7 @@
   {
     "listingId": "1937-tamarind-blaze",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Tamarind Blaze",
     "strainNameCanonical": "Tamarind Blaze",
     "brand": "1937",
@@ -1205346,7 +1205089,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1205354,7 +1205097,7 @@
   {
     "listingId": "major-teflon-don-premium-flower",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Teflon Don - Premium Flower",
     "strainNameCanonical": "Teflon Don",
     "brand": "Major",
@@ -1205415,7 +1205158,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1205423,7 +1205166,7 @@
   {
     "listingId": "claybourne-co-the-judge-gold-cuts",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "The Judge Gold Cuts",
     "strainNameCanonical": "The Judge Gold Cuts",
     "brand": "Claybourne Co",
@@ -1205499,7 +1205242,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1205507,7 +1205250,7 @@
   {
     "listingId": "knack-third-eye",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Third Eye",
     "strainNameCanonical": "Third Eye",
     "brand": "Knack",
@@ -1205583,7 +1205326,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1205591,7 +1205334,7 @@
   {
     "listingId": "budd-triple-diesel",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Triple Diesel",
     "strainNameCanonical": "Triple Diesel",
     "brand": "Budd",
@@ -1205682,7 +1205425,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1205690,7 +1205433,7 @@
   {
     "listingId": "house-of-sacci-trop-cherry",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Trop Cherry",
     "strainNameCanonical": "Trop Cherry",
     "brand": "House of Sacci",
@@ -1205766,7 +1205509,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1205774,7 +1205517,7 @@
   {
     "listingId": "knack-tropical-treats",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Tropical Treats",
     "strainNameCanonical": "Tropical Treats",
     "brand": "Knack",
@@ -1205836,7 +1205579,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1205844,7 +1205587,7 @@
   {
     "listingId": "knack-twice-baked",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Twice Baked",
     "strainNameCanonical": "Twice Baked",
     "brand": "Knack",
@@ -1205910,7 +1205653,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1205918,7 +1205661,7 @@
   {
     "listingId": "voice-of-the-plant-vop-gelato",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "VOP - Gelato",
     "strainNameCanonical": "Gelato",
     "brand": "Voice of the Plant",
@@ -1205984,7 +1205727,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1205992,7 +1205735,7 @@
   {
     "listingId": "voice-of-the-plant-vop-lemon-cherry-sherbert",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "VOP - Lemon Cherry Sherbert",
     "strainNameCanonical": "Lemon Cherry Sherbert",
     "brand": "Voice of the Plant",
@@ -1206068,7 +1205811,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1206076,7 +1205819,7 @@
   {
     "listingId": "voice-of-the-plant-vop-lip-smackers",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "VOP - Lip Smackers",
     "strainNameCanonical": "Lip Smackers",
     "brand": "Voice of the Plant",
@@ -1206147,7 +1205890,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1206155,7 +1205898,7 @@
   {
     "listingId": "voice-of-the-plant-vop-super-runtz-x-sherbanger",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "VOP - Super Runtz x Sherbanger",
     "strainNameCanonical": "Super Runtz x Sherbanger",
     "brand": "Voice of the Plant",
@@ -1206231,7 +1205974,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1206239,7 +1205982,7 @@
   {
     "listingId": "voice-of-the-plant-vop-vop-kush",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "VOP - VOP Kush",
     "strainNameCanonical": "VOP Kush",
     "brand": "Voice of the Plant",
@@ -1206305,7 +1206048,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1206313,7 +1206056,7 @@
   {
     "listingId": "budd-watermelon-z",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Watermelon Z",
     "strainNameCanonical": "Watermelon Z",
     "brand": "Budd",
@@ -1206384,7 +1206127,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1206392,7 +1206135,7 @@
   {
     "listingId": "house-of-sacci-white-diamonds",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "White Diamonds",
     "strainNameCanonical": "White Diamonds",
     "brand": "House of Sacci",
@@ -1206469,7 +1206212,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1206477,7 +1206220,7 @@
   {
     "listingId": "synergy-white-widow",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "White Widow",
     "strainNameCanonical": "White Widow",
     "brand": "Synergy",
@@ -1206558,7 +1206301,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1206566,7 +1206309,7 @@
   {
     "listingId": "the-botanist-wizard-jewel",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Wizard Jewel",
     "strainNameCanonical": "Wizard Jewel",
     "brand": "The Botanist",
@@ -1206647,7 +1206390,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1206655,7 +1206398,7 @@
   {
     "listingId": "lion-order-young-gong",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Young Gong",
     "strainNameCanonical": "Young Gong",
     "brand": "Lion Order",
@@ -1206721,7 +1206464,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1206729,7 +1206472,7 @@
   {
     "listingId": "suspect-zkittlez",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Zkittlez",
     "strainNameCanonical": "Zkittlez",
     "brand": "Suspect",
@@ -1206795,7 +1206538,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
@@ -1206803,7 +1206546,7 @@
   {
     "listingId": "the-botanist-zourz",
     "licenseNumber": "OCM-RETL-24-000159",
-    "capturedAt": "2026-11-17T19:09:04Z",
+    "capturedAt": "2026-11-18T18:49:27Z",
     "strainNameRaw": "Zourz",
     "strainNameCanonical": "Zourz",
     "brand": "The Botanist",
@@ -1206889,7 +1206632,7 @@
         "url": "https://starlifedispensary.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-17T19:09:04Z"
+        "retrievedAt": "2026-11-18T18:49:27Z"
       }
     ],
     "warnings": []
