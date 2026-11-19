@@ -60,6 +60,7 @@
   "HTTPS://1A4.COM/13U2YPUQ3SABQUCC15Z6KT": "1A4120300000208000002509",
   "HTTPS://1A4.COM/13U2YPUQ3SABQUCC15ZMZ5": "1A4120300000208000002509",
   "HTTPS://1A4.COM/13U2YPUQ3SABQUCC15ZMZ7": "1A4120300000208000002509",
+  "HTTPS://1A4.COM/13U2YPUQ3SABQUCC48TXC8": "1A4120300000208000003022",
   "HTTPS://1A4.COM/13U2YPUQ3SABQUCC4AW655": "1A4120300000208000003057",
   "HTTPS://1A4.COM/13U2YPUQ3SABQUCC4AWBO1": "1A4120300000208000003057",
   "HTTPS://1A4.COM/13U2YPUQ3SABQUCC4AWH7F": "1A4120300000208000003057",
@@ -70,6 +71,9 @@
   "HTTPS://1A4.COM/13U2YPUQ3SABQUCC4D8IYQ": "1A4120300000208000003093",
   "HTTPS://1A4.COM/13U2YPUQ3SABQUCC4DD8GA": "1A4120300000208000003096",
   "HTTPS://1A4.COM/13U2YPUQ3SABQUCC4DE7FF": "1A4120300000208000003097",
+  "HTTPS://1A4.COM/13U2YPUQ3SABQUCC4I5R8H": "1A4120300000208000003111",
+  "HTTPS://1A4.COM/13U2YPUQ3SABQUCC4IGZRF": "1A4120300000208000003119",
+  "HTTPS://1A4.COM/13U2YPUQ3SABQUCC60OCN6": "1A4120300000208000003686",
   "HTTPS://1A4.COM/13U2YPUQ3SB7RSK0O6CD1F": "1A4120300000222000001296",
   "HTTPS://1A4.COM/13U2YPUQ3SB7RSK0OD1TE5": "1A4120300000222000001342",
   "HTTPS://1A4.COM/13U2YPUQ3SB7RSK0ODPJIE": "1A4120300000222000001353",
@@ -119,6 +123,7 @@
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QJQDI4R": "1A4120300000235000008019",
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QJQZYTP": "1A4120300000235000008029",
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QJT94B3": "1A4120300000235000008063",
+  "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QK1AI9W": "1A4120300000235000008131",
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QKEDHCD": "1A4120300000235000008280",
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QKNRK7B": "1A4120300000235000008371",
   "HTTPS://1A4.COM/13U2YPUQ3SBV6C0QKNUUPT": "1A4120300000235000008373",
@@ -209,6 +214,8 @@
   "HTTPS://1A4.COM/13U2YPUQ3SE4H1Y2OFOKJV": "1A4120300000277000000778",
   "HTTPS://1A4.COM/13U2YPUQ3SF471C6S9KTU3": "1A4120300000294000000801",
   "HTTPS://1A4.COM/13U2YPUQ3SF471C6V749AB": "1A4120300000294000001292",
+  "HTTPS://1A4.COM/13U2YPUQ3SF471C704JEOU": "1A4120300000294000002455",
+  "HTTPS://1A4.COM/13U2YPUQ3SF471C704YKUB": "1A4120300000294000002460",
   "HTTPS://1A4.COM/13U2YPUQ3SGNMJ0PHMFUVH": "1A41203000002C1000028287",
   "HTTPS://1A4.COM/13U2YPUQ3SJXVKQ6XTUBEO": "1A4120300000321000001138",
   "HTTPS://1A4.COM/13U2YPUQ3SJXVKQ6XTUH4N": "1A4120300000321000001138",
@@ -354,9 +361,12 @@
   "HTTPS://1A4.COM/13U2YPUQ3SYIM82MS7677L": "1A41203000004CB000003489",
   "HTTPS://1A4.COM/13U2YPUQ3SYIM82MSHR8CL": "1A41203000004CB000003598",
   "HTTPS://1A4.COM/13U2YPUQ3TI6W5Y6WKNEAF": "1A412030000070A000000209",
+  "HTTPS://1A4.COM/13U2YPUQ3TI6W5Y6WLK83T": "1A412030000070A000000220",
+  "HTTPS://1A4.COM/13U2YPUQ3TI6W5Y6WQ8KQV": "1A412030000070A000000298",
   "HTTPS://1A4.COM/13U2YPUQ3TI6W5Y6X6GU8J": "1A412030000070A000000438",
   "HTTPS://1A4.COM/13U2YPUQ3TI6W5Y6X7356P": "1A412030000070A000000448",
   "HTTPS://1A4.COM/13U2YPUQ3TI6W5Y6X73EOA": "1A412030000070A000000448",
+  "HTTPS://1A4.COM/13U2YPUQ3TI6W5Y6XFMN7Z": "1A412030000070A000000523",
   "HTTPS://1A4.COM/13U2YPUQ3TI6W5Y6XJGCNF": "1A412030000070A000000585",
   "HTTPS://1A4.COM/13U2YPUQ3U6EZW2MNFC5CC": "1A41203000009CE000000301",
   "HTTPS://1A4.COM/13U2YPUQ3U6EZW2NBETQMH": "1A41203000009CE000005973",
@@ -379,12 +389,18 @@
   "HTTPS://1A4.COM/13U2YPUQ3U9XVCJ9KZ591R": "1A4120300000A35000007987",
   "HTTPS://1A4.COM/13U2YPUQ3U9XVCJ9KZ6R5U": "1A4120300000A35000007988",
   "HTTPS://1A4.COM/13U2YPUQ3U9XVCJ9KZ86WY": "1A4120300000A35000007989",
+  "HTTPS://1A4.COM/13U2YPUQ3U9XVCJ9SX2O7I": "1A4120300000A35000009627",
+  "HTTPS://1A4.COM/13U2YPUQ3U9XVCJAOSCU85": "1A4120300000A35000010903",
   "HTTPS://1A4.COM/13U2YPUQ3U9XVCJAOSEOEC": "1A4120300000A35000010904",
+  "HTTPS://1A4.COM/13U2YPUQ3U9XVCJARW6TJG": "1A4120300000A35000011435",
+  "HTTPS://1A4.COM/13U2YPUQ3U9XVCJARWB0G1": "1A4120300000A35000011438",
+  "HTTPS://1A4.COM/13U2YPUQ3U9XVCJARWMCXW": "1A4120300000A35000011440",
   "HTTPS://1A4.COM/13U2YPUQ3UACNH8YB6EYV5": "1A4120300000A41000003168",
   "HTTPS://1A4.COM/13U2YPUQ3UJTUU28LOUUIP": "1A4120300000B56000000547",
   "HTTPS://1A4.COM/13U2YPUQ3UJTUU28LOV0U9": "1A4120300000B56000000547",
   "HTTPS://1A4.COM/13U2YPUQ3UJTUU28LOWKQQ": "1A4120300000B56000000548",
   "HTTPS://1A4.COM/13U2YPUQ3UJTUU28LOXNUQ": "1A4120300000B56000000549",
+  "HTTPS://1A4.COM/13U2YPUQ3UQPG10XCULBLT": "1A4120300000C1F000033081",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZGIKT8N": "1A4120300000C1F000044136",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZGJ7FGV": "1A4120300000C1F000044146",
   "HTTPS://1A4.COM/13U2YPUQ3UQPG10ZHLV9JB": "1A4120300000C1F000044525",
@@ -457,6 +473,7 @@
   "HTTPS://1A4.COM/13U2YPUQ3WGFL1OO3710XW": "1A412030000132B000000568",
   "HTTPS://1A4.COM/13U2YPUQ3WGFL1OO3DXN2R": "1A412030000132B000000619",
   "HTTPS://1A4.COM/13U2YPUQ3X4Q5GLE0LG3K1": "1A41203000015F1000000237",
+  "HTTPS://1A4.COM/13U2YPUQ3X5USTK2PSO741": "1A4120300001612000001840",
   "HTTPS://1A4.COM/13U2YPUQ3X7U8SCAZF1GJP": "1A412030000164C000002063",
   "HTTPS://1A4.COM/13U2YPUQ3X7XXTIQ2ADY4P": "1A412030000164F000000118",
   "HTTPS://1A4.COM/13U2YPUQ3X85BVVKPZC9OP": "1A4120300001655000000335",
@@ -551,6 +568,11 @@
   "HTTPS://1A4.COM/13U2YPUQ3Y9CA2VS1STFK5": "1A4120300001A94000000936",
   "HTTPS://1A4.COM/13U2YPUQ3Y9CA2VS1U2MFC": "1A4120300001A94000000956",
   "HTTPS://1A4.COM/13U2YPUQ3Y9CA2VS1VA1OH": "1A4120300001A94000000975",
+  "HTTPS://1A4.COM/13U2YPUQ3Y9CA2VS3OWVEP": "1A4120300001A94000001007",
+  "HTTPS://1A4.COM/13U2YPUQ3Y9CA2VS3PD8UB": "1A4120300001A94000001013",
+  "HTTPS://1A4.COM/13U2YPUQ3Y9CA2VS3PFZ7O": "1A4120300001A94000001015",
+  "HTTPS://1A4.COM/13U2YPUQ3Y9CA2VS3TB669": "1A4120300001A94000001078",
+  "HTTPS://1A4.COM/13U2YPUQ3Y9CA2VS3TCWEB": "1A4120300001A94000001079",
   "HTTPS://1A4.COM/13U2YPUQ3Y9SAJZMFEVDW5": "1A4120300001AA1000000795",
   "HTTPS://1A4.COM/13U2YPUQ3Y9SAJZMFJP98I": "1A4120300001AA1000000811",
   "HTTPS://1A4.COM/13U2YPUQ3Y9SAJZMFX1K3U": "1A4120300001AA1000000967",
@@ -564,8 +586,14 @@
   "HTTPS://1A4.COM/13U2YPUQ3YZ3TAOLJZFIFY": "1A4120300001D85000000316",
   "HTTPS://1A4.COM/13U2YPUQ3YZ3TAOLJZIVWJ": "1A4120300001D85000000318",
   "HTTPS://1A4.COM/13U2YPUQ3YZ3TAOLJZU39D": "1A4120300001D85000000320",
+  "HTTPS://1A4.COM/13U2YPUQ3YZ3TAOLK3TEYX": "1A4120300001D85000000386",
+  "HTTPS://1A4.COM/13U2YPUQ3YZ3TAOLK47B4B": "1A4120300001D85000000390",
   "HTTPS://1A4.COM/13U2YPUQ3YZ3TAOLK49VK3": "1A4120300001D85000000392",
   "HTTPS://1A4.COM/13U2YPUQ3YZ3TAOLK8UEX4": "1A4120300001D85000000407",
+  "HTTPS://1A4.COM/13U2YPUQ3YZ3TAOLK8UFIA": "1A4120300001D85000000407",
+  "HTTPS://1A4.COM/13U2YPUQ3YZ3TAOLKA1ZWH": "1A4120300001D85000000426",
+  "HTTPS://1A4.COM/13U2YPUQ3YZ3TAOLKA30G1": "1A4120300001D85000000427",
+  "HTTPS://1A4.COM/13U2YPUQ3YZ3TAOLKAK64H": "1A4120300001D85000000433",
   "HTTPS://1A4.COM/13U2YPUQ3Z4DIB6G6X2IH0": "1A4120300001E1F000001838",
   "HTTPS://1A4.COM/13U2YPUQ3Z4DIB6G70OZR8": "1A4120300001E1F000001895",
   "HTTPS://1A4.COM/13U2YPUQ3Z4DIB6G78M58O": "1A4120300001E1F000001960",
@@ -622,6 +650,8 @@
   "HTTPS://1A4.COM/5LO1I9DSNN16WJ162CMH": "1A4120300000149000020646",
   "HTTPS://1A4.COM/5LO1I9DSNNY9YN3XZSHS": "1A4120300000208000002718",
   "HTTPS://1A4.COM/5LO1I9DSNNY9YN3Y08AV": "1A4120300000208000002768",
+  "HTTPS://1A4.COM/5LO1I9DSNNY9YN3YIALJ": "1A4120300000208000003444",
+  "HTTPS://1A4.COM/5LO1I9DSNNY9YN3YLGZ9": "1A4120300000208000003687",
   "HTTPS://1A4.COM/5LO1I9DSNO2S3GBCF03A": "1A4120300000222000001306",
   "HTTPS://1A4.COM/5LO1I9DSNO4IGDPAN47H": "1A412030000022C000002493",
   "HTTPS://1A4.COM/5LO1I9DSNO4IGDPATRU8": "1A412030000022C000002950",
@@ -666,6 +696,9 @@
   "HTTPS://1A4.COM/5LO1I9DSNSBWN1BPF30G": "1A4120300000596000001352",
   "HTTPS://1A4.COM/5LO1I9DSNSBWN1BPF37K": "1A4120300000596000001353",
   "HTTPS://1A4.COM/5LO1I9DSNSBWN1BPF6YO": "1A4120300000596000001366",
+  "HTTPS://1A4.COM/5LO1I9DSNSBWN1BPHWCG": "1A4120300000596000001553",
+  "HTTPS://1A4.COM/5LO1I9DSNSBWN1BPHWQO": "1A4120300000596000001555",
+  "HTTPS://1A4.COM/5LO1I9DSNSBWN1BPHWXS": "1A4120300000596000001556",
   "HTTPS://1A4.COM/5LO1I9DSNSOWBZQ7QSCL": "1A41203000005E1000002711",
   "HTTPS://1A4.COM/5LO1I9DSNXYX4J2VV5KW": "1A4120300000A2A000000625",
   "HTTPS://1A4.COM/5LO1I9DSNY0TPY7IXO57": "1A4120300000A35000007126",
@@ -710,6 +743,7 @@
   "HTTPS://1A4.COM/5LO1I9DSO938B97OWWZZ": "1A4120300001331000000153",
   "HTTPS://1A4.COM/5LO1I9DSOCIE1LFFQNEO": "1A41203000015F8000000394",
   "HTTPS://1A4.COM/5LO1I9DSOCMW6EMVG4JK": "1A4120300001612000001072",
+  "HTTPS://1A4.COM/5LO1I9DSOCMW6EMVO210": "1A4120300001612000001617",
   "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGEOEC": "1A4120300001613000000657",
   "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGEUX0": "1A4120300001613000000678",
   "HTTPS://1A4.COM/5LO1I9DSOCN2EWDGG6BZ": "1A4120300001613000000768",
@@ -16403,7 +16437,7 @@
   },
   "1A412030000038D000014841": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000015123": {
    "found": false,
@@ -16587,7 +16621,7 @@
   },
   "1A412030000038D000020011": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000020015": {
    "found": false,
@@ -16611,7 +16645,7 @@
   },
   "1A412030000038D000020193": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000020479": {
    "found": false,
@@ -16619,7 +16653,7 @@
   },
   "1A412030000038D000020643": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000020670": {
    "found": false,
@@ -16627,11 +16661,11 @@
   },
   "1A412030000038D000020674": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000020678": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000020682": {
    "found": false,
@@ -16643,23 +16677,23 @@
   },
   "1A412030000038D000020776": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000020778": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000020780": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000020782": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000020784": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000020786": {
    "found": false,
@@ -16679,15 +16713,15 @@
   },
   "1A412030000038D000021441": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000021443": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000021445": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000021720": {
    "found": false,
@@ -16723,15 +16757,15 @@
   },
   "1A412030000038D000023584": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000023586": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000024107": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000024108": {
    "found": false,
@@ -16747,7 +16781,7 @@
   },
   "1A412030000038D000024673": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000024674": {
    "found": false,
@@ -16755,11 +16789,11 @@
   },
   "1A412030000038D000024827": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000024829": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000024834": {
    "found": false,
@@ -16771,7 +16805,7 @@
   },
   "1A412030000038D000024838": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000025018": {
    "found": false,
@@ -16791,15 +16825,15 @@
   },
   "1A412030000038D000025038": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000025040": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000025042": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000025043": {
    "found": false,
@@ -16815,7 +16849,7 @@
   },
   "1A412030000038D000025116": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000025119": {
    "found": false,
@@ -16827,7 +16861,7 @@
   },
   "1A412030000038D000025122": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000025124": {
    "found": false,
@@ -16835,15 +16869,15 @@
   },
   "1A412030000038D000025125": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000025127": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000025129": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000025131": {
    "found": false,
@@ -16851,7 +16885,7 @@
   },
   "1A412030000038D000025133": {
    "found": false,
-   "checked": "2026-09-29"
+   "checked": "2026-11-19"
   },
   "1A412030000038D000025150": {
    "found": false,
@@ -43593,6 +43627,63 @@
    "coaFile": true,
    "checked": "2026-11-13"
   },
+  "1A4120300000D7D000003065": {
+   "found": true,
+   "facility": "Flo Extracts, LLC",
+   "product": "Purple Sugar 3.5g",
+   "strain": "Purple Sugar",
+   "packaged": "2026-11-13",
+   "tested": "2026-10-16",
+   "harvested": "2026-08-07",
+   "lab": "Certified Testing and Data NY, LLC",
+   "batchTag": "1A4120300000D7C000002850",
+   "thc": 26.0,
+   "cbd": 0.0,
+   "terpenesTotal": 1.8646,
+   "terpenes": {
+    "BISABOLOL": 0.0354,
+    "CARYOPHYLLENE": 0.4763,
+    "FARNESENE": 0.1948,
+    "FENCHOL": 0.0336,
+    "HUMULENE": 0.124,
+    "LIMONENE": 0.3926,
+    "LINALOOL": 0.2723,
+    "MYRCENE": 0.2106,
+    "PINENE_ALPHA": 0.0313,
+    "PINENE_BETA": 0.0569,
+    "TERPINEOL": 0.0368
+   },
+   "labLicense": "OCM-CPL-24-00009-L1",
+   "labDoc": 202387,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
+  "1A4120300000D7D000003069": {
+   "found": true,
+   "facility": "Flo Extracts, LLC",
+   "product": "East Coast Sour Diesel 3.5g",
+   "strain": "East Coast Sour Diesel",
+   "packaged": "2026-11-16",
+   "tested": "2026-10-12",
+   "harvested": "2026-03-18",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300000D7C000002843",
+   "thc": 24.664,
+   "cbd": 0.0,
+   "terpenesTotal": 2.18,
+   "terpenes": {
+    "BISABOLOL": 0.1,
+    "CARYOPHYLLENE": 0.92,
+    "HUMULENE": 0.39,
+    "LIMONENE": 0.41,
+    "LINALOOL": 0.14,
+    "MYRCENE": 0.22
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 197002,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
   "1A4120300000D7F000000552": {
    "found": false,
    "checked": "2026-10-08"
@@ -43849,6 +43940,10 @@
    "found": false,
    "checked": "2026-10-23"
   },
+  "1A4120300000D7F000026174": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
   "1A4120300000D7F000026724": {
    "found": false,
    "checked": "2026-11-12"
@@ -43929,6 +44024,10 @@
    "found": false,
    "checked": "2026-10-21"
   },
+  "1A4120300000D7F000032078": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
   "1A4120300000D7F000032092": {
    "found": false,
    "checked": "2026-10-23"
@@ -43976,6 +44075,10 @@
   "1A4120300000D7F000036435": {
    "found": false,
    "checked": "2026-11-10"
+  },
+  "1A4120300000D7F000036449": {
+   "found": false,
+   "checked": "2026-11-19"
   },
   "1A4120300000D7F000036693": {
    "found": false,
@@ -44136,6 +44239,10 @@
   "1A4120300000D7F000043381": {
    "found": false,
    "checked": "2026-10-26"
+  },
+  "1A4120300000D7F000043389": {
+   "found": false,
+   "checked": "2026-11-19"
   },
   "1A4120300000D7F000043492": {
    "found": false,
@@ -44436,6 +44543,10 @@
   "1A4120300000D7F000053019": {
    "found": false,
    "checked": "2026-11-12"
+  },
+  "1A4120300000D7F000053085": {
+   "found": false,
+   "checked": "2026-11-19"
   },
   "1A4120300000D7F000053123": {
    "found": false,
@@ -49395,6 +49506,32 @@
    "coaFile": true,
    "checked": "2026-11-05"
   },
+  "1A4120300001612000001617": {
+   "found": true,
+   "facility": "MAGNA CANNA NY, LLC",
+   "product": "HIGH AMBITIONS - DANTES INFERNO 3.5G - Dante's Inferno - 3.5g",
+   "strain": "Dante's Inferno",
+   "packaged": "2026-09-27",
+   "tested": "2026-10-05",
+   "harvested": "2026-09-10",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300001612000001622",
+   "thc": 20.923,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.1,
+    "CARYOPHYLLENE": 0.45,
+    "HUMULENE": 0.13,
+    "LIMONENE": 0.3,
+    "MYRCENE": 0.14,
+    "OCIMENE": 0.11
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 190052,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
   "1A4120300001612000001658": {
    "found": false,
    "checked": "2026-10-08"
@@ -49455,6 +49592,32 @@
    "found": false,
    "checked": "2026-10-15"
   },
+  "1A4120300001612000001840": {
+   "found": true,
+   "facility": "MAGNA CANNA NY, LLC",
+   "product": "HIGH AMBITIONS - GORILLA GLUE 3.5G - GORILLA GLUE - 3.5g",
+   "strain": "GORILLA GLUE",
+   "packaged": "2026-10-23",
+   "tested": "2026-11-02",
+   "harvested": "2026-10-05",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300001612000001857",
+   "thc": 20.927,
+   "cbd": 0.04,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.09,
+    "CARYOPHYLLENE": 0.48,
+    "HUMULENE": 0.18,
+    "LIMONENE": 0.32,
+    "LINALOOL": 0.09,
+    "MYRCENE": 0.79
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 215722,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
   "1A4120300001612000001844": {
    "found": false,
    "checked": "2026-10-25"
@@ -49502,6 +49665,14 @@
   "1A4120300001612000001902": {
    "found": false,
    "checked": "2026-11-12"
+  },
+  "1A4120300001612000001983": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A4120300001612000001984": {
+   "found": false,
+   "checked": "2026-11-19"
   },
   "1A4120300001613000000294": {
    "found": true,
@@ -53561,6 +53732,10 @@
    "found": false,
    "checked": "2026-10-20"
   },
+  "1A41203000018B1000035404": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
   "1A41203000018B1000035419": {
    "found": false,
    "checked": "2026-10-18"
@@ -55457,6 +55632,10 @@
    "found": false,
    "checked": "2026-10-03"
   },
+  "1A41203000018B1000095277": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
   "1A41203000018B1000095320": {
    "found": false,
    "checked": "2026-10-02"
@@ -57225,6 +57404,10 @@
    "found": false,
    "checked": "2026-09-29"
   },
+  "1A412030000190E000000529": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
   "1A4120300001911000000103": {
    "found": true,
    "facility": "Scotch Valley Ranch Hemp LLC",
@@ -57471,6 +57654,10 @@
    "found": false,
    "checked": "2026-10-11"
   },
+  "1A412030000191B000015604": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
   "1A412030000191B000015640": {
    "found": false,
    "checked": "2026-11-12"
@@ -57498,6 +57685,22 @@
   "1A412030000191B000015917": {
    "found": false,
    "checked": "2026-11-12"
+  },
+  "1A412030000191B000016114": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A412030000191B000016115": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A412030000191B000016116": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A412030000191B000016117": {
+   "found": false,
+   "checked": "2026-11-19"
   },
   "1A412030000191D000001566": {
    "found": true,
@@ -59614,6 +59817,141 @@
    "coaFile": true,
    "checked": "2026-11-12"
   },
+  "1A4120300001A94000001007": {
+   "found": true,
+   "facility": "Excelsior Legacy LLC",
+   "product": "Gotti - Rat Poison - 3.5g Flower",
+   "strain": "Sativa",
+   "packaged": "2026-10-07",
+   "tested": "2026-10-20",
+   "harvested": "2026-08-24",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300001A94000001021",
+   "thc": 20.907,
+   "cbd": 0.036,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.22,
+    "CARYOPHYLLENE": 1.06,
+    "HUMULENE": 0.34,
+    "LIMONENE": 0.2,
+    "LINALOOL": 0.28,
+    "MYRCENE": 0.24
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 203813,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
+  "1A4120300001A94000001013": {
+   "found": true,
+   "facility": "Excelsior Legacy LLC",
+   "product": "Gotti - Zatti- 3.5g Flower",
+   "strain": "Sativa",
+   "packaged": "2026-10-08",
+   "tested": "2026-10-20",
+   "harvested": "2026-08-24",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300001A94000001022",
+   "thc": 18.928,
+   "cbd": 0.044,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.12,
+    "CARYOPHYLLENE": 0.46,
+    "FENCHOL": 0.08,
+    "HUMULENE": 0.15,
+    "LIMONENE": 0.48,
+    "LINALOOL": 0.53,
+    "MYRCENE": 0.2,
+    "PINENE_BETA": 0.08,
+    "TERPINEOL": 0.08
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 203722,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
+  "1A4120300001A94000001015": {
+   "found": true,
+   "facility": "Excelsior Legacy LLC",
+   "product": "Gotti - ZKnickerbocker - 3.5g Flower",
+   "strain": "Indica",
+   "packaged": "2026-10-08",
+   "tested": "2026-10-20",
+   "harvested": "2026-08-24",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300001A94000001024",
+   "thc": 20.316,
+   "cbd": 0.041,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.09,
+    "CARYOPHYLLENE": 0.44,
+    "FENCHOL": 0.1,
+    "HUMULENE": 0.14,
+    "LIMONENE": 0.46,
+    "LINALOOL": 0.25,
+    "PINENE_BETA": 0.09,
+    "TERPINEOL": 0.09
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 203814,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
+  "1A4120300001A94000001078": {
+   "found": true,
+   "facility": "Excelsior Legacy LLC",
+   "product": "Family Ties - Toad Venmo - 3.5g Flower",
+   "strain": "Hybrid",
+   "packaged": "2026-10-19",
+   "tested": "2026-10-27",
+   "harvested": "2026-08-24",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300001A94000001086",
+   "thc": 26.449,
+   "cbd": 0.052,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.18,
+    "HUMULENE": 0.09,
+    "LIMONENE": 0.6,
+    "LINALOOL": 0.08,
+    "MYRCENE": 0.29,
+    "PINENE_BETA": 0.08
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 209955,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
+  "1A4120300001A94000001079": {
+   "found": true,
+   "facility": "Excelsior Legacy LLC",
+   "product": "Family Ties - NY Cheesecake - 3.5g Flower",
+   "strain": "Hybrid",
+   "packaged": "2026-10-19",
+   "tested": "2026-10-27",
+   "harvested": "2026-08-24",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300001A94000001087",
+   "thc": 22.667,
+   "cbd": 0.036,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.1,
+    "LIMONENE": 0.22,
+    "OCIMENE": 0.09,
+    "PINENE_ALPHA": 0.48,
+    "PINENE_BETA": 0.26,
+    "TERPINOLENE": 0.96
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 209764,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
   "1A4120300001AA1000000071": {
    "found": false,
    "checked": "2026-11-04"
@@ -60197,6 +60535,10 @@
   "1A4120300001AA1000081193": {
    "found": false,
    "checked": "2026-09-29"
+  },
+  "1A4120300001AA1000082922": {
+   "found": false,
+   "checked": "2026-11-19"
   },
   "1A4120300001AA1000082923": {
    "found": false,
@@ -63644,6 +63986,38 @@
    "labDoc": 37883,
    "coaFile": true
   },
+  "1A4120300001C44000001074": {
+   "found": true,
+   "facility": "Honest Pharmco, Inc",
+   "product": "Blue Lobster 3.5",
+   "strain": "Blue Lobster",
+   "packaged": "2026-05-25",
+   "tested": "2026-02-18",
+   "harvested": null,
+   "lab": "Reliable Labs, Inc.",
+   "batchTag": "1A4120300001C44000000063",
+   "thc": 24.31,
+   "cbd": 0.0,
+   "terpenesTotal": 2.5922,
+   "terpenes": {
+    "BISABOLOL": 0.0462,
+    "CAMPHENE": 0.0169,
+    "CARYOPHYLLENE": 0.7278,
+    "FENCHOL": 0.0326,
+    "HUMULENE": 0.0872,
+    "LIMONENE": 0.5977,
+    "LINALOOL": 0.1767,
+    "MYRCENE": 0.3593,
+    "PINENE_ALPHA": 0.0534,
+    "PINENE_BETA": 0.3656,
+    "TERPINEOL": 0.0728,
+    "TERPINOLENE": 0.0559
+   },
+   "labLicense": "OCM-CPL-24-00011-L1",
+   "labDoc": 37879,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
   "1A4120300001C44000001519": {
    "found": true,
    "facility": "Honest Pharmco, Inc",
@@ -65503,6 +65877,56 @@
    "coaFile": true,
    "checked": "2026-10-10"
   },
+  "1A4120300001D85000000386": {
+   "found": true,
+   "facility": "ZIZ NY GRW LLC",
+   "product": "RAINBOW BELTZ 3.5",
+   "strain": "RAINBOW BELTZ",
+   "packaged": "2026-07-21",
+   "tested": "2026-08-25",
+   "harvested": null,
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300001D85000000387",
+   "thc": 30.626,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.13,
+    "FARNESENE": 0.07,
+    "LIMONENE": 0.11,
+    "LINALOOL": 0.4
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 156496,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
+  "1A4120300001D85000000390": {
+   "found": true,
+   "facility": "ZIZ NY GRW LLC",
+   "product": "SOUR DIESEL 3.5G",
+   "strain": "SOUR DIESEL",
+   "packaged": "2026-08-17",
+   "tested": "2026-08-25",
+   "harvested": null,
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300001D85000000391",
+   "thc": 28.856,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.08,
+    "CARYOPHYLLENE": 0.31,
+    "HUMULENE": 0.14,
+    "LIMONENE": 0.23,
+    "LINALOOL": 0.1,
+    "MYRCENE": 0.2
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 156565,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
   "1A4120300001D85000000392": {
    "found": true,
    "facility": "ZIZ NY GRW LLC",
@@ -65553,6 +65977,86 @@
    "labDoc": 200152,
    "coaFile": true,
    "checked": "2026-11-12"
+  },
+  "1A4120300001D85000000426": {
+   "found": true,
+   "facility": "ZIZ NY GRW LLC",
+   "product": "Honey Banana FOTIA",
+   "strain": "HONEY BANANA",
+   "packaged": "2026-10-13",
+   "tested": "2026-10-30",
+   "harvested": null,
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300001D85000000439",
+   "thc": 33.469,
+   "cbd": 0.07,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.08,
+    "CARYOPHYLLENE": 0.33,
+    "FARNESENE": 0.1,
+    "HUMULENE": 0.13,
+    "LIMONENE": 0.29,
+    "LINALOOL": 0.34,
+    "MYRCENE": 0.36,
+    "TERPINEOL": 0.08
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 213158,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
+  "1A4120300001D85000000427": {
+   "found": true,
+   "facility": "ZIZ NY GRW LLC",
+   "product": "SOUR DIESEL-3.5G -FOTIA",
+   "strain": "SOUR DIESEL",
+   "packaged": "2026-10-14",
+   "tested": "2026-10-30",
+   "harvested": "2026-03-05",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300001D85000000441",
+   "thc": 15.977,
+   "cbd": 0.043,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.07,
+    "CARYOPHYLLENE": 0.24,
+    "HUMULENE": 0.11,
+    "LIMONENE": 0.07,
+    "LINALOOL": 0.08
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 213157,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
+  "1A4120300001D85000000433": {
+   "found": true,
+   "facility": "ZIZ NY GRW LLC",
+   "product": "MAC1 3.5G FOTIA",
+   "strain": "MAC1",
+   "packaged": "2026-10-14",
+   "tested": "2026-10-30",
+   "harvested": "2026-07-17",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A4120300001D85000000440",
+   "thc": 24.278,
+   "cbd": 0.045,
+   "terpenesTotal": null,
+   "terpenes": {
+    "BISABOLOL": 0.09,
+    "CARYOPHYLLENE": 0.35,
+    "FENCHOL": 0.09,
+    "HUMULENE": 0.11,
+    "LIMONENE": 0.24,
+    "LINALOOL": 0.17,
+    "PINENE_ALPHA": 0.09
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 213845,
+   "coaFile": true,
+   "checked": "2026-11-19"
   },
   "1A4120300001D8B000000307": {
    "found": false,
@@ -67464,6 +67968,10 @@
    "found": false,
    "checked": "2026-10-08"
   },
+  "1A4120300001E41000000456": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
   "1A4120300001E41000000462": {
    "found": false,
    "checked": "2026-09-29"
@@ -68187,6 +68695,14 @@
    "found": false,
    "checked": "2026-11-18"
   },
+  "1A4120300001EB2000014053": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A4120300001EB2000014055": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
   "1A4120300001EB3000000013": {
    "found": false,
    "checked": "2026-09-29"
@@ -68635,6 +69151,14 @@
   "1A4120300002266000000030": {
    "found": false,
    "checked": "2026-11-16"
+  },
+  "1A4120300002266000000388": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A4120300002266000000390": {
+   "found": false,
+   "checked": "2026-11-19"
   },
   "1A41203000022C5000000014": {
    "found": false,
@@ -70725,6 +71249,186 @@
    "coaFile": true,
    "checked": "2026-10-10"
   },
+  "1A41203000022C5000004065": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - BlueberrieZ - 3.5g",
+   "strain": "BlueberrieZ",
+   "packaged": "2026-10-15",
+   "tested": "2026-09-18",
+   "harvested": "2026-09-14",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000003086",
+   "thc": 29.716,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.22,
+    "LIMONENE": 0.48,
+    "LINALOOL": 0.33,
+    "MYRCENE": 0.15,
+    "OCIMENE": 0.11,
+    "PINENE_BETA": 0.08,
+    "TERPINEOL": 0.07
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 172337,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
+  "1A41203000022C5000004067": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Candy Blues - 3.5g",
+   "strain": "Candy Blues",
+   "packaged": "2026-10-15",
+   "tested": "2026-09-18",
+   "harvested": "2026-09-14",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000003087",
+   "thc": 33.718,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.33,
+    "HUMULENE": 0.09,
+    "LIMONENE": 0.15,
+    "LINALOOL": 0.31,
+    "MYRCENE": 1.04,
+    "OCIMENE": 0.08
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 172428,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
+  "1A41203000022C5000004070": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Kerosene Cream - 3.5g",
+   "strain": "Kerosene Cream",
+   "packaged": "2026-10-15",
+   "tested": "2026-09-18",
+   "harvested": "2026-09-14",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000003089",
+   "thc": 26.089,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.26,
+    "FENCHOL": 0.07,
+    "HUMULENE": 0.08,
+    "LIMONENE": 0.45,
+    "LINALOOL": 0.17,
+    "PINENE_ALPHA": 0.09,
+    "PINENE_BETA": 0.08,
+    "TERPINEOL": 0.07
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 172335,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
+  "1A41203000022C5000004073": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Magic Marker - 3.5g",
+   "strain": "Magic Marker",
+   "packaged": "2026-10-15",
+   "tested": "2026-09-22",
+   "harvested": "2026-09-14",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000003091",
+   "thc": 30.669,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.28,
+    "HUMULENE": 0.09,
+    "LIMONENE": 0.15,
+    "LINALOOL": 0.26,
+    "MYRCENE": 0.64,
+    "OCIMENE": 0.06
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 175306,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
+  "1A41203000022C5000004075": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Sherbadelic - 3.5g",
+   "strain": "Sherbadelic",
+   "packaged": "2026-10-15",
+   "tested": "2026-09-18",
+   "harvested": "2026-09-14",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000003092",
+   "thc": 27.678,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.35,
+    "FARNESENE": 0.08,
+    "HUMULENE": 0.1,
+    "LIMONENE": 0.34,
+    "LINALOOL": 0.26,
+    "MYRCENE": 0.17
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 172336,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
+  "1A41203000022C5000004077": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth Jar - Uptown Haze - 3.5g",
+   "strain": "Uptown Haze",
+   "packaged": "2026-10-15",
+   "tested": "2026-09-09",
+   "harvested": "2026-08-18",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000002908",
+   "thc": 27.515,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "MYRCENE": 0.43
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 164464,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
+  "1A41203000022C5000004079": {
+   "found": true,
+   "facility": "AJ'S NATIVE WHOLESALE INC",
+   "product": "Major - Eighth - Zlushie - 3.5g",
+   "strain": "Zlushie",
+   "packaged": "2026-10-15",
+   "tested": "2026-09-18",
+   "harvested": "2026-09-14",
+   "lab": "Green Analytics NY, LLC",
+   "batchTag": "1A41203000022C5000003093",
+   "thc": 33.521,
+   "cbd": 0.0,
+   "terpenesTotal": null,
+   "terpenes": {
+    "CARYOPHYLLENE": 0.28,
+    "HUMULENE": 0.08,
+    "LIMONENE": 0.34,
+    "LINALOOL": 0.27,
+    "MYRCENE": 0.39,
+    "PINENE_BETA": 0.06
+   },
+   "labLicense": "OCM-CPL-24-00013-L1",
+   "labDoc": 172338,
+   "coaFile": true,
+   "checked": "2026-11-19"
+  },
   "1A41203000022C5000004161": {
    "found": true,
    "facility": "AJ'S NATIVE WHOLESALE INC",
@@ -71286,6 +71990,14 @@
   "1A41203000022E7000001043": {
    "found": false,
    "checked": "2026-11-13"
+  },
+  "1A41203000022E7000001151": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000022E7000001155": {
+   "found": false,
+   "checked": "2026-11-19"
   },
   "1A41203000023A2000000996": {
    "found": false,
@@ -72207,6 +72919,30 @@
    "found": false,
    "checked": "2026-11-14"
   },
+  "1A41203000023A2000022871": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000023A2000022873": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000023A2000022875": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000023A2000022876": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000023A2000022878": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000023A2000022879": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
   "1A41203000023A4000000104": {
    "found": false,
    "checked": "2026-10-08"
@@ -72466,6 +73202,14 @@
   "1A41203000023FE000000803": {
    "found": false,
    "checked": "2026-10-23"
+  },
+  "1A41203000023FE000000872": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000023FE000000874": {
+   "found": false,
+   "checked": "2026-11-19"
   },
   "1A41203000023FF000000074": {
    "found": true,
@@ -73310,6 +74054,46 @@
   "1A41203000037DF000000518": {
    "found": false,
    "checked": "2026-10-19"
+  },
+  "1A41203000037DF000000676": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000037DF000000677": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000037DF000000678": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000037DF000000684": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000037DF000000685": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000037DF000000686": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000037DF000000695": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000037DF000000696": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000037DF000000715": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
+  "1A41203000037DF000000716": {
+   "found": false,
+   "checked": "2026-11-19"
   },
   "1A4120300003B62000000495": {
    "found": false,
@@ -76829,6 +77613,10 @@
    "found": false,
    "checked": "2026-11-13"
   },
+  "1A41203000052D5000042099": {
+   "found": false,
+   "checked": "2026-11-19"
+  },
   "1A41203000054C6000000086": {
    "found": true,
    "facility": "Wizard Trees NY LLC",
@@ -77992,8 +78780,13 @@
   "1A4120300000149000028893": "2026-11-18",
   "1A4120300000149000028894": "2026-11-18",
   "1A4120300000149000028895": "2026-11-18",
-  "1A4120300000149000028896": "2026-11-18",
   "1A4120300000149000028898": "2026-11-18",
+  "1A4120300000149000028902": "2026-11-19",
+  "1A4120300000149000029011": "2026-11-19",
+  "1A4120300000149000029013": "2026-11-19",
+  "1A4120300000149000029015": "2026-11-19",
+  "1A4120300000149000029017": "2026-11-19",
+  "1A4120300000149000029025": "2026-11-19",
   "1A4120300000149000029219": "2026-11-18",
   "1A4120300000149000029224": "2026-11-18",
   "1A4120300000149000029238": "2026-11-18",
@@ -78001,6 +78794,8 @@
   "1A4120300000149000029240": "2026-11-18",
   "1A4120300000149000029241": "2026-11-18",
   "1A4120300000149000029243": "2026-11-18",
+  "1A4120300000149000029347": "2026-11-19",
+  "1A4120300000149000029350": "2026-11-19",
   "1A412030000014A000001229": "2026-11-18",
   "1A412030000014E000001265": "2026-11-04",
   "1A412030000014F000017021": "2026-10-08",
@@ -78010,6 +78805,7 @@
   "1A412030000019E000113699": "2026-10-08",
   "1A412030000019E000113700": "2026-10-08",
   "1A412030000019E000121422": "2026-10-08",
+  "1A412030000019E000140012": "2026-11-19",
   "1A412030000019E000141203": "2026-10-08",
   "1A412030000019E000149677": "2026-10-08",
   "1A412030000019E000149678": "2026-10-08",
@@ -78046,14 +78842,17 @@
   "1A4120300000200000000595": "2026-10-08",
   "1A4120300000200000000711": "2026-10-08",
   "1A4120300000200000000712": "2026-10-08",
+  "1A4120300000205000004033": "2026-11-19",
   "1A4120300000205000006109": "2026-11-08",
   "1A4120300000205000006958": "2026-10-08",
   "1A4120300000205000008825": "2026-10-08",
   "1A4120300000205000010147": "2026-10-29",
   "1A4120300000205000013429": "2026-10-08",
+  "1A4120300000205000013760": "2026-11-19",
   "1A4120300000205000014917": "2026-11-08",
   "1A4120300000205000014995": "2026-11-12",
   "1A4120300000205000015270": "2026-11-13",
+  "1A4120300000205000020404": "2026-11-19",
   "1A4120300000205000022030": "2026-11-05",
   "1A4120300000205000022115": "2026-11-12",
   "1A4120300000205000022118": "2026-11-13",
@@ -78062,8 +78861,17 @@
   "1A4120300000208000002181": "2026-10-08",
   "1A4120300000208000002236": "2026-10-08",
   "1A4120300000208000002484": "2026-10-08",
+  "1A4120300000208000003022": "2026-11-19",
+  "1A4120300000208000003027": "2026-11-19",
   "1A4120300000208000003096": "2026-10-08",
   "1A4120300000208000003097": "2026-10-08",
+  "1A4120300000208000003111": "2026-11-19",
+  "1A4120300000208000003119": "2026-11-19",
+  "1A4120300000208000003434": "2026-11-19",
+  "1A4120300000208000003444": "2026-11-19",
+  "1A4120300000208000003686": "2026-11-19",
+  "1A4120300000208000003687": "2026-11-19",
+  "1A4120300000208000003688": "2026-11-19",
   "1A412030000020E000002962": "2026-11-05",
   "1A4120300000216000008201": "2026-10-08",
   "1A4120300000216000011747": "2026-10-08",
@@ -78095,6 +78903,7 @@
   "1A4120300000216000092325": "2026-10-08",
   "1A4120300000216000092328": "2026-10-08",
   "1A4120300000216000092330": "2026-10-08",
+  "1A4120300000216000097848": "2026-11-19",
   "1A4120300000216000097863": "2026-11-18",
   "1A4120300000216000097871": "2026-11-18",
   "1A4120300000216000097880": "2026-11-18",
@@ -78209,6 +79018,19 @@
   "1A4120300000216000153643": "2026-11-08",
   "1A4120300000216000153647": "2026-11-08",
   "1A4120300000216000153804": "2026-11-12",
+  "1A4120300000216000154063": "2026-11-19",
+  "1A4120300000216000154070": "2026-11-19",
+  "1A4120300000216000154071": "2026-11-19",
+  "1A4120300000216000154073": "2026-11-19",
+  "1A4120300000216000154074": "2026-11-19",
+  "1A4120300000216000154075": "2026-11-19",
+  "1A4120300000216000154076": "2026-11-19",
+  "1A4120300000216000154077": "2026-11-19",
+  "1A4120300000216000154078": "2026-11-19",
+  "1A4120300000216000154079": "2026-11-19",
+  "1A4120300000216000154080": "2026-11-19",
+  "1A4120300000216000154081": "2026-11-19",
+  "1A4120300000216000154082": "2026-11-19",
   "1A4120300000216000155429": "2026-11-18",
   "1A4120300000216000155430": "2026-11-18",
   "1A4120300000216000155431": "2026-11-18",
@@ -78220,6 +79042,7 @@
   "1A4120300000216000163933": "2026-11-05",
   "1A4120300000216000163935": "2026-11-05",
   "1A4120300000216000163936": "2026-11-05",
+  "1A4120300000216000163937": "2026-11-19",
   "1A4120300000216000163940": "2026-11-05",
   "1A4120300000216000163989": "2026-11-18",
   "1A4120300000216000163990": "2026-11-18",
@@ -78250,7 +79073,6 @@
   "1A4120300000216000171785": "2026-10-27",
   "1A4120300000216000171799": "2026-10-27",
   "1A4120300000216000171803": "2026-10-27",
-  "1A4120300000216000173882": "2026-11-12",
   "1A4120300000216000174219": "2026-10-08",
   "1A4120300000216000174231": "2026-10-08",
   "1A4120300000216000174232": "2026-10-08",
@@ -78288,6 +79110,7 @@
   "1A412030000022C000009403": "2026-11-08",
   "1A412030000022C000009440": "2026-11-08",
   "1A412030000022C000009441": "2026-11-08",
+  "1A412030000022C000009754": "2026-11-19",
   "1A4120300000231000004886": "2026-10-08",
   "1A4120300000231000004888": "2026-10-08",
   "1A4120300000231000004894": "2026-10-08",
@@ -78301,6 +79124,7 @@
   "1A4120300000231000009653": "2026-11-18",
   "1A4120300000235000007617": "2026-11-04",
   "1A4120300000235000007619": "2026-11-04",
+  "1A4120300000235000008131": "2026-11-19",
   "1A4120300000235000008280": "2026-11-08",
   "1A4120300000235000008511": "2026-11-04",
   "1A4120300000235000008512": "2026-11-04",
@@ -78360,8 +79184,11 @@
   "1A4120300000268000066352": "2026-11-04",
   "1A4120300000268000068928": "2026-11-08",
   "1A4120300000268000068947": "2026-11-08",
+  "1A4120300000268000069646": "2026-11-19",
   "1A4120300000268000072186": "2026-10-29",
   "1A4120300000268000073752": "2026-11-13",
+  "1A4120300000268000074768": "2026-11-19",
+  "1A4120300000268000075530": "2026-11-19",
   "1A4120300000268000076314": "2026-11-05",
   "1A4120300000268000076317": "2026-11-08",
   "1A4120300000268000076320": "2026-11-12",
@@ -78375,6 +79202,7 @@
   "1A4120300000268000080006": "2026-11-12",
   "1A4120300000268000080024": "2026-11-08",
   "1A4120300000268000080166": "2026-11-12",
+  "1A4120300000268000080982": "2026-11-19",
   "1A4120300000268000081024": "2026-11-12",
   "1A4120300000268000081170": "2026-11-08",
   "1A4120300000268000082716": "2026-11-08",
@@ -78420,6 +79248,8 @@
   "1A4120300000283000053138": "2026-10-08",
   "1A4120300000283000060120": "2026-10-08",
   "1A4120300000283000060135": "2026-11-12",
+  "1A4120300000283000060463": "2026-11-19",
+  "1A4120300000283000060669": "2026-11-19",
   "1A4120300000283000060792": "2026-10-08",
   "1A4120300000283000061243": "2026-10-08",
   "1A4120300000283000061554": "2026-10-08",
@@ -78427,14 +79257,15 @@
   "1A4120300000283000061628": "2026-10-27",
   "1A4120300000283000061782": "2026-11-04",
   "1A4120300000283000061846": "2026-11-13",
+  "1A4120300000283000061865": "2026-11-19",
   "1A4120300000283000062112": "2026-10-08",
   "1A4120300000283000062175": "2026-10-08",
   "1A4120300000283000062408": "2026-11-13",
   "1A4120300000283000062417": "2026-10-08",
   "1A4120300000283000062418": "2026-10-08",
   "1A4120300000283000062527": "2026-11-05",
-  "1A4120300000283000062679": "2026-11-08",
   "1A4120300000283000062702": "2026-11-13",
+  "1A4120300000283000062782": "2026-11-19",
   "1A4120300000283000063180": "2026-11-13",
   "1A4120300000283000063321": "2026-11-05",
   "1A4120300000283000063349": "2026-11-05",
@@ -78446,8 +79277,8 @@
   "1A4120300000283000063622": "2026-11-04",
   "1A4120300000283000063666": "2026-11-13",
   "1A4120300000283000063698": "2026-11-08",
-  "1A4120300000283000063719": "2026-11-12",
   "1A4120300000283000063726": "2026-10-29",
+  "1A4120300000283000063755": "2026-11-19",
   "1A4120300000283000063794": "2026-11-08",
   "1A4120300000283000063837": "2026-11-08",
   "1A4120300000283000063891": "2026-11-08",
@@ -78459,6 +79290,7 @@
   "1A4120300000283000064081": "2026-11-04",
   "1A4120300000283000064432": "2026-11-12",
   "1A4120300000283000064472": "2026-11-08",
+  "1A4120300000283000064491": "2026-11-19",
   "1A4120300000283000064647": "2026-11-05",
   "1A4120300000283000064953": "2026-11-05",
   "1A4120300000283000064983": "2026-11-04",
@@ -78469,7 +79301,7 @@
   "1A4120300000283000065133": "2026-11-08",
   "1A4120300000283000065185": "2026-11-04",
   "1A4120300000283000065224": "2026-11-13",
-  "1A4120300000283000065236": "2026-11-13",
+  "1A4120300000283000065238": "2026-11-19",
   "1A4120300000283000065277": "2026-11-04",
   "1A4120300000283000065281": "2026-11-08",
   "1A4120300000283000065285": "2026-11-05",
@@ -78486,6 +79318,7 @@
   "1A4120300000283000065739": "2026-11-05",
   "1A4120300000283000065754": "2026-11-04",
   "1A4120300000283000065786": "2026-11-08",
+  "1A4120300000283000065801": "2026-11-19",
   "1A4120300000283000065802": "2026-11-05",
   "1A4120300000283000065809": "2026-11-05",
   "1A4120300000283000065817": "2026-11-08",
@@ -78508,6 +79341,7 @@
   "1A4120300000283000066585": "2026-11-05",
   "1A4120300000283000066613": "2026-11-08",
   "1A4120300000283000066704": "2026-11-08",
+  "1A4120300000283000066727": "2026-11-19",
   "1A4120300000283000066744": "2026-11-08",
   "1A4120300000283000066750": "2026-11-13",
   "1A4120300000283000066778": "2026-11-13",
@@ -78519,6 +79353,8 @@
   "1A4120300000283000067103": "2026-11-13",
   "1A4120300000283000067145": "2026-11-12",
   "1A4120300000283000067149": "2026-11-12",
+  "1A4120300000283000067182": "2026-11-19",
+  "1A4120300000283000067276": "2026-11-19",
   "1A4120300000283000067277": "2026-11-08",
   "1A4120300000283000067280": "2026-11-05",
   "1A4120300000283000067281": "2026-11-04",
@@ -78531,6 +79367,10 @@
   "1A4120300000283000067650": "2026-11-08",
   "1A4120300000283000067769": "2026-11-12",
   "1A4120300000283000068139": "2026-11-13",
+  "1A4120300000283000069557": "2026-11-19",
+  "1A4120300000283000069558": "2026-11-19",
+  "1A4120300000294000002455": "2026-11-19",
+  "1A4120300000294000002460": "2026-11-19",
   "1A41203000002C1000018496": "2026-10-08",
   "1A41203000002C1000025783": "2026-10-08",
   "1A41203000002C1000034436": "2026-10-08",
@@ -78542,6 +79382,7 @@
   "1A41203000002C1000051185": "2026-10-08",
   "1A41203000002C1000051186": "2026-10-08",
   "1A41203000002C1000051238": "2026-10-08",
+  "1A41203000002C1000053409": "2026-11-19",
   "1A41203000002C1000064577": "2026-10-08",
   "1A41203000002C1000065314": "2026-10-27",
   "1A41203000002C1000066025": "2026-10-08",
@@ -78551,7 +79392,6 @@
   "1A41203000002C1000067487": "2026-10-08",
   "1A41203000002C1000067504": "2026-10-08",
   "1A41203000002C1000067505": "2026-10-08",
-  "1A41203000002C1000069140": "2026-10-08",
   "1A41203000002C1000069141": "2026-10-08",
   "1A41203000002C1000069142": "2026-10-08",
   "1A41203000002C1000071863": "2026-11-05",
@@ -78559,7 +79399,11 @@
   "1A41203000002C1000073334": "2026-11-12",
   "1A41203000002C1000073336": "2026-11-04",
   "1A41203000002C1000073356": "2026-11-08",
+  "1A41203000002C1000073736": "2026-11-19",
+  "1A41203000002C1000073738": "2026-11-19",
   "1A41203000002C1000073739": "2026-10-29",
+  "1A41203000002C1000073740": "2026-11-19",
+  "1A41203000002C1000073753": "2026-11-19",
   "1A41203000002C1000073754": "2026-10-29",
   "1A41203000002C1000073755": "2026-10-29",
   "1A41203000002C1000073756": "2026-10-29",
@@ -78592,8 +79436,28 @@
   "1A41203000002C1000077539": "2026-11-13",
   "1A41203000002C1000077540": "2026-11-13",
   "1A41203000002C1000077761": "2026-11-13",
+  "1A41203000002C1000077762": "2026-11-19",
+  "1A41203000002C1000077763": "2026-11-19",
   "1A41203000002C1000077764": "2026-11-13",
   "1A41203000002C1000077767": "2026-11-13",
+  "1A41203000002C1000079071": "2026-11-19",
+  "1A41203000002C1000079072": "2026-11-19",
+  "1A41203000002C1000079074": "2026-11-19",
+  "1A41203000002C1000079075": "2026-11-19",
+  "1A41203000002C1000079076": "2026-11-19",
+  "1A41203000002C1000079080": "2026-11-19",
+  "1A41203000002C1000079081": "2026-11-19",
+  "1A41203000002C1000079082": "2026-11-19",
+  "1A41203000002C1000079083": "2026-11-19",
+  "1A41203000002C1000079084": "2026-11-19",
+  "1A41203000002C1000079085": "2026-11-19",
+  "1A41203000002C1000079086": "2026-11-19",
+  "1A41203000002C1000079087": "2026-11-19",
+  "1A41203000002C1000079088": "2026-11-19",
+  "1A41203000002C1000079089": "2026-11-19",
+  "1A41203000002C1000079164": "2026-11-19",
+  "1A41203000002C1000079165": "2026-11-19",
+  "1A41203000002C1000079167": "2026-11-19",
   "1A4120300000321000001674": "2026-10-08",
   "1A4120300000321000001752": "2026-10-08",
   "1A412030000038D000004608": "2026-10-08",
@@ -78601,11 +79465,13 @@
   "1A412030000038D000004615": "2026-10-08",
   "1A412030000038D000004616": "2026-10-08",
   "1A412030000038D000013327": "2026-10-08",
+  "1A412030000038D000014503": "2026-11-19",
   "1A412030000038D000019858": "2026-10-08",
   "1A412030000038D000019864": "2026-10-08",
   "1A412030000038D000024032": "2026-10-08",
   "1A412030000038D000024628": "2026-10-08",
   "1A412030000038D000024632": "2026-10-08",
+  "1A412030000038D000025898": "2026-11-19",
   "1A412030000038D000026940": "2026-10-08",
   "1A412030000038D000026942": "2026-10-08",
   "1A412030000038D000028174": "2026-11-08",
@@ -78633,6 +79499,9 @@
   "1A412030000038D000029399": "2026-11-13",
   "1A412030000038D000029401": "2026-11-13",
   "1A412030000038D000029403": "2026-11-13",
+  "1A412030000038D000029980": "2026-11-19",
+  "1A412030000038D000029982": "2026-11-19",
+  "1A412030000038D000030002": "2026-11-19",
   "1A41203000003F5000000222": "2026-10-08",
   "1A41203000003F5000000464": "2026-10-08",
   "1A41203000003F5000000557": "2026-10-08",
@@ -78678,6 +79547,8 @@
   "1A4120300000451000012860": "2026-11-05",
   "1A4120300000451000012899": "2026-11-08",
   "1A4120300000451000012908": "2026-11-08",
+  "1A4120300000451000012909": "2026-11-19",
+  "1A4120300000451000012910": "2026-11-19",
   "1A4120300000451000012911": "2026-10-29",
   "1A4120300000451000012983": "2026-11-12",
   "1A4120300000451000012986": "2026-11-05",
@@ -78686,9 +79557,16 @@
   "1A4120300000451000013029": "2026-11-04",
   "1A4120300000451000013030": "2026-11-04",
   "1A4120300000451000013031": "2026-11-04",
-  "1A4120300000451000013032": "2026-11-04",
   "1A4120300000451000013033": "2026-11-04",
   "1A4120300000451000013034": "2026-11-04",
+  "1A4120300000451000013814": "2026-11-19",
+  "1A4120300000451000013818": "2026-11-19",
+  "1A4120300000451000013819": "2026-11-19",
+  "1A4120300000451000013820": "2026-11-19",
+  "1A4120300000451000013848": "2026-11-19",
+  "1A4120300000451000013849": "2026-11-19",
+  "1A4120300000451000013850": "2026-11-19",
+  "1A4120300000451000013851": "2026-11-19",
   "1A4120300000452000000098": "2026-10-08",
   "1A4120300000452000000102": "2026-10-08",
   "1A4120300000452000000119": "2026-10-08",
@@ -78698,6 +79576,9 @@
   "1A4120300000452000000127": "2026-10-08",
   "1A4120300000452000000138": "2026-10-08",
   "1A4120300000454000002284": "2026-10-08",
+  "1A4120300000454000003087": "2026-11-19",
+  "1A4120300000454000003088": "2026-11-19",
+  "1A4120300000454000003089": "2026-11-19",
   "1A4120300000475000000199": "2026-10-08",
   "1A41203000004A3000000418": "2026-10-08",
   "1A41203000004B3000006625": "2026-10-08",
@@ -78745,6 +79626,7 @@
   "1A41203000004CC000028870": "2026-11-05",
   "1A41203000004CC000029217": "2026-11-12",
   "1A41203000004CC000029218": "2026-11-12",
+  "1A41203000004CC000029718": "2026-11-19",
   "1A41203000004D2000000841": "2026-10-08",
   "1A41203000004D2000000842": "2026-10-08",
   "1A41203000004EB000001163": "2026-10-08",
@@ -78789,7 +79671,6 @@
   "1A41203000004EB000024280": "2026-10-08",
   "1A41203000004EB000024633": "2026-10-08",
   "1A41203000004EB000024719": "2026-10-08",
-  "1A41203000004EB000024734": "2026-10-08",
   "1A41203000004EB000024742": "2026-10-08",
   "1A41203000004EB000024743": "2026-10-08",
   "1A41203000004EB000024744": "2026-10-08",
@@ -78814,7 +79695,6 @@
   "1A41203000004EB000028301": "2026-10-08",
   "1A41203000004EB000028950": "2026-10-08",
   "1A41203000004EB000029277": "2026-10-08",
-  "1A41203000004EB000029278": "2026-10-08",
   "1A41203000004EB000029279": "2026-10-08",
   "1A41203000004EB000030215": "2026-10-08",
   "1A41203000004EB000030216": "2026-10-08",
@@ -78841,6 +79721,8 @@
   "1A41203000004EB000035360": "2026-11-05",
   "1A41203000004EB000035403": "2026-11-08",
   "1A41203000004EB000035404": "2026-11-08",
+  "1A41203000004EB000037660": "2026-11-19",
+  "1A41203000004EB000037662": "2026-11-19",
   "1A41203000004EB000037906": "2026-11-12",
   "1A41203000004EB000037907": "2026-11-12",
   "1A41203000004EB000037908": "2026-11-12",
@@ -78862,12 +79744,15 @@
   "1A41203000004EB000039118": "2026-11-12",
   "1A41203000004EC000001719": "2026-10-08",
   "1A41203000004EC000001720": "2026-10-08",
+  "1A41203000004EC000001995": "2026-11-19",
+  "1A41203000004EC000001996": "2026-11-19",
+  "1A41203000004EC000002000": "2026-11-19",
+  "1A41203000004EC000002001": "2026-11-19",
   "1A4120300000529000064739": "2026-10-08",
   "1A4120300000529000064740": "2026-10-08",
   "1A4120300000529000064741": "2026-10-08",
   "1A4120300000529000064742": "2026-10-08",
   "1A4120300000529000064743": "2026-10-08",
-  "1A4120300000529000077356": "2026-11-05",
   "1A4120300000529000077357": "2026-11-05",
   "1A4120300000529000082883": "2026-11-05",
   "1A4120300000529000082891": "2026-11-05",
@@ -78890,6 +79775,7 @@
   "1A4120300000529000085171": "2026-10-29",
   "1A4120300000529000085172": "2026-10-29",
   "1A4120300000529000085176": "2026-10-29",
+  "1A4120300000529000086363": "2026-11-19",
   "1A4120300000529000087669": "2026-11-12",
   "1A4120300000529000087926": "2026-11-12",
   "1A4120300000529000087927": "2026-11-12",
@@ -78902,6 +79788,9 @@
   "1A4120300000596000001352": "2026-10-08",
   "1A4120300000596000001353": "2026-10-08",
   "1A4120300000596000001381": "2026-10-08",
+  "1A4120300000596000001553": "2026-11-19",
+  "1A4120300000596000001555": "2026-11-19",
+  "1A4120300000596000001556": "2026-11-19",
   "1A41203000005E1000002655": "2026-11-05",
   "1A41203000005E1000002656": "2026-11-05",
   "1A41203000005E1000002657": "2026-11-05",
@@ -78912,7 +79801,6 @@
   "1A4120300000641000136355": "2026-10-08",
   "1A4120300000641000178847": "2026-10-08",
   "1A4120300000641000190572": "2026-10-08",
-  "1A4120300000641000199844": "2026-10-08",
   "1A4120300000641000214133": "2026-10-08",
   "1A4120300000641000214134": "2026-10-08",
   "1A4120300000641000223877": "2026-10-08",
@@ -78939,6 +79827,8 @@
   "1A4120300000641000272625": "2026-11-05",
   "1A4120300000641000275008": "2026-11-05",
   "1A4120300000641000275014": "2026-11-05",
+  "1A4120300000641000277410": "2026-11-19",
+  "1A4120300000641000277418": "2026-11-19",
   "1A4120300000641000285702": "2026-10-08",
   "1A4120300000641000290118": "2026-10-08",
   "1A4120300000641000290119": "2026-10-08",
@@ -78950,6 +79840,8 @@
   "1A4120300000641000300088": "2026-10-29",
   "1A4120300000641000326793": "2026-10-08",
   "1A4120300000641000326794": "2026-10-08",
+  "1A4120300000641000329343": "2026-11-19",
+  "1A4120300000641000329344": "2026-11-19",
   "1A4120300000641000351816": "2026-10-08",
   "1A4120300000641000351819": "2026-10-08",
   "1A4120300000641000351820": "2026-10-08",
@@ -78975,6 +79867,9 @@
   "1A4120300000642000031427": "2026-10-08",
   "1A4120300000642000038128": "2026-10-08",
   "1A4120300000642000038132": "2026-10-08",
+  "1A412030000070A000000220": "2026-11-19",
+  "1A412030000070A000000298": "2026-11-19",
+  "1A412030000070A000000523": "2026-11-19",
   "1A412030000070B000022013": "2026-10-08",
   "1A412030000070B000035670": "2026-10-08",
   "1A412030000070B000035671": "2026-10-08",
@@ -79001,9 +79896,14 @@
   "1A41203000009CF000000168": "2026-11-05",
   "1A4120300000A2A000000851": "2026-11-05",
   "1A4120300000A35000002967": "2026-10-08",
-  "1A4120300000A35000004775": "2026-10-08",
   "1A4120300000A35000006201": "2026-10-08",
   "1A4120300000A35000007994": "2026-10-08",
+  "1A4120300000A35000009627": "2026-11-19",
+  "1A4120300000A35000010903": "2026-11-19",
+  "1A4120300000A35000011435": "2026-11-19",
+  "1A4120300000A35000011438": "2026-11-19",
+  "1A4120300000A35000011440": "2026-11-19",
+  "1A4120300000A35000011810": "2026-11-19",
   "1A4120300000A96000001577": "2026-10-08",
   "1A4120300000B67000001224": "2026-10-08",
   "1A4120300000B67000001226": "2026-10-08",
@@ -79025,6 +79925,7 @@
   "1A4120300000BBF000045440": "2026-10-08",
   "1A4120300000BBF000050021": "2026-10-08",
   "1A4120300000BBF000051868": "2026-10-08",
+  "1A4120300000BBF000071701": "2026-11-19",
   "1A4120300000C1E000044240": "2026-10-08",
   "1A4120300000C1E000044789": "2026-10-08",
   "1A4120300000C1E000049054": "2026-10-08",
@@ -79039,7 +79940,7 @@
   "1A4120300000C1E000067066": "2026-10-08",
   "1A4120300000C1E000067072": "2026-10-08",
   "1A4120300000C1E000067074": "2026-10-08",
-  "1A4120300000C1E000071897": "2026-10-08",
+  "1A4120300000C1E000071898": "2026-11-19",
   "1A4120300000C1E000073562": "2026-10-08",
   "1A4120300000C1E000073564": "2026-10-08",
   "1A4120300000C1E000073567": "2026-10-08",
@@ -79056,7 +79957,6 @@
   "1A4120300000C1E000073627": "2026-10-08",
   "1A4120300000C1E000073629": "2026-10-08",
   "1A4120300000C1E000073631": "2026-10-08",
-  "1A4120300000C1E000073633": "2026-10-08",
   "1A4120300000C1E000073635": "2026-10-08",
   "1A4120300000C1E000073637": "2026-10-08",
   "1A4120300000C1E000073641": "2026-10-08",
@@ -79079,8 +79979,9 @@
   "1A4120300000C1E000115396": "2026-10-08",
   "1A4120300000C1E000116237": "2026-10-08",
   "1A4120300000C1E000116239": "2026-10-08",
+  "1A4120300000C1E000119057": "2026-11-19",
   "1A4120300000C1E000120936": "2026-11-05",
-  "1A4120300000C1E000124238": "2026-10-08",
+  "1A4120300000C1E000122617": "2026-11-19",
   "1A4120300000C1E000124239": "2026-10-08",
   "1A4120300000C1E000124241": "2026-10-08",
   "1A4120300000C1E000126357": "2026-10-08",
@@ -79095,6 +79996,7 @@
   "1A4120300000C1E000141931": "2026-10-08",
   "1A4120300000C1E000141933": "2026-10-08",
   "1A4120300000C1E000141935": "2026-10-08",
+  "1A4120300000C1E000141960": "2026-11-19",
   "1A4120300000C1E000148202": "2026-10-08",
   "1A4120300000C1E000170136": "2026-11-05",
   "1A4120300000C1E000179390": "2026-11-05",
@@ -79114,6 +80016,8 @@
   "1A4120300000C1F000016987": "2026-10-08",
   "1A4120300000C1F000017094": "2026-10-08",
   "1A4120300000C1F000017128": "2026-10-08",
+  "1A4120300000C1F000033040": "2026-11-19",
+  "1A4120300000C1F000033081": "2026-11-19",
   "1A4120300000C1F000034298": "2026-10-08",
   "1A4120300000C1F000038155": "2026-10-08",
   "1A4120300000C1F000044065": "2026-10-08",
@@ -79134,6 +80038,7 @@
   "1A4120300000CFB000000816": "2026-10-08",
   "1A4120300000D7D000001519": "2026-10-08",
   "1A4120300000D7D000001520": "2026-10-08",
+  "1A4120300000D7D000003043": "2026-11-19",
   "1A4120300000D7F000013922": "2026-10-08",
   "1A4120300000D7F000018010": "2026-10-08",
   "1A4120300000D7F000022569": "2026-10-08"
