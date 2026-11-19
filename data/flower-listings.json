@@ -77928,7 +77928,7 @@
   {
     "listingId": "hurley-grown-black-scotti",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Black Scotti",
     "strainNameCanonical": "Black Scotti",
     "brand": "Hurley Grown",
@@ -77994,7 +77994,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -78002,7 +78002,7 @@
   {
     "listingId": "the-botanist-blue-dream",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Blue Dream",
     "strainNameCanonical": "Blue Dream",
     "brand": "THE BOTANIST",
@@ -78083,7 +78083,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -78091,7 +78091,7 @@
   {
     "listingId": "clear-chronic-candy-fumes",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Candy Fumes",
     "strainNameCanonical": "Candy Fumes",
     "brand": "Clear Chronic",
@@ -78152,50 +78152,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "slack-hollow-organics-candy-fumez",
-    "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
-    "strainNameRaw": "Candy Fumez",
-    "strainNameCanonical": "Candy Fumez",
-    "brand": "Slack Hollow Organics",
-    "brandKey": "slackholloworganics",
-    "lineage": "SATIVA",
-    "thcPercent": null,
-    "cbdPercent": 0,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": null,
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": "https://thctheherbalcare.com/shop/slack-hollow-organics/slack-hollow-organics-candy-fumez-35g-flower",
-    "description": null,
-    "sources": [
-      {
-        "url": "https://thctheherbalcare.com/shop/categories/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -78203,7 +78160,7 @@
   {
     "listingId": "hepworth-citrus-slurp",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Citrus Slurp",
     "strainNameCanonical": "Citrus Slurp",
     "brand": "Hepworth",
@@ -78264,7 +78221,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -78272,7 +78229,7 @@
   {
     "listingId": "grams-divorcee-cake",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Divorcee Cake",
     "strainNameCanonical": "Divorcee Cake",
     "brand": "Grams",
@@ -78343,7 +78300,76 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "major-dumpster",
+    "licenseNumber": "OCM-CAURD-23-000036",
+    "capturedAt": "2026-11-19T18:56:24Z",
+    "strainNameRaw": "Dumpster",
+    "strainNameCanonical": "Dumpster",
+    "brand": "MAJOR",
+    "brandKey": "major",
+    "lineage": "INDICA",
+    "thcPercent": 24.23,
+    "cbdPercent": 0,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.2
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.48
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.08
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.13
+        },
+        {
+          "name": "OCIMENE",
+          "rawName": null,
+          "percent": 0.2
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": "THC:24.23|CARYOPHYLLENE:0.2|HUMULENE:0.08|LINALOOL:0.13|MYRCENE:0.48|OCIMENE:0.2",
+    "packageIds": null,
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": "https://thctheherbalcare.com/shop/major/major-dumpster-35g",
+    "description": null,
+    "sources": [
+      {
+        "url": "https://thctheherbalcare.com/shop/categories/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -78351,7 +78377,7 @@
   {
     "listingId": "flamer-flamer-hehe-haha",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Flamer HeHe HaHa",
     "strainNameCanonical": "HeHe HaHa",
     "brand": "FLAMER",
@@ -78412,7 +78438,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -78420,7 +78446,7 @@
   {
     "listingId": "the-botanist-gary-payton",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Gary Payton",
     "strainNameCanonical": "Gary Payton",
     "brand": "THE BOTANIST",
@@ -78496,7 +78522,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -78504,7 +78530,7 @@
   {
     "listingId": "skyrose-headband",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Headband",
     "strainNameCanonical": "Headband",
     "brand": "Skyrose",
@@ -78590,7 +78616,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -78598,7 +78624,7 @@
   {
     "listingId": "high-peaks-horchata",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Horchata",
     "strainNameCanonical": "Horchata",
     "brand": "High Peaks",
@@ -78669,7 +78695,76 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "major-jawbreaker",
+    "licenseNumber": "OCM-CAURD-23-000036",
+    "capturedAt": "2026-11-19T18:56:24Z",
+    "strainNameRaw": "Jawbreaker",
+    "strainNameCanonical": "Jawbreaker",
+    "brand": "MAJOR",
+    "brandKey": "major",
+    "lineage": "INDICA_DOMINANT",
+    "thcPercent": 24.52,
+    "cbdPercent": 0,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.29
+        },
+        {
+          "name": "MYRCENE",
+          "rawName": null,
+          "percent": 0.14
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.1
+        },
+        {
+          "name": "LIMONENE",
+          "rawName": null,
+          "percent": 0.43
+        },
+        {
+          "name": "LINALOOL",
+          "rawName": null,
+          "percent": 0.4
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": "THC:24.52|CARYOPHYLLENE:0.29|HUMULENE:0.1|LIMONENE:0.43|LINALOOL:0.4|MYRCENE:0.14",
+    "packageIds": null,
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": "https://thctheherbalcare.com/shop/major/major-jawbreaker-35g",
+    "description": null,
+    "sources": [
+      {
+        "url": "https://thctheherbalcare.com/shop/categories/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -78677,7 +78772,7 @@
   {
     "listingId": "slack-hollow-organics-jet-fuel-gelato",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Jet Fuel Gelato",
     "strainNameCanonical": "Jet Fuel Gelato",
     "brand": "Slack Hollow Organics",
@@ -78743,7 +78838,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -78751,7 +78846,7 @@
   {
     "listingId": "clear-chronic-permanent-marker",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Permanent Marker",
     "strainNameCanonical": "Permanent Marker",
     "brand": "Clear Chronic",
@@ -78812,7 +78907,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -78820,7 +78915,7 @@
   {
     "listingId": "flamer-pillow-princess",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Pillow Princess",
     "strainNameCanonical": "Pillow Princess",
     "brand": "FLAMER",
@@ -78876,7 +78971,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -78884,7 +78979,7 @@
   {
     "listingId": "flamer-revelation",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Revelation",
     "strainNameCanonical": "Revelation",
     "brand": "FLAMER",
@@ -78935,7 +79030,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -78943,7 +79038,7 @@
   {
     "listingId": "skyrose-sour-diesel",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Sour Diesel",
     "strainNameCanonical": "Sour Diesel",
     "brand": "Skyrose",
@@ -79009,7 +79104,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -79017,7 +79112,7 @@
   {
     "listingId": "hepworth-terp-poison",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Terp Poison",
     "strainNameCanonical": "Terp Poison",
     "brand": "Hepworth",
@@ -79103,7 +79198,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -79111,7 +79206,7 @@
   {
     "listingId": "clear-chronic-tropicana-cookies",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Tropicana Cookies",
     "strainNameCanonical": "Tropicana Cookies",
     "brand": "Clear Chronic",
@@ -79182,7 +79277,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -79190,7 +79285,7 @@
   {
     "listingId": "to-the-moon-turbo-toad",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Turbo Toad",
     "strainNameCanonical": "Turbo Toad",
     "brand": "To The Moon",
@@ -79246,7 +79341,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
@@ -79254,7 +79349,7 @@
   {
     "listingId": "high-peaks-zesty-parm",
     "licenseNumber": "OCM-CAURD-23-000036",
-    "capturedAt": "2026-11-18T18:15:26Z",
+    "capturedAt": "2026-11-19T18:56:24Z",
     "strainNameRaw": "Zesty Parm",
     "strainNameCanonical": "Zesty Parm",
     "brand": "High Peaks",
@@ -79330,7 +79425,7 @@
         "url": "https://thctheherbalcare.com/shop/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-18T18:15:26Z"
+        "retrievedAt": "2026-11-19T18:56:24Z"
       }
     ],
     "warnings": []
