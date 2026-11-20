@@ -35,10 +35,10 @@
 |---|---|---|---|
 | Proud New York Cannabis LLC | ASTORIA | https://proudnewyork.com | страница вернула ноль товаров |
 | Weed Mart By New Metro | Bayside | https://newmetro.club | стена на странице меню (cloudflare-challenge) — **не трогать** |
-| Just a Little Higher Briarwood ✳️ | Briarwood | https://justalittlehigher.com/ | прочитано 48 товаров, ни один не цветок |
+| Just a Little Higher Briarwood ✳️ | Briarwood | https://justalittlehigher.com/ | прочитано 112 товаров, ни один не цветок |
 | Caffiend LLC ✳️ | Brooklyn | https://thebushwicknyc.com | стена на странице меню (cloudflare-challenge) — **не трогать** |
 | Cannabis Kingdom Inc. | Brooklyn | https://www.bkgrass.com | страница вернула ноль товаров |
-| DISPO/BK LLC ✳️ | Brooklyn | https://dispostore.com | товары есть (82), цветка нет |
+| DISPO/BK LLC ✳️ | Brooklyn | https://dispostore.com | товары есть (81), цветка нет |
 | Green Room Dispensary LLC | Brooklyn | https://greenroomny.com | страница вернула ноль товаров |
 | HAPPY BUDS BROOKLYN | Brooklyn | https://www.happybudsbk.com | страница вернула ноль товаров |
 | Empire Plant Services Holdings LLC | Farmingdale | https://www.theartisttree.com/farmingdale-dispensary/ | страница вернула ноль товаров |
@@ -52,13 +52,16 @@
 
 ✳️ — адрес в `menu-endpoints.json` уже есть, и всё равно пусто: значит записанный адрес больше не тот.
 
-## Полка читается не до конца — 1
+## Полка читается не до конца — 4
 
 Здесь адрес есть и меню отвечает, но отдаёт меньше, чем само объявляет. Листание таким не помогло — им нужен прямой адрес категории.
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| JUST A LITTLE HIGHER MURRAY HILL | 4 | 100 | https://justalittlehigher.com |
+| Clouditude Dispensary | 152 | 379 | https://clouditudedispensary.com |
+| JUST A LITTLE HIGHER MURRAY HILL | 4 | 94 | https://justalittlehigher.com |
+| OZ Dispensary | 87 | 145 | https://ozdispensary.com/ |
+| Puro vita enterprises inc. | 90 | 101 | https://purovita.com |
 
 ## Сюда не ходим
 
