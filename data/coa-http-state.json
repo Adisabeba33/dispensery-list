@@ -102,7 +102,7 @@
     "errors": 0
   },
   "https://www.harneybrotherscannabis.com": {
-    "errors": 0
+    "errors": 1
   },
   "https://ichindustries.com": {
     "errors": 0
@@ -144,7 +144,7 @@
     "errors": 0
   },
   "https://evlfarm.com": {
-    "errors": 1
+    "errors": 0
   },
   "https://oldfriendscultivation.com": {
     "errors": 0
@@ -171,7 +171,7 @@
     "errors": 0
   },
   "https://www.growingheartgreens.com": {
-    "errors": 0
+    "errors": 1
   },
   "https://www.centralprocessorsny.com": {
     "errors": 0
@@ -198,8 +198,8 @@
     "errors": 0
   },
   "http://-content": {
-    "errors": 27,
-    "blockedUntil": "2026-11-20T19:15:57.733875+00:00"
+    "errors": 28,
+    "blockedUntil": "2026-11-22T17:53:58.204907+00:00"
   },
   "https://www.awalkinthepines.com": {
     "errors": 0
@@ -260,12 +260,12 @@
     "errors": 0
   },
   "https://v1": {
-    "errors": 30,
-    "blockedUntil": "2026-11-20T19:09:58.620320+00:00"
+    "errors": 31,
+    "blockedUntil": "2026-11-22T17:52:23.701439+00:00"
   },
   "https://czz.8a7.mytemp.website": {
-    "errors": 30,
-    "blockedUntil": "2026-11-20T19:14:31.871310+00:00"
+    "errors": 31,
+    "blockedUntil": "2026-11-22T17:52:32.189925+00:00"
   },
   "https://clearlyfaded.com": {
     "errors": 0
