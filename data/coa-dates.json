@@ -22196,6 +22196,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/31973.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/31974.pdf": {
+   "lab": "DRS",
+   "sampled": "2026-04-21",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "a7c5200cfb959acbdcf0337d33090ab3044859fcd307e5fd02eed50813429767",
+   "docType": "lab-coa",
+   "sampleId": "2604RLI0464-2357",
+   "batchTag": "AG1411",
+   "lotNumber": null,
+   "metrcTag": null,
+   "panel": {
+    "lab": "DRS",
+    "name": "Acapulco Gold",
+    "matrix": "flower",
+    "licence": "OCM-MICR-24-000133",
+    "thc": 32.93,
+    "totalTerpenes": null,
+    "terpenes": {
+     "PINENE_ALPHA": 0.03,
+     "PINENE_BETA": 0.06,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.4,
+     "FARNESENE": 0.02,
+     "HUMULENE": 0.06,
+     "LIMONENE": 0.32,
+     "LINALOOL": 0.32,
+     "MYRCENE": 0.0,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/31974.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/31976.pdf": {
    "lab": "Kaycha",
    "sampled": "2026-05-01",
@@ -26114,6 +26152,82 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/33387.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33400.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": "2025-12-01",
+   "harvestedFrom": "document-harvest-lot-id",
+   "sha256": "9e3f8fa482efd19bba22dbd1ff8ebe132423c9e1a2249f99c32ee1adedabf48a",
+   "docType": "lab-coa",
+   "sampleId": "AL60314005-016",
+   "batchTag": "SDZR26-10",
+   "lotNumber": null,
+   "metrcTag": "1A4120300001A94000000262",
+   "panel": {
+    "lab": "Kaycha",
+    "name": "Mega Z Red",
+    "matrix": "flower",
+    "licence": "OCM-MICR-25-000243",
+    "thc": 29.64,
+    "totalTerpenes": 2.05,
+    "terpenes": {
+     "PINENE_ALPHA": 0.01,
+     "PINENE_BETA": 0.02,
+     "BISABOLOL": 0.06,
+     "CARYOPHYLLENE": 0.98,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.33,
+     "LIMONENE": 0.14,
+     "LINALOOL": 0.26,
+     "MYRCENE": 0.16,
+     "OCIMENE": 0.01,
+     "TERPINOLENE": 0.03
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/33400.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/33401.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2026-03-14",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": "2025-12-01",
+   "harvestedFrom": "document-harvest-lot-id",
+   "sha256": "f2f5748660363165f5f462adf2dc78edfa4568893ccb0108932723cbf852e2a9",
+   "docType": "lab-coa",
+   "sampleId": "AL60314005-017",
+   "batchTag": "SDCP26-10",
+   "lotNumber": null,
+   "metrcTag": "1A4120300001A94000000263",
+   "panel": {
+    "lab": "Kaycha",
+    "name": "Cherry Popperz",
+    "matrix": "flower",
+    "licence": "OCM-MICR-25-000243",
+    "thc": 29.16,
+    "totalTerpenes": 2.0,
+    "terpenes": {
+     "PINENE_ALPHA": 0.01,
+     "PINENE_BETA": 0.02,
+     "BISABOLOL": 0.05,
+     "CARYOPHYLLENE": 0.99,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.31,
+     "LIMONENE": 0.15,
+     "LINALOOL": 0.26,
+     "MYRCENE": 0.15,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.01
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/33401.pdf",
    "sourceKind": "menu"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/33406.pdf": {
@@ -43411,6 +43525,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39253.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/39254.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-09-16",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "47aa870b8192020cf34948d5e2d812ea12eccf1c89d6eeb93adb1ddae81fe5f9",
+   "docType": "lab-coa",
+   "sampleId": "20260916-HMOF-003",
+   "batchTag": "MM0262",
+   "lotNumber": "MM0262",
+   "metrcTag": "1A412030000022C000003993",
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Mini MART | Flower | 3.5 Gram | Secret Stash | Indica",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000119",
+    "thc": 28.23,
+    "totalTerpenes": 1.27,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.13,
+     "CARYOPHYLLENE": 0.33,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.09,
+     "LIMONENE": 0.22,
+     "LINALOOL": 0.35,
+     "MYRCENE": 0.15,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/39254.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/39256.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-09-16",
@@ -49894,6 +50046,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/40844.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/40845.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-08-11",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "3d465d7b1f25330fd5d32dc9f6c35e85486db66b57eec7ab57a8762ae314e088",
+   "docType": "lab-coa",
+   "sampleId": "20260811-HMOF-007",
+   "batchTag": "MM0243",
+   "lotNumber": "MM0243",
+   "metrcTag": null,
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Mini MART | Flower | 3.5 Gram | SinMint Cookies | Hybrid",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000119",
+    "thc": 27.59,
+    "totalTerpenes": 1.08,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.15,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.0,
+     "LIMONENE": 0.18,
+     "LINALOOL": 0.2,
+     "MYRCENE": 0.41,
+     "OCIMENE": 0.07,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/40845.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/40846.pdf": {
    "lab": "Green Analytics",
    "sampled": "2026-07-15",
@@ -51032,6 +51222,44 @@
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/41148.pdf",
    "sourceKind": "menu"
   },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/41149.pdf": {
+   "lab": "Green Analytics",
+   "sampled": "2026-10-08",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "80f7595a39597a33166c82d06e288ebbd00b4d1264e4f4f2a53644a2431313c8",
+   "docType": "lab-coa",
+   "sampleId": "20261008-HMOF-001",
+   "batchTag": "MM0270",
+   "lotNumber": "MM0270",
+   "metrcTag": null,
+   "panel": {
+    "lab": "Green Analytics",
+    "name": "Mini MART | Flower | 3.5 Gram | Ghost Train Haze | Sativa",
+    "matrix": "flower",
+    "licence": "OCM-PROC-24-000119",
+    "thc": 27.78,
+    "totalTerpenes": 0.68,
+    "terpenes": {
+     "PINENE_ALPHA": 0.0,
+     "PINENE_BETA": 0.0,
+     "BISABOLOL": 0.0,
+     "CARYOPHYLLENE": 0.16,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.0,
+     "LIMONENE": 0.17,
+     "LINALOOL": 0.17,
+     "MYRCENE": 0.18,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/41149.pdf",
+   "sourceKind": "menu"
+  },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/41159.pdf": {
    "lab": "DRS",
    "sampled": "2026-07-17",
@@ -51980,6 +52208,44 @@
     }
    },
    "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/41517.pdf",
+   "sourceKind": "menu"
+  },
+  "https://app.alleaves.com/api/inventory/batch/buddega/coa/41525.pdf": {
+   "lab": "Kaycha",
+   "sampled": "2025-11-12",
+   "sampledFrom": "sampled",
+   "packaged": null,
+   "packagedFrom": null,
+   "harvested": null,
+   "harvestedFrom": null,
+   "sha256": "1b6f8d98ac366313da06df9b0eea37f5352af86d44b22b35674a4d62b6c4363d",
+   "docType": "lab-coa",
+   "sampleId": "AL51112001-005",
+   "batchTag": "AA-BV35-1010-01",
+   "lotNumber": null,
+   "metrcTag": "1A41203000023FF000000016",
+   "panel": {
+    "lab": "Kaycha",
+    "name": "BOO V",
+    "matrix": "flower",
+    "licence": "OCM-MICR-25-000272",
+    "thc": 26.94,
+    "totalTerpenes": 2.72,
+    "terpenes": {
+     "PINENE_ALPHA": 0.03,
+     "PINENE_BETA": 0.05,
+     "BISABOLOL": 0.04,
+     "CARYOPHYLLENE": 1.1,
+     "FARNESENE": 0.0,
+     "HUMULENE": 0.46,
+     "LIMONENE": 0.37,
+     "LINALOOL": 0.2,
+     "MYRCENE": 0.35,
+     "OCIMENE": 0.0,
+     "TERPINOLENE": 0.0
+    }
+   },
+   "documentUrl": "https://app.alleaves.com/api/inventory/batch/buddega/coa/41525.pdf",
    "sourceKind": "menu"
   },
   "https://app.alleaves.com/api/inventory/batch/buddega/coa/41526.pdf": {
