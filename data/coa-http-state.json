@@ -198,8 +198,8 @@
     "errors": 0
   },
   "http://-content": {
-    "errors": 29,
-    "blockedUntil": "2026-11-23T18:07:10.269521+00:00"
+    "errors": 30,
+    "blockedUntil": "2026-11-24T22:09:42.277522+00:00"
   },
   "https://www.awalkinthepines.com": {
     "errors": 0
@@ -260,12 +260,12 @@
     "errors": 0
   },
   "https://v1": {
-    "errors": 32,
-    "blockedUntil": "2026-11-23T18:05:35.768211+00:00"
+    "errors": 33,
+    "blockedUntil": "2026-11-24T22:08:07.777406+00:00"
   },
   "https://czz.8a7.mytemp.website": {
-    "errors": 32,
-    "blockedUntil": "2026-11-23T18:05:44.414703+00:00"
+    "errors": 33,
+    "blockedUntil": "2026-11-24T22:08:16.489099+00:00"
   },
   "https://clearlyfaded.com": {
     "errors": 0
