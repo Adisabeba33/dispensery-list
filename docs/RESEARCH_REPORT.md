@@ -1,21 +1,21 @@
 # Research report — NYC + Westchester dispensaries
 
-Snapshot time: **2026-11-16T20:42:02.985Z**
+Snapshot time: **2026-11-23T22:16:15.078Z**
 
 ## Result
 
-Published current-license records: **472**.
-- OPEN: **346**
-- APPROVED_NOT_OPEN: **110**
-- UNKNOWN: **16**
-- VERIFIED_OFFICIAL: **472 / 472 (100%)**
+Published current-license records: **470**.
+- OPEN: **344**
+- APPROVED_NOT_OPEN: **109**
+- UNKNOWN: **17**
+- VERIFIED_OFFICIAL: **470 / 470 (100%)**
 
 ### By county
 
 | County | Total | Open | Approved not open | Unknown |
 |---|---:|---:|---:|---:|
-| New York | 125 | 102 | 20 | 3 |
-| Kings | 118 | 91 | 25 | 2 |
+| New York | 125 | 102 | 19 | 4 |
+| Kings | 116 | 89 | 25 | 2 |
 | Queens | 118 | 85 | 29 | 4 |
 | Bronx | 36 | 23 | 12 | 1 |
 | Richmond | 24 | 18 | 4 | 2 |
@@ -25,25 +25,27 @@ Published current-license records: **472**.
 
 The official OCM public-open page text advertises 717 adult-use dispensaries statewide, while the HTML table snapshot parsed into **761 data rows**. This mismatch is preserved as a source inconsistency; no synthetic 717th row was created.
 
-The raw Current OCM Licenses snapshot contains **3059** rows. The first-pass six-county retail-ish filter produced **481** OCM-format licensed rows: **458 Active** and **8 Inactive/expired** before geography sanity filtering.
+The raw Current OCM Licenses snapshot contains **3063** rows. The first-pass six-county retail-ish filter produced **481** OCM-format licensed rows: **458 Active** and **8 Inactive/expired** before geography sanity filtering.
 
 Two rows are tagged `county=New York` / `region=Manhattan` in the official registry but have clearly upstate addresses and ZIPs; they are excluded from the NYC/Westchester deliverable and kept in the raw evidence:
 - `OCM-MICR-24-000199` — Copperhead Grow, LLC — 10242 State Route 12, Remsen NY 13438.
 - `OCM-RETL-26-000482` — Forage Dispensaries, LLC — 734 NY-32A, Palenville NY 12414.
 
-Expired/inactive OCM-format retail licenses excluded from the current directory: **16**.
+Expired/inactive OCM-format retail licenses excluded from the current directory: **18**.
 - `OCM-RETL-24-000121` — Altitude NY LLC — expired 2026-07-10.
 - `OCM-MICR-24-000043` — BKL Flowers LLC — expired 2026-04-08.
 - `OCM-RETL-24-000195` — Buds R Us LLC — expired 2026-10-09.
 - `OCM-RETL-24-000167` — Cannabis Creations INC — expired 2026-08-22.
 - `OCM-CAURD-24-000208` — Budr Cannabis — expired 2026-09-27.
 - `OCM-CAURD-24-000158` — DISCO HERBATORY LLC — expired 2026-06-28.
+- `OCM-CAURD-24-000210` — Exotic Herbals LLC — expired 2026-10-18.
 - `OCM-CAURD-24-000049` — Culture House — expired 2026-01-12.
 - `OCM-RETL-24-000006` — HUDSON ECONOMICS LLC — expired 2026-02-28.
 - `OCM-CAURD-24-000206` — Gotham Williamsburg — expired 2026-09-20.
 - `OCM-CAURD-24-000186` — LAR MEMORABILIA LLC — expired 2026-08-09.
 - `OCM-RETL-24-000067` — MamitaJoy LLC — expired 2026-04-18.
 - `OCM-CAURD-24-000193` — Northern Lights Dispensary LLC — expired 2026-08-23.
+- `OCM-CAURD-24-000211` — Kaya Bliss Dispensary — expired 2026-10-18.
 - `OCM-CAURD-23-000015` — Statis Cannabis Co — expired 2025-06-27.
 - `OCM-CAURD-24-000207` — R & R Remedies — expired 2026-09-27.
 - `OCM-RETL-24-000185` — Satura Development Group LLC — expired 2026-09-19.
@@ -62,6 +64,7 @@ These licenses are `Active` and the registry operating-address status is `Active
 - `OCM-RETL-25-000338` — Fire Escape — 103 Avenue A, New York 10009
 - `OCM-RETL-24-000262` — Free Thinkers LLC — 2 Coenties Slip, New York 10004
 - `OCM-RETL-26-000514` — NY Retail 4 Inc. — 435 5th Ave, New York 10016
+- `OCM-CAURD-26-000356` — TOASTREE LLC — 1584 York Ave, New York 10028
 - `OCM-RETL-25-000369` — M & M Neighborhood Convenience Inc. — 246-01 Jamaica Ave, Bellerose 11426
 - `OCM-CAURD-25-000231` — Token Retail Inc — 9229 Queens Blvd, Rego Park 11374
 - `OCM-CAURD-26-000326` — Gaia Operations LLC — 10412 Lefferts Blvd, South Richmond Hill 11419
