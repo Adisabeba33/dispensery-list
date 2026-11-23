@@ -1,6 +1,6 @@
 # Магазины, которым нужен адрес меню
 
-Работающих магазинов в реестре: **346**. Обход заходит в **259**, полку отдают **244**.
+Работающих магазинов в реестре: **346**. Обход заходит в **259**, полку отдают **245**.
 
 Этот файл собирается скриптом `scripts/menu-endpoints-wanted.py` по последнему прогону — правит его не рука, а следующий запуск.
 
@@ -29,13 +29,13 @@
 
 Проверить перед коммитом: `python scripts/validate-menu-endpoints.py`.
 
-## Пусто — 15
+## Пусто — 14
 
 | Магазин | Город | Сайт | Почему пусто |
 |---|---|---|---|
 | Proud New York Cannabis LLC | ASTORIA | https://proudnewyork.com | страница вернула ноль товаров |
 | Weed Mart By New Metro | Bayside | https://newmetro.club | стена на странице меню (cloudflare-challenge) — **не трогать** |
-| Just a Little Higher Briarwood ✳️ | Briarwood | https://justalittlehigher.com/ | прочитано 112 товаров, ни один не цветок |
+| Just a Little Higher Briarwood ✳️ | Briarwood | https://justalittlehigher.com/ | прочитано 86 товаров, ни один не цветок |
 | Caffiend LLC ✳️ | Brooklyn | https://thebushwicknyc.com | стена на странице меню (cloudflare-challenge) — **не трогать** |
 | Cannabis Kingdom Inc. | Brooklyn | https://www.bkgrass.com | страница вернула ноль товаров |
 | Green Room Dispensary LLC | Brooklyn | https://greenroomny.com | страница вернула ноль товаров |
@@ -47,18 +47,18 @@
 | Ava Flower Co | New York | https://www.avaflowerco.com | страница вернула ноль товаров |
 | Up the River Cannabis Dispensary | Ossining | https://www.uptheriver914.com | robots.txt запрещает — **не трогать** |
 | Gaz Station | Staten Island | https://www.gazstationny.com | страница вернула ноль товаров |
-| Green Land Retail LLC | Staten Island | https://greenlandny.com | ссылку на меню не нашли |
 
 ✳️ — адрес в `menu-endpoints.json` уже есть, и всё равно пусто: значит записанный адрес больше не тот.
 
-## Полка читается не до конца — 2
+## Полка читается не до конца — 3
 
 Здесь адрес есть и меню отвечает, но отдаёт меньше, чем само объявляет. Листание таким не помогло — им нужен прямой адрес категории.
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
+| Flower Hill | 135 | 894 | https://flowerhilldispensary.com |
 | JUST A LITTLE HIGHER MURRAY HILL | 4 | 88 | https://justalittlehigher.com |
-| ESH | 161 | 193 | https://esh.us |
+| OZ Dispensary | 90 | 140 | https://ozdispensary.com/ |
 
 ## Сюда не ходим
 
@@ -70,6 +70,6 @@
   - Tiki Leaves LLC — Brooklyn, http://www.tikileaves.com
   - Kushie — Forest Hills, https://kushieny.com
   - CannaBees — Maspeth, https://cannabeesdispensary.com
-  - Good Company — New York, https://goodcompanyshop.com
   - 581 Realty CRD LLC — Springfield Gardens, https://cannabisonconduit.com
+  - Green Land Retail LLC — Staten Island, https://greenlandny.com
 
