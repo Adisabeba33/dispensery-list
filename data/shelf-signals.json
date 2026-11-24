@@ -18965,6 +18965,25 @@
    ]
   },
   {
+   "brand": "Find",
+   "strain": "Pop Jammin",
+   "thc": 31.26,
+   "before": [
+    31.11
+   ],
+   "first": "2026-11-19",
+   "shops": [
+    "OCM-CAURD-24-000064",
+    "OCM-CAURD-24-000071",
+    "OCM-CAURD-24-000154",
+    "OCM-CAURD-24-000162",
+    "OCM-CAURD-25-000256",
+    "OCM-CAURD-26-000329",
+    "OCM-RETL-25-000319",
+    "OCM-RETL-25-000450"
+   ]
+  },
+  {
    "brand": "Grassroots",
    "strain": "Floral Frost",
    "thc": 33.38,
@@ -19084,24 +19103,6 @@
    ]
   },
   {
-   "brand": "Find",
-   "strain": "Pop Jammin",
-   "thc": 31.26,
-   "before": [
-    31.11
-   ],
-   "first": "2026-11-19",
-   "shops": [
-    "OCM-CAURD-24-000064",
-    "OCM-CAURD-24-000071",
-    "OCM-CAURD-24-000154",
-    "OCM-CAURD-24-000162",
-    "OCM-CAURD-25-000256",
-    "OCM-CAURD-26-000329",
-    "OCM-RETL-25-000319"
-   ]
-  },
-  {
    "brand": "Grassroots",
    "strain": "Giggin Grapes #7",
    "thc": 33.36,
@@ -19183,30 +19184,6 @@
    ]
   },
   {
-   "brand": "Grassroots",
-   "strain": "Facetz #12",
-   "thc": 31.43,
-   "before": [
-    30.71,
-    31.11,
-    32.57,
-    33.31,
-    33.44,
-    33.61,
-    33.62,
-    35.67,
-    35.81
-   ],
-   "first": "2026-11-18",
-   "shops": [
-    "OCM-CAURD-23-000038",
-    "OCM-CAURD-24-000064",
-    "OCM-CAURD-24-000087",
-    "OCM-CAURD-24-000116",
-    "OCM-CAURD-25-000297"
-   ]
-  },
-  {
    "brand": "Umamii",
    "strain": "GMO",
    "thc": 31.52,
@@ -19221,6 +19198,22 @@
     "OCM-RETL-24-000099",
     "OCM-RETL-24-000247",
     "OCM-RETL-24-000254"
+   ]
+  },
+  {
+   "brand": "Zips",
+   "strain": "White Widow",
+   "thc": 33.26,
+   "before": [
+    27.2
+   ],
+   "first": "2026-11-21",
+   "shops": [
+    "OCM-CAURD-22-000001",
+    "OCM-CAURD-24-000144",
+    "OCM-CAURD-24-000225",
+    "OCM-RETL-24-000026",
+    "OCM-RETL-25-000339"
    ]
   },
   {
@@ -19259,6 +19252,67 @@
     "OCM-CAURD-24-000119",
     "OCM-CAURD-24-000154",
     "OCM-CAURD-25-000294"
+   ]
+  },
+  {
+   "brand": "Rolling Green Cannabis",
+   "strain": "Code Red",
+   "thc": 27.34,
+   "before": [
+    22.94,
+    25.34,
+    28.21,
+    29.14,
+    30.46
+   ],
+   "first": "2026-11-18",
+   "shops": [
+    "OCM-CAURD-23-000020",
+    "OCM-CAURD-24-000094",
+    "OCM-CAURD-24-000156",
+    "OCM-RETL-24-000104"
+   ]
+  },
+  {
+   "brand": "Rolling Green",
+   "strain": "Code Red",
+   "thc": 27.35,
+   "before": [
+    22.94,
+    25.34,
+    28.21,
+    29.14,
+    30.46
+   ],
+   "first": "2026-11-18",
+   "shops": [
+    "OCM-CAURD-23-000020",
+    "OCM-CAURD-24-000094",
+    "OCM-CAURD-24-000156",
+    "OCM-RETL-24-000104"
+   ]
+  },
+  {
+   "brand": "Grassroots",
+   "strain": "Facetz #12",
+   "thc": 31.43,
+   "before": [
+    30.71,
+    31.11,
+    32.57,
+    33.31,
+    33.44,
+    33.61,
+    33.62,
+    35.67,
+    35.81
+   ],
+   "first": "2026-11-18",
+   "shops": [
+    "OCM-CAURD-23-000038",
+    "OCM-CAURD-24-000064",
+    "OCM-CAURD-24-000116",
+    "OCM-CAURD-25-000297"
    ]
   },
   {
@@ -19319,10 +19373,10 @@
    ],
    "first": "2026-11-21",
    "shops": [
+    "OCM-CAURD-24-000091",
     "OCM-CAURD-24-000121",
     "OCM-CAURD-24-000169",
-    "OCM-CAURD-26-000329",
-    "OCM-RETL-25-000355"
+    "OCM-CAURD-26-000329"
    ]
   },
   {
@@ -19338,6 +19392,21 @@
     "OCM-CAURD-24-000144",
     "OCM-RETL-24-000026",
     "OCM-RETL-25-000339"
+   ]
+  },
+  {
+   "brand": "Dank. by Definition",
+   "strain": "Grape Ape",
+   "thc": 32.32,
+   "before": [
+    27.97
+   ],
+   "first": "2026-11-23",
+   "shops": [
+    "MM1004D",
+    "OCM-CAURD-24-000062",
+    "OCM-RETL-25-000319",
+    "OCM-RETL-25-000450"
    ]
   },
   {
@@ -19373,42 +19442,6 @@
     "OCM-CAURD-24-000075",
     "OCM-CAURD-25-000297",
     "OCM-RETL-25-000324"
-   ]
-  },
-  {
-   "brand": "Rolling Green Cannabis",
-   "strain": "Code Red",
-   "thc": 27.34,
-   "before": [
-    22.94,
-    25.34,
-    28.21,
-    29.14,
-    30.46
-   ],
-   "first": "2026-11-18",
-   "shops": [
-    "OCM-CAURD-23-000020",
-    "OCM-CAURD-24-000156",
-    "OCM-RETL-24-000104"
-   ]
-  },
-  {
-   "brand": "Rolling Green",
-   "strain": "Code Red",
-   "thc": 27.35,
-   "before": [
-    22.94,
-    25.34,
-    28.21,
-    29.14,
-    30.46
-   ],
-   "first": "2026-11-18",
-   "shops": [
-    "OCM-CAURD-23-000020",
-    "OCM-CAURD-24-000156",
-    "OCM-RETL-24-000104"
    ]
   },
   {
@@ -19686,20 +19719,6 @@
    ]
   },
   {
-   "brand": "Zips",
-   "strain": "White Widow",
-   "thc": 33.26,
-   "before": [
-    27.2
-   ],
-   "first": "2026-11-21",
-   "shops": [
-    "OCM-CAURD-24-000144",
-    "OCM-RETL-24-000026",
-    "OCM-RETL-25-000339"
-   ]
-  },
-  {
    "brand": "Milkweed",
    "strain": "White Zlushie",
    "thc": 24.49,
@@ -19749,17 +19768,17 @@
    ]
   },
   {
-   "brand": "Dank. by Definition",
-   "strain": "Grape Ape",
-   "thc": 32.32,
+   "brand": "Dank",
+   "strain": "Sunset Sherbert",
+   "thc": 30.28,
    "before": [
-    27.97
+    29.25
    ],
    "first": "2026-11-23",
    "shops": [
-    "MM1004D",
-    "OCM-RETL-25-000319",
-    "OCM-RETL-25-000450"
+    "OCM-CAURD-22-000001",
+    "OCM-CAURD-23-000038",
+    "OCM-CAURD-24-000225"
    ]
   },
   {
@@ -20001,6 +20020,19 @@
    "shops": [
     "OCM-CAURD-23-000044",
     "OCM-CAURD-24-000104"
+   ]
+  },
+  {
+   "brand": "Rolling Green Cannabis",
+   "strain": "Cookies & Cream",
+   "thc": 28.49,
+   "before": [
+    30.76
+   ],
+   "first": "2026-11-19",
+   "shops": [
+    "OCM-CAURD-24-000094",
+    "OCM-RETL-24-000099"
    ]
   },
   {
@@ -20248,6 +20280,53 @@
    ]
   },
   {
+   "brand": "Grassroots",
+   "strain": "Blue Lobster",
+   "thc": 26.44,
+   "before": [
+    24.98,
+    25.87,
+    26.66,
+    27.02,
+    27.05,
+    27.1,
+    27.25,
+    27.6,
+    27.64,
+    27.67,
+    27.82,
+    28.32,
+    28.91,
+    29.06,
+    29.07,
+    29.11,
+    29.86,
+    30.29,
+    31.96,
+    32.2,
+    32.26,
+    33.02
+   ],
+   "first": "2026-11-21",
+   "shops": [
+    "OCM-CAURD-25-000301",
+    "OCM-RETL-25-000456"
+   ]
+  },
+  {
+   "brand": "Tall Trees Farm",
+   "strain": "Carbon Fiber",
+   "thc": 24.3,
+   "before": [
+    30.93
+   ],
+   "first": "2026-11-21",
+   "shops": [
+    "OCM-CAURD-24-000102",
+    "OCM-CAURD-26-000330"
+   ]
+  },
+  {
    "brand": "Oasis",
    "strain": "DONNY BURGER",
    "thc": 30.74,
@@ -20378,6 +20457,20 @@
    ]
   },
   {
+   "brand": "Grassroots",
+   "strain": "Giggin Grapes",
+   "thc": 31.17,
+   "before": [
+    28.81,
+    36.71
+   ],
+   "first": "2026-11-23",
+   "shops": [
+    "OCM-RETL-25-000355",
+    "OCM-RETL-25-000456"
+   ]
+  },
+  {
    "brand": "1937",
    "strain": "SOUR POWER",
    "thc": 26.27,
@@ -20400,6 +20493,19 @@
    "thc": 28.68,
    "before": [
     22.25
+   ],
+   "first": "2026-11-18",
+   "shops": [
+    "OCM-RETL-24-000037"
+   ]
+  },
+  {
+   "brand": "UNTITLED",
+   "strain": "*BLUEBERRY KUSH",
+   "thc": 31.49,
+   "before": [
+    26.09,
+    27.48
    ],
    "first": "2026-11-18",
    "shops": [
@@ -20682,18 +20788,6 @@
    "first": "2026-11-19",
    "shops": [
     "OCM-RETL-25-000417"
-   ]
-  },
-  {
-   "brand": "Rolling Green Cannabis",
-   "strain": "Cookies & Cream",
-   "thc": 28.49,
-   "before": [
-    30.76
-   ],
-   "first": "2026-11-19",
-   "shops": [
-    "OCM-RETL-24-000099"
    ]
   },
   {
@@ -21240,19 +21334,6 @@
   },
   {
    "brand": "THE BOTANIST",
-   "strain": "OG CHEM HAZE",
-   "thc": 25.16,
-   "before": [
-    27.88,
-    29.2
-   ],
-   "first": "2026-11-20",
-   "shops": [
-    "OCM-CAURD-24-000087"
-   ]
-  },
-  {
-   "brand": "THE BOTANIST",
    "strain": "Orange Slice Nebula",
    "thc": 23.91,
    "before": [
@@ -21401,6 +21482,18 @@
    ]
   },
   {
+   "brand": "URBAN XTRACTS",
+   "strain": "WILD CHERRY Z INDICA 1/2",
+   "thc": 32.69,
+   "before": [
+    34.13
+   ],
+   "first": "2026-11-20",
+   "shops": [
+    "OCM-MICR-24-000030"
+   ]
+  },
+  {
    "brand": "LEAL",
    "strain": "*FORTUNE COOKIE",
    "thc": 27.63,
@@ -21435,51 +21528,6 @@
    "first": "2026-11-21",
    "shops": [
     "OCM-CAURD-24-000094"
-   ]
-  },
-  {
-   "brand": "Grassroots",
-   "strain": "Blue Lobster",
-   "thc": 26.44,
-   "before": [
-    24.98,
-    25.87,
-    26.66,
-    27.02,
-    27.05,
-    27.1,
-    27.25,
-    27.6,
-    27.64,
-    27.67,
-    27.82,
-    28.32,
-    28.91,
-    29.06,
-    29.07,
-    29.11,
-    29.86,
-    30.29,
-    31.96,
-    32.2,
-    32.26,
-    33.02
-   ],
-   "first": "2026-11-21",
-   "shops": [
-    "OCM-CAURD-25-000301"
-   ]
-  },
-  {
-   "brand": "Tall Trees Farm",
-   "strain": "Carbon Fiber",
-   "thc": 24.3,
-   "before": [
-    30.93
-   ],
-   "first": "2026-11-21",
-   "shops": [
-    "OCM-CAURD-26-000330"
    ]
   },
   {
@@ -22062,19 +22110,6 @@
    ]
   },
   {
-   "brand": "Tall Trees Farm",
-   "strain": "Carbon Fiber",
-   "thc": 24.9,
-   "before": [
-    24.3,
-    30.93
-   ],
-   "first": "2026-11-23",
-   "shops": [
-    "OCM-CAURD-24-000102"
-   ]
-  },
-  {
    "brand": "Alchemy Pure",
    "strain": "DOC x Green Lantern",
    "thc": 25.9,
@@ -22135,19 +22170,6 @@
    "first": "2026-11-23",
    "shops": [
     "OCM-RETL-24-000175"
-   ]
-  },
-  {
-   "brand": "Grassroots",
-   "strain": "Giggin Grapes",
-   "thc": 31.17,
-   "before": [
-    28.81,
-    36.71
-   ],
-   "first": "2026-11-23",
-   "shops": [
-    "OCM-RETL-25-000355"
    ]
   },
   {
@@ -22364,18 +22386,6 @@
    ]
   },
   {
-   "brand": "Dank",
-   "strain": "Sunset Sherbert",
-   "thc": 30.28,
-   "before": [
-    29.25
-   ],
-   "first": "2026-11-23",
-   "shops": [
-    "OCM-CAURD-23-000038"
-   ]
-  },
-  {
    "brand": "ElectraLeaf",
    "strain": "Trop Cherry",
    "thc": 27.19,
@@ -22467,17 +22477,6 @@
    ]
   },
   {
-   "brand": "UNTITLED",
-   "strain": "*BLUEBERRY KUSH",
-   "thc": 31.49,
-   "before": [
-    26.09,
-    27.48
-   ],
-   "first": "2026-11-18",
-   "shops": []
-  },
-  {
    "brand": "Rolling Green Cannabis",
    "strain": "Grape Scotti",
    "thc": 35.73,
@@ -22521,6 +22520,17 @@
    "shops": []
   },
   {
+   "brand": "THE BOTANIST",
+   "strain": "OG CHEM HAZE",
+   "thc": 25.16,
+   "before": [
+    27.88,
+    29.2
+   ],
+   "first": "2026-11-20",
+   "shops": []
+  },
+  {
    "brand": "RYTHM",
    "strain": "Sour Diesel",
    "thc": 27.86,
@@ -22535,16 +22545,6 @@
    "shops": []
   },
   {
-   "brand": "URBAN XTRACTS",
-   "strain": "WILD CHERRY Z INDICA 1/2",
-   "thc": 32.69,
-   "before": [
-    34.13
-   ],
-   "first": "2026-11-20",
-   "shops": []
-  },
-  {
    "brand": "Botanist",
    "strain": "The Botanist Gelato",
    "thc": 27.69,
@@ -22552,6 +22552,17 @@
     25.29
    ],
    "first": "2026-11-21",
+   "shops": []
+  },
+  {
+   "brand": "Tall Trees Farm",
+   "strain": "Carbon Fiber",
+   "thc": 24.9,
+   "before": [
+    24.3,
+    30.93
+   ],
+   "first": "2026-11-23",
    "shops": []
   }
  ],
