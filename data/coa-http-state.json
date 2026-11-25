@@ -39,7 +39,7 @@
     "errors": 0
   },
   "https://hashtaghoneyofficial.com": {
-    "errors": 2
+    "errors": 0
   },
   "https://www.milkweed.life": {
     "errors": 0
@@ -198,8 +198,8 @@
     "errors": 0
   },
   "http://-content": {
-    "errors": 30,
-    "blockedUntil": "2026-11-24T22:09:42.277522+00:00"
+    "errors": 31,
+    "blockedUntil": "2026-11-26T20:25:01.025839+00:00"
   },
   "https://www.awalkinthepines.com": {
     "errors": 0
@@ -260,12 +260,12 @@
     "errors": 0
   },
   "https://v1": {
-    "errors": 33,
-    "blockedUntil": "2026-11-24T22:08:07.777406+00:00"
+    "errors": 34,
+    "blockedUntil": "2026-11-26T20:23:26.527874+00:00"
   },
   "https://czz.8a7.mytemp.website": {
-    "errors": 33,
-    "blockedUntil": "2026-11-24T22:08:16.489099+00:00"
+    "errors": 34,
+    "blockedUntil": "2026-11-26T20:23:35.198984+00:00"
   },
   "https://clearlyfaded.com": {
     "errors": 0
