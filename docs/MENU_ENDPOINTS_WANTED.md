@@ -1,6 +1,6 @@
 # Магазины, которым нужен адрес меню
 
-Работающих магазинов в реестре: **344**. Обход заходит в **258**, полку отдают **243**.
+Работающих магазинов в реестре: **344**. Обход заходит в **257**, полку отдают **241**.
 
 Этот файл собирается скриптом `scripts/menu-endpoints-wanted.py` по последнему прогону — правит его не рука, а следующий запуск.
 
@@ -29,7 +29,7 @@
 
 Проверить перед коммитом: `python scripts/validate-menu-endpoints.py`.
 
-## Пусто — 15
+## Пусто — 16
 
 | Магазин | Город | Сайт | Почему пусто |
 |---|---|---|---|
@@ -43,8 +43,9 @@
 | Empire Plant Services Holdings LLC | Farmingdale | https://www.theartisttree.com/farmingdale-dispensary/ | страница вернула ноль товаров |
 | FLUSHING CANNABIS CO | Flushing | https://flushingcannabis.com | ссылку на меню не нашли |
 | Mirae Corp | Flushing | https://pureleafflower.nyc | страница вернула ноль товаров |
-| LYFE | Long Island City | https://lyfeastoria.com/ | robots.txt запрещает — **не трогать** |
+| LYFE | Long Island City | https://lyfeastoria.com/ | страница вернула ноль товаров |
 | Ava Flower Co | New York | https://www.avaflowerco.com | страница вернула ноль товаров |
+| Nucleus Dispensary Inc. ✳️ | New York | https://nucleusdispensary.com | прочитано 376 товаров, ни один не цветок |
 | Up the River Cannabis Dispensary | Ossining | https://www.uptheriver914.com | robots.txt запрещает — **не трогать** |
 | Gaz Station | Staten Island | https://www.gazstationny.com | страница вернула ноль товаров |
 | Mindset Cannabis Shop | Tarrytown | https://mindsettarrytown.com | ссылку на меню не нашли |
@@ -57,16 +58,17 @@
 
 | Магазин | Держим | Меню объявляет | Сайт |
 |---|---:|---:|---|
-| Flower Hill | 29 | 895 | https://flowerhilldispensary.com |
-| JUST A LITTLE HIGHER MURRAY HILL | 8 | 113 | https://justalittlehigher.com |
-| OZ Dispensary | 90 | 138 | https://ozdispensary.com/ |
+| Flower Hill | 29 | 899 | https://flowerhilldispensary.com |
+| JUST A LITTLE HIGHER MURRAY HILL | 8 | 111 | https://justalittlehigher.com |
+| OZ Dispensary | 91 | 131 | https://ozdispensary.com/ |
 
 ## Сюда не ходим
 
 - **70** магазинов на паузе (`data/menu-paused.json`): их меню Dutchie открывается в окне dutchie.com, которое с 24.09 отвечает автоматическим браузерам только проверкой «вы не бот?». Плановый прогон к ним не ходит, на сайте остаётся их последняя прочитанная полка. Проверить, не открылся ли Dutchie, можно ручным прогоном «Dutchie menus, slowly».
 - **0** магазинов держат меню на Leafly или Weedmaps. Это чужая витрина, а не витрина магазина, и читать её мы не будем — адрес такого меню в файл добавлять не нужно.
 - **9** магазинов не имеют сайта в реестре; см. `docs/MISSING_WEBSITES.md`. Найдётся сайт — магазин сам попадёт в обход.
-- **7** магазинов запретили обход в своём `robots.txt`. Мы спросили и получили отказ — это ответ, а не пробел, и искать им адрес меню не нужно. Отказ обычно приходит не от магазина, а от платформы, на которой стоит его витрина, и тогда уходит не один магазин, а все её. Список только растёт: сайт, который не отдал `robots.txt`, считается разрешившим, так что попасть сюда можно лишь по ясно объявленному запрету.
+- **8** магазинов запретили обход в своём `robots.txt`. Мы спросили и получили отказ — это ответ, а не пробел, и искать им адрес меню не нужно. Отказ обычно приходит не от магазина, а от платформы, на которой стоит его витрина, и тогда уходит не один магазин, а все её. Список только растёт: сайт, который не отдал `robots.txt`, считается разрешившим, так что попасть сюда можно лишь по ясно объявленному запрету.
+  - High Tidez CI — Brooklyn, https://hightidezci.com
   - MZDZ Corp — Brooklyn, http://www.coneyislandcannabisny.com
   - Tiki Leaves LLC — Brooklyn, http://www.tikileaves.com
   - Kushie — Forest Hills, https://kushieny.com
