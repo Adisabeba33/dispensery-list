@@ -1600405,7 +1600405,7 @@
   {
     "listingId": "back-home-acapulco-gold",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Acapulco Gold",
     "strainNameCanonical": "Acapulco Gold",
     "brand": "Back Home",
@@ -1600477,7 +1600477,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1600485,7 +1600485,7 @@
   {
     "listingId": "left-coast-albany-1996-sour-diesel",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Albany 1996 Sour Diesel",
     "strainNameCanonical": "Albany 1996 Sour Diesel",
     "brand": "Left Coast",
@@ -1600520,7 +1600520,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1600528,7 +1600528,7 @@
   {
     "listingId": "electraleaf-alien-og",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Alien OG",
     "strainNameCanonical": "Alien OG",
     "brand": "Electraleaf",
@@ -1600563,7 +1600563,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1600571,7 +1600571,7 @@
   {
     "listingId": "left-coast-amherst-sour-diesel",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Amherst Sour Diesel",
     "strainNameCanonical": "Amherst Sour Diesel",
     "brand": "Left Coast",
@@ -1600606,7 +1600606,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1600614,7 +1600614,7 @@
   {
     "listingId": "dank-animal-cookies",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Animal Cookies",
     "strainNameCanonical": "Animal Cookies",
     "brand": "Dank",
@@ -1600649,7 +1600649,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1600657,7 +1600657,7 @@
   {
     "listingId": "rythm-animal-face",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Animal Face",
     "strainNameCanonical": "Animal Face",
     "brand": "Rythm",
@@ -1600743,7 +1600743,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1600751,7 +1600751,7 @@
   {
     "listingId": "synergy-apple-biscotti",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Apple Biscotti",
     "strainNameCanonical": "Apple Biscotti",
     "brand": "Synergy",
@@ -1600786,7 +1600786,50 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "mintz-apple-tartz",
+    "licenseNumber": "OCM-RETL-26-000489",
+    "capturedAt": "2026-11-27T19:46:46Z",
+    "strainNameRaw": "Apple Tartz",
+    "strainNameCanonical": "Apple Tartz",
+    "brand": "MINTZ",
+    "brandKey": "mintz",
+    "lineage": "SATIVA",
+    "thcPercent": 26.49,
+    "cbdPercent": 0.08,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": null,
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": "http://kushieny.com/menu/mintz/mintz-apple-tartz-flower-sativa-35g",
+    "description": null,
+    "sources": [
+      {
+        "url": "https://kushieny.com/menu/categories/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1600794,7 +1600837,7 @@
   {
     "listingId": "1937-astro-berry",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Astro Berry",
     "strainNameCanonical": "Astro Berry",
     "brand": "1937",
@@ -1600829,7 +1600872,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1600837,7 +1600880,7 @@
   {
     "listingId": "electraleaf-atf",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "ATF",
     "strainNameCanonical": "ATF",
     "brand": "Electraleaf",
@@ -1600872,7 +1600915,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1600880,7 +1600923,7 @@
   {
     "listingId": "dank-baby-yoda",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Baby Yoda",
     "strainNameCanonical": "Baby Yoda",
     "brand": "Dank",
@@ -1600915,7 +1600958,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1600923,7 +1600966,7 @@
   {
     "listingId": "bouket-banana-kush",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Banana Kush",
     "strainNameCanonical": "Banana Kush",
     "brand": "Bouket",
@@ -1600958,7 +1601001,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1600966,7 +1601009,7 @@
   {
     "listingId": "willie-s-reserve-berry-og",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Berry OG",
     "strainNameCanonical": "Berry OG",
     "brand": "Willie's Reserve",
@@ -1601001,7 +1601044,50 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "mintz-berry-white",
+    "licenseNumber": "OCM-RETL-26-000489",
+    "capturedAt": "2026-11-27T19:46:46Z",
+    "strainNameRaw": "Berry White",
+    "strainNameCanonical": "Berry White",
+    "brand": "MINTZ",
+    "brandKey": "mintz",
+    "lineage": "HYBRID",
+    "thcPercent": 32.95,
+    "cbdPercent": 0,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": null,
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": "http://kushieny.com/menu/mintz/mintz-berry-white-flower-hybrid-35g",
+    "description": null,
+    "sources": [
+      {
+        "url": "https://kushieny.com/menu/categories/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601009,7 +1601095,7 @@
   {
     "listingId": "florist-farms-black-runtz",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Black Runtz",
     "strainNameCanonical": "Black Runtz",
     "brand": "Florist Farms",
@@ -1601044,7 +1601130,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601052,7 +1601138,7 @@
   {
     "listingId": "electraleaf-blue-dream",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Blue Dream",
     "strainNameCanonical": "Blue Dream",
     "brand": "Electraleaf",
@@ -1601087,7 +1601173,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601095,7 +1601181,7 @@
   {
     "listingId": "left-coast-blue-dream",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Blue Dream",
     "strainNameCanonical": "Blue Dream",
     "brand": "Left Coast",
@@ -1601130,7 +1601216,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601138,7 +1601224,7 @@
   {
     "listingId": "synergy-blue-dream",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Blue Dream",
     "strainNameCanonical": "Blue Dream",
     "brand": "Synergy",
@@ -1601173,7 +1601259,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601181,7 +1601267,7 @@
   {
     "listingId": "synergy-blue-lobster",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Blue Lobster",
     "strainNameCanonical": "Blue Lobster",
     "brand": "Synergy",
@@ -1601216,7 +1601302,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601224,7 +1601310,7 @@
   {
     "listingId": "bouket-blue-nerdz-small-flower",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Blue Nerdz - Small Flower",
     "strainNameCanonical": "Blue Nerdz",
     "brand": "Bouket",
@@ -1601259,7 +1601345,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601267,7 +1601353,7 @@
   {
     "listingId": "synergy-blue-sherbert",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Blue Sherbert",
     "strainNameCanonical": "Blue Sherbert",
     "brand": "Synergy",
@@ -1601302,7 +1601388,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601310,7 +1601396,7 @@
   {
     "listingId": "milkweed-blueberry-blitz",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Blueberry Blitz",
     "strainNameCanonical": "Blueberry Blitz",
     "brand": "Milkweed",
@@ -1601381,7 +1601467,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601389,7 +1601475,7 @@
   {
     "listingId": "slack-hollow-blueberry-cupcake",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Blueberry Cupcake",
     "strainNameCanonical": "Blueberry Cupcake",
     "brand": "Slack Hollow",
@@ -1601424,7 +1601510,50 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "mintz-bruce-banner",
+    "licenseNumber": "OCM-RETL-26-000489",
+    "capturedAt": "2026-11-27T19:46:46Z",
+    "strainNameRaw": "Bruce Banner",
+    "strainNameCanonical": "Bruce Banner",
+    "brand": "MINTZ",
+    "brandKey": "mintz",
+    "lineage": "HYBRID",
+    "thcPercent": 23,
+    "cbdPercent": 0.06,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": null,
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": "http://kushieny.com/menu/mintz/mintz-bruce-banner-flower-hybrid-35g",
+    "description": null,
+    "sources": [
+      {
+        "url": "https://kushieny.com/menu/categories/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601432,7 +1601561,7 @@
   {
     "listingId": "good-green-bubba-fett-mixed-buds",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Bubba Fett - Mixed Buds",
     "strainNameCanonical": "Bubba Fett",
     "brand": "Good Green",
@@ -1601467,7 +1601596,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601475,7 +1601604,7 @@
   {
     "listingId": "electraleaf-bubba-kush",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Bubba Kush",
     "strainNameCanonical": "Bubba Kush",
     "brand": "Electraleaf",
@@ -1601510,7 +1601639,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601518,7 +1601647,7 @@
   {
     "listingId": "electraleaf-bubble-bath",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Bubble Bath",
     "strainNameCanonical": "Bubble Bath",
     "brand": "Electraleaf",
@@ -1601553,7 +1601682,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601561,7 +1601690,7 @@
   {
     "listingId": "left-coast-buffalo-cheese",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Buffalo Cheese",
     "strainNameCanonical": "Buffalo Cheese",
     "brand": "Left Coast",
@@ -1601596,7 +1601725,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601604,7 +1601733,7 @@
   {
     "listingId": "left-coast-cake-bomb",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Cake Bomb",
     "strainNameCanonical": "Cake Bomb",
     "brand": "Left Coast",
@@ -1601680,7 +1601809,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601688,7 +1601817,7 @@
   {
     "listingId": "bouket-cap-junkie",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Cap Junkie",
     "strainNameCanonical": "Cap Junkie",
     "brand": "Bouket",
@@ -1601723,7 +1601852,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601731,7 +1601860,7 @@
   {
     "listingId": "left-coast-cap-junky",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Cap Junky",
     "strainNameCanonical": "Cap Junky",
     "brand": "Left Coast",
@@ -1601766,7 +1601895,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601774,7 +1601903,7 @@
   {
     "listingId": "electraleaf-cereal-milk",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Cereal Milk",
     "strainNameCanonical": "Cereal Milk",
     "brand": "Electraleaf",
@@ -1601809,7 +1601938,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601817,7 +1601946,7 @@
   {
     "listingId": "1937-chemd-x-i95",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "ChemD x I95",
     "strainNameCanonical": "ChemD x I95",
     "brand": "1937",
@@ -1601852,7 +1601981,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601860,7 +1601989,7 @@
   {
     "listingId": "synergy-cherries",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Cherries",
     "strainNameCanonical": "Cherries",
     "brand": "Synergy",
@@ -1601895,7 +1602024,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1601903,7 +1602032,7 @@
   {
     "listingId": "rythm-cherry-maui-wowie",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Cherry Maui Wowie",
     "strainNameCanonical": "Cherry Maui Wowie",
     "brand": "Rythm",
@@ -1601994,50 +1602123,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "bouket-cherry-paloma",
-    "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
-    "strainNameRaw": "Cherry Paloma",
-    "strainNameCanonical": "Cherry Paloma",
-    "brand": "Bouket",
-    "brandKey": "bouket",
-    "lineage": "INDICA",
-    "thcPercent": 29.35,
-    "cbdPercent": 0,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": null,
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": "http://kushieny.com/menu/bouket/bouket-cherry-paloma-flower-indica-35g",
-    "description": null,
-    "sources": [
-      {
-        "url": "https://kushieny.com/menu/categories/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602045,7 +1602131,7 @@
   {
     "listingId": "1937-cinderella",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Cinderella",
     "strainNameCanonical": "Cinderella",
     "brand": "1937",
@@ -1602126,7 +1602212,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602134,7 +1602220,7 @@
   {
     "listingId": "claybourne-claybourne-cc-purple-chem",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Claybourne CC - Purple Chem",
     "strainNameCanonical": "Claybourne CC - Purple Chem",
     "brand": "Claybourne",
@@ -1602169,7 +1602255,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602177,7 +1602263,7 @@
   {
     "listingId": "dank-critical-jack",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Critical Jack",
     "strainNameCanonical": "Critical Jack",
     "brand": "Dank",
@@ -1602212,7 +1602298,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602220,7 +1602306,7 @@
   {
     "listingId": "dank-dank-orange-soda",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Dank |Orange Soda",
     "strainNameCanonical": "Orange Soda",
     "brand": "Dank",
@@ -1602255,7 +1602341,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602263,7 +1602349,7 @@
   {
     "listingId": "bouket-dark-matter-og",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Dark Matter OG",
     "strainNameCanonical": "Dark Matter OG",
     "brand": "Bouket",
@@ -1602298,7 +1602384,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602306,7 +1602392,7 @@
   {
     "listingId": "honest-pharm-co-double-runtz",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Double Runtz",
     "strainNameCanonical": "Double Runtz",
     "brand": "Honest Pharm Co",
@@ -1602341,7 +1602427,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602349,7 +1602435,7 @@
   {
     "listingId": "electraleaf-east-side-og",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "East Side OG",
     "strainNameCanonical": "East Side OG",
     "brand": "Electraleaf",
@@ -1602384,7 +1602470,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602392,7 +1602478,7 @@
   {
     "listingId": "bouket-ethanol-33",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Ethanol #33",
     "strainNameCanonical": "Ethanol #33",
     "brand": "Bouket",
@@ -1602427,7 +1602513,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602435,7 +1602521,7 @@
   {
     "listingId": "kings-queens-frosted-flakes",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Frosted Flakes",
     "strainNameCanonical": "Frosted Flakes",
     "brand": "Kings & Queens",
@@ -1602470,7 +1602556,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602478,7 +1602564,7 @@
   {
     "listingId": "knack-fruit-stripez",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Fruit Stripez",
     "strainNameCanonical": "Fruit Stripez",
     "brand": "Knack",
@@ -1602513,7 +1602599,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602521,7 +1602607,7 @@
   {
     "listingId": "knack-funk-bomb",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Funk Bomb",
     "strainNameCanonical": "Funk Bomb",
     "brand": "Knack",
@@ -1602556,7 +1602642,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602564,7 +1602650,7 @@
   {
     "listingId": "animal-house-g6",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "G6",
     "strainNameCanonical": "G6",
     "brand": "Animal House",
@@ -1602599,7 +1602685,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602607,7 +1602693,7 @@
   {
     "listingId": "animal-house-gazzurple",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Gazzurple",
     "strainNameCanonical": "Gazzurple",
     "brand": "Animal House",
@@ -1602642,7 +1602728,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602650,7 +1602736,7 @@
   {
     "listingId": "dank-gelato-skittlez",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Gelato Skittlez",
     "strainNameCanonical": "Gelato Skittlez",
     "brand": "Dank",
@@ -1602726,7 +1602812,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602734,7 +1602820,7 @@
   {
     "listingId": "ghost-gelato-z",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Gelato Z",
     "strainNameCanonical": "Gelato Z",
     "brand": "Ghost",
@@ -1602769,7 +1602855,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602777,7 +1602863,7 @@
   {
     "listingId": "vop-gello-gelato",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Gello Gelato",
     "strainNameCanonical": "Gello Gelato",
     "brand": "VOP",
@@ -1602853,7 +1602939,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602861,7 +1602947,7 @@
   {
     "listingId": "bouket-gmo-punch",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "GMO Punch",
     "strainNameCanonical": "GMO Punch",
     "brand": "Bouket",
@@ -1602896,7 +1602982,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602904,7 +1602990,7 @@
   {
     "listingId": "electraleaf-godzilla-glue",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Godzilla Glue",
     "strainNameCanonical": "Godzilla Glue",
     "brand": "Electraleaf",
@@ -1602939,7 +1603025,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602947,7 +1603033,7 @@
   {
     "listingId": "knack-golden-ring",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Golden Ring",
     "strainNameCanonical": "Golden Ring",
     "brand": "Knack",
@@ -1602982,7 +1603068,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1602990,7 +1603076,7 @@
   {
     "listingId": "bouket-gorilla-glue-4",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Gorilla Glue #4",
     "strainNameCanonical": "Gorilla Glue #4",
     "brand": "Bouket",
@@ -1603071,7 +1603157,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603079,7 +1603165,7 @@
   {
     "listingId": "florist-farms-gorilla-guava",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Gorilla Guava",
     "strainNameCanonical": "Gorilla Guava",
     "brand": "Florist Farms",
@@ -1603114,7 +1603200,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603122,7 +1603208,7 @@
   {
     "listingId": "rythm-granny-candy-small-flower",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Granny Candy - Small Flower",
     "strainNameCanonical": "Granny Candy",
     "brand": "Rythm",
@@ -1603203,7 +1603289,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603211,7 +1603297,7 @@
   {
     "listingId": "dank-grape-gasoline",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Grape Gasoline",
     "strainNameCanonical": "Grape Gasoline",
     "brand": "Dank",
@@ -1603292,7 +1603378,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603300,7 +1603386,7 @@
   {
     "listingId": "animal-house-grape-gluttony",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Grape Gluttony",
     "strainNameCanonical": "Grape Gluttony",
     "brand": "Animal House",
@@ -1603335,7 +1603421,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603343,7 +1603429,7 @@
   {
     "listingId": "the-botanist-grape-mochi",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Grape Mochi",
     "strainNameCanonical": "Grape Mochi",
     "brand": "The Botanist",
@@ -1603378,7 +1603464,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603386,7 +1603472,7 @@
   {
     "listingId": "electraleaf-han-solo-burger",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Han Solo Burger",
     "strainNameCanonical": "Han Solo Burger",
     "brand": "Electraleaf",
@@ -1603421,7 +1603507,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603429,7 +1603515,7 @@
   {
     "listingId": "kings-queens-hellcat",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Hellcat",
     "strainNameCanonical": "Hellcat",
     "brand": "Kings & Queens",
@@ -1603495,7 +1603581,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603503,7 +1603589,7 @@
   {
     "listingId": "kings-queens-highball",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Highball",
     "strainNameCanonical": "Highball",
     "brand": "Kings & Queens",
@@ -1603538,7 +1603624,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603546,7 +1603632,7 @@
   {
     "listingId": "honest-farms-honest-pharm-co-chemdawg",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Honest Pharm Co - Chemdawg",
     "strainNameCanonical": "Chemdawg",
     "brand": "Honest Farms",
@@ -1603581,7 +1603667,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603589,7 +1603675,7 @@
   {
     "listingId": "left-coast-honey-banana",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Honey Banana",
     "strainNameCanonical": "Honey Banana",
     "brand": "Left Coast",
@@ -1603670,7 +1603756,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603678,7 +1603764,7 @@
   {
     "listingId": "1937-hood-candy",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Hood Candy",
     "strainNameCanonical": "Hood Candy",
     "brand": "1937",
@@ -1603713,7 +1603799,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603721,7 +1603807,7 @@
   {
     "listingId": "bouket-hot-sauce-small-flower",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Hot Sauce - Small Flower",
     "strainNameCanonical": "Hot Sauce",
     "brand": "Bouket",
@@ -1603756,7 +1603842,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603764,7 +1603850,7 @@
   {
     "listingId": "back-home-ice-cream-cake",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Ice Cream Cake",
     "strainNameCanonical": "Ice Cream Cake",
     "brand": "Back Home",
@@ -1603799,7 +1603885,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603807,7 +1603893,7 @@
   {
     "listingId": "left-coast-ice-cream-cake",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Ice Cream Cake",
     "strainNameCanonical": "Ice Cream Cake",
     "brand": "Left Coast",
@@ -1603842,7 +1603928,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603850,7 +1603936,7 @@
   {
     "listingId": "edie-parker-ice-cream-mintz",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Ice Cream Mintz",
     "strainNameCanonical": "Ice Cream Mintz",
     "brand": "Edie Parker",
@@ -1603921,7 +1604007,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603929,7 +1604015,7 @@
   {
     "listingId": "bouket-indoor-honeymoon-diesel",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Indoor Honeymoon Diesel",
     "strainNameCanonical": "Honeymoon Diesel",
     "brand": "Bouket",
@@ -1603964,7 +1604050,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1603972,7 +1604058,7 @@
   {
     "listingId": "vop-indoor-runtz-x-sunset-sherbert",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Indoor Runtz X Sunset Sherbert",
     "strainNameCanonical": "Runtz X Sunset Sherbert",
     "brand": "VOP",
@@ -1604043,7 +1604129,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604051,7 +1604137,7 @@
   {
     "listingId": "bouket-indoor-sunkist",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Indoor Sunkist",
     "strainNameCanonical": "Sunkist",
     "brand": "Bouket",
@@ -1604117,7 +1604203,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604125,7 +1604211,7 @@
   {
     "listingId": "1937-island-ice",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Island Ice",
     "strainNameCanonical": "Island Ice",
     "brand": "1937",
@@ -1604160,7 +1604246,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604168,7 +1604254,7 @@
   {
     "listingId": "back-home-jack-herer",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Jack Herer",
     "strainNameCanonical": "Jack Herer",
     "brand": "Back Home",
@@ -1604245,7 +1604331,66 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "willie-s-reserve-jack-herer",
+    "licenseNumber": "OCM-RETL-26-000489",
+    "capturedAt": "2026-11-27T19:46:46Z",
+    "strainNameRaw": "Jack Herer",
+    "strainNameCanonical": "Jack Herer",
+    "brand": "Willie's Reserve",
+    "brandKey": "williesreserve",
+    "lineage": "SATIVA",
+    "thcPercent": 21.16,
+    "cbdPercent": 0.05,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "MENU_LISTING",
+      "profile": [
+        {
+          "name": "CARYOPHYLLENE",
+          "rawName": null,
+          "percent": 0.42
+        },
+        {
+          "name": "HUMULENE",
+          "rawName": null,
+          "percent": 0.2
+        },
+        {
+          "name": "TERPINOLENE",
+          "rawName": null,
+          "percent": 0.21
+        }
+      ],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": null,
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": "http://kushieny.com/menu/willies-reserve/willies-reserve-jack-herer-flower-sativa-35g",
+    "description": null,
+    "sources": [
+      {
+        "url": "https://kushieny.com/menu/categories/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604253,7 +1604398,7 @@
   {
     "listingId": "bouket-jack-knife-large-flower",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Jack Knife - Large Flower",
     "strainNameCanonical": "Jack Knife",
     "brand": "Bouket",
@@ -1604288,50 +1604433,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "good-green-jahspresso",
-    "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
-    "strainNameRaw": "Jahspresso",
-    "strainNameCanonical": "Jahspresso",
-    "brand": "Good Green",
-    "brandKey": "goodgreen",
-    "lineage": "SATIVA",
-    "thcPercent": 22.67,
-    "cbdPercent": 0,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": null,
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      28
-    ],
-    "productUrl": "http://kushieny.com/menu/good-green/good-green-jahspresso-flower-sativa-28g",
-    "description": null,
-    "sources": [
-      {
-        "url": "https://kushieny.com/menu/categories/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604339,7 +1604441,7 @@
   {
     "listingId": "left-coast-jellie-pie",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Jellie Pie",
     "strainNameCanonical": "Jellie Pie",
     "brand": "Left Coast",
@@ -1604374,7 +1604476,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604382,7 +1604484,7 @@
   {
     "listingId": "bouket-jungle-king",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Jungle King",
     "strainNameCanonical": "Jungle King",
     "brand": "Bouket",
@@ -1604417,7 +1604519,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604425,7 +1604527,7 @@
   {
     "listingId": "miss-grass-kilimanjaro",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Kilimanjaro",
     "strainNameCanonical": "Kilimanjaro",
     "brand": "Miss Grass",
@@ -1604511,50 +1604613,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "kings-queens-kingdom-og",
-    "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
-    "strainNameRaw": "Kingdom OG",
-    "strainNameCanonical": "Kingdom OG",
-    "brand": "Kings & Queens",
-    "brandKey": "kingsqueens",
-    "lineage": "INDICA",
-    "thcPercent": 32.72,
-    "cbdPercent": 0,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": null,
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": "http://kushieny.com/menu/kings-queens/kings-and-queens-kingdom-og-flower-indica-35g",
-    "description": null,
-    "sources": [
-      {
-        "url": "https://kushieny.com/menu/categories/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604562,7 +1604621,7 @@
   {
     "listingId": "knack-knack-black-kush-mints",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Knack Black - Kush Mints",
     "strainNameCanonical": "Kush Mints",
     "brand": "Knack",
@@ -1604597,7 +1604656,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604605,7 +1604664,7 @@
   {
     "listingId": "good-green-kosher-kush",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Kosher Kush",
     "strainNameCanonical": "Kosher Kush",
     "brand": "Good Green",
@@ -1604640,7 +1604699,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604648,7 +1604707,7 @@
   {
     "listingId": "good-green-kosher-kush-mixed-buds",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Kosher Kush - Mixed Buds",
     "strainNameCanonical": "Kosher Kush",
     "brand": "Good Green",
@@ -1604683,7 +1604742,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604691,7 +1604750,7 @@
   {
     "listingId": "florist-farms-la-bomba",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "La Bomba",
     "strainNameCanonical": "La Bomba",
     "brand": "Florist Farms",
@@ -1604727,7 +1604786,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604735,7 +1604794,7 @@
   {
     "listingId": "good-green-la-kush-cake",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "LA Kush Cake",
     "strainNameCanonical": "LA Kush Cake",
     "brand": "Good Green",
@@ -1604811,7 +1604870,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604819,7 +1604878,7 @@
   {
     "listingId": "dank-lemon-berry-diesel",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Lemon Berry Diesel",
     "strainNameCanonical": "Lemon Berry Diesel",
     "brand": "Dank",
@@ -1604905,7 +1604964,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604913,7 +1604972,7 @@
   {
     "listingId": "electraleaf-lemon-cherry-diesel",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Lemon Cherry Diesel",
     "strainNameCanonical": "Lemon Cherry Diesel",
     "brand": "Electraleaf",
@@ -1604948,7 +1605007,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604956,7 +1605015,7 @@
   {
     "listingId": "synergy-lemon-cherry-gelato",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Lemon Cherry Gelato",
     "strainNameCanonical": "Lemon Cherry Gelato",
     "brand": "Synergy",
@@ -1604991,7 +1605050,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1604999,7 +1605058,7 @@
   {
     "listingId": "electraleaf-lemonatti",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Lemonatti",
     "strainNameCanonical": "Lemonatti",
     "brand": "Electraleaf",
@@ -1605034,7 +1605093,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1605042,7 +1605101,7 @@
   {
     "listingId": "lion-order-lions-order-og-hurricane",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Lions Order - OG Hurricane",
     "strainNameCanonical": "OG Hurricane",
     "brand": "Lion Order",
@@ -1605077,7 +1605136,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1605085,7 +1605144,7 @@
   {
     "listingId": "lion-order-lions-order-orangutan",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Lions Order - Orangutan",
     "strainNameCanonical": "Orangutan",
     "brand": "Lion Order",
@@ -1605120,7 +1605179,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1605128,7 +1605187,7 @@
   {
     "listingId": "lion-order-lions-order-runna-gal",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Lions Order - Runna Gal",
     "strainNameCanonical": "Runna Gal",
     "brand": "Lion Order",
@@ -1605163,7 +1605222,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1605171,7 +1605230,7 @@
   {
     "listingId": "lion-order-lions-order-sunshine-kush",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Lions Order - Sunshine Kush",
     "strainNameCanonical": "Sunshine Kush",
     "brand": "Lion Order",
@@ -1605206,50 +1605265,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "rythm-lorange",
-    "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
-    "strainNameRaw": "LOrange",
-    "strainNameCanonical": "LOrange",
-    "brand": "Rythm",
-    "brandKey": "rythm",
-    "lineage": "SATIVA_DOMINANT",
-    "thcPercent": 21.1,
-    "cbdPercent": 0,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": null,
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      28
-    ],
-    "productUrl": "http://kushieny.com/menu/rythm/rythm-lorange-flower-sativa-dom-28g",
-    "description": null,
-    "sources": [
-      {
-        "url": "https://kushieny.com/menu/categories/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1605257,7 +1605273,7 @@
   {
     "listingId": "animal-house-madd-fruit",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Madd Fruit",
     "strainNameCanonical": "Madd Fruit",
     "brand": "Animal House",
@@ -1605292,7 +1605308,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1605300,7 +1605316,7 @@
   {
     "listingId": "back-home-maui-wowie",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Maui Wowie",
     "strainNameCanonical": "Maui Wowie",
     "brand": "Back Home",
@@ -1605386,7 +1605402,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1605394,7 +1605410,7 @@
   {
     "listingId": "dank-megan-fox",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Megan Fox",
     "strainNameCanonical": "Megan Fox",
     "brand": "Dank",
@@ -1605465,7 +1605481,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1605473,7 +1605489,7 @@
   {
     "listingId": "dank-memory-loss",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Memory Loss",
     "strainNameCanonical": "Memory Loss",
     "brand": "Dank",
@@ -1605559,7 +1605575,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1605567,7 +1605583,7 @@
   {
     "listingId": "1937-menace-og",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Menace OG",
     "strainNameCanonical": "Menace OG",
     "brand": "1937",
@@ -1605602,50 +1605618,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
-      }
-    ],
-    "warnings": []
-  },
-  {
-    "listingId": "the-botanist-mimosa",
-    "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
-    "strainNameRaw": "Mimosa",
-    "strainNameCanonical": "Mimosa",
-    "brand": "The Botanist",
-    "brandKey": "thebotanist",
-    "lineage": "SATIVA",
-    "thcPercent": 91.98,
-    "cbdPercent": 0.28,
-    "totalCannabinoidsPercent": null,
-    "terpenes": {
-      "source": "NONE",
-      "profile": [],
-      "totalPercent": null,
-      "labName": null,
-      "testedOn": null,
-      "coaUrl": null,
-      "referenceStrain": null
-    },
-    "labPanelKey": null,
-    "packageIds": null,
-    "harvestedOn": null,
-    "packagedOn": null,
-    "expiresOn": null,
-    "expiresWithinDays": null,
-    "inStock": true,
-    "availableSizesGrams": [
-      3.5
-    ],
-    "productUrl": "http://kushieny.com/menu/the-botanist/the-botanist-mimosa-flower-sativa-35g",
-    "description": null,
-    "sources": [
-      {
-        "url": "https://kushieny.com/menu/categories/flower",
-        "label": "Shop menu",
-        "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1605653,7 +1605626,7 @@
   {
     "listingId": "kings-queens-mind-twist",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Mind Twist",
     "strainNameCanonical": "Mind Twist",
     "brand": "Kings & Queens",
@@ -1605688,7 +1605661,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1605696,7 +1605669,7 @@
   {
     "listingId": "synergy-mochi",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Mochi",
     "strainNameCanonical": "Mochi",
     "brand": "Synergy",
@@ -1605731,7 +1605704,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1605739,7 +1605712,7 @@
   {
     "listingId": "left-coast-mochi-melon-4",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Mochi Melon #4",
     "strainNameCanonical": "Mochi Melon #4",
     "brand": "Left Coast",
@@ -1605774,7 +1605747,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1605782,7 +1605755,7 @@
   {
     "listingId": "left-coast-monster-cookie",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Monster Cookie",
     "strainNameCanonical": "Monster Cookie",
     "brand": "Left Coast",
@@ -1605868,7 +1605841,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1605876,7 +1605849,7 @@
   {
     "listingId": "sp-farms-moonbow-living-soil-indoor-flower",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Moonbow - Living Soil Indoor Flower",
     "strainNameCanonical": "Moonbow - Living Soil",
     "brand": "SP Farms",
@@ -1605911,7 +1605884,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1605919,7 +1605892,7 @@
   {
     "listingId": "electraleaf-motor-breath",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Motor Breath",
     "strainNameCanonical": "Motor Breath",
     "brand": "Electraleaf",
@@ -1606000,7 +1605973,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606008,7 +1605981,7 @@
   {
     "listingId": "florist-farms-mule-fuel",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Mule Fuel",
     "strainNameCanonical": "Mule Fuel",
     "brand": "Florist Farms",
@@ -1606044,7 +1606017,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606052,7 +1606025,7 @@
   {
     "listingId": "kings-queens-neon-flamingo",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Neon Flamingo",
     "strainNameCanonical": "Neon Flamingo",
     "brand": "Kings & Queens",
@@ -1606133,7 +1606106,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606141,7 +1606114,7 @@
   {
     "listingId": "back-home-northern-lights",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Northern Lights",
     "strainNameCanonical": "Northern Lights",
     "brand": "Back Home",
@@ -1606208,7 +1606181,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606216,7 +1606189,7 @@
   {
     "listingId": "dank-northern-lights",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Northern Lights",
     "strainNameCanonical": "Northern Lights",
     "brand": "Dank",
@@ -1606251,7 +1606224,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606259,7 +1606232,7 @@
   {
     "listingId": "animal-house-notorious-cherry",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Notorious Cherry",
     "strainNameCanonical": "Notorious Cherry",
     "brand": "Animal House",
@@ -1606294,7 +1606267,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606302,7 +1606275,7 @@
   {
     "listingId": "dank-og-kush",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "OG Kush",
     "strainNameCanonical": "OG Kush",
     "brand": "Dank",
@@ -1606383,7 +1606356,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606391,7 +1606364,7 @@
   {
     "listingId": "bouket-oleander-kush",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Oleander Kush",
     "strainNameCanonical": "Oleander Kush",
     "brand": "Bouket",
@@ -1606426,7 +1606399,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606434,7 +1606407,7 @@
   {
     "listingId": "operator-operator-shooter-thc-bomb",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Operator Shooter - THC Bomb",
     "strainNameCanonical": "Operator Shooter",
     "brand": "Operator",
@@ -1606515,7 +1606488,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606523,7 +1606496,7 @@
   {
     "listingId": "the-botanist-orange-slice-nebula",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Orange Slice Nebula",
     "strainNameCanonical": "Orange Slice Nebula",
     "brand": "The Botanist",
@@ -1606609,7 +1606582,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606617,7 +1606590,7 @@
   {
     "listingId": "knack-outsider-og",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Outsider OG",
     "strainNameCanonical": "Outsider OG",
     "brand": "Knack",
@@ -1606652,7 +1606625,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606660,7 +1606633,7 @@
   {
     "listingId": "electraleaf-pablo-s-revenge",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Pablo's Revenge",
     "strainNameCanonical": "Pablo's Revenge",
     "brand": "Electraleaf",
@@ -1606695,7 +1606668,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606703,7 +1606676,7 @@
   {
     "listingId": "back-home-panama-red",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Panama Red",
     "strainNameCanonical": "Panama Red",
     "brand": "Back Home",
@@ -1606738,7 +1606711,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606746,7 +1606719,7 @@
   {
     "listingId": "dank-papaya-cake",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Papaya Cake",
     "strainNameCanonical": "Papaya Cake",
     "brand": "Dank",
@@ -1606781,7 +1606754,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606789,7 +1606762,7 @@
   {
     "listingId": "knack-paris-kush",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Paris Kush",
     "strainNameCanonical": "Paris Kush",
     "brand": "Knack",
@@ -1606824,7 +1606797,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606832,7 +1606805,7 @@
   {
     "listingId": "ghost-pb-cookies",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "PB Cookies",
     "strainNameCanonical": "PB Cookies",
     "brand": "Ghost",
@@ -1606867,7 +1606840,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606875,7 +1606848,7 @@
   {
     "listingId": "milkweed-permanent-chimera",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Permanent Chimera",
     "strainNameCanonical": "Permanent Chimera",
     "brand": "Milkweed",
@@ -1606941,7 +1606914,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1606949,13 +1606922,13 @@
   {
     "listingId": "back-home-pineapple-express",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Pineapple Express",
     "strainNameCanonical": "Pineapple Express",
     "brand": "Back Home",
     "brandKey": "backhome",
-    "lineage": "SATIVA",
-    "thcPercent": 24.44,
+    "lineage": "SATIVA_DOMINANT",
+    "thcPercent": 20.13,
     "cbdPercent": 0,
     "totalCannabinoidsPercent": null,
     "terpenes": {
@@ -1607019,14 +1606992,14 @@
       3.5,
       14
     ],
-    "productUrl": "http://kushieny.com/menu/back-home/back-home-pineapple-express-flower-sativa-35g",
+    "productUrl": "http://kushieny.com/menu/back-home/back-home-pineapple-express-flower-sativa-hybrid-14-g",
     "description": null,
     "sources": [
       {
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607034,7 +1607007,7 @@
   {
     "listingId": "bouket-pineapple-kush-small-flower",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Pineapple Kush - Small Flower",
     "strainNameCanonical": "Pineapple Kush",
     "brand": "Bouket",
@@ -1607069,7 +1607042,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607077,7 +1607050,7 @@
   {
     "listingId": "electraleaf-pink-zushi",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Pink Zushi",
     "strainNameCanonical": "Pink Zushi",
     "brand": "Electraleaf",
@@ -1607112,7 +1607085,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607120,7 +1607093,7 @@
   {
     "listingId": "dank-planet-of-the-grapes",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Planet of the Grapes",
     "strainNameCanonical": "Planet of the Grapes",
     "brand": "Dank",
@@ -1607196,7 +1607169,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607204,7 +1607177,7 @@
   {
     "listingId": "dank-platinum-gorilla",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Platinum Gorilla",
     "strainNameCanonical": "Platinum Gorilla",
     "brand": "Dank",
@@ -1607285,7 +1607258,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607293,7 +1607266,7 @@
   {
     "listingId": "florist-farms-private-party",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Private Party",
     "strainNameCanonical": "Private Party",
     "brand": "Florist Farms",
@@ -1607328,7 +1607301,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607336,7 +1607309,7 @@
   {
     "listingId": "knack-purple-brulee",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Purple Brulee",
     "strainNameCanonical": "Purple Brulee",
     "brand": "Knack",
@@ -1607371,7 +1607344,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607379,7 +1607352,7 @@
   {
     "listingId": "back-home-rainbow-belts",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Rainbow Belts",
     "strainNameCanonical": "Rainbow Belts",
     "brand": "Back Home",
@@ -1607414,7 +1607387,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607422,7 +1607395,7 @@
   {
     "listingId": "sp-farms-rainbow-gelato-living-soil-indoor-flower",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Rainbow Gelato - Living Soil Indoor Flower",
     "strainNameCanonical": "Rainbow Gelato - Living Soil",
     "brand": "SP Farms",
@@ -1607457,7 +1607430,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607465,7 +1607438,7 @@
   {
     "listingId": "animal-house-rancid-fruit",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Rancid Fruit",
     "strainNameCanonical": "Rancid Fruit",
     "brand": "Animal House",
@@ -1607500,7 +1607473,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607508,7 +1607481,7 @@
   {
     "listingId": "dank-randy-marsh",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Randy Marsh",
     "strainNameCanonical": "Randy Marsh",
     "brand": "Dank",
@@ -1607543,7 +1607516,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607551,7 +1607524,7 @@
   {
     "listingId": "good-green-sherb-cream-pie-mixed-buds",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Sherb Cream Pie - Mixed Buds",
     "strainNameCanonical": "Sherb Cream Pie",
     "brand": "Good Green",
@@ -1607586,7 +1607559,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607594,7 +1607567,7 @@
   {
     "listingId": "1937-silver-surfer",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Silver Surfer",
     "strainNameCanonical": "Silver Surfer",
     "brand": "1937",
@@ -1607629,7 +1607602,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607637,7 +1607610,7 @@
   {
     "listingId": "bouket-sky-fire-og",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Sky Fire OG",
     "strainNameCanonical": "Sky Fire OG",
     "brand": "Bouket",
@@ -1607672,7 +1607645,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607680,7 +1607653,7 @@
   {
     "listingId": "slack-hollow-slack-hollow-organic-blue-dream",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Slack Hollow Organic - Blue Dream",
     "strainNameCanonical": "Slack Hollow Organic - Blue Dream",
     "brand": "Slack Hollow",
@@ -1607716,7 +1607689,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607724,7 +1607697,7 @@
   {
     "listingId": "slack-hollow-slack-hollow-organic-candy-fumez",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Slack Hollow Organic - Candy Fumez",
     "strainNameCanonical": "Slack Hollow Organic - Candy Fumez",
     "brand": "Slack Hollow",
@@ -1607759,7 +1607732,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607767,7 +1607740,7 @@
   {
     "listingId": "slack-hollow-slack-hollow-organic-guzzlerz",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Slack Hollow Organic - Guzzlerz",
     "strainNameCanonical": "Slack Hollow Organic - Guzzlerz",
     "brand": "Slack Hollow",
@@ -1607802,7 +1607775,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607810,7 +1607783,7 @@
   {
     "listingId": "slack-hollow-slack-hollow-organic-jet-fuel-gelato",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Slack Hollow Organic| Jet Fuel Gelato",
     "strainNameCanonical": "Slack Hollow Organic - Jet Fuel Gelato",
     "brand": "Slack Hollow",
@@ -1607845,7 +1607818,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607853,7 +1607826,7 @@
   {
     "listingId": "synergy-sour-diesel",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Sour Diesel",
     "strainNameCanonical": "Sour Diesel",
     "brand": "Synergy",
@@ -1607888,7 +1607861,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607896,7 +1607869,7 @@
   {
     "listingId": "sp-farms-sour-diesel-living-soil-indoor-flower",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Sour Diesel - Living Soil Indoor Flower",
     "strainNameCanonical": "Sour Diesel - Living Soil",
     "brand": "SP Farms",
@@ -1607931,7 +1607904,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607939,7 +1607912,7 @@
   {
     "listingId": "good-green-sour-diesel-mixed-buds",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Sour Diesel - Mixed Buds",
     "strainNameCanonical": "Sour Diesel",
     "brand": "Good Green",
@@ -1607974,7 +1607947,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1607982,7 +1607955,7 @@
   {
     "listingId": "edie-parker-sour-jack",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Sour Jack",
     "strainNameCanonical": "Sour Jack",
     "brand": "Edie Parker",
@@ -1608017,7 +1607990,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608025,7 +1607998,7 @@
   {
     "listingId": "milkweed-sour-sherbanger",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Sour Sherbanger",
     "strainNameCanonical": "Sour Sherbanger",
     "brand": "Milkweed",
@@ -1608086,7 +1608059,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608094,7 +1608067,7 @@
   {
     "listingId": "bouket-sour-summit",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Sour Summit",
     "strainNameCanonical": "Sour Summit",
     "brand": "Bouket",
@@ -1608129,7 +1608102,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608137,7 +1608110,7 @@
   {
     "listingId": "electraleaf-starworld",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Starworld",
     "strainNameCanonical": "Starworld",
     "brand": "Electraleaf",
@@ -1608172,7 +1608145,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608180,7 +1608153,7 @@
   {
     "listingId": "florist-farms-strawberries-cream",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Strawberries & Cream",
     "strainNameCanonical": "Strawberries & Cream",
     "brand": "Florist Farms",
@@ -1608215,7 +1608188,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608223,7 +1608196,7 @@
   {
     "listingId": "edie-parker-sugar-breath",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Sugar Breath",
     "strainNameCanonical": "Sugar Breath",
     "brand": "Edie Parker",
@@ -1608309,7 +1608282,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608317,7 +1608290,7 @@
   {
     "listingId": "kings-queens-sunnyside-og",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Sunnyside OG",
     "strainNameCanonical": "Sunnyside OG",
     "brand": "Kings & Queens",
@@ -1608352,7 +1608325,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608360,7 +1608333,7 @@
   {
     "listingId": "electraleaf-super-lemon-diesel",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Super Lemon Diesel",
     "strainNameCanonical": "Super Lemon Diesel",
     "brand": "Electraleaf",
@@ -1608411,7 +1608384,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608419,7 +1608392,7 @@
   {
     "listingId": "back-home-super-lemon-haze",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Super Lemon Haze",
     "strainNameCanonical": "Super Lemon Haze",
     "brand": "Back Home",
@@ -1608496,7 +1608469,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608504,7 +1608477,7 @@
   {
     "listingId": "synergy-super-lemon-haze",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Super Lemon Haze",
     "strainNameCanonical": "Super Lemon Haze",
     "brand": "Synergy",
@@ -1608539,7 +1608512,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608547,7 +1608520,7 @@
   {
     "listingId": "vop-super-runtz-x-sherbanger",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Super Runtz x Sherbanger",
     "strainNameCanonical": "Super Runtz x Sherbanger",
     "brand": "VOP",
@@ -1608582,7 +1608555,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608590,7 +1608563,7 @@
   {
     "listingId": "bouket-sweet-exhale",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Sweet Exhale",
     "strainNameCanonical": "Sweet Exhale",
     "brand": "Bouket",
@@ -1608625,7 +1608598,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608633,7 +1608606,7 @@
   {
     "listingId": "bouket-tahoe-og-small-flower",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Tahoe OG - Small Flower",
     "strainNameCanonical": "Tahoe OG",
     "brand": "Bouket",
@@ -1608668,7 +1608641,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608676,7 +1608649,7 @@
   {
     "listingId": "rythm-tamarindo",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Tamarindo",
     "strainNameCanonical": "Tamarindo",
     "brand": "Rythm",
@@ -1608752,7 +1608725,50 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "listingId": "slack-hollow-tangerine-dream",
+    "licenseNumber": "OCM-RETL-26-000489",
+    "capturedAt": "2026-11-27T19:46:46Z",
+    "strainNameRaw": "Tangerine Dream",
+    "strainNameCanonical": "Tangerine Dream",
+    "brand": "Slack Hollow",
+    "brandKey": "slackhollow",
+    "lineage": "SATIVA",
+    "thcPercent": 23.9,
+    "cbdPercent": 0,
+    "totalCannabinoidsPercent": null,
+    "terpenes": {
+      "source": "NONE",
+      "profile": [],
+      "totalPercent": null,
+      "labName": null,
+      "testedOn": null,
+      "coaUrl": null,
+      "referenceStrain": null
+    },
+    "labPanelKey": null,
+    "packageIds": null,
+    "harvestedOn": null,
+    "packagedOn": null,
+    "expiresOn": null,
+    "expiresWithinDays": null,
+    "inStock": true,
+    "availableSizesGrams": [
+      3.5
+    ],
+    "productUrl": "http://kushieny.com/menu/slack-hollow/slack-hollow-tangerine-dream-flower-sativa-35g",
+    "description": null,
+    "sources": [
+      {
+        "url": "https://kushieny.com/menu/categories/flower",
+        "label": "Shop menu",
+        "type": "MENU_PLATFORM",
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608760,7 +1608776,7 @@
   {
     "listingId": "milkweed-the-queen",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "The Queen",
     "strainNameCanonical": "The Queen",
     "brand": "Milkweed",
@@ -1608801,7 +1608817,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608809,7 +1608825,7 @@
   {
     "listingId": "knack-third-eye",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Third Eye",
     "strainNameCanonical": "Third Eye",
     "brand": "Knack",
@@ -1608844,7 +1608860,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608852,7 +1608868,7 @@
   {
     "listingId": "left-coast-tourbillion",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Tourbillion",
     "strainNameCanonical": "Tourbillion",
     "brand": "Left Coast",
@@ -1608887,7 +1608903,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608895,7 +1608911,7 @@
   {
     "listingId": "electraleaf-trop-cherry",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Trop Cherry",
     "strainNameCanonical": "Trop Cherry",
     "brand": "Electraleaf",
@@ -1608930,7 +1608946,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1608938,7 +1608954,7 @@
   {
     "listingId": "dank-tropical-runtz",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Tropical Runtz",
     "strainNameCanonical": "Tropical Runtz",
     "brand": "Dank",
@@ -1609014,7 +1609030,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1609022,7 +1609038,7 @@
   {
     "listingId": "animal-house-tropicana-trip",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Tropicana Trip",
     "strainNameCanonical": "Tropicana Trip",
     "brand": "Animal House",
@@ -1609058,7 +1609074,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1609066,7 +1609082,7 @@
   {
     "listingId": "knack-twice-baked",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Twice Baked",
     "strainNameCanonical": "Twice Baked",
     "brand": "Knack",
@@ -1609101,7 +1609117,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1609109,7 +1609125,7 @@
   {
     "listingId": "animal-house-vanilla-cream",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Vanilla Cream",
     "strainNameCanonical": "Vanilla Cream",
     "brand": "Animal House",
@@ -1609144,7 +1609160,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1609152,7 +1609168,7 @@
   {
     "listingId": "rythm-velcroz",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "VelcroZ",
     "strainNameCanonical": "VelcroZ",
     "brand": "Rythm",
@@ -1609238,7 +1609254,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1609246,7 +1609262,7 @@
   {
     "listingId": "animal-house-white-chocolate",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "White Chocolate",
     "strainNameCanonical": "White Chocolate",
     "brand": "Animal House",
@@ -1609281,7 +1609297,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1609289,7 +1609305,7 @@
   {
     "listingId": "back-home-white-widow",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "White Widow",
     "strainNameCanonical": "White Widow",
     "brand": "Back Home",
@@ -1609360,7 +1609376,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1609368,7 +1609384,7 @@
   {
     "listingId": "synergy-white-widow",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "White Widow",
     "strainNameCanonical": "White Widow",
     "brand": "Synergy",
@@ -1609403,7 +1609419,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
@@ -1609411,7 +1609427,7 @@
   {
     "listingId": "sp-farms-zainbow-living-soil-indoor-flower",
     "licenseNumber": "OCM-RETL-26-000489",
-    "capturedAt": "2026-11-21T17:15:53Z",
+    "capturedAt": "2026-11-27T19:46:46Z",
     "strainNameRaw": "Zainbow - Living Soil Indoor Flower",
     "strainNameCanonical": "Zainbow - Living Soil",
     "brand": "SP Farms",
@@ -1609446,7 +1609462,7 @@
         "url": "https://kushieny.com/menu/categories/flower",
         "label": "Shop menu",
         "type": "MENU_PLATFORM",
-        "retrievedAt": "2026-11-21T17:15:53Z"
+        "retrievedAt": "2026-11-27T19:46:46Z"
       }
     ],
     "warnings": []
